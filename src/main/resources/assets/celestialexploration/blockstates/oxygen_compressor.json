@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "celestialexploration:block/oxygen_compressor"
+    },
+    "lit=true": {
+      "model": "celestialexploration:block/oxygen_compressor_on"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "celestialexploration:meteor_brick_slab"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:chiseled_meteor_brick"
+  }
+}

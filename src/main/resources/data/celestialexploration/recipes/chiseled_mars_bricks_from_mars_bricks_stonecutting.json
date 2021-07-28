@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "celestialexploration:mars_brick"
+  },
+  "result": "celestialexploration:chiseled_mars_brick",
+  "count": 1
+}

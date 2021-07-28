@@ -1,0 +1,39 @@
+{
+  "scale": 0.2,
+  "effects": {
+    "mood_sound": {
+      "sound": "minecraft:ambient.cave",
+      "tick_delay": 6000,
+      "block_search_extent": 8,
+      "offset": 2
+    },
+    "sky_color": 527121,
+    "fog_color": 527121,
+    "water_color": 527121,
+    "water_fog_color": 527121
+  },
+  "surface_builder": "minecraft:end",
+  "carvers": {},
+  "features": [
+    [
+//      "minecraft:end_island_decorated"
+    ]
+  ],
+  "starts": [],
+  "spawners": {
+    "monster": [],
+    "creature": [],
+    "ambient": [],
+    "water_creature": [],
+    "water_ambient": [],
+    "misc": []
+  },
+  "spawn_costs": {},
+  "player_spawn_friendly": false,
+  "surface_builder": "celestialexploration:asteroid_field",
+  "precipitation": "none",
+  "temperature": 0.5,
+  "downfall": 0.5,
+  "category": "the_end",
+  "depth": 0.1
+}

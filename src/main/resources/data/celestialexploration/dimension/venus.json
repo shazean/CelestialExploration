@@ -1,0 +1,102 @@
+{
+  "type": "celestialexploration:warm_planet",
+  "generator": {
+    "type": "minecraft:noise",
+    "seed": 2166577995,
+    "settings": "celestialexploration:venus",
+    "biome_source": {
+      "type": "minecraft:multi_noise",
+      "seed": 2860605197,
+      "humidity_noise": {
+        "firstOctave": -7,
+        "amplitudes": [
+          1.0,
+          1.0
+        ]
+      },
+      "altitude_noise": {
+        "firstOctave": -7,
+        "amplitudes": [
+          1.0,
+          1.0
+        ]
+      },
+      "weirdness_noise": {
+        "firstOctave": -7,
+        "amplitudes": [
+          1.0,
+          1.0
+        ]
+      },
+      "temperature_noise": {
+        "firstOctave": -7,
+        "amplitudes": [
+          7.0,
+          7.0
+        ]
+      },
+      "biomes": [
+        {
+          "biome": "celestialexploration:venus_flats",
+          "parameters": {
+            "temperature": 0.0,
+            "humidity": 0.0,
+            "altitude": 0.3,
+            "weirdness": 0.0,
+            "offset": 0.0
+          }
+        },
+        {
+          "biome": "celestialexploration:venus_hills",
+          "parameters": {
+            "temperature": 0.0,
+            "humidity": 0.0,
+            "altitude": 0.3,
+            "weirdness": 0.0,
+            "offset": 0.0
+          }
+        },
+        {
+          "biome": "celestialexploration:venus_flats",
+          "parameters": {
+            "temperature": 0.0,
+            "humidity": 0.0,
+            "altitude": 0.3,
+            "weirdness": 0.0,
+            "offset": 0.0
+          }
+        },
+        {
+          "biome": "celestialexploration:venus_hills",
+          "parameters": {
+            "temperature": 0.0,
+            "humidity": 0.0,
+            "altitude": 0.3,
+            "weirdness": 0.0,
+            "offset": 0.0
+          }
+        },
+        {
+          "biome": "celestialexploration:venus_volcanoes",
+          "parameters": {
+            "temperature": 0.0,
+            "humidity": 0.0,
+            "altitude": 0.3,
+            "weirdness": 0.0,
+            "offset": 0.0
+          }
+        },     
+        {
+          "biome": "celestialexploration:venus_poles",
+          "parameters": {
+            "temperature": 0.0,
+            "humidity": 0.0,
+            "altitude": -0.2,
+            "weirdness": 0.0,
+            "offset": 0.0
+          }
+        }
+      ]
+    }
+  }
+}

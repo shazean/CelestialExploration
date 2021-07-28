@@ -1,0 +1,59 @@
+{
+  "effects": {
+    "mood_sound": {
+      "sound": "minecraft:ambient.basalt_deltas.mood",
+      "tick_delay": 6000,
+      "block_search_extent": 8,
+      "offset": 2
+    },
+    "sky_color": 15565857,
+    "fog_color": 14591603,
+    "water_color": 1050626,
+    "water_fog_color": 3150848
+  },
+  "carvers": {
+    "air": [
+      "minecraft:canyon"
+    ],
+    "liquid": [
+      "minecraft:underwater_canyon"
+    ]
+  },
+  "starts": [
+    "celestialexploration:crater"
+  ],
+  "features": [
+    [],
+    [],
+    [],
+    [
+           "celestialexploration:mars_iron_ore",
+    ],
+    [],
+    [],
+    [],
+    [],
+    [
+           "celestialexploration:mars_iron_ore",
+       "celestialexploration:mars_redstone_ore"
+    ],
+    []
+  ],
+  "spawners": {
+    "ambient": [],
+    "creature": [],
+    "misc": [],
+    "monster": [],
+    "water_ambient": [],
+    "water_creature": []
+  },
+  "category": "river",
+  "precipitation": "none",
+  "surface_builder": "celestialexploration:mars_surface",
+  "scale": 0.3,
+  "downfall": 0.1,
+  "depth": 0.01,
+  "temperature": 0,
+  "player_spawn_friendly": true,
+  "spawn_costs": {}
+}

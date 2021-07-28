@@ -1,0 +1,49 @@
+{
+  "effects": {
+    "mood_sound": {
+      "sound": "minecraft:ambient.cave",
+      "tick_delay": 6000,
+      "block_search_extent": 8,
+      "offset": 2
+    },
+    "sky_color": 15565857,
+    "fog_color": 14591603,
+    "water_color": 1050626,
+    "water_fog_color": 3150848
+  },
+  "carvers": {
+  },
+  "starts": [],
+  "features": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+       "celestialexploration:mars_iron_ore",
+       "celestialexploration:mars_redstone_ore"
+    ],
+    [],
+    []
+  ],
+  "spawners": {
+    "ambient": [],
+    "creature": [],
+    "misc": [],
+    "monster": [],
+    "water_ambient": [],
+    "water_creature": []
+  },
+  "category": "desert",
+  "precipitation": "none",
+  "surface_builder": "celestialexploration:olympus_mons",
+  "scale": 0.9,
+  "downfall": 0.1,
+  "depth": 1.7,
+  "temperature": 0.1,
+  "player_spawn_friendly": true,
+  "spawn_costs": {}
+}

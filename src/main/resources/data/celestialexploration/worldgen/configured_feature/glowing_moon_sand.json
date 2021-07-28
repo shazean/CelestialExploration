@@ -1,0 +1,42 @@
+{
+  "type": "minecraft:decorated",
+  "config": {
+    "feature": {
+      "type": "minecraft:decorated",
+      "name": "celestialexploration:glowing_moon_sand",
+      "config": {
+        "feature": {
+          "config": {
+            "contents": {
+              "Name": "celestialexploration:glowing_moon_sand"
+            },
+            "rim": {
+              "Name": "celestialexploration:glowing_moon_sand"
+            },
+            "size": {
+              "base": 3,
+              "spread": 4
+            },
+            "rim_size": {
+              "base": 0,
+              "spread": 2
+            }
+          },
+          "type": "minecraft:delta_feature"
+        },
+        "decorator": {
+          "type": "minecraft:chance",
+          "config": {
+            "chance": 64
+          }
+        }
+      }
+    },
+    "decorator": {
+      "config": {
+        "count": 40
+      },
+      "type": "minecraft:count_multilayer"
+    }
+  }
+}
