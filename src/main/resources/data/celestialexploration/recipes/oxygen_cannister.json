@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#",
+    "S",
+    "C"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:glass"
+    },
+    "S": {
+      "item": "minecraft:water_bucket"
+    },
+    "C": {
+      "item": "minecraft:redstone_torch"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:oxygen_cannister"
+  }
+}

@@ -47,6 +47,10 @@ public class RegistryItems {
 	public static final RegistryObject<Item> SULFUR_CRYSTAL = ITEMS.register("sulfur_crystal", ItemBase::new);
 	 public static final RegistryObject<Item> SULFUR_BUCKET = ITEMS.register("sulfur_bucket", () -> new BucketItem(RegistryFluids.SULFUR, (new Item.Properties()).craftRemainder(Items.BUCKET).stacksTo(1).tab(ItemGroup.TAB_MISC)));
 
+	public static final RegistryObject<Item> OXYGEN_CANNISTER = ITEMS.register("oxygen_cannister", ItemBase::new);
+	public static final RegistryObject<Item> COLD_OXYGEN_CANNISTER = ITEMS.register("cold_oxygen_cannister", ItemBase::new);
+
+	 
 	
 	//Block Items
 	//MOON
@@ -119,11 +123,13 @@ public class RegistryItems {
 	//OTHER BLOCK ITEMS
 	public static final RegistryObject<Item> STEEL_BLOCK = ITEMS.register("steel_block",  () -> new BlockItemBase(RegistryBlocks.STEEL_BLOCK.get()));
 	public static final RegistryObject<Item> DRY_ICE = ITEMS.register("dry_ice", () -> new BlockItemBase(RegistryBlocks.DRY_ICE.get()));
-	public static final RegistryObject<Item> OXYGEN_COMPRESSOR = ITEMS.register("oxygen_compressor",  () -> new BlockItemBase(RegistryBlocks.OXYGEN_COMPRESSOR.get()));
+//	public static final RegistryObject<Item> OXYGEN_COMPRESSOR = ITEMS.register("oxygen_compressor",  () -> new BlockItemBase(RegistryBlocks.OXYGEN_COMPRESSOR.get()));
 	public static final RegistryObject<Item> ASSEMBLY_STATION = ITEMS.register("assembly_station",  () -> new BlockItemBase(RegistryBlocks.ASSEMBLY_STATION.get()));
 	public static final RegistryObject<Item> SOLAR_PANEL = ITEMS.register("solar_panel",  () -> new BlockItemBase(RegistryBlocks.SOLAR_PANEL.get()));
 
 
+		
+	
 	public static final RegistryObject<Item> CERAMIC = ITEMS.register("ceramic",  () -> new BlockItemBase(RegistryBlocks.CERAMIC.get()));	
 	public static final RegistryObject<Item> CERAMIC_TILE = ITEMS.register("ceramic_tile",  () -> new BlockItemBase(RegistryBlocks.CERAMIC_TILE.get()));
 	public static final RegistryObject<Item> STEEL_ROD = ITEMS.register("steel_rod", () -> new Item((new Item.Properties()).tab(ItemGroup.TAB_MATERIALS)));

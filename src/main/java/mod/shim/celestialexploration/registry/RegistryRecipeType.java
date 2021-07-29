@@ -14,7 +14,7 @@
 //	
 //
 //	
-//	public static DeferredRegister<IRecipeSerializer<?>> RECIPE_SERIALIZER = DeferredRegister.create(ForgeRegistries.RECIPE, Main.MODID);
+//	public static DeferredRegister<IRecipeSerializer<?>> RECIPE_SERIALIZER = DeferredRegister.create(ForgeRegistries.rec, Main.MODID);
 //	
 //	public static void init() {
 //		RECIPE_SERIALIZER.register(FMLJavaModLoadingContext.get().getModEventBus());

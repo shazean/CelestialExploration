@@ -1,7 +1,11 @@
 package mod.shim.celestialexploration.inventory.container;
 
+import java.util.List;
 import java.util.Objects;
 
+import javax.annotation.Nullable;
+
+import mod.shim.celestialexploration.items.crafting.OxygenCompressorRecipe;
 import mod.shim.celestialexploration.registry.RegistryBlocks;
 import mod.shim.celestialexploration.registry.RegistryContainerType;
 import mod.shim.celestialexploration.tileentity.OxygenCompressorTileEntity;
@@ -10,14 +14,14 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.Slot;
-import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IWorldPosCallable;
+import net.minecraft.world.World;
 
 public class OxygenCompressorContainer extends Container {
 
-
+	
 	public final OxygenCompressorTileEntity oxcompte;
 	private final IWorldPosCallable canInteractWithCallable;
 	
