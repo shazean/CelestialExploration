@@ -34,6 +34,7 @@ import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.event.world.WorldEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DeferredWorkQueue;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
@@ -64,6 +65,11 @@ public class Main {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
         
         RegistryStructures.DEFERRED_REGISTRY_STRUCTURE.register(modEventBus);
+        
+        IEventBus forgeBus = MinecraftForge.EVENT_BUS;
+        forgeBus.addListener(EventPriority.NORMAL, this::addDimensionalSpacing);
+        
+        forgeBus.addListener(EventPriority.HIGH, this::biomeModification);
         
         RegistryItems.init();
         RegistryBlocks.init();
@@ -234,7 +240,4 @@ public class Main {
         }
    }
 
-
-
-    
 }

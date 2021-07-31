@@ -1,9 +1,12 @@
 package mod.shim.celestialexploration.world.gen.feature.structure;
 
 import java.util.List;
-
+import java.util.Locale;
 import java.util.Map;
 import java.util.Random;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
@@ -30,6 +33,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.MutableBoundingBox;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.ISeedReader;
 import net.minecraft.world.IServerWorld;
@@ -37,7 +41,10 @@ import net.minecraft.world.IWorld;
 import net.minecraft.world.gen.ChunkGenerator;
 import net.minecraft.world.gen.Heightmap;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
+import net.minecraft.world.gen.feature.jigsaw.JigsawJunction;
+import net.minecraft.world.gen.feature.jigsaw.JigsawPiece;
 import net.minecraft.world.gen.feature.structure.IStructurePieceType;
+import net.minecraft.world.gen.feature.structure.MineshaftPieces;
 import net.minecraft.world.gen.feature.structure.OceanRuinConfig;
 import net.minecraft.world.gen.feature.structure.OceanRuinPieces;
 import net.minecraft.world.gen.feature.structure.OceanRuinStructure;
@@ -50,12 +57,29 @@ import net.minecraft.world.gen.feature.template.PlacementSettings;
 import net.minecraft.world.gen.feature.template.Template;
 import net.minecraft.world.gen.feature.template.TemplateManager;
 
-public class CraterPiece {
-//	   private boolean placedMainChest;
-//	   private boolean placedHiddenChest;
-//	   private boolean placedTrap1;
-//	   private boolean placedTrap2;
-//	   private static final SmallCraterPiece.Selector MOSS_STONE_SELECTOR = new SmallCraterPiece.Selector();
+public class CraterPiece extends StructurePiece {
+
+	
+	  
+
+
+	private static final Logger LOGGER = LogManager.getLogger();
+	   protected final CraterPiece element;
+	   protected BlockPos position;
+	   private final int groundLevelDelta;
+	   protected final Rotation rotation;
+	   private final List<JigsawJunction> junctions = Lists.newArrayList();
+	   private final TemplateManager structureManager;
+
+	   public CraterPiece(TemplateManager p_i242036_1_, CraterPiece p_i242036_2_, BlockPos p_i242036_3_, int p_i242036_4_, Rotation p_i242036_5_, MutableBoundingBox p_i242036_6_) {
+	      super(IStructurePieceType.JIGSAW, 0);
+	      this.structureManager = p_i242036_1_;
+	      this.element = p_i242036_2_;
+	      this.position = p_i242036_3_;
+	      this.groundLevelDelta = p_i242036_4_;
+	      this.rotation = p_i242036_5_;
+	      this.boundingBox = p_i242036_6_;
+	   }
 
 	private static final ResourceLocation SMALL_CRATER = new ResourceLocation(Main.MODID + ":small_crater");
 	private static final ResourceLocation MEDIUM_CRATER = new ResourceLocation(Main.MODID + ":medium_crater");
@@ -73,18 +97,32 @@ public class CraterPiece {
 		switch(rand.nextInt()) {
 		
 		case 0:
+			return SMALL_CRATER;
+
 		case 1:
+			return SMALL_CRATER;
+
 		case 2:
+			return SMALL_CRATER;
+
 		case 3:
 			return SMALL_CRATER;
 		
 		case 4:
+			return MEDIUM_CRATER;
+
 		case 5:
+			return MEDIUM_CRATER;
+
 		case 6:
 			return MEDIUM_CRATER;
 
 		case 7:
+			return MEDIUM_CRATER;
+
 		case 8:		
+			return MEDIUM_CRATER;
+
 		case 9:
 			return LARGE_CRATER;
 
@@ -103,7 +141,7 @@ public class CraterPiece {
 	   public static void addPieces(TemplateManager p_204041_0_, BlockPos p_204041_1_, Rotation p_204041_2_, List<StructurePiece> p_204041_3_, Random p_204041_4_, NoFeatureConfig p_204041_5_) {
 		   	boolean flag = p_204041_4_.nextFloat() <= Math.random();
 		      float f = flag ? 0.9F : 0.8F;
-		      addPiece(p_204041_0_, p_204041_1_, p_204041_2_, p_204041_3_, p_204041_4_, p_204041_5_, flag, f);
+		      addPiece(p_204041_0_, p_204041_1_, p_204041_2_, p_204041_3_, p_204041_4_, flag, f);
 //		      if (flag && p_204041_4_.nextFloat() <= p_204041_5_.clusterProbability) {
 //		         addClusterRuins(p_204041_0_, p_204041_4_, p_204041_2_, p_204041_1_, p_204041_5_, p_204041_3_);
 //		      }
@@ -149,12 +187,8 @@ public class CraterPiece {
 		      return list;
 		   }
 
-		   private static void addPiece(TemplateManager p_204045_0_, BlockPos p_204045_1_, Rotation p_204045_2_, List<StructurePiece> p_204045_3_, Random p_204045_4_, NoFeatureConfig p_204045_5_, boolean p_204045_6_, float p_204045_7_) {
-
-			   
-	
-			   p_204045_3_.add(new CraterPiece.Piece(p_204045_0_, (ResourceLocation) CRATER_PIECE, p_204045_1_, p_204045_2_, p_204045_7_,p_204045_5_, p_204045_6_));
-	
+		   private static void addPiece(TemplateManager p_204045_0_, BlockPos p_204045_1_, Rotation p_204045_2_, List<StructurePiece> p_204045_3_, Random p_204045_4_, boolean p_204045_6_, float p_204045_7_) {
+			   p_204045_3_.add(new CraterPiece.Piece(p_204045_0_, (ResourceLocation) CRATER_PIECE, p_204045_1_, p_204045_2_, p_204045_7_, p_204045_6_));
 		   }
 
 		   public static class Piece extends TemplateStructurePiece {
@@ -164,8 +198,8 @@ public class CraterPiece {
 		      private final Rotation rotation;
 		      private final boolean isLarge;
 
-		      public Piece(TemplateManager p_i48868_1_, ResourceLocation p_i48868_2_, BlockPos p_i48868_3_, Rotation p_i48868_4_, float p_i48868_5_, NoFeatureConfig p_i48868_6_, boolean p_i48868_7_) {
-		         super(IStructurePieceType.OCEAN_RUIN, 0);
+		      public Piece(TemplateManager p_i48868_1_, ResourceLocation p_i48868_2_, BlockPos p_i48868_3_, Rotation p_i48868_4_, float p_i48868_5_, boolean p_i48868_7_) {
+		         super(CRATER_PIECE_TYPE, 0);
 		         this.templateLocation = p_i48868_2_;
 		         this.templatePosition = p_i48868_3_;
 		         this.rotation = p_i48868_4_;
@@ -175,8 +209,16 @@ public class CraterPiece {
 		         this.loadTemplate(p_i48868_1_);
 		      }
 
+		      static IStructurePieceType CRATER_PIECE_TYPE = setPieceId(CraterPiece.Piece::new, "CraterPiece");
+
+		      static IStructurePieceType setPieceId(IStructurePieceType p_214750_0_, String p_214750_1_) {
+		          return Registry.register(Registry.STRUCTURE_PIECE, p_214750_1_.toLowerCase(Locale.ROOT), p_214750_0_);
+		       }
+
+		      
+		      
 		      public Piece(TemplateManager p_i50592_1_, CompoundNBT p_i50592_2_) {
-		         super(IStructurePieceType.OCEAN_RUIN, p_i50592_2_);
+		         super(CRATER_PIECE_TYPE, p_i50592_2_);
 		         this.templateLocation = new ResourceLocation(p_i50592_2_.getString("Template"));
 		         this.rotation = Rotation.valueOf(p_i50592_2_.getString("Rot"));
 		         this.integrity = p_i50592_2_.getFloat("Integrity");
@@ -269,4 +311,19 @@ public class CraterPiece {
 		         return i;
 		      }
 		   }
+
+		@Override
+		protected void addAdditionalSaveData(CompoundNBT p_143011_1_) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public boolean postProcess(ISeedReader p_230383_1_, StructureManager p_230383_2_, ChunkGenerator p_230383_3_,
+				Random p_230383_4_, MutableBoundingBox p_230383_5_, ChunkPos p_230383_6_, BlockPos p_230383_7_) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		
 		}
