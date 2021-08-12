@@ -15,7 +15,6 @@
     "air": []
   },
   "starts": [
-        "celestialexploration:crater",
         "minecraft:village_plains"
   ],
   "features": [

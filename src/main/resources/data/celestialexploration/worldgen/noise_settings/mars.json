@@ -10,11 +10,6 @@
       "count": 128
     },
     "structures": {
-      "celestialexploration:crater": {
-        "spacing": 5,
-        "separation": 2,
-        "salt": 3295543
-      },
       "minecraft:village": {
         "spacing": 32,
         "separation": 8,

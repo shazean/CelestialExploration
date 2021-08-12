@@ -2,18 +2,15 @@ package mod.shim.celestialexploration.registry;
 
 import mod.shim.celestialexploration.Main;
 import mod.shim.celestialexploration.blocks.BlockItemBase;
-import mod.shim.celestialexploration.entity.item.ShuttleEntity;
 import mod.shim.celestialexploration.items.ItemBase;
-import mod.shim.celestialexploration.items.ShuttleItem;
+import mod.shim.celestialexploration.items.ModSpawnEgg;
 import mod.shim.celestialexploration.items.SpaceSuitArmor;
 import mod.shim.celestialexploration.tools.ModArmorMaterial;
 import mod.shim.celestialexploration.tools.ModItemTier;
-import net.minecraft.entity.item.BoatEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.AxeItem;
-import net.minecraft.item.BoatItem;
 import net.minecraft.item.BucketItem;
 import net.minecraft.item.HoeItem;
 import net.minecraft.item.Item;
@@ -26,6 +23,7 @@ import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+
 
 public class RegistryItems {
 
@@ -40,6 +38,11 @@ public class RegistryItems {
 
 	
    
+	public static final RegistryObject<ModSpawnEgg> ROVER_SPAWN_EGG = ITEMS.register("rover_spawn_egg", () -> 
+		new ModSpawnEgg(RegistryEntities.ROVER, 0x000000, 0xffffff, new Item.Properties().tab(Main.CELESTIAL_TAB)));
+	
+	
+	
 	//Items
 	public static final RegistryObject<Item> STEEL_INGOT = ITEMS.register("steel_ingot", ItemBase::new);
 	public static final RegistryObject<Item> MOON_DUST = ITEMS.register("moon_dust", ItemBase::new);
@@ -148,7 +151,7 @@ public class RegistryItems {
 	
 	
 	
-	public static final RegistryObject<Item> SPRUCE_SHUTTLE = ITEMS.register("spruce_shuttle", () -> new ShuttleItem(ShuttleEntity.Type.SPRUCE, (new Item.Properties()).stacksTo(1).tab(Main.SHUTTLE_TAB)));
+//	public static final RegistryObject<Item> SPRUCE_SHUTTLE = ITEMS.register("spruce_shuttle", () -> new ShuttleItem(ShuttleEntity.Type.SPRUCE, (new Item.Properties()).stacksTo(1).tab(Main.SHUTTLE_TAB)));
 
 //	   public static final Item SPRUCE_BOAT = registerItem("spruce_boat", new BoatItem(BoatEntity.Type.SPRUCE, (new Item.Properties()).stacksTo(1).tab(ItemGroup.TAB_TRANSPORTATION)));
 

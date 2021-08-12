@@ -2,6 +2,7 @@ package mod.shim.celestialexploration.registry;
 
 import java.util.Set;
 
+
 import java.util.function.Supplier;
 
 import javax.annotation.Nullable;
@@ -10,7 +11,6 @@ import com.google.common.collect.ImmutableSet;
 import com.mojang.datafixers.types.Type;
 
 import mod.shim.celestialexploration.Main;
-import mod.shim.celestialexploration.entity.item.ShuttleEntity;
 import mod.shim.celestialexploration.tileentity.AssemblyStationTileEntity;
 import mod.shim.celestialexploration.tileentity.OxygenCompressorTileEntity;
 import net.minecraft.block.Block;

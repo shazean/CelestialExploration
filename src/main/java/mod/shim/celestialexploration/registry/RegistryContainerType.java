@@ -1,7 +1,7 @@
 package mod.shim.celestialexploration.registry;
 
 import mod.shim.celestialexploration.Main;
-import mod.shim.celestialexploration.entity.item.ShuttleEntity;
+
 import mod.shim.celestialexploration.inventory.container.AssemblyStationContainer;
 import mod.shim.celestialexploration.inventory.container.OxygenCompressorContainer;
 import net.minecraft.entity.EntityClassification;
