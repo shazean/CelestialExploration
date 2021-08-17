@@ -1,5 +1,6 @@
 package mod.shim.celestialexploration.items;
 
+import mod.shim.celestialexploration.registry.RegistryEffects;
 import mod.shim.celestialexploration.registry.RegistryItems;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
@@ -20,8 +21,10 @@ public class SpaceSuitArmor extends ArmorItem {
 	public void onArmorTick(ItemStack itemStack, World world, PlayerEntity player) {
 		ItemStack boots = player.getItemBySlot(EquipmentSlotType.FEET);
 		if(boots.getItem() == RegistryItems.SPACE_SUIT_BOOTS.get()) {
-				player.addEffect(new EffectInstance(Effects.JUMP, 50, 1, false, false, false));
-				player.addEffect(new EffectInstance(Effects.SLOW_FALLING, 50, 1, false, false, false));
+//				player.addEffect(new EffectInstance(Effects.JUMP, 50, 1, false, false, false));
+//				player.addEffect(new EffectInstance(Effects.SLOW_FALLING, 50, 1, false, false, false));
+				
+				player.addEffect(new EffectInstance(RegistryEffects.GRAVITY.get(), 50, -5, false, false, false));
 				
 
 		} 

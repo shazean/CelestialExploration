@@ -4,9 +4,11 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import mod.shim.celestialexploration.entity.RoverEntity;
+import mod.shim.celestialexploration.entity.item.ShuttleEntity;
 import mod.shim.celestialexploration.items.ModSpawnEgg;
 import mod.shim.celestialexploration.registry.RegistryBlocks;
 import mod.shim.celestialexploration.registry.RegistryContainerType;
+import mod.shim.celestialexploration.registry.RegistryEffects;
 import mod.shim.celestialexploration.registry.RegistryEntities;
 import mod.shim.celestialexploration.registry.RegistryFluids;
 import mod.shim.celestialexploration.registry.RegistryItems;
@@ -20,6 +22,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.event.entity.EntityTravelToDimensionEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DeferredWorkQueue;
@@ -61,6 +64,7 @@ public class Main {
         RegistryTileEntity.init();
         RegistryContainerType.init();
         RegistryRecipeSerializer.init();
+        RegistryEffects.init();
         
         RegistryEntities.ENTITY_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
 //      RegistryEntities.ENTITY_TYPES.register(bus);
@@ -72,6 +76,8 @@ public class Main {
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
+        
+        
     }
    
 
@@ -95,7 +101,7 @@ public class Main {
         });
     	
     	DeferredWorkQueue.runLater(() -> { //FIXME?
-//    		GlobalEntityTypeAttributes.put(RegistryEntities.SHUTTLE.get(), ShuttleEntity.createBaseUnicornAttributes().build()); //ADD A NEW ONE OF THESE LINES FOR EACH ENTITY
+//    		GlobalEntityTypeAttributes.put(RegistryEntities.SHUTTLE.get(), ShuttleEntity.createLivingAttributes().build()); //ADD A NEW ONE OF THESE LINES FOR EACH ENTITY
     		GlobalEntityTypeAttributes.put(RegistryEntities.ROVER.get(), RoverEntity.createLivingAttributes().build());
     	});
 

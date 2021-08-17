@@ -4,6 +4,7 @@ import mod.shim.celestialexploration.Main;
 import mod.shim.celestialexploration.client.gui.screen.AssemblyStationScreen;
 import mod.shim.celestialexploration.client.gui.screen.OxygenCompressorScreen;
 import mod.shim.celestialexploration.client.render.RoverRenderer;
+import mod.shim.celestialexploration.client.render.ShuttleRenderer;
 import mod.shim.celestialexploration.registry.RegistryContainerType;
 import mod.shim.celestialexploration.registry.RegistryEntities;
 import net.minecraft.client.gui.ScreenManager;
@@ -34,9 +35,8 @@ public class ClientEventBusSubscriber {
 		ScreenManager.register(RegistryContainerType.ASSEMBLY_STATION.get(), AssemblyStationScreen::new);
 
 		RenderingRegistry.registerEntityRenderingHandler(RegistryEntities.ROVER.get(), RoverRenderer::new);
-		
-//		ClientRegistry.bindTileEntityRenderer(RegistryTileEntity.OXYGEN_COMPRESSOR_TILE_ENTITY_TYPE.get(), OxygenCompressorTileEntityRenderer::new);
-		
+		RenderingRegistry.registerEntityRenderingHandler(RegistryEntities.SHUTTLE.get(), ShuttleRenderer::new);
+				
 	}
 
 }

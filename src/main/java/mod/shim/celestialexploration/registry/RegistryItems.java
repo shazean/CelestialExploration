@@ -2,8 +2,10 @@ package mod.shim.celestialexploration.registry;
 
 import mod.shim.celestialexploration.Main;
 import mod.shim.celestialexploration.blocks.BlockItemBase;
+import mod.shim.celestialexploration.entity.item.ShuttleEntity;
 import mod.shim.celestialexploration.items.ItemBase;
 import mod.shim.celestialexploration.items.ModSpawnEgg;
+import mod.shim.celestialexploration.items.ShuttleItem;
 import mod.shim.celestialexploration.items.SpaceSuitArmor;
 import mod.shim.celestialexploration.tools.ModArmorMaterial;
 import mod.shim.celestialexploration.tools.ModItemTier;
@@ -38,8 +40,6 @@ public class RegistryItems {
 
 	
    
-	public static final RegistryObject<ModSpawnEgg> ROVER_SPAWN_EGG = ITEMS.register("rover_spawn_egg", () -> 
-		new ModSpawnEgg(RegistryEntities.ROVER, 0x000000, 0xffffff, new Item.Properties().tab(Main.CELESTIAL_TAB)));
 	
 	
 	
@@ -131,7 +131,9 @@ public class RegistryItems {
 	public static final RegistryObject<Item> SOLAR_PANEL = ITEMS.register("solar_panel",  () -> new BlockItemBase(RegistryBlocks.SOLAR_PANEL.get()));
 
 
-		
+	public static final RegistryObject<ModSpawnEgg> ROVER_SPAWN_EGG = ITEMS.register("rover_spawn_egg", () -> 
+	new ModSpawnEgg(RegistryEntities.ROVER, 0x000000, 0xffffff, new Item.Properties().tab(Main.CELESTIAL_TAB)));
+	
 	
 	public static final RegistryObject<Item> CERAMIC = ITEMS.register("ceramic",  () -> new BlockItemBase(RegistryBlocks.CERAMIC.get()));	
 	public static final RegistryObject<Item> CERAMIC_TILE = ITEMS.register("ceramic_tile",  () -> new BlockItemBase(RegistryBlocks.CERAMIC_TILE.get()));
@@ -150,9 +152,16 @@ public class RegistryItems {
 
 	
 	
+//FIXME when adding type back in	
+	public static final RegistryObject<Item> WHITE_SHUTTLE = ITEMS.register("white_shuttle", () -> new ShuttleItem(ShuttleEntity.Color.WHITE, new Item.Properties().stacksTo(1).tab(Main.SHUTTLE_TAB)));
+	public static final RegistryObject<Item> RED_SHUTTLE = ITEMS.register("red_shuttle", () -> new ShuttleItem(ShuttleEntity.Color.RED, new Item.Properties().stacksTo(1).tab(Main.SHUTTLE_TAB)));
+	public static final RegistryObject<Item> ORANGE_SHUTTLE = ITEMS.register("orange_shuttle", () -> new ShuttleItem(ShuttleEntity.Color.ORANGE, new Item.Properties().stacksTo(1).tab(Main.SHUTTLE_TAB)));
+	public static final RegistryObject<Item> YELLOW_SHUTTLE = ITEMS.register("yellow_shuttle", () -> new ShuttleItem(ShuttleEntity.Color.YELLOW, new Item.Properties().stacksTo(1).tab(Main.SHUTTLE_TAB)));
+	public static final RegistryObject<Item> GREEN_SHUTTLE = ITEMS.register("green_shuttle", () -> new ShuttleItem(ShuttleEntity.Color.GREEN, new Item.Properties().stacksTo(1).tab(Main.SHUTTLE_TAB)));
+	public static final RegistryObject<Item> BLUE_SHUTTLE = ITEMS.register("blue_shuttle", () -> new ShuttleItem(ShuttleEntity.Color.BLUE, new Item.Properties().stacksTo(1).tab(Main.SHUTTLE_TAB)));
+	public static final RegistryObject<Item> PURPLE_SHUTTLE = ITEMS.register("purple_shuttle", () -> new ShuttleItem(ShuttleEntity.Color.PURPLE, new Item.Properties().stacksTo(1).tab(Main.SHUTTLE_TAB)));
+	public static final RegistryObject<Item> BLACK_SHUTTLE = ITEMS.register("black_shuttle", () -> new ShuttleItem(ShuttleEntity.Color.BLACK, new Item.Properties().stacksTo(1).tab(Main.SHUTTLE_TAB)));
 	
-//	public static final RegistryObject<Item> SPRUCE_SHUTTLE = ITEMS.register("spruce_shuttle", () -> new ShuttleItem(ShuttleEntity.Type.SPRUCE, (new Item.Properties()).stacksTo(1).tab(Main.SHUTTLE_TAB)));
-
 //	   public static final Item SPRUCE_BOAT = registerItem("spruce_boat", new BoatItem(BoatEntity.Type.SPRUCE, (new Item.Properties()).stacksTo(1).tab(ItemGroup.TAB_TRANSPORTATION)));
 
 	
