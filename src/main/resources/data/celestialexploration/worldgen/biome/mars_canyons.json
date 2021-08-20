@@ -42,7 +42,14 @@
   "spawners": {
     "ambient": [],
     "creature": [],
-    "misc": [],
+    "misc": [
+      {
+        "type": "celestialexploration:rover",
+        "minCount": 1,
+        "maxCount": 1,
+        "weight": 1
+      }
+    ],
     "monster": [],
     "water_ambient": [],
     "water_creature": []

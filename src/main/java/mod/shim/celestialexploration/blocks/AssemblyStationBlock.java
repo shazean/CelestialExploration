@@ -41,7 +41,7 @@ public class AssemblyStationBlock extends Block {
 
 
 
-@Override
+	@Override
 	public ActionResultType use(BlockState state, World worldIn, BlockPos pos,
 			PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
 		// TODO Auto-generated method stub
@@ -51,7 +51,7 @@ public class AssemblyStationBlock extends Block {
 				NetworkHooks.openGui((ServerPlayerEntity) player, (AssemblyStationTileEntity) tileentity, pos);
 			}
 		}
-		return super.use(state, worldIn, pos, player, handIn, hit);
+		return ActionResultType.SUCCESS;
 	}
 
 //	   public ActionResultType use(BlockState p_225533_1_, World p_225533_2_, BlockPos p_225533_3_, PlayerEntity p_225533_4_, Hand p_225533_5_, BlockRayTraceResult p_225533_6_) {

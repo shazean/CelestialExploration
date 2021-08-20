@@ -13,6 +13,7 @@ import mod.shim.celestialexploration.registry.RegistryEntities;
 import mod.shim.celestialexploration.registry.RegistryFluids;
 import mod.shim.celestialexploration.registry.RegistryItems;
 import mod.shim.celestialexploration.registry.RegistryRecipeSerializer;
+import mod.shim.celestialexploration.registry.RegistrySurfaceBuilders;
 import mod.shim.celestialexploration.registry.RegistryTileEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
@@ -65,6 +66,7 @@ public class Main {
         RegistryContainerType.init();
         RegistryRecipeSerializer.init();
         RegistryEffects.init();
+        RegistrySurfaceBuilders.init();
         
         RegistryEntities.ENTITY_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
 //      RegistryEntities.ENTITY_TYPES.register(bus);

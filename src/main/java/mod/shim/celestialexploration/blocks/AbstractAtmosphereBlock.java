@@ -19,7 +19,7 @@ public class AbstractAtmosphereBlock extends BreakableBlock {
 	   }
 
 	   public VoxelShape getVisualShape(BlockState p_230322_1_, IBlockReader p_230322_2_, BlockPos p_230322_3_, ISelectionContext p_230322_4_) {
-	      return VoxelShapes.empty();
+		   return VoxelShapes.empty();
 	   }
 
 	   @OnlyIn(Dist.CLIENT)
@@ -30,7 +30,13 @@ public class AbstractAtmosphereBlock extends BreakableBlock {
 	   public boolean propagatesSkylightDown(BlockState p_200123_1_, IBlockReader p_200123_2_, BlockPos p_200123_3_) {
 	      return true;
 	   }
-		   
+		
+	   //Makes completely invisible
+//	   @Override
+//	   public BlockRenderType getRenderShape(BlockState p_149645_1_) {
+//		      return BlockRenderType.INVISIBLE;
+//		   }
+
 		   
 }
 

@@ -98,7 +98,9 @@ public class RegistryItems {
 	public static final RegistryObject<Item> CHISELED_MARS_BRICK = ITEMS.register("chiseled_mars_brick", () -> new BlockItemBase(RegistryBlocks.CHISELED_MARS_BRICK.get()));
 	public static final RegistryObject<Item> MARS_BRICK_STAIRS = ITEMS.register("mars_brick_stairs", () -> new BlockItemBase(RegistryBlocks.MARS_BRICK_STAIRS.get()));
 	public static final RegistryObject<Item> MARS_BRICK_SLAB = ITEMS.register("mars_brick_slab", () -> new BlockItemBase(RegistryBlocks.MARS_BRICK_SLAB.get()));
-
+	public static final RegistryObject<Item> MARS_SOIL = ITEMS.register("mars_soil", () -> new BlockItemBase(RegistryBlocks.MARS_SOIL.get()));
+	
+	
 	
 	//VENUS
 	public static final RegistryObject<Item> VENUS_STONE = ITEMS.register("venus_stone", () -> new BlockItemBase(RegistryBlocks.VENUS_STONE.get()));	
@@ -133,6 +135,10 @@ public class RegistryItems {
 
 	public static final RegistryObject<ModSpawnEgg> ROVER_SPAWN_EGG = ITEMS.register("rover_spawn_egg", () -> 
 	new ModSpawnEgg(RegistryEntities.ROVER, 0x000000, 0xffffff, new Item.Properties().tab(Main.CELESTIAL_TAB)));
+	
+	
+	public static final RegistryObject<Item> GEYSER = ITEMS.register("geyser", () -> new BlockItemBase(RegistryBlocks.GEYSER.get()));
+
 	
 	
 	public static final RegistryObject<Item> CERAMIC = ITEMS.register("ceramic",  () -> new BlockItemBase(RegistryBlocks.CERAMIC.get()));	

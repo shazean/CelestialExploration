@@ -5,7 +5,9 @@ import java.util.function.ToIntFunction;
 import mod.shim.celestialexploration.Main;
 import mod.shim.celestialexploration.blocks.AssemblyStationBlock;
 import mod.shim.celestialexploration.blocks.AtmosphereBlock;
-import mod.shim.celestialexploration.blocks.MarsPortalBlock;
+import mod.shim.celestialexploration.blocks.GeyserBlock;
+import mod.shim.celestialexploration.blocks.GeyserColumnBlock;
+import mod.shim.celestialexploration.blocks.MarsFarmlandBlock;
 import mod.shim.celestialexploration.blocks.OxygenCompressorBlock;
 import mod.shim.celestialexploration.blocks.SolarPanelBlock;
 import net.minecraft.block.AbstractBlock;
@@ -72,7 +74,8 @@ public class RegistryBlocks {
 	public static final RegistryObject<Block> MARS_REDSTONE_ORE = BLOCKS.register("mars_redstone_ore", () -> new RedstoneOreBlock(Block.Properties.of(Material.STONE).strength(2.0f, 6.0f).sound(SoundType.STONE).harvestLevel(1).harvestTool(ToolType.PICKAXE)));
 	public static final RegistryObject<Block> MARS_BRICK_STAIRS = BLOCKS.register("mars_brick_stairs", () -> new StairsBlock(MARS_BRICK.get().defaultBlockState(), Block.Properties.copy(MARS_BRICK.get())));
 	public static final RegistryObject<Block> MARS_BRICK_SLAB = BLOCKS.register("mars_brick_slab", () -> new SlabBlock(Block.Properties.copy(MARS_BRICK.get())));
-
+	public static final RegistryObject<Block> MARS_SOIL = BLOCKS.register("mars_soil", () -> new MarsFarmlandBlock(Block.Properties.of(Material.DIRT).strength(0.6f).sound(SoundType.GRAVEL)));
+	
 	//VENUS (VENETIAN?) BLOCKS
 	public static final RegistryObject<Block> VENUS_STONE = BLOCKS.register("venus_stone", () -> new Block(Block.Properties.of(Material.STONE).strength(2.0f, 6.0f).sound(SoundType.STONE).harvestLevel(1).harvestTool(ToolType.PICKAXE)));	
 	public static final RegistryObject<Block> VENUS_SAND = BLOCKS.register("venus_sand", () -> new SandBlock(0xE7E2E2, Block.Properties.of(Material.SAND).strength(0.5F).sound(SoundType.SAND)));
@@ -110,8 +113,11 @@ public class RegistryBlocks {
 	
 	
 	
+	public static final RegistryObject<Block> GEYSER = BLOCKS.register("geyser", () -> new GeyserBlock(Block.Properties.of(Material.STONE, MaterialColor.STONE).strength(0.5f).sound(SoundType.STONE)));
+	public static final RegistryObject<Block> GEYSER_COLUMN = BLOCKS.register("geyser_column", () -> new GeyserColumnBlock(Block.Properties.of(Material.BUBBLE_COLUMN).noCollission().noDrops()));
 
-	
+//	   public static final Block BUBBLE_COLUMN = register("bubble_column", new BubbleColumnBlock(AbstractBlock.Properties.of(Material.BUBBLE_COLUMN).noCollission().noDrops()));
+
 	
 	//OTHER BLOCKS
 	public static final RegistryObject<Block> STEEL_BLOCK = BLOCKS.register("steel_block", () -> new Block(Block.Properties.of(Material.HEAVY_METAL, MaterialColor.METAL).strength(5.0F, 6.0F).sound(SoundType.METAL)));

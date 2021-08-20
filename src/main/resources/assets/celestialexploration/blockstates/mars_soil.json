@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "moisture=0": {
+      "model": "celestialexploration:block/mars_soil"
+    },
+    "moisture=1": {
+      "model": "celestialexploration:block/mars_soil"
+    },
+    "moisture=2": {
+      "model": "celestialexploration:block/mars_soil"
+    },
+    "moisture=3": {
+      "model": "celestialexploration:block/mars_soil"
+    },
+    "moisture=4": {
+      "model": "celestialexploration:block/mars_soil"
+    },
+    "moisture=5": {
+      "model": "celestialexploration:block/mars_soil"
+    },
+    "moisture=6": {
+      "model": "celestialexploration:block/mars_soil"
+    },
+    "moisture=7": {
+      "model": "celestialexploration:block/mars_soil_moist"
+    }
+  }
+}

@@ -10,5 +10,5 @@
       "Name": "celestialexploration:venus_stone"
     }
   },
-  "type": "minecraft:default"
+  "type": "celestialexploration:venus_surface_builder"
 }
