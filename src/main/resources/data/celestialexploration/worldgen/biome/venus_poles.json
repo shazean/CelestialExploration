@@ -50,7 +50,7 @@
   "precipitation": "none",
   "surface_builder": "celestialexploration:venus_poles",
   "scale": 0.3,
-  "downfall": 0.1,
+  "downfall": 0.01,
   "depth": 0.01,
   "temperature": 6.0,
   "player_spawn_friendly": true,

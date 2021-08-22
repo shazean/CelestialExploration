@@ -55,6 +55,7 @@ public class Main {
 //        RegistryStructures.DEFERRED_REGISTRY_STRUCTURE.register(modEventBus);
         
         IEventBus forgeBus = MinecraftForge.EVENT_BUS;
+        IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 //        forgeBus.addListener(EventPriority.NORMAL, this::addDimensionalSpacing);
 //        
 //        forgeBus.addListener(EventPriority.HIGH, this::biomeModification);
@@ -71,6 +72,7 @@ public class Main {
         RegistryEntities.ENTITY_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
 //      RegistryEntities.ENTITY_TYPES.register(bus);
 
+//        bus.register(new RegistryRecipeSerializer());
         
 //        CelestialFeature.init();
 //        CelestialStructures.init();

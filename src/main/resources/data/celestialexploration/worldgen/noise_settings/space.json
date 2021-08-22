@@ -15,7 +15,7 @@
   "noise": {
     "random_density_offset": true,
     "density_factor": 1.0,
-    "density_offset": -0.46875,
+    "density_offset": -0.46835,
     "simplex_surface_noise": true,
     "bottom_slide": {
       "target": -30,
@@ -26,8 +26,8 @@
     "size_vertical": 2,
     "height": 256,
     "sampling": {
-      "xz_scale": 0.9999999814507745,
-      "y_scale": 0.9999999814507745,
+      "xz_scale": 0.9999999814507742,
+      "y_scale": 0.9999999814507744,
       "xz_factor": 80.0,
       "y_factor": 160.0
     },

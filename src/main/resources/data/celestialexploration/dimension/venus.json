@@ -2,7 +2,7 @@
   "type": "celestialexploration:warm_planet",
   "generator": {
     "type": "minecraft:noise",
-    "seed": 2166577995,
+    "seed": 4068967303,
     "settings": "celestialexploration:venus",
     "biome_source": {
       "type": "minecraft:multi_noise",

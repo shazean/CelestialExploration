@@ -41,7 +41,7 @@
   "precipitation": "none",
   "surface_builder": "celestialexploration:olympus_mons",
   "scale": 0.9,
-  "downfall": 0.1,
+  "downfall": 0.01,
   "depth": 1.7,
   "temperature": 0.1,
   "player_spawn_friendly": true,

@@ -52,7 +52,7 @@
   "precipitation": "none",
   "surface_builder": "celestialexploration:moon_surface",
   "scale": 0.3,
-  "downfall": 0.1,
+  "downfall": 0.01,
   "depth": 0.01,
   "temperature": 0,
   "player_spawn_friendly": true,

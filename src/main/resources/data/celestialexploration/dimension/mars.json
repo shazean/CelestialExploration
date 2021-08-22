@@ -2,7 +2,7 @@
   "type": "celestialexploration:surface_planet",
   "generator": {
     "type": "minecraft:noise",
-    "seed": 2166577995,
+    "seed": 2389745298,
     "settings": "celestialexploration:mars",
     "biome_source": {
       "type": "minecraft:multi_noise",

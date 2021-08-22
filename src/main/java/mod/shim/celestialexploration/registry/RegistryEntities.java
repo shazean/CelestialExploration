@@ -18,7 +18,7 @@ public class RegistryEntities {
 	//Entity types
 	public static final RegistryObject<EntityType<ShuttleEntity>> SHUTTLE = ENTITY_TYPES.register("shuttle", () -> 
 			EntityType.Builder.of(ShuttleEntity::new, EntityClassification.MISC)
-			.sized(18.0f, 4.0f)
+			.sized(12.0f, 4.0f)
 			.build(new ResourceLocation(Main.MODID, "shuttle").toString())
 			);
 

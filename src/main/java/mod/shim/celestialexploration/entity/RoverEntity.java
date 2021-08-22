@@ -47,7 +47,7 @@ public class RoverEntity extends CreatureEntity {
 	public static AttributeModifierMap.MutableAttribute createLivingAttributes() {
 	    
 		
-		return CreatureEntity.createLivingAttributes().add(Attributes.MAX_HEALTH, 20.0f).add(Attributes.MOVEMENT_SPEED, 1.2f).add(Attributes.FOLLOW_RANGE, 5);
+		return CreatureEntity.createLivingAttributes().add(Attributes.MAX_HEALTH, 20.0f).add(Attributes.MOVEMENT_SPEED, 0.25D).add(Attributes.FOLLOW_RANGE, 5);
 		
 //		return AttributeModifierMap.builder().add(Attributes.MAX_HEALTH).add(Attributes.KNOCKBACK_RESISTANCE).add(Attributes.MOVEMENT_SPEED).add(Attributes.ARMOR).add(Attributes.ARMOR_TOUGHNESS).add(net.minecraftforge.common.ForgeMod.SWIM_SPEED.get()).add(net.minecraftforge.common.ForgeMod.NAMETAG_DISTANCE.get()).add(net.minecraftforge.common.ForgeMod.ENTITY_GRAVITY.get());
 	   }

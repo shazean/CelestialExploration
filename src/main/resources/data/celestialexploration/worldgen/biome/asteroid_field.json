@@ -32,7 +32,7 @@
   "player_spawn_friendly": false,
   "surface_builder": "celestialexploration:asteroid_field",
   "precipitation": "none",
-  "temperature": 0.5,
+  "temperature": 0.01,
   "downfall": 0.5,
   "category": "the_end",
   "depth": 0.1

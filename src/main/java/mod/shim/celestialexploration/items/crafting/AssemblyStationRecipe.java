@@ -63,8 +63,8 @@ public class AssemblyStationRecipe implements ICraftingRecipe, net.minecraftforg
 
 	   @Override
 	   public IRecipeSerializer<?> getSerializer() {
-//		   return RegistryRecipeSerializer.ASSEMBLY_STATION_RECIPE.get();
-	      return IRecipeSerializer.SHAPED_RECIPE;
+		   return RegistryRecipeSerializer.ASSEMBLY_STATION_RECIPE.get();
+//	      return IRecipeSerializer.SHAPED_RECIPE;
 	   }
 
 	   @Override

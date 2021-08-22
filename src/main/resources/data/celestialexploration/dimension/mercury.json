@@ -2,7 +2,7 @@
   "type": "celestialexploration:surface_planet",
   "generator": {
     "type": "minecraft:noise",
-    "seed": 2166577995,
+    "seed": 2039448564,
     "settings": "celestialexploration:mercury",
     "biome_source": {
       "type": "minecraft:multi_noise",

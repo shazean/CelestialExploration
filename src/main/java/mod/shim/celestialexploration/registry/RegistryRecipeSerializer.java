@@ -1,5 +1,9 @@
 package mod.shim.celestialexploration.registry;
 
+import 	cpw.mods.modlauncher.TransformingClassLoader;
+
+
+
 import mod.shim.celestialexploration.Main;
 import mod.shim.celestialexploration.items.crafting.AssemblyStationRecipe;
 import mod.shim.celestialexploration.items.crafting.OxygenCompressorRecipe;
