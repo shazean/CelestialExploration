@@ -13,6 +13,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonSyntaxException;
 
+import mod.shim.celestialexploration.registry.RegistryRecipeSerializer;
 import net.minecraft.inventory.CraftingInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -60,26 +61,33 @@ public class AssemblyStationRecipe implements ICraftingRecipe, net.minecraftforg
 	      return this.id;
 	   }
 
+	   @Override
 	   public IRecipeSerializer<?> getSerializer() {
+//		   return RegistryRecipeSerializer.ASSEMBLY_STATION_RECIPE.get();
 	      return IRecipeSerializer.SHAPED_RECIPE;
 	   }
 
+	   @Override
 	   public String getGroup() {
 	      return this.group;
 	   }
 
+	   @Override
 	   public ItemStack getResultItem() {
 	      return this.result;
 	   }
 
+	   @Override
 	   public NonNullList<Ingredient> getIngredients() {
 	      return this.recipeItems;
 	   }
 
+	   @Override
 	   public boolean canCraftInDimensions(int p_194133_1_, int p_194133_2_) {
 	      return p_194133_1_ >= this.width && p_194133_2_ >= this.height;
 	   }
 
+	   @Override
 	   public boolean matches(CraftingInventory p_77569_1_, World p_77569_2_) {
 	      for(int i = 0; i <= p_77569_1_.getWidth() - this.width; ++i) {
 	         for(int j = 0; j <= p_77569_1_.getHeight() - this.height; ++j) {
@@ -119,10 +127,12 @@ public class AssemblyStationRecipe implements ICraftingRecipe, net.minecraftforg
 	      return true;
 	   }
 
+	   @Override
 	   public ItemStack assemble(CraftingInventory p_77572_1_) {
 	      return this.getResultItem().copy();
 	   }
 
+	   
 	   public int getWidth() {
 	      return this.width;
 	   }
