@@ -112,7 +112,7 @@
             "altitude": 0,
             "weirdness": -0.5,
             "offset": 0.5,
-            "temperature": 0.8,
+            "temperature": -1.5,
             "humidity": 0.3
           }
         }

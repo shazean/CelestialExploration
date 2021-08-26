@@ -92,7 +92,7 @@
             "temperature": 0.0,
             "humidity": 0.0,
             "altitude": -0.2,
-            "weirdness": 0.0,
+            "weirdness": -1.5,
             "offset": 0.0
           }
         }

@@ -15,9 +15,30 @@
   "surface_builder": "minecraft:end",
   "carvers": {},
   "features": [
+   [
+//      "minecraft:end_spike"
+    ],
     [
-//      "minecraft:end_island_decorated"
-    ]
+//      "minecraft:end_island"
+    ],
+    [
+      "minecraft:end_island_decorated"
+    ],
+    [
+      "minecraft:delta"
+    ],
+    [
+      "minecraft:large_basalt_columns"
+    ],
+    [
+      "minecraft:ice_spike"
+    ],
+    [
+      "celestialexploration:asteroid_feature"
+    ],
+    [],
+    [],
+    []
   ],
   "starts": [],
   "spawners": {

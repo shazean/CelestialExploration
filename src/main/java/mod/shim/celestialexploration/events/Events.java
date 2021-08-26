@@ -1,11 +1,8 @@
 package mod.shim.celestialexploration.events;
 
 import mod.shim.celestialexploration.Main;
-import mod.shim.celestialexploration.registry.RegistryEffects;
-import net.minecraft.entity.LivingEntity;
+
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.potion.Effects;
 import net.minecraft.world.World;
 import net.minecraftforge.event.TickEvent.PlayerTickEvent;
 import net.minecraftforge.event.TickEvent.WorldTickEvent;
@@ -23,6 +20,8 @@ public class Events {
 		World world = event.world;
 		
 
+		
+		
 		if (world.dimension().location().toString().equals("celestialexploration:mars")) {
 			
 		}
@@ -30,7 +29,6 @@ public class Events {
 	}
 	
 	
-
 	
 //	@SubscribeEvent
 //	public static void testEvent(EntityEvent event) {

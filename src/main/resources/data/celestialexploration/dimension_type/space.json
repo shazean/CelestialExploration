@@ -5,7 +5,7 @@
   "effects": "minecraft:overworld",
   "ambient_light": 0,
   "piglin_safe": false,
-  "bed_works": true,
+  "bed_works": false,
   "respawn_anchor_works": false,
   "ultrawarm": false,
   "natural": true,

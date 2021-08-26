@@ -32,7 +32,7 @@ public class RegistryTileEntity {
 			() -> TileEntityType.Builder.of(AssemblyStationTileEntity::new, RegistryBlocks.ASSEMBLY_STATION.get()).build(null));
 
 	public static final RegistryObject<TileEntityType<GeyserTileEntity>> GEYSER_TILE_ENTITY_TYPE = TILE_ENTITY_TYPES.register("geyser", 
-			() -> TileEntityType.Builder.of(GeyserTileEntity::new, RegistryBlocks.GEYSER_COLUMN.get()).build(null));
+			() -> TileEntityType.Builder.of(GeyserTileEntity::new, RegistryBlocks.GEYSER.get()).build(null));
 
 	
 }

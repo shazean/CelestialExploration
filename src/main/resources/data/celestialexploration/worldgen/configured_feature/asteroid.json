@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:decorated",
+  "config": {
+    "feature": {
+      "config": {},
+      "type": "celestialexploration:asteroid_feature"
+    },
+    "decorator": {
+      "config": {},
+      "type": "minecraft:end_island"
+    }
+  }
+}
