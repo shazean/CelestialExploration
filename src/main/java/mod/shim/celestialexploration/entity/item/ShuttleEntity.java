@@ -621,8 +621,7 @@ public class ShuttleEntity extends Entity {
 //	         }
 	      }
 	 }
-	   
-
+	    
 	@Override
 	@Nullable
 	public Entity getControllingPassenger() {
