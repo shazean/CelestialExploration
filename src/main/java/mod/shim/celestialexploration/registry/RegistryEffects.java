@@ -4,12 +4,14 @@ import mod.shim.celestialexploration.Main;
 import mod.shim.celestialexploration.blocks.BlockItemBase;
 import mod.shim.celestialexploration.entity.item.ShuttleEntity;
 import mod.shim.celestialexploration.potion.CelestialEffect;
+import net.minecraft.client.particle.Particle;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.attributes.Attribute;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.item.Item;
+import net.minecraft.particles.ParticleType;
 import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectType;
 import net.minecraft.util.ResourceLocation;
@@ -24,6 +26,7 @@ public class RegistryEffects {
 //	public static DeferredRegister<Attribute> ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.ATTRIBUTES, Main.MODID);
 	public static DeferredRegister<Effect> EFFECTS = DeferredRegister.create(ForgeRegistries.POTIONS, Main.MODID);
 	
+
 	
 	public static void init() {
 		EFFECTS.register(FMLJavaModLoadingContext.get().getModEventBus());

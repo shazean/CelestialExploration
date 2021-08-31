@@ -128,7 +128,7 @@ public class RoverModel<T extends RoverEntity> extends EntityModel<T> {
 
 		rover = new ModelRenderer(this);
 		rover.setPos(-10.0F, 5.0F, -10.0F);
-		
+
 
 		body = new ModelRenderer(this);
 		body.setPos(10.0F, -5.0F, 10.0F);
@@ -853,10 +853,10 @@ public class RoverModel<T extends RoverEntity> extends EntityModel<T> {
 		cube_r92.texOffs(0, 32).addBox(-5.5F, -0.6F, -1.5F, 4.0F, 1.0F, 1.0F, 0.0F, false);
 	}
 
-//	@Override
-//	public void setRotationAngles(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch){
-//		//previously the render function, render code was moved to a method below
-//	}
+	//	@Override
+	//	public void setRotationAngles(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch){
+	//		//previously the render function, render code was moved to a method below
+	//	}
 
 	public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z) {
 		modelRenderer.xRot = x;
@@ -868,7 +868,7 @@ public class RoverModel<T extends RoverEntity> extends EntityModel<T> {
 	public void setupAnim(RoverEntity p_225597_1_, float p_225597_2_, float p_225597_3_, float p_225597_4_,
 			float p_225597_5_, float p_225597_6_) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override

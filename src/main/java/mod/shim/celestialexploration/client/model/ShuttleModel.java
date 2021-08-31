@@ -105,7 +105,7 @@ public class ShuttleModel<T extends ShuttleEntity> extends SegmentedModel<T> {
 		tail.texOffs(480, 336).addBox(-9.0F, -96.0F, 40.0F, 18.0F, 16.0F, 80.0F, 0.0F, false);
 		tail.texOffs(272, 320).addBox(-8.0F, -128.0F, 88.0F, 16.0F, 16.0F, 64.0F, 0.0F, false);
 		tail.texOffs(496, 0).addBox(-8.0F, -112.0F, 56.0F, 16.0F, 16.0F, 80.0F, 0.0F, false);
-	    Builder<ModelRenderer> builder = ImmutableList.builder();
+		Builder<ModelRenderer> builder = ImmutableList.builder();
 
 		builder.addAll(Arrays.asList(core));
 		builder.addAll(Arrays.asList(leftwing));
@@ -119,16 +119,16 @@ public class ShuttleModel<T extends ShuttleEntity> extends SegmentedModel<T> {
 
 	}
 
-//	@Override
-//	public void setRotationAngles(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch){
-//		//previously the render function, render code was moved to a method below
-//	}
-//
-//	@Override
-//	public void render(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha){
-//		window_group.render(matrixStack, buffer, packedLight, packedOverlay);
-//		bb_main.render(matrixStack, buffer, packedLight, packedOverlay);
-//	}
+	//	@Override
+	//	public void setRotationAngles(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch){
+	//		//previously the render function, render code was moved to a method below
+	//	}
+	//
+	//	@Override
+	//	public void render(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha){
+	//		window_group.render(matrixStack, buffer, packedLight, packedOverlay);
+	//		bb_main.render(matrixStack, buffer, packedLight, packedOverlay);
+	//	}
 
 	public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z) {
 		modelRenderer.xRot = x;
@@ -137,17 +137,17 @@ public class ShuttleModel<T extends ShuttleEntity> extends SegmentedModel<T> {
 	}
 
 
-	   public ImmutableList<ModelRenderer> parts() {
-	      return this.parts;
-	   }
+	public ImmutableList<ModelRenderer> parts() {
+		return this.parts;
+	}
 
 	@Override
 	public void setupAnim(ShuttleEntity p_225597_1_, float p_225597_2_, float p_225597_3_, float p_225597_4_,
 			float p_225597_5_, float p_225597_6_) {
 
-		
-		
-	}
 
 
 	}
+
+
+}

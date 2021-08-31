@@ -43,7 +43,21 @@
     "ambient": [],
     "creature": [],
     "misc": [],
-    "monster": [],
+    "monster": [
+      {
+        "type": "celestialexploration:white_slime",
+        "weight": 100,
+        "minCount": 4,
+        "maxCount": 4
+      },
+      {
+        "type": "celestialexploration:lurker",
+        "weight": 100,
+        "minCount": 4,
+        "maxCount": 4
+      }
+
+    ],
     "water_ambient": [],
     "water_creature": []
   },

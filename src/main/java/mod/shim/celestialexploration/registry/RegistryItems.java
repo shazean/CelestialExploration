@@ -133,8 +133,13 @@ public class RegistryItems {
 	public static final RegistryObject<Item> SOLAR_PANEL = ITEMS.register("solar_panel",  () -> new BlockItemBase(RegistryBlocks.SOLAR_PANEL.get()));
 
 
-	public static final RegistryObject<ModSpawnEgg> ROVER_SPAWN_EGG = ITEMS.register("rover_spawn_egg", () -> 
-	new ModSpawnEgg(RegistryEntities.ROVER, 0x000000, 0xffffff, new Item.Properties().tab(Main.CELESTIAL_TAB)));
+	public static final RegistryObject<ModSpawnEgg> ROVER_SPAWN_EGG = ITEMS.register("rover_spawn_egg", () -> new ModSpawnEgg(RegistryEntities.ROVER, 0x000000, 0xffffff, new Item.Properties().tab(Main.CELESTIAL_TAB)));
+
+	public static final RegistryObject<ModSpawnEgg> LURKER_SPAWN_EGG = ITEMS.register("lurker_spawn_egg", () -> new ModSpawnEgg(RegistryEntities.LURKER, 0, 894731, new Item.Properties().tab(ItemGroup.TAB_MISC)));
+
+	public static final RegistryObject<ModSpawnEgg> RUST_SLIME_SPAWN_EGG = ITEMS.register("rust_slime_spawn_egg", () -> new ModSpawnEgg(RegistryEntities.RUST_SLIME, 0x984521, 0x7d3213, new Item.Properties().tab(ItemGroup.TAB_MISC)));
+	public static final RegistryObject<ModSpawnEgg> WHITE_SLIME_SPAWN_EGG = ITEMS.register("white_slime_spawn_egg", () -> new ModSpawnEgg(RegistryEntities.WHITE_SLIME, 0xdbdbdb, 0xffffff, new Item.Properties().tab(ItemGroup.TAB_MISC)));
+	public static final RegistryObject<ModSpawnEgg> SULFURIC_SLIME_SPAWN_EGG = ITEMS.register("sulfuric_slime_spawn_egg", () -> new ModSpawnEgg(RegistryEntities.SULFURIC_SLIME, 0xbd9200, 0xa68000, new Item.Properties().tab(ItemGroup.TAB_MISC)));
 	
 	
 	public static final RegistryObject<Item> GEYSER = ITEMS.register("geyser", () -> new BlockItemBase(RegistryBlocks.GEYSER.get()));
@@ -144,21 +149,23 @@ public class RegistryItems {
 	public static final RegistryObject<Item> CERAMIC = ITEMS.register("ceramic",  () -> new BlockItemBase(RegistryBlocks.CERAMIC.get()));	
 	public static final RegistryObject<Item> CERAMIC_TILE = ITEMS.register("ceramic_tile",  () -> new BlockItemBase(RegistryBlocks.CERAMIC_TILE.get()));
 	public static final RegistryObject<Item> STEEL_ROD = ITEMS.register("steel_rod", () -> new Item((new Item.Properties()).tab(ItemGroup.TAB_MATERIALS)));
-	public static final RegistryObject<Item> STEEL_FRAME = ITEMS.register("steel_frame",  () -> new BlockItemBase(RegistryBlocks.STEEL_FRAME.get()));
-	public static final RegistryObject<Item> LAUNCH_PAD = ITEMS.register("launch_pad",  () -> new BlockItemBase(RegistryBlocks.LAUNCH_PAD.get()));
-	public static final RegistryObject<Item> ROCKET_CABIN = ITEMS.register("rocket_cabin", () -> new Item((new Item.Properties()).stacksTo(1).tab(Main.SHUTTLE_TAB)));
-	public static final RegistryObject<Item> ROCKET_FRAME = ITEMS.register("rocket_frame", () -> new Item((new Item.Properties()).stacksTo(1).tab(Main.SHUTTLE_TAB)));
-	public static final RegistryObject<Item> ROCKET_ENGINE = ITEMS.register("rocket_engine", () -> new Item((new Item.Properties()).stacksTo(1).tab(Main.SHUTTLE_TAB)));
-	public static final RegistryObject<Item> NOSE_CONE = ITEMS.register("nose_cone", () -> new Item((new Item.Properties()).stacksTo(1).tab(Main.SHUTTLE_TAB)));
-	public static final RegistryObject<Item> FUEL_TANK = ITEMS.register("fuel_tank",  () -> new BlockItemBase(RegistryBlocks.FUEL_TANK.get()));	
-
-	public static final RegistryObject<Item> THICK_CARBON_AIR = ITEMS.register("thick_carbon_air",  () -> new BlockItemBase(RegistryBlocks.THICK_CARBON_AIR.get()));	
-	
-	public static final RegistryObject<Item> GASEOUS_CARBON = ITEMS.register("gaseous_carbon", () -> new Item((new Item.Properties()).tab(Main.CELESTIAL_TAB)));
 
 	
+	//ROCKET
+//	public static final RegistryObject<Item> STEEL_FRAME = ITEMS.register("steel_frame",  () -> new BlockItemBase(RegistryBlocks.STEEL_FRAME.get()));
+//	public static final RegistryObject<Item> LAUNCH_PAD = ITEMS.register("launch_pad",  () -> new BlockItemBase(RegistryBlocks.LAUNCH_PAD.get()));
+//	public static final RegistryObject<Item> ROCKET_CABIN = ITEMS.register("rocket_cabin", () -> new Item((new Item.Properties()).stacksTo(1).tab(Main.SHUTTLE_TAB)));
+//	public static final RegistryObject<Item> ROCKET_FRAME = ITEMS.register("rocket_frame", () -> new Item((new Item.Properties()).stacksTo(1).tab(Main.SHUTTLE_TAB)));
+//	public static final RegistryObject<Item> ROCKET_ENGINE = ITEMS.register("rocket_engine", () -> new Item((new Item.Properties()).stacksTo(1).tab(Main.SHUTTLE_TAB)));
+//	public static final RegistryObject<Item> NOSE_CONE = ITEMS.register("nose_cone", () -> new Item((new Item.Properties()).stacksTo(1).tab(Main.SHUTTLE_TAB)));
+//	public static final RegistryObject<Item> FUEL_TANK = ITEMS.register("fuel_tank",  () -> new BlockItemBase(RegistryBlocks.FUEL_TANK.get()));	
+//
+//	public static final RegistryObject<Item> THICK_CARBON_AIR = ITEMS.register("thick_carbon_air",  () -> new BlockItemBase(RegistryBlocks.THICK_CARBON_AIR.get()));	
+//	
+//	public static final RegistryObject<Item> GASEOUS_CARBON = ITEMS.register("gaseous_carbon", () -> new Item((new Item.Properties()).tab(Main.CELESTIAL_TAB)));
+
 	
-//FIXME when adding type back in	
+	
 	public static final RegistryObject<Item> WHITE_SHUTTLE = ITEMS.register("white_shuttle", () -> new ShuttleItem(ShuttleEntity.Color.WHITE, new Item.Properties().stacksTo(1).tab(Main.SHUTTLE_TAB)));
 	public static final RegistryObject<Item> RED_SHUTTLE = ITEMS.register("red_shuttle", () -> new ShuttleItem(ShuttleEntity.Color.RED, new Item.Properties().stacksTo(1).tab(Main.SHUTTLE_TAB)));
 	public static final RegistryObject<Item> ORANGE_SHUTTLE = ITEMS.register("orange_shuttle", () -> new ShuttleItem(ShuttleEntity.Color.ORANGE, new Item.Properties().stacksTo(1).tab(Main.SHUTTLE_TAB)));

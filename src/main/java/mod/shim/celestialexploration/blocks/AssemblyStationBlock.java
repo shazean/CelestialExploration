@@ -21,18 +21,18 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
 
 public class AssemblyStationBlock extends Block {
-	   private static final ITextComponent CONTAINER_TITLE = new TranslationTextComponent("container." + Main.MODID + ".assembly_station");
+	private static final ITextComponent CONTAINER_TITLE = new TranslationTextComponent("container." + Main.MODID + ".assembly_station");
 
-	   public AssemblyStationBlock(AbstractBlock.Properties properties) {
-	      super(properties);
-	   }
+	public AssemblyStationBlock(AbstractBlock.Properties properties) {
+		super(properties);
+	}
 
 	@Override
 	public boolean hasTileEntity(BlockState state) {
 		// TODO Auto-generated method stub
 		return true;
 	}
-	
+
 	@Override
 	public TileEntity createTileEntity(BlockState state, IBlockReader world) {
 		// TODO Auto-generated method stub
@@ -54,19 +54,19 @@ public class AssemblyStationBlock extends Block {
 		return ActionResultType.SUCCESS;
 	}
 
-//	   public ActionResultType use(BlockState p_225533_1_, World p_225533_2_, BlockPos p_225533_3_, PlayerEntity p_225533_4_, Hand p_225533_5_, BlockRayTraceResult p_225533_6_) {
-//	      if (p_225533_2_.isClientSide) {
-//	         return ActionResultType.SUCCESS;
-//	      } else {
-//	         p_225533_4_.openMenu(p_225533_1_.getMenuProvider(p_225533_2_, p_225533_3_));
-//	         p_225533_4_.awardStat(Stats.INTERACT_WITH_CRAFTING_TABLE);
-//	         return ActionResultType.CONSUME;
-//	      }
-//	   }
-//
-//	   public INamedContainerProvider getMenuProvider(BlockState p_220052_1_, World p_220052_2_, BlockPos p_220052_3_) {
-//	      return new SimpleNamedContainerProvider((p_220270_2_, p_220270_3_, p_220270_4_) -> {
-//	         return new WorkbenchContainer(p_220270_2_, p_220270_3_, IWorldPosCallable.create(p_220052_2_, p_220052_3_));
-//	      }, CONTAINER_TITLE);
-//	   }
-	}
+	//	   public ActionResultType use(BlockState p_225533_1_, World p_225533_2_, BlockPos p_225533_3_, PlayerEntity p_225533_4_, Hand p_225533_5_, BlockRayTraceResult p_225533_6_) {
+	//	      if (p_225533_2_.isClientSide) {
+	//	         return ActionResultType.SUCCESS;
+	//	      } else {
+	//	         p_225533_4_.openMenu(p_225533_1_.getMenuProvider(p_225533_2_, p_225533_3_));
+	//	         p_225533_4_.awardStat(Stats.INTERACT_WITH_CRAFTING_TABLE);
+	//	         return ActionResultType.CONSUME;
+	//	      }
+	//	   }
+	//
+	//	   public INamedContainerProvider getMenuProvider(BlockState p_220052_1_, World p_220052_2_, BlockPos p_220052_3_) {
+	//	      return new SimpleNamedContainerProvider((p_220270_2_, p_220270_3_, p_220270_4_) -> {
+	//	         return new WorkbenchContainer(p_220270_2_, p_220270_3_, IWorldPosCallable.create(p_220052_2_, p_220052_3_));
+	//	      }, CONTAINER_TITLE);
+	//	   }
+}

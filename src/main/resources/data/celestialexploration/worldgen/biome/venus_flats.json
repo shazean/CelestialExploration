@@ -30,7 +30,8 @@
     [],
     [
        "celestialexploration:venus_iron_ore",
-       "celestialexploration:venus_redstone_ore"
+       "celestialexploration:venus_redstone_ore",
+       "celestialexploration:venus_rock_feature"
     ],
     [],
     [],
@@ -40,7 +41,21 @@
     "ambient": [],
     "creature": [],
     "misc": [],
-    "monster": [],
+    "monster": [
+      {
+        "type": "celestialexploration:sulfuric_slime",
+        "weight": 100,
+        "minCount": 4,
+        "maxCount": 4
+      },
+      {
+        "type": "celestialexploration:lurker",
+        "weight": 100,
+        "minCount": 4,
+        "maxCount": 4
+      }
+
+    ],
     "water_ambient": [],
     "water_creature": []
   },

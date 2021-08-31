@@ -50,7 +50,21 @@
         "weight": 1
       }
     ],
-    "monster": [],
+    "monster": [
+      {
+        "type": "celestialexploration:rust_slime",
+        "weight": 100,
+        "minCount": 4,
+        "maxCount": 4
+      },
+      {
+        "type": "celestialexploration:lurker",
+        "weight": 100,
+        "minCount": 4,
+        "maxCount": 4
+      }
+
+    ],
     "water_ambient": [],
     "water_creature": []
   },

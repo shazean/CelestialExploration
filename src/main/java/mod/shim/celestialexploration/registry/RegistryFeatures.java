@@ -2,10 +2,12 @@ package mod.shim.celestialexploration.registry;
 
 import mod.shim.celestialexploration.Main;
 import mod.shim.celestialexploration.world.gen.feature.AsteroidFeature;
+import mod.shim.celestialexploration.world.gen.feature.MarsRockFeature;
+import mod.shim.celestialexploration.world.gen.feature.TinyCraterFeature;
+import mod.shim.celestialexploration.world.gen.feature.VenusRockFeature;
 import net.minecraft.block.BlockState;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.IFeatureConfig;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -27,6 +29,14 @@ public class RegistryFeatures {
 	public static final RegistryObject<AsteroidFeature> ASTEROID_FEATURE = FEATURES.register("asteroid_feature",
 			() -> new AsteroidFeature(NoFeatureConfig.CODEC));
 
+	public static final RegistryObject<MarsRockFeature> MARS_ROCK_FEATURE = FEATURES.register("mars_rock_feature",
+			() -> new MarsRockFeature(NoFeatureConfig.CODEC));
+	public static final RegistryObject<VenusRockFeature> VENUS_ROCK_FEATURE = FEATURES.register("venus_rock_feature",
+			() -> new VenusRockFeature(NoFeatureConfig.CODEC));
+	public static final RegistryObject<TinyCraterFeature> TINY_CRATER_FEATURE = FEATURES.register("tiny_crater_feature",
+			() -> new TinyCraterFeature(NoFeatureConfig.CODEC));
+
+	
 //	
 //	public static final RegistryObject<LakesFeature> CELESTIAL_LAKE = FEATURES.register("sulfur_lake", 
 //			() -> new LakesFeature(BlockStateFeatureConfig.CODEC));
@@ -49,8 +59,8 @@ public class RegistryFeatures {
 //	public static final ConfiguredFeature<?, ?> LAKE_LAVA = register("lake_lava", Feature.LAKE.configured(new BlockStateFeatureConfig(Features.States.LAVA)).decorated(Placement.LAVA_LAKE.configured(new ChanceConfig(80))));
 
 	
-    protected static final FluidState SULFUR_STATE = RegistryFluids.SULFUR.get().defaultFluidState();
-    protected static final BlockState SULFUR = RegistryBlocks.SULFUR_BLOCK.get().defaultBlockState();
+//    protected static final FluidState SULFUR_STATE = RegistryFluids.SULFUR.get().defaultFluidState();
+//    protected static final BlockState SULFUR = RegistryBlocks.SULFUR_BLOCK.get().defaultBlockState();
 
 	
 }

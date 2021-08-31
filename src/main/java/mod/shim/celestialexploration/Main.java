@@ -4,14 +4,19 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import mod.shim.celestialexploration.entity.RoverEntity;
-import mod.shim.celestialexploration.entity.item.ShuttleEntity;
+import mod.shim.celestialexploration.entity.mobs.LurkerEntity;
+import mod.shim.celestialexploration.entity.mobs.slimes.RustSlimeEntity;
+import mod.shim.celestialexploration.entity.mobs.slimes.SulfuricSlimeEntity;
+import mod.shim.celestialexploration.entity.mobs.slimes.WhiteSlimeEntity;
 import mod.shim.celestialexploration.items.ModSpawnEgg;
 import mod.shim.celestialexploration.registry.RegistryBlocks;
 import mod.shim.celestialexploration.registry.RegistryContainerType;
 import mod.shim.celestialexploration.registry.RegistryEffects;
 import mod.shim.celestialexploration.registry.RegistryEntities;
+import mod.shim.celestialexploration.registry.RegistryFeatures;
 import mod.shim.celestialexploration.registry.RegistryFluids;
 import mod.shim.celestialexploration.registry.RegistryItems;
+import mod.shim.celestialexploration.registry.RegistryParticles;
 import mod.shim.celestialexploration.registry.RegistryRecipeSerializer;
 import mod.shim.celestialexploration.registry.RegistrySurfaceBuilders;
 import mod.shim.celestialexploration.registry.RegistryTileEntity;
@@ -23,7 +28,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.event.entity.EntityTravelToDimensionEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DeferredWorkQueue;
@@ -68,6 +72,9 @@ public class Main {
         RegistryRecipeSerializer.init();
         RegistryEffects.init();
         RegistrySurfaceBuilders.init();
+        RegistryParticles.init();
+        
+        RegistryFeatures.init();
         
         RegistryEntities.ENTITY_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
 //      RegistryEntities.ENTITY_TYPES.register(bus);
@@ -107,6 +114,12 @@ public class Main {
     	DeferredWorkQueue.runLater(() -> { //FIXME?
 //    		GlobalEntityTypeAttributes.put(RegistryEntities.SHUTTLE.get(), ShuttleEntity.createLivingAttributes().build()); //ADD A NEW ONE OF THESE LINES FOR EACH ENTITY
     		GlobalEntityTypeAttributes.put(RegistryEntities.ROVER.get(), RoverEntity.createLivingAttributes().build());
+    		GlobalEntityTypeAttributes.put(RegistryEntities.LURKER.get(), LurkerEntity.createAttributes().build());
+    		GlobalEntityTypeAttributes.put(RegistryEntities.RUST_SLIME.get(), RustSlimeEntity.createMonsterAttributes().build());
+    		GlobalEntityTypeAttributes.put(RegistryEntities.WHITE_SLIME.get(), WhiteSlimeEntity.createMonsterAttributes().build());
+    		GlobalEntityTypeAttributes.put(RegistryEntities.SULFURIC_SLIME.get(), SulfuricSlimeEntity.createMonsterAttributes().build());
+
+    
     	});
 
     	

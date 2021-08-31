@@ -33,12 +33,9 @@ public class VenusSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderConfig> {
 			long seed, SurfaceBuilderConfig config) {
 		// TODO Auto-generated method stub
 		
-		int rand = random.nextInt(800);
+		int rand = random.nextInt(2000);
 		
 		if (rand == 0) {
-			SurfaceBuilder.DEFAULT.apply(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, VENUS_STONE_CONFIG);
-			
-		} else if (rand == 1) {
 			SurfaceBuilder.DEFAULT.apply(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, VENUS_GEYSER_CONFIG);
 			
 		}

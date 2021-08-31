@@ -55,7 +55,7 @@ public class GeyserTileEntity extends TileEntity implements ITickableTileEntity 
 //   }
 	   
    public int getCounterTime() {
-	   System.out.println("GeyserTileEntity getCounterTime randomTimer: " + randomTimer);
+//	   System.out.println("GeyserTileEntity getCounterTime randomTimer: " + randomTimer);
 	   return randomTimer;
 	   
    }

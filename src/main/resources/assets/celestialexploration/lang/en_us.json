@@ -76,7 +76,12 @@
 "block.celestialexploration.ceramic": "Ceramic",
 "block.celestialexploration.ceramic_tile": "Ceramic Tile",
 
-"block.celestialexploration.assembly_station": "Assembly Station"
+"block.celestialexploration.assembly_station": "Assembly Station",
+"block.celestialexploration.geyser": "Geyser",
+
+"entity.celestialexploration.rover": "Rover",
+"entity.celestialexploration.lurker": "Lurker",
+"items.celestialexploration.rover_spawn_egg": "Rover Spawn Egg"
 
 
 
