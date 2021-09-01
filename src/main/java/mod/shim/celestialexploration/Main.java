@@ -117,7 +117,7 @@ public class Main {
     		GlobalEntityTypeAttributes.put(RegistryEntities.LURKER.get(), LurkerEntity.createAttributes().build());
     		GlobalEntityTypeAttributes.put(RegistryEntities.RUST_SLIME.get(), RustSlimeEntity.createMonsterAttributes().build());
     		GlobalEntityTypeAttributes.put(RegistryEntities.WHITE_SLIME.get(), WhiteSlimeEntity.createMonsterAttributes().build());
-    		GlobalEntityTypeAttributes.put(RegistryEntities.SULFURIC_SLIME.get(), SulfuricSlimeEntity.createMonsterAttributes().build());
+    		GlobalEntityTypeAttributes.put(RegistryEntities.SULFURIC_SLIME.get(), SulfuricSlimeEntity.createAttributes().build());
 
     
     	});

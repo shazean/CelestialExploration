@@ -8,6 +8,7 @@ import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
 public class SulfuricSlimeModel<T extends Entity> extends SegmentedModel<T> {
+	//should be slime model or magma cube model? potential FIXME
 	   private final ModelRenderer cube;
 	   private final ModelRenderer eye0;
 	   private final ModelRenderer eye1;
