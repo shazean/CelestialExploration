@@ -95,7 +95,7 @@
     "offsetY": -4,
     "predicate": {
       "block": {
-        "block": "minecraft:red_sandstone"
+        "block": "minecraft:sandstone"
       }
     }
   },

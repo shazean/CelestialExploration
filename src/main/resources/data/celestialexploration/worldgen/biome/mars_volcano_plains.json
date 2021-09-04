@@ -1,7 +1,7 @@
 {
   "effects": {
     "mood_sound": {
-      "sound": "minecraft:ambient.basalt_deltas.mood",
+      "sound": "minecraft:ambient.cave",
       "tick_delay": 6000,
       "block_search_extent": 8,
       "offset": 2
@@ -13,31 +13,31 @@
   },
   "carvers": {
     "air": [
+      "minecraft:cave",
       "minecraft:canyon"
-    ],
-    "liquid": [
-      "minecraft:underwater_canyon"
     ]
   },
   "starts": [
-    "celestialexploration:crater"
   ],
   "features": [
     [],
     [],
-    [],
     [
-           "celestialexploration:mars_iron_ore",
+       "celestialexploration:mars_iron_ore"
     ],
     [],
     [],
     [],
     [],
     [
-           "celestialexploration:mars_iron_ore",
-       "celestialexploration:mars_redstone_ore"
+       "celestialexploration:mars_iron_ore"
     ],
-    []
+    [],
+    [
+       "celestialexploration:mars_iron_ore",
+       "celestialexploration:mars_redstone_ore",
+       "celestialexploration:mars_rock_feature"
+    ]
   ],
   "spawners": {
     "ambient": [],
@@ -68,13 +68,13 @@
     "water_ambient": [],
     "water_creature": []
   },
-  "category": "river",
+  "category": "desert",
   "precipitation": "none",
   "surface_builder": "celestialexploration:mars_surface",
-  "scale": 0.3,
+  "scale": 0.2,
   "downfall": 0.01,
-  "depth": 0.01,
-  "temperature": 0,
+  "depth": 0.12,
+  "temperature": -1,
   "player_spawn_friendly": true,
   "spawn_costs": {}
 }

@@ -4,9 +4,9 @@ import 	cpw.mods.modlauncher.TransformingClassLoader;
 
 
 
+
 import mod.shim.celestialexploration.Main;
 import mod.shim.celestialexploration.items.crafting.AssemblyStationRecipe;
-import mod.shim.celestialexploration.items.crafting.OxygenCompressorRecipe;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.SpecialRecipeSerializer;
 import net.minecraftforge.fml.RegistryObject;

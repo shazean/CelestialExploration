@@ -12,7 +12,10 @@
     "water_fog_color": 3150848
   },
   "carvers": {
-    "air": []
+    "air": [
+      "minecraft:cave",
+      "minecraft:canyon"
+    ]
   },
   "starts": [
   ],

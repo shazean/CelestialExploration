@@ -47,7 +47,7 @@
           }
         },
         {
-          "biome": "celestialexploration:mars_canyons",
+          "biome": "celestialexploration:mars_volcano_plains",
           "parameters": {
             "altitude": 0,
             "weirdness": 0.1,
@@ -67,7 +67,7 @@
           }
         },     
         {
-          "biome": "celestialexploration:mars_desert",
+          "biome": "celestialexploration:mars_dunes",
           "parameters": {
             "altitude": 0.0,
             "weirdness": 0.0,
@@ -87,7 +87,7 @@
           }
         },
         {
-          "biome": "celestialexploration:mars_canyons",
+          "biome": "celestialexploration:mars_volcano_plains",
           "parameters": {
             "altitude": 0,
             "weirdness": 0.1,
@@ -97,7 +97,7 @@
           }
         },
         {
-          "biome": "celestialexploration:mars_desert",
+          "biome": "celestialexploration:mars_flats",
           "parameters": {
             "altitude": 0.0,
             "weirdness": 0.0,

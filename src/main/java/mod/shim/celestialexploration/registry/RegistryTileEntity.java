@@ -1,9 +1,9 @@
 package mod.shim.celestialexploration.registry;
 
 import mod.shim.celestialexploration.Main;
+
 import mod.shim.celestialexploration.tileentity.AssemblyStationTileEntity;
 import mod.shim.celestialexploration.tileentity.GeyserTileEntity;
-import mod.shim.celestialexploration.tileentity.OxygenCompressorTileEntity;
 import mod.shim.celestialexploration.tileentity.ShuttleTileEntity;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.fml.RegistryObject;
@@ -26,8 +26,8 @@ public class RegistryTileEntity {
 
 	
 	
-	public static final RegistryObject<TileEntityType<OxygenCompressorTileEntity>> OXYGEN_COMPRESSOR_TILE_ENTITY_TYPE = TILE_ENTITY_TYPES.register("oxygen_compressor", 
-			() -> TileEntityType.Builder.of(OxygenCompressorTileEntity::new, RegistryBlocks.OXYGEN_COMPRESSOR.get()).build(null));
+//	public static final RegistryObject<TileEntityType<OxygenCompressorTileEntity>> OXYGEN_COMPRESSOR_TILE_ENTITY_TYPE = TILE_ENTITY_TYPES.register("oxygen_compressor", 
+//			() -> TileEntityType.Builder.of(OxygenCompressorTileEntity::new, RegistryBlocks.OXYGEN_COMPRESSOR.get()).build(null));
 	
 	public static final RegistryObject<TileEntityType<AssemblyStationTileEntity>> ASSEMBLY_STATION_TILE_ENTITY_TYPE = TILE_ENTITY_TYPES.register("assembly_station", 
 			() -> TileEntityType.Builder.of(AssemblyStationTileEntity::new, RegistryBlocks.ASSEMBLY_STATION.get()).build(null));

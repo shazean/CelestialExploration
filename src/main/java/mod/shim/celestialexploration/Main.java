@@ -9,6 +9,7 @@ import mod.shim.celestialexploration.entity.mobs.slimes.RustSlimeEntity;
 import mod.shim.celestialexploration.entity.mobs.slimes.SulfuricSlimeEntity;
 import mod.shim.celestialexploration.entity.mobs.slimes.WhiteSlimeEntity;
 import mod.shim.celestialexploration.items.ModSpawnEgg;
+import mod.shim.celestialexploration.registry.RegistryBiomes;
 import mod.shim.celestialexploration.registry.RegistryBlocks;
 import mod.shim.celestialexploration.registry.RegistryContainerType;
 import mod.shim.celestialexploration.registry.RegistryEffects;
@@ -73,6 +74,7 @@ public class Main {
         RegistryEffects.init();
         RegistrySurfaceBuilders.init();
         RegistryParticles.init();
+        RegistryBiomes.BIOMES.register(bus);
         
         RegistryFeatures.init();
         

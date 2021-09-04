@@ -50,8 +50,8 @@ public class RegistryItems {
 	public static final RegistryObject<Item> SULFUR_CRYSTAL = ITEMS.register("sulfur_crystal", ItemBase::new);
 	 public static final RegistryObject<Item> SULFUR_BUCKET = ITEMS.register("sulfur_bucket", () -> new BucketItem(RegistryFluids.SULFUR, (new Item.Properties()).craftRemainder(Items.BUCKET).stacksTo(1).tab(ItemGroup.TAB_MISC)));
 
-	public static final RegistryObject<Item> OXYGEN_CANNISTER = ITEMS.register("oxygen_cannister", ItemBase::new);
-	public static final RegistryObject<Item> COLD_OXYGEN_CANNISTER = ITEMS.register("cold_oxygen_cannister", ItemBase::new);
+	public static final RegistryObject<Item> OXYGEN_CANISTER = ITEMS.register("oxygen_canister", ItemBase::new);
+	public static final RegistryObject<Item> COLD_OXYGEN_CANISTER = ITEMS.register("cold_oxygen_canister", ItemBase::new);
 
 	 
 	
@@ -127,6 +127,10 @@ public class RegistryItems {
 	
 	//OTHER BLOCK ITEMS
 	public static final RegistryObject<Item> STEEL_BLOCK = ITEMS.register("steel_block",  () -> new BlockItemBase(RegistryBlocks.STEEL_BLOCK.get()));
+	public static final RegistryObject<Item> STEEL_BLOCK_STAIRS = ITEMS.register("steel_block_stairs", () -> new BlockItemBase(RegistryBlocks.STEEL_BLOCK_STAIRS.get()));
+	public static final RegistryObject<Item> STEEL_BLOCK_SLAB	= ITEMS.register("steel_block_slab", () -> new BlockItemBase(RegistryBlocks.STEEL_BLOCK_SLAB.get()));
+
+	
 	public static final RegistryObject<Item> DRY_ICE = ITEMS.register("dry_ice", () -> new BlockItemBase(RegistryBlocks.DRY_ICE.get()));
 //	public static final RegistryObject<Item> OXYGEN_COMPRESSOR = ITEMS.register("oxygen_compressor",  () -> new BlockItemBase(RegistryBlocks.OXYGEN_COMPRESSOR.get()));
 	public static final RegistryObject<Item> ASSEMBLY_STATION = ITEMS.register("assembly_station",  () -> new BlockItemBase(RegistryBlocks.ASSEMBLY_STATION.get()));

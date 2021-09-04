@@ -1,8 +1,8 @@
 package mod.shim.celestialexploration.registry;
 
 import mod.shim.celestialexploration.Main;
+
 import mod.shim.celestialexploration.inventory.container.AssemblyStationContainer;
-import mod.shim.celestialexploration.inventory.container.OxygenCompressorContainer;
 import mod.shim.celestialexploration.inventory.container.ShuttleContainer;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraftforge.common.extensions.IForgeContainerType;
@@ -22,8 +22,8 @@ public class RegistryContainerType {
 	}
 
 	//Entity types
-	public static final RegistryObject<ContainerType<OxygenCompressorContainer>> OXYGEN_COMPRESSOR = CONTAINER_TYPES.register("oxygen_compressor",
-			() -> IForgeContainerType.create(OxygenCompressorContainer::new));
+//	public static final RegistryObject<ContainerType<OxygenCompressorContainer>> OXYGEN_COMPRESSOR = CONTAINER_TYPES.register("oxygen_compressor",
+//			() -> IForgeContainerType.create(OxygenCompressorContainer::new));
 	
 	public static final RegistryObject<ContainerType<AssemblyStationContainer>> ASSEMBLY_STATION = CONTAINER_TYPES.register("assembly_station",
 			() -> IForgeContainerType.create(AssemblyStationContainer::new));

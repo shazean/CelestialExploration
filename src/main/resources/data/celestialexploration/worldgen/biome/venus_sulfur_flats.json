@@ -12,47 +12,62 @@
     "water_fog_color": 12494110
   },
   "carvers": {
-    "air": [
-      "minecraft:cave"
-    ],
+    "air": [],
     "liquid": []
   },
-  "starts": [
-  ],
+  "starts": [],
   "features": [
     [],
     [
       "celestialexploration:sulfur_lake"
     ],
-    [],
+    [
+      "celestialexploration:sulfur_lake"
+    ],
+    [
+       "celestialexploration:venus_redstone_ore"
+],
     [],
     [],
     [],
     [
        "celestialexploration:venus_iron_ore",
-       "celestialexploration:venus_redstone_ore"
+       "celestialexploration:venus_redstone_ore",
+       "celestialexploration:venus_rock_feature"
 
     ],
     [],
-    [],
-    [
-    ]
+    []
   ],
   "spawners": {
     "ambient": [],
     "creature": [],
     "misc": [],
-    "monster": [],
+    "monster": [
+      {
+        "type": "celestialexploration:sulfuric_slime",
+        "weight": 100,
+        "minCount": 4,
+        "maxCount": 4
+      },
+      {
+        "type": "celestialexploration:lurker",
+        "weight": 100,
+        "minCount": 4,
+        "maxCount": 4
+      }
+
+    ],
     "water_ambient": [],
     "water_creature": []
   },
-  "category": "plains",
+  "category": "desert",
   "precipitation": "none",
-  "surface_builder": "celestialexploration:venus_poles",
+  "surface_builder": "celestialexploration:venus_volcanoes",
   "scale": 0.3,
   "downfall": 0.01,
   "depth": 0.01,
-  "temperature": 6.0,
+  "temperature": 7.0,
   "player_spawn_friendly": true,
   "spawn_costs": {}
 }

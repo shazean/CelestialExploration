@@ -13,7 +13,8 @@
   },
   "carvers": {
     "air": [
-      "minecraft:cave"
+      "minecraft:cave",
+      "minecraft:canyon"
     ],
     "liquid": []
   },

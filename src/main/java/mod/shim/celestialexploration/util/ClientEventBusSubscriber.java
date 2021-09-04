@@ -1,8 +1,9 @@
 package mod.shim.celestialexploration.util;
 
 import mod.shim.celestialexploration.Main;
+
 import mod.shim.celestialexploration.client.gui.screen.AssemblyStationScreen;
-import mod.shim.celestialexploration.client.gui.screen.OxygenCompressorScreen;
+//import mod.shim.celestialexploration.client.gui.screen.OxygenCompressorScreen;
 import mod.shim.celestialexploration.client.render.RoverRenderer;
 import mod.shim.celestialexploration.client.render.ShuttleRenderer;
 import mod.shim.celestialexploration.client.render.mobs.LurkerRenderer;
@@ -38,7 +39,7 @@ public class ClientEventBusSubscriber {
 	
 	@SubscribeEvent
 	public static void clientSetup(FMLClientSetupEvent event) {
-		ScreenManager.register(RegistryContainerType.OXYGEN_COMPRESSOR.get(), OxygenCompressorScreen::new);
+//		ScreenManager.register(RegistryContainerType.OXYGEN_COMPRESSOR.get(), OxygenCompressorScreen::new);
 		ScreenManager.register(RegistryContainerType.ASSEMBLY_STATION.get(), AssemblyStationScreen::new);
 		
 		

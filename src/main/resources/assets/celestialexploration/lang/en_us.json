@@ -81,8 +81,18 @@
 
 "entity.celestialexploration.rover": "Rover",
 "entity.celestialexploration.lurker": "Lurker",
-"items.celestialexploration.rover_spawn_egg": "Rover Spawn Egg"
-
+"item.celestialexploration.rover_spawn_egg": "Rover Spawn Egg",
+"item.celestialexploration.oxygen_canister": "Oxygen Canister",
+"item.celestialexploration.cold_oxygen_canister": "Cold Oxygen Canister",
+"item.celestialexploration.lurker_spawn_egg": "Lurker Spawn Egg",
+"item.celestialexploration.rust_slime_spawn_egg": "Rust Slime Spawn Egg",
+"item.celestialexploration.sulfuric_slime_spawn_egg": "Sulfuric Slime Spawn Egg",
+"item.celestialexploration.white_slime_spawn_egg": "White Slime Spawn Egg",
+"item.celestialexploration.steel_rod": "Steel Rod",
+"block.celestialexploration.mars_soil": "Mars Soil",
+"block.celestialexploration.solar_panel": "Solar Panel",
+"block.celestialexploration.steel_block_stairs": "Steel Block Stairs",
+"block.celestialexploration.steel_block_slab": "Steel Block Slab"
 
 
 }

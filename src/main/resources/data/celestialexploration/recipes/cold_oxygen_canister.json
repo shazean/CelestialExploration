@@ -2,13 +2,13 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "celestialexploration:oxygen_cannister"
+      "item": "celestialexploration:oxygen_canister"
     },
     {
       "item": "minecraft:blue_ice"
     }
   ],
   "result": {
-    "item": "celestialexploration:cold_oxygen_cannister"
+    "item": "celestialexploration:cold_oxygen_canister"
   }
 }
