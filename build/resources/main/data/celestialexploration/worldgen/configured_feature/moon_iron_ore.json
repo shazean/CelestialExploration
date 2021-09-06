@@ -1,0 +1,47 @@
+{
+  "type": "minecraft:decorated",
+  "config": {
+    "feature": {
+      "type": "minecraft:decorated",
+      "name": "celestialexploration:coal_ore",
+      "config": {
+        "feature": {
+          "type": "minecraft:decorated",
+          "config": {
+            "feature": {
+              "config": {
+                "target": {
+                  "predicate_type": "minecraft:block_match",
+                  "block": "celestialexploration:moon_stone"
+                },
+                "state": {
+                  "Name": "celestialexploration:moon_iron_ore"
+                },
+                "size": 15
+              },
+              "type": "minecraft:ore"
+            },
+            "decorator": {
+              "type": "minecraft:range",
+              "config": {
+                "bottom_offset": 1,
+                "top_offset": 1,
+                "maximum": 180
+              }
+            }
+          }
+        },
+        "decorator": {
+          "config": {},
+          "type": "minecraft:square"
+        }
+      }
+    },
+    "decorator": {
+      "type": "minecraft:count",
+      "config": {
+        "count": 25
+      }
+    }
+  }
+}

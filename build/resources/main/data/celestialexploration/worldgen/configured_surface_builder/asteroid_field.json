@@ -1,0 +1,17 @@
+{
+  "config": {
+    "top_material": {
+      "Properties": {
+        "snowy": "false"
+      },
+      "Name": "celestialexploration:meteor"
+    },
+    "under_material": {
+      "Name": "celestialexploration:meteor"
+    },
+    "underwater_material": {
+      "Name": "minecraft:air"
+    }
+  },
+  "type": "minecraft:default"
+}

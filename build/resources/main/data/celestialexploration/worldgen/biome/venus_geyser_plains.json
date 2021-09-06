@@ -1,0 +1,71 @@
+{
+  "effects": {
+    "mood_sound": {
+      "sound": "minecraft:ambient.cave",
+      "tick_delay": 6000,
+      "block_search_extent": 8,
+      "offset": 2
+    },
+    "sky_color": 12887639,
+    "fog_color": 11506512,
+    "water_color": 10387968,
+    "water_fog_color": 12494110
+  },
+  "carvers": {
+    "air": []
+  },
+  "starts": [],
+  "features": [
+    [],
+    [ "celestialexploration:sulfur_lake"
+    ],
+    [
+      "celestialexploration:sulfur_lake"
+    ],
+    [
+       "celestialexploration:venus_redstone_ore"
+
+    ],
+    [],
+    [],
+    [
+       "celestialexploration:venus_iron_ore",
+       "celestialexploration:venus_redstone_ore",
+       "celestialexploration:venus_rock_feature"
+    ],
+    [],
+    [],
+    []
+  ],
+  "spawners": {
+    "ambient": [],
+    "creature": [],
+    "misc": [],
+    "monster": [
+      {
+        "type": "celestialexploration:sulfuric_slime",
+        "weight": 100,
+        "minCount": 4,
+        "maxCount": 4
+      },
+      {
+        "type": "celestialexploration:lurker",
+        "weight": 100,
+        "minCount": 4,
+        "maxCount": 4
+      }
+
+    ],
+    "water_ambient": [],
+    "water_creature": []
+  },
+  "category": "desert",
+  "precipitation": "none",
+  "surface_builder": "celestialexploration:venus_surface",
+  "scale": 0.05,
+  "downfall": 0.01,
+  "depth": 0.12,
+  "temperature": 7.0,
+  "player_spawn_friendly": true,
+  "spawn_costs": {}
+}

@@ -1,0 +1,17 @@
+{
+  "config": {
+    "top_material": {
+      "Properties": {
+        "snowy": "false"
+      },
+      "Name": "minecraft:air"
+    },
+    "under_material": {
+      "Name": "minecraft:air"
+    },
+    "underwater_material": {
+      "Name": "minecraft:air"
+    }
+  },
+  "type": "minecraft:default"
+}

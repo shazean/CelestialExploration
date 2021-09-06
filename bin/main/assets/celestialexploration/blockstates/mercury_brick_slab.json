@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "type=bottom": { "model": "celestialexploration:block/mercury_brick_slab" },
+        "type=top": { "model": "celestialexploration:block/mercury_brick_slab_top" },
+        "type=double": { "model": "celestialexploration:block/mercury_brick" }
+    }
+}

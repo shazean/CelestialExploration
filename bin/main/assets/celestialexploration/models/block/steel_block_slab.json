@@ -1,0 +1,8 @@
+{
+    "parent": "block/slab",
+    "textures": {
+        "bottom": "celestialexploration:blocks/steel_block",
+        "top": "celestialexploration:blocks/steel_block",
+        "side": "celestialexploration:blocks/steel_block"
+    }
+}

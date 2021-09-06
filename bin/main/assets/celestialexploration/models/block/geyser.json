@@ -1,0 +1,11 @@
+{
+	"parent": "block/cube_all",
+	"textures": {
+		"north": "celestialexploration:blocks/venus_stone",
+    	"south": "celestialexploration:blocks/venus_stone",
+    	"east": "celestialexploration:blocks/venus_stone",
+    	"west": "celestialexploration:blocks/venus_stone",
+    	"up": "celestialexploration:blocks/geyser_top",
+    	"down": "celestialexploration:blocks/venus_stone"
+	}
+}

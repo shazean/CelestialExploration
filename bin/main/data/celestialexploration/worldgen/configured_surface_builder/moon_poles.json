@@ -1,0 +1,14 @@
+{
+  "config": {
+     "top_material": {
+      "Name": "celestialexploration:dry_ice"
+    },
+    "under_material": {
+      "Name": "celestialexploration:moon_stone"
+    },
+    "underwater_material": {
+      "Name": "celestialexploration:moon_stone"
+    }
+  },
+  "type": "minecraft:default"
+}

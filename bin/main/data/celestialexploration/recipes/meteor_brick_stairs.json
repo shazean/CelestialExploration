@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "celestialexploration:meteor_brick"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:meteor_brick_stairs",
+    "count": 4
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "config": {
+     "top_material": {
+      "Name": "celestialexploration:mercury_sand"
+    },
+    "under_material": {
+      "Name": "celestialexploration:mercury_stone"
+    },
+    "underwater_material": {
+      "Name": "celestialexploration:mercury_stone"
+    }
+  },
+  "type": "minecraft:default"
+}
