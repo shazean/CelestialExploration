@@ -1,0 +1,9 @@
+JVM:         /Users/katy/.gradle/jdks/jdk8u282-b08/Contents/Home/bin/java
+JVM Args:    
+Run Args:    "--in-jar", "/Users/katy/Desktop/Coding/CelestialExploration116/build/fg_cache/mcp/1.16.5-20210115.111550/joined/0b4769c740080cdaae0d4dc0b14d410d528af1be/merge/output.jar", "--out-jar", "/Users/katy/Desktop/Coding/CelestialExploration116/build/fg_cache/mcp/1.16.5-20210115.111550/joined/0b4769c740080cdaae0d4dc0b14d410d528af1be/rename/output.jar", "--srg-in", "config/joined.tsrg"
+Classpath:   /Users/katy/.gradle/caches/forge_gradle/maven_downloader/net/md-5/SpecialSource/1.8.3/SpecialSource-1.8.3-shaded.jar
+Working Dir: /Users/katy/Desktop/Coding/CelestialExploration116/build/fg_cache/mcp/1.16.5-20210115.111550/joined/0b4769c740080cdaae0d4dc0b14d410d528af1be/rename
+Main Class:  net.md_5.specialsource.SpecialSource
+Loading mappings
+0 packages, 5447 classes, 21481 fields, 38359 methods
+Remapping final jar

@@ -1,5 +1,5 @@
 {
-  "type": "celestialexploration:surface_planet",
+  "type": "celestialexploration:moon",
   "generator": {
     "type": "minecraft:noise",
     "seed": 9479287343,

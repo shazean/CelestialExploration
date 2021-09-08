@@ -21,17 +21,20 @@ import mod.shim.celestialexploration.registry.RegistryParticles;
 import mod.shim.celestialexploration.registry.RegistryRecipeSerializer;
 import mod.shim.celestialexploration.registry.RegistrySurfaceBuilders;
 import mod.shim.celestialexploration.registry.RegistryTileEntity;
+import mod.shim.celestialexploration.world.renderer.DimensionRenderers;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.biome.Biome;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DeferredWorkQueue;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -50,7 +53,8 @@ public class Main {
 
 //    public static final ResourceLocation MOON_DIM_TYPE = new ResourceLocation(MODID, "moon");
         
-    public Main() {
+    @SuppressWarnings("deprecation")
+	public Main() {
     	
     	final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
     	
@@ -86,6 +90,11 @@ public class Main {
 //        CelestialFeature.init();
 //        CelestialStructures.init();
         System.out.println("Main *Main* CHECK");
+        
+        DistExecutor.runWhenOn(Dist.CLIENT, () -> () -> {
+			modEventBus.addListener(this::clientSetup);
+		});
+        
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
@@ -172,6 +181,14 @@ public class Main {
     	}
     	
     };
+
+    
+    public void clientSetup(final FMLClientSetupEvent event)
+	{
+		event.enqueueWork(() -> {
+			DimensionRenderers.setDimensionEffects();
+		});
+	}
 
     
     public static <T extends IForgeRegistryEntry<T>> T register(IForgeRegistry<T> registry, T entry, String registryKey)

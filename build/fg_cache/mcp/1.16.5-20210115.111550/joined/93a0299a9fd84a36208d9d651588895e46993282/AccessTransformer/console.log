@@ -1,0 +1,6 @@
+JVM:         /Users/katy/.gradle/jdks/jdk8u282-b08/Contents/Home/bin/java
+JVM Args:    
+Run Args:    "--inJar", "/Users/katy/Desktop/Coding/CelestialExploration116/build/fg_cache/mcp/1.16.5-20210115.111550/joined/93a0299a9fd84a36208d9d651588895e46993282/mcinject/output.jar", "--outJar", "/Users/katy/Desktop/Coding/CelestialExploration116/build/fg_cache/mcp/1.16.5-20210115.111550/joined/93a0299a9fd84a36208d9d651588895e46993282/AccessTransformer/output.jar", "--atFile", "/Users/katy/Desktop/Coding/CelestialExploration116/src/main/resources/META-INF/accesstransformer.cfg", "--atFile", "/var/folders/k9/36v_7vbd09z1170vdgjk8f8w0000gn/T/FG_ats_15593079006118518047.cfg"
+Classpath:   /Users/katy/.gradle/caches/forge_gradle/maven_downloader/net/minecraftforge/accesstransformers/3.0.1/accesstransformers-3.0.1-fatjar.jar
+Working Dir: /Users/katy/Desktop/Coding/CelestialExploration116/build/fg_cache/mcp/1.16.5-20210115.111550/joined/93a0299a9fd84a36208d9d651588895e46993282/AccessTransformer
+Main Class:  net.minecraftforge.accesstransformer.TransformerProcessor

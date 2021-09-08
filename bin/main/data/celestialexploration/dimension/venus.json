@@ -1,5 +1,5 @@
 {
-  "type": "celestialexploration:warm_planet",
+  "type": "celestialexploration:venus",
   "generator": {
     "type": "minecraft:noise",
     "seed": 4068967303,
