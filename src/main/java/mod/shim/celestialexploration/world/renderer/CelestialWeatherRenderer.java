@@ -44,25 +44,7 @@ public class CelestialWeatherRenderer implements IWeatherRenderHandler {
 	private static final ResourceLocation SULFUR_RAIN_LOCATION = new ResourceLocation(Main.MODID, "textures/environment/sulfur_rain.png");
 	   private Minecraft minecraft;
 	   private ClientWorld level;
-	   @Nullable
-	   private VertexBuffer starBuffer;
-	   @Nullable
-	   private VertexBuffer skyBuffer;
-	   @Nullable
-	   private VertexBuffer darkBuffer;
-	   @Nullable
-	   private VertexBuffer cloudBuffer;
 	   private int ticks;
-	   @Nullable
-	   private Framebuffer particlesTarget;
-	   @Nullable
-	   private Framebuffer weatherTarget;
-	   @Nullable
-	   private Framebuffer cloudsTarget;
-	   @Nullable
-	   private ShaderGroup transparencyChain;
-	   @Nullable
-	   private ClippingHelper capturedFrustum;
 	   private int rainSoundTime;
 
 	private final float[] rainSizeX = new float[1024];
