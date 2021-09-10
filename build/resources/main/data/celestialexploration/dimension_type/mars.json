@@ -11,5 +11,5 @@
   "coordinate_scale": 1.0,
   "has_skylight": true,
   "has_ceiling": false,
-  "effects": "celestialexploration:mars_dimension"
+  "effects": "celestialexploration:mars"
 }

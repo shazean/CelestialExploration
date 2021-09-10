@@ -55,8 +55,8 @@ public class CelestialWeatherRenderer implements IWeatherRenderHandler {
 	public void render(int ticks, float partialTicks, ClientWorld clientWorld, Minecraft mc, LightTexture lightmapIn,
 			double xIn, double yIn, double zIn) {
 
-		renderRain(ticks, partialTicks, clientWorld, mc, lightmapIn, xIn, yIn, zIn);
-		this.minecraft = mc;
+//		renderRain(ticks, partialTicks, clientWorld, mc, lightmapIn, xIn, yIn, zIn);
+//		this.minecraft = mc;
 		
 
 	}
