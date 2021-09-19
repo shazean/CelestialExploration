@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 
 import mod.shim.celestialexploration.entity.RoverEntity;
 import mod.shim.celestialexploration.entity.mobs.LurkerEntity;
+import mod.shim.celestialexploration.entity.mobs.slimes.MarsMallowEntity;
 import mod.shim.celestialexploration.entity.mobs.slimes.RustSlimeEntity;
 import mod.shim.celestialexploration.entity.mobs.slimes.SulfuricSlimeEntity;
 import mod.shim.celestialexploration.entity.mobs.slimes.WhiteSlimeEntity;
@@ -129,6 +130,7 @@ public class Main {
     		GlobalEntityTypeAttributes.put(RegistryEntities.RUST_SLIME.get(), RustSlimeEntity.createMonsterAttributes().build());
     		GlobalEntityTypeAttributes.put(RegistryEntities.WHITE_SLIME.get(), WhiteSlimeEntity.createMonsterAttributes().build());
     		GlobalEntityTypeAttributes.put(RegistryEntities.SULFURIC_SLIME.get(), SulfuricSlimeEntity.createAttributes().build());
+    		GlobalEntityTypeAttributes.put(RegistryEntities.MARS_MALLOW.get(), MarsMallowEntity.createMonsterAttributes().build());
 
     
     	});

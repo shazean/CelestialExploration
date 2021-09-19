@@ -21,6 +21,7 @@ import net.minecraft.item.Items;
 import net.minecraft.item.PickaxeItem;
 import net.minecraft.item.ShovelItem;
 import net.minecraft.item.SwordItem;
+import net.minecraft.item.Item.Properties;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
@@ -144,7 +145,7 @@ public class RegistryItems {
 	public static final RegistryObject<ModSpawnEgg> RUST_SLIME_SPAWN_EGG = ITEMS.register("rust_slime_spawn_egg", () -> new ModSpawnEgg(RegistryEntities.RUST_SLIME, 0x984521, 0x7d3213, new Item.Properties().tab(ItemGroup.TAB_MISC)));
 	public static final RegistryObject<ModSpawnEgg> WHITE_SLIME_SPAWN_EGG = ITEMS.register("white_slime_spawn_egg", () -> new ModSpawnEgg(RegistryEntities.WHITE_SLIME, 0xdbdbdb, 0xffffff, new Item.Properties().tab(ItemGroup.TAB_MISC)));
 	public static final RegistryObject<ModSpawnEgg> SULFURIC_SLIME_SPAWN_EGG = ITEMS.register("sulfuric_slime_spawn_egg", () -> new ModSpawnEgg(RegistryEntities.SULFURIC_SLIME, 0xbd9200, 0xa68000, new Item.Properties().tab(ItemGroup.TAB_MISC)));
-	
+	public static final RegistryObject<ModSpawnEgg> MARS_MALLOW_SPAWN_EGG = ITEMS.register("mars_mallow_spawn_egg", () -> new ModSpawnEgg(RegistryEntities.MARS_MALLOW, 0xffffff, 0xF3F3F3, new Item.Properties().tab(ItemGroup.TAB_MISC)));
 	
 	public static final RegistryObject<Item> GEYSER = ITEMS.register("geyser", () -> new BlockItemBase(RegistryBlocks.GEYSER.get()));
 

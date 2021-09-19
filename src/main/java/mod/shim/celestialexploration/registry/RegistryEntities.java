@@ -4,6 +4,7 @@ import mod.shim.celestialexploration.Main;
 import mod.shim.celestialexploration.entity.RoverEntity;
 import mod.shim.celestialexploration.entity.item.ShuttleEntity;
 import mod.shim.celestialexploration.entity.mobs.LurkerEntity;
+import mod.shim.celestialexploration.entity.mobs.slimes.MarsMallowEntity;
 import mod.shim.celestialexploration.entity.mobs.slimes.RustSlimeEntity;
 import mod.shim.celestialexploration.entity.mobs.slimes.SulfuricSlimeEntity;
 import mod.shim.celestialexploration.entity.mobs.slimes.WhiteSlimeEntity;
@@ -51,6 +52,11 @@ public class RegistryEntities {
 		EntityType.Builder.of(SulfuricSlimeEntity::new, EntityClassification.MISC)
 		.sized(1.8f, 1.8f)
 		.build(new ResourceLocation(Main.MODID, "sulfuric_slime").toString()));
+
+	public static final RegistryObject<EntityType<MarsMallowEntity>> MARS_MALLOW = ENTITY_TYPES.register("mars_mallow", () -> 
+		EntityType.Builder.of(MarsMallowEntity::new, EntityClassification.MISC)
+		.sized(1.8f, 1.8f)
+		.build(new ResourceLocation(Main.MODID, "mars_mallow").toString()));
 
 
 }

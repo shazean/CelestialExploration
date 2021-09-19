@@ -1,12 +1,12 @@
 package mod.shim.celestialexploration.util;
 
 import mod.shim.celestialexploration.Main;
-
 import mod.shim.celestialexploration.client.gui.screen.AssemblyStationScreen;
 //import mod.shim.celestialexploration.client.gui.screen.OxygenCompressorScreen;
 import mod.shim.celestialexploration.client.render.RoverRenderer;
 import mod.shim.celestialexploration.client.render.ShuttleRenderer;
 import mod.shim.celestialexploration.client.render.mobs.LurkerRenderer;
+import mod.shim.celestialexploration.client.render.mobs.slimes.MarsMallowRenderer;
 import mod.shim.celestialexploration.client.render.mobs.slimes.RustSlimeRenderer;
 import mod.shim.celestialexploration.client.render.mobs.slimes.SulfuricSlimeRenderer;
 import mod.shim.celestialexploration.client.render.mobs.slimes.WhiteSlimeRenderer;
@@ -51,6 +51,7 @@ public class ClientEventBusSubscriber {
 		RenderingRegistry.registerEntityRenderingHandler(RegistryEntities.RUST_SLIME.get(), RustSlimeRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(RegistryEntities.WHITE_SLIME.get(), WhiteSlimeRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(RegistryEntities.SULFURIC_SLIME.get(), SulfuricSlimeRenderer::new);
+		RenderingRegistry.registerEntityRenderingHandler(RegistryEntities.MARS_MALLOW.get(), MarsMallowRenderer::new);
 
 
 				
