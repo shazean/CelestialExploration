@@ -74,24 +74,34 @@ public class ShuttleEntity extends Entity {
 	public ShuttleEntity(EntityType<? extends ShuttleEntity> p_i48580_1_, World p_i48580_2_) {
 		super(p_i48580_1_, p_i48580_2_);
 		this.noPhysics = true;
-//		this.setColor(color);
+		//		this.setColor(color);
 	}
-	
-	 public static ShuttleEntity createShuttle(World p_184263_0_, ShuttleEntity.Color color) {
-//	      if (color == ShuttleEntity.Color.WHITE) {
-	         return new ShuttleEntity(RegistryEntities.SHUTTLE.get(), p_184263_0_);
-//	      } else if (color == ShuttleEntity.Color.BLACK) {
-//	         return new FurnaceMinecartEntity(p_184263_0_, p_184263_1_, p_184263_3_, p_184263_5_);
-//	      } else if (color == ShuttleEntity.Color.RED) {
-//	         return new TNTMinecartEntity(p_184263_0_, p_184263_1_, p_184263_3_, p_184263_5_);
-//	      } else if (color == ShuttleEntity.Color.ORANGE) {
-//	         return new SpawnerMinecartEntity(p_184263_0_, p_184263_1_, p_184263_3_, p_184263_5_);
-//	      } else if (color == ShuttleEntity.Color.YELLOW) {
-//	         return new HopperMinecartEntity(p_184263_0_, p_184263_1_, p_184263_3_, p_184263_5_);
-//	      } else {
-//	         return (ShuttleEntity)(p_184263_7_ == ShuttleEntity.Type.COMMAND_BLOCK ? new CommandBlockMinecartEntity(p_184263_0_, p_184263_1_, p_184263_3_, p_184263_5_) : new MinecartEntity(p_184263_0_, p_184263_1_, p_184263_3_, p_184263_5_));
-//	      }
-	   }
+
+
+	public ShuttleEntity(World p_i1705_1_, double p_i1705_2_, double p_i1705_4_, double p_i1705_6_) {
+		this(RegistryEntities.SHUTTLE.get(), p_i1705_1_);
+		this.setPos(p_i1705_2_, p_i1705_4_, p_i1705_6_);
+		this.setDeltaMovement(Vector3d.ZERO);
+		this.xo = p_i1705_2_;
+		this.yo = p_i1705_4_;
+		this.zo = p_i1705_6_;
+	}
+
+	public static ShuttleEntity createShuttle(World p_184263_0_, ShuttleEntity.Color color) {
+		//	      if (color == ShuttleEntity.Color.WHITE) {
+		return new ShuttleEntity(RegistryEntities.SHUTTLE.get(), p_184263_0_);
+		//	      } else if (color == ShuttleEntity.Color.BLACK) {
+		//	         return new FurnaceMinecartEntity(p_184263_0_, p_184263_1_, p_184263_3_, p_184263_5_);
+		//	      } else if (color == ShuttleEntity.Color.RED) {
+		//	         return new TNTMinecartEntity(p_184263_0_, p_184263_1_, p_184263_3_, p_184263_5_);
+		//	      } else if (color == ShuttleEntity.Color.ORANGE) {
+		//	         return new SpawnerMinecartEntity(p_184263_0_, p_184263_1_, p_184263_3_, p_184263_5_);
+		//	      } else if (color == ShuttleEntity.Color.YELLOW) {
+		//	         return new HopperMinecartEntity(p_184263_0_, p_184263_1_, p_184263_3_, p_184263_5_);
+		//	      } else {
+		//	         return (ShuttleEntity)(p_184263_7_ == ShuttleEntity.Type.COMMAND_BLOCK ? new CommandBlockMinecartEntity(p_184263_0_, p_184263_1_, p_184263_3_, p_184263_5_) : new MinecartEntity(p_184263_0_, p_184263_1_, p_184263_3_, p_184263_5_));
+		//	      }
+	}
 
 
 	@Override
@@ -370,7 +380,7 @@ public class ShuttleEntity extends Entity {
 
 
 	private void controlShuttle() {
-//		System.out.println("ShuttleEntity controlShuttle");
+		//		System.out.println("ShuttleEntity controlShuttle");
 		if (this.isVehicle()) {
 			float f = 0.0F;
 			if (this.inputLeft) {
@@ -566,88 +576,88 @@ public class ShuttleEntity extends Entity {
 	protected boolean canAddPassenger(Entity p_184219_1_) {
 		return this.getPassengers().size() < 2; //&& !this.isEyeInFluid(FluidTags.WATER);
 	}
-	
+
 	protected void doPlayerRide(PlayerEntity p_110237_1_) {
-	      if (!this.level.isClientSide) {
-	         p_110237_1_.yRot = this.yRot;
-	         p_110237_1_.xRot = this.xRot;
-	         p_110237_1_.startRiding(this);
-	      }
+		if (!this.level.isClientSide) {
+			p_110237_1_.yRot = this.yRot;
+			p_110237_1_.xRot = this.xRot;
+			p_110237_1_.startRiding(this);
+		}
 
-	   }
-	 
-	   public boolean canBeControlledByRider() {
-		      return this.getControllingPassenger() instanceof LivingEntity;
-		   }
+	}
 
-	 
-	 public void travel(Vector3d p_213352_1_) {
-//	      if (this.isAlive()) {
-	         if (this.isVehicle() && this.canBeControlledByRider()) {
-	            LivingEntity livingentity = (LivingEntity)this.getControllingPassenger();
-	            this.yRot = livingentity.yRot;
-	            this.yRotO = this.yRot;
-	            this.xRot = livingentity.xRot * 0.5F;
-	            this.setRot(this.yRot, this.xRot);
-//	            this.yBodyRot = this.yRot;
-//	            this.yHeadRot = this.yBodyRot;
-	            float f = livingentity.xxa * 0.5F;
-	            float f1 = livingentity.zza;
-//	            if (f1 <= 0.0F) {
-//	               f1 *= 0.25F;
-//	               this.gallopSoundCounter = 0;
-//	            }
+	public boolean canBeControlledByRider() {
+		return this.getControllingPassenger() instanceof LivingEntity;
+	}
 
-//	            if (this.onGround && this.playerJumpPendingScale == 0.0F && this.isStanding() && !this.allowStandSliding) {
-//	               f = 0.0F;
-//	               f1 = 0.0F;
-//	            }
-//
-//	            if (this.playerJumpPendingScale > 0.0F && !this.isJumping() && this.onGround) {
-//	               double d0 = this.getCustomJump() * (double)this.playerJumpPendingScale * (double)this.getBlockJumpFactor();
-	               double d1;
-//	               if (this.hasEffect(Effects.JUMP)) {
-//	                  d1 = d0 + (double)((float)(this.getEffect(Effects.JUMP).getAmplifier() + 1) * 0.1F);
-//	               } else {
-//	                  d1 = d0;
-//	               }
 
-	               Vector3d vector3d = this.getDeltaMovement();
-//	               this.setDeltaMovement(vector3d.x, d1, vector3d.z);
-//	               this.setIsJumping(true);
-	               this.hasImpulse = true;
-//	               net.minecraftforge.common.ForgeHooks.onLivingJump(this);
-	               if (f1 > 0.0F) {
-	                  float f2 = MathHelper.sin(this.yRot * ((float)Math.PI / 180F));
-	                  float f3 = MathHelper.cos(this.yRot * ((float)Math.PI / 180F));
-//	                  this.setDeltaMovement(this.getDeltaMovement().add((double)(-0.4F * f2 * this.playerJumpPendingScale), 0.0D, (double)(0.4F * f3 * this.playerJumpPendingScale)));
-	               }
+	public void travel(Vector3d p_213352_1_) {
+		//	      if (this.isAlive()) {
+		if (this.isVehicle() && this.canBeControlledByRider()) {
+			LivingEntity livingentity = (LivingEntity)this.getControllingPassenger();
+			this.yRot = livingentity.yRot;
+			this.yRotO = this.yRot;
+			this.xRot = livingentity.xRot * 0.5F;
+			this.setRot(this.yRot, this.xRot);
+			//	            this.yBodyRot = this.yRot;
+			//	            this.yHeadRot = this.yBodyRot;
+			float f = livingentity.xxa * 0.5F;
+			float f1 = livingentity.zza;
+			//	            if (f1 <= 0.0F) {
+			//	               f1 *= 0.25F;
+			//	               this.gallopSoundCounter = 0;
+			//	            }
 
-//	               this.playerJumpPendingScale = 0.0F;
-//	            }
+			//	            if (this.onGround && this.playerJumpPendingScale == 0.0F && this.isStanding() && !this.allowStandSliding) {
+			//	               f = 0.0F;
+			//	               f1 = 0.0F;
+			//	            }
+			//
+			//	            if (this.playerJumpPendingScale > 0.0F && !this.isJumping() && this.onGround) {
+			//	               double d0 = this.getCustomJump() * (double)this.playerJumpPendingScale * (double)this.getBlockJumpFactor();
+			double d1;
+			//	               if (this.hasEffect(Effects.JUMP)) {
+			//	                  d1 = d0 + (double)((float)(this.getEffect(Effects.JUMP).getAmplifier() + 1) * 0.1F);
+			//	               } else {
+			//	                  d1 = d0;
+			//	               }
 
-//	            this.flyingSpeed = this.getSpeed() * 0.1F;
-//	            if (this.isControlledByLocalInstance()) {
-//	               this.setSpeed((float)this.getAttributeValue(Attributes.MOVEMENT_SPEED));
-//	               super.travel(new Vector3d((double)f, p_213352_1_.y, (double)f1));
-//	            } else
-	         	if (livingentity instanceof PlayerEntity) {
-	               this.setDeltaMovement(Vector3d.ZERO);
-	            }
-//
-//	            if (this.onGround) {
-//	               this.playerJumpPendingScale = 0.0F;
-//	               this.setIsJumping(false);
-//	            }
+			Vector3d vector3d = this.getDeltaMovement();
+			//	               this.setDeltaMovement(vector3d.x, d1, vector3d.z);
+			//	               this.setIsJumping(true);
+			this.hasImpulse = true;
+			//	               net.minecraftforge.common.ForgeHooks.onLivingJump(this);
+			if (f1 > 0.0F) {
+				float f2 = MathHelper.sin(this.yRot * ((float)Math.PI / 180F));
+				float f3 = MathHelper.cos(this.yRot * ((float)Math.PI / 180F));
+				//	                  this.setDeltaMovement(this.getDeltaMovement().add((double)(-0.4F * f2 * this.playerJumpPendingScale), 0.0D, (double)(0.4F * f3 * this.playerJumpPendingScale)));
+			}
 
-//	            this.calculateEntityAnimation(this, false);
-//	         } else {
-////	            this.flyingSpeed = 0.02F;
-////	            super.travel(p_213352_1_);
-//	         }
-	      }
-	 }
-	    
+			//	               this.playerJumpPendingScale = 0.0F;
+			//	            }
+
+			//	            this.flyingSpeed = this.getSpeed() * 0.1F;
+			//	            if (this.isControlledByLocalInstance()) {
+			//	               this.setSpeed((float)this.getAttributeValue(Attributes.MOVEMENT_SPEED));
+			//	               super.travel(new Vector3d((double)f, p_213352_1_.y, (double)f1));
+			//	            } else
+			if (livingentity instanceof PlayerEntity) {
+				this.setDeltaMovement(Vector3d.ZERO);
+			}
+			//
+			//	            if (this.onGround) {
+			//	               this.playerJumpPendingScale = 0.0F;
+			//	               this.setIsJumping(false);
+			//	            }
+
+			//	            this.calculateEntityAnimation(this, false);
+			//	         } else {
+			////	            this.flyingSpeed = 0.02F;
+			////	            super.travel(p_213352_1_);
+			//	         }
+		}
+	}
+
 	@Override
 	@Nullable
 	public Entity getControllingPassenger() {
@@ -677,9 +687,9 @@ public class ShuttleEntity extends Entity {
 			this.absMoveTo(this.lerpX, this.lerpY, this.lerpZ, (float)this.lerpYRot, (float)this.lerpXRot);
 		}
 	}
-	
-	
-	 
+
+
+
 
 	public static enum Status {
 		IN_WATER,

@@ -47,6 +47,9 @@ public class ShuttleItem extends Item {
 	   }
 
 	   public ActionResult<ItemStack> use(World p_77659_1_, PlayerEntity p_77659_2_, Hand p_77659_3_) {
+		   
+		  System.out.println("ShuttleItem use");
+		  
 	      ItemStack itemstack = p_77659_2_.getItemInHand(p_77659_3_);
 	      RayTraceResult raytraceresult = getPlayerPOVHitResult(p_77659_1_, p_77659_2_, RayTraceContext.FluidMode.ANY);
 	      if (raytraceresult.getType() == RayTraceResult.Type.MISS) {
@@ -67,14 +70,16 @@ public class ShuttleItem extends Item {
 	         }
 
 	         if (raytraceresult.getType() == RayTraceResult.Type.BLOCK) {
-	            ShuttleEntity Shuttleentity = new ShuttleEntity(RegistryEntities.SHUTTLE.get(), p_77659_1_);
-	            Shuttleentity.setColor(this.color);
-	            Shuttleentity.yRot = p_77659_2_.yRot;
-	            if (!p_77659_1_.noCollision(Shuttleentity, Shuttleentity.getBoundingBox().inflate(-0.1D))) {
+//	            ShuttleEntity shuttleentity = new ShuttleEntity(RegistryEntities.SHUTTLE.get(), p_77659_1_);
+	             ShuttleEntity shuttleentity = new ShuttleEntity(p_77659_1_, raytraceresult.getLocation().x, raytraceresult.getLocation().y, raytraceresult.getLocation().z);
+
+	            shuttleentity.setColor(this.color);
+	            shuttleentity.yRot = p_77659_2_.yRot;
+	            if (!p_77659_1_.noCollision(shuttleentity, shuttleentity.getBoundingBox().inflate(-0.1D))) {
 	               return ActionResult.fail(itemstack);
 	            } else {
 	               if (!p_77659_1_.isClientSide) {
-	                  p_77659_1_.addFreshEntity(Shuttleentity);
+	                  p_77659_1_.addFreshEntity(shuttleentity);
 	                  if (!p_77659_2_.abilities.instabuild) {
 	                     itemstack.shrink(1);
 	                  }
@@ -88,4 +93,33 @@ public class ShuttleItem extends Item {
 	         }
 	      }
 	   }
+	   
+	   public ActionResultType useOn(ItemUseContext p_195939_1_) {
+		      World world = p_195939_1_.getLevel();
+		      BlockPos blockpos = p_195939_1_.getClickedPos();
+		      BlockState blockstate = world.getBlockState(blockpos);
+//		      if (!blockstate.is(BlockTags.RAILS)) {
+//		         return ActionResultType.FAIL;
+//		      } else {
+		         ItemStack itemstack = p_195939_1_.getItemInHand();
+		         if (!world.isClientSide) {
+//		            RailShape railshape = blockstate.getBlock() instanceof AbstractRailBlock ? ((AbstractRailBlock)blockstate.getBlock()).getRailDirection(blockstate, world, blockpos, null) : RailShape.NORTH_SOUTH;
+		            double d0 = 0.0D;
+//		            if (railshape.isAscending()) {
+//		               d0 = 0.5D;
+//		            }
+
+		            ShuttleEntity shuttleentity = new ShuttleEntity(world, (double)blockpos.getX() + 0.5D, (double)blockpos.getY() + 0.0625D + d0, (double)blockpos.getZ() + 0.5D);
+		            if (itemstack.hasCustomHoverName()) {
+		               shuttleentity.setCustomName(itemstack.getHoverName());
+		            }
+
+		            world.addFreshEntity(shuttleentity);
+		         }
+
+		         itemstack.shrink(1);
+		         return ActionResultType.sidedSuccess(world.isClientSide);
+		      }
+//		   }
+	   
 	}

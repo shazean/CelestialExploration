@@ -10,6 +10,7 @@ import mod.shim.celestialexploration.entity.mobs.slimes.SulfuricSlimeEntity;
 import mod.shim.celestialexploration.entity.mobs.slimes.WhiteSlimeEntity;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.item.minecart.MinecartEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
@@ -22,11 +23,11 @@ public class RegistryEntities {
 
 	//Entity types
 	public static final RegistryObject<EntityType<ShuttleEntity>> SHUTTLE = ENTITY_TYPES.register("shuttle", () -> 
-		EntityType.Builder.of(ShuttleEntity::new, EntityClassification.MISC)
+		EntityType.Builder.<ShuttleEntity>of(ShuttleEntity::new, EntityClassification.MISC)
 		.sized(12.0f, 4.0f)
 		.build(new ResourceLocation(Main.MODID, "shuttle").toString())
 			);
-
+			
 	public static final RegistryObject<EntityType<RoverEntity>> ROVER = ENTITY_TYPES.register("rover", () -> 
 		EntityType.Builder.of(RoverEntity::new, EntityClassification.MISC)
 		.sized(2.0f, 2.0f)
