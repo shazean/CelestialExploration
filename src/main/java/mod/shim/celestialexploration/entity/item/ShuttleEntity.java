@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import mod.shim.celestialexploration.registry.RegistryEntities;
 import mod.shim.celestialexploration.registry.RegistryItems;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
@@ -12,6 +13,14 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.Pose;
 import net.minecraft.entity.ai.attributes.Attributes;
+import net.minecraft.entity.item.minecart.AbstractMinecartEntity;
+import net.minecraft.entity.item.minecart.ChestMinecartEntity;
+import net.minecraft.entity.item.minecart.CommandBlockMinecartEntity;
+import net.minecraft.entity.item.minecart.FurnaceMinecartEntity;
+import net.minecraft.entity.item.minecart.HopperMinecartEntity;
+import net.minecraft.entity.item.minecart.MinecartEntity;
+import net.minecraft.entity.item.minecart.SpawnerMinecartEntity;
+import net.minecraft.entity.item.minecart.TNTMinecartEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.WaterMobEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -65,7 +74,24 @@ public class ShuttleEntity extends Entity {
 	public ShuttleEntity(EntityType<? extends ShuttleEntity> p_i48580_1_, World p_i48580_2_) {
 		super(p_i48580_1_, p_i48580_2_);
 		this.noPhysics = true;
+//		this.setColor(color);
 	}
+	
+	 public static ShuttleEntity createShuttle(World p_184263_0_, ShuttleEntity.Color color) {
+//	      if (color == ShuttleEntity.Color.WHITE) {
+	         return new ShuttleEntity(RegistryEntities.SHUTTLE.get(), p_184263_0_);
+//	      } else if (color == ShuttleEntity.Color.BLACK) {
+//	         return new FurnaceMinecartEntity(p_184263_0_, p_184263_1_, p_184263_3_, p_184263_5_);
+//	      } else if (color == ShuttleEntity.Color.RED) {
+//	         return new TNTMinecartEntity(p_184263_0_, p_184263_1_, p_184263_3_, p_184263_5_);
+//	      } else if (color == ShuttleEntity.Color.ORANGE) {
+//	         return new SpawnerMinecartEntity(p_184263_0_, p_184263_1_, p_184263_3_, p_184263_5_);
+//	      } else if (color == ShuttleEntity.Color.YELLOW) {
+//	         return new HopperMinecartEntity(p_184263_0_, p_184263_1_, p_184263_3_, p_184263_5_);
+//	      } else {
+//	         return (ShuttleEntity)(p_184263_7_ == ShuttleEntity.Type.COMMAND_BLOCK ? new CommandBlockMinecartEntity(p_184263_0_, p_184263_1_, p_184263_3_, p_184263_5_) : new MinecartEntity(p_184263_0_, p_184263_1_, p_184263_3_, p_184263_5_));
+//	      }
+	   }
 
 
 	@Override
