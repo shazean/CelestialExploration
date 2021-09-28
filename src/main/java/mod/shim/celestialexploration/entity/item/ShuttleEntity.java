@@ -1,61 +1,81 @@
 package mod.shim.celestialexploration.entity.item;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 import javax.annotation.Nullable;
 
+import mod.shim.celestialexploration.Main;
+import mod.shim.celestialexploration.inventory.container.ShuttleContainer;
+import mod.shim.celestialexploration.registry.RegistryContainerType;
 import mod.shim.celestialexploration.registry.RegistryEntities;
 import mod.shim.celestialexploration.registry.RegistryItems;
+import mod.shim.celestialexploration.registry.RegistryTileEntity;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.Pose;
-import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.item.minecart.AbstractMinecartEntity;
-import net.minecraft.entity.item.minecart.ChestMinecartEntity;
-import net.minecraft.entity.item.minecart.CommandBlockMinecartEntity;
-import net.minecraft.entity.item.minecart.FurnaceMinecartEntity;
-import net.minecraft.entity.item.minecart.HopperMinecartEntity;
-import net.minecraft.entity.item.minecart.MinecartEntity;
-import net.minecraft.entity.item.minecart.SpawnerMinecartEntity;
-import net.minecraft.entity.item.minecart.TNTMinecartEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.WaterMobEntity;
+import net.minecraft.entity.passive.horse.AbstractHorseEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.IInventoryChangedListener;
+import net.minecraft.inventory.Inventory;
+import net.minecraft.inventory.ItemStackHelper;
+import net.minecraft.inventory.container.Container;
+import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.nbt.ListNBT;
 import net.minecraft.network.IPacket;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.network.play.client.CSteerBoatPacket;
-import net.minecraft.potion.Effects;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.Direction;
 import net.minecraft.util.EntityPredicates;
 import net.minecraft.util.Hand;
+import net.minecraft.util.IntArray;
+import net.minecraft.util.NonNullList;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.util.TeleportationRepositioner;
 import net.minecraft.util.TransportationHelper;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.vector.Vector3d;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.network.NetworkHooks;
 
-public class ShuttleEntity extends Entity {
+public class ShuttleEntity extends Entity implements IInventoryChangedListener {
 
 	private static final DataParameter<Integer> DATA_ID_HURT = EntityDataManager.defineId(ShuttleEntity.class, DataSerializers.INT);
 	private static final DataParameter<Integer> DATA_ID_HURTDIR = EntityDataManager.defineId(ShuttleEntity.class, DataSerializers.INT);
 	private static final DataParameter<Float> DATA_ID_DAMAGE = EntityDataManager.defineId(ShuttleEntity.class, DataSerializers.FLOAT);
 	private static final DataParameter<Integer> DATA_ID_COLOR = EntityDataManager.defineId(ShuttleEntity.class, DataSerializers.INT);
+	private static final DataParameter<Byte> DATA_ID_FLAGS = EntityDataManager.defineId(ShuttleEntity.class, DataSerializers.BYTE);
+	//	   private static final DataParameter<Optional<UUID>> DATA_ID_OWNER_UUID = EntityDataManager.defineId(ShuttleEntity.class, DataSerializers.OPTIONAL_UUID);
+
+	   private NonNullList<ItemStack> itemStacks = NonNullList.withSize(18, ItemStack.EMPTY);
+
+	
 	private float outOfControlTicks;
 	private float deltaRotation;
 	private int lerpSteps;
@@ -69,6 +89,8 @@ public class ShuttleEntity extends Entity {
 	private boolean inputUp;
 	private boolean inputDown;
 	private double lastYd;
+	protected Inventory inventory;
+
 	private ShuttleEntity.Status status;
 
 	public ShuttleEntity(EntityType<? extends ShuttleEntity> p_i48580_1_, World p_i48580_2_) {
@@ -110,21 +132,77 @@ public class ShuttleEntity extends Entity {
 		this.entityData.define(DATA_ID_HURTDIR, 1);
 		this.entityData.define(DATA_ID_DAMAGE, 0.0F);
 		this.entityData.define(DATA_ID_COLOR, ShuttleEntity.Color.WHITE.ordinal());
+		this.entityData.define(DATA_ID_FLAGS, (byte)0);
 
 	}
+
 
 	@Override
 	protected void readAdditionalSaveData(CompoundNBT p_70037_1_) {
 		if (p_70037_1_.contains("Color", 8)) {
 			this.setColor(ShuttleEntity.Color.byName(p_70037_1_.getString("Color")));
 		}
+
+		ListNBT listnbt = p_70037_1_.getList("Items", 19);
+		this.createInventory();
+
+		for(int i = 0; i < listnbt.size(); ++i) {
+			CompoundNBT compoundnbt = listnbt.getCompound(i);
+			int j = compoundnbt.getByte("Slot") & 255;
+			if (j >= 2 && j < this.inventory.getContainerSize()) {
+				this.inventory.setItem(j, ItemStack.of(compoundnbt));
+			}
+		}
+		
+        ItemStackHelper.loadAllItems(p_70037_1_, this.itemStacks);
+
+
 	}
 
 	@Override
 	protected void addAdditionalSaveData(CompoundNBT p_213281_1_) {
 		p_213281_1_.putString("Color", this.getShuttleColor().getName());
 
+		//		 p_213281_1_.putBoolean("ChestedHorse", this.hasChest());
+		//	      if (this.hasChest()) {
+		ListNBT listnbt = new ListNBT();
+
+		for(int i = 2; i < this.inventory.getContainerSize(); ++i) {
+			ItemStack itemstack = this.inventory.getItem(i);
+			if (!itemstack.isEmpty()) {
+				CompoundNBT compoundnbt = new CompoundNBT();
+				compoundnbt.putByte("Slot", (byte)i);
+				itemstack.save(compoundnbt);
+				listnbt.add(compoundnbt);
+			}
+		}
+		
+        ItemStackHelper.saveAllItems(p_213281_1_, this.itemStacks);
+
+
+		p_213281_1_.put("Items", listnbt);
+
 	}
+
+	public boolean setSlot(int p_174820_1_, ItemStack p_174820_2_) {
+		if (p_174820_1_ == 499) {
+			if (p_174820_2_.isEmpty()) {
+				//		            this.setChest(false);
+				this.createInventory();
+				return true;
+			}
+
+			//		         if (!this.hasChest() && p_174820_2_.getItem() == Blocks.CHEST.asItem()) {
+			//		            this.setChest(true);
+			//		            this.createInventory();
+			//		            return true;
+			//		         }
+		}
+
+		return super.setSlot(p_174820_1_, p_174820_2_);
+	}
+	
+	
 
 	@Override
 	public IPacket<?> getAddEntityPacket() {
@@ -382,6 +460,7 @@ public class ShuttleEntity extends Entity {
 	private void controlShuttle() {
 		//		System.out.println("ShuttleEntity controlShuttle");
 		if (this.isVehicle()) {
+			System.out.println("ShuttleEntity controlShuttle if isVehicle");
 			float f = 0.0F;
 			if (this.inputLeft) {
 				System.out.println("ShuttleEntity controlShuttle inputLeft");
@@ -491,13 +570,30 @@ public class ShuttleEntity extends Entity {
 	}
 
 	@Override
-	public ActionResultType interact(PlayerEntity p_184230_1_, Hand p_184230_2_) {
+	public ActionResultType interact(PlayerEntity player, Hand p_184230_2_) {
 
-		if (p_184230_1_.isSecondaryUseActive()) {
-			return ActionResultType.PASS;
+		if (player.isSecondaryUseActive()) {
+			if (player instanceof ServerPlayerEntity) {
+				NetworkHooks.openGui((ServerPlayerEntity) player, new INamedContainerProvider() {
+
+					@Override
+					public Container createMenu(int id, PlayerInventory inv, PlayerEntity arg2) {
+						return getShuttleContainer(id, inv);
+					}
+
+					@Override
+					public ITextComponent getDisplayName() {
+						return new TranslationTextComponent("container." + Main.MODID + ".shuttle");
+					}
+				}, buf -> buf.writeVarInt(this.getId()));
+
+				return ActionResultType.sidedSuccess(this.level.isClientSide);
+			} else {
+				return ActionResultType.PASS;
+			}
 		} else if (this.outOfControlTicks < 60.0F) {
 			if (!this.level.isClientSide) {
-				return p_184230_1_.startRiding(this) ? ActionResultType.CONSUME : ActionResultType.PASS;
+				return player.startRiding(this) ? ActionResultType.CONSUME : ActionResultType.PASS;
 			} else {
 				return ActionResultType.SUCCESS;
 			}
@@ -505,6 +601,40 @@ public class ShuttleEntity extends Entity {
 			return ActionResultType.PASS;
 		}
 	}
+
+	private Container getShuttleContainer(int id, PlayerInventory inv) {
+		return new ShuttleContainer(RegistryContainerType.SHUTTLE.get(), id, inv, new Inventory(19), new IntArray(20));
+	}
+
+
+	//	//FIXME?
+	//	public void openInventory(PlayerEntity p_110199_1_) {
+	//		if (!this.level.isClientSide && (!this.isVehicle() || this.hasPassenger(p_110199_1_))) {
+	////			p_110199_1_.openHorseInventory(this, this.inventory);
+	//			
+	//			ServerPlayerEntity serverPlayer = (ServerPlayerEntity) p_110199_1_;
+	//			
+	//		     if (p_110199_1_.containerMenu != p_110199_1_.inventoryMenu) {
+	//		    	 p_110199_1_.closeContainer();
+	//		      }
+	//
+	//		     serverPlayer.nextContainerCounter();
+	//		     serverPlayer.connection.send(new SOpenHorseWindowPacket(serverPlayer.containerCounter, serverPlayer.inventory.getContainerSize(), serverPlayer.getId()));
+	////		     serverPlayer.containerMenu = new ShuttleContainer(serverPlayer.containerCounter, this.inventory, this.inventory, serverPlayer);
+	//		     serverPlayer.containerMenu = new ShuttleContainer(serverPlayer.containerCounter, serverPlayer.inventory, serverPlayer.inventory, this);
+	//		     serverPlayer.containerMenu.addSlotListener((IContainerListener) p_110199_1_);
+	//		      net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(new net.minecraftforge.event.entity.player.PlayerContainerEvent.Open(serverPlayer, serverPlayer.containerMenu));
+	//			
+	//			System.out.println("ShuttleEntity openInventory end");
+	//			
+	//			
+	//			
+	//		}
+	//
+	//	}
+
+
+
 
 	@Override
 	protected void checkFallDamage(double p_184231_1_, boolean p_184231_3_, BlockState p_184231_4_, BlockPos p_184231_5_) {
@@ -750,6 +880,65 @@ public class ShuttleEntity extends Entity {
 
 			return ashuttleentity$color[0];
 		}
+	}
+
+	protected int getInventorySize() {
+		return 18;
+	}
+
+	protected void createInventory() {
+		Inventory inventory = this.inventory;
+		this.inventory = new Inventory(this.getInventorySize());
+		if (inventory != null) {
+			inventory.removeListener(this);
+			int i = Math.min(inventory.getContainerSize(), this.inventory.getContainerSize());
+
+			for(int j = 0; j < i; ++j) {
+				ItemStack itemstack = inventory.getItem(j);
+				if (!itemstack.isEmpty()) {
+					this.inventory.setItem(j, itemstack.copy());
+				}
+			}
+		}
+
+		this.inventory.addListener(this);
+		this.updateContainerEquipment();
+		//	      this.itemHandler = net.minecraftforge.common.util.LazyOptional.of(() -> new net.minecraftforge.items.wrapper.InvWrapper(this.inventory));
+	}
+
+	protected boolean getFlag(int p_110233_1_) {
+		return (this.entityData.get(DATA_ID_FLAGS) & p_110233_1_) != 0;
+	}
+
+	protected void setFlag(int p_110208_1_, boolean p_110208_2_) {
+		byte b0 = this.entityData.get(DATA_ID_FLAGS);
+		if (p_110208_2_) {
+			this.entityData.set(DATA_ID_FLAGS, (byte)(b0 | p_110208_1_));
+		} else {
+			this.entityData.set(DATA_ID_FLAGS, (byte)(b0 & ~p_110208_1_));
+		}
+
+	}
+
+
+	protected void updateContainerEquipment() {
+		if (!this.level.isClientSide) {
+			this.setFlag(4, !this.inventory.getItem(0).isEmpty());
+		}
+	}
+
+	@Override
+	public void containerChanged(IInventory p_76316_1_) {
+		//	      boolean flag = this.isSaddled();
+		this.updateContainerEquipment();
+		if (this.tickCount > 20) { // && !flag && this.isSaddled()) {
+			this.playSound(SoundEvents.CHEST_CLOSE, 0.5F, 1.0F);
+		}
+
+	}
+
+	public int getInventoryColumns() {
+		return 6;
 	}
 
 }

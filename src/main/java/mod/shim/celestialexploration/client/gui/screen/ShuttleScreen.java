@@ -25,7 +25,7 @@ public class ShuttleScreen extends ContainerScreen<ShuttleContainer> {
 		this.leftPos = 0;
 		this.topPos = 0;
 		this.imageWidth = 175;
-		this.imageHeight = 211;
+		this.imageHeight = 175;
 		
 	}
 	
@@ -39,7 +39,7 @@ public class ShuttleScreen extends ContainerScreen<ShuttleContainer> {
 
 	@Override
 	protected void renderLabels(MatrixStack p_230451_1_, int p_230451_2_, int p_230451_3_) {
-		this.font.draw(p_230451_1_, this.inventory.getDisplayName(), (float) this.inventoryLabelX, (float) this.inventoryLabelY + 10, 4210752);
+		this.font.draw(p_230451_1_, this.inventory.getDisplayName(), (float) this.inventoryLabelX, (float) this.inventoryLabelY, 4210752);
 
 	}
 	

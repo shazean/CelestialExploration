@@ -48,8 +48,6 @@ public class ShuttleItem extends Item {
 
 	   public ActionResult<ItemStack> use(World p_77659_1_, PlayerEntity p_77659_2_, Hand p_77659_3_) {
 		   
-		  System.out.println("ShuttleItem use");
-		  
 	      ItemStack itemstack = p_77659_2_.getItemInHand(p_77659_3_);
 	      RayTraceResult raytraceresult = getPlayerPOVHitResult(p_77659_1_, p_77659_2_, RayTraceContext.FluidMode.ANY);
 	      if (raytraceresult.getType() == RayTraceResult.Type.MISS) {

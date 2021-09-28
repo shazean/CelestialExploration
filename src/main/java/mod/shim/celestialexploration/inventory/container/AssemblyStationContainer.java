@@ -36,14 +36,14 @@ public class AssemblyStationContainer extends Container {
 	public final AssemblyStationTileEntity assemblystationte;
 	private final IWorldPosCallable canInteractWithCallable;
 	private final PlayerEntity player;
-	
+
 	public AssemblyStationContainer(final int windowId, final PlayerInventory playerInv, final AssemblyStationTileEntity assemblystationte) {
 		super(RegistryContainerType.ASSEMBLY_STATION.get(), windowId);
 		this.assemblystationte = assemblystationte;
 		this.canInteractWithCallable = IWorldPosCallable.create(assemblystationte.getLevel(), assemblystationte.getBlockPos());
-	      this.player = playerInv.player;
+		this.player = playerInv.player;
 
-		
+
 		//TILE ENTITY slot, X-axis (left/right), Y-axis (up/down)
 		this.addSlot(new Slot((IInventory) this.craftSlots, 0, 30, 9));
 		this.addSlot(new Slot((IInventory) this.craftSlots, 1, 48, 9));
@@ -62,19 +62,19 @@ public class AssemblyStationContainer extends Container {
 		this.addSlot(new Slot((IInventory) this.craftSlots, 14, 66, 63));
 		this.addSlot(new Slot((IInventory) this.craftSlots, 15, 84, 63));
 
-	    this.addSlot(new CraftingResultSlot(playerInv.player, this.craftSlots, this.resultSlots, 16, 129, 35));
-
-		
-//		this.addSlot(new CraftingResultSlot(null, null, (IInventory) assemblystationte, 16, 129, 35));
+		this.addSlot(new CraftingResultSlot(playerInv.player, this.craftSlots, this.resultSlots, 16, 129, 35));
 
 
-//		for (int row = 0; row < 3; row++) {
-//			for (int col = 0; col < 3; col++) {
-//				this.addSlot(new Slot((IInventory) assemblystationte, col, 8 + col * 18, 35 - (4 - row) * 18 - 10));
-//			}
-//		}
+		//		this.addSlot(new CraftingResultSlot(null, null, (IInventory) assemblystationte, 16, 129, 35));
 
-		
+
+		//		for (int row = 0; row < 3; row++) {
+		//			for (int col = 0; col < 3; col++) {
+		//				this.addSlot(new Slot((IInventory) assemblystationte, col, 8 + col * 18, 35 - (4 - row) * 18 - 10));
+		//			}
+		//		}
+
+
 		//MAIN PLAYER INVENTORY
 		for (int row = 0; row < 3; row++) {
 			for (int col = 0; col < 9; col++) {
@@ -87,13 +87,13 @@ public class AssemblyStationContainer extends Container {
 			this.addSlot(new Slot(playerInv, col, 8 + col * 18, 142 + 10));
 		}
 
-		
+
 	}
 
 	public AssemblyStationContainer(final int windowId, final PlayerInventory playerInv, final PacketBuffer data) {
 		this(windowId, playerInv, getTileEntity(playerInv, data));
 	}
-	
+
 	private static AssemblyStationTileEntity getTileEntity(final PlayerInventory playerInv, final PacketBuffer data) {
 		Objects.requireNonNull(playerInv, "Player Inventory cannot be null.");
 		Objects.requireNonNull(data, "Player Inventory cannot be null.");
@@ -102,133 +102,133 @@ public class AssemblyStationContainer extends Container {
 			return (AssemblyStationTileEntity) assemblystationte;
 		}
 		throw new IllegalStateException("Tile entity is not correct");
-		
+
 	}
 
-	 protected static void slotChangedCraftingGrid(int p_217066_0_, World p_217066_1_, PlayerEntity p_217066_2_, CraftingInventory p_217066_3_, CraftResultInventory p_217066_4_) {
-	      if (!p_217066_1_.isClientSide) {
-	         ServerPlayerEntity serverplayerentity = (ServerPlayerEntity)p_217066_2_;
-	         ItemStack itemstack = ItemStack.EMPTY;
-	         Optional<ICraftingRecipe> optional = p_217066_1_.getServer().getRecipeManager().getRecipeFor(IRecipeType.CRAFTING, p_217066_3_, p_217066_1_);
-	         if (optional.isPresent()) {
-	            ICraftingRecipe icraftingrecipe = optional.get();
-	            if (p_217066_4_.setRecipeUsed(p_217066_1_, serverplayerentity, icraftingrecipe)) {
-	               itemstack = icraftingrecipe.assemble(p_217066_3_);
-	            }
-	         }
+	protected static void slotChangedCraftingGrid(int p_217066_0_, World p_217066_1_, PlayerEntity p_217066_2_, CraftingInventory p_217066_3_, CraftResultInventory p_217066_4_) {
+		if (!p_217066_1_.isClientSide) {
+			ServerPlayerEntity serverplayerentity = (ServerPlayerEntity)p_217066_2_;
+			ItemStack itemstack = ItemStack.EMPTY;
+			Optional<ICraftingRecipe> optional = p_217066_1_.getServer().getRecipeManager().getRecipeFor(IRecipeType.CRAFTING, p_217066_3_, p_217066_1_);
+			if (optional.isPresent()) {
+				ICraftingRecipe icraftingrecipe = optional.get();
+				if (p_217066_4_.setRecipeUsed(p_217066_1_, serverplayerentity, icraftingrecipe)) {
+					itemstack = icraftingrecipe.assemble(p_217066_3_);
+				}
+			}
 
-	         p_217066_4_.setItem(0, itemstack);
-	         serverplayerentity.connection.send(new SSetSlotPacket(p_217066_0_, 16, itemstack));
-	      }
-	   }
+			p_217066_4_.setItem(0, itemstack);
+			serverplayerentity.connection.send(new SSetSlotPacket(p_217066_0_, 16, itemstack));
+		}
+	}
 
-	   public void slotsChanged(IInventory p_75130_1_) {
-	      this.canInteractWithCallable.execute((p_217069_1_, p_217069_2_) -> {
-	         slotChangedCraftingGrid(this.containerId, p_217069_1_, this.player, this.craftSlots, this.resultSlots);
-	      });
-	   }
+	public void slotsChanged(IInventory p_75130_1_) {
+		this.canInteractWithCallable.execute((p_217069_1_, p_217069_2_) -> {
+			slotChangedCraftingGrid(this.containerId, p_217069_1_, this.player, this.craftSlots, this.resultSlots);
+		});
+	}
 
-	   public void fillCraftSlotsStackedContents(RecipeItemHelper p_201771_1_) {
-	      this.craftSlots.fillStackedContents(p_201771_1_);
-	   }
+	public void fillCraftSlotsStackedContents(RecipeItemHelper p_201771_1_) {
+		this.craftSlots.fillStackedContents(p_201771_1_);
+	}
 
-	   public void clearCraftingContent() {
-	      this.craftSlots.clearContent();
-	      this.resultSlots.clearContent();
-	   }
+	public void clearCraftingContent() {
+		this.craftSlots.clearContent();
+		this.resultSlots.clearContent();
+	}
 
-	   public boolean recipeMatches(IRecipe<? super CraftingInventory> p_201769_1_) {
-	      return p_201769_1_.matches(this.craftSlots, this.player.level);
-	   }
+	public boolean recipeMatches(IRecipe<? super CraftingInventory> p_201769_1_) {
+		return p_201769_1_.matches(this.craftSlots, this.player.level);
+	}
 
-	   public void removed(PlayerEntity p_75134_1_) {
-	      super.removed(p_75134_1_);
-	      this.canInteractWithCallable.execute((p_217068_2_, p_217068_3_) -> {
-	         this.clearContainer(p_75134_1_, p_217068_2_, this.craftSlots);
-	      });
-	   }
-	
+	public void removed(PlayerEntity p_75134_1_) {
+		super.removed(p_75134_1_);
+		this.canInteractWithCallable.execute((p_217068_2_, p_217068_3_) -> {
+			this.clearContainer(p_75134_1_, p_217068_2_, this.craftSlots);
+		});
+	}
+
 	@Override //canInteractWith? 14:59 FIXME maybe
 	public boolean stillValid(PlayerEntity p_75145_1_) {
 		// TODO Auto-generated method stub
-//		return true;
+		//		return true;
 		return stillValid(canInteractWithCallable, p_75145_1_, RegistryBlocks.ASSEMBLY_STATION.get());
 	}
-	
-	   public ItemStack quickMoveStack(PlayerEntity player, int num) {
-		      ItemStack itemstack = ItemStack.EMPTY;
-		      Slot slot = this.slots.get(num);
-		      if (slot != null && slot.hasItem()) {
-		         ItemStack itemstack1 = slot.getItem();
-		         itemstack = itemstack1.copy();
-		         if (num == 0) {
-		            this.canInteractWithCallable.execute((p_217067_2_, p_217067_3_) -> {
-		               itemstack1.getItem().onCraftedBy(itemstack1, p_217067_2_, player);
-		            });
-		            if (!this.moveItemStackTo(itemstack1, 17, 53, true)) { //10, 46, true
-		               return ItemStack.EMPTY;
-		            }
 
-		            slot.onQuickCraft(itemstack1, itemstack);
-		         } else if (num >= 17 && num < 53) { //10, 46
-		            if (!this.moveItemStackTo(itemstack1, 1, 17, false)) { //1, 10, false
-		               if (num < 44) { //37
-		                  if (!this.moveItemStackTo(itemstack1, 44, 53, false)) { //37, 46, false
-		                     return ItemStack.EMPTY;
-		                  }
-		               } else if (!this.moveItemStackTo(itemstack1, 17, 44, false)) { //10, 37, false
-		                  return ItemStack.EMPTY;
-		               }
-		            }
-		         } else if (!this.moveItemStackTo(itemstack1, 17, 53, false)) { //10, 46, false
-		            return ItemStack.EMPTY;
-		         }
+	public ItemStack quickMoveStack(PlayerEntity player, int num) {
+		ItemStack itemstack = ItemStack.EMPTY;
+		Slot slot = this.slots.get(num);
+		if (slot != null && slot.hasItem()) {
+			ItemStack itemstack1 = slot.getItem();
+			itemstack = itemstack1.copy();
+			if (num == 0) {
+				this.canInteractWithCallable.execute((p_217067_2_, p_217067_3_) -> {
+					itemstack1.getItem().onCraftedBy(itemstack1, p_217067_2_, player);
+				});
+				if (!this.moveItemStackTo(itemstack1, 17, 53, true)) { //10, 46, true
+					return ItemStack.EMPTY;
+				}
 
-		         if (itemstack1.isEmpty()) {
-		            slot.set(ItemStack.EMPTY);
-		         } else {
-		            slot.setChanged();
-		         }
+				slot.onQuickCraft(itemstack1, itemstack);
+			} else if (num >= 17 && num < 53) { //10, 46
+				if (!this.moveItemStackTo(itemstack1, 1, 17, false)) { //1, 10, false
+					if (num < 44) { //37
+						if (!this.moveItemStackTo(itemstack1, 44, 53, false)) { //37, 46, false
+							return ItemStack.EMPTY;
+						}
+					} else if (!this.moveItemStackTo(itemstack1, 17, 44, false)) { //10, 37, false
+						return ItemStack.EMPTY;
+					}
+				}
+			} else if (!this.moveItemStackTo(itemstack1, 17, 53, false)) { //10, 46, false
+				return ItemStack.EMPTY;
+			}
 
-		         if (itemstack1.getCount() == itemstack.getCount()) {
-		            return ItemStack.EMPTY;
-		         }
+			if (itemstack1.isEmpty()) {
+				slot.set(ItemStack.EMPTY);
+			} else {
+				slot.setChanged();
+			}
 
-		         ItemStack itemstack2 = slot.onTake(player, itemstack1);
-		         if (num == 0) {
-		            player.drop(itemstack2, false);
-		         }
-		      }
+			if (itemstack1.getCount() == itemstack.getCount()) {
+				return ItemStack.EMPTY;
+			}
 
-		      return itemstack;
-		   }
+			ItemStack itemstack2 = slot.onTake(player, itemstack1);
+			if (num == 0) {
+				player.drop(itemstack2, false);
+			}
+		}
 
-		   public boolean canTakeItemForPickAll(ItemStack p_94530_1_, Slot p_94530_2_) {
-		      return p_94530_2_.container != this.resultSlots && super.canTakeItemForPickAll(p_94530_1_, p_94530_2_);
-		   }
+		return itemstack;
+	}
 
-		   public int getResultSlotIndex() {
-		      return 16;
-		   }
+	public boolean canTakeItemForPickAll(ItemStack p_94530_1_, Slot p_94530_2_) {
+		return p_94530_2_.container != this.resultSlots && super.canTakeItemForPickAll(p_94530_1_, p_94530_2_);
+	}
 
-		   public int getGridWidth() {
-			   System.out.println(this.craftSlots.getWidth());
-		      return this.craftSlots.getWidth();
-		   }
+	public int getResultSlotIndex() {
+		return 16;
+	}
 
-		   public int getGridHeight() {
-			   System.out.println(this.craftSlots.getHeight());
-		      return this.craftSlots.getHeight();
-		   }
+	public int getGridWidth() {
+//		System.out.println(this.craftSlots.getWidth());
+		return this.craftSlots.getWidth();
+	}
 
-		   @OnlyIn(Dist.CLIENT)
-		   public int getSize() {
-		      return 17;
-		   }
+	public int getGridHeight() {
+//		System.out.println(this.craftSlots.getHeight());
+		return this.craftSlots.getHeight();
+	}
 
-		   @OnlyIn(Dist.CLIENT)
-		   public RecipeBookCategory getRecipeBookType() {
-		      return RecipeBookCategory.CRAFTING;
-		   }
-	
+	@OnlyIn(Dist.CLIENT)
+	public int getSize() {
+		return 17;
+	}
+
+	@OnlyIn(Dist.CLIENT)
+	public RecipeBookCategory getRecipeBookType() {
+		return RecipeBookCategory.CRAFTING;
+	}
+
 }

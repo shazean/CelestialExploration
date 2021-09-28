@@ -4,7 +4,6 @@ import mod.shim.celestialexploration.Main;
 
 import mod.shim.celestialexploration.tileentity.AssemblyStationTileEntity;
 import mod.shim.celestialexploration.tileentity.GeyserTileEntity;
-import mod.shim.celestialexploration.tileentity.ShuttleTileEntity;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
