@@ -154,17 +154,12 @@ public class ShuttleEntity extends Entity implements IInventoryChangedListener {
 			}
 		}
 		
-        ItemStackHelper.loadAllItems(p_70037_1_, this.itemStacks);
-
-
 	}
 
 	@Override
 	protected void addAdditionalSaveData(CompoundNBT p_213281_1_) {
 		p_213281_1_.putString("Color", this.getShuttleColor().getName());
 
-		//		 p_213281_1_.putBoolean("ChestedHorse", this.hasChest());
-		//	      if (this.hasChest()) {
 		ListNBT listnbt = new ListNBT();
 
 		for(int i = 2; i < this.inventory.getContainerSize(); ++i) {
@@ -177,9 +172,6 @@ public class ShuttleEntity extends Entity implements IInventoryChangedListener {
 			}
 		}
 		
-        ItemStackHelper.saveAllItems(p_213281_1_, this.itemStacks);
-
-
 		p_213281_1_.put("Items", listnbt);
 
 	}
