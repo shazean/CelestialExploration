@@ -14,7 +14,7 @@ public class ModLanguageProvider extends LanguageProvider {
 
 	@Override
 	protected void addTranslations() {
-		add("itemGroup." + CelestialExploration.CELESTIAL_TAB.getDisplayName(), "Celestial Tab");
+		add("itemGroup.celestialtab", "Celestial Tab");
 		
 		
 		//***BLOCKS***

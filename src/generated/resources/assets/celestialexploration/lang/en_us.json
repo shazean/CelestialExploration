@@ -32,5 +32,5 @@
   "block.celestialexploration.moon_redstone_ore": "Lunar Redstone Ore",
   "block.celestialexploration.moon_sand": "Lunar Sand",
   "block.celestialexploration.moon_stone": "Lunar Stone",
-  "itemGroup.TranslatableComponent{key='itemGroup.celestialtab', args=[], siblings=[], style=Style{ color=null, bold=null, italic=null, underlined=null, strikethrough=null, obfuscated=null, clickEvent=null, hoverEvent=null, insertion=null, font=minecraft:default}}": "Celestial Tab"
+  "itemGroup.celestialtab": "Celestial Tab"
 }
