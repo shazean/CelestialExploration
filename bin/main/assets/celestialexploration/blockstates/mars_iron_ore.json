@@ -1,5 +1,7 @@
 {
-	"variants": {
-	"": { "model": "celestialexploration:block/mars_iron_ore" }
-	}
+  "variants": {
+    "": {
+      "model": "celestialexploration:block/mars_iron_ore"
+    }
+  }
 }

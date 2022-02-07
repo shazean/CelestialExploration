@@ -1,5 +1,7 @@
 {
-	"variants": {
-	"": { "model": "celestialexploration:block/mars_stone" }
-	}
+  "variants": {
+    "": {
+      "model": "celestialexploration:block/mars_stone"
+    }
+  }
 }

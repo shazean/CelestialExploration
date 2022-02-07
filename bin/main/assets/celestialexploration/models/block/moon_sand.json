@@ -1,6 +1,6 @@
 {
-	"parent": "block/cube_all",
-	"textures": {
-		"all": "celestialexploration:blocks/moon_sand"
-	}
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "celestialexploration:block/moon_sand"
+  }
 }

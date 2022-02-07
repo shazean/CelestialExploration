@@ -1,6 +1,0 @@
-{
- "parent": "item/generated",
- "textures": {
- 	"layer0": "celestialexploration:items/rocket_engine"
- }
-}

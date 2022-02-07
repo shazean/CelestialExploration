@@ -1,8 +1,0 @@
-{
-    "parent": "block/slab_top",
-    "textures": {
-        "bottom": "celestialexploration:blocks/venus_brick",
-        "top": "celestialexploration:blocks/venus_brick",
-        "side": "celestialexploration:blocks/venus_brick"
-    }
-}

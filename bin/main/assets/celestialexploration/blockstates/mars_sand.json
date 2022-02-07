@@ -1,5 +1,7 @@
 {
-	"variants": {
-	"": { "model": "celestialexploration:block/mars_sand" }
-	}
+  "variants": {
+    "": {
+      "model": "celestialexploration:block/mars_sand"
+    }
+  }
 }

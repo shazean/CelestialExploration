@@ -1,7 +1,0 @@
-{
-    "variants": {
-        "type=bottom": { "model": "celestialexploration:block/venus_brick_slab" },
-        "type=top": { "model": "celestialexploration:block/venus_brick_slab_top" },
-        "type=double": { "model": "celestialexploration:block/venus_brick" }
-    }
-}

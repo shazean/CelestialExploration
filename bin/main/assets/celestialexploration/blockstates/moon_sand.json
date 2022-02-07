@@ -1,5 +1,7 @@
 {
-	"variants": {
-	"": { "model": "celestialexploration:block/moon_sand" }
-	}
+  "variants": {
+    "": {
+      "model": "celestialexploration:block/moon_sand"
+    }
+  }
 }

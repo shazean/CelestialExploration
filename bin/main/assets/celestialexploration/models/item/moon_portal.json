@@ -1,6 +1,0 @@
-{
-	"parent": "celestialexploration:item/portal_base",
-	"textures": {
-		"texture": "celestialexploration:blocks/moon_portal"
-	}
-}

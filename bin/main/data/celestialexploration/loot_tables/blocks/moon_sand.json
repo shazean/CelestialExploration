@@ -2,16 +2,13 @@
   "type": "minecraft:block",
   "pools": [
     {
-      "rolls": 1,
+      "name": "moon_sand",
+      "rolls": 1.0,
+      "bonus_rolls": 0.0,
       "entries": [
         {
           "type": "minecraft:item",
           "name": "celestialexploration:moon_sand"
-        }
-      ],
-      "conditions": [
-        {
-          "condition": "minecraft:survives_explosion"
         }
       ]
     }

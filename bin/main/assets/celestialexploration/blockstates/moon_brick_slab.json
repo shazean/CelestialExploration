@@ -1,7 +1,13 @@
 {
-    "variants": {
-        "type=bottom": { "model": "celestialexploration:block/moon_brick_slab" },
-        "type=top": { "model": "celestialexploration:block/moon_brick_slab_top" },
-        "type=double": { "model": "celestialexploration:block/moon_brick" }
+  "variants": {
+    "type=top": {
+      "model": "celestialexploration:block/moon_brick_slab_top"
+    },
+    "type=bottom": {
+      "model": "celestialexploration:block/moon_brick_slab"
+    },
+    "type=double": {
+      "model": "celestialexploration:block/moon_bricks"
     }
+  }
 }

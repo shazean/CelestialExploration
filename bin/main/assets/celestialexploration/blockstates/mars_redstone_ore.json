@@ -1,5 +1,7 @@
 {
-	"variants": {
-	"": { "model": "celestialexploration:block/mars_redstone_ore" }
-	}
+  "variants": {
+    "": {
+      "model": "celestialexploration:block/mars_redstone_ore"
+    }
+  }
 }

@@ -1,6 +1,6 @@
 {
-	"parent": "block/cube_all",
-	"textures": {
-		"all": "celestialexploration:blocks/meteor"
-	}
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "celestialexploration:block/meteor"
+  }
 }

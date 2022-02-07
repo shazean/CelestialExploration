@@ -1,6 +1,6 @@
 {
-	"parent": "block/cube_all",
-	"textures": {
-		"all": "celestialexploration:blocks/mars_iron_ore"
-	}
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "celestialexploration:block/mars_iron_ore"
+  }
 }

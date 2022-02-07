@@ -1,5 +1,7 @@
 {
-	"variants": {
-	"": { "model": "celestialexploration:block/lunar_lantern" }
-	}
+  "variants": {
+    "": {
+      "model": "celestialexploration:block/lunar_lantern"
+    }
+  }
 }

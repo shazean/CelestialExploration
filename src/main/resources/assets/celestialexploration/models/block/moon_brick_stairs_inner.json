@@ -1,8 +1,0 @@
-{
-    "parent": "block/inner_stairs",
-    "textures": {
-        "bottom": "celestialexploration:blocks/moon_brick",
-        "top": "celestialexploration:blocks/moon_brick",
-        "side": "celestialexploration:blocks/moon_brick"
-    }
-}

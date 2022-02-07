@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "celestialexploration:items/space_suit_boots"
-  }
-}

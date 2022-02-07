@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/orientable",
-  "textures": {
-    "top": "celestialexploration:blocks/oxygen_compressor_top",
-    "front": "celestialexploration:blocks/oxygen_compressor_front",
-    "side": "celestialexploration:blocks/oxygen_compressor_side"
-  }
-}

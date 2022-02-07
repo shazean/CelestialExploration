@@ -1,5 +1,7 @@
 {
-	"variants": {
-	"": { "model": "celestialexploration:block/meteor_gold_ore" }
-	}
+  "variants": {
+    "": {
+      "model": "celestialexploration:block/meteor_gold_ore"
+    }
+  }
 }

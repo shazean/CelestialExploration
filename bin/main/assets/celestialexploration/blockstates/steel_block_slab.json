@@ -1,7 +1,0 @@
-{
-    "variants": {
-        "type=bottom": { "model": "celestialexploration:block/steel_block_slab" },
-        "type=top": { "model": "celestialexploration:block/steel_block_slab_top" },
-        "type=double": { "model": "celestialexploration:block/steel_block" }
-    }
-}

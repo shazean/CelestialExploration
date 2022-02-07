@@ -1,5 +1,7 @@
 {
-	"variants": {
-	"": { "model": "celestialexploration:block/meteor_lapis_ore" }
-	}
+  "variants": {
+    "": {
+      "model": "celestialexploration:block/meteor_lapis_ore"
+    }
+  }
 }
