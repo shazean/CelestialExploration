@@ -1,9 +1,0 @@
-JVM:         /Users/katy/.gradle/jdks/jdk8u282-b08/Contents/Home/bin/java
-JVM Args:    
-Run Args:    "--strip", "--input", "/Users/katy/Desktop/Coding/CelestialExploration116/build/fg_cache/mcp/1.16.5-20210115.111550/joined/93a0299a9fd84a36208d9d651588895e46993282/AccessTransformer/output.jar", "--output", "/Users/katy/Desktop/Coding/CelestialExploration116/build/fg_cache/mcp/1.16.5-20210115.111550/joined/93a0299a9fd84a36208d9d651588895e46993282/SideStripper/output.jar", "--data", "/Users/katy/Desktop/Coding/CelestialExploration116/build/fg_cache/mcp/1.16.5-20210115.111550/joined/93a0299a9fd84a36208d9d651588895e46993282/SideStripper/string_data.sas"
-Classpath:   /Users/katy/.gradle/caches/forge_gradle/maven_downloader/net/minecraftforge/mergetool/1.1.3/mergetool-1.1.3-fatjar.jar
-Working Dir: /Users/katy/Desktop/Coding/CelestialExploration116/build/fg_cache/mcp/1.16.5-20210115.111550/joined/93a0299a9fd84a36208d9d651588895e46993282/SideStripper
-Main Class:  net.minecraftforge.mergetool.ConsoleMerger
-Input:  /Users/katy/Desktop/Coding/CelestialExploration116/build/fg_cache/mcp/1.16.5-20210115.111550/joined/93a0299a9fd84a36208d9d651588895e46993282/AccessTransformer/output.jar
-Output: /Users/katy/Desktop/Coding/CelestialExploration116/build/fg_cache/mcp/1.16.5-20210115.111550/joined/93a0299a9fd84a36208d9d651588895e46993282/SideStripper/output.jar
-Data:   /Users/katy/Desktop/Coding/CelestialExploration116/build/fg_cache/mcp/1.16.5-20210115.111550/joined/93a0299a9fd84a36208d9d651588895e46993282/SideStripper/string_data.sas

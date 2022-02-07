@@ -1,8 +1,0 @@
-{
-    "parent": "block/outer_stairs",
-    "textures": {
-        "bottom": "celestialexploration:blocks/meteor_brick",
-        "top": "celestialexploration:blocks/meteor_brick",
-        "side": "celestialexploration:blocks/meteor_brick"
-    }
-}

@@ -1,8 +1,0 @@
-{
-    "parent": "block/stairs",
-    "textures": {
-        "bottom": "celestialexploration:blocks/mars_brick",
-        "top": "celestialexploration:blocks/mars_brick",
-        "side": "celestialexploration:blocks/mars_brick"
-    }
-}

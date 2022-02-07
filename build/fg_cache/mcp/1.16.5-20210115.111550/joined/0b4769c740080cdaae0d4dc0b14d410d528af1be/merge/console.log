@@ -1,6 +1,0 @@
-JVM:         /Users/katy/.gradle/jdks/jdk8u282-b08/Contents/Home/bin/java
-JVM Args:    
-Run Args:    "--client", "/Users/katy/Desktop/Coding/CelestialExploration116/build/fg_cache/mcp/1.16.5-20210115.111550/joined/0b4769c740080cdaae0d4dc0b14d410d528af1be/stripClient/output.jar", "--server", "/Users/katy/Desktop/Coding/CelestialExploration116/build/fg_cache/mcp/1.16.5-20210115.111550/joined/0b4769c740080cdaae0d4dc0b14d410d528af1be/stripServer/output.jar", "--ann", "1.16.5", "--output", "/Users/katy/Desktop/Coding/CelestialExploration116/build/fg_cache/mcp/1.16.5-20210115.111550/joined/0b4769c740080cdaae0d4dc0b14d410d528af1be/merge/output.jar", "--inject", "false"
-Classpath:   /Users/katy/.gradle/caches/forge_gradle/maven_downloader/net/minecraftforge/mergetool/1.1.1/mergetool-1.1.1-fatjar.jar
-Working Dir: /Users/katy/Desktop/Coding/CelestialExploration116/build/fg_cache/mcp/1.16.5-20210115.111550/joined/0b4769c740080cdaae0d4dc0b14d410d528af1be/merge
-Main Class:  net.minecraftforge.mergetool.ConsoleMerger

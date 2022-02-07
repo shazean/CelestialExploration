@@ -1,1 +1,0 @@
-attribute @s forge:entity_gravity base set 0.01

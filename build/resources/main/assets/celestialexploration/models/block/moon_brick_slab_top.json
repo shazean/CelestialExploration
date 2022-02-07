@@ -1,8 +1,0 @@
-{
-    "parent": "block/slab_top",
-    "textures": {
-        "bottom": "celestialexploration:blocks/moon_brick",
-        "top": "celestialexploration:blocks/moon_brick",
-        "side": "celestialexploration:blocks/moon_brick"
-    }
-}
