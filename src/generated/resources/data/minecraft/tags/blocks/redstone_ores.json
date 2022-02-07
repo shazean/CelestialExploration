@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "celestialexploration:moon_redstone_ore",
+    "celestialexploration:mars_redstone_ore",
+    "celestialexploration:meteor_redstone_ore"
+  ]
+}

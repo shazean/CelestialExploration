@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "celestialexploration:mars_brick_wall",
+    "celestialexploration:meteor_brick_wall",
+    "celestialexploration:moon_brick_wall"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "celestialexploration:meteor_gold_ore"
+  },
+  "result": "minecraft:gold_ingot",
+  "experience": 1.0,
+  "cookingtime": 100
+}

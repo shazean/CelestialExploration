@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "celestialexploration:mars_brick_slab",
+    "celestialexploration:moon_brick_slab",
+    "celestialexploration:meteor_brick_slab"
+  ]
+}

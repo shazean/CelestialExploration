@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=top": {
+      "model": "celestialexploration:block/mars_brick_slab_top"
+    },
+    "type=bottom": {
+      "model": "celestialexploration:block/mars_brick_slab"
+    },
+    "type=double": {
+      "model": "celestialexploration:block/mars_bricks"
+    }
+  }
+}

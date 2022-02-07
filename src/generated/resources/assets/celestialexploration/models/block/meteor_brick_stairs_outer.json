@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "side": "celestialexploration:block/meteor_bricks",
+    "bottom": "celestialexploration:block/meteor_bricks",
+    "top": "celestialexploration:block/meteor_bricks"
+  }
+}

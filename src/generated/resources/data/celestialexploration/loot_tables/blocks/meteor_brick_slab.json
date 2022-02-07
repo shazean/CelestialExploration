@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "name": "meteor_brick_slab",
+      "rolls": 1.0,
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "celestialexploration:meteor_brick_slab"
+        }
+      ]
+    }
+  ]
+}
