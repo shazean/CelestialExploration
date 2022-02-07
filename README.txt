@@ -10,7 +10,7 @@ SRG Names) - this means that you will not be able to read them directly against
 normal code.
 
 Setup Process:
-==============================
+===============================
 
 Step 1: Open your command-line and browse to the folder where you extracted the zip file.
 
