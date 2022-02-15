@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "celestialexploration",
+  "pattern": [
+    "XXX",
+    " I ",
+    " B "
+  ],
+  "key": {
+    "X": {
+      "item": "minecraft:daylight_detector"
+    },
+    "I": {
+      "item": "celestialexploration:steel_rod"
+    },
+    "B": {
+      "item": "minecraft:iron_block"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:solar_panel"
+  }
+}

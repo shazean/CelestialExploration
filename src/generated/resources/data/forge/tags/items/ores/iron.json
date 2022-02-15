@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "celestialexploration:mars_iron_ore",
+    "celestialexploration:meteor_iron_ore",
+    "celestialexploration:moon_iron_ore"
+  ]
+}

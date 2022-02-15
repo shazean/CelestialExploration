@@ -66,6 +66,7 @@ public class BlockStates extends BlockStateProvider {
 		
 		
 		//OTHER
+		simpleBlock(BlockRegistry.SOLAR_PANEL.get());
 		
 	}
 	

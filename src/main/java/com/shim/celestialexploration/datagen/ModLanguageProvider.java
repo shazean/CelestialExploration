@@ -57,8 +57,10 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(BlockRegistry.METEOR_IRON_ORE.get(), "Meteorite Iron Ore");
 		add(BlockRegistry.METEOR_LAPIS_ORE.get(), "Meteorite Lapis Lazuli Ore");
 		add(BlockRegistry.METEOR_REDSTONE_ORE.get(), "Meteorite Redstone Ore");
-		
-		
+
+		//OTHER
+		add(BlockRegistry.SOLAR_PANEL.get(), "Solar Panel");
+
 	}
 	
 	

@@ -2,6 +2,8 @@ package com.shim.celestialexploration.setup;
 
 import com.shim.celestialexploration.CelestialExploration;
 
+import com.shim.celestialexploration.blocks.screens.SolarPanelScreen;
+import com.shim.celestialexploration.registry.ContainerRegistry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
@@ -25,7 +27,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 public class ClientSetup {
 
     public static void init(final FMLClientSetupEvent event) {
-//        MenuScreens.register(Registration.FIRSTBLOCK_CONTAINER.get(), FirstBlockScreen::new);
+        MenuScreens.register(ContainerRegistry.SOLAR_PANEL_CONTAINER.get(), SolarPanelScreen::new);
 //        MinecraftForge.EVENT_BUS.addListener(InWorldRenderer::render);
 //        MinecraftForge.EVENT_BUS.addListener(AfterLivingRenderer::render);
 

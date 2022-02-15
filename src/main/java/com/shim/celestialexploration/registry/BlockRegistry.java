@@ -5,6 +5,7 @@ import java.util.function.ToIntFunction;
 
 import com.shim.celestialexploration.CelestialExploration;
 
+import com.shim.celestialexploration.blocks.SolarPanelBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.OreBlock;
 import net.minecraft.world.level.block.RedStoneOreBlock;
@@ -111,7 +112,7 @@ public class BlockRegistry {
 	
 	
 	//POWER-RELATED BLOCKS
-//	public static final RegistryObject<SolarPanelBlock> SOLAR_PANEL = BLOCKS.register("solar_panel", SolarPanelBlock::new);
+	public static final RegistryObject<SolarPanelBlock> SOLAR_PANEL = BLOCKS.register("solar_panel", SolarPanelBlock::new);
 
 	
 	

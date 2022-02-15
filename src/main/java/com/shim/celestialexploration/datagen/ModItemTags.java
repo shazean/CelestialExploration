@@ -42,6 +42,35 @@ public class ModItemTags extends ItemTagsProvider {
 		.add(ItemRegistry.MOON_STONE.get())
 		.add(ItemRegistry.MARS_STONE.get())
 		.add(ItemRegistry.METEOR.get());
+
+		tag(Tags.Items.ORES_COAL)
+				.add(ItemRegistry.METEOR_COAL_ORE.get());
+
+		tag(Tags.Items.ORES_COPPER)
+				.add(ItemRegistry.METEOR_COPPER_ORE.get());
+
+		tag(Tags.Items.ORES_DIAMOND)
+				.add(ItemRegistry.METEOR_DIAMOND_ORE.get());
+
+		tag(Tags.Items.ORES_EMERALD)
+				.add(ItemRegistry.METEOR_EMERALD_ORE.get());
+
+		tag(Tags.Items.ORES_GOLD)
+				.add(ItemRegistry.METEOR_GOLD_ORE.get());
+
+		tag(Tags.Items.ORES_IRON)
+				.add(ItemRegistry.MARS_IRON_ORE.get())
+				.add(ItemRegistry.METEOR_IRON_ORE.get())
+				.add(ItemRegistry.MOON_IRON_ORE.get());
+
+		tag(Tags.Items.ORES_LAPIS)
+				.add(ItemRegistry.METEOR_LAPIS_ORE.get());
+
+		tag(Tags.Items.ORES_REDSTONE)
+				.add(ItemRegistry.MARS_REDSTONE_ORE.get())
+				.add(ItemRegistry.MOON_REDSTONE.get())
+				.add(ItemRegistry.METEOR_REDSTONE_ORE.get());
+
 	}
 	
 	

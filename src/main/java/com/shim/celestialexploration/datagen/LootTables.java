@@ -55,6 +55,10 @@ public class LootTables  extends BaseLootTableProvider {
     	lootTables.put(BlockRegistry.METEOR_LAPIS_ORE.get(), createSimpleItemTable("meteor_lapis_ore", Items.LAPIS_LAZULI));
     	lootTables.put(BlockRegistry.METEOR_REDSTONE_ORE.get(), createSimpleItemTable("meteor_redstone_ore", Items.REDSTONE));
     	lootTables.put(BlockRegistry.CHISELED_METEOR_BRICKS.get(), createSimpleTable("chiseled_meteor_bricks", BlockRegistry.CHISELED_METEOR_BRICKS.get()));
-    	
+
+		//OTHER
+    	lootTables.put(BlockRegistry.SOLAR_PANEL.get(), createSimpleTable("solar_panel", BlockRegistry.SOLAR_PANEL.get()));
+
+
     }
 }

@@ -41,7 +41,7 @@ public class ItemRegistry {
 
 //	public static final RegistryObject<Item> OXYGEN_CANISTER = ITEMS.register("oxygen_canister", () -> new Item((new Item.Properties()).tab(CelestialExploration.CELESTIAL_TAB)));
 //	public static final RegistryObject<Item> COLD_OXYGEN_CANISTER = ITEMS.register("cold_oxygen_canister", () -> new Item((new Item.Properties()).tab(CelestialExploration.CELESTIAL_TAB)));
-//	public static final RegistryObject<Item> STEEL_ROD = ITEMS.register("steel_rod", () -> new Item((new Item.Properties()).tab(CreativeModeTab.TAB_MATERIALS)));
+	public static final RegistryObject<Item> STEEL_ROD = ITEMS.register("steel_rod", () -> new Item((new Item.Properties()).tab(CreativeModeTab.TAB_MATERIALS)));
 
 	 
 	
@@ -119,7 +119,7 @@ public class ItemRegistry {
 //	public static final RegistryObject<Item> MERCURY_BRICK_SLAB = ITEMS.register("mercury_brick_slab", () -> new BlockItemBase(RegistryBlocks.MERCURY_BRICK_SLAB.get()));
 
 	//POWER-RELATED
-//	public static final RegistryObject<Item> SOLAR_PANEL = fromBlock(BlockRegistry.SOLAR_PANEL);
+	public static final RegistryObject<Item> SOLAR_PANEL = fromBlock(BlockRegistry.SOLAR_PANEL);
 	
 	
 	//OTHER BLOCK ITEMS

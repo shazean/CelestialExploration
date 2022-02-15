@@ -4,12 +4,17 @@ import java.util.function.Consumer;
 
 import com.shim.celestialexploration.registry.BlockRegistry;
 
+import com.shim.celestialexploration.registry.ItemRegistry;
+import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.block.Blocks;
 
 public class Recipes extends RecipeProvider {
 
@@ -43,6 +48,20 @@ public class Recipes extends RecipeProvider {
 		SimpleCookingRecipeBuilder.smelting(Ingredient.of(BlockRegistry.METEOR_COPPER_ORE.get()), Items.COPPER_INGOT, 1.0f, 100)
 		.unlockedBy("has_ore",  has(BlockRegistry.METEOR_COPPER_ORE.get()))
 		.save(consumer, "meteor_copper_ore");
+
+		ShapedRecipeBuilder.shaped(BlockRegistry.SOLAR_PANEL.get())
+				.pattern("XXX")
+				.pattern(" I ")
+				.pattern(" B ")
+				.define('X', Blocks.DAYLIGHT_DETECTOR)
+				.define('I', ItemRegistry.STEEL_ROD.get())
+				.define('B', Items.IRON_BLOCK)
+				.group("celestialexploration")
+				.unlockedBy("redstone", InventoryChangeTrigger.TriggerInstance.hasItems(Items.REDSTONE))
+				.unlockedBy("daylight_detector", InventoryChangeTrigger.TriggerInstance.hasItems(Blocks.DAYLIGHT_DETECTOR))
+				.save(consumer);
+
+
 		
 	}
 

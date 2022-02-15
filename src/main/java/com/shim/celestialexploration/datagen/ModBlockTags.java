@@ -125,6 +125,13 @@ public class ModBlockTags extends BlockTagsProvider {
 			.add(BlockRegistry.GLOWING_MOON_SAND.get())
 			.add(BlockRegistry.MARS_SAND.get())
 			.add(BlockRegistry.MOON_SAND.get());
+
+		tag(Tags.Blocks.ORE_RATES_DENSE)
+		;
+		tag(Tags.Blocks.ORE_RATES_SINGULAR)
+		;
+		tag(Tags.Blocks.ORE_RATES_SPARSE)
+		;
 	}
 	
 	@Override
