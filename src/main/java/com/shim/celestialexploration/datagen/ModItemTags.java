@@ -71,6 +71,25 @@ public class ModItemTags extends ItemTagsProvider {
 				.add(ItemRegistry.MOON_REDSTONE.get())
 				.add(ItemRegistry.METEOR_REDSTONE_ORE.get());
 
+		tag(ItemRegistry.MARS_TAG)
+				.add(ItemRegistry.MARS_STONE.get())
+				.add(ItemRegistry.MARS_BRICK_SLAB.get())
+				.add(ItemRegistry.MARS_BRICK_STAIRS.get())
+				.add(ItemRegistry.MARS_BRICK_WALL.get())
+				.add(ItemRegistry.MARS_BRICKS.get())
+				.add(ItemRegistry.CHISELED_MARS_BRICKS.get())
+				.add(ItemRegistry.MARS_IRON_ORE.get())
+				.add(ItemRegistry.MARS_REDSTONE_ORE.get())
+				.add(ItemRegistry.MARS_SAND.get());
+
+		tag(ItemRegistry.MARS_STONE_TAG)
+				.add(ItemRegistry.MARS_STONE.get())
+				.add(ItemRegistry.MARS_BRICK_SLAB.get())
+				.add(ItemRegistry.MARS_BRICK_STAIRS.get())
+				.add(ItemRegistry.MARS_BRICK_WALL.get())
+				.add(ItemRegistry.MARS_BRICKS.get())
+				.add(ItemRegistry.CHISELED_MARS_BRICKS.get());
+
 	}
 	
 	

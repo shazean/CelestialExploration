@@ -2,11 +2,14 @@ package com.shim.celestialexploration.registry;
 
 import com.shim.celestialexploration.CelestialExploration;
 
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Item.Properties;
 import net.minecraft.world.level.block.Block;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -123,6 +126,8 @@ public class ItemRegistry {
 	
 	
 	//OTHER BLOCK ITEMS
+	public static final RegistryObject<Item> SOLAR_LANTERN = fromBlock(BlockRegistry.SOLAR_LANTERN);
+	public static final RegistryObject<Item> ECLIPSE_LANTERN = fromBlock(BlockRegistry.ECLIPSE_LANTERN);
 //	public static final RegistryObject<Item> STEEL_BLOCK = fromBlock(BlockRegistry.STEEL_BLOCK);
 //	public static final RegistryObject<Item> STEEL_BLOCK_STAIRS = fromBlock(BlockRegistry.STEEL_BLOCK_STAIRS);
 //	public static final RegistryObject<Item> STEEL_BLOCK_SLAB = fromBlock(BlockRegistry.STEEL_BLOCK_SLAB);
@@ -195,8 +200,14 @@ public class ItemRegistry {
 //	public static final RegistryObject<ArmorItem> SPACE_SUIT_LEGGINGS = ITEMS.register("space_suit_leggings", () -> new ArmorItem(ArmorMaterial.LEATHER, EquipmentSlotType.LEGS, (new Item.Properties()).tab(ItemGroup.TAB_COMBAT)));
 
 	
-	
-	  
+	//CUSTOM ITEM TAGS
+	public static final Tags.IOptionalNamedTag<Item> MARS_TAG = ItemTags.createOptional(new ResourceLocation(CelestialExploration.MODID, "mars_tag"));
+	public static final Tags.IOptionalNamedTag<Item> MARS_STONE_TAG = ItemTags.createOptional(new ResourceLocation(CelestialExploration.MODID, "mars_stone_tag"));
+	public static final Tags.IOptionalNamedTag<Item> MOON_TAG = ItemTags.createOptional(new ResourceLocation(CelestialExploration.MODID, "moon_tag"));
+	public static final Tags.IOptionalNamedTag<Item> MOON_STONE_TAG = ItemTags.createOptional(new ResourceLocation(CelestialExploration.MODID, "moon_stone_tag"));
+	public static final Tags.IOptionalNamedTag<Item> METEOR_TAG = ItemTags.createOptional(new ResourceLocation(CelestialExploration.MODID, "meteor_tag"));
+	public static final Tags.IOptionalNamedTag<Item> METEOR_STONE_TAG = ItemTags.createOptional(new ResourceLocation(CelestialExploration.MODID, "meteor_stone_tag"));
+
 	
 }
 

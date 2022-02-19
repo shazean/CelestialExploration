@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "celestialexploration",
+  "pattern": [
+    "XXX",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:mars_bricks"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:chiseled_mars_bricks"
+  }
+}

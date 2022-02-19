@@ -62,9 +62,11 @@ public class BlockStates extends BlockStateProvider {
 		wallBlock((WallBlock) BlockRegistry.METEOR_BRICK_WALL.get(), modLoc("block/meteor_bricks"));
 
 
-		
-		
-		
+		simpleBlock(BlockRegistry.SOLAR_LANTERN.get());
+		simpleBlock(BlockRegistry.ECLIPSE_LANTERN.get());
+
+
+
 		//OTHER
 		simpleBlock(BlockRegistry.SOLAR_PANEL.get());
 		

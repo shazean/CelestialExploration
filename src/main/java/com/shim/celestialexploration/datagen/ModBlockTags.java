@@ -132,6 +132,26 @@ public class ModBlockTags extends BlockTagsProvider {
 		;
 		tag(Tags.Blocks.ORE_RATES_SPARSE)
 		;
+
+		tag(BlockRegistry.MARS_TAG)
+				.add(BlockRegistry.MARS_BRICKS.get())
+				.add(BlockRegistry.MARS_IRON_ORE.get())
+				.add(BlockRegistry.MARS_BRICK_SLAB.get())
+				.add(BlockRegistry.MARS_BRICK_STAIRS.get())
+				.add(BlockRegistry.MARS_BRICK_WALL.get())
+				.add(BlockRegistry.MARS_REDSTONE_ORE.get())
+				.add(BlockRegistry.MARS_SAND.get())
+				.add(BlockRegistry.MARS_STONE.get())
+				.add(BlockRegistry.CHISELED_MARS_BRICKS.get());
+
+		tag(BlockRegistry.MARS_STONE_TAG)
+				.add(BlockRegistry.MARS_BRICKS.get())
+				.add(BlockRegistry.MARS_BRICK_SLAB.get())
+				.add(BlockRegistry.MARS_BRICK_STAIRS.get())
+				.add(BlockRegistry.MARS_BRICK_WALL.get())
+				.add(BlockRegistry.MARS_STONE.get())
+				.add(BlockRegistry.CHISELED_MARS_BRICKS.get());
+
 	}
 	
 	@Override

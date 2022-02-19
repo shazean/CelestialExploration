@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "celestialexploration:mars_bricks",
+    "celestialexploration:mars_brick_slab",
+    "celestialexploration:mars_brick_stairs",
+    "celestialexploration:mars_brick_wall",
+    "celestialexploration:mars_stone",
+    "celestialexploration:chiseled_mars_bricks"
+  ]
+}

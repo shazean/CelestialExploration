@@ -6,6 +6,8 @@ import java.util.function.ToIntFunction;
 import com.shim.celestialexploration.CelestialExploration;
 
 import com.shim.celestialexploration.blocks.SolarPanelBlock;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.OreBlock;
 import net.minecraft.world.level.block.RedStoneOreBlock;
@@ -18,6 +20,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -50,7 +53,7 @@ public class BlockRegistry {
 	public static final RegistryObject<Block> MOON_IRON_ORE = BLOCKS.register("moon_iron_ore", () -> new Block(Block.Properties.of(Material.HEAVY_METAL).strength(2.0f, 6.0f).sound(SoundType.STONE)));
 	public static final RegistryObject<Block> MOON_REDSTONE_ORE = BLOCKS.register("moon_redstone_ore", () -> new RedStoneOreBlock(Block.Properties.of(Material.STONE).strength(2.0f, 6.0f).sound(SoundType.STONE)));
 	public static final RegistryObject<Block> LUNAR_LANTERN = BLOCKS.register("lunar_lantern", () -> new Block(Block.Properties.of(Material.GLASS, MaterialColor.QUARTZ).strength(0.3F).sound(SoundType.GLASS).lightLevel((p_235455_0_) -> {
-		return 15;
+		return 12;
 	})));
 	public static final RegistryObject<Block> MOON_BRICK_STAIRS = BLOCKS.register("moon_brick_stairs", () -> new StairBlock(MOON_BRICKS.get().defaultBlockState(), Block.Properties.copy(MOON_BRICKS.get())));
 	public static final RegistryObject<Block> MOON_BRICK_SLAB = BLOCKS.register("moon_brick_slab", () -> new SlabBlock(Block.Properties.copy(MOON_BRICKS.get())));
@@ -121,6 +124,13 @@ public class BlockRegistry {
 
 
 	//OTHER BLOCKS
+	public static final RegistryObject<Block> SOLAR_LANTERN = BLOCKS.register("solar_lantern", () -> new Block(Block.Properties.of(Material.GLASS, MaterialColor.FIRE).strength(0.3F).sound(SoundType.GLASS).lightLevel((p_235455_0_) -> {
+		return 20;
+	})));
+	public static final RegistryObject<Block> ECLIPSE_LANTERN = BLOCKS.register("eclipse_lantern", () -> new Block(Block.Properties.of(Material.GLASS, MaterialColor.FIRE).strength(0.3F).sound(SoundType.GLASS).lightLevel((p_235455_0_) -> {
+		return 8;
+	})));
+
 //	public static final RegistryObject<Block> STEEL_BLOCK = BLOCKS.register("steel_block", () -> new Block(Block.Properties.of(Material.HEAVY_METAL, MaterialColor.METAL).strength(5.0F, 6.0F).sound(SoundType.METAL)));
 //	public static final RegistryObject<Block> STEEL_BLOCK_STAIRS = BLOCKS.register("steel_block_stairs", () -> new StairBlock(STEEL_BLOCK.get().defaultBlockState(), Block.Properties.copy(STEEL_BLOCK.get())));
 //	public static final RegistryObject<Block> STEEL_BLOCK_SLAB = BLOCKS.register("steel_block_slab", () -> new SlabBlock(Block.Properties.copy(STEEL_BLOCK.get())));
@@ -146,6 +156,16 @@ public class BlockRegistry {
 //	public static final RegistryObject<Block> ASSEMBLY_STATION = BLOCKS.register("assembly_station", () -> new AssemblyStationBlock(Block.Properties.of(Material.HEAVY_METAL, MaterialColor.METAL).strength(5.0F, 6.0F).sound(SoundType.METAL)));
 
 //	public static final RegistryObject<Block> SOLAR_PANEL = BLOCKS.register("solar_panel", () -> new SolarPanelBlock(Block.Properties.of(Material.DECORATION, MaterialColor.METAL).noCollission().sound(SoundType.METAL).lightLevel(litBlockEmission(1))));
+
+
+	//CUSTOM BLOCK TAGS
+	public static final Tags.IOptionalNamedTag<Block> MARS_TAG = BlockTags.createOptional(new ResourceLocation(CelestialExploration.MODID, "mars_tag"));
+	public static final Tags.IOptionalNamedTag<Block> MARS_STONE_TAG = BlockTags.createOptional(new ResourceLocation(CelestialExploration.MODID, "mars_stone_tag"));
+	public static final Tags.IOptionalNamedTag<Block> MOON_TAG = BlockTags.createOptional(new ResourceLocation(CelestialExploration.MODID, "moon_tag"));
+	public static final Tags.IOptionalNamedTag<Block> MOON_STONE_TAG = BlockTags.createOptional(new ResourceLocation(CelestialExploration.MODID, "moon_stone_tag"));
+	public static final Tags.IOptionalNamedTag<Block> METEOR_TAG = BlockTags.createOptional(new ResourceLocation(CelestialExploration.MODID, "meteor_tag"));
+	public static final Tags.IOptionalNamedTag<Block> METEOR_STONE_TAG = BlockTags.createOptional(new ResourceLocation(CelestialExploration.MODID, "meteor_stone_tag"));
+
 
 
 	public final BlockState getDefaultState() {
