@@ -4,6 +4,7 @@ import com.shim.celestialexploration.CelestialExploration;
 
 import com.shim.celestialexploration.blocks.screens.SolarPanelScreen;
 import com.shim.celestialexploration.registry.ContainerRegistry;
+import com.shim.celestialexploration.world.renderer.DimensionRenderers;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
@@ -75,4 +76,5 @@ public class ClientSetup {
             event.setMaxWidth(200);
         }
     }
+
 }

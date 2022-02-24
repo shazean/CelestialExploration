@@ -2,6 +2,11 @@ package com.shim.celestialexploration;
 
 import java.util.stream.Collectors;
 
+import com.shim.celestialexploration.world.renderer.DimensionRenderers;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.DistExecutor;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -33,6 +38,9 @@ public class CelestialExploration {
     public static final String MODID = "celestialexploration";
 
     public CelestialExploration() {
+
+        final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
         // Register the setup method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         // Register the enqueueIMC method for modloading
@@ -42,7 +50,11 @@ public class CelestialExploration {
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
-        
+
+
+        DistExecutor.runWhenOn(Dist.CLIENT, () -> () -> {
+            modEventBus.addListener(this::clientSetup);
+        });
         
         BlockRegistry.init();
         ItemRegistry.init();
@@ -93,6 +105,13 @@ public class CelestialExploration {
             // register a new block here
             LOGGER.info("HELLO from Register Block");
         }
+    }
+
+    public void clientSetup(final FMLClientSetupEvent event)
+    {
+        event.enqueueWork(() -> {
+            DimensionRenderers.setDimensionEffects();
+        });
     }
     
 }

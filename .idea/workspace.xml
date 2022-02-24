@@ -5,48 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b464c170-d4b2-4691-bad6-ac7c3c167e21" name="Changes" comment="Added rudimentary solar panel block, minimal functionality&#10;Updated sand/stone textures">
-      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/celestialexploration/blockstates/eclipse_lantern.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/celestialexploration/blockstates/solar_lantern.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/celestialexploration/models/block/eclipse_lantern.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/celestialexploration/models/block/solar_lantern.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/celestialexploration/models/item/eclipse_lantern.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/celestialexploration/models/item/solar_lantern.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/generated/resources/data/celestialexploration/advancements/recipes/celestialtab/chiseled_mars_bricks.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/generated/resources/data/celestialexploration/advancements/recipes/celestialtab/mars_brick_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/generated/resources/data/celestialexploration/advancements/recipes/celestialtab/mars_brick_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/generated/resources/data/celestialexploration/advancements/recipes/celestialtab/mars_brick_wall.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/generated/resources/data/celestialexploration/advancements/recipes/celestialtab/mars_bricks.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/generated/resources/data/celestialexploration/recipes/chiseled_mars_bricks.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/generated/resources/data/celestialexploration/recipes/mars_brick_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/generated/resources/data/celestialexploration/recipes/mars_brick_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/generated/resources/data/celestialexploration/recipes/mars_brick_wall.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/generated/resources/data/celestialexploration/recipes/mars_bricks.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/generated/resources/data/celestialexploration/tags/blocks/mars_stone_tag.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/generated/resources/data/celestialexploration/tags/blocks/mars_tag.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/generated/resources/data/celestialexploration/tags/items/mars_stone_tag.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/generated/resources/data/celestialexploration/tags/items/mars_tag.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/generated/resources/data/minecraft/advancements/recipes/building_blocks/moon_sand.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/generated/resources/data/minecraft/recipes/moon_sand.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/celestialexploration/textures/block/chiseled_meteor_bricks.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/celestialexploration/textures/block/eclipse_lantern.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/celestialexploration/textures/block/eclipse_lantern.png.mcmeta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/celestialexploration/textures/block/glowing_moon_sand.png.mcmeta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/celestialexploration/textures/block/lunar_lantern.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/celestialexploration/textures/block/lunar_lantern.png.mcmeta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/celestialexploration/textures/block/meteor.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/celestialexploration/textures/block/meteor_bricks.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/celestialexploration/textures/block/solar_lantern.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/celestialexploration/textures/block/solar_lantern.png.mcmeta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/celestialexploration/textures/block/solar_panel.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/shim/celestialexploration/blocks/blockentities/AssemblyStationBlockEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/shim/celestialexploration/registry/DimensionRegistry.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/shim/celestialexploration/world/renderer/DimensionRenderers.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/accesstransformer.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/celestialexploration/dimension/mars.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/celestialexploration/dimension/moon.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/celestialexploration/dimension_type/mars.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/celestialexploration/dimension_type/moon.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/celestialexploration/worldgen/biome/mars_dunes.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/celestialexploration/worldgen/biome/mars_flats.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/celestialexploration/worldgen/biome/mars_poles.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/celestialexploration/worldgen/biome/mars_volcano_plains.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/celestialexploration/worldgen/biome/moon_canyons.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/celestialexploration/worldgen/biome/moon_plains.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/celestialexploration/worldgen/biome/moon_poles.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/celestialexploration/worldgen/biome/olympus_mons.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/celestialexploration/worldgen/configured_surface_builder/mars_poles.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/celestialexploration/worldgen/configured_surface_builder/mars_sand_dunes.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/celestialexploration/worldgen/configured_surface_builder/mars_surface.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/celestialexploration/worldgen/configured_surface_builder/moon_poles.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/celestialexploration/worldgen/configured_surface_builder/moon_surface.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/celestialexploration/worldgen/configured_surface_builder/olympus_mons.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/celestialexploration/worldgen/noise_settings/mars.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/celestialexploration/worldgen/noise_settings/moon.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/.cache/cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/.cache/cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shim/celestialexploration/datagen/BlockStates.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shim/celestialexploration/datagen/BlockStates.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shim/celestialexploration/datagen/ItemModels.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shim/celestialexploration/datagen/ItemModels.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shim/celestialexploration/datagen/ModBlockTags.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shim/celestialexploration/datagen/ModBlockTags.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shim/celestialexploration/datagen/ModItemTags.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shim/celestialexploration/datagen/ModItemTags.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shim/celestialexploration/datagen/Recipes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shim/celestialexploration/datagen/Recipes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shim/celestialexploration/registry/BlockRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shim/celestialexploration/registry/BlockRegistry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shim/celestialexploration/registry/ItemRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shim/celestialexploration/registry/ItemRegistry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shim/celestialexploration/CelestialExploration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shim/celestialexploration/CelestialExploration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shim/celestialexploration/setup/ClientSetup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shim/celestialexploration/setup/ClientSetup.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,6 +133,7 @@
       <recent name="$PROJECT_DIR$/src/main/resources/assets/celestialexploration/textures/gui" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/data/celestialexploration" />
       <recent name="$PROJECT_DIR$/src/main/resources/assets/celestialexploration/textures/block" />
     </key>
   </component>
