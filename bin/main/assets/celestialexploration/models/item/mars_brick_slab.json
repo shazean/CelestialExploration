@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "side": "celestialexploration:block/mars_bricks",
-    "bottom": "celestialexploration:block/mars_bricks",
-    "top": "celestialexploration:block/mars_bricks"
-  }
-}

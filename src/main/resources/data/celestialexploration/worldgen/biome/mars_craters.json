@@ -1,0 +1,28 @@
+{
+  "temperature": 2,
+  "downfall": 0,
+  "precipitation": "none",
+  "category": "ocean",
+  "effects": {
+    "sky_color": 15565857,
+    "fog_color": 14591603,
+    "water_color": 1050626,
+    "water_fog_color": 3150848,
+    "mood_sound": {
+      "sound": "minecraft:ambient.cave",
+      "tick_delay": 6000,
+      "block_search_extent": 8,
+      "offset": 2
+    }
+  },
+  "spawners": {},
+  "spawn_costs": {},
+  "carvers": {
+    "air": [
+      "minecraft:cave",
+      "minecraft:cave_extra_underground",
+      "minecraft:canyon"
+    ]
+  },
+  "features": []
+}

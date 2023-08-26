@@ -14,7 +14,7 @@ public class ItemModels extends ItemModelProvider {
 	public ItemModels(DataGenerator generator, ExistingFileHelper existingFileHelper) {
 		super(generator, CelestialExploration.MODID, existingFileHelper);
 	}
-	
+
 	@Override
 	protected void registerModels() {
 		//MOON
@@ -30,7 +30,7 @@ public class ItemModels extends ItemModelProvider {
 		stairs("moon_brick_stairs", modLoc("block/moon_bricks"), modLoc("block/moon_bricks"), modLoc("block/moon_bricks"));
 		slab("moon_brick_slab", modLoc("block/moon_bricks"), modLoc("block/moon_bricks"), modLoc("block/moon_bricks"));
 		wallInventory("moon_brick_wall",  modLoc("block/moon_bricks"));
-		
+
 		//MARS
 		withExistingParent(ItemRegistry.CHISELED_MARS_BRICKS.get().getRegistryName().getPath(), modLoc("block/chiseled_mars_bricks"));
 		withExistingParent(ItemRegistry.MARS_BRICKS.get().getRegistryName().getPath(), modLoc("block/mars_bricks"));
@@ -42,7 +42,7 @@ public class ItemModels extends ItemModelProvider {
 		slab("mars_brick_slab", modLoc("block/mars_bricks"), modLoc("block/mars_bricks"), modLoc("block/mars_bricks"));
 		wallInventory("mars_brick_wall",  modLoc("block/mars_bricks"));
 
-		
+
 		//METEOR
 		withExistingParent(ItemRegistry.METEOR.get().getRegistryName().getPath(), modLoc("block/meteor"));
 		withExistingParent(ItemRegistry.METEOR_BRICKS.get().getRegistryName().getPath(), modLoc("block/meteor_bricks"));
@@ -65,11 +65,19 @@ public class ItemModels extends ItemModelProvider {
 		withExistingParent(ItemRegistry.SOLAR_LANTERN.get().getRegistryName().getPath(), modLoc("block/solar_lantern"));
 		withExistingParent(ItemRegistry.ECLIPSE_LANTERN.get().getRegistryName().getPath(), modLoc("block/eclipse_lantern"));
 
+		withExistingParent(ItemRegistry.TEST_BLOCK.get().getRegistryName().getPath(), modLoc("block/test_block"));
+
 		//ITEMS
 		//moon dust, etc.
 		singleTexture(ItemRegistry.MOON_DUST.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/moon_dust"));
 		singleTexture(ItemRegistry.STEEL_INGOT.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/steel_ingot"));
 		singleTexture(ItemRegistry.STEEL_ROD.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/steel_rod"));
 
+
 	}
 }
+
+
+
+
+

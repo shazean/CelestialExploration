@@ -2,18 +2,17 @@ package com.shim.celestialexploration;
 
 import java.util.stream.Collectors;
 
+import com.shim.celestialexploration.registry.*;
 import com.shim.celestialexploration.world.renderer.DimensionRenderers;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import com.shim.celestialexploration.registry.BlockEntityRegistry;
-import com.shim.celestialexploration.registry.BlockRegistry;
-import com.shim.celestialexploration.registry.ContainerRegistry;
-import com.shim.celestialexploration.registry.ItemRegistry;
 
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
@@ -34,19 +33,20 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 public class CelestialExploration {
 
     // Directly reference a log4j logger.
-    private static final Logger LOGGER = LogManager.getLogger();
+    public static final Logger LOGGER = LogManager.getLogger();
     public static final String MODID = "celestialexploration";
 
     public CelestialExploration() {
 
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        IEventBus bus = MinecraftForge.EVENT_BUS;
 
         // Register the setup method for modloading
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+        modEventBus.addListener(this::setup);
         // Register the enqueueIMC method for modloading
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
+        modEventBus.addListener(this::enqueueIMC);
         // Register the processIMC method for modloading
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
+        modEventBus.addListener(this::processIMC);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
@@ -55,18 +55,25 @@ public class CelestialExploration {
         DistExecutor.runWhenOn(Dist.CLIENT, () -> () -> {
             modEventBus.addListener(this::clientSetup);
         });
-        
+
         BlockRegistry.init();
         ItemRegistry.init();
         ContainerRegistry.init();
         BlockEntityRegistry.init();
+
+        StructureRegistry.DEFERRED_REGISTRY_STRUCTURE.register(modEventBus);
+        PortalRegistry.register(modEventBus);
+
+//        bus.addListener(EventPriority.NORMAL, Structures::addDimensionalSpacing);
+//        bus.addListener(EventPriority.NORMAL, Structures::setupStructureSpawns);
+
     }
-    
+
     public static final CreativeModeTab CELESTIAL_TAB = new CreativeModeTab("celestialtab") {
-    	@Override
-    	public ItemStack makeIcon() {
-    		return new ItemStack(ItemRegistry.MOON_DUST.get());
-    	}
+        @Override
+        public ItemStack makeIcon() {
+            return new ItemStack(ItemRegistry.MOON_DUST.get());
+        }
     };
 
     private void setup(final FMLCommonSetupEvent event)
@@ -112,6 +119,9 @@ public class CelestialExploration {
         event.enqueueWork(() -> {
             DimensionRenderers.setDimensionEffects();
         });
+
+        ItemBlockRenderTypes.setRenderLayer(BlockRegistry.MARS_PORTAL.get(), RenderType.translucent());
+
     }
-    
+
 }

@@ -5,9 +5,12 @@ import java.util.function.ToIntFunction;
 
 import com.shim.celestialexploration.CelestialExploration;
 
+import com.shim.celestialexploration.blocks.MarsPortalBlock;
+import com.shim.celestialexploration.blocks.MoonPortalBlock;
 import com.shim.celestialexploration.blocks.SolarPanelBlock;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.OreBlock;
 import net.minecraft.world.level.block.RedStoneOreBlock;
@@ -122,6 +125,10 @@ public class BlockRegistry {
 //	public static final RegistryObject<Block> GEYSER = BLOCKS.register("geyser", () -> new GeyserBlock(Block.Properties.of(Material.STONE, MaterialColor.STONE).strength(0.5f).sound(SoundType.STONE)));
 //	public static final RegistryObject<Block> GEYSER_COLUMN = BLOCKS.register("geyser_column", () -> new GeyserColumnBlock(Block.Properties.of(Material.BUBBLE_COLUMN).noCollission().noDrops()));
 
+	//PORTAL BLOCKS
+	public static final RegistryObject<Block> MARS_PORTAL = BLOCKS.register("mars_portal", MarsPortalBlock::new);
+	public static final RegistryObject<Block> MOON_PORTAL = BLOCKS.register("moon_portal", MoonPortalBlock::new);
+
 
 	//OTHER BLOCKS
 	public static final RegistryObject<Block> SOLAR_LANTERN = BLOCKS.register("solar_lantern", () -> new Block(Block.Properties.of(Material.GLASS, MaterialColor.FIRE).strength(0.3F).sound(SoundType.GLASS).lightLevel((p_235455_0_) -> {
@@ -158,13 +165,19 @@ public class BlockRegistry {
 //	public static final RegistryObject<Block> SOLAR_PANEL = BLOCKS.register("solar_panel", () -> new SolarPanelBlock(Block.Properties.of(Material.DECORATION, MaterialColor.METAL).noCollission().sound(SoundType.METAL).lightLevel(litBlockEmission(1))));
 
 
+	public static final RegistryObject<Block> TEST_BLOCK = BLOCKS.register("test_block", () -> new Block(Block.Properties.of(Material.STONE).strength(2.0f, 6.0f).sound(SoundType.STONE)));
+
+
 	//CUSTOM BLOCK TAGS
-	public static final Tags.IOptionalNamedTag<Block> MARS_TAG = BlockTags.createOptional(new ResourceLocation(CelestialExploration.MODID, "mars_tag"));
-	public static final Tags.IOptionalNamedTag<Block> MARS_STONE_TAG = BlockTags.createOptional(new ResourceLocation(CelestialExploration.MODID, "mars_stone_tag"));
-	public static final Tags.IOptionalNamedTag<Block> MOON_TAG = BlockTags.createOptional(new ResourceLocation(CelestialExploration.MODID, "moon_tag"));
-	public static final Tags.IOptionalNamedTag<Block> MOON_STONE_TAG = BlockTags.createOptional(new ResourceLocation(CelestialExploration.MODID, "moon_stone_tag"));
-	public static final Tags.IOptionalNamedTag<Block> METEOR_TAG = BlockTags.createOptional(new ResourceLocation(CelestialExploration.MODID, "meteor_tag"));
-	public static final Tags.IOptionalNamedTag<Block> METEOR_STONE_TAG = BlockTags.createOptional(new ResourceLocation(CelestialExploration.MODID, "meteor_stone_tag"));
+	public static final TagKey<Block> MARS_TAG = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "mars_tag"));
+	public static final TagKey<Block> MARS_STONE_TAG = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "mars_stone_tag"));
+	public static final TagKey<Block> MOON_TAG = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "moon_tag"));
+	public static final TagKey<Block> MOON_STONE_TAG = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "moon_stone_tag"));
+	public static final TagKey<Block> METEOR_TAG = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "meteor_tag"));
+	public static final TagKey<Block> METEOR_STONE_TAG = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "meteor_stone_tag"));
+
+	public static final TagKey<Block> MARS_PORTAL_FRAME_BLOCK = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "mars_portal_frame_block"));
+	public static final TagKey<Block> MOON_PORTAL_FRAME_BLOCK = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "moon_portal_frame_block"));
 
 
 

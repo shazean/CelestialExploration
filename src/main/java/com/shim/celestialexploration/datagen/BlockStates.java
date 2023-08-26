@@ -16,7 +16,7 @@ public class BlockStates extends BlockStateProvider {
 	public BlockStates(DataGenerator gen, ExistingFileHelper helper) {
 		super(gen, CelestialExploration.MODID, helper);
 	}
-	
+
 	@Override
 	protected void registerStatesAndModels() {
 		//MOON
@@ -43,8 +43,8 @@ public class BlockStates extends BlockStateProvider {
 		slabBlock((SlabBlock) BlockRegistry.MARS_BRICK_SLAB.get(), modLoc("block/mars_bricks"), modLoc("block/mars_bricks"));
 		wallBlock((WallBlock) BlockRegistry.MARS_BRICK_WALL.get(), modLoc("block/mars_bricks"));
 
-		
-		
+
+
 		//METEORS
 		simpleBlock(BlockRegistry.METEOR.get());
 		simpleBlock(BlockRegistry.METEOR_BRICKS.get());
@@ -69,7 +69,9 @@ public class BlockStates extends BlockStateProvider {
 
 		//OTHER
 		simpleBlock(BlockRegistry.SOLAR_PANEL.get());
-		
+
+		simpleBlock(BlockRegistry.TEST_BLOCK.get());
+
 	}
-	
+
 }

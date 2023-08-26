@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/inner_stairs",
-  "textures": {
-    "side": "celestialexploration:block/meteor_bricks",
-    "bottom": "celestialexploration:block/meteor_bricks",
-    "top": "celestialexploration:block/meteor_bricks"
-  }
-}

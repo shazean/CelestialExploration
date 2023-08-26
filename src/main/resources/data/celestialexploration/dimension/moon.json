@@ -1,43 +1,109 @@
 {
-  "type": "celestialexploration:moon",
+  "type": {
+    "ultrawarm": false,
+    "natural": true,
+    "piglin_safe": false,
+    "respawn_anchor_works": false,
+    "bed_works": true,
+    "has_raids": true,
+    "has_skylight": true,
+    "has_ceiling": false,
+    "coordinate_scale": 1,
+    "ambient_light": 0,
+    "logical_height": 384,
+    "infiniburn": "#minecraft:infiniburn_overworld",
+    "min_y": -64,
+    "height": 384
+  },
   "generator": {
     "type": "minecraft:noise",
-    "seed": 2498572093,
+    "seed": -1693290070,
     "settings": "celestialexploration:moon",
     "biome_source": {
       "type": "minecraft:multi_noise",
       "biomes": [
         {
-          "biome": "celestialexploration:moon_canyons",
-          "parameters": {
-            "temperature": 0,
-            "humidity": 0,
-            "continentalness": 0,
-            "erosion": 0,
-            "weirdness": 0,
-            "depth": 0,
-            "offset": 0
-          }
-        },
-        {
           "biome": "celestialexploration:moon_plains",
           "parameters": {
-            "temperature": 0,
+            "temperature": [
+              0.2,
+              1
+            ],
             "humidity": 0,
-            "continentalness": 0,
-            "erosion": 0,
+            "continentalness": [
+              0.01,
+              1
+            ],
+            "erosion": [
+              0.3,
+              1
+            ],
+            "weirdness": [
+              -0.8,
+              0.3
+            ],
+            "depth": 0,
+            "offset": 0
+          }
+        },
+        {
+          "biome": "celestialexploration:moon_desert",
+          "parameters": {
+            "temperature": [
+              0.2,
+              1
+            ],
+            "humidity": 0,
+            "continentalness": [
+              -0.19,
+              1
+            ],
+            "erosion": [
+              0.2,
+              0.8
+            ],
+            "weirdness": [
+              -0.6,
+              0.2
+            ],
+            "depth": 0,
+            "offset": 0
+          }
+        },
+        {
+          "biome": "celestialexploration:moon_craters",
+          "parameters": {
+            "temperature": [
+              -0.45,
+              0.2
+            ],
+            "humidity": 0,
+            "continentalness": -1,
+            "erosion": [
+              -0.3,
+              0.8
+            ],
             "weirdness": 0,
             "depth": 0,
             "offset": 0
           }
         },
         {
-          "biome": "celestialexploration:moon_poles",
+          "biome": "celestialexploration:moon_lower_plains",
           "parameters": {
-            "temperature": -1,
+            "temperature": [
+              -0.45,
+              0.2
+            ],
             "humidity": 0,
-            "continentalness": 0,
-            "erosion": 0,
+            "continentalness": [
+              -0.9,
+              0
+            ],
+            "erosion": [
+              -0.2,
+              0.6
+            ],
             "weirdness": 0,
             "depth": 0,
             "offset": 0
