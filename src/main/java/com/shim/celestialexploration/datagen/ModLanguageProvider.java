@@ -3,6 +3,7 @@ package com.shim.celestialexploration.datagen;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.registry.BlockRegistry;
 
+import com.shim.celestialexploration.registry.ItemRegistry;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.LanguageProvider;
 
@@ -60,6 +61,18 @@ public class ModLanguageProvider extends LanguageProvider {
 
 		//OTHER
 		add(BlockRegistry.SOLAR_PANEL.get(), "Solar Panel");
+
+
+
+		//ARMOR
+		add(ItemRegistry.STEEL_BOOTS.get(), "Steel Boots");
+		add(ItemRegistry.STEEL_CHESTPLATE.get(), "Steel Chestplate");
+		add(ItemRegistry.STEEL_HELMET.get(), "Steel Helmet");
+		add(ItemRegistry.STEEL_LEGGINGS.get(), "Steel Leggings");
+		add(ItemRegistry.SPACE_SUIT_BOOTS.get(), "Space Suit Boots");
+		add(ItemRegistry.SPACE_SUIT_CHESTPLATE.get(), "Space Suit Chestplate");
+		add(ItemRegistry.SPACE_SUIT_HELMET.get(), "Space Suit Helmet");
+		add(ItemRegistry.SPACE_SUIT_LEGGINGS.get(), "Space Suit Leggings");
 
 	}
 	

@@ -63,6 +63,7 @@ public class CelestialExploration {
 
         StructureRegistry.DEFERRED_REGISTRY_STRUCTURE.register(modEventBus);
         PortalRegistry.register(modEventBus);
+        EffectRegistry.register(modEventBus);
 
 //        bus.addListener(EventPriority.NORMAL, Structures::addDimensionalSpacing);
 //        bus.addListener(EventPriority.NORMAL, Structures::setupStructureSpawns);

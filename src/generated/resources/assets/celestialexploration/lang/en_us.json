@@ -33,5 +33,13 @@
   "block.celestialexploration.moon_sand": "Lunar Sand",
   "block.celestialexploration.moon_stone": "Lunar Stone",
   "block.celestialexploration.solar_panel": "Solar Panel",
+  "item.celestialexploration.space_suit_boots": "Space Suit Boots",
+  "item.celestialexploration.space_suit_chestplate": "Space Suit Chestplate",
+  "item.celestialexploration.space_suit_helmet": "Space Suit Helmet",
+  "item.celestialexploration.space_suit_leggings": "Space Suit Leggings",
+  "item.celestialexploration.steel_boots": "Steel Boots",
+  "item.celestialexploration.steel_chestplate": "Steel Chestplate",
+  "item.celestialexploration.steel_helmet": "Steel Helmet",
+  "item.celestialexploration.steel_leggings": "Steel Leggings",
   "itemGroup.celestialtab": "Celestial Tab"
 }
