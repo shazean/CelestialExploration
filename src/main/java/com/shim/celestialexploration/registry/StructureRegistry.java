@@ -5,7 +5,6 @@ import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.world.structures.LargeCraterStructure;
 import com.shim.celestialexploration.world.structures.SmallCraterStructure;
 import com.shim.celestialexploration.world.structures.MediumCraterStructure;
-import com.shim.celestialexploration.world.structures.SkyStructures;
 import net.minecraft.world.level.levelgen.feature.StructureFeature;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;

@@ -74,6 +74,13 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(ItemRegistry.SPACE_SUIT_HELMET.get(), "Space Suit Helmet");
 		add(ItemRegistry.SPACE_SUIT_LEGGINGS.get(), "Space Suit Leggings");
 
+		//SPAWN EGGS
+		add(ItemRegistry.RUST_SPAWN_EGG.get(), "Rust Slime Spawn Egg");
+		add(ItemRegistry.LUNAR_SPAWN_EGG.get(), "Lunar Slime Spawn Egg");
+		add(ItemRegistry.MARS_MALLOW_SPAWN_EGG.get(), "Mars Mallow Spawn Egg");
+		add(ItemRegistry.LURKER_SPAWN_EGG.get(), "Lurker Spawn Egg");
+
+
 	}
 	
 	

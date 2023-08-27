@@ -14,6 +14,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Item.Properties;
 import net.minecraft.world.level.block.Block;
+import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
@@ -143,12 +144,26 @@ public class ItemRegistry {
 //	public static final RegistryObject<Item> ASSEMBLY_STATION = ITEMS.register("assembly_station",  () -> new BlockItemBase(RegistryBlocks.ASSEMBLY_STATION.get()));
 //	public static final RegistryObject<Item> SOLAR_PANEL = ITEMS.register("solar_panel",  () -> new BlockItemBase(RegistryBlocks.SOLAR_PANEL.get()));
 
-
+	//SPAWN EGGS
 //	public static final RegistryObject<ModSpawnEgg> ROVER_SPAWN_EGG = ITEMS.register("rover_spawn_egg", () -> new ModSpawnEgg(RegistryEntities.ROVER, 0x000000, 0xffffff, new Item.Properties().tab(Main.CELESTIAL_TAB)));
 //	public static final RegistryObject<ModSpawnEgg> LURKER_SPAWN_EGG = ITEMS.register("lurker_spawn_egg", () -> new ModSpawnEgg(RegistryEntities.LURKER, 0, 894731, new Item.Properties().tab(ItemGroup.TAB_MISC)));
 //
-//	public static final RegistryObject<ModSpawnEgg> RUST_SLIME_SPAWN_EGG = ITEMS.register("rust_slime_spawn_egg", () -> new ModSpawnEgg(RegistryEntities.RUST_SLIME, 0x984521, 0x7d3213, new Item.Properties().tab(ItemGroup.TAB_MISC)));
-//	public static final RegistryObject<ModSpawnEgg> WHITE_SLIME_SPAWN_EGG = ITEMS.register("white_slime_spawn_egg", () -> new ModSpawnEgg(RegistryEntities.WHITE_SLIME, 0xdbdbdb, 0xffffff, new Item.Properties().tab(ItemGroup.TAB_MISC)));
+	public static final RegistryObject<Item> RUST_SPAWN_EGG = ITEMS.register("rust_spawn_egg",
+			() -> new ForgeSpawnEggItem(EntityRegistry.RUST_SLIME,0x7f3414, 0x984521,
+					new Item.Properties().tab(CelestialExploration.CELESTIAL_TAB)));
+
+	public static final RegistryObject<Item> LUNAR_SPAWN_EGG = ITEMS.register("lunar_spawn_egg",
+			() -> new ForgeSpawnEggItem(EntityRegistry.LUNAR_SLIME,0xd5d5d5, 0xfafafa,
+					new Item.Properties().tab(CelestialExploration.CELESTIAL_TAB)));
+
+	public static final RegistryObject<Item> MARS_MALLOW_SPAWN_EGG = ITEMS.register("mars_mallow_spawn_egg",
+			() -> new ForgeSpawnEggItem(EntityRegistry.MARS_MALLOW,0xcda568, 0xfaf5ee,
+					new Item.Properties().tab(CelestialExploration.CELESTIAL_TAB)));
+
+	public static final RegistryObject<Item> LURKER_SPAWN_EGG = ITEMS.register("lurker_spawn_egg",
+			() -> new ForgeSpawnEggItem(EntityRegistry.LURKER,0, 0x894731,
+					new Item.Properties().tab(CelestialExploration.CELESTIAL_TAB)));
+
 //	public static final RegistryObject<ModSpawnEgg> SULFURIC_SLIME_SPAWN_EGG = ITEMS.register("sulfuric_slime_spawn_egg", () -> new ModSpawnEgg(RegistryEntities.SULFURIC_SLIME, 0xbd9200, 0xa68000, new Item.Properties().tab(ItemGroup.TAB_MISC)));
 //	public static final RegistryObject<ModSpawnEgg> MARS_MALLOW_SPAWN_EGG = ITEMS.register("mars_mallow_spawn_egg", () -> new ModSpawnEgg(RegistryEntities.MARS_MALLOW, 0xffffff, 0xF3F3F3, new Item.Properties().tab(ItemGroup.TAB_MISC)));
 	

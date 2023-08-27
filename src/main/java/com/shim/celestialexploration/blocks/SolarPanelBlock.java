@@ -44,7 +44,7 @@ public class SolarPanelBlock extends Block implements EntityBlock {
 				.sound(SoundType.METAL)
 				.strength(2.0f)
 				.lightLevel(state -> state.getValue(BlockStateProperties.POWERED) ? 5  : 0)
-						);
+		);
 	}
 
 	@Override
@@ -77,32 +77,34 @@ public class SolarPanelBlock extends Block implements EntityBlock {
 		builder.add(BlockStateProperties.POWERED);
 	}
 
-    @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult trace) {
+	@Override
+	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult trace) {
 		System.out.println("SolarPanelBlock use()");
 		if (!level.isClientSide) {
 			System.out.println("SolarPanelScreen use() is not client side");
 
 			BlockEntity tileEntity = level.getBlockEntity(pos);
-            if (tileEntity instanceof SolarPanelBlockEntity) {
-                MenuProvider containerProvider = new MenuProvider() {
-                    @Override
-                    public Component getDisplayName() {
-                        return new TranslatableComponent(SCREEN_SOLAR_PANEL);
-                    }
+			if (tileEntity instanceof SolarPanelBlockEntity) {
+				MenuProvider containerProvider = new MenuProvider() {
+					@Override
+					public Component getDisplayName() {
+						return new TranslatableComponent(SCREEN_SOLAR_PANEL);
+					}
 
-                    @Override
-                    public AbstractContainerMenu createMenu(int i, Inventory playerInv, Player player) {
+					@Override
+					public AbstractContainerMenu createMenu(int i, Inventory playerInv, Player player) {
 						System.out.println("SolarPanelScreen use() createMenu");
 						return new SolarPanelContainer(i, level, pos, playerInv, player);
-                    }
-                };
-                NetworkHooks.openGui((ServerPlayer) player, containerProvider, tileEntity.getBlockPos());
-            } else {
-              throw new IllegalStateException("Our named container provider is missing!");
-            }
-        }
-        return InteractionResult.SUCCESS;
-    }
+					}
+				};
+				NetworkHooks.openGui((ServerPlayer) player, containerProvider, tileEntity.getBlockPos());
+			} else {
+				throw new IllegalStateException("Our named container provider is missing!");
+			}
+		}
+		return InteractionResult.SUCCESS;
+	}
 
 }
+
+

@@ -2,11 +2,18 @@ package com.shim.celestialexploration;
 
 import java.util.stream.Collectors;
 
+import com.shim.celestialexploration.entity.RustSlimeEntity;
+import com.shim.celestialexploration.entity.renderer.LunarSlimeRenderer;
+import com.shim.celestialexploration.entity.renderer.LurkerRenderer;
+import com.shim.celestialexploration.entity.renderer.MarsMallowRenderer;
+import com.shim.celestialexploration.entity.renderer.RustSlimeRenderer;
 import com.shim.celestialexploration.registry.*;
 import com.shim.celestialexploration.world.renderer.DimensionRenderers;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
@@ -28,6 +35,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import software.bernie.geckolib3.GeckoLib;
 
 @Mod("celestialexploration")
 public class CelestialExploration {
@@ -64,9 +72,12 @@ public class CelestialExploration {
         StructureRegistry.DEFERRED_REGISTRY_STRUCTURE.register(modEventBus);
         PortalRegistry.register(modEventBus);
         EffectRegistry.register(modEventBus);
+        EntityRegistry.register(modEventBus);
 
 //        bus.addListener(EventPriority.NORMAL, Structures::addDimensionalSpacing);
 //        bus.addListener(EventPriority.NORMAL, Structures::setupStructureSpawns);
+
+        GeckoLib.initialize();
 
     }
 
@@ -122,6 +133,12 @@ public class CelestialExploration {
         });
 
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.MARS_PORTAL.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BlockRegistry.MOON_PORTAL.get(), RenderType.translucent());
+
+        EntityRenderers.register(EntityRegistry.RUST_SLIME.get(), RustSlimeRenderer::new);
+        EntityRenderers.register(EntityRegistry.LUNAR_SLIME.get(), LunarSlimeRenderer::new);
+        EntityRenderers.register(EntityRegistry.MARS_MALLOW.get(), MarsMallowRenderer::new);
+        EntityRenderers.register(EntityRegistry.LURKER.get(), LurkerRenderer::new);
 
     }
 

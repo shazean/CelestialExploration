@@ -84,6 +84,7 @@ public class ItemModels extends ItemModelProvider {
 		singleTexture(ItemRegistry.SPACE_SUIT_BOOTS.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/space_suit_boots"));
 
 
+
 	}
 }
 
