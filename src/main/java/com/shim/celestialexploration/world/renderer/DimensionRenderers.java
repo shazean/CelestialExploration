@@ -30,18 +30,21 @@ public class DimensionRenderers {
                         float f1 = (float) (Math.cos(p_230492_1_ * ((float)Math.PI * 2F)) - 0.0F);
                         float f2 = -0.0F;
                         if (f1 >= -0.4F && f1 <= 0.4F) { //0.4F
+                            System.out.println("Sunrise color!");
                             float f3 = (f1 - -0.0F) / 0.4F * 0.5F + 0.5F; //0.0, 0.4, 0.5, 0.5
                             float f4 = (float) (1.0F - (1.0F - Math.sin(f3 * (float)Math.PI)) * 0.99F);
                             f4 = f4 * f4;
-                            this.sunriseCol[0] = f3 * 0.3F - 5.7F; //0.3, +0.7 //-5.2
+                            this.sunriseCol[0] = f3 * 0.3F - 5.7F; //0.3, +0.7 //0.3, -5.7
                             this.sunriseCol[1] = f3 * f3 * 0.7F + 3.2F; //0.7, +0.2
-                            this.sunriseCol[2] = f3 * f3 * 0.0F + 3.2F; //0.0, 0.2
+                            this.sunriseCol[2] = f3 * f3 * 0.0F + 3.2F; //0.0, 0.2 //0.0, 3.2
                             this.sunriseCol[3] = f4; //none
                             return this.sunriseCol;
                         } else {
                             return null;
                         }
                     }
+
+
 
                     @Override
                     public Vec3 getBrightnessDependentFogColor(Vec3 color, float brightness) {

@@ -63,14 +63,14 @@ public class BlockStates extends BlockStateProvider {
 
 
 		simpleBlock(BlockRegistry.SOLAR_LANTERN.get());
-		simpleBlock(BlockRegistry.ECLIPSE_LANTERN.get());
+//		simpleBlock(BlockRegistry.ECLIPSE_LANTERN.get());
 
 
 
 		//OTHER
 		simpleBlock(BlockRegistry.SOLAR_PANEL.get());
 
-		simpleBlock(BlockRegistry.TEST_BLOCK.get());
+//		simpleBlock(BlockRegistry.TEST_BLOCK.get());
 
 	}
 

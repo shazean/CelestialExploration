@@ -52,7 +52,8 @@ public class ItemRegistry {
 //	public static final RegistryObject<Item> COLD_OXYGEN_CANISTER = ITEMS.register("cold_oxygen_canister", () -> new Item((new Item.Properties()).tab(CelestialExploration.CELESTIAL_TAB)));
 	public static final RegistryObject<Item> STEEL_ROD = ITEMS.register("steel_rod", () -> new CatalystItem()); //FIXME?
 
-	 
+	public static final RegistryObject<Item> METEOR_INGOT = ITEMS.register("meteor_ingot", () -> new Item((new Item.Properties()).tab(CreativeModeTab.TAB_MATERIALS)));
+
 	
 	//Block Items
 	//MOON
@@ -61,7 +62,7 @@ public class ItemRegistry {
 	public static final RegistryObject<Item> GLOWING_MOON_SAND = fromBlock(BlockRegistry.GLOWING_MOON_SAND);
 	public static final RegistryObject<Item> MOON_BRICKS = fromBlock(BlockRegistry.MOON_BRICKS);
 	public static final RegistryObject<Item> MOON_IRON_ORE = fromBlock(BlockRegistry.MOON_IRON_ORE);
-	public static final RegistryObject<Item> MOON_REDSTONE = fromBlock(BlockRegistry.MOON_REDSTONE_ORE);
+	public static final RegistryObject<Item> MOON_REDSTONE_ORE = fromBlock(BlockRegistry.MOON_REDSTONE_ORE);
 
 	public static final RegistryObject<Item> LUNAR_LANTERN = fromBlock(BlockRegistry.LUNAR_LANTERN);
 	
@@ -72,7 +73,7 @@ public class ItemRegistry {
 
 
 
-	public static final RegistryObject<Item> TEST_BLOCK = fromBlock(BlockRegistry.TEST_BLOCK);
+//	public static final RegistryObject<Item> TEST_BLOCK = fromBlock(BlockRegistry.TEST_BLOCK);
 
 	  
 	
@@ -134,7 +135,7 @@ public class ItemRegistry {
 	
 	//OTHER BLOCK ITEMS
 	public static final RegistryObject<Item> SOLAR_LANTERN = fromBlock(BlockRegistry.SOLAR_LANTERN);
-	public static final RegistryObject<Item> ECLIPSE_LANTERN = fromBlock(BlockRegistry.ECLIPSE_LANTERN);
+//	public static final RegistryObject<Item> ECLIPSE_LANTERN = fromBlock(BlockRegistry.ECLIPSE_LANTERN);
 //	public static final RegistryObject<Item> STEEL_BLOCK = fromBlock(BlockRegistry.STEEL_BLOCK);
 //	public static final RegistryObject<Item> STEEL_BLOCK_STAIRS = fromBlock(BlockRegistry.STEEL_BLOCK_STAIRS);
 //	public static final RegistryObject<Item> STEEL_BLOCK_SLAB = fromBlock(BlockRegistry.STEEL_BLOCK_SLAB);

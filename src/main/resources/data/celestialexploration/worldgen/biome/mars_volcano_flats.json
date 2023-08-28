@@ -15,7 +15,40 @@
       "offset": 2
     }
   },
-  "spawners": {},
+  "spawners": {
+    "monster": [
+      {
+        "type": "celestialexploration:mars_mallow",
+        "weight": 4,
+        "minCount": 0,
+        "maxCount": 2
+      },
+      {
+        "type": "celestialexploration:rust_slime",
+        "weight": 3,
+        "minCount": 0,
+        "maxCount": 2
+      },
+      {
+        "type": "celestialexploration:lurker",
+        "weight": 5,
+        "minCount": 0,
+        "maxCount": 1
+      },
+      {
+        "type": "minecraft:enderman",
+        "weight": 1,
+        "minCount": 0,
+        "maxCount": 1
+      },
+      {
+        "type": "minecraft:skeleton",
+        "weight": 3,
+        "minCount": 0,
+        "maxCount": 1
+      }
+    ]
+  },
   "spawn_costs": {},
   "carvers": {
     "air": [

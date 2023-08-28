@@ -2,6 +2,7 @@ package com.shim.celestialexploration.datagen;
 
 import com.shim.celestialexploration.registry.BlockRegistry;
 
+import com.shim.celestialexploration.registry.ItemRegistry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.item.Items;
 
@@ -23,7 +24,7 @@ public class LootTables  extends BaseLootTableProvider {
     	lootTables.put(BlockRegistry.MOON_SAND.get(), createSimpleTable("moon_sand", BlockRegistry.MOON_SAND.get()));
     	lootTables.put(BlockRegistry.MOON_STONE.get(), createSimpleTable("moon_stone", BlockRegistry.MOON_STONE.get()));
     	lootTables.put(BlockRegistry.CHISELED_MOON_BRICKS.get(), createSimpleTable("chiseled_moon_bricks", BlockRegistry.CHISELED_MOON_BRICKS.get()));
-    	lootTables.put(BlockRegistry.GLOWING_MOON_SAND.get(), createSimpleTable("glowing_moon_sand", BlockRegistry.GLOWING_MOON_SAND.get()));
+    	lootTables.put(BlockRegistry.GLOWING_MOON_SAND.get(), createSilkTouchTable("glowing_moon_sand", BlockRegistry.GLOWING_MOON_SAND.get(), ItemRegistry.MOON_DUST.get(), 2, 4));
     	lootTables.put(BlockRegistry.MOON_IRON_ORE.get(), createSimpleItemTable("moon_iron_ore", Items.RAW_IRON));
     	lootTables.put(BlockRegistry.MOON_REDSTONE_ORE.get(), createSimpleItemTable("moon_redstone_ore", Items.REDSTONE));
 
@@ -58,7 +59,9 @@ public class LootTables  extends BaseLootTableProvider {
 
 		//OTHER
     	lootTables.put(BlockRegistry.SOLAR_PANEL.get(), createSimpleTable("solar_panel", BlockRegistry.SOLAR_PANEL.get()));
+		lootTables.put(BlockRegistry.LUNAR_LANTERN.get(), createSilkTouchTable("lunar_lantern", BlockRegistry.LUNAR_LANTERN.get(), ItemRegistry.MOON_DUST.get(), 1, 3));
 
 
-    }
+
+	}
 }

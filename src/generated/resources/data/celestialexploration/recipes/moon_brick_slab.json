@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "celestialexploration",
+  "pattern": [
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:moon_stone"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:moon_brick_slab"
+  }
+}

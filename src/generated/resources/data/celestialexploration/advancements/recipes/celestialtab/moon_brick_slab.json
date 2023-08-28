@@ -2,17 +2,17 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "minecraft:meteor_iron_ore"
+      "celestialexploration:moon_brick_slab"
     ]
   },
   "criteria": {
-    "has_ore": {
+    "moon_stone": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "celestialexploration:meteor_iron_ore"
+              "celestialexploration:moon_stone"
             ]
           }
         ]
@@ -21,13 +21,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "minecraft:meteor_iron_ore"
+        "recipe": "celestialexploration:moon_brick_slab"
       }
     }
   },
   "requirements": [
     [
-      "has_ore",
+      "moon_stone",
       "has_the_recipe"
     ]
   ]

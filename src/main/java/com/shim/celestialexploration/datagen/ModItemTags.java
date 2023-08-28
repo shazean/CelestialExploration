@@ -22,7 +22,7 @@ public class ModItemTags extends ItemTagsProvider {
 	protected void addTags() {
 		tag(Tags.Items.ORES)
 				.add(ItemRegistry.MOON_IRON_ORE.get())
-				.add(ItemRegistry.MOON_REDSTONE.get())
+				.add(ItemRegistry.MOON_REDSTONE_ORE.get())
 				.add(ItemRegistry.MARS_REDSTONE_ORE.get())
 				.add(ItemRegistry.MARS_IRON_ORE.get())
 				.add(ItemRegistry.METEOR_COAL_ORE.get())
@@ -69,7 +69,7 @@ public class ModItemTags extends ItemTagsProvider {
 
 		tag(Tags.Items.ORES_REDSTONE)
 				.add(ItemRegistry.MARS_REDSTONE_ORE.get())
-				.add(ItemRegistry.MOON_REDSTONE.get())
+				.add(ItemRegistry.MOON_REDSTONE_ORE.get())
 				.add(ItemRegistry.METEOR_REDSTONE_ORE.get());
 
 		tag(ItemRegistry.MARS_TAG)
@@ -90,6 +90,34 @@ public class ModItemTags extends ItemTagsProvider {
 				.add(ItemRegistry.MARS_BRICK_WALL.get())
 				.add(ItemRegistry.MARS_BRICKS.get())
 				.add(ItemRegistry.CHISELED_MARS_BRICKS.get());
+
+
+		tag(ItemRegistry.MOON_TAG)
+				.add(ItemRegistry.MOON_STONE.get())
+				.add(ItemRegistry.MOON_BRICK_SLAB.get())
+				.add(ItemRegistry.MOON_BRICK_STAIRS.get())
+				.add(ItemRegistry.MOON_BRICK_WALL.get())
+				.add(ItemRegistry.MOON_BRICKS.get())
+				.add(ItemRegistry.CHISELED_MOON_BRICKS.get())
+				.add(ItemRegistry.MOON_IRON_ORE.get())
+				.add(ItemRegistry.MOON_REDSTONE_ORE.get())
+				.add(ItemRegistry.MOON_SAND.get());
+
+		tag(ItemRegistry.MOON_STONE_TAG)
+				.add(ItemRegistry.MOON_STONE.get())
+				.add(ItemRegistry.MOON_BRICK_SLAB.get())
+				.add(ItemRegistry.MOON_BRICK_STAIRS.get())
+				.add(ItemRegistry.MOON_BRICK_WALL.get())
+				.add(ItemRegistry.MOON_BRICKS.get())
+				.add(ItemRegistry.CHISELED_MOON_BRICKS.get());
+
+		tag(ItemRegistry.METEOR_TAG)
+				.add(ItemRegistry.METEOR.get())
+				.add(ItemRegistry.METEOR_BRICK_SLAB.get())
+				.add(ItemRegistry.METEOR_BRICK_STAIRS.get())
+				.add(ItemRegistry.METEOR_BRICK_WALL.get())
+				.add(ItemRegistry.METEOR_BRICKS.get())
+				.add(ItemRegistry.CHISELED_METEOR_BRICKS.get());
 
 	}
 

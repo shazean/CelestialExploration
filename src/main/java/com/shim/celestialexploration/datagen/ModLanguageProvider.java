@@ -26,7 +26,7 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(BlockRegistry.MOON_BRICKS.get(), "Lunar Bricks");
 		add(BlockRegistry.MOON_IRON_ORE.get(), "Lunar Iron Ore");
 		add(BlockRegistry.MOON_REDSTONE_ORE.get(), "Lunar Redstone Ore");
-		add(BlockRegistry.MOON_SAND.get(), "Lunar Sand");
+		add(BlockRegistry.MOON_SAND.get(), "Lunar Regolith");
 		add(BlockRegistry.MOON_STONE.get(), "Lunar Stone");
 		add(BlockRegistry.CHISELED_MOON_BRICKS.get(), "Chiseled Lunar Bricks");
 		add(BlockRegistry.GLOWING_MOON_SAND.get(), "Glowing Lunar Sand");
@@ -41,7 +41,7 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(BlockRegistry.MARS_BRICKS.get(), "Martian Bricks");
 		add(BlockRegistry.MARS_IRON_ORE.get(), "Martian Iron Ore");
 		add(BlockRegistry.MARS_REDSTONE_ORE.get(), "Martian Redstone Ore");
-		add(BlockRegistry.MARS_SAND.get(), "Martian Sand");
+		add(BlockRegistry.MARS_SAND.get(), "Martian Regolith");
 		add(BlockRegistry.MARS_STONE.get(), "Martian Stone");
 		
 		//METEOR

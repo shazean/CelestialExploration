@@ -12,6 +12,7 @@ import com.shim.celestialexploration.world.renderer.DimensionRenderers;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.world.scores.criteria.ObjectiveCriteria;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
@@ -37,6 +38,8 @@ import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import software.bernie.geckolib3.GeckoLib;
 
+import static net.minecraft.client.renderer.RenderType.crumbling;
+
 @Mod("celestialexploration")
 public class CelestialExploration {
 
@@ -58,7 +61,6 @@ public class CelestialExploration {
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
-
 
         DistExecutor.runWhenOn(Dist.CLIENT, () -> () -> {
             modEventBus.addListener(this::clientSetup);
@@ -90,9 +92,19 @@ public class CelestialExploration {
 
     private void setup(final FMLCommonSetupEvent event)
     {
+
         // some preinit code
         LOGGER.info("HELLO FROM PREINIT");
         LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
+
+
+        event.enqueueWork(() -> {
+            DimensionRenderers.setDimensionEffects();
+        });
+
+        ItemBlockRenderTypes.setRenderLayer(BlockRegistry.MARS_PORTAL.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BlockRegistry.MOON_PORTAL.get(), RenderType.translucent());
+
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event)
@@ -128,6 +140,10 @@ public class CelestialExploration {
 
     public void clientSetup(final FMLClientSetupEvent event)
     {
+        LOGGER.info("HELLO FROM CLIENTSETUP");
+        LOGGER.info("SAND BLOCK >> {}", Blocks.SAND.getRegistryName());
+
+
         event.enqueueWork(() -> {
             DimensionRenderers.setDimensionEffects();
         });
@@ -141,5 +157,4 @@ public class CelestialExploration {
         EntityRenderers.register(EntityRegistry.LURKER.get(), LurkerRenderer::new);
 
     }
-
 }
