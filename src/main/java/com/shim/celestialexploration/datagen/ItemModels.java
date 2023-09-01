@@ -63,6 +63,8 @@ public class ItemModels extends ItemModelProvider {
 		//OTHER BLOCK ITEMS
 		withExistingParent(ItemRegistry.SOLAR_PANEL.get().getRegistryName().getPath(), modLoc("block/solar_panel"));
 		withExistingParent(ItemRegistry.SOLAR_LANTERN.get().getRegistryName().getPath(), modLoc("block/solar_lantern"));
+		withExistingParent(ItemRegistry.IGNEOUS_ROCK.get().getRegistryName().getPath(), modLoc("block/igneous_rock"));
+
 //		withExistingParent(ItemRegistry.ECLIPSE_LANTERN.get().getRegistryName().getPath(), modLoc("block/eclipse_lantern"));
 
 //		withExistingParent(ItemRegistry.TEST_BLOCK.get().getRegistryName().getPath(), modLoc("block/test_block"));
@@ -72,7 +74,9 @@ public class ItemModels extends ItemModelProvider {
 		singleTexture(ItemRegistry.MOON_DUST.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/moon_dust"));
 		singleTexture(ItemRegistry.STEEL_INGOT.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/steel_ingot"));
 		singleTexture(ItemRegistry.STEEL_ROD.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/steel_rod"));
-		singleTexture(ItemRegistry.METEOR_INGOT.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/meteor_ingot"));
+//		singleTexture(ItemRegistry.METEOR_INGOT.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/meteor_ingot"));
+
+
 
 
 		//ARMOR
@@ -85,6 +89,8 @@ public class ItemModels extends ItemModelProvider {
 		singleTexture(ItemRegistry.SPACE_SUIT_CHESTPLATE.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/space_suit_chestplate"));
 		singleTexture(ItemRegistry.SPACE_SUIT_BOOTS.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/space_suit_boots"));
 
+		//SHUTTLE
+		singleTexture(ItemRegistry.OAK_SHUTTLE.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/oak_shuttle"));
 
 
 	}

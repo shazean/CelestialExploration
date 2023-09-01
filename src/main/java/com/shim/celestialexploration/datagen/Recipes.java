@@ -156,10 +156,13 @@ public class Recipes extends RecipeProvider {
 
 
 		//METEOR
+//		SimpleCookingRecipeBuilder.smelting(Ingredient.of(BlockRegistry.METEOR.get()), ItemRegistry.METEOR_INGOT.get(), 1.0F, 100)
+//				.unlockedBy("meteor", has(BlockRegistry.METEOR.get())).save(consumer, "meteor");
+
 		ShapedRecipeBuilder.shaped(BlockRegistry.METEOR_BRICKS.get())
 				.pattern("XX")
 				.pattern("XX")
-				.define('X', BlockRegistry.METEOR.get())
+				.define('X', ItemRegistry.METEOR.get())
 				.group("celestialexploration")
 				.unlockedBy("meteor", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.METEOR.get()))
 				.save(consumer);
@@ -169,7 +172,7 @@ public class Recipes extends RecipeProvider {
 
 		ShapedRecipeBuilder.shaped(BlockRegistry.METEOR_BRICK_SLAB.get())
 				.pattern("XXX")
-				.define('X', BlockRegistry.METEOR.get())
+				.define('X', ItemRegistry.METEOR_BRICKS.get())
 				.group("celestialexploration")
 				.unlockedBy("meteor", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.METEOR.get()))
 				.save(consumer);
@@ -181,7 +184,7 @@ public class Recipes extends RecipeProvider {
 				.pattern("X  ")
 				.pattern("XX ")
 				.pattern("XXX")
-				.define('X', BlockRegistry.METEOR.get())
+				.define('X', ItemRegistry.METEOR_BRICKS.get())
 				.group("celestialexploration")
 				.unlockedBy("meteor", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.METEOR.get()))
 				.save(consumer);
@@ -192,7 +195,7 @@ public class Recipes extends RecipeProvider {
 		ShapedRecipeBuilder.shaped(BlockRegistry.METEOR_BRICK_WALL.get())
 				.pattern("XXX")
 				.pattern("XXX")
-				.define('X', BlockRegistry.METEOR.get())
+				.define('X', BlockRegistry.METEOR_BRICKS.get())
 				.group("celestialexploration")
 				.unlockedBy("meteor", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.METEOR.get()))
 				.save(consumer);

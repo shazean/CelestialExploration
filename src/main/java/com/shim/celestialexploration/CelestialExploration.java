@@ -1,19 +1,19 @@
 package com.shim.celestialexploration;
 
+import java.awt.*;
 import java.util.stream.Collectors;
 
 import com.shim.celestialexploration.entity.RustSlimeEntity;
-import com.shim.celestialexploration.entity.renderer.LunarSlimeRenderer;
-import com.shim.celestialexploration.entity.renderer.LurkerRenderer;
-import com.shim.celestialexploration.entity.renderer.MarsMallowRenderer;
-import com.shim.celestialexploration.entity.renderer.RustSlimeRenderer;
+import com.shim.celestialexploration.entity.renderer.*;
 import com.shim.celestialexploration.registry.*;
+import com.shim.celestialexploration.util.Keybinds;
 import com.shim.celestialexploration.world.renderer.DimensionRenderers;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.scores.criteria.ObjectiveCriteria;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -75,11 +75,16 @@ public class CelestialExploration {
         PortalRegistry.register(modEventBus);
         EffectRegistry.register(modEventBus);
         EntityRegistry.register(modEventBus);
+        FeatureRegistry.register(modEventBus);
 
 //        bus.addListener(EventPriority.NORMAL, Structures::addDimensionalSpacing);
 //        bus.addListener(EventPriority.NORMAL, Structures::setupStructureSpawns);
 
         GeckoLib.initialize();
+
+        bus.addListener((InputEvent.KeyInputEvent e) -> onKeyPress(e.getKey(), e.getAction(), e.getModifiers()));
+
+
 
     }
 
@@ -96,14 +101,6 @@ public class CelestialExploration {
         // some preinit code
         LOGGER.info("HELLO FROM PREINIT");
         LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
-
-
-        event.enqueueWork(() -> {
-            DimensionRenderers.setDimensionEffects();
-        });
-
-        ItemBlockRenderTypes.setRenderLayer(BlockRegistry.MARS_PORTAL.get(), RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(BlockRegistry.MOON_PORTAL.get(), RenderType.translucent());
 
     }
 
@@ -148,6 +145,7 @@ public class CelestialExploration {
             DimensionRenderers.setDimensionEffects();
         });
 
+
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.MARS_PORTAL.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.MOON_PORTAL.get(), RenderType.translucent());
 
@@ -155,6 +153,12 @@ public class CelestialExploration {
         EntityRenderers.register(EntityRegistry.LUNAR_SLIME.get(), LunarSlimeRenderer::new);
         EntityRenderers.register(EntityRegistry.MARS_MALLOW.get(), MarsMallowRenderer::new);
         EntityRenderers.register(EntityRegistry.LURKER.get(), LurkerRenderer::new);
+        EntityRenderers.register(EntityRegistry.SHUTTLE.get(), ShuttleRenderer::new);
 
     }
+
+    static void onKeyPress(int key, int action, int modifiers) {
+        Keybinds.handleKeyPress(key, action);
+    }
+
 }

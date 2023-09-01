@@ -1,0 +1,66 @@
+{
+  "temperature": 1,
+  "downfall": 0,
+  "precipitation": "none",
+  "category": "desert",
+  "effects": {
+    "sky_color": 1807,
+    "fog_color": 1549,
+    "water_color": 1549,
+    "water_fog_color": 69408,
+    "mood_sound": {
+      "sound": "minecraft:ambient.cave",
+      "tick_delay": 6000,
+      "block_search_extent": 8,
+      "offset": 2
+    }
+  },
+  "spawners": {
+    "monster": [
+      {
+        "type": "celestialexploration:lunar_slime",
+        "weight": 3,
+        "minCount": 0,
+        "maxCount": 2
+      },
+      {
+        "type": "celestialexploration:lurker",
+        "weight": 5,
+        "minCount": 0,
+        "maxCount": 1
+      },
+      {
+        "type": "minecraft:enderman",
+        "weight": 1,
+        "minCount": 0,
+        "maxCount": 1
+      },
+      {
+        "type": "minecraft:skeleton",
+        "weight": 3,
+        "minCount": 0,
+        "maxCount": 1
+      }
+    ]
+  },
+  "spawn_costs": {},
+  "carvers": {
+    "air": [
+      "minecraft:cave",
+      "minecraft:cave_extra_underground"
+    ]
+  },
+  "features": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "celestialexploration:obsidian_pool"
+    ]
+  ]
+}

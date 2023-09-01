@@ -51,5 +51,9 @@
       "minecraft:canyon"
     ]
   },
-  "features": []
+  "features": [
+    [
+      "celestialexploration:glowing_sand"
+    ]
+  ]
 }

@@ -152,6 +152,41 @@ public class ModBlockTags extends BlockTagsProvider {
 				.add(BlockRegistry.MARS_STONE.get())
 				.add(BlockRegistry.CHISELED_MARS_BRICKS.get());
 
+		tag(BlockRegistry.MOON_TAG)
+				.add(BlockRegistry.MOON_BRICKS.get())
+				.add(BlockRegistry.MOON_IRON_ORE.get())
+				.add(BlockRegistry.MOON_BRICK_SLAB.get())
+				.add(BlockRegistry.MOON_BRICK_STAIRS.get())
+				.add(BlockRegistry.MOON_BRICK_WALL.get())
+				.add(BlockRegistry.MOON_REDSTONE_ORE.get())
+				.add(BlockRegistry.MOON_SAND.get())
+				.add(BlockRegistry.MOON_STONE.get())
+				.add(BlockRegistry.CHISELED_MOON_BRICKS.get());
+
+		tag(BlockRegistry.MOON_STONE_TAG)
+				.add(BlockRegistry.MOON_BRICKS.get())
+				.add(BlockRegistry.MOON_BRICK_SLAB.get())
+				.add(BlockRegistry.MOON_BRICK_STAIRS.get())
+				.add(BlockRegistry.MOON_BRICK_WALL.get())
+				.add(BlockRegistry.MOON_STONE.get())
+				.add(BlockRegistry.CHISELED_MOON_BRICKS.get());
+
+		tag(BlockRegistry.METEOR_TAG)
+				.add(BlockRegistry.METEOR_BRICKS.get())
+				.add(BlockRegistry.METEOR_IRON_ORE.get())
+				.add(BlockRegistry.METEOR_BRICK_SLAB.get())
+				.add(BlockRegistry.METEOR_BRICK_STAIRS.get())
+				.add(BlockRegistry.METEOR_BRICK_WALL.get())
+				.add(BlockRegistry.METEOR_REDSTONE_ORE.get())
+				.add(BlockRegistry.METEOR_GOLD_ORE.get())
+				.add(BlockRegistry.METEOR_DIAMOND_ORE.get())
+				.add(BlockRegistry.METEOR_LAPIS_ORE.get())
+				.add(BlockRegistry.METEOR_EMERALD_ORE.get())
+				.add(BlockRegistry.METEOR_COPPER_ORE.get())
+				.add(BlockRegistry.METEOR_COAL_ORE.get())
+				.add(BlockRegistry.METEOR.get())
+				.add(BlockRegistry.CHISELED_METEOR_BRICKS.get());
+
 	}
 	
 	@Override

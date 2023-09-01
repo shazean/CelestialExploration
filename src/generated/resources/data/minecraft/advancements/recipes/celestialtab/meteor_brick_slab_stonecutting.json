@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:meteor_brick_slab_stonecutting"
+    ]
+  },
+  "criteria": {
+    "meteor": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:meteor"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:meteor_brick_slab_stonecutting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "meteor",
+      "has_the_recipe"
+    ]
+  ]
+}

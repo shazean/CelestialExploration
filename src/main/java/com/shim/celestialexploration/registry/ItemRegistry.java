@@ -2,8 +2,10 @@ package com.shim.celestialexploration.registry;
 
 import com.shim.celestialexploration.CelestialExploration;
 
+import com.shim.celestialexploration.entity.Shuttle;
 import com.shim.celestialexploration.item.CatalystItem;
 import com.shim.celestialexploration.item.ModArmorMaterials;
+import com.shim.celestialexploration.item.ShuttleItem;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
@@ -12,14 +14,13 @@ import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Item.Properties;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.ForgeSpawnEggItem;
-import net.minecraftforge.common.Tags;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+
 
 public class ItemRegistry {
 
@@ -52,7 +53,7 @@ public class ItemRegistry {
 //	public static final RegistryObject<Item> COLD_OXYGEN_CANISTER = ITEMS.register("cold_oxygen_canister", () -> new Item((new Item.Properties()).tab(CelestialExploration.CELESTIAL_TAB)));
 	public static final RegistryObject<Item> STEEL_ROD = ITEMS.register("steel_rod", () -> new CatalystItem()); //FIXME?
 
-	public static final RegistryObject<Item> METEOR_INGOT = ITEMS.register("meteor_ingot", () -> new Item((new Item.Properties()).tab(CreativeModeTab.TAB_MATERIALS)));
+//	public static final RegistryObject<Item> METEOR_INGOT = ITEMS.register("meteor_ingot", () -> new Item((new Item.Properties()).tab(CreativeModeTab.TAB_MATERIALS)));
 
 	
 	//Block Items
@@ -135,6 +136,9 @@ public class ItemRegistry {
 	
 	//OTHER BLOCK ITEMS
 	public static final RegistryObject<Item> SOLAR_LANTERN = fromBlock(BlockRegistry.SOLAR_LANTERN);
+	public static final RegistryObject<Item> IGNEOUS_ROCK = fromBlock(BlockRegistry.IGNEOUS_ROCK);
+
+
 //	public static final RegistryObject<Item> ECLIPSE_LANTERN = fromBlock(BlockRegistry.ECLIPSE_LANTERN);
 //	public static final RegistryObject<Item> STEEL_BLOCK = fromBlock(BlockRegistry.STEEL_BLOCK);
 //	public static final RegistryObject<Item> STEEL_BLOCK_STAIRS = fromBlock(BlockRegistry.STEEL_BLOCK_STAIRS);
@@ -192,7 +196,7 @@ public class ItemRegistry {
 
 	
 	
-//	public static final RegistryObject<Item> WHITE_SHUTTLE = ITEMS.register("white_shuttle", () -> new ShuttleItem(ShuttleEntity.Color.WHITE, new Item.Properties().stacksTo(1).tab(Main.SHUTTLE_TAB)));
+	public static final RegistryObject<Item> OAK_SHUTTLE = ITEMS.register("oak_shuttle", () -> new ShuttleItem(Shuttle.Type.OAK, new Item.Properties().stacksTo(1).tab(CelestialExploration.CELESTIAL_TAB))); //FIXME add shuttle tab
 //	public static final RegistryObject<Item> RED_SHUTTLE = ITEMS.register("red_shuttle", () -> new ShuttleItem(ShuttleEntity.Color.RED, new Item.Properties().stacksTo(1).tab(Main.SHUTTLE_TAB)));
 //	public static final RegistryObject<Item> ORANGE_SHUTTLE = ITEMS.register("orange_shuttle", () -> new ShuttleItem(ShuttleEntity.Color.ORANGE, new Item.Properties().stacksTo(1).tab(Main.SHUTTLE_TAB)));
 //	public static final RegistryObject<Item> YELLOW_SHUTTLE = ITEMS.register("yellow_shuttle", () -> new ShuttleItem(ShuttleEntity.Color.YELLOW, new Item.Properties().stacksTo(1).tab(Main.SHUTTLE_TAB)));

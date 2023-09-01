@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "tag": "celestialexploration:mars_stone_tag"
+  },
+  "result": "celestialexploration:mars_brick_slab",
+  "count": 2
+}

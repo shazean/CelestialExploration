@@ -109,7 +109,11 @@ public class ModItemTags extends ItemTagsProvider {
 				.add(ItemRegistry.MOON_BRICK_STAIRS.get())
 				.add(ItemRegistry.MOON_BRICK_WALL.get())
 				.add(ItemRegistry.MOON_BRICKS.get())
-				.add(ItemRegistry.CHISELED_MOON_BRICKS.get());
+				.add(ItemRegistry.CHISELED_MOON_BRICKS.get())
+				.add(ItemRegistry.GLOWING_MOON_SAND.get())
+				.add(ItemRegistry.MOON_IRON_ORE.get())
+				.add(ItemRegistry.MOON_REDSTONE_ORE.get())
+				.add(ItemRegistry.MOON_SAND.get());
 
 		tag(ItemRegistry.METEOR_TAG)
 				.add(ItemRegistry.METEOR.get())
@@ -117,7 +121,15 @@ public class ModItemTags extends ItemTagsProvider {
 				.add(ItemRegistry.METEOR_BRICK_STAIRS.get())
 				.add(ItemRegistry.METEOR_BRICK_WALL.get())
 				.add(ItemRegistry.METEOR_BRICKS.get())
-				.add(ItemRegistry.CHISELED_METEOR_BRICKS.get());
+				.add(ItemRegistry.CHISELED_METEOR_BRICKS.get())
+				.add(ItemRegistry.METEOR_REDSTONE_ORE.get())
+				.add(ItemRegistry.METEOR_GOLD_ORE.get())
+				.add(ItemRegistry.METEOR_DIAMOND_ORE.get())
+				.add(ItemRegistry.METEOR_LAPIS_ORE.get())
+				.add(ItemRegistry.METEOR_EMERALD_ORE.get())
+				.add(ItemRegistry.METEOR_COPPER_ORE.get())
+				.add(ItemRegistry.METEOR_COAL_ORE.get())
+				.add(ItemRegistry.METEOR_IRON_ORE.get());
 
 	}
 

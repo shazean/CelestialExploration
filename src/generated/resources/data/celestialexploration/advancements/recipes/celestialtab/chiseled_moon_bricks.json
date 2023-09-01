@@ -1,0 +1,47 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "celestialexploration:chiseled_moon_bricks"
+    ]
+  },
+  "criteria": {
+    "moon_stone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:moon_stone"
+            ]
+          }
+        ]
+      }
+    },
+    "moon_bricks": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:moon_bricks"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "celestialexploration:chiseled_moon_bricks"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "moon_stone",
+      "moon_bricks",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:mars_sand"
+    ]
+  },
+  "criteria": {
+    "has_mars_sand": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:mars_sand"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:mars_sand"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_mars_sand",
+      "has_the_recipe"
+    ]
+  ]
+}

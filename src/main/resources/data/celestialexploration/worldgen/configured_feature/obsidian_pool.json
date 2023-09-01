@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:delta_feature",
+  "config": {
+    "contents": {
+      "Name": "minecraft:obsidian"
+    },
+    "rim": {
+      "Name": "minecraft:obsidian"
+    },
+    "size": {
+      "type": "minecraft:clamped_normal",
+      "value": {
+        "min_inclusive": 0,
+        "max_inclusive": 12,
+        "mean": 7,
+        "deviation": -1
+      }
+    },
+    "rim_size": {
+      "type": "minecraft:clamped_normal",
+      "value": {
+        "min_inclusive": 0,
+        "max_inclusive": 12,
+        "mean": 7,
+        "deviation": -1
+      }
+    }
+  }
+}

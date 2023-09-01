@@ -61,7 +61,7 @@ public class ModLanguageProvider extends LanguageProvider {
 
 		//OTHER
 		add(BlockRegistry.SOLAR_PANEL.get(), "Solar Panel");
-
+		add(BlockRegistry.IGNEOUS_ROCK.get(), "Igneous Rock");
 
 
 		//ARMOR

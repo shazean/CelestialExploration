@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "celestialexploration",
+  "pattern": [
+    "XXX",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:meteor_bricks"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:meteor_brick_wall"
+  }
+}

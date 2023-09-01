@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "celestialexploration:moon_stone",
+    "celestialexploration:moon_brick_slab",
+    "celestialexploration:moon_brick_stairs",
+    "celestialexploration:moon_brick_wall",
+    "celestialexploration:moon_bricks",
+    "celestialexploration:chiseled_moon_bricks",
+    "celestialexploration:glowing_moon_sand",
+    "celestialexploration:moon_iron_ore",
+    "celestialexploration:moon_redstone_ore",
+    "celestialexploration:moon_sand"
+  ]
+}

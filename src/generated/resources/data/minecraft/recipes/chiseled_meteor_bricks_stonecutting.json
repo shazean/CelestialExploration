@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "tag": "celestialexploration:meteor_tag"
+  },
+  "result": "celestialexploration:chiseled_meteor_bricks",
+  "count": 1
+}
