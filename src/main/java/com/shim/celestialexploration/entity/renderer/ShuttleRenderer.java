@@ -25,15 +25,22 @@ import java.util.stream.Stream;
 public class ShuttleRenderer<T extends Shuttle> extends EntityRenderer<T> {
 
         private static final ResourceLocation[] SHUTTLE_TEXTURE_LOCATIONS = new ResourceLocation[]{
-                new ResourceLocation(CelestialExploration.MODID, "textures/entity/shuttle/oak.png"),
+                new ResourceLocation(CelestialExploration.MODID, "textures/entity/shuttle/black.png"),
+                new ResourceLocation(CelestialExploration.MODID, "textures/entity/shuttle/grey.png"),
+                new ResourceLocation(CelestialExploration.MODID, "textures/entity/shuttle/light_grey.png"),
                 new ResourceLocation(CelestialExploration.MODID, "textures/entity/shuttle/white.png"),
+                new ResourceLocation(CelestialExploration.MODID, "textures/entity/shuttle/pink.png"),
+                new ResourceLocation(CelestialExploration.MODID, "textures/entity/shuttle/magenta.png"),
                 new ResourceLocation(CelestialExploration.MODID, "textures/entity/shuttle/red.png"),
+                new ResourceLocation(CelestialExploration.MODID, "textures/entity/shuttle/brown.png"),
                 new ResourceLocation(CelestialExploration.MODID, "textures/entity/shuttle/orange.png"),
                 new ResourceLocation(CelestialExploration.MODID, "textures/entity/shuttle/yellow.png"),
+                new ResourceLocation(CelestialExploration.MODID, "textures/entity/shuttle/lime.png"),
                 new ResourceLocation(CelestialExploration.MODID, "textures/entity/shuttle/green.png"),
+                new ResourceLocation(CelestialExploration.MODID, "textures/entity/shuttle/cyan.png"),
+                new ResourceLocation(CelestialExploration.MODID, "textures/entity/shuttle/light_blue.png"),
                 new ResourceLocation(CelestialExploration.MODID, "textures/entity/shuttle/blue.png"),
-                new ResourceLocation(CelestialExploration.MODID, "textures/entity/shuttle/purple.png"),
-                new ResourceLocation(CelestialExploration.MODID, "textures/entity/shuttle/black.png")};
+                new ResourceLocation(CelestialExploration.MODID, "textures/entity/shuttle/purple.png")};
 
         private final Map<Shuttle.Type, Pair<ResourceLocation, ShuttleModel>> shuttleResources;
 

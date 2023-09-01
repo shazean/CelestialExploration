@@ -196,14 +196,23 @@ public class ItemRegistry {
 
 	
 	
-	public static final RegistryObject<Item> OAK_SHUTTLE = ITEMS.register("oak_shuttle", () -> new ShuttleItem(Shuttle.Type.OAK, new Item.Properties().stacksTo(1).tab(CelestialExploration.CELESTIAL_TAB))); //FIXME add shuttle tab
-//	public static final RegistryObject<Item> RED_SHUTTLE = ITEMS.register("red_shuttle", () -> new ShuttleItem(ShuttleEntity.Color.RED, new Item.Properties().stacksTo(1).tab(Main.SHUTTLE_TAB)));
-//	public static final RegistryObject<Item> ORANGE_SHUTTLE = ITEMS.register("orange_shuttle", () -> new ShuttleItem(ShuttleEntity.Color.ORANGE, new Item.Properties().stacksTo(1).tab(Main.SHUTTLE_TAB)));
-//	public static final RegistryObject<Item> YELLOW_SHUTTLE = ITEMS.register("yellow_shuttle", () -> new ShuttleItem(ShuttleEntity.Color.YELLOW, new Item.Properties().stacksTo(1).tab(Main.SHUTTLE_TAB)));
-//	public static final RegistryObject<Item> GREEN_SHUTTLE = ITEMS.register("green_shuttle", () -> new ShuttleItem(ShuttleEntity.Color.GREEN, new Item.Properties().stacksTo(1).tab(Main.SHUTTLE_TAB)));
-//	public static final RegistryObject<Item> BLUE_SHUTTLE = ITEMS.register("blue_shuttle", () -> new ShuttleItem(ShuttleEntity.Color.BLUE, new Item.Properties().stacksTo(1).tab(Main.SHUTTLE_TAB)));
-//	public static final RegistryObject<Item> PURPLE_SHUTTLE = ITEMS.register("purple_shuttle", () -> new ShuttleItem(ShuttleEntity.Color.PURPLE, new Item.Properties().stacksTo(1).tab(Main.SHUTTLE_TAB)));
-//	public static final RegistryObject<Item> BLACK_SHUTTLE = ITEMS.register("black_shuttle", () -> new ShuttleItem(ShuttleEntity.Color.BLACK, new Item.Properties().stacksTo(1).tab(Main.SHUTTLE_TAB)));
+	public static final RegistryObject<Item> BLACK_SHUTTLE = ITEMS.register("black_shuttle", () -> new ShuttleItem(Shuttle.Type.BLACK, new Item.Properties().stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB)));
+	public static final RegistryObject<Item> GREY_SHUTTLE = ITEMS.register("grey_shuttle", () -> new ShuttleItem(Shuttle.Type.GREY, new Item.Properties().stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB)));
+	public static final RegistryObject<Item> LIGHT_GREY_SHUTTLE = ITEMS.register("light_grey_shuttle", () -> new ShuttleItem(Shuttle.Type.LIGHT_GREY, new Item.Properties().stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB)));
+	public static final RegistryObject<Item> WHITE_SHUTTLE = ITEMS.register("white_shuttle", () -> new ShuttleItem(Shuttle.Type.WHITE, new Item.Properties().stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB)));
+	public static final RegistryObject<Item> PINK_SHUTTLE = ITEMS.register("pink_shuttle", () -> new ShuttleItem(Shuttle.Type.PINK, new Item.Properties().stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB)));
+	public static final RegistryObject<Item> MAGENTA_SHUTTLE = ITEMS.register("magenta_shuttle", () -> new ShuttleItem(Shuttle.Type.MAGENTA, new Item.Properties().stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB)));
+	public static final RegistryObject<Item> RED_SHUTTLE = ITEMS.register("red_shuttle", () -> new ShuttleItem(Shuttle.Type.RED, new Item.Properties().stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB)));
+	public static final RegistryObject<Item> BROWN_SHUTTLE = ITEMS.register("brown_shuttle", () -> new ShuttleItem(Shuttle.Type.BROWN, new Item.Properties().stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB)));
+	public static final RegistryObject<Item> ORANGE_SHUTTLE = ITEMS.register("orange_shuttle", () -> new ShuttleItem(Shuttle.Type.ORANGE, new Item.Properties().stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB)));
+	public static final RegistryObject<Item> YELLOW_SHUTTLE = ITEMS.register("yellow_shuttle", () -> new ShuttleItem(Shuttle.Type.YELLOW, new Item.Properties().stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB)));
+	public static final RegistryObject<Item> LIME_SHUTTLE = ITEMS.register("lime_shuttle", () -> new ShuttleItem(Shuttle.Type.LIME, new Item.Properties().stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB)));
+	public static final RegistryObject<Item> GREEN_SHUTTLE = ITEMS.register("green_shuttle", () -> new ShuttleItem(Shuttle.Type.GREEN, new Item.Properties().stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB)));
+	public static final RegistryObject<Item> CYAN_SHUTTLE = ITEMS.register("cyan_shuttle", () -> new ShuttleItem(Shuttle.Type.CYAN, new Item.Properties().stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB)));
+	public static final RegistryObject<Item> LIGHT_BLUE_SHUTTLE = ITEMS.register("light_blue_shuttle", () -> new ShuttleItem(Shuttle.Type.LIGHT_BLUE, new Item.Properties().stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB)));
+	public static final RegistryObject<Item> BLUE_SHUTTLE = ITEMS.register("blue_shuttle", () -> new ShuttleItem(Shuttle.Type.BLUE, new Item.Properties().stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB)));
+	public static final RegistryObject<Item> PURPLE_SHUTTLE = ITEMS.register("purple_shuttle", () -> new ShuttleItem(Shuttle.Type.PURPLE, new Item.Properties().stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB)));
+
 
 	
 	

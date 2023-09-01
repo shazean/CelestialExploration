@@ -95,6 +95,13 @@ public class CelestialExploration {
         }
     };
 
+    public static final CreativeModeTab SHUTTLE_TAB = new CreativeModeTab("shuttletab") {
+        @Override
+        public ItemStack makeIcon() {
+            return new ItemStack(ItemRegistry.WHITE_SHUTTLE.get());
+        }
+    };
+
     private void setup(final FMLCommonSetupEvent event)
     {
 

@@ -1,15 +1,14 @@
 package com.shim.celestialexploration.entity;
 
 import com.google.common.collect.Lists;
-import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.registry.EntityRegistry;
 import com.shim.celestialexploration.registry.ItemRegistry;
 import com.shim.celestialexploration.util.Keybinds;
 import net.minecraft.BlockUtil;
-import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
@@ -17,29 +16,37 @@ import net.minecraft.network.protocol.game.ServerboundPaddleBoatPacket;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.sounds.SoundEvent;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.*;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.WaterAnimal;
+import net.minecraft.world.entity.animal.horse.AbstractHorse;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.vehicle.AbstractMinecartContainer;
 import net.minecraft.world.entity.vehicle.DismountHelper;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ChestMenu;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.WaterlilyBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.BooleanOp;
@@ -48,6 +55,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 import javax.annotation.Nullable;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class Shuttle extends Entity {
     private static final EntityDataAccessor<Integer> DATA_ID_HURT = SynchedEntityData.defineId(Shuttle.class, EntityDataSerializers.INT);
@@ -57,13 +65,6 @@ public class Shuttle extends Entity {
     private static final EntityDataAccessor<Boolean> DATA_ID_PADDLE_LEFT = SynchedEntityData.defineId(Shuttle.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> DATA_ID_PADDLE_RIGHT = SynchedEntityData.defineId(Shuttle.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Integer> DATA_ID_BUBBLE_TIME = SynchedEntityData.defineId(Shuttle.class, EntityDataSerializers.INT);
-    public static final int PADDLE_LEFT = 0;
-    public static final int PADDLE_RIGHT = 1;
-    private static final int TIME_TO_EJECT = 60;
-    private static final float PADDLE_SPEED = ((float)Math.PI / 8F);
-    public static final double PADDLE_SOUND_TIME = (double)((float)Math.PI / 4F);
-    public static final int BUBBLE_TIME = 60;
-    private final float[] paddlePositions = new float[2];
     private float invFriction;
     private float outOfControlTicks;
     private float deltaRotation;
@@ -73,21 +74,9 @@ public class Shuttle extends Entity {
     private double lerpZ;
     private double lerpYRot;
     private double lerpXRot;
-    private boolean inputLeft;
-    private boolean inputRight;
-    private boolean inputUp;
-    private boolean inputDown;
-    private double waterLevel;
-    private float landFriction;
     private Shuttle.Status status;
-    private Shuttle.Status oldStatus;
-    private double lastYd;
-    private boolean isAboveBubbleColumn;
-    private boolean bubbleColumnDirectionIsDown;
-    private float bubbleMultiplier;
-    private float bubbleAngle;
-    private float bubbleAngleO;
     private final float SHUTTLE_SPEED = .35F;
+    protected SimpleContainer inventory;
 
     public Shuttle(EntityType<? extends Shuttle> p_38290_, Level p_38291_) {
         super(p_38290_, p_38291_);
@@ -115,7 +104,7 @@ public class Shuttle extends Entity {
         this.entityData.define(DATA_ID_HURT, 0);
         this.entityData.define(DATA_ID_HURTDIR, 1);
         this.entityData.define(DATA_ID_DAMAGE, 0.0F);
-        this.entityData.define(DATA_ID_TYPE, Shuttle.Type.OAK.ordinal());
+        this.entityData.define(DATA_ID_TYPE, Type.WHITE.ordinal());
         this.entityData.define(DATA_ID_PADDLE_LEFT, false);
         this.entityData.define(DATA_ID_PADDLE_RIGHT, false);
         this.entityData.define(DATA_ID_BUBBLE_TIME, 0);
@@ -134,14 +123,14 @@ public class Shuttle extends Entity {
     }
 
     public boolean isPushable() {
-        return true;
+        return false;
     }
 
     protected Vec3 getRelativePortalPosition(Direction.Axis p_38335_, BlockUtil.FoundRectangle p_38336_) {
         return LivingEntity.resetForwardDirectionOfRelativePortalPosition(super.getRelativePortalPosition(p_38335_, p_38336_));
     }
 
-    public double getPassengersRidingOffset() {
+    public double getPassengersRidingOffset() {  //FIXME
         return -0.1D;
     }
 
@@ -169,49 +158,67 @@ public class Shuttle extends Entity {
         }
     }
 
-    public void onAboveBubbleCol(boolean p_38381_) {
-        if (!this.level.isClientSide) {
-            this.isAboveBubbleColumn = true;
-            this.bubbleColumnDirectionIsDown = p_38381_;
-            if (this.getBubbleTime() == 0) {
-                this.setBubbleTime(60);
-            }
-        }
+//    public void onAboveBubbleCol(boolean p_38381_) {
+//        if (!this.level.isClientSide) {
+//            this.isAboveBubbleColumn = true;
+//            this.bubbleColumnDirectionIsDown = p_38381_;
+//            if (this.getBubbleTime() == 0) {
+//                this.setBubbleTime(60);
+//            }
+//        }
+//
+//        this.level.addParticle(ParticleTypes.SPLASH, this.getX() + (double)this.random.nextFloat(), this.getY() + 0.7D, this.getZ() + (double)this.random.nextFloat(), 0.0D, 0.0D, 0.0D);
+//        if (this.random.nextInt(20) == 0) {
+//            this.level.playLocalSound(this.getX(), this.getY(), this.getZ(), this.getSwimSplashSound(), this.getSoundSource(), 1.0F, 0.8F + 0.4F * this.random.nextFloat(), false);
+//        }
+//
+//        this.gameEvent(GameEvent.SPLASH, this.getControllingPassenger());
+//    }
 
-        this.level.addParticle(ParticleTypes.SPLASH, this.getX() + (double)this.random.nextFloat(), this.getY() + 0.7D, this.getZ() + (double)this.random.nextFloat(), 0.0D, 0.0D, 0.0D);
-        if (this.random.nextInt(20) == 0) {
-            this.level.playLocalSound(this.getX(), this.getY(), this.getZ(), this.getSwimSplashSound(), this.getSoundSource(), 1.0F, 0.8F + 0.4F * this.random.nextFloat(), false);
-        }
-
-        this.gameEvent(GameEvent.SPLASH, this.getControllingPassenger());
-    }
-
-    public void push(Entity p_38373_) {
-        if (p_38373_ instanceof Shuttle) {
-            if (p_38373_.getBoundingBox().minY < this.getBoundingBox().maxY) {
-                super.push(p_38373_);
-            }
-        } else if (p_38373_.getBoundingBox().minY <= this.getBoundingBox().minY) {
-            super.push(p_38373_);
-        }
-
-    }
+//    public void push(Entity p_38373_) {
+//        if (p_38373_ instanceof Shuttle) {
+//            if (p_38373_.getBoundingBox().minY < this.getBoundingBox().maxY) {
+//                super.push(p_38373_);
+//            }
+//        } else if (p_38373_.getBoundingBox().minY <= this.getBoundingBox().minY) {
+//            super.push(p_38373_);
+//        }
+//
+//    }
 
     public Item getDropItem() {
         switch(this.getShuttleType()) {
-            case OAK:
+            case BLACK:
+                return ItemRegistry.BLACK_SHUTTLE.get();
+            case GREY:
+                return ItemRegistry.GREY_SHUTTLE.get();
+            case LIGHT_GREY:
+                return ItemRegistry.LIGHT_GREY_SHUTTLE.get();
+            case WHITE:
             default:
-                return ItemRegistry.OAK_SHUTTLE.get();
-            case SPRUCE:
-                return ItemRegistry.OAK_SHUTTLE.get(); //FIXME
-            case BIRCH:
-                return ItemRegistry.OAK_SHUTTLE.get();
-            case JUNGLE:
-                return ItemRegistry.OAK_SHUTTLE.get();
-            case ACACIA:
-                return ItemRegistry.OAK_SHUTTLE.get();
-            case DARK_OAK:
-                return ItemRegistry.OAK_SHUTTLE.get();
+                return ItemRegistry.WHITE_SHUTTLE.get();
+            case PINK:
+                return ItemRegistry.PINK_SHUTTLE.get();
+            case MAGENTA:
+                return ItemRegistry.MAGENTA_SHUTTLE.get();
+            case RED:
+                return ItemRegistry.RED_SHUTTLE.get();
+            case ORANGE:
+                return ItemRegistry.ORANGE_SHUTTLE.get();
+            case YELLOW:
+                return ItemRegistry.YELLOW_SHUTTLE.get();
+            case LIME:
+                return ItemRegistry.LIME_SHUTTLE.get();
+            case GREEN:
+                return ItemRegistry.GREEN_SHUTTLE.get();
+            case CYAN:
+                return ItemRegistry.CYAN_SHUTTLE.get();
+            case LIGHT_BLUE:
+                return ItemRegistry.LIGHT_BLUE_SHUTTLE.get();
+            case BLUE:
+                return ItemRegistry.BLUE_SHUTTLE.get();
+            case PURPLE:
+                return ItemRegistry.PURPLE_SHUTTLE.get();
         }
     }
 
@@ -239,7 +246,7 @@ public class Shuttle extends Entity {
     }
 
     public void tick() {
-        this.oldStatus = this.status;
+        Status oldStatus = this.status;
         this.status = this.getStatus();
         if (this.status != Shuttle.Status.UNDER_WATER && this.status != Shuttle.Status.UNDER_FLOWING_WATER) {
             this.outOfControlTicks = 0.0F;
@@ -263,10 +270,10 @@ public class Shuttle extends Entity {
         this.tickLerp();
         if (this.isControlledByLocalInstance()) {
             if (!(this.getFirstPassenger() instanceof Player)) {
-                this.setPaddleState(false, false);
+//                this.setPaddleState(false, false);
             }
 
-            this.floatShuttle();
+//            this.floatShuttle();
             if (this.level.isClientSide) {
                 this.controlShuttle();
                 this.level.sendPacketToServer(new ServerboundPaddleBoatPacket(this.getPaddleState(0), this.getPaddleState(1)));
@@ -277,26 +284,26 @@ public class Shuttle extends Entity {
             this.setDeltaMovement(Vec3.ZERO);
         }
 
-        this.tickBubbleColumn();
+//        this.tickBubbleColumn();
 
-        for(int i = 0; i <= 1; ++i) {
-            if (this.getPaddleState(i)) {
-                if (!this.isSilent() && (double)(this.paddlePositions[i] % ((float)Math.PI * 2F)) <= (double)((float)Math.PI / 4F) && (double)((this.paddlePositions[i] + ((float)Math.PI / 8F)) % ((float)Math.PI * 2F)) >= (double)((float)Math.PI / 4F)) {
-                    SoundEvent soundevent = this.getPaddleSound();
-                    if (soundevent != null) {
-                        Vec3 vec3 = this.getViewVector(1.0F);
-                        double d0 = i == 1 ? -vec3.z : vec3.z;
-                        double d1 = i == 1 ? vec3.x : -vec3.x;
-                        this.level.playSound((Player)null, this.getX() + d0, this.getY(), this.getZ() + d1, soundevent, this.getSoundSource(), 1.0F, 0.8F + 0.4F * this.random.nextFloat());
-                        this.level.gameEvent(this.getControllingPassenger(), GameEvent.SPLASH, new BlockPos(this.getX() + d0, this.getY(), this.getZ() + d1));
-                    }
-                }
-
-                this.paddlePositions[i] += ((float)Math.PI / 8F);
-            } else {
-                this.paddlePositions[i] = 0.0F;
-            }
-        }
+//        for(int i = 0; i <= 1; ++i) {
+//            if (this.getPaddleState(i)) {
+//                if (!this.isSilent() && (double)(this.paddlePositions[i] % ((float)Math.PI * 2F)) <= (double)((float)Math.PI / 4F) && (double)((this.paddlePositions[i] + ((float)Math.PI / 8F)) % ((float)Math.PI * 2F)) >= (double)((float)Math.PI / 4F)) {
+//                    SoundEvent soundevent = this.getPaddleSound();
+//                    if (soundevent != null) {
+//                        Vec3 vec3 = this.getViewVector(1.0F);
+//                        double d0 = i == 1 ? -vec3.z : vec3.z;
+//                        double d1 = i == 1 ? vec3.x : -vec3.x;
+//                        this.level.playSound((Player)null, this.getX() + d0, this.getY(), this.getZ() + d1, soundevent, this.getSoundSource(), 1.0F, 0.8F + 0.4F * this.random.nextFloat());
+//                        this.level.gameEvent(this.getControllingPassenger(), GameEvent.SPLASH, new BlockPos(this.getX() + d0, this.getY(), this.getZ() + d1));
+//                    }
+//                }
+//
+//                this.paddlePositions[i] += ((float)Math.PI / 8F);
+//            } else {
+//                this.paddlePositions[i] = 0.0F;
+//            }
+//        }
 
         this.checkInsideBlocks();
         List<Entity> list = this.level.getEntities(this, this.getBoundingBox().inflate((double)0.2F, (double)-0.01F, (double)0.2F), EntitySelector.pushableBy(this));
@@ -317,61 +324,61 @@ public class Shuttle extends Entity {
 
     }
 
-    private void tickBubbleColumn() {
-        if (this.level.isClientSide) {
-            int i = this.getBubbleTime();
-            if (i > 0) {
-                this.bubbleMultiplier += 0.05F;
-            } else {
-                this.bubbleMultiplier -= 0.1F;
-            }
+//    private void tickBubbleColumn() {
+//        if (this.level.isClientSide) {
+//            int i = this.getBubbleTime();
+//            if (i > 0) {
+//                this.bubbleMultiplier += 0.05F;
+//            } else {
+//                this.bubbleMultiplier -= 0.1F;
+//            }
+//
+//            this.bubbleMultiplier = Mth.clamp(this.bubbleMultiplier, 0.0F, 1.0F);
+//            this.bubbleAngleO = this.bubbleAngle;
+//            this.bubbleAngle = 10.0F * (float)Math.sin((double)(0.5F * (float)this.level.getGameTime())) * this.bubbleMultiplier;
+//        } else {
+//            if (!this.isAboveBubbleColumn) {
+//                this.setBubbleTime(0);
+//            }
+//
+//            int k = this.getBubbleTime();
+//            if (k > 0) {
+//                --k;
+//                this.setBubbleTime(k);
+//                int j = 60 - k - 1;
+//                if (j > 0 && k == 0) {
+//                    this.setBubbleTime(0);
+//                    Vec3 vec3 = this.getDeltaMovement();
+//                    if (this.bubbleColumnDirectionIsDown) {
+//                        this.setDeltaMovement(vec3.add(0.0D, -0.7D, 0.0D));
+//                        this.ejectPassengers();
+//                    } else {
+//                        this.setDeltaMovement(vec3.x, this.hasPassenger((p_150274_) -> {
+//                            return p_150274_ instanceof Player;
+//                        }) ? 2.7D : 0.6D, vec3.z);
+//                    }
+//                }
+//
+//                this.isAboveBubbleColumn = false;
+//            }
+//        }
+//
+//    }
 
-            this.bubbleMultiplier = Mth.clamp(this.bubbleMultiplier, 0.0F, 1.0F);
-            this.bubbleAngleO = this.bubbleAngle;
-            this.bubbleAngle = 10.0F * (float)Math.sin((double)(0.5F * (float)this.level.getGameTime())) * this.bubbleMultiplier;
-        } else {
-            if (!this.isAboveBubbleColumn) {
-                this.setBubbleTime(0);
-            }
-
-            int k = this.getBubbleTime();
-            if (k > 0) {
-                --k;
-                this.setBubbleTime(k);
-                int j = 60 - k - 1;
-                if (j > 0 && k == 0) {
-                    this.setBubbleTime(0);
-                    Vec3 vec3 = this.getDeltaMovement();
-                    if (this.bubbleColumnDirectionIsDown) {
-                        this.setDeltaMovement(vec3.add(0.0D, -0.7D, 0.0D));
-                        this.ejectPassengers();
-                    } else {
-                        this.setDeltaMovement(vec3.x, this.hasPassenger((p_150274_) -> {
-                            return p_150274_ instanceof Player;
-                        }) ? 2.7D : 0.6D, vec3.z);
-                    }
-                }
-
-                this.isAboveBubbleColumn = false;
-            }
-        }
-
-    }
-
-    @javax.annotation.Nullable
-    protected SoundEvent getPaddleSound() {
-        switch(this.getStatus()) {
-            case IN_WATER:
-            case UNDER_WATER:
-            case UNDER_FLOWING_WATER:
-                return SoundEvents.BOAT_PADDLE_WATER;
-            case ON_LAND:
-                return SoundEvents.BOAT_PADDLE_LAND;
-            case IN_AIR:
-            default:
-                return null;
-        }
-    }
+//    @javax.annotation.Nullable
+//    protected SoundEvent getPaddleSound() {
+//        switch(this.getStatus()) {
+//            case IN_WATER:
+//            case UNDER_WATER:
+//            case UNDER_FLOWING_WATER:
+//                return SoundEvents.BOAT_PADDLE_WATER;
+//            case ON_LAND:
+//                return SoundEvents.BOAT_PADDLE_LAND;
+//            case IN_AIR:
+//            default:
+//                return null;
+//        }
+//    }
 
     private void tickLerp() {
         if (this.isControlledByLocalInstance()) {
@@ -392,26 +399,25 @@ public class Shuttle extends Entity {
         }
     }
 
-    public void setPaddleState(boolean p_38340_, boolean p_38341_) {
-        this.entityData.set(DATA_ID_PADDLE_LEFT, p_38340_);
-        this.entityData.set(DATA_ID_PADDLE_RIGHT, p_38341_);
-    }
+//    public void setPaddleState(boolean p_38340_, boolean p_38341_) {
+//        this.entityData.set(DATA_ID_PADDLE_LEFT, p_38340_);
+//        this.entityData.set(DATA_ID_PADDLE_RIGHT, p_38341_);
+//    }
 
-    public float getRowingTime(int p_38316_, float p_38317_) {
-        return this.getPaddleState(p_38316_) ? Mth.clampedLerp(this.paddlePositions[p_38316_] - ((float)Math.PI / 8F), this.paddlePositions[p_38316_], p_38317_) : 0.0F;
-    }
+//    public float getRowingTime(int p_38316_, float p_38317_) {
+//        return this.getPaddleState(p_38316_) ? Mth.clampedLerp(this.paddlePositions[p_38316_] - ((float)Math.PI / 8F), this.paddlePositions[p_38316_], p_38317_) : 0.0F;
+//    }
 
     private Shuttle.Status getStatus() {
         Shuttle.Status suttle$status = this.isUnderwater();
         if (suttle$status != null) {
-            this.waterLevel = this.getBoundingBox().maxY;
+            double waterLevel = this.getBoundingBox().maxY;
             return suttle$status;
-        } else if (this.checkInWater()) {
-            return Shuttle.Status.IN_WATER;
+//        } else if (this.checkInWater()) {
+//            return Shuttle.Status.IN_WATER;
         } else {
             float f = this.getGroundFriction();
             if (f > 0.0F) {
-                this.landFriction = f;
                 return Shuttle.Status.ON_LAND;
             } else {
                 return Shuttle.Status.IN_AIR;
@@ -419,41 +425,41 @@ public class Shuttle extends Entity {
         }
     }
 
-    public float getWaterLevelAbove() {
-        AABB aabb = this.getBoundingBox();
-        int i = Mth.floor(aabb.minX);
-        int j = Mth.ceil(aabb.maxX);
-        int k = Mth.floor(aabb.maxY);
-        int l = Mth.ceil(aabb.maxY - this.lastYd);
-        int i1 = Mth.floor(aabb.minZ);
-        int j1 = Mth.ceil(aabb.maxZ);
-        BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
-
-        label39:
-        for(int k1 = k; k1 < l; ++k1) {
-            float f = 0.0F;
-
-            for(int l1 = i; l1 < j; ++l1) {
-                for(int i2 = i1; i2 < j1; ++i2) {
-                    blockpos$mutableblockpos.set(l1, k1, i2);
-                    FluidState fluidstate = this.level.getFluidState(blockpos$mutableblockpos);
-                    if (fluidstate.is(FluidTags.WATER)) {
-                        f = Math.max(f, fluidstate.getHeight(this.level, blockpos$mutableblockpos));
-                    }
-
-                    if (f >= 1.0F) {
-                        continue label39;
-                    }
-                }
-            }
-
-            if (f < 1.0F) {
-                return (float)blockpos$mutableblockpos.getY() + f;
-            }
-        }
-
-        return (float)(l + 1);
-    }
+//    public float getWaterLevelAbove() {
+//        AABB aabb = this.getBoundingBox();
+//        int i = Mth.floor(aabb.minX);
+//        int j = Mth.ceil(aabb.maxX);
+//        int k = Mth.floor(aabb.maxY);
+//        int l = Mth.ceil(aabb.maxY - this.lastYd);
+//        int i1 = Mth.floor(aabb.minZ);
+//        int j1 = Mth.ceil(aabb.maxZ);
+//        BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
+//
+//        label39:
+//        for(int k1 = k; k1 < l; ++k1) {
+//            float f = 0.0F;
+//
+//            for(int l1 = i; l1 < j; ++l1) {
+//                for(int i2 = i1; i2 < j1; ++i2) {
+//                    blockpos$mutableblockpos.set(l1, k1, i2);
+//                    FluidState fluidstate = this.level.getFluidState(blockpos$mutableblockpos);
+//                    if (fluidstate.is(FluidTags.WATER)) {
+//                        f = Math.max(f, fluidstate.getHeight(this.level, blockpos$mutableblockpos));
+//                    }
+//
+//                    if (f >= 1.0F) {
+//                        continue label39;
+//                    }
+//                }
+//            }
+//
+//            if (f < 1.0F) {
+//                return (float)blockpos$mutableblockpos.getY() + f;
+//            }
+//        }
+//
+//        return (float)(l + 1);
+//    }
 
     public float getGroundFriction() {
         AABB aabb = this.getBoundingBox();
@@ -491,34 +497,34 @@ public class Shuttle extends Entity {
 //        return 0;
     }
 
-    private boolean checkInWater() {
-        AABB aabb = this.getBoundingBox();
-        int i = Mth.floor(aabb.minX);
-        int j = Mth.ceil(aabb.maxX);
-        int k = Mth.floor(aabb.minY);
-        int l = Mth.ceil(aabb.minY + 0.001D);
-        int i1 = Mth.floor(aabb.minZ);
-        int j1 = Mth.ceil(aabb.maxZ);
-        boolean flag = false;
-        this.waterLevel = -Double.MAX_VALUE;
-        BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
-
-        for(int k1 = i; k1 < j; ++k1) {
-            for(int l1 = k; l1 < l; ++l1) {
-                for(int i2 = i1; i2 < j1; ++i2) {
-                    blockpos$mutableblockpos.set(k1, l1, i2);
-                    FluidState fluidstate = this.level.getFluidState(blockpos$mutableblockpos);
-                    if (fluidstate.is(FluidTags.WATER)) {
-                        float f = (float)l1 + fluidstate.getHeight(this.level, blockpos$mutableblockpos);
-                        this.waterLevel = Math.max((double)f, this.waterLevel);
-                        flag |= aabb.minY < (double)f;
-                    }
-                }
-            }
-        }
-
-        return flag;
-    }
+//    private boolean checkInWater() {
+//        AABB aabb = this.getBoundingBox();
+//        int i = Mth.floor(aabb.minX);
+//        int j = Mth.ceil(aabb.maxX);
+//        int k = Mth.floor(aabb.minY);
+//        int l = Mth.ceil(aabb.minY + 0.001D);
+//        int i1 = Mth.floor(aabb.minZ);
+//        int j1 = Mth.ceil(aabb.maxZ);
+//        boolean flag = false;
+//        this.waterLevel = -Double.MAX_VALUE;
+//        BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
+//
+//        for(int k1 = i; k1 < j; ++k1) {
+//            for(int l1 = k; l1 < l; ++l1) {
+//                for(int i2 = i1; i2 < j1; ++i2) {
+//                    blockpos$mutableblockpos.set(k1, l1, i2);
+//                    FluidState fluidstate = this.level.getFluidState(blockpos$mutableblockpos);
+//                    if (fluidstate.is(FluidTags.WATER)) {
+//                        float f = (float)l1 + fluidstate.getHeight(this.level, blockpos$mutableblockpos);
+//                        this.waterLevel = Math.max((double)f, this.waterLevel);
+//                        flag |= aabb.minY < (double)f;
+//                    }
+//                }
+//            }
+//        }
+//
+//        return flag;
+//    }
 
     @javax.annotation.Nullable
     private Shuttle.Status isUnderwater() {
@@ -552,46 +558,46 @@ public class Shuttle extends Entity {
         return flag ? Shuttle.Status.UNDER_WATER : null;
     }
 
-    private void floatShuttle() {
-        double d0 = (double)-0.04F;
-        double d1 = this.isNoGravity() ? 0.0D : (double)-0.04F;
-        double d2 = 0.0D;
-        this.invFriction = 0.05F;
-        if (this.oldStatus == Shuttle.Status.IN_AIR && this.status != Shuttle.Status.IN_AIR && this.status != Shuttle.Status.ON_LAND) {
-            this.waterLevel = this.getY(1.0D);
-            this.setPos(this.getX(), (double)(this.getWaterLevelAbove() - this.getBbHeight()) + 0.101D, this.getZ());
-            this.setDeltaMovement(this.getDeltaMovement().multiply(1.0D, 0.0D, 1.0D));
-            this.lastYd = 0.0D;
-            this.status = Shuttle.Status.IN_WATER;
-        } else {
-            if (this.status == Shuttle.Status.IN_WATER) {
-                d2 = (this.waterLevel - this.getY()) / (double)this.getBbHeight();
-                this.invFriction = 0.9F;
-            } else if (this.status == Shuttle.Status.UNDER_FLOWING_WATER) {
-                d1 = -7.0E-4D;
-                this.invFriction = 0.9F;
-            } else if (this.status == Shuttle.Status.UNDER_WATER) {
-                d2 = (double)0.01F;
-                this.invFriction = 0.45F;
-            } else if (this.status == Shuttle.Status.IN_AIR) {
-                this.invFriction = 0.9F;
-            } else if (this.status == Shuttle.Status.ON_LAND) {
-                this.invFriction = this.landFriction;
-                if (this.getControllingPassenger() instanceof Player) {
-                    this.landFriction /= 2.0F;
-                }
-            }
-
-            Vec3 vec3 = this.getDeltaMovement();
-            this.setDeltaMovement(vec3.x * (double)this.invFriction, vec3.y + d1, vec3.z * (double)this.invFriction);
-            this.deltaRotation *= this.invFriction;
-            if (d2 > 0.0D) {
-                Vec3 vec31 = this.getDeltaMovement();
-                this.setDeltaMovement(vec31.x, (vec31.y + d2 * 0.06153846016296973D) * 0.75D, vec31.z);
-            }
-        }
-
-    }
+//    private void floatShuttle() {
+//        double d0 = (double)-0.04F;
+//        double d1 = this.isNoGravity() ? 0.0D : (double)-0.04F;
+//        double d2 = 0.0D;
+//        this.invFriction = 0.05F;
+//        if (this.oldStatus == Shuttle.Status.IN_AIR && this.status != Shuttle.Status.IN_AIR && this.status != Shuttle.Status.ON_LAND) {
+//            this.waterLevel = this.getY(1.0D);
+//            this.setPos(this.getX(), (double)(this.getWaterLevelAbove() - this.getBbHeight()) + 0.101D, this.getZ());
+//            this.setDeltaMovement(this.getDeltaMovement().multiply(1.0D, 0.0D, 1.0D));
+//            this.lastYd = 0.0D;
+//            this.status = Shuttle.Status.IN_WATER;
+//        } else {
+//            if (this.status == Shuttle.Status.IN_WATER) {
+//                d2 = (this.waterLevel - this.getY()) / (double)this.getBbHeight();
+//                this.invFriction = 0.9F;
+//            } else if (this.status == Shuttle.Status.UNDER_FLOWING_WATER) {
+//                d1 = -7.0E-4D;
+//                this.invFriction = 0.9F;
+//            } else if (this.status == Shuttle.Status.UNDER_WATER) {
+//                d2 = (double)0.01F;
+//                this.invFriction = 0.45F;
+//            } else if (this.status == Shuttle.Status.IN_AIR) {
+//                this.invFriction = 0.9F;
+//            } else if (this.status == Shuttle.Status.ON_LAND) {
+//                this.invFriction = this.landFriction;
+//                if (this.getControllingPassenger() instanceof Player) {
+//                    this.landFriction /= 2.0F;
+//                }
+//            }
+//
+//            Vec3 vec3 = this.getDeltaMovement();
+//            this.setDeltaMovement(vec3.x * (double)this.invFriction, vec3.y + d1, vec3.z * (double)this.invFriction);
+//            this.deltaRotation *= this.invFriction;
+//            if (d2 > 0.0D) {
+//                Vec3 vec31 = this.getDeltaMovement();
+//                this.setDeltaMovement(vec31.x, (vec31.y + d2 * 0.06153846016296973D) * 0.75D, vec31.z);
+//            }
+//        }
+//
+//    }
 
     private void controlShuttle() {
         if (this.isVehicle()) {
@@ -635,7 +641,7 @@ public class Shuttle extends Entity {
 
 
 
-    public void positionRider(Entity p_38379_) {
+    public void positionRider(Entity p_38379_) { //FIXME
         if (this.hasPassenger(p_38379_)) {
             float f = 0.0F;
             float f1 = (float)((this.isRemoved() ? (double)0.01F : this.getPassengersRidingOffset()) + p_38379_.getMyRidingOffset());
@@ -712,6 +718,7 @@ public class Shuttle extends Entity {
 
     protected void addAdditionalSaveData(CompoundTag p_38359_) {
         p_38359_.putString("Type", this.getShuttleType().getName());
+
     }
 
     protected void readAdditionalSaveData(CompoundTag p_38338_) {
@@ -720,6 +727,8 @@ public class Shuttle extends Entity {
         }
 
     }
+
+
 
     public InteractionResult interact(Player p_38330_, InteractionHand p_38331_) {
         if (p_38330_.isSecondaryUseActive()) {
@@ -736,7 +745,7 @@ public class Shuttle extends Entity {
     }
 
     protected void checkFallDamage(double p_38307_, boolean p_38308_, BlockState p_38309_, BlockPos p_38310_) {
-        this.lastYd = this.getDeltaMovement().y;
+        double lastYd = this.getDeltaMovement().y;
         if (!this.isPassenger()) {
             if (p_38308_) {
                 if (this.fallDistance > 3.0F) {
@@ -750,7 +759,7 @@ public class Shuttle extends Entity {
                         this.kill();
                         if (this.level.getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
                             for(int i = 0; i < 3; ++i) {
-                                this.spawnAtLocation(this.getShuttleType().getPlanks());
+                                this.spawnAtLocation(this.getShuttleType().getDye());
                             }
 
                             for(int j = 0; j < 2; ++j) {
@@ -788,17 +797,17 @@ public class Shuttle extends Entity {
         return this.entityData.get(DATA_ID_HURT);
     }
 
-    private void setBubbleTime(int p_38367_) {
-        this.entityData.set(DATA_ID_BUBBLE_TIME, p_38367_);
-    }
-
-    private int getBubbleTime() {
-        return this.entityData.get(DATA_ID_BUBBLE_TIME);
-    }
-
-    public float getBubbleAngle(float p_38353_) {
-        return Mth.lerp(p_38353_, this.bubbleAngleO, this.bubbleAngle);
-    }
+//    private void setBubbleTime(int p_38367_) {
+//        this.entityData.set(DATA_ID_BUBBLE_TIME, p_38367_);
+//    }
+//
+//    private int getBubbleTime() {
+//        return this.entityData.get(DATA_ID_BUBBLE_TIME);
+//    }
+//
+//    public float getBubbleAngle(float p_38353_) {
+//        return Mth.lerp(p_38353_, this.bubbleAngleO, this.bubbleAngle);
+//    }
 
     public void setHurtDir(int p_38363_) {
         this.entityData.set(DATA_ID_HURTDIR, p_38363_);
@@ -825,12 +834,12 @@ public class Shuttle extends Entity {
         return this.getFirstPassenger();
     }
 
-    public void setInput(boolean p_38343_, boolean p_38344_, boolean p_38345_, boolean p_38346_) {
-        this.inputLeft = p_38343_;
-        this.inputRight = p_38344_;
-        this.inputUp = p_38345_;
-        this.inputDown = p_38346_;
-    }
+//    public void setInput(boolean p_38343_, boolean p_38344_, boolean p_38345_, boolean p_38346_) {
+//        this.inputLeft = p_38343_;
+//        this.inputRight = p_38344_;
+//        this.inputUp = p_38345_;
+//        this.inputDown = p_38346_;
+//    }
 
     public Packet<?> getAddEntityPacket() {
         return new ClientboundAddEntityPacket(this);
@@ -850,11 +859,9 @@ public class Shuttle extends Entity {
         }
     }
 
-    public ItemStack getPickResult() {
-        return new ItemStack(this.getDropItem());
-    }
 
-    public static enum Status {
+
+    public enum Status {
         IN_WATER,
         UNDER_WATER,
         UNDER_FLOWING_WATER,
@@ -862,28 +869,38 @@ public class Shuttle extends Entity {
         IN_AIR;
     }
 
-    public static enum Type {
-        OAK(Blocks.OAK_PLANKS, "oak"),
-        SPRUCE(Blocks.SPRUCE_PLANKS, "spruce"),
-        BIRCH(Blocks.BIRCH_PLANKS, "birch"),
-        JUNGLE(Blocks.JUNGLE_PLANKS, "jungle"),
-        ACACIA(Blocks.ACACIA_PLANKS, "acacia"),
-        DARK_OAK(Blocks.DARK_OAK_PLANKS, "dark_oak");
+    public enum Type {
+        BLACK(Items.BLACK_DYE, "black"),
+        GREY(Items.GRAY_DYE, "grey"),
+        LIGHT_GREY(Items.LIGHT_GRAY_DYE, "light_grey"),
+        WHITE(Items.WHITE_DYE, "white"),
+        PINK(Items.PINK_DYE, "pink"),
+        MAGENTA(Items.MAGENTA_DYE, "magenta"),
+        RED(Items.RED_DYE, "red"),
+        BROWN(Items.BROWN_DYE, "brown"),
+        ORANGE(Items.ORANGE_DYE, "orange"),
+        YELLOW(Items.YELLOW_DYE, "yellow"),
+        LIME(Items.LIME_DYE, "lime"),
+        GREEN(Items.GREEN_DYE, "green"),
+        CYAN(Items.CYAN_DYE, "cyan"),
+        LIGHT_BLUE(Items.LIGHT_BLUE_DYE, "light_blue"),
+        BLUE(Items.RED_DYE, "blue"),
+        PURPLE(Items.RED_DYE, "purple");
 
         private final String name;
-        private final Block planks;
+        private final Item dye;
 
-        private Type(Block p_38427_, String p_38428_) {
-            this.name = p_38428_;
-            this.planks = p_38427_;
+        Type(Item dye, String name) {
+            this.name = name;
+            this.dye = dye;
         }
 
         public String getName() {
             return this.name;
         }
 
-        public Block getPlanks() {
-            return this.planks;
+        public Item getDye() {
+            return this.dye;
         }
 
         public String toString() {
