@@ -5,9 +5,7 @@ import java.util.function.ToIntFunction;
 
 import com.shim.celestialexploration.CelestialExploration;
 
-import com.shim.celestialexploration.blocks.MarsPortalBlock;
-import com.shim.celestialexploration.blocks.MoonPortalBlock;
-import com.shim.celestialexploration.blocks.SolarPanelBlock;
+import com.shim.celestialexploration.blocks.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
@@ -165,6 +163,8 @@ public class BlockRegistry {
 
 
 //	public static final RegistryObject<Block> ASSEMBLY_STATION = BLOCKS.register("assembly_station", () -> new AssemblyStationBlock(Block.Properties.of(Material.HEAVY_METAL, MaterialColor.METAL).strength(5.0F, 6.0F).sound(SoundType.METAL)));
+	public static final RegistryObject<Block> OXYGEN_COMPRESSOR = BLOCKS.register("oxygen_compressor", () -> new OxygenCompressorBlock(Block.Properties.of(Material.HEAVY_METAL, MaterialColor.METAL).lightLevel(litBlockEmission(10)).strength(5.0F, 6.0F).sound(SoundType.METAL)));
+
 
 //	public static final RegistryObject<Block> SOLAR_PANEL = BLOCKS.register("solar_panel", () -> new SolarPanelBlock(Block.Properties.of(Material.DECORATION, MaterialColor.METAL).noCollission().sound(SoundType.METAL).lightLevel(litBlockEmission(1))));
 

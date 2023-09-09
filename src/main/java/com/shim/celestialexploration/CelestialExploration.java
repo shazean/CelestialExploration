@@ -5,9 +5,12 @@ import java.util.stream.Collectors;
 
 import com.shim.celestialexploration.entity.RustSlimeEntity;
 import com.shim.celestialexploration.entity.renderer.*;
+import com.shim.celestialexploration.inventory.menus.OxygenCompressorMenu;
+import com.shim.celestialexploration.inventory.screens.OxygenCompressorScreen;
 import com.shim.celestialexploration.registry.*;
 import com.shim.celestialexploration.util.Keybinds;
 import com.shim.celestialexploration.world.renderer.DimensionRenderers;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderers;
@@ -69,7 +72,8 @@ public class CelestialExploration {
         BlockRegistry.init();
         ItemRegistry.init();
         ContainerRegistry.init();
-        BlockEntityRegistry.init();
+        BlockEntityRegistry.register(modEventBus);
+        MenuRegistry.register(modEventBus);
 
         StructureRegistry.DEFERRED_REGISTRY_STRUCTURE.register(modEventBus);
         PortalRegistry.register(modEventBus);
@@ -144,14 +148,7 @@ public class CelestialExploration {
 
     public void clientSetup(final FMLClientSetupEvent event)
     {
-        LOGGER.info("HELLO FROM CLIENTSETUP");
-        LOGGER.info("SAND BLOCK >> {}", Blocks.SAND.getRegistryName());
-
-
-        event.enqueueWork(() -> {
-            DimensionRenderers.setDimensionEffects();
-        });
-
+        event.enqueueWork(DimensionRenderers::setDimensionEffects);
 
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.MARS_PORTAL.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.MOON_PORTAL.get(), RenderType.translucent());
@@ -161,6 +158,8 @@ public class CelestialExploration {
         EntityRenderers.register(EntityRegistry.MARS_MALLOW.get(), MarsMallowRenderer::new);
         EntityRenderers.register(EntityRegistry.LURKER.get(), LurkerRenderer::new);
         EntityRenderers.register(EntityRegistry.SHUTTLE.get(), ShuttleRenderer::new);
+
+        MenuScreens.register(MenuRegistry.OXYGEN_COMPRESSOR_MENU.get(), OxygenCompressorScreen::new);
 
     }
 

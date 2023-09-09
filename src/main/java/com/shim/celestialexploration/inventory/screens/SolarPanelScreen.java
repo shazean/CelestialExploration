@@ -1,9 +1,9 @@
-package com.shim.celestialexploration.blocks.screens;
+package com.shim.celestialexploration.inventory.screens;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.blocks.containers.SolarPanelContainer;
+import com.shim.celestialexploration.inventory.containers.SolarPanelContainer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;

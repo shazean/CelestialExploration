@@ -33,6 +33,7 @@
   "block.celestialexploration.moon_redstone_ore": "Lunar Redstone Ore",
   "block.celestialexploration.moon_sand": "Lunar Regolith",
   "block.celestialexploration.moon_stone": "Lunar Stone",
+  "block.celestialexploration.oxygen_compressor": "Oxygen Compressor",
   "block.celestialexploration.solar_panel": "Solar Panel",
   "item.celestialexploration.lunar_spawn_egg": "Lunar Slime Spawn Egg",
   "item.celestialexploration.lurker_spawn_egg": "Lurker Spawn Egg",
@@ -46,5 +47,6 @@
   "item.celestialexploration.steel_chestplate": "Steel Chestplate",
   "item.celestialexploration.steel_helmet": "Steel Helmet",
   "item.celestialexploration.steel_leggings": "Steel Leggings",
-  "itemGroup.celestialtab": "Celestial Tab"
+  "itemGroup.celestialtab": "Celestial Tab",
+  "container.oxygen_compressor": "Oxygen Compressor"
 }

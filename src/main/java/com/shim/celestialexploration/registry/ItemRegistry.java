@@ -10,10 +10,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.item.ArmorItem;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.Item;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -146,7 +143,15 @@ public class ItemRegistry {
 
 	
 //	public static final RegistryObject<Item> DRY_ICE = ITEMS.register("dry_ice", () -> new BlockItemBase(RegistryBlocks.DRY_ICE.get()));
-//	public static final RegistryObject<Item> ASSEMBLY_STATION = ITEMS.register("assembly_station",  () -> new BlockItemBase(RegistryBlocks.ASSEMBLY_STATION.get()));
+//	public static final RegistryObject<Item> ASSEMBLY_STATION = fromBlock(BlockRegistry.ASSEMBLY_STATION);
+	public static final RegistryObject<Item> OXYGEN_COMPRESSOR = fromBlock(BlockRegistry.OXYGEN_COMPRESSOR);
+
+	//TODO make a placeable bucket item
+	public static final RegistryObject<Item> LOX_TANK = ITEMS.register("lox_tank", () -> new Item((new Item.Properties()).tab(CelestialExploration.SHUTTLE_TAB)));
+	public static final RegistryObject<Item> FILLED_LOX_TANK = ITEMS.register("filled_lox_tank", () -> new Item((new Item.Properties()).tab(CelestialExploration.SHUTTLE_TAB)));
+
+
+
 //	public static final RegistryObject<Item> SOLAR_PANEL = ITEMS.register("solar_panel",  () -> new BlockItemBase(RegistryBlocks.SOLAR_PANEL.get()));
 
 	//SPAWN EGGS

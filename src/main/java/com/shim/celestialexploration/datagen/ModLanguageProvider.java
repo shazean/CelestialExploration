@@ -80,6 +80,9 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(ItemRegistry.MARS_MALLOW_SPAWN_EGG.get(), "Mars Mallow Spawn Egg");
 		add(ItemRegistry.LURKER_SPAWN_EGG.get(), "Lurker Spawn Egg");
 
+//		add(ItemRegistry.ASSEMBLY_STATION.get(), "Assembly Station");
+		add(ItemRegistry.OXYGEN_COMPRESSOR.get(), "Oxygen Compressor");
+
 
 	}
 	

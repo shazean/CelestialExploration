@@ -2,7 +2,8 @@ package com.shim.celestialexploration.registry;
 
 import com.shim.celestialexploration.CelestialExploration;
 
-import com.shim.celestialexploration.blocks.containers.SolarPanelContainer;
+import com.shim.celestialexploration.inventory.containers.SolarPanelContainer;
+import com.shim.celestialexploration.inventory.menus.OxygenCompressorMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.level.Level;

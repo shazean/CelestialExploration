@@ -1,4 +1,4 @@
-package com.shim.celestialexploration.blocks.containers;
+package com.shim.celestialexploration.inventory.containers;
 
 import com.shim.celestialexploration.registry.BlockRegistry;
 import com.shim.celestialexploration.registry.ContainerRegistry;

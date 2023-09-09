@@ -1,7 +1,7 @@
 package com.shim.celestialexploration.blocks;
 
 import com.shim.celestialexploration.blocks.blockentities.SolarPanelBlockEntity;
-import com.shim.celestialexploration.blocks.containers.SolarPanelContainer;
+import com.shim.celestialexploration.inventory.containers.SolarPanelContainer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
