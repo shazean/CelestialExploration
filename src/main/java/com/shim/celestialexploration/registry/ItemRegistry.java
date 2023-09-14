@@ -4,6 +4,7 @@ import com.shim.celestialexploration.CelestialExploration;
 
 import com.shim.celestialexploration.entity.Shuttle;
 import com.shim.celestialexploration.item.CatalystItem;
+import com.shim.celestialexploration.item.LoxTankItem;
 import com.shim.celestialexploration.item.ModArmorMaterials;
 import com.shim.celestialexploration.item.ShuttleItem;
 import net.minecraft.resources.ResourceLocation;
@@ -146,9 +147,9 @@ public class ItemRegistry {
 //	public static final RegistryObject<Item> ASSEMBLY_STATION = fromBlock(BlockRegistry.ASSEMBLY_STATION);
 	public static final RegistryObject<Item> OXYGEN_COMPRESSOR = fromBlock(BlockRegistry.OXYGEN_COMPRESSOR);
 
-	//TODO make a placeable bucket item
-	public static final RegistryObject<Item> LOX_TANK = ITEMS.register("lox_tank", () -> new Item((new Item.Properties()).tab(CelestialExploration.SHUTTLE_TAB)));
-	public static final RegistryObject<Item> FILLED_LOX_TANK = ITEMS.register("filled_lox_tank", () -> new Item((new Item.Properties()).tab(CelestialExploration.SHUTTLE_TAB)));
+	public static final RegistryObject<Item> LOX_TANK = ITEMS.register("lox_tank", () -> new LoxTankItem(BlockRegistry.LOX_TANK.get(), new Item.Properties().tab(CelestialExploration.SHUTTLE_TAB).stacksTo(1)));
+//	public static final RegistryObject<Item> FILLED_LOX_TANK = ITEMS.register("filled_lox_tank", () -> new Item((new Item.Properties()).tab(CelestialExploration.SHUTTLE_TAB)));
+	public static final RegistryObject<Item> LOX_BUCKET = ITEMS.register("lox_bucket", () -> new BucketItem(FluidRegistry.LOX_STILL, new Item.Properties().tab(CelestialExploration.SHUTTLE_TAB).stacksTo(1)));
 
 
 

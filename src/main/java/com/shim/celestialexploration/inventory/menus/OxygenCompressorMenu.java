@@ -1,5 +1,6 @@
 package com.shim.celestialexploration.inventory.menus;
 
+import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.blocks.blockentities.OxygenCompressorBlockEntity;
 import com.shim.celestialexploration.inventory.ModResultSlot;
 import com.shim.celestialexploration.registry.BlockRegistry;
@@ -123,27 +124,54 @@ public class OxygenCompressorMenu  extends AbstractContainerMenu {
     private void addPlayerInventory(Inventory playerInventory) {
         for (int i = 0; i < 3; ++i) {
             for (int l = 0; l < 9; ++l) {
-                this.addSlot(new Slot(playerInventory, l + i * 9 + 9, 8 + l * 18, 86 + i * 18));
+                this.addSlot(new Slot(playerInventory, l + i * 9 + 9, 8 + l * 18, 84 + i * 18)); //8 + l * 18, 86 + l * 18
             }
         }
     }
 
     private void addPlayerHotbar(Inventory playerInventory) {
         for (int i = 0; i < 9; ++i) {
-            this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 144));
+            this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 142)); //144
         }
     }
 
     public int getBurnProgress() {
 //        int i = this.blockEntity.getBurnProgress();
-        return this.blockEntity.getBurnProgress() / 10;
+//        return this.blockEntity.getBurnProgress() / 10;
 //        int i = this.data.get(2);
 //        int j = this.data.get(3);
 //        return j != 0 && i != 0 ? i * 24 / j : 0;
+//        int i = this.blockEntity.getBurnProgress() / this.blockEntity.getBurnMaxTime() * 100; //50 / 250 = .20 * 10 = 20 //200 / 250 = .8 * 100 = 80
+//        i = 100 - i; //100 - 20 = 80 //100 - 80 = 20
+//        return i / 10;
+
+        int i = this.blockEntity.getBurnProgress();
+        int j = this.blockEntity.getBurnMaxTime();
+
+        if (j == 0) {
+            return 0;
+        }
+        double k = (double)i / (double)j;
+        i = (int) (k * 100);
+        i = 100 - i; //100 - 20 = 80 //100 - 80 = 20
+        return i / 10;
     }
 
     public int getLitProgress() {
-        return this.blockEntity.getLitProgress() / 10;
+        int i = this.blockEntity.getLitProgress();
+        int j = this.blockEntity.getLitTotalTime();
+
+        if (j == 0) {
+            return 0;
+        }
+
+        double k = (double)i / (double)j;
+        i = (int) (k * 100);
+
+
+//        i = i * 100; //50 / 250 = .20 * 10 = 20 //200 / 250 = .8 * 100 = 80
+        i = 100 - i; //100 - 20 = 80 //100 - 80 = 20
+        return i / 10;
     }
 //        int i = this.data.get(1);
 //        if (i == 0) {

@@ -3,10 +3,12 @@ package com.shim.celestialexploration;
 import java.awt.*;
 import java.util.stream.Collectors;
 
+import com.shim.celestialexploration.capabilities.LoxTankCapability;
 import com.shim.celestialexploration.entity.RustSlimeEntity;
 import com.shim.celestialexploration.entity.renderer.*;
 import com.shim.celestialexploration.inventory.menus.OxygenCompressorMenu;
 import com.shim.celestialexploration.inventory.screens.OxygenCompressorScreen;
+import com.shim.celestialexploration.inventory.screens.ShuttleScreen;
 import com.shim.celestialexploration.registry.*;
 import com.shim.celestialexploration.util.Keybinds;
 import com.shim.celestialexploration.world.renderer.DimensionRenderers;
@@ -14,9 +16,15 @@ import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.ContainerListener;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.scores.criteria.ObjectiveCriteria;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.InputEvent;
+import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -40,6 +48,8 @@ import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import software.bernie.geckolib3.GeckoLib;
+
+import javax.annotation.Nullable;
 
 import static net.minecraft.client.renderer.RenderType.crumbling;
 
@@ -69,6 +79,11 @@ public class CelestialExploration {
             modEventBus.addListener(this::clientSetup);
         });
 
+        modEventBus.addListener(CapabilityRegistry::registerCapabilities);
+        MinecraftForge.EVENT_BUS.addGenericListener(ItemStack.class, CapabilityRegistry::attachItemCapabilities);
+        MinecraftForge.EVENT_BUS.addGenericListener(BlockEntity.class, CapabilityRegistry::attachBlockCapabilities);
+
+
         BlockRegistry.init();
         ItemRegistry.init();
         ContainerRegistry.init();
@@ -80,6 +95,9 @@ public class CelestialExploration {
         EffectRegistry.register(modEventBus);
         EntityRegistry.register(modEventBus);
         FeatureRegistry.register(modEventBus);
+        FluidRegistry.register(modEventBus);
+
+
 
 //        bus.addListener(EventPriority.NORMAL, Structures::addDimensionalSpacing);
 //        bus.addListener(EventPriority.NORMAL, Structures::setupStructureSpawns);
@@ -87,8 +105,6 @@ public class CelestialExploration {
         GeckoLib.initialize();
 
         bus.addListener((InputEvent.KeyInputEvent e) -> onKeyPress(e.getKey(), e.getAction(), e.getModifiers()));
-
-
 
     }
 
@@ -150,8 +166,30 @@ public class CelestialExploration {
     {
         event.enqueueWork(DimensionRenderers::setDimensionEffects);
 
+        event.enqueueWork(() -> {
+            ItemProperties.register(ItemRegistry.LOX_TANK.get(), new ResourceLocation( "filled"), (stack, level, living, id) -> {
+//                LOGGER.debug("item is: " + stack.getItem());
+                LoxTankCapability.ILoxTank loxTank = CelestialExploration.getCapability(stack, CapabilityRegistry.LOX_TANK_CAPABILITY);
+//                LOGGER.debug("lox amount is: " + loxTank.getAmount() + " and fullness is: " + loxTank.getFullness());
+//                LOGGER.debug("loxTank fullness: " + loxTank.getFullness() + " and divided by 8: " + ((float)loxTank.getFullness() / 8.0F));
+                return (float)loxTank.getFullness() / 8.0F;
+            });
+        });
+
+//        ItemProperties.register(ItemRegistry.LOX_TANK.get(), new ResourceLocation( "filled"), (stack, level, living, id) -> {
+//            LoxTankCapability.ILoxTank loxTank = CelestialExploration.getCapability(stack, CapabilityRegistry.LOX_TANK_CAPABILITY);
+//            LOGGER.debug("loxTank fullness: " + loxTank.getFullness() + " and divided by 8: " + (loxTank.getFullness() / 8));
+//            return loxTank.getFullness() / 8;
+//        });
+
+
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.MARS_PORTAL.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.MOON_PORTAL.get(), RenderType.translucent());
+
+//        ItemBlockRenderTypes.setRenderLayer(FluidRegistry.LOX_STILL.get(), RenderType.translucent());
+//        ItemBlockRenderTypes.setRenderLayer(FluidRegistry.LOX_FLOWING.get(), RenderType.translucent());
+
+        ItemBlockRenderTypes.setRenderLayer(BlockRegistry.LOX_TANK.get(), RenderType.cutout());
 
         EntityRenderers.register(EntityRegistry.RUST_SLIME.get(), RustSlimeRenderer::new);
         EntityRenderers.register(EntityRegistry.LUNAR_SLIME.get(), LunarSlimeRenderer::new);
@@ -160,6 +198,7 @@ public class CelestialExploration {
         EntityRenderers.register(EntityRegistry.SHUTTLE.get(), ShuttleRenderer::new);
 
         MenuScreens.register(MenuRegistry.OXYGEN_COMPRESSOR_MENU.get(), OxygenCompressorScreen::new);
+        MenuScreens.register(MenuRegistry.SHUTTLE_MENU.get(), ShuttleScreen::new);
 
     }
 
@@ -167,4 +206,15 @@ public class CelestialExploration {
         Keybinds.handleKeyPress(key, action);
     }
 
+    @Nullable
+    public static <T> T getCapability(ItemStack stackIn, Capability<T> capability) {
+        if (stackIn == null) return null;
+        return stackIn.getCapability(capability).isPresent() ? stackIn.getCapability(capability).orElseThrow(() -> new IllegalArgumentException("Lazy optional must not be empty")) : null;
+    }
+
+    @Nullable
+    public static <T> T getCapability(BlockEntity entityIn, Capability<T> capability) {
+        if (entityIn == null) return null;
+        return entityIn.getCapability(capability).isPresent() ? entityIn.getCapability(capability).orElseThrow(() -> new IllegalArgumentException("Lazy optional must not be empty")) : null;
+    }
 }

@@ -1,25 +1,25 @@
 package com.shim.celestialexploration.entity;
 
 import com.google.common.collect.Lists;
+import com.shim.celestialexploration.CelestialExploration;
+import com.shim.celestialexploration.blocks.blockentities.OxygenCompressorBlockEntity;
+import com.shim.celestialexploration.inventory.menus.ShuttleMenu;
 import com.shim.celestialexploration.registry.EntityRegistry;
 import com.shim.celestialexploration.registry.ItemRegistry;
 import com.shim.celestialexploration.util.Keybinds;
 import net.minecraft.BlockUtil;
-import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
 import net.minecraft.network.protocol.game.ServerboundPaddleBoatPacket;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.*;
@@ -27,37 +27,30 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.WaterAnimal;
-import net.minecraft.world.entity.animal.horse.AbstractHorse;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.vehicle.AbstractMinecartContainer;
 import net.minecraft.world.entity.vehicle.DismountHelper;
 import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.ChestMenu;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.WaterlilyBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.network.NetworkHooks;
 
 import javax.annotation.Nullable;
 import java.util.List;
-import java.util.function.Predicate;
 
-public class Shuttle extends Entity {
+public class Shuttle extends Entity implements ContainerListener, MenuProvider {
     private static final EntityDataAccessor<Integer> DATA_ID_HURT = SynchedEntityData.defineId(Shuttle.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> DATA_ID_HURTDIR = SynchedEntityData.defineId(Shuttle.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Float> DATA_ID_DAMAGE = SynchedEntityData.defineId(Shuttle.class, EntityDataSerializers.FLOAT);
@@ -65,7 +58,7 @@ public class Shuttle extends Entity {
     private static final EntityDataAccessor<Boolean> DATA_ID_PADDLE_LEFT = SynchedEntityData.defineId(Shuttle.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> DATA_ID_PADDLE_RIGHT = SynchedEntityData.defineId(Shuttle.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Integer> DATA_ID_BUBBLE_TIME = SynchedEntityData.defineId(Shuttle.class, EntityDataSerializers.INT);
-    private float invFriction;
+    //    private float invFriction;
     private float outOfControlTicks;
     private float deltaRotation;
     private int lerpSteps;
@@ -75,7 +68,8 @@ public class Shuttle extends Entity {
     private double lerpYRot;
     private double lerpXRot;
     private Shuttle.Status status;
-    private final float SHUTTLE_SPEED = .35F;
+    private final float SHUTTLE_SPEED = .45F;
+    private final float SHUTTLE_NO_FUEL_SPEED = .1F; //TODO
     protected SimpleContainer inventory;
 
     public Shuttle(EntityType<? extends Shuttle> p_38290_, Level p_38291_) {
@@ -91,6 +85,18 @@ public class Shuttle extends Entity {
         this.zo = p_38296_;
         this.setNoGravity(true);
     }
+
+    @Override
+    public void containerChanged(Container p_18983_) {
+
+    }
+
+    @org.jetbrains.annotations.Nullable
+    @Override
+    public AbstractContainerMenu createMenu(int containerId, Inventory inventory, Player player) {
+        return new ShuttleMenu(containerId, inventory, this);
+    }
+
 
     protected float getEyeHeight(Pose p_38327_, EntityDimensions p_38328_) {
         return p_38328_.height;
@@ -119,7 +125,7 @@ public class Shuttle extends Entity {
     }
 
     public boolean canBeCollidedWith() {
-        return true;
+        return false;
     }
 
     public boolean isPushable() {
@@ -131,7 +137,7 @@ public class Shuttle extends Entity {
     }
 
     public double getPassengersRidingOffset() {  //FIXME
-        return -0.1D;
+        return 0.8D;
     }
 
     public boolean hurt(DamageSource p_38319_, float p_38320_) {
@@ -143,7 +149,7 @@ public class Shuttle extends Entity {
             this.setDamage(this.getDamage() + p_38320_ * 10.0F);
             this.markHurt();
             this.gameEvent(GameEvent.ENTITY_DAMAGED, p_38319_.getEntity());
-            boolean flag = p_38319_.getEntity() instanceof Player && ((Player)p_38319_.getEntity()).getAbilities().instabuild;
+            boolean flag = p_38319_.getEntity() instanceof Player && ((Player) p_38319_.getEntity()).getAbilities().instabuild;
             if (flag || this.getDamage() > 40.0F) {
                 if (!flag && this.level.getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
                     this.spawnAtLocation(this.getDropItem());
@@ -187,7 +193,7 @@ public class Shuttle extends Entity {
 //    }
 
     public Item getDropItem() {
-        switch(this.getShuttleType()) {
+        switch (this.getShuttleType()) {
             case BLACK:
                 return ItemRegistry.BLACK_SHUTTLE.get();
             case GREY:
@@ -236,8 +242,8 @@ public class Shuttle extends Entity {
         this.lerpX = p_38299_;
         this.lerpY = p_38300_;
         this.lerpZ = p_38301_;
-        this.lerpYRot = (double)p_38302_;
-        this.lerpXRot = (double)p_38303_;
+        this.lerpYRot = p_38302_;
+        this.lerpXRot = p_38303_;
         this.lerpSteps = 10;
     }
 
@@ -246,7 +252,7 @@ public class Shuttle extends Entity {
     }
 
     public void tick() {
-        Status oldStatus = this.status;
+//        Status oldStatus = this.status;
         this.status = this.getStatus();
         if (this.status != Shuttle.Status.UNDER_WATER && this.status != Shuttle.Status.UNDER_FLOWING_WATER) {
             this.outOfControlTicks = 0.0F;
@@ -269,9 +275,9 @@ public class Shuttle extends Entity {
         super.tick();
         this.tickLerp();
         if (this.isControlledByLocalInstance()) {
-            if (!(this.getFirstPassenger() instanceof Player)) {
+//            if (!(this.getFirstPassenger() instanceof Player)) {
 //                this.setPaddleState(false, false);
-            }
+//            }
 
 //            this.floatShuttle();
             if (this.level.isClientSide) {
@@ -306,12 +312,11 @@ public class Shuttle extends Entity {
 //        }
 
         this.checkInsideBlocks();
-        List<Entity> list = this.level.getEntities(this, this.getBoundingBox().inflate((double)0.2F, (double)-0.01F, (double)0.2F), EntitySelector.pushableBy(this));
+        List<Entity> list = this.level.getEntities(this, this.getBoundingBox().inflate(0.2F, -0.01F, 0.2F), EntitySelector.pushableBy(this));
         if (!list.isEmpty()) {
             boolean flag = !this.level.isClientSide && !(this.getControllingPassenger() instanceof Player);
 
-            for(int j = 0; j < list.size(); ++j) {
-                Entity entity = list.get(j);
+            for (Entity entity : list) {
                 if (!entity.hasPassenger(this)) {
                     if (flag && this.getPassengers().size() < 2 && !entity.isPassenger() && entity.getBbWidth() < this.getBbWidth() && entity instanceof LivingEntity && !(entity instanceof WaterAnimal) && !(entity instanceof Player)) {
                         entity.startRiding(this);
@@ -387,12 +392,12 @@ public class Shuttle extends Entity {
         }
 
         if (this.lerpSteps > 0) {
-            double d0 = this.getX() + (this.lerpX - this.getX()) / (double)this.lerpSteps;
-            double d1 = this.getY() + (this.lerpY - this.getY()) / (double)this.lerpSteps;
-            double d2 = this.getZ() + (this.lerpZ - this.getZ()) / (double)this.lerpSteps;
-            double d3 = Mth.wrapDegrees(this.lerpYRot - (double)this.getYRot());
-            this.setYRot(this.getYRot() + (float)d3 / (float)this.lerpSteps);
-            this.setXRot(this.getXRot() + (float)(this.lerpXRot - (double)this.getXRot()) / (float)this.lerpSteps);
+            double d0 = this.getX() + (this.lerpX - this.getX()) / (double) this.lerpSteps;
+            double d1 = this.getY() + (this.lerpY - this.getY()) / (double) this.lerpSteps;
+            double d2 = this.getZ() + (this.lerpZ - this.getZ()) / (double) this.lerpSteps;
+            double d3 = Mth.wrapDegrees(this.lerpYRot - (double) this.getYRot());
+            this.setYRot(this.getYRot() + (float) d3 / (float) this.lerpSteps);
+            this.setXRot(this.getXRot() + (float) (this.lerpXRot - (double) this.getXRot()) / (float) this.lerpSteps);
             --this.lerpSteps;
             this.setPos(d0, d1, d2);
             this.setRot(this.getYRot(), this.getXRot());
@@ -411,7 +416,7 @@ public class Shuttle extends Entity {
     private Shuttle.Status getStatus() {
         Shuttle.Status suttle$status = this.isUnderwater();
         if (suttle$status != null) {
-            double waterLevel = this.getBoundingBox().maxY;
+//            double waterLevel = this.getBoundingBox().maxY;
             return suttle$status;
 //        } else if (this.checkInWater()) {
 //            return Shuttle.Status.IN_WATER;
@@ -475,15 +480,15 @@ public class Shuttle extends Entity {
         int k1 = 0;
         BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
 
-        for(int l1 = i; l1 < j; ++l1) {
-            for(int i2 = i1; i2 < j1; ++i2) {
+        for (int l1 = i; l1 < j; ++l1) {
+            for (int i2 = i1; i2 < j1; ++i2) {
                 int j2 = (l1 != i && l1 != j - 1 ? 0 : 1) + (i2 != i1 && i2 != j1 - 1 ? 0 : 1);
                 if (j2 != 2) {
-                    for(int k2 = k; k2 < l; ++k2) {
+                    for (int k2 = k; k2 < l; ++k2) {
                         if (j2 <= 0 || k2 != k && k2 != l - 1) {
                             blockpos$mutableblockpos.set(l1, k2, i2);
                             BlockState blockstate = this.level.getBlockState(blockpos$mutableblockpos);
-                            if (!(blockstate.getBlock() instanceof WaterlilyBlock) && Shapes.joinIsNotEmpty(blockstate.getCollisionShape(this.level, blockpos$mutableblockpos).move((double)l1, (double)k2, (double)i2), voxelshape, BooleanOp.AND)) {
+                            if (!(blockstate.getBlock() instanceof WaterlilyBlock) && Shapes.joinIsNotEmpty(blockstate.getCollisionShape(this.level, blockpos$mutableblockpos).move(l1, k2, i2), voxelshape, BooleanOp.AND)) {
                                 f += blockstate.getFriction(this.level, blockpos$mutableblockpos, this);
                                 ++k1;
                             }
@@ -493,7 +498,7 @@ public class Shuttle extends Entity {
             }
         }
 
-        return f / (float)k1;
+        return f / (float) k1;
 //        return 0;
     }
 
@@ -539,12 +544,12 @@ public class Shuttle extends Entity {
         boolean flag = false;
         BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
 
-        for(int k1 = i; k1 < j; ++k1) {
-            for(int l1 = k; l1 < l; ++l1) {
-                for(int i2 = i1; i2 < j1; ++i2) {
+        for (int k1 = i; k1 < j; ++k1) {
+            for (int l1 = k; l1 < l; ++l1) {
+                for (int i2 = i1; i2 < j1; ++i2) {
                     blockpos$mutableblockpos.set(k1, l1, i2);
                     FluidState fluidstate = this.level.getFluidState(blockpos$mutableblockpos);
-                    if (fluidstate.is(FluidTags.WATER) && d0 < (double)((float)blockpos$mutableblockpos.getY() + fluidstate.getHeight(this.level, blockpos$mutableblockpos))) {
+                    if (fluidstate.is(FluidTags.WATER) && d0 < (double) ((float) blockpos$mutableblockpos.getY() + fluidstate.getHeight(this.level, blockpos$mutableblockpos))) {
                         if (!fluidstate.isSource()) {
                             return Shuttle.Status.UNDER_FLOWING_WATER;
                         }
@@ -621,8 +626,7 @@ public class Shuttle extends Entity {
 //            if (livingentity.getDeltaMovement().y > 0) {
             if (Keybinds.ASCEND_KEY.isDown()) {
                 f1 = SHUTTLE_SPEED;
-            }
-            else if (Keybinds.DESCEND_KEY.isDown()) {
+            } else if (Keybinds.DESCEND_KEY.isDown()) {
                 f1 = -1 * SHUTTLE_SPEED;
             }
 //            else if (livingentity.getDeltaMovement().y < 0) {
@@ -632,19 +636,17 @@ public class Shuttle extends Entity {
                 f1 = 0;
             }
 //
-            this.setDeltaMovement((Mth.sin(-this.getYRot() * ((float)Math.PI / 180F)) * f), f1, (Mth.cos(this.getYRot() * ((float)Math.PI / 180F)) * f));
+            this.setDeltaMovement((Mth.sin(-this.getYRot() * ((float) Math.PI / 180F)) * f), f1, (Mth.cos(this.getYRot() * ((float) Math.PI / 180F)) * f));
 //            this.setDeltaMovement(this.getDeltaMovement().add((double)(Mth.sin(-this.getYRot() * ((float)Math.PI / 180F)) * f), f1, (double)(Mth.cos(this.getYRot() * ((float)Math.PI / 180F)) * f)));
 //            this.setPaddleState(this.inputRight && !this.inputLeft || this.inputUp, this.inputLeft && !this.inputRight || this.inputUp);
         }
     }
 
 
-
-
     public void positionRider(Entity p_38379_) { //FIXME
         if (this.hasPassenger(p_38379_)) {
-            float f = 0.0F;
-            float f1 = (float)((this.isRemoved() ? (double)0.01F : this.getPassengersRidingOffset()) + p_38379_.getMyRidingOffset());
+            float f = 4.0F;
+            float f1 = (float) ((this.isRemoved() ? (double) 0.01F : this.getPassengersRidingOffset()) + p_38379_.getMyRidingOffset());
             if (this.getPassengers().size() > 1) {
                 int i = this.getPassengers().indexOf(p_38379_);
                 if (i == 0) {
@@ -658,22 +660,22 @@ public class Shuttle extends Entity {
                 }
             }
 
-            Vec3 vec3 = (new Vec3((double)f, 0.0D, 0.0D)).yRot(-this.getYRot() * ((float)Math.PI / 180F) - ((float)Math.PI / 2F));
-            p_38379_.setPos(this.getX() + vec3.x, this.getY() + (double)f1, this.getZ() + vec3.z);
+            Vec3 vec3 = (new Vec3(f, 0.0D, 0.0D)).yRot(-this.getYRot() * ((float) Math.PI / 180F) - ((float) Math.PI / 2F));
+            p_38379_.setPos(this.getX() + vec3.x, this.getY() + (double) f1, this.getZ() + vec3.z);
             p_38379_.setYRot(p_38379_.getYRot() + this.deltaRotation);
             p_38379_.setYHeadRot(p_38379_.getYHeadRot() + this.deltaRotation);
             this.clampRotation(p_38379_);
             if (p_38379_ instanceof Animal && this.getPassengers().size() > 1) {
                 int j = p_38379_.getId() % 2 == 0 ? 90 : 270;
-                p_38379_.setYBodyRot(((Animal)p_38379_).yBodyRot + (float)j);
-                p_38379_.setYHeadRot(p_38379_.getYHeadRot() + (float)j);
+                p_38379_.setYBodyRot(((Animal) p_38379_).yBodyRot + (float) j);
+                p_38379_.setYHeadRot(p_38379_.getYHeadRot() + (float) j);
             }
 
         }
     }
 
-    public Vec3 getDismountLocationForPassenger(LivingEntity p_38357_) {
-        Vec3 vec3 = getCollisionHorizontalEscapeVector((double)(this.getBbWidth() * Mth.SQRT_OF_TWO), (double)p_38357_.getBbWidth(), p_38357_.getYRot());
+    public Vec3 getDismountLocationForPassenger(LivingEntity p_38357_) { //FIXME
+        Vec3 vec3 = getCollisionHorizontalEscapeVector((this.getBbWidth() * Mth.SQRT_OF_TWO), p_38357_.getBbWidth(), p_38357_.getYRot());
         double d0 = this.getX() + vec3.x;
         double d1 = this.getZ() + vec3.z;
         BlockPos blockpos = new BlockPos(d0, this.getBoundingBox().maxY, d1);
@@ -682,16 +684,16 @@ public class Shuttle extends Entity {
             List<Vec3> list = Lists.newArrayList();
             double d2 = this.level.getBlockFloorHeight(blockpos);
             if (DismountHelper.isBlockFloorValid(d2)) {
-                list.add(new Vec3(d0, (double)blockpos.getY() + d2, d1));
+                list.add(new Vec3(d0, (double) blockpos.getY() + d2, d1));
             }
 
             double d3 = this.level.getBlockFloorHeight(blockpos1);
             if (DismountHelper.isBlockFloorValid(d3)) {
-                list.add(new Vec3(d0, (double)blockpos1.getY() + d3, d1));
+                list.add(new Vec3(d0, (double) blockpos1.getY() + d3, d1));
             }
 
-            for(Pose pose : p_38357_.getDismountPoses()) {
-                for(Vec3 vec31 : list) {
+            for (Pose pose : p_38357_.getDismountPoses()) {
+                for (Vec3 vec31 : list) {
                     if (DismountHelper.canDismountTo(this.level, vec31, p_38357_, pose)) {
                         p_38357_.setPose(pose);
                         return vec31;
@@ -728,14 +730,59 @@ public class Shuttle extends Entity {
 
     }
 
+    public void openInventory(Player player) {
+        if (!this.level.isClientSide) {
+            player.openMenu((MenuProvider) this.inventory);
+        }
+    }
+
+    public AbstractContainerMenu openMenu(int containerId, Inventory inventory) {
+        return new ShuttleMenu(containerId, inventory, this);
+    }
+
+    public InteractionResult interact(Player player, InteractionHand hand) {
+
+        if (player.isSecondaryUseActive()) {
+
+            CelestialExploration.LOGGER.debug("ID is: " + this.getId());
+
+            if (player instanceof ServerPlayer) {
+
+//                BlockEntity entity = this.level.getBlockEntity(pPos);
+//                this.level.get
+//                NetworkHooks.openGui((ServerPlayer)player, this);
+//                CelestialExploration.LOGGER.debug("ID is: " + this.getId());
+                NetworkHooks.openGui((ServerPlayer)player, this, buf -> buf.writeVarInt(this.getId() - 3));
+            }
+            return InteractionResult.sidedSuccess(this.level.isClientSide());
 
 
-    public InteractionResult interact(Player p_38330_, InteractionHand p_38331_) {
-        if (p_38330_.isSecondaryUseActive()) {
-            return InteractionResult.PASS;
+//            if (player instanceof ServerPlayer) {
+//                NetworkHooks.openGui((ServerPlayer) player, new MenuProvider() {
+//
+//                    @org.jetbrains.annotations.Nullable
+//                    @Override
+//                    public AbstractContainerMenu createMenu(int containerId, Inventory inventory, Player player) {
+//                        return openMenu(containerId, inventory);
+//                    }
+//
+//                    @Override
+//                    public Component getDisplayName() {
+//                        return new TranslatableComponent("container." + CelestialExploration.MODID + ".shuttle");
+//                    }
+//                }, buf -> buf.writeVarInt(this.getId()));
+//
+//                return InteractionResult.sidedSuccess(this.level.isClientSide);
+//            } else {
+//                return InteractionResult.PASS;
+//            }
+
+//            this.openInventory(player);
+//            return InteractionResult.sidedSuccess(this.level.isClientSide);
+
         } else if (this.outOfControlTicks < 60.0F) {
             if (!this.level.isClientSide) {
-                return p_38330_.startRiding(this) ? InteractionResult.CONSUME : InteractionResult.PASS;
+                return player.startRiding(this) ? InteractionResult.CONSUME : InteractionResult.PASS;
             } else {
                 return InteractionResult.SUCCESS;
             }
@@ -745,7 +792,7 @@ public class Shuttle extends Entity {
     }
 
     protected void checkFallDamage(double p_38307_, boolean p_38308_, BlockState p_38309_, BlockPos p_38310_) {
-        double lastYd = this.getDeltaMovement().y;
+//        double lastYd = this.getDeltaMovement().y;
         if (!this.isPassenger()) {
             if (p_38308_) {
                 if (this.fallDistance > 3.0F) {
@@ -758,11 +805,11 @@ public class Shuttle extends Entity {
                     if (!this.level.isClientSide && !this.isRemoved()) {
                         this.kill();
                         if (this.level.getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
-                            for(int i = 0; i < 3; ++i) {
+                            for (int i = 0; i < 3; ++i) {
                                 this.spawnAtLocation(this.getShuttleType().getDye());
                             }
 
-                            for(int j = 0; j < 2; ++j) {
+                            for (int j = 0; j < 2; ++j) {
                                 this.spawnAtLocation(Items.STICK);
                             }
                         }
@@ -771,7 +818,7 @@ public class Shuttle extends Entity {
 
                 this.resetFallDistance();
             } else if (!this.level.getFluidState(this.blockPosition().below()).is(FluidTags.WATER) && p_38307_ < 0.0D) {
-                this.fallDistance -= (float)p_38307_;
+                this.fallDistance -= (float) p_38307_;
             }
 
         }
@@ -855,10 +902,9 @@ public class Shuttle extends Entity {
         super.addPassenger(passenger);
         if (this.isControlledByLocalInstance() && this.lerpSteps > 0) {
             this.lerpSteps = 0;
-            this.absMoveTo(this.lerpX, this.lerpY, this.lerpZ, (float)this.lerpYRot, (float)this.lerpXRot);
+            this.absMoveTo(this.lerpX, this.lerpY, this.lerpZ, (float) this.lerpYRot, (float) this.lerpXRot);
         }
     }
-
 
 
     public enum Status {
@@ -866,7 +912,7 @@ public class Shuttle extends Entity {
         UNDER_WATER,
         UNDER_FLOWING_WATER,
         ON_LAND,
-        IN_AIR;
+        IN_AIR
     }
 
     public enum Type {
@@ -919,9 +965,9 @@ public class Shuttle extends Entity {
         public static Shuttle.Type byName(String p_38433_) {
             Shuttle.Type[] shuttle$type = values();
 
-            for(int i = 0; i < shuttle$type.length; ++i) {
-                if (shuttle$type[i].getName().equals(p_38433_)) {
-                    return shuttle$type[i];
+            for (Type type : shuttle$type) {
+                if (type.getName().equals(p_38433_)) {
+                    return type;
                 }
             }
 

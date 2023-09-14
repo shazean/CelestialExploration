@@ -82,7 +82,8 @@ public class ModLanguageProvider extends LanguageProvider {
 
 //		add(ItemRegistry.ASSEMBLY_STATION.get(), "Assembly Station");
 		add(ItemRegistry.OXYGEN_COMPRESSOR.get(), "Oxygen Compressor");
-
+		add(ItemRegistry.LOX_TANK.get(), "Liquid Oxygen Tank");
+		add(ItemRegistry.LOX_BUCKET.get(), "Liquid Oxygen Bucket");
 
 	}
 	

@@ -69,10 +69,10 @@ public class ShuttleRenderer<T extends Shuttle> extends EntityRenderer<T> {
                 ShuttleModel model = pair.getSecond();
 
                 p_225623_4_.pushPose();
-                p_225623_4_.translate(0.0D, 0.375D, 0.0D);
+                p_225623_4_.translate(0.0D, 1.1D, 0.0D); //originally: 0.0D, 0.375D, 0.0D
                 p_225623_4_.mulPose(Vector3f.YP.rotationDegrees(180.0F - p_225623_2_));
                 p_225623_4_.scale(-1.0F, -1.0F, 1.0F);
-                p_225623_4_.mulPose(Vector3f.YP.rotationDegrees(90.0F));
+//                p_225623_4_.mulPose(Vector3f.YP.rotationDegrees(90.0F));
                 model.setupAnim(p_225623_1_, p_225623_3_, 0.0F, -0.1F, 0.0F, 0.0F);
                 VertexConsumer ivertexbuilder = p_225623_5_.getBuffer(model.renderType(this.getTextureLocation(p_225623_1_)));
                 model.renderToBuffer(p_225623_4_, ivertexbuilder, p_225623_6_, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);

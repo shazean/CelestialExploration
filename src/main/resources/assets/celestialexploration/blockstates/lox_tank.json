@@ -1,0 +1,31 @@
+{
+  "variants": {
+     "fullness=0": {
+      "model": "celestialexploration:block/lox_tank_0"
+    },
+    "fullness=1": {
+      "model": "celestialexploration:block/lox_tank_1"
+    },
+    "fullness=2": {
+      "model": "celestialexploration:block/lox_tank_2"
+    },
+    "fullness=3": {
+      "model": "celestialexploration:block/lox_tank_3"
+    },
+    "fullness=4": {
+      "model": "celestialexploration:block/lox_tank_4"
+    },
+    "fullness=5": {
+      "model": "celestialexploration:block/lox_tank_5"
+    },
+    "fullness=6": {
+      "model": "celestialexploration:block/lox_tank_6"
+    },
+    "fullness=7": {
+      "model": "celestialexploration:block/lox_tank_7"
+    },
+    "fullness=8": {
+      "model": "celestialexploration:block/lox_tank_8"
+    }
+  }
+}

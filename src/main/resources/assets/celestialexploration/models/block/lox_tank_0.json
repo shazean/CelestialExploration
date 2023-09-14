@@ -1,0 +1,29 @@
+{   "parent": "block/block",
+    "ambientocclusion": false,
+    "textures": {
+        "particle": "minecraft:block/glass",
+        "side": "celestialexploration:block/lox_tank_side",
+        "top": "celestialexploration:block/lox_tank_top",
+        "fluid": "celestialexploration:block/liquid_oxygen_single"
+    },
+    "elements": [
+        {   "__comment": "Glass shell",
+            "from": [ 0, 0, 0 ],
+            "to": [ 16, 16, 16 ],
+            "faces": {
+                "north": { "uv": [ 0, 0, 16, 16 ], "texture": "#side" },
+                "south": { "uv": [ 0, 0, 16, 16 ], "texture": "#side" },
+                "west":  { "uv": [ 0, 0, 16, 16 ], "texture": "#side" },
+                "east":  { "uv": [ 0, 0, 16, 16 ], "texture": "#side" }
+            }
+        },
+        {
+            "from": [ 0, 0, 0 ],
+            "to": [ 16, 16, 16 ],
+            "faces": {
+                "up": {"uv": [0, 0, 16, 16], "texture": "top"},
+                "down": {"uv": [0, 0, 16, 16], "texture": "top"}
+            }
+        }
+    ]
+}

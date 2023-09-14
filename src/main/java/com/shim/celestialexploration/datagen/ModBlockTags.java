@@ -187,6 +187,8 @@ public class ModBlockTags extends BlockTagsProvider {
 				.add(BlockRegistry.METEOR.get())
 				.add(BlockRegistry.CHISELED_METEOR_BRICKS.get());
 
+		//TODO fluid tags
+
 	}
 	
 	@Override

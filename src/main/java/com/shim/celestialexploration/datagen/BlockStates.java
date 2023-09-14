@@ -3,6 +3,7 @@ package com.shim.celestialexploration.datagen;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.registry.BlockRegistry;
 
+import com.shim.celestialexploration.registry.FluidRegistry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.SlabBlock;
@@ -76,6 +77,10 @@ public class BlockStates extends BlockStateProvider {
 //		simpleBlock(BlockRegistry.ASSEMBLY_STATION.get());
 
 //		simpleBlock(BlockRegistry.TEST_BLOCK.get());
+
+		//LOX
+//		simpleBlock(BlockRegistry.LOX_TANK.get());
+		simpleBlock(FluidRegistry.LOX_BLOCK.get());
 
 	}
 

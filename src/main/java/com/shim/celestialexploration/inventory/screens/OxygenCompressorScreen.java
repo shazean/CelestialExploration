@@ -35,14 +35,26 @@ public class OxygenCompressorScreen extends AbstractContainerScreen<OxygenCompre
         int j = this.topPos;
         //FIXME?
 //        this.blit(p_97853_, i, j, 0, 0, this.imageWidth, this.imageHeight);
-//        if (this.menu.isLit()) {
-//            int k = this.menu.getBurnProgress();
+        if (this.menu.isLit()) {
+            //display flame as fuel item burns
+            int l = (int) (this.menu.getLitProgress() * 1.25); //placement, X; placement Y, grab starting at, X; grab starting at, Y; width?; height?;
+            this.blit(poseStack, i + 32, j + 35 + l, 176, 0 + l, 16, 14 - l);
 //            this.blit(poseStack, i + 31, j + 35 + 12 - k, 176, 12 - k, 14, k + 1);
-//        }
-//
-//        int l = this.menu.getLitProgress(); //placement, X; placement Y, grab starting at, X; grab starting at, Y; width?; height?;
-//        this.blit(poseStack, i + 79, j + 34, 196, 14, 45 - l, 16);
-////        this.blit(poseStack, i + 31, j + 35, 176,  10 + -l + 25, 16, 20 - l);
+
+
+        }
+
+        int k = this.menu.getBurnProgress();
+
+        //compression tube
+        this.blit(poseStack, i + 79, j + 55, 192, 0, k * 2, 6);
+
+        //snowflakes FIXME
+        this.blit(poseStack, i + 76, j + 20, 211, 0, 24, 1 + (k * 3)); //32
+
+
+
+//        this.blit(poseStack, i + 31, j + 35, 176,  10 + -l + 25, 16, 20 - l);
 
 
     }

@@ -3,6 +3,7 @@
   "block.celestialexploration.chiseled_moon_bricks": "Chiseled Lunar Bricks",
   "block.celestialexploration.glowing_moon_sand": "Glowing Lunar Sand",
   "block.celestialexploration.igneous_rock": "Igneous Rock",
+  "block.celestialexploration.lox_tank": "Liquid Oxygen Tank",
   "block.celestialexploration.lunar_lantern": "Lunar Lantern",
   "block.celestialexploration.mars_brick_slab": "Martian Brick Slab",
   "block.celestialexploration.mars_brick_stairs": "Martian Brick Stairs",
@@ -35,6 +36,7 @@
   "block.celestialexploration.moon_stone": "Lunar Stone",
   "block.celestialexploration.oxygen_compressor": "Oxygen Compressor",
   "block.celestialexploration.solar_panel": "Solar Panel",
+  "item.celestialexploration.lox_bucket": "Liquid Oxygen Bucket",
   "item.celestialexploration.lunar_spawn_egg": "Lunar Slime Spawn Egg",
   "item.celestialexploration.lurker_spawn_egg": "Lurker Spawn Egg",
   "item.celestialexploration.mars_mallow_spawn_egg": "Mars Mallow Spawn Egg",
@@ -47,6 +49,5 @@
   "item.celestialexploration.steel_chestplate": "Steel Chestplate",
   "item.celestialexploration.steel_helmet": "Steel Helmet",
   "item.celestialexploration.steel_leggings": "Steel Leggings",
-  "itemGroup.celestialtab": "Celestial Tab",
-  "container.oxygen_compressor": "Oxygen Compressor"
+  "itemGroup.celestialtab": "Celestial Tab"
 }
