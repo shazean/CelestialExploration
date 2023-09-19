@@ -16,6 +16,8 @@ public class ShuttleScreen extends AbstractContainerScreen<ShuttleMenu> {
 
     public ShuttleScreen(ShuttleMenu menu, Inventory playerInventory, Component title) {
         super(menu, playerInventory, title);
+        this.imageHeight = 200;
+        this.inventoryLabelY = this.imageHeight - 94;
     }
 
     @Override
@@ -24,9 +26,9 @@ public class ShuttleScreen extends AbstractContainerScreen<ShuttleMenu> {
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         RenderSystem.setShaderTexture(0, TEXTURE);
         int x = (width - imageWidth) / 2;
-        int y = (height - imageHeight) / 2;
+        int y = (height - (this.imageHeight)) / 2;
 
-        this.blit(poseStack, x, y, 0, 0, imageWidth, imageHeight);
+        this.blit(poseStack, x, y, 0, 0, imageWidth, this.imageHeight);
 
     }
 

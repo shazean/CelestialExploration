@@ -18,7 +18,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 
-public class OxygenCompressorMenu  extends AbstractContainerMenu {
+public class OxygenCompressorMenu extends AbstractContainerMenu {
     private final OxygenCompressorBlockEntity blockEntity;
     private final Level level;
 

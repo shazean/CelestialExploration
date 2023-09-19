@@ -2,6 +2,7 @@ package com.shim.celestialexploration.inventory.menus;
 
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.entity.Shuttle;
+import com.shim.celestialexploration.inventory.FuelSlot;
 import com.shim.celestialexploration.registry.MenuRegistry;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.Entity;
@@ -23,28 +24,9 @@ public class ShuttleMenu extends AbstractContainerMenu {
         this(containerId, inventory, inventory.player.level.getEntity(friendlyByteBuf.readInt()));
     }
 
-    public ShuttleMenu(int containerId, Inventory inv, Entity shuttle, ContainerData data) {
-        super(MenuRegistry.SHUTTLE_MENU.get(), containerId);
-        checkContainerSize(inv, 4);
-        entity = ((Shuttle) shuttle);
-        this.level = inv.player.level;
-
-        addPlayerInventory(inv);
-        addPlayerHotbar(inv);
-
-        this.entity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(handler -> {
-            this.addSlot(new SlotItemHandler(handler, 0, 15, 70));
-            this.addSlot(new SlotItemHandler(handler, 1, 90, 18));
-//            this.addSlot(new SlotItemHandler(handler, 2, 103, 18));
-//            this.addSlot(new ModResultSlot(handler, 3, 90, 60));
-        });
-
-
-    }
-
     public ShuttleMenu(int containerId, Inventory inv, Entity shuttle) {
         super(MenuRegistry.SHUTTLE_MENU.get(), containerId);
-        checkContainerSize(inv, 1);
+        checkContainerSize(inv, 29);
         entity = ((Shuttle) shuttle);
         this.level = inv.player.level;
 
@@ -52,13 +34,18 @@ public class ShuttleMenu extends AbstractContainerMenu {
         addPlayerHotbar(inv);
 
         this.entity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(handler -> {
-            this.addSlot(new SlotItemHandler(handler, 0, 31, 51));
-            this.addSlot(new SlotItemHandler(handler, 1, 106, 23));
-//            this.addSlot(new SlotItemHandler(handler, 2, 103, 18));
-//            this.addSlot(new ModResultSlot(handler, 3, 80, 60));
+            //fuel slots
+            this.addSlot(new FuelSlot(handler, 0, 26, 22));
+            this.addSlot(new FuelSlot(handler, 1, 62, 22));
+
+            //shuttle storage
+            for (int i = 0; i < 3; ++i) {
+                for (int l = 0; l < 9; ++l) {
+                    this.addSlot(new SlotItemHandler(handler, l + i * 9 + 2, 8 + l * 18, 50 + i * 18)); //l + i * 9 + 9, 8 + l * 18, 86 + l * 18
+                }
+            }
         });
     }
-
 
     // CREDIT GOES TO: diesieben07 | https://github.com/diesieben07/SevenCommons
     // must assign a slot number to each of the slots used by the GUI.
@@ -75,7 +62,7 @@ public class ShuttleMenu extends AbstractContainerMenu {
     private static final int VANILLA_FIRST_SLOT_INDEX = 0;
     private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
 
-    private static final int TE_INVENTORY_SLOT_COUNT = 2;  // must be the number of slots you have! FIXME
+    private static final int TE_INVENTORY_SLOT_COUNT = 29;  // must be the number of slots you have! FIXME
 
     @Override
     public ItemStack quickMoveStack(Player playerIn, int index) {
@@ -97,7 +84,7 @@ public class ShuttleMenu extends AbstractContainerMenu {
                 return ItemStack.EMPTY;
             }
         } else {
-            System.out.println("Invalid slotIndex:" + index);
+            CelestialExploration.LOGGER.debug("Invalid slotIndex:" + index);
             return ItemStack.EMPTY;
         }
         // If stack size == 0 (the entire stack was moved) set slot contents to null
@@ -118,14 +105,14 @@ public class ShuttleMenu extends AbstractContainerMenu {
     private void addPlayerInventory(Inventory playerInventory) {
         for (int i = 0; i < 3; ++i) {
             for (int l = 0; l < 9; ++l) {
-                this.addSlot(new Slot(playerInventory, l + i * 9 + 9, 8 + l * 18, 84 + i * 18)); //8 + l * 18, 86 + l * 18
+                this.addSlot(new Slot(playerInventory, l + i * 9 + 9, 8 + l * 18, 84 + 34 + i * 18)); //8 + l * 18, 86 + l * 18
             }
         }
     }
 
     private void addPlayerHotbar(Inventory playerInventory) {
         for (int i = 0; i < 9; ++i) {
-            this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 142));
+            this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 142 + 34));
         }
     }
 }

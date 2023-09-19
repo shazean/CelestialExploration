@@ -22,5 +22,7 @@ public class MenuRegistry {
 
     public static final RegistryObject<MenuType<OxygenCompressorMenu>> OXYGEN_COMPRESSOR_MENU = MENUS.register("oxygen_compressor", () -> IForgeMenuType.create(OxygenCompressorMenu::new));
     public static final RegistryObject<MenuType<ShuttleMenu>> SHUTTLE_MENU = MENUS.register("shuttle", () -> IForgeMenuType.create(ShuttleMenu::new));
+//    public static final RegistryObject<MenuType<AssemblyStationMenu>> ASSEMBLY_MENU = MENUS.register("assembly_menu", () -> IForgeMenuType.create(AssemblyStationMenu::new));
+
 
 }

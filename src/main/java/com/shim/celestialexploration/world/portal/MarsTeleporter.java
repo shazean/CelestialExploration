@@ -37,23 +37,6 @@ public class MarsTeleporter implements ITeleporter {
         this.level = worldIn;
     }
 
-    public Optional<BlockUtil.FoundRectangle> getExistingPortal(BlockPos pos) {
-        PoiManager poiManager = this.level.getPoiManager();
-        poiManager.ensureLoadedAndValid(this.level, pos, 64);
-        Optional<PoiRecord> optional = poiManager.getInSquare((poiType) ->
-                poiType == PortalRegistry.MARS_PORTAL.get(), pos, 64, PoiManager.Occupancy.ANY).sorted(Comparator.<PoiRecord>comparingDouble((poi) ->
-                poi.getPos().distSqr(pos)).thenComparingInt((poi) ->
-                poi.getPos().getY())).filter((poi) ->
-                this.level.getBlockState(poi.getPos()).hasProperty(BlockStateProperties.HORIZONTAL_AXIS)).findFirst();
-        return optional.map((poi) -> {
-            BlockPos blockpos = poi.getPos();
-            this.level.getChunkSource().addRegionTicket(TicketType.PORTAL, new ChunkPos(blockpos), 3, blockpos);
-            BlockState blockstate = this.level.getBlockState(blockpos);
-            return BlockUtil.getLargestRectangleAround(blockpos, blockstate.getValue(BlockStateProperties.HORIZONTAL_AXIS), 21, Direction.Axis.Y, 21, (posIn) ->
-                    this.level.getBlockState(posIn) == blockstate);
-        });
-    }
-
     public Optional<BlockUtil.FoundRectangle> makePortal(BlockPos pos, Direction.Axis axis) {
         Direction direction = Direction.get(Direction.AxisDirection.POSITIVE, axis);
         double d0 = -1.0D;
@@ -141,6 +124,23 @@ public class MarsTeleporter implements ITeleporter {
         }
 
         return Optional.of(new BlockUtil.FoundRectangle(blockpos.immutable(), 2, 3));
+    }
+
+    public Optional<BlockUtil.FoundRectangle> getExistingPortal(BlockPos pos) {
+        PoiManager poiManager = this.level.getPoiManager();
+        poiManager.ensureLoadedAndValid(this.level, pos, 64);
+        Optional<PoiRecord> optional = poiManager.getInSquare((poiType) ->
+                poiType == PortalRegistry.MARS_PORTAL.get(), pos, 64, PoiManager.Occupancy.ANY).sorted(Comparator.<PoiRecord>comparingDouble((poi) ->
+                poi.getPos().distSqr(pos)).thenComparingInt((poi) ->
+                poi.getPos().getY())).filter((poi) ->
+                this.level.getBlockState(poi.getPos()).hasProperty(BlockStateProperties.HORIZONTAL_AXIS)).findFirst();
+        return optional.map((poi) -> {
+            BlockPos blockpos = poi.getPos();
+            this.level.getChunkSource().addRegionTicket(TicketType.PORTAL, new ChunkPos(blockpos), 3, blockpos);
+            BlockState blockstate = this.level.getBlockState(blockpos);
+            return BlockUtil.getLargestRectangleAround(blockpos, blockstate.getValue(BlockStateProperties.HORIZONTAL_AXIS), 21, Direction.Axis.Y, 21, (posIn) ->
+                    this.level.getBlockState(posIn) == blockstate);
+        });
     }
 
     private boolean checkRegionForPlacement(BlockPos originalPos, BlockPos.MutableBlockPos offsetPos, Direction directionIn, int offsetScale) {

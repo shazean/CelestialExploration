@@ -11,7 +11,9 @@ import net.minecraft.BlockUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
@@ -27,11 +29,14 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.WaterAnimal;
+import net.minecraft.world.entity.animal.horse.AbstractChestedHorse;
+import net.minecraft.world.entity.animal.horse.AbstractHorse;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.vehicle.DismountHelper;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
@@ -45,10 +50,14 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.network.NetworkHooks;
 
 import javax.annotation.Nullable;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class Shuttle extends Entity implements ContainerListener, MenuProvider {
     private static final EntityDataAccessor<Integer> DATA_ID_HURT = SynchedEntityData.defineId(Shuttle.class, EntityDataSerializers.INT);
@@ -58,7 +67,8 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
     private static final EntityDataAccessor<Boolean> DATA_ID_PADDLE_LEFT = SynchedEntityData.defineId(Shuttle.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> DATA_ID_PADDLE_RIGHT = SynchedEntityData.defineId(Shuttle.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Integer> DATA_ID_BUBBLE_TIME = SynchedEntityData.defineId(Shuttle.class, EntityDataSerializers.INT);
-    //    private float invFriction;
+    private static final EntityDataAccessor<Byte> DATA_ID_FLAGS = SynchedEntityData.defineId(Shuttle.class, EntityDataSerializers.BYTE);
+
     private float outOfControlTicks;
     private float deltaRotation;
     private int lerpSteps;
@@ -75,6 +85,7 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
     public Shuttle(EntityType<? extends Shuttle> p_38290_, Level p_38291_) {
         super(p_38290_, p_38291_);
         this.blocksBuilding = true;
+        this.createInventory();
     }
 
     public Shuttle(Level p_38293_, double p_38294_, double p_38295_, double p_38296_) {
@@ -91,10 +102,16 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
 
     }
 
+
     @org.jetbrains.annotations.Nullable
     @Override
     public AbstractContainerMenu createMenu(int containerId, Inventory inventory, Player player) {
         return new ShuttleMenu(containerId, inventory, this);
+    }
+
+    @Override
+    public Component getDisplayName() {
+        return new TextComponent("Shuttle");
     }
 
 
@@ -106,6 +123,7 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
         return Entity.MovementEmission.NONE;
     }
 
+    @Override
     protected void defineSynchedData() {
         this.entityData.define(DATA_ID_HURT, 0);
         this.entityData.define(DATA_ID_HURTDIR, 1);
@@ -114,14 +132,17 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
         this.entityData.define(DATA_ID_PADDLE_LEFT, false);
         this.entityData.define(DATA_ID_PADDLE_RIGHT, false);
         this.entityData.define(DATA_ID_BUBBLE_TIME, 0);
+        this.entityData.define(DATA_ID_FLAGS, (byte)0);
     }
 
     public boolean canCollideWith(Entity p_38376_) {
-        return canVehicleCollide(this, p_38376_);
+        return false;
+//        return canVehicleCollide(this, p_38376_);
     }
 
     public static boolean canVehicleCollide(Entity p_38324_, Entity p_38325_) {
-        return (p_38325_.canBeCollidedWith() || p_38325_.isPushable()) && !p_38324_.isPassengerOfSameVehicle(p_38325_);
+        return false;
+//        return (p_38325_.canBeCollidedWith() || p_38325_.isPushable()) && !p_38324_.isPassengerOfSameVehicle(p_38325_);
     }
 
     public boolean canBeCollidedWith() {
@@ -642,7 +663,6 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
         }
     }
 
-
     public void positionRider(Entity p_38379_) { //FIXME
         if (this.hasPassenger(p_38379_)) {
             float f = 4.0F;
@@ -720,6 +740,19 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
 
     protected void addAdditionalSaveData(CompoundTag p_38359_) {
         p_38359_.putString("Type", this.getShuttleType().getName());
+        ListTag listtag = new ListTag();
+
+        for(int i = 2; i < this.inventory.getContainerSize(); ++i) {
+            ItemStack itemstack = this.inventory.getItem(i);
+            if (!itemstack.isEmpty()) {
+                CompoundTag compoundtag = new CompoundTag();
+                compoundtag.putByte("Slot", (byte)i);
+                itemstack.save(compoundtag);
+                listtag.add(compoundtag);
+            }
+        }
+
+        p_38359_.put("Items", listtag);
 
     }
 
@@ -727,58 +760,168 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
         if (p_38338_.contains("Type", 8)) {
             this.setType(Shuttle.Type.byName(p_38338_.getString("Type")));
         }
+        ListTag listtag = p_38338_.getList("Items", 10);
+
+        this.createInventory();
+        for(int i = 0; i < listtag.size(); ++i) {
+            CompoundTag compoundtag = listtag.getCompound(i);
+            int j = compoundtag.getByte("Slot") & 255;
+            if (j >= 2 && j < this.inventory.getContainerSize()) {
+                this.inventory.setItem(j, ItemStack.of(compoundtag));
+            }
+        }
 
     }
 
-    public void openInventory(Player player) {
+    protected int getInventorySize() {
+        return 29;
+    }
+
+    protected void createInventory() {
+        SimpleContainer simplecontainer = this.inventory;
+        this.inventory = new SimpleContainer(this.getInventorySize());
+        if (simplecontainer != null) {
+            simplecontainer.removeListener(this);
+            int i = Math.min(simplecontainer.getContainerSize(), this.inventory.getContainerSize());
+
+            for(int j = 0; j < i; ++j) {
+                ItemStack itemstack = simplecontainer.getItem(j);
+                if (!itemstack.isEmpty()) {
+                    this.inventory.setItem(j, itemstack.copy());
+                }
+            }
+        }
+
+        this.inventory.addListener(this);
+        this.updateContainerEquipment();
+        this.itemHandler = net.minecraftforge.common.util.LazyOptional.of(() -> new net.minecraftforge.items.wrapper.InvWrapper(this.inventory));
+    }
+
+    protected boolean getFlag(int p_30648_) {
+        return (this.entityData.get(DATA_ID_FLAGS) & p_30648_) != 0;
+    }
+
+    protected void setFlag(int p_30598_, boolean p_30599_) {
+        byte b0 = this.entityData.get(DATA_ID_FLAGS);
+        if (p_30599_) {
+            this.entityData.set(DATA_ID_FLAGS, (byte)(b0 | p_30598_));
+        } else {
+            this.entityData.set(DATA_ID_FLAGS, (byte)(b0 & ~p_30598_));
+        }
+
+    }
+
+    protected void updateContainerEquipment() {
         if (!this.level.isClientSide) {
-            player.openMenu((MenuProvider) this.inventory);
+            this.setFlag(4, !this.inventory.getItem(0).isEmpty());
         }
     }
 
-    public AbstractContainerMenu openMenu(int containerId, Inventory inventory) {
-        return new ShuttleMenu(containerId, inventory, this);
+    private SlotAccess createEquipmentSlotAccess(final int p_149503_, final Predicate<ItemStack> p_149504_) {
+        return new SlotAccess() {
+            public ItemStack get() {
+                return Shuttle.this.inventory.getItem(p_149503_);
+            }
+
+            public boolean set(ItemStack p_149528_) {
+                if (!p_149504_.test(p_149528_)) {
+                    return false;
+                } else {
+                    Shuttle.this.inventory.setItem(p_149503_, p_149528_);
+                    Shuttle.this.updateContainerEquipment();
+                    return true;
+                }
+            }
+        };
     }
+
+    public SlotAccess getSlot(int p_149479_) {
+        return p_149479_ == 499 ? new SlotAccess() {
+            public ItemStack get() {
+                return new ItemStack(Items.CHEST);
+            }
+
+            public boolean set(ItemStack p_149485_) {
+                if (p_149485_.isEmpty()) {
+//                    if (AbstractChestedHorse.this.hasChest()) {
+//                        AbstractChestedHorse.this.setChest(false);
+                        Shuttle.this.createInventory();
+//                    }
+
+                    return true;
+                } else if (p_149485_.is(Items.CHEST)) {
+//                    if (!AbstractChestedHorse.this.hasChest()) {
+//                        AbstractChestedHorse.this.setChest(true);
+                        Shuttle.this.createInventory();
+//                    }
+
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        } : this.getSlotSuper(p_149479_);
+    }
+
+    public SlotAccess getSlotSuper(int p_149514_) {
+        int i = p_149514_ - 400;
+        if (i >= 0 && i < 2 && i < this.inventory.getContainerSize()) {
+            if (i == 0) {
+                return this.createEquipmentSlotAccess(i, (p_149518_) -> {
+                    return p_149518_.isEmpty() || p_149518_.is(Items.SADDLE);
+                });
+            }
+
+            if (i == 1) {
+//                if (!this.canWearArmor()) {
+//                    return SlotAccess.NULL;
+//                }
+
+                return this.createEquipmentSlotAccess(i, (p_149516_) -> {
+                    return p_149516_.isEmpty(); // || this.isArmor(p_149516_);
+                });
+            }
+        }
+
+        int j = p_149514_ - 500 + 2;
+        return j >= 2 && j < this.inventory.getContainerSize() ? SlotAccess.forContainer(this.inventory, j) : super.getSlot(p_149514_);
+    }
+
+    private net.minecraftforge.common.util.LazyOptional<?> itemHandler = null;
+
+    @Override
+    public <T> net.minecraftforge.common.util.LazyOptional<T> getCapability(net.minecraftforge.common.capabilities.Capability<T> capability, @Nullable net.minecraft.core.Direction facing) {
+        if (this.isAlive() && capability == net.minecraftforge.items.CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && itemHandler != null)
+            return itemHandler.cast();
+        return super.getCapability(capability, facing);
+    }
+
+    @Override
+    public void invalidateCaps() {
+        super.invalidateCaps();
+        if (itemHandler != null) {
+            net.minecraftforge.common.util.LazyOptional<?> oldHandler = itemHandler;
+            itemHandler = null;
+            oldHandler.invalidate();
+        }
+    }
+
+//    public boolean hasInventoryChanged(Container p_149512_) {
+//        return this.inventory != p_149512_;
+//    }
+//
+//    public int getInventoryColumns() {
+//        return 5;
+//    }
 
     public InteractionResult interact(Player player, InteractionHand hand) {
 
         if (player.isSecondaryUseActive()) {
 
-            CelestialExploration.LOGGER.debug("ID is: " + this.getId());
-
             if (player instanceof ServerPlayer) {
-
-//                BlockEntity entity = this.level.getBlockEntity(pPos);
-//                this.level.get
-//                NetworkHooks.openGui((ServerPlayer)player, this);
-//                CelestialExploration.LOGGER.debug("ID is: " + this.getId());
-                NetworkHooks.openGui((ServerPlayer)player, this, buf -> buf.writeVarInt(this.getId() - 3));
+                NetworkHooks.openGui((ServerPlayer)player, this, buf -> buf.writeInt(this.getId()));
             }
             return InteractionResult.sidedSuccess(this.level.isClientSide());
-
-
-//            if (player instanceof ServerPlayer) {
-//                NetworkHooks.openGui((ServerPlayer) player, new MenuProvider() {
-//
-//                    @org.jetbrains.annotations.Nullable
-//                    @Override
-//                    public AbstractContainerMenu createMenu(int containerId, Inventory inventory, Player player) {
-//                        return openMenu(containerId, inventory);
-//                    }
-//
-//                    @Override
-//                    public Component getDisplayName() {
-//                        return new TranslatableComponent("container." + CelestialExploration.MODID + ".shuttle");
-//                    }
-//                }, buf -> buf.writeVarInt(this.getId()));
-//
-//                return InteractionResult.sidedSuccess(this.level.isClientSide);
-//            } else {
-//                return InteractionResult.PASS;
-//            }
-
-//            this.openInventory(player);
-//            return InteractionResult.sidedSuccess(this.level.isClientSide);
 
         } else if (this.outOfControlTicks < 60.0F) {
             if (!this.level.isClientSide) {
@@ -844,18 +987,6 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
         return this.entityData.get(DATA_ID_HURT);
     }
 
-//    private void setBubbleTime(int p_38367_) {
-//        this.entityData.set(DATA_ID_BUBBLE_TIME, p_38367_);
-//    }
-//
-//    private int getBubbleTime() {
-//        return this.entityData.get(DATA_ID_BUBBLE_TIME);
-//    }
-//
-//    public float getBubbleAngle(float p_38353_) {
-//        return Mth.lerp(p_38353_, this.bubbleAngleO, this.bubbleAngle);
-//    }
-
     public void setHurtDir(int p_38363_) {
         this.entityData.set(DATA_ID_HURTDIR, p_38363_);
     }
@@ -880,13 +1011,6 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
     public Entity getControllingPassenger() {
         return this.getFirstPassenger();
     }
-
-//    public void setInput(boolean p_38343_, boolean p_38344_, boolean p_38345_, boolean p_38346_) {
-//        this.inputLeft = p_38343_;
-//        this.inputRight = p_38344_;
-//        this.inputUp = p_38345_;
-//        this.inputDown = p_38346_;
-//    }
 
     public Packet<?> getAddEntityPacket() {
         return new ClientboundAddEntityPacket(this);

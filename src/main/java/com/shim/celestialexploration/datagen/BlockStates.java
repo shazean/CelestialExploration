@@ -75,7 +75,6 @@ public class BlockStates extends BlockStateProvider {
 
 		//SHUTTLE
 //		simpleBlock(BlockRegistry.ASSEMBLY_STATION.get());
-
 //		simpleBlock(BlockRegistry.TEST_BLOCK.get());
 
 		//LOX

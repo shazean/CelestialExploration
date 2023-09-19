@@ -1,8 +1,5 @@
-//package com.shim.celestialexploration.blocks.menus;
+//package com.shim.celestialexploration.inventory.menus;
 //
-//
-//import com.shim.celestialexploration.registry.BlockRegistry;
-//import com.shim.celestialexploration.registry.MenuRegistry;
 //import net.minecraft.network.FriendlyByteBuf;
 //import net.minecraft.network.protocol.game.ClientboundContainerSetSlotPacket;
 //import net.minecraft.server.level.ServerPlayer;
@@ -17,21 +14,17 @@
 //import net.minecraft.world.item.crafting.RecipeType;
 //import net.minecraft.world.level.Level;
 //import net.minecraft.world.level.block.Blocks;
-//import net.minecraft.world.level.block.entity.BlockEntity;
-//import net.minecraftforge.items.CapabilityItemHandler;
-//import net.minecraftforge.items.SlotItemHandler;
-//import org.jetbrains.annotations.Nullable;
 //
 //import java.util.Optional;
 //
 //public class AssemblyStationMenu extends RecipeBookMenu<CraftingContainer> {
 //    public static final int RESULT_SLOT = 0;
 //    private static final int CRAFT_SLOT_START = 1;
-//    private static final int CRAFT_SLOT_END = 10;
-//    private static final int INV_SLOT_START = 10;
-//    private static final int INV_SLOT_END = 37;
-//    private static final int USE_ROW_SLOT_START = 37;
-//    private static final int USE_ROW_SLOT_END = 46;
+//    private static final int CRAFT_SLOT_END = 10 + 7;
+//    private static final int INV_SLOT_START = 10 + 7;
+//    private static final int INV_SLOT_END = 37 + 7;
+//    private static final int USE_ROW_SLOT_START = 37 + 7;
+//    private static final int USE_ROW_SLOT_END = 46 + 7;
 //    private final CraftingContainer craftSlots = new CraftingContainer(this, 4, 4);
 //    private final ResultContainer resultSlots = new ResultContainer();
 //    private final ContainerLevelAccess access;
@@ -42,63 +35,33 @@
 //    }
 //
 //    public AssemblyStationMenu(int i, Inventory inventory, FriendlyByteBuf friendlyByteBuf) {
+//        this(i, inventory); //FIXME?
 //    }
 //
-//    public AssemblyStationMenu(int p_39356_, Inventory inv, ContainerLevelAccess p_39358_) {
-//        super(MenuRegistry.ASSEMBLY_STATION_MENU.get(), p_39356_);
+//    public AssemblyStationMenu(int p_39356_, Inventory p_39357_, ContainerLevelAccess p_39358_) {
+//        super(MenuType.CRAFTING, p_39356_);
 //        this.access = p_39358_;
-//        this.player = inv.player;
-////        this.addSlot(new ResultSlot(p_39357_.player, this.craftSlots, this.resultSlots, 0, 124, 35));
-////
-////        for(int i = 0; i < 3; ++i) {
-////            for(int j = 0; j < 3; ++j) {
-////                this.addSlot(new Slot(this.craftSlots, j + i * 3, 30 + j * 18, 17 + i * 18));
-////            }
-////        }
-////
-////        for(int k = 0; k < 3; ++k) {
-////            for(int i1 = 0; i1 < 9; ++i1) {
-////                this.addSlot(new Slot(p_39357_, i1 + k * 9 + 9, 8 + i1 * 18, 84 + k * 18));
-////            }
-////        }
-////
-////        for(int l = 0; l < 9; ++l) {
-////            this.addSlot(new Slot(p_39357_, l, 8 + l * 18, 142));
-////        }
+//        this.player = p_39357_.player;
+//        this.addSlot(new ResultSlot(p_39357_.player, this.craftSlots, this.resultSlots, 0, 124, 35));
 //
-//        //BLOCK ENTITY slot, X-axis (left/right), Y-axis (up/down)
-//        this.addSlot(new Slot( this.craftSlots, 0, 30, 9));
-//        this.addSlot(new Slot( this.craftSlots, 1, 48, 9));
-//        this.addSlot(new Slot( this.craftSlots, 2, 66, 9));
-//        this.addSlot(new Slot( this.craftSlots, 3, 84, 9));
-//        this.addSlot(new Slot( this.craftSlots, 4, 30, 27));
-//        this.addSlot(new Slot( this.craftSlots, 5, 48, 27));
-//        this.addSlot(new Slot( this.craftSlots, 6, 66, 27));
-//        this.addSlot(new Slot( this.craftSlots, 7, 84, 27));
-//        this.addSlot(new Slot( this.craftSlots, 8, 30, 45));
-//        this.addSlot(new Slot( this.craftSlots, 9, 48, 45));
-//        this.addSlot(new Slot( this.craftSlots, 10, 66, 45));
-//        this.addSlot(new Slot( this.craftSlots, 11, 84, 45));
-//        this.addSlot(new Slot( this.craftSlots, 12, 30, 63));
-//        this.addSlot(new Slot( this.craftSlots, 13, 48, 63));
-//        this.addSlot(new Slot( this.craftSlots, 14, 66, 63));
-//        this.addSlot(new Slot( this.craftSlots, 15, 84, 63));
-//
-//        this.addSlot(new ResultSlot(inv.player, this.craftSlots, this.resultSlots, 16, 129, 35));
-//
-//        //MAIN PLAYER INVENTORY
-//        for (int row = 0; row < 3; row++) {
-//            for (int col = 0; col < 9; col++) {
-//                this.addSlot(new Slot(inv, col + row * 9 + 9, 8 + col * 18, 166 - (4 - row) * 18 - 10 + 10));
+//        for(int i = 0; i < 4; ++i) {
+//            for(int j = 0; j < 4; ++j) {
+//                this.addSlot(new Slot(this.craftSlots, j + i * 3, 30 + j * 18, 17 + i * 18));
 //            }
 //        }
 //
-//        //PLAYER HOTBAR
-//        for (int col = 0; col < 9; col++) {
-//            this.addSlot(new Slot(inv, col, 8 + col * 18, 142 + 10));
+//        for(int k = 0; k < 3; ++k) {
+//            for(int i1 = 0; i1 < 9; ++i1) {
+//                this.addSlot(new Slot(p_39357_, i1 + k * 9 + 9, 8 + i1 * 18, 84 + k * 18));
+//            }
+//        }
+//
+//        for(int l = 0; l < 9; ++l) {
+//            this.addSlot(new Slot(p_39357_, l, 8 + l * 18, 142));
 //        }
 //
 //    }
+//
 //
 //
 //    protected static void slotChangedCraftingGrid(AbstractContainerMenu p_150547_, Level p_150548_, Player p_150549_, CraftingContainer p_150550_, ResultContainer p_150551_) {
@@ -202,7 +165,7 @@
 //    }
 //
 //    public int getResultSlotIndex() {
-//        return 16;
+//        return 0;
 //    }
 //
 //    public int getGridWidth() {
@@ -214,7 +177,7 @@
 //    }
 //
 //    public int getSize() {
-//        return 17;
+//        return 10;
 //    }
 //
 //    public RecipeBookType getRecipeBookType() {

@@ -1,12 +1,7 @@
 package com.shim.celestialexploration;
 
-import java.awt.*;
-import java.util.stream.Collectors;
-
 import com.shim.celestialexploration.capabilities.LoxTankCapability;
-import com.shim.celestialexploration.entity.RustSlimeEntity;
 import com.shim.celestialexploration.entity.renderer.*;
-import com.shim.celestialexploration.inventory.menus.OxygenCompressorMenu;
 import com.shim.celestialexploration.inventory.screens.OxygenCompressorScreen;
 import com.shim.celestialexploration.inventory.screens.ShuttleScreen;
 import com.shim.celestialexploration.registry.*;
@@ -18,40 +13,33 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.ContainerListener;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.scores.criteria.ObjectiveCriteria;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.InputEvent;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
-import net.minecraftforge.eventbus.api.EventPriority;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.DistExecutor;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import software.bernie.geckolib3.GeckoLib;
 
 import javax.annotation.Nullable;
-
-import static net.minecraft.client.renderer.RenderType.crumbling;
+import java.util.stream.Collectors;
 
 @Mod("celestialexploration")
 public class CelestialExploration {
@@ -134,7 +122,7 @@ public class CelestialExploration {
     private void enqueueIMC(final InterModEnqueueEvent event)
     {
         // some example code to dispatch IMC to another mod
-        InterModComms.sendTo("celestialexploration", "helloworld", () -> { LOGGER.info("Hello world from the MDK"); return "Hello world";});
+        InterModComms.sendTo(MODID, "helloworld", () -> { LOGGER.info("Hello world from the MDK"); return "Hello world";});
     }
 
     private void processIMC(final InterModProcessEvent event)
@@ -168,20 +156,10 @@ public class CelestialExploration {
 
         event.enqueueWork(() -> {
             ItemProperties.register(ItemRegistry.LOX_TANK.get(), new ResourceLocation( "filled"), (stack, level, living, id) -> {
-//                LOGGER.debug("item is: " + stack.getItem());
                 LoxTankCapability.ILoxTank loxTank = CelestialExploration.getCapability(stack, CapabilityRegistry.LOX_TANK_CAPABILITY);
-//                LOGGER.debug("lox amount is: " + loxTank.getAmount() + " and fullness is: " + loxTank.getFullness());
-//                LOGGER.debug("loxTank fullness: " + loxTank.getFullness() + " and divided by 8: " + ((float)loxTank.getFullness() / 8.0F));
                 return (float)loxTank.getFullness() / 8.0F;
             });
         });
-
-//        ItemProperties.register(ItemRegistry.LOX_TANK.get(), new ResourceLocation( "filled"), (stack, level, living, id) -> {
-//            LoxTankCapability.ILoxTank loxTank = CelestialExploration.getCapability(stack, CapabilityRegistry.LOX_TANK_CAPABILITY);
-//            LOGGER.debug("loxTank fullness: " + loxTank.getFullness() + " and divided by 8: " + (loxTank.getFullness() / 8));
-//            return loxTank.getFullness() / 8;
-//        });
-
 
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.MARS_PORTAL.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.MOON_PORTAL.get(), RenderType.translucent());
@@ -199,6 +177,8 @@ public class CelestialExploration {
 
         MenuScreens.register(MenuRegistry.OXYGEN_COMPRESSOR_MENU.get(), OxygenCompressorScreen::new);
         MenuScreens.register(MenuRegistry.SHUTTLE_MENU.get(), ShuttleScreen::new);
+//        MenuScreens.register(MenuRegistry.ASSEMBLY_MENU.get(), AssemblyStationScreen::new);
+
 
     }
 

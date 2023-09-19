@@ -85,6 +85,24 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(ItemRegistry.LOX_TANK.get(), "Liquid Oxygen Tank");
 		add(ItemRegistry.LOX_BUCKET.get(), "Liquid Oxygen Bucket");
 
+		//SHUTTLE
+		add(ItemRegistry.WHITE_SHUTTLE.get(), "White Shuttle");
+		add(ItemRegistry.BLACK_SHUTTLE.get(), "Black Shuttle");
+		add(ItemRegistry.GREY_SHUTTLE.get(), "Grey Shuttle");
+		add(ItemRegistry.LIGHT_GREY_SHUTTLE.get(), "Light Grey Shuttle");
+		add(ItemRegistry.PINK_SHUTTLE.get(), "Pink Shuttle");
+		add(ItemRegistry.RED_SHUTTLE.get(), "Red Shuttle");
+		add(ItemRegistry.ORANGE_SHUTTLE.get(), "Orange Shuttle");
+		add(ItemRegistry.YELLOW_SHUTTLE.get(), "Yellow Shuttle");
+		add(ItemRegistry.LIME_SHUTTLE.get(), "Lime Shuttle");
+		add(ItemRegistry.GREEN_SHUTTLE.get(), "Green Shuttle");
+		add(ItemRegistry.CYAN_SHUTTLE.get(), "Cyan Shuttle");
+		add(ItemRegistry.BLUE_SHUTTLE.get(), "Blue Shuttle");
+		add(ItemRegistry.LIGHT_BLUE_SHUTTLE.get(), "Light Blue Shuttle");
+		add(ItemRegistry.PURPLE_SHUTTLE.get(), "Purple Shuttle");
+		add(ItemRegistry.MAGENTA_SHUTTLE.get(), "Magenta Shuttle");
+		add(ItemRegistry.BROWN_SHUTTLE.get(), "Brown Shuttle");
+
 	}
 	
 	
