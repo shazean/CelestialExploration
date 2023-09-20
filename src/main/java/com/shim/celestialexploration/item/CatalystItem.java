@@ -19,8 +19,8 @@ public class CatalystItem extends Item {
     public CatalystItem() {
         super(new Properties()
                 .tab(CelestialExploration.CELESTIAL_TAB)
-                .stacksTo(1)
-                .rarity(Rarity.RARE)
+//                .stacksTo(1)
+//                .rarity(Rarity.RARE)
         );
     }
 

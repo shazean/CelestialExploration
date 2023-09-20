@@ -23,6 +23,7 @@ public class LoxTankCapability {
         public void setFullness();
         public int getFullness();
         public boolean isFull();
+        public boolean isEmpty();
         void setLoxData(CompoundTag nbt);
     }
 
@@ -56,7 +57,7 @@ public class LoxTankCapability {
         @Override
         public boolean decrementAmount() {
             if (loxAmount > 0) {
-                loxAmount -= 1000;
+                loxAmount -= 100;
                 fullness = (int) (((double)loxAmount / (double)DEFAULT_CAPACITY) * 8);
                 return true;
             } else {
@@ -87,6 +88,11 @@ public class LoxTankCapability {
         public boolean isFull() {
             return (loxAmount >= DEFAULT_CAPACITY) ?  true :  false;
         }
+
+        public boolean isEmpty() {
+            return (loxAmount <= 0) ?  true :  false;
+        }
+
 
 
         @Override

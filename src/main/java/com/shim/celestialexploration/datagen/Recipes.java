@@ -10,6 +10,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.*;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.StonecutterRecipe;
@@ -230,7 +231,208 @@ public class Recipes extends RecipeProvider {
 				.unlockedBy("daylight_detector", InventoryChangeTrigger.TriggerInstance.hasItems(Blocks.DAYLIGHT_DETECTOR))
 				.save(consumer);
 
+		//STEEL
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.STEEL_INGOT.get())
+				.requires(Items.COAL)
+				.requires(Items.IRON_INGOT)
+				.requires(Items.COAL)
+				.requires(Items.IRON_INGOT)
+				.group("celestialexploration")
+				.unlockedBy("iron", InventoryChangeTrigger.TriggerInstance.hasItems(Items.IRON_INGOT))
+				.save(consumer);
 
+		ShapedRecipeBuilder.shaped(ItemRegistry.STEEL_ROD.get())
+				.pattern("X")
+				.pattern("X")
+				.pattern("X")
+				.define('X', ItemRegistry.STEEL_INGOT.get())
+				.group("celestialexploration")
+				.unlockedBy("steel", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get()))
+				.save(consumer);
+		ShapedRecipeBuilder.shaped(ItemRegistry.STEEL_BLOCK.get())
+				.pattern("XXX")
+				.pattern("XXX")
+				.pattern("XXX")
+				.define('X', ItemRegistry.STEEL_INGOT.get())
+				.group("celestialexploration")
+				.unlockedBy("steel", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get()))
+				.save(consumer);
+
+		//SHUTTLE
+		ShapedRecipeBuilder.shaped(BlockRegistry.STEEL_FRAME.get())
+				.pattern("X X")
+				.pattern("XXX")
+				.pattern("X X")
+				.define('X', ItemRegistry.STEEL_ROD.get())
+				.group("celestialexploration")
+				.unlockedBy("steel", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_ROD.get()))
+				.save(consumer);
+		ShapedRecipeBuilder.shaped(ItemRegistry.SHUTTLE_FRAME.get())
+				.pattern("CSC")
+				.pattern("C C")
+				.pattern("CSC")
+				.define('C', ItemRegistry.CERAMIC_TILE.get())
+				.define('S', ItemRegistry.STEEL_ROD.get())
+				.group("celestialexploration")
+				.unlockedBy("steel", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_ROD.get()))
+				.save(consumer);
+		ShapedRecipeBuilder.shaped(ItemRegistry.NOSE_CONE.get())
+				.pattern(" C ")
+				.pattern("CSC")
+				.define('C', ItemRegistry.CERAMIC_TILE.get())
+				.define('S', ItemRegistry.STEEL_BLOCK.get())
+				.group("celestialexploration")
+				.unlockedBy("steel", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_ROD.get()))
+				.save(consumer);
+		ShapedRecipeBuilder.shaped(ItemRegistry.SHUTTLE_CABIN.get())
+				.pattern(" N ")
+				.pattern("CGC")
+				.pattern("XSX")
+				.define('N', ItemRegistry.NOSE_CONE.get())
+				.define('C', ItemRegistry.CERAMIC_TILE.get())
+				.define('G', Items.GLASS)
+				.define('S', ItemRegistry.STEEL_BLOCK.get())
+				.define('X', Items.CHEST)
+				.group("celestialexploration")
+				.unlockedBy("steel", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_ROD.get()))
+				.save(consumer);
+		ShapedRecipeBuilder.shaped(ItemRegistry.LOX_TANK.get())
+				.pattern("SsS")
+				.pattern("G G")
+				.pattern("SsS")
+				.define('S', ItemRegistry.STEEL_BLOCK.get())
+				.define('s', ItemRegistry.STEEL_INGOT.get())
+				.define('G', Items.GLASS)
+				.group("celestialexploration")
+				.unlockedBy("steel", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_ROD.get()))
+				.save(consumer);
+		ShapedRecipeBuilder.shaped(ItemRegistry.SHUTTLE_ENGINE.get())
+				.pattern("SRS")
+				.pattern("SKS")
+				.pattern("TTT")
+				.define('S', ItemRegistry.STEEL_BLOCK.get())
+				.define('K', ItemRegistry.LOX_TANK.get())
+				.define('R', Items.REDSTONE)
+				.define('T', Items.REDSTONE_TORCH)
+				.group("celestialexploration")
+				.unlockedBy("steel", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_ROD.get()))
+				.save(consumer);
+		ShapedRecipeBuilder.shaped(ItemRegistry.WHITE_SHUTTLE.get())
+				.pattern("C")
+				.pattern("F")
+				.pattern("E")
+				.define('C', ItemRegistry.SHUTTLE_CABIN.get())
+				.define('F', ItemRegistry.SHUTTLE_FRAME.get())
+				.define('E', ItemRegistry.SHUTTLE_ENGINE.get())
+				.group("celestialexploration")
+				.unlockedBy("steel", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get()))
+				.save(consumer);
+
+
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.BLACK_SHUTTLE.get())
+				.requires(ItemRegistry.WHITE_SHUTTLE.get())
+				.requires(Items.BLACK_DYE)
+				.group("celestialexploration")
+				.unlockedBy("shuttle", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.WHITE_SHUTTLE.get()))
+				.save(consumer);
+
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.GREY_SHUTTLE.get())
+				.requires(ItemRegistry.WHITE_SHUTTLE.get())
+				.requires(Items.GRAY_DYE)
+				.group("celestialexploration")
+				.unlockedBy("shuttle", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.WHITE_SHUTTLE.get()))
+				.save(consumer);
+
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.LIGHT_GREY_SHUTTLE.get())
+				.requires(ItemRegistry.WHITE_SHUTTLE.get())
+				.requires(Items.LIGHT_GRAY_DYE)
+				.group("celestialexploration")
+				.unlockedBy("shuttle", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.WHITE_SHUTTLE.get()))
+				.save(consumer);
+
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.PINK_SHUTTLE.get())
+				.requires(ItemRegistry.WHITE_SHUTTLE.get())
+				.requires(Items.PINK_DYE)
+				.group("celestialexploration")
+				.unlockedBy("shuttle", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.WHITE_SHUTTLE.get()))
+				.save(consumer);
+
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.RED_SHUTTLE.get())
+				.requires(ItemRegistry.WHITE_SHUTTLE.get())
+				.requires(Items.RED_DYE)
+				.group("celestialexploration")
+				.unlockedBy("shuttle", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.WHITE_SHUTTLE.get()))
+				.save(consumer);
+
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.ORANGE_SHUTTLE.get())
+				.requires(ItemRegistry.WHITE_SHUTTLE.get())
+				.requires(Items.ORANGE_DYE)
+				.group("celestialexploration")
+				.unlockedBy("shuttle", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.WHITE_SHUTTLE.get()))
+				.save(consumer);
+
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.YELLOW_SHUTTLE.get())
+				.requires(ItemRegistry.WHITE_SHUTTLE.get())
+				.requires(Items.YELLOW_DYE)
+				.group("celestialexploration")
+				.unlockedBy("shuttle", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.WHITE_SHUTTLE.get()))
+				.save(consumer);
+
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.LIME_SHUTTLE.get())
+				.requires(ItemRegistry.WHITE_SHUTTLE.get())
+				.requires(Items.LIME_DYE)
+				.group("celestialexploration")
+				.unlockedBy("shuttle", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.WHITE_SHUTTLE.get()))
+				.save(consumer);
+
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.GREEN_SHUTTLE.get())
+				.requires(ItemRegistry.WHITE_SHUTTLE.get())
+				.requires(Items.GREEN_DYE)
+				.group("celestialexploration")
+				.unlockedBy("shuttle", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.WHITE_SHUTTLE.get()))
+				.save(consumer);
+
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.CYAN_SHUTTLE.get())
+				.requires(ItemRegistry.WHITE_SHUTTLE.get())
+				.requires(Items.CYAN_DYE)
+				.group("celestialexploration")
+				.unlockedBy("shuttle", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.WHITE_SHUTTLE.get()))
+				.save(consumer);
+
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.BLUE_SHUTTLE.get())
+				.requires(ItemRegistry.WHITE_SHUTTLE.get())
+				.requires(Items.BLUE_DYE)
+				.group("celestialexploration")
+				.unlockedBy("shuttle", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.WHITE_SHUTTLE.get()))
+				.save(consumer);
+
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.LIGHT_BLUE_SHUTTLE.get())
+				.requires(ItemRegistry.WHITE_SHUTTLE.get())
+				.requires(Items.LIGHT_BLUE_DYE)
+				.group("celestialexploration")
+				.unlockedBy("shuttle", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.WHITE_SHUTTLE.get()))
+				.save(consumer);
+
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.PURPLE_SHUTTLE.get())
+				.requires(ItemRegistry.WHITE_SHUTTLE.get())
+				.requires(Items.PURPLE_DYE)
+				.group("celestialexploration")
+				.unlockedBy("shuttle", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.WHITE_SHUTTLE.get()))
+				.save(consumer);
+
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.MAGENTA_SHUTTLE.get())
+				.requires(ItemRegistry.WHITE_SHUTTLE.get())
+				.requires(Items.MAGENTA_DYE)
+				.group("celestialexploration")
+				.unlockedBy("shuttle", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.WHITE_SHUTTLE.get()))
+				.save(consumer);
+
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.BROWN_SHUTTLE.get())
+				.requires(ItemRegistry.WHITE_SHUTTLE.get())
+				.requires(Items.BROWN_DYE)
+				.group("celestialexploration")
+				.unlockedBy("shuttle", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.WHITE_SHUTTLE.get()))
+				.save(consumer);
 
 
 	}

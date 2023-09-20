@@ -3,7 +3,9 @@ package com.shim.celestialexploration.entity;
 import com.google.common.collect.Lists;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.blocks.blockentities.OxygenCompressorBlockEntity;
+import com.shim.celestialexploration.capabilities.LoxTankCapability;
 import com.shim.celestialexploration.inventory.menus.ShuttleMenu;
+import com.shim.celestialexploration.registry.CapabilityRegistry;
 import com.shim.celestialexploration.registry.EntityRegistry;
 import com.shim.celestialexploration.registry.ItemRegistry;
 import com.shim.celestialexploration.util.Keybinds;
@@ -68,7 +70,6 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
     private static final EntityDataAccessor<Boolean> DATA_ID_PADDLE_RIGHT = SynchedEntityData.defineId(Shuttle.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Integer> DATA_ID_BUBBLE_TIME = SynchedEntityData.defineId(Shuttle.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Byte> DATA_ID_FLAGS = SynchedEntityData.defineId(Shuttle.class, EntityDataSerializers.BYTE);
-
     private float outOfControlTicks;
     private float deltaRotation;
     private int lerpSteps;
@@ -79,8 +80,9 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
     private double lerpXRot;
     private Shuttle.Status status;
     private final float SHUTTLE_SPEED = .45F;
-    private final float SHUTTLE_NO_FUEL_SPEED = .1F; //TODO
+    private final float SHUTTLE_NO_FUEL_SPEED = .15F;
     protected SimpleContainer inventory;
+    private int fuelTicks = 10;
 
     public Shuttle(EntityType<? extends Shuttle> p_38290_, Level p_38291_) {
         super(p_38290_, p_38291_);
@@ -303,7 +305,22 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
 //            this.floatShuttle();
             if (this.level.isClientSide) {
                 this.controlShuttle();
-                this.level.sendPacketToServer(new ServerboundPaddleBoatPacket(this.getPaddleState(0), this.getPaddleState(1)));
+//                this.level.sendPacketToServer(new ServerboundPaddleBoatPacket(this.getPaddleState(0), this.getPaddleState(1)));
+
+                if (this.isVehicle()) {
+
+                    if (this.getDeltaMovement().z > 0 || this.getDeltaMovement().x > 0) {
+                        CelestialExploration.LOGGER.debug("Shuttle is moving!");
+                        --fuelTicks;
+                        if (fuelTicks <= 0) {
+                            this.useFuel();
+                            fuelTicks = 100;
+                        }
+
+                    }
+                }
+
+
             }
 
             this.move(MoverType.SELF, this.getDeltaMovement());
@@ -347,6 +364,9 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
                 }
             }
         }
+
+
+
 
     }
 
@@ -625,15 +645,61 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
 //
 //    }
 
+    private boolean hasFuel() {
+        boolean hasFuel = false;
+        ItemStack tank = this.inventory.getItem(0);
+        ItemStack secondTank = this.inventory.getItem(1);
+
+        LoxTankCapability.ILoxTank loxTank = CelestialExploration.getCapability(tank, CapabilityRegistry.LOX_TANK_CAPABILITY);
+        LoxTankCapability.ILoxTank secondLoxTank = CelestialExploration.getCapability(secondTank, CapabilityRegistry.LOX_TANK_CAPABILITY);
+
+        if (loxTank != null) {
+            hasFuel = !loxTank.isEmpty();
+            if (hasFuel) return true;
+            if (secondLoxTank != null) {
+                hasFuel = !secondLoxTank.isEmpty();
+            }
+        }
+
+        return hasFuel;
+    }
+
+
+    private void useFuel() {
+        ItemStack firstTank = this.inventory.getItem(0);
+        ItemStack secondTank = this.inventory.getItem(1);
+
+        LoxTankCapability.ILoxTank loxTank = CelestialExploration.getCapability(firstTank, CapabilityRegistry.LOX_TANK_CAPABILITY);
+        LoxTankCapability.ILoxTank secondLoxTank = CelestialExploration.getCapability(secondTank, CapabilityRegistry.LOX_TANK_CAPABILITY);
+
+        if (loxTank != null && !loxTank.isEmpty()) {
+            loxTank.decrementAmount();
+            CelestialExploration.LOGGER.debug("first tank fuel level is " + loxTank.getAmount());
+        } else if (secondLoxTank != null && !secondLoxTank.isEmpty()) {
+            secondLoxTank.decrementAmount();
+            CelestialExploration.LOGGER.debug("second tank fuel level is " + secondLoxTank.getAmount());
+        } else {
+
+        }
+    }
+
+
     private void controlShuttle() {
         if (this.isVehicle()) {
+
+            float currentSpeed;
+            if (this.hasFuel()) {
+                currentSpeed = SHUTTLE_SPEED;
+            } else {
+                currentSpeed = SHUTTLE_NO_FUEL_SPEED;
+            }
 
             LivingEntity livingentity = (LivingEntity) this.getControllingPassenger();
             this.setYRot(livingentity.getYRot());
             this.yRotO = this.getYRot();
             this.setXRot(livingentity.getXRot() * 0.5F);
             this.setRot(this.getYRot(), this.getXRot());
-            float f = livingentity.zza * SHUTTLE_SPEED;
+            float f = livingentity.zza * currentSpeed;
 
             if (livingentity.xxa > 0) {
                 --this.deltaRotation;
@@ -646,9 +712,9 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
 
 //            if (livingentity.getDeltaMovement().y > 0) {
             if (Keybinds.ASCEND_KEY.isDown()) {
-                f1 = SHUTTLE_SPEED;
+                f1 = currentSpeed;
             } else if (Keybinds.DESCEND_KEY.isDown()) {
-                f1 = -1 * SHUTTLE_SPEED;
+                f1 = -1 * SHUTTLE_SPEED; //shuttle can always descend at normal speed
             }
 //            else if (livingentity.getDeltaMovement().y < 0) {
 //                f1 = -0.5F;
@@ -661,9 +727,10 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
 //            this.setDeltaMovement(this.getDeltaMovement().add((double)(Mth.sin(-this.getYRot() * ((float)Math.PI / 180F)) * f), f1, (double)(Mth.cos(this.getYRot() * ((float)Math.PI / 180F)) * f)));
 //            this.setPaddleState(this.inputRight && !this.inputLeft || this.inputUp, this.inputLeft && !this.inputRight || this.inputUp);
         }
+
     }
 
-    public void positionRider(Entity p_38379_) { //FIXME
+    public void positionRider(Entity p_38379_) {
         if (this.hasPassenger(p_38379_)) {
             float f = 4.0F;
             float f1 = (float) ((this.isRemoved() ? (double) 0.01F : this.getPassengersRidingOffset()) + p_38379_.getMyRidingOffset());
@@ -845,14 +912,14 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
                 if (p_149485_.isEmpty()) {
 //                    if (AbstractChestedHorse.this.hasChest()) {
 //                        AbstractChestedHorse.this.setChest(false);
-                        Shuttle.this.createInventory();
+                    Shuttle.this.createInventory();
 //                    }
 
                     return true;
                 } else if (p_149485_.is(Items.CHEST)) {
 //                    if (!AbstractChestedHorse.this.hasChest()) {
 //                        AbstractChestedHorse.this.setChest(true);
-                        Shuttle.this.createInventory();
+                    Shuttle.this.createInventory();
 //                    }
 
                     return true;

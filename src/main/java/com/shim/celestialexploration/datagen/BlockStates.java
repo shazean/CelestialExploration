@@ -71,9 +71,12 @@ public class BlockStates extends BlockStateProvider {
 		//OTHER
 		simpleBlock(BlockRegistry.SOLAR_PANEL.get());
 		simpleBlock(BlockRegistry.IGNEOUS_ROCK.get());
+		simpleBlock(BlockRegistry.STEEL_BLOCK.get());
 
+		simpleBlock(BlockRegistry.CERAMIC.get());
 
 		//SHUTTLE
+		simpleBlock(BlockRegistry.STEEL_FRAME.get());
 //		simpleBlock(BlockRegistry.ASSEMBLY_STATION.get());
 //		simpleBlock(BlockRegistry.TEST_BLOCK.get());
 

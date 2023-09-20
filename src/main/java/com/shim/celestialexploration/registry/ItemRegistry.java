@@ -2,6 +2,7 @@ package com.shim.celestialexploration.registry;
 
 import com.shim.celestialexploration.CelestialExploration;
 
+import com.shim.celestialexploration.blocks.BlockItemBase;
 import com.shim.celestialexploration.entity.Shuttle;
 import com.shim.celestialexploration.item.CatalystItem;
 import com.shim.celestialexploration.item.LoxTankItem;
@@ -33,13 +34,19 @@ public class ItemRegistry {
 	public static <B extends Block> RegistryObject<Item> fromBlock(RegistryObject<B> block) {
 		return ITEMS.register(block.getId().getPath(), () -> new BlockItem(block.get(), ITEM_PROPERTIES));
 	}
+
+	public static <B extends Block> RegistryObject<Item> fromShuttleBlock(RegistryObject<B> block) {
+		return ITEMS.register(block.getId().getPath(), () -> new BlockItem(block.get(), SHUTTLE_ITEM_PROPERTIES));
+	}
 	
 	public static final Item.Properties ITEM_PROPERTIES = new Item.Properties().tab(CelestialExploration.CELESTIAL_TAB);
-   
-	
-	
+	public static final Item.Properties SHUTTLE_ITEM_PROPERTIES = new Item.Properties().tab(CelestialExploration.SHUTTLE_TAB);
 
-	
+
+
+
+
+
 	//Items
 	public static final RegistryObject<Item> STEEL_INGOT = ITEMS.register("steel_ingot", () -> new Item((new Item.Properties()).tab(CreativeModeTab.TAB_MATERIALS)));
 	public static final RegistryObject<Item> MOON_DUST = ITEMS.register("moon_dust", () -> new Item((new Item.Properties()).tab(CelestialExploration.CELESTIAL_TAB)));
@@ -47,9 +54,8 @@ public class ItemRegistry {
 //	public static final RegistryObject<Item> SULFUR_CRYSTAL = ITEMS.register("sulfur_crystal", () -> new Item((new Item.Properties()).tab(CelestialExploration.CELESTIAL_TAB)));
 //	 public static final RegistryObject<Item> SULFUR_BUCKET = ITEMS.register("sulfur_bucket", () -> new BucketItem(RegistryFluids.SULFUR, (new Item.Properties()).craftRemainder(Items.BUCKET).stacksTo(1).tab(ItemGroup.TAB_MISC)));
 
-//	public static final RegistryObject<Item> OXYGEN_CANISTER = ITEMS.register("oxygen_canister", () -> new Item((new Item.Properties()).tab(CelestialExploration.CELESTIAL_TAB)));
-//	public static final RegistryObject<Item> COLD_OXYGEN_CANISTER = ITEMS.register("cold_oxygen_canister", () -> new Item((new Item.Properties()).tab(CelestialExploration.CELESTIAL_TAB)));
 	public static final RegistryObject<Item> STEEL_ROD = ITEMS.register("steel_rod", () -> new CatalystItem()); //FIXME?
+
 
 //	public static final RegistryObject<Item> METEOR_INGOT = ITEMS.register("meteor_ingot", () -> new Item((new Item.Properties()).tab(CreativeModeTab.TAB_MATERIALS)));
 
@@ -135,6 +141,7 @@ public class ItemRegistry {
 	//OTHER BLOCK ITEMS
 	public static final RegistryObject<Item> SOLAR_LANTERN = fromBlock(BlockRegistry.SOLAR_LANTERN);
 	public static final RegistryObject<Item> IGNEOUS_ROCK = fromBlock(BlockRegistry.IGNEOUS_ROCK);
+	public static final RegistryObject<Item> STEEL_BLOCK = fromBlock(BlockRegistry.STEEL_BLOCK);
 
 
 //	public static final RegistryObject<Item> ECLIPSE_LANTERN = fromBlock(BlockRegistry.ECLIPSE_LANTERN);
@@ -182,25 +189,22 @@ public class ItemRegistry {
 
 	
 	
-//	public static final RegistryObject<Item> CERAMIC = fromBlock(BlockRegistry.CERAMIC);
-//	public static final RegistryObject<Item> CERAMIC_TILE = fromBlock(BlockRegistry.CERAMIC_TILE);
-//	public static final RegistryObject<Item> STEEL_ROD = ITEMS.register("steel_rod", () -> new Item((new Item.Properties()).tab(CreativeModeTab.TAB_MATERIALS)));
+	public static final RegistryObject<Item> CERAMIC = fromBlock(BlockRegistry.CERAMIC);
+	public static final RegistryObject<Item> CERAMIC_TILE = fromBlock(BlockRegistry.CERAMIC_TILE);
 
-	
-	//ROCKET
-//	public static final RegistryObject<Item> STEEL_FRAME = ITEMS.register("steel_frame",  () -> new BlockItemBase(RegistryBlocks.STEEL_FRAME.get()));
-//	public static final RegistryObject<Item> LAUNCH_PAD = ITEMS.register("launch_pad",  () -> new BlockItemBase(RegistryBlocks.LAUNCH_PAD.get()));
-//	public static final RegistryObject<Item> ROCKET_CABIN = ITEMS.register("rocket_cabin", () -> new Item((new Item.Properties()).stacksTo(1).tab(Main.SHUTTLE_TAB)));
-//	public static final RegistryObject<Item> ROCKET_FRAME = ITEMS.register("rocket_frame", () -> new Item((new Item.Properties()).stacksTo(1).tab(Main.SHUTTLE_TAB)));
-//	public static final RegistryObject<Item> ROCKET_ENGINE = ITEMS.register("rocket_engine", () -> new Item((new Item.Properties()).stacksTo(1).tab(Main.SHUTTLE_TAB)));
-//	public static final RegistryObject<Item> NOSE_CONE = ITEMS.register("nose_cone", () -> new Item((new Item.Properties()).stacksTo(1).tab(Main.SHUTTLE_TAB)));
-//	public static final RegistryObject<Item> FUEL_TANK = ITEMS.register("fuel_tank",  () -> new BlockItemBase(RegistryBlocks.FUEL_TANK.get()));	
-//
-//	public static final RegistryObject<Item> THICK_CARBON_AIR = ITEMS.register("thick_carbon_air",  () -> new BlockItemBase(RegistryBlocks.THICK_CARBON_AIR.get()));	
-//	
+
+	//	public static final RegistryObject<Item> THICK_CARBON_AIR = ITEMS.register("thick_carbon_air",  () -> new BlockItemBase(RegistryBlocks.THICK_CARBON_AIR.get()));
 //	public static final RegistryObject<Item> GASEOUS_CARBON = ITEMS.register("gaseous_carbon", () -> new Item((new Item.Properties()).tab(Main.CELESTIAL_TAB)));
 
-	
+
+
+	//SHUTTLE
+	public static final RegistryObject<Item> STEEL_FRAME = fromShuttleBlock(BlockRegistry.STEEL_FRAME);
+//	public static final RegistryObject<Item> LAUNCH_PAD = ITEMS.register("launch_pad",  () -> new BlockItemBase(RegistryBlocks.LAUNCH_PAD.get()));
+	public static final RegistryObject<Item> SHUTTLE_CABIN = ITEMS.register("shuttle_cabin", () -> new Item((new Item.Properties()).stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB)));
+	public static final RegistryObject<Item> SHUTTLE_FRAME = ITEMS.register("shuttle_frame", () -> new Item((new Item.Properties()).stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB)));
+	public static final RegistryObject<Item> SHUTTLE_ENGINE = ITEMS.register("shuttle_engine", () -> new Item((new Item.Properties()).stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB)));
+	public static final RegistryObject<Item> NOSE_CONE = ITEMS.register("nose_cone", () -> new Item((new Item.Properties()).stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB)));
 	
 	public static final RegistryObject<Item> BLACK_SHUTTLE = ITEMS.register("black_shuttle", () -> new ShuttleItem(Shuttle.Type.BLACK, new Item.Properties().stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB)));
 	public static final RegistryObject<Item> GREY_SHUTTLE = ITEMS.register("grey_shuttle", () -> new ShuttleItem(Shuttle.Type.GREY, new Item.Properties().stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB)));
@@ -220,8 +224,6 @@ public class ItemRegistry {
 	public static final RegistryObject<Item> PURPLE_SHUTTLE = ITEMS.register("purple_shuttle", () -> new ShuttleItem(Shuttle.Type.PURPLE, new Item.Properties().stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB)));
 
 
-	
-	
 //	//Tools
 //	public static final RegistryObject<SwordItem> STEEL_SWORD = ITEMS.register("steel_sword", () -> new SwordItem(ModItemTier.STEEL, /*attackDamage*/ 5, /*attackSpeed*/ -2.4F, new Item.Properties().tab(ItemGroup.TAB_COMBAT)));
 //	public static final RegistryObject<AxeItem> STEEL_AXE = ITEMS.register("steel_axe", () -> new AxeItem(ModItemTier.STEEL, 8, -3.1F, new Item.Properties().tab(ItemGroup.TAB_TOOLS)));
@@ -234,12 +236,13 @@ public class ItemRegistry {
 	public static final RegistryObject<Item> STEEL_BOOTS = ITEMS.register("steel_boots", () -> new ArmorItem(ModArmorMaterials.STEEL, EquipmentSlot.FEET, (new Item.Properties()).tab(CelestialExploration.CELESTIAL_TAB)));
 	public static final RegistryObject<Item> STEEL_CHESTPLATE = ITEMS.register("steel_chestplate", () -> new ArmorItem(ModArmorMaterials.STEEL, EquipmentSlot.CHEST, (new Item.Properties()).tab(CelestialExploration.CELESTIAL_TAB)));
 	public static final RegistryObject<Item> STEEL_LEGGINGS = ITEMS.register("steel_leggings", () -> new ArmorItem(ModArmorMaterials.STEEL, EquipmentSlot.LEGS, (new Item.Properties()).tab(CelestialExploration.CELESTIAL_TAB)));
-//	
+
 	public static final RegistryObject<Item> SPACE_SUIT_HELMET = ITEMS.register("space_suit_helmet", () -> new ArmorItem(ModArmorMaterials.SPACE_SUIT, EquipmentSlot.HEAD, (new Item.Properties()).tab(CelestialExploration.CELESTIAL_TAB)));
 	public static final RegistryObject<ArmorItem> SPACE_SUIT_BOOTS = ITEMS.register("space_suit_boots", () -> new ArmorItem(ModArmorMaterials.SPACE_SUIT, EquipmentSlot.FEET, (new Item.Properties()).tab(CelestialExploration.CELESTIAL_TAB)));
 	public static final RegistryObject<ArmorItem> SPACE_SUIT_CHESTPLATE = ITEMS.register("space_suit_chestplate", () -> new ArmorItem(ModArmorMaterials.SPACE_SUIT, EquipmentSlot.CHEST, (new Item.Properties()).tab(CelestialExploration.CELESTIAL_TAB)));
 	public static final RegistryObject<ArmorItem> SPACE_SUIT_LEGGINGS = ITEMS.register("space_suit_leggings", () -> new ArmorItem(ModArmorMaterials.SPACE_SUIT, EquipmentSlot.LEGS, (new Item.Properties()).tab(CelestialExploration.CELESTIAL_TAB)));
 
+	//TODO - netherite space suit
 	
 	//CUSTOM ITEM TAGS
 	public static final TagKey<Item> MARS_TAG = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "mars_tag"));

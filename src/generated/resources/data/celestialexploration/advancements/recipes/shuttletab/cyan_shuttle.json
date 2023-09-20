@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "celestialexploration:cyan_shuttle"
+    ]
+  },
+  "criteria": {
+    "shuttle": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:white_shuttle"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "celestialexploration:cyan_shuttle"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "shuttle",
+      "has_the_recipe"
+    ]
+  ]
+}

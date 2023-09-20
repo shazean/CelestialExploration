@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "celestialexploration",
+  "pattern": [
+    "SsS",
+    "G G",
+    "SsS"
+  ],
+  "key": {
+    "S": {
+      "item": "celestialexploration:steel_block"
+    },
+    "s": {
+      "item": "celestialexploration:steel_ingot"
+    },
+    "G": {
+      "item": "minecraft:glass"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:lox_tank"
+  }
+}

@@ -157,7 +157,11 @@ public class CelestialExploration {
         event.enqueueWork(() -> {
             ItemProperties.register(ItemRegistry.LOX_TANK.get(), new ResourceLocation( "filled"), (stack, level, living, id) -> {
                 LoxTankCapability.ILoxTank loxTank = CelestialExploration.getCapability(stack, CapabilityRegistry.LOX_TANK_CAPABILITY);
-                return (float)loxTank.getFullness() / 8.0F;
+                if (loxTank != null) {
+                    return (float) loxTank.getFullness() / 8.0F;
+                } else {
+                    return 0;
+                }
             });
         });
 

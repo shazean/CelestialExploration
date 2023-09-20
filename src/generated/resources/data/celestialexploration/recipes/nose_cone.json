@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "celestialexploration",
+  "pattern": [
+    " C ",
+    "CSC"
+  ],
+  "key": {
+    "C": {
+      "item": "celestialexploration:ceramic_tile"
+    },
+    "S": {
+      "item": "celestialexploration:steel_block"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:nose_cone"
+  }
+}

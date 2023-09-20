@@ -51,7 +51,7 @@ public class OxygenCompressorBlockEntity extends BlockEntity implements MenuProv
     int burnTime = 250;
     int burnMaxTime = burnTime;
 
-    private final ItemStackHandler itemHandler = new ItemStackHandler(4) {
+    private final ItemStackHandler itemHandler = new ItemStackHandler(2) {
         @Override
         protected void onContentsChanged(int slot) {
             setChanged();

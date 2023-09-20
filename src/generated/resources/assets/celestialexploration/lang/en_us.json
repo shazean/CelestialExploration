@@ -1,5 +1,4 @@
 {
-  "block.celestialexploration.assembly_station": "Assembly Station",
   "block.celestialexploration.chiseled_mars_bricks": "Chiseled Martian Bricks",
   "block.celestialexploration.chiseled_moon_bricks": "Chiseled Lunar Bricks",
   "block.celestialexploration.glowing_moon_sand": "Glowing Lunar Sand",
@@ -67,5 +66,5 @@
   "item.celestialexploration.white_shuttle": "White Shuttle",
   "item.celestialexploration.yellow_shuttle": "Yellow Shuttle",
   "itemGroup.celestialtab": "Celestial Tab",
-  "Assembly Station": "Assembly Station"
+  "Lox Tank": "Lox Tank"
 }
