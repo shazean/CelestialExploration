@@ -4,10 +4,7 @@ import com.shim.celestialexploration.CelestialExploration;
 
 import com.shim.celestialexploration.blocks.BlockItemBase;
 import com.shim.celestialexploration.entity.Shuttle;
-import com.shim.celestialexploration.item.CatalystItem;
-import com.shim.celestialexploration.item.LoxTankItem;
-import com.shim.celestialexploration.item.ModArmorMaterials;
-import com.shim.celestialexploration.item.ShuttleItem;
+import com.shim.celestialexploration.item.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
@@ -187,10 +184,26 @@ public class ItemRegistry {
 	
 //	public static final RegistryObject<Item> GEYSER = ITEMS.register("geyser", () -> new BlockItemBase(RegistryBlocks.GEYSER.get()));
 
-	
-	
+
+
 	public static final RegistryObject<Item> CERAMIC = fromBlock(BlockRegistry.CERAMIC);
 	public static final RegistryObject<Item> CERAMIC_TILE = fromBlock(BlockRegistry.CERAMIC_TILE);
+	public static final RegistryObject<Item> WHITE_CERAMIC = fromBlock(BlockRegistry.WHITE_CERAMIC);
+	public static final RegistryObject<Item> LIGHT_GREY_CERAMIC = fromBlock(BlockRegistry.LIGHT_GREY_CERAMIC);
+	public static final RegistryObject<Item> GREY_CERAMIC = fromBlock(BlockRegistry.GREY_CERAMIC);
+	public static final RegistryObject<Item> BLACK_CERAMIC = fromBlock(BlockRegistry.BLACK_CERAMIC);
+	public static final RegistryObject<Item> PURPLE_CERAMIC = fromBlock(BlockRegistry.PURPLE_CERAMIC);
+	public static final RegistryObject<Item> MAGENTA_CERAMIC = fromBlock(BlockRegistry.MAGENTA_CERAMIC);
+	public static final RegistryObject<Item> BLUE_CERAMIC = fromBlock(BlockRegistry.BLUE_CERAMIC);
+	public static final RegistryObject<Item> LIGHT_BLUE_CERAMIC = fromBlock(BlockRegistry.LIGHT_BLUE_CERAMIC);
+	public static final RegistryObject<Item> CYAN_CERAMIC = fromBlock(BlockRegistry.CYAN_CERAMIC);
+	public static final RegistryObject<Item> GREEN_CERAMIC = fromBlock(BlockRegistry.GREEN_CERAMIC);
+	public static final RegistryObject<Item> LIME_CERAMIC = fromBlock(BlockRegistry.LIME_CERAMIC);
+	public static final RegistryObject<Item> YELLOW_CERAMIC = fromBlock(BlockRegistry.YELLOW_CERAMIC);
+	public static final RegistryObject<Item> ORANGE_CERAMIC = fromBlock(BlockRegistry.ORANGE_CERAMIC);
+	public static final RegistryObject<Item> BROWN_CERAMIC = fromBlock(BlockRegistry.BROWN_CERAMIC);
+	public static final RegistryObject<Item> RED_CERAMIC = fromBlock(BlockRegistry.RED_CERAMIC);
+	public static final RegistryObject<Item> PINK_CERAMIC = fromBlock(BlockRegistry.PINK_CERAMIC);
 
 
 	//	public static final RegistryObject<Item> THICK_CARBON_AIR = ITEMS.register("thick_carbon_air",  () -> new BlockItemBase(RegistryBlocks.THICK_CARBON_AIR.get()));
@@ -237,10 +250,10 @@ public class ItemRegistry {
 	public static final RegistryObject<Item> STEEL_CHESTPLATE = ITEMS.register("steel_chestplate", () -> new ArmorItem(ModArmorMaterials.STEEL, EquipmentSlot.CHEST, (new Item.Properties()).tab(CelestialExploration.CELESTIAL_TAB)));
 	public static final RegistryObject<Item> STEEL_LEGGINGS = ITEMS.register("steel_leggings", () -> new ArmorItem(ModArmorMaterials.STEEL, EquipmentSlot.LEGS, (new Item.Properties()).tab(CelestialExploration.CELESTIAL_TAB)));
 
-	public static final RegistryObject<Item> SPACE_SUIT_HELMET = ITEMS.register("space_suit_helmet", () -> new ArmorItem(ModArmorMaterials.SPACE_SUIT, EquipmentSlot.HEAD, (new Item.Properties()).tab(CelestialExploration.CELESTIAL_TAB)));
-	public static final RegistryObject<ArmorItem> SPACE_SUIT_BOOTS = ITEMS.register("space_suit_boots", () -> new ArmorItem(ModArmorMaterials.SPACE_SUIT, EquipmentSlot.FEET, (new Item.Properties()).tab(CelestialExploration.CELESTIAL_TAB)));
-	public static final RegistryObject<ArmorItem> SPACE_SUIT_CHESTPLATE = ITEMS.register("space_suit_chestplate", () -> new ArmorItem(ModArmorMaterials.SPACE_SUIT, EquipmentSlot.CHEST, (new Item.Properties()).tab(CelestialExploration.CELESTIAL_TAB)));
-	public static final RegistryObject<ArmorItem> SPACE_SUIT_LEGGINGS = ITEMS.register("space_suit_leggings", () -> new ArmorItem(ModArmorMaterials.SPACE_SUIT, EquipmentSlot.LEGS, (new Item.Properties()).tab(CelestialExploration.CELESTIAL_TAB)));
+	public static final RegistryObject<Item> SPACE_SUIT_HELMET = ITEMS.register("space_suit_helmet", () -> new SpaceSuitArmorItem(ModArmorMaterials.SPACE_SUIT, EquipmentSlot.HEAD, (new Item.Properties()).tab(CelestialExploration.CELESTIAL_TAB)));
+	public static final RegistryObject<ArmorItem> SPACE_SUIT_BOOTS = ITEMS.register("space_suit_boots", () -> new SpaceSuitArmorItem(ModArmorMaterials.SPACE_SUIT, EquipmentSlot.FEET, (new Item.Properties()).tab(CelestialExploration.CELESTIAL_TAB)));
+	public static final RegistryObject<ArmorItem> SPACE_SUIT_CHESTPLATE = ITEMS.register("space_suit_chestplate", () -> new SpaceSuitArmorItem(ModArmorMaterials.SPACE_SUIT, EquipmentSlot.CHEST, (new Item.Properties()).tab(CelestialExploration.CELESTIAL_TAB)));
+	public static final RegistryObject<ArmorItem> SPACE_SUIT_LEGGINGS = ITEMS.register("space_suit_leggings", () -> new SpaceSuitArmorItem(ModArmorMaterials.SPACE_SUIT, EquipmentSlot.LEGS, (new Item.Properties()).tab(CelestialExploration.CELESTIAL_TAB)));
 
 	//TODO - netherite space suit
 	

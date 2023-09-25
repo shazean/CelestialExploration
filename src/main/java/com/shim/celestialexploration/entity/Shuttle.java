@@ -56,6 +56,7 @@ import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.network.NetworkHooks;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -270,7 +271,7 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
         this.lerpSteps = 10;
     }
 
-    public Direction getMotionDirection() {
+    public @NotNull Direction getMotionDirection() {
         return this.getDirection().getClockWise();
     }
 
@@ -306,21 +307,15 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
             if (this.level.isClientSide) {
                 this.controlShuttle();
 //                this.level.sendPacketToServer(new ServerboundPaddleBoatPacket(this.getPaddleState(0), this.getPaddleState(1)));
-
                 if (this.isVehicle()) {
-
                     if (this.getDeltaMovement().z > 0 || this.getDeltaMovement().x > 0) {
-                        CelestialExploration.LOGGER.debug("Shuttle is moving!");
                         --fuelTicks;
                         if (fuelTicks <= 0) {
                             this.useFuel();
                             fuelTicks = 100;
                         }
-
                     }
                 }
-
-
             }
 
             this.move(MoverType.SELF, this.getDeltaMovement());
@@ -364,10 +359,6 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
                 }
             }
         }
-
-
-
-
     }
 
 //    private void tickBubbleColumn() {
@@ -958,7 +949,7 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
 
     @Override
     public <T> net.minecraftforge.common.util.LazyOptional<T> getCapability(net.minecraftforge.common.capabilities.Capability<T> capability, @Nullable net.minecraft.core.Direction facing) {
-        if (this.isAlive() && capability == net.minecraftforge.items.CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && itemHandler != null)
+        if (capability == net.minecraftforge.items.CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && itemHandler != null)
             return itemHandler.cast();
         return super.getCapability(capability, facing);
     }

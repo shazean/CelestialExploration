@@ -3,6 +3,7 @@ package com.shim.celestialexploration.inventory.menus;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.entity.Shuttle;
 import com.shim.celestialexploration.inventory.FuelSlot;
+import com.shim.celestialexploration.inventory.OxygenTankSlot;
 import com.shim.celestialexploration.registry.MenuRegistry;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.Entity;
@@ -35,8 +36,8 @@ public class ShuttleMenu extends AbstractContainerMenu {
 
         this.entity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(handler -> {
             //fuel slots
-            this.addSlot(new FuelSlot(handler, 0, 26, 22));
-            this.addSlot(new FuelSlot(handler, 1, 62, 22));
+            this.addSlot(new OxygenTankSlot(handler, 0, 26, 22));
+            this.addSlot(new OxygenTankSlot(handler, 1, 62, 22));
 
             //shuttle storage
             for (int i = 0; i < 3; ++i) {

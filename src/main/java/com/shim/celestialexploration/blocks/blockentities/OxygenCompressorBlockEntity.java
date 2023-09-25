@@ -51,7 +51,7 @@ public class OxygenCompressorBlockEntity extends BlockEntity implements MenuProv
     int burnTime = 250;
     int burnMaxTime = burnTime;
 
-    private final ItemStackHandler itemHandler = new ItemStackHandler(2) {
+    private final ItemStackHandler itemHandler = new ItemStackHandler(7) {
         @Override
         protected void onContentsChanged(int slot) {
             setChanged();
@@ -250,7 +250,7 @@ public class OxygenCompressorBlockEntity extends BlockEntity implements MenuProv
 
     public static void tick(Level level, BlockPos pos, BlockState state, OxygenCompressorBlockEntity blockEntity) {
 
-        boolean hasTankInSlot = blockEntity.itemHandler.getStackInSlot(1).getItem() == ItemRegistry.LOX_TANK.get();
+        boolean hasTankInSlot = blockEntity.itemHandler.getStackInSlot(1).getItem() == ItemRegistry.LOX_TANK.get() || blockEntity.itemHandler.getStackInSlot(2).getItem() == ItemRegistry.LOX_TANK.get() || blockEntity.itemHandler.getStackInSlot(3).getItem() == ItemRegistry.LOX_TANK.get() || blockEntity.itemHandler.getStackInSlot(4).getItem() == ItemRegistry.LOX_TANK.get();
         ItemStack fuelSlot = blockEntity.itemHandler.getStackInSlot(0);
         boolean isChanged = false;
 
@@ -273,15 +273,37 @@ public class OxygenCompressorBlockEntity extends BlockEntity implements MenuProv
                 --blockEntity.litTime;
                 --blockEntity.burnTime;
                 if (blockEntity.burnTime <= 0) {
-                    ItemStack tank = blockEntity.itemHandler.getStackInSlot(1);
+                    ItemStack firstSlot = blockEntity.itemHandler.getStackInSlot(1);
+                    ItemStack secondSlot = blockEntity.itemHandler.getStackInSlot(2);
+                    ItemStack thirdSlot = blockEntity.itemHandler.getStackInSlot(3);
+                    ItemStack fourthSlot = blockEntity.itemHandler.getStackInSlot(4);
 
+                    LoxTankCapability.ILoxTank loxTank = CelestialExploration.getCapability(firstSlot, CapabilityRegistry.LOX_TANK_CAPABILITY);
+                    LoxTankCapability.ILoxTank secondloxTank = CelestialExploration.getCapability(secondSlot, CapabilityRegistry.LOX_TANK_CAPABILITY);
+                    LoxTankCapability.ILoxTank thirdloxTank = CelestialExploration.getCapability(thirdSlot, CapabilityRegistry.LOX_TANK_CAPABILITY);
+                    LoxTankCapability.ILoxTank fourthloxTank = CelestialExploration.getCapability(fourthSlot, CapabilityRegistry.LOX_TANK_CAPABILITY);
 
-                    LoxTankCapability.ILoxTank loxTank = CelestialExploration.getCapability(tank, CapabilityRegistry.LOX_TANK_CAPABILITY);
-
-                    if (!loxTank.isFull()) {
+                    if (loxTank != null && !loxTank.isFull()) {
                         loxTank.incrementAmount();
+                        blockEntity.resetBurnTime(blockEntity);
+                    } else if (secondloxTank != null && !secondloxTank.isFull()) {
+                        secondloxTank.incrementAmount();
+                        blockEntity.resetBurnTime(blockEntity);
+                    } else if (thirdloxTank != null && !thirdloxTank.isFull()) {
+                        thirdloxTank.incrementAmount();
+                        blockEntity.resetBurnTime(blockEntity);
+                    } else if (fourthloxTank != null && !fourthloxTank.isFull()) {
+                        fourthloxTank.incrementAmount();
+                        blockEntity.resetBurnTime(blockEntity);
+                    } else {
+
                     }
-                    blockEntity.resetBurnTime(blockEntity);
+
+
+//                    if (!loxTank.isFull()) {
+//                        loxTank.incrementAmount();
+//                        blockEntity.resetBurnTime(blockEntity);
+//                    }
 
                     //TODO add multiple slots
                 }

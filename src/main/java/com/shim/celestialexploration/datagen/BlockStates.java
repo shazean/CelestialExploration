@@ -9,8 +9,12 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.WallBlock;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
+import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
+
+import java.util.function.Function;
 
 public class BlockStates extends BlockStateProvider {
 
@@ -74,6 +78,9 @@ public class BlockStates extends BlockStateProvider {
 		simpleBlock(BlockRegistry.STEEL_BLOCK.get());
 
 		simpleBlock(BlockRegistry.CERAMIC.get());
+
+		paneBlock(BlockRegistry.CERAMIC_TILE.get(), modLoc("block/ceramic"), modLoc("block/ceramic_tile_top"));
+
 
 		//SHUTTLE
 		simpleBlock(BlockRegistry.STEEL_FRAME.get());

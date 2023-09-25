@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "celestialexploration:block/orange_ceramic",
+      "y": 270
+    },
+    "facing=north": {
+      "model": "celestialexploration:block/orange_ceramic",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "celestialexploration:block/orange_ceramic"
+    },
+    "facing=west": {
+      "model": "celestialexploration:block/orange_ceramic",
+      "y": 90
+    }
+  }
+}

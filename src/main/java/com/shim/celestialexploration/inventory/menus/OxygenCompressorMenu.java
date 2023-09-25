@@ -2,10 +2,11 @@ package com.shim.celestialexploration.inventory.menus;
 
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.blocks.blockentities.OxygenCompressorBlockEntity;
-import com.shim.celestialexploration.inventory.ModResultSlot;
+import com.shim.celestialexploration.inventory.OxygenTankSlot;
 import com.shim.celestialexploration.registry.BlockRegistry;
 import com.shim.celestialexploration.registry.MenuRegistry;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -21,33 +22,21 @@ import net.minecraftforge.items.SlotItemHandler;
 public class OxygenCompressorMenu extends AbstractContainerMenu {
     private final OxygenCompressorBlockEntity blockEntity;
     private final Level level;
+    public static final int CONTAINER_SIZE = 5;
+
 
     public OxygenCompressorMenu(int containerId, Inventory inv, FriendlyByteBuf extraData) {
         this(containerId, inv, inv.player.level.getBlockEntity(extraData.readBlockPos()));
     }
 
     public OxygenCompressorMenu(int containerId, Inventory inv, BlockEntity entity, ContainerData data) {
-        super(MenuRegistry.OXYGEN_COMPRESSOR_MENU.get(), containerId);
-        checkContainerSize(inv, 4);
-        blockEntity = ((OxygenCompressorBlockEntity) entity);
-        this.level = inv.player.level;
-
-        addPlayerInventory(inv);
-        addPlayerHotbar(inv);
-
-        this.blockEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(handler -> {
-            this.addSlot(new SlotItemHandler(handler, 0, 15, 70));
-            this.addSlot(new SlotItemHandler(handler, 1, 90, 18));
-//            this.addSlot(new SlotItemHandler(handler, 2, 103, 18));
-//            this.addSlot(new ModResultSlot(handler, 3, 90, 60));
-        });
-
-
+        this(containerId, inv, entity);
     }
 
     public OxygenCompressorMenu(int containerId, Inventory inv, BlockEntity entity) {
         super(MenuRegistry.OXYGEN_COMPRESSOR_MENU.get(), containerId);
-        checkContainerSize(inv, 4);
+
+        checkContainerSize(inv, 6);
         blockEntity = ((OxygenCompressorBlockEntity) entity);
         this.level = inv.player.level;
 
@@ -56,13 +45,17 @@ public class OxygenCompressorMenu extends AbstractContainerMenu {
 
         this.blockEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(handler -> {
             this.addSlot(new SlotItemHandler(handler, 0, 31, 51));
-            this.addSlot(new SlotItemHandler(handler, 1, 106, 23));
-//            this.addSlot(new SlotItemHandler(handler, 2, 103, 18));
-//            this.addSlot(new ModResultSlot(handler, 3, 80, 60));
+            this.addSlot(new OxygenTankSlot(handler, 1, 106, 23));
+            this.addSlot(new OxygenTankSlot(handler, 2, 130, 23));
+            this.addSlot(new OxygenTankSlot(handler, 3, 106, 47));
+            this.addSlot(new OxygenTankSlot(handler, 4, 130, 47));
+
         });
 
 
     }
+
+
 
 
     // CREDIT GOES TO: diesieben07 | https://github.com/diesieben07/SevenCommons
@@ -80,7 +73,7 @@ public class OxygenCompressorMenu extends AbstractContainerMenu {
     private static final int VANILLA_FIRST_SLOT_INDEX = 0;
     private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
 
-    private static final int TE_INVENTORY_SLOT_COUNT = 2;  // must be the number of slots you have! FIXME
+    private static final int TE_INVENTORY_SLOT_COUNT = 6;  // must be the number of slots you have!
 
     @Override
     public ItemStack quickMoveStack(Player playerIn, int index) {
