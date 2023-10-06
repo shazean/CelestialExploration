@@ -102,9 +102,7 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
 
     @Override
     public void containerChanged(Container p_18983_) {
-
     }
-
 
     @org.jetbrains.annotations.Nullable
     @Override

@@ -21,6 +21,8 @@ public class DataGenerators {
 			ModBlockTags blockTags = new ModBlockTags(generator, event.getExistingFileHelper());
 			generator.addProvider(blockTags);
 			generator.addProvider(new ModItemTags(generator, blockTags, event.getExistingFileHelper()));
+//			ModBiomeTags biomeTags = new ModBiomeTags(generator);
+//			generator.addProvider(biomeTags);
 		}
 		if (event.includeClient()) {
 			generator.addProvider(new BlockStates(generator, event.getExistingFileHelper()));

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "celestialexploration",
+  "pattern": [
+    "XXX",
+    "XGX"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:steel_ingot"
+    },
+    "G": {
+      "item": "minecraft:glass"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:space_suit_helmet"
+  }
+}

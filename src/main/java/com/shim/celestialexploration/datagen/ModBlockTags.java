@@ -1,6 +1,7 @@
 package com.shim.celestialexploration.datagen;
 
 import com.shim.celestialexploration.CelestialExploration;
+import com.shim.celestialexploration.registry.BiomeRegistry;
 import com.shim.celestialexploration.registry.BlockRegistry;
 
 import net.minecraft.data.DataGenerator;
@@ -17,8 +18,13 @@ public class ModBlockTags extends BlockTagsProvider {
 
 	@Override
 	protected void addTags() {
+		/**
+		 * VANILLA TAGS
+		 */
 		tag(BlockTags.MINEABLE_WITH_PICKAXE)
-			//MOON
+			/**
+			 * MOON
+			 */
 			.add(BlockRegistry.MOON_BRICK_SLAB.get())
 			.add(BlockRegistry.MOON_BRICK_STAIRS.get())
 			.add(BlockRegistry.MOON_BRICK_WALL.get())
@@ -26,7 +32,7 @@ public class ModBlockTags extends BlockTagsProvider {
 			.add(BlockRegistry.MOON_REDSTONE_ORE.get())
 			.add(BlockRegistry.MOON_STONE.get())
 			.add(BlockRegistry.CHISELED_MOON_BRICKS.get())
-			//MARS
+			/**MARS*/
 			.add(BlockRegistry.MARS_BRICK_SLAB.get())
 			.add(BlockRegistry.MARS_BRICK_STAIRS.get())
 			.add(BlockRegistry.MARS_BRICK_WALL.get())
@@ -35,7 +41,7 @@ public class ModBlockTags extends BlockTagsProvider {
 			.add(BlockRegistry.MARS_REDSTONE_ORE.get())
 			.add(BlockRegistry.MARS_STONE.get())
 			.add(BlockRegistry.CHISELED_MARS_BRICKS.get())
-			//METEOR
+			/**METEOR*/
 			.add(BlockRegistry.METEOR.get())
 			.add(BlockRegistry.METEOR_BRICK_SLAB.get())
 			.add(BlockRegistry.METEOR_BRICK_STAIRS.get())
@@ -126,12 +132,14 @@ public class ModBlockTags extends BlockTagsProvider {
 			.add(BlockRegistry.MARS_SAND.get())
 			.add(BlockRegistry.MOON_SAND.get());
 
-		tag(Tags.Blocks.ORE_RATES_DENSE)
-		;
-		tag(Tags.Blocks.ORE_RATES_SINGULAR)
-		;
-		tag(Tags.Blocks.ORE_RATES_SPARSE)
-		;
+		//TODO
+		tag(Tags.Blocks.ORE_RATES_DENSE);
+		tag(Tags.Blocks.ORE_RATES_SINGULAR);
+		tag(Tags.Blocks.ORE_RATES_SPARSE);
+
+		/**
+		 * CUSTOM TAGS
+		 */
 
 		tag(BlockRegistry.MARS_TAG)
 				.add(BlockRegistry.MARS_BRICKS.get())
@@ -188,7 +196,6 @@ public class ModBlockTags extends BlockTagsProvider {
 				.add(BlockRegistry.CHISELED_METEOR_BRICKS.get());
 
 		//TODO fluid tags
-
 	}
 	
 	@Override
@@ -196,5 +203,4 @@ public class ModBlockTags extends BlockTagsProvider {
 		return "Celestial Exploration tags";
 		
 	}
-
 }

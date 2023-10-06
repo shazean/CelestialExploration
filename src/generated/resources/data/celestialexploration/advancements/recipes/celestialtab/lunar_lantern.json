@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "celestialexploration:lunar_lantern"
+    ]
+  },
+  "criteria": {
+    "has_moon_dust": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:moon_dust"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "celestialexploration:lunar_lantern"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_moon_dust",
+      "has_the_recipe"
+    ]
+  ]
+}

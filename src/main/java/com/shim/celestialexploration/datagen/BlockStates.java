@@ -24,7 +24,9 @@ public class BlockStates extends BlockStateProvider {
 
 	@Override
 	protected void registerStatesAndModels() {
-		//MOON
+		/**
+		 * MOON
+		 * */
 		simpleBlock(BlockRegistry.MOON_BRICKS.get());
 		simpleBlock(BlockRegistry.MOON_IRON_ORE.get());
 		simpleBlock(BlockRegistry.MOON_REDSTONE_ORE.get());
@@ -37,7 +39,9 @@ public class BlockStates extends BlockStateProvider {
 		slabBlock((SlabBlock) BlockRegistry.MOON_BRICK_SLAB.get(), modLoc("block/moon_bricks"), modLoc("block/moon_bricks"));
 		wallBlock((WallBlock) BlockRegistry.MOON_BRICK_WALL.get(), modLoc("block/moon_bricks"));
 
-		//MARS
+		/**
+		 * MARS
+		 * */
 		simpleBlock(BlockRegistry.CHISELED_MARS_BRICKS.get());
 		simpleBlock(BlockRegistry.MARS_BRICKS.get());
 		simpleBlock(BlockRegistry.MARS_IRON_ORE.get());
@@ -50,7 +54,9 @@ public class BlockStates extends BlockStateProvider {
 
 
 
-		//METEORS
+		/**
+		 * METEORS
+		 */
 		simpleBlock(BlockRegistry.METEOR.get());
 		simpleBlock(BlockRegistry.METEOR_BRICKS.get());
 		simpleBlock(BlockRegistry.METEOR_COAL_ORE.get());
@@ -66,31 +72,29 @@ public class BlockStates extends BlockStateProvider {
 		slabBlock((SlabBlock) BlockRegistry.METEOR_BRICK_SLAB.get(), modLoc("block/meteor_bricks"), modLoc("block/meteor_bricks"));
 		wallBlock((WallBlock) BlockRegistry.METEOR_BRICK_WALL.get(), modLoc("block/meteor_bricks"));
 
-
-		simpleBlock(BlockRegistry.SOLAR_LANTERN.get());
+//		simpleBlock(BlockRegistry.SOLAR_LANTERN.get());
 //		simpleBlock(BlockRegistry.ECLIPSE_LANTERN.get());
 
 
-
-		//OTHER
-		simpleBlock(BlockRegistry.SOLAR_PANEL.get());
-		simpleBlock(BlockRegistry.IGNEOUS_ROCK.get());
+		/**
+		 * OTHER
+		 * */
+//		simpleBlock(BlockRegistry.SOLAR_PANEL.get());
+//		simpleBlock(BlockRegistry.IGNEOUS_ROCK.get());
 		simpleBlock(BlockRegistry.STEEL_BLOCK.get());
-
 		simpleBlock(BlockRegistry.CERAMIC.get());
-
 		paneBlock(BlockRegistry.CERAMIC_TILE.get(), modLoc("block/ceramic"), modLoc("block/ceramic_tile_top"));
 
-
-		//SHUTTLE
+		/**
+		 * SHUTTLE
+		 */
 		simpleBlock(BlockRegistry.STEEL_FRAME.get());
-//		simpleBlock(BlockRegistry.ASSEMBLY_STATION.get());
-//		simpleBlock(BlockRegistry.TEST_BLOCK.get());
 
-		//LOX
-//		simpleBlock(BlockRegistry.LOX_TANK.get());
+		/**
+		 * LOX
+		 * NOTE: lox tank drops are handled manually in block class
+		 * */
 		simpleBlock(FluidRegistry.LOX_BLOCK.get());
-
 	}
 
 }

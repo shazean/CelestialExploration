@@ -5,6 +5,8 @@ import com.shim.celestialexploration.registry.BlockRegistry;
 
 import com.shim.celestialexploration.registry.ItemRegistry;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.LanguageProvider;
 
 public class ModLanguageProvider extends LanguageProvider {
@@ -15,11 +17,11 @@ public class ModLanguageProvider extends LanguageProvider {
 
 	@Override
 	protected void addTranslations() {
+		/**TABS**/
 		add("itemGroup.celestialtab", "Celestial Tab");
-		
-		
-		//***BLOCKS***
-		//MOON
+		add("itemGroup.shuttletab", "Shuttle Tab");
+
+		/**MOON**/
 		add(BlockRegistry.MOON_BRICK_SLAB.get(), "Lunar Brick Slab");
 		add(BlockRegistry.MOON_BRICK_STAIRS.get(), "Lunar Brick Stairs");
 		add(BlockRegistry.MOON_BRICK_WALL.get(), "Lunar Brick Wall");
@@ -29,11 +31,11 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(BlockRegistry.MOON_SAND.get(), "Lunar Regolith");
 		add(BlockRegistry.MOON_STONE.get(), "Lunar Stone");
 		add(BlockRegistry.CHISELED_MOON_BRICKS.get(), "Chiseled Lunar Bricks");
-		add(BlockRegistry.GLOWING_MOON_SAND.get(), "Glowing Lunar Sand");
+		add(BlockRegistry.GLOWING_MOON_SAND.get(), "Glowing Lunar Regolith");
 		add(BlockRegistry.LUNAR_LANTERN.get(), "Lunar Lantern");
-		
-		
-		//MARS
+		add(ItemRegistry.MOON_DUST.get(), "Lunar Dust");
+
+		/**MARS**/
 		add(BlockRegistry.CHISELED_MARS_BRICKS.get(), "Chiseled Martian Bricks");
 		add(BlockRegistry.MARS_BRICK_SLAB.get(), "Martian Brick Slab");
 		add(BlockRegistry.MARS_BRICK_STAIRS.get(), "Martian Brick Stairs");
@@ -44,12 +46,13 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(BlockRegistry.MARS_SAND.get(), "Martian Regolith");
 		add(BlockRegistry.MARS_STONE.get(), "Martian Stone");
 		
-		//METEOR
+		/**METEOR**/
 		add(BlockRegistry.METEOR.get(), "Meteorite");
 		add(BlockRegistry.METEOR_BRICK_SLAB.get(), "Meteorite Brick Slab");
 		add(BlockRegistry.METEOR_BRICK_STAIRS.get(), "Meteorite Brick Stairs");
 		add(BlockRegistry.METEOR_BRICK_WALL.get(), "Meteorite Brick Wall");
 		add(BlockRegistry.METEOR_BRICKS.get(), "Meteorite Bricks");
+		add(BlockRegistry.CHISELED_METEOR_BRICKS.get(), "Chiseled Meteorite Bricks");
 		add(BlockRegistry.METEOR_COAL_ORE.get(), "Meteorite Coal Ore");
 		add(BlockRegistry.METEOR_COPPER_ORE.get(), "Meteorite Copper Ore");
 		add(BlockRegistry.METEOR_DIAMOND_ORE.get(), "Meteorite Diamond Ore");
@@ -59,12 +62,20 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(BlockRegistry.METEOR_LAPIS_ORE.get(), "Meteorite Lapis Lazuli Ore");
 		add(BlockRegistry.METEOR_REDSTONE_ORE.get(), "Meteorite Redstone Ore");
 
-		//OTHER
-		add(BlockRegistry.SOLAR_PANEL.get(), "Solar Panel");
-		add(BlockRegistry.IGNEOUS_ROCK.get(), "Igneous Rock");
+		/**OTHER**/
+//		add(BlockRegistry.SOLAR_PANEL.get(), "Solar Panel");
+//		add(BlockRegistry.IGNEOUS_ROCK.get(), "Igneous Rock");
+//		add(ItemRegistry.ASSEMBLY_STATION.get(), "Assembly Station");
+		add(ItemRegistry.OXYGEN_COMPRESSOR.get(), "Oxygen Compressor");
+		add(ItemRegistry.LOX_TANK.get(), "Liquid Oxygen Tank");
+		add(ItemRegistry.LOX_BUCKET.get(), "Liquid Oxygen Bucket");
+		add(ItemRegistry.STEEL_ROD.get(), "Steel Rod");
+		add(ItemRegistry.STEEL_INGOT.get(), "Steel Ingot");
+		add(BlockRegistry.STEEL_BLOCK.get(), "Steel Block");
+		add(BlockRegistry.CERAMIC.get(), "Ceramic");
+		add(BlockRegistry.CERAMIC_TILE.get(), "Ceramic Tile");
 
-
-		//ARMOR
+		/**ARMOR**/
 		add(ItemRegistry.STEEL_BOOTS.get(), "Steel Boots");
 		add(ItemRegistry.STEEL_CHESTPLATE.get(), "Steel Chestplate");
 		add(ItemRegistry.STEEL_HELMET.get(), "Steel Helmet");
@@ -74,18 +85,13 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(ItemRegistry.SPACE_SUIT_HELMET.get(), "Space Suit Helmet");
 		add(ItemRegistry.SPACE_SUIT_LEGGINGS.get(), "Space Suit Leggings");
 
-		//SPAWN EGGS
+		/**SPAWN EGGS**/
 		add(ItemRegistry.RUST_SPAWN_EGG.get(), "Rust Slime Spawn Egg");
 		add(ItemRegistry.LUNAR_SPAWN_EGG.get(), "Lunar Slime Spawn Egg");
 		add(ItemRegistry.MARS_MALLOW_SPAWN_EGG.get(), "Mars Mallow Spawn Egg");
 		add(ItemRegistry.LURKER_SPAWN_EGG.get(), "Lurker Spawn Egg");
 
-//		add(ItemRegistry.ASSEMBLY_STATION.get(), "Assembly Station");
-		add(ItemRegistry.OXYGEN_COMPRESSOR.get(), "Oxygen Compressor");
-		add(ItemRegistry.LOX_TANK.get(), "Liquid Oxygen Tank");
-		add(ItemRegistry.LOX_BUCKET.get(), "Liquid Oxygen Bucket");
-
-		//SHUTTLE
+		/**SHUTTLE ITEMS**/
 		add(ItemRegistry.WHITE_SHUTTLE.get(), "White Shuttle");
 		add(ItemRegistry.BLACK_SHUTTLE.get(), "Black Shuttle");
 		add(ItemRegistry.GREY_SHUTTLE.get(), "Grey Shuttle");
@@ -103,8 +109,14 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(ItemRegistry.MAGENTA_SHUTTLE.get(), "Magenta Shuttle");
 		add(ItemRegistry.BROWN_SHUTTLE.get(), "Brown Shuttle");
 
-	}
-	
-	
+		/**
+		 * SHUTTLE-RELATED
+		 */
+		add(BlockRegistry.STEEL_FRAME.get(), "Steel Frame");
+		add(ItemRegistry.SHUTTLE_FRAME.get(), "Shuttle Frame");
+		add(ItemRegistry.SHUTTLE_CABIN.get(), "Shuttle Cabin");
+		add(ItemRegistry.SHUTTLE_ENGINE.get(), "Shuttle Engine");
+		add(ItemRegistry.NOSE_CONE.get(), "Shuttle Nose Cone");
 
+	}
 }

@@ -17,7 +17,9 @@ public class ItemModels extends ItemModelProvider {
 
 	@Override
 	protected void registerModels() {
-		//MOON
+		/**
+		 * MOON
+		 */
 		withExistingParent(ItemRegistry.MOON_BRICKS.get().getRegistryName().getPath(), modLoc("block/moon_bricks"));
 		withExistingParent(ItemRegistry.MOON_IRON_ORE.get().getRegistryName().getPath(), modLoc("block/moon_iron_ore"));
 		withExistingParent(ItemRegistry.MOON_REDSTONE_ORE.get().getRegistryName().getPath(), modLoc("block/moon_redstone_ore"));
@@ -31,7 +33,9 @@ public class ItemModels extends ItemModelProvider {
 		slab("moon_brick_slab", modLoc("block/moon_bricks"), modLoc("block/moon_bricks"), modLoc("block/moon_bricks"));
 		wallInventory("moon_brick_wall",  modLoc("block/moon_bricks"));
 
-		//MARS
+		/**
+		 * MARS
+		 */
 		withExistingParent(ItemRegistry.CHISELED_MARS_BRICKS.get().getRegistryName().getPath(), modLoc("block/chiseled_mars_bricks"));
 		withExistingParent(ItemRegistry.MARS_BRICKS.get().getRegistryName().getPath(), modLoc("block/mars_bricks"));
 		withExistingParent(ItemRegistry.MARS_IRON_ORE.get().getRegistryName().getPath(), modLoc("block/mars_iron_ore"));
@@ -43,7 +47,9 @@ public class ItemModels extends ItemModelProvider {
 		wallInventory("mars_brick_wall",  modLoc("block/mars_bricks"));
 
 
-		//METEOR
+		/**
+		 * METEOR
+		 */
 		withExistingParent(ItemRegistry.METEOR.get().getRegistryName().getPath(), modLoc("block/meteor"));
 		withExistingParent(ItemRegistry.METEOR_BRICKS.get().getRegistryName().getPath(), modLoc("block/meteor_bricks"));
 		withExistingParent(ItemRegistry.METEOR_COAL_ORE.get().getRegistryName().getPath(), modLoc("block/meteor_coal_ore"));
@@ -60,30 +66,26 @@ public class ItemModels extends ItemModelProvider {
 		wallInventory("meteor_brick_wall",  modLoc("block/meteor_bricks"));
 
 
-		//OTHER BLOCK ITEMS
-		withExistingParent(ItemRegistry.SOLAR_PANEL.get().getRegistryName().getPath(), modLoc("block/solar_panel"));
-		withExistingParent(ItemRegistry.SOLAR_LANTERN.get().getRegistryName().getPath(), modLoc("block/solar_lantern"));
-		withExistingParent(ItemRegistry.IGNEOUS_ROCK.get().getRegistryName().getPath(), modLoc("block/igneous_rock"));
-
+		/**
+		 * OTHER BLOCK ITEMS
+		 */
+//		withExistingParent(ItemRegistry.SOLAR_PANEL.get().getRegistryName().getPath(), modLoc("block/solar_panel"));
+//		withExistingParent(ItemRegistry.SOLAR_LANTERN.get().getRegistryName().getPath(), modLoc("block/solar_lantern"));
+//		withExistingParent(ItemRegistry.IGNEOUS_ROCK.get().getRegistryName().getPath(), modLoc("block/igneous_rock"));
 //		withExistingParent(ItemRegistry.ECLIPSE_LANTERN.get().getRegistryName().getPath(), modLoc("block/eclipse_lantern"));
 
-//		withExistingParent(ItemRegistry.TEST_BLOCK.get().getRegistryName().getPath(), modLoc("block/test_block"));
 
-		//ITEMS
-		//moon dust, etc.
+		/**
+		 * ITEMS (not belonging to blocks)
+		 */
 		singleTexture(ItemRegistry.MOON_DUST.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/moon_dust"));
 		singleTexture(ItemRegistry.STEEL_INGOT.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/steel_ingot"));
 		singleTexture(ItemRegistry.STEEL_ROD.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/steel_rod"));
-
-		//		singleTexture(ItemRegistry.METEOR_INGOT.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/meteor_ingot"));
-//		singleTexture(ItemRegistry.LOX_TANK.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/lox_tank"));
-//		singleTexture(ItemRegistry.FILLED_LOX_TANK.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/filled_lox_tank"));
-
 		singleTexture(ItemRegistry.LOX_BUCKET.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/lox_bucket"));
 
-
-
-		//ARMOR
+		/**
+		 * ARMOR
+		 */
 		singleTexture(ItemRegistry.STEEL_HELMET.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/steel_helmet"));
 		singleTexture(ItemRegistry.STEEL_LEGGINGS.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/steel_leggings"));
 		singleTexture(ItemRegistry.STEEL_CHESTPLATE.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/steel_chestplate"));
@@ -93,7 +95,9 @@ public class ItemModels extends ItemModelProvider {
 		singleTexture(ItemRegistry.SPACE_SUIT_CHESTPLATE.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/space_suit_chestplate"));
 		singleTexture(ItemRegistry.SPACE_SUIT_BOOTS.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/space_suit_boots"));
 
-		//SHUTTLE
+		/**
+		 * SHUTTLE ITEMS
+		 */
 		singleTexture(ItemRegistry.BLACK_SHUTTLE.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/black_shuttle"));
 		singleTexture(ItemRegistry.GREY_SHUTTLE.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/grey_shuttle"));
 		singleTexture(ItemRegistry.LIGHT_GREY_SHUTTLE.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/light_grey_shuttle"));
@@ -111,42 +115,37 @@ public class ItemModels extends ItemModelProvider {
 		singleTexture(ItemRegistry.BLUE_SHUTTLE.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/blue_shuttle"));
 		singleTexture(ItemRegistry.PURPLE_SHUTTLE.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/purple_shuttle"));
 
-		//SHUTTLE RELATED
+		/**
+		 * SHUTTLE-RELATED ITEMS
+		*/
 //		withExistingParent(ItemRegistry.ASSEMBLY_STATION.get().getRegistryName().getPath(), modLoc("block/assembly_station"));
 		withExistingParent(ItemRegistry.OXYGEN_COMPRESSOR.get().getRegistryName().getPath(), modLoc("block/oxygen_compressor"));
-
 		withExistingParent(ItemRegistry.STEEL_BLOCK.get().getRegistryName().getPath(), modLoc("block/steel_block"));
 		withExistingParent(ItemRegistry.CERAMIC.get().getRegistryName().getPath(), modLoc("block/ceramic"));
 		singleTexture(ItemRegistry.CERAMIC_TILE.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "block/ceramic"));
-		withExistingParent(ItemRegistry.WHITE_CERAMIC.get().getRegistryName().getPath(), modLoc("block/white_ceramic"));
-		withExistingParent(ItemRegistry.LIGHT_GREY_CERAMIC.get().getRegistryName().getPath(), modLoc("block/light_grey_ceramic"));
-		withExistingParent(ItemRegistry.GREY_CERAMIC.get().getRegistryName().getPath(), modLoc("block/grey_ceramic"));
-		withExistingParent(ItemRegistry.BLACK_CERAMIC.get().getRegistryName().getPath(), modLoc("block/black_ceramic"));
-		withExistingParent(ItemRegistry.PURPLE_CERAMIC.get().getRegistryName().getPath(), modLoc("block/purple_ceramic"));
-		withExistingParent(ItemRegistry.MAGENTA_CERAMIC.get().getRegistryName().getPath(), modLoc("block/magenta_ceramic"));
-		withExistingParent(ItemRegistry.BLUE_CERAMIC.get().getRegistryName().getPath(), modLoc("block/blue_ceramic"));
-		withExistingParent(ItemRegistry.LIGHT_BLUE_CERAMIC.get().getRegistryName().getPath(), modLoc("block/light_blue_ceramic"));
-		withExistingParent(ItemRegistry.CYAN_CERAMIC.get().getRegistryName().getPath(), modLoc("block/cyan_ceramic"));
-		withExistingParent(ItemRegistry.GREEN_CERAMIC.get().getRegistryName().getPath(), modLoc("block/green_ceramic"));
-		withExistingParent(ItemRegistry.LIME_CERAMIC.get().getRegistryName().getPath(), modLoc("block/lime_ceramic"));
-		withExistingParent(ItemRegistry.YELLOW_CERAMIC.get().getRegistryName().getPath(), modLoc("block/yellow_ceramic"));
-		withExistingParent(ItemRegistry.ORANGE_CERAMIC.get().getRegistryName().getPath(), modLoc("block/orange_ceramic"));
-		withExistingParent(ItemRegistry.BROWN_CERAMIC.get().getRegistryName().getPath(), modLoc("block/brown_ceramic"));
-		withExistingParent(ItemRegistry.RED_CERAMIC.get().getRegistryName().getPath(), modLoc("block/red_ceramic"));
-		withExistingParent(ItemRegistry.PINK_CERAMIC.get().getRegistryName().getPath(), modLoc("block/pink_ceramic"));
-
-
 		withExistingParent(ItemRegistry.STEEL_FRAME.get().getRegistryName().getPath(), modLoc("block/steel_frame"));
 		singleTexture(ItemRegistry.SHUTTLE_FRAME.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/shuttle_frame"));
 		singleTexture(ItemRegistry.SHUTTLE_CABIN.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/shuttle_cabin"));
 		singleTexture(ItemRegistry.NOSE_CONE.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/nose_cone"));
 		singleTexture(ItemRegistry.SHUTTLE_ENGINE.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/shuttle_engine"));
 
-
-
-
-		//LOX
-//		withExistingParent(ItemRegistry.LOX_TANK.get().getRegistryName().getPath(), modLoc("block/lox_tank/lox_tank"));
+		//TODO
+//		withExistingParent(ItemRegistry.WHITE_CERAMIC.get().getRegistryName().getPath(), modLoc("block/white_ceramic"));
+//		withExistingParent(ItemRegistry.LIGHT_GREY_CERAMIC.get().getRegistryName().getPath(), modLoc("block/light_grey_ceramic"));
+//		withExistingParent(ItemRegistry.GREY_CERAMIC.get().getRegistryName().getPath(), modLoc("block/grey_ceramic"));
+//		withExistingParent(ItemRegistry.BLACK_CERAMIC.get().getRegistryName().getPath(), modLoc("block/black_ceramic"));
+//		withExistingParent(ItemRegistry.PURPLE_CERAMIC.get().getRegistryName().getPath(), modLoc("block/purple_ceramic"));
+//		withExistingParent(ItemRegistry.MAGENTA_CERAMIC.get().getRegistryName().getPath(), modLoc("block/magenta_ceramic"));
+//		withExistingParent(ItemRegistry.BLUE_CERAMIC.get().getRegistryName().getPath(), modLoc("block/blue_ceramic"));
+//		withExistingParent(ItemRegistry.LIGHT_BLUE_CERAMIC.get().getRegistryName().getPath(), modLoc("block/light_blue_ceramic"));
+//		withExistingParent(ItemRegistry.CYAN_CERAMIC.get().getRegistryName().getPath(), modLoc("block/cyan_ceramic"));
+//		withExistingParent(ItemRegistry.GREEN_CERAMIC.get().getRegistryName().getPath(), modLoc("block/green_ceramic"));
+//		withExistingParent(ItemRegistry.LIME_CERAMIC.get().getRegistryName().getPath(), modLoc("block/lime_ceramic"));
+//		withExistingParent(ItemRegistry.YELLOW_CERAMIC.get().getRegistryName().getPath(), modLoc("block/yellow_ceramic"));
+//		withExistingParent(ItemRegistry.ORANGE_CERAMIC.get().getRegistryName().getPath(), modLoc("block/orange_ceramic"));
+//		withExistingParent(ItemRegistry.BROWN_CERAMIC.get().getRegistryName().getPath(), modLoc("block/brown_ceramic"));
+//		withExistingParent(ItemRegistry.RED_CERAMIC.get().getRegistryName().getPath(), modLoc("block/red_ceramic"));
+//		withExistingParent(ItemRegistry.PINK_CERAMIC.get().getRegistryName().getPath(), modLoc("block/pink_ceramic"));
 
 	}
 }

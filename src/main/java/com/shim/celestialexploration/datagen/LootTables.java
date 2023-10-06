@@ -14,9 +14,9 @@ public class LootTables  extends BaseLootTableProvider {
 
     @Override
     protected void addTables() {
-//        lootTables.put(Registration.FANCYBLOCK.get(), createStandardTable("fancyblock", Registration.FANCYBLOCK.get(), Registration.FANCYBLOCK_TILE.get()));
-    	//MOON
-    	//TODO ores
+    	/**
+		 * MOON
+		 */
     	lootTables.put(BlockRegistry.MOON_BRICK_SLAB.get(), createSimpleTable("moon_brick_slab", BlockRegistry.MOON_BRICK_SLAB.get()));
     	lootTables.put(BlockRegistry.MOON_BRICK_STAIRS.get(), createSimpleTable("moon_brick_stairs", BlockRegistry.MOON_BRICK_STAIRS.get()));
     	lootTables.put(BlockRegistry.MOON_BRICK_WALL.get(), createSimpleTable("moon_brick_wall", BlockRegistry.MOON_BRICK_WALL.get()));
@@ -29,7 +29,9 @@ public class LootTables  extends BaseLootTableProvider {
     	lootTables.put(BlockRegistry.MOON_REDSTONE_ORE.get(), createSimpleItemTable("moon_redstone_ore", Items.REDSTONE));
 
     	
-    	//MARS
+    	/**
+		 * MARS
+		 */
     	lootTables.put(BlockRegistry.CHISELED_MARS_BRICKS.get(), createSimpleTable("chiseled_mars_bricks", BlockRegistry.CHISELED_MARS_BRICKS.get()));
     	lootTables.put(BlockRegistry.MARS_BRICK_SLAB.get(), createSimpleTable("mars_brick_slab", BlockRegistry.MARS_BRICK_SLAB.get()));
     	lootTables.put(BlockRegistry.MARS_BRICK_STAIRS.get(), createSimpleTable("mars_brick_stairs", BlockRegistry.MARS_BRICK_STAIRS.get()));
@@ -41,7 +43,9 @@ public class LootTables  extends BaseLootTableProvider {
     	lootTables.put(BlockRegistry.MARS_REDSTONE_ORE.get(), createSimpleItemTable("mars_redstone_ore", Items.REDSTONE));
 
     	
-    	//METEOR
+    	/**
+		 * METEOR
+		 */
     	lootTables.put(BlockRegistry.METEOR.get(), createSimpleTable("meteor", BlockRegistry.METEOR.get()));
     	lootTables.put(BlockRegistry.METEOR_BRICK_SLAB.get(), createSimpleTable("meteor_brick_slab", BlockRegistry.METEOR_BRICK_SLAB.get()));
     	lootTables.put(BlockRegistry.METEOR_BRICK_STAIRS.get(), createSimpleTable("moon_brick_stairs", BlockRegistry.METEOR_BRICK_STAIRS.get()));
@@ -57,19 +61,23 @@ public class LootTables  extends BaseLootTableProvider {
     	lootTables.put(BlockRegistry.METEOR_REDSTONE_ORE.get(), createSimpleItemTable("meteor_redstone_ore", Items.REDSTONE));
     	lootTables.put(BlockRegistry.CHISELED_METEOR_BRICKS.get(), createSimpleTable("chiseled_meteor_bricks", BlockRegistry.CHISELED_METEOR_BRICKS.get()));
 
-		//OTHER
-    	lootTables.put(BlockRegistry.SOLAR_PANEL.get(), createSimpleTable("solar_panel", BlockRegistry.SOLAR_PANEL.get()));
+		/**
+		 * OTHER
+		 */
+//    	lootTables.put(BlockRegistry.SOLAR_PANEL.get(), createSimpleTable("solar_panel", BlockRegistry.SOLAR_PANEL.get()));
 		lootTables.put(BlockRegistry.LUNAR_LANTERN.get(), createSilkTouchTable("lunar_lantern", BlockRegistry.LUNAR_LANTERN.get(), ItemRegistry.MOON_DUST.get(), 1, 3));
-		lootTables.put(BlockRegistry.IGNEOUS_ROCK.get(), createSimpleTable("igneous_rock", BlockRegistry.IGNEOUS_ROCK.get()));
 
 
-		//SHUTTLE RELATED
+//		lootTables.put(BlockRegistry.IGNEOUS_ROCK.get(), createSimpleTable("igneous_rock", BlockRegistry.IGNEOUS_ROCK.get()));
+		lootTables.put(BlockRegistry.STEEL_BLOCK.get(), createSimpleTable("steel_block", BlockRegistry.STEEL_BLOCK.get()));
+
+
+		/**
+		 * SHUTTLE-RELATED
+		 */
 //		lootTables.put(BlockRegistry.ASSEMBLY_STATION.get(), createSimpleTable("assembly_station", BlockRegistry.ASSEMBLY_STATION.get()));
 		lootTables.put(BlockRegistry.OXYGEN_COMPRESSOR.get(), createSimpleTable("oxygen_compressor", BlockRegistry.OXYGEN_COMPRESSOR.get()));
 		lootTables.put(BlockRegistry.STEEL_FRAME.get(), createSimpleTable("steel_frame", BlockRegistry.STEEL_FRAME.get()));
-
-		lootTables.put(BlockRegistry.LOX_TANK.get(), createSimpleTable("lox_tank", BlockRegistry.LOX_TANK.get()));
-
 
 	}
 }

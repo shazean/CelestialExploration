@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "minecraft:brick"
+  },
+  "result": "celestialexploration:ceramic",
+  "experience": 1.0,
+  "cookingtime": 100
+}

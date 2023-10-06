@@ -100,12 +100,23 @@ public class OxygenCompressorBlockEntity extends BlockEntity implements MenuProv
     @Override
     protected void saveAdditional(@NotNull CompoundTag tag) {
         tag.put("inventory", itemHandler.serializeNBT());
+
+        tag.putInt("LitTime", this.litTime);
+        tag.putInt("LitTotalTime", this.litTotalTime);
+        tag.putInt("BurnTime", this.burnTime);
+
         super.saveAdditional(tag);
     }
 
     @Override
     public void load(CompoundTag nbt) {
         super.load(nbt);
+
+        this.litTime = nbt.getInt("LitTime");
+        this.litTotalTime = nbt.getInt("LitTotalTime");
+        this.burnTime = nbt.getInt("BurnTime");
+//        int burnMaxTime = nbt.getInt("BurnMaxTime");
+
         itemHandler.deserializeNBT(nbt.getCompound("inventory"));
     }
 
@@ -249,74 +260,62 @@ public class OxygenCompressorBlockEntity extends BlockEntity implements MenuProv
     }
 
     public static void tick(Level level, BlockPos pos, BlockState state, OxygenCompressorBlockEntity blockEntity) {
+        if (!level.isClientSide) {
 
-        boolean hasTankInSlot = blockEntity.itemHandler.getStackInSlot(1).getItem() == ItemRegistry.LOX_TANK.get() || blockEntity.itemHandler.getStackInSlot(2).getItem() == ItemRegistry.LOX_TANK.get() || blockEntity.itemHandler.getStackInSlot(3).getItem() == ItemRegistry.LOX_TANK.get() || blockEntity.itemHandler.getStackInSlot(4).getItem() == ItemRegistry.LOX_TANK.get();
-        ItemStack fuelSlot = blockEntity.itemHandler.getStackInSlot(0);
-        boolean isChanged = false;
+            boolean hasTankInSlot = blockEntity.itemHandler.getStackInSlot(1).getItem() == ItemRegistry.LOX_TANK.get() || blockEntity.itemHandler.getStackInSlot(2).getItem() == ItemRegistry.LOX_TANK.get() || blockEntity.itemHandler.getStackInSlot(3).getItem() == ItemRegistry.LOX_TANK.get() || blockEntity.itemHandler.getStackInSlot(4).getItem() == ItemRegistry.LOX_TANK.get();
+            ItemStack fuelSlot = blockEntity.itemHandler.getStackInSlot(0);
 
-        if (blockEntity.litTime == 0) {
-            blockEntity.litTotalTime = 0;
-            if (!fuelSlot.isEmpty() && hasTankInSlot) {
-                if (blockEntity.isBurnableFuel(getFuel(), fuelSlot.getItem())) {
-                    blockEntity.litTime = getBurnDuration(blockEntity.getFuel(), blockEntity.itemHandler.getStackInSlot(0).getItem());
-                    if (hasTankInSlot) {
-                        blockEntity.itemHandler.extractItem(0, 1, false);
-                        blockEntity.litTotalTime = getBurnDuration(blockEntity.getFuel(), blockEntity.itemHandler.getStackInSlot(0).getItem());
-                    }
-                }
-            }
-        } else { //litTime > 0
-            state = state.setValue(OxygenCompressorBlock.LIT, Boolean.valueOf(blockEntity.isLit()));
-            level.setBlock(pos, state, 3);
-            isChanged = true;
-            if (hasTankInSlot) {
-                --blockEntity.litTime;
-                --blockEntity.burnTime;
-                if (blockEntity.burnTime <= 0) {
-                    ItemStack firstSlot = blockEntity.itemHandler.getStackInSlot(1);
-                    ItemStack secondSlot = blockEntity.itemHandler.getStackInSlot(2);
-                    ItemStack thirdSlot = blockEntity.itemHandler.getStackInSlot(3);
-                    ItemStack fourthSlot = blockEntity.itemHandler.getStackInSlot(4);
-
-                    LoxTankCapability.ILoxTank loxTank = CelestialExploration.getCapability(firstSlot, CapabilityRegistry.LOX_TANK_CAPABILITY);
-                    LoxTankCapability.ILoxTank secondloxTank = CelestialExploration.getCapability(secondSlot, CapabilityRegistry.LOX_TANK_CAPABILITY);
-                    LoxTankCapability.ILoxTank thirdloxTank = CelestialExploration.getCapability(thirdSlot, CapabilityRegistry.LOX_TANK_CAPABILITY);
-                    LoxTankCapability.ILoxTank fourthloxTank = CelestialExploration.getCapability(fourthSlot, CapabilityRegistry.LOX_TANK_CAPABILITY);
-
-                    if (loxTank != null && !loxTank.isFull()) {
-                        loxTank.incrementAmount();
-                        blockEntity.resetBurnTime(blockEntity);
-                    } else if (secondloxTank != null && !secondloxTank.isFull()) {
-                        secondloxTank.incrementAmount();
-                        blockEntity.resetBurnTime(blockEntity);
-                    } else if (thirdloxTank != null && !thirdloxTank.isFull()) {
-                        thirdloxTank.incrementAmount();
-                        blockEntity.resetBurnTime(blockEntity);
-                    } else if (fourthloxTank != null && !fourthloxTank.isFull()) {
-                        fourthloxTank.incrementAmount();
-                        blockEntity.resetBurnTime(blockEntity);
-                    } else {
-
-                    }
-
-
-//                    if (!loxTank.isFull()) {
-//                        loxTank.incrementAmount();
-//                        blockEntity.resetBurnTime(blockEntity);
-//                    }
-
-                    //TODO add multiple slots
-                }
-            } else {
+            if (blockEntity.litTime == 0) {
+                state = state.setValue(OxygenCompressorBlock.LIT, blockEntity.isLit());
+                level.setBlock(pos, state, 3);
                 blockEntity.resetBurnTime(blockEntity);
-                --blockEntity.litTime;
-            }
-        }
 
-        if (isChanged) {
-//            CelestialExploration.LOGGER.debug("isChanged! Setting change now!");
+                blockEntity.litTotalTime = 0;
+                if (!fuelSlot.isEmpty() && hasTankInSlot) {
+                    if (blockEntity.isBurnableFuel(getFuel(), fuelSlot.getItem())) {
+                        blockEntity.litTime = getBurnDuration(getFuel(), blockEntity.itemHandler.getStackInSlot(0).getItem());
+                        blockEntity.itemHandler.extractItem(0, 1, false);
+                        blockEntity.litTotalTime = getBurnDuration(getFuel(), blockEntity.itemHandler.getStackInSlot(0).getItem());
+                    }
+                }
+            } else { //litTime > 0
+                state = state.setValue(OxygenCompressorBlock.LIT, blockEntity.isLit());
+                level.setBlock(pos, state, 3);
+                if (hasTankInSlot) {
+                    --blockEntity.litTime;
+                    --blockEntity.burnTime;
+                    if (blockEntity.burnTime <= 0) {
+                        ItemStack firstSlot = blockEntity.itemHandler.getStackInSlot(1);
+                        ItemStack secondSlot = blockEntity.itemHandler.getStackInSlot(2);
+                        ItemStack thirdSlot = blockEntity.itemHandler.getStackInSlot(3);
+                        ItemStack fourthSlot = blockEntity.itemHandler.getStackInSlot(4);
+
+                        LoxTankCapability.ILoxTank loxTank = CelestialExploration.getCapability(firstSlot, CapabilityRegistry.LOX_TANK_CAPABILITY);
+                        LoxTankCapability.ILoxTank secondloxTank = CelestialExploration.getCapability(secondSlot, CapabilityRegistry.LOX_TANK_CAPABILITY);
+                        LoxTankCapability.ILoxTank thirdloxTank = CelestialExploration.getCapability(thirdSlot, CapabilityRegistry.LOX_TANK_CAPABILITY);
+                        LoxTankCapability.ILoxTank fourthloxTank = CelestialExploration.getCapability(fourthSlot, CapabilityRegistry.LOX_TANK_CAPABILITY);
+
+                        if (loxTank != null && !loxTank.isFull()) {
+                            loxTank.incrementAmount();
+                            blockEntity.resetBurnTime(blockEntity);
+                        } else if (secondloxTank != null && !secondloxTank.isFull()) {
+                            secondloxTank.incrementAmount();
+                            blockEntity.resetBurnTime(blockEntity);
+                        } else if (thirdloxTank != null && !thirdloxTank.isFull()) {
+                            thirdloxTank.incrementAmount();
+                            blockEntity.resetBurnTime(blockEntity);
+                        } else if (fourthloxTank != null && !fourthloxTank.isFull()) {
+                            fourthloxTank.incrementAmount();
+                            blockEntity.resetBurnTime(blockEntity);
+                        }
+
+                    }
+                } else {
+                    blockEntity.resetBurnTime(blockEntity);
+                    --blockEntity.litTime;
+                }
+            }
             setChanged(level, pos, state);
         }
-
     }
 }

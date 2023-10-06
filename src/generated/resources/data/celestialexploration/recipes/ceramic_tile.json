@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "celestialexploration",
+  "pattern": [
+    "XXX",
+    "XXX",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:ceramic"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:ceramic_tile"
+  }
+}

@@ -3,6 +3,7 @@ package com.shim.celestialexploration.item;
 import com.google.common.collect.ImmutableMap;
 import com.shim.celestialexploration.registry.EffectRegistry;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorItem;
@@ -25,7 +26,7 @@ public class SpaceSuitArmorItem extends GeoArmorItem implements IAnimatable {
 
 //    private static final Map<ArmorMaterial, MobEffectInstance> MATERIAL_TO_EFFECT_MAP =
 //            (new ImmutableMap.Builder<ArmorMaterial, MobEffectInstance>())
-//                    .put(ModArmorMaterials.SPACE_SUIT, new MobEffectInstance(EffectRegistry.LOW_GRAVITY.get(), 200, 1)).build();
+//                    .put(ModArmorMaterials.SPACE_SUIT, new MobEffectInstance(MobEffects.LUCK, 200, 1)).build();
 
     public SpaceSuitArmorItem(ArmorMaterial material, EquipmentSlot slot, Properties settings) {
         super(material, slot, settings);

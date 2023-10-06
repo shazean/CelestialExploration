@@ -1,30 +1,30 @@
 package com.shim.celestialexploration.capabilities;
 
-import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.registry.CapabilityRegistry;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ICapabilityProvider;
-import net.minecraftforge.common.capabilities.ICapabilitySerializable;
+import net.minecraft.nbt.Tag;
+import net.minecraftforge.common.capabilities.*;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fluids.FluidAttributes;
-import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nonnull;
 
 public class LoxTankCapability {
     public interface ILoxTank {
         public int getAmount();
         public void setAmount(int amount);
-        public boolean incrementAmount();
-        public boolean decrementAmount();
+        public void incrementAmount();
+        public void decrementAmount();
         CompoundTag getLoxData();
         public void setFullness();
         public int getFullness();
         public boolean isFull();
         public boolean isEmpty();
         void setLoxData(CompoundTag nbt);
+
     }
 
     public static class LoxTankHandler implements ILoxTank {
@@ -44,24 +44,20 @@ public class LoxTankCapability {
         }
 
         @Override
-        public boolean incrementAmount() {
+        public void incrementAmount() {
             if (loxAmount < DEFAULT_CAPACITY) {
                 loxAmount += 1000;
                 fullness = (int) (((double)loxAmount / (double)DEFAULT_CAPACITY) * 8);
-                return true;
             } else {
-                return false;
             }
         }
 
         @Override
-        public boolean decrementAmount() {
+        public void decrementAmount() {
             if (loxAmount > 0) {
                 loxAmount -= 100;
                 fullness = (int) (((double)loxAmount / (double)DEFAULT_CAPACITY) * 8);
-                return true;
             } else {
-                return false;
             }
         }
 
@@ -86,14 +82,12 @@ public class LoxTankCapability {
         }
 
         public boolean isFull() {
-            return (loxAmount >= DEFAULT_CAPACITY) ?  true :  false;
+            return loxAmount >= DEFAULT_CAPACITY;
         }
 
         public boolean isEmpty() {
-            return (loxAmount <= 0) ?  true :  false;
+            return loxAmount <= 0;
         }
-
-
 
         @Override
         public void setLoxData(CompoundTag nbt) {
@@ -103,22 +97,33 @@ public class LoxTankCapability {
     }
 
     public static class LoxTankCapabilityProvider implements ICapabilityProvider, ICapabilitySerializable<CompoundTag> {
-        private final LazyOptional<ILoxTank> loxTank = LazyOptional.of(LoxTankHandler::new);
+
+        public static Capability<LoxTankHandler> LOX_TANK = CapabilityManager.get(new CapabilityToken<>(){});
+        private LoxTankHandler loxTankHandler = null;
+        private final LazyOptional<LoxTankHandler> lazyLoxTank = LazyOptional.of(this::createLoxHandler);
+
+        @Nonnull
+        private LoxTankHandler createLoxHandler() {
+            if (loxTankHandler == null) {
+                loxTankHandler = new LoxTankHandler();
+            }
+            return loxTankHandler;
+        }
 
         @NotNull
         @Override
         public <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-            return CapabilityRegistry.LOX_TANK_CAPABILITY.orEmpty(cap, loxTank.cast());
+            return CapabilityRegistry.LOX_TANK_CAPABILITY.orEmpty(cap, lazyLoxTank.cast());
         }
 
         @Override
         public CompoundTag serializeNBT() {
-            return loxTank.orElseThrow(NullPointerException::new).getLoxData();
+            return lazyLoxTank.orElseThrow(NullPointerException::new).getLoxData();
         }
 
         @Override
         public void deserializeNBT(CompoundTag nbt) {
-            loxTank.orElseThrow(NullPointerException::new).setLoxData(nbt);
+            lazyLoxTank.orElseThrow(NullPointerException::new).setLoxData(nbt);
         }
     }
 }

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "celestialexploration",
+  "pattern": [
+    "X X",
+    "S S"
+  ],
+  "key": {
+    "S": {
+      "item": "celestialexploration:steel_ingot"
+    },
+    "X": {
+      "item": "minecraft:leather"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:space_suit_boots"
+  }
+}

@@ -89,7 +89,6 @@ public abstract class BaseLootTableProvider extends LootTableProvider {
         return LootTable.lootTable().withPool(builder);
     }
 
-
     protected LootTable.Builder createStandardTable(String name, Block block, BlockEntityType<?> type) {
         LootPool.Builder builder = LootPool.lootPool()
                 .name(name)

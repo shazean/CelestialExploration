@@ -14,11 +14,11 @@ import net.minecraftforge.common.Tags;
 import java.util.function.Supplier;
 
 public enum ModArmorMaterials implements ArmorMaterial {
-    STEEL("steel", 15, new int[]{1, 4, 5, 2}, 9, SoundEvents.ARMOR_EQUIP_IRON,
-            0.0F, 0.0F, () -> Ingredient.of(ItemRegistry.STEEL_INGOT.get())), //FIXME currently identical to iron
+    STEEL("steel", 20, new int[]{2, 5, 7, 2}, 9, SoundEvents.ARMOR_EQUIP_IRON,
+            0.0F, 0.0F, () -> Ingredient.of(ItemRegistry.STEEL_INGOT.get())),
 
-    SPACE_SUIT("space_suit", 5, new int[]{1, 2, 3, 1}, 15, SoundEvents.ARMOR_EQUIP_LEATHER,
-            0.0F, 0.0F, () -> Ingredient.of(Tags.Items.LEATHER)); //FIXME currently identical to leather
+    SPACE_SUIT("space_suit", 18, new int[]{2, 5, 7, 2}, 12, SoundEvents.ARMOR_EQUIP_LEATHER,
+            0.0F, 0.0F, () -> Ingredient.of(Tags.Items.INGOTS_IRON));
 
     private static final int[] HEALTH_PER_SLOT = new int[]{13, 15, 16, 11};
     private final String name;

@@ -67,29 +67,25 @@ public class CelestialExploration {
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
 
-        DistExecutor.runWhenOn(Dist.CLIENT, () -> () -> {
-            modEventBus.addListener(this::clientSetup);
-        });
+//        DistExecutor.runWhenOn(Dist.CLIENT, () -> () -> {
+//            modEventBus.addListener(this::clientSetup);
+//        });
 
-        modEventBus.addListener(CapabilityRegistry::registerCapabilities);
-        MinecraftForge.EVENT_BUS.addGenericListener(ItemStack.class, CapabilityRegistry::attachItemCapabilities);
-        MinecraftForge.EVENT_BUS.addGenericListener(BlockEntity.class, CapabilityRegistry::attachBlockCapabilities);
-
-
-        BlockRegistry.init();
-        ItemRegistry.init();
-        ContainerRegistry.init();
+        ItemRegistry.register(modEventBus);
+        BlockRegistry.register(modEventBus);
+        ContainerRegistry.register(modEventBus);
         BlockEntityRegistry.register(modEventBus);
         MenuRegistry.register(modEventBus);
-
-        StructureRegistry.DEFERRED_REGISTRY_STRUCTURE.register(modEventBus);
         PortalRegistry.register(modEventBus);
         EffectRegistry.register(modEventBus);
         EntityRegistry.register(modEventBus);
         FeatureRegistry.register(modEventBus);
         FluidRegistry.register(modEventBus);
+        StructureRegistry.DEFERRED_REGISTRY_STRUCTURE.register(modEventBus);
 
-
+        modEventBus.addListener(CapabilityRegistry::registerCapabilities);
+        MinecraftForge.EVENT_BUS.addGenericListener(ItemStack.class, CapabilityRegistry::attachItemCapabilities);
+        MinecraftForge.EVENT_BUS.addGenericListener(BlockEntity.class, CapabilityRegistry::attachBlockCapabilities);
 
 //        bus.addListener(EventPriority.NORMAL, Structures::addDimensionalSpacing);
 //        bus.addListener(EventPriority.NORMAL, Structures::setupStructureSpawns);
@@ -97,7 +93,6 @@ public class CelestialExploration {
         GeckoLib.initialize();
 
         bus.addListener((InputEvent.KeyInputEvent e) -> onKeyPress(e.getKey(), e.getAction(), e.getModifiers()));
-
     }
 
     public static final CreativeModeTab CELESTIAL_TAB = new CreativeModeTab("celestialtab") {
@@ -116,7 +111,6 @@ public class CelestialExploration {
 
     private void setup(final FMLCommonSetupEvent event)
     {
-
         // some preinit code
         LOGGER.info("HELLO FROM PREINIT");
         LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
@@ -152,42 +146,6 @@ public class CelestialExploration {
             // register a new block here
             LOGGER.info("HELLO from Register Block");
         }
-    }
-
-    public void clientSetup(final FMLClientSetupEvent event)
-    {
-        event.enqueueWork(DimensionRenderers::setDimensionEffects);
-
-        event.enqueueWork(() -> {
-            ItemProperties.register(ItemRegistry.LOX_TANK.get(), new ResourceLocation( "filled"), (stack, level, living, id) -> {
-                LoxTankCapability.ILoxTank loxTank = CelestialExploration.getCapability(stack, CapabilityRegistry.LOX_TANK_CAPABILITY);
-                if (loxTank != null) {
-                    return (float) loxTank.getFullness() / 8.0F;
-                } else {
-                    return 0;
-                }
-            });
-        });
-
-        ItemBlockRenderTypes.setRenderLayer(BlockRegistry.MARS_PORTAL.get(), RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(BlockRegistry.MOON_PORTAL.get(), RenderType.translucent());
-
-//        ItemBlockRenderTypes.setRenderLayer(FluidRegistry.LOX_STILL.get(), RenderType.translucent());
-//        ItemBlockRenderTypes.setRenderLayer(FluidRegistry.LOX_FLOWING.get(), RenderType.translucent());
-
-        ItemBlockRenderTypes.setRenderLayer(BlockRegistry.LOX_TANK.get(), RenderType.cutout());
-
-        EntityRenderers.register(EntityRegistry.RUST_SLIME.get(), RustSlimeRenderer::new);
-        EntityRenderers.register(EntityRegistry.LUNAR_SLIME.get(), LunarSlimeRenderer::new);
-        EntityRenderers.register(EntityRegistry.MARS_MALLOW.get(), MarsMallowRenderer::new);
-        EntityRenderers.register(EntityRegistry.LURKER.get(), LurkerRenderer::new);
-        EntityRenderers.register(EntityRegistry.SHUTTLE.get(), ShuttleRenderer::new);
-
-        MenuScreens.register(MenuRegistry.OXYGEN_COMPRESSOR_MENU.get(), OxygenCompressorScreen::new);
-        MenuScreens.register(MenuRegistry.SHUTTLE_MENU.get(), ShuttleScreen::new);
-//        MenuScreens.register(MenuRegistry.ASSEMBLY_MENU.get(), AssemblyStationScreen::new);
-
-
     }
 
     static void onKeyPress(int key, int action, int modifiers) {

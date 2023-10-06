@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "celestialexploration",
+  "pattern": [
+    "XCX",
+    "CCC",
+    "XCX"
+  ],
+  "key": {
+    "X": {
+      "item": "minecraft:iron_ingot"
+    },
+    "C": {
+      "item": "celestialexploration:moon_dust"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:lunar_lantern"
+  }
+}

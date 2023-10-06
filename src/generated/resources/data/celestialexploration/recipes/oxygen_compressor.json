@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "celestialexploration",
+  "pattern": [
+    "SSS",
+    "CGC",
+    "CRC"
+  ],
+  "key": {
+    "S": {
+      "item": "celestialexploration:steel_ingot"
+    },
+    "C": {
+      "tag": "forge:cobblestone"
+    },
+    "G": {
+      "item": "celestialexploration:lox_tank"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:oxygen_compressor"
+  }
+}

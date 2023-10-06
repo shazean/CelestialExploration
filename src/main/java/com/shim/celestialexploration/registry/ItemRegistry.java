@@ -12,6 +12,7 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.ForgeSpawnEggItem;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -22,10 +23,10 @@ public class ItemRegistry {
 
 	
 	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, CelestialExploration.MODID);
-	
-	
-	public static void init() {
-		ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
+
+
+	public static void register(IEventBus event) {
+		ITEMS.register(event);
 	}
 	
 	public static <B extends Block> RegistryObject<Item> fromBlock(RegistryObject<B> block) {
@@ -132,12 +133,12 @@ public class ItemRegistry {
 //	public static final RegistryObject<Item> MERCURY_BRICK_SLAB = ITEMS.register("mercury_brick_slab", () -> new BlockItemBase(RegistryBlocks.MERCURY_BRICK_SLAB.get()));
 
 	//POWER-RELATED
-	public static final RegistryObject<Item> SOLAR_PANEL = fromBlock(BlockRegistry.SOLAR_PANEL);
+//	public static final RegistryObject<Item> SOLAR_PANEL = fromBlock(BlockRegistry.SOLAR_PANEL);
 	
 	
 	//OTHER BLOCK ITEMS
-	public static final RegistryObject<Item> SOLAR_LANTERN = fromBlock(BlockRegistry.SOLAR_LANTERN);
-	public static final RegistryObject<Item> IGNEOUS_ROCK = fromBlock(BlockRegistry.IGNEOUS_ROCK);
+//	public static final RegistryObject<Item> SOLAR_LANTERN = fromBlock(BlockRegistry.SOLAR_LANTERN);
+//	public static final RegistryObject<Item> IGNEOUS_ROCK = fromBlock(BlockRegistry.IGNEOUS_ROCK);
 	public static final RegistryObject<Item> STEEL_BLOCK = fromBlock(BlockRegistry.STEEL_BLOCK);
 
 
@@ -149,11 +150,11 @@ public class ItemRegistry {
 	
 //	public static final RegistryObject<Item> DRY_ICE = ITEMS.register("dry_ice", () -> new BlockItemBase(RegistryBlocks.DRY_ICE.get()));
 //	public static final RegistryObject<Item> ASSEMBLY_STATION = fromBlock(BlockRegistry.ASSEMBLY_STATION);
-	public static final RegistryObject<Item> OXYGEN_COMPRESSOR = fromBlock(BlockRegistry.OXYGEN_COMPRESSOR);
+	public static final RegistryObject<Item> OXYGEN_COMPRESSOR = fromShuttleBlock(BlockRegistry.OXYGEN_COMPRESSOR);
 
 	public static final RegistryObject<Item> LOX_TANK = ITEMS.register("lox_tank", () -> new LoxTankItem(BlockRegistry.LOX_TANK.get(), new Item.Properties().tab(CelestialExploration.SHUTTLE_TAB).stacksTo(1)));
 //	public static final RegistryObject<Item> FILLED_LOX_TANK = ITEMS.register("filled_lox_tank", () -> new Item((new Item.Properties()).tab(CelestialExploration.SHUTTLE_TAB)));
-	public static final RegistryObject<Item> LOX_BUCKET = ITEMS.register("lox_bucket", () -> new BucketItem(FluidRegistry.LOX_STILL, new Item.Properties().tab(CelestialExploration.SHUTTLE_TAB).stacksTo(1)));
+	public static final RegistryObject<Item> LOX_BUCKET = ITEMS.register("lox_bucket", () -> new BucketItem(FluidRegistry.LOX_STILL, new Item.Properties().stacksTo(1))); //TODO add creative tab
 
 
 
@@ -188,22 +189,22 @@ public class ItemRegistry {
 
 	public static final RegistryObject<Item> CERAMIC = fromBlock(BlockRegistry.CERAMIC);
 	public static final RegistryObject<Item> CERAMIC_TILE = fromBlock(BlockRegistry.CERAMIC_TILE);
-	public static final RegistryObject<Item> WHITE_CERAMIC = fromBlock(BlockRegistry.WHITE_CERAMIC);
-	public static final RegistryObject<Item> LIGHT_GREY_CERAMIC = fromBlock(BlockRegistry.LIGHT_GREY_CERAMIC);
-	public static final RegistryObject<Item> GREY_CERAMIC = fromBlock(BlockRegistry.GREY_CERAMIC);
-	public static final RegistryObject<Item> BLACK_CERAMIC = fromBlock(BlockRegistry.BLACK_CERAMIC);
-	public static final RegistryObject<Item> PURPLE_CERAMIC = fromBlock(BlockRegistry.PURPLE_CERAMIC);
-	public static final RegistryObject<Item> MAGENTA_CERAMIC = fromBlock(BlockRegistry.MAGENTA_CERAMIC);
-	public static final RegistryObject<Item> BLUE_CERAMIC = fromBlock(BlockRegistry.BLUE_CERAMIC);
-	public static final RegistryObject<Item> LIGHT_BLUE_CERAMIC = fromBlock(BlockRegistry.LIGHT_BLUE_CERAMIC);
-	public static final RegistryObject<Item> CYAN_CERAMIC = fromBlock(BlockRegistry.CYAN_CERAMIC);
-	public static final RegistryObject<Item> GREEN_CERAMIC = fromBlock(BlockRegistry.GREEN_CERAMIC);
-	public static final RegistryObject<Item> LIME_CERAMIC = fromBlock(BlockRegistry.LIME_CERAMIC);
-	public static final RegistryObject<Item> YELLOW_CERAMIC = fromBlock(BlockRegistry.YELLOW_CERAMIC);
-	public static final RegistryObject<Item> ORANGE_CERAMIC = fromBlock(BlockRegistry.ORANGE_CERAMIC);
-	public static final RegistryObject<Item> BROWN_CERAMIC = fromBlock(BlockRegistry.BROWN_CERAMIC);
-	public static final RegistryObject<Item> RED_CERAMIC = fromBlock(BlockRegistry.RED_CERAMIC);
-	public static final RegistryObject<Item> PINK_CERAMIC = fromBlock(BlockRegistry.PINK_CERAMIC);
+//	public static final RegistryObject<Item> WHITE_CERAMIC = fromBlock(BlockRegistry.WHITE_CERAMIC);
+//	public static final RegistryObject<Item> LIGHT_GREY_CERAMIC = fromBlock(BlockRegistry.LIGHT_GREY_CERAMIC);
+//	public static final RegistryObject<Item> GREY_CERAMIC = fromBlock(BlockRegistry.GREY_CERAMIC);
+//	public static final RegistryObject<Item> BLACK_CERAMIC = fromBlock(BlockRegistry.BLACK_CERAMIC);
+//	public static final RegistryObject<Item> PURPLE_CERAMIC = fromBlock(BlockRegistry.PURPLE_CERAMIC);
+//	public static final RegistryObject<Item> MAGENTA_CERAMIC = fromBlock(BlockRegistry.MAGENTA_CERAMIC);
+//	public static final RegistryObject<Item> BLUE_CERAMIC = fromBlock(BlockRegistry.BLUE_CERAMIC);
+//	public static final RegistryObject<Item> LIGHT_BLUE_CERAMIC = fromBlock(BlockRegistry.LIGHT_BLUE_CERAMIC);
+//	public static final RegistryObject<Item> CYAN_CERAMIC = fromBlock(BlockRegistry.CYAN_CERAMIC);
+//	public static final RegistryObject<Item> GREEN_CERAMIC = fromBlock(BlockRegistry.GREEN_CERAMIC);
+//	public static final RegistryObject<Item> LIME_CERAMIC = fromBlock(BlockRegistry.LIME_CERAMIC);
+//	public static final RegistryObject<Item> YELLOW_CERAMIC = fromBlock(BlockRegistry.YELLOW_CERAMIC);
+//	public static final RegistryObject<Item> ORANGE_CERAMIC = fromBlock(BlockRegistry.ORANGE_CERAMIC);
+//	public static final RegistryObject<Item> BROWN_CERAMIC = fromBlock(BlockRegistry.BROWN_CERAMIC);
+//	public static final RegistryObject<Item> RED_CERAMIC = fromBlock(BlockRegistry.RED_CERAMIC);
+//	public static final RegistryObject<Item> PINK_CERAMIC = fromBlock(BlockRegistry.PINK_CERAMIC);
 
 
 	//	public static final RegistryObject<Item> THICK_CARBON_AIR = ITEMS.register("thick_carbon_air",  () -> new BlockItemBase(RegistryBlocks.THICK_CARBON_AIR.get()));

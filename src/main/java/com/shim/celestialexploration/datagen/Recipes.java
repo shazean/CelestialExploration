@@ -29,9 +29,19 @@ public class Recipes extends RecipeProvider {
 	protected void buildCraftingRecipes(Consumer<FinishedRecipe> consumer) {
 		//TODO check/update experience granted arguments
 
-		//MOON
+		/**MOON*/
 		SimpleCookingRecipeBuilder.smelting(Ingredient.of(BlockRegistry.MOON_SAND.get()), Items.WHITE_STAINED_GLASS, 1.0F, 100)
 				.unlockedBy("has_moon_sand", has(BlockRegistry.MOON_SAND.get())).save(consumer, "moon_sand");
+
+		ShapedRecipeBuilder.shaped(BlockRegistry.LUNAR_LANTERN.get())
+				.pattern("XCX")
+				.pattern("CCC")
+				.pattern("XCX")
+				.define('X', Items.IRON_INGOT)
+				.define('C', ItemRegistry.MOON_DUST.get())
+				.group("celestialexploration")
+				.unlockedBy("has_moon_dust", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MOON_DUST.get()))
+				.save(consumer);
 
 		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_BRICKS.get())
 				.pattern("XX")
@@ -95,7 +105,7 @@ public class Recipes extends RecipeProvider {
 //				.pattern("XXX")
 //				.pattern("XXX")
 
-		//MARS
+		/**MARS*/
 		SimpleCookingRecipeBuilder.smelting(Ingredient.of(BlockRegistry.MARS_SAND.get()), Items.BROWN_STAINED_GLASS, 1.0F, 100)
 				.unlockedBy("has_mars_sand", has(BlockRegistry.MARS_SAND.get())).save(consumer, "mars_sand");
 
@@ -156,7 +166,7 @@ public class Recipes extends RecipeProvider {
 				.save(consumer, "chiseled_mars_bricks_stonecutting");
 
 
-		//METEOR
+		/**METEOR*/
 //		SimpleCookingRecipeBuilder.smelting(Ingredient.of(BlockRegistry.METEOR.get()), ItemRegistry.METEOR_INGOT.get(), 1.0F, 100)
 //				.unlockedBy("meteor", has(BlockRegistry.METEOR.get())).save(consumer, "meteor");
 
@@ -216,22 +226,7 @@ public class Recipes extends RecipeProvider {
 				.unlockedBy("meteor", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.METEOR_BRICKS.get()))
 				.save(consumer, "chiseled_meteor_bricks_stonecutting");
 
-
-
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.SOLAR_PANEL.get())
-				.pattern("XXX")
-				.pattern(" I ")
-				.pattern(" B ")
-				.define('X', Blocks.DAYLIGHT_DETECTOR)
-				.define('I', ItemRegistry.STEEL_ROD.get())
-				.define('B', Items.IRON_BLOCK)
-				.group("celestialexploration")
-				.unlockedBy("redstone", InventoryChangeTrigger.TriggerInstance.hasItems(Items.REDSTONE))
-				.unlockedBy("daylight_detector", InventoryChangeTrigger.TriggerInstance.hasItems(Blocks.DAYLIGHT_DETECTOR))
-				.save(consumer);
-
-		//STEEL
+		/**STEEL*/
 		ShapelessRecipeBuilder.shapeless(ItemRegistry.STEEL_INGOT.get())
 				.requires(Items.COAL)
 				.requires(Items.IRON_INGOT)
@@ -258,7 +253,7 @@ public class Recipes extends RecipeProvider {
 				.unlockedBy("steel", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get()))
 				.save(consumer);
 
-		//SHUTTLE
+		/**SHUTTLE-ITEMS*/
 		ShapedRecipeBuilder.shaped(BlockRegistry.STEEL_FRAME.get())
 				.pattern("X X")
 				.pattern("XXX")
@@ -317,6 +312,7 @@ public class Recipes extends RecipeProvider {
 				.group("celestialexploration")
 				.unlockedBy("steel", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_ROD.get()))
 				.save(consumer);
+
 		ShapedRecipeBuilder.shaped(ItemRegistry.WHITE_SHUTTLE.get())
 				.pattern("C")
 				.pattern("F")
@@ -327,7 +323,6 @@ public class Recipes extends RecipeProvider {
 				.group("celestialexploration")
 				.unlockedBy("steel", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get()))
 				.save(consumer);
-
 
 		ShapelessRecipeBuilder.shapeless(ItemRegistry.BLACK_SHUTTLE.get())
 				.requires(ItemRegistry.WHITE_SHUTTLE.get())
@@ -433,6 +428,113 @@ public class Recipes extends RecipeProvider {
 				.group("celestialexploration")
 				.unlockedBy("shuttle", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.WHITE_SHUTTLE.get()))
 				.save(consumer);
+
+		/**ARMOR**/
+		ShapedRecipeBuilder.shaped(ItemRegistry.STEEL_HELMET.get())
+				.pattern("XXX")
+				.pattern("X X")
+				.define('X', ItemRegistry.STEEL_INGOT.get())
+				.group("celestialexploration")
+				.unlockedBy("steel_ingot", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get()))
+				.save(consumer);
+		ShapedRecipeBuilder.shaped(ItemRegistry.STEEL_CHESTPLATE.get())
+				.pattern("X X")
+				.pattern("XXX")
+				.pattern("XXX")
+				.define('X', ItemRegistry.STEEL_INGOT.get())
+				.group("celestialexploration")
+				.unlockedBy("steel_ingot", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get()))
+				.save(consumer);
+		ShapedRecipeBuilder.shaped(ItemRegistry.STEEL_LEGGINGS.get())
+				.pattern("XXX")
+				.pattern("X X")
+				.pattern("X X")
+				.define('X', ItemRegistry.STEEL_INGOT.get())
+				.group("celestialexploration")
+				.unlockedBy("steel_ingot", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get()))
+				.save(consumer);
+		ShapedRecipeBuilder.shaped(ItemRegistry.STEEL_BOOTS.get())
+				.pattern("X X")
+				.pattern("X X")
+				.define('X', ItemRegistry.STEEL_INGOT.get())
+				.group("celestialexploration")
+				.unlockedBy("steel_ingot", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get()))
+				.save(consumer);
+		ShapedRecipeBuilder.shaped(ItemRegistry.SPACE_SUIT_HELMET.get())
+				.pattern("XXX")
+				.pattern("XGX")
+				.define('X', ItemRegistry.STEEL_INGOT.get())
+				.define('G', Items.GLASS)
+				.group("celestialexploration")
+				.unlockedBy("steel_ingot", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get()))
+				.save(consumer);
+		ShapedRecipeBuilder.shaped(ItemRegistry.SPACE_SUIT_CHESTPLATE.get())
+				.pattern("X X")
+				.pattern("SSS")
+				.pattern("XSX")
+				.define('S', ItemRegistry.STEEL_INGOT.get())
+				.define('X', Items.LEATHER)
+				.group("celestialexploration")
+				.unlockedBy("steel_ingot", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get()))
+				.save(consumer);
+		ShapedRecipeBuilder.shaped(ItemRegistry.SPACE_SUIT_LEGGINGS.get())
+				.pattern("XSX")
+				.pattern("S S")
+				.pattern("X X")
+				.define('S', ItemRegistry.STEEL_INGOT.get())
+				.define('X', Items.LEATHER)
+				.group("celestialexploration")
+				.unlockedBy("steel_ingot", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get()))
+				.save(consumer);
+		ShapedRecipeBuilder.shaped(ItemRegistry.SPACE_SUIT_BOOTS.get())
+				.pattern("X X")
+				.pattern("S S")
+				.define('S', ItemRegistry.STEEL_INGOT.get())
+				.define('X', Items.LEATHER)
+				.group("celestialexploration")
+				.unlockedBy("steel_ingot", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get()))
+				.save(consumer);
+
+		/**MISC**/
+		ShapedRecipeBuilder.shaped(ItemRegistry.OXYGEN_COMPRESSOR.get())
+				.pattern("SSS")
+				.pattern("CGC")
+				.pattern("CRC")
+				.define('S', ItemRegistry.STEEL_INGOT.get())
+				.define('C', Tags.Items.COBBLESTONE)
+				.define('G', ItemRegistry.LOX_TANK.get())
+				.define('R', Items.REDSTONE)
+				.group("celestialexploration")
+				.unlockedBy("steel_ingot", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get()))
+				.save(consumer);
+
+
+		ShapedRecipeBuilder.shaped(BlockRegistry.CERAMIC_TILE.get())
+				.pattern("XXX")
+				.pattern("XXX")
+				.pattern("XXX")
+				.define('X', BlockRegistry.CERAMIC.get())
+				.group("celestialexploration")
+				.unlockedBy("clay", InventoryChangeTrigger.TriggerInstance.hasItems(Items.CLAY))
+				.save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.CERAMIC.get()), BlockRegistry.CERAMIC_TILE.get(), 2)
+				.unlockedBy("clay", InventoryChangeTrigger.TriggerInstance.hasItems(Items.CLAY))
+				.save(consumer, "ceramic_tile_stonecutting");
+
+		SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.BRICK), BlockRegistry.CERAMIC.get(), 1.0F, 100)
+				.unlockedBy("has_brick", has(Items.BRICK)).save(consumer, "ceramic");
+
+//		ShapedRecipeBuilder.shaped(BlockRegistry.SOLAR_PANEL.get())
+//				.pattern("XXX")
+//				.pattern(" I ")
+//				.pattern(" B ")
+//				.define('X', Blocks.DAYLIGHT_DETECTOR)
+//				.define('I', ItemRegistry.STEEL_ROD.get())
+//				.define('B', Items.IRON_BLOCK)
+//				.group("celestialexploration")
+//				.unlockedBy("redstone", InventoryChangeTrigger.TriggerInstance.hasItems(Items.REDSTONE))
+//				.unlockedBy("daylight_detector", InventoryChangeTrigger.TriggerInstance.hasItems(Blocks.DAYLIGHT_DETECTOR))
+//				.save(consumer);
 
 
 	}
