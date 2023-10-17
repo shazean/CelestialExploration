@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=top": {
+      "model": "celestialexploration:block/moon_stone_slab_top"
+    },
+    "type=bottom": {
+      "model": "celestialexploration:block/moon_stone_slab"
+    },
+    "type=double": {
+      "model": "celestialexploration:block/moon_stone"
+    }
+  }
+}

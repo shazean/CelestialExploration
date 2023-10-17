@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "celestialexploration",
+  "ingredients": [
+    {
+      "item": "celestialexploration:roasted_marshmallow"
+    },
+    {
+      "item": "celestialexploration:chocolate"
+    },
+    {
+      "item": "celestialexploration:cracker"
+    },
+    {
+      "item": "celestialexploration:cracker"
+    }
+  ],
+  "result": {
+    "item": "celestialexploration:smores"
+  }
+}

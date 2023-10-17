@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "celestialexploration",
+  "pattern": [
+    "XX",
+    "XX"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:mars_deepslate"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:mars_deepslate_bricks",
+    "count": 4
+  }
+}

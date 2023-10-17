@@ -3,7 +3,7 @@
   "group": "celestialexploration",
   "pattern": [
     "CSC",
-    "C C",
+    "S S",
     "CSC"
   ],
   "key": {
@@ -11,7 +11,7 @@
       "item": "celestialexploration:ceramic_tile"
     },
     "S": {
-      "item": "celestialexploration:steel_rod"
+      "item": "celestialexploration:steel_ingot"
     }
   },
   "result": {

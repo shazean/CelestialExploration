@@ -7,9 +7,9 @@
     "celestialexploration:moon_brick_wall",
     "celestialexploration:moon_bricks",
     "celestialexploration:chiseled_moon_bricks",
-    "celestialexploration:glowing_moon_sand",
-    "celestialexploration:moon_iron_ore",
-    "celestialexploration:moon_redstone_ore",
-    "celestialexploration:moon_sand"
+    "celestialexploration:moon_brick_pillar",
+    "celestialexploration:moon_stone_slab",
+    "celestialexploration:moon_smooth_stone",
+    "celestialexploration:cracked_moon_bricks"
   ]
 }

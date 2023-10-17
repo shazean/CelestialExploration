@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_glass_pane_side",
+  "textures": {
+    "pane": "celestialexploration:block/luminous_white_glass",
+    "edge": "celestialexploration:block/luminous_white_glass_pane_top"
+  }
+}

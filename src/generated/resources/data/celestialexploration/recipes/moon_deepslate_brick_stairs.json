@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "celestialexploration",
+  "pattern": [
+    "X  ",
+    "XX ",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:moon_deepslate_bricks"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:moon_deepslate_brick_stairs",
+    "count": 4
+  }
+}

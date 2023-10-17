@@ -27,8 +27,8 @@ public class StructureRegistry {
      * this base structure will have the resourcelocation of structure_tutorial:sky_structures.
      */
 //    public static final RegistryObject<StructureFeature<?>> SKY_STRUCTURES = DEFERRED_REGISTRY_STRUCTURE.register("sky_structures", SkyStructures::new);
-    public static final RegistryObject<StructureFeature<?>> SMALL_CRATER = DEFERRED_REGISTRY_STRUCTURE.register("small_crater", SmallCraterStructure::new);
-    public static final RegistryObject<StructureFeature<?>> MEDIUM_CRATER = DEFERRED_REGISTRY_STRUCTURE.register("medium_crater", MediumCraterStructure::new);
+//    public static final RegistryObject<StructureFeature<?>> SMALL_CRATER = DEFERRED_REGISTRY_STRUCTURE.register("small_crater", SmallCraterStructure::new);
+//    public static final RegistryObject<StructureFeature<?>> MEDIUM_CRATER = DEFERRED_REGISTRY_STRUCTURE.register("medium_crater", MediumCraterStructure::new);
     public static final RegistryObject<StructureFeature<?>> LARGE_CRATER = DEFERRED_REGISTRY_STRUCTURE.register("large_crater", LargeCraterStructure::new);
 
 }

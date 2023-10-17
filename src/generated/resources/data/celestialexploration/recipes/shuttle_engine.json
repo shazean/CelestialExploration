@@ -2,11 +2,14 @@
   "type": "minecraft:crafting_shaped",
   "group": "celestialexploration",
   "pattern": [
-    "SRS",
+    "sRs",
     "SKS",
     "TTT"
   ],
   "key": {
+    "s": {
+      "item": "celestialexploration:steel_ingot"
+    },
     "S": {
       "item": "celestialexploration:steel_block"
     },

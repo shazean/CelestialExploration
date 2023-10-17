@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "side": "celestialexploration:block/mars_cobbled_deepslate",
+    "bottom": "celestialexploration:block/mars_cobbled_deepslate",
+    "top": "celestialexploration:block/mars_cobbled_deepslate"
+  }
+}

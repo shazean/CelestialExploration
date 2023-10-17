@@ -20,7 +20,7 @@
       "item": "celestialexploration:steel_block"
     },
     "X": {
-      "item": "minecraft:chest"
+      "tag": "forge:chests"
     }
   },
   "result": {

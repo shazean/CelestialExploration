@@ -3,6 +3,8 @@
   "values": [
     "celestialexploration:mars_redstone_ore",
     "celestialexploration:moon_redstone_ore",
-    "celestialexploration:meteor_redstone_ore"
+    "celestialexploration:meteor_redstone_ore",
+    "celestialexploration:moon_deepslate_redstone_ore",
+    "celestialexploration:mars_deepslate_redstone_ore"
   ]
 }

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:stonecutting",
+  "group": "celestialexploration",
+  "ingredient": {
+    "tag": "celestialexploration:mars_deepslate_tag"
+  },
+  "result": "celestialexploration:mars_deepslate_bricks",
+  "count": 1
+}

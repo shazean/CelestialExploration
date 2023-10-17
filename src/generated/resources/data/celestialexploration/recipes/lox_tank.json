@@ -2,9 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "group": "celestialexploration",
   "pattern": [
-    "SsS",
+    "sSs",
     "G G",
-    "SsS"
+    "sSs"
   ],
   "key": {
     "S": {
@@ -14,7 +14,7 @@
       "item": "celestialexploration:steel_ingot"
     },
     "G": {
-      "item": "minecraft:glass"
+      "tag": "forge:glass"
     }
   },
   "result": {

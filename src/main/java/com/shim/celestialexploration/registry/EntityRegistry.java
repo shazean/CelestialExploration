@@ -16,24 +16,24 @@ public class EntityRegistry {
 
     //MOBS
     public static final RegistryObject<EntityType<RustSlimeEntity>> RUST_SLIME = ENTITY_TYPES.register("rust_slime", () -> EntityType.Builder.of(RustSlimeEntity::new, MobCategory.MONSTER)
-            .sized(1.0f, 1.0f)
+            .sized(2.04F, 2.04F).clientTrackingRange(10)
             .build(new ResourceLocation(CelestialExploration.MODID, "rust_slime").toString()));
 
     public static final RegistryObject<EntityType<LunarSlimeEntity>> LUNAR_SLIME = ENTITY_TYPES.register("lunar_slime", () -> EntityType.Builder.of(LunarSlimeEntity::new, MobCategory.MONSTER)
-            .sized(1.0f, 1.0f)
+            .sized(2.04F, 2.04F).clientTrackingRange(10)
             .build(new ResourceLocation(CelestialExploration.MODID, "lunar_slime").toString()));
 
     public static final RegistryObject<EntityType<MarsMallowEntity>> MARS_MALLOW = ENTITY_TYPES.register("mars_mallow", () -> EntityType.Builder.of(MarsMallowEntity::new, MobCategory.MONSTER)
-            .sized(1.0f, 1.0f)
+            .sized(2.04F, 2.04F).clientTrackingRange(10)
             .build(new ResourceLocation(CelestialExploration.MODID, "mars_mallow").toString()));
 
     public static final RegistryObject<EntityType<LurkerEntity>> LURKER = ENTITY_TYPES.register("lurker", () -> EntityType.Builder.of(LurkerEntity::new, MobCategory.MONSTER)
-            .sized(1.0f, 1.0f)
+            .sized(0.6F, 1.7F).clientTrackingRange(8)
             .build(new ResourceLocation(CelestialExploration.MODID, "lurker").toString()));
 
     //VEHICLES
     public static final RegistryObject<EntityType<Shuttle>> SHUTTLE = ENTITY_TYPES.register("shuttle", () -> EntityType.Builder.<Shuttle>of(Shuttle::new, MobCategory.MISC)
-            .sized(3.0f, 3.0f)
+            .sized(3.1f, 3.1f)
             .build(new ResourceLocation(CelestialExploration.MODID, "shuttle").toString()));
 
     public static void register(IEventBus eventbus) {

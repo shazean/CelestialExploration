@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:marshmallow_from_marshmallow_goo"
+    ]
+  },
+  "criteria": {
+    "marshmallow_goo": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:marshmallow_goo"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:marshmallow_from_marshmallow_goo"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "marshmallow_goo",
+      "has_the_recipe"
+    ]
+  ]
+}

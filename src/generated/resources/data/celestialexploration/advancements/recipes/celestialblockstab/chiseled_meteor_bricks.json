@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "celestialexploration:chiseled_meteor_bricks"
+    ]
+  },
+  "criteria": {
+    "meteor": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:meteor"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "celestialexploration:chiseled_meteor_bricks"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "meteor",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "celestialexploration",
+  "pattern": [
+    "X",
+    "X"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:moon_bricks"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:moon_brick_pillar",
+    "count": 4
+  }
+}

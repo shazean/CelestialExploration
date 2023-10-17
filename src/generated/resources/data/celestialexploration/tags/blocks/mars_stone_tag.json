@@ -6,6 +6,10 @@
     "celestialexploration:mars_brick_stairs",
     "celestialexploration:mars_brick_wall",
     "celestialexploration:mars_stone",
-    "celestialexploration:chiseled_mars_bricks"
+    "celestialexploration:chiseled_mars_bricks",
+    "celestialexploration:mars_brick_pillar",
+    "celestialexploration:mars_stone_slab",
+    "celestialexploration:mars_smooth_stone",
+    "celestialexploration:cracked_mars_bricks"
   ]
 }

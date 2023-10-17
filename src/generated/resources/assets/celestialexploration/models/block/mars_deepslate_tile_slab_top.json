@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "side": "celestialexploration:block/mars_deepslate_tiles",
+    "bottom": "celestialexploration:block/mars_deepslate_tiles",
+    "top": "celestialexploration:block/mars_deepslate_tiles"
+  }
+}

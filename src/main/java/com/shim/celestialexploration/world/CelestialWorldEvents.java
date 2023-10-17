@@ -13,5 +13,4 @@ public class CelestialWorldEvents {
     public static void biomeLoadingEvent(final BiomeLoadingEvent event) {
         CelestialOreGeneration.generateOres(event);
     }
-
 }

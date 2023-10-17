@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "celestialexploration",
+  "ingredients": [
+    {
+      "item": "celestialexploration:meteor"
+    }
+  ],
+  "result": {
+    "item": "celestialexploration:meteor_button"
+  }
+}

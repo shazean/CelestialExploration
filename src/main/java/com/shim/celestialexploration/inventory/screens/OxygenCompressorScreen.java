@@ -34,12 +34,14 @@ public class OxygenCompressorScreen extends AbstractContainerScreen<OxygenCompre
         int i = this.leftPos;
         int j = this.topPos;
         //FIXME?
-//        this.blit(p_97853_, i, j, 0, 0, this.imageWidth, this.imageHeight);
+//        CelestialExploration.LOGGER.debug("screen isLit is: " + this.menu.isLit());
+
+
         if (this.menu.isLit()) {
+
             //display flame as fuel item burns
             int l = (int) (this.menu.getLitProgress() * 1.25); //placement, X; placement Y, grab starting at, X; grab starting at, Y; width?; height?;
             this.blit(poseStack, i + 32, j + 35 + l, 176, 0 + l, 16, 14 - l);
-//            this.blit(poseStack, i + 31, j + 35 + 12 - k, 176, 12 - k, 14, k + 1);
 
 
         }
@@ -51,12 +53,6 @@ public class OxygenCompressorScreen extends AbstractContainerScreen<OxygenCompre
 
         //snowflakes FIXME
         this.blit(poseStack, i + 76, j + 20, 211, 0, 24, 1 + (k * 3)); //32
-
-
-
-//        this.blit(poseStack, i + 31, j + 35, 176,  10 + -l + 25, 16, 20 - l);
-
-
     }
 
     @Override

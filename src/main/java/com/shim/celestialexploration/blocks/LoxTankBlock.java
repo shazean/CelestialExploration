@@ -8,6 +8,7 @@ import com.shim.celestialexploration.registry.BlockEntityRegistry;
 import com.shim.celestialexploration.registry.CapabilityRegistry;
 import com.shim.celestialexploration.registry.ItemRegistry;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
@@ -19,6 +20,7 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.BaseEntityBlock;
@@ -33,6 +35,9 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
 import javax.annotation.Nullable;
 
@@ -43,6 +48,18 @@ public class LoxTankBlock extends BaseEntityBlock {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(FULLNESS, 0));
     }
+
+//    public boolean skipRendering(BlockState p_53972_, BlockState p_53973_, Direction p_53974_) {
+//        return p_53973_.is(this) ? true : super.skipRendering(p_53972_, p_53973_, p_53974_);
+//    }
+//
+//    public VoxelShape getVisualShape(BlockState p_48735_, BlockGetter p_48736_, BlockPos p_48737_, CollisionContext p_48738_) {
+//        return Shapes.empty();
+//    }
+//
+//    public boolean propagatesSkylightDown(BlockState p_48740_, BlockGetter p_48741_, BlockPos p_48742_) {
+//        return true;
+//    }
 
     public BlockState getStateForPlacement(BlockPlaceContext p_48689_) {
         return this.defaultBlockState();

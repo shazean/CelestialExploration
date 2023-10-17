@@ -8,10 +8,11 @@
   ],
   "key": {
     "X": {
-      "item": "celestialexploration:moon_stone"
+      "item": "celestialexploration:moon_bricks"
     }
   },
   "result": {
-    "item": "celestialexploration:moon_brick_stairs"
+    "item": "celestialexploration:moon_brick_stairs",
+    "count": 4
   }
 }

@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "celestialexploration:mars_cobbled_deepslate",
+    "celestialexploration:mars_cobbled_deepslate_slab",
+    "celestialexploration:mars_cobbled_deepslate_stairs",
+    "celestialexploration:mars_cobbled_deepslate_wall"
+  ]
+}

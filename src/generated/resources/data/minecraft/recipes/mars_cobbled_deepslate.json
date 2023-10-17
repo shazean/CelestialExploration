@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "celestialexploration:mars_cobbled_deepslate"
+  },
+  "result": "celestialexploration:mars_deepslate",
+  "experience": 1.0,
+  "cookingtime": 100
+}

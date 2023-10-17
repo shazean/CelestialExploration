@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "celestialexploration",
+  "ingredients": [
+    {
+      "item": "celestialexploration:iron_dust"
+    },
+    {
+      "item": "celestialexploration:iron_dust"
+    }
+  ],
+  "result": {
+    "item": "minecraft:iron_nugget"
+  }
+}

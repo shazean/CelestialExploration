@@ -3,16 +3,10 @@
   "group": "celestialexploration",
   "ingredients": [
     {
-      "item": "minecraft:coal"
+      "item": "celestialexploration:white_shuttle"
     },
     {
-      "item": "minecraft:iron_ingot"
-    },
-    {
-      "item": "minecraft:coal"
-    },
-    {
-      "item": "minecraft:iron_ingot"
+      "item": "minecraft:yellow_dye"
     }
   ],
   "result": {

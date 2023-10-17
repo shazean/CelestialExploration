@@ -6,10 +6,11 @@
   ],
   "key": {
     "X": {
-      "item": "celestialexploration:mars_stone"
+      "item": "celestialexploration:mars_bricks"
     }
   },
   "result": {
-    "item": "celestialexploration:mars_brick_slab"
+    "item": "celestialexploration:mars_brick_slab",
+    "count": 6
   }
 }

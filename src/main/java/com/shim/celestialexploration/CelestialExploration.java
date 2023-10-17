@@ -95,7 +95,14 @@ public class CelestialExploration {
         bus.addListener((InputEvent.KeyInputEvent e) -> onKeyPress(e.getKey(), e.getAction(), e.getModifiers()));
     }
 
-    public static final CreativeModeTab CELESTIAL_TAB = new CreativeModeTab("celestialtab") {
+    public static final CreativeModeTab CELESTIAL_BLOCKS_TAB = new CreativeModeTab("celestialblockstab") {
+        @Override
+        public ItemStack makeIcon() {
+            return new ItemStack(ItemRegistry.MOON_STONE.get());
+        }
+    };
+
+    public static final CreativeModeTab CELESTIAL_MISC_TAB = new CreativeModeTab("celestialmisctab") {
         @Override
         public ItemStack makeIcon() {
             return new ItemStack(ItemRegistry.MOON_DUST.get());

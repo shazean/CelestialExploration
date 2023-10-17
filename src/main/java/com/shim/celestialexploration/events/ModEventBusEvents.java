@@ -20,6 +20,8 @@ import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.vehicle.Boat;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
@@ -55,19 +57,25 @@ public class ModEventBusEvents {
     {
         event.enqueueWork(DimensionRenderers::setDimensionEffects);
 
-        event.enqueueWork(() -> {
-            ItemProperties.register(ItemRegistry.LOX_TANK.get(), new ResourceLocation( "filled"), (stack, level, living, id) -> {
-                LoxTankCapability.ILoxTank loxTank = CelestialExploration.getCapability(stack, CapabilityRegistry.LOX_TANK_CAPABILITY);
-                if (loxTank != null) {
-                    return (float) loxTank.getFullness() / 8.0F;
-                } else {
-                    return 0;
-                }
-            });
-        });
+//        DimensionRenderers::setDimensionEffects);
+
+        event.enqueueWork(() -> ItemProperties.register(ItemRegistry.LOX_TANK.get(), new ResourceLocation( "filled"), (stack, level, living, id) -> {
+            LoxTankCapability.ILoxTank loxTank = CelestialExploration.getCapability(stack, CapabilityRegistry.LOX_TANK_CAPABILITY);
+            if (loxTank != null) {
+                return (float) loxTank.getFullness() / 8.0F;
+            } else {
+                return 0;
+            }
+        }));
 
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.MARS_PORTAL.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.MOON_PORTAL.get(), RenderType.translucent());
+
+        ItemBlockRenderTypes.setRenderLayer(BlockRegistry.LUMINOUS_BLUE_GLASS.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BlockRegistry.LUMINOUS_WHITE_GLASS.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BlockRegistry.LUMINOUS_BLUE_GLASS_PANE.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BlockRegistry.LUMINOUS_WHITE_GLASS_PANE.get(), RenderType.translucent());
+
 
 //        ItemBlockRenderTypes.setRenderLayer(FluidRegistry.LOX_STILL.get(), RenderType.translucent());
 //        ItemBlockRenderTypes.setRenderLayer(FluidRegistry.LOX_FLOWING.get(), RenderType.translucent());
@@ -83,8 +91,8 @@ public class ModEventBusEvents {
 
         MenuScreens.register(MenuRegistry.OXYGEN_COMPRESSOR_MENU.get(), OxygenCompressorScreen::new);
         MenuScreens.register(MenuRegistry.SHUTTLE_MENU.get(), ShuttleScreen::new);
-//        MenuScreens.register(MenuRegistry.ASSEMBLY_MENU.get(), AssemblyStationScreen::new);
 
+        OverlayRegistry.registerOverlay(event);
 
     }
 

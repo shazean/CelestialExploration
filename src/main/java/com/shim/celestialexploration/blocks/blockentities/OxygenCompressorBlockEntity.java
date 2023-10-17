@@ -101,9 +101,9 @@ public class OxygenCompressorBlockEntity extends BlockEntity implements MenuProv
     protected void saveAdditional(@NotNull CompoundTag tag) {
         tag.put("inventory", itemHandler.serializeNBT());
 
-        tag.putInt("LitTime", this.litTime);
-        tag.putInt("LitTotalTime", this.litTotalTime);
-        tag.putInt("BurnTime", this.burnTime);
+//        tag.putInt("LitTime", this.litTime);
+//        tag.putInt("LitTotalTime", this.litTotalTime);
+//        tag.putInt("BurnTime", this.burnTime);
 
         super.saveAdditional(tag);
     }
@@ -112,9 +112,9 @@ public class OxygenCompressorBlockEntity extends BlockEntity implements MenuProv
     public void load(CompoundTag nbt) {
         super.load(nbt);
 
-        this.litTime = nbt.getInt("LitTime");
-        this.litTotalTime = nbt.getInt("LitTotalTime");
-        this.burnTime = nbt.getInt("BurnTime");
+//        this.litTime = nbt.getInt("LitTime");
+//        this.litTotalTime = nbt.getInt("LitTotalTime");
+//        this.burnTime = nbt.getInt("BurnTime");
 //        int burnMaxTime = nbt.getInt("BurnMaxTime");
 
         itemHandler.deserializeNBT(nbt.getCompound("inventory"));
@@ -260,7 +260,6 @@ public class OxygenCompressorBlockEntity extends BlockEntity implements MenuProv
     }
 
     public static void tick(Level level, BlockPos pos, BlockState state, OxygenCompressorBlockEntity blockEntity) {
-        if (!level.isClientSide) {
 
             boolean hasTankInSlot = blockEntity.itemHandler.getStackInSlot(1).getItem() == ItemRegistry.LOX_TANK.get() || blockEntity.itemHandler.getStackInSlot(2).getItem() == ItemRegistry.LOX_TANK.get() || blockEntity.itemHandler.getStackInSlot(3).getItem() == ItemRegistry.LOX_TANK.get() || blockEntity.itemHandler.getStackInSlot(4).getItem() == ItemRegistry.LOX_TANK.get();
             ItemStack fuelSlot = blockEntity.itemHandler.getStackInSlot(0);
@@ -308,7 +307,6 @@ public class OxygenCompressorBlockEntity extends BlockEntity implements MenuProv
                             fourthloxTank.incrementAmount();
                             blockEntity.resetBurnTime(blockEntity);
                         }
-
                     }
                 } else {
                     blockEntity.resetBurnTime(blockEntity);
@@ -316,6 +314,5 @@ public class OxygenCompressorBlockEntity extends BlockEntity implements MenuProv
                 }
             }
             setChanged(level, pos, state);
-        }
     }
 }

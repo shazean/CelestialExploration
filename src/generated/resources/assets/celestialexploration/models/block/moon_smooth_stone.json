@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "celestialexploration:block/moon_smooth_stone"
+  }
+}

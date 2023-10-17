@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "celestialexploration:mars_cobblestone"
+  },
+  "result": "celestialexploration:mars_stone",
+  "experience": 1.0,
+  "cookingtime": 100
+}

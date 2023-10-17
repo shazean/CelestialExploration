@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    "celestialexploration:moon_deepslate",
+    "celestialexploration:cracked_moon_deepslate_bricks",
+    "celestialexploration:cracked_moon_deepslate_tiles",
+    "celestialexploration:chiseled_moon_deepslate_bricks",
+    "celestialexploration:moon_deepslate_bricks",
+    "celestialexploration:moon_deepslate_brick_slab",
+    "celestialexploration:moon_deepslate_brick_stairs",
+    "celestialexploration:moon_deepslate_brick_wall",
+    "celestialexploration:moon_deepslate_tiles",
+    "celestialexploration:moon_deepslate_tile_slab",
+    "celestialexploration:moon_deepslate_tile_stairs",
+    "celestialexploration:moon_deepslate_tile_wall",
+    "celestialexploration:moon_polished_deepslate",
+    "celestialexploration:moon_polished_deepslate_slab",
+    "celestialexploration:moon_polished_deepslate_stairs",
+    "celestialexploration:moon_polished_deepslate_wall"
+  ]
+}

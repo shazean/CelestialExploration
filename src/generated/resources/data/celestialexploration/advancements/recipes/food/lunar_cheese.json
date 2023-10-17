@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "celestialexploration:lunar_cheese"
+    ]
+  },
+  "criteria": {
+    "lunar_goo": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:lunar_goo"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "celestialexploration:lunar_cheese"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "lunar_goo",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "celestialexploration",
+  "pattern": [
+    "XX"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:mars_stone"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:mars_stone_pressure_plate"
+  }
+}

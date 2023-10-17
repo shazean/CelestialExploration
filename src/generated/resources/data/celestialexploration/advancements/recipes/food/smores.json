@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "celestialexploration:smores"
+    ]
+  },
+  "criteria": {
+    "marshmallow_goo": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:marshmallow_goo"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "celestialexploration:smores"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "marshmallow_goo",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "group": "celestialexploration",
+  "ingredient": {
+    "item": "celestialexploration:marshmallow"
+  },
+  "result": "celestialexploration:roasted_marshmallow",
+  "experience": 1.0,
+  "cookingtime": 30
+}

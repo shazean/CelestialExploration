@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "tag": "celestialexploration:moon_cobblestone_tag"
+  },
+  "result": "celestialexploration:moon_cobblestone_stairs",
+  "count": 1
+}

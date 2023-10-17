@@ -18,7 +18,7 @@ import net.minecraft.world.level.Level;
 public class CatalystItem extends Item {
     public CatalystItem() {
         super(new Properties()
-                .tab(CelestialExploration.CELESTIAL_TAB)
+                .tab(CelestialExploration.CELESTIAL_MISC_TAB)
 //                .stacksTo(1)
 //                .rarity(Rarity.RARE)
         );

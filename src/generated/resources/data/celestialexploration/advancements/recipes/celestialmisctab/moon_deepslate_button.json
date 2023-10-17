@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "celestialexploration:moon_deepslate_button"
+    ]
+  },
+  "criteria": {
+    "moon_deepslate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:moon_deepslate"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "celestialexploration:moon_deepslate_button"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "moon_deepslate",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -28,11 +28,8 @@ public class CapabilityRegistry {
     public static void attachBlockCapabilities(AttachCapabilitiesEvent<BlockEntity> eventIn) {
         if(eventIn.getObject().getBlockState() == BlockRegistry.LOX_TANK.get().defaultBlockState()) {
             if (!eventIn.getObject().getCapability(LoxTankCapability.LoxTankCapabilityProvider.LOX_TANK).isPresent()) {
-                CelestialExploration.LOGGER.debug("Block capabilities attached!");
                 eventIn.addCapability(new ResourceLocation(CelestialExploration.MODID, "lox_tank_block"), new LoxTankCapability.LoxTankCapabilityProvider());
             }
         }
-
-
     }
 }

@@ -12,6 +12,7 @@
     }
   },
   "result": {
-    "item": "celestialexploration:meteor_brick_stairs"
+    "item": "celestialexploration:meteor_brick_stairs",
+    "count": 4
   }
 }

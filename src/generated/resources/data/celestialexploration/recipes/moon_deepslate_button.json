@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "celestialexploration",
+  "ingredients": [
+    {
+      "item": "celestialexploration:moon_deepslate"
+    }
+  ],
+  "result": {
+    "item": "celestialexploration:moon_deepslate_button"
+  }
+}

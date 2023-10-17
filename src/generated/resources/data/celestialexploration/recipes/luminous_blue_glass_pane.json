@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "celestialexploration",
+  "pattern": [
+    "XXX",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:luminous_blue_glass"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:luminous_blue_glass_pane",
+    "count": 16
+  }
+}

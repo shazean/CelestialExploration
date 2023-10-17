@@ -14,7 +14,7 @@ public class LurkerEntity extends Creeper {
 
     public static AttributeSupplier setAttributes() {
         return Mob.createMobAttributes()
-                .add(Attributes.ATTACK_DAMAGE, 3.0f).build();
+                .add(Attributes.ATTACK_DAMAGE, 3.0f)
+                .add(Attributes.MOVEMENT_SPEED, 0.5D).build();
     }
-
 }

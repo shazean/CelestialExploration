@@ -112,6 +112,30 @@ public class OxygenCompressorMenu extends AbstractContainerMenu {
         }
     }
 
+//    public float getBurnProgress() {
+////        int i = this.blockEntity.getBurnProgress();
+////        return this.blockEntity.getBurnProgress() / 10;
+////        int i = this.data.get(2);
+////        int j = this.data.get(3);
+////        return j != 0 && i != 0 ? i * 24 / j : 0;
+////        int i = this.blockEntity.getBurnProgress() / this.blockEntity.getBurnMaxTime() * 100; //50 / 250 = .20 * 10 = 20 //200 / 250 = .8 * 100 = 80
+////        i = 100 - i; //100 - 20 = 80 //100 - 80 = 20
+////        return i / 10;
+//
+//        int i = this.blockEntity.getBurnProgress();
+//        int j = this.blockEntity.getBurnMaxTime();
+//
+//        if (j == 0) {
+//            return 0;
+//        }
+//
+//
+//        float k = (float)i / (float)j;
+////        i = (int) (k * 100);
+////        i = 100 - i; //100 - 20 = 80 //100 - 80 = 20
+//        return k;
+//    }
+
     public int getBurnProgress() {
 //        int i = this.blockEntity.getBurnProgress();
 //        return this.blockEntity.getBurnProgress() / 10;
@@ -133,6 +157,23 @@ public class OxygenCompressorMenu extends AbstractContainerMenu {
         i = 100 - i; //100 - 20 = 80 //100 - 80 = 20
         return i / 10;
     }
+
+//    public float getLitProgress() {
+//        int i = this.blockEntity.getLitProgress();
+//        int j = this.blockEntity.getLitTotalTime();
+//
+//        if (j == 0) {
+//            return 0;
+//        }
+//
+//        float k = (float)i / (float)j;
+////        i = (int) (k * 100);
+//
+//
+////        i = i * 100; //50 / 250 = .20 * 10 = 20 //200 / 250 = .8 * 100 = 80
+////        i = 100 - i; //100 - 20 = 80 //100 - 80 = 20
+//        return k;
+//    }
 
     public int getLitProgress() {
         int i = this.blockEntity.getLitProgress();

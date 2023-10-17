@@ -3,6 +3,18 @@
   "values": [
     "celestialexploration:mars_brick_slab",
     "celestialexploration:moon_brick_slab",
-    "celestialexploration:meteor_brick_slab"
+    "celestialexploration:meteor_brick_slab",
+    "celestialexploration:mars_stone_slab",
+    "celestialexploration:moon_stone_slab",
+    "celestialexploration:mars_cobblestone_slab",
+    "celestialexploration:moon_cobblestone_slab",
+    "celestialexploration:mars_cobbled_deepslate_slab",
+    "celestialexploration:moon_cobbled_deepslate_slab",
+    "celestialexploration:mars_deepslate_brick_slab",
+    "celestialexploration:mars_deepslate_tile_slab",
+    "celestialexploration:mars_polished_deepslate_slab",
+    "celestialexploration:moon_deepslate_brick_slab",
+    "celestialexploration:moon_deepslate_tile_slab",
+    "celestialexploration:moon_polished_deepslate_slab"
   ]
 }

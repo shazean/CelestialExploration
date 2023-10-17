@@ -28,10 +28,56 @@ public class ItemModels extends ItemModelProvider {
 		withExistingParent(ItemRegistry.CHISELED_MOON_BRICKS.get().getRegistryName().getPath(), modLoc("block/chiseled_moon_bricks"));
 		withExistingParent(ItemRegistry.GLOWING_MOON_SAND.get().getRegistryName().getPath(), modLoc("block/glowing_moon_sand"));
 		withExistingParent(ItemRegistry.LUNAR_LANTERN.get().getRegistryName().getPath(), modLoc("block/lunar_lantern"));
+		withExistingParent(ItemRegistry.MOON_COBBLESTONE.get().getRegistryName().getPath(), modLoc("block/moon_cobblestone"));
+		withExistingParent(ItemRegistry.MOON_DEEPSLATE.get().getRegistryName().getPath(), modLoc("block/moon_deepslate"));
+		withExistingParent(ItemRegistry.MOON_COBBLED_DEEPSLATE.get().getRegistryName().getPath(), modLoc("block/moon_cobbled_deepslate"));
+		withExistingParent(ItemRegistry.MOON_BRICK_PILLAR.get().getRegistryName().getPath(), modLoc("block/moon_brick_pillar"));
+		withExistingParent(ItemRegistry.MOON_DEEPSLATE_IRON_ORE.get().getRegistryName().getPath(), modLoc("block/moon_deepslate_iron_ore"));
+		withExistingParent(ItemRegistry.MOON_DEEPSLATE_REDSTONE_ORE.get().getRegistryName().getPath(), modLoc("block/moon_deepslate_redstone_ore"));
 
 		stairs("moon_brick_stairs", modLoc("block/moon_bricks"), modLoc("block/moon_bricks"), modLoc("block/moon_bricks"));
 		slab("moon_brick_slab", modLoc("block/moon_bricks"), modLoc("block/moon_bricks"), modLoc("block/moon_bricks"));
 		wallInventory("moon_brick_wall",  modLoc("block/moon_bricks"));
+
+		slab("moon_stone_slab", modLoc("block/moon_stone"), modLoc("block/moon_stone"), modLoc("block/moon_stone"));
+
+		stairs("moon_cobblestone_stairs", modLoc("block/moon_cobblestone"), modLoc("block/moon_cobblestone"), modLoc("block/moon_cobblestone"));
+		slab("moon_cobblestone_slab", modLoc("block/moon_cobblestone"), modLoc("block/moon_cobblestone"), modLoc("block/moon_cobblestone"));
+		wallInventory("moon_cobblestone_wall",  modLoc("block/moon_cobblestone"));
+
+		stairs("moon_cobbled_deepslate_stairs", modLoc("block/moon_cobbled_deepslate"), modLoc("block/moon_cobbled_deepslate"), modLoc("block/moon_cobbled_deepslate"));
+		slab("moon_cobbled_deepslate_slab", modLoc("block/moon_cobbled_deepslate"), modLoc("block/moon_cobbled_deepslate"), modLoc("block/moon_cobbled_deepslate"));
+		wallInventory("moon_cobbled_deepslate_wall",  modLoc("block/moon_cobbled_deepslate"));
+
+		withExistingParent(ItemRegistry.MOON_SMOOTH_STONE.get().getRegistryName().getPath(), modLoc("block/moon_smooth_stone"));
+//		slab("moon_smooth_stone_slab", modLoc("block/moon_smooth_stone_slab_side"), modLoc("block/moon_smooth_stone"), modLoc("block/moon_smooth_stone"));
+
+		withExistingParent(ItemRegistry.CRACKED_MOON_BRICKS.get().getRegistryName().getPath(), modLoc("block/cracked_moon_bricks"));
+
+		withExistingParent(ItemRegistry.MOON_DEEPSLATE_BRICKS.get().getRegistryName().getPath(), modLoc("block/moon_deepslate_bricks"));
+		stairs("moon_deepslate_brick_stairs", modLoc("block/moon_deepslate_bricks"), modLoc("block/moon_deepslate_bricks"), modLoc("block/moon_deepslate_bricks"));
+		slab("moon_deepslate_brick_slab", modLoc("block/moon_deepslate_bricks"), modLoc("block/moon_deepslate_bricks"), modLoc("block/moon_deepslate_bricks"));
+		wallInventory("moon_deepslate_brick_wall",  modLoc("block/moon_deepslate_bricks"));
+
+		withExistingParent(ItemRegistry.CHISELED_MOON_DEEPSLATE_BRICKS.get().getRegistryName().getPath(), modLoc("block/chiseled_moon_deepslate_bricks"));
+		withExistingParent(ItemRegistry.CRACKED_MOON_DEEPSLATE_BRICKS.get().getRegistryName().getPath(), modLoc("block/cracked_moon_deepslate_bricks"));
+
+		withExistingParent(ItemRegistry.MOON_POLISHED_DEEPSLATE.get().getRegistryName().getPath(), modLoc("block/moon_polished_deepslate"));
+		stairs("moon_polished_deepslate_stairs", modLoc("block/moon_polished_deepslate"), modLoc("block/moon_polished_deepslate"), modLoc("block/moon_polished_deepslate"));
+		slab("moon_polished_deepslate_slab", modLoc("block/moon_polished_deepslate"), modLoc("block/moon_polished_deepslate"), modLoc("block/moon_polished_deepslate"));
+		wallInventory("moon_polished_deepslate_wall",  modLoc("block/moon_polished_deepslate"));
+
+		withExistingParent(ItemRegistry.MOON_DEEPSLATE_TILES.get().getRegistryName().getPath(), modLoc("block/moon_deepslate_tiles"));
+		stairs("moon_deepslate_tile_stairs", modLoc("block/moon_deepslate_tiles"), modLoc("block/moon_deepslate_tiles"), modLoc("block/moon_deepslate_tiles"));
+		slab("moon_deepslate_tile_slab", modLoc("block/moon_deepslate_tiles"), modLoc("block/moon_deepslate_tiles"), modLoc("block/moon_deepslate_tiles"));
+		wallInventory("moon_deepslate_tile_wall",  modLoc("block/moon_deepslate_tiles"));
+		withExistingParent(ItemRegistry.CRACKED_MOON_DEEPSLATE_TILES.get().getRegistryName().getPath(), modLoc("block/cracked_moon_deepslate_tiles"));
+
+		buttonInventory(ItemRegistry.MOON_STONE_BUTTON.get().getRegistryName().getPath(), modLoc("block/moon_stone"));
+		pressurePlate(ItemRegistry.MOON_STONE_PRESSURE_PLATE.get().getRegistryName().getPath(), modLoc("block/moon_stone"));
+		buttonInventory(ItemRegistry.MOON_DEEPSLATE_BUTTON.get().getRegistryName().getPath(), modLoc("block/moon_deepslate_side"));
+		pressurePlate(ItemRegistry.MOON_DEEPSLATE_PRESSURE_PLATE.get().getRegistryName().getPath(), modLoc("block/moon_deepslate_side"));
+
 
 		/**
 		 * MARS
@@ -42,9 +88,55 @@ public class ItemModels extends ItemModelProvider {
 		withExistingParent(ItemRegistry.MARS_REDSTONE_ORE.get().getRegistryName().getPath(), modLoc("block/mars_redstone_ore"));
 		withExistingParent(ItemRegistry.MARS_STONE.get().getRegistryName().getPath(), modLoc("block/mars_stone"));
 		withExistingParent(ItemRegistry.MARS_SAND.get().getRegistryName().getPath(), modLoc("block/mars_sand"));
+		withExistingParent(ItemRegistry.MARS_COBBLESTONE.get().getRegistryName().getPath(), modLoc("block/mars_cobblestone"));
+		withExistingParent(ItemRegistry.MARS_DEEPSLATE.get().getRegistryName().getPath(), modLoc("block/mars_deepslate"));
+		withExistingParent(ItemRegistry.MARS_COBBLED_DEEPSLATE.get().getRegistryName().getPath(), modLoc("block/mars_cobbled_deepslate"));
+		withExistingParent(ItemRegistry.MARS_BRICK_PILLAR.get().getRegistryName().getPath(), modLoc("block/mars_brick_pillar"));
+		withExistingParent(ItemRegistry.MARS_DEEPSLATE_IRON_ORE.get().getRegistryName().getPath(), modLoc("block/mars_deepslate_iron_ore"));
+		withExistingParent(ItemRegistry.MARS_DEEPSLATE_REDSTONE_ORE.get().getRegistryName().getPath(), modLoc("block/mars_deepslate_redstone_ore"));
+
 		stairs("mars_brick_stairs", modLoc("block/mars_bricks"), modLoc("block/mars_bricks"), modLoc("block/mars_bricks"));
 		slab("mars_brick_slab", modLoc("block/mars_bricks"), modLoc("block/mars_bricks"), modLoc("block/mars_bricks"));
 		wallInventory("mars_brick_wall",  modLoc("block/mars_bricks"));
+
+		slab("mars_stone_slab", modLoc("block/mars_stone"), modLoc("block/mars_stone"), modLoc("block/mars_stone"));
+
+		stairs("mars_cobblestone_stairs", modLoc("block/mars_cobblestone"), modLoc("block/mars_cobblestone"), modLoc("block/mars_cobblestone"));
+		slab("mars_cobblestone_slab", modLoc("block/mars_cobblestone"), modLoc("block/mars_cobblestone"), modLoc("block/mars_cobblestone"));
+		wallInventory("mars_cobblestone_wall",  modLoc("block/mars_cobblestone"));
+
+		stairs("mars_cobbled_deepslate_stairs", modLoc("block/mars_cobbled_deepslate"), modLoc("block/mars_cobbled_deepslate"), modLoc("block/mars_cobbled_deepslate"));
+		slab("mars_cobbled_deepslate_slab", modLoc("block/mars_cobbled_deepslate"), modLoc("block/mars_cobbled_deepslate"), modLoc("block/mars_cobbled_deepslate"));
+		wallInventory("mars_cobbled_deepslate_wall",  modLoc("block/mars_cobbled_deepslate"));
+
+		withExistingParent(ItemRegistry.MARS_SMOOTH_STONE.get().getRegistryName().getPath(), modLoc("block/mars_smooth_stone"));
+//		slab("mars_smooth_stone_slab", modLoc("block/mars_smooth_stone_slab_side"), modLoc("block/mars_smooth_stone"), modLoc("block/mars_smooth_stone"));
+
+		withExistingParent(ItemRegistry.CRACKED_MARS_BRICKS.get().getRegistryName().getPath(), modLoc("block/cracked_mars_bricks"));
+
+		withExistingParent(ItemRegistry.MARS_DEEPSLATE_BRICKS.get().getRegistryName().getPath(), modLoc("block/mars_deepslate_bricks"));
+		stairs("mars_deepslate_brick_stairs", modLoc("block/mars_deepslate_bricks"), modLoc("block/mars_deepslate_bricks"), modLoc("block/mars_deepslate_bricks"));
+		slab("mars_deepslate_brick_slab", modLoc("block/mars_deepslate_bricks"), modLoc("block/mars_deepslate_bricks"), modLoc("block/mars_deepslate_bricks"));
+		wallInventory("mars_deepslate_brick_wall",  modLoc("block/mars_deepslate_bricks"));
+
+		withExistingParent(ItemRegistry.CHISELED_MARS_DEEPSLATE_BRICKS.get().getRegistryName().getPath(), modLoc("block/chiseled_mars_deepslate_bricks"));
+		withExistingParent(ItemRegistry.CRACKED_MARS_DEEPSLATE_BRICKS.get().getRegistryName().getPath(), modLoc("block/cracked_mars_deepslate_bricks"));
+
+		withExistingParent(ItemRegistry.MARS_POLISHED_DEEPSLATE.get().getRegistryName().getPath(), modLoc("block/mars_polished_deepslate"));
+		stairs("mars_polished_deepslate_stairs", modLoc("block/mars_polished_deepslate"), modLoc("block/mars_polished_deepslate"), modLoc("block/mars_polished_deepslate"));
+		slab("mars_polished_deepslate_slab", modLoc("block/mars_polished_deepslate"), modLoc("block/mars_polished_deepslate"), modLoc("block/mars_polished_deepslate"));
+		wallInventory("mars_polished_deepslate_wall",  modLoc("block/mars_polished_deepslate"));
+
+		withExistingParent(ItemRegistry.MARS_DEEPSLATE_TILES.get().getRegistryName().getPath(), modLoc("block/mars_deepslate_tiles"));
+		stairs("mars_deepslate_tile_stairs", modLoc("block/mars_deepslate_tiles"), modLoc("block/mars_deepslate_tiles"), modLoc("block/mars_deepslate_tiles"));
+		slab("mars_deepslate_tile_slab", modLoc("block/mars_deepslate_tiles"), modLoc("block/mars_deepslate_tiles"), modLoc("block/mars_deepslate_tiles"));
+		wallInventory("mars_deepslate_tile_wall",  modLoc("block/mars_deepslate_tiles"));
+		withExistingParent(ItemRegistry.CRACKED_MARS_DEEPSLATE_TILES.get().getRegistryName().getPath(), modLoc("block/cracked_mars_deepslate_tiles"));
+
+		buttonInventory(ItemRegistry.MARS_STONE_BUTTON.get().getRegistryName().getPath(), modLoc("block/mars_stone"));
+		pressurePlate(ItemRegistry.MARS_STONE_PRESSURE_PLATE.get().getRegistryName().getPath(), modLoc("block/mars_stone"));
+		buttonInventory(ItemRegistry.MARS_DEEPSLATE_BUTTON.get().getRegistryName().getPath(), modLoc("block/mars_deepslate_side"));
+		pressurePlate(ItemRegistry.MARS_DEEPSLATE_PRESSURE_PLATE.get().getRegistryName().getPath(), modLoc("block/mars_deepslate_side"));
 
 
 		/**
@@ -65,6 +157,9 @@ public class ItemModels extends ItemModelProvider {
 		slab("meteor_brick_slab", modLoc("block/meteor_bricks"), modLoc("block/meteor_bricks"), modLoc("block/meteor_bricks"));
 		wallInventory("meteor_brick_wall",  modLoc("block/meteor_bricks"));
 
+		buttonInventory(ItemRegistry.METEOR_BUTTON.get().getRegistryName().getPath(), modLoc("block/meteor"));
+		pressurePlate(ItemRegistry.METEOR_PRESSURE_PLATE.get().getRegistryName().getPath(), modLoc("block/meteor"));
+
 
 		/**
 		 * OTHER BLOCK ITEMS
@@ -73,7 +168,12 @@ public class ItemModels extends ItemModelProvider {
 //		withExistingParent(ItemRegistry.SOLAR_LANTERN.get().getRegistryName().getPath(), modLoc("block/solar_lantern"));
 //		withExistingParent(ItemRegistry.IGNEOUS_ROCK.get().getRegistryName().getPath(), modLoc("block/igneous_rock"));
 //		withExistingParent(ItemRegistry.ECLIPSE_LANTERN.get().getRegistryName().getPath(), modLoc("block/eclipse_lantern"));
+		withExistingParent(ItemRegistry.DRY_ICE.get().getRegistryName().getPath(), modLoc("block/dry_ice"));
 
+		withExistingParent(ItemRegistry.LUMINOUS_BLUE_GLASS.get().getRegistryName().getPath(), modLoc("block/luminous_blue_glass"));
+		withExistingParent(ItemRegistry.LUMINOUS_WHITE_GLASS.get().getRegistryName().getPath(), modLoc("block/luminous_white_glass"));
+		singleTexture(ItemRegistry.LUMINOUS_BLUE_GLASS_PANE.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "block/luminous_blue_glass"));
+		singleTexture(ItemRegistry.LUMINOUS_WHITE_GLASS_PANE.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "block/luminous_white_glass"));
 
 		/**
 		 * ITEMS (not belonging to blocks)
@@ -146,6 +246,24 @@ public class ItemModels extends ItemModelProvider {
 //		withExistingParent(ItemRegistry.BROWN_CERAMIC.get().getRegistryName().getPath(), modLoc("block/brown_ceramic"));
 //		withExistingParent(ItemRegistry.RED_CERAMIC.get().getRegistryName().getPath(), modLoc("block/red_ceramic"));
 //		withExistingParent(ItemRegistry.PINK_CERAMIC.get().getRegistryName().getPath(), modLoc("block/pink_ceramic"));
+
+		singleTexture(ItemRegistry.RUSTED_IRON_NUGGET.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/rusted_iron_nugget"));
+		singleTexture(ItemRegistry.IRON_DUST.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/iron_dust"));
+		singleTexture(ItemRegistry.LUNAR_GOO.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/lunar_goo"));
+
+
+		/**
+		 * FOOD
+		 */
+		singleTexture(ItemRegistry.MARSHMALLOW_GOO.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/marshmallow_goo"));
+		singleTexture(ItemRegistry.MARSHMALLOW.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/marshmallow"));
+		singleTexture(ItemRegistry.ROASTED_MARSHMALLOW.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/roasted_marshmallow"));
+		singleTexture(ItemRegistry.CHOCOLATE.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/chocolate"));
+		singleTexture(ItemRegistry.CRACKER.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/cracker"));
+		singleTexture(ItemRegistry.SMORES.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/smores"));
+
+		singleTexture(ItemRegistry.LUNAR_CHEESE.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/lunar_cheese"));
+		singleTexture(ItemRegistry.CHEESE.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/cheese"));
 
 	}
 }

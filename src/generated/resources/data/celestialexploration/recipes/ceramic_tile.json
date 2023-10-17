@@ -3,7 +3,6 @@
   "group": "celestialexploration",
   "pattern": [
     "XXX",
-    "XXX",
     "XXX"
   ],
   "key": {
@@ -12,6 +11,7 @@
     }
   },
   "result": {
-    "item": "celestialexploration:ceramic_tile"
+    "item": "celestialexploration:ceramic_tile",
+    "count": 16
   }
 }

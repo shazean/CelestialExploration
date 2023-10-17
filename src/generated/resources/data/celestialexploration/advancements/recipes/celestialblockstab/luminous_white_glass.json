@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "celestialexploration:luminous_white_glass"
+    ]
+  },
+  "criteria": {
+    "moon_dust": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:moon_dust"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "celestialexploration:luminous_white_glass"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "moon_dust",
+      "has_the_recipe"
+    ]
+  ]
+}

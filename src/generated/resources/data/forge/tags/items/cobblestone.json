@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "celestialexploration:mars_cobblestone",
+    "celestialexploration:mars_cobblestone_slab",
+    "celestialexploration:mars_cobblestone_stairs",
+    "celestialexploration:mars_cobblestone_wall",
+    "celestialexploration:moon_cobblestone",
+    "celestialexploration:moon_cobblestone_slab",
+    "celestialexploration:moon_cobblestone_stairs",
+    "celestialexploration:moon_cobblestone_wall"
+  ]
+}
