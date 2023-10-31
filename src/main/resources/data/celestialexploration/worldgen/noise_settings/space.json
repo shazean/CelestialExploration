@@ -114,6 +114,8 @@
           "type": "minecraft:biome",
           "biome_is": [
             "celestialexploration:empty_space",
+            "celestialexploration:mars_orbit",
+            "celestialexploration:earth_orbit",
             "celestialexploration:sparse_asteroid_field",
             "celestialexploration:asteroid_field"
           ]

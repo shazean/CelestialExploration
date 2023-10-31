@@ -1,0 +1,15 @@
+{
+  "name": "celestialexploration:mars",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "celestialexploration:mars",
+        "processors": "celestialexploration:mars",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

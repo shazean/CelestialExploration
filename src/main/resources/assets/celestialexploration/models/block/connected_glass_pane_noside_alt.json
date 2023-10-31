@@ -1,0 +1,6 @@
+{
+  "parent": "celestialexploration:block/template_connected_glass_pane_noside_alt",
+  "textures": {
+    "pane": "celestialexploration:block/connected_glass_center"
+  }
+}

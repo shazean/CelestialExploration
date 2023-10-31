@@ -1,13 +1,4 @@
 {
-  "type": "minecraft:delta_feature",
-  "config": {
-    "contents": {
-      "Name": "celestialexploration:glowing_moon_sand"
-    },
-    "rim": {
-      "Name": "celestialexploration:glowing_moon_sand"
-    },
-    "size": 2,
-    "rim_size": 2
-  }
+  "type": "celestialexploration:glowing_sand",
+  "config": {}
 }

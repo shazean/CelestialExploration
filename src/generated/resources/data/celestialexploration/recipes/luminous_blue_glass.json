@@ -3,7 +3,7 @@
   "group": "celestialexploration",
   "ingredients": [
     {
-      "item": "minecraft:glass"
+      "tag": "forge:glass"
     },
     {
       "item": "celestialexploration:moon_dust"

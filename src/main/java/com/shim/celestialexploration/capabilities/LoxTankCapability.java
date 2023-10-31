@@ -18,6 +18,7 @@ public class LoxTankCapability {
         public void setAmount(int amount);
         public void incrementAmount();
         public void decrementAmount();
+        public void decrementAmountByFifty();
         CompoundTag getLoxData();
         public void setFullness();
         public int getFullness();
@@ -56,6 +57,15 @@ public class LoxTankCapability {
         public void decrementAmount() {
             if (loxAmount > 0) {
                 loxAmount -= 100;
+                fullness = (int) (((double)loxAmount / (double)DEFAULT_CAPACITY) * 8);
+            } else {
+            }
+        }
+
+        @Override
+        public void decrementAmountByFifty() {
+            if (loxAmount > 0) {
+                loxAmount -= 50;
                 fullness = (int) (((double)loxAmount / (double)DEFAULT_CAPACITY) * 8);
             } else {
             }

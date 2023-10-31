@@ -203,7 +203,8 @@ public class ShuttleModel<T extends Shuttle> extends EntityModel<T> {
 
     @Override
     public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-
+       renderPitch(entity);
+       renderRoll(entity);
     }
 
     @Override
@@ -223,4 +224,109 @@ public class ShuttleModel<T extends Shuttle> extends EntityModel<T> {
         RightTailWing.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
         LeftTailWing.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
     }
+
+    private void renderPitch(Shuttle shuttle) {
+        double f1 = shuttle.getDeltaMovement().y;
+        float pitch = 0.055F;
+
+        if (f1 > 0) {
+            this.Body.xRot = -pitch;
+            this.Chest.xRot = -pitch;
+            this.Chest2.xRot = -pitch;
+            this.Chest3.xRot = -pitch;
+            this.FrontSeat.xRot = -pitch;
+            this.RightSeat.xRot = -pitch;
+            this.LeftSeat.xRot = -pitch;
+            this.RightWing.xRot = -pitch;
+            this.LeftWing.xRot = -pitch;
+            this.BackBooster.xRot = -pitch;
+            this.LeftBooster.xRot = -pitch;
+            this.RightBooster.xRot = -pitch;
+            this.RightTailWing.xRot = -pitch;
+            this.LeftTailWing.xRot = -pitch;
+        } else if (f1 < 0) {
+            this.Body.xRot = pitch;
+            this.Chest.xRot = pitch;
+            this.Chest2.xRot = pitch;
+            this.Chest3.xRot = pitch;
+            this.FrontSeat.xRot = pitch;
+            this.RightSeat.xRot = pitch;
+            this.LeftSeat.xRot = pitch;
+            this.RightWing.xRot = pitch;
+            this.LeftWing.xRot = pitch;
+            this.BackBooster.xRot = pitch;
+            this.LeftBooster.xRot = pitch;
+            this.RightBooster.xRot = pitch;
+            this.RightTailWing.xRot = pitch;
+            this.LeftTailWing.xRot = pitch;
+        } else {
+            this.Body.xRot = 0;
+            this.Chest.xRot = 0;
+            this.Chest2.xRot = 0;
+            this.Chest3.xRot = 0;
+            this.FrontSeat.xRot = 0;
+            this.RightSeat.xRot = 0;
+            this.LeftSeat.xRot = 0;
+            this.RightWing.xRot = 0;
+            this.LeftWing.xRot = 0;
+            this.BackBooster.xRot = 0;
+            this.LeftBooster.xRot = 0;
+            this.RightBooster.xRot = 0;
+            this.RightTailWing.xRot = 0;
+            this.LeftTailWing.xRot = 0;
+        }
+    }
+
+    private void renderRoll(Shuttle shuttle) {
+        double f1 = shuttle.deltaRotation;
+        float pitch = 0.075F;
+
+        if (f1 > 0) {
+            this.Body.zRot = -pitch;
+            this.Chest.zRot = -pitch;
+            this.Chest2.zRot = -pitch;
+            this.Chest3.zRot = -pitch;
+            this.FrontSeat.zRot = -pitch;
+            this.RightSeat.zRot = -pitch;
+            this.LeftSeat.zRot = -pitch;
+            this.RightWing.zRot = -pitch;
+            this.LeftWing.zRot = -pitch;
+            this.BackBooster.zRot = -pitch;
+            this.LeftBooster.zRot = -pitch;
+            this.RightBooster.zRot = -pitch;
+            this.RightTailWing.zRot = -pitch;
+            this.LeftTailWing.zRot = -pitch;
+        } else if (f1 < 0) {
+            this.Body.zRot = pitch;
+            this.Chest.zRot = pitch;
+            this.Chest2.zRot = pitch;
+            this.Chest3.zRot = pitch;
+            this.FrontSeat.zRot = pitch;
+            this.RightSeat.zRot = pitch;
+            this.LeftSeat.zRot = pitch;
+            this.RightWing.zRot = pitch;
+            this.LeftWing.zRot = pitch;
+            this.BackBooster.zRot = pitch;
+            this.LeftBooster.zRot = pitch;
+            this.RightBooster.zRot = pitch;
+            this.RightTailWing.zRot = pitch;
+            this.LeftTailWing.zRot = pitch;
+        } else {
+            this.Body.zRot = 0;
+            this.Chest.zRot = 0;
+            this.Chest2.zRot = 0;
+            this.Chest3.zRot = 0;
+            this.FrontSeat.zRot = 0;
+            this.RightSeat.zRot = 0;
+            this.LeftSeat.zRot = 0;
+            this.RightWing.zRot = 0;
+            this.LeftWing.zRot = 0;
+            this.BackBooster.zRot = 0;
+            this.LeftBooster.zRot = 0;
+            this.RightBooster.zRot = 0;
+            this.RightTailWing.zRot = 0;
+            this.LeftTailWing.zRot = 0;
+        }
+    }
+
 }

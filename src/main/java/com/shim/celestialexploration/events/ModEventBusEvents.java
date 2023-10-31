@@ -11,19 +11,12 @@ import com.shim.celestialexploration.inventory.screens.ShuttleScreen;
 import com.shim.celestialexploration.registry.*;
 import com.shim.celestialexploration.world.renderer.DimensionRenderers;
 import net.minecraft.client.gui.screens.MenuScreens;
-import net.minecraft.client.model.BoatModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.vehicle.Boat;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -36,10 +29,10 @@ public class ModEventBusEvents {
 
     @SubscribeEvent
     public static void entityAttributeEvent(EntityAttributeCreationEvent event) {
-        event.put(EntityRegistry.RUST_SLIME.get(), RustSlimeEntity.setAttributes());
-        event.put(EntityRegistry.LUNAR_SLIME.get(), LunarSlimeEntity.setAttributes());
-        event.put(EntityRegistry.MARS_MALLOW.get(), MarsMallowEntity.setAttributes());
-        event.put(EntityRegistry.LURKER.get(), LurkerEntity.setAttributes());
+        event.put(EntityRegistry.RUST_SLIME.get(), RustSlime.setAttributes());
+        event.put(EntityRegistry.LUNAR_SLIME.get(), LunarSlime.setAttributes());
+        event.put(EntityRegistry.MARS_MALLOW.get(), MarsMallow.setAttributes());
+        event.put(EntityRegistry.LURKER.get(), Lurker.setAttributes());
 
 
     }
@@ -75,6 +68,9 @@ public class ModEventBusEvents {
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.LUMINOUS_WHITE_GLASS.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.LUMINOUS_BLUE_GLASS_PANE.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.LUMINOUS_WHITE_GLASS_PANE.get(), RenderType.translucent());
+
+        ItemBlockRenderTypes.setRenderLayer(BlockRegistry.CONNECTED_GLASS.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BlockRegistry.CONNECTED_GLASS_PANE.get(), RenderType.translucent());
 
 
 //        ItemBlockRenderTypes.setRenderLayer(FluidRegistry.LOX_STILL.get(), RenderType.translucent());

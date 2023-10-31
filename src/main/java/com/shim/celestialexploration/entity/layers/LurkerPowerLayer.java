@@ -1,7 +1,7 @@
 package com.shim.celestialexploration.entity.layers;
 
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.entity.LurkerEntity;
+import com.shim.celestialexploration.entity.Lurker;
 import com.shim.celestialexploration.entity.model.LurkerModel;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.EntityModelSet;
@@ -11,11 +11,11 @@ import net.minecraft.client.renderer.entity.layers.EnergySwirlLayer;
 import net.minecraft.resources.ResourceLocation;
 
 
-public class LurkerPowerLayer extends EnergySwirlLayer<LurkerEntity, LurkerModel<LurkerEntity>> {
+public class LurkerPowerLayer extends EnergySwirlLayer<Lurker, LurkerModel<Lurker>> {
     private static final ResourceLocation POWER_LOCATION = new ResourceLocation(CelestialExploration.MODID, "textures/entity/lurker/lurker_armor.png");
-    private final LurkerModel<LurkerEntity> model;
+    private final LurkerModel<Lurker> model;
 
-    public LurkerPowerLayer(RenderLayerParent<LurkerEntity, LurkerModel<LurkerEntity>> p_174471_, EntityModelSet p_174472_) {
+    public LurkerPowerLayer(RenderLayerParent<Lurker, LurkerModel<Lurker>> p_174471_, EntityModelSet p_174472_) {
         super(p_174471_);
         this.model = new LurkerModel<>(p_174472_.bakeLayer(ModelLayers.CREEPER_ARMOR));
     }
@@ -28,7 +28,7 @@ public class LurkerPowerLayer extends EnergySwirlLayer<LurkerEntity, LurkerModel
         return POWER_LOCATION;
     }
 
-    protected EntityModel<LurkerEntity> model() {
+    protected EntityModel<Lurker> model() {
         return this.model;
     }
 }

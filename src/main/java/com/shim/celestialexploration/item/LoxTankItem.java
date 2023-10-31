@@ -58,43 +58,6 @@ public class LoxTankItem extends BlockItem {
     }
 
     @Override
-    public void onDestroyed(ItemEntity p_150700_) {
-
-        CelestialExploration.LOGGER.debug("hello? onDestroyed?");
-
-        System.out.println("Hello is my logger working?");
-
-        if (this.getBlock() instanceof LoxTankBlock) {
-            ItemStack itemStack = p_150700_.getItem();
-
-            CompoundTag compoundtag = getBlockEntityData(itemStack);
-            CelestialExploration.LOGGER.debug("Lox block destroying!");
-
-            if (compoundtag != null && compoundtag.contains("ForgeCaps")) {
-                CelestialExploration.LOGGER.debug("We found a thing?");
-            }
-
-//            LoxTankCapability.ILoxTank loxTankEntity = CelestialExploration.getCapability(blockEntity, CapabilityRegistry.LOX_TANK_CAPABILITY);
-//            if (loxTankEntity != null) {
-//                int amount = loxTankEntity.getAmount();
-//
-//                LoxTankCapability.ILoxTank loxTank = CelestialExploration.getCapability(itemStack, CapabilityRegistry.LOX_TANK_CAPABILITY);
-//                if (loxTank != null) {
-//                    loxTank.setAmount(amount);
-//                    CelestialExploration.LOGGER.debug("item lox amount: " + loxTank.getAmount());
-//                }
-//        }
-
-//            CompoundTag compoundtag = getBlockEntityData(itemstack);
-//            if (compoundtag != null && compoundtag.contains("Items", 9)) {
-//                ListTag listtag = compoundtag.getList("Items", 10);
-//                ItemUtils.onContainerDestroyed(p_150700_, listtag.stream().map(CompoundTag.class::cast).map(ItemStack::of));
-//            }
-
-        }
-    }
-
-    @Override
     public CompoundTag getShareTag(ItemStack stackIn) {
         CompoundTag nbt = stackIn.getOrCreateTag();
         LoxTankCapability.ILoxTank loxCap = CelestialExploration.getCapability(stackIn, CapabilityRegistry.LOX_TANK_CAPABILITY);

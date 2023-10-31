@@ -1,10 +1,7 @@
 package com.shim.celestialexploration.item;
 
-import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.entity.Shuttle;
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -13,7 +10,6 @@ import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
@@ -21,31 +17,31 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 
-import javax.annotation.Nullable;
 import java.util.List;
 import java.util.function.Predicate;
 
 public class ShuttleItem extends Item {
     private static final Predicate<Entity> ENTITY_PREDICATE = EntitySelector.NO_SPECTATORS.and(Entity::isPickable);
     private final Shuttle.Type type;
+//    private CompoundTag shuttleData;
 
     public ShuttleItem(Shuttle.Type p_40619_, Item.Properties p_40620_) {
         super(p_40620_);
         this.type = p_40619_;
     }
 
-    public InteractionResultHolder<ItemStack> use(Level p_40622_, Player p_40623_, InteractionHand p_40624_) {
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
 
-        ItemStack itemstack = p_40623_.getItemInHand(p_40624_);
-        HitResult hitresult = getPlayerPOVHitResult(p_40622_, p_40623_, ClipContext.Fluid.ANY);
+        ItemStack itemstack = player.getItemInHand(hand);
+        HitResult hitresult = getPlayerPOVHitResult(level, player, ClipContext.Fluid.ANY);
         if (hitresult.getType() == HitResult.Type.MISS) {
             return InteractionResultHolder.pass(itemstack);
         } else {
-            Vec3 vec3 = p_40623_.getViewVector(1.0F);
+            Vec3 vec3 = player.getViewVector(1.0F);
             double d0 = 5.0D;
-            List<Entity> list = p_40622_.getEntities(p_40623_, p_40623_.getBoundingBox().expandTowards(vec3.scale(5.0D)).inflate(1.0D), ENTITY_PREDICATE);
+            List<Entity> list = level.getEntities(player, player.getBoundingBox().expandTowards(vec3.scale(5.0D)).inflate(1.0D), ENTITY_PREDICATE);
             if (!list.isEmpty()) {
-                Vec3 vec31 = p_40623_.getEyePosition();
+                Vec3 vec31 = player.getEyePosition();
 
                 for(Entity entity : list) {
                     AABB aabb = entity.getBoundingBox().inflate((double)entity.getPickRadius());
@@ -56,23 +52,28 @@ public class ShuttleItem extends Item {
             }
 
             if (hitresult.getType() == HitResult.Type.BLOCK) {
-                Shuttle shuttle = new Shuttle(p_40622_, hitresult.getLocation().x, hitresult.getLocation().y, hitresult.getLocation().z);
+                Shuttle shuttle = new Shuttle(level, hitresult.getLocation().x, hitresult.getLocation().y, hitresult.getLocation().z);
                 shuttle.setType(this.type);
-                shuttle.setYRot(p_40623_.getYRot());
-                if (!p_40622_.noCollision(shuttle, shuttle.getBoundingBox())) {
+                shuttle.setYRot(player.getYRot());
+                if (!level.noCollision(shuttle, shuttle.getBoundingBox())) {
                     return InteractionResultHolder.fail(itemstack);
                 } else {
-                    if (!p_40622_.isClientSide) {
-                        p_40622_.addFreshEntity(shuttle);
-                        p_40622_.gameEvent(p_40623_, GameEvent.ENTITY_PLACE, new BlockPos(hitresult.getLocation()));
-                        if (!p_40623_.getAbilities().instabuild) {
-                            itemstack.shrink(1);
+                    if (!level.isClientSide) {
+//                        Block block = level.getBlockState(new BlockPos(hitresult.getLocation())).getBlock();
+//                        if (block instanceof LaunchPadBlock) {
+//                        } else {
+//                            shuttle.setInvData(shuttleData);
+                            level.addFreshEntity(shuttle);
+                            level.gameEvent(player, GameEvent.ENTITY_PLACE, new BlockPos(hitresult.getLocation()));
+                            if (!player.getAbilities().instabuild) {
+                                itemstack.shrink(1);
+//                            }
                         }
 
                     }
 
-                    p_40623_.awardStat(Stats.ITEM_USED.get(this));
-                    return InteractionResultHolder.sidedSuccess(itemstack, p_40622_.isClientSide());
+                    player.awardStat(Stats.ITEM_USED.get(this));
+                    return InteractionResultHolder.sidedSuccess(itemstack, level.isClientSide());
                 }
             } else {
                 return InteractionResultHolder.pass(itemstack);
@@ -80,5 +81,26 @@ public class ShuttleItem extends Item {
         }
     }
 
-
+//    public void setShuttleItemData(CompoundTag tag) {
+//        this.shuttleData = tag;
+//    }
+//
+//    @Override
+//    public CompoundTag getShareTag(ItemStack stackIn) {
+//        CompoundTag nbt = stackIn.getOrCreateTag();
+////        LoxTankCapability.ILoxTank loxCap = CelestialExploration.getCapability(stackIn, CapabilityRegistry.LOX_TANK_CAPABILITY);
+////        if (loxCap != null) {
+////            nbt.put("LoxData", loxCap.getLoxData());
+////        }
+//        return nbt;
+//    }
+//
+//    @Override
+//    public void readShareTag(ItemStack stackIn, @Nullable CompoundTag nbtIn) {
+//        super.readShareTag(stackIn, nbtIn);
+////        if (nbtIn != null) {
+////            LoxTankCapability.ILoxTank loxCap = CelestialExploration.getCapability(stackIn, CapabilityRegistry.LOX_TANK_CAPABILITY);
+////            if (loxCap != null && nbtIn.contains("LoxData", 10)) loxCap.setLoxData(nbtIn.getCompound("LoxData"));
+////        }
+//    }
 }

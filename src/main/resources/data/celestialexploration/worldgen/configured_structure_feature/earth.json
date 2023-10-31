@@ -1,0 +1,11 @@
+{
+  "type": "celestialexploration:earth",
+  "config": {
+    "start_pool": "celestialexploration:earth",
+    "size": 1
+  },
+  "biomes": "#celestialexploration:has_structure/earth_biome",
+  "adapt_noise": false,
+  "spawn_overrides": {
+  }
+}

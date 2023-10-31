@@ -19,13 +19,13 @@
     "monster": [
       {
         "type": "celestialexploration:lunar_slime",
-        "weight": 3,
+        "weight": 30,
         "minCount": 0,
-        "maxCount": 2
+        "maxCount": 1
       },
       {
         "type": "celestialexploration:lurker",
-        "weight": 5,
+        "weight": 50,
         "minCount": 0,
         "maxCount": 1
       },
@@ -37,7 +37,7 @@
       },
       {
         "type": "minecraft:skeleton",
-        "weight": 3,
+        "weight": 50,
         "minCount": 0,
         "maxCount": 1
       }

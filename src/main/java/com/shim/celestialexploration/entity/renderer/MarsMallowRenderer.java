@@ -2,24 +2,20 @@ package com.shim.celestialexploration.entity.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.entity.MarsMallowEntity;
-import com.shim.celestialexploration.entity.RustSlimeEntity;
+import com.shim.celestialexploration.entity.MarsMallow;
 import com.shim.celestialexploration.entity.layers.MarsMallowOuterLayer;
-import com.shim.celestialexploration.entity.layers.RustSlimeOuterLayer;
 import com.shim.celestialexploration.entity.model.MarsMallowModel;
-import com.shim.celestialexploration.entity.model.RustSlimeModel;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.client.renderer.entity.layers.SlimeOuterLayer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class MarsMallowRenderer extends MobRenderer<MarsMallowEntity, MarsMallowModel<MarsMallowEntity>> {
+public class MarsMallowRenderer extends MobRenderer<MarsMallow, MarsMallowModel<MarsMallow>> {
     private static final ResourceLocation SLIME_LOCATION = new ResourceLocation(CelestialExploration.MODID, "textures/entity/slime/mars_mallow.png");
 
     public MarsMallowRenderer(EntityRendererProvider.Context p_174391_) {
@@ -27,13 +23,13 @@ public class MarsMallowRenderer extends MobRenderer<MarsMallowEntity, MarsMallow
         this.addLayer(new MarsMallowOuterLayer<>(this, p_174391_.getModelSet()));
     }
 
-    public void render(MarsMallowEntity p_115976_, float p_115977_, float p_115978_, PoseStack p_115979_, MultiBufferSource p_115980_, int p_115981_) {
+    public void render(MarsMallow p_115976_, float p_115977_, float p_115978_, PoseStack p_115979_, MultiBufferSource p_115980_, int p_115981_) {
         this.shadowRadius = 0.25F * (float)p_115976_.getSize();
         super.render(p_115976_, p_115977_, p_115978_, p_115979_, p_115980_, p_115981_);
     }
 
 
-    protected void scale(MarsMallowEntity p_115983_, PoseStack p_115984_, float p_115985_) {
+    protected void scale(MarsMallow p_115983_, PoseStack p_115984_, float p_115985_) {
         float f = 0.999F;
         p_115984_.scale(0.999F, 0.999F, 0.999F);
         p_115984_.translate(0.0D, (double)0.001F, 0.0D);
@@ -43,7 +39,7 @@ public class MarsMallowRenderer extends MobRenderer<MarsMallowEntity, MarsMallow
         p_115984_.scale(f3 * f1, 1.0F / f3 * f1, f3 * f1);
     }
 
-    public ResourceLocation getTextureLocation(MarsMallowEntity slime) {
+    public ResourceLocation getTextureLocation(MarsMallow slime) {
         return SLIME_LOCATION;
     }
 }

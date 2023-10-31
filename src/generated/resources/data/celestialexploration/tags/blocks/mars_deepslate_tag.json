@@ -6,16 +6,7 @@
     "celestialexploration:cracked_mars_deepslate_tiles",
     "celestialexploration:chiseled_mars_deepslate_bricks",
     "celestialexploration:mars_deepslate_bricks",
-    "celestialexploration:mars_deepslate_brick_slab",
-    "celestialexploration:mars_deepslate_brick_stairs",
-    "celestialexploration:mars_deepslate_brick_wall",
     "celestialexploration:mars_deepslate_tiles",
-    "celestialexploration:mars_deepslate_tile_slab",
-    "celestialexploration:mars_deepslate_tile_stairs",
-    "celestialexploration:mars_deepslate_tile_wall",
-    "celestialexploration:mars_polished_deepslate",
-    "celestialexploration:mars_polished_deepslate_slab",
-    "celestialexploration:mars_polished_deepslate_stairs",
-    "celestialexploration:mars_polished_deepslate_wall"
+    "celestialexploration:mars_polished_deepslate"
   ]
 }

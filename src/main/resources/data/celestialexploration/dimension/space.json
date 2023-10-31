@@ -99,6 +99,30 @@
 						"depth": 0,
 						"offset": 0
 					}
+				},
+				{
+					"biome": "celestialexploration:mars_orbit",
+					"parameters": {
+						"temperature": 0,
+						"humidity": 0,
+						"continentalness": 0,
+						"erosion": 0,
+						"weirdness": 1,
+						"depth": 0,
+						"offset": 0
+					}
+				},
+				{
+					"biome": "celestialexploration:earth_orbit",
+					"parameters": {
+						"temperature": 0,
+						"humidity": 0,
+						"continentalness": 0,
+						"erosion": 0,
+						"weirdness": -1,
+						"depth": 0,
+						"offset": 0
+					}
 				}
 			]
 		}

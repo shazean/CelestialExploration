@@ -136,7 +136,7 @@ public class DimensionRenderers {
     @OnlyIn(Dist.CLIENT)
     public static class MarsEffects extends DimensionSpecialEffects {
         public MarsEffects() {
-            super(Float.NaN, true, DimensionSpecialEffects.SkyType.NORMAL, true, false);
+            super(Float.NaN, true, DimensionSpecialEffects.SkyType.NONE, false, false);
 //            CelestialExploration.LOGGER.debug("Mars dimension effects?");
         }
 
@@ -148,6 +148,7 @@ public class DimensionRenderers {
         }
 
         @Nullable
+        @Override
         public float[] getSunriseColor(float p_108888_, float p_108889_) {
             CelestialExploration.LOGGER.debug("Mars getSunriseColor?");
             return null;
@@ -179,6 +180,7 @@ public class DimensionRenderers {
 
         @Override
         public Vec3 getBrightnessDependentFogColor(Vec3 color, float brightness) {
+            CelestialExploration.LOGGER.debug("Mars getBrightnessDependentFogColor?");
             return color.multiply(brightness * 0.94F + 0.06F, brightness * 0.94F + 0.06F, brightness * 0.91F + 0.09F);
         }
     }

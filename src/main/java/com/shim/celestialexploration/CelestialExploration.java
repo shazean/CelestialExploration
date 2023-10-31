@@ -1,27 +1,18 @@
 package com.shim.celestialexploration;
 
-import com.shim.celestialexploration.capabilities.LoxTankCapability;
-import com.shim.celestialexploration.entity.renderer.*;
-import com.shim.celestialexploration.inventory.screens.OxygenCompressorScreen;
-import com.shim.celestialexploration.inventory.screens.ShuttleScreen;
-import com.shim.celestialexploration.item.SpaceSuitArmorItem;
-import com.shim.celestialexploration.item.armor.SpaceSuitRenderer;
+import com.shim.celestialexploration.entity.LunarSlime;
+import com.shim.celestialexploration.entity.Lurker;
+import com.shim.celestialexploration.entity.MarsMallow;
+import com.shim.celestialexploration.entity.RustSlime;
 import com.shim.celestialexploration.registry.*;
 import com.shim.celestialexploration.util.Keybinds;
-import com.shim.celestialexploration.world.renderer.DimensionRenderers;
-import net.minecraft.client.gui.screens.MenuScreens;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.entity.EntityRenderers;
-import net.minecraft.client.renderer.item.ItemProperties;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.Capability;
@@ -29,10 +20,8 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
@@ -40,7 +29,6 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import software.bernie.geckolib3.GeckoLib;
-import software.bernie.geckolib3.renderers.geo.GeoArmorRenderer;
 
 import javax.annotation.Nullable;
 import java.util.stream.Collectors;
@@ -122,6 +110,10 @@ public class CelestialExploration {
         LOGGER.info("HELLO FROM PREINIT");
         LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
 
+        SpawnPlacements.register(EntityRegistry.MARS_MALLOW.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, MarsMallow::checkMarsMallowSpawnRules);
+        SpawnPlacements.register(EntityRegistry.RUST_SLIME.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, RustSlime::checkRustSlimeSpawnRules);
+        SpawnPlacements.register(EntityRegistry.LUNAR_SLIME.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, LunarSlime::checkLunarSlimeSpawnRules);
+        SpawnPlacements.register(EntityRegistry.LURKER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, Lurker::checkMonsterSpawnRules);
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event)

@@ -1,6 +1,7 @@
 package com.shim.celestialexploration.datagen;
 
 import com.shim.celestialexploration.CelestialExploration;
+import com.shim.celestialexploration.registry.BiomeRegistry;
 import com.shim.celestialexploration.registry.BlockRegistry;
 
 import com.shim.celestialexploration.registry.EntityRegistry;
@@ -23,6 +24,21 @@ public class ModLanguageProvider extends LanguageProvider {
 		add("itemGroup.shuttletab", "Shuttle Items");
 		add("itemGroup.celestialmisctab", "Celestial Items");
 
+		/**BIOMES**/
+		add(BiomeRegistry.MOON_CRATERS.getRegistryName().getNamespace(), "Lunar Craters");
+//		add(BiomeRegistry.MOON_DESERT.getRegistryName().getNamespace(), "Lunar Desert");
+//		add(BiomeRegistry.MOON_LAVA_FLATS.getRegistryName().getNamespace(), "Lunar Lava Flats");
+//		add(BiomeRegistry.MOON_LOWER_PLAINS.getRegistryName().getNamespace(), "Lunar Lower Plains");
+//		add(BiomeRegistry.MOON_PLAINS.getRegistryName().getNamespace(), "Lunar Plains");
+//		add(BiomeRegistry.MARS_CRATERS.getRegistryName().getNamespace(), "Martian Craters");
+//		add(BiomeRegistry.MARS_DEEP_CRATERS.getRegistryName().getNamespace(), "Martian Deep Craters");
+//		add(BiomeRegistry.MARS_DESERT.getRegistryName().getNamespace(), "Martian Desert");
+//		add(BiomeRegistry.MARS_DUNES.getRegistryName().getNamespace(), "Martian Dunes");
+//		add(BiomeRegistry.MARS_DRY_ICE_FLATS.getRegistryName().getNamespace(), "Martian Dry Ice Flats");
+//		add(BiomeRegistry.MARS_DRY_ICE_PEAKS.getRegistryName().getNamespace(), "Martian Dry Ice Peaks");
+//		add(BiomeRegistry.MARS_ERODED_FLATS.getRegistryName().getNamespace(), "Martian Eroded Flats");
+//		add(BiomeRegistry.MARS_VOLCANO_FLATS.getRegistryName().getNamespace(), "Martian Volcano Flats");
+//		add(BiomeRegistry.MARS_FLATS.getRegistryName().getNamespace(), "Martian Flats");
 
 		/**MOON**/
 		add(BlockRegistry.MOON_BRICK_SLAB.get(), "Lunar Brick Slab");
@@ -153,7 +169,7 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(BlockRegistry.METEOR_BUTTON.get(), "Meteorite Button");
 		add(BlockRegistry.METEOR_PRESSURE_PLATE.get(), "Meteorite Pressure Plate");
 
-		/**OTHER**/
+		/**OTHER BLOCKS**/
 //		add(BlockRegistry.SOLAR_PANEL.get(), "Solar Panel");
 //		add(BlockRegistry.IGNEOUS_ROCK.get(), "Igneous Rock");
 //		add(ItemRegistry.ASSEMBLY_STATION.get(), "Assembly Station");

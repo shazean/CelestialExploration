@@ -1,0 +1,29 @@
+{
+	"display": {
+		"icon": {
+			"item": "minecraft:potato"
+		},
+		"title": "I'm the best botanist on this planet",
+		"description": "Plant potatoes on Mars",
+		"frame": "task",
+		"show_toast": true,
+		"announce_to_chat": true,
+		"hidden": false
+	},
+	"criteria": {
+		"potato": {
+			"trigger": "minecraft:placed_block",
+			"conditions": {
+				"block": "minecraft:potatoes",
+				"location": {
+					"dimension": "celestialexploration:mars"
+				}
+			}
+		}
+	},
+	"requirements": [
+		[
+			"potato"
+		]
+	]
+}

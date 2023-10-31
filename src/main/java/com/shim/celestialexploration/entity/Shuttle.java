@@ -2,31 +2,28 @@ package com.shim.celestialexploration.entity;
 
 import com.google.common.collect.Lists;
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.blocks.blockentities.OxygenCompressorBlockEntity;
 import com.shim.celestialexploration.capabilities.LoxTankCapability;
 import com.shim.celestialexploration.inventory.menus.ShuttleMenu;
-import com.shim.celestialexploration.registry.CapabilityRegistry;
-import com.shim.celestialexploration.registry.DimensionRegistry;
-import com.shim.celestialexploration.registry.EntityRegistry;
-import com.shim.celestialexploration.registry.ItemRegistry;
+import com.shim.celestialexploration.item.ShuttleItem;
+import com.shim.celestialexploration.registry.*;
 import com.shim.celestialexploration.util.Keybinds;
-import com.shim.celestialexploration.world.portal.MarsTeleporter;
 import com.shim.celestialexploration.world.portal.SpaceTeleporter;
 import net.minecraft.BlockUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Holder;
+import net.minecraft.core.Rotations;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
-import net.minecraft.network.protocol.game.ServerboundPaddleBoatPacket;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -37,8 +34,7 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.WaterAnimal;
-import net.minecraft.world.entity.animal.horse.AbstractChestedHorse;
-import net.minecraft.world.entity.animal.horse.AbstractHorse;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.vehicle.DismountHelper;
@@ -48,8 +44,11 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.WaterlilyBlock;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.FluidState;
@@ -59,14 +58,12 @@ import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.ItemStackHandler;
+import net.minecraftforge.items.wrapper.InvWrapper;
 import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 import java.util.List;
-import java.util.function.Predicate;
 
 public class Shuttle extends Entity implements ContainerListener, MenuProvider {
     private static final EntityDataAccessor<Integer> DATA_ID_HURT = SynchedEntityData.defineId(Shuttle.class, EntityDataSerializers.INT);
@@ -78,7 +75,7 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
     private static final EntityDataAccessor<Integer> DATA_ID_BUBBLE_TIME = SynchedEntityData.defineId(Shuttle.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Byte> DATA_ID_FLAGS = SynchedEntityData.defineId(Shuttle.class, EntityDataSerializers.BYTE);
     private float outOfControlTicks;
-    private float deltaRotation;
+    public float deltaRotation;
     private int lerpSteps;
     private double lerpX;
     private double lerpY;
@@ -87,10 +84,11 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
     private double lerpXRot;
     private Shuttle.Status status;
     private final float SHUTTLE_SPEED = .55F;
+    private final float SHUTTLE_LOW_FUEL_SPEED = .4F;
     private final float SHUTTLE_NO_FUEL_SPEED = .2F;
     protected SimpleContainer inventory;
     private int fuelTicks = 200;
-    private int teleportationCooldown = 300;
+    private int teleportationCooldown = 120;
 
     public Shuttle(EntityType<? extends Shuttle> p_38290_, Level p_38291_) {
         super(p_38290_, p_38291_);
@@ -182,46 +180,46 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
             this.gameEvent(GameEvent.ENTITY_DAMAGED, p_38319_.getEntity());
             boolean flag = p_38319_.getEntity() instanceof Player && ((Player) p_38319_.getEntity()).getAbilities().instabuild;
             if (flag || this.getDamage() > 40.0F) {
-                if (!flag && this.level.getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
-                    this.spawnAtLocation(this.getDropItem());
-                }
 
+                this.spawnAtLocation(this.getDropItem());
+                for (int i = 0; i < this.inventory.getContainerSize(); i++) {
+                    if (this.inventory.getItem(i) != null) {
+                        this.spawnAtLocation(this.inventory.getItem(i));
+                    }
+                }
+//                ShuttleItem shuttleItem = (ShuttleItem) this.getDropItem();
+//                Level level = this.getLevel();
+//
+//                Containers.dropContents(level, new BlockPos(this.position()), (Container)this);
+//
+//                CompoundTag tag = new CompoundTag();
+//
+//                ListTag listtag = new ListTag();
+//
+//                for (int i = 0; i < inventory.getContainerSize(); ++i) {
+//                    ItemStack itemstack = inventory.getItem(i);
+//                    if (!itemstack.isEmpty()) {
+//                        CompoundTag compoundtag = new CompoundTag();
+//                        compoundtag.putByte("Slot", (byte) i);
+//                        itemstack.save(compoundtag);
+//                        listtag.add(compoundtag);
+//                    }
+//                }
+//
+//                tag.put("Items", listtag);
+//                shuttleItem.setShuttleItemData(tag);
+
+//                ItemEntity itemEntity = new ItemEntity(level, this.position().x, this.position().y, this.position().z, new ItemStack(shuttleItem));
+//
+//                itemEntity.setDefaultPickUpDelay();
+//                level.addFreshEntity(itemEntity);
                 this.discard();
             }
-
             return true;
         } else {
             return true;
         }
     }
-
-//    public void onAboveBubbleCol(boolean p_38381_) {
-//        if (!this.level.isClientSide) {
-//            this.isAboveBubbleColumn = true;
-//            this.bubbleColumnDirectionIsDown = p_38381_;
-//            if (this.getBubbleTime() == 0) {
-//                this.setBubbleTime(60);
-//            }
-//        }
-//
-//        this.level.addParticle(ParticleTypes.SPLASH, this.getX() + (double)this.random.nextFloat(), this.getY() + 0.7D, this.getZ() + (double)this.random.nextFloat(), 0.0D, 0.0D, 0.0D);
-//        if (this.random.nextInt(20) == 0) {
-//            this.level.playLocalSound(this.getX(), this.getY(), this.getZ(), this.getSwimSplashSound(), this.getSoundSource(), 1.0F, 0.8F + 0.4F * this.random.nextFloat(), false);
-//        }
-//
-//        this.gameEvent(GameEvent.SPLASH, this.getControllingPassenger());
-//    }
-
-//    public void push(Entity p_38373_) {
-//        if (p_38373_ instanceof Shuttle) {
-//            if (p_38373_.getBoundingBox().minY < this.getBoundingBox().maxY) {
-//                super.push(p_38373_);
-//            }
-//        } else if (p_38373_.getBoundingBox().minY <= this.getBoundingBox().minY) {
-//            super.push(p_38373_);
-//        }
-//
-//    }
 
     public Item getDropItem() {
         switch (this.getShuttleType()) {
@@ -328,37 +326,61 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
             this.setDeltaMovement(Vec3.ZERO);
         }
 
-        if (isTeleportHeight()) {
+        if (isTeleportHeight() && isVehicle()) {
             Entity passenger = this.getControllingPassenger();
             //TODO or FIXME does not allow for multiple passengers, update if we want shuttle to allow multiple passengers in the future
             if (this.teleportationCooldown == 0) {
-                this.teleportShuttle(passenger, this);
+                this.displayTeleportMessage(teleportationCooldown);
+                ResourceKey<Level> destination = this.level.dimension() == DimensionRegistry.SPACE ? Level.OVERWORLD : DimensionRegistry.SPACE;
+                this.teleportShuttle(passenger, this, destination);
             } else {
                 this.teleportationCooldown--;
+                this.displayTeleportMessage(teleportationCooldown);
             }
         }
 
+        Holder<Biome> currentBiome = this.level.getBiome(new BlockPos(this.position()));
 
-//        this.tickBubbleColumn();
+        if (currentBiome.is(BiomeRegistry.MARS_ORBIT) || isBiomeInRange(BiomeRegistry.MARS_ORBIT)) { //IN MARS ORBIT OR NEAR EDGE
+            if (this.shouldTeleportToPlanet(BlockRegistry.MARS_STONE.get()) && this.isVehicle()) { //APPROACHING MARS
+                Entity passenger = this.getControllingPassenger();
+                assert passenger != null;
+                if (this.teleportationCooldown == 0) {
+                    this.displayTeleportMessage(teleportationCooldown);
+                    ResourceKey<Level> destination = DimensionRegistry.MARS;
+                    this.teleportShuttle(passenger, this, destination);
+                } else {
+                    this.teleportationCooldown--;
+                    this.displayTeleportMessage(teleportationCooldown);
+                }
+            }
+        } else if (currentBiome.is(BiomeRegistry.EARTH_ORBIT) || isBiomeInRange(BiomeRegistry.EARTH_ORBIT)) { //IN EARTH ORBIT OR NEAR EDGE
+            if (this.shouldTeleportToPlanet(Blocks.STONE) && this.isVehicle()) { //APPROACHING EARTH
+                Entity passenger = this.getControllingPassenger();
+                assert passenger != null;
+                if (this.teleportationCooldown == 0) {
+                    this.displayTeleportMessage(teleportationCooldown);
+                    ResourceKey<Level> destination = Level.OVERWORLD;
+                    this.teleportShuttle(passenger, this, destination);
+                } else {
+                    this.teleportationCooldown--;
+                    this.displayTeleportMessage(teleportationCooldown);
 
-//        for(int i = 0; i <= 1; ++i) {
-//            if (this.getPaddleState(i)) {
-//                if (!this.isSilent() && (double)(this.paddlePositions[i] % ((float)Math.PI * 2F)) <= (double)((float)Math.PI / 4F) && (double)((this.paddlePositions[i] + ((float)Math.PI / 8F)) % ((float)Math.PI * 2F)) >= (double)((float)Math.PI / 4F)) {
-//                    SoundEvent soundevent = this.getPaddleSound();
-//                    if (soundevent != null) {
-//                        Vec3 vec3 = this.getViewVector(1.0F);
-//                        double d0 = i == 1 ? -vec3.z : vec3.z;
-//                        double d1 = i == 1 ? vec3.x : -vec3.x;
-//                        this.level.playSound((Player)null, this.getX() + d0, this.getY(), this.getZ() + d1, soundevent, this.getSoundSource(), 1.0F, 0.8F + 0.4F * this.random.nextFloat());
-//                        this.level.gameEvent(this.getControllingPassenger(), GameEvent.SPLASH, new BlockPos(this.getX() + d0, this.getY(), this.getZ() + d1));
-//                    }
-//                }
-//
-//                this.paddlePositions[i] += ((float)Math.PI / 8F);
-//            } else {
-//                this.paddlePositions[i] = 0.0F;
-//            }
-//        }
+                }
+            } else if (this.shouldTeleportToPlanet(BlockRegistry.MOON_STONE.get()) && this.isVehicle()) { //APPROACHING MOON
+                Entity passenger = this.getControllingPassenger();
+                assert passenger != null;
+                if (this.teleportationCooldown == 0) {
+                    this.displayTeleportMessage(teleportationCooldown);
+                    ResourceKey<Level> destination = DimensionRegistry.MOON;
+                    this.teleportShuttle(passenger, this, destination);
+                } else {
+                    this.teleportationCooldown--;
+                    this.displayTeleportMessage(teleportationCooldown);
+                }
+            }
+        }
+
         this.checkInsideBlocks();
         List<Entity> list = this.level.getEntities(this, this.getBoundingBox().inflate(0.2F, -0.01F, 0.2F), EntitySelector.pushableBy(this));
         if (!list.isEmpty()) {
@@ -376,6 +398,52 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
         }
     }
 
+    public void displayTeleportMessage(int teleportCooldown) {
+        Entity entity = this.getControllingPassenger();
+
+        if (entity instanceof Player) {
+            if (teleportCooldown % 20 == 0) {
+                ((Player) entity).displayClientMessage(Component.nullToEmpty("Teleporting in… " + teleportCooldown / 20), true);
+            } else if (teleportCooldown == 0) {
+                ((Player) entity).displayClientMessage(Component.nullToEmpty("Teleporting!"), true);
+            }
+        }
+    }
+
+    public boolean shouldTeleportToPlanet(Block blockToTest) {
+        BlockPos pos;
+        boolean blockInRange = false;
+        BlockState state;
+
+        for (int x = -15; x <= 15; x++) {
+            for (int y = -15; y <= 15; y++) {
+                for (int z = -15; z <= 15; z++) {
+                    pos = new BlockPos(this.position().x + x, this.position().y + y, this.position().z + z);
+                    state = level.getBlockState(pos);
+                    if (state.getBlock() == blockToTest) blockInRange = true;
+                }
+            }
+        }
+        return blockInRange;
+    }
+
+    public boolean isBiomeInRange(ResourceKey<Biome> biomeToTest) {
+        BlockPos pos;
+        boolean biomeInRange = false;
+        Holder<Biome> biome;
+
+        for (int x = -18; x <= 18; x++) {
+            for (int y = -18; y <= 18; y++) {
+                for (int z = -18; z <= 18; z++) {
+                    pos = new BlockPos(this.position().x + x, this.position().y + y, this.position().z + z);
+                    biome = this.level.getBiome(new BlockPos(pos));
+                    if (biome.is(biomeToTest)) biomeInRange = true;
+                }
+            }
+        }
+        return biomeInRange;
+    }
+
     public boolean isTeleportHeight() {
         if (this.isVehicle() && this.position().y > this.level.getMaxBuildHeight() + 10) {
             return true;
@@ -385,124 +453,32 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
     }
 
     protected void resetTelportationCooldown() {
-        this.teleportationCooldown = 300;
+        this.teleportationCooldown = 120;
     }
 
     public int getTelportationCooldown() {
         return this.teleportationCooldown;
     }
 
-    protected void teleportShuttle(Entity passenger, Shuttle shuttle) {
+    protected void teleportShuttle(Entity passenger, Shuttle shuttle, ResourceKey<Level> destinationDim) {
         if (passenger.canChangeDimensions()) {
-//            if (!passenger.level.isClientSide && !pos.equals(passenger.portalEntrancePos)) {
-//                passenger.portalEntrancePos = pos.immutable();
-//            }
+
             Level entityWorld = passenger.level;
-            if (entityWorld != null) {
-                MinecraftServer minecraftserver = entityWorld.getServer();
-                ResourceKey<Level> destination = passenger.level.dimension() == DimensionRegistry.SPACE
-                        ? Level.OVERWORLD : DimensionRegistry.SPACE;
-                if (minecraftserver != null) {
-                    ServerLevel destinationWorld = minecraftserver.getLevel(destination);
-                    if (destinationWorld != null && minecraftserver.isNetherEnabled()) {
-//                        passenger.level.getProfiler().push("mars_portal");
-                        this.resetTelportationCooldown();
-                        passenger.changeDimension(destinationWorld, new SpaceTeleporter(destinationWorld));
-                        Entity newShuttle = shuttle.changeDimension(destinationWorld, new SpaceTeleporter(destinationWorld));
-                        if (!this.level.isClientSide && passenger instanceof Player) {
-                            passenger.startRiding(newShuttle);
-                        }
-//                        passenger.level.getProfiler().pop();
+            MinecraftServer minecraftserver = entityWorld.getServer();
+            if (minecraftserver != null) {
+                ServerLevel destinationWorld = minecraftserver.getLevel(destinationDim);
+                if (destinationWorld != null) {
+                    this.resetTelportationCooldown();
+                    passenger.changeDimension(destinationWorld, new SpaceTeleporter(destinationWorld));
+                    Entity newShuttle = shuttle.changeDimension(destinationWorld, new SpaceTeleporter(destinationWorld));
+                    if (!this.level.isClientSide && passenger instanceof Player) {
+                        assert newShuttle != null;
+                        passenger.startRiding(newShuttle);
                     }
                 }
             }
         }
-
-
-//        if(!entity.isPassenger() && !entity.isVehicle() && entity.canChangeDimensions()) {
-//            if(entity.isOnPortalCooldown()) {
-//                entity.setPortalCooldown();
-//            }
-//            else {
-//                if(!entity.level.isClientSide && !pos.equals(entity.portalEntrancePos)) {
-//                    entity.portalEntrancePos = pos.immutable();
-//                }
-//                Level entityWorld = entity.level;
-//                if(entityWorld != null) {
-//                    MinecraftServer minecraftserver = entityWorld.getServer();
-//                    ResourceKey<Level> destination = entity.level.dimension() == DimensionRegistry.MARS
-//                            ? Level.OVERWORLD : DimensionRegistry.MARS;
-//                    if(minecraftserver != null) {
-//                        ServerLevel destinationWorld = minecraftserver.getLevel(destination);
-//                        if(destinationWorld != null && minecraftserver.isNetherEnabled() && !entity.isPassenger()) {
-//                            entity.level.getProfiler().push("mars_portal");
-//                            entity.setPortalCooldown();
-//                            entity.changeDimension(destinationWorld, new MarsTeleporter(destinationWorld));
-//                            entity.level.getProfiler().pop();
-//                        }
-//                    }
-//                }
-//            }
-//        }
-
     }
-
-
-//    private void tickBubbleColumn() {
-//        if (this.level.isClientSide) {
-//            int i = this.getBubbleTime();
-//            if (i > 0) {
-//                this.bubbleMultiplier += 0.05F;
-//            } else {
-//                this.bubbleMultiplier -= 0.1F;
-//            }
-//
-//            this.bubbleMultiplier = Mth.clamp(this.bubbleMultiplier, 0.0F, 1.0F);
-//            this.bubbleAngleO = this.bubbleAngle;
-//            this.bubbleAngle = 10.0F * (float)Math.sin((double)(0.5F * (float)this.level.getGameTime())) * this.bubbleMultiplier;
-//        } else {
-//            if (!this.isAboveBubbleColumn) {
-//                this.setBubbleTime(0);
-//            }
-//
-//            int k = this.getBubbleTime();
-//            if (k > 0) {
-//                --k;
-//                this.setBubbleTime(k);
-//                int j = 60 - k - 1;
-//                if (j > 0 && k == 0) {
-//                    this.setBubbleTime(0);
-//                    Vec3 vec3 = this.getDeltaMovement();
-//                    if (this.bubbleColumnDirectionIsDown) {
-//                        this.setDeltaMovement(vec3.add(0.0D, -0.7D, 0.0D));
-//                        this.ejectPassengers();
-//                    } else {
-//                        this.setDeltaMovement(vec3.x, this.hasPassenger((p_150274_) -> {
-//                            return p_150274_ instanceof Player;
-//                        }) ? 2.7D : 0.6D, vec3.z);
-//                    }
-//                }
-//
-//                this.isAboveBubbleColumn = false;
-//            }
-//        }
-//
-//    }
-
-//    @javax.annotation.Nullable
-//    protected SoundEvent getPaddleSound() {
-//        switch(this.getStatus()) {
-//            case IN_WATER:
-//            case UNDER_WATER:
-//            case UNDER_FLOWING_WATER:
-//                return SoundEvents.BOAT_PADDLE_WATER;
-//            case ON_LAND:
-//                return SoundEvents.BOAT_PADDLE_LAND;
-//            case IN_AIR:
-//            default:
-//                return null;
-//        }
-//    }
 
     private void tickLerp() {
         if (this.isControlledByLocalInstance()) {
@@ -524,12 +500,9 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
     }
 
     private Shuttle.Status getStatus() {
-        Shuttle.Status suttle$status = this.isUnderwater();
-        if (suttle$status != null) {
-//            double waterLevel = this.getBoundingBox().maxY;
-            return suttle$status;
-//        } else if (this.checkInWater()) {
-//            return Shuttle.Status.IN_WATER;
+        Shuttle.Status shuttle$status = this.isUnderwater();
+        if (shuttle$status != null) {
+            return shuttle$status;
         } else {
             float f = this.getGroundFriction();
             if (f > 0.0F) {
@@ -539,42 +512,6 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
             }
         }
     }
-
-//    public float getWaterLevelAbove() {
-//        AABB aabb = this.getBoundingBox();
-//        int i = Mth.floor(aabb.minX);
-//        int j = Mth.ceil(aabb.maxX);
-//        int k = Mth.floor(aabb.maxY);
-//        int l = Mth.ceil(aabb.maxY - this.lastYd);
-//        int i1 = Mth.floor(aabb.minZ);
-//        int j1 = Mth.ceil(aabb.maxZ);
-//        BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
-//
-//        label39:
-//        for(int k1 = k; k1 < l; ++k1) {
-//            float f = 0.0F;
-//
-//            for(int l1 = i; l1 < j; ++l1) {
-//                for(int i2 = i1; i2 < j1; ++i2) {
-//                    blockpos$mutableblockpos.set(l1, k1, i2);
-//                    FluidState fluidstate = this.level.getFluidState(blockpos$mutableblockpos);
-//                    if (fluidstate.is(FluidTags.WATER)) {
-//                        f = Math.max(f, fluidstate.getHeight(this.level, blockpos$mutableblockpos));
-//                    }
-//
-//                    if (f >= 1.0F) {
-//                        continue label39;
-//                    }
-//                }
-//            }
-//
-//            if (f < 1.0F) {
-//                return (float)blockpos$mutableblockpos.getY() + f;
-//            }
-//        }
-//
-//        return (float)(l + 1);
-//    }
 
     public float getGroundFriction() {
         AABB aabb = this.getBoundingBox();
@@ -612,35 +549,6 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
 //        return 0;
     }
 
-//    private boolean checkInWater() {
-//        AABB aabb = this.getBoundingBox();
-//        int i = Mth.floor(aabb.minX);
-//        int j = Mth.ceil(aabb.maxX);
-//        int k = Mth.floor(aabb.minY);
-//        int l = Mth.ceil(aabb.minY + 0.001D);
-//        int i1 = Mth.floor(aabb.minZ);
-//        int j1 = Mth.ceil(aabb.maxZ);
-//        boolean flag = false;
-//        this.waterLevel = -Double.MAX_VALUE;
-//        BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
-//
-//        for(int k1 = i; k1 < j; ++k1) {
-//            for(int l1 = k; l1 < l; ++l1) {
-//                for(int i2 = i1; i2 < j1; ++i2) {
-//                    blockpos$mutableblockpos.set(k1, l1, i2);
-//                    FluidState fluidstate = this.level.getFluidState(blockpos$mutableblockpos);
-//                    if (fluidstate.is(FluidTags.WATER)) {
-//                        float f = (float)l1 + fluidstate.getHeight(this.level, blockpos$mutableblockpos);
-//                        this.waterLevel = Math.max((double)f, this.waterLevel);
-//                        flag |= aabb.minY < (double)f;
-//                    }
-//                }
-//            }
-//        }
-//
-//        return flag;
-//    }
-
     @javax.annotation.Nullable
     private Shuttle.Status isUnderwater() {
         AABB aabb = this.getBoundingBox();
@@ -673,113 +581,114 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
         return flag ? Shuttle.Status.UNDER_WATER : null;
     }
 
-//    private void floatShuttle() {
-//        double d0 = (double)-0.04F;
-//        double d1 = this.isNoGravity() ? 0.0D : (double)-0.04F;
-//        double d2 = 0.0D;
-//        this.invFriction = 0.05F;
-//        if (this.oldStatus == Shuttle.Status.IN_AIR && this.status != Shuttle.Status.IN_AIR && this.status != Shuttle.Status.ON_LAND) {
-//            this.waterLevel = this.getY(1.0D);
-//            this.setPos(this.getX(), (double)(this.getWaterLevelAbove() - this.getBbHeight()) + 0.101D, this.getZ());
-//            this.setDeltaMovement(this.getDeltaMovement().multiply(1.0D, 0.0D, 1.0D));
-//            this.lastYd = 0.0D;
-//            this.status = Shuttle.Status.IN_WATER;
-//        } else {
-//            if (this.status == Shuttle.Status.IN_WATER) {
-//                d2 = (this.waterLevel - this.getY()) / (double)this.getBbHeight();
-//                this.invFriction = 0.9F;
-//            } else if (this.status == Shuttle.Status.UNDER_FLOWING_WATER) {
-//                d1 = -7.0E-4D;
-//                this.invFriction = 0.9F;
-//            } else if (this.status == Shuttle.Status.UNDER_WATER) {
-//                d2 = (double)0.01F;
-//                this.invFriction = 0.45F;
-//            } else if (this.status == Shuttle.Status.IN_AIR) {
-//                this.invFriction = 0.9F;
-//            } else if (this.status == Shuttle.Status.ON_LAND) {
-//                this.invFriction = this.landFriction;
-//                if (this.getControllingPassenger() instanceof Player) {
-//                    this.landFriction /= 2.0F;
-//                }
-//            }
-//
-//            Vec3 vec3 = this.getDeltaMovement();
-//            this.setDeltaMovement(vec3.x * (double)this.invFriction, vec3.y + d1, vec3.z * (double)this.invFriction);
-//            this.deltaRotation *= this.invFriction;
-//            if (d2 > 0.0D) {
-//                Vec3 vec31 = this.getDeltaMovement();
-//                this.setDeltaMovement(vec31.x, (vec31.y + d2 * 0.06153846016296973D) * 0.75D, vec31.z);
-//            }
-//        }
-//
-//    }
-
-    private boolean hasFuel() {
+    public boolean hasFuel() {
         boolean hasFuel = false;
-        ItemStack tank = this.inventory.getItem(0);
-        ItemStack secondTank = this.inventory.getItem(1);
 
-        LoxTankCapability.ILoxTank loxTank = CelestialExploration.getCapability(tank, CapabilityRegistry.LOX_TANK_CAPABILITY);
-        LoxTankCapability.ILoxTank secondLoxTank = CelestialExploration.getCapability(secondTank, CapabilityRegistry.LOX_TANK_CAPABILITY);
+        LoxTankCapability.ILoxTank firstTankCap = getTankCap(this.inventory.getItem(0));
+        LoxTankCapability.ILoxTank secondTankCap = getTankCap(this.inventory.getItem(1));
+        LoxTankCapability.ILoxTank thirdTankCap = getTankCap(this.inventory.getItem(2));
+        LoxTankCapability.ILoxTank fourthTankCap = getTankCap(this.inventory.getItem(3));
 
-        if (loxTank != null) {
-            hasFuel = !loxTank.isEmpty();
-            if (hasFuel) return true;
-            if (secondLoxTank != null) {
-                hasFuel = !secondLoxTank.isEmpty();
-            }
+        if (firstTankCap != null) {
+            hasFuel = !firstTankCap.isEmpty();
+        }
+        if (secondTankCap != null) {
+            hasFuel = !secondTankCap.isEmpty();
+        }
+        if (thirdTankCap != null) {
+            hasFuel = !thirdTankCap.isEmpty();
+        }
+        if (fourthTankCap != null) {
+            hasFuel = !fourthTankCap.isEmpty();
         }
 
         return hasFuel;
     }
 
     private void useFuel() {
-        ItemStack firstTank = this.inventory.getItem(0);
-        ItemStack secondTank = this.inventory.getItem(1);
+        LoxTankCapability.ILoxTank firstTankCap = getTankCap(this.inventory.getItem(0));
+        LoxTankCapability.ILoxTank secondTankCap = getTankCap(this.inventory.getItem(1));
+        LoxTankCapability.ILoxTank thirdTankCap = getTankCap(this.inventory.getItem(2));
+        LoxTankCapability.ILoxTank fourthTankCap = getTankCap(this.inventory.getItem(3));
 
-        LoxTankCapability.ILoxTank loxTank = CelestialExploration.getCapability(firstTank, CapabilityRegistry.LOX_TANK_CAPABILITY);
-        LoxTankCapability.ILoxTank secondLoxTank = CelestialExploration.getCapability(secondTank, CapabilityRegistry.LOX_TANK_CAPABILITY);
+        if (hasLowFuel()) {
+            if (firstTankCap != null && !firstTankCap.isEmpty()) {
+                firstTankCap.decrementAmountByFifty();
+            } else if (secondTankCap != null && !secondTankCap.isEmpty()) {
+                secondTankCap.decrementAmountByFifty();
+            } else if (thirdTankCap != null && !thirdTankCap.isEmpty()) {
+                thirdTankCap.decrementAmountByFifty();
+            } else if (fourthTankCap != null && !fourthTankCap.isEmpty()) {
+                fourthTankCap.decrementAmountByFifty();
+            }
+        } else {
+            if (firstTankCap != null && !firstTankCap.isEmpty()) {
+                firstTankCap.decrementAmount();
+            } else if (secondTankCap != null && !secondTankCap.isEmpty()) {
+                secondTankCap.decrementAmount();
+            } else if (thirdTankCap != null && !thirdTankCap.isEmpty()) {
+                thirdTankCap.decrementAmount();
+            } else if (fourthTankCap != null && !fourthTankCap.isEmpty()) {
+                fourthTankCap.decrementAmount();
+            }
+        }
+    }
 
-        if (loxTank != null && !loxTank.isEmpty()) {
-            loxTank.decrementAmount();
-            CelestialExploration.LOGGER.debug("first tank fuel level is " + loxTank.getAmount());
-        } else if (secondLoxTank != null && !secondLoxTank.isEmpty()) {
-            secondLoxTank.decrementAmount();
-            CelestialExploration.LOGGER.debug("second tank fuel level is " + secondLoxTank.getAmount());
+    public boolean hasLowFuel() {
+        return getFuel() <= 300;
+    }
+
+    private LoxTankCapability.ILoxTank getTankCap(ItemStack tank) {
+        LoxTankCapability.ILoxTank tankCap = CelestialExploration.getCapability(tank, CapabilityRegistry.LOX_TANK_CAPABILITY);
+        if (tankCap != null) {
+            return tankCap;
+        } else {
+            return null;
         }
     }
 
     public int getFuel() {
         int totalFuel = 0;
 
-        ItemStack firstTank = this.inventory.getItem(0);
-        ItemStack secondTank = this.inventory.getItem(1);
+        LoxTankCapability.ILoxTank firstTankCap = getTankCap(this.inventory.getItem(0));
+        LoxTankCapability.ILoxTank secondTankCap = getTankCap(this.inventory.getItem(1));
+        LoxTankCapability.ILoxTank thirdTankCap = getTankCap(this.inventory.getItem(2));
+        LoxTankCapability.ILoxTank fourthTankCap = getTankCap(this.inventory.getItem(3));
 
-        LoxTankCapability.ILoxTank loxTank = CelestialExploration.getCapability(firstTank, CapabilityRegistry.LOX_TANK_CAPABILITY);
-        LoxTankCapability.ILoxTank secondLoxTank = CelestialExploration.getCapability(secondTank, CapabilityRegistry.LOX_TANK_CAPABILITY);
+        if (firstTankCap != null && !firstTankCap.isEmpty()) {
+            totalFuel += firstTankCap.getAmount();
+        }
+        if (secondTankCap != null && !secondTankCap.isEmpty()) {
+            totalFuel += secondTankCap.getAmount();
+        }
+        if (thirdTankCap != null && !thirdTankCap.isEmpty()) {
+            totalFuel += thirdTankCap.getAmount();
+        }
+        if (fourthTankCap != null && !fourthTankCap.isEmpty()) {
+            totalFuel += fourthTankCap.getAmount();
+        }
 
-        if (loxTank != null && !loxTank.isEmpty()) {
-            totalFuel += loxTank.getAmount();
-        }
-        if (secondLoxTank != null && !secondLoxTank.isEmpty()) {
-            totalFuel += secondLoxTank.getAmount();
-        }
         return totalFuel;
     }
 
-    public float getCurrentSpeed() {
+    public float getMaxSpeed() {
         if (this.hasFuel()) {
+            if (this.hasLowFuel()) return SHUTTLE_LOW_FUEL_SPEED;
             return SHUTTLE_SPEED;
-        } else {
-            return SHUTTLE_NO_FUEL_SPEED;
         }
+        return SHUTTLE_NO_FUEL_SPEED;
     }
+
+    public double getCurrentSpeed() {
+        return this.getDeltaMovement().x;
+    }
+
 
     private void controlShuttle() {
         if (this.isVehicle()) {
 
             float currentSpeed;
-            currentSpeed = getCurrentSpeed();
+            currentSpeed = getMaxSpeed();
 
             LivingEntity livingentity = (LivingEntity) this.getControllingPassenger();
             this.setYRot(livingentity.getYRot());
@@ -789,38 +698,24 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
             float f = livingentity.zza * currentSpeed;
 
             if (Keybinds.TURN_LEFT_KEY.isDown()) {
-//            if (livingentity.xxa > 0) {
                 --this.deltaRotation;
             } else if (Keybinds.TURN_RIGHT_KEY.isDown()) {
-//            if (livingentity.xxa < 0) {
                 ++this.deltaRotation;
             } else {
                 this.deltaRotation = 0;
             }
             float f1;
-//            clampRotation(livingentity);
 
-            this.setYRot(this.getYRot() + this.deltaRotation);
+//            this.setYRot(this.getYRot() + this.deltaRotation);
 
-
-//            if (livingentity.getDeltaMovement().y > 0) {
             if (Keybinds.ASCEND_KEY.isDown()) {
                 f1 = currentSpeed;
             } else if (Keybinds.DESCEND_KEY.isDown()) {
                 f1 = -1 * SHUTTLE_SPEED; //shuttle can always descend at normal speed
-            }
-//            else if (livingentity.getDeltaMovement().y < 0) {
-//                f1 = -0.5F;
-//            }
-            else {
+            } else {
                 f1 = 0;
             }
-//
             this.setDeltaMovement((Mth.sin(-this.getYRot() * ((float) Math.PI / 180F)) * f), f1, (Mth.cos(this.getYRot() * ((float) Math.PI / 180F)) * f));
-//            this.setDeltaMovement(this.getDeltaMovement().add((double)(Mth.sin(-this.getYRot() * ((float)Math.PI / 180F)) * f), f1, (double)(Mth.cos(this.getYRot() * ((float)Math.PI / 180F)) * f)));
-
-            //            this.setDeltaMovement(this.getDeltaMovement().add((double)(Mth.sin(-this.getYRot() * ((float)Math.PI / 180F)) * f), f1, (double)(Mth.cos(this.getYRot() * ((float)Math.PI / 180F)) * f)));
-//            this.setPaddleState(this.inputRight && !this.inputLeft || this.inputUp, this.inputLeft && !this.inputRight || this.inputUp);
         }
     }
 
@@ -856,7 +751,7 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
         }
     }
 
-    public Vec3 getDismountLocationForPassenger(LivingEntity p_38357_) { //FIXME
+    public Vec3 getDismountLocationForPassenger(LivingEntity p_38357_) {
         Vec3 vec3 = getCollisionHorizontalEscapeVector((this.getBbWidth() * Mth.SQRT_OF_TWO), p_38357_.getBbWidth(), p_38357_.getYRot());
         double d0 = this.getX() + vec3.x;
         double d1 = this.getZ() + vec3.z;
@@ -900,8 +795,8 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
         this.clampRotation(p_38383_);
     }
 
-    protected void addAdditionalSaveData(CompoundTag p_38359_) {
-        p_38359_.putString("Type", this.getShuttleType().getName());
+    protected void addAdditionalSaveData(CompoundTag tag) {
+        tag.putString("Type", this.getShuttleType().getName());
         ListTag listtag = new ListTag();
 
         for (int i = 0; i < this.inventory.getContainerSize(); ++i) {
@@ -914,7 +809,7 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
             }
         }
 
-        p_38359_.put("Items", listtag);
+        tag.put("Items", listtag);
     }
 
     protected void readAdditionalSaveData(CompoundTag p_38338_) {
@@ -927,14 +822,32 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
         for (int i = 0; i < listtag.size(); ++i) {
             CompoundTag compoundtag = listtag.getCompound(i);
             int j = compoundtag.getByte("Slot") & 255;
-            if (j >= 2 && j < this.inventory.getContainerSize()) {
+            if (j >= 0 && j < this.inventory.getContainerSize()) {
+                this.inventory.setItem(j, ItemStack.of(compoundtag));
+            }
+        }
+    }
+
+    public void setInvData(CompoundTag tag) {
+        if (tag == null) {
+            return;
+        }
+        ListTag listtag = tag.getList("Items", 10);
+
+        this.createInventory();
+        for (int i = 0; i < listtag.size(); ++i) {
+
+            CompoundTag compoundtag = listtag.getCompound(i);
+            int j = compoundtag.getByte("Slot") & 255;
+            if (j >= 0 && j < this.inventory.getContainerSize()) {
+
                 this.inventory.setItem(j, ItemStack.of(compoundtag));
             }
         }
     }
 
     protected int getInventorySize() {
-        return 29;
+        return 31;
     }
 
     protected void createInventory() {
@@ -954,7 +867,7 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
 
         this.inventory.addListener(this);
         this.updateContainerEquipment();
-        this.itemHandler = net.minecraftforge.common.util.LazyOptional.of(() -> new net.minecraftforge.items.wrapper.InvWrapper(this.inventory));
+        this.itemHandler = LazyOptional.of(() -> new InvWrapper(this.inventory));
     }
 
     protected boolean getFlag(int p_30648_) {
@@ -977,75 +890,75 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
         }
     }
 
-    private SlotAccess createEquipmentSlotAccess(final int p_149503_, final Predicate<ItemStack> p_149504_) {
-        return new SlotAccess() {
-            public ItemStack get() {
-                return Shuttle.this.inventory.getItem(p_149503_);
-            }
-
-            public boolean set(ItemStack p_149528_) {
-                if (!p_149504_.test(p_149528_)) {
-                    return false;
-                } else {
-                    Shuttle.this.inventory.setItem(p_149503_, p_149528_);
-                    Shuttle.this.updateContainerEquipment();
-                    return true;
-                }
-            }
-        };
-    }
-
-    public SlotAccess getSlot(int p_149479_) {
-        return p_149479_ == 499 ? new SlotAccess() {
-            public ItemStack get() {
-                return new ItemStack(Items.CHEST);
-            }
-
-            public boolean set(ItemStack p_149485_) {
-                if (p_149485_.isEmpty()) {
-//                    if (AbstractChestedHorse.this.hasChest()) {
-//                        AbstractChestedHorse.this.setChest(false);
-                    Shuttle.this.createInventory();
-//                    }
-
-                    return true;
-                } else if (p_149485_.is(Items.CHEST)) {
-//                    if (!AbstractChestedHorse.this.hasChest()) {
-//                        AbstractChestedHorse.this.setChest(true);
-                    Shuttle.this.createInventory();
-//                    }
-
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-        } : this.getSlotSuper(p_149479_);
-    }
-
-    public SlotAccess getSlotSuper(int p_149514_) {
-        int i = p_149514_ - 400;
-        if (i >= 0 && i < 2 && i < this.inventory.getContainerSize()) {
-            if (i == 0) {
-                return this.createEquipmentSlotAccess(i, (p_149518_) -> {
-                    return p_149518_.isEmpty() || p_149518_.is(Items.SADDLE);
-                });
-            }
-
-            if (i == 1) {
-//                if (!this.canWearArmor()) {
-//                    return SlotAccess.NULL;
+//    private SlotAccess createEquipmentSlotAccess(final int p_149503_, final Predicate<ItemStack> p_149504_) {
+//        return new SlotAccess() {
+//            public ItemStack get() {
+//                return Shuttle.this.inventory.getItem(p_149503_);
+//            }
+//
+//            public boolean set(ItemStack p_149528_) {
+//                if (!p_149504_.test(p_149528_)) {
+//                    return false;
+//                } else {
+//                    Shuttle.this.inventory.setItem(p_149503_, p_149528_);
+//                    Shuttle.this.updateContainerEquipment();
+//                    return true;
 //                }
+//            }
+//        };
+//    }
 
-                return this.createEquipmentSlotAccess(i, (p_149516_) -> {
-                    return p_149516_.isEmpty(); // || this.isArmor(p_149516_);
-                });
-            }
-        }
+//    public SlotAccess getSlot(int p_149479_) {
+//        return p_149479_ == 499 ? new SlotAccess() {
+//            public ItemStack get() {
+//                return new ItemStack(Items.CHEST);
+//            }
+//
+//            public boolean set(ItemStack p_149485_) {
+//                if (p_149485_.isEmpty()) {
+////                    if (AbstractChestedHorse.this.hasChest()) {
+////                        AbstractChestedHorse.this.setChest(false);
+//                    Shuttle.this.createInventory();
+////                    }
+//
+//                    return true;
+//                } else if (p_149485_.is(Items.CHEST)) {
+////                    if (!AbstractChestedHorse.this.hasChest()) {
+////                        AbstractChestedHorse.this.setChest(true);
+//                    Shuttle.this.createInventory();
+////                    }
+//
+//                    return true;
+//                } else {
+//                    return false;
+//                }
+//            }
+//        } : this.getSlotSuper(p_149479_);
+//    }
 
-        int j = p_149514_ - 500 + 2;
-        return j >= 2 && j < this.inventory.getContainerSize() ? SlotAccess.forContainer(this.inventory, j) : super.getSlot(p_149514_);
-    }
+//    public SlotAccess getSlotSuper(int p_149514_) {
+//        int i = p_149514_ - 400;
+//        if (i >= 0 && i < 2 && i < this.inventory.getContainerSize()) {
+//            if (i == 0) {
+//                return this.createEquipmentSlotAccess(i, (p_149518_) -> {
+//                    return p_149518_.isEmpty() || p_149518_.is(Items.SADDLE);
+//                });
+//            }
+//
+//            if (i == 1) {
+////                if (!this.canWearArmor()) {
+////                    return SlotAccess.NULL;
+////                }
+//
+//                return this.createEquipmentSlotAccess(i, (p_149516_) -> {
+//                    return p_149516_.isEmpty(); // || this.isArmor(p_149516_);
+//                });
+//            }
+//        }
+//
+//        int j = p_149514_ - 500 + 2;
+//        return j >= 2 && j < this.inventory.getContainerSize() ? SlotAccess.forContainer(this.inventory, j) : super.getSlot(p_149514_);
+//    }
 
     private net.minecraftforge.common.util.LazyOptional<?> itemHandler = null;
 
@@ -1065,14 +978,6 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
             oldHandler.invalidate();
         }
     }
-
-//    public boolean hasInventoryChanged(Container p_149512_) {
-//        return this.inventory != p_149512_;
-//    }
-//
-//    public int getInventoryColumns() {
-//        return 5;
-//    }
 
     public InteractionResult interact(Player player, InteractionHand hand) {
 
@@ -1126,10 +1031,6 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
 
         }
     }
-
-//    public boolean getPaddleState(int p_38314_) {
-//        return this.entityData.<Boolean>get(p_38314_ == 0 ? DATA_ID_PADDLE_LEFT : DATA_ID_PADDLE_RIGHT) && this.getControllingPassenger() != null;
-//    }
 
     public void setDamage(float p_38312_) {
         this.entityData.set(DATA_ID_DAMAGE, p_38312_);

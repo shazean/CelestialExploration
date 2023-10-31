@@ -235,7 +235,7 @@ public class Recipes extends RecipeProvider {
 				.pattern("XX")
 				.define('X', BlockRegistry.MOON_DEEPSLATE.get())
 				.group("celestialexploration").unlockedBy("moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_DEEPSLATE_TAG), BlockRegistry.MOON_DEEPSLATE_TILES.get(), 1)
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_DEEPSLATE_TAG), BlockRegistry.MOON_POLISHED_DEEPSLATE.get(), 1)
 				.unlockedBy("has_moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get()))
 				.group("celestialexploration").save(consumer, "moon_polished_deepslate_stonecutting");
 
@@ -297,7 +297,7 @@ public class Recipes extends RecipeProvider {
 //				.pattern("XXX")
 
 		/**MARS*/
-		SimpleCookingRecipeBuilder.smelting(Ingredient.of(BlockRegistry.MARS_SAND.get()), Items.BROWN_STAINED_GLASS, 1.0F, 100)
+		SimpleCookingRecipeBuilder.smelting(Ingredient.of(BlockRegistry.MARS_SAND.get()), Items.ORANGE_STAINED_GLASS, 1.0F, 100)
 				.unlockedBy("has_mars_sand", has(BlockRegistry.MARS_SAND.get())).save(consumer, "mars_sand");
 
 		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_BRICKS.get(), 4)
@@ -483,7 +483,7 @@ public class Recipes extends RecipeProvider {
 				.pattern("XX")
 				.define('X', BlockRegistry.MARS_DEEPSLATE.get())
 				.group("celestialexploration").unlockedBy("mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_DEEPSLATE_TAG), BlockRegistry.MARS_DEEPSLATE_TILES.get(), 1)
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_DEEPSLATE_TAG), BlockRegistry.MARS_POLISHED_DEEPSLATE.get(), 1)
 				.unlockedBy("has_mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get()))
 				.group("celestialexploration").save(consumer, "mars_polished_deepslate_stonecutting");
 
@@ -812,7 +812,7 @@ public class Recipes extends RecipeProvider {
 				.group("celestialexploration").unlockedBy("steel_ingot", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get())).save(consumer);
 
 		ShapelessRecipeBuilder.shapeless(ItemRegistry.LUMINOUS_BLUE_GLASS.get())
-				.requires(Items.GLASS)
+				.requires(Tags.Items.GLASS)
 				.requires(ItemRegistry.MOON_DUST.get())
 				.group("celestialexploration").unlockedBy("moon_dust", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MOON_DUST.get())).save(consumer);
 

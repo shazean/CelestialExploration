@@ -29,11 +29,13 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -262,7 +264,7 @@ public class OxygenCompressorBlockEntity extends BlockEntity implements MenuProv
     public static void tick(Level level, BlockPos pos, BlockState state, OxygenCompressorBlockEntity blockEntity) {
 
             boolean hasTankInSlot = blockEntity.itemHandler.getStackInSlot(1).getItem() == ItemRegistry.LOX_TANK.get() || blockEntity.itemHandler.getStackInSlot(2).getItem() == ItemRegistry.LOX_TANK.get() || blockEntity.itemHandler.getStackInSlot(3).getItem() == ItemRegistry.LOX_TANK.get() || blockEntity.itemHandler.getStackInSlot(4).getItem() == ItemRegistry.LOX_TANK.get();
-            ItemStack fuelSlot = blockEntity.itemHandler.getStackInSlot(0);
+            ItemStack fuelItem = blockEntity.itemHandler.getStackInSlot(0);
 
             if (blockEntity.litTime == 0) {
                 state = state.setValue(OxygenCompressorBlock.LIT, blockEntity.isLit());
@@ -270,12 +272,12 @@ public class OxygenCompressorBlockEntity extends BlockEntity implements MenuProv
                 blockEntity.resetBurnTime(blockEntity);
 
                 blockEntity.litTotalTime = 0;
-                if (!fuelSlot.isEmpty() && hasTankInSlot) {
-                    if (blockEntity.isBurnableFuel(getFuel(), fuelSlot.getItem())) {
-                        blockEntity.litTime = getBurnDuration(getFuel(), blockEntity.itemHandler.getStackInSlot(0).getItem());
+                if (!fuelItem.isEmpty() && hasTankInSlot) {
+//                    if (blockEntity.isBurnableFuel(getFuel(), fuelSlot.getItem())) {
+                        blockEntity.litTime = ForgeHooks.getBurnTime(fuelItem, RecipeType.SMELTING);
                         blockEntity.itemHandler.extractItem(0, 1, false);
-                        blockEntity.litTotalTime = getBurnDuration(getFuel(), blockEntity.itemHandler.getStackInSlot(0).getItem());
-                    }
+                        blockEntity.litTotalTime = ForgeHooks.getBurnTime(fuelItem, RecipeType.SMELTING);
+//                    }
                 }
             } else { //litTime > 0
                 state = state.setValue(OxygenCompressorBlock.LIT, blockEntity.isLit());

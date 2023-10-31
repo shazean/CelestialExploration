@@ -10,6 +10,7 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -235,6 +236,10 @@ public class ItemRegistry {
 	public static final RegistryObject<Item> LUMINOUS_BLUE_GLASS_PANE = fromBlock(BlockRegistry.LUMINOUS_BLUE_GLASS_PANE);
 	public static final RegistryObject<Item> LUMINOUS_WHITE_GLASS_PANE = fromBlock(BlockRegistry.LUMINOUS_WHITE_GLASS_PANE);
 
+	public static final RegistryObject<Item> CONNECTED_GLASS = fromBlock(BlockRegistry.CONNECTED_GLASS);
+	public static final RegistryObject<Item> CONNECTED_GLASS_PANE = fromBlock(BlockRegistry.CONNECTED_GLASS_PANE);
+
+
 //	public static final RegistryObject<Item> SOLAR_PANEL = ITEMS.register("solar_panel",  () -> new BlockItemBase(RegistryBlocks.SOLAR_PANEL.get()));
 
 	//SPAWN EGGS
@@ -256,6 +261,9 @@ public class ItemRegistry {
 	public static final RegistryObject<Item> LURKER_SPAWN_EGG = ITEMS.register("lurker_spawn_egg",
 			() -> new ForgeSpawnEggItem(EntityRegistry.LURKER,0, 0x894731,
 					new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+
+	public static final RegistryObject<Item> LURKER_HEAD = ITEMS.register("lurker_head", () -> new StandingAndWallBlockItem(BlockRegistry.LURKER_HEAD.get(), BlockRegistry.LURKER_WALL_HEAD.get(), (new Item.Properties()).tab(CreativeModeTab.TAB_DECORATIONS).rarity(Rarity.UNCOMMON)));
+
 
 //	public static final RegistryObject<ModSpawnEgg> SULFURIC_SLIME_SPAWN_EGG = ITEMS.register("sulfuric_slime_spawn_egg", () -> new ModSpawnEgg(RegistryEntities.SULFURIC_SLIME, 0xbd9200, 0xa68000, new Item.Properties().tab(ItemGroup.TAB_MISC)));
 //	public static final RegistryObject<ModSpawnEgg> MARS_MALLOW_SPAWN_EGG = ITEMS.register("mars_mallow_spawn_egg", () -> new ModSpawnEgg(RegistryEntities.MARS_MALLOW, 0xffffff, 0xF3F3F3, new Item.Properties().tab(ItemGroup.TAB_MISC)));

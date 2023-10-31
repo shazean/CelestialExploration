@@ -2,13 +2,9 @@
   "replace": false,
   "values": [
     "celestialexploration:moon_stone",
-    "celestialexploration:moon_brick_slab",
-    "celestialexploration:moon_brick_stairs",
-    "celestialexploration:moon_brick_wall",
     "celestialexploration:moon_bricks",
     "celestialexploration:chiseled_moon_bricks",
     "celestialexploration:moon_brick_pillar",
-    "celestialexploration:moon_stone_slab",
     "celestialexploration:moon_smooth_stone",
     "celestialexploration:cracked_moon_bricks"
   ]

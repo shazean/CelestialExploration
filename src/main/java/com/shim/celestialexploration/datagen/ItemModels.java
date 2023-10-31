@@ -175,6 +175,10 @@ public class ItemModels extends ItemModelProvider {
 		singleTexture(ItemRegistry.LUMINOUS_BLUE_GLASS_PANE.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "block/luminous_blue_glass"));
 		singleTexture(ItemRegistry.LUMINOUS_WHITE_GLASS_PANE.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "block/luminous_white_glass"));
 
+		withExistingParent(ItemRegistry.CONNECTED_GLASS.get().getRegistryName().getPath(), modLoc("block/connected_glass_inventory"));
+		singleTexture(ItemRegistry.CONNECTED_GLASS_PANE.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "block/connected_glass"));
+
+
 		/**
 		 * ITEMS (not belonging to blocks)
 		 */

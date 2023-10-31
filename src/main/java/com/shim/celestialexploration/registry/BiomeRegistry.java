@@ -44,21 +44,29 @@ public class BiomeRegistry {
     public static final ResourceKey<Biome> MOON_LOWER_PLAINS = register("moon_lower_plains");
     public static final ResourceKey<Biome> MOON_PLAINS = register("moon_plains");
 
+    /**
+     * SPACE
+     */
+    public static final ResourceKey<Biome> ASTEROID_FIELD = register("asteroid_field");
+    public static final ResourceKey<Biome> EMPTY_SPACE = register("empty_space");
+    public static final ResourceKey<Biome> LARGE_ASTEROID = register("large_asteroid");
+    public static final ResourceKey<Biome> SPARSE_ASTEROID_FIELD = register("sparse_asteroid_field");
+    public static final ResourceKey<Biome> MARS_ORBIT = register("mars_orbit");
+    public static final ResourceKey<Biome> EARTH_ORBIT = register("earth_orbit");
+
+    /**
+     * TAGS
+     */
     public static final TagKey<Biome> MARS_BIOMES = create("mars_tag");
     public static final TagKey<Biome> MOON_BIOMES = create("moon_tag");
 
 
-    private static ResourceKey<Biome> register(String p_48229_) {
-        return ResourceKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(p_48229_));
+    private static ResourceKey<Biome> register(String key) {
+        return ResourceKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(CelestialExploration.MODID, key));
     }
 
     private static TagKey<Biome> create(String key) {
         return TagKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(CelestialExploration.MODID, key));
     }
-
-//    public static void register(IEventBus eventbus) {
-//        BIOMES.register(eventbus);
-//    }
-
 
 }

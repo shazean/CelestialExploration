@@ -28,6 +28,8 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
+import static net.minecraft.world.level.block.Blocks.OAK_PLANKS;
+
 
 public class BlockRegistry {
 
@@ -160,8 +162,8 @@ public class BlockRegistry {
     public static final RegistryObject<Block> MARS_DEEPSLATE_BUTTON = BLOCKS.register("mars_deepslate_button", () -> new StoneButtonBlock(Block.Properties.copy(MARS_DEEPSLATE.get())));
 
     //PRESSURE PLATE
-    public static final RegistryObject<Block> MARS_DEEPSLATE_PRESSURE_PLATE = BLOCKS.register("mars_deepslate_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, Block.Properties.copy(MARS_DEEPSLATE.get())));
-    public static final RegistryObject<Block> MARS_STONE_PRESSURE_PLATE = BLOCKS.register("mars_stone_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, Block.Properties.copy(MOON_STONE.get())));
+    public static final RegistryObject<Block> MARS_DEEPSLATE_PRESSURE_PLATE = BLOCKS.register("mars_deepslate_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, Block.Properties.copy(MARS_DEEPSLATE.get()).isValidSpawn(BlockRegistry::never)));
+    public static final RegistryObject<Block> MARS_STONE_PRESSURE_PLATE = BLOCKS.register("mars_stone_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, Block.Properties.copy(MOON_STONE.get()).isValidSpawn(BlockRegistry::never)));
 
     /**
      * METEOR BLOCKS
@@ -248,17 +250,28 @@ public class BlockRegistry {
 
     //LUMINOUS GLASS
     public static final RegistryObject<Block> LUMINOUS_BLUE_GLASS = BLOCKS.register("luminous_blue_glass", () -> new GlassBlock(Block.Properties.of(Material.GLASS, MaterialColor.COLOR_BLUE).strength(0.3F).sound(SoundType.GLASS).isValidSpawn(BlockRegistry::never).isRedstoneConductor(BlockRegistry::never).isSuffocating(BlockRegistry::never).isViewBlocking(BlockRegistry::never).noOcclusion().lightLevel((light) -> {
-        return 6;
+        return 9;
     })));
     public static final RegistryObject<Block> LUMINOUS_WHITE_GLASS = BLOCKS.register("luminous_white_glass", () -> new GlassBlock(Block.Properties.of(Material.GLASS, MaterialColor.QUARTZ).strength(0.3F).sound(SoundType.GLASS).isValidSpawn(BlockRegistry::never).isRedstoneConductor(BlockRegistry::never).isSuffocating(BlockRegistry::never).isViewBlocking(BlockRegistry::never).noOcclusion().lightLevel((light) -> {
-        return 6;
+        return 9;
     })));
     public static final RegistryObject<Block> LUMINOUS_BLUE_GLASS_PANE = BLOCKS.register("luminous_blue_glass_pane", () -> new IronBarsBlock(Block.Properties.of(Material.GLASS, MaterialColor.COLOR_BLUE).strength(0.3F).sound(SoundType.GLASS).isValidSpawn(BlockRegistry::never).isRedstoneConductor(BlockRegistry::never).isSuffocating(BlockRegistry::never).isViewBlocking(BlockRegistry::never).noOcclusion().lightLevel((light) -> {
-        return 6;
+        return 9;
     })));
     public static final RegistryObject<Block> LUMINOUS_WHITE_GLASS_PANE = BLOCKS.register("luminous_white_glass_pane", () -> new IronBarsBlock(Block.Properties.of(Material.GLASS, MaterialColor.QUARTZ).strength(0.3F).sound(SoundType.GLASS).isValidSpawn(BlockRegistry::never).isRedstoneConductor(BlockRegistry::never).isSuffocating(BlockRegistry::never).isViewBlocking(BlockRegistry::never).noOcclusion().lightLevel((light) -> {
-        return 6;
+        return 9;
     })));
+
+
+    public static final RegistryObject<Block> CONNECTED_GLASS = BLOCKS.register("connected_glass", () -> new ConnectedGlassBlock(BlockBehaviour.Properties.of(Material.GLASS, MaterialColor.QUARTZ).strength(0.3F).isValidSpawn(BlockRegistry::never).isRedstoneConductor(BlockRegistry::never).isSuffocating(BlockRegistry::never).isViewBlocking(BlockRegistry::never).noOcclusion().sound(SoundType.GLASS)));
+    public static final RegistryObject<Block> CONNECTED_GLASS_PANE = BLOCKS.register("connected_glass_pane", () -> new ConnectedGlassPaneBlock(Block.Properties.of(Material.GLASS, MaterialColor.QUARTZ).strength(0.3F).sound(SoundType.GLASS).isValidSpawn(BlockRegistry::never).isRedstoneConductor(BlockRegistry::never).isSuffocating(BlockRegistry::never).isViewBlocking(BlockRegistry::never).noOcclusion()));
+
+    //MOB-RELATED
+
+    public static final RegistryObject<Block> LURKER_HEAD = BLOCKS.register("lurker_head", () -> new SkullBlock(SkullBlock.Types.CREEPER, BlockBehaviour.Properties.of(Material.DECORATION).strength(1.0F)));
+    public static final RegistryObject<Block> LURKER_WALL_HEAD = BLOCKS.register("lurker_wall_head", () -> new WallSkullBlock(SkullBlock.Types.CREEPER, BlockBehaviour.Properties.of(Material.DECORATION).strength(1.0F).dropsLike(LURKER_HEAD.get())));
+
+
 
     /**
      * ~~CUSTOM BLOCK TAGS~~
@@ -277,6 +290,10 @@ public class BlockRegistry {
 
     public static final TagKey<Block> METEOR_TAG = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "meteor_tag"));
     public static final TagKey<Block> METEOR_STONE_TAG = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "meteor_stone_tag"));
+
+    public static final TagKey<Block> CONNECTED_GLASS_TAG = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "connected_glass_tag"));
+    public static final TagKey<Block> CONNECTED_GLASS_PANE_TAG = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "connected_glass_pane_tag"));
+
 
     public static final TagKey<Block> MARS_PORTAL_FRAME_BLOCK = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "mars_portal_frame_block"));
     public static final TagKey<Block> MOON_PORTAL_FRAME_BLOCK = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "moon_portal_frame_block"));

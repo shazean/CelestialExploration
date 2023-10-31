@@ -16,5 +16,4 @@ public class SpaceTeleporter implements ITeleporter {
     public boolean playTeleportSound(ServerPlayer player, ServerLevel sourceWorld, ServerLevel destWorld) {
         return false;
     }
-
 }

@@ -310,13 +310,13 @@ public class ModBlockTags extends BlockTagsProvider {
 
         tag(BlockRegistry.MARS_STONE_TAG)
                 .add(BlockRegistry.MARS_BRICKS.get())
-                .add(BlockRegistry.MARS_BRICK_SLAB.get())
-                .add(BlockRegistry.MARS_BRICK_STAIRS.get())
-                .add(BlockRegistry.MARS_BRICK_WALL.get())
+//                .add(BlockRegistry.MARS_BRICK_SLAB.get())
+//                .add(BlockRegistry.MARS_BRICK_STAIRS.get())
+//                .add(BlockRegistry.MARS_BRICK_WALL.get())
                 .add(BlockRegistry.MARS_STONE.get())
                 .add(BlockRegistry.CHISELED_MARS_BRICKS.get())
                 .add(BlockRegistry.MARS_BRICK_PILLAR.get())
-                .add(BlockRegistry.MARS_STONE_SLAB.get())
+//                .add(BlockRegistry.MARS_STONE_SLAB.get())
                 .add(BlockRegistry.MARS_SMOOTH_STONE.get())
 //                .add(BlockRegistry.MARS_SMOOTH_STONE_SLAB.get())
                 .add(BlockRegistry.CRACKED_MARS_BRICKS.get());
@@ -324,12 +324,13 @@ public class ModBlockTags extends BlockTagsProvider {
         tag(BlockRegistry.MARS_COBBLESTONE_TAG)
                 .add(BlockRegistry.MARS_COBBLESTONE.get())
                 .add(BlockRegistry.MARS_COBBLED_DEEPSLATE.get())
-                .add(BlockRegistry.MARS_COBBLESTONE_SLAB.get())
-                .add(BlockRegistry.MARS_COBBLESTONE_STAIRS.get())
-                .add(BlockRegistry.MARS_COBBLESTONE_WALL.get())
-                .add(BlockRegistry.MARS_COBBLED_DEEPSLATE_SLAB.get())
-                .add(BlockRegistry.MARS_COBBLED_DEEPSLATE_STAIRS.get())
-                .add(BlockRegistry.MARS_COBBLED_DEEPSLATE_WALL.get());
+//                .add(BlockRegistry.MARS_COBBLESTONE_SLAB.get())
+//                .add(BlockRegistry.MARS_COBBLESTONE_STAIRS.get())
+//                .add(BlockRegistry.MARS_COBBLESTONE_WALL.get())
+//                .add(BlockRegistry.MARS_COBBLED_DEEPSLATE_SLAB.get())
+//                .add(BlockRegistry.MARS_COBBLED_DEEPSLATE_STAIRS.get())
+//                .add(BlockRegistry.MARS_COBBLED_DEEPSLATE_WALL.get());
+        ;
 
         tag(BlockRegistry.MARS_DEEPSLATE_TAG)
                 .add(BlockRegistry.MARS_DEEPSLATE.get())
@@ -337,24 +338,25 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(BlockRegistry.CRACKED_MARS_DEEPSLATE_TILES.get())
                 .add(BlockRegistry.CHISELED_MARS_DEEPSLATE_BRICKS.get())
                 .add(BlockRegistry.MARS_DEEPSLATE_BRICKS.get())
-                .add(BlockRegistry.MARS_DEEPSLATE_BRICK_SLAB.get())
-                .add(BlockRegistry.MARS_DEEPSLATE_BRICK_STAIRS.get())
-                .add(BlockRegistry.MARS_DEEPSLATE_BRICK_WALL.get())
+//                .add(BlockRegistry.MARS_DEEPSLATE_BRICK_SLAB.get())
+//                .add(BlockRegistry.MARS_DEEPSLATE_BRICK_STAIRS.get())
+//                .add(BlockRegistry.MARS_DEEPSLATE_BRICK_WALL.get())
                 .add(BlockRegistry.MARS_DEEPSLATE_TILES.get())
-                .add(BlockRegistry.MARS_DEEPSLATE_TILE_SLAB.get())
-                .add(BlockRegistry.MARS_DEEPSLATE_TILE_STAIRS.get())
-                .add(BlockRegistry.MARS_DEEPSLATE_TILE_WALL.get())
+//                .add(BlockRegistry.MARS_DEEPSLATE_TILE_SLAB.get())
+//                .add(BlockRegistry.MARS_DEEPSLATE_TILE_STAIRS.get())
+//                .add(BlockRegistry.MARS_DEEPSLATE_TILE_WALL.get())
                 .add(BlockRegistry.MARS_POLISHED_DEEPSLATE.get())
-                .add(BlockRegistry.MARS_POLISHED_DEEPSLATE_SLAB.get())
-                .add(BlockRegistry.MARS_POLISHED_DEEPSLATE_STAIRS.get())
-                .add(BlockRegistry.MARS_POLISHED_DEEPSLATE_WALL.get());
+//                .add(BlockRegistry.MARS_POLISHED_DEEPSLATE_SLAB.get())
+//                .add(BlockRegistry.MARS_POLISHED_DEEPSLATE_STAIRS.get())
+//                .add(BlockRegistry.MARS_POLISHED_DEEPSLATE_WALL.get());
+        ;
 
         tag(BlockRegistry.MARS_COBBLED_DEEPSLATE_TAG)
                 .add(BlockRegistry.MARS_COBBLED_DEEPSLATE.get())
-                .add(BlockRegistry.MARS_COBBLED_DEEPSLATE_SLAB.get())
-                .add(BlockRegistry.MARS_COBBLED_DEEPSLATE_STAIRS.get())
-                .add(BlockRegistry.MARS_COBBLED_DEEPSLATE_WALL.get());
-
+//                .add(BlockRegistry.MARS_COBBLED_DEEPSLATE_SLAB.get())
+//                .add(BlockRegistry.MARS_COBBLED_DEEPSLATE_STAIRS.get())
+//                .add(BlockRegistry.MARS_COBBLED_DEEPSLATE_WALL.get());
+;
 
         tag(BlockRegistry.MOON_TAG)
                 .add(BlockRegistry.MOON_BRICKS.get())
@@ -456,6 +458,18 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(BlockRegistry.METEOR_COAL_ORE.get())
                 .add(BlockRegistry.METEOR.get())
                 .add(BlockRegistry.CHISELED_METEOR_BRICKS.get());
+
+        tag(BlockTags.PORTALS)
+                .add(BlockRegistry.MARS_PORTAL.get())
+                .add(BlockRegistry.MOON_PORTAL.get());
+
+        tag(BlockRegistry.CONNECTED_GLASS_TAG)
+                .add(BlockRegistry.CONNECTED_GLASS.get());
+
+        tag(BlockRegistry.CONNECTED_GLASS_PANE_TAG)
+                .add(BlockRegistry.CONNECTED_GLASS_PANE.get());
+
+
 
         //TODO fluid tags
     }

@@ -16,7 +16,14 @@
 		}
 	},
 	"spawners": {
-		"monster": [],
+		"monster": [
+      	{
+        	"type": "celestialexploration:lurker",
+        	"weight": 50,
+        	"minCount": 0,
+        	"maxCount": 1
+      	}
+    ],
 		"creature": [],
 		"ambient": [],
 		"axolotls": [],

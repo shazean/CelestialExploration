@@ -2,26 +2,22 @@ package com.shim.celestialexploration.entity.layers;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
-import com.shim.celestialexploration.entity.LurkerEntity;
+import com.shim.celestialexploration.entity.Lurker;
 import com.shim.celestialexploration.entity.model.LurkerModel;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.Tags;
 
-public class LurkerHelmetLayer extends RenderLayer<LurkerEntity, LurkerModel<LurkerEntity>> {
-    public LurkerHelmetLayer(RenderLayerParent<LurkerEntity, LurkerModel<LurkerEntity>> p_116994_) {
+public class LurkerHelmetLayer extends RenderLayer<Lurker, LurkerModel<Lurker>> {
+    public LurkerHelmetLayer(RenderLayerParent<Lurker, LurkerModel<Lurker>> p_116994_) {
         super(p_116994_);
     }
 
-    public void render(PoseStack poseStack, MultiBufferSource bufferSource, int p_117009_, LurkerEntity p_117010_, float p_117011_, float p_117012_, float p_117013_, float p_117014_, float p_117015_, float p_117016_) {
+    public void render(PoseStack poseStack, MultiBufferSource bufferSource, int p_117009_, Lurker p_117010_, float p_117011_, float p_117012_, float p_117013_, float p_117014_, float p_117015_, float p_117016_) {
 //        boolean flag = p_117010_.isSleeping();
   //      boolean flag1 = p_117010_.isBaby();
 

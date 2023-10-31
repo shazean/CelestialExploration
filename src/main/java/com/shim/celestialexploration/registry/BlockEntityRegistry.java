@@ -22,5 +22,4 @@ public class BlockEntityRegistry {
     public static final RegistryObject<BlockEntityType<OxygenCompressorBlockEntity>> OXYGEN_COMPRESSOR_BLOCK_ENTITY = BLOCK_ENTITIES.register("oxygen_compressor", () -> BlockEntityType.Builder.of(OxygenCompressorBlockEntity::new, BlockRegistry.OXYGEN_COMPRESSOR.get()).build(null));
     public static final RegistryObject<BlockEntityType<LoxTankBlockEntity>> LOX_TANK_BLOCK_ENTITY = BLOCK_ENTITIES.register("lox_tank", () -> BlockEntityType.Builder.of(LoxTankBlockEntity::new, BlockRegistry.LOX_TANK.get()).build(null));
 
-
 }

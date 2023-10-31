@@ -1,17 +1,26 @@
 package com.shim.celestialexploration.datagen;
 
+import com.google.common.collect.ImmutableMap;
 import com.shim.celestialexploration.CelestialExploration;
+import com.shim.celestialexploration.blocks.ConnectedGlassBlock;
 import com.shim.celestialexploration.registry.BlockRegistry;
 
 import com.shim.celestialexploration.registry.FluidRegistry;
+import net.minecraft.core.Direction;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.properties.Property;
+import net.minecraft.world.level.block.state.properties.WallSide;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ModelFile;
+import net.minecraftforge.client.model.generators.MultiPartBlockStateBuilder;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
+import java.util.Map;
 import java.util.function.Function;
 
 public class BlockStates extends BlockStateProvider {
@@ -182,6 +191,18 @@ public class BlockStates extends BlockStateProvider {
 		paneBlock((IronBarsBlock) BlockRegistry.LUMINOUS_BLUE_GLASS_PANE.get(), modLoc("block/luminous_blue_glass"), modLoc("block/luminous_blue_glass_pane_top"));
 		paneBlock((IronBarsBlock) BlockRegistry.LUMINOUS_WHITE_GLASS_PANE.get(), modLoc("block/luminous_white_glass"), modLoc("block/luminous_white_glass_pane_top"));
 
+//		connectedGlassBlock((ConnectedGlassBlock) BlockRegistry.CONNECTED_GLASS.get(), modLoc("block/connected_glass"));
+
+//		public void fenceBlock(FenceBlock block, ResourceLocation texture) {
+//			String baseName = block.getRegistryName().toString();
+//			fourWayBlock(block, models().fencePost(baseName + "_post", texture), models().fenceSide(baseName + "_side", texture));
+//		}
+
+//		public void fourWayBlock(CrossCollisionBlock block, ModelFile post, ModelFile side) {
+//			MultiPartBlockStateBuilder builder = getMultipartBuilder(block)
+//					.part().modelFile(post).addModel().end();
+//			fourWayMultipart(builder, side);
+//		}
 
 		/**
 		 * SHUTTLE
@@ -193,6 +214,17 @@ public class BlockStates extends BlockStateProvider {
 		 * NOTE: lox tank drops are handled manually in block class
 		 * */
 		simpleBlock(FluidRegistry.LOX_BLOCK.get());
+	}
+
+	public void connectedGlassBlock(ConnectedGlassBlock block, ResourceLocation texture) {
+			String baseName = block.getRegistryName().toString();
+			fourWayGlassBlock(block, models().fencePost(baseName + "_corner", texture), models().fenceSide(baseName + "_side", texture));
+		}
+
+	public void fourWayGlassBlock(ConnectedGlassBlock block, ModelFile post, ModelFile side) {
+		MultiPartBlockStateBuilder builder = getMultipartBuilder(block)
+				.part().modelFile(post).addModel().end();
+		fourWayMultipart(builder, side);
 	}
 
 }
