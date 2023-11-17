@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "celestialexploration",
+  "ingredients": [
+    {
+      "item": "celestialexploration:compressed_moon_cobbled_deepslate"
+    }
+  ],
+  "result": {
+    "item": "celestialexploration:moon_cobbled_deepslate",
+    "count": 9
+  }
+}

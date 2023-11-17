@@ -51,6 +51,7 @@ public class ItemRegistry {
 	 */
 	public static final RegistryObject<Item> MOON_SAND = fromBlock(BlockRegistry.MOON_SAND);
 	public static final RegistryObject<Item> GLOWING_MOON_SAND = fromBlock(BlockRegistry.GLOWING_MOON_SAND);
+	public static final RegistryObject<Item> COARSE_MOON_SAND = fromBlock(BlockRegistry.COARSE_MOON_SAND);
 	public static final RegistryObject<Item> MOON_STONE = fromBlock(BlockRegistry.MOON_STONE);
 	public static final RegistryObject<Item> MOON_SMOOTH_STONE = fromBlock(BlockRegistry.MOON_SMOOTH_STONE);
 	public static final RegistryObject<Item> MOON_BRICKS = fromBlock(BlockRegistry.MOON_BRICKS);
@@ -71,8 +72,12 @@ public class ItemRegistry {
 	public static final RegistryObject<Item> MOON_DEEPSLATE_IRON_ORE = fromBlock(BlockRegistry.MOON_DEEPSLATE_IRON_ORE);
 	public static final RegistryObject<Item> MOON_DEEPSLATE_REDSTONE_ORE = fromBlock(BlockRegistry.MOON_DEEPSLATE_REDSTONE_ORE);
 	public static final RegistryObject<Item> LUNAR_LANTERN = fromBlock(BlockRegistry.LUNAR_LANTERN);
+	public static final RegistryObject<Item> COMPRESSED_MOON_COBBLESTONE = fromBlock(BlockRegistry.COMPRESSED_MOON_COBBLESTONE);
+	public static final RegistryObject<Item> COMPRESSED_MOON_COBBLED_DEEPSLATE = fromBlock(BlockRegistry.COMPRESSED_MOON_COBBLED_DEEPSLATE);
+
 
 	//~STAIRS
+	public static final RegistryObject<Item> MOON_STONE_STAIRS = fromBlock(BlockRegistry.MOON_STONE_STAIRS);
 	public static final RegistryObject<Item> MOON_BRICK_STAIRS = fromBlock(BlockRegistry.MOON_BRICK_STAIRS);
 	public static final RegistryObject<Item> MOON_COBBLESTONE_STAIRS = fromBlock(BlockRegistry.MOON_COBBLESTONE_STAIRS);
 	public static final RegistryObject<Item> MOON_COBBLED_DEEPSLATE_STAIRS = fromBlock(BlockRegistry.MOON_COBBLED_DEEPSLATE_STAIRS);
@@ -111,6 +116,8 @@ public class ItemRegistry {
 	//MARS
 	//FULL BLOCKS
 	public static final RegistryObject<Item> MARS_SAND = fromBlock(BlockRegistry.MARS_SAND);
+	public static final RegistryObject<Item> COARSE_MARS_SAND = fromBlock(BlockRegistry.COARSE_MARS_SAND);
+
 	//	public static final RegistryObject<Item> MARS_SOIL = ITEMS.register("mars_soil", () -> new BlockItemBase(RegistryBlocks.MARS_SOIL.get()));
 	public static final RegistryObject<Item> MARS_STONE = fromBlock(BlockRegistry.MARS_STONE);
 	public static final RegistryObject<Item> MARS_SMOOTH_STONE = fromBlock(BlockRegistry.MARS_SMOOTH_STONE);
@@ -132,9 +139,12 @@ public class ItemRegistry {
 	public static final RegistryObject<Item> MARS_POLISHED_DEEPSLATE = fromBlock(BlockRegistry.MARS_POLISHED_DEEPSLATE);
 	public static final RegistryObject<Item> MARS_DEEPSLATE_IRON_ORE = fromBlock(BlockRegistry.MARS_DEEPSLATE_IRON_ORE);
 	public static final RegistryObject<Item> MARS_DEEPSLATE_REDSTONE_ORE = fromBlock(BlockRegistry.MARS_DEEPSLATE_REDSTONE_ORE);
+	public static final RegistryObject<Item> COMPRESSED_MARS_COBBLESTONE = fromBlock(BlockRegistry.COMPRESSED_MARS_COBBLESTONE);
+	public static final RegistryObject<Item> COMPRESSED_MARS_COBBLED_DEEPSLATE = fromBlock(BlockRegistry.COMPRESSED_MARS_COBBLED_DEEPSLATE);
 
 
 	//STAIRS
+	public static final RegistryObject<Item> MARS_STONE_STAIRS = fromBlock(BlockRegistry.MARS_STONE_STAIRS);
 	public static final RegistryObject<Item> MARS_BRICK_STAIRS = fromBlock(BlockRegistry.MARS_BRICK_STAIRS);
 	public static final RegistryObject<Item> MARS_COBBLESTONE_STAIRS = fromBlock(BlockRegistry.MARS_COBBLESTONE_STAIRS);
 	public static final RegistryObject<Item> MARS_DEEPSLATE_BRICK_STAIRS = fromBlock(BlockRegistry.MARS_DEEPSLATE_BRICK_STAIRS);
@@ -220,6 +230,9 @@ public class ItemRegistry {
 	//	public static final RegistryObject<Item> IGNEOUS_ROCK = fromBlock(BlockRegistry.IGNEOUS_ROCK);
 	public static final RegistryObject<Item> STEEL_BLOCK = fromBlock(BlockRegistry.STEEL_BLOCK);
 
+	public static final RegistryObject<Item> COMPRESSED_COBBLESTONE = fromBlock(BlockRegistry.COMPRESSED_COBBLESTONE);
+	public static final RegistryObject<Item> COMPRESSED_COBBLED_DEEPSLATE = fromBlock(BlockRegistry.COMPRESSED_COBBLED_DEEPSLATE);
+
 
 	public static final RegistryObject<Item> DRY_ICE = fromBlock(BlockRegistry.DRY_ICE);
 	public static final RegistryObject<Item> OXYGEN_COMPRESSOR = fromShuttleBlock(BlockRegistry.OXYGEN_COMPRESSOR);
@@ -236,8 +249,10 @@ public class ItemRegistry {
 	public static final RegistryObject<Item> LUMINOUS_BLUE_GLASS_PANE = fromBlock(BlockRegistry.LUMINOUS_BLUE_GLASS_PANE);
 	public static final RegistryObject<Item> LUMINOUS_WHITE_GLASS_PANE = fromBlock(BlockRegistry.LUMINOUS_WHITE_GLASS_PANE);
 
-	public static final RegistryObject<Item> CONNECTED_GLASS = fromBlock(BlockRegistry.CONNECTED_GLASS);
-	public static final RegistryObject<Item> CONNECTED_GLASS_PANE = fromBlock(BlockRegistry.CONNECTED_GLASS_PANE);
+//	public static final RegistryObject<Item> CONNECTED_GLASS = fromBlock(BlockRegistry.CONNECTED_GLASS);
+//	public static final RegistryObject<Item> CONNECTED_GLASS_PANE = fromBlock(BlockRegistry.CONNECTED_GLASS_PANE);
+	public static final RegistryObject<Item> REINFORCED_GLASS = fromBlock(BlockRegistry.REINFORCED_GLASS);
+	public static final RegistryObject<Item> REINFORCED_GLASS_PANE = fromBlock(BlockRegistry.REINFORCED_GLASS_PANE);
 
 
 //	public static final RegistryObject<Item> SOLAR_PANEL = ITEMS.register("solar_panel",  () -> new BlockItemBase(RegistryBlocks.SOLAR_PANEL.get()));
@@ -261,8 +276,6 @@ public class ItemRegistry {
 	public static final RegistryObject<Item> LURKER_SPAWN_EGG = ITEMS.register("lurker_spawn_egg",
 			() -> new ForgeSpawnEggItem(EntityRegistry.LURKER,0, 0x894731,
 					new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
-
-	public static final RegistryObject<Item> LURKER_HEAD = ITEMS.register("lurker_head", () -> new StandingAndWallBlockItem(BlockRegistry.LURKER_HEAD.get(), BlockRegistry.LURKER_WALL_HEAD.get(), (new Item.Properties()).tab(CreativeModeTab.TAB_DECORATIONS).rarity(Rarity.UNCOMMON)));
 
 
 //	public static final RegistryObject<ModSpawnEgg> SULFURIC_SLIME_SPAWN_EGG = ITEMS.register("sulfuric_slime_spawn_egg", () -> new ModSpawnEgg(RegistryEntities.SULFURIC_SLIME, 0xbd9200, 0xa68000, new Item.Properties().tab(ItemGroup.TAB_MISC)));

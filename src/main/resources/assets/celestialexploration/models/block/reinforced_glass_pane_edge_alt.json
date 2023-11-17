@@ -1,0 +1,7 @@
+{
+  "parent": "celestialexploration:block/template_connected_glass_pane_edge",
+  "textures": {
+    "east": "celestialexploration:block/reinforced_glass_side_n",
+    "edge": "minecraft:block/glass_pane_top"
+  }
+}

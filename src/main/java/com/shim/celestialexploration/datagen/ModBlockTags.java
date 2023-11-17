@@ -253,8 +253,16 @@ public class ModBlockTags extends BlockTagsProvider {
 
         tag(Tags.Blocks.SAND)
                 .add(BlockRegistry.GLOWING_MOON_SAND.get())
+                .add(BlockRegistry.COARSE_MOON_SAND.get())
+                .add(BlockRegistry.COARSE_MARS_SAND.get())
                 .add(BlockRegistry.MARS_SAND.get())
                 .add(BlockRegistry.MOON_SAND.get());
+
+        tag(BlockTags.CLIMBABLE)
+                .add(BlockRegistry.STEEL_FRAME.get());
+
+        tag(BlockTags.UNSTABLE_BOTTOM_CENTER)
+                .add(BlockRegistry.STEEL_FRAME.get());
 
         //TODO
         tag(Tags.Blocks.ORE_RATES_DENSE);
@@ -276,6 +284,7 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(BlockRegistry.MARS_BRICK_WALL.get())
                 .add(BlockRegistry.MARS_REDSTONE_ORE.get())
                 .add(BlockRegistry.MARS_SAND.get())
+                .add(BlockRegistry.COARSE_MARS_SAND.get())
                 .add(BlockRegistry.MARS_STONE.get())
                 .add(BlockRegistry.CHISELED_MARS_BRICKS.get())
                 .add(BlockRegistry.MARS_BRICK_PILLAR.get())
@@ -368,6 +377,8 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(BlockRegistry.MOON_BRICK_WALL.get())
                 .add(BlockRegistry.MOON_REDSTONE_ORE.get())
                 .add(BlockRegistry.MOON_SAND.get())
+                .add(BlockRegistry.COARSE_MOON_SAND.get())
+                .add(BlockRegistry.GLOWING_MOON_SAND.get())
                 .add(BlockRegistry.MOON_STONE.get())
                 .add(BlockRegistry.CHISELED_MOON_BRICKS.get())
                 .add(BlockRegistry.MOON_BRICK_PILLAR.get())
@@ -464,11 +475,23 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(BlockRegistry.MOON_PORTAL.get());
 
         tag(BlockRegistry.CONNECTED_GLASS_TAG)
-                .add(BlockRegistry.CONNECTED_GLASS.get());
+                .add(BlockRegistry.REINFORCED_GLASS.get());
 
         tag(BlockRegistry.CONNECTED_GLASS_PANE_TAG)
-                .add(BlockRegistry.CONNECTED_GLASS_PANE.get());
+                .add(BlockRegistry.REINFORCED_GLASS_PANE.get());
 
+        tag(Tags.Blocks.GLASS)
+                .add(BlockRegistry.REINFORCED_GLASS.get())
+                .add(BlockRegistry.REINFORCED_GLASS_PANE.get())
+                .add(BlockRegistry.LUMINOUS_BLUE_GLASS.get())
+                .add(BlockRegistry.LUMINOUS_WHITE_GLASS.get())
+                .add(BlockRegistry.LUMINOUS_BLUE_GLASS.get())
+                .add(BlockRegistry.LUMINOUS_WHITE_GLASS.get());
+
+        tag(Tags.Blocks.GLASS_PANES)
+                .add(BlockRegistry.REINFORCED_GLASS_PANE.get())
+                .add(BlockRegistry.LUMINOUS_BLUE_GLASS_PANE.get())
+                .add(BlockRegistry.LUMINOUS_WHITE_GLASS_PANE.get());
 
 
         //TODO fluid tags

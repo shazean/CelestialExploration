@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "side": "celestialexploration:block/moon_stone",
+    "bottom": "celestialexploration:block/moon_stone",
+    "top": "celestialexploration:block/moon_stone"
+  }
+}

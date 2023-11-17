@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "bottom=false": {
+      "model": "celestialexploration:block/steel_frame_stable"
+    },
+    "bottom=true": {
+      "model": "celestialexploration:block/steel_frame_unstable"
+    }
+  }
+}

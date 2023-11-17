@@ -8,8 +8,10 @@ import com.shim.celestialexploration.entity.model.ShuttleModel;
 import com.shim.celestialexploration.entity.renderer.*;
 import com.shim.celestialexploration.inventory.screens.OxygenCompressorScreen;
 import com.shim.celestialexploration.inventory.screens.ShuttleScreen;
+import com.shim.celestialexploration.particles.CelestialSlimeParticles;
 import com.shim.celestialexploration.registry.*;
 import com.shim.celestialexploration.world.renderer.DimensionRenderers;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
@@ -17,6 +19,7 @@ import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.client.event.ParticleFactoryRegisterEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -33,26 +36,23 @@ public class ModEventBusEvents {
         event.put(EntityRegistry.LUNAR_SLIME.get(), LunarSlime.setAttributes());
         event.put(EntityRegistry.MARS_MALLOW.get(), MarsMallow.setAttributes());
         event.put(EntityRegistry.LURKER.get(), Lurker.setAttributes());
-
-
     }
 
     @SubscribeEvent
     public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
 
-        for(Shuttle.Type shuttle$type : Shuttle.Type.values())
+        for (Shuttle.Type shuttle$type : Shuttle.Type.values())
             event.registerLayerDefinition(createShuttleModelName(shuttle$type), ShuttleModel::createBodyLayer);
 
     }
 
     @SubscribeEvent
-    public static void clientSetup(final FMLClientSetupEvent event)
-    {
+    public static void clientSetup(final FMLClientSetupEvent event) {
         event.enqueueWork(DimensionRenderers::setDimensionEffects);
 
 //        DimensionRenderers::setDimensionEffects);
 
-        event.enqueueWork(() -> ItemProperties.register(ItemRegistry.LOX_TANK.get(), new ResourceLocation( "filled"), (stack, level, living, id) -> {
+        event.enqueueWork(() -> ItemProperties.register(ItemRegistry.LOX_TANK.get(), new ResourceLocation("filled"), (stack, level, living, id) -> {
             LoxTankCapability.ILoxTank loxTank = CelestialExploration.getCapability(stack, CapabilityRegistry.LOX_TANK_CAPABILITY);
             if (loxTank != null) {
                 return (float) loxTank.getFullness() / 8.0F;
@@ -69,9 +69,8 @@ public class ModEventBusEvents {
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.LUMINOUS_BLUE_GLASS_PANE.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.LUMINOUS_WHITE_GLASS_PANE.get(), RenderType.translucent());
 
-        ItemBlockRenderTypes.setRenderLayer(BlockRegistry.CONNECTED_GLASS.get(), RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(BlockRegistry.CONNECTED_GLASS_PANE.get(), RenderType.translucent());
-
+        ItemBlockRenderTypes.setRenderLayer(BlockRegistry.REINFORCED_GLASS.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BlockRegistry.REINFORCED_GLASS_PANE.get(), RenderType.translucent());
 
 //        ItemBlockRenderTypes.setRenderLayer(FluidRegistry.LOX_STILL.get(), RenderType.translucent());
 //        ItemBlockRenderTypes.setRenderLayer(FluidRegistry.LOX_FLOWING.get(), RenderType.translucent());
@@ -89,7 +88,15 @@ public class ModEventBusEvents {
         MenuScreens.register(MenuRegistry.SHUTTLE_MENU.get(), ShuttleScreen::new);
 
         OverlayRegistry.registerOverlay(event);
-
     }
 
+    @SubscribeEvent
+    public static void registerParticleFactories(final ParticleFactoryRegisterEvent event) {
+        Minecraft.getInstance().particleEngine.register(ParticleRegistry.RUST_SLIME_PARTICLES.get(),
+                CelestialSlimeParticles.RustProvider::new);
+        Minecraft.getInstance().particleEngine.register(ParticleRegistry.LUNAR_SLIME_PARTICLES.get(),
+                CelestialSlimeParticles.LunarProvider::new);
+        Minecraft.getInstance().particleEngine.register(ParticleRegistry.MARS_MALLOW_SLIME_PARTICLES.get(),
+                CelestialSlimeParticles.MallowProvider::new);
+    }
 }

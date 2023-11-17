@@ -4,6 +4,7 @@ package com.shim.celestialexploration.registry;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.world.structures.EarthStructure;
 import com.shim.celestialexploration.world.structures.LargeCraterStructure;
+import com.shim.celestialexploration.world.structures.LunarColonyStructure;
 import com.shim.celestialexploration.world.structures.MarsStructure;
 import net.minecraft.world.level.levelgen.feature.StructureFeature;
 import net.minecraftforge.registries.DeferredRegister;
@@ -22,5 +23,8 @@ public class StructureRegistry {
     //PLANETS
     public static final RegistryObject<StructureFeature<?>> MARS = DEFERRED_REGISTRY_STRUCTURE.register("mars", MarsStructure::new);
     public static final RegistryObject<StructureFeature<?>> EARTH = DEFERRED_REGISTRY_STRUCTURE.register("earth", EarthStructure::new);
+
+    //VILLAGES - LUNAR
+    public static final RegistryObject<StructureFeature<?>> LUNAR_COLONY = DEFERRED_REGISTRY_STRUCTURE.register("lunar_colony", LunarColonyStructure::new);
 
 }

@@ -10,7 +10,7 @@ import org.lwjgl.glfw.GLFW;
 
 public class Keybinds {
 
-    public static final KeyMapping DESCEND_KEY = keymap("flight_descent", GLFW.GLFW_KEY_X, "key.categories.movement");
+    public static final KeyMapping DESCEND_KEY = keymap("flight_descent", GLFW.GLFW_KEY_LEFT_SHIFT, "key.categories.movement");
     public static final KeyMapping ASCEND_KEY = keymap("flight_ascent", GLFW.GLFW_KEY_SPACE, "key.categories.movement");
     public static final KeyMapping TURN_LEFT_KEY = keymap("turn_left", GLFW.GLFW_KEY_A, "key.categories.movement");
     public static final KeyMapping TURN_RIGHT_KEY = keymap("turn_right", GLFW.GLFW_KEY_D, "key.categories.movement");
@@ -26,12 +26,5 @@ public class Keybinds {
     }
 
     public static void handleKeyPress(int key, int action) {
-//        if (key == CAMERA_CONTROLS.getKey().getValue()
-//                && action == GLFW.GLFW_PRESS
-//                && Minecraft.getInstance().player.getVehicle() instanceof Shuttle d)
-//        {
-//            DMLConfig.cameraFlight = !DMLConfig.cameraFlight();
-//            Minecraft.getInstance().player.displayClientMessage(new TranslatableComponent("mount.dragon.camera_controls." + (DMLConfig.cameraFlight()? "enabled" : "disabled"), d.getDisplayName()), true);
-//        }
     }
 }

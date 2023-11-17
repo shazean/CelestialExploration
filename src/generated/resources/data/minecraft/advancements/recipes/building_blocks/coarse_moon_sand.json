@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:coarse_moon_sand"
+    ]
+  },
+  "criteria": {
+    "has_moon_sand": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:coarse_moon_sand"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:coarse_moon_sand"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_moon_sand",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -9,6 +9,7 @@ import com.shim.celestialexploration.registry.*;
 import com.shim.celestialexploration.util.Keybinds;
 import com.shim.celestialexploration.world.portal.SpaceTeleporter;
 import net.minecraft.BlockUtil;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
@@ -74,6 +75,7 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
     private static final EntityDataAccessor<Boolean> DATA_ID_PADDLE_RIGHT = SynchedEntityData.defineId(Shuttle.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Integer> DATA_ID_BUBBLE_TIME = SynchedEntityData.defineId(Shuttle.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Byte> DATA_ID_FLAGS = SynchedEntityData.defineId(Shuttle.class, EntityDataSerializers.BYTE);
+    private static final EntityDataAccessor<Integer> DATA_ID_TIME_ON_GROUND = SynchedEntityData.defineId(Shuttle.class, EntityDataSerializers.INT);
     private float outOfControlTicks;
     public float deltaRotation;
     private int lerpSteps;
@@ -88,7 +90,13 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
     private final float SHUTTLE_NO_FUEL_SPEED = .2F;
     protected SimpleContainer inventory;
     private int fuelTicks = 200;
+    private int maxFuelTicks = 200;
     private int teleportationCooldown = 120;
+    //    public int timeOnGround = 0;
+    public static int maxTimeOnGround = 10;
+    private int biomeCheckCooldown = 5;
+    private String celestialBodyInRange = "null";
+
 
     public Shuttle(EntityType<? extends Shuttle> p_38290_, Level p_38291_) {
         super(p_38290_, p_38291_);
@@ -138,6 +146,7 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
         this.entityData.define(DATA_ID_PADDLE_RIGHT, false);
         this.entityData.define(DATA_ID_BUBBLE_TIME, 0);
         this.entityData.define(DATA_ID_FLAGS, (byte) 0);
+        this.entityData.define(DATA_ID_TIME_ON_GROUND, 1);
     }
 
     @Override
@@ -280,6 +289,14 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
         return this.getDirection().getClockWise();
     }
 
+    public void setTimeOnGround(int time) {
+        this.entityData.set(DATA_ID_TIME_ON_GROUND, time);
+    }
+
+    public int getTimeOnGround() {
+        return this.entityData.get(DATA_ID_TIME_ON_GROUND);
+    }
+
     public void tick() {
 //        Status oldStatus = this.status;
         this.status = this.getStatus();
@@ -301,6 +318,9 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
             this.setDamage(this.getDamage() - 1.0F);
         }
 
+        if (!this.isOnGround()) this.setTimeOnGround(0);
+        else if (this.getTimeOnGround() < maxTimeOnGround) this.setTimeOnGround(this.getTimeOnGround() + 1);
+
         super.tick();
         this.tickLerp();
         if (this.isControlledByLocalInstance()) {
@@ -311,68 +331,26 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
                         --fuelTicks;
                         if (fuelTicks <= 0) {
                             this.useFuel();
-                            fuelTicks = 100;
+                            fuelTicks = maxFuelTicks;
                         }
                     }
+                } else {
+                    this.setDeltaMovement(Vec3.ZERO);
                 }
-
-
             } else {
                 this.setDeltaMovement(Vec3.ZERO);
             }
-
             this.move(MoverType.SELF, this.getDeltaMovement());
-        } else {
-            this.setDeltaMovement(Vec3.ZERO);
         }
 
-        if (isTeleportHeight() && isVehicle()) {
-            Entity passenger = this.getControllingPassenger();
-            //TODO or FIXME does not allow for multiple passengers, update if we want shuttle to allow multiple passengers in the future
-            if (this.teleportationCooldown == 0) {
-                this.displayTeleportMessage(teleportationCooldown);
-                ResourceKey<Level> destination = this.level.dimension() == DimensionRegistry.SPACE ? Level.OVERWORLD : DimensionRegistry.SPACE;
-                this.teleportShuttle(passenger, this, destination);
-            } else {
-                this.teleportationCooldown--;
-                this.displayTeleportMessage(teleportationCooldown);
-            }
-        }
-
-        Holder<Biome> currentBiome = this.level.getBiome(new BlockPos(this.position()));
-
-        if (currentBiome.is(BiomeRegistry.MARS_ORBIT) || isBiomeInRange(BiomeRegistry.MARS_ORBIT)) { //IN MARS ORBIT OR NEAR EDGE
-            if (this.shouldTeleportToPlanet(BlockRegistry.MARS_STONE.get()) && this.isVehicle()) { //APPROACHING MARS
-                Entity passenger = this.getControllingPassenger();
-                assert passenger != null;
+        if (isVehicle() && isTeleportHeight()) {
+            if (this.level.dimension() == Level.OVERWORLD) {
+                //TODO or FIXME does not allow for multiple passengers, update if we want shuttle to allow multiple passengers in the future
                 if (this.teleportationCooldown == 0) {
+                    Entity passenger = this.getControllingPassenger();
                     this.displayTeleportMessage(teleportationCooldown);
-                    ResourceKey<Level> destination = DimensionRegistry.MARS;
-                    this.teleportShuttle(passenger, this, destination);
-                } else {
-                    this.teleportationCooldown--;
-                    this.displayTeleportMessage(teleportationCooldown);
-                }
-            }
-        } else if (currentBiome.is(BiomeRegistry.EARTH_ORBIT) || isBiomeInRange(BiomeRegistry.EARTH_ORBIT)) { //IN EARTH ORBIT OR NEAR EDGE
-            if (this.shouldTeleportToPlanet(Blocks.STONE) && this.isVehicle()) { //APPROACHING EARTH
-                Entity passenger = this.getControllingPassenger();
-                assert passenger != null;
-                if (this.teleportationCooldown == 0) {
-                    this.displayTeleportMessage(teleportationCooldown);
-                    ResourceKey<Level> destination = Level.OVERWORLD;
-                    this.teleportShuttle(passenger, this, destination);
-                } else {
-                    this.teleportationCooldown--;
-                    this.displayTeleportMessage(teleportationCooldown);
-
-                }
-            } else if (this.shouldTeleportToPlanet(BlockRegistry.MOON_STONE.get()) && this.isVehicle()) { //APPROACHING MOON
-                Entity passenger = this.getControllingPassenger();
-                assert passenger != null;
-                if (this.teleportationCooldown == 0) {
-                    this.displayTeleportMessage(teleportationCooldown);
-                    ResourceKey<Level> destination = DimensionRegistry.MOON;
+                    ResourceKey<Level> destination = DimensionRegistry.SPACE;
+                    assert passenger != null;
                     this.teleportShuttle(passenger, this, destination);
                 } else {
                     this.teleportationCooldown--;
@@ -380,8 +358,111 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
                 }
             }
         }
+
+        /**
+         * Possibly just a bandaid fix? Until I can come up with a
+         * more efficient way of dealing with this.
+         *
+         * Check if we're being used as a vehicle, because if we're not, none of this matters.
+         * Check if we're in space, so that way none of this code
+         * ever gets run in other dimensions.
+         * Then we check if we're in an appropriate biome or nearby it.
+         * The reason for checking nearby is sometimes the structure we're looking for
+         * (or rather the blocks making up the structure) sometimes spawns
+         * near the edge of the biome, so that would mean our teleporting only
+         * works approaching from *some* angles and not others.
+         * If all that passes, then we'll look at whether or not we should be
+         * trying to teleport to another dimension.
+         **
+         * The issue, that I need to somehow make more efficient, is that
+         * isBiomeInRange (and also a little bit shouldTeleportToPlanet) do
+         * a little bit more calculating than should be done every tick, and
+         * was causing a bunch of lag, especially with multiple shuttles nearby each other.
+         **/
+//        biomeCheckCooldown--;
+//        if (biomeCheckCooldown == 0) {
+//            biomeCheckCooldown = 5;
+
+        ResourceKey<Level> currentDimension = this.level.dimension();
+
+        if (this.isVehicle()) {
+            if (currentDimension == DimensionRegistry.SPACE) {
+                Holder<Biome> currentBiome = this.level.getBiome(new BlockPos(this.position()));
+
+                if (currentBiome.is(BiomeRegistry.MARS_ORBIT) || isBiomeInRange(BiomeRegistry.MARS_ORBIT)) { //IN MARS ORBIT OR NEAR EDGE
+                    if (this.shouldTeleportToCelestialBody(BlockRegistry.MARS_STONE.get())) { //APPROACHING MARS
+//                            celestialBodyInRange = "Mars";
+                        Entity passenger = this.getControllingPassenger();
+                        assert passenger != null;
+                        if (this.teleportationCooldown == 0) {
+                            this.displayTeleportMessage(teleportationCooldown);
+                            ResourceKey<Level> destination = DimensionRegistry.MARS;
+                            this.teleportShuttle(passenger, this, destination);
+                        } else {
+                            this.teleportationCooldown--;
+                            this.displayTeleportMessage(teleportationCooldown);
+                        }
+                    }
+                } else if (currentBiome.is(BiomeRegistry.EARTH_ORBIT) || isBiomeInRange(BiomeRegistry.EARTH_ORBIT)) { //IN EARTH ORBIT OR NEAR EDGE
+                    if (this.shouldTeleportToCelestialBody(Blocks.STONE)) { //APPROACHING EARTH
+//                            celestialBodyInRange = "Earth";
+                        Entity passenger = this.getControllingPassenger();
+                        assert passenger != null;
+                        if (this.teleportationCooldown == 0) {
+                            this.displayTeleportMessage(teleportationCooldown);
+                            ResourceKey<Level> destination = Level.OVERWORLD;
+                            this.teleportShuttle(passenger, this, destination);
+                        } else {
+                            this.teleportationCooldown--;
+                            this.displayTeleportMessage(teleportationCooldown);
+                        }
+                    } else if (this.shouldTeleportToCelestialBody(BlockRegistry.MOON_STONE.get())) { //APPROACHING MOON
+//                            celestialBodyInRange = "Moon";
+                        Entity passenger = this.getControllingPassenger();
+                        assert passenger != null;
+                        if (this.teleportationCooldown == 0) {
+                            this.displayTeleportMessage(teleportationCooldown);
+                            ResourceKey<Level> destination = DimensionRegistry.MOON;
+                            this.teleportShuttle(passenger, this, destination);
+                        } else {
+                            this.teleportationCooldown--;
+                            this.displayTeleportMessage(teleportationCooldown);
+                        }
+                    }
+                } else {
+                    this.teleportationCooldown = 120; //reset the cooldown
+                }
+            }
+        }
+//        }
+
+//        if (this.isVehicle() && celestialBodyInRange != null) {
+//            Entity passenger = this.getControllingPassenger();
+//            assert passenger != null;
+//            if (this.teleportationCooldown == 0) {
+//                this.displayTeleportMessage(teleportationCooldown);
+//                ResourceKey<Level> destination;
+//                if (celestialBodyInRange.equals("Mars")) {
+//                    destination = DimensionRegistry.MARS;
+//                } else if (celestialBodyInRange.equals("Earth")) {
+//                    destination = Level.OVERWORLD;
+//                } else if (celestialBodyInRange.equals("Moon")) {
+//                    destination = DimensionRegistry.MOON;
+//                } else {
+//                    destination = null;
+//                }
+//                if (destination != null) {
+//                    this.teleportShuttle(passenger, this, destination);
+//                }
+//            } else {
+//                this.teleportationCooldown--;
+//                this.displayTeleportMessage(teleportationCooldown);
+//            }
+//
+//        }
 
         this.checkInsideBlocks();
+
         List<Entity> list = this.level.getEntities(this, this.getBoundingBox().inflate(0.2F, -0.01F, 0.2F), EntitySelector.pushableBy(this));
         if (!list.isEmpty()) {
             boolean flag = !this.level.isClientSide && !(this.getControllingPassenger() instanceof Player);
@@ -410,14 +491,14 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
         }
     }
 
-    public boolean shouldTeleportToPlanet(Block blockToTest) {
+    public boolean shouldTeleportToCelestialBody(Block blockToTest) {
         BlockPos pos;
         boolean blockInRange = false;
         BlockState state;
 
-        for (int x = -15; x <= 15; x++) {
-            for (int y = -15; y <= 15; y++) {
-                for (int z = -15; z <= 15; z++) {
+        for (int x = -10; x <= 10; x++) {
+            for (int y = -10; y <= 10; y++) {
+                for (int z = -10; z <= 10; z++) {
                     pos = new BlockPos(this.position().x + x, this.position().y + y, this.position().z + z);
                     state = level.getBlockState(pos);
                     if (state.getBlock() == blockToTest) blockInRange = true;
@@ -432,9 +513,9 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
         boolean biomeInRange = false;
         Holder<Biome> biome;
 
-        for (int x = -18; x <= 18; x++) {
-            for (int y = -18; y <= 18; y++) {
-                for (int z = -18; z <= 18; z++) {
+        for (int x = -11; x <= 11; x++) {
+            for (int y = -11; y <= 11; y++) {
+                for (int z = -11; z <= 11; z++) {
                     pos = new BlockPos(this.position().x + x, this.position().y + y, this.position().z + z);
                     biome = this.level.getBiome(new BlockPos(pos));
                     if (biome.is(biomeToTest)) biomeInRange = true;
@@ -512,6 +593,10 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
             }
         }
     }
+
+//    public boolean isTimeOnGroundSufficient() {
+//        return this.timeOnGround == this.maxTimeOnGround;
+//    }
 
     public float getGroundFriction() {
         AABB aabb = this.getBoundingBox();
@@ -691,22 +776,22 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
             currentSpeed = getMaxSpeed();
 
             LivingEntity livingentity = (LivingEntity) this.getControllingPassenger();
-            this.setYRot(livingentity.getYRot());
-            this.yRotO = this.getYRot();
-            this.setXRot(livingentity.getXRot() * 0.5F);
-            this.setRot(this.getYRot(), this.getXRot());
+//            this.yRotO = this.getYRot();
+//            this.setXRot(livingentity.getXRot() * 0.5F);
+//            this.setRot(this.getYRot(), this.getXRot());
             float f = livingentity.zza * currentSpeed;
 
             if (Keybinds.TURN_LEFT_KEY.isDown()) {
+                this.setYRot(livingentity.getYRot());
+
                 --this.deltaRotation;
             } else if (Keybinds.TURN_RIGHT_KEY.isDown()) {
+                this.setYRot(livingentity.getYRot());
                 ++this.deltaRotation;
             } else {
                 this.deltaRotation = 0;
             }
             float f1;
-
-//            this.setYRot(this.getYRot() + this.deltaRotation);
 
             if (Keybinds.ASCEND_KEY.isDown()) {
                 f1 = currentSpeed;
@@ -884,6 +969,7 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
 
     }
 
+
     protected void updateContainerEquipment() {
         if (!this.level.isClientSide) {
             this.setFlag(4, !this.inventory.getItem(0).isEmpty());
@@ -1017,9 +1103,9 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
                                 this.spawnAtLocation(this.getShuttleType().getDye());
                             }
 
-                            for (int j = 0; j < 2; ++j) {
-                                this.spawnAtLocation(Items.STICK);
-                            }
+//                            for (int j = 0; j < 2; ++j) {
+//                                this.spawnAtLocation(Items.STICK);
+//                            }
                         }
                     }
                 }

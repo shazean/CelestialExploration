@@ -19,7 +19,7 @@ public class ShuttleGui extends ForgeIngameGui implements IIngameOverlay {
 
     public static final Minecraft MINECRAFT = Minecraft.getInstance();
     public static final ResourceLocation GUI_ICONS_LOCATION = new ResourceLocation(CelestialExploration.MODID, "textures/gui/icons.png");
-    private int animationNum = 0;
+//    private int animationNum = 0;
 
     public ShuttleGui() {
         super(MINECRAFT);
@@ -37,41 +37,8 @@ public class ShuttleGui extends ForgeIngameGui implements IIngameOverlay {
             RenderSystem.setShaderTexture(0, GUI_ICONS_LOCATION);
 
             this.renderShuttleData((Shuttle) mount, poseStack, width, height);
-
-//            if (((Shuttle) mount).isTeleportHeight()) {
-//                this.renderShuttleTeleportData((Shuttle) mount, poseStack, width, height);
-//            }
         }
     }
-
-//    protected void renderShuttleFuel(Shuttle shuttle, PoseStack poseStack, int width, int height) {
-//        int fuel = shuttle.getFuel();
-//        int maxFuel = 16000;
-//
-//        double fuelPercent = (double) fuel / (double) maxFuel;
-//
-//        String fuelReadout = "Fuel: " + fuelPercent + "/" + maxFuel + "mb";
-//
-//        //placement, X; placement Y, grab starting at, X; grab starting at, Y; width?; height?;
-////       MINECRAFT.font.draw(poseStack, fuelReadout, width + 46 - (MINECRAFT.font.width(fuelReadout) / 2), height - 50, 1118481);
-//        MINECRAFT.font.draw(poseStack, fuelReadout, 15, 15, 1118481);
-//
-//        //TODO change to icons instead of text?
-////        blit(poseStack, width + 34, width - 26, (int) (56 * fuelPercent), 0,56 - (int) (56 * fuelPercent), 16);
-////        blit(poseStack, width + 34, width - 26, 0, 16,56, 16); //the outlines part of the texture
-//
-//    }
-//
-//    protected void renderShuttlePosition(Shuttle shuttle, PoseStack poseStack, int width, int height) {
-//        int altitude = (int) shuttle.position().y;
-//
-//        String fuelReadout = "Altitude: " + altitude;
-//
-//        //placement, X; placement Y, grab starting at, X; grab starting at, Y; width?; height?;
-//        MINECRAFT.font.draw(poseStack, fuelReadout, 15, 30, 1118481);
-//
-//
-//    }
 
     protected void renderShuttleData(Shuttle shuttle, PoseStack poseStack, int width, int height) {
         int fuel = shuttle.getFuel();
@@ -97,11 +64,10 @@ public class ShuttleGui extends ForgeIngameGui implements IIngameOverlay {
         }
 
         //FUEL LEVEL
-
         blit(poseStack, width - 12 - 45, 12 + 45 + 1, 0, 19 + 45, 45, 7);  //EMPTY BAR
         blit(poseStack, width - 12 - 45, 12 + 45 + 1, 0, 19 + 45 + 8, (int) ((double) 45 * fuelPercent), 7);  //EMPTY BAR
 
-        //altimeter lights
+        //ALTIMETER LIGHTS
         int heightInThirds = (level.getMaxBuildHeight() + Math.abs(level.getMinBuildHeight())) / 3;
         if (altitude > level.getMaxBuildHeight()) {
             blit(poseStack, width - 12 - 45 + 22 + 10, 12 + 21 + 1 + 9, 46, 22 + 16 + 12,3, 7);
@@ -115,15 +81,4 @@ public class ShuttleGui extends ForgeIngameGui implements IIngameOverlay {
 
         MINECRAFT.font.draw(poseStack, String.valueOf(altitude), width - 12 - 34, 12 + 31, 0xffffff); //ALTITUDE READOUT
     }
-
-//    protected void renderShuttleTeleportData(Shuttle shuttle, PoseStack poseStack, int width, int height) {
-//        int teleportationCooldown = shuttle.getTelportationCooldown();
-//
-//        String teleportationReadout = "Teleport height reached!";
-//        String cooldownReadout = "Teleportation cooldown: " + teleportationCooldown / 20 + "seconds (" + teleportationCooldown + " ticks)" ;
-//
-//        //placement, X; placement Y, grab starting at, X; grab starting at, Y; width?; height?;
-//        MINECRAFT.font.draw(poseStack, teleportationReadout, 12, 60, 1118481);
-//        MINECRAFT.font.draw(poseStack, cooldownReadout, 12, 72, 1118481);
-//    }
 }

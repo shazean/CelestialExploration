@@ -1,0 +1,408 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "celestialexploration:block/reinforced_glass_pane_post"
+      }
+    },
+    {
+      "when": { "AND": [
+        { "north": "true", "north_glass": "true" }
+        
+      ]},
+      "apply": {
+        "model": "celestialexploration:block/reinforced_glass_pane_side"
+      }
+    },
+    {
+      "when": { "AND": [
+        { "north": "true", "up": "false" }
+        
+      ]},
+      "apply": {
+        "model": "celestialexploration:block/reinforced_glass_pane_top"
+      }
+    },
+    {
+      "when": { "AND": [
+        { "north": "true", "down": "false" }
+        
+      ]},
+      "apply": {
+        "model": "celestialexploration:block/reinforced_glass_pane_top",
+        "x": 180,
+        "y": 180
+      }
+    },
+    {
+      "when": { "AND": [
+        { "east": "true", "east_glass": "true" }
+        
+      ]},
+      "apply": {
+        "model": "celestialexploration:block/reinforced_glass_pane_side",
+        "y": 90
+      }
+    },
+    {
+      "when": { "AND": [
+        { "east": "true", "up": "false" }
+        
+      ]},
+      "apply": {
+        "model": "celestialexploration:block/reinforced_glass_pane_top",
+        "y": 90
+      }
+    },
+    {
+      "when": { "AND": [
+        { "east": "true", "down": "false" }
+        
+      ]},
+      "apply": {
+        "model": "celestialexploration:block/reinforced_glass_pane_top",
+        "x": 180,
+        "y": 270
+      }
+    },
+    {
+      "when": { "AND": [
+        { "south": "true", "south_glass": "true" }
+        
+      ]},
+      "apply": {
+        "model": "celestialexploration:block/reinforced_glass_pane_side_alt",
+        "x": 180,
+        "y": 180
+      }
+    },
+    {
+      "when": { "AND": [
+        { "south": "true", "up": "false" }
+        
+      ]},
+      "apply": {
+        "model": "celestialexploration:block/reinforced_glass_pane_top",
+        "y": 180
+      }
+    },
+    {
+      "when": { "AND": [
+        { "south": "true", "down": "false" }
+        
+      ]},
+      "apply": {
+        "model": "celestialexploration:block/reinforced_glass_pane_top",
+        "x": 180
+      }
+    },
+    {
+      "when": { "AND": [
+        { "west": "true", "west_glass": "true" }
+        
+      ]},
+      "apply": {
+        "model": "celestialexploration:block/reinforced_glass_pane_side_alt",
+        "y": 90
+      }
+    },
+    {
+      "when": { "AND": [
+        { "west": "true", "up": "false" }
+        
+      ]},
+      "apply": {
+        "model": "celestialexploration:block/reinforced_glass_pane_top",
+        "y": 270
+      }
+    },
+    {
+      "when": { "AND": [
+        { "west": "true", "down": "false" }
+        
+      ]},
+      "apply": {
+        "model": "celestialexploration:block/reinforced_glass_pane_top",
+        "x": 180,
+        "y": 90
+      }
+    },
+    {
+      "when": { "AND": [
+        { "north": "false", "up": "false" }
+        
+      ]},
+      "apply": {
+        "model": "celestialexploration:block/reinforced_glass_pane_noside"
+      }
+    },
+    {
+      "when": { "AND": [
+        { "north": "false", "down": "false" }
+        
+      ]},
+      "apply": {
+        "model": "celestialexploration:block/reinforced_glass_pane_noside_alt"
+      }
+    },
+    {
+      "when": { "AND": [
+        { "east": "false", "up": "false" }
+        
+      ]},
+      "apply": {
+        "model": "celestialexploration:block/reinforced_glass_pane_noside",
+        "y": 90
+      }
+    },
+    {
+      "when": { "AND": [
+        { "east": "false", "down": "false" }
+        
+      ]},
+      "apply": {
+        "model": "celestialexploration:block/reinforced_glass_pane_noside_alt",
+        "y": 90
+      }
+    },
+    {
+      "when": { "AND": [
+        { "south": "false", "up": "false" }
+        
+      ]},
+      "apply": {
+        "model": "celestialexploration:block/reinforced_glass_pane_noside",
+        "y": 180
+      }
+    },
+    {
+      "when": { "AND": [
+        { "south": "false", "down": "false" }
+        
+      ]},
+      "apply": {
+        "model": "celestialexploration:block/reinforced_glass_pane_noside_alt",
+        "y": 180
+      }
+    },
+    {
+      "when": { "AND": [
+        { "west": "false", "up": "false" }
+        
+      ]},
+      "apply": {
+        "model": "celestialexploration:block/reinforced_glass_pane_noside",
+        "y": 270
+      }
+    },
+    {
+      "when": { "AND": [
+        { "west": "false", "down": "false" } 
+      ]},
+      "apply": {
+        "model": "celestialexploration:block/reinforced_glass_pane_noside_alt",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "up": "false"
+      },
+      "apply": {
+        "model": "celestialexploration:block/reinforced_glass_pane_post_alt"
+      }
+    },
+    {
+      "when": {
+        "down": "false"
+      },
+      "apply": {
+        "model": "celestialexploration:block/reinforced_glass_pane_post_alt",
+        "x" : 180
+      }
+    },
+    {
+      "when": { "AND": [
+        { "north": "true", "north_glass": "false" }
+      ]},
+      "apply": {
+        "model": "celestialexploration:block/reinforced_glass_pane_edge"
+      }
+    },
+    {
+      "when": { "AND": [
+        { "east": "true", "east_glass": "false" }
+      ]},
+      "apply": {
+        "model": "celestialexploration:block/reinforced_glass_pane_edge",
+        "y": 90
+      }
+    },
+    {
+      "when": { "AND": [
+        { "south": "true", "south_glass": "false" }
+      ]},
+      "apply": {
+        "model": "celestialexploration:block/reinforced_glass_pane_edge",
+        "y": 180
+      }
+    },
+    {
+      "when": { "AND": [
+        { "west": "true", "west_glass": "false" }
+      ]},
+      "apply": {
+        "model": "celestialexploration:block/reinforced_glass_pane_edge",
+        "y": 270
+      }
+    },
+    {
+      "when": { "AND": [
+        { "up": "true", "north": "true", "up_glass": "false" }
+      ]},
+      "apply": {
+        "model": "celestialexploration:block/reinforced_glass_pane_edge_alt"
+      }
+    },
+    {
+      "when": { "AND": [
+        { "down": "true", "north": "true", "down_glass": "false" }
+      ]},
+      "apply": {
+        "model": "celestialexploration:block/reinforced_glass_pane_edge_alt",
+        "x": 180,
+        "y": 180
+      }
+    },
+    {
+      "when": { "AND": [
+        { "up": "true", "east": "true", "up_glass": "false" }
+      ]},
+      "apply": {
+        "model": "celestialexploration:block/reinforced_glass_pane_edge_alt",
+        "y": 90
+      }
+    },
+    {
+      "when": { "AND": [
+        { "down": "true", "east": "true", "down_glass": "false" }
+      ]},
+      "apply": {
+        "model": "celestialexploration:block/reinforced_glass_pane_edge_alt",
+        "x": 180,
+        "y": 270
+      }
+    },
+    {
+      "when": { "AND": [
+        { "up": "true", "south": "true", "up_glass": "false" }
+      ]},
+      "apply": {
+        "model": "celestialexploration:block/reinforced_glass_pane_edge_alt",
+        "y": 180
+      }
+    },
+    {
+      "when": { "AND": [
+        { "down": "true", "south": "true", "down_glass": "false" }
+      ]},
+      "apply": {
+        "model": "celestialexploration:block/reinforced_glass_pane_edge_alt",
+        "x": 180
+      }
+    },
+    {
+      "when": { "AND": [
+        { "up": "true", "west": "true", "up_glass": "false" }
+      ]},
+      "apply": {
+        "model": "celestialexploration:block/reinforced_glass_pane_edge_alt",
+        "y": 270
+      }
+    },
+    {
+      "when": { "AND": [
+        { "down": "true", "west": "true", "down_glass": "false" }
+      ]},
+      "apply": {
+        "model": "celestialexploration:block/reinforced_glass_pane_edge_alt",
+        "x": 180,
+        "y": 90
+      }
+    },
+    {
+      "when": { "AND": [
+        { "up": "true", "up_glass": "false", "north": "false" }
+      ]}, 
+      "apply": {
+        "model": "celestialexploration:block/reinforced_glass_pane_noside"
+      }
+    },
+    {
+      "when": { "AND": [
+        { "down": "true", "down_glass": "false", "north": "false" }
+      ]},
+      "apply": {
+        "model": "celestialexploration:block/reinforced_glass_pane_noside",
+        "x" : 180,
+        "y": 180
+      }
+    },
+    {
+      "when": { "AND": [
+        { "up": "true", "up_glass": "false", "east": "false" }
+      ]}, 
+      "apply": {
+        "model": "celestialexploration:block/reinforced_glass_pane_noside",
+        "y": 90
+      }
+    },
+    {
+      "when": { "AND": [
+        { "down": "true", "down_glass": "false", "east": "false" }
+      ]},
+      "apply": {
+        "model": "celestialexploration:block/reinforced_glass_pane_noside",
+        "x" : 180,
+        "y": 270
+      }
+    },
+    {
+      "when": { "AND": [
+        { "up": "true", "up_glass": "false", "south": "false" }
+      ]}, 
+      "apply": {
+        "model": "celestialexploration:block/reinforced_glass_pane_noside",
+        "y": 180
+      }
+    },
+    {
+      "when": { "AND": [
+        { "down": "true", "down_glass": "false", "south": "false" }
+      ]},
+      "apply": {
+        "model": "celestialexploration:block/reinforced_glass_pane_noside",
+        "x" : 180
+      }
+    },
+    {
+      "when": { "AND": [
+        { "up": "true", "up_glass": "false", "west": "false" }
+      ]}, 
+      "apply": {
+        "model": "celestialexploration:block/reinforced_glass_pane_noside",
+        "y": 270
+      }
+    },
+    {
+      "when": { "AND": [
+        { "down": "true", "down_glass": "false", "west": "false" }
+      ]},
+      "apply": {
+        "model": "celestialexploration:block/reinforced_glass_pane_noside",
+        "x" : 180,
+        "y": 90
+      }
+    }
+  ]
+}

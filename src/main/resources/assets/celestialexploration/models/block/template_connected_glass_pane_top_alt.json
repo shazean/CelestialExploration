@@ -7,8 +7,9 @@
         {   "from": [ 7, 0, 9 ],
             "to": [ 9, 16, 16 ],
             "faces": {
-                "west":  { "uv": [  7, 0,  0, 16 ], "texture": "#pane" },
-                "east":  { "uv": [  0, 0,  7, 16 ], "texture": "#pane" }
+                "up":    { "uv": [  7, 0,  9,  7 ], "texture": "#edge" },
+                "north":  { "uv": [ 16, 0,  9, 16 ], "texture": "#pane" },
+                "south":  { "uv": [  9, 0, 16, 16 ], "texture": "#pane" }
             }
         }
     ]

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "name": "compressed_mars_cobblestone",
+      "rolls": 1.0,
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "celestialexploration:compressed_mars_cobblestone"
+        }
+      ]
+    }
+  ]
+}

@@ -78,6 +78,8 @@ public class MarsStructure extends StructureFeature<JigsawConfiguration> {
         // Grabs the chunk position we are at
         ChunkPos chunkpos = context.chunkPos();
 
+
+
         // Checks to make sure our structure does not spawn within 10 chunks of an Ocean Monument
         // to demonstrate how this method is good for checking extra conditions for spawning
         return !context.chunkGenerator().hasFeatureChunkInRange(BuiltinStructureSets.OCEAN_MONUMENTS, context.seed(), chunkpos.x, chunkpos.z, 10);

@@ -33,6 +33,9 @@ public class Recipes extends RecipeProvider {
 		SimpleCookingRecipeBuilder.smelting(Ingredient.of(BlockRegistry.MOON_SAND.get()), Items.WHITE_STAINED_GLASS, 1.0F, 100)
 				.unlockedBy("has_moon_sand", has(BlockRegistry.MOON_SAND.get())).save(consumer, "moon_sand");
 
+		SimpleCookingRecipeBuilder.smelting(Ingredient.of(BlockRegistry.COARSE_MOON_SAND.get()), Items.WHITE_STAINED_GLASS, 1.0F, 100)
+				.unlockedBy("has_moon_sand", has(BlockRegistry.COARSE_MOON_SAND.get())).save(consumer, "coarse_moon_sand");
+
 		ShapedRecipeBuilder.shaped(BlockRegistry.LUNAR_LANTERN.get())
 				.pattern("XCX")
 				.pattern("CCC")
@@ -96,6 +99,15 @@ public class Recipes extends RecipeProvider {
 
 		SimpleCookingRecipeBuilder.smelting(Ingredient.of(BlockRegistry.MOON_COBBLED_DEEPSLATE.get()), BlockRegistry.MOON_DEEPSLATE.get(), 1.0F, 100)
 				.unlockedBy("has_moon_cobblestone", has(BlockRegistry.MOON_COBBLED_DEEPSLATE.get())).save(consumer, "moon_cobbled_deepslate");
+
+		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_STONE_STAIRS.get(), 4)
+				.pattern("X  ")
+				.pattern("XX ")
+				.pattern("XXX")
+				.define('X', BlockRegistry.MOON_STONE.get())
+				.group("celestialexploration").unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_STONE_TAG), BlockRegistry.MOON_STONE_STAIRS.get(), 1)
+				.unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer, "moon_stone_stairs_stonecutting");
 
 		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_STONE_SLAB.get(), 6)
 				.pattern("XXX")
@@ -282,7 +294,7 @@ public class Recipes extends RecipeProvider {
 				.group("celestialexploration").unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer);
 
 		ShapelessRecipeBuilder.shapeless(ItemRegistry.MOON_DEEPSLATE_BUTTON.get())
-				.requires(ItemRegistry.MOON_DEEPSLATE.get())
+				.requires(BlockRegistry.MOON_DEEPSLATE.get())
 				.group("celestialexploration").unlockedBy("moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MOON_DEEPSLATE.get())).save(consumer);
 
 		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_DEEPSLATE_PRESSURE_PLATE.get())
@@ -290,6 +302,27 @@ public class Recipes extends RecipeProvider {
 				.define('X', BlockRegistry.MOON_DEEPSLATE.get())
 				.group("celestialexploration").unlockedBy("moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).save(consumer);
 
+		ShapedRecipeBuilder.shaped(BlockRegistry.COMPRESSED_MOON_COBBLESTONE.get())
+				.pattern("XXX")
+				.pattern("XXX")
+				.pattern("XXX")
+				.define('X', BlockRegistry.MOON_COBBLESTONE.get())
+				.group("celestialexploration").unlockedBy("has_moon_cobblestone", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MOON_COBBLESTONE.get())).save(consumer);
+
+		ShapelessRecipeBuilder.shapeless(BlockRegistry.MOON_COBBLESTONE.get(), 9)
+				.requires(BlockRegistry.COMPRESSED_MOON_COBBLESTONE.get())
+				.group("celestialexploration").unlockedBy("has_moon_cobblestone", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MOON_COBBLESTONE.get())).save(consumer);
+
+		ShapedRecipeBuilder.shaped(BlockRegistry.COMPRESSED_MOON_COBBLED_DEEPSLATE.get())
+				.pattern("XXX")
+				.pattern("XXX")
+				.pattern("XXX")
+				.define('X', BlockRegistry.MOON_COBBLED_DEEPSLATE.get())
+				.group("celestialexploration").unlockedBy("has_moon_cobbled_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MOON_COBBLED_DEEPSLATE.get())).save(consumer);
+
+		ShapelessRecipeBuilder.shapeless(BlockRegistry.MOON_COBBLED_DEEPSLATE.get(), 9)
+				.requires(BlockRegistry.COMPRESSED_MOON_COBBLED_DEEPSLATE.get())
+				.group("celestialexploration").unlockedBy("has_moon_cobbled_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MOON_COBBLED_DEEPSLATE.get())).save(consumer);
 
 //		ShapedRecipeBuilder.shaped(BlockRegistry.LUNAR_LANTERN.get())
 //				.pattern("XXX")
@@ -299,6 +332,9 @@ public class Recipes extends RecipeProvider {
 		/**MARS*/
 		SimpleCookingRecipeBuilder.smelting(Ingredient.of(BlockRegistry.MARS_SAND.get()), Items.ORANGE_STAINED_GLASS, 1.0F, 100)
 				.unlockedBy("has_mars_sand", has(BlockRegistry.MARS_SAND.get())).save(consumer, "mars_sand");
+
+		SimpleCookingRecipeBuilder.smelting(Ingredient.of(BlockRegistry.COARSE_MARS_SAND.get()), Items.ORANGE_STAINED_GLASS, 1.0F, 100)
+				.unlockedBy("has_mars_sand", has(BlockRegistry.COARSE_MARS_SAND.get())).save(consumer, "coarse_mars_sand");
 
 		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_BRICKS.get(), 4)
 				.pattern("XX")
@@ -352,6 +388,15 @@ public class Recipes extends RecipeProvider {
 				.group("celestialexploration").unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer);
 		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_STONE_TAG), BlockRegistry.MARS_STONE_SLAB.get(), 2)
 				.unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer, "mars_stone_slab_stonecutting");
+
+		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_STONE_STAIRS.get(), 4)
+				.pattern("X  ")
+				.pattern("XX ")
+				.pattern("XXX")
+				.define('X', BlockRegistry.MARS_STONE.get())
+				.group("celestialexploration").unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_STONE_TAG), BlockRegistry.MARS_STONE_STAIRS.get(), 1)
+				.unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer, "mars_stone_stairs_stonecutting");
 
 		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_COBBLESTONE_SLAB.get(), 6)
 				.pattern("XXX")
@@ -536,6 +581,28 @@ public class Recipes extends RecipeProvider {
 				.pattern("XX")
 				.define('X', BlockRegistry.MARS_DEEPSLATE.get())
 				.group("celestialexploration").unlockedBy("mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).save(consumer);
+
+		ShapedRecipeBuilder.shaped(BlockRegistry.COMPRESSED_MARS_COBBLESTONE.get())
+				.pattern("XXX")
+				.pattern("XXX")
+				.pattern("XXX")
+				.define('X', BlockRegistry.MARS_COBBLESTONE.get())
+				.group("celestialexploration").unlockedBy("has_mars_cobblestone", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MARS_COBBLESTONE.get())).save(consumer);
+
+		ShapelessRecipeBuilder.shapeless(BlockRegistry.MARS_COBBLESTONE.get(), 9)
+				.requires(BlockRegistry.COMPRESSED_MARS_COBBLESTONE.get())
+				.group("celestialexploration").unlockedBy("has_mars_cobblestone", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MARS_COBBLESTONE.get())).save(consumer);
+
+		ShapedRecipeBuilder.shaped(BlockRegistry.COMPRESSED_MARS_COBBLED_DEEPSLATE.get())
+				.pattern("XXX")
+				.pattern("XXX")
+				.pattern("XXX")
+				.define('X', BlockRegistry.MARS_COBBLED_DEEPSLATE.get())
+				.group("celestialexploration").unlockedBy("has_mars_cobbled_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MARS_COBBLED_DEEPSLATE.get())).save(consumer);
+
+		ShapelessRecipeBuilder.shapeless(BlockRegistry.MARS_COBBLED_DEEPSLATE.get(), 9)
+				.requires(BlockRegistry.COMPRESSED_MARS_COBBLED_DEEPSLATE.get())
+				.group("celestialexploration").unlockedBy("has_mars_cobbled_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MARS_COBBLED_DEEPSLATE.get())).save(consumer);
 
 
 		/**METEOR*/
@@ -833,6 +900,19 @@ public class Recipes extends RecipeProvider {
 				.define('X', ItemRegistry.LUMINOUS_WHITE_GLASS.get())
 				.group("celestialexploration").unlockedBy("moon_dust", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MOON_DUST.get())).save(consumer);
 
+		ShapedRecipeBuilder.shaped(BlockRegistry.REINFORCED_GLASS.get(), 4)
+				.pattern(" X ")
+				.pattern("XCX")
+				.pattern(" X ")
+				.define('X', Blocks.GLASS)
+				.define('C', Items.IRON_INGOT)
+				.group("celestialexploration").unlockedBy("glass", InventoryChangeTrigger.TriggerInstance.hasItems(Blocks.GLASS)).save(consumer);
+
+		ShapedRecipeBuilder.shaped(BlockRegistry.REINFORCED_GLASS_PANE.get(), 16)
+				.pattern("XXX")
+				.pattern("XXX")
+				.define('X', ItemRegistry.REINFORCED_GLASS.get())
+				.group("celestialexploration").unlockedBy("glass", InventoryChangeTrigger.TriggerInstance.hasItems(Blocks.GLASS)).save(consumer);
 
 		ShapedRecipeBuilder.shaped(BlockRegistry.CERAMIC_TILE.get(), 16)
 				.pattern("XXX")
@@ -844,6 +924,29 @@ public class Recipes extends RecipeProvider {
 
 		SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.BRICK), BlockRegistry.CERAMIC.get(), 1.0F, 100)
 				.unlockedBy("has_brick", has(Items.BRICK)).save(consumer, "ceramic");
+
+		ShapedRecipeBuilder.shaped(BlockRegistry.COMPRESSED_COBBLESTONE.get())
+				.pattern("XXX")
+				.pattern("XXX")
+				.pattern("XXX")
+				.define('X', Blocks.COBBLESTONE)
+				.group("celestialexploration").unlockedBy("has_cobblestone", InventoryChangeTrigger.TriggerInstance.hasItems(Blocks.COBBLESTONE)).save(consumer);
+
+		ShapelessRecipeBuilder.shapeless(Blocks.COBBLESTONE, 9)
+				.requires(BlockRegistry.COMPRESSED_COBBLESTONE.get())
+				.group("celestialexploration").unlockedBy("has_cobblestone", InventoryChangeTrigger.TriggerInstance.hasItems(Blocks.COBBLESTONE)).save(consumer);
+
+		ShapedRecipeBuilder.shaped(BlockRegistry.COMPRESSED_COBBLED_DEEPSLATE.get())
+				.pattern("XXX")
+				.pattern("XXX")
+				.pattern("XXX")
+				.define('X', Blocks.COBBLED_DEEPSLATE)
+				.group("celestialexploration").unlockedBy("has_cobbled_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(Blocks.COBBLED_DEEPSLATE)).save(consumer);
+
+		ShapelessRecipeBuilder.shapeless(Blocks.COBBLED_DEEPSLATE, 9)
+				.requires(BlockRegistry.COMPRESSED_COBBLED_DEEPSLATE.get())
+				.group("celestialexploration").unlockedBy("has_cobbled_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(Blocks.COBBLED_DEEPSLATE)).save(consumer);
+
 
 //		ShapedRecipeBuilder.shaped(BlockRegistry.SOLAR_PANEL.get())
 //				.pattern("XXX")

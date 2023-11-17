@@ -26,6 +26,7 @@ public class ItemModels extends ItemModelProvider {
 		withExistingParent(ItemRegistry.MOON_SAND.get().getRegistryName().getPath(), modLoc("block/moon_sand"));
 		withExistingParent(ItemRegistry.MOON_STONE.get().getRegistryName().getPath(), modLoc("block/moon_stone"));
 		withExistingParent(ItemRegistry.CHISELED_MOON_BRICKS.get().getRegistryName().getPath(), modLoc("block/chiseled_moon_bricks"));
+		withExistingParent(ItemRegistry.COARSE_MOON_SAND.get().getRegistryName().getPath(), modLoc("block/coarse_moon_sand"));
 		withExistingParent(ItemRegistry.GLOWING_MOON_SAND.get().getRegistryName().getPath(), modLoc("block/glowing_moon_sand"));
 		withExistingParent(ItemRegistry.LUNAR_LANTERN.get().getRegistryName().getPath(), modLoc("block/lunar_lantern"));
 		withExistingParent(ItemRegistry.MOON_COBBLESTONE.get().getRegistryName().getPath(), modLoc("block/moon_cobblestone"));
@@ -35,10 +36,15 @@ public class ItemModels extends ItemModelProvider {
 		withExistingParent(ItemRegistry.MOON_DEEPSLATE_IRON_ORE.get().getRegistryName().getPath(), modLoc("block/moon_deepslate_iron_ore"));
 		withExistingParent(ItemRegistry.MOON_DEEPSLATE_REDSTONE_ORE.get().getRegistryName().getPath(), modLoc("block/moon_deepslate_redstone_ore"));
 
+		withExistingParent(ItemRegistry.COMPRESSED_MOON_COBBLESTONE.get().getRegistryName().getPath(), modLoc("block/compressed_moon_cobblestone"));
+		withExistingParent(ItemRegistry.COMPRESSED_MOON_COBBLED_DEEPSLATE.get().getRegistryName().getPath(), modLoc("block/compressed_moon_cobbled_deepslate"));
+
+
 		stairs("moon_brick_stairs", modLoc("block/moon_bricks"), modLoc("block/moon_bricks"), modLoc("block/moon_bricks"));
 		slab("moon_brick_slab", modLoc("block/moon_bricks"), modLoc("block/moon_bricks"), modLoc("block/moon_bricks"));
 		wallInventory("moon_brick_wall",  modLoc("block/moon_bricks"));
 
+		stairs("moon_stone_stairs", modLoc("block/moon_stone"), modLoc("block/moon_stone"), modLoc("block/moon_stone"));
 		slab("moon_stone_slab", modLoc("block/moon_stone"), modLoc("block/moon_stone"), modLoc("block/moon_stone"));
 
 		stairs("moon_cobblestone_stairs", modLoc("block/moon_cobblestone"), modLoc("block/moon_cobblestone"), modLoc("block/moon_cobblestone"));
@@ -88,6 +94,7 @@ public class ItemModels extends ItemModelProvider {
 		withExistingParent(ItemRegistry.MARS_REDSTONE_ORE.get().getRegistryName().getPath(), modLoc("block/mars_redstone_ore"));
 		withExistingParent(ItemRegistry.MARS_STONE.get().getRegistryName().getPath(), modLoc("block/mars_stone"));
 		withExistingParent(ItemRegistry.MARS_SAND.get().getRegistryName().getPath(), modLoc("block/mars_sand"));
+		withExistingParent(ItemRegistry.COARSE_MARS_SAND.get().getRegistryName().getPath(), modLoc("block/coarse_mars_sand"));
 		withExistingParent(ItemRegistry.MARS_COBBLESTONE.get().getRegistryName().getPath(), modLoc("block/mars_cobblestone"));
 		withExistingParent(ItemRegistry.MARS_DEEPSLATE.get().getRegistryName().getPath(), modLoc("block/mars_deepslate"));
 		withExistingParent(ItemRegistry.MARS_COBBLED_DEEPSLATE.get().getRegistryName().getPath(), modLoc("block/mars_cobbled_deepslate"));
@@ -95,10 +102,15 @@ public class ItemModels extends ItemModelProvider {
 		withExistingParent(ItemRegistry.MARS_DEEPSLATE_IRON_ORE.get().getRegistryName().getPath(), modLoc("block/mars_deepslate_iron_ore"));
 		withExistingParent(ItemRegistry.MARS_DEEPSLATE_REDSTONE_ORE.get().getRegistryName().getPath(), modLoc("block/mars_deepslate_redstone_ore"));
 
+		withExistingParent(ItemRegistry.COMPRESSED_MARS_COBBLESTONE.get().getRegistryName().getPath(), modLoc("block/compressed_mars_cobblestone"));
+		withExistingParent(ItemRegistry.COMPRESSED_MARS_COBBLED_DEEPSLATE.get().getRegistryName().getPath(), modLoc("block/compressed_mars_cobbled_deepslate"));
+
+
 		stairs("mars_brick_stairs", modLoc("block/mars_bricks"), modLoc("block/mars_bricks"), modLoc("block/mars_bricks"));
 		slab("mars_brick_slab", modLoc("block/mars_bricks"), modLoc("block/mars_bricks"), modLoc("block/mars_bricks"));
 		wallInventory("mars_brick_wall",  modLoc("block/mars_bricks"));
 
+		stairs("mars_stone_stairs", modLoc("block/mars_stone"), modLoc("block/mars_stone"), modLoc("block/mars_stone"));
 		slab("mars_stone_slab", modLoc("block/mars_stone"), modLoc("block/mars_stone"), modLoc("block/mars_stone"));
 
 		stairs("mars_cobblestone_stairs", modLoc("block/mars_cobblestone"), modLoc("block/mars_cobblestone"), modLoc("block/mars_cobblestone"));
@@ -153,6 +165,11 @@ public class ItemModels extends ItemModelProvider {
 		withExistingParent(ItemRegistry.METEOR_LAPIS_ORE.get().getRegistryName().getPath(), modLoc("block/meteor_lapis_ore"));
 		withExistingParent(ItemRegistry.METEOR_REDSTONE_ORE.get().getRegistryName().getPath(), modLoc("block/meteor_redstone_ore"));
 		withExistingParent(ItemRegistry.CHISELED_METEOR_BRICKS.get().getRegistryName().getPath(), modLoc("block/chiseled_meteor_bricks"));
+
+		withExistingParent(ItemRegistry.COMPRESSED_COBBLESTONE.get().getRegistryName().getPath(), modLoc("block/compressed_cobblestone"));
+		withExistingParent(ItemRegistry.COMPRESSED_COBBLED_DEEPSLATE.get().getRegistryName().getPath(), modLoc("block/compressed_cobbled_deepslate"));
+
+
 		stairs("meteor_brick_stairs", modLoc("block/meteor_bricks"), modLoc("block/meteor_bricks"), modLoc("block/meteor_bricks"));
 		slab("meteor_brick_slab", modLoc("block/meteor_bricks"), modLoc("block/meteor_bricks"), modLoc("block/meteor_bricks"));
 		wallInventory("meteor_brick_wall",  modLoc("block/meteor_bricks"));
@@ -175,8 +192,8 @@ public class ItemModels extends ItemModelProvider {
 		singleTexture(ItemRegistry.LUMINOUS_BLUE_GLASS_PANE.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "block/luminous_blue_glass"));
 		singleTexture(ItemRegistry.LUMINOUS_WHITE_GLASS_PANE.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "block/luminous_white_glass"));
 
-		withExistingParent(ItemRegistry.CONNECTED_GLASS.get().getRegistryName().getPath(), modLoc("block/connected_glass_inventory"));
-		singleTexture(ItemRegistry.CONNECTED_GLASS_PANE.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "block/connected_glass"));
+		withExistingParent(ItemRegistry.REINFORCED_GLASS.get().getRegistryName().getPath(), modLoc("block/reinforced_glass_inventory"));
+		singleTexture(ItemRegistry.REINFORCED_GLASS_PANE.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "block/reinforced_glass"));
 
 
 		/**
@@ -227,7 +244,7 @@ public class ItemModels extends ItemModelProvider {
 		withExistingParent(ItemRegistry.STEEL_BLOCK.get().getRegistryName().getPath(), modLoc("block/steel_block"));
 		withExistingParent(ItemRegistry.CERAMIC.get().getRegistryName().getPath(), modLoc("block/ceramic"));
 		singleTexture(ItemRegistry.CERAMIC_TILE.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "block/ceramic"));
-		withExistingParent(ItemRegistry.STEEL_FRAME.get().getRegistryName().getPath(), modLoc("block/steel_frame"));
+//		withExistingParent(ItemRegistry.STEEL_FRAME.get().getRegistryName().getPath(), modLoc("block/steel_frame"));
 		singleTexture(ItemRegistry.SHUTTLE_FRAME.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/shuttle_frame"));
 		singleTexture(ItemRegistry.SHUTTLE_CABIN.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/shuttle_cabin"));
 		singleTexture(ItemRegistry.NOSE_CONE.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/nose_cone"));

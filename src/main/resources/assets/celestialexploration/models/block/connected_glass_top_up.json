@@ -1,7 +1,0 @@
-{
-    "parent": "celestialexploration:block/template_connected_glass_top_up",
-    "textures": {
-        "particle": "minecraft:block/glass",
-        "texture": "celestialexploration:block/connected_glass_side_n"
-    }
-}

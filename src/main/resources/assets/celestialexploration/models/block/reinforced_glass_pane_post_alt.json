@@ -1,0 +1,6 @@
+{
+  "parent": "celestialexploration:block/template_connected_glass_pane_post_alt",
+  "textures": {
+    "edge": "minecraft:block/glass_pane_top"
+  }
+}

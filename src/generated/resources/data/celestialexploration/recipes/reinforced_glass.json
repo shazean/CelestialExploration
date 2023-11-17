@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "celestialexploration",
+  "pattern": [
+    " X ",
+    "XCX",
+    " X "
+  ],
+  "key": {
+    "X": {
+      "item": "minecraft:glass"
+    },
+    "C": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:reinforced_glass",
+    "count": 4
+  }
+}

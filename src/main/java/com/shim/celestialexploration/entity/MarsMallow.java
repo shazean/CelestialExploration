@@ -1,6 +1,8 @@
 package com.shim.celestialexploration.entity;
 
+import com.shim.celestialexploration.registry.ParticleRegistry;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
@@ -23,6 +25,11 @@ public class MarsMallow extends Slime {
     public static AttributeSupplier setAttributes() {
         return Mob.createMobAttributes()
                 .add(Attributes.ATTACK_DAMAGE, 3.0f).build();
+    }
+
+    @Override
+    protected ParticleOptions getParticleType() {
+        return ParticleRegistry.MARS_MALLOW_SLIME_PARTICLES.get();
     }
 
     public static boolean checkMarsMallowSpawnRules(EntityType<MarsMallow> slime, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, Random random) {

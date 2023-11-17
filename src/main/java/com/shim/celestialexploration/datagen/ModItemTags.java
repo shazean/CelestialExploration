@@ -44,6 +44,8 @@ public class ModItemTags extends ItemTagsProvider {
 
 		tag(Tags.Items.SAND)
 				.add(ItemRegistry.GLOWING_MOON_SAND.get())
+				.add(ItemRegistry.COARSE_MOON_SAND.get())
+				.add(ItemRegistry.COARSE_MARS_SAND.get())
 				.add(ItemRegistry.MARS_SAND.get())
 				.add(ItemRegistry.MOON_SAND.get());
 
@@ -196,6 +198,7 @@ public class ModItemTags extends ItemTagsProvider {
 				.add(ItemRegistry.MARS_IRON_ORE.get())
 				.add(ItemRegistry.MARS_REDSTONE_ORE.get())
 				.add(ItemRegistry.MARS_SAND.get())
+				.add(ItemRegistry.COARSE_MARS_SAND.get())
 				.add(ItemRegistry.MARS_BRICK_PILLAR.get())
 				.add(ItemRegistry.MARS_DEEPSLATE.get())
 				.add(ItemRegistry.MARS_COBBLED_DEEPSLATE.get())
@@ -286,6 +289,7 @@ public class ModItemTags extends ItemTagsProvider {
 				.add(ItemRegistry.MOON_REDSTONE_ORE.get())
 				.add(ItemRegistry.MOON_SAND.get())
 				.add(ItemRegistry.GLOWING_MOON_SAND.get())
+				.add(ItemRegistry.COARSE_MOON_SAND.get())
 				.add(ItemRegistry.MOON_BRICK_PILLAR.get())
 				.add(ItemRegistry.MOON_DEEPSLATE_IRON_ORE.get())
 				.add(ItemRegistry.MOON_DEEPSLATE_REDSTONE_ORE.get())
@@ -380,6 +384,32 @@ public class ModItemTags extends ItemTagsProvider {
 //				.add(ItemRegistry.METEOR_COAL_ORE.get())
 //				.add(ItemRegistry.METEOR_IRON_ORE.get());
 		;
+
+		tag(Tags.Items.GLASS)
+				.add(ItemRegistry.LUMINOUS_WHITE_GLASS.get())
+				.add(ItemRegistry.LUMINOUS_BLUE_GLASS.get())
+				.add(ItemRegistry.REINFORCED_GLASS.get());
+
+		tag(Tags.Items.GLASS_PANES)
+				.add(ItemRegistry.LUMINOUS_BLUE_GLASS_PANE.get())
+				.add(ItemRegistry.LUMINOUS_WHITE_GLASS_PANE.get())
+				.add(ItemRegistry.REINFORCED_GLASS_PANE.get());
+
+		tag(Tags.Items.GLASS_COLORLESS)
+				.add(ItemRegistry.REINFORCED_GLASS.get());
+
+		tag(Tags.Items.GLASS_BLUE)
+				.add(ItemRegistry.LUMINOUS_BLUE_GLASS.get());
+
+		tag(Tags.Items.GLASS_WHITE)
+				.add(ItemRegistry.LUMINOUS_WHITE_GLASS.get());
+
+		tag(Tags.Items.GLASS_PANES_BLUE)
+				.add(ItemRegistry.LUMINOUS_BLUE_GLASS_PANE.get());
+
+		tag(Tags.Items.GLASS_PANES_WHITE)
+				.add(ItemRegistry.LUMINOUS_WHITE_GLASS_PANE.get());
+
 
 	}
 

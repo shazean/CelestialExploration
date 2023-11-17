@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "celestialexploration",
+  "pattern": [
+    "XXX",
+    "XXX",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:mars_cobbled_deepslate"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:compressed_mars_cobbled_deepslate"
+  }
+}

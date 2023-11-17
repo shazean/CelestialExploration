@@ -51,12 +51,14 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(BlockRegistry.MOON_STONE.get(), "Lunar Stone");
 		add(BlockRegistry.CHISELED_MOON_BRICKS.get(), "Chiseled Lunar Bricks");
 		add(BlockRegistry.GLOWING_MOON_SAND.get(), "Glowing Lunar Regolith");
+		add(BlockRegistry.COARSE_MOON_SAND.get(), "Coarse Lunar Regolith");
 		add(BlockRegistry.LUNAR_LANTERN.get(), "Lunar Lantern");
 		add(ItemRegistry.MOON_DUST.get(), "Lunar Dust");
 		add(BlockRegistry.MOON_COBBLESTONE.get(), "Lunar Cobblestone");
 		add(BlockRegistry.MOON_BRICK_PILLAR.get(), "Lunar Brick Pillar");
 		add(BlockRegistry.MOON_DEEPSLATE.get(), "Lunar Deepslate");
 		add(BlockRegistry.MOON_COBBLED_DEEPSLATE.get(), "Lunar Cobbled Deepslate");
+		add(BlockRegistry.MOON_STONE_STAIRS.get(), "Lunar Stone Stairs");
 		add(BlockRegistry.MOON_STONE_SLAB.get(), "Lunar Stone Slab");
 		add(BlockRegistry.MOON_COBBLESTONE_SLAB.get(), "Lunar Cobblestone Slab");
 		add(BlockRegistry.MOON_COBBLESTONE_STAIRS.get(), "Lunar Cobblestone Stairs");
@@ -94,6 +96,9 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(BlockRegistry.MOON_STONE_PRESSURE_PLATE.get(), "Lunar Stone Pressure Plate");
 		add(BlockRegistry.MOON_DEEPSLATE_BUTTON.get(), "Lunar Deepslate Button");
 		add(BlockRegistry.MOON_DEEPSLATE_PRESSURE_PLATE.get(), "Lunar Deepslate Pressure Plate");
+
+		add(BlockRegistry.COMPRESSED_MOON_COBBLESTONE.get(), "Compressed Lunar Cobblestone");
+		add(BlockRegistry.COMPRESSED_MOON_COBBLED_DEEPSLATE.get(), "Compressed Lunar Cobbled Deepslate");
 
 
 		/**MARS**/
@@ -149,6 +154,9 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(BlockRegistry.MARS_DEEPSLATE_BUTTON.get(), "Martian Deepslate Button");
 		add(BlockRegistry.MARS_DEEPSLATE_PRESSURE_PLATE.get(), "Martian Deepslate Pressure Plate");
 
+		add(BlockRegistry.COMPRESSED_MARS_COBBLESTONE.get(), "Compressed Martian Cobblestone");
+		add(BlockRegistry.COMPRESSED_MARS_COBBLED_DEEPSLATE.get(), "Compressed Martian Cobbled Deepslate");
+
 
 		/**METEOR**/
 		add(BlockRegistry.METEOR.get(), "Meteorite");
@@ -186,6 +194,12 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(BlockRegistry.LUMINOUS_WHITE_GLASS.get(), "Luminous White Glass");
 		add(BlockRegistry.LUMINOUS_BLUE_GLASS_PANE.get(), "Luminous Blue Glass Pane");
 		add(BlockRegistry.LUMINOUS_WHITE_GLASS_PANE.get(), "Luminous White Glass Pane");
+
+		add(BlockRegistry.REINFORCED_GLASS.get(), "Reinforced  Glass");
+		add(BlockRegistry.REINFORCED_GLASS_PANE.get(), "Reinforced Glass Pane");
+
+		add(BlockRegistry.COMPRESSED_COBBLESTONE.get(), "Compressed Cobblestone");
+		add(BlockRegistry.COMPRESSED_COBBLED_DEEPSLATE.get(), "Compressed Cobbled Deepslate");
 
 
 		/**ARMOR**/

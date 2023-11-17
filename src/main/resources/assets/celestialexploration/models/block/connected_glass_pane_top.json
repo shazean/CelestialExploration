@@ -1,7 +1,0 @@
-{
-  "parent": "celestialexploration:block/template_connected_glass_pane_top",
-  "textures": {
-    "pane": "celestialexploration:block/connected_glass",
-    "edge": "minecraft:block/glass_pane_top"
-  }
-}

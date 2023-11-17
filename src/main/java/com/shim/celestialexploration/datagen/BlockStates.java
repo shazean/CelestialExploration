@@ -39,6 +39,7 @@ public class BlockStates extends BlockStateProvider {
 		simpleBlock(BlockRegistry.MOON_REDSTONE_ORE.get());
 		simpleBlock(BlockRegistry.MOON_SAND.get());
 		simpleBlock(BlockRegistry.MOON_STONE.get());
+		simpleBlock(BlockRegistry.COARSE_MOON_SAND.get());
 
 		simpleBlock(BlockRegistry.CHISELED_MOON_BRICKS.get());
 		simpleBlock(BlockRegistry.GLOWING_MOON_SAND.get());
@@ -51,6 +52,7 @@ public class BlockStates extends BlockStateProvider {
 		simpleBlock(BlockRegistry.MOON_COBBLED_DEEPSLATE.get());
 		axisBlock((RotatedPillarBlock) BlockRegistry.MOON_BRICK_PILLAR.get(), modLoc("block/moon_brick_pillar"));
 
+		stairsBlock((StairBlock) BlockRegistry.MOON_STONE_STAIRS.get(), modLoc("block/moon_stone"));
 		slabBlock((SlabBlock) BlockRegistry.MOON_STONE_SLAB.get(), modLoc("block/moon_stone"), modLoc("block/moon_stone"));
 
 		stairsBlock((StairBlock) BlockRegistry.MOON_COBBLESTONE_STAIRS.get(), modLoc("block/moon_cobblestone"));
@@ -91,6 +93,9 @@ public class BlockStates extends BlockStateProvider {
 		simpleBlock(BlockRegistry.MOON_DEEPSLATE_IRON_ORE.get());
 		simpleBlock(BlockRegistry.MOON_DEEPSLATE_REDSTONE_ORE.get());
 
+		simpleBlock(BlockRegistry.COMPRESSED_MOON_COBBLESTONE.get());
+		simpleBlock(BlockRegistry.COMPRESSED_MOON_COBBLED_DEEPSLATE.get());
+
 
 		/**
 		 * MARS
@@ -100,6 +105,7 @@ public class BlockStates extends BlockStateProvider {
 		simpleBlock(BlockRegistry.MARS_IRON_ORE.get());
 		simpleBlock(BlockRegistry.MARS_REDSTONE_ORE.get());
 		simpleBlock(BlockRegistry.MARS_SAND.get());
+		simpleBlock(BlockRegistry.COARSE_MARS_SAND.get());
 		simpleBlock(BlockRegistry.MARS_STONE.get());
 		stairsBlock((StairBlock) BlockRegistry.MARS_BRICK_STAIRS.get(), modLoc("block/mars_bricks"));
 		slabBlock((SlabBlock) BlockRegistry.MARS_BRICK_SLAB.get(), modLoc("block/mars_bricks"), modLoc("block/mars_bricks"));
@@ -109,6 +115,7 @@ public class BlockStates extends BlockStateProvider {
 		simpleBlock(BlockRegistry.MARS_COBBLED_DEEPSLATE.get());
 		axisBlock((RotatedPillarBlock) BlockRegistry.MARS_BRICK_PILLAR.get(), modLoc("block/mars_brick_pillar"));
 
+		stairsBlock((StairBlock) BlockRegistry.MARS_STONE_STAIRS.get(), modLoc("block/mars_stone"));
 		slabBlock((SlabBlock) BlockRegistry.MARS_STONE_SLAB.get(), modLoc("block/mars_stone"), modLoc("block/mars_stone"));
 
 		stairsBlock((StairBlock) BlockRegistry.MARS_COBBLESTONE_STAIRS.get(), modLoc("block/mars_cobblestone"));
@@ -149,6 +156,9 @@ public class BlockStates extends BlockStateProvider {
 
 		simpleBlock(BlockRegistry.MARS_DEEPSLATE_IRON_ORE.get());
 		simpleBlock(BlockRegistry.MARS_DEEPSLATE_REDSTONE_ORE.get());
+
+		simpleBlock(BlockRegistry.COMPRESSED_MARS_COBBLESTONE.get());
+		simpleBlock(BlockRegistry.COMPRESSED_MARS_COBBLED_DEEPSLATE.get());
 
 
 		/**
@@ -191,6 +201,10 @@ public class BlockStates extends BlockStateProvider {
 		paneBlock((IronBarsBlock) BlockRegistry.LUMINOUS_BLUE_GLASS_PANE.get(), modLoc("block/luminous_blue_glass"), modLoc("block/luminous_blue_glass_pane_top"));
 		paneBlock((IronBarsBlock) BlockRegistry.LUMINOUS_WHITE_GLASS_PANE.get(), modLoc("block/luminous_white_glass"), modLoc("block/luminous_white_glass_pane_top"));
 
+		simpleBlock(BlockRegistry.COMPRESSED_COBBLESTONE.get());
+		simpleBlock(BlockRegistry.COMPRESSED_COBBLED_DEEPSLATE.get());
+
+
 //		connectedGlassBlock((ConnectedGlassBlock) BlockRegistry.CONNECTED_GLASS.get(), modLoc("block/connected_glass"));
 
 //		public void fenceBlock(FenceBlock block, ResourceLocation texture) {
@@ -207,7 +221,7 @@ public class BlockStates extends BlockStateProvider {
 		/**
 		 * SHUTTLE
 		 */
-		simpleBlock(BlockRegistry.STEEL_FRAME.get());
+//		simpleBlock(BlockRegistry.STEEL_FRAME.get());
 
 		/**
 		 * LOX
