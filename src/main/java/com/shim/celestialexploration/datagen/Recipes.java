@@ -2,20 +2,20 @@ package com.shim.celestialexploration.datagen;
 
 import java.util.function.Consumer;
 
+import com.shim.celestialexploration.datagen.util.WorkbenchCraftingRecipeBuilder;
+import com.shim.celestialexploration.datagen.util.WorkbenchRecipeBuilder;
 import com.shim.celestialexploration.registry.BlockRegistry;
 
+import com.shim.celestialexploration.registry.FluidRegistry;
 import com.shim.celestialexploration.registry.ItemRegistry;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
-import net.minecraft.core.Registry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.*;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.item.Item;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.StonecutterRecipe;
-import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.Tags;
 
 
@@ -30,1001 +30,430 @@ public class Recipes extends RecipeProvider {
 		//TODO check/update experience granted arguments
 
 		/**MOON*/
-		SimpleCookingRecipeBuilder.smelting(Ingredient.of(BlockRegistry.MOON_SAND.get()), Items.WHITE_STAINED_GLASS, 1.0F, 100)
-				.unlockedBy("has_moon_sand", has(BlockRegistry.MOON_SAND.get())).save(consumer, "moon_sand");
+		SimpleCookingRecipeBuilder.smelting(Ingredient.of(BlockRegistry.MOON_SAND.get()), Items.WHITE_STAINED_GLASS, 1.0F, 100).unlockedBy("has_moon_sand", has(BlockRegistry.MOON_SAND.get())).save(consumer, "moon_sand");
+		SimpleCookingRecipeBuilder.smelting(Ingredient.of(BlockRegistry.COARSE_MOON_SAND.get()), Items.WHITE_STAINED_GLASS, 1.0F, 100).unlockedBy("has_moon_sand", has(BlockRegistry.COARSE_MOON_SAND.get())).save(consumer, "coarse_moon_sand");
+		ShapedRecipeBuilder.shaped(BlockRegistry.LUNAR_LANTERN.get()).pattern("XCX").pattern("CCC").pattern("XCX").define('X', Items.IRON_INGOT).define('C', ItemRegistry.MOON_DUST.get()).group("celestialexploration").unlockedBy("has_moon_dust", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MOON_DUST.get())).save(consumer);
+	ShapedRecipeBuilder.shaped(BlockRegistry.MOON_BRICKS.get(), 4).pattern("XX").pattern("XX").define('X', BlockRegistry.MOON_STONE.get()).group("celestialexploration").unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_STONE_TAG), BlockRegistry.MOON_BRICKS.get(), 1).unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).group("celestialexploration").save(consumer, "moon_bricks_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_BRICK_SLAB.get(), 6).pattern("XXX").define('X', BlockRegistry.MOON_BRICKS.get()).group("celestialexploration").unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_STONE_TAG), BlockRegistry.MOON_BRICK_SLAB.get(), 2).unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer, "moon_brick_slab_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_BRICK_STAIRS.get(), 4).pattern("X  ").pattern("XX ").pattern("XXX").define('X', BlockRegistry.MOON_BRICKS.get()).group("celestialexploration").unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_STONE_TAG), BlockRegistry.MOON_BRICK_STAIRS.get(), 1).unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer, "moon_brick_stairs_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_BRICK_WALL.get(), 6).pattern("XXX").pattern("XXX").define('X', BlockRegistry.MOON_BRICKS.get()).group("celestialexploration").unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_STONE_TAG), BlockRegistry.MOON_BRICK_WALL.get(), 1).unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer, "moon_brick_wall_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.CHISELED_MOON_BRICKS.get()).pattern("X").pattern("X").define('X', BlockRegistry.MOON_BRICK_SLAB.get()).group("celestialexploration").unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_STONE_TAG), BlockRegistry.CHISELED_MOON_BRICKS.get(), 1).unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_BRICKS.get())).save(consumer, "chiseled_moon_bricks_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_BRICK_PILLAR.get(), 4).pattern("X").pattern("X").define('X', BlockRegistry.MOON_BRICKS.get()).group("celestialexploration").unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_STONE_TAG), BlockRegistry.MOON_BRICK_PILLAR.get(), 1).unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).group("celestialexploration").save(consumer, "moon_brick_pillar_stonecutting");
+		SimpleCookingRecipeBuilder.smelting(Ingredient.of(BlockRegistry.MOON_COBBLESTONE.get()), BlockRegistry.MOON_STONE.get(), 1.0F, 100).unlockedBy("has_moon_cobblestone", has(BlockRegistry.MOON_COBBLESTONE.get())).save(consumer, "moon_cobblestone");
+		SimpleCookingRecipeBuilder.smelting(Ingredient.of(BlockRegistry.MOON_COBBLED_DEEPSLATE.get()), BlockRegistry.MOON_DEEPSLATE.get(), 1.0F, 100).unlockedBy("has_moon_cobblestone", has(BlockRegistry.MOON_COBBLED_DEEPSLATE.get())).save(consumer, "moon_cobbled_deepslate");
+		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_STONE_STAIRS.get(), 4).pattern("X  ").pattern("XX ").pattern("XXX").define('X', BlockRegistry.MOON_STONE.get()).group("celestialexploration").unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_STONE_TAG), BlockRegistry.MOON_STONE_STAIRS.get(), 1).unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer, "moon_stone_stairs_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_STONE_SLAB.get(), 6).pattern("XXX").define('X', BlockRegistry.MOON_STONE.get()).group("celestialexploration").unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_STONE_TAG), BlockRegistry.MOON_STONE_SLAB.get(), 2).unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer, "moon_stone_slab_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_COBBLESTONE_SLAB.get(), 6).pattern("XXX").define('X', BlockRegistry.MOON_COBBLESTONE.get()).group("celestialexploration").unlockedBy("moon_cobblestone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_COBBLESTONE_TAG), BlockRegistry.MOON_COBBLESTONE_SLAB.get(), 2).unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer, "moon_cobblestone_slab_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_COBBLESTONE_STAIRS.get(), 4).pattern("X  ").pattern("XX ").pattern("XXX").define('X', BlockRegistry.MOON_COBBLESTONE.get()).group("celestialexploration").unlockedBy("moon_cobblestone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_COBBLESTONE_TAG), BlockRegistry.MOON_COBBLESTONE_STAIRS.get(), 1).unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer, "moon_cobblestone_stairs_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_COBBLESTONE_WALL.get(), 6).pattern("XXX").pattern("XXX").define('X', BlockRegistry.MOON_COBBLESTONE.get()).group("celestialexploration").unlockedBy("moon_cobblestone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_COBBLESTONE_TAG), BlockRegistry.MOON_COBBLESTONE_WALL.get(), 1).unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer, "moon_cobblestone_wall_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_COBBLED_DEEPSLATE_SLAB.get(), 6).pattern("XXX").define('X', BlockRegistry.MOON_COBBLED_DEEPSLATE.get()).group("celestialexploration").unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_COBBLED_DEEPSLATE_TAG), BlockRegistry.MOON_COBBLED_DEEPSLATE_SLAB.get(), 2).unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer, "moon_cobbled_deepslate_slab_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_COBBLED_DEEPSLATE_STAIRS.get(), 4).pattern("X  ").pattern("XX ").pattern("XXX").define('X', BlockRegistry.MOON_COBBLED_DEEPSLATE.get()).group("celestialexploration").unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_COBBLED_DEEPSLATE_TAG), BlockRegistry.MOON_COBBLED_DEEPSLATE_STAIRS.get(), 1).unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer, "moon_cobbled_deepslate_stairs_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_COBBLED_DEEPSLATE_WALL.get(), 6).pattern("XXX").pattern("XXX").define('X', BlockRegistry.MOON_COBBLED_DEEPSLATE.get()).group("celestialexploration").unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_COBBLED_DEEPSLATE_TAG), BlockRegistry.MOON_COBBLED_DEEPSLATE_WALL.get(), 1).unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer, "moon_cobbled_deepslate_wall_stonecutting");
+		SimpleCookingRecipeBuilder.smelting(Ingredient.of(BlockRegistry.MOON_STONE.get()), ItemRegistry.MOON_SMOOTH_STONE.get(), 1.0F, 100).unlockedBy("has_moon_stone", has(BlockRegistry.MOON_STONE.get())).save(consumer, "moon_smooth_stone");
+//		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_SMOOTH_STONE_SLAB.get(), 6).pattern("XXX").define('X', BlockRegistry.MOON_SMOOTH_STONE.get()).group("celestialexploration").unlockedBy("has_moon_smooth_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer);
+//		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_COBBLED_DEEPSLATE_TAG), BlockRegistry.MOON_SMOOTH_STONE_SLAB.get(), 2).unlockedBy("has_moon_smooth_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_SMOOTH_STONE.get())).save(consumer, "moon_smooth_stone_slab_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_DEEPSLATE_BRICKS.get(), 4).pattern("XX").pattern("XX").define('X', BlockRegistry.MOON_DEEPSLATE.get()).group("celestialexploration").unlockedBy("moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_DEEPSLATE_TAG), BlockRegistry.MOON_DEEPSLATE_BRICKS.get(), 1).unlockedBy("has_moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).group("celestialexploration").save(consumer, "moon_deepslate_bricks_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_DEEPSLATE_BRICK_SLAB.get(), 6).pattern("XXX").define('X', BlockRegistry.MOON_DEEPSLATE_BRICKS.get()).group("celestialexploration").unlockedBy("has_moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_DEEPSLATE_TAG), BlockRegistry.MOON_DEEPSLATE_BRICK_SLAB.get(), 2).unlockedBy("has_moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).save(consumer, "moon_deepslate_brick_slab_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_DEEPSLATE_BRICK_STAIRS.get(), 4).pattern("X  ").pattern("XX ").pattern("XXX").define('X', BlockRegistry.MOON_DEEPSLATE_BRICKS.get()).group("celestialexploration").unlockedBy("has_moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_DEEPSLATE_TAG), BlockRegistry.MOON_DEEPSLATE_BRICK_STAIRS.get(), 1).unlockedBy("has_moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).save(consumer, "moon_deepslate_brick_stairs_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_DEEPSLATE_BRICK_WALL.get(), 6).pattern("XXX").pattern("XXX").define('X', BlockRegistry.MOON_DEEPSLATE_BRICKS.get()).group("celestialexploration").unlockedBy("has_moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_DEEPSLATE_TAG), BlockRegistry.MOON_DEEPSLATE_BRICK_WALL.get(), 1).unlockedBy("has_moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).save(consumer, "moon_deepslate_brick_wall_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_DEEPSLATE_TILES.get(), 4).pattern("XX").pattern("XX").define('X', BlockRegistry.MOON_DEEPSLATE.get()).group("celestialexploration").unlockedBy("moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_DEEPSLATE_TAG), BlockRegistry.MOON_DEEPSLATE_TILES.get(), 1).unlockedBy("has_moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).group("celestialexploration").save(consumer, "moon_deepslate_tiles_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_DEEPSLATE_TILE_SLAB.get(), 6).pattern("XXX").define('X', BlockRegistry.MOON_DEEPSLATE_TILES.get()).group("celestialexploration").unlockedBy("has_moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_DEEPSLATE_TAG), BlockRegistry.MOON_DEEPSLATE_TILE_SLAB.get(), 2).unlockedBy("has_moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).save(consumer, "moon_deepslate_tile_slab_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_DEEPSLATE_TILE_STAIRS.get(), 4).pattern("X  ").pattern("XX ").pattern("XXX").define('X', BlockRegistry.MOON_DEEPSLATE_TILES.get()).group("celestialexploration").unlockedBy("has_moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_DEEPSLATE_TAG), BlockRegistry.MOON_DEEPSLATE_TILE_STAIRS.get(), 1).unlockedBy("has_moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).save(consumer, "moon_deepslate_tile_stairs_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_DEEPSLATE_TILE_WALL.get(), 6).pattern("XXX").pattern("XXX").define('X', BlockRegistry.MOON_DEEPSLATE_TILES.get()).group("celestialexploration").unlockedBy("has_moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_DEEPSLATE_TAG), BlockRegistry.MOON_DEEPSLATE_TILE_WALL.get(), 1).unlockedBy("has_moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).save(consumer, "moon_deepslate_tile_wall_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_POLISHED_DEEPSLATE.get(), 4).pattern("XX").pattern("XX").define('X', BlockRegistry.MOON_DEEPSLATE.get()).group("celestialexploration").unlockedBy("moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_DEEPSLATE_TAG), BlockRegistry.MOON_POLISHED_DEEPSLATE.get(), 1).unlockedBy("has_moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).group("celestialexploration").save(consumer, "moon_polished_deepslate_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_POLISHED_DEEPSLATE_SLAB.get(), 6).pattern("XXX").define('X', BlockRegistry.MOON_POLISHED_DEEPSLATE.get()).group("celestialexploration").unlockedBy("has_moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_DEEPSLATE_TAG), BlockRegistry.MOON_POLISHED_DEEPSLATE_SLAB.get(), 2).unlockedBy("has_moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).save(consumer, "moon_polished_deepslate_slab_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_POLISHED_DEEPSLATE_STAIRS.get(), 4).pattern("X  ").pattern("XX ").pattern("XXX").define('X', BlockRegistry.MOON_POLISHED_DEEPSLATE.get()).group("celestialexploration").unlockedBy("has_moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_DEEPSLATE_TAG), BlockRegistry.MOON_POLISHED_DEEPSLATE_STAIRS.get(), 1).unlockedBy("has_moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).save(consumer, "moon_polished_deepslate_stairs_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_POLISHED_DEEPSLATE_WALL.get(), 6).pattern("XXX").pattern("XXX").define('X', BlockRegistry.MOON_POLISHED_DEEPSLATE.get()).group("celestialexploration").unlockedBy("has_moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_DEEPSLATE_TAG), BlockRegistry.MOON_POLISHED_DEEPSLATE_WALL.get(), 1).unlockedBy("has_moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).save(consumer, "moon_polished_deepslate_wall_stonecutting");
 
-		SimpleCookingRecipeBuilder.smelting(Ingredient.of(BlockRegistry.COARSE_MOON_SAND.get()), Items.WHITE_STAINED_GLASS, 1.0F, 100)
-				.unlockedBy("has_moon_sand", has(BlockRegistry.COARSE_MOON_SAND.get())).save(consumer, "coarse_moon_sand");
+		ShapedRecipeBuilder.shaped(BlockRegistry.CHISELED_MOON_DEEPSLATE_BRICKS.get()).pattern("X").pattern("X").define('X', BlockRegistry.MOON_DEEPSLATE_BRICK_SLAB.get()).group("celestialexploration").unlockedBy("has_moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_DEEPSLATE_TAG), BlockRegistry.CHISELED_MOON_DEEPSLATE_BRICKS.get(), 1).unlockedBy("has_moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).save(consumer, "chiseled_moon_deepslate_bricks_stonecutting");
 
-		ShapedRecipeBuilder.shaped(BlockRegistry.LUNAR_LANTERN.get())
-				.pattern("XCX")
-				.pattern("CCC")
-				.pattern("XCX")
-				.define('X', Items.IRON_INGOT)
-				.define('C', ItemRegistry.MOON_DUST.get())
-				.group("celestialexploration").unlockedBy("has_moon_dust", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MOON_DUST.get())).save(consumer);
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.MOON_STONE_BUTTON.get()).requires(ItemRegistry.MOON_STONE.get()).group("celestialexploration").unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MOON_STONE.get())).save(consumer);
 
-		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_BRICKS.get(), 4)
-				.pattern("XX")
-				.pattern("XX")
-				.define('X', BlockRegistry.MOON_STONE.get())
-				.group("celestialexploration").unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_STONE_TAG), BlockRegistry.MOON_BRICKS.get(), 1)
-				.unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get()))
-				.group("celestialexploration").save(consumer, "moon_bricks_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_STONE_PRESSURE_PLATE.get()).pattern("XX").define('X', BlockRegistry.MOON_STONE.get()).group("celestialexploration").unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer);
 
-		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_BRICK_SLAB.get(), 6)
-				.pattern("XXX")
-				.define('X', BlockRegistry.MOON_BRICKS.get())
-				.group("celestialexploration").unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_STONE_TAG), BlockRegistry.MOON_BRICK_SLAB.get(), 2)
-				.unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer, "moon_brick_slab_stonecutting");
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.MOON_DEEPSLATE_BUTTON.get()).requires(BlockRegistry.MOON_DEEPSLATE.get()).group("celestialexploration").unlockedBy("moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MOON_DEEPSLATE.get())).save(consumer);
 
-		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_BRICK_STAIRS.get(), 4)
-				.pattern("X  ")
-				.pattern("XX ")
-				.pattern("XXX")
-				.define('X', BlockRegistry.MOON_BRICKS.get())
-				.group("celestialexploration").unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_STONE_TAG), BlockRegistry.MOON_BRICK_STAIRS.get(), 1)
-				.unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer, "moon_brick_stairs_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_DEEPSLATE_PRESSURE_PLATE.get()).pattern("XX").define('X', BlockRegistry.MOON_DEEPSLATE.get()).group("celestialexploration").unlockedBy("moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).save(consumer);
 
-		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_BRICK_WALL.get(), 6)
-				.pattern("XXX")
-				.pattern("XXX")
-				.define('X', BlockRegistry.MOON_BRICKS.get())
-				.group("celestialexploration").unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_STONE_TAG), BlockRegistry.MOON_BRICK_WALL.get(), 1)
-				.unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer, "moon_brick_wall_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.COMPRESSED_MOON_COBBLESTONE.get()).pattern("XXX").pattern("XXX").pattern("XXX").define('X', BlockRegistry.MOON_COBBLESTONE.get()).group("celestialexploration").unlockedBy("has_moon_cobblestone", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MOON_COBBLESTONE.get())).save(consumer);
 
-		ShapedRecipeBuilder.shaped(BlockRegistry.CHISELED_MOON_BRICKS.get())
-				.pattern("X")
-				.pattern("X")
-				.define('X', BlockRegistry.MOON_BRICK_SLAB.get())
-				.group("celestialexploration").unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_STONE_TAG), BlockRegistry.CHISELED_MOON_BRICKS.get(), 1)
-				.unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_BRICKS.get())).save(consumer, "chiseled_moon_bricks_stonecutting");
+		ShapelessRecipeBuilder.shapeless(BlockRegistry.MOON_COBBLESTONE.get(), 9).requires(BlockRegistry.COMPRESSED_MOON_COBBLESTONE.get()).group("celestialexploration").unlockedBy("has_moon_cobblestone", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MOON_COBBLESTONE.get())).save(consumer);
 
-		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_BRICK_PILLAR.get(), 4)
-				.pattern("X")
-				.pattern("X")
-				.define('X', BlockRegistry.MOON_BRICKS.get())
-				.group("celestialexploration").unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_STONE_TAG), BlockRegistry.MOON_BRICK_PILLAR.get(), 1)
-				.unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get()))
-				.group("celestialexploration").save(consumer, "moon_brick_pillar_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.COMPRESSED_MOON_COBBLED_DEEPSLATE.get()).pattern("XXX").pattern("XXX").pattern("XXX").define('X', BlockRegistry.MOON_COBBLED_DEEPSLATE.get()).group("celestialexploration").unlockedBy("has_moon_cobbled_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MOON_COBBLED_DEEPSLATE.get())).save(consumer);
 
-		SimpleCookingRecipeBuilder.smelting(Ingredient.of(BlockRegistry.MOON_COBBLESTONE.get()), BlockRegistry.MOON_STONE.get(), 1.0F, 100)
-				.unlockedBy("has_moon_cobblestone", has(BlockRegistry.MOON_COBBLESTONE.get())).save(consumer, "moon_cobblestone");
-
-		SimpleCookingRecipeBuilder.smelting(Ingredient.of(BlockRegistry.MOON_COBBLED_DEEPSLATE.get()), BlockRegistry.MOON_DEEPSLATE.get(), 1.0F, 100)
-				.unlockedBy("has_moon_cobblestone", has(BlockRegistry.MOON_COBBLED_DEEPSLATE.get())).save(consumer, "moon_cobbled_deepslate");
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_STONE_STAIRS.get(), 4)
-				.pattern("X  ")
-				.pattern("XX ")
-				.pattern("XXX")
-				.define('X', BlockRegistry.MOON_STONE.get())
-				.group("celestialexploration").unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_STONE_TAG), BlockRegistry.MOON_STONE_STAIRS.get(), 1)
-				.unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer, "moon_stone_stairs_stonecutting");
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_STONE_SLAB.get(), 6)
-				.pattern("XXX")
-				.define('X', BlockRegistry.MOON_STONE.get())
-				.group("celestialexploration").unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_STONE_TAG), BlockRegistry.MOON_STONE_SLAB.get(), 2)
-				.unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer, "moon_stone_slab_stonecutting");
-
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_COBBLESTONE_SLAB.get(), 6)
-				.pattern("XXX")
-				.define('X', BlockRegistry.MOON_COBBLESTONE.get())
-				.group("celestialexploration").unlockedBy("moon_cobblestone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_COBBLESTONE_TAG), BlockRegistry.MOON_COBBLESTONE_SLAB.get(), 2)
-				.unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer, "moon_cobblestone_slab_stonecutting");
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_COBBLESTONE_STAIRS.get(), 4)
-				.pattern("X  ")
-				.pattern("XX ")
-				.pattern("XXX")
-				.define('X', BlockRegistry.MOON_COBBLESTONE.get())
-				.group("celestialexploration").unlockedBy("moon_cobblestone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_COBBLESTONE_TAG), BlockRegistry.MOON_COBBLESTONE_STAIRS.get(), 1)
-				.unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer, "moon_cobblestone_stairs_stonecutting");
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_COBBLESTONE_WALL.get(), 6)
-				.pattern("XXX")
-				.pattern("XXX")
-				.define('X', BlockRegistry.MOON_COBBLESTONE.get())
-				.group("celestialexploration").unlockedBy("moon_cobblestone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_COBBLESTONE_TAG), BlockRegistry.MOON_COBBLESTONE_WALL.get(), 1)
-				.unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer, "moon_cobblestone_wall_stonecutting");
-
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_COBBLED_DEEPSLATE_SLAB.get(), 6)
-				.pattern("XXX")
-				.define('X', BlockRegistry.MOON_COBBLED_DEEPSLATE.get())
-				.group("celestialexploration").unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_COBBLED_DEEPSLATE_TAG), BlockRegistry.MOON_COBBLED_DEEPSLATE_SLAB.get(), 2)
-				.unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer, "moon_cobbled_deepslate_slab_stonecutting");
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_COBBLED_DEEPSLATE_STAIRS.get(), 4)
-				.pattern("X  ")
-				.pattern("XX ")
-				.pattern("XXX")
-				.define('X', BlockRegistry.MOON_COBBLED_DEEPSLATE.get())
-				.group("celestialexploration").unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_COBBLED_DEEPSLATE_TAG), BlockRegistry.MOON_COBBLED_DEEPSLATE_STAIRS.get(), 1)
-				.unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer, "moon_cobbled_deepslate_stairs_stonecutting");
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_COBBLED_DEEPSLATE_WALL.get(), 6)
-				.pattern("XXX")
-				.pattern("XXX")
-				.define('X', BlockRegistry.MOON_COBBLED_DEEPSLATE.get())
-				.group("celestialexploration").unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_COBBLED_DEEPSLATE_TAG), BlockRegistry.MOON_COBBLED_DEEPSLATE_WALL.get(), 1)
-				.unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer, "moon_cobbled_deepslate_wall_stonecutting");
-
-		SimpleCookingRecipeBuilder.smelting(Ingredient.of(BlockRegistry.MOON_STONE.get()), ItemRegistry.MOON_SMOOTH_STONE.get(), 1.0F, 100)
-				.unlockedBy("has_moon_stone", has(BlockRegistry.MOON_STONE.get())).save(consumer, "moon_smooth_stone");
-
-//		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_SMOOTH_STONE_SLAB.get(), 6)
-//				.pattern("XXX")
-//				.define('X', BlockRegistry.MOON_SMOOTH_STONE.get())
-//				.group("celestialexploration").unlockedBy("has_moon_smooth_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer);
-//		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_COBBLED_DEEPSLATE_TAG), BlockRegistry.MOON_SMOOTH_STONE_SLAB.get(), 2)
-//				.unlockedBy("has_moon_smooth_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_SMOOTH_STONE.get())).save(consumer, "moon_smooth_stone_slab_stonecutting");
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_DEEPSLATE_BRICKS.get(), 4)
-				.pattern("XX")
-				.pattern("XX")
-				.define('X', BlockRegistry.MOON_DEEPSLATE.get())
-				.group("celestialexploration").unlockedBy("moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_DEEPSLATE_TAG), BlockRegistry.MOON_DEEPSLATE_BRICKS.get(), 1)
-				.unlockedBy("has_moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get()))
-				.group("celestialexploration").save(consumer, "moon_deepslate_bricks_stonecutting");
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_DEEPSLATE_BRICK_SLAB.get(), 6)
-				.pattern("XXX")
-				.define('X', BlockRegistry.MOON_DEEPSLATE_BRICKS.get())
-				.group("celestialexploration").unlockedBy("has_moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_DEEPSLATE_TAG), BlockRegistry.MOON_DEEPSLATE_BRICK_SLAB.get(), 2)
-				.unlockedBy("has_moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).save(consumer, "moon_deepslate_brick_slab_stonecutting");
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_DEEPSLATE_BRICK_STAIRS.get(), 4)
-				.pattern("X  ")
-				.pattern("XX ")
-				.pattern("XXX")
-				.define('X', BlockRegistry.MOON_DEEPSLATE_BRICKS.get())
-				.group("celestialexploration").unlockedBy("has_moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_DEEPSLATE_TAG), BlockRegistry.MOON_DEEPSLATE_BRICK_STAIRS.get(), 1)
-				.unlockedBy("has_moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).save(consumer, "moon_deepslate_brick_stairs_stonecutting");
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_DEEPSLATE_BRICK_WALL.get(), 6)
-				.pattern("XXX")
-				.pattern("XXX")
-				.define('X', BlockRegistry.MOON_DEEPSLATE_BRICKS.get())
-				.group("celestialexploration").unlockedBy("has_moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_DEEPSLATE_TAG), BlockRegistry.MOON_DEEPSLATE_BRICK_WALL.get(), 1)
-				.unlockedBy("has_moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).save(consumer, "moon_deepslate_brick_wall_stonecutting");
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_DEEPSLATE_TILES.get(), 4)
-				.pattern("XX")
-				.pattern("XX")
-				.define('X', BlockRegistry.MOON_DEEPSLATE.get())
-				.group("celestialexploration").unlockedBy("moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_DEEPSLATE_TAG), BlockRegistry.MOON_DEEPSLATE_TILES.get(), 1)
-				.unlockedBy("has_moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get()))
-				.group("celestialexploration").save(consumer, "moon_deepslate_tiles_stonecutting");
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_DEEPSLATE_TILE_SLAB.get(), 6)
-				.pattern("XXX")
-				.define('X', BlockRegistry.MOON_DEEPSLATE_TILES.get())
-				.group("celestialexploration").unlockedBy("has_moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_DEEPSLATE_TAG), BlockRegistry.MOON_DEEPSLATE_TILE_SLAB.get(), 2)
-				.unlockedBy("has_moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).save(consumer, "moon_deepslate_tile_slab_stonecutting");
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_DEEPSLATE_TILE_STAIRS.get(), 4)
-				.pattern("X  ")
-				.pattern("XX ")
-				.pattern("XXX")
-				.define('X', BlockRegistry.MOON_DEEPSLATE_TILES.get())
-				.group("celestialexploration").unlockedBy("has_moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_DEEPSLATE_TAG), BlockRegistry.MOON_DEEPSLATE_TILE_STAIRS.get(), 1)
-				.unlockedBy("has_moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).save(consumer, "moon_deepslate_tile_stairs_stonecutting");
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_DEEPSLATE_TILE_WALL.get(), 6)
-				.pattern("XXX")
-				.pattern("XXX")
-				.define('X', BlockRegistry.MOON_DEEPSLATE_TILES.get())
-				.group("celestialexploration").unlockedBy("has_moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_DEEPSLATE_TAG), BlockRegistry.MOON_DEEPSLATE_TILE_WALL.get(), 1)
-				.unlockedBy("has_moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).save(consumer, "moon_deepslate_tile_wall_stonecutting");
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_POLISHED_DEEPSLATE.get(), 4)
-				.pattern("XX")
-				.pattern("XX")
-				.define('X', BlockRegistry.MOON_DEEPSLATE.get())
-				.group("celestialexploration").unlockedBy("moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_DEEPSLATE_TAG), BlockRegistry.MOON_POLISHED_DEEPSLATE.get(), 1)
-				.unlockedBy("has_moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get()))
-				.group("celestialexploration").save(consumer, "moon_polished_deepslate_stonecutting");
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_POLISHED_DEEPSLATE_SLAB.get(), 6)
-				.pattern("XXX")
-				.define('X', BlockRegistry.MOON_POLISHED_DEEPSLATE.get())
-				.group("celestialexploration").unlockedBy("has_moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_DEEPSLATE_TAG), BlockRegistry.MOON_POLISHED_DEEPSLATE_SLAB.get(), 2)
-				.unlockedBy("has_moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).save(consumer, "moon_polished_deepslate_slab_stonecutting");
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_POLISHED_DEEPSLATE_STAIRS.get(), 4)
-				.pattern("X  ")
-				.pattern("XX ")
-				.pattern("XXX")
-				.define('X', BlockRegistry.MOON_POLISHED_DEEPSLATE.get())
-				.group("celestialexploration").unlockedBy("has_moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_DEEPSLATE_TAG), BlockRegistry.MOON_POLISHED_DEEPSLATE_STAIRS.get(), 1)
-				.unlockedBy("has_moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).save(consumer, "moon_polished_deepslate_stairs_stonecutting");
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_POLISHED_DEEPSLATE_WALL.get(), 6)
-				.pattern("XXX")
-				.pattern("XXX")
-				.define('X', BlockRegistry.MOON_POLISHED_DEEPSLATE.get())
-				.group("celestialexploration").unlockedBy("has_moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_DEEPSLATE_TAG), BlockRegistry.MOON_POLISHED_DEEPSLATE_WALL.get(), 1)
-				.unlockedBy("has_moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).save(consumer, "moon_polished_deepslate_wall_stonecutting");
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.CHISELED_MOON_DEEPSLATE_BRICKS.get())
-				.pattern("X")
-				.pattern("X")
-				.define('X', BlockRegistry.MOON_DEEPSLATE_BRICK_SLAB.get())
-				.group("celestialexploration").unlockedBy("has_moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MOON_DEEPSLATE_TAG), BlockRegistry.CHISELED_MOON_DEEPSLATE_BRICKS.get(), 1)
-				.unlockedBy("has_moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).save(consumer, "chiseled_moon_deepslate_bricks_stonecutting");
-
-		ShapelessRecipeBuilder.shapeless(ItemRegistry.MOON_STONE_BUTTON.get())
-				.requires(ItemRegistry.MOON_STONE.get())
-				.group("celestialexploration").unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MOON_STONE.get())).save(consumer);
-
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_STONE_PRESSURE_PLATE.get())
-				.pattern("XX")
-				.define('X', BlockRegistry.MOON_STONE.get())
-				.group("celestialexploration").unlockedBy("moon_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_STONE.get())).save(consumer);
-
-		ShapelessRecipeBuilder.shapeless(ItemRegistry.MOON_DEEPSLATE_BUTTON.get())
-				.requires(BlockRegistry.MOON_DEEPSLATE.get())
-				.group("celestialexploration").unlockedBy("moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MOON_DEEPSLATE.get())).save(consumer);
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_DEEPSLATE_PRESSURE_PLATE.get())
-				.pattern("XX")
-				.define('X', BlockRegistry.MOON_DEEPSLATE.get())
-				.group("celestialexploration").unlockedBy("moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).save(consumer);
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.COMPRESSED_MOON_COBBLESTONE.get())
-				.pattern("XXX")
-				.pattern("XXX")
-				.pattern("XXX")
-				.define('X', BlockRegistry.MOON_COBBLESTONE.get())
-				.group("celestialexploration").unlockedBy("has_moon_cobblestone", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MOON_COBBLESTONE.get())).save(consumer);
-
-		ShapelessRecipeBuilder.shapeless(BlockRegistry.MOON_COBBLESTONE.get(), 9)
-				.requires(BlockRegistry.COMPRESSED_MOON_COBBLESTONE.get())
-				.group("celestialexploration").unlockedBy("has_moon_cobblestone", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MOON_COBBLESTONE.get())).save(consumer);
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.COMPRESSED_MOON_COBBLED_DEEPSLATE.get())
-				.pattern("XXX")
-				.pattern("XXX")
-				.pattern("XXX")
-				.define('X', BlockRegistry.MOON_COBBLED_DEEPSLATE.get())
-				.group("celestialexploration").unlockedBy("has_moon_cobbled_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MOON_COBBLED_DEEPSLATE.get())).save(consumer);
-
-		ShapelessRecipeBuilder.shapeless(BlockRegistry.MOON_COBBLED_DEEPSLATE.get(), 9)
-				.requires(BlockRegistry.COMPRESSED_MOON_COBBLED_DEEPSLATE.get())
-				.group("celestialexploration").unlockedBy("has_moon_cobbled_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MOON_COBBLED_DEEPSLATE.get())).save(consumer);
-
-//		ShapedRecipeBuilder.shaped(BlockRegistry.LUNAR_LANTERN.get())
-//				.pattern("XXX")
-//				.pattern("XXX")
-//				.pattern("XXX")
+		ShapelessRecipeBuilder.shapeless(BlockRegistry.MOON_COBBLED_DEEPSLATE.get(), 9).requires(BlockRegistry.COMPRESSED_MOON_COBBLED_DEEPSLATE.get()).group("celestialexploration").unlockedBy("has_moon_cobbled_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MOON_COBBLED_DEEPSLATE.get())).save(consumer);
 
 		/**MARS*/
-		SimpleCookingRecipeBuilder.smelting(Ingredient.of(BlockRegistry.MARS_SAND.get()), Items.ORANGE_STAINED_GLASS, 1.0F, 100)
-				.unlockedBy("has_mars_sand", has(BlockRegistry.MARS_SAND.get())).save(consumer, "mars_sand");
+		SimpleCookingRecipeBuilder.smelting(Ingredient.of(BlockRegistry.MARS_SAND.get()), Items.ORANGE_STAINED_GLASS, 1.0F, 100).unlockedBy("has_mars_sand", has(BlockRegistry.MARS_SAND.get())).save(consumer, "mars_sand");
+		SimpleCookingRecipeBuilder.smelting(Ingredient.of(BlockRegistry.COARSE_MARS_SAND.get()), Items.ORANGE_STAINED_GLASS, 1.0F, 100).unlockedBy("has_mars_sand", has(BlockRegistry.COARSE_MARS_SAND.get())).save(consumer, "coarse_mars_sand");
+		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_BRICKS.get(), 4).pattern("XX").pattern("XX").define('X', BlockRegistry.MARS_STONE.get()).group("celestialexploration").unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_STONE_TAG), BlockRegistry.MARS_BRICKS.get(), 1).unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer, "mars_bricks_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_BRICK_SLAB.get(), 6).pattern("XXX").define('X', BlockRegistry.MARS_BRICKS.get()).group("celestialexploration").unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_STONE_TAG), BlockRegistry.MARS_BRICK_SLAB.get(), 2).unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer, "mars_bricks_slab_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_BRICK_STAIRS.get(), 4).pattern("X  ").pattern("XX ").pattern("XXX").define('X', BlockRegistry.MARS_BRICKS.get()).group("celestialexploration").unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_STONE_TAG), BlockRegistry.MARS_BRICK_STAIRS.get(), 1).unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer, "mars_brick_stairs_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_BRICK_WALL.get(), 6).pattern("XXX").pattern("XXX").define('X', BlockRegistry.MARS_BRICKS.get()).group("celestialexploration").unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_STONE_TAG), BlockRegistry.MARS_BRICK_WALL.get(), 1).unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer, "mars_brick_wall_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.CHISELED_MARS_BRICKS.get()).pattern("X").pattern("X").define('X', BlockRegistry.MARS_BRICK_SLAB.get()).group("celestialexploration").unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.METEOR.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_STONE_TAG), BlockRegistry.CHISELED_MARS_BRICKS.get(), 1).unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_BRICKS.get())).save(consumer, "chiseled_mars_bricks_stonecutting");
+		SimpleCookingRecipeBuilder.smelting(Ingredient.of(BlockRegistry.MARS_COBBLESTONE.get()), BlockRegistry.MARS_STONE.get(), 1.0F, 100).unlockedBy("has_mars_cobblestone", has(BlockRegistry.MARS_COBBLESTONE.get())).save(consumer, "mars_cobblestone");
+		SimpleCookingRecipeBuilder.smelting(Ingredient.of(BlockRegistry.MARS_COBBLED_DEEPSLATE.get()), BlockRegistry.MARS_DEEPSLATE.get(), 1.0F, 100).unlockedBy("has_mars_cobblestone", has(BlockRegistry.MARS_COBBLED_DEEPSLATE.get())).save(consumer, "mars_cobbled_deepslate");
 
-		SimpleCookingRecipeBuilder.smelting(Ingredient.of(BlockRegistry.COARSE_MARS_SAND.get()), Items.ORANGE_STAINED_GLASS, 1.0F, 100)
-				.unlockedBy("has_mars_sand", has(BlockRegistry.COARSE_MARS_SAND.get())).save(consumer, "coarse_mars_sand");
+		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_STONE_SLAB.get(), 6).pattern("XXX").define('X', BlockRegistry.MARS_STONE.get()).group("celestialexploration").unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_STONE_TAG), BlockRegistry.MARS_STONE_SLAB.get(), 2).unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer, "mars_stone_slab_stonecutting");
 
-		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_BRICKS.get(), 4)
-				.pattern("XX")
-				.pattern("XX")
-				.define('X', BlockRegistry.MARS_STONE.get())
-				.group("celestialexploration").unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_STONE_TAG), BlockRegistry.MARS_BRICKS.get(), 1)
-				.unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer, "mars_bricks_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_STONE_STAIRS.get(), 4).pattern("X  ").pattern("XX ").pattern("XXX").define('X', BlockRegistry.MARS_STONE.get()).group("celestialexploration").unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_STONE_TAG), BlockRegistry.MARS_STONE_STAIRS.get(), 1).unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer, "mars_stone_stairs_stonecutting");
 
-		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_BRICK_SLAB.get(), 6)
-				.pattern("XXX")
-				.define('X', BlockRegistry.MARS_BRICKS.get())
-				.group("celestialexploration").unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_STONE_TAG), BlockRegistry.MARS_BRICK_SLAB.get(), 2)
-				.unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer, "mars_bricks_slab_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_COBBLESTONE_SLAB.get(), 6).pattern("XXX").define('X', BlockRegistry.MARS_COBBLESTONE.get()).group("celestialexploration").unlockedBy("mars_cobblestone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_COBBLESTONE_TAG), BlockRegistry.MARS_COBBLESTONE_SLAB.get(), 2).unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer, "mars_cobblestone_slab_stonecutting");
 
-		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_BRICK_STAIRS.get(), 4)
-				.pattern("X  ")
-				.pattern("XX ")
-				.pattern("XXX")
-				.define('X', BlockRegistry.MARS_BRICKS.get())
-				.group("celestialexploration").unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_STONE_TAG), BlockRegistry.MARS_BRICK_STAIRS.get(), 1)
-				.unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer, "mars_brick_stairs_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_COBBLESTONE_STAIRS.get(), 4).pattern("X  ").pattern("XX ").pattern("XXX").define('X', BlockRegistry.MARS_COBBLESTONE.get()).group("celestialexploration").unlockedBy("mars_cobblestone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_COBBLESTONE_TAG), BlockRegistry.MARS_COBBLESTONE_STAIRS.get(), 1).unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer, "mars_cobblestone_stairs_stonecutting");
 
-		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_BRICK_WALL.get(), 6)
-				.pattern("XXX")
-				.pattern("XXX")
-				.define('X', BlockRegistry.MARS_BRICKS.get())
-				.group("celestialexploration").unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_STONE_TAG), BlockRegistry.MARS_BRICK_WALL.get(), 1)
-				.unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer, "mars_brick_wall_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_COBBLESTONE_WALL.get(), 6).pattern("XXX").pattern("XXX").define('X', BlockRegistry.MARS_COBBLESTONE.get()).group("celestialexploration").unlockedBy("mars_cobblestone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_COBBLESTONE_TAG), BlockRegistry.MARS_COBBLESTONE_WALL.get(), 1).unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer, "mars_cobblestone_wall_stonecutting");
 
-		ShapedRecipeBuilder.shaped(BlockRegistry.CHISELED_MARS_BRICKS.get())
-				.pattern("X")
-				.pattern("X")
-				.define('X', BlockRegistry.MARS_BRICK_SLAB.get())
-				.group("celestialexploration").unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.METEOR.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_STONE_TAG), BlockRegistry.CHISELED_MARS_BRICKS.get(), 1)
-				.unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_BRICKS.get())).save(consumer, "chiseled_mars_bricks_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_COBBLED_DEEPSLATE_SLAB.get(), 6).pattern("XXX").define('X', BlockRegistry.MARS_COBBLED_DEEPSLATE.get()).group("celestialexploration").unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_COBBLED_DEEPSLATE_TAG), BlockRegistry.MARS_COBBLED_DEEPSLATE_SLAB.get(), 2).unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer, "mars_cobbled_deepslate_slab_stonecutting");
 
-		SimpleCookingRecipeBuilder.smelting(Ingredient.of(BlockRegistry.MARS_COBBLESTONE.get()), BlockRegistry.MARS_STONE.get(), 1.0F, 100)
-				.unlockedBy("has_mars_cobblestone", has(BlockRegistry.MARS_COBBLESTONE.get())).save(consumer, "mars_cobblestone");
-
-		SimpleCookingRecipeBuilder.smelting(Ingredient.of(BlockRegistry.MARS_COBBLED_DEEPSLATE.get()), BlockRegistry.MARS_DEEPSLATE.get(), 1.0F, 100)
-				.unlockedBy("has_mars_cobblestone", has(BlockRegistry.MARS_COBBLED_DEEPSLATE.get())).save(consumer, "mars_cobbled_deepslate");
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_STONE_SLAB.get(), 6)
-				.pattern("XXX")
-				.define('X', BlockRegistry.MARS_STONE.get())
-				.group("celestialexploration").unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_STONE_TAG), BlockRegistry.MARS_STONE_SLAB.get(), 2)
-				.unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer, "mars_stone_slab_stonecutting");
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_STONE_STAIRS.get(), 4)
-				.pattern("X  ")
-				.pattern("XX ")
-				.pattern("XXX")
-				.define('X', BlockRegistry.MARS_STONE.get())
-				.group("celestialexploration").unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_STONE_TAG), BlockRegistry.MARS_STONE_STAIRS.get(), 1)
-				.unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer, "mars_stone_stairs_stonecutting");
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_COBBLESTONE_SLAB.get(), 6)
-				.pattern("XXX")
-				.define('X', BlockRegistry.MARS_COBBLESTONE.get())
-				.group("celestialexploration").unlockedBy("mars_cobblestone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_COBBLESTONE_TAG), BlockRegistry.MARS_COBBLESTONE_SLAB.get(), 2)
-				.unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer, "mars_cobblestone_slab_stonecutting");
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_COBBLESTONE_STAIRS.get(), 4)
-				.pattern("X  ")
-				.pattern("XX ")
-				.pattern("XXX")
-				.define('X', BlockRegistry.MARS_COBBLESTONE.get())
-				.group("celestialexploration").unlockedBy("mars_cobblestone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_COBBLESTONE_TAG), BlockRegistry.MARS_COBBLESTONE_STAIRS.get(), 1)
-				.unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer, "mars_cobblestone_stairs_stonecutting");
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_COBBLESTONE_WALL.get(), 6)
-				.pattern("XXX")
-				.pattern("XXX")
-				.define('X', BlockRegistry.MARS_COBBLESTONE.get())
-				.group("celestialexploration").unlockedBy("mars_cobblestone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_COBBLESTONE_TAG), BlockRegistry.MARS_COBBLESTONE_WALL.get(), 1)
-				.unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer, "mars_cobblestone_wall_stonecutting");
-
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_COBBLED_DEEPSLATE_SLAB.get(), 6)
-				.pattern("XXX")
-				.define('X', BlockRegistry.MARS_COBBLED_DEEPSLATE.get())
-				.group("celestialexploration").unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_COBBLED_DEEPSLATE_TAG), BlockRegistry.MARS_COBBLED_DEEPSLATE_SLAB.get(), 2)
-				.unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer, "mars_cobbled_deepslate_slab_stonecutting");
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_COBBLED_DEEPSLATE_STAIRS.get(), 4)
-				.pattern("X  ")
-				.pattern("XX ")
-				.pattern("XXX")
-				.define('X', BlockRegistry.MARS_COBBLED_DEEPSLATE.get())
-				.group("celestialexploration").unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_COBBLED_DEEPSLATE_TAG), BlockRegistry.MARS_COBBLED_DEEPSLATE_STAIRS.get(), 1)
-				.unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer, "mars_cobbled_deepslate_stairs_stonecutting");
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_COBBLED_DEEPSLATE_WALL.get(), 6)
-				.pattern("XXX")
-				.pattern("XXX")
-				.define('X', BlockRegistry.MARS_COBBLED_DEEPSLATE.get())
-				.group("celestialexploration").unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_COBBLED_DEEPSLATE_TAG), BlockRegistry.MARS_COBBLED_DEEPSLATE_WALL.get(), 1)
-				.unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer, "mars_cobbled_deepslate_wall_stonecutting");
-
-		SimpleCookingRecipeBuilder.smelting(Ingredient.of(BlockRegistry.MARS_STONE.get()), ItemRegistry.MARS_SMOOTH_STONE.get(), 1.0F, 100)
-				.unlockedBy("has_mars_stone", has(BlockRegistry.MARS_STONE.get())).save(consumer, "mars_smooth_stone");
-
-//		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_SMOOTH_STONE_SLAB.get(), 6)
-//				.pattern("XXX")
-//				.define('X', BlockRegistry.MARS_SMOOTH_STONE.get())
-//				.group("celestialexploration").unlockedBy("has_mars_smooth_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer);
-//		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_COBBLED_DEEPSLATE_TAG), BlockRegistry.MARS_SMOOTH_STONE_SLAB.get(), 2)
-//				.unlockedBy("has_mars_smooth_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_SMOOTH_STONE.get())).save(consumer, "mars_smooth_stone_slab_stonecutting");
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_DEEPSLATE_BRICKS.get(), 4)
-				.pattern("XX")
-				.pattern("XX")
-				.define('X', BlockRegistry.MARS_DEEPSLATE.get())
-				.group("celestialexploration").unlockedBy("mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_DEEPSLATE_TAG), BlockRegistry.MARS_DEEPSLATE_BRICKS.get(), 1)
-				.unlockedBy("has_mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get()))
-				.group("celestialexploration").save(consumer, "mars_deepslate_bricks_stonecutting");
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_DEEPSLATE_BRICK_SLAB.get(), 6)
-				.pattern("XXX")
-				.define('X', BlockRegistry.MARS_DEEPSLATE_BRICKS.get())
-				.group("celestialexploration").unlockedBy("has_mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_DEEPSLATE_TAG), BlockRegistry.MARS_DEEPSLATE_BRICK_SLAB.get(), 2)
-				.unlockedBy("has_mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).save(consumer, "mars_deepslate_brick_slab_stonecutting");
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_DEEPSLATE_BRICK_STAIRS.get(), 4)
-				.pattern("X  ")
-				.pattern("XX ")
-				.pattern("XXX")
-				.define('X', BlockRegistry.MARS_DEEPSLATE_BRICKS.get())
-				.group("celestialexploration").unlockedBy("has_mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_DEEPSLATE_TAG), BlockRegistry.MARS_DEEPSLATE_BRICK_STAIRS.get(), 1)
-				.unlockedBy("has_mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).save(consumer, "mars_deepslate_brick_stairs_stonecutting");
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_DEEPSLATE_BRICK_WALL.get(), 6)
-				.pattern("XXX")
-				.pattern("XXX")
-				.define('X', BlockRegistry.MARS_DEEPSLATE_BRICKS.get())
-				.group("celestialexploration").unlockedBy("has_mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_DEEPSLATE_TAG), BlockRegistry.MARS_DEEPSLATE_BRICK_WALL.get(), 1)
-				.unlockedBy("has_mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).save(consumer, "mars_deepslate_brick_wall_stonecutting");
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_DEEPSLATE_TILES.get(), 4)
-				.pattern("XX")
-				.pattern("XX")
-				.define('X', BlockRegistry.MARS_DEEPSLATE.get())
-				.group("celestialexploration").unlockedBy("mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_DEEPSLATE_TAG), BlockRegistry.MARS_DEEPSLATE_TILES.get(), 1)
-				.unlockedBy("has_mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get()))
-				.group("celestialexploration").save(consumer, "mars_deepslate_tiles_stonecutting");
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_DEEPSLATE_TILE_SLAB.get(), 6)
-				.pattern("XXX")
-				.define('X', BlockRegistry.MARS_DEEPSLATE_TILES.get())
-				.group("celestialexploration").unlockedBy("has_mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_DEEPSLATE_TAG), BlockRegistry.MARS_DEEPSLATE_TILE_SLAB.get(), 2)
-				.unlockedBy("has_mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).save(consumer, "mars_deepslate_tile_slab_stonecutting");
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_DEEPSLATE_TILE_STAIRS.get(), 4)
-				.pattern("X  ")
-				.pattern("XX ")
-				.pattern("XXX")
-				.define('X', BlockRegistry.MARS_DEEPSLATE_TILES.get())
-				.group("celestialexploration").unlockedBy("has_mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_DEEPSLATE_TAG), BlockRegistry.MARS_DEEPSLATE_TILE_STAIRS.get(), 1)
-				.unlockedBy("has_mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).save(consumer, "mars_deepslate_tile_stairs_stonecutting");
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_DEEPSLATE_TILE_WALL.get(), 6)
-				.pattern("XXX")
-				.pattern("XXX")
-				.define('X', BlockRegistry.MARS_DEEPSLATE_TILES.get())
-				.group("celestialexploration").unlockedBy("has_mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_DEEPSLATE_TAG), BlockRegistry.MARS_DEEPSLATE_TILE_WALL.get(), 1)
-				.unlockedBy("has_mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).save(consumer, "mars_deepslate_tile_wall_stonecutting");
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_POLISHED_DEEPSLATE.get(), 4)
-				.pattern("XX")
-				.pattern("XX")
-				.define('X', BlockRegistry.MARS_DEEPSLATE.get())
-				.group("celestialexploration").unlockedBy("mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_DEEPSLATE_TAG), BlockRegistry.MARS_POLISHED_DEEPSLATE.get(), 1)
-				.unlockedBy("has_mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get()))
-				.group("celestialexploration").save(consumer, "mars_polished_deepslate_stonecutting");
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_POLISHED_DEEPSLATE_SLAB.get(), 6)
-				.pattern("XXX")
-				.define('X', BlockRegistry.MARS_POLISHED_DEEPSLATE.get())
-				.group("celestialexploration").unlockedBy("has_mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_DEEPSLATE_TAG), BlockRegistry.MARS_POLISHED_DEEPSLATE_SLAB.get(), 2)
-				.unlockedBy("has_mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).save(consumer, "mars_polished_deepslate_slab_stonecutting");
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_POLISHED_DEEPSLATE_STAIRS.get(), 4)
-				.pattern("X  ")
-				.pattern("XX ")
-				.pattern("XXX")
-				.define('X', BlockRegistry.MARS_POLISHED_DEEPSLATE.get())
-				.group("celestialexploration").unlockedBy("has_mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_DEEPSLATE_TAG), BlockRegistry.MARS_POLISHED_DEEPSLATE_STAIRS.get(), 1)
-				.unlockedBy("has_mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).save(consumer, "mars_polished_deepslate_stairs_stonecutting");
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_POLISHED_DEEPSLATE_WALL.get(), 6)
-				.pattern("XXX")
-				.pattern("XXX")
-				.define('X', BlockRegistry.MARS_POLISHED_DEEPSLATE.get())
-				.group("celestialexploration").unlockedBy("has_mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_DEEPSLATE_TAG), BlockRegistry.MARS_POLISHED_DEEPSLATE_WALL.get(), 1)
-				.unlockedBy("has_mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).save(consumer, "mars_polished_deepslate_wall_stonecutting");
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.CHISELED_MARS_DEEPSLATE_BRICKS.get())
-				.pattern("X")
-				.pattern("X")
-				.define('X', BlockRegistry.MARS_DEEPSLATE_BRICK_SLAB.get())
-				.group("celestialexploration").unlockedBy("has_mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_DEEPSLATE_TAG), BlockRegistry.CHISELED_MARS_DEEPSLATE_BRICKS.get(), 1)
-				.unlockedBy("has_mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).save(consumer, "chiseled_mars_deepslate_bricks_stonecutting");
-
-		ShapelessRecipeBuilder.shapeless(ItemRegistry.MARS_STONE_BUTTON.get())
-				.requires(ItemRegistry.MARS_STONE.get())
-				.group("celestialexploration").unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MARS_STONE.get())).save(consumer);
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_STONE_PRESSURE_PLATE.get())
-				.pattern("XX")
-				.define('X', BlockRegistry.MARS_STONE.get())
-				.group("celestialexploration").unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer);
-
-		ShapelessRecipeBuilder.shapeless(ItemRegistry.MARS_DEEPSLATE_BUTTON.get())
-				.requires(ItemRegistry.MARS_DEEPSLATE.get())
-				.group("celestialexploration").unlockedBy("mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MARS_DEEPSLATE.get())).save(consumer);
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_DEEPSLATE_PRESSURE_PLATE.get())
-				.pattern("XX")
-				.define('X', BlockRegistry.MARS_DEEPSLATE.get())
-				.group("celestialexploration").unlockedBy("mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).save(consumer);
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.COMPRESSED_MARS_COBBLESTONE.get())
-				.pattern("XXX")
-				.pattern("XXX")
-				.pattern("XXX")
-				.define('X', BlockRegistry.MARS_COBBLESTONE.get())
-				.group("celestialexploration").unlockedBy("has_mars_cobblestone", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MARS_COBBLESTONE.get())).save(consumer);
-
-		ShapelessRecipeBuilder.shapeless(BlockRegistry.MARS_COBBLESTONE.get(), 9)
-				.requires(BlockRegistry.COMPRESSED_MARS_COBBLESTONE.get())
-				.group("celestialexploration").unlockedBy("has_mars_cobblestone", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MARS_COBBLESTONE.get())).save(consumer);
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.COMPRESSED_MARS_COBBLED_DEEPSLATE.get())
-				.pattern("XXX")
-				.pattern("XXX")
-				.pattern("XXX")
-				.define('X', BlockRegistry.MARS_COBBLED_DEEPSLATE.get())
-				.group("celestialexploration").unlockedBy("has_mars_cobbled_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MARS_COBBLED_DEEPSLATE.get())).save(consumer);
-
-		ShapelessRecipeBuilder.shapeless(BlockRegistry.MARS_COBBLED_DEEPSLATE.get(), 9)
-				.requires(BlockRegistry.COMPRESSED_MARS_COBBLED_DEEPSLATE.get())
-				.group("celestialexploration").unlockedBy("has_mars_cobbled_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MARS_COBBLED_DEEPSLATE.get())).save(consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_COBBLED_DEEPSLATE_STAIRS.get(), 4).pattern("X  ").pattern("XX ").pattern("XXX").define('X', BlockRegistry.MARS_COBBLED_DEEPSLATE.get()).group("celestialexploration").unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_COBBLED_DEEPSLATE_TAG), BlockRegistry.MARS_COBBLED_DEEPSLATE_STAIRS.get(), 1).unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer, "mars_cobbled_deepslate_stairs_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_COBBLED_DEEPSLATE_WALL.get(), 6).pattern("XXX").pattern("XXX").define('X', BlockRegistry.MARS_COBBLED_DEEPSLATE.get()).group("celestialexploration").unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_COBBLED_DEEPSLATE_TAG), BlockRegistry.MARS_COBBLED_DEEPSLATE_WALL.get(), 1).unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer, "mars_cobbled_deepslate_wall_stonecutting");
+		SimpleCookingRecipeBuilder.smelting(Ingredient.of(BlockRegistry.MARS_STONE.get()), ItemRegistry.MARS_SMOOTH_STONE.get(), 1.0F, 100).unlockedBy("has_mars_stone", has(BlockRegistry.MARS_STONE.get())).save(consumer, "mars_smooth_stone");
+//		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_SMOOTH_STONE_SLAB.get(), 6).pattern("XXX").define('X', BlockRegistry.MARS_SMOOTH_STONE.get()).group("celestialexploration").unlockedBy("has_mars_smooth_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer);
+//		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_COBBLED_DEEPSLATE_TAG), BlockRegistry.MARS_SMOOTH_STONE_SLAB.get(), 2).unlockedBy("has_mars_smooth_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_SMOOTH_STONE.get())).save(consumer, "mars_smooth_stone_slab_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_DEEPSLATE_BRICKS.get(), 4).pattern("XX").pattern("XX").define('X', BlockRegistry.MARS_DEEPSLATE.get()).group("celestialexploration").unlockedBy("mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_DEEPSLATE_TAG), BlockRegistry.MARS_DEEPSLATE_BRICKS.get(), 1).unlockedBy("has_mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).group("celestialexploration").save(consumer, "mars_deepslate_bricks_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_DEEPSLATE_BRICK_SLAB.get(), 6).pattern("XXX").define('X', BlockRegistry.MARS_DEEPSLATE_BRICKS.get()).group("celestialexploration").unlockedBy("has_mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_DEEPSLATE_TAG), BlockRegistry.MARS_DEEPSLATE_BRICK_SLAB.get(), 2).unlockedBy("has_mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).save(consumer, "mars_deepslate_brick_slab_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_DEEPSLATE_BRICK_STAIRS.get(), 4).pattern("X  ").pattern("XX ").pattern("XXX").define('X', BlockRegistry.MARS_DEEPSLATE_BRICKS.get()).group("celestialexploration").unlockedBy("has_mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_DEEPSLATE_TAG), BlockRegistry.MARS_DEEPSLATE_BRICK_STAIRS.get(), 1).unlockedBy("has_mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).save(consumer, "mars_deepslate_brick_stairs_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_DEEPSLATE_BRICK_WALL.get(), 6).pattern("XXX").pattern("XXX").define('X', BlockRegistry.MARS_DEEPSLATE_BRICKS.get()).group("celestialexploration").unlockedBy("has_mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_DEEPSLATE_TAG), BlockRegistry.MARS_DEEPSLATE_BRICK_WALL.get(), 1).unlockedBy("has_mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).save(consumer, "mars_deepslate_brick_wall_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_DEEPSLATE_TILES.get(), 4).pattern("XX").pattern("XX").define('X', BlockRegistry.MARS_DEEPSLATE.get()).group("celestialexploration").unlockedBy("mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_DEEPSLATE_TAG), BlockRegistry.MARS_DEEPSLATE_TILES.get(), 1).unlockedBy("has_mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).group("celestialexploration").save(consumer, "mars_deepslate_tiles_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_DEEPSLATE_TILE_SLAB.get(), 6).pattern("XXX").define('X', BlockRegistry.MARS_DEEPSLATE_TILES.get()).group("celestialexploration").unlockedBy("has_mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_DEEPSLATE_TAG), BlockRegistry.MARS_DEEPSLATE_TILE_SLAB.get(), 2).unlockedBy("has_mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).save(consumer, "mars_deepslate_tile_slab_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_DEEPSLATE_TILE_STAIRS.get(), 4).pattern("X  ").pattern("XX ").pattern("XXX").define('X', BlockRegistry.MARS_DEEPSLATE_TILES.get()).group("celestialexploration").unlockedBy("has_mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_DEEPSLATE_TAG), BlockRegistry.MARS_DEEPSLATE_TILE_STAIRS.get(), 1).unlockedBy("has_mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).save(consumer, "mars_deepslate_tile_stairs_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_DEEPSLATE_TILE_WALL.get(), 6).pattern("XXX").pattern("XXX").define('X', BlockRegistry.MARS_DEEPSLATE_TILES.get()).group("celestialexploration").unlockedBy("has_mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_DEEPSLATE_TAG), BlockRegistry.MARS_DEEPSLATE_TILE_WALL.get(), 1).unlockedBy("has_mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).save(consumer, "mars_deepslate_tile_wall_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_POLISHED_DEEPSLATE.get(), 4).pattern("XX").pattern("XX").define('X', BlockRegistry.MARS_DEEPSLATE.get()).group("celestialexploration").unlockedBy("mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_DEEPSLATE_TAG), BlockRegistry.MARS_POLISHED_DEEPSLATE.get(), 1).unlockedBy("has_mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).group("celestialexploration").save(consumer, "mars_polished_deepslate_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_POLISHED_DEEPSLATE_SLAB.get(), 6).pattern("XXX").define('X', BlockRegistry.MARS_POLISHED_DEEPSLATE.get()).group("celestialexploration").unlockedBy("has_mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_DEEPSLATE_TAG), BlockRegistry.MARS_POLISHED_DEEPSLATE_SLAB.get(), 2).unlockedBy("has_mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).save(consumer, "mars_polished_deepslate_slab_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_POLISHED_DEEPSLATE_STAIRS.get(), 4).pattern("X  ").pattern("XX ").pattern("XXX").define('X', BlockRegistry.MARS_POLISHED_DEEPSLATE.get()).group("celestialexploration").unlockedBy("has_mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_DEEPSLATE_TAG), BlockRegistry.MARS_POLISHED_DEEPSLATE_STAIRS.get(), 1).unlockedBy("has_mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).save(consumer, "mars_polished_deepslate_stairs_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_POLISHED_DEEPSLATE_WALL.get(), 6).pattern("XXX").pattern("XXX").define('X', BlockRegistry.MARS_POLISHED_DEEPSLATE.get()).group("celestialexploration").unlockedBy("has_mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_DEEPSLATE_TAG), BlockRegistry.MARS_POLISHED_DEEPSLATE_WALL.get(), 1).unlockedBy("has_mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).save(consumer, "mars_polished_deepslate_wall_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.CHISELED_MARS_DEEPSLATE_BRICKS.get()).pattern("X").pattern("X").define('X', BlockRegistry.MARS_DEEPSLATE_BRICK_SLAB.get()).group("celestialexploration").unlockedBy("has_mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.MARS_DEEPSLATE_TAG), BlockRegistry.CHISELED_MARS_DEEPSLATE_BRICKS.get(), 1).unlockedBy("has_mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).save(consumer, "chiseled_mars_deepslate_bricks_stonecutting");
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.MARS_STONE_BUTTON.get()).requires(ItemRegistry.MARS_STONE.get()).group("celestialexploration").unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MARS_STONE.get())).save(consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_STONE_PRESSURE_PLATE.get()).pattern("XX").define('X', BlockRegistry.MARS_STONE.get()).group("celestialexploration").unlockedBy("mars_stone", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_STONE.get())).save(consumer);
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.MARS_DEEPSLATE_BUTTON.get()).requires(ItemRegistry.MARS_DEEPSLATE.get()).group("celestialexploration").unlockedBy("mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MARS_DEEPSLATE.get())).save(consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.MARS_DEEPSLATE_PRESSURE_PLATE.get()).pattern("XX").define('X', BlockRegistry.MARS_DEEPSLATE.get()).group("celestialexploration").unlockedBy("mars_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MARS_DEEPSLATE.get())).save(consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.COMPRESSED_MARS_COBBLESTONE.get()).pattern("XXX").pattern("XXX").pattern("XXX").define('X', BlockRegistry.MARS_COBBLESTONE.get()).group("celestialexploration").unlockedBy("has_mars_cobblestone", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MARS_COBBLESTONE.get())).save(consumer);
+		ShapelessRecipeBuilder.shapeless(BlockRegistry.MARS_COBBLESTONE.get(), 9).requires(BlockRegistry.COMPRESSED_MARS_COBBLESTONE.get()).group("celestialexploration").unlockedBy("has_mars_cobblestone", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MARS_COBBLESTONE.get())).save(consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.COMPRESSED_MARS_COBBLED_DEEPSLATE.get()).pattern("XXX").pattern("XXX").pattern("XXX").define('X', BlockRegistry.MARS_COBBLED_DEEPSLATE.get()).group("celestialexploration").unlockedBy("has_mars_cobbled_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MARS_COBBLED_DEEPSLATE.get())).save(consumer);
+		ShapelessRecipeBuilder.shapeless(BlockRegistry.MARS_COBBLED_DEEPSLATE.get(), 9).requires(BlockRegistry.COMPRESSED_MARS_COBBLED_DEEPSLATE.get()).group("celestialexploration").unlockedBy("has_mars_cobbled_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MARS_COBBLED_DEEPSLATE.get())).save(consumer);
 
 
 		/**METEOR*/
-//		SimpleCookingRecipeBuilder.smelting(Ingredient.of(BlockRegistry.METEOR.get()), ItemRegistry.METEOR_INGOT.get(), 1.0F, 100)
-//				.unlockedBy("meteor", has(BlockRegistry.METEOR.get())).save(consumer, "meteor");
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.METEOR_BRICKS.get(), 4)
-				.pattern("XX")
-				.pattern("XX")
-				.define('X', ItemRegistry.METEOR.get())
-				.group("celestialexploration").unlockedBy("meteor", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.METEOR.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.METEOR_TAG), BlockRegistry.METEOR_BRICKS.get(), 1)
-				.unlockedBy("meteor", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.METEOR.get())).save(consumer, "meteor_bricks_stonecutting");
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.METEOR_BRICK_SLAB.get(), 6)
-				.pattern("XXX")
-				.define('X', ItemRegistry.METEOR_BRICKS.get())
-				.group("celestialexploration").unlockedBy("meteor", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.METEOR.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.METEOR_TAG), BlockRegistry.METEOR_BRICK_SLAB.get(), 2)
-				.unlockedBy("meteor", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.METEOR.get())).save(consumer, "meteor_brick_slab_stonecutting");
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.METEOR_BRICK_STAIRS.get(), 4)
-				.pattern("X  ")
-				.pattern("XX ")
-				.pattern("XXX")
-				.define('X', ItemRegistry.METEOR_BRICKS.get())
-				.group("celestialexploration").unlockedBy("meteor", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.METEOR.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.METEOR_TAG), BlockRegistry.METEOR_BRICK_STAIRS.get(), 1)
-				.unlockedBy("meteor", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.METEOR.get())).save(consumer, "meteor_brick_stairs_stonecutting");
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.METEOR_BRICK_WALL.get(), 6)
-				.pattern("XXX")
-				.pattern("XXX")
-				.define('X', BlockRegistry.METEOR_BRICKS.get())
-				.group("celestialexploration").unlockedBy("meteor", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.METEOR.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.METEOR_TAG), BlockRegistry.METEOR_BRICK_WALL.get(), 1)
-				.unlockedBy("meteor", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.METEOR.get())).save(consumer, "meteor_brick_wall_stonecutting");
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.CHISELED_METEOR_BRICKS.get())
-				.pattern("X")
-				.pattern("X")
-				.define('X', BlockRegistry.METEOR_BRICK_SLAB.get())
-				.group("celestialexploration").unlockedBy("meteor", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.METEOR.get())).save(consumer);
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.METEOR_TAG), BlockRegistry.CHISELED_METEOR_BRICKS.get(), 1)
-				.unlockedBy("meteor", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.METEOR_BRICKS.get())).save(consumer, "chiseled_meteor_bricks_stonecutting");
-
-		ShapelessRecipeBuilder.shapeless(ItemRegistry.METEOR_BUTTON.get())
-				.requires(ItemRegistry.METEOR.get())
-				.group("celestialexploration").unlockedBy("meteor", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.METEOR.get())).save(consumer);
-
-		ShapedRecipeBuilder.shaped(BlockRegistry.METEOR_PRESSURE_PLATE.get())
-				.pattern("XX")
-				.define('X', BlockRegistry.METEOR.get())
-				.group("celestialexploration").unlockedBy("meteor", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.METEOR.get())).save(consumer);
-
+//		SimpleCookingRecipeBuilder.smelting(Ingredient.of(BlockRegistry.METEOR.get()), ItemRegistry.METEOR_INGOT.get(), 1.0F, 100).unlockedBy("meteor", has(BlockRegistry.METEOR.get())).save(consumer, "meteor");
+		ShapedRecipeBuilder.shaped(BlockRegistry.METEOR_BRICKS.get(), 4).pattern("XX").pattern("XX").define('X', ItemRegistry.METEOR.get()).group("celestialexploration").unlockedBy("meteor", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.METEOR.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.METEOR_TAG), BlockRegistry.METEOR_BRICKS.get(), 1).unlockedBy("meteor", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.METEOR.get())).save(consumer, "meteor_bricks_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.METEOR_BRICK_SLAB.get(), 6).pattern("XXX").define('X', ItemRegistry.METEOR_BRICKS.get()).group("celestialexploration").unlockedBy("meteor", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.METEOR.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.METEOR_TAG), BlockRegistry.METEOR_BRICK_SLAB.get(), 2).unlockedBy("meteor", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.METEOR.get())).save(consumer, "meteor_brick_slab_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.METEOR_BRICK_STAIRS.get(), 4).pattern("X  ").pattern("XX ").pattern("XXX").define('X', ItemRegistry.METEOR_BRICKS.get()).group("celestialexploration").unlockedBy("meteor", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.METEOR.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.METEOR_TAG), BlockRegistry.METEOR_BRICK_STAIRS.get(), 1).unlockedBy("meteor", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.METEOR.get())).save(consumer, "meteor_brick_stairs_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.METEOR_BRICK_WALL.get(), 6).pattern("XXX").pattern("XXX").define('X', BlockRegistry.METEOR_BRICKS.get()).group("celestialexploration").unlockedBy("meteor", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.METEOR.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.METEOR_TAG), BlockRegistry.METEOR_BRICK_WALL.get(), 1).unlockedBy("meteor", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.METEOR.get())).save(consumer, "meteor_brick_wall_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.CHISELED_METEOR_BRICKS.get()).pattern("X").pattern("X").define('X', BlockRegistry.METEOR_BRICK_SLAB.get()).group("celestialexploration").unlockedBy("meteor", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.METEOR.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.METEOR_TAG), BlockRegistry.CHISELED_METEOR_BRICKS.get(), 1).unlockedBy("meteor", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.METEOR_BRICKS.get())).save(consumer, "chiseled_meteor_bricks_stonecutting");
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.METEOR_BUTTON.get()).requires(ItemRegistry.METEOR.get()).group("celestialexploration").unlockedBy("meteor", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.METEOR.get())).save(consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.METEOR_PRESSURE_PLATE.get()).pattern("XX").define('X', BlockRegistry.METEOR.get()).group("celestialexploration").unlockedBy("meteor", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.METEOR.get())).save(consumer);
 
 		/**STEEL*/
-		ShapelessRecipeBuilder.shapeless(ItemRegistry.STEEL_INGOT.get(), 2)
-				.requires(Items.COAL)
-				.requires(Items.IRON_INGOT)
-				.requires(Items.COAL)
-				.requires(Items.IRON_INGOT)
-				.group("celestialexploration").unlockedBy("iron", InventoryChangeTrigger.TriggerInstance.hasItems(Items.IRON_INGOT)).save(consumer);
-
-		ShapedRecipeBuilder.shaped(ItemRegistry.STEEL_ROD.get(), 4)
-				.pattern("X")
-				.pattern("X")
-				.pattern("X")
-				.define('X', ItemRegistry.STEEL_INGOT.get())
-				.group("celestialexploration").unlockedBy("steel", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get())).save(consumer);
-
-		ShapedRecipeBuilder.shaped(ItemRegistry.STEEL_BLOCK.get())
-				.pattern("XXX")
-				.pattern("XXX")
-				.pattern("XXX")
-				.define('X', ItemRegistry.STEEL_INGOT.get())
-				.group("celestialexploration").unlockedBy("steel", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get())).save(consumer);
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.STEEL_INGOT.get(), 2).requires(Items.COAL).requires(Items.IRON_INGOT).requires(Items.IRON_INGOT).group("celestialexploration").unlockedBy("iron", InventoryChangeTrigger.TriggerInstance.hasItems(Items.IRON_INGOT)).save(consumer);
+		ShapedRecipeBuilder.shaped(ItemRegistry.STEEL_ROD.get(), 4).pattern("X").pattern("X").pattern("X").define('X', ItemRegistry.STEEL_INGOT.get()).group("celestialexploration").unlockedBy("steel", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get())).save(consumer);
+		ShapedRecipeBuilder.shaped(ItemRegistry.STEEL_BLOCK.get()).pattern("XXX").pattern("XXX").pattern("XXX").define('X', ItemRegistry.STEEL_INGOT.get()).group("celestialexploration").unlockedBy("steel", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get())).save(consumer);
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.STEEL_INGOT.get(), 9).requires(ItemRegistry.STEEL_BLOCK.get()).group("celestialexploration").unlockedBy("steel", InventoryChangeTrigger.TriggerInstance.hasItems(Items.IRON_INGOT)).save(consumer, "steel_ingot_from_steel_block");
+		ShapedRecipeBuilder.shaped(ItemRegistry.STEEL_INGOT.get()).pattern("XXX").pattern("XXX").pattern("XXX").define('X', ItemRegistry.STEEL_NUGGET.get()).group("celestialexploration").unlockedBy("steel", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get())).save(consumer, "steel_ingot_from_steel_nuggets");
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.STEEL_NUGGET.get(), 9).requires(ItemRegistry.STEEL_INGOT.get()).group("celestialexploration").unlockedBy("steel", InventoryChangeTrigger.TriggerInstance.hasItems(Items.IRON_INGOT)).save(consumer);
+		ShapedRecipeBuilder.shaped(ItemRegistry.STEEL_WOOL.get(), 4).pattern(" X ").pattern("XSX").pattern(" X ").define('X', ItemRegistry.STEEL_NUGGET.get()).define('S', Items.STRING).group("celestialexploration").unlockedBy("steel", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get())).save(consumer);
 
 		/**SHUTTLE-ITEMS*/
-		ShapedRecipeBuilder.shaped(BlockRegistry.STEEL_FRAME.get(), 6)
-				.pattern("X X")
-				.pattern("XXX")
-				.pattern("X X")
-				.define('X', ItemRegistry.STEEL_ROD.get())
-				.group("celestialexploration").unlockedBy("steel", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get())).save(consumer);
-		ShapedRecipeBuilder.shaped(ItemRegistry.SHUTTLE_FRAME.get())
-				.pattern("CSC")
-				.pattern("S S")
-				.pattern("CSC")
-				.define('C', ItemRegistry.CERAMIC_TILE.get())
-				.define('S', ItemRegistry.STEEL_INGOT.get())
-				.group("celestialexploration").unlockedBy("steel", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get())).save(consumer);
-		ShapedRecipeBuilder.shaped(ItemRegistry.NOSE_CONE.get())
-				.pattern(" C ")
-				.pattern("CSC")
-				.define('C', ItemRegistry.CERAMIC_TILE.get())
-				.define('S', ItemRegistry.STEEL_BLOCK.get())
-				.group("celestialexploration").unlockedBy("steel", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get())).save(consumer);
-		ShapedRecipeBuilder.shaped(ItemRegistry.SHUTTLE_CABIN.get())
-				.pattern(" N ")
-				.pattern("CGC")
-				.pattern("XSX")
-				.define('N', ItemRegistry.NOSE_CONE.get())
-				.define('C', ItemRegistry.CERAMIC_TILE.get())
-				.define('G', Items.GLASS)
-				.define('S', ItemRegistry.STEEL_BLOCK.get())
-				.define('X', Tags.Items.CHESTS)
-				.group("celestialexploration").unlockedBy("steel", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get())).save(consumer);
-		ShapedRecipeBuilder.shaped(ItemRegistry.LOX_TANK.get())
-				.pattern("sSs")
-				.pattern("G G")
-				.pattern("sSs")
-				.define('S', ItemRegistry.STEEL_BLOCK.get())
-				.define('s', ItemRegistry.STEEL_INGOT.get())
-				.define('G', Tags.Items.GLASS)
-				.group("celestialexploration").unlockedBy("steel", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get())).save(consumer);
+//		ShapedRecipeBuilder.shaped(BlockRegistry.STEEL_FRAME.get(), 6).pattern("X X").pattern("XXX").pattern("X X").define('X', ItemRegistry.STEEL_ROD.get()).group("celestialexploration").unlockedBy("steel", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get())).save(consumer);
+//		ShapedRecipeBuilder.shaped(ItemRegistry.SHUTTLE_FRAME.get()).pattern("CSC").pattern("S S").pattern("CSC").define('C', ItemRegistry.CERAMIC_TILE.get()).define('S', ItemRegistry.STEEL_INGOT.get()).group("celestialexploration").unlockedBy("steel", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get())).save(consumer);
+//		ShapedRecipeBuilder.shaped(ItemRegistry.NOSE_CONE.get()).pattern(" C ").pattern("CSC").define('C', ItemRegistry.CERAMIC_TILE.get()).define('S', ItemRegistry.STEEL_BLOCK.get()).group("celestialexploration").unlockedBy("steel", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get())).save(consumer);
+//		ShapedRecipeBuilder.shaped(ItemRegistry.SHUTTLE_CABIN.get()).pattern(" N ").pattern("CGC").pattern("XSX").define('N', ItemRegistry.NOSE_CONE.get()).define('C', ItemRegistry.CERAMIC_TILE.get()).define('G', Items.GLASS).define('S', ItemRegistry.STEEL_BLOCK.get()).define('X', Tags.Items.CHESTS).group("celestialexploration").unlockedBy("steel", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get())).save(consumer);
+		ShapedRecipeBuilder.shaped(ItemRegistry.LOX_TANK.get()).pattern("sSs").pattern("G G").pattern("sSs").define('S', ItemRegistry.STEEL_BLOCK.get()).define('s', ItemRegistry.STEEL_INGOT.get()).define('G', Tags.Items.GLASS).group("celestialexploration").unlockedBy("steel", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get())).save(consumer);
+//		ShapedRecipeBuilder.shaped(ItemRegistry.SHUTTLE_ENGINE.get()).pattern("sRs").pattern("SKS").pattern("TTT").define('s', ItemRegistry.STEEL_INGOT.get()).define('S', ItemRegistry.STEEL_BLOCK.get()).define('K', ItemRegistry.LOX_TANK.get()).define('R', Items.REDSTONE).define('T', Items.REDSTONE_TORCH).group("celestialexploration").unlockedBy("steel", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get())).save(consumer);
+//		ShapedRecipeBuilder.shaped(ItemRegistry.WHITE_SHUTTLE.get()).pattern("C").pattern("F").pattern("E").define('C', ItemRegistry.SHUTTLE_CABIN.get()).define('F', ItemRegistry.SHUTTLE_FRAME.get()).define('E', ItemRegistry.SHUTTLE_ENGINE.get()).group("celestialexploration").unlockedBy("steel", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get())).save(consumer);
 
-		ShapedRecipeBuilder.shaped(ItemRegistry.SHUTTLE_ENGINE.get())
-				.pattern("sRs")
-				.pattern("SKS")
-				.pattern("TTT")
-				.define('s', ItemRegistry.STEEL_INGOT.get())
-				.define('S', ItemRegistry.STEEL_BLOCK.get())
-				.define('K', ItemRegistry.LOX_TANK.get())
-				.define('R', Items.REDSTONE)
-				.define('T', Items.REDSTONE_TORCH)
-				.group("celestialexploration").unlockedBy("steel", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get())).save(consumer);
-
-		ShapedRecipeBuilder.shaped(ItemRegistry.WHITE_SHUTTLE.get())
-				.pattern("C")
-				.pattern("F")
-				.pattern("E")
-				.define('C', ItemRegistry.SHUTTLE_CABIN.get())
-				.define('F', ItemRegistry.SHUTTLE_FRAME.get())
-				.define('E', ItemRegistry.SHUTTLE_ENGINE.get())
-				.group("celestialexploration").unlockedBy("steel", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get())).save(consumer);
-
-		ShapelessRecipeBuilder.shapeless(ItemRegistry.BLACK_SHUTTLE.get())
-				.requires(ItemRegistry.WHITE_SHUTTLE.get())
-				.requires(Items.BLACK_DYE)
-				.group("celestialexploration").unlockedBy("shuttle", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.WHITE_SHUTTLE.get())).save(consumer);
-
-		ShapelessRecipeBuilder.shapeless(ItemRegistry.GREY_SHUTTLE.get())
-				.requires(ItemRegistry.WHITE_SHUTTLE.get())
-				.requires(Items.GRAY_DYE)
-				.group("celestialexploration").unlockedBy("shuttle", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.WHITE_SHUTTLE.get())).save(consumer);
-
-		ShapelessRecipeBuilder.shapeless(ItemRegistry.LIGHT_GREY_SHUTTLE.get())
-				.requires(ItemRegistry.WHITE_SHUTTLE.get())
-				.requires(Items.LIGHT_GRAY_DYE)
-				.group("celestialexploration").unlockedBy("shuttle", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.WHITE_SHUTTLE.get())).save(consumer);
-
-		ShapelessRecipeBuilder.shapeless(ItemRegistry.PINK_SHUTTLE.get())
-				.requires(ItemRegistry.WHITE_SHUTTLE.get())
-				.requires(Items.PINK_DYE)
-				.group("celestialexploration").unlockedBy("shuttle", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.WHITE_SHUTTLE.get())).save(consumer);
-
-		ShapelessRecipeBuilder.shapeless(ItemRegistry.RED_SHUTTLE.get())
-				.requires(ItemRegistry.WHITE_SHUTTLE.get())
-				.requires(Items.RED_DYE)
-				.group("celestialexploration").unlockedBy("shuttle", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.WHITE_SHUTTLE.get())).save(consumer);
-
-		ShapelessRecipeBuilder.shapeless(ItemRegistry.ORANGE_SHUTTLE.get())
-				.requires(ItemRegistry.WHITE_SHUTTLE.get())
-				.requires(Items.ORANGE_DYE)
-				.group("celestialexploration").unlockedBy("shuttle", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.WHITE_SHUTTLE.get())).save(consumer);
-
-		ShapelessRecipeBuilder.shapeless(ItemRegistry.YELLOW_SHUTTLE.get())
-				.requires(ItemRegistry.WHITE_SHUTTLE.get())
-				.requires(Items.YELLOW_DYE)
-				.group("celestialexploration").unlockedBy("shuttle", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.WHITE_SHUTTLE.get())).save(consumer);
-
-		ShapelessRecipeBuilder.shapeless(ItemRegistry.LIME_SHUTTLE.get())
-				.requires(ItemRegistry.WHITE_SHUTTLE.get())
-				.requires(Items.LIME_DYE)
-				.group("celestialexploration").unlockedBy("shuttle", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.WHITE_SHUTTLE.get())).save(consumer);
-
-		ShapelessRecipeBuilder.shapeless(ItemRegistry.GREEN_SHUTTLE.get())
-				.requires(ItemRegistry.WHITE_SHUTTLE.get())
-				.requires(Items.GREEN_DYE)
-				.group("celestialexploration").unlockedBy("shuttle", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.WHITE_SHUTTLE.get())).save(consumer);
-
-		ShapelessRecipeBuilder.shapeless(ItemRegistry.CYAN_SHUTTLE.get())
-				.requires(ItemRegistry.WHITE_SHUTTLE.get())
-				.requires(Items.CYAN_DYE)
-				.group("celestialexploration").unlockedBy("shuttle", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.WHITE_SHUTTLE.get())).save(consumer);
-
-		ShapelessRecipeBuilder.shapeless(ItemRegistry.BLUE_SHUTTLE.get())
-				.requires(ItemRegistry.WHITE_SHUTTLE.get())
-				.requires(Items.BLUE_DYE)
-				.group("celestialexploration").unlockedBy("shuttle", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.WHITE_SHUTTLE.get())).save(consumer);
-
-		ShapelessRecipeBuilder.shapeless(ItemRegistry.LIGHT_BLUE_SHUTTLE.get())
-				.requires(ItemRegistry.WHITE_SHUTTLE.get())
-				.requires(Items.LIGHT_BLUE_DYE)
-				.group("celestialexploration").unlockedBy("shuttle", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.WHITE_SHUTTLE.get())).save(consumer);
-
-		ShapelessRecipeBuilder.shapeless(ItemRegistry.PURPLE_SHUTTLE.get())
-				.requires(ItemRegistry.WHITE_SHUTTLE.get())
-				.requires(Items.PURPLE_DYE)
-				.group("celestialexploration").unlockedBy("shuttle", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.WHITE_SHUTTLE.get())).save(consumer);
-
-		ShapelessRecipeBuilder.shapeless(ItemRegistry.MAGENTA_SHUTTLE.get())
-				.requires(ItemRegistry.WHITE_SHUTTLE.get())
-				.requires(Items.MAGENTA_DYE)
-				.group("celestialexploration").unlockedBy("shuttle", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.WHITE_SHUTTLE.get())).save(consumer);
-
-		ShapelessRecipeBuilder.shapeless(ItemRegistry.BROWN_SHUTTLE.get())
-				.requires(ItemRegistry.WHITE_SHUTTLE.get())
-				.requires(Items.BROWN_DYE)
-				.group("celestialexploration").unlockedBy("shuttle", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.WHITE_SHUTTLE.get())).save(consumer);
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.BLACK_SHUTTLE.get()).requires(ItemRegistry.WHITE_SHUTTLE.get()).requires(Items.BLACK_DYE).group("celestialexploration").unlockedBy("shuttle", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.WHITE_SHUTTLE.get())).save(consumer);
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.GREY_SHUTTLE.get()).requires(ItemRegistry.WHITE_SHUTTLE.get()).requires(Items.GRAY_DYE).group("celestialexploration").unlockedBy("shuttle", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.WHITE_SHUTTLE.get())).save(consumer);
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.LIGHT_GREY_SHUTTLE.get()).requires(ItemRegistry.WHITE_SHUTTLE.get()).requires(Items.LIGHT_GRAY_DYE).group("celestialexploration").unlockedBy("shuttle", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.WHITE_SHUTTLE.get())).save(consumer);
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.PINK_SHUTTLE.get()).requires(ItemRegistry.WHITE_SHUTTLE.get()).requires(Items.PINK_DYE).group("celestialexploration").unlockedBy("shuttle", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.WHITE_SHUTTLE.get())).save(consumer);
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.RED_SHUTTLE.get()).requires(ItemRegistry.WHITE_SHUTTLE.get()).requires(Items.RED_DYE).group("celestialexploration").unlockedBy("shuttle", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.WHITE_SHUTTLE.get())).save(consumer);
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.ORANGE_SHUTTLE.get()).requires(ItemRegistry.WHITE_SHUTTLE.get()).requires(Items.ORANGE_DYE).group("celestialexploration").unlockedBy("shuttle", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.WHITE_SHUTTLE.get())).save(consumer);
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.YELLOW_SHUTTLE.get()).requires(ItemRegistry.WHITE_SHUTTLE.get()).requires(Items.YELLOW_DYE).group("celestialexploration").unlockedBy("shuttle", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.WHITE_SHUTTLE.get())).save(consumer);
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.LIME_SHUTTLE.get()).requires(ItemRegistry.WHITE_SHUTTLE.get()).requires(Items.LIME_DYE).group("celestialexploration").unlockedBy("shuttle", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.WHITE_SHUTTLE.get())).save(consumer);
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.GREEN_SHUTTLE.get()).requires(ItemRegistry.WHITE_SHUTTLE.get()).requires(Items.GREEN_DYE).group("celestialexploration").unlockedBy("shuttle", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.WHITE_SHUTTLE.get())).save(consumer);
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.CYAN_SHUTTLE.get()).requires(ItemRegistry.WHITE_SHUTTLE.get()).requires(Items.CYAN_DYE).group("celestialexploration").unlockedBy("shuttle", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.WHITE_SHUTTLE.get())).save(consumer);
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.BLUE_SHUTTLE.get()).requires(ItemRegistry.WHITE_SHUTTLE.get()).requires(Items.BLUE_DYE).group("celestialexploration").unlockedBy("shuttle", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.WHITE_SHUTTLE.get())).save(consumer);
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.LIGHT_BLUE_SHUTTLE.get()).requires(ItemRegistry.WHITE_SHUTTLE.get()).requires(Items.LIGHT_BLUE_DYE).group("celestialexploration").unlockedBy("shuttle", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.WHITE_SHUTTLE.get())).save(consumer);
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.PURPLE_SHUTTLE.get()).requires(ItemRegistry.WHITE_SHUTTLE.get()).requires(Items.PURPLE_DYE).group("celestialexploration").unlockedBy("shuttle", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.WHITE_SHUTTLE.get())).save(consumer);
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.MAGENTA_SHUTTLE.get()).requires(ItemRegistry.WHITE_SHUTTLE.get()).requires(Items.MAGENTA_DYE).group("celestialexploration").unlockedBy("shuttle", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.WHITE_SHUTTLE.get())).save(consumer);
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.BROWN_SHUTTLE.get()).requires(ItemRegistry.WHITE_SHUTTLE.get()).requires(Items.BROWN_DYE).group("celestialexploration").unlockedBy("shuttle", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.WHITE_SHUTTLE.get())).save(consumer);
 
 		/**ARMOR**/
-		ShapedRecipeBuilder.shaped(ItemRegistry.STEEL_HELMET.get())
-				.pattern("XXX")
-				.pattern("X X")
-				.define('X', ItemRegistry.STEEL_INGOT.get())
-				.group("celestialexploration")
-				.unlockedBy("steel_ingot", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get()))
-				.save(consumer);
-		ShapedRecipeBuilder.shaped(ItemRegistry.STEEL_CHESTPLATE.get())
-				.pattern("X X")
-				.pattern("XXX")
-				.pattern("XXX")
-				.define('X', ItemRegistry.STEEL_INGOT.get())
-				.group("celestialexploration").unlockedBy("steel_ingot", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get())).save(consumer);
-		ShapedRecipeBuilder.shaped(ItemRegistry.STEEL_LEGGINGS.get())
-				.pattern("XXX")
-				.pattern("X X")
-				.pattern("X X")
-				.define('X', ItemRegistry.STEEL_INGOT.get())
-				.group("celestialexploration").unlockedBy("steel_ingot", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get())).save(consumer);
-		ShapedRecipeBuilder.shaped(ItemRegistry.STEEL_BOOTS.get())
-				.pattern("X X")
-				.pattern("X X")
-				.define('X', ItemRegistry.STEEL_INGOT.get())
-				.group("celestialexploration").unlockedBy("steel_ingot", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get())).save(consumer);
-		ShapedRecipeBuilder.shaped(ItemRegistry.SPACE_SUIT_HELMET.get())
-				.pattern("XXX")
-				.pattern("XGX")
-				.define('X', ItemRegistry.STEEL_INGOT.get())
-				.define('G', Items.GLASS)
-				.group("celestialexploration").unlockedBy("steel_ingot", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get())).save(consumer);
-		ShapedRecipeBuilder.shaped(ItemRegistry.SPACE_SUIT_CHESTPLATE.get())
-				.pattern("X X")
-				.pattern("SSS")
-				.pattern("XSX")
-				.define('S', ItemRegistry.STEEL_INGOT.get())
-				.define('X', Items.LEATHER)
-				.group("celestialexploration").unlockedBy("steel_ingot", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get())).save(consumer);
-		ShapedRecipeBuilder.shaped(ItemRegistry.SPACE_SUIT_LEGGINGS.get())
-				.pattern("XSX")
-				.pattern("S S")
-				.pattern("X X")
-				.define('S', ItemRegistry.STEEL_INGOT.get())
-				.define('X', Items.LEATHER)
-				.group("celestialexploration").unlockedBy("steel_ingot", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get())).save(consumer);
-		ShapedRecipeBuilder.shaped(ItemRegistry.SPACE_SUIT_BOOTS.get())
-				.pattern("X X")
-				.pattern("S S")
-				.define('S', ItemRegistry.STEEL_INGOT.get())
-				.define('X', Items.LEATHER)
-				.group("celestialexploration").unlockedBy("steel_ingot", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get())).save(consumer);
+		ShapedRecipeBuilder.shaped(ItemRegistry.STEEL_HELMET.get()).pattern("XXX").pattern("X X").define('X', ItemRegistry.STEEL_INGOT.get()).group("celestialexploration").unlockedBy("steel_ingot", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get())).save(consumer);
+		ShapedRecipeBuilder.shaped(ItemRegistry.STEEL_CHESTPLATE.get()).pattern("X X").pattern("XXX").pattern("XXX").define('X', ItemRegistry.STEEL_INGOT.get()).group("celestialexploration").unlockedBy("steel_ingot", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get())).save(consumer);
+		ShapedRecipeBuilder.shaped(ItemRegistry.STEEL_LEGGINGS.get()).pattern("XXX").pattern("X X").pattern("X X").define('X', ItemRegistry.STEEL_INGOT.get()).group("celestialexploration").unlockedBy("steel_ingot", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get())).save(consumer);
+		ShapedRecipeBuilder.shaped(ItemRegistry.STEEL_BOOTS.get()).pattern("X X").pattern("X X").define('X', ItemRegistry.STEEL_INGOT.get()).group("celestialexploration").unlockedBy("steel_ingot", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get())).save(consumer);
+		ShapedRecipeBuilder.shaped(ItemRegistry.SPACE_SUIT_HELMET.get()).pattern("XXX").pattern("XGX").define('X', ItemRegistry.STEEL_INGOT.get()).define('G', Items.GLASS).group("celestialexploration").unlockedBy("steel_ingot", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get())).save(consumer);
+		ShapedRecipeBuilder.shaped(ItemRegistry.SPACE_SUIT_CHESTPLATE.get()).pattern("X X").pattern("SSS").pattern("XSX").define('S', ItemRegistry.STEEL_INGOT.get()).define('X', Items.LEATHER).group("celestialexploration").unlockedBy("steel_ingot", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get())).save(consumer);
+		ShapedRecipeBuilder.shaped(ItemRegistry.SPACE_SUIT_LEGGINGS.get()).pattern("XSX").pattern("S S").pattern("X X").define('S', ItemRegistry.STEEL_INGOT.get()).define('X', Items.LEATHER).group("celestialexploration").unlockedBy("steel_ingot", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get())).save(consumer);
+		ShapedRecipeBuilder.shaped(ItemRegistry.SPACE_SUIT_BOOTS.get()).pattern("X X").pattern("S S").define('S', ItemRegistry.STEEL_INGOT.get()).define('X', Items.LEATHER).group("celestialexploration").unlockedBy("steel_ingot", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get())).save(consumer);
 
 		/**MISC**/
-		ShapedRecipeBuilder.shaped(ItemRegistry.OXYGEN_COMPRESSOR.get())
-				.pattern("SSS")
-				.pattern("CGC")
-				.pattern("CRC")
-				.define('S', ItemRegistry.STEEL_INGOT.get())
-				.define('C', Tags.Items.COBBLESTONE)
-				.define('G', ItemRegistry.LOX_TANK.get())
-				.define('R', Items.REDSTONE)
-				.group("celestialexploration").unlockedBy("steel_ingot", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get())).save(consumer);
+		ShapedRecipeBuilder.shaped(ItemRegistry.OXYGEN_COMPRESSOR.get()).pattern("SSS").pattern("CGC").pattern("CRC").define('S', ItemRegistry.STEEL_INGOT.get()).define('C', Tags.Items.COBBLESTONE).define('G', ItemRegistry.LOX_TANK.get()).define('R', Items.REDSTONE).group("celestialexploration").unlockedBy("steel_ingot", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.STEEL_INGOT.get())).save(consumer);
 
-		ShapelessRecipeBuilder.shapeless(ItemRegistry.LUMINOUS_BLUE_GLASS.get())
-				.requires(Tags.Items.GLASS)
-				.requires(ItemRegistry.MOON_DUST.get())
-				.group("celestialexploration").unlockedBy("moon_dust", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MOON_DUST.get())).save(consumer);
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.LUMINOUS_BLUE_GLASS.get()).requires(Tags.Items.GLASS).requires(ItemRegistry.MOON_DUST.get()).group("celestialexploration").unlockedBy("moon_dust", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MOON_DUST.get())).save(consumer);
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.LUMINOUS_WHITE_GLASS.get()).requires(ItemRegistry.LUMINOUS_BLUE_GLASS.get()).requires(ItemRegistry.LUNAR_GOO.get()).group("celestialexploration").unlockedBy("moon_dust", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MOON_DUST.get())).save(consumer);
+		ShapedRecipeBuilder.shaped(ItemRegistry.LUMINOUS_BLUE_GLASS_PANE.get(), 16).pattern("XXX").pattern("XXX").define('X', ItemRegistry.LUMINOUS_BLUE_GLASS.get()).group("celestialexploration").unlockedBy("moon_dust", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MOON_DUST.get())).save(consumer);
+		ShapedRecipeBuilder.shaped(ItemRegistry.LUMINOUS_WHITE_GLASS_PANE.get(), 16).pattern("XXX").pattern("XXX").define('X', ItemRegistry.LUMINOUS_WHITE_GLASS.get()).group("celestialexploration").unlockedBy("moon_dust", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MOON_DUST.get())).save(consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.REINFORCED_GLASS.get(), 4).pattern(" X ").pattern("XCX").pattern(" X ").define('X', Blocks.GLASS).define('C', Items.IRON_INGOT).group("celestialexploration").unlockedBy("glass", InventoryChangeTrigger.TriggerInstance.hasItems(Blocks.GLASS)).save(consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.REINFORCED_GLASS_PANE.get(), 16).pattern("XXX").pattern("XXX").define('X', ItemRegistry.REINFORCED_GLASS.get()).group("celestialexploration").unlockedBy("glass", InventoryChangeTrigger.TriggerInstance.hasItems(Blocks.GLASS)).save(consumer);
 
-		ShapelessRecipeBuilder.shapeless(ItemRegistry.LUMINOUS_WHITE_GLASS.get())
-				.requires(ItemRegistry.LUMINOUS_BLUE_GLASS.get())
-				.requires(ItemRegistry.LUNAR_GOO.get())
-				.group("celestialexploration").unlockedBy("moon_dust", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MOON_DUST.get())).save(consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.CERAMIC_TILE.get(), 16).pattern("XXX").pattern("XXX").define('X', BlockRegistry.CERAMIC.get()).group("celestialexploration").unlockedBy("clay", InventoryChangeTrigger.TriggerInstance.hasItems(Items.CLAY)).save(consumer);
+//		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.CERAMIC.get()), BlockRegistry.CERAMIC_TILE.get()).unlockedBy("clay", InventoryChangeTrigger.TriggerInstance.hasItems(Items.CLAY)).save(consumer, "ceramic_tile_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.WHITE_CERAMIC_TILE.get(), 16).pattern("XXX").pattern("XXX").define('X', BlockRegistry.WHITE_CERAMIC.get()).group("celestialexploration").unlockedBy("clay", InventoryChangeTrigger.TriggerInstance.hasItems(Items.CLAY)).save(consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.LIGHT_GREY_CERAMIC_TILE.get(), 16).pattern("XXX").pattern("XXX").define('X', BlockRegistry.LIGHT_GREY_CERAMIC.get()).group("celestialexploration").unlockedBy("clay", InventoryChangeTrigger.TriggerInstance.hasItems(Items.CLAY)).save(consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.GREY_CERAMIC_TILE.get(), 16).pattern("XXX").pattern("XXX").define('X', BlockRegistry.GREY_CERAMIC.get()).group("celestialexploration").unlockedBy("clay", InventoryChangeTrigger.TriggerInstance.hasItems(Items.CLAY)).save(consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.BLACK_CERAMIC_TILE.get(), 16).pattern("XXX").pattern("XXX").define('X', BlockRegistry.BLACK_CERAMIC.get()).group("celestialexploration").unlockedBy("clay", InventoryChangeTrigger.TriggerInstance.hasItems(Items.CLAY)).save(consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.PURPLE_CERAMIC_TILE.get(), 16).pattern("XXX").pattern("XXX").define('X', BlockRegistry.PURPLE_CERAMIC.get()).group("celestialexploration").unlockedBy("clay", InventoryChangeTrigger.TriggerInstance.hasItems(Items.CLAY)).save(consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.MAGENTA_CERAMIC_TILE.get(), 16).pattern("XXX").pattern("XXX").define('X', BlockRegistry.MAGENTA_CERAMIC.get()).group("celestialexploration").unlockedBy("clay", InventoryChangeTrigger.TriggerInstance.hasItems(Items.CLAY)).save(consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.BLUE_CERAMIC_TILE.get(), 16).pattern("XXX").pattern("XXX").define('X', BlockRegistry.BLUE_CERAMIC.get()).group("celestialexploration").unlockedBy("clay", InventoryChangeTrigger.TriggerInstance.hasItems(Items.CLAY)).save(consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.LIGHT_BLUE_CERAMIC_TILE.get(), 16).pattern("XXX").pattern("XXX").define('X', BlockRegistry.LIGHT_BLUE_CERAMIC.get()).group("celestialexploration").unlockedBy("clay", InventoryChangeTrigger.TriggerInstance.hasItems(Items.CLAY)).save(consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.CYAN_CERAMIC_TILE.get(), 16).pattern("XXX").pattern("XXX").define('X', BlockRegistry.CYAN_CERAMIC.get()).group("celestialexploration").unlockedBy("clay", InventoryChangeTrigger.TriggerInstance.hasItems(Items.CLAY)).save(consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.GREEN_CERAMIC_TILE.get(), 16).pattern("XXX").pattern("XXX").define('X', BlockRegistry.GREEN_CERAMIC.get()).group("celestialexploration").unlockedBy("clay", InventoryChangeTrigger.TriggerInstance.hasItems(Items.CLAY)).save(consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.LIME_CERAMIC_TILE.get(), 16).pattern("XXX").pattern("XXX").define('X', BlockRegistry.LIME_CERAMIC.get()).group("celestialexploration").unlockedBy("clay", InventoryChangeTrigger.TriggerInstance.hasItems(Items.CLAY)).save(consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.YELLOW_CERAMIC_TILE.get(), 16).pattern("XXX").pattern("XXX").define('X', BlockRegistry.YELLOW_CERAMIC.get()).group("celestialexploration").unlockedBy("clay", InventoryChangeTrigger.TriggerInstance.hasItems(Items.CLAY)).save(consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.ORANGE_CERAMIC_TILE.get(), 16).pattern("XXX").pattern("XXX").define('X', BlockRegistry.ORANGE_CERAMIC.get()).group("celestialexploration").unlockedBy("clay", InventoryChangeTrigger.TriggerInstance.hasItems(Items.CLAY)).save(consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.BROWN_CERAMIC_TILE.get(), 16).pattern("XXX").pattern("XXX").define('X', BlockRegistry.BROWN_CERAMIC.get()).group("celestialexploration").unlockedBy("clay", InventoryChangeTrigger.TriggerInstance.hasItems(Items.CLAY)).save(consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.RED_CERAMIC_TILE.get(), 16).pattern("XXX").pattern("XXX").define('X', BlockRegistry.RED_CERAMIC.get()).group("celestialexploration").unlockedBy("clay", InventoryChangeTrigger.TriggerInstance.hasItems(Items.CLAY)).save(consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.PINK_CERAMIC_TILE.get(), 16).pattern("XXX").pattern("XXX").define('X', BlockRegistry.PINK_CERAMIC.get()).group("celestialexploration").unlockedBy("clay", InventoryChangeTrigger.TriggerInstance.hasItems(Items.CLAY)).save(consumer);
 
-		ShapedRecipeBuilder.shaped(ItemRegistry.LUMINOUS_BLUE_GLASS_PANE.get(), 16)
-				.pattern("XXX")
-				.pattern("XXX")
-				.define('X', ItemRegistry.LUMINOUS_BLUE_GLASS.get())
-				.group("celestialexploration").unlockedBy("moon_dust", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MOON_DUST.get())).save(consumer);
+		SimpleCookingRecipeBuilder.smelting(Ingredient.of(ItemRegistry.SILICA.get()), BlockRegistry.CERAMIC.get(), 1.0F, 100).unlockedBy("has_sand", has(Items.SAND)).save(consumer, "ceramic");
 
-		ShapedRecipeBuilder.shaped(ItemRegistry.LUMINOUS_WHITE_GLASS_PANE.get(), 16)
-				.pattern("XXX")
-				.pattern("XXX")
-				.define('X', ItemRegistry.LUMINOUS_WHITE_GLASS.get())
-				.group("celestialexploration").unlockedBy("moon_dust", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MOON_DUST.get())).save(consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.WHITE_CERAMIC.get(), 8).pattern("XXX").pattern("X#X").pattern("XXX").define('X', BlockRegistry.CERAMIC.get()).define('#', Items.WHITE_DYE).group("celestialexploration").unlockedBy("ceramic", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.CERAMIC.get())).save(consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.LIGHT_GREY_CERAMIC.get(), 8).pattern("XXX").pattern("X#X").pattern("XXX").define('X', BlockRegistry.CERAMIC.get()).define('#', Items.LIGHT_GRAY_DYE).group("celestialexploration").unlockedBy("ceramic", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.CERAMIC.get())).save(consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.GREY_CERAMIC.get(), 8).pattern("XXX").pattern("X#X").pattern("XXX").define('X', BlockRegistry.CERAMIC.get()).define('#', Items.GRAY_DYE).group("celestialexploration").unlockedBy("ceramic", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.CERAMIC.get())).save(consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.BLACK_CERAMIC.get(), 8).pattern("XXX").pattern("X#X").pattern("XXX").define('X', BlockRegistry.CERAMIC.get()).define('#', Items.BLACK_DYE).group("celestialexploration").unlockedBy("ceramic", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.CERAMIC.get())).save(consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.PURPLE_CERAMIC.get(), 8).pattern("XXX").pattern("X#X").pattern("XXX").define('X', BlockRegistry.CERAMIC.get()).define('#', Items.PURPLE_DYE).group("celestialexploration").unlockedBy("ceramic", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.CERAMIC.get())).save(consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.MAGENTA_CERAMIC.get(), 8).pattern("XXX").pattern("X#X").pattern("XXX").define('X', BlockRegistry.CERAMIC.get()).define('#', Items.MAGENTA_DYE).group("celestialexploration").unlockedBy("ceramic", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.CERAMIC.get())).save(consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.BLUE_CERAMIC.get(), 8).pattern("XXX").pattern("X#X").pattern("XXX").define('X', BlockRegistry.CERAMIC.get()).define('#', Items.BLUE_DYE).group("celestialexploration").unlockedBy("ceramic", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.CERAMIC.get())).save(consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.LIGHT_BLUE_CERAMIC.get(), 8).pattern("XXX").pattern("X#X").pattern("XXX").define('X', BlockRegistry.CERAMIC.get()).define('#', Items.LIGHT_BLUE_DYE).group("celestialexploration").unlockedBy("ceramic", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.CERAMIC.get())).save(consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.CYAN_CERAMIC.get(), 8).pattern("XXX").pattern("X#X").pattern("XXX").define('X', BlockRegistry.CERAMIC.get()).define('#', Items.CYAN_DYE).group("celestialexploration").unlockedBy("ceramic", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.CERAMIC.get())).save(consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.GREEN_CERAMIC.get(), 8).pattern("XXX").pattern("X#X").pattern("XXX").define('X', BlockRegistry.CERAMIC.get()).define('#', Items.GREEN_DYE).group("celestialexploration").unlockedBy("ceramic", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.CERAMIC.get())).save(consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.LIME_CERAMIC.get(), 8).pattern("XXX").pattern("X#X").pattern("XXX").define('X', BlockRegistry.CERAMIC.get()).define('#', Items.LIME_DYE).group("celestialexploration").unlockedBy("ceramic", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.CERAMIC.get())).save(consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.YELLOW_CERAMIC.get(), 8).pattern("XXX").pattern("X#X").pattern("XXX").define('X', BlockRegistry.CERAMIC.get()).define('#', Items.YELLOW_DYE).group("celestialexploration").unlockedBy("ceramic", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.CERAMIC.get())).save(consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.ORANGE_CERAMIC.get(), 8).pattern("XXX").pattern("X#X").pattern("XXX").define('X', BlockRegistry.CERAMIC.get()).define('#', Items.ORANGE_DYE).group("celestialexploration").unlockedBy("ceramic", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.CERAMIC.get())).save(consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.BROWN_CERAMIC.get(), 8).pattern("XXX").pattern("X#X").pattern("XXX").define('X', BlockRegistry.CERAMIC.get()).define('#', Items.BROWN_DYE).group("celestialexploration").unlockedBy("ceramic", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.CERAMIC.get())).save(consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.RED_CERAMIC.get(), 8).pattern("XXX").pattern("X#X").pattern("XXX").define('X', BlockRegistry.CERAMIC.get()).define('#', Items.RED_DYE).group("celestialexploration").unlockedBy("ceramic", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.CERAMIC.get())).save(consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.PINK_CERAMIC.get(), 8).pattern("XXX").pattern("X#X").pattern("XXX").define('X', BlockRegistry.CERAMIC.get()).define('#', Items.PINK_DYE).group("celestialexploration").unlockedBy("ceramic", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.CERAMIC.get())).save(consumer);
 
-		ShapedRecipeBuilder.shaped(BlockRegistry.REINFORCED_GLASS.get(), 4)
-				.pattern(" X ")
-				.pattern("XCX")
-				.pattern(" X ")
-				.define('X', Blocks.GLASS)
-				.define('C', Items.IRON_INGOT)
-				.group("celestialexploration").unlockedBy("glass", InventoryChangeTrigger.TriggerInstance.hasItems(Blocks.GLASS)).save(consumer);
+		SimpleCookingRecipeBuilder.smelting(Ingredient.of(ItemRegistry.WHITE_CERAMIC.get()), BlockRegistry.PAINTED_WHITE_CERAMIC.get(), 1.0F, 100).unlockedBy("has_ceramic", has(ItemRegistry.CERAMIC.get())).save(consumer, "painted_white_ceramic");
+		SimpleCookingRecipeBuilder.smelting(Ingredient.of(ItemRegistry.LIGHT_GREY_CERAMIC.get()), BlockRegistry.PAINTED_LIGHT_GREY_CERAMIC.get(), 1.0F, 100).unlockedBy("has_ceramic", has(ItemRegistry.CERAMIC.get())).save(consumer, "painted_light_grey_ceramic");
+		SimpleCookingRecipeBuilder.smelting(Ingredient.of(ItemRegistry.GREY_CERAMIC.get()), BlockRegistry.PAINTED_GREY_CERAMIC.get(), 1.0F, 100).unlockedBy("has_ceramic", has(ItemRegistry.CERAMIC.get())).save(consumer, "painted_grey_ceramic");
+		SimpleCookingRecipeBuilder.smelting(Ingredient.of(ItemRegistry.BLACK_CERAMIC.get()), BlockRegistry.PAINTED_BLACK_CERAMIC.get(), 1.0F, 100).unlockedBy("has_ceramic", has(ItemRegistry.CERAMIC.get())).save(consumer, "painted_black_ceramic");
+		SimpleCookingRecipeBuilder.smelting(Ingredient.of(ItemRegistry.PURPLE_CERAMIC.get()), BlockRegistry.PAINTED_PURPLE_CERAMIC.get(), 1.0F, 100).unlockedBy("has_ceramic", has(ItemRegistry.CERAMIC.get())).save(consumer, "painted_purple_ceramic");
+		SimpleCookingRecipeBuilder.smelting(Ingredient.of(ItemRegistry.MAGENTA_CERAMIC.get()), BlockRegistry.PAINTED_MAGENTA_CERAMIC.get(), 1.0F, 100).unlockedBy("has_ceramic", has(ItemRegistry.CERAMIC.get())).save(consumer, "painted_magenta_ceramic");
+		SimpleCookingRecipeBuilder.smelting(Ingredient.of(ItemRegistry.BLUE_CERAMIC.get()), BlockRegistry.PAINTED_BLUE_CERAMIC.get(), 1.0F, 100).unlockedBy("has_ceramic", has(ItemRegistry.CERAMIC.get())).save(consumer, "painted_blue_ceramic");
+		SimpleCookingRecipeBuilder.smelting(Ingredient.of(ItemRegistry.LIGHT_BLUE_CERAMIC.get()), BlockRegistry.PAINTED_LIGHT_BLUE_CERAMIC.get(), 1.0F, 100).unlockedBy("has_ceramic", has(ItemRegistry.CERAMIC.get())).save(consumer, "painted_light_blue_ceramic");
+		SimpleCookingRecipeBuilder.smelting(Ingredient.of(ItemRegistry.CYAN_CERAMIC.get()), BlockRegistry.PAINTED_CYAN_CERAMIC.get(), 1.0F, 100).unlockedBy("has_ceramic", has(ItemRegistry.CERAMIC.get())).save(consumer, "painted_cyan_ceramic");
+		SimpleCookingRecipeBuilder.smelting(Ingredient.of(ItemRegistry.GREEN_CERAMIC.get()), BlockRegistry.PAINTED_GREEN_CERAMIC.get(), 1.0F, 100).unlockedBy("has_ceramic", has(ItemRegistry.CERAMIC.get())).save(consumer, "painted_green_ceramic");
+		SimpleCookingRecipeBuilder.smelting(Ingredient.of(ItemRegistry.LIME_CERAMIC.get()), BlockRegistry.PAINTED_LIME_CERAMIC.get(), 1.0F, 100).unlockedBy("has_ceramic", has(ItemRegistry.CERAMIC.get())).save(consumer, "painted_lime_ceramic");
+		SimpleCookingRecipeBuilder.smelting(Ingredient.of(ItemRegistry.YELLOW_CERAMIC.get()), BlockRegistry.PAINTED_YELLOW_CERAMIC.get(), 1.0F, 100).unlockedBy("has_ceramic", has(ItemRegistry.CERAMIC.get())).save(consumer, "painted_yellow_ceramic");
+		SimpleCookingRecipeBuilder.smelting(Ingredient.of(ItemRegistry.ORANGE_CERAMIC.get()), BlockRegistry.PAINTED_ORANGE_CERAMIC.get(), 1.0F, 100).unlockedBy("has_ceramic", has(ItemRegistry.CERAMIC.get())).save(consumer, "painted_orange_ceramic");
+		SimpleCookingRecipeBuilder.smelting(Ingredient.of(ItemRegistry.BROWN_CERAMIC.get()), BlockRegistry.PAINTED_BROWN_CERAMIC.get(), 1.0F, 100).unlockedBy("has_ceramic", has(ItemRegistry.CERAMIC.get())).save(consumer, "painted_brown_ceramic");
+		SimpleCookingRecipeBuilder.smelting(Ingredient.of(ItemRegistry.RED_CERAMIC.get()), BlockRegistry.PAINTED_RED_CERAMIC.get(), 1.0F, 100).unlockedBy("has_ceramic", has(ItemRegistry.CERAMIC.get())).save(consumer, "painted_red_ceramic");
+		SimpleCookingRecipeBuilder.smelting(Ingredient.of(ItemRegistry.PINK_CERAMIC.get()), BlockRegistry.PAINTED_PINK_CERAMIC.get(), 1.0F, 100).unlockedBy("has_ceramic", has(ItemRegistry.CERAMIC.get())).save(consumer, "painted_pink_ceramic");
 
-		ShapedRecipeBuilder.shaped(BlockRegistry.REINFORCED_GLASS_PANE.get(), 16)
-				.pattern("XXX")
-				.pattern("XXX")
-				.define('X', ItemRegistry.REINFORCED_GLASS.get())
-				.group("celestialexploration").unlockedBy("glass", InventoryChangeTrigger.TriggerInstance.hasItems(Blocks.GLASS)).save(consumer);
+		ShapedRecipeBuilder.shaped(Items.GLASS, 8).pattern("GGG").pattern("GXG").pattern("GGG").define('X', ItemRegistry.STEEL_WOOL.get()).define('G', Tags.Items.STAINED_GLASS).group("celestialexploration").unlockedBy("glass", InventoryChangeTrigger.TriggerInstance.hasItems(Items.GLASS)).save(consumer, "glass_from_steel_wool");
+		ShapedRecipeBuilder.shaped(Items.GLASS_PANE, 8).pattern("GGG").pattern("GXG").pattern("GGG").define('X', ItemRegistry.STEEL_WOOL.get()).define('G', Tags.Items.STAINED_GLASS_PANES).group("celestialexploration").unlockedBy("glass", InventoryChangeTrigger.TriggerInstance.hasItems(Items.GLASS)).save(consumer, "glass_pane_from_steel_wool");
+		ShapedRecipeBuilder.shaped(ItemRegistry.CERAMIC.get(), 8).pattern("GGG").pattern("GXG").pattern("GGG").define('X', ItemRegistry.STEEL_WOOL.get()).define('G', ItemRegistry.DYED_CERAMIC_TAG).group("celestialexploration").unlockedBy("ceramic", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.CERAMIC.get())).save(consumer, "ceramic_from_steel_wool");
+		ShapedRecipeBuilder.shaped(ItemRegistry.CERAMIC_TILE.get(), 8).pattern("GGG").pattern("GXG").pattern("GGG").define('X', ItemRegistry.STEEL_WOOL.get()).define('G', ItemRegistry.DYED_CERAMIC_TILE_TAG).group("celestialexploration").unlockedBy("ceramic", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.CERAMIC.get())).save(consumer, "ceramic_tile_from_steel_wool");
 
-		ShapedRecipeBuilder.shaped(BlockRegistry.CERAMIC_TILE.get(), 16)
-				.pattern("XXX")
-				.pattern("XXX")
-				.define('X', BlockRegistry.CERAMIC.get())
-				.group("celestialexploration").unlockedBy("clay", InventoryChangeTrigger.TriggerInstance.hasItems(Items.CLAY)).save(consumer);
-//		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.CERAMIC.get()), BlockRegistry.CERAMIC_TILE.get())
-//				.unlockedBy("clay", InventoryChangeTrigger.TriggerInstance.hasItems(Items.CLAY)).save(consumer, "ceramic_tile_stonecutting");
+		ShapedRecipeBuilder.shaped(BlockRegistry.COMPRESSED_COBBLESTONE.get()).pattern("XXX").pattern("XXX").pattern("XXX").define('X', Blocks.COBBLESTONE).group("celestialexploration").unlockedBy("has_cobblestone", InventoryChangeTrigger.TriggerInstance.hasItems(Blocks.COBBLESTONE)).save(consumer);
+		ShapelessRecipeBuilder.shapeless(Blocks.COBBLESTONE, 9).requires(BlockRegistry.COMPRESSED_COBBLESTONE.get()).group("celestialexploration").unlockedBy("has_cobblestone", InventoryChangeTrigger.TriggerInstance.hasItems(Blocks.COBBLESTONE)).save(consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.COMPRESSED_COBBLED_DEEPSLATE.get()).pattern("XXX").pattern("XXX").pattern("XXX").define('X', Blocks.COBBLED_DEEPSLATE).group("celestialexploration").unlockedBy("has_cobbled_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(Blocks.COBBLED_DEEPSLATE)).save(consumer);
+		ShapelessRecipeBuilder.shapeless(Blocks.COBBLED_DEEPSLATE, 9).requires(BlockRegistry.COMPRESSED_COBBLED_DEEPSLATE.get()).group("celestialexploration").unlockedBy("has_cobbled_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(Blocks.COBBLED_DEEPSLATE)).save(consumer);
 
-		SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.BRICK), BlockRegistry.CERAMIC.get(), 1.0F, 100)
-				.unlockedBy("has_brick", has(Items.BRICK)).save(consumer, "ceramic");
+		ShapedRecipeBuilder.shaped(BlockRegistry.WORKBENCH.get()).pattern("XXX").pattern("X X").pattern("CCC").define('X', ItemTags.PLANKS).define('C', Blocks.COBBLESTONE).group("celestialexploration").unlockedBy("has_cobblestone", InventoryChangeTrigger.TriggerInstance.hasItems(Blocks.COBBLESTONE)).save(consumer);
+//		ShapedRecipeBuilder.shaped(BlockRegistry.SOLAR_PANEL.get()).pattern("XXX").pattern(" I ").pattern(" B ").define('X', Blocks.DAYLIGHT_DETECTOR).define('I', ItemRegistry.STEEL_ROD.get()).define('B', Items.IRON_BLOCK).group("celestialexploration").unlockedBy("redstone", InventoryChangeTrigger.TriggerInstance.hasItems(Items.REDSTONE)).unlockedBy("daylight_detector", InventoryChangeTrigger.TriggerInstance.hasItems(Blocks.DAYLIGHT_DETECTOR)).save(consumer);
 
-		ShapedRecipeBuilder.shaped(BlockRegistry.COMPRESSED_COBBLESTONE.get())
-				.pattern("XXX")
-				.pattern("XXX")
-				.pattern("XXX")
-				.define('X', Blocks.COBBLESTONE)
-				.group("celestialexploration").unlockedBy("has_cobblestone", InventoryChangeTrigger.TriggerInstance.hasItems(Blocks.COBBLESTONE)).save(consumer);
+		/*FOOD*/
+		ShapedRecipeBuilder.shaped(ItemRegistry.MARSHMALLOW.get()).pattern("XX").pattern("XX").define('X', ItemRegistry.MARSHMALLOW_GOO.get()).group("celestialexploration").unlockedBy("marshmallow_goo", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MARSHMALLOW_GOO.get())).save(consumer, "marshmallow_from_marshmallow_goo");
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.MARSHMALLOW.get(), 2).requires(Items.SUGAR).requires(Items.MILK_BUCKET).requires(Items.SUGAR).requires(Items.SUGAR).group("celestialexploration").unlockedBy("sugar", InventoryChangeTrigger.TriggerInstance.hasItems(Items.SUGAR)).save(consumer);
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.CHOCOLATE.get()).requires(Items.SUGAR).requires(Items.MILK_BUCKET).requires(Items.COCOA_BEANS).group("celestialexploration").unlockedBy("cocoa_beans", InventoryChangeTrigger.TriggerInstance.hasItems(Items.COCOA_BEANS)).save(consumer);
+		ShapedRecipeBuilder.shaped(ItemRegistry.CRACKER.get(), 4).pattern("X").pattern("X").define('X', Items.WHEAT).group("celestialexploration").unlockedBy("wheat", InventoryChangeTrigger.TriggerInstance.hasItems(Items.WHEAT)).save(consumer);
+		SimpleCookingRecipeBuilder.smelting(Ingredient.of(ItemRegistry.MARSHMALLOW.get()), ItemRegistry.ROASTED_MARSHMALLOW.get(), 1.0F, 30).unlockedBy("marshmallow", has(ItemRegistry.MARSHMALLOW_GOO.get())).group("celestialexploration").save(consumer);
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.SMORES.get()).requires(ItemRegistry.ROASTED_MARSHMALLOW.get()).requires(ItemRegistry.CHOCOLATE.get()).requires(ItemRegistry.CRACKER.get()).requires(ItemRegistry.CRACKER.get()).group("celestialexploration").unlockedBy("marshmallow_goo", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MARSHMALLOW_GOO.get())).save(consumer);
 
-		ShapelessRecipeBuilder.shapeless(Blocks.COBBLESTONE, 9)
-				.requires(BlockRegistry.COMPRESSED_COBBLESTONE.get())
-				.group("celestialexploration").unlockedBy("has_cobblestone", InventoryChangeTrigger.TriggerInstance.hasItems(Blocks.COBBLESTONE)).save(consumer);
+		ShapelessRecipeBuilder.shapeless(Items.IRON_NUGGET).requires(ItemRegistry.RUSTED_IRON_NUGGET.get()).group("celestialexploration").unlockedBy("rusted_iron_nugget", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.RUSTED_IRON_NUGGET.get())).save(consumer, "iron_nugget_from_rusted_iron_nugget");
+		SimpleCookingRecipeBuilder.smelting(Ingredient.of(ItemRegistry.RUSTED_IRON_NUGGET.get()), Items.IRON_NUGGET, 1.0F, 30).unlockedBy("has_rusted_iron_nugget", has(ItemRegistry.RUSTED_IRON_NUGGET.get())).group("celestialexploration").save(consumer, "smelting_rusted_iron_nugget");
 
-		ShapedRecipeBuilder.shaped(BlockRegistry.COMPRESSED_COBBLED_DEEPSLATE.get())
-				.pattern("XXX")
-				.pattern("XXX")
-				.pattern("XXX")
-				.define('X', Blocks.COBBLED_DEEPSLATE)
-				.group("celestialexploration").unlockedBy("has_cobbled_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(Blocks.COBBLED_DEEPSLATE)).save(consumer);
+//		ShapelessRecipeBuilder.shapeless(Items.IRON_NUGGET).requires(ItemRegistry.IRON_DUST.get()).requires(ItemRegistry.IRON_DUST.get()).group("celestialexploration").unlockedBy("iron_dust", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.IRON_DUST.get())).save(consumer, "iron_nugget_from_iron_dust");
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.LUNAR_CHEESE.get()).requires(ItemRegistry.LUNAR_GOO.get()).requires(Items.MILK_BUCKET).group("celestialexploration").unlockedBy("lunar_goo", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.LUNAR_GOO.get())).save(consumer);
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.CHEESE.get()).requires(Items.MILK_BUCKET).requires(Items.MILK_BUCKET).group("celestialexploration").unlockedBy("milk", InventoryChangeTrigger.TriggerInstance.hasItems(Items.MILK_BUCKET)).save(consumer);
 
-		ShapelessRecipeBuilder.shapeless(Blocks.COBBLED_DEEPSLATE, 9)
-				.requires(BlockRegistry.COMPRESSED_COBBLED_DEEPSLATE.get())
-				.group("celestialexploration").unlockedBy("has_cobbled_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(Blocks.COBBLED_DEEPSLATE)).save(consumer);
-
-
-//		ShapedRecipeBuilder.shaped(BlockRegistry.SOLAR_PANEL.get())
-//				.pattern("XXX")
-//				.pattern(" I ")
-//				.pattern(" B ")
-//				.define('X', Blocks.DAYLIGHT_DETECTOR)
-//				.define('I', ItemRegistry.STEEL_ROD.get())
-//				.define('B', Items.IRON_BLOCK)
-//				.group("celestialexploration")
-//				.unlockedBy("redstone", InventoryChangeTrigger.TriggerInstance.hasItems(Items.REDSTONE))
-//				.unlockedBy("daylight_detector", InventoryChangeTrigger.TriggerInstance.hasItems(Blocks.DAYLIGHT_DETECTOR))
-//				.save(consumer);
-
-
-		/**
-		 * FOOD
+		/*
+		 * ~~WORKBENCH~~
 		 */
-		ShapedRecipeBuilder.shaped(ItemRegistry.MARSHMALLOW.get())
-				.pattern("XX")
-				.pattern("XX")
-				.define('X', ItemRegistry.MARSHMALLOW_GOO.get())
-				.group("celestialexploration").unlockedBy("marshmallow_goo", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MARSHMALLOW_GOO.get())).save(consumer, "marshmallow_from_marshmallow_goo");
-		ShapelessRecipeBuilder.shapeless(ItemRegistry.MARSHMALLOW.get(), 2)
-				.requires(Items.SUGAR)
-				.requires(Items.MILK_BUCKET)
-				.requires(Items.SUGAR)
-				.requires(Items.SUGAR)
-				.group("celestialexploration").unlockedBy("sugar", InventoryChangeTrigger.TriggerInstance.hasItems(Items.SUGAR)).save(consumer);
-		ShapelessRecipeBuilder.shapeless(ItemRegistry.CHOCOLATE.get())
-				.requires(Items.SUGAR)
-				.requires(Items.MILK_BUCKET)
-				.requires(Items.COCOA_BEANS)
-				.group("celestialexploration").unlockedBy("cocoa_beans", InventoryChangeTrigger.TriggerInstance.hasItems(Items.COCOA_BEANS)).save(consumer);
-		ShapedRecipeBuilder.shaped(ItemRegistry.CRACKER.get(), 4)
-				.pattern("X")
-				.pattern("X")
-				.define('X', Items.WHEAT)
-				.group("celestialexploration").unlockedBy("wheat", InventoryChangeTrigger.TriggerInstance.hasItems(Items.WHEAT)).save(consumer);
+		WorkbenchRecipeBuilder.smelting(Fluids.WATER, Ingredient.of(Items.WATER_BUCKET), 0.0F, 1, 1.0F).group("celestialexploration").unlockedBy("workbench", has(BlockRegistry.WORKBENCH.get())).save(consumer, "water_bucket_workbench");
+		WorkbenchRecipeBuilder.smelting(Fluids.LAVA, Ingredient.of(Items.LAVA_BUCKET), 0.0F, 1, 1.0F).group("celestialexploration").unlockedBy("workbench", has(BlockRegistry.WORKBENCH.get())).save(consumer, "lava_bucket_workbench");
 
-		SimpleCookingRecipeBuilder.smelting(Ingredient.of(ItemRegistry.MARSHMALLOW.get()), ItemRegistry.ROASTED_MARSHMALLOW.get(), 1.0F, 30)
-				.unlockedBy("marshmallow", has(ItemRegistry.MARSHMALLOW_GOO.get())).group("celestialexploration").save(consumer);
+		//WORKBENCH - IRON
+		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_IRON.get(), Ingredient.of(Items.IRON_INGOT), 0.7F, 100, 0.11F).group("celestialexploration").unlockedBy("workbench", has(Items.IRON_INGOT)).save(consumer, "iron_ingot_workbench");
+		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_IRON.get(), Ingredient.of(Items.RAW_IRON), 0.7F, 100, 0.11F).group("celestialexploration").unlockedBy("workbench", has(Items.RAW_IRON)).save(consumer, "raw_iron_workbench");
+//		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_IRON.get(), Ingredient.of(Items.IRON_NUGGET), 0.1F, 80, 0.012F).group("celestialexploration").unlockedBy("workbench", has(Items.IRON_NUGGET)).save(consumer, "iron_nugget_workbench");
+		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_IRON.get(), Ingredient.of(Blocks.IRON_ORE), 0.1F, 100, 0.11F).group("celestialexploration").unlockedBy("workbench", has(Blocks.IRON_ORE)).save(consumer, "iron_ore_workbench");
+		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_IRON.get(), Ingredient.of(Blocks.DEEPSLATE_IRON_ORE), 0.1F, 100, 0.11F).group("celestialexploration").unlockedBy("workbench", has(Blocks.DEEPSLATE_IRON_ORE)).save(consumer, "deepslate_iron_ore_workbench");
+		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_IRON.get(), Ingredient.of(BlockRegistry.MARS_IRON_ORE.get()), 0.1F, 100, 0.11F).group("celestialexploration").unlockedBy("workbench", has(BlockRegistry.MARS_IRON_ORE.get())).save(consumer, "mars_iron_ore_workbench");
+		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_IRON.get(), Ingredient.of(BlockRegistry.MARS_DEEPSLATE_IRON_ORE.get()), 0.1F, 100, 0.11F).group("celestialexploration").unlockedBy("workbench", has(BlockRegistry.MARS_DEEPSLATE_IRON_ORE.get())).save(consumer, "mars_deepslate_iron_ore_workbench");
+		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_IRON.get(), Ingredient.of(BlockRegistry.MOON_IRON_ORE.get()), 0.1F, 100, 0.11F).group("celestialexploration").unlockedBy("workbench", has(BlockRegistry.MOON_IRON_ORE.get())).save(consumer, "moon_iron_ore_workbench");
+		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_IRON.get(), Ingredient.of(BlockRegistry.MOON_DEEPSLATE_IRON_ORE.get()), 0.1F, 100, 0.11F).group("celestialexploration").unlockedBy("workbench", has(BlockRegistry.MOON_DEEPSLATE_IRON_ORE.get())).save(consumer, "moon_deepslate_iron_ore_workbench");
+		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_IRON.get(), Ingredient.of(BlockRegistry.METEOR_IRON_ORE.get()), 0.1F, 100, 0.11F).group("celestialexploration").unlockedBy("workbench", has(BlockRegistry.METEOR_IRON_ORE.get())).save(consumer, "meteor_iron_ore_workbench");
+//		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_IRON.get(), Ingredient.of(Items.IRON_PICKAXE), 0.1F, 80, 0.012F).group("celestialexploration").unlockedBy("workbench", has(Items.IRON_INGOT)).save(consumer, "iron_pickaxe_workbench");
+//		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_IRON.get(), Ingredient.of(Items.IRON_SHOVEL), 0.1F, 80, 0.012F).group("celestialexploration").unlockedBy("workbench", has(Items.IRON_INGOT)).save(consumer, "iron_shovel_workbench");
+//		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_IRON.get(), Ingredient.of(Items.IRON_AXE), 0.1F, 80, 0.012F).group("celestialexploration").unlockedBy("workbench", has(Items.IRON_INGOT)).save(consumer, "iron_axe_workbench");
+//		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_IRON.get(), Ingredient.of(Items.IRON_HOE), 0.1F, 80, 0.012F).group("celestialexploration").unlockedBy("workbench", has(Items.IRON_INGOT)).save(consumer, "iron_hoe_workbench");
+//		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_IRON.get(), Ingredient.of(Items.IRON_SWORD), 0.1F, 80, 0.012F).group("celestialexploration").unlockedBy("workbench", has(Items.IRON_INGOT)).save(consumer, "iron_sword_workbench");
+//		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_IRON.get(), Ingredient.of(Items.IRON_HELMET), 0.1F, 80, 0.012F).group("celestialexploration").unlockedBy("workbench", has(Items.IRON_INGOT)).save(consumer, "iron_helmet_workbench");
+//		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_IRON.get(), Ingredient.of(Items.IRON_CHESTPLATE), 0.1F, 80, 0.012F).group("celestialexploration").unlockedBy("workbench", has(Items.IRON_INGOT)).save(consumer, "iron_chestplate_workbench");
+//		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_IRON.get(), Ingredient.of(Items.IRON_LEGGINGS), 0.1F, 80, 0.012F).group("celestialexploration").unlockedBy("workbench", has(Items.IRON_INGOT)).save(consumer, "iron_leggings_workbench");
+//		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_IRON.get(), Ingredient.of(Items.IRON_BOOTS), 0.1F, 80, 0.012F).group("celestialexploration").unlockedBy("workbench", has(BlockRegistry.WORKBENCH.get())).save(consumer, "iron_boots_workbench");
+//		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_IRON.get(), Ingredient.of(Items.IRON_HORSE_ARMOR), 0.1F, 80, 0.012F).group("celestialexploration").unlockedBy("workbench", has(Items.IRON_HORSE_ARMOR)).save(consumer, "iron_horse_armor_workbench");
+//		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_IRON.get(), Ingredient.of(Items.CHAINMAIL_HELMET), 0.1F, 80, 0.012F).group("celestialexploration").unlockedBy("workbench", has(Items.CHAINMAIL_HELMET)).save(consumer, "chainmail_helmet_workbench");
+//		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_IRON.get(), Ingredient.of(Items.CHAINMAIL_CHESTPLATE), 0.1F, 80, 0.012F).group("celestialexploration").unlockedBy("workbench", has(Items.CHAINMAIL_CHESTPLATE)).save(consumer, "chainmail_chestplate_workbench");
+//		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_IRON.get(), Ingredient.of(Items.CHAINMAIL_LEGGINGS), 0.1F, 80, 0.012F).group("celestialexploration").unlockedBy("workbench", has(Items.CHAINMAIL_LEGGINGS)).save(consumer, "chainmail_leggings_workbench");
+//		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_IRON.get(), Ingredient.of(Items.CHAINMAIL_BOOTS), 0.1F, 80, 0.012F).group("celestialexploration").unlockedBy("workbench", has(Items.CHAINMAIL_BOOTS)).save(consumer, "chainmail_boots_workbench");
+		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_IRON.get(), Ingredient.of(Blocks.IRON_BLOCK), 0.7F, 150, 1.0F).group("celestialexploration").unlockedBy("workbench", has(Items.IRON_INGOT)).save(consumer, "iron_block_workbench");
 
+		//WORKBENCH - COPPER
+		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_COPPER.get(), Ingredient.of(Items.COPPER_INGOT), 0.7F, 100, .11F).group("celestialexploration").unlockedBy("workbench", has(Items.COPPER_INGOT)).save(consumer, "copper_ingot_workbench");
+		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_COPPER.get(), Ingredient.of(Items.RAW_COPPER), 0.7F, 100, 0.11F).group("celestialexploration").unlockedBy("workbench", has(Items.RAW_COPPER)).save(consumer, "raw_copper_workbench");
+//		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_COPPER.get(), Ingredient.of(Items.COPPER_NUGGET), 0.1F, 90, 0.11F).group("celestialexploration").unlockedBy("workbench", has(Items.IRON_NUGGET)).save(consumer, "iron_nugget_workbench");
+		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_COPPER.get(), Ingredient.of(Blocks.COPPER_ORE), 0.1F, 100, 0.11F).group("celestialexploration").unlockedBy("workbench", has(Blocks.IRON_ORE)).save(consumer, "copper_ore_workbench");
+		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_COPPER.get(), Ingredient.of(Blocks.DEEPSLATE_COPPER_ORE), 0.1F, 100, 0.11F).group("celestialexploration").unlockedBy("workbench", has(Blocks.DEEPSLATE_COPPER_ORE)).save(consumer, "deepslate_copper_ore_workbench");
+		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_COPPER.get(), Ingredient.of(BlockRegistry.METEOR_COPPER_ORE.get()), 0.1F, 100, 0.11F).group("celestialexploration").unlockedBy("workbench", has(BlockRegistry.METEOR_COPPER_ORE.get())).save(consumer, "meteor_copper_ore_workbench");
+		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_COPPER.get(), Ingredient.of(Blocks.COPPER_BLOCK), 0.7F, 150, 1.0F).group("celestialexploration").unlockedBy("workbench", has(Items.COPPER_BLOCK)).save(consumer, "copper_block_workbench");
+		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_COPPER.get(), Ingredient.of(Blocks.EXPOSED_COPPER), 0.7F, 150, 1.0F).group("celestialexploration").unlockedBy("workbench", has(Items.COPPER_BLOCK)).save(consumer, "exposed_copper_block_workbench");
+		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_COPPER.get(), Ingredient.of(Blocks.OXIDIZED_COPPER), 0.7F, 150, 1.0F).group("celestialexploration").unlockedBy("workbench", has(Items.COPPER_BLOCK)).save(consumer, "oxidized_copper_block_workbench");
+		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_COPPER.get(), Ingredient.of(Blocks.WEATHERED_COPPER), 0.7F, 150, 1.0F).group("celestialexploration").unlockedBy("workbench", has(Items.COPPER_BLOCK)).save(consumer, "weathered_copper_block_workbench");
 
-		ShapelessRecipeBuilder.shapeless(ItemRegistry.SMORES.get())
-				.requires(ItemRegistry.ROASTED_MARSHMALLOW.get())
-				.requires(ItemRegistry.CHOCOLATE.get())
-				.requires(ItemRegistry.CRACKER.get())
-				.requires(ItemRegistry.CRACKER.get())
-				.group("celestialexploration").unlockedBy("marshmallow_goo", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MARSHMALLOW_GOO.get())).save(consumer);
+		//WORKBENCH - GOLD
+		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_GOLD.get(), Ingredient.of(Items.GOLD_INGOT), 0.7F, 100, 0.11F).group("celestialexploration").unlockedBy("workbench", has(Items.GOLD_INGOT)).save(consumer, "gold_ingot_workbench");
+		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_GOLD.get(), Ingredient.of(Items.RAW_GOLD), 0.7F, 100, 0.11F).group("celestialexploration").unlockedBy("workbench", has(Items.RAW_GOLD)).save(consumer, "raw_gold_workbench");
+//		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_GOLD.get(), Ingredient.of(Items.GOLD_NUGGET), 0.1F, 90, 0.012F).group("celestialexploration").unlockedBy("workbench", has(Items.GOLD_NUGGET)).save(consumer, "gold_nugget_workbench");
+		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_GOLD.get(), Ingredient.of(Blocks.GOLD_ORE), 0.1F, 100, 0.11F).group("celestialexploration").unlockedBy("workbench", has(Blocks.GOLD_ORE)).save(consumer, "gold_ore_workbench");
+		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_GOLD.get(), Ingredient.of(Blocks.DEEPSLATE_GOLD_ORE), 0.1F, 100, 0.11F).group("celestialexploration").unlockedBy("workbench", has(Blocks.DEEPSLATE_GOLD_ORE)).save(consumer, "deepslate_gold_ore_workbench");
+		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_GOLD.get(), Ingredient.of(BlockRegistry.METEOR_GOLD_ORE.get()), 0.1F, 100, 0.11F).group("celestialexploration").unlockedBy("workbench", has(BlockRegistry.METEOR_IRON_ORE.get())).save(consumer, "meteor_gold_ore_workbench");
+//		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_GOLD.get(), Ingredient.of(Items.GOLDEN_PICKAXE), 0.1F, 90, 0.012F).group("celestialexploration").unlockedBy("workbench", has(Items.GOLD_INGOT)).save(consumer, "golden_pickaxe_workbench");
+//		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_GOLD.get(), Ingredient.of(Items.GOLDEN_SHOVEL), 0.1F, 90, 0.012F).group("celestialexploration").unlockedBy("workbench", has(Items.GOLD_INGOT)).save(consumer, "golden_shovel_workbench");
+//		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_GOLD.get(), Ingredient.of(Items.GOLDEN_AXE), 0.1F, 90, 0.012F).group("celestialexploration").unlockedBy("workbench", has(Items.GOLD_INGOT)).save(consumer, "golden_axe_workbench");
+//		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_GOLD.get(), Ingredient.of(Items.GOLDEN_HOE), 0.1F, 90, 0.012F).group("celestialexploration").unlockedBy("workbench", has(Items.GOLD_INGOT)).save(consumer, "golden_hoe_workbench");
+//		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_GOLD.get(), Ingredient.of(Items.GOLDEN_SWORD), 0.1F, 90, 0.012F).group("celestialexploration").unlockedBy("workbench", has(Items.GOLD_INGOT)).save(consumer, "golden_sword_workbench");
+//		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_GOLD.get(), Ingredient.of(Items.GOLDEN_HELMET), 0.1F, 90, 0.012F).group("celestialexploration").unlockedBy("workbench", has(Items.GOLD_INGOT)).save(consumer, "golden_helmet_workbench");
+//		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_GOLD.get(), Ingredient.of(Items.GOLDEN_CHESTPLATE), 0.1F, 90, 0.012F).group("celestialexploration").unlockedBy("workbench", has(Items.GOLD_INGOT)).save(consumer, "golden_chestplate_workbench");
+//		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_GOLD.get(), Ingredient.of(Items.GOLDEN_LEGGINGS), 0.1F, 90, 0.012F).group("celestialexploration").unlockedBy("workbench", has(Items.GOLD_INGOT)).save(consumer, "golden_leggings_workbench");
+//		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_GOLD.get(), Ingredient.of(Items.GOLDEN_BOOTS), 0.1F, 90, 0.012F).group("celestialexploration").unlockedBy("workbench", has(Items.GOLD_INGOT)).save(consumer, "golden_boots_workbench");
+//		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_GOLD.get(), Ingredient.of(Items.GOLDEN_HORSE_ARMOR), 0.1F, 90, 0.012F).group("celestialexploration").unlockedBy("workbench", has(Items.GOLDEN_HORSE_ARMOR)).save(consumer, "golden_horse_armor_workbench");
+		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_GOLD.get(), Ingredient.of(Blocks.GOLD_BLOCK), 0.7F, 150, 1.0F).group("celestialexploration").unlockedBy("workbench", has(Items.GOLD_INGOT)).save(consumer, "gold_block_workbench");
 
+		//WORKBENCH - STEEL
+		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_STEEL.get(), Ingredient.of(ItemRegistry.STEEL_INGOT.get()), 0.7F, 100, 0.11F).group("celestialexploration").unlockedBy("workbench", has(ItemRegistry.STEEL_INGOT.get())).save(consumer, "steel_ingot_workbench");
+//		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_STEEL.get(), Ingredient.of(ItemRegistry.STEEL_NUGGET.get()), 0.1F, 90, 0.11F).group("celestialexploration").unlockedBy("workbench", has(Items.STEEL_NUGGET)).save(consumer, "gold_nugget_workbench");
+//		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_GOLD.get(), Ingredient.of(Items.GOLDEN_PICKAXE), 0.1F, 90, 0.11F).group("celestialexploration").unlockedBy("workbench", has(Items.GOLD_INGOT)).save(consumer, "golden_pickaxe_workbench");
+//		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_GOLD.get(), Ingredient.of(Items.GOLDEN_SHOVEL), 0.1F, 90, 0.11F).group("celestialexploration").unlockedBy("workbench", has(Items.GOLD_INGOT)).save(consumer, "golden_shovel_workbench");
+//		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_GOLD.get(), Ingredient.of(Items.GOLDEN_AXE), 0.1F, 90, 0.11F).group("celestialexploration").unlockedBy("workbench", has(Items.GOLD_INGOT)).save(consumer, "golden_axe_workbench");
+//		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_GOLD.get(), Ingredient.of(Items.GOLDEN_HOE), 0.1F, 90, 0.11F).group("celestialexploration").unlockedBy("workbench", has(Items.GOLD_INGOT)).save(consumer, "golden_hoe_workbench");
+//		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_GOLD.get(), Ingredient.of(Items.GOLDEN_SWORD), 0.1F, 90, 0.11F).group("celestialexploration").unlockedBy("workbench", has(Items.GOLD_INGOT)).save(consumer, "golden_sword_workbench");
+//		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_STEEL.get(), Ingredient.of(ItemRegistry.STEEL_HELMET.get()), 0.1F, 90, 0.012F).group("celestialexploration").unlockedBy("workbench", has(ItemRegistry.STEEL_INGOT.get())).save(consumer, "steel_helmet_workbench");
+//		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_STEEL.get(), Ingredient.of(ItemRegistry.STEEL_CHESTPLATE.get()), 0.1F, 90, 0.012F).group("celestialexploration").unlockedBy("workbench", has(ItemRegistry.STEEL_INGOT.get())).save(consumer, "steel_chestplate_workbench");
+//		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_STEEL.get(), Ingredient.of(ItemRegistry.STEEL_LEGGINGS.get()), 0.1F, 90, 0.012F).group("celestialexploration").unlockedBy("workbench", has(ItemRegistry.STEEL_INGOT.get())).save(consumer, "steel_leggings_workbench");
+//		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_STEEL.get(), Ingredient.of(ItemRegistry.STEEL_BOOTS.get()), 0.1F, 90, 0.012F).group("celestialexploration").unlockedBy("workbench", has(ItemRegistry.STEEL_INGOT.get())).save(consumer, "steel_boots_workbench");
+////		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_GOLD.get(), Ingredient.of(Items.GOLDEN_HORSE_ARMOR), 0.1F, 90, 0.11F).group("celestialexploration").unlockedBy("workbench", has(Items.GOLDEN_HORSE_ARMOR)).save(consumer, "golden_horse_armor_workbench");
+		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_STEEL.get(), Ingredient.of(BlockRegistry.STEEL_BLOCK.get()), 0.7F, 150, 1.0F).group("celestialexploration").unlockedBy("workbench", has(ItemRegistry.STEEL_INGOT.get())).save(consumer, "steel_block_workbench");
 
+		/*
+		 * ~~WORKBENCH CRAFTING~~
+		 * SHUTTLE ITEMS
+		 */
+		WorkbenchCraftingRecipeBuilder.shaped(BlockRegistry.STEEL_FRAME.get(), 4, FluidRegistry.MOLTEN_STEEL.get(), 0.22F).pattern("X").define('X', Items.SCAFFOLDING).group("celestialexploration").unlockedBy("has_steel", has(ItemRegistry.STEEL_INGOT.get())).save(consumer, "steel_frame_from_workbench");
+		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.SHUTTLE_FRAME.get(), FluidRegistry.MOLTEN_STEEL.get(), 0.33F).pattern("C C").pattern(" X ").pattern("C C").define('X', ItemRegistry.STEEL_FRAME.get()).define('C', ItemRegistry.CERAMIC_TILE.get()).group("celestialexploration").unlockedBy("has_steel", has(ItemRegistry.STEEL_INGOT.get())).save(consumer, "shuttle_frame_from_workbench");
+		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.SHUTTLE_CABIN.get(), FluidRegistry.MOLTEN_STEEL.get(), 0.44F).pattern(" C ").pattern("CGC").pattern("X X").define('C', ItemRegistry.CERAMIC_TILE.get()).define('G', Tags.Items.GLASS).define('X', Tags.Items.CHESTS).group("celestialexploration").unlockedBy("has_steel", has(ItemRegistry.STEEL_INGOT.get())).save(consumer, "shuttle_cabin_from_workbench");
+		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.SHUTTLE_ENGINE.get(), FluidRegistry.MOLTEN_STEEL.get(), 0.495F).pattern(" R ").pattern("TTT").define('R', Items.REDSTONE).define('T', Items.REDSTONE_TORCH).group("celestialexploration").unlockedBy("has_steel", has(ItemRegistry.STEEL_INGOT.get())).save(consumer, "shuttle_engine_from_workbench");
+		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.WHITE_SHUTTLE.get(), FluidRegistry.MOLTEN_STEEL.get(), .275F).pattern("C").pattern("F").pattern("E").define('C', ItemRegistry.SHUTTLE_CABIN.get()).define('F', ItemRegistry.SHUTTLE_FRAME.get()).define('E', ItemRegistry.SHUTTLE_ENGINE.get()).group("celestialexploration").unlockedBy("has_steel", has(ItemRegistry.STEEL_INGOT.get())).save(consumer, "shuttle_from_workbench");
+		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.SILICA.get(), 4, Fluids.WATER, 0.5F).pattern("SS").pattern("SS").define('S', Tags.Items.SAND).group("celestialexploration").unlockedBy("has_sand", has(Items.SAND)).save(consumer, "silica_from_workbench");
+		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.STEEL_INGOT.get(), 2, FluidRegistry.MOLTEN_IRON.get(), 0.11F).pattern("X").define('X', Items.COAL).group("celestialexploration").unlockedBy("has_iron", has(Items.IRON_INGOT)).save(consumer, "steel_ingot_from_workbench");
 
-		ShapelessRecipeBuilder.shapeless(Items.IRON_NUGGET)
-				.requires(ItemRegistry.RUSTED_IRON_NUGGET.get())
-				.group("celestialexploration")
-				.unlockedBy("rusted_iron_nugget", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.RUSTED_IRON_NUGGET.get())).save(consumer, "iron_nugget_from_rusted_iron_nugget");
+		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.LOX_TANK.get(), FluidRegistry.MOLTEN_STEEL.get(), 0.11F).pattern("XXX").pattern("XGX").pattern("XXX").define('X', Tags.Items.COBBLESTONE).define('G', Tags.Items.GLASS).group("celestialexploration").unlockedBy("has_iron", has(Items.IRON_INGOT)).save(consumer, "lox_tank_from_workbench");
+		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.OXYGEN_COMPRESSOR.get(), FluidRegistry.MOLTEN_STEEL.get(), 0.22F).pattern("XXX").pattern("X X").pattern("XXX").define('X', Tags.Items.COBBLESTONE).group("celestialexploration").unlockedBy("has_iron", has(Items.IRON_INGOT)).save(consumer, "oxygen_compressor_from_workbench");
 
-		SimpleCookingRecipeBuilder.smelting(Ingredient.of(ItemRegistry.RUSTED_IRON_NUGGET.get()), Items.IRON_NUGGET, 1.0F, 30)
-				.unlockedBy("has_rusted_iron_nugget", has(ItemRegistry.RUSTED_IRON_NUGGET.get())).group("celestialexploration").save(consumer, "smelting_rusted_iron_nugget");
+		WorkbenchCraftingRecipeBuilder.shaped(Items.WATER_BUCKET, Fluids.WATER, 1.0F).pattern("X").define('X', Items.BUCKET).group("celestialexploration").unlockedBy("has_iron", has(Items.IRON_INGOT)).save(consumer, "water_bucket_from_workbench");
+		WorkbenchCraftingRecipeBuilder.shaped(Items.LAVA_BUCKET, Fluids.LAVA, 1.0F).pattern("X").define('X', Items.BUCKET).group("celestialexploration").unlockedBy("has_iron", has(Items.IRON_INGOT)).save(consumer, "lava_bucket_from_workbench");
 
+		ShapedRecipeBuilder.shaped(ItemRegistry.BLOCK_MOLD.get(), 8).pattern("XXX").pattern("XCX").pattern("XXX").define('C', Items.STONE).define('X', Tags.Items.COBBLESTONE).group("celestialexploration").unlockedBy("has_iron_ingot", InventoryChangeTrigger.TriggerInstance.hasItems(Items.IRON_INGOT)).save(consumer);
+		ShapedRecipeBuilder.shaped(ItemRegistry.INGOT_MOLD.get(), 8).pattern("XXX").pattern("XCX").pattern("XXX").define('C', Tags.Items.INGOTS).define('X', Tags.Items.COBBLESTONE).group("celestialexploration").unlockedBy("has_iron_ingot", InventoryChangeTrigger.TriggerInstance.hasItems(Items.IRON_INGOT)).save(consumer);
+//		ShapedRecipeBuilder.shaped(ItemRegistry.NUGGET_MOLD.get(), 2).pattern("XXX").pattern("XCX").pattern("XXX").define('C', Tags.Items.NUGGETS).define('X', Tags.Items.COBBLESTONE).group("celestialexploration").unlockedBy("has_iron_nugget", InventoryChangeTrigger.TriggerInstance.hasItems(Items.IRON_NUGGET)).save(consumer);
 
-		ShapelessRecipeBuilder.shapeless(Items.IRON_NUGGET)
-				.requires(ItemRegistry.IRON_DUST.get())
-				.requires(ItemRegistry.IRON_DUST.get())
-				.group("celestialexploration")
-				.unlockedBy("iron_dust", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.IRON_DUST.get())).save(consumer, "iron_nugget_from_iron_dust");
+		WorkbenchCraftingRecipeBuilder.shaped(Items.IRON_INGOT, FluidRegistry.MOLTEN_IRON.get(), 0.11F).pattern("X").define('X', ItemRegistry.INGOT_MOLD.get()).group("celestialexploration").unlockedBy("has_iron", has(Items.IRON_INGOT)).save(consumer, "iron_ingot_from_molten_iron");
+		WorkbenchCraftingRecipeBuilder.shaped(Items.IRON_BLOCK, FluidRegistry.MOLTEN_IRON.get(), 1.0F).pattern("X").define('X', ItemRegistry.BLOCK_MOLD.get()).group("celestialexploration").unlockedBy("has_iron", has(Items.IRON_INGOT)).save(consumer, "iron_block_from_molten_iron");
+//		WorkbenchCraftingRecipeBuilder.shaped(Items.IRON_NUGGET, FluidRegistry.MOLTEN_IRON.get(), 0.012F).pattern("X").define('X', ItemRegistry.NUGGET_MOLD.get()).group("celestialexploration").unlockedBy("has_iron", has(Items.IRON_INGOT)).save(consumer, "iron_nugget_from_molten_iron");
+		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.STEEL_INGOT.get(), FluidRegistry.MOLTEN_STEEL.get(), 0.11F).pattern("X").define('X', ItemRegistry.INGOT_MOLD.get()).group("celestialexploration").unlockedBy("has_steel", has(ItemRegistry.STEEL_INGOT.get())).save(consumer, "steel_ingot_from_molten_steel");
+		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.STEEL_BLOCK.get(), FluidRegistry.MOLTEN_STEEL.get(), 1.0F).pattern("X").define('X', ItemRegistry.BLOCK_MOLD.get()).group("celestialexploration").unlockedBy("has_steel", has(ItemRegistry.STEEL_INGOT.get())).save(consumer, "steel_block_from_molten_steel");
+//		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.STEEL_NUGGET.get(), FluidRegistry.MOLTEN_STEEL.get(), 0.012F).pattern("X").define('X', ItemRegistry.NUGGET_MOLD.get()).group("celestialexploration").unlockedBy("has_steel", has(ItemRegistry.STEEL_INGOT.get())).save(consumer, "steel_nugget_from_molten_steel");
+		WorkbenchCraftingRecipeBuilder.shaped(Items.COPPER_INGOT, FluidRegistry.MOLTEN_COPPER.get(), 0.11F).pattern("X").define('X', ItemRegistry.INGOT_MOLD.get()).group("celestialexploration").unlockedBy("has_copper", has(Items.COPPER_INGOT)).save(consumer, "copper_ingot_from_molten_copper");
+		WorkbenchCraftingRecipeBuilder.shaped(Items.COPPER_BLOCK, FluidRegistry.MOLTEN_COPPER.get(), 1.0F).pattern("X").define('X', ItemRegistry.BLOCK_MOLD.get()).group("celestialexploration").unlockedBy("has_copper", has(Items.COPPER_INGOT)).save(consumer, "copper_block_from_molten_copper");
+//		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.COPPER_NUGGET.get(), FluidRegistry.MOLTEN_COPPER.get(), 0.012F).pattern("X").define('X', ItemRegistry.NUGGET_MOLD.get()).group("celestialexploration").unlockedBy("has_copper", has(Items.COPPER_INGOT)).save(consumer, "copper_nugget_from_molten_copper");
+		WorkbenchCraftingRecipeBuilder.shaped(Items.GOLD_INGOT, FluidRegistry.MOLTEN_GOLD.get(), 0.11F).pattern("X").define('X', ItemRegistry.INGOT_MOLD.get()).group("celestialexploration").unlockedBy("has_gold", has(Items.GOLD_INGOT)).save(consumer, "gold_ingot_from_molten_gold");
+		WorkbenchCraftingRecipeBuilder.shaped(Items.GOLD_BLOCK, FluidRegistry.MOLTEN_GOLD.get(), 1.0F).pattern("X").define('X', ItemRegistry.BLOCK_MOLD.get()).group("celestialexploration").unlockedBy("has_gold", has(Items.GOLD_INGOT)).save(consumer, "gold_block_from_molten_gold");
+//		WorkbenchCraftingRecipeBuilder.shaped(Items.GOLD_NUGGET, FluidRegistry.MOLTEN_COPPER.get(), 0.012F).pattern("X").define('X', ItemRegistry.NUGGET_MOLD.get()).group("celestialexploration").unlockedBy("has_gold", has(Items.GOLD_INGOT)).save(consumer, "gold_nugget_from_molten_gold");
 
-		ShapelessRecipeBuilder.shapeless(ItemRegistry.LUNAR_CHEESE.get())
-				.requires(ItemRegistry.LUNAR_GOO.get())
-				.requires(Items.MILK_BUCKET)
-				.group("celestialexploration")
-				.unlockedBy("lunar_goo", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.LUNAR_GOO.get())).save(consumer);
-
-		ShapelessRecipeBuilder.shapeless(ItemRegistry.CHEESE.get())
-				.requires(Items.MILK_BUCKET)
-				.requires(Items.MILK_BUCKET)
-				.group("celestialexploration")
-				.unlockedBy("milk", InventoryChangeTrigger.TriggerInstance.hasItems(Items.MILK_BUCKET)).save(consumer);
+//		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.CHEESE.get(), Fluids.WATER, 1.0F).pattern("X").define('X', Items.MILK_BUCKET).group("celestialexploration").unlockedBy("has_gold", has(Items.GOLD_INGOT)).save(consumer, "test_cheese");
 
 	}
 }

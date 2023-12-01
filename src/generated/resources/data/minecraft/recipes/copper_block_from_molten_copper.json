@@ -1,0 +1,17 @@
+{
+  "type": "celestialexploration:workbench_crafting",
+  "group": "celestialexploration",
+  "pattern": [
+    "X"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:block_mold"
+    }
+  },
+  "result": {
+    "item": "minecraft:copper_block"
+  },
+  "fluid": "celestialexploration:molten_copper",
+  "buckets": 1.0
+}

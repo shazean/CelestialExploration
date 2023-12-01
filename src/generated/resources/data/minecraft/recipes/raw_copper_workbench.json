@@ -1,0 +1,11 @@
+{
+  "type": "celestialexploration:workbench_smelting",
+  "group": "celestialexploration",
+  "ingredient": {
+    "item": "minecraft:raw_copper"
+  },
+  "result": "celestialexploration:molten_copper",
+  "experience": 0.7,
+  "cookingtime": 100,
+  "buckets": 0.11
+}

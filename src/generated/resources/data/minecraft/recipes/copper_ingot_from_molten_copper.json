@@ -1,0 +1,17 @@
+{
+  "type": "celestialexploration:workbench_crafting",
+  "group": "celestialexploration",
+  "pattern": [
+    "X"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:ingot_mold"
+    }
+  },
+  "result": {
+    "item": "minecraft:copper_ingot"
+  },
+  "fluid": "celestialexploration:molten_copper",
+  "buckets": 0.11
+}

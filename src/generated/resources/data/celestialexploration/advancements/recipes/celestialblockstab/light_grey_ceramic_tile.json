@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "celestialexploration:light_grey_ceramic_tile"
+    ]
+  },
+  "criteria": {
+    "clay": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:clay"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "celestialexploration:light_grey_ceramic_tile"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "clay",
+      "has_the_recipe"
+    ]
+  ]
+}

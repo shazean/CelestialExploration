@@ -1,0 +1,22 @@
+{
+  "type": "celestialexploration:workbench_crafting",
+  "group": "celestialexploration",
+  "pattern": [
+    "XXX",
+    "XGX",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "tag": "forge:cobblestone"
+    },
+    "G": {
+      "tag": "forge:glass"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:lox_tank"
+  },
+  "fluid": "celestialexploration:molten_steel",
+  "buckets": 0.11
+}

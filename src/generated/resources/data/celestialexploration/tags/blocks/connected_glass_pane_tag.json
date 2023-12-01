@@ -1,6 +1,22 @@
 {
   "replace": false,
   "values": [
-    "celestialexploration:reinforced_glass_pane"
+    "celestialexploration:reinforced_glass_pane",
+    "celestialexploration:painted_white_ceramic",
+    "celestialexploration:painted_light_grey_ceramic",
+    "celestialexploration:painted_grey_ceramic",
+    "celestialexploration:painted_black_ceramic",
+    "celestialexploration:painted_purple_ceramic",
+    "celestialexploration:painted_magenta_ceramic",
+    "celestialexploration:painted_blue_ceramic",
+    "celestialexploration:painted_light_blue_ceramic",
+    "celestialexploration:painted_cyan_ceramic",
+    "celestialexploration:painted_green_ceramic",
+    "celestialexploration:painted_lime_ceramic",
+    "celestialexploration:painted_yellow_ceramic",
+    "celestialexploration:painted_orange_ceramic",
+    "celestialexploration:painted_brown_ceramic",
+    "celestialexploration:painted_red_ceramic",
+    "celestialexploration:painted_pink_ceramic"
   ]
 }

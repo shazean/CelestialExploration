@@ -12,10 +12,6 @@ public class OxygenTankSlot extends SlotItemHandler {
 
     @Override
     public boolean mayPlace(ItemStack stack) {
-        if (stack.getItem() == ItemRegistry.LOX_TANK.get()) {
-            return true;
-        } else {
-            return false;
-        }
+        return stack.getItem() == ItemRegistry.LOX_TANK.get();
     }
 }

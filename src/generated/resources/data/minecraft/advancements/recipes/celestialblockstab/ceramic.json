@@ -6,13 +6,13 @@
     ]
   },
   "criteria": {
-    "has_brick": {
+    "has_sand": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:brick"
+              "minecraft:sand"
             ]
           }
         ]
@@ -27,7 +27,7 @@
   },
   "requirements": [
     [
-      "has_brick",
+      "has_sand",
       "has_the_recipe"
     ]
   ]

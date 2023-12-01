@@ -4,6 +4,7 @@ import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.entity.Shuttle;
 import com.shim.celestialexploration.item.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -236,12 +237,12 @@ public class ItemRegistry {
 
 	public static final RegistryObject<Item> DRY_ICE = fromBlock(BlockRegistry.DRY_ICE);
 	public static final RegistryObject<Item> OXYGEN_COMPRESSOR = fromShuttleBlock(BlockRegistry.OXYGEN_COMPRESSOR);
+	public static final RegistryObject<Item> WORKBENCH = fromShuttleBlock(BlockRegistry.WORKBENCH);
 
 	public static final RegistryObject<Item> LOX_TANK = ITEMS.register("lox_tank", () -> new LoxTankItem(BlockRegistry.LOX_TANK.get(), new Item.Properties().tab(CelestialExploration.SHUTTLE_TAB).stacksTo(1)));
-	public static final RegistryObject<Item> LOX_BUCKET = ITEMS.register("lox_bucket", () -> new BucketItem(FluidRegistry.LOX_STILL, new Item.Properties().stacksTo(1))); //TODO add creative tab
 
 	public static final RegistryObject<Item> RUSTED_IRON_NUGGET = ITEMS.register("rusted_iron_nugget", () -> new Item((new Item.Properties()).tab(CelestialExploration.CELESTIAL_MISC_TAB)));
-	public static final RegistryObject<Item> IRON_DUST = ITEMS.register("iron_dust", () -> new Item((new Item.Properties()).tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+//	public static final RegistryObject<Item> IRON_DUST = ITEMS.register("iron_dust", () -> new Item((new Item.Properties()).tab(CelestialExploration.CELESTIAL_MISC_TAB)));
 	public static final RegistryObject<Item> LUNAR_GOO = ITEMS.register("lunar_goo", () -> new Item((new Item.Properties()).tab(CelestialExploration.CELESTIAL_MISC_TAB)));
 
 	public static final RegistryObject<Item> LUMINOUS_BLUE_GLASS = fromBlock(BlockRegistry.LUMINOUS_BLUE_GLASS);
@@ -253,6 +254,8 @@ public class ItemRegistry {
 //	public static final RegistryObject<Item> CONNECTED_GLASS_PANE = fromBlock(BlockRegistry.CONNECTED_GLASS_PANE);
 	public static final RegistryObject<Item> REINFORCED_GLASS = fromBlock(BlockRegistry.REINFORCED_GLASS);
 	public static final RegistryObject<Item> REINFORCED_GLASS_PANE = fromBlock(BlockRegistry.REINFORCED_GLASS_PANE);
+
+	public static final RegistryObject<Item> SILICA = fromBlock(BlockRegistry.SILICA);
 
 
 //	public static final RegistryObject<Item> SOLAR_PANEL = ITEMS.register("solar_panel",  () -> new BlockItemBase(RegistryBlocks.SOLAR_PANEL.get()));
@@ -287,22 +290,55 @@ public class ItemRegistry {
 
 	public static final RegistryObject<Item> CERAMIC = fromBlock(BlockRegistry.CERAMIC);
 	public static final RegistryObject<Item> CERAMIC_TILE = fromBlock(BlockRegistry.CERAMIC_TILE);
-//	public static final RegistryObject<Item> WHITE_CERAMIC = fromBlock(BlockRegistry.WHITE_CERAMIC);
-//	public static final RegistryObject<Item> LIGHT_GREY_CERAMIC = fromBlock(BlockRegistry.LIGHT_GREY_CERAMIC);
-//	public static final RegistryObject<Item> GREY_CERAMIC = fromBlock(BlockRegistry.GREY_CERAMIC);
-//	public static final RegistryObject<Item> BLACK_CERAMIC = fromBlock(BlockRegistry.BLACK_CERAMIC);
-//	public static final RegistryObject<Item> PURPLE_CERAMIC = fromBlock(BlockRegistry.PURPLE_CERAMIC);
-//	public static final RegistryObject<Item> MAGENTA_CERAMIC = fromBlock(BlockRegistry.MAGENTA_CERAMIC);
-//	public static final RegistryObject<Item> BLUE_CERAMIC = fromBlock(BlockRegistry.BLUE_CERAMIC);
-//	public static final RegistryObject<Item> LIGHT_BLUE_CERAMIC = fromBlock(BlockRegistry.LIGHT_BLUE_CERAMIC);
-//	public static final RegistryObject<Item> CYAN_CERAMIC = fromBlock(BlockRegistry.CYAN_CERAMIC);
-//	public static final RegistryObject<Item> GREEN_CERAMIC = fromBlock(BlockRegistry.GREEN_CERAMIC);
-//	public static final RegistryObject<Item> LIME_CERAMIC = fromBlock(BlockRegistry.LIME_CERAMIC);
-//	public static final RegistryObject<Item> YELLOW_CERAMIC = fromBlock(BlockRegistry.YELLOW_CERAMIC);
-//	public static final RegistryObject<Item> ORANGE_CERAMIC = fromBlock(BlockRegistry.ORANGE_CERAMIC);
-//	public static final RegistryObject<Item> BROWN_CERAMIC = fromBlock(BlockRegistry.BROWN_CERAMIC);
-//	public static final RegistryObject<Item> RED_CERAMIC = fromBlock(BlockRegistry.RED_CERAMIC);
-//	public static final RegistryObject<Item> PINK_CERAMIC = fromBlock(BlockRegistry.PINK_CERAMIC);
+	public static final RegistryObject<Item> WHITE_CERAMIC = fromBlock(BlockRegistry.WHITE_CERAMIC);
+	public static final RegistryObject<Item> WHITE_CERAMIC_TILE = fromBlock(BlockRegistry.WHITE_CERAMIC_TILE);
+	public static final RegistryObject<Item> LIGHT_GREY_CERAMIC = fromBlock(BlockRegistry.LIGHT_GREY_CERAMIC);
+	public static final RegistryObject<Item> LIGHT_GREY_CERAMIC_TILE = fromBlock(BlockRegistry.LIGHT_GREY_CERAMIC_TILE);
+	public static final RegistryObject<Item> GREY_CERAMIC = fromBlock(BlockRegistry.GREY_CERAMIC);
+	public static final RegistryObject<Item> GREY_CERAMIC_TILE = fromBlock(BlockRegistry.GREY_CERAMIC_TILE);
+	public static final RegistryObject<Item> BLACK_CERAMIC = fromBlock(BlockRegistry.BLACK_CERAMIC);
+	public static final RegistryObject<Item> BLACK_CERAMIC_TILE = fromBlock(BlockRegistry.BLACK_CERAMIC_TILE);
+	public static final RegistryObject<Item> PURPLE_CERAMIC = fromBlock(BlockRegistry.PURPLE_CERAMIC);
+	public static final RegistryObject<Item> PURPLE_CERAMIC_TILE = fromBlock(BlockRegistry.PURPLE_CERAMIC_TILE);
+	public static final RegistryObject<Item> MAGENTA_CERAMIC = fromBlock(BlockRegistry.MAGENTA_CERAMIC);
+	public static final RegistryObject<Item> MAGENTA_CERAMIC_TILE = fromBlock(BlockRegistry.MAGENTA_CERAMIC_TILE);
+	public static final RegistryObject<Item> BLUE_CERAMIC = fromBlock(BlockRegistry.BLUE_CERAMIC);
+	public static final RegistryObject<Item> BLUE_CERAMIC_TILE = fromBlock(BlockRegistry.BLUE_CERAMIC_TILE);
+	public static final RegistryObject<Item> LIGHT_BLUE_CERAMIC = fromBlock(BlockRegistry.LIGHT_BLUE_CERAMIC);
+	public static final RegistryObject<Item> LIGHT_BLUE_CERAMIC_TILE = fromBlock(BlockRegistry.LIGHT_BLUE_CERAMIC_TILE);
+	public static final RegistryObject<Item> CYAN_CERAMIC = fromBlock(BlockRegistry.CYAN_CERAMIC);
+	public static final RegistryObject<Item> CYAN_CERAMIC_TILE = fromBlock(BlockRegistry.CYAN_CERAMIC_TILE);
+	public static final RegistryObject<Item> GREEN_CERAMIC = fromBlock(BlockRegistry.GREEN_CERAMIC);
+	public static final RegistryObject<Item> GREEN_CERAMIC_TILE = fromBlock(BlockRegistry.GREEN_CERAMIC_TILE);
+	public static final RegistryObject<Item> LIME_CERAMIC = fromBlock(BlockRegistry.LIME_CERAMIC);
+	public static final RegistryObject<Item> LIME_CERAMIC_TILE = fromBlock(BlockRegistry.LIME_CERAMIC_TILE);
+	public static final RegistryObject<Item> YELLOW_CERAMIC = fromBlock(BlockRegistry.YELLOW_CERAMIC);
+	public static final RegistryObject<Item> YELLOW_CERAMIC_TILE = fromBlock(BlockRegistry.YELLOW_CERAMIC_TILE);
+	public static final RegistryObject<Item> ORANGE_CERAMIC = fromBlock(BlockRegistry.ORANGE_CERAMIC);
+	public static final RegistryObject<Item> ORANGE_CERAMIC_TILE = fromBlock(BlockRegistry.ORANGE_CERAMIC_TILE);
+	public static final RegistryObject<Item> BROWN_CERAMIC = fromBlock(BlockRegistry.BROWN_CERAMIC);
+	public static final RegistryObject<Item> BROWN_CERAMIC_TILE = fromBlock(BlockRegistry.BROWN_CERAMIC_TILE);
+	public static final RegistryObject<Item> RED_CERAMIC = fromBlock(BlockRegistry.RED_CERAMIC);
+	public static final RegistryObject<Item> RED_CERAMIC_TILE = fromBlock(BlockRegistry.RED_CERAMIC_TILE);
+	public static final RegistryObject<Item> PINK_CERAMIC = fromBlock(BlockRegistry.PINK_CERAMIC);
+	public static final RegistryObject<Item> PINK_CERAMIC_TILE = fromBlock(BlockRegistry.PINK_CERAMIC_TILE);
+
+	public static final RegistryObject<Item> PAINTED_WHITE_CERAMIC = fromBlock(BlockRegistry.PAINTED_WHITE_CERAMIC);
+	public static final RegistryObject<Item> PAINTED_LIGHT_GREY_CERAMIC = fromBlock(BlockRegistry.PAINTED_LIGHT_GREY_CERAMIC);
+	public static final RegistryObject<Item> PAINTED_GREY_CERAMIC = fromBlock(BlockRegistry.PAINTED_GREY_CERAMIC);
+	public static final RegistryObject<Item> PAINTED_BLACK_CERAMIC = fromBlock(BlockRegistry.PAINTED_BLACK_CERAMIC);
+	public static final RegistryObject<Item> PAINTED_PURPLE_CERAMIC = fromBlock(BlockRegistry.PAINTED_PURPLE_CERAMIC);
+	public static final RegistryObject<Item> PAINTED_MAGENTA_CERAMIC = fromBlock(BlockRegistry.PAINTED_MAGENTA_CERAMIC);
+	public static final RegistryObject<Item> PAINTED_BLUE_CERAMIC = fromBlock(BlockRegistry.PAINTED_BLUE_CERAMIC);
+	public static final RegistryObject<Item> PAINTED_LIGHT_BLUE_CERAMIC = fromBlock(BlockRegistry.PAINTED_LIGHT_BLUE_CERAMIC);
+	public static final RegistryObject<Item> PAINTED_CYAN_CERAMIC = fromBlock(BlockRegistry.PAINTED_CYAN_CERAMIC);
+	public static final RegistryObject<Item> PAINTED_GREEN_CERAMIC = fromBlock(BlockRegistry.PAINTED_GREEN_CERAMIC);
+	public static final RegistryObject<Item> PAINTED_LIME_CERAMIC = fromBlock(BlockRegistry.PAINTED_LIME_CERAMIC);
+	public static final RegistryObject<Item> PAINTED_YELLOW_CERAMIC = fromBlock(BlockRegistry.PAINTED_YELLOW_CERAMIC);
+	public static final RegistryObject<Item> PAINTED_ORANGE_CERAMIC = fromBlock(BlockRegistry.PAINTED_ORANGE_CERAMIC);
+	public static final RegistryObject<Item> PAINTED_BROWN_CERAMIC = fromBlock(BlockRegistry.PAINTED_BROWN_CERAMIC);
+	public static final RegistryObject<Item> PAINTED_RED_CERAMIC = fromBlock(BlockRegistry.PAINTED_RED_CERAMIC);
+	public static final RegistryObject<Item> PAINTED_PINK_CERAMIC = fromBlock(BlockRegistry.PAINTED_PINK_CERAMIC);
 
 
 	//	public static final RegistryObject<Item> THICK_CARBON_AIR = ITEMS.register("thick_carbon_air",  () -> new BlockItemBase(RegistryBlocks.THICK_CARBON_AIR.get()));
@@ -316,7 +352,7 @@ public class ItemRegistry {
 	public static final RegistryObject<Item> SHUTTLE_CABIN = ITEMS.register("shuttle_cabin", () -> new Item((new Item.Properties()).stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB)));
 	public static final RegistryObject<Item> SHUTTLE_FRAME = ITEMS.register("shuttle_frame", () -> new Item((new Item.Properties()).stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB)));
 	public static final RegistryObject<Item> SHUTTLE_ENGINE = ITEMS.register("shuttle_engine", () -> new Item((new Item.Properties()).stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB)));
-	public static final RegistryObject<Item> NOSE_CONE = ITEMS.register("nose_cone", () -> new Item((new Item.Properties()).stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB)));
+//	public static final RegistryObject<Item> NOSE_CONE = ITEMS.register("nose_cone", () -> new Item((new Item.Properties()).stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB)));
 	
 	public static final RegistryObject<Item> BLACK_SHUTTLE = ITEMS.register("black_shuttle", () -> new ShuttleItem(Shuttle.Type.BLACK, new Item.Properties().stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB)));
 	public static final RegistryObject<Item> GREY_SHUTTLE = ITEMS.register("grey_shuttle", () -> new ShuttleItem(Shuttle.Type.GREY, new Item.Properties().stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB)));
@@ -358,11 +394,22 @@ public class ItemRegistry {
 
 	//Items
 	public static final RegistryObject<Item> STEEL_INGOT = ITEMS.register("steel_ingot", () -> new Item((new Item.Properties()).tab(CreativeModeTab.TAB_MATERIALS)));
+	public static final RegistryObject<Item> STEEL_NUGGET = ITEMS.register("steel_nugget", () -> new Item((new Item.Properties()).tab(CreativeModeTab.TAB_MATERIALS)));
+//	public static final RegistryObject<Item> COPPER_NUGGET = ITEMS.register("copper_nugget", () -> new Item((new Item.Properties()).tab(CreativeModeTab.TAB_MATERIALS)));
+
+
 	public static final RegistryObject<Item> MOON_DUST = ITEMS.register("moon_dust", () -> new Item((new Item.Properties()).tab(CelestialExploration.CELESTIAL_MISC_TAB)));
 	//	public static final RegistryObject<Item> SULFUR_CRYSTAL = ITEMS.register("sulfur_crystal", () -> new Item((new Item.Properties()).tab(CelestialExploration.CELESTIAL_TAB)));
 //	 public static final RegistryObject<Item> SULFUR_BUCKET = ITEMS.register("sulfur_bucket", () -> new BucketItem(RegistryFluids.SULFUR, (new Item.Properties()).craftRemainder(Items.BUCKET).stacksTo(1).tab(ItemGroup.TAB_MISC)));
 	public static final RegistryObject<Item> STEEL_ROD = ITEMS.register("steel_rod", () -> new CatalystItem()); //FIXME?
 //	public static final RegistryObject<Item> METEOR_INGOT = ITEMS.register("meteor_ingot", () -> new Item((new Item.Properties()).tab(CreativeModeTab.TAB_MATERIALS)));
+
+	public static final RegistryObject<Item> BLOCK_MOLD = ITEMS.register("block_mold", () -> new Item(new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> INGOT_MOLD = ITEMS.register("ingot_mold", () -> new Item(new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+//	public static final RegistryObject<Item> NUGGET_MOLD = ITEMS.register("nugget_mold", () -> new NuggetMoldItem((new Item.Properties()).tab(CreativeModeTab.TAB_MATERIALS)));
+
+	public static final RegistryObject<Item> STEEL_WOOL = ITEMS.register("steel_wool", () -> new Item((new Item.Properties()).tab(CreativeModeTab.TAB_MATERIALS)));
+
 
 	/**
 	 * FOOD PROPERTIES
@@ -377,42 +424,34 @@ public class ItemRegistry {
 	/**
 	 * FOODS
 	 */
-	public static final RegistryObject<Item> MARSHMALLOW_GOO = ITEMS.register("marshmallow_goo",
-			() -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_FOOD).food(MARSHMALLOW_GOO_PROPERTIES)));
-	public static final RegistryObject<Item> MARSHMALLOW = ITEMS.register("marshmallow",
-			() -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_FOOD).food(MARSHMALLOW_PROPERTIES)));
-	public static final RegistryObject<Item> ROASTED_MARSHMALLOW = ITEMS.register("roasted_marshmallow",
-			() -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_FOOD).food(MARSHMALLOW_PROPERTIES)));
-	public static final RegistryObject<Item> CHOCOLATE = ITEMS.register("chocolate",
-			() -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_FOOD).food(CHOCOLATE_PROPERTIES)));
-	public static final RegistryObject<Item> CRACKER = ITEMS.register("cracker",
-			() -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_FOOD).food(CRACKER_PROPERTIES)));
-	public static final RegistryObject<Item> SMORES = ITEMS.register("smores",
-			() -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_FOOD).food(SMORES_PROPERTIES)));
-	public static final RegistryObject<Item> LUNAR_CHEESE = ITEMS.register("lunar_cheese",
-			() -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_FOOD).food(CHEESE_PROPERTIES)));
-	public static final RegistryObject<Item> CHEESE = ITEMS.register("cheese",
-			() -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_FOOD).food(CHEESE_PROPERTIES)));
-
+	public static final RegistryObject<Item> MARSHMALLOW_GOO = ITEMS.register("marshmallow_goo", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_FOOD).food(MARSHMALLOW_GOO_PROPERTIES)));
+	public static final RegistryObject<Item> MARSHMALLOW = ITEMS.register("marshmallow", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_FOOD).food(MARSHMALLOW_PROPERTIES)));
+	public static final RegistryObject<Item> ROASTED_MARSHMALLOW = ITEMS.register("roasted_marshmallow", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_FOOD).food(MARSHMALLOW_PROPERTIES)));
+	public static final RegistryObject<Item> CHOCOLATE = ITEMS.register("chocolate", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_FOOD).food(CHOCOLATE_PROPERTIES)));
+	public static final RegistryObject<Item> CRACKER = ITEMS.register("cracker", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_FOOD).food(CRACKER_PROPERTIES)));
+	public static final RegistryObject<Item> SMORES = ITEMS.register("smores", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_FOOD).food(SMORES_PROPERTIES)));
+	public static final RegistryObject<Item> LUNAR_CHEESE = ITEMS.register("lunar_cheese", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_FOOD).food(CHEESE_PROPERTIES)));
+	public static final RegistryObject<Item> CHEESE = ITEMS.register("cheese", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_FOOD).food(CHEESE_PROPERTIES)));
 
 	//CUSTOM ITEM TAGS
-	public static final TagKey<Item> MARS_TAG = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "mars_tag"));
-	public static final TagKey<Item> MARS_STONE_TAG = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "mars_stone_tag"));
-	public static final TagKey<Item> MARS_COBBLESTONE_TAG = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "mars_cobblestone_tag"));
-	public static final TagKey<Item> MARS_DEEPSLATE_TAG = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "mars_deepslate_tag"));
-	public static final TagKey<Item> MARS_COBBLED_DEEPSLATE_TAG = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "mars_cobbled_deepslate_tag"));
+	public static final TagKey<Item> MARS_TAG = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "mars"));
+	public static final TagKey<Item> MARS_STONE_TAG = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "mars_stone"));
+	public static final TagKey<Item> MARS_COBBLESTONE_TAG = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "mars_cobblestone"));
+	public static final TagKey<Item> MARS_DEEPSLATE_TAG = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "mars_deepslate"));
+	public static final TagKey<Item> MARS_COBBLED_DEEPSLATE_TAG = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "mars_cobbled_deepslate"));
 
-	public static final TagKey<Item> MOON_TAG = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "moon_tag"));
-	public static final TagKey<Item> MOON_STONE_TAG = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "moon_stone_tag"));
-	public static final TagKey<Item> MOON_COBBLESTONE_TAG = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "moon_cobblestone_tag"));
-	public static final TagKey<Item> MOON_DEEPSLATE_TAG = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "moon_deepslate_tag"));
-	public static final TagKey<Item> MOON_COBBLED_DEEPSLATE_TAG = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "moon_cobbled_deepslate_tag"));
+	public static final TagKey<Item> MOON_TAG = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "moon"));
+	public static final TagKey<Item> MOON_STONE_TAG = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "moon_stone"));
+	public static final TagKey<Item> MOON_COBBLESTONE_TAG = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "moon_cobblestone"));
+	public static final TagKey<Item> MOON_DEEPSLATE_TAG = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "moon_deepslate"));
+	public static final TagKey<Item> MOON_COBBLED_DEEPSLATE_TAG = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "moon_cobbled_deepslate"));
 
-	public static final TagKey<Item> METEOR_TAG = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "meteor_tag"));
-	public static final TagKey<Item> METEOR_STONE_TAG = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "meteor_stone_tag"));
+	public static final TagKey<Item> METEOR_TAG = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "meteor"));
+	public static final TagKey<Item> METEOR_STONE_TAG = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "meteor_stone"));
 
-
+	public static final TagKey<Item> DYED_CERAMIC_TAG = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "ceramic"));
+	public static final TagKey<Item> PAINTED_CERAMIC_TAG = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "painted"));
+	public static final TagKey<Item> DYED_CERAMIC_TILE_TAG = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "ceramic_tile"));
+	public static final TagKey<Item> PAINTED_CERAMIC_TILE_TAG = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "painted_ceramic_tile"));
 
 }
-
-	

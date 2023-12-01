@@ -1,0 +1,25 @@
+{
+  "type": "celestialexploration:workbench_crafting",
+  "group": "celestialexploration",
+  "pattern": [
+    " C ",
+    "CGC",
+    "X X"
+  ],
+  "key": {
+    "C": {
+      "item": "celestialexploration:ceramic_tile"
+    },
+    "G": {
+      "tag": "forge:glass"
+    },
+    "X": {
+      "tag": "forge:chests"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:shuttle_cabin"
+  },
+  "fluid": "celestialexploration:molten_steel",
+  "buckets": 0.44
+}

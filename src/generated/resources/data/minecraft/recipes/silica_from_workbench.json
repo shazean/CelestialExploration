@@ -1,0 +1,19 @@
+{
+  "type": "celestialexploration:workbench_crafting",
+  "group": "celestialexploration",
+  "pattern": [
+    "SS",
+    "SS"
+  ],
+  "key": {
+    "S": {
+      "tag": "forge:sand"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:silica",
+    "count": 4
+  },
+  "fluid": "minecraft:water",
+  "buckets": 0.5
+}

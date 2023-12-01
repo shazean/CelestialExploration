@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_glass_pane_post",
+  "textures": {
+    "pane": "celestialexploration:block/blue_ceramic",
+    "edge": "celestialexploration:block/blue_ceramic_tile_top"
+  }
+}

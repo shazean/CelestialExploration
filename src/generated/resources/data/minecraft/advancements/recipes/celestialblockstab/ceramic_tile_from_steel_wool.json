@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:ceramic_tile_from_steel_wool"
+    ]
+  },
+  "criteria": {
+    "ceramic": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:ceramic"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:ceramic_tile_from_steel_wool"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "ceramic",
+      "has_the_recipe"
+    ]
+  ]
+}

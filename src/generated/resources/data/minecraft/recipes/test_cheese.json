@@ -1,0 +1,17 @@
+{
+  "type": "celestialexploration:workbench_crafting",
+  "group": "celestialexploration",
+  "pattern": [
+    "X"
+  ],
+  "key": {
+    "X": {
+      "item": "minecraft:milk_bucket"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:cheese"
+  },
+  "fluid": "minecraft:water",
+  "buckets": 1.0
+}

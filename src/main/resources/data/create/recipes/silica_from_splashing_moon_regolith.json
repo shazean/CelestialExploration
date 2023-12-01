@@ -1,0 +1,13 @@
+{
+  "type": "create:splashing",
+  "ingredients": [
+    {
+      "item": "celestialexploration:moon_sand"
+    }
+  ],
+  "results": [
+    {
+      "item": "celestialexploration:silica"
+    }
+  ]
+}

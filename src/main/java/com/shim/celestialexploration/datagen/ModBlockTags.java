@@ -1,14 +1,13 @@
 package com.shim.celestialexploration.datagen;
 
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.registry.BiomeRegistry;
 import com.shim.celestialexploration.registry.BlockRegistry;
-
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.tags.BlockTags;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import org.jetbrains.annotations.NotNull;
 
 public class ModBlockTags extends BlockTagsProvider {
 
@@ -18,13 +17,9 @@ public class ModBlockTags extends BlockTagsProvider {
 
     @Override
     protected void addTags() {
-        /**
-         * VANILLA TAGS
-         */
+        /*VANILLA TAGS*/
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
-                /**
-                 * MOON
-                 */
+                /*MOON*/
                 .add(BlockRegistry.MOON_BRICK_SLAB.get())
                 .add(BlockRegistry.MOON_BRICK_STAIRS.get())
                 .add(BlockRegistry.MOON_BRICK_WALL.get())
@@ -65,7 +60,7 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(BlockRegistry.MOON_POLISHED_DEEPSLATE_WALL.get())
 
 
-                /**MARS*/
+                /*MARS*/
                 .add(BlockRegistry.MARS_BRICK_SLAB.get())
                 .add(BlockRegistry.MARS_BRICK_STAIRS.get())
                 .add(BlockRegistry.MARS_BRICK_WALL.get())
@@ -107,7 +102,7 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(BlockRegistry.MARS_POLISHED_DEEPSLATE_WALL.get())
 
 
-                /**METEOR*/
+                /*METEOR*/
                 .add(BlockRegistry.METEOR.get())
                 .add(BlockRegistry.METEOR_BRICK_SLAB.get())
                 .add(BlockRegistry.METEOR_BRICK_STAIRS.get())
@@ -121,14 +116,65 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(BlockRegistry.METEOR_IRON_ORE.get())
                 .add(BlockRegistry.METEOR_LAPIS_ORE.get())
                 .add(BlockRegistry.METEOR_REDSTONE_ORE.get())
-                .add(BlockRegistry.CHISELED_METEOR_BRICKS.get());
+                .add(BlockRegistry.CHISELED_METEOR_BRICKS.get())
+
+                /*CERAMIC*/
+                .add(BlockRegistry.CERAMIC.get())
+                .add(BlockRegistry.CERAMIC_TILE.get())
+                .add(BlockRegistry.WHITE_CERAMIC.get())
+                .add(BlockRegistry.WHITE_CERAMIC_TILE.get())
+                .add(BlockRegistry.LIGHT_GREY_CERAMIC.get())
+                .add(BlockRegistry.LIGHT_GREY_CERAMIC_TILE.get())
+                .add(BlockRegistry.GREY_CERAMIC.get())
+                .add(BlockRegistry.GREY_CERAMIC_TILE.get())
+                .add(BlockRegistry.BLACK_CERAMIC.get())
+                .add(BlockRegistry.BLACK_CERAMIC_TILE.get())
+                .add(BlockRegistry.PURPLE_CERAMIC.get())
+                .add(BlockRegistry.PURPLE_CERAMIC_TILE.get())
+                .add(BlockRegistry.MAGENTA_CERAMIC.get())
+                .add(BlockRegistry.MAGENTA_CERAMIC_TILE.get())
+                .add(BlockRegistry.BLUE_CERAMIC.get())
+                .add(BlockRegistry.BLUE_CERAMIC_TILE.get())
+                .add(BlockRegistry.LIGHT_BLUE_CERAMIC.get())
+                .add(BlockRegistry.LIGHT_BLUE_CERAMIC_TILE.get())
+                .add(BlockRegistry.CYAN_CERAMIC.get())
+                .add(BlockRegistry.CYAN_CERAMIC_TILE.get())
+                .add(BlockRegistry.GREEN_CERAMIC.get())
+                .add(BlockRegistry.GREEN_CERAMIC_TILE.get())
+                .add(BlockRegistry.LIME_CERAMIC.get())
+                .add(BlockRegistry.LIME_CERAMIC_TILE.get())
+                .add(BlockRegistry.YELLOW_CERAMIC.get())
+                .add(BlockRegistry.YELLOW_CERAMIC_TILE.get())
+                .add(BlockRegistry.ORANGE_CERAMIC.get())
+                .add(BlockRegistry.ORANGE_CERAMIC_TILE.get())
+                .add(BlockRegistry.BROWN_CERAMIC.get())
+                .add(BlockRegistry.BROWN_CERAMIC_TILE.get())
+                .add(BlockRegistry.RED_CERAMIC.get())
+                .add(BlockRegistry.RED_CERAMIC_TILE.get())
+                .add(BlockRegistry.PINK_CERAMIC.get())
+                .add(BlockRegistry.PINK_CERAMIC_TILE.get())
+                .add(BlockRegistry.PAINTED_WHITE_CERAMIC.get())
+                .add(BlockRegistry.PAINTED_LIGHT_GREY_CERAMIC.get())
+                .add(BlockRegistry.PAINTED_GREY_CERAMIC.get())
+                .add(BlockRegistry.PAINTED_BLACK_CERAMIC.get())
+                .add(BlockRegistry.PAINTED_PURPLE_CERAMIC.get())
+                .add(BlockRegistry.PAINTED_MAGENTA_CERAMIC.get())
+                .add(BlockRegistry.PAINTED_BLUE_CERAMIC.get())
+                .add(BlockRegistry.PAINTED_LIGHT_BLUE_CERAMIC.get())
+                .add(BlockRegistry.PAINTED_CYAN_CERAMIC.get())
+                .add(BlockRegistry.PAINTED_GREEN_CERAMIC.get())
+                .add(BlockRegistry.PAINTED_LIME_CERAMIC.get())
+                .add(BlockRegistry.PAINTED_YELLOW_CERAMIC.get())
+                .add(BlockRegistry.PAINTED_ORANGE_CERAMIC.get())
+                .add(BlockRegistry.PAINTED_BROWN_CERAMIC.get())
+                .add(BlockRegistry.PAINTED_RED_CERAMIC.get())
+                .add(BlockRegistry.PAINTED_PINK_CERAMIC.get());
 
         tag(BlockTags.NEEDS_STONE_TOOL)
                 .add(BlockRegistry.MOON_IRON_ORE.get())
                 .add(BlockRegistry.MARS_IRON_ORE.get())
                 .add(BlockRegistry.MOON_DEEPSLATE_IRON_ORE.get())
-                .add(BlockRegistry.MARS_DEEPSLATE_IRON_ORE.get())
-        ;
+                .add(BlockRegistry.MARS_DEEPSLATE_IRON_ORE.get());
 
         tag(BlockTags.NEEDS_IRON_TOOL)
                 .add(BlockRegistry.MOON_REDSTONE_ORE.get())
@@ -182,8 +228,7 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(BlockRegistry.MARS_IRON_ORE.get())
                 .add(BlockRegistry.METEOR_IRON_ORE.get())
                 .add(BlockRegistry.MOON_DEEPSLATE_IRON_ORE.get())
-                .add(BlockRegistry.MARS_DEEPSLATE_IRON_ORE.get())
-        ;
+                .add(BlockRegistry.MARS_DEEPSLATE_IRON_ORE.get());
 
         tag(BlockTags.LAPIS_ORES)
                 .add(BlockRegistry.METEOR_LAPIS_ORE.get());
@@ -269,9 +314,7 @@ public class ModBlockTags extends BlockTagsProvider {
         tag(Tags.Blocks.ORE_RATES_SINGULAR);
         tag(Tags.Blocks.ORE_RATES_SPARSE);
 
-        /**
-         * CUSTOM TAGS
-         */
+        /*CUSTOM TAGS*/
 
         tag(BlockRegistry.MARS_TAG)
                 .add(BlockRegistry.MARS_BRICKS.get())
@@ -493,12 +536,84 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(BlockRegistry.LUMINOUS_BLUE_GLASS_PANE.get())
                 .add(BlockRegistry.LUMINOUS_WHITE_GLASS_PANE.get());
 
+        tag(BlockRegistry.DYED_CERAMIC_TAG)
+//                .add(BlockRegistry.CERAMIC.get())
+//                .add(BlockRegistry.CERAMIC_TILE.get())
+                .add(BlockRegistry.WHITE_CERAMIC.get())
+//                .add(BlockRegistry.WHITE_CERAMIC_TILE.get())
+                .add(BlockRegistry.LIGHT_GREY_CERAMIC.get())
+//                .add(BlockRegistry.LIGHT_GREY_CERAMIC_TILE.get())
+                .add(BlockRegistry.GREY_CERAMIC.get())
+//                .add(BlockRegistry.GREY_CERAMIC_TILE.get())
+                .add(BlockRegistry.BLACK_CERAMIC.get())
+//                .add(BlockRegistry.BLACK_CERAMIC_TILE.get())
+                .add(BlockRegistry.PURPLE_CERAMIC.get())
+//                .add(BlockRegistry.PURPLE_CERAMIC_TILE.get())
+                .add(BlockRegistry.MAGENTA_CERAMIC.get())
+//                .add(BlockRegistry.MAGENTA_CERAMIC_TILE.get())
+                .add(BlockRegistry.BLUE_CERAMIC.get())
+//                .add(BlockRegistry.BLUE_CERAMIC_TILE.get())
+                .add(BlockRegistry.LIGHT_BLUE_CERAMIC.get())
+//                .add(BlockRegistry.LIGHT_BLUE_CERAMIC_TILE.get())
+                .add(BlockRegistry.CYAN_CERAMIC.get())
+//                .add(BlockRegistry.CYAN_CERAMIC_TILE.get())
+                .add(BlockRegistry.GREEN_CERAMIC.get())
+//                .add(BlockRegistry.GREEN_CERAMIC_TILE.get())
+                .add(BlockRegistry.LIME_CERAMIC.get())
+//                .add(BlockRegistry.LIME_CERAMIC_TILE.get())
+                .add(BlockRegistry.YELLOW_CERAMIC.get())
+//                .add(BlockRegistry.YELLOW_CERAMIC_TILE.get())
+                .add(BlockRegistry.ORANGE_CERAMIC.get())
+//                .add(BlockRegistry.ORANGE_CERAMIC_TILE.get())
+                .add(BlockRegistry.BROWN_CERAMIC.get())
+//                .add(BlockRegistry.BROWN_CERAMIC_TILE.get())
+                .add(BlockRegistry.RED_CERAMIC.get())
+//                .add(BlockRegistry.RED_CERAMIC_TILE.get())
+                .add(BlockRegistry.PINK_CERAMIC.get());
+//                .add(BlockRegistry.PINK_CERAMIC_TILE.get());
+
+
+        tag(BlockRegistry.PAINTED_CERAMIC_TAG)
+                .add(BlockRegistry.PAINTED_WHITE_CERAMIC.get())
+                .add(BlockRegistry.PAINTED_LIGHT_GREY_CERAMIC.get())
+                .add(BlockRegistry.PAINTED_GREY_CERAMIC.get())
+                .add(BlockRegistry.PAINTED_BLACK_CERAMIC.get())
+                .add(BlockRegistry.PAINTED_PURPLE_CERAMIC.get())
+                .add(BlockRegistry.PAINTED_MAGENTA_CERAMIC.get())
+                .add(BlockRegistry.PAINTED_BLUE_CERAMIC.get())
+                .add(BlockRegistry.PAINTED_LIGHT_BLUE_CERAMIC.get())
+                .add(BlockRegistry.PAINTED_CYAN_CERAMIC.get())
+                .add(BlockRegistry.PAINTED_GREEN_CERAMIC.get())
+                .add(BlockRegistry.PAINTED_LIME_CERAMIC.get())
+                .add(BlockRegistry.PAINTED_YELLOW_CERAMIC.get())
+                .add(BlockRegistry.PAINTED_ORANGE_CERAMIC.get())
+                .add(BlockRegistry.PAINTED_BROWN_CERAMIC.get())
+                .add(BlockRegistry.PAINTED_RED_CERAMIC.get())
+                .add(BlockRegistry.PAINTED_PINK_CERAMIC.get());
+
+        tag(BlockRegistry.CONNECTED_GLASS_PANE_TAG)
+                .add(BlockRegistry.PAINTED_WHITE_CERAMIC.get())
+                .add(BlockRegistry.PAINTED_LIGHT_GREY_CERAMIC.get())
+                .add(BlockRegistry.PAINTED_GREY_CERAMIC.get())
+                .add(BlockRegistry.PAINTED_BLACK_CERAMIC.get())
+                .add(BlockRegistry.PAINTED_PURPLE_CERAMIC.get())
+                .add(BlockRegistry.PAINTED_MAGENTA_CERAMIC.get())
+                .add(BlockRegistry.PAINTED_BLUE_CERAMIC.get())
+                .add(BlockRegistry.PAINTED_LIGHT_BLUE_CERAMIC.get())
+                .add(BlockRegistry.PAINTED_CYAN_CERAMIC.get())
+                .add(BlockRegistry.PAINTED_GREEN_CERAMIC.get())
+                .add(BlockRegistry.PAINTED_LIME_CERAMIC.get())
+                .add(BlockRegistry.PAINTED_YELLOW_CERAMIC.get())
+                .add(BlockRegistry.PAINTED_ORANGE_CERAMIC.get())
+                .add(BlockRegistry.PAINTED_BROWN_CERAMIC.get())
+                .add(BlockRegistry.PAINTED_RED_CERAMIC.get())
+                .add(BlockRegistry.PAINTED_PINK_CERAMIC.get());
 
         //TODO fluid tags
     }
 
     @Override
-    public String getName() {
+    public @NotNull String getName() {
         return "Celestial Exploration tags";
 
     }

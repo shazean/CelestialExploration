@@ -1,0 +1,11 @@
+{
+  "type": "celestialexploration:workbench_smelting",
+  "group": "celestialexploration",
+  "ingredient": {
+    "item": "minecraft:lava_bucket"
+  },
+  "result": "minecraft:lava",
+  "experience": 0.0,
+  "cookingtime": 1,
+  "buckets": 1.0
+}

@@ -1,0 +1,18 @@
+{
+  "type": "celestialexploration:workbench_crafting",
+  "group": "celestialexploration",
+  "pattern": [
+    "X"
+  ],
+  "key": {
+    "X": {
+      "item": "minecraft:scaffolding"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:steel_frame",
+    "count": 4
+  },
+  "fluid": "celestialexploration:molten_steel",
+  "buckets": 0.22
+}

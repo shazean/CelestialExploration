@@ -1,0 +1,17 @@
+{
+  "type": "celestialexploration:workbench_crafting",
+  "group": "celestialexploration",
+  "pattern": [
+    "X"
+  ],
+  "key": {
+    "X": {
+      "item": "minecraft:bucket"
+    }
+  },
+  "result": {
+    "item": "minecraft:lava_bucket"
+  },
+  "fluid": "minecraft:lava",
+  "buckets": 1.0
+}

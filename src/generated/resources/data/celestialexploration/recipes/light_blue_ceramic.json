@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "celestialexploration",
+  "pattern": [
+    "XXX",
+    "X#X",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:ceramic"
+    },
+    "#": {
+      "item": "minecraft:light_blue_dye"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:light_blue_ceramic",
+    "count": 8
+  }
+}

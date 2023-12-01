@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "celestialexploration:pink_ceramic"
+  },
+  "result": "celestialexploration:painted_pink_ceramic",
+  "experience": 1.0,
+  "cookingtime": 100
+}

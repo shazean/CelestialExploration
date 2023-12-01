@@ -1,0 +1,11 @@
+{
+  "type": "celestialexploration:workbench_smelting",
+  "group": "celestialexploration",
+  "ingredient": {
+    "item": "minecraft:deepslate_iron_ore"
+  },
+  "result": "celestialexploration:molten_iron",
+  "experience": 0.1,
+  "cookingtime": 100,
+  "buckets": 0.11
+}

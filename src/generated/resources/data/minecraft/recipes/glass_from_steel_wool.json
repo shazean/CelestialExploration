@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "celestialexploration",
+  "pattern": [
+    "GGG",
+    "GXG",
+    "GGG"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:steel_wool"
+    },
+    "G": {
+      "tag": "forge:stained_glass"
+    }
+  },
+  "result": {
+    "item": "minecraft:glass",
+    "count": 8
+  }
+}

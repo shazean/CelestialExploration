@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "celestialexploration:purple_ceramic"
+    ]
+  },
+  "criteria": {
+    "ceramic": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:ceramic"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "celestialexploration:purple_ceramic"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "ceramic",
+      "has_the_recipe"
+    ]
+  ]
+}

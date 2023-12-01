@@ -13,10 +13,6 @@ public class FuelSlot extends SlotItemHandler {
 
     @Override
     public boolean mayPlace(ItemStack stack) {
-        if (stack.getItem() == ItemRegistry.LOX_TANK.get()) {
-            return true;
-        } else {
-            return false;
-        }
+        return true; //TODO make only fuel items or buckets
     }
 }

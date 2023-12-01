@@ -1,11 +1,8 @@
 package com.shim.celestialexploration.datagen;
 
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.registry.BiomeRegistry;
-import com.shim.celestialexploration.registry.BlockRegistry;
+import com.shim.celestialexploration.registry.*;
 
-import com.shim.celestialexploration.registry.EntityRegistry;
-import com.shim.celestialexploration.registry.ItemRegistry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -25,20 +22,25 @@ public class ModLanguageProvider extends LanguageProvider {
 		add("itemGroup.celestialmisctab", "Celestial Items");
 
 		/**BIOMES**/
-		add(BiomeRegistry.MOON_CRATERS.getRegistryName().getNamespace(), "Lunar Craters");
-//		add(BiomeRegistry.MOON_DESERT.getRegistryName().getNamespace(), "Lunar Desert");
-//		add(BiomeRegistry.MOON_LAVA_FLATS.getRegistryName().getNamespace(), "Lunar Lava Flats");
-//		add(BiomeRegistry.MOON_LOWER_PLAINS.getRegistryName().getNamespace(), "Lunar Lower Plains");
-//		add(BiomeRegistry.MOON_PLAINS.getRegistryName().getNamespace(), "Lunar Plains");
-//		add(BiomeRegistry.MARS_CRATERS.getRegistryName().getNamespace(), "Martian Craters");
-//		add(BiomeRegistry.MARS_DEEP_CRATERS.getRegistryName().getNamespace(), "Martian Deep Craters");
-//		add(BiomeRegistry.MARS_DESERT.getRegistryName().getNamespace(), "Martian Desert");
-//		add(BiomeRegistry.MARS_DUNES.getRegistryName().getNamespace(), "Martian Dunes");
-//		add(BiomeRegistry.MARS_DRY_ICE_FLATS.getRegistryName().getNamespace(), "Martian Dry Ice Flats");
-//		add(BiomeRegistry.MARS_DRY_ICE_PEAKS.getRegistryName().getNamespace(), "Martian Dry Ice Peaks");
-//		add(BiomeRegistry.MARS_ERODED_FLATS.getRegistryName().getNamespace(), "Martian Eroded Flats");
-//		add(BiomeRegistry.MARS_VOLCANO_FLATS.getRegistryName().getNamespace(), "Martian Volcano Flats");
-//		add(BiomeRegistry.MARS_FLATS.getRegistryName().getNamespace(), "Martian Flats");
+		add("biomes.celestialexploration.moon_craters", "Lunar Craters");
+		add("biomes.celestialexploration.moon_desert", "Lunar Desert");
+		add("biomes.celestialexploration.moon_lava_flats", "Lunar Lava Flats");
+		add("biomes.celestialexploration.moon_lower_plains", "Lunar Lower Plains");
+		add("biomes.celestialexploration.moon_plains", "Lunar Plains");
+		add("biomes.celestialexploration.mars_craters_", "Martian Craters");
+		add("biomes.celestialexploration.mars_deep_craters", "Martian Deep Craters");
+		add("biomes.celestialexploration.mars_desert", "Martian Desert");
+		add("biomes.celestialexploration.mars_dunes", "Martian Dunes");
+		add("biomes.celestialexploration.mars_dry_ice_flats", "Martian Dry Ice Flats");
+		add("biomes.celestialexploration.mars_dry_ice_peaks", "Martian Dry Ice Peaks");
+		add("biomes.celestialexploration.mars_eroded_flats", "Martian Eroded Flats");
+		add("biomes.celestialexploration.mars_volcano_flats", "Martian Volcano Flats");
+		add("biomes.celestialexploration.asteroid_field", "Asteroid Field");
+		add("biomes.celestialexploration.earth_orbit", "Earthen Orbit");
+		add("biomes.celestialexploration.empty_space", "Empty Space");
+		add("biomes.celestialexploration.large_asteroid", "Large Asteroid");
+		add("biomes.celestialexploration.mars_orbit", "Martian Orbit");
+		add("biomes.celestialexploration.sparse_asteroid_field", "Sparse Asteroid Field");
 
 		/**MOON**/
 		add(BlockRegistry.MOON_BRICK_SLAB.get(), "Lunar Brick Slab");
@@ -183,12 +185,67 @@ public class ModLanguageProvider extends LanguageProvider {
 //		add(ItemRegistry.ASSEMBLY_STATION.get(), "Assembly Station");
 		add(ItemRegistry.OXYGEN_COMPRESSOR.get(), "Oxygen Compressor");
 		add(ItemRegistry.LOX_TANK.get(), "Liquid Oxygen Tank");
-		add(ItemRegistry.LOX_BUCKET.get(), "Liquid Oxygen Bucket");
+//		add(FluidRegistry.LOX_BUCKET.get(), "Liquid Oxygen Bucket");
 		add(ItemRegistry.STEEL_ROD.get(), "Steel Rod");
 		add(ItemRegistry.STEEL_INGOT.get(), "Steel Ingot");
+		add(ItemRegistry.STEEL_NUGGET.get(), "Steel Nugget");
+		add(ItemRegistry.STEEL_WOOL.get(), "Steel Wool");
 		add(BlockRegistry.STEEL_BLOCK.get(), "Steel Block");
 		add(BlockRegistry.CERAMIC.get(), "Ceramic");
 		add(BlockRegistry.CERAMIC_TILE.get(), "Ceramic Tile");
+
+		add(BlockRegistry.WHITE_CERAMIC.get(), "White Ceramic");
+		add(BlockRegistry.WHITE_CERAMIC_TILE.get(), "White Ceramic Tile");
+		add(BlockRegistry.LIGHT_GREY_CERAMIC.get(), "Light Grey Ceramic");
+		add(BlockRegistry.LIGHT_GREY_CERAMIC_TILE.get(), "Light Grey Ceramic Tile");
+		add(BlockRegistry.GREY_CERAMIC.get(), "Grey Ceramic");
+		add(BlockRegistry.GREY_CERAMIC_TILE.get(), "Grey Ceramic Tile");
+		add(BlockRegistry.BLACK_CERAMIC.get(), "Black Ceramic");
+		add(BlockRegistry.BLACK_CERAMIC_TILE.get(), "Black Ceramic Tile");
+		add(BlockRegistry.PURPLE_CERAMIC.get(), "Purple Ceramic");
+		add(BlockRegistry.PURPLE_CERAMIC_TILE.get(), "Purple Ceramic Tile");
+		add(BlockRegistry.MAGENTA_CERAMIC.get(), "Magenta Ceramic");
+		add(BlockRegistry.MAGENTA_CERAMIC_TILE.get(), "Magenta Ceramic Tile");
+		add(BlockRegistry.BLUE_CERAMIC.get(), "Blue Ceramic");
+		add(BlockRegistry.BLUE_CERAMIC_TILE.get(), "Blue Ceramic Tile");
+		add(BlockRegistry.LIGHT_BLUE_CERAMIC.get(), "Light Blue Ceramic");
+		add(BlockRegistry.LIGHT_BLUE_CERAMIC_TILE.get(), "Light Blue Ceramic Tile");
+		add(BlockRegistry.CYAN_CERAMIC.get(), "Cyan Ceramic");
+		add(BlockRegistry.CYAN_CERAMIC_TILE.get(), "Cyan Ceramic Tile");
+		add(BlockRegistry.GREEN_CERAMIC.get(), "Green Ceramic");
+		add(BlockRegistry.GREEN_CERAMIC_TILE.get(), "Green Ceramic Tile");
+		add(BlockRegistry.LIME_CERAMIC.get(), "Lime Ceramic");
+		add(BlockRegistry.LIME_CERAMIC_TILE.get(), "Lime Ceramic Tile");
+		add(BlockRegistry.YELLOW_CERAMIC.get(), "Yellow Ceramic");
+		add(BlockRegistry.YELLOW_CERAMIC_TILE.get(), "Yellow Ceramic Tile");
+		add(BlockRegistry.ORANGE_CERAMIC.get(), "Orange Ceramic");
+		add(BlockRegistry.ORANGE_CERAMIC_TILE.get(), "Orange Ceramic Tile");
+		add(BlockRegistry.BROWN_CERAMIC.get(), "Brown Ceramic");
+		add(BlockRegistry.BROWN_CERAMIC_TILE.get(), "Brown Ceramic Tile");
+		add(BlockRegistry.RED_CERAMIC.get(), "Red Ceramic");
+		add(BlockRegistry.RED_CERAMIC_TILE.get(), "Red Ceramic Tile");
+		add(BlockRegistry.PINK_CERAMIC.get(), "Pink Ceramic");
+		add(BlockRegistry.PINK_CERAMIC_TILE.get(), "Pink Ceramic Tile");
+
+		add(BlockRegistry.PAINTED_WHITE_CERAMIC.get(), "Painted White Ceramic");
+		add(BlockRegistry.PAINTED_LIGHT_GREY_CERAMIC.get(), "Painted Light Grey Ceramic");
+		add(BlockRegistry.PAINTED_GREY_CERAMIC.get(), "Painted Grey Ceramic");
+		add(BlockRegistry.PAINTED_BLACK_CERAMIC.get(), "Painted Black Ceramic");
+		add(BlockRegistry.PAINTED_PURPLE_CERAMIC.get(), "Painted Purple Ceramic");
+		add(BlockRegistry.PAINTED_MAGENTA_CERAMIC.get(), "Painted Magenta Ceramic");
+		add(BlockRegistry.PAINTED_BLUE_CERAMIC.get(), "Painted Blue Ceramic");
+		add(BlockRegistry.PAINTED_LIGHT_BLUE_CERAMIC.get(), "Painted Light Blue Ceramic");
+		add(BlockRegistry.PAINTED_CYAN_CERAMIC.get(), "Painted Cyan Ceramic");
+		add(BlockRegistry.PAINTED_GREEN_CERAMIC.get(), "Painted Green Ceramic");
+		add(BlockRegistry.PAINTED_LIME_CERAMIC.get(), "Painted Lime Ceramic");
+		add(BlockRegistry.PAINTED_YELLOW_CERAMIC.get(), "Painted Yellow Ceramic");
+		add(BlockRegistry.PAINTED_ORANGE_CERAMIC.get(), "Painted Orange Ceramic");
+		add(BlockRegistry.PAINTED_BROWN_CERAMIC.get(), "Painted Brown Ceramic");
+		add(BlockRegistry.PAINTED_RED_CERAMIC.get(), "Painted Red Ceramic");
+		add(BlockRegistry.PAINTED_PINK_CERAMIC.get(), "Painted Pink Ceramic");
+
+
+
 		add(BlockRegistry.DRY_ICE.get(), "Dry Ice");
 		add(BlockRegistry.LUMINOUS_BLUE_GLASS.get(), "Luminous Blue Glass");
 		add(BlockRegistry.LUMINOUS_WHITE_GLASS.get(), "Luminous White Glass");
@@ -200,6 +257,9 @@ public class ModLanguageProvider extends LanguageProvider {
 
 		add(BlockRegistry.COMPRESSED_COBBLESTONE.get(), "Compressed Cobblestone");
 		add(BlockRegistry.COMPRESSED_COBBLED_DEEPSLATE.get(), "Compressed Cobbled Deepslate");
+
+		add(BlockRegistry.WORKBENCH.get(), "Workbench");
+		add(BlockRegistry.SILICA.get(), "Silica");
 
 
 		/**ARMOR**/
@@ -249,7 +309,7 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(ItemRegistry.SHUTTLE_FRAME.get(), "Shuttle Frame");
 		add(ItemRegistry.SHUTTLE_CABIN.get(), "Shuttle Cabin");
 		add(ItemRegistry.SHUTTLE_ENGINE.get(), "Shuttle Engine");
-		add(ItemRegistry.NOSE_CONE.get(), "Shuttle Nose Cone");
+//		add(ItemRegistry.NOSE_CONE.get(), "Shuttle Nose Cone");
 
 		/**
 		 * FOOD
@@ -265,8 +325,26 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(ItemRegistry.CHEESE.get(), "Cheese");
 		add(ItemRegistry.LUNAR_GOO.get(), "Lunar Goo");
 
-		add(ItemRegistry.IRON_DUST.get(), "Iron Dust");
+//		add(ItemRegistry.IRON_DUST.get(), "Iron Dust");
 		add(ItemRegistry.RUSTED_IRON_NUGGET.get(), "Rusted Iron Nugget");
+
+		add(ItemRegistry.BLOCK_MOLD.get(), "Block Mold");
+		add(ItemRegistry.INGOT_MOLD.get(), "Ingot Mold");
+
+
+		/**
+		 * FLUID
+		 */
+		add("fluid.celestialexploration.lox", "Liquid Oxygen");
+		add(FluidRegistry.MOLTEN_IRON_BLOCK.get(), "Molten Iron");
+		add("fluid.celestialexploration.molten_iron", "Molten Iron");
+		add(FluidRegistry.MOLTEN_STEEL_BLOCK.get(), "Molten Steel");
+		add("fluid.celestialexploration.molten_steel", "Molten Steel");
+		add(FluidRegistry.MOLTEN_COPPER_BLOCK.get(), "Molten Copper");
+		add("fluid.celestialexploration.molten_copper", "Molten Copper");
+		add(FluidRegistry.MOLTEN_GOLD_BLOCK.get(), "Molten Gold");
+		add("fluid.celestialexploration.molten_gold", "Molten Gold");
+//		add(FluidRegistry.MOLTEN_NETHERITE_BLOCK.get(), "Molten Copper");
 
 	}
 }

@@ -194,6 +194,40 @@ public class BlockStates extends BlockStateProvider {
 		simpleBlock(BlockRegistry.STEEL_BLOCK.get());
 		simpleBlock(BlockRegistry.CERAMIC.get());
 		paneBlock(BlockRegistry.CERAMIC_TILE.get(), modLoc("block/ceramic"), modLoc("block/ceramic_tile_top"));
+
+		simpleBlock(BlockRegistry.WHITE_CERAMIC.get());
+		paneBlock(BlockRegistry.WHITE_CERAMIC_TILE.get(), modLoc("block/white_ceramic"), modLoc("block/white_ceramic_tile_top"));
+		simpleBlock(BlockRegistry.LIGHT_GREY_CERAMIC.get());
+		paneBlock(BlockRegistry.LIGHT_GREY_CERAMIC_TILE.get(), modLoc("block/light_grey_ceramic"), modLoc("block/light_grey_ceramic_tile_top"));
+		simpleBlock(BlockRegistry.GREY_CERAMIC.get());
+		paneBlock(BlockRegistry.GREY_CERAMIC_TILE.get(), modLoc("block/grey_ceramic"), modLoc("block/grey_ceramic_tile_top"));
+		simpleBlock(BlockRegistry.BLACK_CERAMIC.get());
+		paneBlock(BlockRegistry.BLACK_CERAMIC_TILE.get(), modLoc("block/black_ceramic"), modLoc("block/black_ceramic_tile_top"));
+		simpleBlock(BlockRegistry.PURPLE_CERAMIC.get());
+		paneBlock(BlockRegistry.PURPLE_CERAMIC_TILE.get(), modLoc("block/purple_ceramic"), modLoc("block/purple_ceramic_tile_top"));
+		simpleBlock(BlockRegistry.MAGENTA_CERAMIC.get());
+		paneBlock(BlockRegistry.MAGENTA_CERAMIC_TILE.get(), modLoc("block/magenta_ceramic"), modLoc("block/magenta_ceramic_tile_top"));
+		simpleBlock(BlockRegistry.BLUE_CERAMIC.get());
+		paneBlock(BlockRegistry.BLUE_CERAMIC_TILE.get(), modLoc("block/blue_ceramic"), modLoc("block/blue_ceramic_tile_top"));
+		simpleBlock(BlockRegistry.LIGHT_BLUE_CERAMIC.get());
+		paneBlock(BlockRegistry.LIGHT_BLUE_CERAMIC_TILE.get(), modLoc("block/light_blue_ceramic"), modLoc("block/light_blue_ceramic_tile_top"));
+		simpleBlock(BlockRegistry.CYAN_CERAMIC.get());
+		paneBlock(BlockRegistry.CYAN_CERAMIC_TILE.get(), modLoc("block/cyan_ceramic"), modLoc("block/cyan_ceramic_tile_top"));
+		simpleBlock(BlockRegistry.GREEN_CERAMIC.get());
+		paneBlock(BlockRegistry.GREEN_CERAMIC_TILE.get(), modLoc("block/green_ceramic"), modLoc("block/green_ceramic_tile_top"));
+		simpleBlock(BlockRegistry.LIME_CERAMIC.get());
+		paneBlock(BlockRegistry.LIME_CERAMIC_TILE.get(), modLoc("block/lime_ceramic"), modLoc("block/lime_ceramic_tile_top"));
+		simpleBlock(BlockRegistry.YELLOW_CERAMIC.get());
+		paneBlock(BlockRegistry.YELLOW_CERAMIC_TILE.get(), modLoc("block/yellow_ceramic"), modLoc("block/yellow_ceramic_tile_top"));
+		simpleBlock(BlockRegistry.ORANGE_CERAMIC.get());
+		paneBlock(BlockRegistry.ORANGE_CERAMIC_TILE.get(), modLoc("block/orange_ceramic"), modLoc("block/orange_ceramic_tile_top"));
+		simpleBlock(BlockRegistry.BROWN_CERAMIC.get());
+		paneBlock(BlockRegistry.BROWN_CERAMIC_TILE.get(), modLoc("block/brown_ceramic"), modLoc("block/brown_ceramic_tile_top"));
+		simpleBlock(BlockRegistry.RED_CERAMIC.get());
+		paneBlock(BlockRegistry.RED_CERAMIC_TILE.get(), modLoc("block/red_ceramic"), modLoc("block/red_ceramic_tile_top"));
+		simpleBlock(BlockRegistry.PINK_CERAMIC.get());
+		paneBlock(BlockRegistry.PINK_CERAMIC_TILE.get(), modLoc("block/pink_ceramic"), modLoc("block/pink_ceramic_tile_top"));
+
 		simpleBlock(BlockRegistry.DRY_ICE.get());
 
 		simpleBlock(BlockRegistry.LUMINOUS_BLUE_GLASS.get());
@@ -203,6 +237,9 @@ public class BlockStates extends BlockStateProvider {
 
 		simpleBlock(BlockRegistry.COMPRESSED_COBBLESTONE.get());
 		simpleBlock(BlockRegistry.COMPRESSED_COBBLED_DEEPSLATE.get());
+
+		simpleBlock(BlockRegistry.SILICA.get());
+
 
 
 //		connectedGlassBlock((ConnectedGlassBlock) BlockRegistry.CONNECTED_GLASS.get(), modLoc("block/connected_glass"));
@@ -224,10 +261,15 @@ public class BlockStates extends BlockStateProvider {
 //		simpleBlock(BlockRegistry.STEEL_FRAME.get());
 
 		/**
-		 * LOX
-		 * NOTE: lox tank drops are handled manually in block class
-		 * */
+		 * FLUIDS
+		 */
 		simpleBlock(FluidRegistry.LOX_BLOCK.get());
+		simpleBlock(FluidRegistry.MOLTEN_IRON_BLOCK.get());
+		simpleBlock(FluidRegistry.MOLTEN_STEEL_BLOCK.get());
+		simpleBlock(FluidRegistry.MOLTEN_COPPER_BLOCK.get());
+		simpleBlock(FluidRegistry.MOLTEN_GOLD_BLOCK.get());
+//		simpleBlock(FluidRegistry.MOLTEN_NETHERITE_BLOCK.get());
+
 	}
 
 	public void connectedGlassBlock(ConnectedGlassBlock block, ResourceLocation texture) {

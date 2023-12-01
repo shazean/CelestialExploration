@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "celestialexploration",
+  "ingredients": [
+    {
+      "item": "celestialexploration:steel_block"
+    }
+  ],
+  "result": {
+    "item": "celestialexploration:steel_ingot",
+    "count": 9
+  }
+}

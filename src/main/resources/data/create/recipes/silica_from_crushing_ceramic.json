@@ -1,0 +1,18 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "tag": "celestialexploration:dyed_ceramic_tag"
+    }
+  ],
+  "results": [
+    {
+      "item": "celestiexploration:silica"
+    },
+    {
+      "item": "celestialexploration:silica",
+      "chance": 0.25
+    }
+  ],
+  "processingTime": 150
+}

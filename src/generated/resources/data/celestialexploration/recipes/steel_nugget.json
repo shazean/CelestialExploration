@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "celestialexploration",
+  "ingredients": [
+    {
+      "item": "celestialexploration:steel_ingot"
+    }
+  ],
+  "result": {
+    "item": "celestialexploration:steel_nugget",
+    "count": 9
+  }
+}

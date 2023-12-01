@@ -410,6 +410,61 @@ public class ModItemTags extends ItemTagsProvider {
 		tag(Tags.Items.GLASS_PANES_WHITE)
 				.add(ItemRegistry.LUMINOUS_WHITE_GLASS_PANE.get());
 
+		tag(ItemRegistry.DYED_CERAMIC_TAG)
+//                .add(BlockRegistry.CERAMIC.get())
+//                .add(BlockRegistry.CERAMIC_TILE.get())
+				.add(ItemRegistry.WHITE_CERAMIC.get())
+//                .add(BlockRegistry.WHITE_CERAMIC_TILE.get())
+				.add(ItemRegistry.LIGHT_GREY_CERAMIC.get())
+//                .add(BlockRegistry.LIGHT_GREY_CERAMIC_TILE.get())
+				.add(ItemRegistry.GREY_CERAMIC.get())
+//                .add(BlockRegistry.GREY_CERAMIC_TILE.get())
+				.add(ItemRegistry.BLACK_CERAMIC.get())
+//                .add(BlockRegistry.BLACK_CERAMIC_TILE.get())
+				.add(ItemRegistry.PURPLE_CERAMIC.get())
+//                .add(BlockRegistry.PURPLE_CERAMIC_TILE.get())
+				.add(ItemRegistry.MAGENTA_CERAMIC.get())
+//                .add(BlockRegistry.MAGENTA_CERAMIC_TILE.get())
+				.add(ItemRegistry.BLUE_CERAMIC.get())
+//                .add(BlockRegistry.BLUE_CERAMIC_TILE.get())
+				.add(ItemRegistry.LIGHT_BLUE_CERAMIC.get())
+//                .add(BlockRegistry.LIGHT_BLUE_CERAMIC_TILE.get())
+				.add(ItemRegistry.CYAN_CERAMIC.get())
+//                .add(BlockRegistry.CYAN_CERAMIC_TILE.get())
+				.add(ItemRegistry.GREEN_CERAMIC.get())
+//                .add(BlockRegistry.GREEN_CERAMIC_TILE.get())
+				.add(ItemRegistry.LIME_CERAMIC.get())
+//                .add(BlockRegistry.LIME_CERAMIC_TILE.get())
+				.add(ItemRegistry.YELLOW_CERAMIC.get())
+//                .add(BlockRegistry.YELLOW_CERAMIC_TILE.get())
+				.add(ItemRegistry.ORANGE_CERAMIC.get())
+//                .add(BlockRegistry.ORANGE_CERAMIC_TILE.get())
+				.add(ItemRegistry.BROWN_CERAMIC.get())
+//                .add(BlockRegistry.BROWN_CERAMIC_TILE.get())
+				.add(ItemRegistry.RED_CERAMIC.get())
+//                .add(BlockRegistry.RED_CERAMIC_TILE.get())
+				.add(ItemRegistry.PINK_CERAMIC.get());
+//                .add(BlockRegistry.PINK_CERAMIC_TILE.get());
+
+
+		tag(ItemRegistry.PAINTED_CERAMIC_TAG)
+				.add(ItemRegistry.PAINTED_WHITE_CERAMIC.get())
+				.add(ItemRegistry.PAINTED_LIGHT_GREY_CERAMIC.get())
+				.add(ItemRegistry.PAINTED_GREY_CERAMIC.get())
+				.add(ItemRegistry.PAINTED_BLACK_CERAMIC.get())
+				.add(ItemRegistry.PAINTED_PURPLE_CERAMIC.get())
+				.add(ItemRegistry.PAINTED_MAGENTA_CERAMIC.get())
+				.add(ItemRegistry.PAINTED_BLUE_CERAMIC.get())
+				.add(ItemRegistry.PAINTED_LIGHT_BLUE_CERAMIC.get())
+				.add(ItemRegistry.PAINTED_CYAN_CERAMIC.get())
+				.add(ItemRegistry.PAINTED_GREEN_CERAMIC.get())
+				.add(ItemRegistry.PAINTED_LIME_CERAMIC.get())
+				.add(ItemRegistry.PAINTED_YELLOW_CERAMIC.get())
+				.add(ItemRegistry.PAINTED_ORANGE_CERAMIC.get())
+				.add(ItemRegistry.PAINTED_BROWN_CERAMIC.get())
+				.add(ItemRegistry.PAINTED_RED_CERAMIC.get())
+				.add(ItemRegistry.PAINTED_PINK_CERAMIC.get());
+
 
 	}
 

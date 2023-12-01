@@ -1,0 +1,8 @@
+{
+"parent": "minecraft:block/orientable",
+"textures": {
+"top": "celestialexploration:block/workbench_top",
+"front": "celestialexploration:block/workbench_front_on",
+"side": "celestialexploration:block/workbench_side"
+}
+}

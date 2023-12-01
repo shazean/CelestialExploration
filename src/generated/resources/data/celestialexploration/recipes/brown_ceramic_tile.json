@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "celestialexploration",
+  "pattern": [
+    "XXX",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:brown_ceramic"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:brown_ceramic_tile",
+    "count": 16
+  }
+}

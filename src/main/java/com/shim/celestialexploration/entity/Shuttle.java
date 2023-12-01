@@ -349,7 +349,10 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
                 if (this.teleportationCooldown == 0) {
                     Entity passenger = this.getControllingPassenger();
                     this.displayTeleportMessage(teleportationCooldown);
-                    ResourceKey<Level> destination = DimensionRegistry.SPACE;
+
+                    ResourceKey<Level> destination = passenger.level.dimension() == DimensionRegistry.SPACE ? Level.OVERWORLD : DimensionRegistry.SPACE; //FIXME
+
+//                    ResourceKey<Level> destination = DimensionRegistry.SPACE;
                     assert passenger != null;
                     this.teleportShuttle(passenger, this, destination);
                 } else {

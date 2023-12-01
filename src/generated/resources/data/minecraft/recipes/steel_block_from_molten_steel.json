@@ -1,0 +1,17 @@
+{
+  "type": "celestialexploration:workbench_crafting",
+  "group": "celestialexploration",
+  "pattern": [
+    "X"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:block_mold"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:steel_block"
+  },
+  "fluid": "celestialexploration:molten_steel",
+  "buckets": 1.0
+}

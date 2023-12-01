@@ -71,6 +71,7 @@ public class CelestialExploration {
         FluidRegistry.register(modEventBus);
         StructureRegistry.DEFERRED_REGISTRY_STRUCTURE.register(modEventBus);
         ParticleRegistry.register(modEventBus);
+        RecipeRegistry.register(modEventBus);
 
         modEventBus.addListener(CapabilityRegistry::registerCapabilities);
         MinecraftForge.EVENT_BUS.addGenericListener(ItemStack.class, CapabilityRegistry::attachItemCapabilities);
