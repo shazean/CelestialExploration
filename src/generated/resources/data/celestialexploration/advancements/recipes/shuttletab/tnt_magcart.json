@@ -2,17 +2,17 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "minecraft:test_cheese"
+      "celestialexploration:tnt_magcart"
     ]
   },
   "criteria": {
-    "has_gold": {
+    "steel": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:gold_ingot"
+              "celestialexploration:steel_ingot"
             ]
           }
         ]
@@ -21,13 +21,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "minecraft:test_cheese"
+        "recipe": "celestialexploration:tnt_magcart"
       }
     }
   },
   "requirements": [
     [
-      "has_gold",
+      "steel",
       "has_the_recipe"
     ]
   ]

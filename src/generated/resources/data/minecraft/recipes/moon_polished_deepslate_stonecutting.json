@@ -2,7 +2,7 @@
   "type": "minecraft:stonecutting",
   "group": "celestialexploration",
   "ingredient": {
-    "tag": "celestialexploration:moon_deepslate_tag"
+    "tag": "celestialexploration:moon_deepslate"
   },
   "result": "celestialexploration:moon_polished_deepslate",
   "count": 1

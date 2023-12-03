@@ -1,7 +1,7 @@
 {
   "type": "minecraft:stonecutting",
   "ingredient": {
-    "tag": "celestialexploration:moon_stone_tag"
+    "tag": "celestialexploration:moon_stone"
   },
   "result": "celestialexploration:moon_brick_slab",
   "count": 2

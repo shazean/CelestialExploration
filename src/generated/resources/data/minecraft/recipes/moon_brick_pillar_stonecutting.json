@@ -2,7 +2,7 @@
   "type": "minecraft:stonecutting",
   "group": "celestialexploration",
   "ingredient": {
-    "tag": "celestialexploration:moon_stone_tag"
+    "tag": "celestialexploration:moon_stone"
   },
   "result": "celestialexploration:moon_brick_pillar",
   "count": 1

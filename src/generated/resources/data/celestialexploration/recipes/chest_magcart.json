@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "celestialexploration",
+  "pattern": [
+    "#",
+    "X"
+  ],
+  "key": {
+    "#": {
+      "tag": "forge:chests"
+    },
+    "X": {
+      "item": "celestialexploration:magcart"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:chest_magcart"
+  }
+}

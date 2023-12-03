@@ -1,19 +1,12 @@
 package com.shim.celestialexploration.registry;
 
-import java.util.function.Supplier;
-import java.util.function.ToIntFunction;
-
-
 import com.shim.celestialexploration.CelestialExploration;
-
 import com.shim.celestialexploration.blocks.*;
-import com.shim.celestialexploration.events.ModEventBusEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -21,20 +14,17 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
-import net.minecraftforge.common.Tags;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-import static net.minecraft.world.level.block.Blocks.OAK_PLANKS;
+import java.util.function.ToIntFunction;
 
 
 public class BlockRegistry {
 
     private BlockState defaultState;
-
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, CelestialExploration.MODID);
 
     public static void register(IEventBus event) {
@@ -323,6 +313,16 @@ public class BlockRegistry {
     public static final RegistryObject<Block> REINFORCED_GLASS_PANE = BLOCKS.register("reinforced_glass_pane", () -> new ConnectedGlassPaneBlock(Block.Properties.of(Material.GLASS, MaterialColor.QUARTZ).strength(0.3F).sound(SoundType.GLASS).isValidSpawn(BlockRegistry::never).isRedstoneConductor(BlockRegistry::never).isSuffocating(BlockRegistry::never).isViewBlocking(BlockRegistry::never).noOcclusion()));
 
 
+    //MAG LEV
+    public static final RegistryObject<Block> MAG_RAIL = BLOCKS.register("mag_rail", () -> new MagRailBlock(BlockBehaviour.Properties.of(Material.DECORATION).noCollission().strength(0.7F).sound(SoundType.METAL)));
+    public static final RegistryObject<Block> POWERED_MAG_RAIL = BLOCKS.register("powered_mag_rail", () -> new PoweredMagRailBlock(BlockBehaviour.Properties.of(Material.DECORATION).noCollission().strength(0.7F).sound(SoundType.METAL), true));
+    public static final RegistryObject<Block> DETECTOR_MAG_RAIL = BLOCKS.register("detector_mag_rail", () -> new DetectorMagRailBlock(BlockBehaviour.Properties.of(Material.DECORATION).noCollission().strength(0.7F).sound(SoundType.METAL)));
+    public static final RegistryObject<Block> ACTIVATOR_MAG_RAIL = BLOCKS.register("activator_mag_rail", () -> new PoweredMagRailBlock(BlockBehaviour.Properties.of(Material.DECORATION).noCollission().strength(0.7F).sound(SoundType.METAL)));
+
+//    public static final Block RAIL = register("rail", new RailBlock(BlockBehaviour.Properties.of(Material.DECORATION).noCollission().strength(0.7F).sound(SoundType.METAL)));
+//    public static final Block POWERED_MAG_RAIL = register("powered_rail", new PoweredRailBlock(BlockBehaviour.Properties.of(Material.DECORATION).noCollission().strength(0.7F).sound(SoundType.METAL), true));
+//    public static final Block DETECTOR_MAG_RAIL = register("detector_rail", new DetectorRailBlock(BlockBehaviour.Properties.of(Material.DECORATION).noCollission().strength(0.7F).sound(SoundType.METAL)));
+//    public static final Block ACTIVATOR_RAIL = register("activator_rail", new PoweredRailBlock(BlockBehaviour.Properties.of(Material.DECORATION).noCollission().strength(0.7F).sound(SoundType.METAL)));
 
 
     /**
@@ -352,6 +352,7 @@ public class BlockRegistry {
     public static final TagKey<Block> MARS_PORTAL_FRAME_BLOCK = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "mars_portal_frame_block"));
     public static final TagKey<Block> MOON_PORTAL_FRAME_BLOCK = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "moon_portal_frame_block"));
 
+    public static final TagKey<Block> MAG_RAIL_TAG = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "mag_rail"));
 
     public final BlockState getDefaultState() {
         return this.defaultState;
@@ -363,7 +364,7 @@ public class BlockRegistry {
         };
     }
 
-    private static Boolean never(BlockState p_50779_, BlockGetter p_50780_, BlockPos p_50781_, EntityType<?> p_50782_) {
+    private static Boolean never(BlockState state, BlockGetter blockGetter, BlockPos pose, EntityType<?> entityType) {
         return false;
     }
 

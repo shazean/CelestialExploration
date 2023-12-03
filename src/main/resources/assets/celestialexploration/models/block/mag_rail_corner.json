@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/rail_curved",
+  "textures": {
+    "rail": "celestialexploration:block/mag_rail_corner"
+  }
+}

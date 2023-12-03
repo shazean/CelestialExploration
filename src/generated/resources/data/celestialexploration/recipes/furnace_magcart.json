@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "celestialexploration",
+  "pattern": [
+    "#",
+    "X"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:furnace"
+    },
+    "X": {
+      "item": "celestialexploration:magcart"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:furnace_magcart"
+  }
+}

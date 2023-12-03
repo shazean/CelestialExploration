@@ -3,12 +3,18 @@
   "group": "celestialexploration",
   "pattern": [
     "XXX",
-    "X X",
-    "XXX"
+    "XGX",
+    "XRX"
   ],
   "key": {
     "X": {
       "tag": "forge:cobblestone"
+    },
+    "G": {
+      "tag": "forge:glass"
+    },
+    "R": {
+      "item": "minecraft:redstone"
     }
   },
   "result": {

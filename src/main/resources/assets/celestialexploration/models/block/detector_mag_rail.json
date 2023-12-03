@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/rail_flat",
+  "textures": {
+    "rail": "celestialexploration:block/detector_mag_rail"
+  }
+}

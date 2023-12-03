@@ -609,6 +609,13 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(BlockRegistry.PAINTED_RED_CERAMIC.get())
                 .add(BlockRegistry.PAINTED_PINK_CERAMIC.get());
 
+
+        tag(BlockRegistry.MAG_RAIL_TAG)
+                .add(BlockRegistry.MAG_RAIL.get())
+                .add(BlockRegistry.POWERED_MAG_RAIL.get())
+                .add(BlockRegistry.DETECTOR_MAG_RAIL.get())
+                .add(BlockRegistry.ACTIVATOR_MAG_RAIL.get());
+
         //TODO fluid tags
     }
 

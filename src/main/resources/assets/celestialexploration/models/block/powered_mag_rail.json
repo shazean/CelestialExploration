@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/rail_flat",
+  "textures": {
+    "rail": "celestialexploration:block/powered_mag_rail"
+  }
+}

@@ -4,6 +4,7 @@ package com.shim.celestialexploration.events;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.capabilities.LoxTankCapability;
 import com.shim.celestialexploration.entity.*;
+import com.shim.celestialexploration.entity.model.MagCartModel;
 import com.shim.celestialexploration.entity.model.ShuttleModel;
 import com.shim.celestialexploration.entity.renderer.*;
 import com.shim.celestialexploration.inventory.screens.OxygenCompressorScreen;
@@ -16,12 +17,19 @@ import com.shim.celestialexploration.registry.*;
 import com.shim.celestialexploration.world.renderer.DimensionRenderers;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.client.model.BoatModel;
+import net.minecraft.client.model.MinecartModel;
+import net.minecraft.client.model.geom.ModelLayers;
+import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.client.renderer.entity.MinecartRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.vehicle.Boat;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.ParticleFactoryRegisterEvent;
@@ -42,13 +50,21 @@ public class ModEventBusEvents {
         event.put(EntityRegistry.LUNAR_SLIME.get(), LunarSlime.setAttributes());
         event.put(EntityRegistry.MARS_MALLOW.get(), MarsMallow.setAttributes());
         event.put(EntityRegistry.LURKER.get(), Lurker.setAttributes());
+        event.put(EntityRegistry.VOIDFELLOW.get(), VoidFellow.setAttributes());
     }
 
     @SubscribeEvent
     public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
-
         for (Shuttle.Type shuttle$type : Shuttle.Type.values())
             event.registerLayerDefinition(createShuttleModelName(shuttle$type), ShuttleModel::createBodyLayer);
+
+        event.registerLayerDefinition(CelestialModelLayers.MAGCART, MagCartModel::createBodyLayer);
+        event.registerLayerDefinition(CelestialModelLayers.CHEST_MAGCART, MagCartModel::createBodyLayer);
+        event.registerLayerDefinition(CelestialModelLayers.COMMAND_BLOCK_MAGCART, MagCartModel::createBodyLayer);
+        event.registerLayerDefinition(CelestialModelLayers.FURNACE_MAGCART, MagCartModel::createBodyLayer);
+        event.registerLayerDefinition(CelestialModelLayers.HOPPER_MAGCART, MagCartModel::createBodyLayer);
+        event.registerLayerDefinition(CelestialModelLayers.SPAWNER_MAGCART, MagCartModel::createBodyLayer);
+        event.registerLayerDefinition(CelestialModelLayers.TNT_MAGCART, MagCartModel::createBodyLayer);
 
     }
 
@@ -101,11 +117,25 @@ public class ModEventBusEvents {
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.LOX_TANK.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.STEEL_FRAME.get(), RenderType.cutout());
 
+        ItemBlockRenderTypes.setRenderLayer(BlockRegistry.MAG_RAIL.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BlockRegistry.POWERED_MAG_RAIL.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BlockRegistry.DETECTOR_MAG_RAIL.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BlockRegistry.ACTIVATOR_MAG_RAIL.get(), RenderType.cutout());
+
         EntityRenderers.register(EntityRegistry.RUST_SLIME.get(), RustSlimeRenderer::new);
         EntityRenderers.register(EntityRegistry.LUNAR_SLIME.get(), LunarSlimeRenderer::new);
         EntityRenderers.register(EntityRegistry.MARS_MALLOW.get(), MarsMallowRenderer::new);
         EntityRenderers.register(EntityRegistry.LURKER.get(), LurkerRenderer::new);
         EntityRenderers.register(EntityRegistry.SHUTTLE.get(), ShuttleRenderer::new);
+        EntityRenderers.register(EntityRegistry.VOIDFELLOW.get(), VoidFellowRenderer::new);
+        EntityRenderers.register(EntityRegistry.MAGCART.get(), (context) -> new MagCartRenderer<>(context, CelestialModelLayers.MAGCART));
+        EntityRenderers.register(EntityRegistry.CHEST_MAGCART.get(), (context) -> new MagCartRenderer<>(context, CelestialModelLayers.CHEST_MAGCART));
+        EntityRenderers.register(EntityRegistry.COMMAND_BLOCK_MAGCART.get(), (context) -> new MagCartRenderer<>(context, CelestialModelLayers.COMMAND_BLOCK_MAGCART));
+        EntityRenderers.register(EntityRegistry.FURNACE_MAGCART.get(), (context) -> new MagCartRenderer<>(context, CelestialModelLayers.FURNACE_MAGCART));
+        EntityRenderers.register(EntityRegistry.HOPPER_MAGCART.get(), (context) -> new MagCartRenderer<>(context, CelestialModelLayers.HOPPER_MAGCART));
+        EntityRenderers.register(EntityRegistry.SPAWNER_MAGCART.get(), (context) -> new MagCartRenderer<>(context, CelestialModelLayers.SPAWNER_MAGCART));
+        EntityRenderers.register(EntityRegistry.TNT_MAGCART.get(), (context) -> new MagCartRenderer<>(context, CelestialModelLayers.TNT_MAGCART));
+
 
         MenuScreens.register(MenuRegistry.OXYGEN_COMPRESSOR_MENU.get(), OxygenCompressorScreen::new);
         MenuScreens.register(MenuRegistry.SHUTTLE_MENU.get(), ShuttleScreen::new);

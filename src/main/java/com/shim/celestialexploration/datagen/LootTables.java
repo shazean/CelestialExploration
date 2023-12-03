@@ -253,5 +253,12 @@ public class LootTables  extends BaseLootTableProvider {
 //		lootTables.put(BlockRegistry.ASSEMBLY_STATION.get(), createSimpleTable("assembly_station", BlockRegistry.ASSEMBLY_STATION.get()));
 		lootTables.put(BlockRegistry.OXYGEN_COMPRESSOR.get(), createSimpleTable("oxygen_compressor", BlockRegistry.OXYGEN_COMPRESSOR.get()));
 		lootTables.put(BlockRegistry.STEEL_FRAME.get(), createSimpleTable("steel_frame", BlockRegistry.STEEL_FRAME.get()));
+
+		/* MAG RAILS */
+		lootTables.put(BlockRegistry.MAG_RAIL.get(), createSimpleTable("mag_rail", BlockRegistry.MAG_RAIL.get()));
+		lootTables.put(BlockRegistry.POWERED_MAG_RAIL.get(), createSimpleTable("powered_mag_rail", BlockRegistry.POWERED_MAG_RAIL.get()));
+		lootTables.put(BlockRegistry.DETECTOR_MAG_RAIL.get(), createSimpleTable("detector_mag_rail", BlockRegistry.DETECTOR_MAG_RAIL.get()));
+		lootTables.put(BlockRegistry.ACTIVATOR_MAG_RAIL.get(), createSimpleTable("activator_mag_rail", BlockRegistry.ACTIVATOR_MAG_RAIL.get()));
+
 	}
 }

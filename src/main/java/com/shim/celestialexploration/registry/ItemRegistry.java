@@ -2,12 +2,14 @@ package com.shim.celestialexploration.registry;
 
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.entity.Shuttle;
+import com.shim.celestialexploration.entity.vehicle.AbstractMagCart;
 import com.shim.celestialexploration.item.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.vehicle.AbstractMinecart;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
@@ -280,6 +282,10 @@ public class ItemRegistry {
 			() -> new ForgeSpawnEggItem(EntityRegistry.LURKER,0, 0x894731,
 					new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
 
+	public static final RegistryObject<Item> VOIDFELLOW_SPAWN_EGG = ITEMS.register("voidfellow_spawn_egg",
+			() -> new ForgeSpawnEggItem(EntityRegistry.VOIDFELLOW,0, 0xffffff,
+					new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+
 
 //	public static final RegistryObject<ModSpawnEgg> SULFURIC_SLIME_SPAWN_EGG = ITEMS.register("sulfuric_slime_spawn_egg", () -> new ModSpawnEgg(RegistryEntities.SULFURIC_SLIME, 0xbd9200, 0xa68000, new Item.Properties().tab(ItemGroup.TAB_MISC)));
 //	public static final RegistryObject<ModSpawnEgg> MARS_MALLOW_SPAWN_EGG = ITEMS.register("mars_mallow_spawn_egg", () -> new ModSpawnEgg(RegistryEntities.MARS_MALLOW, 0xffffff, 0xF3F3F3, new Item.Properties().tab(ItemGroup.TAB_MISC)));
@@ -433,6 +439,28 @@ public class ItemRegistry {
 	public static final RegistryObject<Item> LUNAR_CHEESE = ITEMS.register("lunar_cheese", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_FOOD).food(CHEESE_PROPERTIES)));
 	public static final RegistryObject<Item> CHEESE = ITEMS.register("cheese", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_FOOD).food(CHEESE_PROPERTIES)));
 
+	/* MAG LEV */
+	public static final RegistryObject<Item> MAG_RAIL = fromShuttleBlock(BlockRegistry.MAG_RAIL);
+	public static final RegistryObject<Item> POWERED_MAG_RAIL = fromShuttleBlock(BlockRegistry.POWERED_MAG_RAIL);
+	public static final RegistryObject<Item> DETECTOR_MAG_RAIL = fromShuttleBlock(BlockRegistry.DETECTOR_MAG_RAIL);
+	public static final RegistryObject<Item> ACTIVATOR_MAG_RAIL = fromShuttleBlock(BlockRegistry.ACTIVATOR_MAG_RAIL);
+
+	public static final RegistryObject<Item> MAGCART = ITEMS.register("magcart", () -> new MagCartItem(AbstractMagCart.Type.RIDEABLE, (new Item.Properties().stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB))));
+	public static final RegistryObject<Item> CHEST_MAGCART = ITEMS.register("chest_magcart", () -> new MagCartItem(AbstractMagCart.Type.CHEST, (new Item.Properties().stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB))));
+	public static final RegistryObject<Item> COMMAND_BLOCK_MAGCART = ITEMS.register("command_block_magcart", () -> new MagCartItem(AbstractMagCart.Type.COMMAND_BLOCK, (new Item.Properties().stacksTo(1).rarity(Rarity.EPIC))));
+	public static final RegistryObject<Item> FURNACE_MAGCART = ITEMS.register("furnace_magcart", () -> new MagCartItem(AbstractMagCart.Type.FURNACE, (new Item.Properties().stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB))));
+	public static final RegistryObject<Item> HOPPER_MAGCART = ITEMS.register("hopper_magcart", () -> new MagCartItem(AbstractMagCart.Type.HOPPER, (new Item.Properties().stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB))));
+//	public static final RegistryObject<Item> SPAWNER_MAGCART = ITEMS.register("magcart", () -> new MagCartItem(AbstractMagCart.Type.RIDEABLE, (new Item.Properties().stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB))));
+	public static final RegistryObject<Item> TNT_MAGCART = ITEMS.register("tnt_magcart", () -> new MagCartItem(AbstractMagCart.Type.TNT, (new Item.Properties().stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB))));
+
+	//	public static final Item MINECART = registerItem("minecart", new MinecartItem(AbstractMinecart.Type.RIDEABLE, (new Item.Properties()).stacksTo(1).tab(CreativeModeTab.TAB_TRANSPORTATION)));
+//	public static final Item CHEST_MINECART = registerItem("chest_minecart", new MinecartItem(AbstractMinecart.Type.CHEST, (new Item.Properties()).stacksTo(1).tab(CreativeModeTab.TAB_TRANSPORTATION)));
+//	public static final Item FURNACE_MINECART = registerItem("furnace_minecart", new MinecartItem(AbstractMinecart.Type.FURNACE, (new Item.Properties()).stacksTo(1).tab(CreativeModeTab.TAB_TRANSPORTATION)));
+//	public static final Item TNT_MINECART = registerItem("tnt_minecart", new MinecartItem(AbstractMinecart.Type.TNT, (new Item.Properties()).stacksTo(1).tab(CreativeModeTab.TAB_TRANSPORTATION)));
+//	public static final Item HOPPER_MINECART = registerItem("hopper_minecart", new MinecartItem(AbstractMinecart.Type.HOPPER, (new Item.Properties()).stacksTo(1).tab(CreativeModeTab.TAB_TRANSPORTATION)));
+//	public static final Item COMMAND_BLOCK_MINECART = registerItem("command_block_minecart", new MinecartItem(AbstractMinecart.Type.COMMAND_BLOCK, (new Item.Properties()).stacksTo(1).rarity(Rarity.EPIC)));
+
+
 	//CUSTOM ITEM TAGS
 	public static final TagKey<Item> MARS_TAG = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "mars"));
 	public static final TagKey<Item> MARS_STONE_TAG = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "mars_stone"));
@@ -453,5 +481,10 @@ public class ItemRegistry {
 	public static final TagKey<Item> PAINTED_CERAMIC_TAG = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "painted"));
 	public static final TagKey<Item> DYED_CERAMIC_TILE_TAG = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "ceramic_tile"));
 	public static final TagKey<Item> PAINTED_CERAMIC_TILE_TAG = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "painted_ceramic_tile"));
+
+	public static final TagKey<Item> MAG_RAIL_TAG = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "mag_rail"));
+
+	public static final TagKey<Item> STONE_PRESSURE_PLATE_TAG = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "stone_pressure_plate"));
+
 
 }

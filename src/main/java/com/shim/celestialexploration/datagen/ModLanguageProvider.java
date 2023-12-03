@@ -277,12 +277,14 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(ItemRegistry.LUNAR_SPAWN_EGG.get(), "Lunar Slime Spawn Egg");
 		add(ItemRegistry.MARS_MALLOW_SPAWN_EGG.get(), "Mars Mallow Spawn Egg");
 		add(ItemRegistry.LURKER_SPAWN_EGG.get(), "Lurker Spawn Egg");
+		add(ItemRegistry.VOIDFELLOW_SPAWN_EGG.get(), "Voidfellow Spawn Egg");
 
 		/**MOBS**/
 		add(EntityRegistry.LUNAR_SLIME.get(), "Lunar Slime");
 		add(EntityRegistry.MARS_MALLOW.get(), "Mars Mallow");
 		add(EntityRegistry.RUST_SLIME.get(), "Rust Slime");
 		add(EntityRegistry.LURKER.get(), "Lurker");
+		add(EntityRegistry.VOIDFELLOW.get(), "Voidfellow");
 
 		/**SHUTTLE ITEMS**/
 		add(ItemRegistry.WHITE_SHUTTLE.get(), "White Shuttle");
@@ -332,9 +334,7 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(ItemRegistry.INGOT_MOLD.get(), "Ingot Mold");
 
 
-		/**
-		 * FLUID
-		 */
+		/* FLUID */
 		add("fluid.celestialexploration.lox", "Liquid Oxygen");
 		add(FluidRegistry.MOLTEN_IRON_BLOCK.get(), "Molten Iron");
 		add("fluid.celestialexploration.molten_iron", "Molten Iron");
@@ -345,6 +345,27 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(FluidRegistry.MOLTEN_GOLD_BLOCK.get(), "Molten Gold");
 		add("fluid.celestialexploration.molten_gold", "Molten Gold");
 //		add(FluidRegistry.MOLTEN_NETHERITE_BLOCK.get(), "Molten Copper");
+
+		/* MAG LEV */
+		add(BlockRegistry.MAG_RAIL.get(), "Mag Rail");
+		add(BlockRegistry.POWERED_MAG_RAIL.get(), "Powered Mag Rail");
+		add(BlockRegistry.DETECTOR_MAG_RAIL.get(), "Detector Mag Rail");
+		add(BlockRegistry.ACTIVATOR_MAG_RAIL.get(), "Activator Mag Rail");
+
+		add(ItemRegistry.MAGCART.get(), "Magcart");
+		add(ItemRegistry.CHEST_MAGCART.get(), "Chest Magcart");
+		add(ItemRegistry.COMMAND_BLOCK_MAGCART.get(), "Command Block Magcart");
+		add(ItemRegistry.FURNACE_MAGCART.get(), "Furnace Magcart");
+		add(ItemRegistry.HOPPER_MAGCART.get(), "Hopper Magcart");
+		add(ItemRegistry.TNT_MAGCART.get(), "TNT Magcart");
+
+		add(EntityRegistry.MAGCART.get(), "Magcart");
+		add(EntityRegistry.CHEST_MAGCART.get(), "Chest Magcart");
+		add(EntityRegistry.COMMAND_BLOCK_MAGCART.get(), "Command Block Magcart");
+		add(EntityRegistry.FURNACE_MAGCART.get(), "Furnace Magcart");
+		add(EntityRegistry.HOPPER_MAGCART.get(), "Hopper Magcart");
+		add(EntityRegistry.SPAWNER_MAGCART.get(), "Spawner Magcart");
+		add(EntityRegistry.TNT_MAGCART.get(), "TNT Magcart");
 
 	}
 }

@@ -465,6 +465,15 @@ public class ModItemTags extends ItemTagsProvider {
 				.add(ItemRegistry.PAINTED_RED_CERAMIC.get())
 				.add(ItemRegistry.PAINTED_PINK_CERAMIC.get());
 
+		tag(ItemRegistry.STONE_PRESSURE_PLATE_TAG)
+				.add(ItemRegistry.MOON_STONE_PRESSURE_PLATE.get())
+				.add(ItemRegistry.MOON_DEEPSLATE_PRESSURE_PLATE.get())
+				.add(ItemRegistry.MARS_STONE_PRESSURE_PLATE.get())
+				.add(ItemRegistry.MARS_DEEPSLATE_PRESSURE_PLATE.get())
+				.add(ItemRegistry.METEOR_PRESSURE_PLATE.get())
+				.add(Items.STONE_PRESSURE_PLATE)
+				.add(Items.POLISHED_BLACKSTONE_PRESSURE_PLATE);
+
 
 	}
 

@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "celestialexploration:moon_stone_pressure_plate",
+    "celestialexploration:moon_deepslate_pressure_plate",
+    "celestialexploration:mars_stone_pressure_plate",
+    "celestialexploration:mars_deepslate_pressure_plate",
+    "celestialexploration:meteor_pressure_plate",
+    "minecraft:stone_pressure_plate",
+    "minecraft:polished_blackstone_pressure_plate"
+  ]
+}

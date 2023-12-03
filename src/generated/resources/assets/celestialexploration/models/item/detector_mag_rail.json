@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "celestialexploration:block/detector_mag_rail"
+  }
+}

@@ -1,7 +1,7 @@
 {
   "type": "minecraft:stonecutting",
   "ingredient": {
-    "tag": "celestialexploration:moon_deepslate_tag"
+    "tag": "celestialexploration:moon_deepslate"
   },
   "result": "celestialexploration:moon_deepslate_brick_wall",
   "count": 1

@@ -1,7 +1,7 @@
 {
   "type": "minecraft:stonecutting",
   "ingredient": {
-    "tag": "celestialexploration:mars_cobblestone_tag"
+    "tag": "celestialexploration:mars_cobblestone"
   },
   "result": "celestialexploration:mars_cobblestone_wall",
   "count": 1

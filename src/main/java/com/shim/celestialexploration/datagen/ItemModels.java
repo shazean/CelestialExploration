@@ -224,9 +224,7 @@ public class ItemModels extends ItemModelProvider {
 		singleTexture(FluidRegistry.MOLTEN_GOLD_BUCKET.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/lox_bucket"));
 //		singleTexture(FluidRegistry.MOLTEN_NETHERITE_BUCKET.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/lox_bucket"));
 
-		/**
-		 * ARMOR
-		 */
+		/* ARMOR */
 		singleTexture(ItemRegistry.STEEL_HELMET.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/steel_helmet"));
 		singleTexture(ItemRegistry.STEEL_LEGGINGS.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/steel_leggings"));
 		singleTexture(ItemRegistry.STEEL_CHESTPLATE.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/steel_chestplate"));
@@ -236,9 +234,7 @@ public class ItemModels extends ItemModelProvider {
 		singleTexture(ItemRegistry.SPACE_SUIT_CHESTPLATE.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/space_suit_chestplate"));
 		singleTexture(ItemRegistry.SPACE_SUIT_BOOTS.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/space_suit_boots"));
 
-		/**
-		 * SHUTTLE ITEMS
-		 */
+		/* SHUTTLE ITEMS */
 		singleTexture(ItemRegistry.BLACK_SHUTTLE.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/black_shuttle"));
 		singleTexture(ItemRegistry.GREY_SHUTTLE.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/grey_shuttle"));
 		singleTexture(ItemRegistry.LIGHT_GREY_SHUTTLE.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/light_grey_shuttle"));
@@ -256,9 +252,7 @@ public class ItemModels extends ItemModelProvider {
 		singleTexture(ItemRegistry.BLUE_SHUTTLE.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/blue_shuttle"));
 		singleTexture(ItemRegistry.PURPLE_SHUTTLE.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/purple_shuttle"));
 
-		/**
-		 * SHUTTLE-RELATED ITEMS
-		*/
+		/* SHUTTLE-RELATED ITEMS*/
 //		withExistingParent(ItemRegistry.ASSEMBLY_STATION.get().getRegistryName().getPath(), modLoc("block/assembly_station"));
 		withExistingParent(ItemRegistry.OXYGEN_COMPRESSOR.get().getRegistryName().getPath(), modLoc("block/oxygen_compressor"));
 		withExistingParent(ItemRegistry.WORKBENCH.get().getRegistryName().getPath(), modLoc("block/workbench"));
@@ -327,9 +321,7 @@ public class ItemModels extends ItemModelProvider {
 //		singleTexture(ItemRegistry.IRON_DUST.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/iron_dust"));
 		singleTexture(ItemRegistry.LUNAR_GOO.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/lunar_goo"));
 
-		/**
-		 * FOOD
-		 */
+		/* FOOD */
 		singleTexture(ItemRegistry.MARSHMALLOW_GOO.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/marshmallow_goo"));
 		singleTexture(ItemRegistry.MARSHMALLOW.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/marshmallow"));
 		singleTexture(ItemRegistry.ROASTED_MARSHMALLOW.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/roasted_marshmallow"));
@@ -339,6 +331,18 @@ public class ItemModels extends ItemModelProvider {
 
 		singleTexture(ItemRegistry.LUNAR_CHEESE.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/lunar_cheese"));
 		singleTexture(ItemRegistry.CHEESE.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/cheese"));
+
+		/* MAG LEV */
+		singleTexture(ItemRegistry.MAG_RAIL.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "block/mag_rail"));
+		singleTexture(ItemRegistry.POWERED_MAG_RAIL.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "block/powered_mag_rail"));
+		singleTexture(ItemRegistry.DETECTOR_MAG_RAIL.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "block/detector_mag_rail"));
+		singleTexture(ItemRegistry.ACTIVATOR_MAG_RAIL.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "block/activator_mag_rail"));
+		singleTexture(ItemRegistry.MAGCART.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/magcart"));
+		singleTexture(ItemRegistry.CHEST_MAGCART.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/chest_magcart"));
+		singleTexture(ItemRegistry.COMMAND_BLOCK_MAGCART.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/command_block_magcart"));
+		singleTexture(ItemRegistry.FURNACE_MAGCART.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/furnace_magcart"));
+		singleTexture(ItemRegistry.HOPPER_MAGCART.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/hopper_magcart"));
+		singleTexture(ItemRegistry.TNT_MAGCART.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/tnt_magcart"));
 
 	}
 }

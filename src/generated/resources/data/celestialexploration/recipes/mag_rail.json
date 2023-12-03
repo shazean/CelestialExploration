@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "celestialexploration",
+  "pattern": [
+    "X X",
+    "X#X",
+    "X X"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:steel_ingot"
+    },
+    "#": {
+      "item": "celestialexploration:steel_rod"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:mag_rail",
+    "count": 16
+  }
+}
