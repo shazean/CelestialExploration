@@ -36,6 +36,18 @@
         "maxCount": 1
       },
       {
+        "type": "celestialexploration:voidfellow",
+        "weight": 3,
+        "minCount": 0,
+        "maxCount": 1
+      },
+      {
+        "type": "celestialexploration:voided",
+        "weight": 50,
+        "minCount": 0,
+        "maxCount": 3
+      },
+      {
         "type": "minecraft:skeleton",
         "weight": 50,
         "minCount": 0,

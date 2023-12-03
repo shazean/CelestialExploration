@@ -286,6 +286,10 @@ public class ItemRegistry {
 			() -> new ForgeSpawnEggItem(EntityRegistry.VOIDFELLOW,0, 0xffffff,
 					new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
 
+	public static final RegistryObject<Item> VOIDED_SPAWN_EGG = ITEMS.register("voided_spawn_egg",
+			() -> new ForgeSpawnEggItem(EntityRegistry.VOIDED,0, 0x3c2d42,
+					new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+
 
 //	public static final RegistryObject<ModSpawnEgg> SULFURIC_SLIME_SPAWN_EGG = ITEMS.register("sulfuric_slime_spawn_egg", () -> new ModSpawnEgg(RegistryEntities.SULFURIC_SLIME, 0xbd9200, 0xa68000, new Item.Properties().tab(ItemGroup.TAB_MISC)));
 //	public static final RegistryObject<ModSpawnEgg> MARS_MALLOW_SPAWN_EGG = ITEMS.register("mars_mallow_spawn_egg", () -> new ModSpawnEgg(RegistryEntities.MARS_MALLOW, 0xffffff, 0xF3F3F3, new Item.Properties().tab(ItemGroup.TAB_MISC)));

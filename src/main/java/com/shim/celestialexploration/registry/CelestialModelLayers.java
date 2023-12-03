@@ -24,6 +24,19 @@ public class CelestialModelLayers {
     public static final ModelLayerLocation TNT_MAGCART = register( "tnt_magcart");
 //    public static final ModelLayerLocation MAGCART = register( "magcart");
 
+    public static final ModelLayerLocation VOIDED = register("voided");
+    public static final ModelLayerLocation VOIDED_INNER_ARMOR = registerInnerArmor("voided");
+    public static final ModelLayerLocation VOIDED_OUTER_ARMOR = registerOuterArmor("voided");
+
+
+    private static ModelLayerLocation registerInnerArmor(String p_171299_) {
+        return register(p_171299_, "inner_armor");
+    }
+
+    private static ModelLayerLocation registerOuterArmor(String p_171304_) {
+        return register(p_171304_, "outer_armor");
+    }
+
     private static ModelLayerLocation register(String p_171294_) {
         return register(p_171294_, "main");
     }

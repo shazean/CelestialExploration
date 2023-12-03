@@ -37,6 +37,10 @@ public class EntityRegistry {
             .sized(0.6F, 1.7F).clientTrackingRange(8)
             .build(new ResourceLocation(CelestialExploration.MODID, "voidfellow").toString()));
 
+    public static final RegistryObject<EntityType<Voided>> VOIDED = ENTITY_TYPES.register("voided", () -> EntityType.Builder.of(Voided::new, MobCategory.MONSTER)
+            .sized(0.6F, 1.7F).clientTrackingRange(8)
+            .build(new ResourceLocation(CelestialExploration.MODID, "voided").toString()));
+
     //VEHICLES
     public static final RegistryObject<EntityType<Shuttle>> SHUTTLE = ENTITY_TYPES.register("shuttle", () -> EntityType.Builder.<Shuttle>of(Shuttle::new, MobCategory.MISC)
             .sized(3.1f, 3.1f)

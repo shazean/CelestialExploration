@@ -6,6 +6,7 @@ import com.shim.celestialexploration.capabilities.LoxTankCapability;
 import com.shim.celestialexploration.entity.*;
 import com.shim.celestialexploration.entity.model.MagCartModel;
 import com.shim.celestialexploration.entity.model.ShuttleModel;
+import com.shim.celestialexploration.entity.model.VoidedModel;
 import com.shim.celestialexploration.entity.renderer.*;
 import com.shim.celestialexploration.inventory.screens.OxygenCompressorScreen;
 import com.shim.celestialexploration.inventory.screens.ShuttleScreen;
@@ -18,8 +19,10 @@ import com.shim.celestialexploration.world.renderer.DimensionRenderers;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.model.BoatModel;
+import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.MinecartModel;
 import net.minecraft.client.model.geom.ModelLayers;
+import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
@@ -39,7 +42,11 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
+import java.util.function.Supplier;
+
 import static com.shim.celestialexploration.entity.renderer.ShuttleRenderer.createShuttleModelName;
+import static net.minecraft.client.model.geom.LayerDefinitions.INNER_ARMOR_DEFORMATION;
+import static net.minecraft.client.model.geom.LayerDefinitions.OUTER_ARMOR_DEFORMATION;
 
 @Mod.EventBusSubscriber(modid = CelestialExploration.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModEventBusEvents {
@@ -51,6 +58,8 @@ public class ModEventBusEvents {
         event.put(EntityRegistry.MARS_MALLOW.get(), MarsMallow.setAttributes());
         event.put(EntityRegistry.LURKER.get(), Lurker.setAttributes());
         event.put(EntityRegistry.VOIDFELLOW.get(), VoidFellow.setAttributes());
+        event.put(EntityRegistry.VOIDED.get(), Voided.setAttributes());
+
     }
 
     @SubscribeEvent
@@ -65,6 +74,15 @@ public class ModEventBusEvents {
         event.registerLayerDefinition(CelestialModelLayers.HOPPER_MAGCART, MagCartModel::createBodyLayer);
         event.registerLayerDefinition(CelestialModelLayers.SPAWNER_MAGCART, MagCartModel::createBodyLayer);
         event.registerLayerDefinition(CelestialModelLayers.TNT_MAGCART, MagCartModel::createBodyLayer);
+
+        LayerDefinition humanoidLayer = LayerDefinition.create(HumanoidModel.createMesh(CubeDeformation.NONE, 0.0F), 64, 64);
+        LayerDefinition innerArmorLayer = LayerDefinition.create(HumanoidModel.createMesh(INNER_ARMOR_DEFORMATION, 0.0F), 64, 32);
+        LayerDefinition outerArmorLayer = LayerDefinition.create(HumanoidModel.createMesh(OUTER_ARMOR_DEFORMATION, 0.0F), 64, 32);
+
+        event.registerLayerDefinition(CelestialModelLayers.VOIDED, () -> humanoidLayer);
+        event.registerLayerDefinition(CelestialModelLayers.VOIDED_INNER_ARMOR, () -> innerArmorLayer);
+        event.registerLayerDefinition(CelestialModelLayers.VOIDED_OUTER_ARMOR, () -> outerArmorLayer);
+
 
     }
 
@@ -135,6 +153,7 @@ public class ModEventBusEvents {
         EntityRenderers.register(EntityRegistry.HOPPER_MAGCART.get(), (context) -> new MagCartRenderer<>(context, CelestialModelLayers.HOPPER_MAGCART));
         EntityRenderers.register(EntityRegistry.SPAWNER_MAGCART.get(), (context) -> new MagCartRenderer<>(context, CelestialModelLayers.SPAWNER_MAGCART));
         EntityRenderers.register(EntityRegistry.TNT_MAGCART.get(), (context) -> new MagCartRenderer<>(context, CelestialModelLayers.TNT_MAGCART));
+        EntityRenderers.register(EntityRegistry.VOIDED.get(), VoidedRenderer::new);
 
 
         MenuScreens.register(MenuRegistry.OXYGEN_COMPRESSOR_MENU.get(), OxygenCompressorScreen::new);

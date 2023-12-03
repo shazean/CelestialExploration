@@ -16,12 +16,12 @@ public class ModLanguageProvider extends LanguageProvider {
 
 	@Override
 	protected void addTranslations() {
-		/**TABS**/
+		/* TABS */
 		add("itemGroup.celestialblockstab", "Celestial Blocks");
 		add("itemGroup.shuttletab", "Shuttle Items");
 		add("itemGroup.celestialmisctab", "Celestial Items");
 
-		/**BIOMES**/
+		/* BIOMES */
 		add("biomes.celestialexploration.moon_craters", "Lunar Craters");
 		add("biomes.celestialexploration.moon_desert", "Lunar Desert");
 		add("biomes.celestialexploration.moon_lava_flats", "Lunar Lava Flats");
@@ -42,7 +42,7 @@ public class ModLanguageProvider extends LanguageProvider {
 		add("biomes.celestialexploration.mars_orbit", "Martian Orbit");
 		add("biomes.celestialexploration.sparse_asteroid_field", "Sparse Asteroid Field");
 
-		/**MOON**/
+		/* MOON */
 		add(BlockRegistry.MOON_BRICK_SLAB.get(), "Lunar Brick Slab");
 		add(BlockRegistry.MOON_BRICK_STAIRS.get(), "Lunar Brick Stairs");
 		add(BlockRegistry.MOON_BRICK_WALL.get(), "Lunar Brick Wall");
@@ -244,8 +244,6 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(BlockRegistry.PAINTED_RED_CERAMIC.get(), "Painted Red Ceramic");
 		add(BlockRegistry.PAINTED_PINK_CERAMIC.get(), "Painted Pink Ceramic");
 
-
-
 		add(BlockRegistry.DRY_ICE.get(), "Dry Ice");
 		add(BlockRegistry.LUMINOUS_BLUE_GLASS.get(), "Luminous Blue Glass");
 		add(BlockRegistry.LUMINOUS_WHITE_GLASS.get(), "Luminous White Glass");
@@ -262,7 +260,7 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(BlockRegistry.SILICA.get(), "Silica");
 
 
-		/**ARMOR**/
+		/* ARMOR */
 		add(ItemRegistry.STEEL_BOOTS.get(), "Steel Boots");
 		add(ItemRegistry.STEEL_CHESTPLATE.get(), "Steel Chestplate");
 		add(ItemRegistry.STEEL_HELMET.get(), "Steel Helmet");
@@ -272,21 +270,23 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(ItemRegistry.SPACE_SUIT_HELMET.get(), "Space Suit Helmet");
 		add(ItemRegistry.SPACE_SUIT_LEGGINGS.get(), "Space Suit Leggings");
 
-		/**SPAWN EGGS**/
+		/* SPAWN EGGS */
 		add(ItemRegistry.RUST_SPAWN_EGG.get(), "Rust Slime Spawn Egg");
 		add(ItemRegistry.LUNAR_SPAWN_EGG.get(), "Lunar Slime Spawn Egg");
 		add(ItemRegistry.MARS_MALLOW_SPAWN_EGG.get(), "Mars Mallow Spawn Egg");
 		add(ItemRegistry.LURKER_SPAWN_EGG.get(), "Lurker Spawn Egg");
 		add(ItemRegistry.VOIDFELLOW_SPAWN_EGG.get(), "Voidfellow Spawn Egg");
+		add(ItemRegistry.VOIDED_SPAWN_EGG.get(), "Voided Spawn Egg");
 
-		/**MOBS**/
+		/* MOBS */
 		add(EntityRegistry.LUNAR_SLIME.get(), "Lunar Slime");
 		add(EntityRegistry.MARS_MALLOW.get(), "Mars Mallow");
 		add(EntityRegistry.RUST_SLIME.get(), "Rust Slime");
 		add(EntityRegistry.LURKER.get(), "Lurker");
-		add(EntityRegistry.VOIDFELLOW.get(), "Voidfellow");
+		add(EntityRegistry.VOIDFELLOW.get(), "Space Enderman");
+		add(EntityRegistry.VOIDED.get(), "Voided");
 
-		/**SHUTTLE ITEMS**/
+		/* SHUTTLE ITEMS */
 		add(ItemRegistry.WHITE_SHUTTLE.get(), "White Shuttle");
 		add(ItemRegistry.BLACK_SHUTTLE.get(), "Black Shuttle");
 		add(ItemRegistry.GREY_SHUTTLE.get(), "Grey Shuttle");
@@ -304,18 +304,14 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(ItemRegistry.MAGENTA_SHUTTLE.get(), "Magenta Shuttle");
 		add(ItemRegistry.BROWN_SHUTTLE.get(), "Brown Shuttle");
 
-		/**
-		 * SHUTTLE-RELATED
-		 */
+		/* SHUTTLE-RELATED */
 		add(BlockRegistry.STEEL_FRAME.get(), "Steel Frame");
 		add(ItemRegistry.SHUTTLE_FRAME.get(), "Shuttle Frame");
 		add(ItemRegistry.SHUTTLE_CABIN.get(), "Shuttle Cabin");
 		add(ItemRegistry.SHUTTLE_ENGINE.get(), "Shuttle Engine");
 //		add(ItemRegistry.NOSE_CONE.get(), "Shuttle Nose Cone");
 
-		/**
-		 * FOOD
-		 */
+		/* FOOD */
 		add(ItemRegistry.MARSHMALLOW_GOO.get(), "Marshmallow Goo");
 		add(ItemRegistry.MARSHMALLOW.get(), "Marshmallow");
 		add(ItemRegistry.ROASTED_MARSHMALLOW.get(), "Roasted Marshmallow");
