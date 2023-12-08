@@ -18,10 +18,13 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.vehicle.Boat;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.Map;
 import java.util.stream.Stream;
 
+@OnlyIn(Dist.CLIENT)
 public class ShuttleRenderer<T extends Shuttle> extends EntityRenderer<T> {
 
         private static final ResourceLocation[] SHUTTLE_TEXTURE_LOCATIONS = new ResourceLocation[]{

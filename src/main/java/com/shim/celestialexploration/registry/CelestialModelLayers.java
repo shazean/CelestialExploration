@@ -3,14 +3,13 @@ package com.shim.celestialexploration.registry;
 import com.google.common.collect.Sets;
 import com.shim.celestialexploration.CelestialExploration;
 import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.vehicle.Boat;
-import net.minecraft.world.level.block.state.properties.WoodType;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.Set;
-import java.util.stream.Stream;
 
+@OnlyIn(Dist.CLIENT)
 public class CelestialModelLayers {
     private static final String DEFAULT_LAYER = "main";
     private static final Set<ModelLayerLocation> ALL_MODELS = Sets.newHashSet();
@@ -22,7 +21,6 @@ public class CelestialModelLayers {
     public static final ModelLayerLocation HOPPER_MAGCART = register( "hopper_magcart");
     public static final ModelLayerLocation SPAWNER_MAGCART = register( "spawner_magcart");
     public static final ModelLayerLocation TNT_MAGCART = register( "tnt_magcart");
-//    public static final ModelLayerLocation MAGCART = register( "magcart");
 
     public static final ModelLayerLocation VOIDED = register("voided");
     public static final ModelLayerLocation VOIDED_INNER_ARMOR = registerInnerArmor("voided");

@@ -1,0 +1,21 @@
+{
+  "type": "celestialexploration:workbench_crafting",
+  "group": "celestialexploration",
+  "pattern": [
+    "L L",
+    "D D"
+  ],
+  "key": {
+    "D": {
+      "tag": "forge:gems/diamond"
+    },
+    "L": {
+      "item": "minecraft:leather"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:thermal_space_suit_boots"
+  },
+  "fluid": "celestialexploration:molten_steel",
+  "buckets": 0.33
+}

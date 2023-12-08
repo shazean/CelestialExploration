@@ -1,9 +1,6 @@
 package com.shim.celestialexploration;
 
-import com.shim.celestialexploration.entity.LunarSlime;
-import com.shim.celestialexploration.entity.Lurker;
-import com.shim.celestialexploration.entity.MarsMallow;
-import com.shim.celestialexploration.entity.RustSlime;
+import com.shim.celestialexploration.entity.*;
 import com.shim.celestialexploration.registry.*;
 import com.shim.celestialexploration.util.Keybinds;
 import net.minecraft.world.entity.SpawnPlacements;
@@ -116,6 +113,9 @@ public class CelestialExploration {
         SpawnPlacements.register(EntityRegistry.RUST_SLIME.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, RustSlime::checkRustSlimeSpawnRules);
         SpawnPlacements.register(EntityRegistry.LUNAR_SLIME.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, LunarSlime::checkLunarSlimeSpawnRules);
         SpawnPlacements.register(EntityRegistry.LURKER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, Lurker::checkMonsterSpawnRules);
+        SpawnPlacements.register(EntityRegistry.VOIDED.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, Voided::checkMonsterSpawnRules);
+        SpawnPlacements.register(EntityRegistry.VOIDFELLOW.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, VoidFellow::checkMonsterSpawnRules);
+
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event)

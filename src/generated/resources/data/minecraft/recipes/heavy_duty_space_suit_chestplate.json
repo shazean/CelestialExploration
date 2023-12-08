@@ -1,0 +1,28 @@
+{
+  "type": "celestialexploration:workbench_crafting",
+  "group": "celestialexploration",
+  "pattern": [
+    "L L",
+    "DDD",
+    "GMG"
+  ],
+  "key": {
+    "L": {
+      "item": "minecraft:leather"
+    },
+    "G": {
+      "tag": "forge:ingots/gold"
+    },
+    "D": {
+      "tag": "forge:gems/diamond"
+    },
+    "M": {
+      "item": "minecraft:magma_cream"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:heavy_duty_space_suit_chestplate"
+  },
+  "fluid": "celestialexploration:molten_steel",
+  "buckets": 0.77
+}

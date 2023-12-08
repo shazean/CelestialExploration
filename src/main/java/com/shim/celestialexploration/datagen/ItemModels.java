@@ -1,7 +1,6 @@
 package com.shim.celestialexploration.datagen;
 
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.registry.BlockRegistry;
 import com.shim.celestialexploration.registry.FluidRegistry;
 import com.shim.celestialexploration.registry.ItemRegistry;
 
@@ -229,10 +228,23 @@ public class ItemModels extends ItemModelProvider {
 		singleTexture(ItemRegistry.STEEL_LEGGINGS.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/steel_leggings"));
 		singleTexture(ItemRegistry.STEEL_CHESTPLATE.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/steel_chestplate"));
 		singleTexture(ItemRegistry.STEEL_BOOTS.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/steel_boots"));
-		singleTexture(ItemRegistry.SPACE_SUIT_HELMET.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/space_suit_helmet"));
-		singleTexture(ItemRegistry.SPACE_SUIT_LEGGINGS.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/space_suit_leggings"));
-		singleTexture(ItemRegistry.SPACE_SUIT_CHESTPLATE.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/space_suit_chestplate"));
-		singleTexture(ItemRegistry.SPACE_SUIT_BOOTS.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/space_suit_boots"));
+		singleTexture(ItemRegistry.BASIC_SPACE_SUIT_HELMET.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/basic_space_suit_helmet"));
+		singleTexture(ItemRegistry.BASIC_SPACE_SUIT_LEGGINGS.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/basic_space_suit_leggings"));
+		singleTexture(ItemRegistry.BASIC_SPACE_SUIT_CHESTPLATE.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/basic_space_suit_chestplate"));
+		singleTexture(ItemRegistry.BASIC_SPACE_SUIT_BOOTS.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/basic_space_suit_boots"));
+		singleTexture(ItemRegistry.HEAVY_DUTY_SPACE_SUIT_HELMET.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/heavy_duty_space_suit_helmet"));
+		singleTexture(ItemRegistry.HEAVY_DUTY_SPACE_SUIT_LEGGINGS.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/heavy_duty_space_suit_leggings"));
+		singleTexture(ItemRegistry.HEAVY_DUTY_SPACE_SUIT_CHESTPLATE.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/heavy_duty_space_suit_chestplate"));
+		singleTexture(ItemRegistry.HEAVY_DUTY_SPACE_SUIT_BOOTS.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/heavy_duty_space_suit_boots"));
+		singleTexture(ItemRegistry.THERMAL_SPACE_SUIT_HELMET.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/thermal_space_suit_helmet"));
+		singleTexture(ItemRegistry.THERMAL_SPACE_SUIT_LEGGINGS.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/thermal_space_suit_leggings"));
+		singleTexture(ItemRegistry.THERMAL_SPACE_SUIT_CHESTPLATE.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/thermal_space_suit_chestplate"));
+		singleTexture(ItemRegistry.THERMAL_SPACE_SUIT_BOOTS.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/thermal_space_suit_boots"));
+		singleTexture(ItemRegistry.ADVANCED_SPACE_SUIT_HELMET.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/advanced_space_suit_helmet"));
+		singleTexture(ItemRegistry.ADVANCED_SPACE_SUIT_LEGGINGS.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/advanced_space_suit_leggings"));
+		singleTexture(ItemRegistry.ADVANCED_SPACE_SUIT_CHESTPLATE.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/advanced_space_suit_chestplate"));
+		singleTexture(ItemRegistry.ADVANCED_SPACE_SUIT_BOOTS.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/advanced_space_suit_boots"));
+
 
 		/* SHUTTLE ITEMS */
 		singleTexture(ItemRegistry.BLACK_SHUTTLE.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/black_shuttle"));

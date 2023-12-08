@@ -1,0 +1,22 @@
+{
+  "type": "celestialexploration:workbench_crafting",
+  "group": "celestialexploration",
+  "pattern": [
+    "WWW",
+    "D D",
+    "W W"
+  ],
+  "key": {
+    "W": {
+      "item": "minecraft:white_wool"
+    },
+    "D": {
+      "tag": "forge:gems/diamond"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:thermal_space_suit_leggings"
+  },
+  "fluid": "celestialexploration:molten_steel",
+  "buckets": 0.66
+}

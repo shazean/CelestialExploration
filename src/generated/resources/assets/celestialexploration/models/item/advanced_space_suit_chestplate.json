@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "celestialexploration:item/advanced_space_suit_chestplate"
+  }
+}

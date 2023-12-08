@@ -5,7 +5,7 @@
       "tag": "forge:sand"
     },
     {
-      "fluidTag": "minecraft:water",
+      "fluid": "minecraft:water",
       "amount": 250
     }
   ],

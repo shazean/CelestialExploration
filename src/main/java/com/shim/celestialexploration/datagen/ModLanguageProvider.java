@@ -4,8 +4,6 @@ import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.registry.*;
 
 import net.minecraft.data.DataGenerator;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.LanguageProvider;
 
 public class ModLanguageProvider extends LanguageProvider {
@@ -20,6 +18,11 @@ public class ModLanguageProvider extends LanguageProvider {
 		add("itemGroup.celestialblockstab", "Celestial Blocks");
 		add("itemGroup.shuttletab", "Shuttle Items");
 		add("itemGroup.celestialmisctab", "Celestial Items");
+
+		/* EFFECTS */
+		add(EffectRegistry.LOW_GRAVITY.get(), "Low Gravity");
+		add(EffectRegistry.EXTRA_LOW_GRAVITY.get(), "Extra Low Gravity");
+		add(EffectRegistry.HIGH_GRAVITY.get(), "High Gravity");
 
 		/* BIOMES */
 		add("biomes.celestialexploration.moon_craters", "Lunar Craters");
@@ -103,7 +106,7 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(BlockRegistry.COMPRESSED_MOON_COBBLED_DEEPSLATE.get(), "Compressed Lunar Cobbled Deepslate");
 
 
-		/**MARS**/
+		/*MARS*/
 		add(BlockRegistry.CHISELED_MARS_BRICKS.get(), "Chiseled Martian Bricks");
 		add(BlockRegistry.MARS_BRICK_SLAB.get(), "Martian Brick Slab");
 		add(BlockRegistry.MARS_BRICK_STAIRS.get(), "Martian Brick Stairs");
@@ -160,7 +163,7 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(BlockRegistry.COMPRESSED_MARS_COBBLED_DEEPSLATE.get(), "Compressed Martian Cobbled Deepslate");
 
 
-		/**METEOR**/
+		/* METEOR */
 		add(BlockRegistry.METEOR.get(), "Meteorite");
 		add(BlockRegistry.METEOR_BRICK_SLAB.get(), "Meteorite Brick Slab");
 		add(BlockRegistry.METEOR_BRICK_STAIRS.get(), "Meteorite Brick Stairs");
@@ -179,7 +182,7 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(BlockRegistry.METEOR_BUTTON.get(), "Meteorite Button");
 		add(BlockRegistry.METEOR_PRESSURE_PLATE.get(), "Meteorite Pressure Plate");
 
-		/**OTHER BLOCKS**/
+		/* OTHER BLOCKS */
 //		add(BlockRegistry.SOLAR_PANEL.get(), "Solar Panel");
 //		add(BlockRegistry.IGNEOUS_ROCK.get(), "Igneous Rock");
 //		add(ItemRegistry.ASSEMBLY_STATION.get(), "Assembly Station");
@@ -265,17 +268,29 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(ItemRegistry.STEEL_CHESTPLATE.get(), "Steel Chestplate");
 		add(ItemRegistry.STEEL_HELMET.get(), "Steel Helmet");
 		add(ItemRegistry.STEEL_LEGGINGS.get(), "Steel Leggings");
-		add(ItemRegistry.SPACE_SUIT_BOOTS.get(), "Space Suit Boots");
-		add(ItemRegistry.SPACE_SUIT_CHESTPLATE.get(), "Space Suit Chestplate");
-		add(ItemRegistry.SPACE_SUIT_HELMET.get(), "Space Suit Helmet");
-		add(ItemRegistry.SPACE_SUIT_LEGGINGS.get(), "Space Suit Leggings");
+		add(ItemRegistry.BASIC_SPACE_SUIT_BOOTS.get(), "Basic Space Suit Boots");
+		add(ItemRegistry.BASIC_SPACE_SUIT_CHESTPLATE.get(), "Basic Space Suit Chestplate");
+		add(ItemRegistry.BASIC_SPACE_SUIT_HELMET.get(), "Basic Space Suit Helmet");
+		add(ItemRegistry.BASIC_SPACE_SUIT_LEGGINGS.get(), "Basic Space Suit Leggings");
+		add(ItemRegistry.HEAVY_DUTY_SPACE_SUIT_BOOTS.get(), "Heavy Duty Space Suit Boots");
+		add(ItemRegistry.HEAVY_DUTY_SPACE_SUIT_CHESTPLATE.get(), "Heavy Duty Space Suit Chestplate");
+		add(ItemRegistry.HEAVY_DUTY_SPACE_SUIT_HELMET.get(), "Heavy Duty Space Suit Helmet");
+		add(ItemRegistry.HEAVY_DUTY_SPACE_SUIT_LEGGINGS.get(), "Heavy Duty Space Suit Leggings");
+		add(ItemRegistry.THERMAL_SPACE_SUIT_BOOTS.get(), "Thermal Space Suit Boots");
+		add(ItemRegistry.THERMAL_SPACE_SUIT_CHESTPLATE.get(), "Thermal Space Suit Chestplate");
+		add(ItemRegistry.THERMAL_SPACE_SUIT_HELMET.get(), "Thermal Space Suit Helmet");
+		add(ItemRegistry.THERMAL_SPACE_SUIT_LEGGINGS.get(), "Thermal Space Suit Leggings");
+		add(ItemRegistry.ADVANCED_SPACE_SUIT_BOOTS.get(), "Advanced Space Suit Boots");
+		add(ItemRegistry.ADVANCED_SPACE_SUIT_CHESTPLATE.get(), "Advanced Space Suit Chestplate");
+		add(ItemRegistry.ADVANCED_SPACE_SUIT_HELMET.get(), "Advanced Space Suit Helmet");
+		add(ItemRegistry.ADVANCED_SPACE_SUIT_LEGGINGS.get(), "Advanced Space Suit Leggings");
 
 		/* SPAWN EGGS */
 		add(ItemRegistry.RUST_SPAWN_EGG.get(), "Rust Slime Spawn Egg");
 		add(ItemRegistry.LUNAR_SPAWN_EGG.get(), "Lunar Slime Spawn Egg");
 		add(ItemRegistry.MARS_MALLOW_SPAWN_EGG.get(), "Mars Mallow Spawn Egg");
 		add(ItemRegistry.LURKER_SPAWN_EGG.get(), "Lurker Spawn Egg");
-		add(ItemRegistry.VOIDFELLOW_SPAWN_EGG.get(), "Voidfellow Spawn Egg");
+		add(ItemRegistry.VOIDFELLOW_SPAWN_EGG.get(), "Space Fellow Spawn Egg");
 		add(ItemRegistry.VOIDED_SPAWN_EGG.get(), "Voided Spawn Egg");
 
 		/* MOBS */
@@ -283,7 +298,7 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(EntityRegistry.MARS_MALLOW.get(), "Mars Mallow");
 		add(EntityRegistry.RUST_SLIME.get(), "Rust Slime");
 		add(EntityRegistry.LURKER.get(), "Lurker");
-		add(EntityRegistry.VOIDFELLOW.get(), "Space Enderman");
+		add(EntityRegistry.VOIDFELLOW.get(), "Space Fellow");
 		add(EntityRegistry.VOIDED.get(), "Voided");
 
 		/* SHUTTLE ITEMS */

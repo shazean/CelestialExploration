@@ -1,0 +1,24 @@
+{
+  "type": "celestialexploration:workbench_crafting",
+  "group": "celestialexploration",
+  "pattern": [
+    "LLL",
+    "WGW"
+  ],
+  "key": {
+    "L": {
+      "item": "minecraft:leather"
+    },
+    "W": {
+      "item": "minecraft:white_wool"
+    },
+    "G": {
+      "tag": "forge:glass"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:basic_space_suit_helmet"
+  },
+  "fluid": "celestialexploration:molten_steel",
+  "buckets": 0.33
+}

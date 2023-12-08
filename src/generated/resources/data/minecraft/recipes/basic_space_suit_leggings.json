@@ -1,0 +1,22 @@
+{
+  "type": "celestialexploration:workbench_crafting",
+  "group": "celestialexploration",
+  "pattern": [
+    "LLL",
+    "L L",
+    "W W"
+  ],
+  "key": {
+    "W": {
+      "item": "minecraft:white_wool"
+    },
+    "L": {
+      "item": "minecraft:leather"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:basic_space_suit_leggings"
+  },
+  "fluid": "celestialexploration:molten_steel",
+  "buckets": 0.55
+}

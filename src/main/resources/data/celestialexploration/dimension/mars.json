@@ -10,6 +10,7 @@
     "has_ceiling": false,
     "coordinate_scale": 1,
     "ambient_light": 0,
+    "effects": "celestialexploration:mars",
     "logical_height": 384,
     "infiniburn": "#minecraft:infiniburn_overworld",
     "min_y": -64,

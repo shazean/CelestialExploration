@@ -17,6 +17,8 @@ import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
 
 import java.util.Optional;
 
+import static net.minecraft.world.level.levelgen.Heightmap.Types.WORLD_SURFACE_WG;
+
 public class LunarColonyStructure extends StructureFeature<JigsawConfiguration> {
 
     // A custom codec that changes the size limit for our code_structure_sky_fan.json's config to not be capped at 7.

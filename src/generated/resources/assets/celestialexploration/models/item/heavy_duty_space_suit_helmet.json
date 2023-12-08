@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "celestialexploration:item/heavy_duty_space_suit_helmet"
+  }
+}

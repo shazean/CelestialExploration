@@ -1,12 +1,6 @@
 package com.shim.celestialexploration.item.armor;
 
-import com.shim.celestialexploration.item.SpaceSuitArmorItem;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.decoration.ArmorStand;
-import software.bernie.geckolib3.core.processor.IBone;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
 import software.bernie.geckolib3.renderers.geo.GeoArmorRenderer;
-import software.bernie.geckolib3.util.GeoUtils;
 
 public class SpaceSuitRenderer extends GeoArmorRenderer<SpaceSuitArmorItem> {
 

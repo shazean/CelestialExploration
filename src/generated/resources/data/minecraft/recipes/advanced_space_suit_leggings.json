@@ -1,0 +1,25 @@
+{
+  "type": "celestialexploration:workbench_crafting",
+  "group": "celestialexploration",
+  "pattern": [
+    "DDD",
+    "O O",
+    "L L"
+  ],
+  "key": {
+    "O": {
+      "item": "minecraft:obsidian"
+    },
+    "L": {
+      "item": "minecraft:leather"
+    },
+    "D": {
+      "tag": "forge:gems/diamond"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:advanced_space_suit_leggings"
+  },
+  "fluid": "celestialexploration:molten_steel",
+  "buckets": 0.66
+}

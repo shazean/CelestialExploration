@@ -1,0 +1,24 @@
+{
+  "type": "celestialexploration:workbench_crafting",
+  "group": "celestialexploration",
+  "pattern": [
+    "OOO",
+    "DGD"
+  ],
+  "key": {
+    "O": {
+      "item": "minecraft:obsidian"
+    },
+    "G": {
+      "tag": "forge:glass"
+    },
+    "D": {
+      "tag": "forge:gems/diamond"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:advanced_space_suit_helmet"
+  },
+  "fluid": "celestialexploration:molten_steel",
+  "buckets": 0.44
+}

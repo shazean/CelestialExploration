@@ -16,8 +16,8 @@ public class DimensionRegistry {
     public static final ResourceKey<Level> MOON = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(CelestialExploration.MODID, "moon"));
     public static final ResourceKey<Level> SPACE = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(CelestialExploration.MODID, "space"));
 
-
     public static final ResourceLocation MARS_EFFECTS = new ResourceLocation(CelestialExploration.MODID, "mars");
-
+    public static final ResourceLocation MOON_EFFECTS = new ResourceLocation(CelestialExploration.MODID, "moon");
+    public static final ResourceLocation SPACE_EFFECTS = new ResourceLocation(CelestialExploration.MODID, "space");
 
 }
