@@ -113,32 +113,13 @@
         "if_true": {
           "type": "minecraft:biome",
           "biome_is": [
-            "celestialexploration:empty_space",
-            "celestialexploration:mars_orbit",
-            "celestialexploration:earth_orbit",
-            "celestialexploration:sparse_asteroid_field",
-            "celestialexploration:asteroid_field"
+            "celestialexploration:space"
           ]
         },
         "then_run": {
           "type": "minecraft:block",
           "result_state": {
             "Name": "minecraft:air"
-          }
-        }
-      },
-      {
-        "type": "minecraft:condition",
-        "if_true": {
-          "type": "minecraft:biome",
-          "biome_is": [
-            "celestialexploration:asteroid_field"
-          ]
-        },
-        "then_run": {
-          "type": "minecraft:block",
-          "result_state": {
-            "Name": "celestialexploration:meteor"
           }
         }
       }

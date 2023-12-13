@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "celestialexploration:large_asteroid",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 5423329,
+    "spacing": 7,
+    "separation": 3,
+  "type": "minecraft:random_spread"
+  }
+}

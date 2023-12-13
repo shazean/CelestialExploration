@@ -330,7 +330,7 @@ public class WorkbenchCraftingRecipe implements Recipe<WorkbenchCraftingContaine
             float buckets = GsonHelper.getAsFloat(json, "buckets", 0.0F);
 
             ItemStack result = itemStackFromJson(GsonHelper.getAsJsonObject(json, "result"));
-            CelestialExploration.LOGGER.debug("ingredients:" + ingredients + " result: " + result);
+//            CelestialExploration.LOGGER.debug("ingredients:" + ingredients + " result: " + result);
             return new WorkbenchCraftingRecipe(id, group, width, height, ingredients, fluidIngredient, buckets, result);
         }
 

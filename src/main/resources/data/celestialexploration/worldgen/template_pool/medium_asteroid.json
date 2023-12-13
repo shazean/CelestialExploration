@@ -1,0 +1,87 @@
+{
+  "name": "celestialexploration:medium_asteroid",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 120,
+      "element": {
+        "location": "celestialexploration:medium_asteroid",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 75,
+      "element": {
+        "location": "celestialexploration:medium_asteroid",
+        "processors": "celestialexploration:asteroid_coal",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 5,
+      "element": {
+        "location": "celestialexploration:medium_asteroid",
+        "processors": "celestialexploration:asteroid_copper",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "celestialexploration:medium_asteroid",
+        "processors": "celestialexploration:asteroid_diamond",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "celestialexploration:medium_asteroid",
+        "processors": "celestialexploration:asteroid_emerald",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "celestialexploration:medium_asteroid",
+        "processors": "celestialexploration:asteroid_gold",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 15,
+      "element": {
+        "location": "celestialexploration:medium_asteroid",
+        "processors": "celestialexploration:asteroid_iron",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "celestialexploration:medium_asteroid",
+        "processors": "celestialexploration:asteroid_lapis",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 8,
+      "element": {
+        "location": "celestialexploration:medium_asteroid",
+        "processors": "celestialexploration:asteroid_redstone",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

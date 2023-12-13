@@ -27,7 +27,7 @@ public class LootTables  extends BaseLootTableProvider {
 		//    	lootTables.put(BlockRegistry.MOON_STONE.get(), createSimpleTable("moon_stone", BlockRegistry.MOON_STONE.get()));
 		lootTables.put(BlockRegistry.MOON_STONE.get(), createSilkTouchTable("moon_stone", BlockRegistry.MOON_STONE.get(), BlockRegistry.MOON_COBBLESTONE.get(), 1, 1));
     	lootTables.put(BlockRegistry.CHISELED_MOON_BRICKS.get(), createSimpleTable("chiseled_moon_bricks", BlockRegistry.CHISELED_MOON_BRICKS.get()));
-    	lootTables.put(BlockRegistry.GLOWING_MOON_SAND.get(), createSilkTouchTable("glowing_moon_sand", BlockRegistry.GLOWING_MOON_SAND.get(), ItemRegistry.MOON_DUST.get(), 2, 4));
+    	lootTables.put(BlockRegistry.GLOWING_MOON_SAND.get(), createSilkTouchTable("glowing_moon_sand", BlockRegistry.GLOWING_MOON_SAND.get(), ItemRegistry.MOON_DUST.get(), 2, 5));
     	lootTables.put(BlockRegistry.MOON_IRON_ORE.get(), createSimpleItemTable("moon_iron_ore", Items.RAW_IRON));
     	lootTables.put(BlockRegistry.MOON_REDSTONE_ORE.get(), createSimpleItemTable("moon_redstone_ore", Items.REDSTONE));
 		lootTables.put(BlockRegistry.MOON_COBBLESTONE.get(), createSimpleTable("moon_cobblestone", BlockRegistry.MOON_COBBLESTONE.get()));

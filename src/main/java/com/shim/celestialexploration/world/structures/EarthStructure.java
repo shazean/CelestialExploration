@@ -3,18 +3,19 @@ package com.shim.celestialexploration.world.structures;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.shim.celestialexploration.CelestialExploration;
+import com.shim.celestialexploration.util.CelestialUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.feature.StructureFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.JigsawConfiguration;
-import net.minecraft.world.level.levelgen.structure.BuiltinStructureSets;
 import net.minecraft.world.level.levelgen.structure.PoolElementStructurePiece;
 import net.minecraft.world.level.levelgen.structure.PostPlacementProcessor;
 import net.minecraft.world.level.levelgen.structure.pieces.PieceGenerator;
 import net.minecraft.world.level.levelgen.structure.pieces.PieceGeneratorSupplier;
 import net.minecraft.world.level.levelgen.structure.pools.JigsawPlacement;
 import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
+import net.minecraft.world.phys.Vec3;
 import org.apache.logging.log4j.Level;
 import org.jetbrains.annotations.NotNull;
 
@@ -77,10 +78,8 @@ public class EarthStructure extends StructureFeature<JigsawConfiguration> {
     private static boolean isFeatureChunk(PieceGeneratorSupplier.Context<JigsawConfiguration> context) {
         // Grabs the chunk position we are at
         ChunkPos chunkpos = context.chunkPos();
-
-        // Checks to make sure our structure does not spawn within 10 chunks of an Ocean Monument
-        // to demonstrate how this method is good for checking extra conditions for spawning
-        return !context.chunkGenerator().hasFeatureChunkInRange(BuiltinStructureSets.OCEAN_MONUMENTS, context.seed(), chunkpos.x, chunkpos.z, 10);
+        Vec3 coordinates = CelestialUtil.getPlanetaryChunkCoordinates(3);
+        return chunkpos.x == coordinates.x && chunkpos.z == coordinates.z;
     }
 
     public static @NotNull Optional<PieceGenerator<JigsawConfiguration>> createPiecesGenerator(PieceGeneratorSupplier.Context<JigsawConfiguration> context) {
@@ -94,7 +93,7 @@ public class EarthStructure extends StructureFeature<JigsawConfiguration> {
         // Turns the chunk coordinates into actual coordinates we can use. (Gets center of that chunk)
         BlockPos blockpos = context.chunkPos().getMiddleBlockPosition(0);
 
-        blockpos = new BlockPos(blockpos.getX(), 128, blockpos.getZ());
+        blockpos = new BlockPos(blockpos.getX(), 64, blockpos.getZ());
 
         Optional<PieceGenerator<JigsawConfiguration>> structurePiecesGenerator =
                 JigsawPlacement.addPieces(
@@ -117,6 +116,10 @@ public class EarthStructure extends StructureFeature<JigsawConfiguration> {
          * An example of a custom JigsawPlacement.addPieces in action can be found here (warning, it is using Mojmap mappings):
          * https://github.com/TelepathicGrunt/RepurposedStructures/blob/1.18.2/src/main/java/com/telepathicgrunt/repurposedstructures/world/structures/pieces/PieceLimitedJigsawManager.java
          */
+
+        if (structurePiecesGenerator.isEmpty()) {
+            CelestialExploration.LOGGER.debug("Earth structurePieceGenerator is empty!");
+        }
 
         if(structurePiecesGenerator.isPresent()) {
             // I use to debug and quickly find out if the structure is spawning or not and where it is.

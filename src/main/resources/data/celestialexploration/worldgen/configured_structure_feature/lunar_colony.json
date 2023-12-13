@@ -6,7 +6,7 @@
     "size": 2
   },
   "biomes": "#celestialexploration:has_structure/lunar_colony_biomes",
-  "adapt_noise": true,
+  "adapt_noise": false,
   "spawn_overrides": {
   }
 }

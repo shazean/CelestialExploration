@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "celestialexploration:uranus",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 239423247,
+    "spacing": 1,
+    "separation": 0,
+  "type": "minecraft:random_spread"
+  }
+}

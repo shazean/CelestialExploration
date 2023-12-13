@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "celestialexploration:neptune",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 239423248,
+    "spacing": 1,
+    "separation": 0,
+  "type": "minecraft:random_spread"
+  }
+}

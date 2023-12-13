@@ -1,5 +1,6 @@
 package com.shim.celestialexploration.item;
 
+import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.entity.Shuttle;
 import net.minecraft.core.BlockPos;
 import net.minecraft.stats.Stats;
@@ -52,6 +53,7 @@ public class ShuttleItem extends Item {
             }
 
             if (hitresult.getType() == HitResult.Type.BLOCK) {
+                CelestialExploration.LOGGER.debug("ShuttleItem HitResult BLOCK should be placing shuttle");
                 Shuttle shuttle = new Shuttle(level, hitresult.getLocation().x, hitresult.getLocation().y, hitresult.getLocation().z);
                 shuttle.setType(this.type);
                 shuttle.setYRot(player.getYRot());

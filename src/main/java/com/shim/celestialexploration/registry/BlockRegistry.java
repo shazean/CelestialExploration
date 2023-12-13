@@ -189,6 +189,13 @@ public class BlockRegistry {
     public static final RegistryObject<Block> METEOR_PRESSURE_PLATE = BLOCKS.register("meteor_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, Block.Properties.copy(METEOR.get())));
 
 
+
+
+    public static final RegistryObject<Block> SOLAR_PLASMA = BLOCKS.register("solar_plasma", () -> new SolarBlock(Block.Properties.of(Material.FIRE).strength(1.0f).lightLevel((light) -> 20).randomTicks().isValidSpawn(BlockRegistry::never).hasPostProcess(BlockRegistry::always).emissiveRendering(BlockRegistry::always)));
+    public static final RegistryObject<Block> SUN_SPOT = BLOCKS.register("sun_spot", () -> new SolarBlock(Block.Properties.of(Material.FIRE).strength(1.0f).lightLevel((light) -> 13).randomTicks().isValidSpawn(BlockRegistry::never).hasPostProcess(BlockRegistry::always).emissiveRendering(BlockRegistry::always)));
+    public static final RegistryObject<Block> SOLAR_FLARE = BLOCKS.register("solar_flare", () -> new SolarFlareBlock(Block.Properties.of(Material.FIRE).strength(0.8f).lightLevel((light) -> 14).isValidSpawn(BlockRegistry::never).hasPostProcess(BlockRegistry::always).noOcclusion().emissiveRendering(BlockRegistry::always)));
+
+
     //POWER-RELATED BLOCKS
 //	public static final RegistryObject<SolarPanelBlock> SOLAR_PANEL = BLOCKS.register("solar_panel", SolarPanelBlock::new);
 
@@ -265,6 +272,7 @@ public class BlockRegistry {
 
     //	public static final RegistryObject<Block> SOLAR_PANEL = BLOCKS.register("solar_panel", () -> new SolarPanelBlock(Block.Properties.of(Material.DECORATION, MaterialColor.METAL).noCollission().sound(SoundType.METAL).lightLevel(litBlockEmission(1))));
     public static final RegistryObject<Block> LOX_TANK = BLOCKS.register("lox_tank", () -> new LoxTankBlock(Block.Properties.of(Material.STONE, MaterialColor.COLOR_BROWN).noOcclusion().strength(0.5F).sound(SoundType.STONE)));
+
     //	public static final RegistryObject<Block> SOLAR_LANTERN = BLOCKS.register("solar_lantern", () -> new Block(Block.Properties.of(Material.GLASS, MaterialColor.FIRE).strength(0.3F).sound(SoundType.GLASS).lightLevel((p_235455_0_) -> {
 //		return 20;
 //	})));
@@ -370,6 +378,10 @@ public class BlockRegistry {
 
     private static boolean never(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos) {
         return false;
+    }
+
+    private static boolean always(BlockState p_50775_, BlockGetter p_50776_, BlockPos p_50777_) {
+        return true;
     }
 
 }

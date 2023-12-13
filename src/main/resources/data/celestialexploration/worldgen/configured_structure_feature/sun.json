@@ -1,0 +1,11 @@
+{
+  "type": "celestialexploration:sun",
+  "config": {
+    "start_pool": "celestialexploration:sun",
+    "size": 1
+  },
+  "biomes": "#celestialexploration:has_structure/space_structures",
+  "adapt_noise": false,
+  "spawn_overrides": {
+  }
+}

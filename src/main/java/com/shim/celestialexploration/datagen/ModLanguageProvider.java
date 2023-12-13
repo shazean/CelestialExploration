@@ -182,6 +182,10 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(BlockRegistry.METEOR_BUTTON.get(), "Meteorite Button");
 		add(BlockRegistry.METEOR_PRESSURE_PLATE.get(), "Meteorite Pressure Plate");
 
+		add(BlockRegistry.SOLAR_PLASMA.get(), "Solar Plasma");
+		add(BlockRegistry.SOLAR_FLARE.get(), "Solar Surface");
+		add(BlockRegistry.SUN_SPOT.get(), "Sun Spot");
+
 		/* OTHER BLOCKS */
 //		add(BlockRegistry.SOLAR_PANEL.get(), "Solar Panel");
 //		add(BlockRegistry.IGNEOUS_ROCK.get(), "Igneous Rock");

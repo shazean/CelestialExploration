@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "celestialexploration:small_asteroid",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 1894393,
+    "spacing": 3,
+    "separation": 2,
+  "type": "minecraft:random_spread"
+  }
+}

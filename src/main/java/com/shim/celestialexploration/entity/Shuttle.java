@@ -4,16 +4,14 @@ import com.google.common.collect.Lists;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.capabilities.LoxTankCapability;
 import com.shim.celestialexploration.inventory.menus.ShuttleMenu;
-import com.shim.celestialexploration.item.ShuttleItem;
 import com.shim.celestialexploration.registry.*;
+import com.shim.celestialexploration.util.CelestialUtil;
 import com.shim.celestialexploration.util.Keybinds;
 import com.shim.celestialexploration.world.portal.SpaceTeleporter;
 import net.minecraft.BlockUtil;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
-import net.minecraft.core.Rotations;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.network.chat.Component;
@@ -24,7 +22,6 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -35,7 +32,6 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.WaterAnimal;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.vehicle.DismountHelper;
@@ -43,12 +39,12 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.WaterlilyBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
@@ -344,99 +340,207 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
         }
 
         if (isVehicle() && isTeleportHeight()) {
-            if (this.level.dimension() == Level.OVERWORLD) {
+            if (!(this.level.dimension() == DimensionRegistry.SPACE)) {
                 //TODO or FIXME does not allow for multiple passengers, update if we want shuttle to allow multiple passengers in the future
-                if (this.teleportationCooldown == 0) {
-                    Entity passenger = this.getControllingPassenger();
-                    this.displayTeleportMessage(teleportationCooldown);
+                int planetOrigin;
 
-                    ResourceKey<Level> destination = passenger.level.dimension() == DimensionRegistry.SPACE ? Level.OVERWORLD : DimensionRegistry.SPACE; //FIXME
+                if (this.level.dimension() == Level.OVERWORLD || this.level.dimension() == DimensionRegistry.MOON) teleportToSpace(3);
+                if (this.level.dimension() == DimensionRegistry.MARS) teleportToSpace(4);
 
+//                if (this.teleportationCooldown == 0) {
+//                    Entity passenger = this.getControllingPassenger();
+//                    this.displayTeleportMessage(teleportationCooldown);
+//
+//                    assert passenger != null;
+////                    ResourceKey<Level> destination = passenger.level.dimension() == DimensionRegistry.SPACE ? Level.OVERWORLD : DimensionRegistry.SPACE; //FIXME
+//
 //                    ResourceKey<Level> destination = DimensionRegistry.SPACE;
+//                    Vec3 earthLocation = new Vec3(CelestialUtil.getPlanetaryChunkCoordinates(3).x * 16, 100.0, CelestialUtil.getPlanetaryChunkCoordinates(3).z * 16); //TODO change to be above whatever planet we just came from
+//                    CelestialExploration.LOGGER.debug("Earth location is: " + earthLocation);
+//
+//                    this.teleportShuttle(passenger, this, destination, earthLocation);
+////                    Level level = this.getLevel();
+//
+////                    this.setLevel(p_9180_);
+////                    p_9180_.addDuringPortalTeleport(this);
+////                    this.setRot(portalinfo.yRot, portalinfo.xRot);
+////                    this.moveTo(portalinfo.pos.x, portalinfo.pos.y, portalinfo.pos.z);
+//                    //move to teleport code
+//
+//
+//
+//                } else {
+//                    this.teleportationCooldown--;
+//                    this.displayTeleportMessage(teleportationCooldown);
+//                }
+            }
+        }
+
+        ResourceKey<Level> currentDimension = this.level.dimension();
+
+        if (this.isVehicle() && currentDimension == DimensionRegistry.SPACE) {
+            ChunkPos shuttleChunkPos = new ChunkPos(this.blockPosition());
+            ChunkPos planetChunkPos;
+            ResourceKey<Level> destination = null;
+            Entity passenger = this.getControllingPassenger();
+
+            destination = getTeleportLocation(this, shuttleChunkPos);
+
+//            Vec3 mercuryLocation = new Vec3(CelestialUtil.getPlanetaryChunkCoordinates(1).x, this.position().y, CelestialUtil.getPlanetaryChunkCoordinates(1).z);
+//            planetChunkPos = new ChunkPos((int) mercuryLocation.x, (int) mercuryLocation.z);
+//            if (CelestialUtil.isInRectangle(planetChunkPos.x, planetChunkPos.z, 2, shuttleChunkPos.x, shuttleChunkPos.z)) {
+////                destination = DimensionRegistry.MERCURY;
+//            }
+//
+//            Vec3 venusLocation = new Vec3(CelestialUtil.getPlanetaryChunkCoordinates(2).x, this.position().y, CelestialUtil.getPlanetaryChunkCoordinates(2).z);
+//            planetChunkPos = new ChunkPos((int) venusLocation.x, (int) venusLocation.z);
+//            if (CelestialUtil.isInRectangle(planetChunkPos.x, planetChunkPos.z, 2, shuttleChunkPos.x, shuttleChunkPos.z)) {
+////                destination = DimensionRegistry.VENUS;
+//            }
+//
+//            Vec3 earthLocation = new Vec3(CelestialUtil.getPlanetaryChunkCoordinates(3).x, this.position().y, CelestialUtil.getPlanetaryChunkCoordinates(3).z);
+//            planetChunkPos = new ChunkPos((int) earthLocation.x, (int) earthLocation.z);
+//            if (CelestialUtil.isInRectangle(planetChunkPos.x, planetChunkPos.z, 2, shuttleChunkPos.x, shuttleChunkPos.z)) {
+//                if (isNearBlockOfPlanet(BlockRegistry.MOON_STONE.get())) {
+//                    destination = DimensionRegistry.MOON;
+//                } else if (isNearBlockOfPlanet(Blocks.STONE)) {
+//                    destination = Level.OVERWORLD;
+//                }
+//            }
+//
+//            Vec3 marsLocation = new Vec3(CelestialUtil.getPlanetaryChunkCoordinates(4).x, this.position().y, CelestialUtil.getPlanetaryChunkCoordinates(4).z);
+//            planetChunkPos = new ChunkPos((int) marsLocation.x, (int) marsLocation.z);
+//            if (CelestialUtil.isInRectangle(planetChunkPos.x, planetChunkPos.z, 2, shuttleChunkPos.x, shuttleChunkPos.z)) {
+//                destination = DimensionRegistry.MARS;
+//            }
+//
+//            Vec3 jupiterLocation = new Vec3(CelestialUtil.getPlanetaryChunkCoordinates(5).x, this.position().y, CelestialUtil.getPlanetaryChunkCoordinates(5).z);
+//            planetChunkPos = new ChunkPos((int) jupiterLocation.x, (int) jupiterLocation.z);
+//            if (CelestialUtil.isInRectangle(planetChunkPos.x, planetChunkPos.z, 2, shuttleChunkPos.x, shuttleChunkPos.z)) {
+////                destination = DimensionRegistry.JUPITER;
+//            }
+//
+//            Vec3 saturnLocation = new Vec3(CelestialUtil.getPlanetaryChunkCoordinates(6).x, this.position().y, CelestialUtil.getPlanetaryChunkCoordinates(6).z);
+//            planetChunkPos = new ChunkPos((int) saturnLocation.x, (int) saturnLocation.z);
+//            if (CelestialUtil.isInRectangle(planetChunkPos.x, planetChunkPos.z, 2, shuttleChunkPos.x, shuttleChunkPos.z)) {
+////                destination = DimensionRegistry.SATURN;
+//            }
+//
+//            Vec3 uranusLocation = new Vec3(CelestialUtil.getPlanetaryChunkCoordinates(7).x, this.position().y, CelestialUtil.getPlanetaryChunkCoordinates(7).z);
+//            planetChunkPos = new ChunkPos((int) uranusLocation.x, (int) uranusLocation.z);
+//            if (CelestialUtil.isInRectangle(planetChunkPos.x, planetChunkPos.z, 2, shuttleChunkPos.x, shuttleChunkPos.z)) {
+////                destination = DimensionRegistry.JUPITER;
+//            }
+//
+//            Vec3 neptuneLocation = new Vec3(CelestialUtil.getPlanetaryChunkCoordinates(8).x, this.position().y, CelestialUtil.getPlanetaryChunkCoordinates(8).z);
+//            planetChunkPos = new ChunkPos((int) neptuneLocation.x, (int) neptuneLocation.z);
+//            if (CelestialUtil.isInRectangle(planetChunkPos.x, planetChunkPos.z, 2, shuttleChunkPos.x, shuttleChunkPos.z)) {
+////                destination = DimensionRegistry.NEPTUNE;
+//            }
+
+            if (destination != null) {
+                if (teleportationCooldown == 0) {
                     assert passenger != null;
-                    this.teleportShuttle(passenger, this, destination);
+                    Vec3 teleportPosition = new Vec3(this.position().x, this.level.getMaxBuildHeight(), this.position().z);
+                    teleportShuttle(passenger, this, destination, teleportPosition);
                 } else {
                     this.teleportationCooldown--;
                     this.displayTeleportMessage(teleportationCooldown);
                 }
             }
-        }
-
-        /**
-         * Possibly just a bandaid fix? Until I can come up with a
-         * more efficient way of dealing with this.
-         *
-         * Check if we're being used as a vehicle, because if we're not, none of this matters.
-         * Check if we're in space, so that way none of this code
-         * ever gets run in other dimensions.
-         * Then we check if we're in an appropriate biome or nearby it.
-         * The reason for checking nearby is sometimes the structure we're looking for
-         * (or rather the blocks making up the structure) sometimes spawns
-         * near the edge of the biome, so that would mean our teleporting only
-         * works approaching from *some* angles and not others.
-         * If all that passes, then we'll look at whether or not we should be
-         * trying to teleport to another dimension.
-         **
-         * The issue, that I need to somehow make more efficient, is that
-         * isBiomeInRange (and also a little bit shouldTeleportToPlanet) do
-         * a little bit more calculating than should be done every tick, and
-         * was causing a bunch of lag, especially with multiple shuttles nearby each other.
-         **/
-//        biomeCheckCooldown--;
-//        if (biomeCheckCooldown == 0) {
-//            biomeCheckCooldown = 5;
-
-        ResourceKey<Level> currentDimension = this.level.dimension();
-
-        if (this.isVehicle()) {
-            if (currentDimension == DimensionRegistry.SPACE) {
-                Holder<Biome> currentBiome = this.level.getBiome(new BlockPos(this.position()));
-
-                if (currentBiome.is(BiomeRegistry.MARS_ORBIT) || isBiomeInRange(BiomeRegistry.MARS_ORBIT)) { //IN MARS ORBIT OR NEAR EDGE
-                    if (this.shouldTeleportToCelestialBody(BlockRegistry.MARS_STONE.get())) { //APPROACHING MARS
-//                            celestialBodyInRange = "Mars";
-                        Entity passenger = this.getControllingPassenger();
-                        assert passenger != null;
-                        if (this.teleportationCooldown == 0) {
-                            this.displayTeleportMessage(teleportationCooldown);
-                            ResourceKey<Level> destination = DimensionRegistry.MARS;
-                            this.teleportShuttle(passenger, this, destination);
-                        } else {
-                            this.teleportationCooldown--;
-                            this.displayTeleportMessage(teleportationCooldown);
-                        }
-                    }
-                } else if (currentBiome.is(BiomeRegistry.EARTH_ORBIT) || isBiomeInRange(BiomeRegistry.EARTH_ORBIT)) { //IN EARTH ORBIT OR NEAR EDGE
-                    if (this.shouldTeleportToCelestialBody(Blocks.STONE)) { //APPROACHING EARTH
-//                            celestialBodyInRange = "Earth";
-                        Entity passenger = this.getControllingPassenger();
-                        assert passenger != null;
-                        if (this.teleportationCooldown == 0) {
-                            this.displayTeleportMessage(teleportationCooldown);
-                            ResourceKey<Level> destination = Level.OVERWORLD;
-                            this.teleportShuttle(passenger, this, destination);
-                        } else {
-                            this.teleportationCooldown--;
-                            this.displayTeleportMessage(teleportationCooldown);
-                        }
-                    } else if (this.shouldTeleportToCelestialBody(BlockRegistry.MOON_STONE.get())) { //APPROACHING MOON
-//                            celestialBodyInRange = "Moon";
-                        Entity passenger = this.getControllingPassenger();
-                        assert passenger != null;
-                        if (this.teleportationCooldown == 0) {
-                            this.displayTeleportMessage(teleportationCooldown);
-                            ResourceKey<Level> destination = DimensionRegistry.MOON;
-                            this.teleportShuttle(passenger, this, destination);
-                        } else {
-                            this.teleportationCooldown--;
-                            this.displayTeleportMessage(teleportationCooldown);
-                        }
-                    }
-                } else {
-                    this.teleportationCooldown = 120; //reset the cooldown
-                }
+            if (destination == null) {
+                this.resetTelportationCooldown();
             }
+
+
+//            if (CelestialUtil.isInRectangle(planetChunkPos.x, planetChunkPos.z, 2, shuttleChunkPos.x, shuttleChunkPos.z)) {
+//                if (shouldTeleportToCelestialBody(BlockRegistry.MOON_STONE.get())) {
+//                    destination = DimensionRegistry.MOON;
+//                } else if (shouldTeleportToCelestialBody(BlockRegistry.MOON_STONE.get())) {
+//                    destination = DimensionRegistry.MOON;
+//                } else {
+//                    destination = DimensionRegistry.SPACE;
+//                }
+//                teleportShuttle(passenger, this, destination);
+//            }
+
         }
+//
+//        /**
+//         * Possibly just a bandaid fix? Until I can come up with a
+//         * more efficient way of dealing with this.
+//         *
+//         * Check if we're being used as a vehicle, because if we're not, none of this matters.
+//         * Check if we're in space, so that way none of this code
+//         * ever gets run in other dimensions.
+//         * Then we check if we're in an appropriate biome or nearby it.
+//         * The reason for checking nearby is sometimes the structure we're looking for
+//         * (or rather the blocks making up the structure) sometimes spawns
+//         * near the edge of the biome, so that would mean our teleporting only
+//         * works approaching from *some* angles and not others.
+//         * If all that passes, then we'll look at whether or not we should be
+//         * trying to teleport to another dimension.
+//         **
+//         * The issue, that I need to somehow make more efficient, is that
+//         * isBiomeInRange (and also a little bit shouldTeleportToPlanet) do
+//         * a little bit more calculating than should be done every tick, and
+//         * was causing a bunch of lag, especially with multiple shuttles nearby each other.
+//         **/
+////        biomeCheckCooldown--;
+////        if (biomeCheckCooldown == 0) {
+////            biomeCheckCooldown = 5;
+//
+//        ResourceKey<Level> currentDimension = this.level.dimension();
+//
+//        if (this.isVehicle()) {
+//            if (currentDimension == DimensionRegistry.SPACE) {
+//                Holder<Biome> currentBiome = this.level.getBiome(new BlockPos(this.position()));
+//
+//                if (currentBiome.is(BiomeRegistry.MARS_ORBIT) || isBiomeInRange(BiomeRegistry.MARS_ORBIT)) { //IN MARS ORBIT OR NEAR EDGE
+//                    if (this.shouldTeleportToCelestialBody(BlockRegistry.MARS_STONE.get())) { //APPROACHING MARS
+////                            celestialBodyInRange = "Mars";
+//                        Entity passenger = this.getControllingPassenger();
+//                        assert passenger != null;
+//                        if (this.teleportationCooldown == 0) {
+//                            this.displayTeleportMessage(teleportationCooldown);
+//                            ResourceKey<Level> destination = DimensionRegistry.MARS;
+//                            this.teleportShuttle(passenger, this, destination);
+//                        } else {
+//                            this.teleportationCooldown--;
+//                            this.displayTeleportMessage(teleportationCooldown);
+//                        }
+//                    }
+//                } else if (currentBiome.is(BiomeRegistry.EARTH_ORBIT) || isBiomeInRange(BiomeRegistry.EARTH_ORBIT)) { //IN EARTH ORBIT OR NEAR EDGE
+//                    if (this.shouldTeleportToCelestialBody(Blocks.STONE)) { //APPROACHING EARTH
+////                            celestialBodyInRange = "Earth";
+//                        Entity passenger = this.getControllingPassenger();
+//                        assert passenger != null;
+//                        if (this.teleportationCooldown == 0) {
+//                            this.displayTeleportMessage(teleportationCooldown);
+//                            ResourceKey<Level> destination = Level.OVERWORLD;
+//                            this.teleportShuttle(passenger, this, destination);
+//                        } else {
+//                            this.teleportationCooldown--;
+//                            this.displayTeleportMessage(teleportationCooldown);
+//                        }
+//                    } else if (this.shouldTeleportToCelestialBody(BlockRegistry.MOON_STONE.get())) { //APPROACHING MOON
+////                            celestialBodyInRange = "Moon";
+//                        Entity passenger = this.getControllingPassenger();
+//                        assert passenger != null;
+//                        if (this.teleportationCooldown == 0) {
+//                            this.displayTeleportMessage(teleportationCooldown);
+//                            ResourceKey<Level> destination = DimensionRegistry.MOON;
+//                            this.teleportShuttle(passenger, this, destination);
+//                        } else {
+//                            this.teleportationCooldown--;
+//                            this.displayTeleportMessage(teleportationCooldown);
+//                        }
+//                    }
+//                } else {
+//                    this.teleportationCooldown = 120; //reset the cooldown
+//                }
+//            }
+//        }
 //        }
 
 //        if (this.isVehicle() && celestialBodyInRange != null) {
@@ -482,6 +586,83 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
         }
     }
 
+    public void teleportToSpace(int planetOriginNum) {
+        if (this.teleportationCooldown == 0) {
+            Entity passenger = this.getControllingPassenger();
+            this.displayTeleportMessage(teleportationCooldown);
+            assert passenger != null;
+            ResourceKey<Level> destination = DimensionRegistry.SPACE;
+            Vec3 earthLocation = new Vec3(CelestialUtil.getPlanetaryChunkCoordinates(planetOriginNum).x * 16, 165.0, CelestialUtil.getPlanetaryChunkCoordinates(planetOriginNum).z * 16);
+            CelestialExploration.LOGGER.debug("Planet location is: " + earthLocation);
+
+            this.teleportShuttle(passenger, this, destination, earthLocation);
+        } else {
+            this.teleportationCooldown--;
+            this.displayTeleportMessage(teleportationCooldown);
+        }
+    }
+
+
+    public static ResourceKey<Level> getTeleportLocation(Shuttle shuttle, ChunkPos shuttleChunkPos) {
+        if (shuttle.position().y > 150) return null;
+
+        Vec3 mercuryLocation = new Vec3(CelestialUtil.getPlanetaryChunkCoordinates(1).x, shuttle.position().y, CelestialUtil.getPlanetaryChunkCoordinates(1).z);
+        ChunkPos planetChunkPos = new ChunkPos((int) mercuryLocation.x, (int) mercuryLocation.z);
+        if (CelestialUtil.isInRectangle(planetChunkPos.x, planetChunkPos.z, 2, shuttleChunkPos.x, shuttleChunkPos.z)) {
+//                return DimensionRegistry.MERCURY;
+        }
+
+        Vec3 venusLocation = new Vec3(CelestialUtil.getPlanetaryChunkCoordinates(2).x, shuttle.position().y, CelestialUtil.getPlanetaryChunkCoordinates(2).z);
+        planetChunkPos = new ChunkPos((int) venusLocation.x, (int) venusLocation.z);
+        if (CelestialUtil.isInRectangle(planetChunkPos.x, planetChunkPos.z, 2, shuttleChunkPos.x, shuttleChunkPos.z)) {
+//                return DimensionRegistry.VENUS;
+        }
+
+        Vec3 earthLocation = new Vec3(CelestialUtil.getPlanetaryChunkCoordinates(3).x, shuttle.position().y, CelestialUtil.getPlanetaryChunkCoordinates(3).z);
+        planetChunkPos = new ChunkPos((int) earthLocation.x, (int) earthLocation.z);
+        if (CelestialUtil.isInRectangle(planetChunkPos.x, planetChunkPos.z, 4, shuttleChunkPos.x, shuttleChunkPos.z)) {
+            if (isNearBlockOfPlanet(shuttle, BlockRegistry.MOON_STONE.get())) {
+                return DimensionRegistry.MOON;
+            } else if (isNearBlockOfPlanet(shuttle, Blocks.STONE)) {
+                return Level.OVERWORLD;
+            }
+        }
+
+        Vec3 marsLocation = new Vec3(CelestialUtil.getPlanetaryChunkCoordinates(4).x, shuttle.position().y, CelestialUtil.getPlanetaryChunkCoordinates(4).z);
+        planetChunkPos = new ChunkPos((int) marsLocation.x, (int) marsLocation.z);
+        if (CelestialUtil.isInRectangle(planetChunkPos.x, planetChunkPos.z, 2, shuttleChunkPos.x, shuttleChunkPos.z)) {
+            if (isNearBlockOfPlanet(shuttle, BlockRegistry.MARS_STONE.get())) {
+                return DimensionRegistry.MARS;
+            }
+        }
+
+        Vec3 jupiterLocation = new Vec3(CelestialUtil.getPlanetaryChunkCoordinates(5).x, shuttle.position().y, CelestialUtil.getPlanetaryChunkCoordinates(5).z);
+        planetChunkPos = new ChunkPos((int) jupiterLocation.x, (int) jupiterLocation.z);
+        if (CelestialUtil.isInRectangle(planetChunkPos.x, planetChunkPos.z, 2, shuttleChunkPos.x, shuttleChunkPos.z)) {
+//                return DimensionRegistry.JUPITER;
+        }
+
+        Vec3 saturnLocation = new Vec3(CelestialUtil.getPlanetaryChunkCoordinates(6).x, shuttle.position().y, CelestialUtil.getPlanetaryChunkCoordinates(6).z);
+        planetChunkPos = new ChunkPos((int) saturnLocation.x, (int) saturnLocation.z);
+        if (CelestialUtil.isInRectangle(planetChunkPos.x, planetChunkPos.z, 2, shuttleChunkPos.x, shuttleChunkPos.z)) {
+//                return DimensionRegistry.SATURN;
+        }
+
+        Vec3 uranusLocation = new Vec3(CelestialUtil.getPlanetaryChunkCoordinates(7).x, shuttle.position().y, CelestialUtil.getPlanetaryChunkCoordinates(7).z);
+        planetChunkPos = new ChunkPos((int) uranusLocation.x, (int) uranusLocation.z);
+        if (CelestialUtil.isInRectangle(planetChunkPos.x, planetChunkPos.z, 2, shuttleChunkPos.x, shuttleChunkPos.z)) {
+//                return DimensionRegistry.JUPITER;
+        }
+
+        Vec3 neptuneLocation = new Vec3(CelestialUtil.getPlanetaryChunkCoordinates(8).x, shuttle.position().y, CelestialUtil.getPlanetaryChunkCoordinates(8).z);
+        planetChunkPos = new ChunkPos((int) neptuneLocation.x, (int) neptuneLocation.z);
+        if (CelestialUtil.isInRectangle(planetChunkPos.x, planetChunkPos.z, 2, shuttleChunkPos.x, shuttleChunkPos.z)) {
+//                return DimensionRegistry.NEPTUNE;
+        }
+
+        return null;
+    }
+
     public void displayTeleportMessage(int teleportCooldown) {
         Entity entity = this.getControllingPassenger();
 
@@ -494,38 +675,21 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
         }
     }
 
-    public boolean shouldTeleportToCelestialBody(Block blockToTest) {
+    public static boolean isNearBlockOfPlanet(Shuttle shuttle, Block blockToTest) {
         BlockPos pos;
-        boolean blockInRange = false;
+//        boolean blockInRange = false;
         BlockState state;
 
-        for (int x = -10; x <= 10; x++) {
-            for (int y = -10; y <= 10; y++) {
-                for (int z = -10; z <= 10; z++) {
-                    pos = new BlockPos(this.position().x + x, this.position().y + y, this.position().z + z);
-                    state = level.getBlockState(pos);
-                    if (state.getBlock() == blockToTest) blockInRange = true;
+        for (int x = -15; x <= 15; x++) {
+            for (int y = -15; y <= 15; y++) {
+                for (int z = -15; z <= 15; z++) {
+                    pos = new BlockPos(shuttle.position().x + x, shuttle.position().y + y, shuttle.position().z + z);
+                    state = shuttle.level.getBlockState(pos);
+                    if (state.getBlock() == blockToTest) return true;
                 }
             }
         }
-        return blockInRange;
-    }
-
-    public boolean isBiomeInRange(ResourceKey<Biome> biomeToTest) {
-        BlockPos pos;
-        boolean biomeInRange = false;
-        Holder<Biome> biome;
-
-        for (int x = -11; x <= 11; x++) {
-            for (int y = -11; y <= 11; y++) {
-                for (int z = -11; z <= 11; z++) {
-                    pos = new BlockPos(this.position().x + x, this.position().y + y, this.position().z + z);
-                    biome = this.level.getBiome(new BlockPos(pos));
-                    if (biome.is(biomeToTest)) biomeInRange = true;
-                }
-            }
-        }
-        return biomeInRange;
+        return false;
     }
 
     public boolean isTeleportHeight() {
@@ -544,7 +708,7 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
         return this.teleportationCooldown;
     }
 
-    protected void teleportShuttle(Entity passenger, Shuttle shuttle, ResourceKey<Level> destinationDim) {
+    protected void teleportShuttle(Entity passenger, Shuttle shuttle, ResourceKey<Level> destinationDim, Vec3 locationInPlace) {
         if (passenger.canChangeDimensions()) {
 
             Level entityWorld = passenger.level;
@@ -555,10 +719,27 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
                     this.resetTelportationCooldown();
                     passenger.changeDimension(destinationWorld, new SpaceTeleporter(destinationWorld));
                     Entity newShuttle = shuttle.changeDimension(destinationWorld, new SpaceTeleporter(destinationWorld));
-                    if (!this.level.isClientSide && passenger instanceof Player) {
-                        assert newShuttle != null;
+
+                    if (passenger instanceof ServerPlayer player) {
+                        ServerLevel level = player.getLevel();
+                        level.getProfiler().push("placing");
+                        CelestialExploration.LOGGER.debug("Sending passenger and shuttle to:" + locationInPlace.x + "," + locationInPlace.x + "," + locationInPlace.z);
+                        player.moveTo(locationInPlace.x, locationInPlace.y, locationInPlace.z);
+                        level.getProfiler().pop();
+                    } else {
+                        passenger.moveTo(locationInPlace);
+                    }
+                    assert newShuttle != null;
+                    newShuttle.moveTo(locationInPlace.x, locationInPlace.y, locationInPlace.z);
+
+                    if (!this.level.isClientSide) {
                         passenger.startRiding(newShuttle);
                     }
+
+//                    if (!this.level.isClientSide && passenger instanceof Player) {
+//                        assert newShuttle != null;
+//                        passenger.startRiding(newShuttle);
+//                    }
                 }
             }
         }
@@ -760,6 +941,15 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
     }
 
     public float getMaxSpeed() {
+        if (this.isVehicle()) {
+            Entity passenger = this.getControllingPassenger();
+            if (passenger instanceof Player player) {
+                if (player.isCreative()) {
+                    return SHUTTLE_SPEED;
+                }
+            }
+        }
+
         if (this.hasFuel()) {
             if (this.hasLowFuel()) return SHUTTLE_LOW_FUEL_SPEED;
             return SHUTTLE_SPEED;

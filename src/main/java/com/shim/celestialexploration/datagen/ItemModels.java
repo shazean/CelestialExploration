@@ -177,6 +177,11 @@ public class ItemModels extends ItemModelProvider {
 		buttonInventory(ItemRegistry.METEOR_BUTTON.get().getRegistryName().getPath(), modLoc("block/meteor"));
 		pressurePlate(ItemRegistry.METEOR_PRESSURE_PLATE.get().getRegistryName().getPath(), modLoc("block/meteor"));
 
+		withExistingParent(ItemRegistry.SOLAR_PLASMA.get().getRegistryName().getPath(), modLoc("block/solar_plasma"));
+		withExistingParent(ItemRegistry.SOLAR_FLARE.get().getRegistryName().getPath(), modLoc("block/solar_flare"));
+		withExistingParent(ItemRegistry.SUN_SPOT.get().getRegistryName().getPath(), modLoc("block/sun_spot"));
+
+
 
 		/**
 		 * OTHER BLOCK ITEMS

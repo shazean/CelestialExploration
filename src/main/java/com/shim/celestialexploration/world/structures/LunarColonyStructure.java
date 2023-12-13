@@ -2,8 +2,13 @@ package com.shim.celestialexploration.world.structures;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.shim.celestialexploration.CelestialExploration;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.world.level.ChunkPos;
+import net.minecraft.world.level.NoiseColumn;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.feature.StructureFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.JigsawConfiguration;
@@ -14,6 +19,7 @@ import net.minecraft.world.level.levelgen.structure.pieces.PieceGenerator;
 import net.minecraft.world.level.levelgen.structure.pieces.PieceGeneratorSupplier;
 import net.minecraft.world.level.levelgen.structure.pools.JigsawPlacement;
 import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
+import org.apache.logging.log4j.Level;
 
 import java.util.Optional;
 
@@ -75,14 +81,41 @@ public class LunarColonyStructure extends StructureFeature<JigsawConfiguration> 
      */
     private static boolean isFeatureChunk(PieceGeneratorSupplier.Context<JigsawConfiguration> context) {
         // Grabs the chunk position we are at
-        ChunkPos chunkpos = context.chunkPos();
+        ChunkPos chunkPos = context.chunkPos();
+        ChunkGenerator chunkGenerator = context.chunkGenerator();
+//        BlockPos blockpos = chunkpos.getMiddleBlockPosition(0);
+//
+//
+//        return blockpos.getX() == 0 && blockpos.getZ() == 0;
+
+        //CREDIT REPURPOSED STRUCTURES
+        BlockPos.MutableBlockPos mutable = new BlockPos.MutableBlockPos();
+        for (int curChunkX = chunkPos.x - 1; curChunkX <= chunkPos.x + 1; curChunkX++) {
+            for (int curChunkZ = chunkPos.z - 1; curChunkZ <= chunkPos.z + 1; curChunkZ++) {
+                mutable.set(curChunkX << 4, context.chunkGenerator().getSeaLevel() + 10, curChunkZ << 4);
+                NoiseColumn blockView = context.chunkGenerator().getBaseColumn(mutable.getX(), mutable.getZ(), context.heightAccessor());
+                int minValidSpace = 65;
+//                int maxHeight = Math.min(GeneralUtils.getMaxTerrainLimit(context.chunkGenerator()), context.chunkGenerator().getSeaLevel() + minValidSpace);
+                int maxHeight = Math.min(chunkGenerator.getMinY() + chunkGenerator.getGenDepth(), chunkGenerator.getSeaLevel() + minValidSpace);
+
+                while(mutable.getY() < maxHeight) {
+                    BlockState state = blockView.getBlock(mutable.getY());
+                    if(!state.isAir()) {
+                        return false;
+                    }
+                    mutable.move(Direction.UP);
+                }
+            }
+        }
 
 
+//        NoiseColumn baseColumn = context.chunkGenerator().getBaseColumn(chunkpos.x, chunkpos.z, context.heightAccessor());
+//        int baseHeight = context.chunkGenerator().getBaseHeight(chunkpos.x, chunkpos.z, WORLD_SURFACE_WG, context.heightAccessor());
 
-
+        return true;
         // Checks to make sure our structure does not spawn within 10 chunks of an Ocean Monument
         // to demonstrate how this method is good for checking extra conditions for spawning
-        return !context.chunkGenerator().hasFeatureChunkInRange(BuiltinStructureSets.OCEAN_MONUMENTS, context.seed(), chunkpos.x, chunkpos.z, 10);
+//        return !context.chunkGenerator().hasFeatureChunkInRange(BuiltinStructureSets.OCEAN_MONUMENTS, context.seed(), chunkPos.x, chunkPos.z, 10);
     }
 
     public static Optional<PieceGenerator<JigsawConfiguration>> createPiecesGenerator(PieceGeneratorSupplier.Context<JigsawConfiguration> context) {
@@ -99,7 +132,7 @@ public class LunarColonyStructure extends StructureFeature<JigsawConfiguration> 
         // Set's our spawning blockpos's y offset to be 60 blocks up.
         // Since we are going to have heightmap/terrain height spawning set to true further down, this will make it so we spawn 60 blocks above terrain.
         // If we wanted to spawn on ocean floor, we would set heightmap/terrain height spawning to false and the grab the y value of the terrain with OCEAN_FLOOR_WG heightmap.
-        blockpos = blockpos.above(-9);
+        blockpos = blockpos.below(15);
 
         Optional<PieceGenerator<JigsawConfiguration>> structurePiecesGenerator =
                 JigsawPlacement.addPieces(
@@ -108,7 +141,7 @@ public class LunarColonyStructure extends StructureFeature<JigsawConfiguration> 
                         blockpos, // Position of the structure. Y value is ignored if last parameter is set to true.
                         false,  // Special boundary adjustments for villages. It's... hard to explain. Keep this false and make your pieces not be partially intersecting.
                         // Either not intersecting or fully contained will make children pieces spawn just fine. It's easier that way.
-                        true // Adds the terrain height's y value to the passed in blockpos's y value. (This uses WORLD_SURFACE_WG heightmap which stops at top water too)
+                        false // Adds the terrain height's y value to the passed in blockpos's y value. (This uses WORLD_SURFACE_WG heightmap which stops at top water too)
                         // Here, blockpos's y value is 60 which means the structure spawn 60 blocks above terrain height.
                         // Set this to false for structure to be place only at the passed in blockpos's Y value instead.
                         // Definitely keep this false when placing structures in the nether as otherwise, heightmap placing will put the structure on the Bedrock roof.
@@ -126,7 +159,7 @@ public class LunarColonyStructure extends StructureFeature<JigsawConfiguration> 
         if(structurePiecesGenerator.isPresent()) {
             // I use to debug and quickly find out if the structure is spawning or not and where it is.
             // This is returning the coordinates of the center starting piece.
-//            CelestialExploration.LOGGER.log(Level.DEBUG, "Large crater at {}", blockpos);
+            CelestialExploration.LOGGER.log(Level.DEBUG, "Lunar colony at {}", blockpos);
         }
 
         // Return the pieces generator that is now set up so that the game runs it when it needs to create the layout of structure pieces.

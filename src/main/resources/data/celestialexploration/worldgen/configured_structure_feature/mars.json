@@ -1,10 +1,10 @@
 {
   "type": "celestialexploration:mars",
-"config": {
+  "config": {
     "start_pool": "celestialexploration:mars",
     "size": 1
   },
-  "biomes": "#celestialexploration:has_structure/mars_biome",
+  "biomes": "#celestialexploration:has_structure/space_structures",
   "adapt_noise": false,
   "spawn_overrides": {
   }

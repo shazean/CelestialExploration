@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "celestialexploration:mercury",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 192038232,
+    "spacing": 1,
+    "separation": 0,
+  "type": "minecraft:random_spread"
+  }
+}

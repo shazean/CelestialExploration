@@ -1,0 +1,11 @@
+{
+  "type": "celestialexploration:large_asteroid",
+  "config": {
+    "start_pool": "celestialexploration:large_asteroid",
+    "size": 1
+  },
+  "biomes": "#celestialexploration:has_structure/space_structures",
+  "adapt_noise": false,
+  "spawn_overrides": {
+  }
+}

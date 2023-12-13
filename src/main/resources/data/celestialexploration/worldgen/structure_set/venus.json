@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "celestialexploration:venus",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 228932734,
+    "spacing": 1,
+    "separation": 0,
+  "type": "minecraft:random_spread"
+  }
+}

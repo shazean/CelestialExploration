@@ -22,13 +22,13 @@ public class CelestialOreGeneration {
         base.add(PlacedFeatureRegistry.MARS_REDSTONE_ORE_PLACED);
 
         //METEOR
-        base.add(PlacedFeatureRegistry.METEOR_COAL_ORE_PLACED);
-        base.add(PlacedFeatureRegistry.METEOR_COPPER_ORE_PLACED);
-        base.add(PlacedFeatureRegistry.METEOR_DIAMOND_ORE_PLACED);
-        base.add(PlacedFeatureRegistry.METEOR_EMERALD_ORE_PLACED);
-        base.add(PlacedFeatureRegistry.METEOR_GOLD_ORE_PLACED);
-        base.add(PlacedFeatureRegistry.METEOR_IRON_ORE_PLACED);
-        base.add(PlacedFeatureRegistry.METEOR_LAPIS_ORE_PLACED);
-        base.add(PlacedFeatureRegistry.METEOR_REDSTONE_ORE_PLACED);
+//        base.add(PlacedFeatureRegistry.METEOR_COAL_ORE_PLACED);
+//        base.add(PlacedFeatureRegistry.METEOR_COPPER_ORE_PLACED);
+//        base.add(PlacedFeatureRegistry.METEOR_DIAMOND_ORE_PLACED);
+//        base.add(PlacedFeatureRegistry.METEOR_EMERALD_ORE_PLACED);
+//        base.add(PlacedFeatureRegistry.METEOR_GOLD_ORE_PLACED);
+//        base.add(PlacedFeatureRegistry.METEOR_IRON_ORE_PLACED);
+//        base.add(PlacedFeatureRegistry.METEOR_LAPIS_ORE_PLACED);
+//        base.add(PlacedFeatureRegistry.METEOR_REDSTONE_ORE_PLACED);
     }
 }

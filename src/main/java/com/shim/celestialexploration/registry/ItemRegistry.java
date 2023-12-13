@@ -203,6 +203,12 @@ public class ItemRegistry {
 	public static final RegistryObject<Item> METEOR_PRESSURE_PLATE = fromMiscBlock(BlockRegistry.METEOR_PRESSURE_PLATE);
 
 
+
+	public static final RegistryObject<Item> SOLAR_PLASMA = fromBlock(BlockRegistry.SOLAR_PLASMA);
+	public static final RegistryObject<Item> SOLAR_FLARE = fromBlock(BlockRegistry.SOLAR_FLARE);
+	public static final RegistryObject<Item> SUN_SPOT = fromBlock(BlockRegistry.SUN_SPOT);
+
+
 	//VENUS
 //	public static final RegistryObject<Item> VENUS_STONE = ITEMS.register("venus_stone", () -> new BlockItemBase(RegistryBlocks.VENUS_STONE.get()));	
 //	public static final RegistryObject<Item> VENUS_SAND = ITEMS.register("venus_sand", () -> new BlockItemBase(RegistryBlocks.VENUS_SAND.get()));

@@ -4,7 +4,7 @@
     "start_pool": "celestialexploration:earth",
     "size": 1
   },
-  "biomes": "#celestialexploration:has_structure/earth_biome",
+  "biomes": "#celestialexploration:has_structure/space_structures",
   "adapt_noise": false,
   "spawn_overrides": {
   }
