@@ -97,9 +97,9 @@ public class BlockStates extends BlockStateProvider {
 		simpleBlock(BlockRegistry.COMPRESSED_MOON_COBBLED_DEEPSLATE.get());
 
 
-		/**
+		/*
 		 * MARS
-		 * */
+		 */
 		simpleBlock(BlockRegistry.CHISELED_MARS_BRICKS.get());
 		simpleBlock(BlockRegistry.MARS_BRICKS.get());
 		simpleBlock(BlockRegistry.MARS_IRON_ORE.get());
@@ -113,6 +113,9 @@ public class BlockStates extends BlockStateProvider {
 		simpleBlock(BlockRegistry.MARS_COBBLESTONE.get());
 		axisBlock((RotatedPillarBlock) BlockRegistry.MARS_DEEPSLATE.get());
 		simpleBlock(BlockRegistry.MARS_COBBLED_DEEPSLATE.get());
+
+		simpleBlock(BlockRegistry.MARS_LANTERN.get());
+
 		axisBlock((RotatedPillarBlock) BlockRegistry.MARS_BRICK_PILLAR.get(), modLoc("block/mars_brick_pillar"));
 
 		stairsBlock((StairBlock) BlockRegistry.MARS_STONE_STAIRS.get(), modLoc("block/mars_stone"));
@@ -160,6 +163,74 @@ public class BlockStates extends BlockStateProvider {
 		simpleBlock(BlockRegistry.COMPRESSED_MARS_COBBLESTONE.get());
 		simpleBlock(BlockRegistry.COMPRESSED_MARS_COBBLED_DEEPSLATE.get());
 
+		/*
+		 * VENUS
+		 */
+		simpleBlock(BlockRegistry.CHISELED_VENUS_BRICKS.get());
+		simpleBlock(BlockRegistry.VENUS_BRICKS.get());
+		simpleBlock(BlockRegistry.VENUS_IRON_ORE.get());
+		simpleBlock(BlockRegistry.VENUS_REDSTONE_ORE.get());
+		simpleBlock(BlockRegistry.VENUS_LAPIS_ORE.get());
+		simpleBlock(BlockRegistry.VENUS_SAND.get());
+		simpleBlock(BlockRegistry.FINE_VENUS_SAND.get());
+		simpleBlock(BlockRegistry.VENUS_STONE.get());
+		stairsBlock((StairBlock) BlockRegistry.VENUS_BRICK_STAIRS.get(), modLoc("block/venus_bricks"));
+		slabBlock((SlabBlock) BlockRegistry.VENUS_BRICK_SLAB.get(), modLoc("block/venus_bricks"), modLoc("block/venus_bricks"));
+		wallBlock((WallBlock) BlockRegistry.VENUS_BRICK_WALL.get(), modLoc("block/venus_bricks"));
+		simpleBlock(BlockRegistry.VENUS_COBBLESTONE.get());
+		axisBlock((RotatedPillarBlock) BlockRegistry.VENUS_DEEPSLATE.get());
+		simpleBlock(BlockRegistry.VENUS_COBBLED_DEEPSLATE.get());
+//		axisBlock((RotatedPillarBlock) BlockRegistry.VENUS_BRICK_PILLAR.get(), modLoc("block/mars_brick_pillar"));
+
+		stairsBlock((StairBlock) BlockRegistry.VENUS_STONE_STAIRS.get(), modLoc("block/venus_stone"));
+		slabBlock((SlabBlock) BlockRegistry.VENUS_STONE_SLAB.get(), modLoc("block/venus_stone"), modLoc("block/venus_stone"));
+
+		stairsBlock((StairBlock) BlockRegistry.VENUS_COBBLESTONE_STAIRS.get(), modLoc("block/venus_cobblestone"));
+		slabBlock((SlabBlock) BlockRegistry.VENUS_COBBLESTONE_SLAB.get(), modLoc("block/venus_cobblestone"), modLoc("block/venus_cobblestone"));
+		wallBlock((WallBlock) BlockRegistry.VENUS_COBBLESTONE_WALL.get(), modLoc("block/venus_cobblestone"));
+
+		stairsBlock((StairBlock) BlockRegistry.VENUS_COBBLED_DEEPSLATE_STAIRS.get(), modLoc("block/venus_cobbled_deepslate"));
+		slabBlock((SlabBlock) BlockRegistry.VENUS_COBBLED_DEEPSLATE_SLAB.get(), modLoc("block/venus_cobbled_deepslate"), modLoc("block/venus_cobbled_deepslate"));
+		wallBlock((WallBlock) BlockRegistry.VENUS_COBBLED_DEEPSLATE_WALL.get(), modLoc("block/venus_cobbled_deepslate"));
+
+//		simpleBlock(BlockRegistry.VENUS_SMOOTH_STONE.get());
+		//FIXME
+//		slabBlock((SlabBlock) BlockRegistry.MARS_SMOOTH_STONE_SLAB.get(), modLoc("block/mars_smooth_stone_slab_side"), modLoc("block/mars_cobbled_deepslate_side"), modLoc("block/mars_cobbled_deepslate"), modLoc("block/mars_cobbled_deepslate"));
+//		simpleBlock(BlockRegistry.CRACKED_MARS_BRICKS.get());
+
+		simpleBlock(BlockRegistry.VENUS_DEEPSLATE_BRICKS.get());
+		stairsBlock((StairBlock) BlockRegistry.VENUS_DEEPSLATE_BRICK_STAIRS.get(), modLoc("block/venus_deepslate_bricks"));
+		slabBlock((SlabBlock) BlockRegistry.VENUS_DEEPSLATE_BRICK_SLAB.get(), modLoc("block/venus_deepslate_bricks"), modLoc("block/venus_deepslate_bricks"));
+		wallBlock((WallBlock) BlockRegistry.VENUS_DEEPSLATE_BRICK_WALL.get(), modLoc("block/venus_deepslate_bricks"));
+//		simpleBlock(BlockRegistry.CHISELED_VENUS_DEEPSLATE_BRICKS.get());
+//		simpleBlock(BlockRegistry.CRACKED_MARS_DEEPSLATE_BRICKS.get());
+
+		simpleBlock(BlockRegistry.VENUS_POLISHED_DEEPSLATE.get());
+		stairsBlock((StairBlock) BlockRegistry.VENUS_POLISHED_DEEPSLATE_STAIRS.get(), modLoc("block/venus_polished_deepslate"));
+		slabBlock((SlabBlock) BlockRegistry.VENUS_POLISHED_DEEPSLATE_SLAB.get(), modLoc("block/venus_polished_deepslate"), modLoc("block/venus_polished_deepslate"));
+		wallBlock((WallBlock) BlockRegistry.VENUS_POLISHED_DEEPSLATE_WALL.get(), modLoc("block/venus_polished_deepslate"));
+
+		simpleBlock(BlockRegistry.VENUS_DEEPSLATE_TILES.get());
+		stairsBlock((StairBlock) BlockRegistry.VENUS_DEEPSLATE_TILE_STAIRS.get(), modLoc("block/venus_deepslate_tiles"));
+		slabBlock((SlabBlock) BlockRegistry.VENUS_DEEPSLATE_TILE_SLAB.get(), modLoc("block/venus_deepslate_tiles"), modLoc("block/venus_deepslate_tiles"));
+		wallBlock((WallBlock) BlockRegistry.VENUS_DEEPSLATE_TILE_WALL.get(), modLoc("block/venus_deepslate_tiles"));
+//		simpleBlock(BlockRegistry.CRACKED_MARS_DEEPSLATE_TILES.get());
+
+		buttonBlock((ButtonBlock) BlockRegistry.VENUS_STONE_BUTTON.get(), modLoc("block/venus_stone"));
+		pressurePlateBlock((PressurePlateBlock) BlockRegistry.VENUS_STONE_PRESSURE_PLATE.get(), modLoc("block/venus_stone"));
+		buttonBlock((ButtonBlock) BlockRegistry.VENUS_DEEPSLATE_BUTTON.get(), modLoc("block/venus_deepslate_side"));
+		pressurePlateBlock((PressurePlateBlock) BlockRegistry.VENUS_DEEPSLATE_PRESSURE_PLATE.get(), modLoc("block/venus_deepslate_side"));
+
+		simpleBlock(BlockRegistry.VENUS_DEEPSLATE_IRON_ORE.get());
+		simpleBlock(BlockRegistry.VENUS_DEEPSLATE_REDSTONE_ORE.get());
+		simpleBlock(BlockRegistry.VENUS_DEEPSLATE_LAPIS_ORE.get());
+
+		simpleBlock(BlockRegistry.COMPRESSED_VENUS_COBBLESTONE.get());
+		simpleBlock(BlockRegistry.COMPRESSED_VENUS_COBBLED_DEEPSLATE.get());
+
+		simpleBlock(BlockRegistry.SULFURIC_OBSIDIAN.get());
+		simpleBlock(BlockRegistry.VENUS_LANTERN.get());
+
 
 		/**
 		 * METEORS
@@ -173,6 +244,7 @@ public class BlockStates extends BlockStateProvider {
 		simpleBlock(BlockRegistry.METEOR_GOLD_ORE.get());
 		simpleBlock(BlockRegistry.METEOR_IRON_ORE.get());
 		simpleBlock(BlockRegistry.METEOR_LAPIS_ORE.get());
+		simpleBlock(BlockRegistry.METEOR_SULFUR_ORE.get());
 		simpleBlock(BlockRegistry.METEOR_REDSTONE_ORE.get());
 		simpleBlock(BlockRegistry.CHISELED_METEOR_BRICKS.get());
 		stairsBlock((StairBlock) BlockRegistry.METEOR_BRICK_STAIRS.get(), modLoc("block/meteor_bricks"));
@@ -241,6 +313,7 @@ public class BlockStates extends BlockStateProvider {
 
 		simpleBlock(BlockRegistry.COMPRESSED_COBBLESTONE.get());
 		simpleBlock(BlockRegistry.COMPRESSED_COBBLED_DEEPSLATE.get());
+		simpleBlock(BlockRegistry.COMPRESSED_NETHERRACK.get());
 
 		simpleBlock(BlockRegistry.SILICA.get());
 
@@ -273,6 +346,8 @@ public class BlockStates extends BlockStateProvider {
 		simpleBlock(FluidRegistry.MOLTEN_COPPER_BLOCK.get());
 		simpleBlock(FluidRegistry.MOLTEN_GOLD_BLOCK.get());
 //		simpleBlock(FluidRegistry.MOLTEN_NETHERITE_BLOCK.get());
+		simpleBlock(FluidRegistry.SULFUR_BLOCK.get());
+
 
 	}
 

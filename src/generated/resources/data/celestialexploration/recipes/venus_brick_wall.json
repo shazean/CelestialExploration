@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "celestialexploration",
+  "pattern": [
+    "XXX",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:venus_bricks"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:venus_brick_wall",
+    "count": 6
+  }
+}

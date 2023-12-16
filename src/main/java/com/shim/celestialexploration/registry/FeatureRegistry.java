@@ -2,10 +2,7 @@ package com.shim.celestialexploration.registry;
 
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.datagen.ModBlockTags;
-import com.shim.celestialexploration.world.features.AsteroidFeature;
-import com.shim.celestialexploration.world.features.CelestialOreFeatures;
-import com.shim.celestialexploration.world.features.CelestialOrePlacement;
-import com.shim.celestialexploration.world.features.GlowingSandFeature;
+import com.shim.celestialexploration.world.features.*;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.data.worldgen.features.FeatureUtils;
@@ -36,6 +33,8 @@ public class FeatureRegistry {
 
     public static final RegistryObject<Feature<NoneFeatureConfiguration>> GLOWING_SAND = FEATURES.register("glowing_sand", () -> new GlowingSandFeature(NoneFeatureConfiguration.CODEC));
     public static final RegistryObject<Feature<NoneFeatureConfiguration>> ASTEROID = FEATURES.register("asteroid", () -> new AsteroidFeature(NoneFeatureConfiguration.CODEC));
+
+    public static final RegistryObject<Feature<NoneFeatureConfiguration>> GEYSER = FEATURES.register("geyser", () -> new GeyserFeature(NoneFeatureConfiguration.CODEC));
 
 
     public static void register(IEventBus eventbus) {

@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:venus_cobbled_deepslate_stairs_stonecutting"
+    ]
+  },
+  "criteria": {
+    "venus_stone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:venus_stone"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:venus_cobbled_deepslate_stairs_stonecutting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "venus_stone",
+      "has_the_recipe"
+    ]
+  ]
+}

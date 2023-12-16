@@ -2,6 +2,8 @@
   "replace": false,
   "values": [
     "celestialexploration:mars_portal",
-    "celestialexploration:moon_portal"
+    "celestialexploration:moon_portal",
+    "celestialexploration:venus_portal",
+    "celestialexploration:space_portal"
   ]
 }

@@ -6,7 +6,7 @@
         {
           "input_predicate": {
             "block": "celestialexploration:meteor",
-            "probability": 0.006,
+            "probability": 0.003,
             "predicate_type": "minecraft:random_block_match"
           },
           "location_predicate": {

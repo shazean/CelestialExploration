@@ -3,6 +3,10 @@
   "values": [
     "celestialexploration:moon_sand",
     "celestialexploration:glowing_moon_sand",
-    "celestialexploration:mars_sand"
+    "celestialexploration:coarse_moon_sand",
+    "celestialexploration:venus_sand",
+    "celestialexploration:mars_sand",
+    "celestialexploration:coarse_mars_sand",
+    "celestialexploration:fine_venus_sand"
   ]
 }

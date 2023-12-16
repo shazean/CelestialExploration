@@ -41,6 +41,12 @@ public class EntityRegistry {
             .sized(0.6F, 1.7F).clientTrackingRange(8)
             .build(new ResourceLocation(CelestialExploration.MODID, "voided").toString()));
 
+    public static final RegistryObject<EntityType<SulfurCube>> SULFUR_CUBE = ENTITY_TYPES.register("sulfur_cube", () -> EntityType.Builder.of(SulfurCube::new, MobCategory.MONSTER)
+            .sized(2.04F, 2.04F).clientTrackingRange(10).fireImmune()
+            .build(new ResourceLocation(CelestialExploration.MODID, "sulfur_cube").toString()));
+
+
+
     //VEHICLES
     public static final RegistryObject<EntityType<Shuttle>> SHUTTLE = ENTITY_TYPES.register("shuttle", () -> EntityType.Builder.<Shuttle>of(Shuttle::new, MobCategory.MISC)
             .sized(3.1f, 3.1f)

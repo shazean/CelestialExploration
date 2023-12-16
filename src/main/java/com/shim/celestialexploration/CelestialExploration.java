@@ -1,5 +1,7 @@
 package com.shim.celestialexploration;
 
+import com.shim.celestialexploration.config.CelestialClientConfig;
+import com.shim.celestialexploration.config.CelestialCommonConfig;
 import com.shim.celestialexploration.entity.*;
 import com.shim.celestialexploration.registry.*;
 import com.shim.celestialexploration.util.Keybinds;
@@ -18,7 +20,9 @@ import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
@@ -77,6 +81,9 @@ public class CelestialExploration {
 //        bus.addListener(EventPriority.NORMAL, Structures::addDimensionalSpacing);
 //        bus.addListener(EventPriority.NORMAL, Structures::setupStructureSpawns);
 
+        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, CelestialClientConfig.SPEC, "celestialexploration-client.toml");
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, CelestialCommonConfig.SPEC, "celestialexploration-common.toml");
+
         GeckoLib.initialize();
 
         bus.addListener((InputEvent.KeyInputEvent e) -> onKeyPress(e.getKey(), e.getAction(), e.getModifiers()));
@@ -115,6 +122,7 @@ public class CelestialExploration {
         SpawnPlacements.register(EntityRegistry.LURKER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, Lurker::checkMonsterSpawnRules);
         SpawnPlacements.register(EntityRegistry.VOIDED.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, Voided::checkMonsterSpawnRules);
         SpawnPlacements.register(EntityRegistry.VOIDFELLOW.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, VoidFellow::checkMonsterSpawnRules);
+        SpawnPlacements.register(EntityRegistry.SULFUR_CUBE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, SulfurCube::checkSulfurCubeSpawnRules);
 
     }
 

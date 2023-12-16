@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "celestialexploration:molten_iron",
+    "celestialexploration:molten_iron_flowing",
+    "celestialexploration:molten_steel",
+    "celestialexploration:molten_steel_flowing",
+    "celestialexploration:molten_copper",
+    "celestialexploration:molten_copper_flowing",
+    "celestialexploration:molten_gold",
+    "celestialexploration:molten_gold_flowing"
+  ]
+}

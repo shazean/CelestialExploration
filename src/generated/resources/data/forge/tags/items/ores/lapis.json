@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
-    "celestialexploration:meteor_lapis_ore"
+    "celestialexploration:meteor_lapis_ore",
+    "celestialexploration:venus_lapis_ore",
+    "celestialexploration:venus_deepslate_lapis_ore"
   ]
 }

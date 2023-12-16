@@ -19,6 +19,14 @@ public class PortalRegistry {
             POI.register("moon_portal", () -> new PoiType("moon_portal",
                     PoiType.getBlockStates(BlockRegistry.MOON_PORTAL.get()), 0, 1));
 
+    public static final RegistryObject<PoiType> VENUS_PORTAL =
+            POI.register("venus_portal", () -> new PoiType("venus_portal",
+                    PoiType.getBlockStates(BlockRegistry.VENUS_PORTAL.get()), 0, 1));
+
+    public static final RegistryObject<PoiType> SPACE_PORTAL =
+            POI.register("space_portal", () -> new PoiType("space_portal",
+                    PoiType.getBlockStates(BlockRegistry.SPACE_PORTAL.get()), 0, 1));
+
 
 
     public static void register(IEventBus eventBus) {

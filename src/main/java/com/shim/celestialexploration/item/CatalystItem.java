@@ -3,6 +3,8 @@ package com.shim.celestialexploration.item;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.blocks.MarsPortalBlock;
 import com.shim.celestialexploration.blocks.MoonPortalBlock;
+import com.shim.celestialexploration.blocks.SpacePortalBlock;
+import com.shim.celestialexploration.blocks.VenusPortalBlock;
 import com.shim.celestialexploration.registry.BlockRegistry;
 import com.shim.celestialexploration.registry.DimensionRegistry;
 import net.minecraft.core.BlockPos;
@@ -29,6 +31,9 @@ public class CatalystItem extends Item {
         if(context.getPlayer() != null) {
             if(context.getPlayer().level.dimension() == DimensionRegistry.MARS
                     || context.getPlayer().level.dimension() == DimensionRegistry.MOON
+                    || context.getPlayer().level.dimension() == DimensionRegistry.VENUS
+                    || context.getPlayer().level.dimension() == DimensionRegistry.SPACE
+
                     || context.getPlayer().level.dimension() == Level.OVERWORLD) {
                 for(Direction direction : Direction.Plane.VERTICAL) {
                     BlockPos framePos = context.getClickedPos().relative(direction);
@@ -38,6 +43,16 @@ public class CatalystItem extends Item {
                         return InteractionResult.CONSUME;
                     }
                     else if(((MoonPortalBlock) BlockRegistry.MOON_PORTAL.get()).trySpawnPortal(context.getLevel(), framePos)) {
+                        context.getLevel().playSound(context.getPlayer(), framePos,
+                                SoundEvents.PORTAL_TRIGGER, SoundSource.BLOCKS, 1.0F, 1.0F);
+                        return InteractionResult.CONSUME;
+                    }
+                    else if(((VenusPortalBlock) BlockRegistry.VENUS_PORTAL.get()).trySpawnPortal(context.getLevel(), framePos)) {
+                        context.getLevel().playSound(context.getPlayer(), framePos,
+                                SoundEvents.PORTAL_TRIGGER, SoundSource.BLOCKS, 1.0F, 1.0F);
+                        return InteractionResult.CONSUME;
+                    }
+                    else if(((SpacePortalBlock) BlockRegistry.SPACE_PORTAL.get()).trySpawnPortal(context.getLevel(), framePos)) {
                         context.getLevel().playSound(context.getPlayer(), framePos,
                                 SoundEvents.PORTAL_TRIGGER, SoundSource.BLOCKS, 1.0F, 1.0F);
                         return InteractionResult.CONSUME;

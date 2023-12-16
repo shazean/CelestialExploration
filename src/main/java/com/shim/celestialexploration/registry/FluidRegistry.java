@@ -1,10 +1,17 @@
 package com.shim.celestialexploration.registry;
 
 import com.shim.celestialexploration.CelestialExploration;
+import com.shim.celestialexploration.blocks.SulfurLiquidBlock;
+import com.shim.celestialexploration.fluids.SulfurFluid;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.FluidTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.BucketItem;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.FlowingFluid;
@@ -22,6 +29,9 @@ public class FluidRegistry {
     public static final ResourceLocation WATER_STILL = new ResourceLocation("block/water_still");
     public static final ResourceLocation WATER_FLOWING_RL = new ResourceLocation("block/water_flow");
     public static final ResourceLocation WATER_OVERLAY_RL = new ResourceLocation("block/water_overlay");
+    public static final ResourceLocation SULFUR_STILL_RL = new ResourceLocation(CelestialExploration.MODID, "block/sulfur_still");
+    public static final ResourceLocation SULFUR_FLOWING_RL = new ResourceLocation(CelestialExploration.MODID, "block/sulfur_flow");
+
 
     public static final DeferredRegister<Fluid> FLUIDS = DeferredRegister.create(ForgeRegistries.FLUIDS, CelestialExploration.MODID);
 
@@ -37,6 +47,9 @@ public class FluidRegistry {
     public static final RegistryObject<FlowingFluid> MOLTEN_GOLD_FLOWING = FLUIDS.register("molten_gold_flowing", () -> new ForgeFlowingFluid.Flowing(FluidRegistry.MOLTEN_GOLD_PROPERTIES));
 //    public static final RegistryObject<FlowingFluid> MOLTEN_NETHERITE = FLUIDS.register("molten_netherite", () -> new ForgeFlowingFluid.Source(FluidRegistry.MOLTEN_NETHERITE_PROPERTIES));
 //    public static final RegistryObject<FlowingFluid> MOLTEN_NETHERITE_FLOWING = FLUIDS.register("molten_neitherite_flowing", () -> new ForgeFlowingFluid.Flowing(FluidRegistry.MOLTEN_NETHERITE_PROPERTIES));
+    public static final RegistryObject<FlowingFluid> SULFUR = FLUIDS.register("sulfur", () -> new SulfurFluid.Source(FluidRegistry.SULFUR_PROPERTIES));
+    public static final RegistryObject<FlowingFluid> SULFUR_FLOWING = FLUIDS.register("sulfur_flowing", () -> new SulfurFluid.Flowing(FluidRegistry.SULFUR_PROPERTIES));
+
 
     public static final RegistryObject<Item> LOX_BUCKET = ItemRegistry.ITEMS.register("lox_bucket", () -> new BucketItem(FluidRegistry.LOX, new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> MOLTEN_IRON_BUCKET = ItemRegistry.ITEMS.register("molten_iron_bucket", () -> new BucketItem(FluidRegistry.MOLTEN_IRON, new Item.Properties().stacksTo(1)));
@@ -44,6 +57,7 @@ public class FluidRegistry {
     public static final RegistryObject<Item> MOLTEN_COPPER_BUCKET = ItemRegistry.ITEMS.register("molten_copper_bucket", () -> new BucketItem(FluidRegistry.MOLTEN_COPPER, new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> MOLTEN_GOLD_BUCKET = ItemRegistry.ITEMS.register("molten_gold_bucket", () -> new BucketItem(FluidRegistry.MOLTEN_GOLD, new Item.Properties().stacksTo(1)));
 //    public static final RegistryObject<Item> MOLTEN_NETHERITE_BUCKET = ItemRegistry.ITEMS.register("molten_netherite_bucket", () -> new BucketItem(FluidRegistry.MOLTEN_NETHERITE, new Item.Properties().stacksTo(1)));
+        public static final RegistryObject<Item> SULFUR_BUCKET = ItemRegistry.ITEMS.register("sulfur_bucket", () -> new BucketItem(FluidRegistry.SULFUR, new Item.Properties().stacksTo(1).tab(CreativeModeTab.TAB_MISC)));
 
 
     public static final ForgeFlowingFluid.Properties LOX_PROPERTIES = new ForgeFlowingFluid.Properties(
@@ -76,17 +90,29 @@ public class FluidRegistry {
 //            .density(15).luminosity(2).viscosity(5).sound(SoundEvents.LAVA_AMBIENT).overlay(WATER_OVERLAY_RL)
 //            .color(0xfa4a2940)).slopeFindDistance(2).levelDecreasePerBlock(2)
 //            .block(() -> FluidRegistry.MOLTEN_NETHERITE_BLOCK.get()).bucket(() -> FluidRegistry.MOLTEN_NETHERITE_BUCKET.get());
+    public static final ForgeFlowingFluid.Properties SULFUR_PROPERTIES = new ForgeFlowingFluid.Properties(
+        () -> SULFUR.get(), () -> SULFUR_FLOWING.get(), FluidAttributes.builder(SULFUR_STILL_RL, SULFUR_FLOWING_RL)
+        .density(15).luminosity(5).viscosity(5).sound(SoundEvents.LAVA_AMBIENT))
+        .slopeFindDistance(2).levelDecreasePerBlock(2)
+        .block(() -> FluidRegistry.SULFUR_BLOCK.get()).bucket(() -> FluidRegistry.SULFUR_BUCKET.get());
 
-    public static final RegistryObject<LiquidBlock> LOX_BLOCK = BlockRegistry.BLOCKS.register("lox", () -> new LiquidBlock(FluidRegistry.LOX, BlockBehaviour.Properties.of(Material.WATER).noCollission().strength(10f).noDrops()));
-    public static final RegistryObject<LiquidBlock> MOLTEN_IRON_BLOCK = BlockRegistry.BLOCKS.register("molten_iron", () -> new LiquidBlock(FluidRegistry.MOLTEN_IRON, BlockBehaviour.Properties.of(Material.LAVA).noCollission().strength(10f).noDrops()));
-    public static final RegistryObject<LiquidBlock> MOLTEN_STEEL_BLOCK = BlockRegistry.BLOCKS.register("molten_steel", () -> new LiquidBlock(FluidRegistry.MOLTEN_STEEL, BlockBehaviour.Properties.of(Material.LAVA).noCollission().strength(10f).noDrops()));
-    public static final RegistryObject<LiquidBlock> MOLTEN_COPPER_BLOCK = BlockRegistry.BLOCKS.register("molten_copper", () -> new LiquidBlock(FluidRegistry.MOLTEN_COPPER, BlockBehaviour.Properties.of(Material.LAVA).noCollission().strength(10f).noDrops()));
-    public static final RegistryObject<LiquidBlock> MOLTEN_GOLD_BLOCK = BlockRegistry.BLOCKS.register("molten_gold", () -> new LiquidBlock(FluidRegistry.MOLTEN_GOLD, BlockBehaviour.Properties.of(Material.LAVA).noCollission().strength(10f).noDrops()));
-//    public static final RegistryObject<LiquidBlock> MOLTEN_NETHERITE_BLOCK = BlockRegistry.BLOCKS.register("molten_netherite", () -> new LiquidBlock(FluidRegistry.MOLTEN_NETHERITE, BlockBehaviour.Properties.of(Material.LAVA).noCollission().strength(10f).noDrops()));
+
+    public static final RegistryObject<LiquidBlock> LOX_BLOCK = BlockRegistry.BLOCKS.register("lox", () -> new LiquidBlock(FluidRegistry.LOX, BlockBehaviour.Properties.of(Material.WATER).noCollission().strength(100f).noDrops()));
+    public static final RegistryObject<LiquidBlock> MOLTEN_IRON_BLOCK = BlockRegistry.BLOCKS.register("molten_iron", () -> new LiquidBlock(FluidRegistry.MOLTEN_IRON, BlockBehaviour.Properties.of(Material.LAVA).noCollission().strength(100f).noDrops()));
+    public static final RegistryObject<LiquidBlock> MOLTEN_STEEL_BLOCK = BlockRegistry.BLOCKS.register("molten_steel", () -> new LiquidBlock(FluidRegistry.MOLTEN_STEEL, BlockBehaviour.Properties.of(Material.LAVA).noCollission().strength(100f).noDrops()));
+    public static final RegistryObject<LiquidBlock> MOLTEN_COPPER_BLOCK = BlockRegistry.BLOCKS.register("molten_copper", () -> new LiquidBlock(FluidRegistry.MOLTEN_COPPER, BlockBehaviour.Properties.of(Material.LAVA).noCollission().strength(100f).noDrops()));
+    public static final RegistryObject<LiquidBlock> MOLTEN_GOLD_BLOCK = BlockRegistry.BLOCKS.register("molten_gold", () -> new LiquidBlock(FluidRegistry.MOLTEN_GOLD, BlockBehaviour.Properties.of(Material.LAVA).noCollission().strength(100f).noDrops()));
+//    public static final RegistryObject<LiquidBlock> MOLTEN_NETHERITE_BLOCK = BlockRegistry.BLOCKS.register("molten_netherite", () -> new LiquidBlock(FluidRegistry.MOLTEN_NETHERITE, BlockBehaviour.Properties.of(Material.LAVA).noCollission().strength(100f).noDrops()));
+    public static final RegistryObject<LiquidBlock> SULFUR_BLOCK = BlockRegistry.BLOCKS.register("sulfur", () -> new SulfurLiquidBlock(FluidRegistry.SULFUR, BlockBehaviour.Properties.of(Material.LAVA).lightLevel((light) -> 15).noCollission().strength(100f).noDrops()));
 
 
     public static void register(IEventBus eventBus) {
         FLUIDS.register(eventBus);
     }
+
+
+    public static final TagKey<Fluid> SULFUR_TAG = FluidTags.create(new ResourceLocation(CelestialExploration.MODID, "sulfur"));
+    public static final TagKey<Fluid> MOLTEN_METAL_TAG = FluidTags.create(new ResourceLocation(CelestialExploration.MODID, "molten_metal"));
+
 
 }

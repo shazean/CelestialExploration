@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "celestialexploration:venus_sand",
+    "celestialexploration:venus_stone",
+    "celestialexploration:venus_cobblestone",
+    "celestialexploration:venus_deepslate",
+    "celestialexploration:venus_cobbled_deepslate",
+    "celestialexploration:meteor_sulfur_ore"
+  ]
+}

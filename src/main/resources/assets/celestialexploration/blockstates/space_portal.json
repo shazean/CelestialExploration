@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "axis=z": { "model":  "celestialexploration:block/space_portal_ew" },
+    "axis=x": { "model":  "celestialexploration:block/space_portal_ns" }
+  }
+}

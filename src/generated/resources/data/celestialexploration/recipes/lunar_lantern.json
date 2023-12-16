@@ -3,11 +3,14 @@
   "group": "celestialexploration",
   "pattern": [
     "XCX",
-    "CCC",
+    "C#C",
     "XCX"
   ],
   "key": {
     "X": {
+      "item": "celestialexploration:moon_stone"
+    },
+    "#": {
       "item": "minecraft:iron_ingot"
     },
     "C": {

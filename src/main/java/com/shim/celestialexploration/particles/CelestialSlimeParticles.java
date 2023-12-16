@@ -85,4 +85,15 @@ public class CelestialSlimeParticles extends TextureSheetParticle {
             return new CelestialSlimeParticles(p_105706_, p_105707_, p_105708_, p_105709_, new ItemStack(ItemRegistry.MARSHMALLOW_GOO.get()));
         }
     }
+
+    @OnlyIn(Dist.CLIENT)
+    public static class SulfurProvider implements ParticleProvider<SimpleParticleType> {
+
+        public SulfurProvider(SpriteSet spriteSet) {}
+
+        public Particle createParticle(SimpleParticleType p_105705_, ClientLevel p_105706_, double p_105707_, double p_105708_, double p_105709_, double p_105710_, double p_105711_, double p_105712_) {
+            return new CelestialSlimeParticles(p_105706_, p_105707_, p_105708_, p_105709_, new ItemStack(ItemRegistry.VENUS_DEEPSLATE.get())); //TODO?
+        }
+    }
+
 }

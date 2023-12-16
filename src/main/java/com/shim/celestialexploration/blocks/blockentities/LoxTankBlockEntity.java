@@ -1,6 +1,5 @@
 package com.shim.celestialexploration.blocks.blockentities;
 
-import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.blocks.LoxTankBlock;
 import com.shim.celestialexploration.capabilities.LoxTankCapability;
 import com.shim.celestialexploration.registry.BlockEntityRegistry;
@@ -13,10 +12,6 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.event.AttachCapabilitiesEvent;
-import net.minecraftforge.items.CapabilityItemHandler;
-import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;

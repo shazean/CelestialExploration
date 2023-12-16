@@ -57,7 +57,7 @@ public class LargeAsteroidStructure extends StructureFeature<JigsawConfiguration
 
         //only check if we didn't eliminate the asteroid belt in the previous step
         //eliminate the inner circle
-        if (asteroidBelt && CelestialUtil.isPointInCircle(0, 0, CelestialUtil.getCalculatedCircleRadius(4.0), chunkpos.x, chunkpos.z)) {
+        if (asteroidBelt && CelestialUtil.isPointInCircle(0, 0, CelestialUtil.getCalculatedCircleRadius(4.2), chunkpos.x, chunkpos.z)) {
             asteroidBelt = false;
         }
 

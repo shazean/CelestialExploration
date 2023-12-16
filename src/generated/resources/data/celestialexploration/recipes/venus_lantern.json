@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "celestialexploration",
+  "pattern": [
+    "XCX",
+    "C#C",
+    "XCX"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:venus_stone"
+    },
+    "#": {
+      "item": "minecraft:iron_ingot"
+    },
+    "C": {
+      "item": "celestialexploration:sulfur_crystal"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:venus_lantern"
+  }
+}

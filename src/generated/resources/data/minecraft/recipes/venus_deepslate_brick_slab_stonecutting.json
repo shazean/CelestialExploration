@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "tag": "celestialexploration:venus_deepslate"
+  },
+  "result": "celestialexploration:venus_deepslate_brick_slab",
+  "count": 2
+}

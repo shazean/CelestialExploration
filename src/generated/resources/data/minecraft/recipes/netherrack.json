@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "celestialexploration",
+  "ingredients": [
+    {
+      "item": "celestialexploration:compressed_netherrack"
+    }
+  ],
+  "result": {
+    "item": "minecraft:netherrack",
+    "count": 9
+  }
+}

@@ -13,6 +13,12 @@
     "celestialexploration:mars_polished_deepslate_wall",
     "celestialexploration:moon_deepslate_brick_wall",
     "celestialexploration:moon_deepslate_tile_wall",
-    "celestialexploration:moon_polished_deepslate_wall"
+    "celestialexploration:moon_polished_deepslate_wall",
+    "celestialexploration:venus_brick_wall",
+    "celestialexploration:venus_cobblestone_wall",
+    "celestialexploration:venus_cobbled_deepslate_wall",
+    "celestialexploration:venus_deepslate_brick_wall",
+    "celestialexploration:venus_deepslate_tile_wall",
+    "celestialexploration:venus_polished_deepslate_wall"
   ]
 }

@@ -123,6 +123,7 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(BlockRegistry.MARS_STONE_SLAB.get(), "Martian Stone Slab");
 		add(BlockRegistry.MARS_DEEPSLATE_IRON_ORE.get(), "Martian Deepslate Iron Ore");
 		add(BlockRegistry.MARS_DEEPSLATE_REDSTONE_ORE.get(), "Martian Deepslate Redstone Ore");
+		add(BlockRegistry.COARSE_MARS_SAND.get(), "Coarse Martian Regolith");
 
 		add(BlockRegistry.MARS_COBBLESTONE_SLAB.get(), "Martian Cobblestone Slab");
 		add(BlockRegistry.MARS_COBBLESTONE_STAIRS.get(), "Martian Cobblestone Stairs");
@@ -159,8 +160,74 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(BlockRegistry.MARS_DEEPSLATE_BUTTON.get(), "Martian Deepslate Button");
 		add(BlockRegistry.MARS_DEEPSLATE_PRESSURE_PLATE.get(), "Martian Deepslate Pressure Plate");
 
+		add(BlockRegistry.MARS_LANTERN.get(), "Martian Lantern");
+
+
 		add(BlockRegistry.COMPRESSED_MARS_COBBLESTONE.get(), "Compressed Martian Cobblestone");
 		add(BlockRegistry.COMPRESSED_MARS_COBBLED_DEEPSLATE.get(), "Compressed Martian Cobbled Deepslate");
+
+		/*VENUS*/
+		add(BlockRegistry.CHISELED_VENUS_BRICKS.get(), "Chiseled Venusian Bricks");
+		add(BlockRegistry.VENUS_BRICK_SLAB.get(), "Venusian Brick Slab");
+		add(BlockRegistry.VENUS_BRICK_STAIRS.get(), "Venusian Brick Stairs");
+		add(BlockRegistry.VENUS_BRICK_WALL.get(), "Venusian Brick Wall");
+		add(BlockRegistry.VENUS_BRICKS.get(), "Venusian Bricks");
+		add(BlockRegistry.VENUS_IRON_ORE.get(), "Venusian Iron Ore");
+		add(BlockRegistry.VENUS_REDSTONE_ORE.get(), "Venusian Redstone Ore");
+		add(BlockRegistry.VENUS_LAPIS_ORE.get(), "Venusian Lapis Lazuli Ore");
+		add(BlockRegistry.VENUS_SAND.get(), "Venusian Regolith");
+		add(BlockRegistry.VENUS_STONE.get(), "Venusian Stone");
+		add(BlockRegistry.VENUS_COBBLESTONE.get(), "Venusian Cobblestone");
+//		add(BlockRegistry.VENUS_BRICK_PILLAR.get(), "Martian Brick Pillar");
+		add(BlockRegistry.VENUS_DEEPSLATE.get(), "Venusian Deepslate");
+		add(BlockRegistry.VENUS_COBBLED_DEEPSLATE.get(), "Venusian Cobbled Deepslate");
+		add(BlockRegistry.VENUS_STONE_SLAB.get(), "Venusian Stone Slab");
+		add(BlockRegistry.VENUS_DEEPSLATE_IRON_ORE.get(), "Venusian Deepslate Iron Ore");
+		add(BlockRegistry.VENUS_DEEPSLATE_REDSTONE_ORE.get(), "Venusian Deepslate Redstone Ore");
+		add(BlockRegistry.VENUS_DEEPSLATE_LAPIS_ORE.get(), "Venusian Deepslate Lapis Lazuli Ore");
+		add(BlockRegistry.FINE_VENUS_SAND.get(), "Fine Venusian Regolith");
+		add(BlockRegistry.GEYSER.get(), "Sulfur Geyser");
+
+
+		add(BlockRegistry.VENUS_COBBLESTONE_SLAB.get(), "Venusian Cobblestone Slab");
+		add(BlockRegistry.VENUS_COBBLESTONE_STAIRS.get(), "Venusian Cobblestone Stairs");
+		add(BlockRegistry.VENUS_COBBLESTONE_WALL.get(), "Venusian Cobblestone Wall");
+		add(BlockRegistry.VENUS_COBBLED_DEEPSLATE_SLAB.get(), "Venusian Cobbled Deepslate Slab");
+		add(BlockRegistry.VENUS_COBBLED_DEEPSLATE_STAIRS.get(), "Venusian Cobbled Deepslate Stairs");
+		add(BlockRegistry.VENUS_COBBLED_DEEPSLATE_WALL.get(), "Venusian Cobbled Deeplsate Wall");
+
+//		add(BlockRegistry.VENUS_SMOOTH_STONE.get(), "Martian Smooth Stone");
+//		add(BlockRegistry.MARS_SMOOTH_STONE_SLAB.get(), "Martian Smooth Stone Slab");
+//		add(BlockRegistry.CRACKED_VENUS_BRICKS.get(), "Cracked Martian Bricks");
+
+		add(BlockRegistry.VENUS_DEEPSLATE_BRICKS.get(), "Venusian Deepslate Bricks");
+		add(BlockRegistry.VENUS_DEEPSLATE_BRICK_SLAB.get(), "Venusian Deepslate Brick Slab");
+		add(BlockRegistry.VENUS_DEEPSLATE_BRICK_STAIRS.get(), "Venusian Deepslate Brick Stairs");
+		add(BlockRegistry.VENUS_DEEPSLATE_BRICK_WALL.get(), "Venusian Deepslate Brick Wall");
+//		add(BlockRegistry.CRACKED_VENUS_DEEPSLATE_BRICKS.get(), "Cracked Martian Deepslate Bricks");
+//		add(BlockRegistry.CHISELED_VENUS_DEEPSLATE_BRICKS.get(), "Chiseled Martian Deepslate Bricks");
+
+		add(BlockRegistry.VENUS_DEEPSLATE_TILES.get(), "Venusian Deepslate Tiles");
+		add(BlockRegistry.VENUS_DEEPSLATE_TILE_SLAB.get(), "Venusian Deepslate Tile Slab");
+		add(BlockRegistry.VENUS_DEEPSLATE_TILE_STAIRS.get(), "Venusian Deepslate Tile Stairs");
+		add(BlockRegistry.VENUS_DEEPSLATE_TILE_WALL.get(), "Venusian Deepslate Tile Wall");
+//		add(BlockRegistry.CRACKED_MARS_DEEPSLATE_TILES.get(), "Cracked Martian Deepslate Tiles");
+
+		add(BlockRegistry.VENUS_POLISHED_DEEPSLATE.get(), "Venusian Polished Deepslate");
+		add(BlockRegistry.VENUS_POLISHED_DEEPSLATE_SLAB.get(), "Venusian Polished Deepslate Slab");
+		add(BlockRegistry.VENUS_POLISHED_DEEPSLATE_STAIRS.get(), "Venusian Polished Deepslate Stairs");
+		add(BlockRegistry.VENUS_POLISHED_DEEPSLATE_WALL.get(), "Venusian Polished Deepslate Wall");
+
+		add(BlockRegistry.VENUS_STONE_BUTTON.get(), "Venusian Stone Button");
+		add(BlockRegistry.VENUS_STONE_PRESSURE_PLATE.get(), "Venusian Stone Pressure Plate");
+		add(BlockRegistry.VENUS_DEEPSLATE_BUTTON.get(), "Venusian Deepslate Button");
+		add(BlockRegistry.VENUS_DEEPSLATE_PRESSURE_PLATE.get(), "Venusian Deepslate Pressure Plate");
+
+		add(BlockRegistry.COMPRESSED_VENUS_COBBLESTONE.get(), "Compressed Venusian Cobblestone");
+		add(BlockRegistry.COMPRESSED_VENUS_COBBLED_DEEPSLATE.get(), "Compressed Venusian Cobbled Deepslate");
+
+		add(BlockRegistry.SULFURIC_OBSIDIAN.get(), "Sulfuric Obsidian");
+		add(BlockRegistry.VENUS_LANTERN.get(), "Venusian Lantern");
 
 
 		/* METEOR */
@@ -177,6 +244,8 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(BlockRegistry.METEOR_GOLD_ORE.get(), "Meteorite Gold Ore");
 		add(BlockRegistry.METEOR_IRON_ORE.get(), "Meteorite Iron Ore");
 		add(BlockRegistry.METEOR_LAPIS_ORE.get(), "Meteorite Lapis Lazuli Ore");
+		add(BlockRegistry.METEOR_SULFUR_ORE.get(), "Meteorite Sulfur Ore");
+
 		add(BlockRegistry.METEOR_REDSTONE_ORE.get(), "Meteorite Redstone Ore");
 
 		add(BlockRegistry.METEOR_BUTTON.get(), "Meteorite Button");
@@ -198,6 +267,8 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(ItemRegistry.STEEL_NUGGET.get(), "Steel Nugget");
 		add(ItemRegistry.STEEL_WOOL.get(), "Steel Wool");
 		add(BlockRegistry.STEEL_BLOCK.get(), "Steel Block");
+		add(ItemRegistry.SULFUR_CRYSTAL.get(), "Sulfur Crystal");
+
 		add(BlockRegistry.CERAMIC.get(), "Ceramic");
 		add(BlockRegistry.CERAMIC_TILE.get(), "Ceramic Tile");
 
@@ -262,6 +333,7 @@ public class ModLanguageProvider extends LanguageProvider {
 
 		add(BlockRegistry.COMPRESSED_COBBLESTONE.get(), "Compressed Cobblestone");
 		add(BlockRegistry.COMPRESSED_COBBLED_DEEPSLATE.get(), "Compressed Cobbled Deepslate");
+		add(BlockRegistry.COMPRESSED_NETHERRACK.get(), "Compressed Netherrack");
 
 		add(BlockRegistry.WORKBENCH.get(), "Workbench");
 		add(BlockRegistry.SILICA.get(), "Silica");
@@ -296,6 +368,8 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(ItemRegistry.LURKER_SPAWN_EGG.get(), "Lurker Spawn Egg");
 		add(ItemRegistry.VOIDFELLOW_SPAWN_EGG.get(), "Space Fellow Spawn Egg");
 		add(ItemRegistry.VOIDED_SPAWN_EGG.get(), "Voided Spawn Egg");
+		add(ItemRegistry.SULFUR_CUBE_SPAWN_EGG.get(), "Sulfur Cube Spawn Egg");
+
 
 		/* MOBS */
 		add(EntityRegistry.LUNAR_SLIME.get(), "Lunar Slime");
@@ -304,6 +378,7 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(EntityRegistry.LURKER.get(), "Lurker");
 		add(EntityRegistry.VOIDFELLOW.get(), "Space Fellow");
 		add(EntityRegistry.VOIDED.get(), "Voided");
+		add(EntityRegistry.SULFUR_CUBE.get(), "Sulfur Cube");
 
 		/* SHUTTLE ITEMS */
 		add(ItemRegistry.WHITE_SHUTTLE.get(), "White Shuttle");
@@ -381,6 +456,7 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(EntityRegistry.HOPPER_MAGCART.get(), "Hopper Magcart");
 		add(EntityRegistry.SPAWNER_MAGCART.get(), "Spawner Magcart");
 		add(EntityRegistry.TNT_MAGCART.get(), "TNT Magcart");
+
 
 	}
 }

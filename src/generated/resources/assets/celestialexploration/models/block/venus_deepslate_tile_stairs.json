@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "side": "celestialexploration:block/venus_deepslate_tiles",
+    "bottom": "celestialexploration:block/venus_deepslate_tiles",
+    "top": "celestialexploration:block/venus_deepslate_tiles"
+  }
+}

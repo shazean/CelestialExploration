@@ -1,6 +1,7 @@
 package com.shim.celestialexploration.events;
 
 import com.shim.celestialexploration.CelestialExploration;
+import com.shim.celestialexploration.config.CelestialCommonConfig;
 import com.shim.celestialexploration.entity.Shuttle;
 import com.shim.celestialexploration.item.armor.ThermalSpaceSuitArmorItem;
 import com.shim.celestialexploration.registry.DimensionRegistry;
@@ -51,6 +52,8 @@ public class ModForgeEventBus {
 
     @SubscribeEvent
     public static void onEntityJoin(EntityJoinWorldEvent event) {
+        if (!CelestialCommonConfig.USE_GRAVITY_EFFECTS.get()) return;
+
         Entity entity = event.getEntity();
         ResourceKey<Level> dimension = event.getWorld().dimension();
         if (entity instanceof ServerPlayer player) {
@@ -72,6 +75,8 @@ public class ModForgeEventBus {
 
     @SubscribeEvent
     public static void onEntityEquipmentChange(LivingEquipmentChangeEvent event) {
+        if (!CelestialCommonConfig.USE_GRAVITY_EFFECTS.get()) return;
+
         Entity entity = event.getEntity();
         EquipmentSlot slot = event.getSlot();
 

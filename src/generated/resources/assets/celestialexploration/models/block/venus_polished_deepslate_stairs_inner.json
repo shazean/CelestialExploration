@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "side": "celestialexploration:block/venus_polished_deepslate",
+    "bottom": "celestialexploration:block/venus_polished_deepslate",
+    "top": "celestialexploration:block/venus_polished_deepslate"
+  }
+}

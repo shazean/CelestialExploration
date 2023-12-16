@@ -102,6 +102,8 @@ public class ModEventClientBusEvents {
         EntityRenderers.register(EntityRegistry.SPAWNER_MAGCART.get(), (context) -> new MagCartRenderer<>(context, CelestialModelLayers.SPAWNER_MAGCART));
         EntityRenderers.register(EntityRegistry.TNT_MAGCART.get(), (context) -> new MagCartRenderer<>(context, CelestialModelLayers.TNT_MAGCART));
         EntityRenderers.register(EntityRegistry.VOIDED.get(), VoidedRenderer::new);
+        EntityRenderers.register(EntityRegistry.SULFUR_CUBE.get(), SulfurCubeRenderer::new);
+
 
         MenuScreens.register(MenuRegistry.OXYGEN_COMPRESSOR_MENU.get(), OxygenCompressorScreen::new);
         MenuScreens.register(MenuRegistry.SHUTTLE_MENU.get(), ShuttleScreen::new);

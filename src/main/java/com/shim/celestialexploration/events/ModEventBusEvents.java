@@ -12,6 +12,7 @@ import com.shim.celestialexploration.inventory.screens.OxygenCompressorScreen;
 import com.shim.celestialexploration.inventory.screens.ShuttleScreen;
 import com.shim.celestialexploration.inventory.screens.WorkbenchScreen;
 import com.shim.celestialexploration.particles.CelestialSlimeParticles;
+import com.shim.celestialexploration.particles.SulfurParticle;
 import com.shim.celestialexploration.recipes.WorkbenchCraftingRecipe;
 import com.shim.celestialexploration.recipes.WorkbenchSmeltingRecipe;
 import com.shim.celestialexploration.registry.*;
@@ -24,12 +25,14 @@ import net.minecraft.client.model.MinecartModel;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
+import net.minecraft.client.particle.FlameParticle;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.MinecartRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.core.Registry;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.vehicle.Boat;
@@ -61,6 +64,7 @@ public class ModEventBusEvents {
         event.put(EntityRegistry.LURKER.get(), Lurker.setAttributes());
         event.put(EntityRegistry.VOIDFELLOW.get(), VoidFellow.setAttributes());
         event.put(EntityRegistry.VOIDED.get(), Voided.setAttributes());
+        event.put(EntityRegistry.SULFUR_CUBE.get(), SulfurCube.setAttributes());
 
     }
 
@@ -167,6 +171,10 @@ public class ModEventBusEvents {
         Minecraft.getInstance().particleEngine.register(ParticleRegistry.RUST_SLIME_PARTICLES.get(), CelestialSlimeParticles.RustProvider::new);
         Minecraft.getInstance().particleEngine.register(ParticleRegistry.LUNAR_SLIME_PARTICLES.get(), CelestialSlimeParticles.LunarProvider::new);
         Minecraft.getInstance().particleEngine.register(ParticleRegistry.MARS_MALLOW_SLIME_PARTICLES.get(), CelestialSlimeParticles.MallowProvider::new);
+        Minecraft.getInstance().particleEngine.register(ParticleRegistry.SULFUR_CUBE_PARTICLES.get(), CelestialSlimeParticles.SulfurProvider::new);
+        Minecraft.getInstance().particleEngine.register(ParticleRegistry.SULFUR_PARTICLE.get(), SulfurParticle.Provider::new);
+        Minecraft.getInstance().particleEngine.register(ParticleRegistry.SULFUR_FIRE_FLAME.get(), FlameParticle.Provider::new);
+
     }
 
     @SubscribeEvent

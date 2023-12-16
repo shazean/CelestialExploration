@@ -77,14 +77,14 @@ public class OxygenCompressorBlock extends BaseEntityBlock {
 
     @Nullable
     @Override
-    public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
-        return new OxygenCompressorBlockEntity(pPos, pState);
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        return new OxygenCompressorBlockEntity(pos, state);
     }
 
     @Nullable
     @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level pLevel, BlockState pState, BlockEntityType<T> pBlockEntityType) {
-        return createTickerHelper(pBlockEntityType, BlockEntityRegistry.OXYGEN_COMPRESSOR_BLOCK_ENTITY.get(),
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
+        return createTickerHelper(blockEntityType, BlockEntityRegistry.OXYGEN_COMPRESSOR_BLOCK_ENTITY.get(),
                 OxygenCompressorBlockEntity::tick);
     }
 }

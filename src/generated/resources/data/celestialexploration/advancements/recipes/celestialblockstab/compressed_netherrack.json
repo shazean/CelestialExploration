@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "celestialexploration:compressed_netherrack"
+    ]
+  },
+  "criteria": {
+    "has_netherrack": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:netherrack"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "celestialexploration:compressed_netherrack"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_netherrack",
+      "has_the_recipe"
+    ]
+  ]
+}

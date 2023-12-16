@@ -49,13 +49,13 @@ public class SmallAsteroidStructure extends StructureFeature<JigsawConfiguration
 
         //ASTEROID BELT
         //Not inside of large circle
-        if (!CelestialUtil.isPointInCircle(0, 0, CelestialUtil.getCalculatedCircleRadius(4.5), chunkpos.x, chunkpos.z)) {
+        if (!CelestialUtil.isPointInCircle(0, 0, CelestialUtil.getCalculatedCircleRadius(4.65), chunkpos.x, chunkpos.z)) {
             asteroidBelt = false;
         }
 
         //only check if we didn't eliminate the asteroid belt in the previous step
         //eliminate the inner circle
-        if (asteroidBelt && CelestialUtil.isPointInCircle(0, 0, CelestialUtil.getCalculatedCircleRadius(4.0), chunkpos.x, chunkpos.z)) {
+        if (asteroidBelt && CelestialUtil.isPointInCircle(0, 0, CelestialUtil.getCalculatedCircleRadius(4.15), chunkpos.x, chunkpos.z)) {
             asteroidBelt = false;
         }
 

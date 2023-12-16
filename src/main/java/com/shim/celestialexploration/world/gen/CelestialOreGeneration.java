@@ -21,6 +21,10 @@ public class CelestialOreGeneration {
         base.add(PlacedFeatureRegistry.MARS_IRON_ORE_PLACED);
         base.add(PlacedFeatureRegistry.MARS_REDSTONE_ORE_PLACED);
 
+        base.add(PlacedFeatureRegistry.VENUS_IRON_ORE_PLACED);
+        base.add(PlacedFeatureRegistry.VENUS_REDSTONE_ORE_PLACED);
+        base.add(PlacedFeatureRegistry.VENUS_LAPIS_ORE_PLACED);
+
         //METEOR
 //        base.add(PlacedFeatureRegistry.METEOR_COAL_ORE_PLACED);
 //        base.add(PlacedFeatureRegistry.METEOR_COPPER_ORE_PLACED);

@@ -53,7 +53,7 @@ public class ShuttleItem extends Item {
             }
 
             if (hitresult.getType() == HitResult.Type.BLOCK) {
-                CelestialExploration.LOGGER.debug("ShuttleItem HitResult BLOCK should be placing shuttle");
+//                CelestialExploration.LOGGER.debug("ShuttleItem HitResult BLOCK should be placing shuttle");
                 Shuttle shuttle = new Shuttle(level, hitresult.getLocation().x, hitresult.getLocation().y, hitresult.getLocation().z);
                 shuttle.setType(this.type);
                 shuttle.setYRot(player.getYRot());

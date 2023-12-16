@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "enabled=false": {
+      "model": "celestialexploration:block/geyser"
+    },
+    "enabled=true": {
+      "model": "celestialexploration:block/geyser_on"
+    }
+  }
+}

@@ -16,6 +16,8 @@ public class DimensionRenderers {
         DimensionSpecialEffects.EFFECTS.put(DimensionRegistry.MARS_EFFECTS, new MarsEffects());
         DimensionSpecialEffects.EFFECTS.put(DimensionRegistry.MOON.location(), new MoonEffects());
         DimensionSpecialEffects.EFFECTS.put(DimensionRegistry.SPACE.location(), new SpaceEffects());
+        DimensionSpecialEffects.EFFECTS.put(DimensionRegistry.VENUS.location(), new VenusEffects());
+
 
 //        DimensionRenderInfo.EFFECTS.put(RegistryDimensions.VENUS_DIMENSION.location(),
 //                new DimensionRenderInfo(128.0F, true, DimensionRenderInfo.FogType.NORMAL, false, false) {
@@ -182,4 +184,38 @@ public class DimensionRenderers {
         }
     }
 
+    @OnlyIn(Dist.CLIENT)
+    public static class VenusEffects extends DimensionSpecialEffects {
+        public VenusEffects() {
+            super(Float.NaN, true, SkyType.NORMAL, false, false);
+        }
+
+        @Override
+        public Vec3 getBrightnessDependentFogColor(Vec3 color, float brightness) {
+            return color.multiply(brightness * 0.94F + 0.06F, brightness * 0.94F + 0.06F, brightness * 0.91F + 0.09F);
+        }
+
+        @Override
+        public boolean isFoggyAt(int x, int z) {
+            return false;
+        }
+
+        @Override
+        public float[] getSunriseColor(float p_230492_1_, float p_230492_2_) {
+            return null;
+        }
+
+        VenusSkyHandler skyHandler = new VenusSkyHandler();
+
+        @Override
+        public void setSkyRenderHandler(ISkyRenderHandler skyRenderHandler) {
+            super.setSkyRenderHandler(skyHandler);
+        }
+
+        @Nullable
+        @Override
+        public ISkyRenderHandler getSkyRenderHandler() {
+            return skyHandler;
+        }
+    }
 }

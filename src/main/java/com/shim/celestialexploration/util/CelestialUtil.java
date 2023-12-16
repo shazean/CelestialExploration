@@ -1,5 +1,6 @@
 package com.shim.celestialexploration.util;
 
+import com.shim.celestialexploration.config.CelestialCommonConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.phys.Vec3;
@@ -13,8 +14,8 @@ public class CelestialUtil {
         return (int) ((Math.pow(phi, n) - Math.pow(-phi, -n))/squareRootOf5);
     }
 
-    public static int getSpaceRatio() { //TODO get from config
-        return 10;
+    public static int getSpaceRatio() {
+        return CelestialCommonConfig.RANGE_OF_SPACE.get();
     }
 
     public static Vec3 getPlanetaryChunkCoordinates(int planetNum) {

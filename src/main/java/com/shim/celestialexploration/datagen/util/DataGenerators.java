@@ -20,7 +20,10 @@ public class DataGenerators {
 			generator.addProvider(new Recipes(generator));
 			generator.addProvider(new LootTables(generator));
 			ModBlockTags blockTags = new ModBlockTags(generator, event.getExistingFileHelper());
+			ModFluidTags fluidTags = new ModFluidTags(generator, CelestialExploration.MODID, event.getExistingFileHelper());
+
 			generator.addProvider(blockTags);
+			generator.addProvider(fluidTags);
 			generator.addProvider(new ModItemTags(generator, blockTags, event.getExistingFileHelper()));
 //			ModBiomeTags biomeTags = new ModBiomeTags(generator);
 //			generator.addProvider(biomeTags);

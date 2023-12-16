@@ -145,6 +145,7 @@ public class ItemRegistry {
 	public static final RegistryObject<Item> MARS_DEEPSLATE_REDSTONE_ORE = fromBlock(BlockRegistry.MARS_DEEPSLATE_REDSTONE_ORE);
 	public static final RegistryObject<Item> COMPRESSED_MARS_COBBLESTONE = fromBlock(BlockRegistry.COMPRESSED_MARS_COBBLESTONE);
 	public static final RegistryObject<Item> COMPRESSED_MARS_COBBLED_DEEPSLATE = fromBlock(BlockRegistry.COMPRESSED_MARS_COBBLED_DEEPSLATE);
+	public static final RegistryObject<Item> MARS_LANTERN = fromBlock(BlockRegistry.MARS_LANTERN);
 
 
 	//STAIRS
@@ -182,6 +183,79 @@ public class ItemRegistry {
 	public static final RegistryObject<Item> MARS_STONE_PRESSURE_PLATE = fromMiscBlock(BlockRegistry.MARS_STONE_PRESSURE_PLATE);
 	public static final RegistryObject<Item> MARS_DEEPSLATE_PRESSURE_PLATE = fromMiscBlock(BlockRegistry.MARS_DEEPSLATE_PRESSURE_PLATE);
 
+	//VENUS
+	//FULL BLOCKS
+	public static final RegistryObject<Item> VENUS_SAND = fromBlock(BlockRegistry.VENUS_SAND);
+	public static final RegistryObject<Item> FINE_VENUS_SAND = fromBlock(BlockRegistry.FINE_VENUS_SAND);
+
+	//	public static final RegistryObject<Item> MARS_SOIL = ITEMS.register("mars_soil", () -> new BlockItemBase(RegistryBlocks.MARS_SOIL.get()));
+	public static final RegistryObject<Item> VENUS_STONE = fromBlock(BlockRegistry.VENUS_STONE);
+//	public static final RegistryObject<Item> MARS_SMOOTH_STONE = fromBlock(BlockRegistry.VENUS_SMOOTH_STONE);
+
+	public static final RegistryObject<Item> VENUS_BRICKS = fromBlock(BlockRegistry.VENUS_BRICKS);
+//	public static final RegistryObject<Item> MARS_BRICK_PILLAR = fromBlock(BlockRegistry.VENUS_BRICK_PILLAR);
+	public static final RegistryObject<Item> CHISELED_VENUS_BRICKS = fromBlock(BlockRegistry.CHISELED_VENUS_BRICKS);
+//	public static final RegistryObject<Item> CRACKED_MARS_BRICKS = fromBlock(BlockRegistry.CRACKED_VENUS_BRICKS);
+	public static final RegistryObject<Item> VENUS_IRON_ORE = fromBlock(BlockRegistry.VENUS_IRON_ORE);
+	public static final RegistryObject<Item> VENUS_REDSTONE_ORE = fromBlock(BlockRegistry.VENUS_REDSTONE_ORE);
+	public static final RegistryObject<Item> VENUS_LAPIS_ORE = fromBlock(BlockRegistry.VENUS_LAPIS_ORE);
+	public static final RegistryObject<Item> VENUS_COBBLESTONE = fromBlock(BlockRegistry.VENUS_COBBLESTONE);
+	public static final RegistryObject<Item> VENUS_DEEPSLATE = fromBlock(BlockRegistry.VENUS_DEEPSLATE);
+	public static final RegistryObject<Item> VENUS_DEEPSLATE_BRICKS = fromBlock(BlockRegistry.VENUS_DEEPSLATE_BRICKS);
+//	public static final RegistryObject<Item> CRACKED_MARS_DEEPSLATE_BRICKS = fromBlock(BlockRegistry.CRACKED_VENUS_DEEPSLATE_BRICKS);
+//	public static final RegistryObject<Item> CHISELED_MARS_DEEPSLATE_BRICKS = fromBlock(BlockRegistry.CHISELED_VENUS_DEEPSLATE_BRICKS);
+	public static final RegistryObject<Item> VENUS_COBBLED_DEEPSLATE = fromBlock(BlockRegistry.VENUS_COBBLED_DEEPSLATE);
+	public static final RegistryObject<Item> VENUS_DEEPSLATE_TILES = fromBlock(BlockRegistry.VENUS_DEEPSLATE_TILES);
+//	public static final RegistryObject<Item> CRACKED_MARS_DEEPSLATE_TILES = fromBlock(BlockRegistry.CRACKED_MARS_DEEPSLATE_TILES);
+	public static final RegistryObject<Item> VENUS_POLISHED_DEEPSLATE = fromBlock(BlockRegistry.VENUS_POLISHED_DEEPSLATE);
+	public static final RegistryObject<Item> VENUS_DEEPSLATE_IRON_ORE = fromBlock(BlockRegistry.VENUS_DEEPSLATE_IRON_ORE);
+	public static final RegistryObject<Item> VENUS_DEEPSLATE_REDSTONE_ORE = fromBlock(BlockRegistry.VENUS_DEEPSLATE_REDSTONE_ORE);
+	public static final RegistryObject<Item> VENUS_DEEPSLATE_LAPIS_ORE = fromBlock(BlockRegistry.VENUS_DEEPSLATE_LAPIS_ORE);
+	public static final RegistryObject<Item> GEYSER = fromBlock(BlockRegistry.GEYSER);
+	public static final RegistryObject<Item> VENUS_LANTERN = fromBlock(BlockRegistry.VENUS_LANTERN);
+
+	public static final RegistryObject<Item> SULFURIC_OBSIDIAN = fromBlock(BlockRegistry.SULFURIC_OBSIDIAN);
+
+	public static final RegistryObject<Item> COMPRESSED_VENUS_COBBLESTONE = fromBlock(BlockRegistry.COMPRESSED_VENUS_COBBLESTONE);
+	public static final RegistryObject<Item> COMPRESSED_VENUS_COBBLED_DEEPSLATE = fromBlock(BlockRegistry.COMPRESSED_VENUS_COBBLED_DEEPSLATE);
+
+
+	//STAIRS
+	public static final RegistryObject<Item> VENUS_STONE_STAIRS = fromBlock(BlockRegistry.VENUS_STONE_STAIRS);
+	public static final RegistryObject<Item> VENUS_BRICK_STAIRS = fromBlock(BlockRegistry.VENUS_BRICK_STAIRS);
+	public static final RegistryObject<Item> VENUS_COBBLESTONE_STAIRS = fromBlock(BlockRegistry.VENUS_COBBLESTONE_STAIRS);
+	public static final RegistryObject<Item> VENUS_DEEPSLATE_BRICK_STAIRS = fromBlock(BlockRegistry.VENUS_DEEPSLATE_BRICK_STAIRS);
+	public static final RegistryObject<Item> VENUS_COBBLED_DEEPSLATE_STAIRS = fromBlock(BlockRegistry.VENUS_COBBLED_DEEPSLATE_STAIRS);
+	public static final RegistryObject<Item> VENUS_DEEPSLATE_TILE_STAIRS = fromBlock(BlockRegistry.VENUS_DEEPSLATE_TILE_STAIRS);
+	public static final RegistryObject<Item> VENUS_POLISHED_DEEPSLATE_STAIRS = fromBlock(BlockRegistry.VENUS_POLISHED_DEEPSLATE_STAIRS);
+
+	//SLABS
+	public static final RegistryObject<Item> VENUS_STONE_SLAB = fromBlock(BlockRegistry.VENUS_STONE_SLAB);
+	//	public static final RegistryObject<Item> MARS_SMOOTH_STONE_SLAB = fromBlock(BlockRegistry.MARS_SMOOTH_STONE_SLAB);
+	public static final RegistryObject<Item> VENUS_BRICK_SLAB = fromBlock(BlockRegistry.VENUS_BRICK_SLAB);
+	public static final RegistryObject<Item> VENUS_COBBLESTONE_SLAB = fromBlock(BlockRegistry.VENUS_COBBLESTONE_SLAB);
+	public static final RegistryObject<Item> VENUS_COBBLED_DEEPSLATE_SLAB = fromBlock(BlockRegistry.VENUS_COBBLED_DEEPSLATE_SLAB);
+	public static final RegistryObject<Item> VENUS_DEEPSLATE_BRICK_SLAB = fromBlock(BlockRegistry.VENUS_DEEPSLATE_BRICK_SLAB);
+	public static final RegistryObject<Item> VENUS_DEEPSLATE_TILE_SLAB = fromBlock(BlockRegistry.VENUS_DEEPSLATE_TILE_SLAB);
+	public static final RegistryObject<Item> VENUS_POLISHED_DEEPSLATE_SLAB = fromBlock(BlockRegistry.VENUS_POLISHED_DEEPSLATE_SLAB);
+
+	//WALLS
+	public static final RegistryObject<Item> VENUS_BRICK_WALL = fromBlock(BlockRegistry.VENUS_BRICK_WALL);
+	public static final RegistryObject<Item> VENUS_COBBLESTONE_WALL = fromBlock(BlockRegistry.VENUS_COBBLESTONE_WALL);
+	public static final RegistryObject<Item> VENUS_COBBLED_DEEPSLATE_WALL = fromBlock(BlockRegistry.VENUS_COBBLED_DEEPSLATE_WALL);
+	public static final RegistryObject<Item> VENUS_DEEPSLATE_BRICK_WALL = fromBlock(BlockRegistry.VENUS_DEEPSLATE_BRICK_WALL);
+	public static final RegistryObject<Item> VENUS_DEEPSLATE_TILE_WALL = fromBlock(BlockRegistry.VENUS_DEEPSLATE_TILE_WALL);
+	public static final RegistryObject<Item> VENUS_POLISHED_DEEPSLATE_WALL = fromBlock(BlockRegistry.VENUS_POLISHED_DEEPSLATE_WALL);
+
+	//BUTTONS
+	public static final RegistryObject<Item> VENUS_STONE_BUTTON = fromMiscBlock(BlockRegistry.VENUS_STONE_BUTTON);
+	public static final RegistryObject<Item> VENUS_DEEPSLATE_BUTTON = fromMiscBlock(BlockRegistry.VENUS_DEEPSLATE_BUTTON);
+
+	//PRESSURE PlATES
+	public static final RegistryObject<Item> VENUS_STONE_PRESSURE_PLATE = fromMiscBlock(BlockRegistry.VENUS_STONE_PRESSURE_PLATE);
+	public static final RegistryObject<Item> VENUS_DEEPSLATE_PRESSURE_PLATE = fromMiscBlock(BlockRegistry.VENUS_DEEPSLATE_PRESSURE_PLATE);
+
+
 
 	//METEOR
 	public static final RegistryObject<Item> METEOR = fromBlock(BlockRegistry.METEOR);	
@@ -192,8 +266,10 @@ public class ItemRegistry {
 	public static final RegistryObject<Item> METEOR_REDSTONE_ORE = fromBlock(BlockRegistry.METEOR_REDSTONE_ORE);	
 	public static final RegistryObject<Item> METEOR_DIAMOND_ORE = fromBlock(BlockRegistry.METEOR_DIAMOND_ORE);	
 	public static final RegistryObject<Item> METEOR_COPPER_ORE = fromBlock(BlockRegistry.METEOR_COPPER_ORE);	
-	public static final RegistryObject<Item> METEOR_LAPIS_ORE = fromBlock(BlockRegistry.METEOR_LAPIS_ORE);	
-	public static final RegistryObject<Item> METEOR_BRICKS = fromBlock(BlockRegistry.METEOR_BRICKS);	
+	public static final RegistryObject<Item> METEOR_LAPIS_ORE = fromBlock(BlockRegistry.METEOR_LAPIS_ORE);
+	public static final RegistryObject<Item> METEOR_SULFUR_ORE = fromBlock(BlockRegistry.METEOR_SULFUR_ORE);
+
+	public static final RegistryObject<Item> METEOR_BRICKS = fromBlock(BlockRegistry.METEOR_BRICKS);
 	public static final RegistryObject<Item> CHISELED_METEOR_BRICKS = fromBlock(BlockRegistry.CHISELED_METEOR_BRICKS);	
 	public static final RegistryObject<Item> METEOR_BRICK_STAIRS = fromBlock(BlockRegistry.METEOR_BRICK_STAIRS);	
 	public static final RegistryObject<Item> METEOR_BRICK_SLAB = fromBlock(BlockRegistry.METEOR_BRICK_SLAB);	
@@ -242,6 +318,7 @@ public class ItemRegistry {
 
 	public static final RegistryObject<Item> COMPRESSED_COBBLESTONE = fromBlock(BlockRegistry.COMPRESSED_COBBLESTONE);
 	public static final RegistryObject<Item> COMPRESSED_COBBLED_DEEPSLATE = fromBlock(BlockRegistry.COMPRESSED_COBBLED_DEEPSLATE);
+	public static final RegistryObject<Item> COMPRESSED_NETHERRACK = fromBlock(BlockRegistry.COMPRESSED_NETHERRACK);
 
 
 	public static final RegistryObject<Item> DRY_ICE = fromBlock(BlockRegistry.DRY_ICE);
@@ -296,6 +373,11 @@ public class ItemRegistry {
 	public static final RegistryObject<Item> VOIDED_SPAWN_EGG = ITEMS.register("voided_spawn_egg",
 			() -> new ForgeSpawnEggItem(EntityRegistry.VOIDED,0, 0x3c2d42,
 					new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+
+	public static final RegistryObject<Item> SULFUR_CUBE_SPAWN_EGG = ITEMS.register("sulfur_cube_spawn_egg",
+			() -> new ForgeSpawnEggItem(EntityRegistry.SULFUR_CUBE,0x3e2800, 0x825300,
+					new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+
 
 
 //	public static final RegistryObject<ModSpawnEgg> SULFURIC_SLIME_SPAWN_EGG = ITEMS.register("sulfuric_slime_spawn_egg", () -> new ModSpawnEgg(RegistryEntities.SULFURIC_SLIME, 0xbd9200, 0xa68000, new Item.Properties().tab(ItemGroup.TAB_MISC)));
@@ -442,6 +524,7 @@ public class ItemRegistry {
 //	public static final RegistryObject<Item> NUGGET_MOLD = ITEMS.register("nugget_mold", () -> new NuggetMoldItem((new Item.Properties()).tab(CreativeModeTab.TAB_MATERIALS)));
 
 	public static final RegistryObject<Item> STEEL_WOOL = ITEMS.register("steel_wool", () -> new Item((new Item.Properties()).tab(CreativeModeTab.TAB_MATERIALS)));
+	public static final RegistryObject<Item> SULFUR_CRYSTAL = ITEMS.register("sulfur_crystal", () -> new Item((new Item.Properties()).tab(CreativeModeTab.TAB_MATERIALS)));
 
 
 	/**
@@ -500,6 +583,13 @@ public class ItemRegistry {
 	public static final TagKey<Item> MOON_COBBLESTONE_TAG = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "moon_cobblestone"));
 	public static final TagKey<Item> MOON_DEEPSLATE_TAG = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "moon_deepslate"));
 	public static final TagKey<Item> MOON_COBBLED_DEEPSLATE_TAG = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "moon_cobbled_deepslate"));
+
+	public static final TagKey<Item> VENUS_TAG = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "venus"));
+	public static final TagKey<Item> VENUS_STONE_TAG = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "venus_stone"));
+	public static final TagKey<Item> VENUS_COBBLESTONE_TAG = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "venus_cobblestone"));
+	public static final TagKey<Item> VENUS_DEEPSLATE_TAG = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "venus_deepslate"));
+	public static final TagKey<Item> VENUS_COBBLED_DEEPSLATE_TAG = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "venus_cobbled_deepslate"));
+
 
 	public static final TagKey<Item> METEOR_TAG = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "meteor"));
 	public static final TagKey<Item> METEOR_STONE_TAG = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "meteor_stone"));

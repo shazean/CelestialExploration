@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:venus_sand"
+    ]
+  },
+  "criteria": {
+    "has_venus_sand": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:venus_sand"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:venus_sand"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_venus_sand",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "celestialexploration",
+  "pattern": [
+    "XXX",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:venus_polished_deepslate"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:venus_polished_deepslate_wall",
+    "count": 6
+  }
+}
