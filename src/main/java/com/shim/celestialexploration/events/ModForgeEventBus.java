@@ -58,18 +58,17 @@ public class ModForgeEventBus {
         ResourceKey<Level> dimension = event.getWorld().dimension();
         if (entity instanceof ServerPlayer player) {
 
-                ItemStack itemStack = player.getItemBySlot(EquipmentSlot.FEET);
+            ItemStack itemStack = player.getItemBySlot(EquipmentSlot.FEET);
 
-                if (itemStack.getItem() instanceof ThermalSpaceSuitArmorItem && ((ThermalSpaceSuitArmorItem) itemStack.getItem()).isGravityBoots(itemStack)) {
-                    player.removeEffect(EffectRegistry.LOW_GRAVITY.get());
-                    return;
+            if (itemStack.getItem() instanceof ThermalSpaceSuitArmorItem && ((ThermalSpaceSuitArmorItem) itemStack.getItem()).isGravityBoots(itemStack)) {
+                player.removeEffect(EffectRegistry.LOW_GRAVITY.get());
+            } else {
+                if (dimension == DimensionRegistry.MARS || dimension == DimensionRegistry.MOON) {
+                    player.addEffect(new MobEffectInstance(EffectRegistry.LOW_GRAVITY.get(), 120000, 0, false, false, true));
                 } else {
-                    if (dimension == DimensionRegistry.MARS || dimension == DimensionRegistry.MOON) {
-                        player.addEffect(new MobEffectInstance(EffectRegistry.LOW_GRAVITY.get(), 120000, 0, false, false, true));
-                    } else {
-                        player.removeEffect(EffectRegistry.LOW_GRAVITY.get());
-                    }
+                    player.removeEffect(EffectRegistry.LOW_GRAVITY.get());
                 }
+            }
         }
     }
 

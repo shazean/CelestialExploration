@@ -3,9 +3,5 @@
 
   "_comment": " This biome tag can specify the biome directly. Or specify another biome tag by starting with # ",
   "values": [
-    "celestialexploration:moon_craters",
-    "celestialexploration:moon_desert",
-    "celestialexploration:moon_lower_plains",
-    "celestialexploration:moon_plains"
   ]
 }

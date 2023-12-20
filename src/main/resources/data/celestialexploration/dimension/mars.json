@@ -8,7 +8,7 @@
     "has_raids": true,
     "has_skylight": true,
     "has_ceiling": false,
-    "coordinate_scale": 1,
+    "coordinate_scale": 3,
     "ambient_light": 0,
     "effects": "celestialexploration:mars",
     "logical_height": 384,

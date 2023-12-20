@@ -2895,8 +2895,8 @@
               "if_true": {
                 "type": "minecraft:noise_threshold",
                 "noise": "minecraft:surface",
-                "min_threshold": -0.909,
-                "max_threshold": -0.287556
+                "min_threshold": -0.99,
+                "max_threshold": -0.2
               },
               "then_run": {
                 "type": "minecraft:block",

@@ -124,6 +124,8 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(BlockRegistry.MARS_DEEPSLATE_IRON_ORE.get(), "Martian Deepslate Iron Ore");
 		add(BlockRegistry.MARS_DEEPSLATE_REDSTONE_ORE.get(), "Martian Deepslate Redstone Ore");
 		add(BlockRegistry.COARSE_MARS_SAND.get(), "Coarse Martian Regolith");
+		add(BlockRegistry.MARS_STONE_STAIRS.get(), "Martian Stone Stairs");
+
 
 		add(BlockRegistry.MARS_COBBLESTONE_SLAB.get(), "Martian Cobblestone Slab");
 		add(BlockRegistry.MARS_COBBLESTONE_STAIRS.get(), "Martian Cobblestone Stairs");
@@ -187,6 +189,7 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(BlockRegistry.VENUS_DEEPSLATE_LAPIS_ORE.get(), "Venusian Deepslate Lapis Lazuli Ore");
 		add(BlockRegistry.FINE_VENUS_SAND.get(), "Fine Venusian Regolith");
 		add(BlockRegistry.GEYSER.get(), "Sulfur Geyser");
+		add(BlockRegistry.VENUS_STONE_STAIRS.get(), "Venusian Stone Stairs");
 
 
 		add(BlockRegistry.VENUS_COBBLESTONE_SLAB.get(), "Venusian Cobblestone Slab");
@@ -435,6 +438,10 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(FluidRegistry.MOLTEN_GOLD_BLOCK.get(), "Molten Gold");
 		add("fluid.celestialexploration.molten_gold", "Molten Gold");
 //		add(FluidRegistry.MOLTEN_NETHERITE_BLOCK.get(), "Molten Copper");
+		add(FluidRegistry.SULFUR_BLOCK.get(), "Sulfur");
+		add("fluid.celestialexploration.sulfur", "Sulfur");
+
+		add(FluidRegistry.SULFUR_BUCKET.get(), "Sulfur Bucket");
 
 		/* MAG LEV */
 		add(BlockRegistry.MAG_RAIL.get(), "Mag Rail");
