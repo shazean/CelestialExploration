@@ -6,6 +6,7 @@ buildscript {
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
+        classpath "gradle.plugin.com.matthewprenger:CurseGradle:1.4.0"
     }
 }
 // Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
@@ -14,7 +15,7 @@ plugins {
     id 'maven-publish'
 }
 apply plugin: 'net.minecraftforge.gradle'
-
+apply plugin: 'com.matthewprenger.cursegradle'
 
 version = '1.0'
 group = 'com.shim.celestialexploration' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
@@ -228,3 +229,23 @@ publishing {
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
 }
+
+curseforge {
+    apiKey = System.getenv('CURSEFORGE_API_KEY') ?: 0
+    project {
+        id = project.curseforge_project_id
+        changelog = file("CHANGELOG/${project.base_mc_version}/current.md")
+        changelogType = 'markdown'
+        releaseType = findProperty("curseforge_release_type") ?: 'beta'
+        addGameVersion project.target_mc_version
+        for (String v : project.additional_mc_versions.split(',')) {
+            if (v) {
+                addGameVersion v
+            }
+        }
+    }
+    options {
+        detectNewerJava = true
+    }
+}
+
