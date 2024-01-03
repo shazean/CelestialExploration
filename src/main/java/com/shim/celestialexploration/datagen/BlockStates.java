@@ -31,9 +31,9 @@ public class BlockStates extends BlockStateProvider {
 
 	@Override
 	protected void registerStatesAndModels() {
-		/**
+		/*
 		 * MOON
-		 * */
+		 */
 		simpleBlock(BlockRegistry.MOON_BRICKS.get());
 		simpleBlock(BlockRegistry.MOON_IRON_ORE.get());
 		simpleBlock(BlockRegistry.MOON_REDSTONE_ORE.get());
@@ -261,6 +261,56 @@ public class BlockStates extends BlockStateProvider {
 		simpleBlock(BlockRegistry.SOLAR_PLASMA.get());
 		simpleBlock(BlockRegistry.SOLAR_FLARE.get());
 		simpleBlock(BlockRegistry.SUN_SPOT.get());
+
+		simpleBlock(BlockRegistry.MERCURY_STONE.get());
+		simpleBlock(BlockRegistry.MERCURY_CORE.get());
+		axisBlock((RotatedPillarBlock) BlockRegistry.MERCURY_DEEPSLATE.get());
+
+		simpleBlock(BlockRegistry.JUPITER_ATMOSPHERE.get());
+		simpleBlock(BlockRegistry.JUPITER_CORE.get());
+		axisBlock((RotatedPillarBlock) BlockRegistry.JUPITER_DEEPSLATE.get());
+
+//		simpleBlock(BlockRegistry.IO_STONE.get());
+//		simpleBlock(BlockRegistry.IO_CORE.get());
+//		axisBlock((RotatedPillarBlock) BlockRegistry.IO_DEEPSLATE.get());
+
+		simpleBlock(BlockRegistry.EUROPA_CORE.get());
+//		simpleBlock(BlockRegistry.EUROPA_HYDRATE.get());
+
+		simpleBlock(BlockRegistry.GANYMEDE_CORE.get());
+		simpleBlock(BlockRegistry.CALLISTO_CORE.get());
+
+		simpleBlock(BlockRegistry.SATURN_ATMOSPHERE.get());
+		simpleBlock(BlockRegistry.SATURN_CORE.get());
+		axisBlock((RotatedPillarBlock) BlockRegistry.SATURN_DEEPSLATE.get());
+
+		simpleBlock(BlockRegistry.TITAN_CORE.get());
+		simpleBlock(BlockRegistry.ENCELADUS_CORE.get());
+		simpleBlock(BlockRegistry.RHEA_CORE.get());
+		simpleBlock(BlockRegistry.IAPETUS_CORE.get());
+		simpleBlock(BlockRegistry.DIONE_CORE.get());
+		simpleBlock(BlockRegistry.HYPERION_CORE.get());
+
+		simpleBlock(BlockRegistry.URANUS_STONE.get());
+		simpleBlock(BlockRegistry.URANUS_CORE.get());
+		axisBlock((RotatedPillarBlock) BlockRegistry.URANUS_DEEPSLATE.get());
+
+		simpleBlock(BlockRegistry.TITANIA_CORE.get());
+		simpleBlock(BlockRegistry.OBERON_CORE.get());
+
+		simpleBlock(BlockRegistry.NEPTUNE_STONE.get());
+		simpleBlock(BlockRegistry.NEPTUNE_CORE.get());
+		axisBlock((RotatedPillarBlock) BlockRegistry.NEPTUNE_DEEPSLATE.get());
+
+		simpleBlock(BlockRegistry.TRITON_CORE.get());
+
+//		simpleBlock(BlockRegistry.PLUTO_CORE.get());
+//		simpleBlock(BlockRegistry.CERES_CORE.get());
+//		simpleBlock(BlockRegistry.ERIS_CORE.get());
+//		simpleBlock(BlockRegistry.HAUMEA_CORE.get());
+//		simpleBlock(BlockRegistry.MAKEMAKE_CORE.get());
+
+
 
 		/**
 		 * OTHER

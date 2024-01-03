@@ -724,11 +724,16 @@ public class ModBlockTags extends BlockTagsProvider {
 
         ;
 
-        tag(BlockRegistry.CONNECTED_GLASS_TAG)
-                .add(BlockRegistry.REINFORCED_GLASS.get());
+        tag(BlockRegistry.REGOLITH_TAG)
+                .add(BlockRegistry.MOON_SAND.get())
+                .add(BlockRegistry.MARS_SAND.get())
+                .add(BlockRegistry.VENUS_SAND.get());
 
-        tag(BlockRegistry.CONNECTED_GLASS_PANE_TAG)
-                .add(BlockRegistry.REINFORCED_GLASS_PANE.get());
+
+        tag(BlockRegistry.CONNECTED_GLASS_TAG).add(BlockRegistry.REINFORCED_GLASS.get());
+
+        tag(BlockRegistry.CONNECTED_GLASS_PANE_TAG).add(BlockRegistry.REINFORCED_GLASS_PANE.get());
+
 
         tag(Tags.Blocks.GLASS)
                 .add(BlockRegistry.REINFORCED_GLASS.get())

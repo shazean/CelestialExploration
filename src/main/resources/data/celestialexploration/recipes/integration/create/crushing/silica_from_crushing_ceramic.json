@@ -1,8 +1,14 @@
 {
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create"
+    }
+  ],
   "type": "create:crushing",
   "ingredients": [
     {
-      "tag": "celestialexploration:dyed_ceramic_tag"
+      "tag": "celestialexploration:dyed_ceramic"
     }
   ],
   "results": [

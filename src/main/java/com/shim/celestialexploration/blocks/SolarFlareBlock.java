@@ -17,7 +17,7 @@ public class SolarFlareBlock extends HalfTransparentBlock {
     }
 
     public void stepOn(Level level, BlockPos pos, BlockState state, Entity entity) {
-        entity.hurt(DamageSource.HOT_FLOOR, 80.0F);
+        entity.hurt(DamageSource.HOT_FLOOR, 100.0F);
     }
 
     public void animateTick(BlockState state, Level level, BlockPos pos, Random rand) {
