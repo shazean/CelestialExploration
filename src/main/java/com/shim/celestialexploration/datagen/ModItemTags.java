@@ -153,7 +153,6 @@ public class ModItemTags extends ItemTagsProvider {
 //				.add(ItemRegistry.MOON_COBBLESTONE_STAIRS.get())
 //				.add(ItemRegistry.MOON_COBBLESTONE_WALL.get())
 				.add(ItemRegistry.VENUS_COBBLESTONE.get())
-
 		;
 
 		tag(Tags.Items.COBBLESTONE_DEEPSLATE)
@@ -166,7 +165,6 @@ public class ModItemTags extends ItemTagsProvider {
 //				.add(ItemRegistry.MOON_COBBLED_DEEPSLATE_STAIRS.get())
 //				.add(ItemRegistry.MOON_COBBLED_DEEPSLATE_WALL.get())
 				.add(ItemRegistry.VENUS_COBBLED_DEEPSLATE.get())
-
 		;
 
 		tag(Tags.Items.ORES_COAL)
@@ -194,7 +192,6 @@ public class ModItemTags extends ItemTagsProvider {
 				.add(ItemRegistry.MARS_DEEPSLATE_IRON_ORE.get())
 				.add(ItemRegistry.VENUS_IRON_ORE.get())
 				.add(ItemRegistry.VENUS_DEEPSLATE_IRON_ORE.get())
-
 		;
 
 		tag(Tags.Items.ORES_LAPIS)
@@ -224,7 +221,6 @@ public class ModItemTags extends ItemTagsProvider {
 				.add(ItemRegistry.MARS_DEEPSLATE_REDSTONE_ORE.get())
 				.add(ItemRegistry.VENUS_REDSTONE_ORE.get())
 				.add(ItemRegistry.VENUS_DEEPSLATE_REDSTONE_ORE.get())
-
 		;
 
 		tag(ItemRegistry.MOON_TAG)
@@ -297,17 +293,8 @@ public class ModItemTags extends ItemTagsProvider {
 				.add(ItemRegistry.CRACKED_MOON_DEEPSLATE_TILES.get())
 				.add(ItemRegistry.CHISELED_MOON_DEEPSLATE_BRICKS.get())
 				.add(ItemRegistry.MOON_DEEPSLATE_BRICKS.get())
-//				.add(ItemRegistry.MOON_DEEPSLATE_BRICK_SLAB.get())
-//				.add(ItemRegistry.MOON_DEEPSLATE_BRICK_STAIRS.get())
-//				.add(ItemRegistry.MOON_DEEPSLATE_BRICK_WALL.get())
 				.add(ItemRegistry.MOON_DEEPSLATE_TILES.get())
-//				.add(ItemRegistry.MOON_DEEPSLATE_TILE_SLAB.get())
-//				.add(ItemRegistry.MOON_DEEPSLATE_TILE_STAIRS.get())
-//				.add(ItemRegistry.MOON_DEEPSLATE_TILE_WALL.get())
 				.add(ItemRegistry.MOON_POLISHED_DEEPSLATE.get())
-//				.add(ItemRegistry.MOON_POLISHED_DEEPSLATE_SLAB.get())
-//				.add(ItemRegistry.MOON_POLISHED_DEEPSLATE_STAIRS.get())
-//				.add(ItemRegistry.MOON_POLISHED_DEEPSLATE_WALL.get())
 				;
 
 		tag(ItemRegistry.MOON_COBBLED_DEEPSLATE_TAG)
@@ -387,27 +374,13 @@ public class ModItemTags extends ItemTagsProvider {
 				.add(ItemRegistry.CRACKED_MARS_DEEPSLATE_TILES.get())
 				.add(ItemRegistry.CHISELED_MARS_DEEPSLATE_BRICKS.get())
 				.add(ItemRegistry.MARS_DEEPSLATE_BRICKS.get())
-//				.add(ItemRegistry.MARS_DEEPSLATE_BRICK_SLAB.get())
-//				.add(ItemRegistry.MARS_DEEPSLATE_BRICK_STAIRS.get())
-//				.add(ItemRegistry.MARS_DEEPSLATE_BRICK_WALL.get())
 				.add(ItemRegistry.MARS_DEEPSLATE_TILES.get())
-//				.add(ItemRegistry.MARS_DEEPSLATE_TILE_SLAB.get())
-//				.add(ItemRegistry.MARS_DEEPSLATE_TILE_STAIRS.get())
-//				.add(ItemRegistry.MARS_DEEPSLATE_TILE_WALL.get())
 				.add(ItemRegistry.MARS_POLISHED_DEEPSLATE.get())
-//				.add(ItemRegistry.MARS_POLISHED_DEEPSLATE_SLAB.get())
-//				.add(ItemRegistry.MARS_POLISHED_DEEPSLATE_STAIRS.get())
-//				.add(ItemRegistry.MARS_POLISHED_DEEPSLATE_WALL.get())
 		;
 
 		tag(ItemRegistry.MARS_COBBLED_DEEPSLATE_TAG)
 				.add(ItemRegistry.MARS_COBBLED_DEEPSLATE.get())
-//				.add(ItemRegistry.MARS_COBBLED_DEEPSLATE_SLAB.get())
-//				.add(ItemRegistry.MARS_COBBLED_DEEPSLATE_STAIRS.get())
-//				.add(ItemRegistry.MARS_COBBLED_DEEPSLATE_WALL.get())
 		;
-
-
 
 		tag(ItemRegistry.VENUS_TAG)
 				.add(ItemRegistry.VENUS_STONE.get())
@@ -524,77 +497,40 @@ public class ModItemTags extends ItemTagsProvider {
 				.add(ItemRegistry.LUMINOUS_WHITE_GLASS_PANE.get());
 
 		tag(ItemRegistry.DYED_CERAMIC_TAG)
-//                .add(BlockRegistry.CERAMIC.get())
-//                .add(BlockRegistry.CERAMIC_TILE.get())
 				.add(ItemRegistry.WHITE_CERAMIC.get())
-//                .add(BlockRegistry.WHITE_CERAMIC_TILE.get())
 				.add(ItemRegistry.LIGHT_GREY_CERAMIC.get())
-//                .add(BlockRegistry.LIGHT_GREY_CERAMIC_TILE.get())
 				.add(ItemRegistry.GREY_CERAMIC.get())
-//                .add(BlockRegistry.GREY_CERAMIC_TILE.get())
 				.add(ItemRegistry.BLACK_CERAMIC.get())
-//                .add(BlockRegistry.BLACK_CERAMIC_TILE.get())
 				.add(ItemRegistry.PURPLE_CERAMIC.get())
-//                .add(BlockRegistry.PURPLE_CERAMIC_TILE.get())
 				.add(ItemRegistry.MAGENTA_CERAMIC.get())
-//                .add(BlockRegistry.MAGENTA_CERAMIC_TILE.get())
 				.add(ItemRegistry.BLUE_CERAMIC.get())
-//                .add(BlockRegistry.BLUE_CERAMIC_TILE.get())
 				.add(ItemRegistry.LIGHT_BLUE_CERAMIC.get())
-//                .add(BlockRegistry.LIGHT_BLUE_CERAMIC_TILE.get())
 				.add(ItemRegistry.CYAN_CERAMIC.get())
-//                .add(BlockRegistry.CYAN_CERAMIC_TILE.get())
 				.add(ItemRegistry.GREEN_CERAMIC.get())
-//                .add(BlockRegistry.GREEN_CERAMIC_TILE.get())
 				.add(ItemRegistry.LIME_CERAMIC.get())
-//                .add(BlockRegistry.LIME_CERAMIC_TILE.get())
 				.add(ItemRegistry.YELLOW_CERAMIC.get())
-//                .add(BlockRegistry.YELLOW_CERAMIC_TILE.get())
 				.add(ItemRegistry.ORANGE_CERAMIC.get())
-//                .add(BlockRegistry.ORANGE_CERAMIC_TILE.get())
 				.add(ItemRegistry.BROWN_CERAMIC.get())
-//                .add(BlockRegistry.BROWN_CERAMIC_TILE.get())
 				.add(ItemRegistry.RED_CERAMIC.get())
-//                .add(BlockRegistry.RED_CERAMIC_TILE.get())
 				.add(ItemRegistry.PINK_CERAMIC.get());
-//                .add(BlockRegistry.PINK_CERAMIC_TILE.get());
 
 		tag(ItemRegistry.DYED_CERAMIC_TILE_TAG)
-//                .add(BlockRegistry.CERAMIC.get())
-//                .add(BlockRegistry.CERAMIC_TILE.get())
-//				.add(ItemRegistry.WHITE_CERAMIC.get())
                 .add(ItemRegistry.WHITE_CERAMIC_TILE.get())
-//				.add(ItemRegistry.LIGHT_GREY_CERAMIC.get())
                 .add(ItemRegistry.LIGHT_GREY_CERAMIC_TILE.get())
-//				.add(ItemRegistry.GREY_CERAMIC.get())
                 .add(ItemRegistry.GREY_CERAMIC_TILE.get())
-//				.add(ItemRegistry.BLACK_CERAMIC.get())
                 .add(ItemRegistry.BLACK_CERAMIC_TILE.get())
-//				.add(ItemRegistry.PURPLE_CERAMIC.get())
                 .add(ItemRegistry.PURPLE_CERAMIC_TILE.get())
-//				.add(ItemRegistry.MAGENTA_CERAMIC.get())
                 .add(ItemRegistry.MAGENTA_CERAMIC_TILE.get())
-//				.add(ItemRegistry.BLUE_CERAMIC.get())
                 .add(ItemRegistry.BLUE_CERAMIC_TILE.get())
-//				.add(ItemRegistry.LIGHT_BLUE_CERAMIC.get())
                 .add(ItemRegistry.LIGHT_BLUE_CERAMIC_TILE.get())
-//				.add(ItemRegistry.CYAN_CERAMIC.get())
                 .add(ItemRegistry.CYAN_CERAMIC_TILE.get())
-//				.add(ItemRegistry.GREEN_CERAMIC.get())
                 .add(ItemRegistry.GREEN_CERAMIC_TILE.get())
-//				.add(ItemRegistry.LIME_CERAMIC.get())
                 .add(ItemRegistry.LIME_CERAMIC_TILE.get())
-//				.add(ItemRegistry.YELLOW_CERAMIC.get())
                 .add(ItemRegistry.YELLOW_CERAMIC_TILE.get())
-//				.add(ItemRegistry.ORANGE_CERAMIC.get())
                 .add(ItemRegistry.ORANGE_CERAMIC_TILE.get())
-//				.add(ItemRegistry.BROWN_CERAMIC.get())
                 .add(ItemRegistry.BROWN_CERAMIC_TILE.get())
-//				.add(ItemRegistry.RED_CERAMIC.get())
                 .add(ItemRegistry.RED_CERAMIC_TILE.get())
-//				.add(ItemRegistry.PINK_CERAMIC.get());
                 .add(ItemRegistry.PINK_CERAMIC_TILE.get());
-
 
 		tag(ItemRegistry.PAINTED_CERAMIC_TAG)
 				.add(ItemRegistry.PAINTED_WHITE_CERAMIC.get())
@@ -624,10 +560,7 @@ public class ModItemTags extends ItemTagsProvider {
 				.add(Items.POLISHED_BLACKSTONE_PRESSURE_PLATE)
 				.add(ItemRegistry.VENUS_DEEPSLATE_PRESSURE_PLATE.get())
 				.add(ItemRegistry.VENUS_STONE_PRESSURE_PLATE.get())
-
 		;
-
-
 	}
 
 	@Override

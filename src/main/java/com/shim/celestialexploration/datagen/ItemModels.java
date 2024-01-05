@@ -258,6 +258,42 @@ public class ItemModels extends ItemModelProvider {
 		withExistingParent(ItemRegistry.SUN_SPOT.get().getRegistryName().getPath(), modLoc("block/sun_spot"));
 
 
+		withExistingParent(ItemRegistry.MERCURY_CORE.get().getRegistryName().getPath(), modLoc("block/mercury_core"));
+		withExistingParent(ItemRegistry.MERCURY_STONE.get().getRegistryName().getPath(), modLoc("block/mercury_stone"));
+		withExistingParent(ItemRegistry.MERCURY_DEEPSLATE.get().getRegistryName().getPath(), modLoc("block/mercury_deepslate"));
+		withExistingParent(ItemRegistry.JUPITER_CORE.get().getRegistryName().getPath(), modLoc("block/jupiter_core"));
+		withExistingParent(ItemRegistry.JUPITER_ATMOSPHERE.get().getRegistryName().getPath(), modLoc("block/jupiter_atmosphere"));
+		withExistingParent(ItemRegistry.JUPITER_DEEPSLATE.get().getRegistryName().getPath(), modLoc("block/jupiter_deepslate"));
+//		withExistingParent(ItemRegistry.IO_CORE.get().getRegistryName().getPath(), modLoc("block/io_core"));
+//		withExistingParent(ItemRegistry.IO_STONE.get().getRegistryName().getPath(), modLoc("block/io_stone"));
+//		withExistingParent(ItemRegistry.IO_DEEPSLATE.get().getRegistryName().getPath(), modLoc("block/io_deepslate"));
+		withExistingParent(ItemRegistry.EUROPA_CORE.get().getRegistryName().getPath(), modLoc("block/europa_core"));
+//		withExistingParent(ItemRegistry.EUROPA_HYDRATE.get().getRegistryName().getPath(), modLoc("block/europa_hydrate"));
+		withExistingParent(ItemRegistry.GANYMEDE_CORE.get().getRegistryName().getPath(), modLoc("block/ganymede_core"));
+		withExistingParent(ItemRegistry.CALLISTO_CORE.get().getRegistryName().getPath(), modLoc("block/callisto_core"));
+		withExistingParent(ItemRegistry.SATURN_ATMOSPHERE.get().getRegistryName().getPath(), modLoc("block/saturn_atmosphere"));
+		withExistingParent(ItemRegistry.SATURN_CORE.get().getRegistryName().getPath(), modLoc("block/saturn_core"));
+		withExistingParent(ItemRegistry.SATURN_DEEPSLATE.get().getRegistryName().getPath(), modLoc("block/saturn_deepslate"));
+		withExistingParent(ItemRegistry.TITAN_CORE.get().getRegistryName().getPath(), modLoc("block/titan_core"));
+		withExistingParent(ItemRegistry.ENCELADUS_CORE.get().getRegistryName().getPath(), modLoc("block/enceladus_core"));
+		withExistingParent(ItemRegistry.IAPETUS_CORE.get().getRegistryName().getPath(), modLoc("block/iapetus_core"));
+		withExistingParent(ItemRegistry.RHEA_CORE.get().getRegistryName().getPath(), modLoc("block/rhea_core"));
+		withExistingParent(ItemRegistry.DIONE_CORE.get().getRegistryName().getPath(), modLoc("block/dione_core"));
+		withExistingParent(ItemRegistry.HYPERION_CORE.get().getRegistryName().getPath(), modLoc("block/hyperion_core"));
+		withExistingParent(ItemRegistry.URANUS_CORE.get().getRegistryName().getPath(), modLoc("block/uranus_core"));
+		withExistingParent(ItemRegistry.URANUS_DEEPSLATE.get().getRegistryName().getPath(), modLoc("block/uranus_deepslate"));
+		withExistingParent(ItemRegistry.URANUS_STONE.get().getRegistryName().getPath(), modLoc("block/uranus_stone"));
+		withExistingParent(ItemRegistry.TITANIA_CORE.get().getRegistryName().getPath(), modLoc("block/titania_core"));
+		withExistingParent(ItemRegistry.OBERON_CORE.get().getRegistryName().getPath(), modLoc("block/oberon_core"));
+		withExistingParent(ItemRegistry.NEPTUNE_CORE.get().getRegistryName().getPath(), modLoc("block/neptune_core"));
+		withExistingParent(ItemRegistry.NEPTUNE_STONE.get().getRegistryName().getPath(), modLoc("block/neptune_stone"));
+		withExistingParent(ItemRegistry.NEPTUNE_DEEPSLATE.get().getRegistryName().getPath(), modLoc("block/neptune_deepslate"));
+		withExistingParent(ItemRegistry.TRITON_CORE.get().getRegistryName().getPath(), modLoc("block/triton_core"));
+//		withExistingParent(ItemRegistry.PLUTO_CORE.get().getRegistryName().getPath(), modLoc("block/pluto_core"));
+//		withExistingParent(ItemRegistry.ERIS_CORE.get().getRegistryName().getPath(), modLoc("block/eris_core"));
+//		withExistingParent(ItemRegistry.HAUMEA_CORE.get().getRegistryName().getPath(), modLoc("block/haumea_core"));
+//		withExistingParent(ItemRegistry.CERES_CORE.get().getRegistryName().getPath(), modLoc("block/ceres_core"));
+//		withExistingParent(ItemRegistry.MAKEMAKE_CORE.get().getRegistryName().getPath(), modLoc("block/makemake_core"));
 
 		/**
 		 * OTHER BLOCK ITEMS

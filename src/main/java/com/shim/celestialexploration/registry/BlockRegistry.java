@@ -62,7 +62,7 @@ public class BlockRegistry {
     public static final RegistryObject<Block> MOON_DEEPSLATE_IRON_ORE = BLOCKS.register("moon_deepslate_iron_ore", () -> new Block(Block.Properties.of(Material.STONE).strength(3.0f, 3.0f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
     public static final RegistryObject<Block> MOON_DEEPSLATE_REDSTONE_ORE = BLOCKS.register("moon_deepslate_redstone_ore", () -> new RedStoneOreBlock(Block.Properties.of(Material.STONE).strength(3.0f, 3.0f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
     public static final RegistryObject<Block> LUNAR_LANTERN = BLOCKS.register("lunar_lantern", () -> new Block(Block.Properties.of(Material.GLASS, MaterialColor.QUARTZ).strength(0.3F).sound(SoundType.GLASS).lightLevel((light) -> {
-        return 12;
+        return 13;
     })));
     public static final RegistryObject<Block> COMPRESSED_MOON_COBBLESTONE = BLOCKS.register("compressed_moon_cobblestone", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 8.0f).sound(SoundType.STONE)));
     public static final RegistryObject<Block> COMPRESSED_MOON_COBBLED_DEEPSLATE = BLOCKS.register("compressed_moon_cobbled_deepslate", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 8.0f).sound(SoundType.STONE)));
@@ -169,7 +169,7 @@ public class BlockRegistry {
     public static final RegistryObject<Block> MARS_STONE_PRESSURE_PLATE = BLOCKS.register("mars_stone_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, Block.Properties.copy(MOON_STONE.get()).isValidSpawn(BlockRegistry::never)));
 
     public static final RegistryObject<Block> MARS_LANTERN = BLOCKS.register("mars_lantern", () -> new Block(Block.Properties.of(Material.GLASS, MaterialColor.QUARTZ).strength(0.3F).sound(SoundType.GLASS).lightLevel((light) -> {
-        return 12;
+        return 13;
     })));
 
 
@@ -264,7 +264,7 @@ public class BlockRegistry {
 
 
     public static final RegistryObject<Block> VENUS_LANTERN = BLOCKS.register("venus_lantern", () -> new Block(Block.Properties.of(Material.GLASS, MaterialColor.QUARTZ).strength(0.3F).sound(SoundType.GLASS).lightLevel((light) -> {
-        return 12;
+        return 13;
     })));
 
 
@@ -275,6 +275,64 @@ public class BlockRegistry {
     public static final RegistryObject<Block> SOLAR_PLASMA = BLOCKS.register("solar_plasma", () -> new SolarBlock(Block.Properties.of(Material.FIRE).strength(1.0f).lightLevel((light) -> 20).randomTicks().isValidSpawn(BlockRegistry::never).hasPostProcess(BlockRegistry::always).emissiveRendering(BlockRegistry::always)));
     public static final RegistryObject<Block> SUN_SPOT = BLOCKS.register("sun_spot", () -> new SolarBlock(Block.Properties.of(Material.FIRE).strength(1.0f).lightLevel((light) -> 13).randomTicks().isValidSpawn(BlockRegistry::never).hasPostProcess(BlockRegistry::always).emissiveRendering(BlockRegistry::always)));
     public static final RegistryObject<Block> SOLAR_FLARE = BLOCKS.register("solar_flare", () -> new SolarFlareBlock(Block.Properties.of(Material.FIRE).strength(0.8f).lightLevel((light) -> 14).isValidSpawn(BlockRegistry::never).hasPostProcess(BlockRegistry::always).noOcclusion().emissiveRendering(BlockRegistry::always)));
+
+    //MERCURY
+    public static final RegistryObject<Block> MERCURY_STONE = BLOCKS.register("mercury_stone", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> MERCURY_CORE = BLOCKS.register("mercury_core", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F).noDrops().isValidSpawn(BlockRegistry::never)));
+    public static final RegistryObject<Block> MERCURY_DEEPSLATE = BLOCKS.register("mercury_deepslate", () -> new RotatedPillarBlock(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)));
+
+    //JUPITER
+    public static final RegistryObject<Block> JUPITER_ATMOSPHERE = BLOCKS.register("jupiter_atmosphere", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> JUPITER_CORE = BLOCKS.register("jupiter_core", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F).noDrops().isValidSpawn(BlockRegistry::never)));
+    public static final RegistryObject<Block> JUPITER_DEEPSLATE = BLOCKS.register("jupiter_deepslate", () -> new RotatedPillarBlock(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)));
+
+    //JUPITER MOONS
+    public static final RegistryObject<Block> IO_CORE = BLOCKS.register("io_core", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F).noDrops().isValidSpawn(BlockRegistry::never)));
+    public static final RegistryObject<Block> IO_STONE = BLOCKS.register("io_stone", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> IO_DEEPSLATE = BLOCKS.register("io_deepslate", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)));
+
+    public static final RegistryObject<Block> EUROPA_CORE = BLOCKS.register("europa_core", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F).noDrops().isValidSpawn(BlockRegistry::never)));
+    public static final RegistryObject<Block> EUROPA_HYDRATE = BLOCKS.register("europa_hydrate", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)));
+
+    public static final RegistryObject<Block> GANYMEDE_CORE = BLOCKS.register("ganymede_core", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F).noDrops().isValidSpawn(BlockRegistry::never)));
+    public static final RegistryObject<Block> CALLISTO_CORE = BLOCKS.register("callisto_core", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F).noDrops().isValidSpawn(BlockRegistry::never)));
+
+    //SATURN
+    public static final RegistryObject<Block> SATURN_ATMOSPHERE = BLOCKS.register("saturn_atmosphere", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> SATURN_CORE = BLOCKS.register("saturn_core", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F).noDrops().isValidSpawn(BlockRegistry::never)));
+    public static final RegistryObject<Block> SATURN_DEEPSLATE = BLOCKS.register("saturn_deepslate", () -> new RotatedPillarBlock(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)));
+
+    //SATURN MOONS
+    public static final RegistryObject<Block> TITAN_CORE = BLOCKS.register("titan_core", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F).noDrops().isValidSpawn(BlockRegistry::never)));
+    public static final RegistryObject<Block> ENCELADUS_CORE = BLOCKS.register("enceladus_core", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F).noDrops().isValidSpawn(BlockRegistry::never)));
+    public static final RegistryObject<Block> RHEA_CORE = BLOCKS.register("rhea_core", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F).noDrops().isValidSpawn(BlockRegistry::never)));
+    public static final RegistryObject<Block> IAPETUS_CORE = BLOCKS.register("iapetus_core", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F).noDrops().isValidSpawn(BlockRegistry::never)));
+    public static final RegistryObject<Block> HYPERION_CORE = BLOCKS.register("hyperion_core", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F).noDrops().isValidSpawn(BlockRegistry::never)));
+    public static final RegistryObject<Block> DIONE_CORE = BLOCKS.register("dione_core", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F).noDrops().isValidSpawn(BlockRegistry::never)));
+
+    //URANUS
+    public static final RegistryObject<Block> URANUS_STONE = BLOCKS.register("uranus_stone", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> URANUS_CORE = BLOCKS.register("uranus_core", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F).noDrops().isValidSpawn(BlockRegistry::never)));
+    public static final RegistryObject<Block> URANUS_DEEPSLATE = BLOCKS.register("uranus_deepslate", () -> new RotatedPillarBlock(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)));
+
+    //URANUS MOONS
+    public static final RegistryObject<Block> TITANIA_CORE = BLOCKS.register("titania_core", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F).noDrops().isValidSpawn(BlockRegistry::never)));
+    public static final RegistryObject<Block> OBERON_CORE = BLOCKS.register("oberon_core", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F).noDrops().isValidSpawn(BlockRegistry::never)));
+
+    //NEPTUNE
+    public static final RegistryObject<Block> NEPTUNE_STONE = BLOCKS.register("neptune_stone", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> NEPTUNE_CORE = BLOCKS.register("neptune_core", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F).noDrops().isValidSpawn(BlockRegistry::never)));
+    public static final RegistryObject<Block> NEPTUNE_DEEPSLATE = BLOCKS.register("neptune_deepslate", () -> new RotatedPillarBlock(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)));
+
+    //NEPTUNE MOONS
+    public static final RegistryObject<Block> TRITON_CORE = BLOCKS.register("triton_core", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F).noDrops().isValidSpawn(BlockRegistry::never)));
+
+    //DWARF PLANETS
+    public static final RegistryObject<Block> PLUTO_CORE = BLOCKS.register("pluto_core", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F).noDrops().isValidSpawn(BlockRegistry::never)));
+    public static final RegistryObject<Block> CERES_CORE = BLOCKS.register("ceres_core", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F).noDrops().isValidSpawn(BlockRegistry::never)));
+    public static final RegistryObject<Block> MAKEMAKE_CORE = BLOCKS.register("makemake_core", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F).noDrops().isValidSpawn(BlockRegistry::never)));
+    public static final RegistryObject<Block> HAUMEA_CORE = BLOCKS.register("haumea_core", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F).noDrops().isValidSpawn(BlockRegistry::never)));
+    public static final RegistryObject<Block> ERIS_CORE = BLOCKS.register("eris_core", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F).noDrops().isValidSpawn(BlockRegistry::never)));
 
 
     //POWER-RELATED BLOCKS
@@ -438,6 +496,9 @@ public class BlockRegistry {
     public static final TagKey<Block> VENUS_COBBLESTONE_TAG = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "venus_cobblestone"));
     public static final TagKey<Block> VENUS_DEEPSLATE_TAG = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "venus_deepslate"));
     public static final TagKey<Block> VENUS_COBBLED_DEEPSLATE_TAG = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "venus_cobbled_deepslate"));
+
+
+    public static final TagKey<Block> REGOLITH_TAG = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "regolith"));
 
     public static final TagKey<Block> SULFUR_FIRE_TAG = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "sulfur_fire"));
 

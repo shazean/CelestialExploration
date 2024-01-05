@@ -1,8 +1,14 @@
 {
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create"
+    }
+  ],
   "type": "create:splashing",
   "ingredients": [
     {
-      "item": "celestialexploration:moon_sand"
+      "tag": "celestialexploration:regolith"
     }
   ],
   "results": [

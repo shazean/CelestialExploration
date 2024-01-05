@@ -25,25 +25,31 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(EffectRegistry.HIGH_GRAVITY.get(), "High Gravity");
 
 		/* BIOMES */
-		add("biomes.celestialexploration.moon_craters", "Lunar Craters");
-		add("biomes.celestialexploration.moon_desert", "Lunar Desert");
-		add("biomes.celestialexploration.moon_lava_flats", "Lunar Lava Flats");
-		add("biomes.celestialexploration.moon_lower_plains", "Lunar Lower Plains");
-		add("biomes.celestialexploration.moon_plains", "Lunar Plains");
-		add("biomes.celestialexploration.mars_craters_", "Martian Craters");
-		add("biomes.celestialexploration.mars_deep_craters", "Martian Deep Craters");
-		add("biomes.celestialexploration.mars_desert", "Martian Desert");
-		add("biomes.celestialexploration.mars_dunes", "Martian Dunes");
-		add("biomes.celestialexploration.mars_dry_ice_flats", "Martian Dry Ice Flats");
-		add("biomes.celestialexploration.mars_dry_ice_peaks", "Martian Dry Ice Peaks");
-		add("biomes.celestialexploration.mars_eroded_flats", "Martian Eroded Flats");
-		add("biomes.celestialexploration.mars_volcano_flats", "Martian Volcano Flats");
-		add("biomes.celestialexploration.asteroid_field", "Asteroid Field");
-		add("biomes.celestialexploration.earth_orbit", "Earthen Orbit");
-		add("biomes.celestialexploration.empty_space", "Empty Space");
-		add("biomes.celestialexploration.large_asteroid", "Large Asteroid");
-		add("biomes.celestialexploration.mars_orbit", "Martian Orbit");
-		add("biomes.celestialexploration.sparse_asteroid_field", "Sparse Asteroid Field");
+		add("biome.celestialexploration.moon_craters", "Lunar Craters");
+		add("biome.celestialexploration.moon_desert", "Lunar Desert");
+		add("biome.celestialexploration.moon_lava_flats", "Lunar Lava Flats");
+		add("biome.celestialexploration.moon_lower_plains", "Lunar Lower Plains");
+		add("biome.celestialexploration.moon_plains", "Lunar Plains");
+		add("biome.celestialexploration.mars_craters_", "Martian Craters");
+		add("biome.celestialexploration.mars_deep_craters", "Martian Deep Craters");
+		add("biome.celestialexploration.mars_desert", "Martian Desert");
+		add("biome.celestialexploration.mars_dunes", "Martian Dunes");
+		add("biome.celestialexploration.mars_dry_ice_flats", "Martian Dry Ice Flats");
+		add("biome.celestialexploration.mars_dry_ice_peaks", "Martian Dry Ice Peaks");
+		add("biome.celestialexploration.mars_eroded_flats", "Martian Eroded Flats");
+		add("biome.celestialexploration.mars_volcano_flats", "Martian Volcano Flats");
+		add("biome.celestialexploration.asteroid_field", "Asteroid Field");
+		add("biome.celestialexploration.earth_orbit", "Earthen Orbit");
+		add("biome.celestialexploration.empty_space", "Empty Space");
+		add("biome.celestialexploration.large_asteroid", "Large Asteroid");
+		add("biome.celestialexploration.mars_orbit", "Martian Orbit");
+		add("biome.celestialexploration.sparse_asteroid_field", "Sparse Asteroid Field");
+
+		/* KEYBINDS */
+		add("key.celestialexploration:flight_ascent", "Shuttle Ascent");
+		add("key.celestialexploration:flight_descent", "Shuttle Descent");
+		add("key.celestialexploration:turn_left", "Shuttle Turn Left");
+		add("key.celestialexploration:turn_right", "Shuttle Turn Right");
 
 		/* MOON */
 		add(BlockRegistry.MOON_BRICK_SLAB.get(), "Lunar Brick Slab");
@@ -257,6 +263,8 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(BlockRegistry.SOLAR_PLASMA.get(), "Solar Plasma");
 		add(BlockRegistry.SOLAR_FLARE.get(), "Solar Surface");
 		add(BlockRegistry.SUN_SPOT.get(), "Sun Spot");
+
+
 
 		/* OTHER BLOCKS */
 //		add(BlockRegistry.SOLAR_PANEL.get(), "Solar Panel");
