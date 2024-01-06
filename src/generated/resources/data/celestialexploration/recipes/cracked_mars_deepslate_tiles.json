@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "celestialexploration:mars_deepslate_tiles"
+  },
+  "result": "celestialexploration:cracked_mars_deepslate_tiles",
+  "experience": 1.0,
+  "cookingtime": 100
+}

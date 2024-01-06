@@ -46,10 +46,11 @@ public class ModLanguageProvider extends LanguageProvider {
 		add("biome.celestialexploration.sparse_asteroid_field", "Sparse Asteroid Field");
 
 		/* KEYBINDS */
-		add("key.celestialexploration:flight_ascent", "Shuttle Ascent");
-		add("key.celestialexploration:flight_descent", "Shuttle Descent");
-		add("key.celestialexploration:turn_left", "Shuttle Turn Left");
-		add("key.celestialexploration:turn_right", "Shuttle Turn Right");
+		add("key.categories.shuttle_controls", "Shuttle Controls");
+		add("key.celestialexploration.flight_ascent", "Shuttle Ascent");
+		add("key.celestialexploration.flight_descent", "Shuttle Descent");
+		add("key.celestialexploration.turn_left", "Shuttle Strafe Left");
+		add("key.celestialexploration.turn_right", "Shuttle Strafe Right");
 
 		/* MOON */
 		add(BlockRegistry.MOON_BRICK_SLAB.get(), "Lunar Brick Slab");
@@ -263,6 +264,9 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(BlockRegistry.SOLAR_PLASMA.get(), "Solar Plasma");
 		add(BlockRegistry.SOLAR_FLARE.get(), "Solar Surface");
 		add(BlockRegistry.SUN_SPOT.get(), "Sun Spot");
+
+
+
 
 
 

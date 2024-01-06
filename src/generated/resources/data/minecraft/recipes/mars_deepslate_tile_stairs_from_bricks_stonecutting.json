@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "celestialexploration:mars_deepslate_bricks"
+  },
+  "result": "celestialexploration:mars_deepslate_tile_stairs",
+  "count": 1
+}

@@ -44,6 +44,11 @@ public class ItemRegistry {
 		return ITEMS.register(block.getId().getPath(), () -> new BlockItem(block.get(), ITEM_PROPERTIES));
 	}
 
+	public static <B extends Block> RegistryObject<Item> fromNoTabBlock(RegistryObject<B> block) {
+		return ITEMS.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties()));
+	}
+
+
 	public static final Item.Properties BLOCK_ITEM_PROPERTIES = new Item.Properties().tab(CelestialExploration.CELESTIAL_BLOCKS_TAB);
 	public static final Item.Properties SHUTTLE_ITEM_PROPERTIES = new Item.Properties().tab(CelestialExploration.SHUTTLE_TAB);
 	public static final Item.Properties ITEM_PROPERTIES = new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB);
@@ -53,6 +58,7 @@ public class ItemRegistry {
 	 * MOON
 	 * ~FULL BLOCKS
 	 */
+	public static final RegistryObject<Item> MOON_CORE = fromNoTabBlock(BlockRegistry.MOON_CORE);
 	public static final RegistryObject<Item> MOON_SAND = fromBlock(BlockRegistry.MOON_SAND);
 	public static final RegistryObject<Item> GLOWING_MOON_SAND = fromBlock(BlockRegistry.GLOWING_MOON_SAND);
 	public static final RegistryObject<Item> COARSE_MOON_SAND = fromBlock(BlockRegistry.COARSE_MOON_SAND);
@@ -119,6 +125,8 @@ public class ItemRegistry {
 	
 	//MARS
 	//FULL BLOCKS
+	public static final RegistryObject<Item> MARS_CORE = fromNoTabBlock(BlockRegistry.MARS_CORE);
+
 	public static final RegistryObject<Item> MARS_SAND = fromBlock(BlockRegistry.MARS_SAND);
 	public static final RegistryObject<Item> COARSE_MARS_SAND = fromBlock(BlockRegistry.COARSE_MARS_SAND);
 
@@ -185,6 +193,8 @@ public class ItemRegistry {
 
 	//VENUS
 	//FULL BLOCKS
+	public static final RegistryObject<Item> VENUS_CORE = fromNoTabBlock(BlockRegistry.VENUS_CORE);
+
 	public static final RegistryObject<Item> VENUS_SAND = fromBlock(BlockRegistry.VENUS_SAND);
 	public static final RegistryObject<Item> FINE_VENUS_SAND = fromBlock(BlockRegistry.FINE_VENUS_SAND);
 
@@ -284,47 +294,48 @@ public class ItemRegistry {
 	public static final RegistryObject<Item> SOLAR_FLARE = fromBlock(BlockRegistry.SOLAR_FLARE);
 	public static final RegistryObject<Item> SUN_SPOT = fromBlock(BlockRegistry.SUN_SPOT);
 
+
 	public static final RegistryObject<Item> MERCURY_STONE = fromBlock(BlockRegistry.MERCURY_STONE);
-	public static final RegistryObject<Item> MERCURY_CORE = fromBlock(BlockRegistry.MERCURY_CORE);
+	public static final RegistryObject<Item> MERCURY_CORE = fromNoTabBlock(BlockRegistry.MERCURY_CORE);
 	public static final RegistryObject<Item> MERCURY_DEEPSLATE = fromBlock(BlockRegistry.MERCURY_DEEPSLATE);
 
 
 	public static final RegistryObject<Item> JUPITER_ATMOSPHERE = fromBlock(BlockRegistry.JUPITER_ATMOSPHERE);
-	public static final RegistryObject<Item> JUPITER_CORE = fromBlock(BlockRegistry.JUPITER_CORE);
+	public static final RegistryObject<Item> JUPITER_CORE = fromNoTabBlock(BlockRegistry.JUPITER_CORE);
 	public static final RegistryObject<Item> JUPITER_DEEPSLATE = fromBlock(BlockRegistry.JUPITER_DEEPSLATE);
 
-	public static final RegistryObject<Item> IO_CORE = fromBlock(BlockRegistry.IO_CORE);
+	public static final RegistryObject<Item> IO_CORE = fromNoTabBlock(BlockRegistry.IO_CORE);
 	public static final RegistryObject<Item> IO_STONE = fromBlock(BlockRegistry.IO_STONE);
 	public static final RegistryObject<Item> IO_DEEPSLATE = fromBlock(BlockRegistry.IO_DEEPSLATE);
 
-	public static final RegistryObject<Item> EUROPA_CORE = fromBlock(BlockRegistry.EUROPA_CORE);
+	public static final RegistryObject<Item> EUROPA_CORE = fromNoTabBlock(BlockRegistry.EUROPA_CORE);
 	public static final RegistryObject<Item> EUROPA_HYDRATE = fromBlock(BlockRegistry.EUROPA_HYDRATE);
-	public static final RegistryObject<Item> GANYMEDE_CORE = fromBlock(BlockRegistry.GANYMEDE_CORE);
-	public static final RegistryObject<Item> CALLISTO_CORE = fromBlock(BlockRegistry.CALLISTO_CORE);
+	public static final RegistryObject<Item> GANYMEDE_CORE = fromNoTabBlock(BlockRegistry.GANYMEDE_CORE);
+	public static final RegistryObject<Item> CALLISTO_CORE = fromNoTabBlock(BlockRegistry.CALLISTO_CORE);
 
 	public static final RegistryObject<Item> SATURN_ATMOSPHERE = fromBlock(BlockRegistry.SATURN_ATMOSPHERE);
-	public static final RegistryObject<Item> SATURN_CORE = fromBlock(BlockRegistry.SATURN_CORE);
+	public static final RegistryObject<Item> SATURN_CORE = fromNoTabBlock(BlockRegistry.SATURN_CORE);
 	public static final RegistryObject<Item> SATURN_DEEPSLATE = fromBlock(BlockRegistry.SATURN_DEEPSLATE);
-	public static final RegistryObject<Item> TITAN_CORE = fromBlock(BlockRegistry.TITAN_CORE);
+	public static final RegistryObject<Item> TITAN_CORE = fromNoTabBlock(BlockRegistry.TITAN_CORE);
 	public static final RegistryObject<Item> ENCELADUS_CORE = fromBlock(BlockRegistry.ENCELADUS_CORE);
-	public static final RegistryObject<Item> RHEA_CORE = fromBlock(BlockRegistry.RHEA_CORE);
-	public static final RegistryObject<Item> IAPETUS_CORE = fromBlock(BlockRegistry.IAPETUS_CORE);
-	public static final RegistryObject<Item> HYPERION_CORE = fromBlock(BlockRegistry.HYPERION_CORE);
-	public static final RegistryObject<Item> DIONE_CORE = fromBlock(BlockRegistry.DIONE_CORE);
+	public static final RegistryObject<Item> RHEA_CORE = fromNoTabBlock(BlockRegistry.RHEA_CORE);
+	public static final RegistryObject<Item> IAPETUS_CORE = fromNoTabBlock(BlockRegistry.IAPETUS_CORE);
+	public static final RegistryObject<Item> HYPERION_CORE = fromNoTabBlock(BlockRegistry.HYPERION_CORE);
+	public static final RegistryObject<Item> DIONE_CORE = fromNoTabBlock(BlockRegistry.DIONE_CORE);
 	public static final RegistryObject<Item> URANUS_STONE = fromBlock(BlockRegistry.URANUS_STONE);
-	public static final RegistryObject<Item> URANUS_CORE = fromBlock(BlockRegistry.URANUS_CORE);
+	public static final RegistryObject<Item> URANUS_CORE = fromNoTabBlock(BlockRegistry.URANUS_CORE);
 	public static final RegistryObject<Item> URANUS_DEEPSLATE = fromBlock(BlockRegistry.URANUS_DEEPSLATE);
-	public static final RegistryObject<Item> TITANIA_CORE = fromBlock(BlockRegistry.TITANIA_CORE);
-	public static final RegistryObject<Item> OBERON_CORE = fromBlock(BlockRegistry.OBERON_CORE);
+	public static final RegistryObject<Item> TITANIA_CORE = fromNoTabBlock(BlockRegistry.TITANIA_CORE);
+	public static final RegistryObject<Item> OBERON_CORE = fromNoTabBlock(BlockRegistry.OBERON_CORE);
 	public static final RegistryObject<Item> NEPTUNE_STONE = fromBlock(BlockRegistry.NEPTUNE_STONE);
-	public static final RegistryObject<Item> NEPTUNE_CORE = fromBlock(BlockRegistry.NEPTUNE_CORE);
+	public static final RegistryObject<Item> NEPTUNE_CORE = fromNoTabBlock(BlockRegistry.NEPTUNE_CORE);
 	public static final RegistryObject<Item> NEPTUNE_DEEPSLATE = fromBlock(BlockRegistry.NEPTUNE_DEEPSLATE);
-	public static final RegistryObject<Item> TRITON_CORE = fromBlock(BlockRegistry.TRITON_CORE);
-	public static final RegistryObject<Item> PLUTO_CORE = fromBlock(BlockRegistry.PLUTO_CORE);
-	public static final RegistryObject<Item> CERES_CORE = fromBlock(BlockRegistry.CERES_CORE);
-	public static final RegistryObject<Item> ERIS_CORE = fromBlock(BlockRegistry.ERIS_CORE);
-	public static final RegistryObject<Item> HAUMEA_CORE = fromBlock(BlockRegistry.HAUMEA_CORE);
-	public static final RegistryObject<Item> MAKEMAKE_CORE = fromBlock(BlockRegistry.MAKEMAKE_CORE);
+	public static final RegistryObject<Item> TRITON_CORE = fromNoTabBlock(BlockRegistry.TRITON_CORE);
+//	public static final RegistryObject<Item> PLUTO_CORE = fromNoTabBlock(BlockRegistry.PLUTO_CORE);
+//	public static final RegistryObject<Item> CERES_CORE = fromNoTabBlock(BlockRegistry.CERES_CORE);
+//	public static final RegistryObject<Item> ERIS_CORE = fromNoTabBlock(BlockRegistry.ERIS_CORE);
+//	public static final RegistryObject<Item> HAUMEA_CORE = fromNoTabBlock(BlockRegistry.HAUMEA_CORE);
+//	public static final RegistryObject<Item> MAKEMAKE_CORE = fromNoTabBlock(BlockRegistry.MAKEMAKE_CORE);
 
 
 

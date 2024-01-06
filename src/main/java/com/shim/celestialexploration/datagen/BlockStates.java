@@ -34,6 +34,7 @@ public class BlockStates extends BlockStateProvider {
 		/*
 		 * MOON
 		 */
+		simpleBlock(BlockRegistry.MOON_CORE.get());
 		simpleBlock(BlockRegistry.MOON_BRICKS.get());
 		simpleBlock(BlockRegistry.MOON_IRON_ORE.get());
 		simpleBlock(BlockRegistry.MOON_REDSTONE_ORE.get());
@@ -100,6 +101,7 @@ public class BlockStates extends BlockStateProvider {
 		/*
 		 * MARS
 		 */
+		simpleBlock(BlockRegistry.MARS_CORE.get());
 		simpleBlock(BlockRegistry.CHISELED_MARS_BRICKS.get());
 		simpleBlock(BlockRegistry.MARS_BRICKS.get());
 		simpleBlock(BlockRegistry.MARS_IRON_ORE.get());
@@ -166,6 +168,7 @@ public class BlockStates extends BlockStateProvider {
 		/*
 		 * VENUS
 		 */
+		simpleBlock(BlockRegistry.VENUS_CORE.get());
 		simpleBlock(BlockRegistry.CHISELED_VENUS_BRICKS.get());
 		simpleBlock(BlockRegistry.VENUS_BRICKS.get());
 		simpleBlock(BlockRegistry.VENUS_IRON_ORE.get());

@@ -59,6 +59,9 @@ public class ModEventClientBusEvents {
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.REINFORCED_GLASS.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.REINFORCED_GLASS_PANE.get(), RenderType.translucent());
 
+        ItemBlockRenderTypes.setRenderLayer(BlockRegistry.JUPITER_ATMOSPHERE.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BlockRegistry.SATURN_ATMOSPHERE.get(), RenderType.translucent());
+
         ItemBlockRenderTypes.setRenderLayer(FluidRegistry.LOX.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(FluidRegistry.LOX_FLOWING.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(FluidRegistry.LOX_BLOCK.get(), RenderType.translucent());

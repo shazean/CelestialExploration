@@ -417,9 +417,9 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
         Vec3 earthLocation = new Vec3(CelestialUtil.getPlanetaryChunkCoordinates(3).x, shuttle.position().y, CelestialUtil.getPlanetaryChunkCoordinates(3).z);
         planetChunkPos = new ChunkPos((int) earthLocation.x, (int) earthLocation.z);
         if (CelestialUtil.isInRectangle(planetChunkPos.x, planetChunkPos.z, 4, shuttleChunkPos.x, shuttleChunkPos.z)) {
-            if (isNearBlockOfPlanet(shuttle, BlockRegistry.MOON_STONE.get())) {
+            if (isNearBlockOfPlanet(shuttle, BlockRegistry.MOON_CORE.get())) {
                 return DimensionRegistry.MOON;
-            } else if (isNearBlockOfPlanet(shuttle, Blocks.STONE)) {
+            } else if (isNearBlockOfPlanet(shuttle, Blocks.BEDROCK)) {
                 return Level.OVERWORLD;
             }
         }
@@ -427,7 +427,7 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
         Vec3 marsLocation = new Vec3(CelestialUtil.getPlanetaryChunkCoordinates(4).x, shuttle.position().y, CelestialUtil.getPlanetaryChunkCoordinates(4).z);
         planetChunkPos = new ChunkPos((int) marsLocation.x, (int) marsLocation.z);
         if (CelestialUtil.isInRectangle(planetChunkPos.x, planetChunkPos.z, 2, shuttleChunkPos.x, shuttleChunkPos.z)) {
-            if (isNearBlockOfPlanet(shuttle, BlockRegistry.MARS_STONE.get())) {
+            if (isNearBlockOfPlanet(shuttle, BlockRegistry.MARS_CORE.get())) {
                 return DimensionRegistry.MARS;
             }
         }
@@ -475,9 +475,9 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
         BlockPos pos;
         BlockState state;
 
-        for (int x = -15; x <= 15; x++) {
-            for (int y = -15; y <= 15; y++) {
-                for (int z = -15; z <= 15; z++) {
+        for (int x = -30; x <= 30; x++) {
+            for (int y = -30; y <= 30; y++) {
+                for (int z = -30; z <= 30; z++) {
                     pos = new BlockPos(shuttle.position().x + x, shuttle.position().y + y, shuttle.position().z + z);
                     state = shuttle.level.getBlockState(pos);
                     if (state.getBlock() == blockToTest) return true;

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "celestialexploration:venus_deepslate_tiles"
+  },
+  "result": "celestialexploration:venus_deepslate_tile_wall",
+  "count": 1
+}

@@ -2,7 +2,7 @@
   "type": "minecraft:stonecutting",
   "group": "celestialexploration",
   "ingredient": {
-    "tag": "celestialexploration:mars_deepslate"
+    "item": "celestialexploration:mars_cobbled_deepslate"
   },
   "result": "celestialexploration:mars_polished_deepslate",
   "count": 1

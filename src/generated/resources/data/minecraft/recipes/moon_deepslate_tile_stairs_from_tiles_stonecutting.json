@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "celestialexploration:moon_deepslate_tiles"
+  },
+  "result": "celestialexploration:moon_deepslate_tile_stairs",
+  "count": 1
+}

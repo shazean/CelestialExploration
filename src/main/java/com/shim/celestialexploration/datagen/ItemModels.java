@@ -20,6 +20,7 @@ public class ItemModels extends ItemModelProvider {
 		/**
 		 * MOON
 		 */
+		withExistingParent(ItemRegistry.MOON_CORE.get().getRegistryName().getPath(), modLoc("block/moon_core"));
 		withExistingParent(ItemRegistry.MOON_BRICKS.get().getRegistryName().getPath(), modLoc("block/moon_bricks"));
 		withExistingParent(ItemRegistry.MOON_IRON_ORE.get().getRegistryName().getPath(), modLoc("block/moon_iron_ore"));
 		withExistingParent(ItemRegistry.MOON_REDSTONE_ORE.get().getRegistryName().getPath(), modLoc("block/moon_redstone_ore"));
@@ -88,6 +89,8 @@ public class ItemModels extends ItemModelProvider {
 		/*
 		 * MARS
 		 */
+		withExistingParent(ItemRegistry.MARS_CORE.get().getRegistryName().getPath(), modLoc("block/mars_core"));
+
 		withExistingParent(ItemRegistry.CHISELED_MARS_BRICKS.get().getRegistryName().getPath(), modLoc("block/chiseled_mars_bricks"));
 		withExistingParent(ItemRegistry.MARS_BRICKS.get().getRegistryName().getPath(), modLoc("block/mars_bricks"));
 		withExistingParent(ItemRegistry.MARS_IRON_ORE.get().getRegistryName().getPath(), modLoc("block/mars_iron_ore"));
@@ -155,6 +158,7 @@ public class ItemModels extends ItemModelProvider {
 		/*
 		 * VENUS
 		 */
+		withExistingParent(ItemRegistry.VENUS_CORE.get().getRegistryName().getPath(), modLoc("block/venus_core"));
 		withExistingParent(ItemRegistry.CHISELED_VENUS_BRICKS.get().getRegistryName().getPath(), modLoc("block/chiseled_venus_bricks"));
 		withExistingParent(ItemRegistry.VENUS_BRICKS.get().getRegistryName().getPath(), modLoc("block/venus_bricks"));
 		withExistingParent(ItemRegistry.VENUS_IRON_ORE.get().getRegistryName().getPath(), modLoc("block/venus_iron_ore"));

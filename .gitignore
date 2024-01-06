@@ -21,3 +21,4 @@ forge*changelog.txt
 /build/
 run/
 .gradle/
+/src/main/resources/assets/celestialexploration/textures/block/OG_textures/

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "celestialexploration:moon_cobbled_deepslate"
+  },
+  "result": "celestialexploration:moon_polished_deepslate_wall",
+  "count": 1
+}

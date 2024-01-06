@@ -1,7 +1,7 @@
 {
   "type": "minecraft:stonecutting",
   "ingredient": {
-    "tag": "celestialexploration:venus_cobbled_deepslate"
+    "item": "celestialexploration:venus_cobbled_deepslate"
   },
   "result": "celestialexploration:venus_cobbled_deepslate_slab",
   "count": 2

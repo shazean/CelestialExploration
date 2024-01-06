@@ -353,8 +353,9 @@
   "itemGroup.celestialblockstab": "Celestial Blocks",
   "itemGroup.celestialmisctab": "Celestial Items",
   "itemGroup.shuttletab": "Shuttle Items",
-  "key.celestialexploration:flight_ascent": "Shuttle Ascent",
-  "key.celestialexploration:flight_descent": "Shuttle Descent",
-  "key.celestialexploration:turn_left": "Shuttle Turn Left",
-  "key.celestialexploration:turn_right": "Shuttle Turn Right"
+  "key.categories.shuttle_controls": "Shuttle Controls",
+  "key.celestialexploration.flight_ascent": "Shuttle Ascent",
+  "key.celestialexploration.flight_descent": "Shuttle Descent",
+  "key.celestialexploration.turn_left": "Shuttle Strafe Left",
+  "key.celestialexploration.turn_right": "Shuttle Strafe Right"
 }
