@@ -155,17 +155,17 @@ public class ModItemTags extends ItemTagsProvider {
 				.add(ItemRegistry.VENUS_COBBLESTONE.get())
 		;
 
-		tag(Tags.Items.COBBLESTONE_DEEPSLATE)
-				.add(ItemRegistry.MARS_COBBLED_DEEPSLATE.get())
-//				.add(ItemRegistry.MARS_COBBLED_DEEPSLATE_SLAB.get())
-//				.add(ItemRegistry.MARS_COBBLED_DEEPSLATE_STAIRS.get())
-//				.add(ItemRegistry.MARS_COBBLED_DEEPSLATE_WALL.get())
-				.add(ItemRegistry.MOON_COBBLED_DEEPSLATE.get())
-//				.add(ItemRegistry.MOON_COBBLED_DEEPSLATE_SLAB.get())
-//				.add(ItemRegistry.MOON_COBBLED_DEEPSLATE_STAIRS.get())
-//				.add(ItemRegistry.MOON_COBBLED_DEEPSLATE_WALL.get())
-				.add(ItemRegistry.VENUS_COBBLED_DEEPSLATE.get())
-		;
+//		tag(Tags.Items.COBBLESTONE_DEEPSLATE)
+//				.add(ItemRegistry.MARS_COBBLED_DEEPSLATE.get())
+////				.add(ItemRegistry.MARS_COBBLED_DEEPSLATE_SLAB.get())
+////				.add(ItemRegistry.MARS_COBBLED_DEEPSLATE_STAIRS.get())
+////				.add(ItemRegistry.MARS_COBBLED_DEEPSLATE_WALL.get())
+//				.add(ItemRegistry.MOON_COBBLED_DEEPSLATE.get())
+////				.add(ItemRegistry.MOON_COBBLED_DEEPSLATE_SLAB.get())
+////				.add(ItemRegistry.MOON_COBBLED_DEEPSLATE_STAIRS.get())
+////				.add(ItemRegistry.MOON_COBBLED_DEEPSLATE_WALL.get())
+//				.add(ItemRegistry.VENUS_COBBLED_DEEPSLATE.get())
+//		;
 
 		tag(Tags.Items.ORES_COAL)
 				.add(ItemRegistry.METEOR_COAL_ORE.get());

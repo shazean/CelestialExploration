@@ -5,6 +5,7 @@ import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
 
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.storage.loot.entries.AlternativesEntry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -62,6 +63,19 @@ public abstract class BaseLootTableProvider extends LootTableProvider {
     			.setRolls(ConstantValue.exactly(1))
     			.add(LootItem.lootTableItem(block));
     	return LootTable.lootTable().withPool(builder);
+    }
+
+    protected LootTable.Builder createOreTable(String name, Block block, Item item) {
+        LootPool.Builder builder = LootPool.lootPool()
+                .name(name)
+                .setRolls(ConstantValue.exactly(1))
+//                .add(LootItem.lootTableItem(block))
+                .add(AlternativesEntry.alternatives((LootItem.lootTableItem(block)
+                                .when(MatchTool.toolMatches(ItemPredicate.Builder.item()
+                                        .hasEnchantment(new EnchantmentPredicate(Enchantments.SILK_TOUCH, MinMaxBounds.Ints.atLeast(1)))))),
+                        LootItem.lootTableItem(item).apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE))
+                        .apply(ApplyExplosionDecay.explosionDecay())));
+        return LootTable.lootTable().withPool(builder);
     }
     
     protected LootTable.Builder createSimpleItemTable(String name, Item item) {
