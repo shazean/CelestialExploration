@@ -1,5 +1,6 @@
 package com.shim.celestialexploration.inventory.screens;
 
+import com.google.common.collect.Lists;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.*;
 import com.shim.celestialexploration.CelestialExploration;
@@ -10,14 +11,13 @@ import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.texture.MissingTextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.chat.Style;
-import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.InventoryMenu;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fluids.FluidStack;
@@ -28,9 +28,11 @@ import java.util.List;
 @OnlyIn(Dist.CLIENT)
 public class WorkbenchScreen extends AbstractContainerScreen<WorkbenchMenu> {
     private static final ResourceLocation TEXTURE = new ResourceLocation(CelestialExploration.MODID, "textures/gui/workbench.png");
+    private List<Component> tooltip = Lists.newArrayList();
 
     public WorkbenchScreen(WorkbenchMenu menu, Inventory playerInventory, Component title) {
         super(menu, playerInventory, title);
+//        this.tooltip = new TranslatableComponent(menu.getFluidLevel() + " / 4000 mb");
     }
 
     @Override
@@ -51,7 +53,7 @@ public class WorkbenchScreen extends AbstractContainerScreen<WorkbenchMenu> {
         int k = this.menu.getFluidLevel();
         int l = this.menu.getFluidType();
 //        blit(poseStack, x + 52, y + 17 + 52, 176 - 9 + (l * 9), 29, 9, ); //FLUID LEVEL
-                blit(poseStack, x + 52, y + 17 + 52 - k, 176 - 9 + (l * 9), 29, 9, k); //FLUID LEVEL
+        blit(poseStack, x + 52, y + 17 + 52 - k, 176 - 9 + (l * 9), 29, 9, k); //FLUID LEVEL
 
         blit(poseStack, x + 31, y + 36, 177, 14, menu.getScaledProgress(), 14); //SMELTING ARROW
 
@@ -59,7 +61,6 @@ public class WorkbenchScreen extends AbstractContainerScreen<WorkbenchMenu> {
         if(menu.isLit()) {
             blit(poseStack, x + 14, y + 36 + 12 - m, 176, 12 - m, 14, m + 1); //FLAME
         }
-
     }
 
     @Override
@@ -68,42 +69,16 @@ public class WorkbenchScreen extends AbstractContainerScreen<WorkbenchMenu> {
         super.render(poseStack, mouseX, mouseY, delta);
         renderTooltip(poseStack, mouseX, mouseY);
 
-//        List<Component> components = Collections.singletonList(new Component() {
-//            @Override
-//            public Style getStyle() {
-//                return null;
-//            }
-//
-//            @Override
-//            public String getContents() {
-//                return null;
-//            }
-//
-//            @Override
-//            public List<Component> getSiblings() {
-//                return null;
-//            }
-//
-//            @Override
-//            public MutableComponent plainCopy() {
-//                return null;
-//            }
-//
-//            @Override
-//            public MutableComponent copy() {
-//                return null;
-//            }
-//
-//            @Override
-//            public FormattedCharSequence getVisualOrderText() {
-//                return null;
-//            }
-//        });
-//
-//        components.add(new TextComponent("Fluid: "));
-//        components.add(new TextComponent("Quantity: "));
+        int x = (width - imageWidth) / 2;
+        int y = (height - imageHeight) / 2;
+        int i = this.leftPos;
+        int j = this.topPos;
 
-
-//        renderTooltip(poseStack, components, null, mouseX, mouseY);
+        if (isHovering(x - i + 52, y - j + 17, 9, 52, mouseX, mouseY)) {
+            tooltip = Lists.newArrayList();
+            this.tooltip.add(new TranslatableComponent(String.valueOf(menu.getFluidTypeString())));
+            this.tooltip.add(new TranslatableComponent(menu.getFluidQuantity() + " / 4000 mb"));
+            this.renderComponentTooltip(poseStack, this.tooltip, mouseX, mouseY);
+        }
     }
 }

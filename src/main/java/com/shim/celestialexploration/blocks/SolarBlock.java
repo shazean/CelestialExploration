@@ -1,5 +1,6 @@
 package com.shim.celestialexploration.blocks;
 
+import com.shim.celestialexploration.registry.CelestialDamageSource;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -31,7 +32,7 @@ public class SolarBlock extends Block {
 
     public void stepOn(Level p_153777_, BlockPos p_153778_, BlockState p_153779_, Entity p_153780_) {
 //        if (!p_153780_.fireImmune() && p_153780_ instanceof LivingEntity && !EnchantmentHelper.hasFrostWalker((LivingEntity)p_153780_)) {
-            p_153780_.hurt(DamageSource.HOT_FLOOR, 120.0F);
+            p_153780_.hurt(CelestialDamageSource.TOUCHED_SUN, 120.0F);
 //        }
 
         super.stepOn(p_153777_, p_153778_, p_153779_, p_153780_);

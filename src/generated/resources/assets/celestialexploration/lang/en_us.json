@@ -256,6 +256,7 @@
   "block.celestialexploration.workbench": "Workbench",
   "block.celestialexploration.yellow_ceramic": "Yellow Ceramic",
   "block.celestialexploration.yellow_ceramic_tile": "Yellow Ceramic Tile",
+  "death.attack.celestialexploration.touchedSun": "%1$s flew into the sun",
   "effect.celestialexploration.extra_low_gravity": "Extra Low Gravity",
   "effect.celestialexploration.high_gravity": "High Gravity",
   "effect.celestialexploration.low_gravity": "Low Gravity",

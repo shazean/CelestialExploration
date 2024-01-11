@@ -24,6 +24,9 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(EffectRegistry.EXTRA_LOW_GRAVITY.get(), "Extra Low Gravity");
 		add(EffectRegistry.HIGH_GRAVITY.get(), "High Gravity");
 
+		/* DAMAGE SOURCES */
+		add("death.attack.celestialexploration.touchedSun", "%1$s flew into the sun");
+
 		/* BIOMES */
 		add("biome.celestialexploration.moon_craters", "Lunar Craters");
 		add("biome.celestialexploration.moon_desert", "Lunar Desert");

@@ -5,11 +5,9 @@ import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.blocks.blockentities.WorkbenchBlockEntity;
-import com.shim.celestialexploration.recipes.WorkbenchSmeltingRecipe;
+import com.shim.celestialexploration.recipes.OxygenCompressorRecipe;
 import com.shim.celestialexploration.registry.BlockRegistry;
 import mezz.jei.api.constants.VanillaTypes;
-import mezz.jei.api.forge.ForgeTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
@@ -27,14 +25,12 @@ import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.fluids.FluidAttributes;
-import net.minecraftforge.fluids.FluidStack;
 
 import javax.annotation.Nonnull;
 
-public class WorkbenchSmeltingRecipeCategory implements IRecipeCategory<WorkbenchSmeltingRecipe> {
-    public final static ResourceLocation UID = new ResourceLocation(CelestialExploration.MODID, "workbench_smelting");
-    public final static ResourceLocation TEXTURE = new ResourceLocation(CelestialExploration.MODID, "textures/gui/workbench.png");
+public class OxygenCompressorRecipeCategory implements IRecipeCategory<OxygenCompressorRecipe> {
+    public final static ResourceLocation UID = new ResourceLocation(CelestialExploration.MODID, "oxygen_compressor");
+    public final static ResourceLocation TEXTURE = new ResourceLocation(CelestialExploration.MODID, "textures/gui/oxygen_compressor.png");
 
     private final IDrawable background;
     private final IDrawable icon;
@@ -43,9 +39,9 @@ public class WorkbenchSmeltingRecipeCategory implements IRecipeCategory<Workbenc
     private final LoadingCache<Integer, IDrawableAnimated> cachedArrows;
 
 
-    public WorkbenchSmeltingRecipeCategory(IGuiHelper helper) {
+    public OxygenCompressorRecipeCategory(IGuiHelper helper) {
         this.background = helper.createDrawable(TEXTURE, 0, 0, 176, 80);
-        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(BlockRegistry.WORKBENCH.get()));
+        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(BlockRegistry.OXYGEN_COMPRESSOR.get()));
         this.staticFlame = helper.createDrawable(TEXTURE, 176, 0, 14, 14);
         this.animatedFlame = helper.createAnimatedDrawable(staticFlame, 300, IDrawableAnimated.StartDirection.TOP, true);
         this.cachedArrows = CacheBuilder.newBuilder()
@@ -67,18 +63,18 @@ public class WorkbenchSmeltingRecipeCategory implements IRecipeCategory<Workbenc
 
     @Override
     @SuppressWarnings("deprecated")
-    public Class<? extends WorkbenchSmeltingRecipe> getRecipeClass() {
-        return WorkbenchSmeltingRecipe.class;
+    public Class<? extends OxygenCompressorRecipe> getRecipeClass() {
+        return OxygenCompressorRecipe.class;
     }
 
     @Override
-    public RecipeType<WorkbenchSmeltingRecipe> getRecipeType() {
+    public RecipeType<OxygenCompressorRecipe> getRecipeType() {
         return IRecipeCategory.super.getRecipeType();
     }
 
     @Override
     public Component getTitle() {
-        return new TextComponent("Workbench Smelting");
+        return new TextComponent("Oxygen Compressor");
     }
 
     @Override
@@ -91,7 +87,7 @@ public class WorkbenchSmeltingRecipeCategory implements IRecipeCategory<Workbenc
         return this.icon;
     }
 
-    protected IDrawableAnimated getArrow(WorkbenchSmeltingRecipe recipe) {
+    protected IDrawableAnimated getArrow(OxygenCompressorRecipe recipe) {
         int cookTime = recipe.getCookingTime();
         if (cookTime <= 0) {
             cookTime = 100;
@@ -101,7 +97,7 @@ public class WorkbenchSmeltingRecipeCategory implements IRecipeCategory<Workbenc
     }
 
     @Override
-    public void draw(WorkbenchSmeltingRecipe recipe, IRecipeSlotsView recipeSlotsView, PoseStack poseStack, double mouseX, double mouseY) {
+    public void draw(OxygenCompressorRecipe recipe, IRecipeSlotsView recipeSlotsView, PoseStack poseStack, double mouseX, double mouseY) {
         animatedFlame.draw(poseStack, 14, 36);
 
         IDrawableAnimated arrow = getArrow(recipe);
@@ -111,7 +107,7 @@ public class WorkbenchSmeltingRecipeCategory implements IRecipeCategory<Workbenc
         drawCookTime(recipe, poseStack, 58);
     }
 
-    protected void drawExperience(WorkbenchSmeltingRecipe recipe, PoseStack poseStack, int y) {
+    protected void drawExperience(OxygenCompressorRecipe recipe, PoseStack poseStack, int y) {
         float experience = recipe.getExperience();
         if (experience > 0) {
             TranslatableComponent experienceString = new TranslatableComponent("gui.jei.category.smelting.experience", experience);
@@ -122,7 +118,7 @@ public class WorkbenchSmeltingRecipeCategory implements IRecipeCategory<Workbenc
         }
     }
 
-    protected void drawCookTime(WorkbenchSmeltingRecipe recipe, PoseStack poseStack, int y) {
+    protected void drawCookTime(OxygenCompressorRecipe recipe, PoseStack poseStack, int y) {
         int cookTime = recipe.getCookingTime();
         if (cookTime > 0) {
             int cookTimeSeconds = cookTime / 20;
@@ -135,7 +131,7 @@ public class WorkbenchSmeltingRecipeCategory implements IRecipeCategory<Workbenc
     }
 
     @Override
-    public void setRecipe(@Nonnull IRecipeLayoutBuilder builder, @Nonnull WorkbenchSmeltingRecipe recipe, @Nonnull IFocusGroup focusGroup) {
+    public void setRecipe(@Nonnull IRecipeLayoutBuilder builder, @Nonnull OxygenCompressorRecipe recipe, @Nonnull IFocusGroup focusGroup) {
 
         builder.addSlot(RecipeIngredientRole.INPUT, 13, 17).addIngredients(recipe.getIngredients().get(0));
 
@@ -163,8 +159,8 @@ public class WorkbenchSmeltingRecipeCategory implements IRecipeCategory<Workbenc
 //
 //        builder.addSlot(RecipeIngredientRole.OUTPUT, 144, 35).addItemStack(recipe.getResultItem());
 
-        FluidStack fluid = new FluidStack(recipe.getResultFluid(), WorkbenchBlockEntity.maxFluidLevel);
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 52, 17).setFluidRenderer(WorkbenchBlockEntity.maxFluidLevel, true, 9, 52).addIngredient(ForgeTypes.FLUID_STACK, fluid);
+//        FluidStack fluid = new FluidStack(recipe.getResultFluid(), FluidAttributes.BUCKET_VOLUME * 8);
+//        builder.addSlot(RecipeIngredientRole.OUTPUT, 52, 17).setFluidRenderer(FluidAttributes.BUCKET_VOLUME * 8, true, 9, 52).addIngredient(ForgeTypes.FLUID_STACK, fluid);
 
 //        this.addSlot(new SlotItemHandler(handler, 0, 13, 17)); //smelting slot
 //        this.addSlot(new FuelSlot(handler, 1, 13, 53)); //fuel slot

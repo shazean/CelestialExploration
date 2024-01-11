@@ -81,7 +81,7 @@ public class LoxTankItem extends BlockItem {
         LoxTankCapability.ILoxTank loxCap = CelestialExploration.getCapability(itemStack, CapabilityRegistry.LOX_TANK_CAPABILITY);
 
         if (loxCap != null) {
-            components.add(new TextComponent(loxCap.getAmount() + " / 8000 millibuckets"));
+            components.add(new TextComponent(loxCap.getAmount() + " / 8000 mb"));
         }
     }
 }

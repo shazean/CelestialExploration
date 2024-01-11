@@ -1,15 +1,15 @@
 package com.shim.celestialexploration.inventory.menus;
 
+import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.blocks.blockentities.OxygenCompressorBlockEntity;
+import com.shim.celestialexploration.inventory.FuelSlot;
 import com.shim.celestialexploration.inventory.OxygenTankSlot;
 import com.shim.celestialexploration.registry.BlockRegistry;
 import com.shim.celestialexploration.registry.MenuRegistry;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.ContainerLevelAccess;
-import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -19,29 +19,39 @@ import net.minecraftforge.items.SlotItemHandler;
 public class OxygenCompressorMenu extends AbstractContainerMenu {
     private final OxygenCompressorBlockEntity blockEntity;
     private final Level level;
+    private final ContainerData data;
+
 
     public OxygenCompressorMenu(int containerId, Inventory inv, FriendlyByteBuf extraData) {
-        this(containerId, inv, inv.player.level.getBlockEntity(extraData.readBlockPos()));
+        this(containerId, inv, inv.player.level.getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(4));
     }
 
-    public OxygenCompressorMenu(int containerId, Inventory inv, BlockEntity entity) {
+    public OxygenCompressorMenu(int containerId, Inventory inv, BlockEntity entity, ContainerData data) {
         super(MenuRegistry.OXYGEN_COMPRESSOR_MENU.get(), containerId);
 
         checkContainerSize(inv, 6);
         blockEntity = ((OxygenCompressorBlockEntity) entity);
         this.level = inv.player.level;
+        this.data = data;
 
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
 
+        CelestialExploration.LOGGER.debug("inventory slot 1: " + inv.getItem(36) + ", "+ inv.getItem(37) + ", "+ inv.getItem(38) + ", "+ inv.getItem(39) + ", "+ inv.getItem(40));
+
         this.blockEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(handler -> {
-            this.addSlot(new SlotItemHandler(handler, 0, 31, 51));
+            this.addSlot(new FuelSlot(handler, 0, 31, 51));
             this.addSlot(new OxygenTankSlot(handler, 1, 106, 23));
             this.addSlot(new OxygenTankSlot(handler, 2, 130, 23));
             this.addSlot(new OxygenTankSlot(handler, 3, 106, 47));
             this.addSlot(new OxygenTankSlot(handler, 4, 130, 47));
+
+            CelestialExploration.LOGGER.debug("menu slot 0: " + this.getSlot(35).getItem() + ", " + this.getSlot(36).getItem() + ", " + this.getSlot(37).getItem());
         });
+
+        addDataSlots(data);
     }
+
 
     /**
      CREDIT GOES TO: diesieben07 | https://github.com/diesieben07/SevenCommons
@@ -133,29 +143,79 @@ public class OxygenCompressorMenu extends AbstractContainerMenu {
 //        return k;
 //    }
 
-    public int getBurnProgress() {
-//        int i = this.blockEntity.getBurnProgress();
-//        return this.blockEntity.getBurnProgress() / 10;
-//        int i = this.data.get(2);
-//        int j = this.data.get(3);
-//        return j != 0 && i != 0 ? i * 24 / j : 0;
-//        int i = this.blockEntity.getBurnProgress() / this.blockEntity.getBurnMaxTime() * 100; //50 / 250 = .20 * 10 = 20 //200 / 250 = .8 * 100 = 80
-//        i = 100 - i; //100 - 20 = 80 //100 - 80 = 20
-//        return i / 10;
+    public int getScaledProgress(int progressSize) {
+        int progress = this.data.get(0);
+        int maxProgress = this.data.get(1);  // Max Progress
+//        int progressArrowSize = 19;
 
-        int i = this.blockEntity.getBurnProgress();
-        int j = this.blockEntity.getBurnMaxTime();
-
-        if (j == 0) {
-            return 0;
-        }
-        double k = (double)i / (double)j;
-        i = (int) (k * 100);
-        i = 100 - i; //100 - 20 = 80 //100 - 80 = 20
-        return i / 10;
+        return maxProgress != 0 && progress != 0 ? progress * progressSize / maxProgress : 0;
     }
 
-//    public float getLitProgress() {
+    public int getBurnProgress() {
+        int i = this.data.get(2);
+        int j = this.data.get(3);
+        return j != 0 && i != 0 ? i * 24 / j : 0;
+    }
+
+    public int getLitProgress() {
+        int i = this.data.get(3);
+        int j = this.data.get(2);
+        if (i == 0) {
+            i = 200;
+        }
+//        CelestialExploration.LOGGER.debug("maxFuelBurnTime: " + i + " fuelBurnTime: " + j + " getLitProgress (fuel * 13 / max): " + j * 13 / i);
+
+        return j * 13 / i;
+    }
+
+    public boolean isLit() {
+        return this.data.get(2) > 0;
+    }
+
+    public boolean isBurning() {
+        return this.data.get(0) > 0;
+    }
+
+//    public int getBurnProgress() {
+////        int i = this.blockEntity.getBurnProgress();
+////        return this.blockEntity.getBurnProgress() / 10;
+////        int i = this.data.get(2);
+////        int j = this.data.get(3);
+////        return j != 0 && i != 0 ? i * 24 / j : 0;
+////        int i = this.blockEntity.getBurnProgress() / this.blockEntity.getBurnMaxTime() * 100; //50 / 250 = .20 * 10 = 20 //200 / 250 = .8 * 100 = 80
+////        i = 100 - i; //100 - 20 = 80 //100 - 80 = 20
+////        return i / 10;
+//
+//        int i = this.blockEntity.getBurnProgress();
+//        int j = this.blockEntity.getBurnMaxTime();
+//
+//        if (j == 0) {
+//            return 0;
+//        }
+//        double k = (double)i / (double)j;
+//        i = (int) (k * 100);
+//        i = 100 - i; //100 - 20 = 80 //100 - 80 = 20
+//        return i / 10;
+//    }
+//
+////    public float getLitProgress() {
+////        int i = this.blockEntity.getLitProgress();
+////        int j = this.blockEntity.getLitTotalTime();
+////
+////        if (j == 0) {
+////            return 0;
+////        }
+////
+////        float k = (float)i / (float)j;
+//////        i = (int) (k * 100);
+////
+////
+//////        i = i * 100; //50 / 250 = .20 * 10 = 20 //200 / 250 = .8 * 100 = 80
+//////        i = 100 - i; //100 - 20 = 80 //100 - 80 = 20
+////        return k;
+////    }
+//
+//    public int getLitProgress() {
 //        int i = this.blockEntity.getLitProgress();
 //        int j = this.blockEntity.getLitTotalTime();
 //
@@ -163,42 +223,24 @@ public class OxygenCompressorMenu extends AbstractContainerMenu {
 //            return 0;
 //        }
 //
-//        float k = (float)i / (float)j;
-////        i = (int) (k * 100);
+//        double k = (double)i / (double)j;
+//        i = (int) (k * 100);
 //
 //
 ////        i = i * 100; //50 / 250 = .20 * 10 = 20 //200 / 250 = .8 * 100 = 80
-////        i = 100 - i; //100 - 20 = 80 //100 - 80 = 20
-//        return k;
+//        i = 100 - i; //100 - 20 = 80 //100 - 80 = 20
+//        return i / 10;
 //    }
+////        int i = this.data.get(1);
+////        if (i == 0) {
+////            i = 200;
+////        }
+////
+////        return this.data.get(0) * 13 / i;
+////    }
 
-    public int getLitProgress() {
-        int i = this.blockEntity.getLitProgress();
-        int j = this.blockEntity.getLitTotalTime();
-
-        if (j == 0) {
-            return 0;
-        }
-
-        double k = (double)i / (double)j;
-        i = (int) (k * 100);
-
-
-//        i = i * 100; //50 / 250 = .20 * 10 = 20 //200 / 250 = .8 * 100 = 80
-        i = 100 - i; //100 - 20 = 80 //100 - 80 = 20
-        return i / 10;
-    }
-//        int i = this.data.get(1);
-//        if (i == 0) {
-//            i = 200;
-//        }
-//
-//        return this.data.get(0) * 13 / i;
+//    public boolean isLit() {
+//        return this.blockEntity.isLit();
+////        return this.data.get(0) > 0;
 //    }
-
-    public boolean isLit() {
-        return this.blockEntity.isLit();
-//        return this.data.get(0) > 0;
-    }
-
 }

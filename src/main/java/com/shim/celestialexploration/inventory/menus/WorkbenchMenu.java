@@ -7,6 +7,7 @@ import com.shim.celestialexploration.inventory.WorkbenchResultSlot;
 import com.shim.celestialexploration.inventory.containers.WorkbenchCraftingContainer;
 import com.shim.celestialexploration.recipes.WorkbenchCraftingRecipe;
 import com.shim.celestialexploration.registry.BlockRegistry;
+import com.shim.celestialexploration.registry.FluidRegistry;
 import com.shim.celestialexploration.registry.MenuRegistry;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.protocol.game.ClientboundContainerSetSlotPacket;
@@ -20,6 +21,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.material.Fluids;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.templates.FluidTank;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -118,6 +121,24 @@ public class WorkbenchMenu extends RecipeBookMenu<WorkbenchCraftingContainer> {
 
     public int getFluidType() {
         return this.data.get(6);
+    }
+
+    public String getFluidTypeString() {
+        int index = this.data.get(6);
+
+        return switch (index) {
+            case 1 -> "Water";
+            case 2 -> "Lava";
+            case 3 -> "Molten Iron";
+            case 4 -> "Molten Steel";
+            case 5 -> "Molten Copper";
+            case 6 -> "Molten Gold";
+            default -> throw new IllegalStateException("Unexpected value: " + index);
+        };
+    }
+
+    public int getFluidQuantity() {
+        return this.data.get(4);
     }
 
     public int getScaledProgress() {

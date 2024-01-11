@@ -14,8 +14,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
 public class OxygenCompressorScreen extends AbstractContainerScreen<OxygenCompressorMenu> {
-    private static final ResourceLocation TEXTURE =
-            new ResourceLocation(CelestialExploration.MODID, "textures/gui/oxygen_compressor.png");
+    private static final ResourceLocation TEXTURE = new ResourceLocation(CelestialExploration.MODID, "textures/gui/oxygen_compressor.png");
 
     public OxygenCompressorScreen(OxygenCompressorMenu menu, Inventory playerInventory, Component title) {
         super(menu, playerInventory, title);
@@ -33,32 +32,38 @@ public class OxygenCompressorScreen extends AbstractContainerScreen<OxygenCompre
 
         int i = this.leftPos;
         int j = this.topPos;
-        //FIXME?
 //        CelestialExploration.LOGGER.debug("screen isLit is: " + this.menu.isLit());
 
 
-        if (this.menu.isLit()) {
+//      if (this.menu.isLit()) {
+//           int l = (int) (this.menu.getLitProgress() * 1.25); //placement, X; placement Y, grab starting at, X; grab starting at, Y; width?; height?;
+//           this.blit(poseStack, i + 32, j + 35 + l, 176, 0 + l, 16, 14 - l);
+//      }
 
-            //display flame as fuel item burns
-            int l = (int) (this.menu.getLitProgress() * 1.25); //placement, X; placement Y, grab starting at, X; grab starting at, Y; width?; height?;
-            this.blit(poseStack, i + 32, j + 35 + l, 176, 0 + l, 16, 14 - l);
-
-
+        int m = this.menu.getLitProgress();
+//        CelestialExploration.LOGGER.debug("m: " + m);
+        if(menu.isLit()) {
+            blit(poseStack, x + 32, y + 36 + 10 - m, 176, 12 - m, 14, m + 1); //FLAME
         }
 
-        int k = this.menu.getBurnProgress();
+        if (menu.isBurning()) {
+            //compression tube
+            int k = this.menu.getScaledProgress(19);
+            this.blit(poseStack, i + 79, j + 55, 192, 0, k, 6);
 
-        //compression tube
-        this.blit(poseStack, i + 79, j + 55, 192, 0, k * 2, 6);
-
-        //snowflakes FIXME
-        this.blit(poseStack, i + 76, j + 20, 211, 0, 24, 1 + (k * 3)); //32
+            //snowflakes
+            int l = this.menu.getScaledProgress(33);
+            this.blit(poseStack, i + 76, j + 20, 211, 0, 24, 1 + l); //32
+        }
     }
 
     @Override
     public void render(PoseStack poseStack, int mouseX, int mouseY, float delta) {
         renderBackground(poseStack);
         super.render(poseStack, mouseX, mouseY, delta);
+
+
+
         renderTooltip(poseStack, mouseX, mouseY);
     }
 }

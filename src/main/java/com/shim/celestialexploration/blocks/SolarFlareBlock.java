@@ -1,5 +1,6 @@
 package com.shim.celestialexploration.blocks;
 
+import com.shim.celestialexploration.registry.CelestialDamageSource;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -17,7 +18,7 @@ public class SolarFlareBlock extends HalfTransparentBlock {
     }
 
     public void stepOn(Level level, BlockPos pos, BlockState state, Entity entity) {
-        entity.hurt(DamageSource.HOT_FLOOR, 100.0F);
+        entity.hurt(CelestialDamageSource.TOUCHED_SUN, 100.0F);
     }
 
     public void animateTick(BlockState state, Level level, BlockPos pos, Random rand) {

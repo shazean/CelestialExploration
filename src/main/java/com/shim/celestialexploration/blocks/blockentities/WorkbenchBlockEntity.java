@@ -1,7 +1,6 @@
 package com.shim.celestialexploration.blocks.blockentities;
 
-import com.ibm.icu.text.AlphabeticIndex;
-import com.shim.celestialexploration.CelestialExploration;
+import com.shim.celestialexploration.blocks.WorkbenchBlock;
 import com.shim.celestialexploration.inventory.menus.WorkbenchMenu;
 import com.shim.celestialexploration.recipes.WorkbenchSmeltingRecipe;
 import com.shim.celestialexploration.registry.BlockEntityRegistry;
@@ -21,12 +20,10 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.item.BucketItem;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.AbstractFurnaceBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluids;
@@ -42,7 +39,6 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.lwjgl.system.CallbackI;
 
 import javax.annotation.Nonnull;
 import java.util.Optional;
@@ -54,7 +50,7 @@ public class WorkbenchBlockEntity extends BlockEntity implements MenuProvider {
     private int fuelBurnTime = 0;
     private int maxFuelBurnTime;
     private int fluidLevel;
-    private int maxFluidLevel = FluidAttributes.BUCKET_VOLUME * 8;
+    public static int maxFluidLevel = FluidAttributes.BUCKET_VOLUME * 4;
     private int fluidType;
 
     private final ItemStackHandler itemHandler = new ItemStackHandler(12) {
@@ -79,11 +75,12 @@ public class WorkbenchBlockEntity extends BlockEntity implements MenuProvider {
                     case 2 -> WorkbenchBlockEntity.this.fuelBurnTime;
                     case 3 -> WorkbenchBlockEntity.this.maxFuelBurnTime;
                     case 4 -> WorkbenchBlockEntity.this.fluidLevel;
-                    case 5 -> WorkbenchBlockEntity.this.maxFluidLevel;
+                    case 5 -> maxFluidLevel;
                     case 6 -> WorkbenchBlockEntity.this.fluidType;
                     default -> 0;
                 };
             }
+
             public void set(int index, int value) {
                 switch (index) {
                     case 0 -> WorkbenchBlockEntity.this.progress = value;
@@ -91,10 +88,11 @@ public class WorkbenchBlockEntity extends BlockEntity implements MenuProvider {
                     case 2 -> WorkbenchBlockEntity.this.fuelBurnTime = value;
                     case 3 -> WorkbenchBlockEntity.this.maxFuelBurnTime = value;
                     case 4 -> WorkbenchBlockEntity.this.fluidLevel = value;
-                    case 5 -> WorkbenchBlockEntity.this.maxFluidLevel = value;
+                    case 5 -> maxFluidLevel = value;
                     case 6 -> WorkbenchBlockEntity.this.fluidType = value;
                 }
             }
+
             public int getCount() {
                 return 7;
             }
@@ -178,8 +176,8 @@ public class WorkbenchBlockEntity extends BlockEntity implements MenuProvider {
     }
 
     public static void tick(Level level, BlockPos pos, BlockState state, WorkbenchBlockEntity blockEntity) {
-       boolean lit = blockEntity.isLit();
-       boolean changed = false;
+        boolean lit = blockEntity.isLit();
+        boolean changed = false;
         SimpleContainer inventory = new SimpleContainer(blockEntity.itemHandler.getSlots());
 
         if (blockEntity.fluidHandler.getFluidAmount() <= 100) {
@@ -191,164 +189,79 @@ public class WorkbenchBlockEntity extends BlockEntity implements MenuProvider {
             inventory.setItem(i, blockEntity.itemHandler.getStackInSlot(i));
         }
 
-       if (lit) {
-           blockEntity.fuelBurnTime--;
-       }
+        if (lit) {
+            blockEntity.fuelBurnTime--;
+        }
 
-       ItemStack fuelItem = blockEntity.itemHandler.getStackInSlot(1);
-       ItemStack smeltItem = blockEntity.itemHandler.getStackInSlot(0);
+        ItemStack fuelItem = blockEntity.itemHandler.getStackInSlot(1);
+        ItemStack smeltItem = blockEntity.itemHandler.getStackInSlot(0);
 
-       if (smeltItem.getItem() instanceof BucketItem && hasRecipe(blockEntity)) {
-           smeltItem(blockEntity);
-           blockEntity.itemHandler.setStackInSlot(0, new ItemStack(Items.BUCKET, 1));
-       }
+        if (smeltItem.getItem() instanceof BucketItem && hasRecipe(blockEntity)) {
+            smeltItem(blockEntity);
+            blockEntity.itemHandler.setStackInSlot(0, new ItemStack(Items.BUCKET, 1));
+        }
 
-       if (blockEntity.isLit() || (!fuelItem.isEmpty() && !smeltItem.isEmpty())) {
+        if (blockEntity.isLit() || (!fuelItem.isEmpty() && !smeltItem.isEmpty())) {
 //           Optional<WorkbenchSmeltingRecipe> recipe = level.getRecipeManager().getRecipeFor(WorkbenchSmeltingRecipe.Type.INSTANCE, inventory, level);
 //           FluidStack fluid = recipe.get().getResultFluid();
 
-           if (!blockEntity.isLit() && hasRecipe(blockEntity)) {
-               Optional<WorkbenchSmeltingRecipe> recipe = level.getRecipeManager().getRecipeFor(WorkbenchSmeltingRecipe.Type.INSTANCE, inventory, level);
-               if (canAddFluid(blockEntity, recipe.get().getResultFluid())) {
+            if (!blockEntity.isLit() && hasRecipe(blockEntity)) {
+                Optional<WorkbenchSmeltingRecipe> recipe = level.getRecipeManager().getRecipeFor(WorkbenchSmeltingRecipe.Type.INSTANCE, inventory, level);
+                if (recipe.isPresent() && canAddFluid(blockEntity, recipe.get().getResultFluid())) {
 
-                   blockEntity.fuelBurnTime = net.minecraftforge.common.ForgeHooks.getBurnTime(fuelItem, RecipeType.SMELTING);
-                   blockEntity.maxFuelBurnTime = blockEntity.fuelBurnTime;
+                    blockEntity.fuelBurnTime = net.minecraftforge.common.ForgeHooks.getBurnTime(fuelItem, RecipeType.SMELTING);
+                    blockEntity.maxFuelBurnTime = blockEntity.fuelBurnTime;
 
-                   if (blockEntity.isLit()) {
-                       changed = true;
+                    if (blockEntity.isLit()) {
+                        changed = true;
 
-                       if (fuelItem.hasContainerItem())
-                           blockEntity.itemHandler.setStackInSlot(1, fuelItem.getContainerItem());
-                       else if (!fuelItem.isEmpty()) {
-                           fuelItem.shrink(1);
-                           if (fuelItem.isEmpty()) {
-                               blockEntity.itemHandler.setStackInSlot(1, fuelItem.getContainerItem());
-                           }
-                       }
-                   }
-               }
-           }
-           if (blockEntity.isLit() && hasRecipe(blockEntity)) {
-               Optional<WorkbenchSmeltingRecipe> recipe = level.getRecipeManager().getRecipeFor(WorkbenchSmeltingRecipe.Type.INSTANCE, inventory, level);
-               if (canAddFluid(blockEntity, recipe.get().getResultFluid()) && hasRoomForFluid(blockEntity, recipe.get())) {
-                   blockEntity.maxProgress = recipe.get().getCookingTime();
+                        if (fuelItem.hasContainerItem())
+                            blockEntity.itemHandler.setStackInSlot(1, fuelItem.getContainerItem());
+                        else if (!fuelItem.isEmpty()) {
+                            fuelItem.shrink(1);
+                            if (fuelItem.isEmpty()) {
+                                blockEntity.itemHandler.setStackInSlot(1, fuelItem.getContainerItem());
+                            }
+                        }
+                    }
+                }
+            }
+            if (blockEntity.isLit() && hasRecipe(blockEntity)) {
+                Optional<WorkbenchSmeltingRecipe> recipe = level.getRecipeManager().getRecipeFor(WorkbenchSmeltingRecipe.Type.INSTANCE, inventory, level);
+                if (recipe.isPresent() && canAddFluid(blockEntity, recipe.get().getResultFluid()) && hasRoomForFluid(blockEntity, recipe.get())) {
+                    blockEntity.maxProgress = recipe.get().getCookingTime();
 
-                   blockEntity.progress++;
-                   if (blockEntity.progress == blockEntity.maxProgress) {
+                    blockEntity.progress++;
+                    if (blockEntity.progress == blockEntity.maxProgress) {
 
-                       blockEntity.progress = 0;
-                       blockEntity.maxProgress = recipe.get().getCookingTime();
-                       smeltItem(blockEntity);
-                       //TODO reward XP?
-                       changed = true;
-                   }
-               }
-           } else {
-               blockEntity.progress = 0;
-           }
+                        blockEntity.progress = 0;
+                        blockEntity.maxProgress = recipe.get().getCookingTime();
+                        smeltItem(blockEntity);
+                        //TODO reward XP?
+                        changed = true;
+                    }
+                }
+            } else {
+                blockEntity.progress = 0;
+            }
         } else if (!blockEntity.isLit() && blockEntity.progress > 0) {
-           blockEntity.progress = Mth.clamp(blockEntity.progress - 2, 0, blockEntity.maxProgress);
-       }
+            blockEntity.progress = Mth.clamp(blockEntity.progress - 2, 0, blockEntity.maxProgress);
+        }
 
-       if (lit != blockEntity.isLit()) {
-           changed = true;
-           state = state.setValue(AbstractFurnaceBlock.LIT, blockEntity.isLit());
-           level.setBlock(pos, state, 3);
-       }
+        if (lit != blockEntity.isLit()) {
+            changed = true;
+            state = state.setValue(WorkbenchBlock.LIT, blockEntity.isLit());
+            level.setBlock(pos, state, 3);
+        }
 
-       if (changed) {
-           setChanged(level, pos, state);
-       }
+        if (changed) {
+            setChanged(level, pos, state);
+        }
     }
 
     private boolean isLit() {
         return this.fuelBurnTime > 0;
     }
-
-//
-//    public static void serverTick(Level level, BlockPos pos, BlockState blockState, WorkbenchBlockEntity blockEntity) {
-//        boolean lit = blockEntity.isLit();
-//        boolean changed = false;
-//        if (blockEntity.isLit()) {
-//            --blockEntity.fuelBurnTime;
-//        }
-//        SimpleContainer inventory = new SimpleContainer(blockEntity.itemHandler.getSlots());
-//        for (int i = 0; i < blockEntity.itemHandler.getSlots(); i++) {
-//            inventory.setItem(i, blockEntity.itemHandler.getStackInSlot(i));
-//        }
-//
-//        ItemStack fuelItem = blockEntity.itemHandler.getStackInSlot(1);
-//        if (blockEntity.isLit() || !fuelItem.isEmpty() && !blockEntity.itemHandler.getStackInSlot(0).isEmpty()) {
-//            Optional<WorkbenchSmeltingRecipe> recipe = level.getRecipeManager().getRecipeFor(WorkbenchSmeltingRecipe.Type.INSTANCE, inventory, level);
-//            int maxStackSize = 64; //?
-//            if (!blockEntity.isLit() && blockEntity.canBurn(recipe, blockEntity.itemHandler, maxStackSize)) {
-//                blockEntity.fuelBurnTime = net.minecraftforge.common.ForgeHooks.getBurnTime(fuelItem, RecipeType.SMELTING);
-//                blockEntity.maxFuelBurnTime = blockEntity.fuelBurnTime;
-//                if (blockEntity.isLit()) {
-//                    changed = true;
-//                    if (fuelItem.hasContainerItem())
-//                        blockEntity.itemHandler.setStackInSlot(1, fuelItem.getContainerItem());
-//                    else if (!fuelItem.isEmpty()) {
-//                        Item item = fuelItem.getItem();
-//                        fuelItem.shrink(1);
-//                        if (fuelItem.isEmpty()) {
-//                            blockEntity.itemHandler.setStackInSlot(1, fuelItem.getContainerItem());
-//                        }
-//                    }
-//                }
-//            }
-//
-//            if (blockEntity.isLit() && blockEntity.canBurn(recipe, blockEntity.itemHandler, maxStackSize)) {
-//                ++blockEntity.progress;
-//                if (blockEntity.progress == blockEntity.maxProgress) {
-//                    blockEntity.progress = 0;
-//                    blockEntity.maxProgress = getTotalCookTime(level, blockEntity.recipeType, blockEntity);
-//                    if (blockEntity.burn(recipe, blockEntity.itemHandler, maxStackSize)) {
-//                        blockEntity.setRecipeUsed(recipe);
-//                    }
-//
-//                    changed = true;
-//                }
-//            } else {
-//                blockEntity.progress = 0;
-//            }
-//        } else if (!blockEntity.isLit() && blockEntity.progress > 0) {
-//            blockEntity.progress = Mth.clamp(blockEntity.progress - 2, 0, blockEntity.maxProgress);
-//        }
-//
-//        if (lit != blockEntity.isLit()) {
-//            changed = true;
-//            blockState = blockState.setValue(AbstractFurnaceBlock.LIT, blockEntity.isLit());
-//            level.setBlock(pos, blockState, 3);
-//        }
-//
-//        if (changed) {
-//            setChanged(level, pos, blockState);
-//        }
-//
-//    }
-//
-//    private boolean canBurn(@javax.annotation.Nullable Recipe<?> p_155006_, NonNullList<ItemStack> p_155007_, int p_155008_) {
-//        if (!p_155007_.get(0).isEmpty() && p_155006_ != null) {
-//            ItemStack itemstack = ((Recipe<WorldlyContainer>) p_155006_).assemble(this);
-//            if (itemstack.isEmpty()) {
-//                return false;
-//            } else {
-//                ItemStack itemstack1 = p_155007_.get(2);
-//                if (itemstack1.isEmpty()) {
-//                    return true;
-//                } else if (!itemstack1.sameItem(itemstack)) {
-//                    return false;
-//                } else if (itemstack1.getCount() + itemstack.getCount() <= p_155008_ && itemstack1.getCount() + itemstack.getCount() <= itemstack1.getMaxStackSize()) { // Forge fix: make furnace respect stack sizes in furnace recipes
-//                    return true;
-//                } else {
-//                    return itemstack1.getCount() + itemstack.getCount() <= itemstack.getMaxStackSize(); // Forge fix: make furnace respect stack sizes in furnace recipes
-//                }
-//            }
-//        } else {
-//            return false;
-//        }
-//    }
 
     private static boolean hasRecipe(WorkbenchBlockEntity entity) {
         Level level = entity.level;
@@ -374,12 +287,12 @@ public class WorkbenchBlockEntity extends BlockEntity implements MenuProvider {
         assert level != null;
         Optional<WorkbenchSmeltingRecipe> recipe = level.getRecipeManager().getRecipeFor(WorkbenchSmeltingRecipe.Type.INSTANCE, inventory, level);
 
-        if(recipe.isPresent()) {
-            entity.itemHandler.extractItem(0,1, false);
+        if (recipe.isPresent()) {
+            entity.itemHandler.extractItem(0, 1, false);
 
             FluidStack fluid = recipe.get().getResultFluid();
 
-            fluid.setAmount((int) ((float)FluidAttributes.BUCKET_VOLUME * recipe.get().getBuckets()));
+            fluid.setAmount((int) ((float) FluidAttributes.BUCKET_VOLUME * recipe.get().getBuckets()));
             entity.fluidHandler.fill(fluid, IFluidHandler.FluidAction.EXECUTE);
             entity.fluidLevel = entity.fluidHandler.getFluidAmount();
             setFluidType(entity);

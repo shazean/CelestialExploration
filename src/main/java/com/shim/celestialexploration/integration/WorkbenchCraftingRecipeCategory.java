@@ -2,6 +2,7 @@ package com.shim.celestialexploration.integration;
 
 import com.ibm.icu.impl.Pair;
 import com.shim.celestialexploration.CelestialExploration;
+import com.shim.celestialexploration.blocks.blockentities.WorkbenchBlockEntity;
 import com.shim.celestialexploration.recipes.WorkbenchCraftingRecipe;
 import com.shim.celestialexploration.registry.BlockRegistry;
 import mezz.jei.api.constants.VanillaTypes;
@@ -75,7 +76,7 @@ public class WorkbenchCraftingRecipeCategory implements IRecipeCategory<Workbenc
     @Override
     public void setRecipe(@Nonnull IRecipeLayoutBuilder builder, @Nonnull WorkbenchCraftingRecipe recipe, @Nonnull IFocusGroup focusGroup) {
         FluidStack fluid = new FluidStack(recipe.getFluid(), (int) (recipe.getBuckets() * FluidAttributes.BUCKET_VOLUME));
-        builder.addSlot(RecipeIngredientRole.INPUT, 52, 17).setFluidRenderer(FluidAttributes.BUCKET_VOLUME * 8, true, 9, 52).addIngredient(ForgeTypes.FLUID_STACK, fluid);
+        builder.addSlot(RecipeIngredientRole.INPUT, 52, 17).setFluidRenderer(WorkbenchBlockEntity.maxFluidLevel, true, 9, 52).addIngredient(ForgeTypes.FLUID_STACK, fluid);
 
         int height = recipe.getHeight();
         int width = recipe.getWidth();
