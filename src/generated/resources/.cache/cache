@@ -2214,7 +2214,7 @@ fead65f790e09cd58a26c05c82a47e2b286dbe21 data/minecraft/tags/blocks/emerald_ores
 ff0109a560289455feaa5248720ce601d1a33524 data/minecraft/tags/blocks/needs_diamond_tool.json
 7fe52b0119a62c3134a6e6b939603eeda468effb data/minecraft/tags/blocks/needs_iron_tool.json
 de57913241f136eb78a7a61c737168736f65ae8e data/minecraft/tags/blocks/needs_stone_tool.json
-42a911d8fdb174cf6990ce08ffa88deab707145d data/minecraft/tags/blocks/portals.json
+f2c746f201578624206fc6b27f2fd54992026446 data/minecraft/tags/blocks/portals.json
 65c016cf49c0c56ab05045f16873b23a1bb81a3e data/minecraft/tags/blocks/redstone_ores.json
 1347524c7174b9540eaa36b785739b8f7e6d8311 data/minecraft/tags/blocks/sand.json
 0b6f63ac96fa9b1ba64a6c3a4015f20909e43e32 data/minecraft/tags/blocks/slabs.json

@@ -730,8 +730,6 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(BlockRegistry.MARS_PORTAL.get())
                 .add(BlockRegistry.MOON_PORTAL.get())
                 .add(BlockRegistry.VENUS_PORTAL.get())
-                .add(BlockRegistry.SPACE_PORTAL.get())
-
         ;
 
         tag(BlockRegistry.REGOLITH_TAG)
