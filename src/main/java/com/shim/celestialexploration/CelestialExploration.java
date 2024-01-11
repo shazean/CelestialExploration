@@ -3,6 +3,7 @@ package com.shim.celestialexploration;
 import com.shim.celestialexploration.config.CelestialClientConfig;
 import com.shim.celestialexploration.config.CelestialCommonConfig;
 import com.shim.celestialexploration.entity.*;
+import com.shim.celestialexploration.packets.CelestialPacketHandler;
 import com.shim.celestialexploration.registry.*;
 import com.shim.celestialexploration.util.Keybinds;
 import net.minecraft.world.entity.SpawnPlacements;
@@ -123,6 +124,8 @@ public class CelestialExploration {
         SpawnPlacements.register(EntityRegistry.VOIDED.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, Voided::checkMonsterSpawnRules);
         SpawnPlacements.register(EntityRegistry.VOIDFELLOW.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, VoidFellow::checkMonsterSpawnRules);
         SpawnPlacements.register(EntityRegistry.SULFUR_CUBE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, SulfurCube::checkSulfurCubeSpawnRules);
+
+        CelestialPacketHandler.init();
 
     }
 

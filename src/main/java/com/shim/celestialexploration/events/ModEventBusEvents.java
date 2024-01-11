@@ -1,53 +1,29 @@
 package com.shim.celestialexploration.events;
 
-
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.capabilities.LoxTankCapability;
 import com.shim.celestialexploration.entity.*;
 import com.shim.celestialexploration.entity.model.MagCartModel;
 import com.shim.celestialexploration.entity.model.ShuttleModel;
-import com.shim.celestialexploration.entity.model.VoidedModel;
-import com.shim.celestialexploration.entity.renderer.*;
-import com.shim.celestialexploration.inventory.screens.OxygenCompressorScreen;
-import com.shim.celestialexploration.inventory.screens.ShuttleScreen;
-import com.shim.celestialexploration.inventory.screens.WorkbenchScreen;
 import com.shim.celestialexploration.particles.CelestialSlimeParticles;
 import com.shim.celestialexploration.particles.SulfurParticle;
 import com.shim.celestialexploration.recipes.WorkbenchCraftingRecipe;
 import com.shim.celestialexploration.recipes.WorkbenchSmeltingRecipe;
-import com.shim.celestialexploration.registry.*;
-import com.shim.celestialexploration.world.renderer.DimensionRenderers;
+import com.shim.celestialexploration.registry.CelestialModelLayers;
+import com.shim.celestialexploration.registry.EntityRegistry;
+import com.shim.celestialexploration.registry.ParticleRegistry;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screens.MenuScreens;
-import net.minecraft.client.model.BoatModel;
 import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.model.MinecartModel;
-import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.particle.FlameParticle;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.entity.EntityRenderers;
-import net.minecraft.client.renderer.entity.MinecartRenderer;
-import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.core.Registry;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.vehicle.Boat;
 import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.ParticleFactoryRegisterEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-
-import java.util.function.Supplier;
 
 import static com.shim.celestialexploration.entity.renderer.ShuttleRenderer.createShuttleModelName;
 import static net.minecraft.client.model.geom.LayerDefinitions.INNER_ARMOR_DEFORMATION;

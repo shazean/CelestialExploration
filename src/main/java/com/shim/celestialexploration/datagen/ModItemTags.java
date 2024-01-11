@@ -61,6 +61,14 @@ public class ModItemTags extends ItemTagsProvider {
 				.add(ItemRegistry.VENUS_SAND.get())
 		;
 
+		tag(ItemTags.SAND)
+				.add(ItemRegistry.GLOWING_MOON_SAND.get())
+//				.add(ItemRegistry.COARSE_MOON_SAND.get())
+//				.add(ItemRegistry.COARSE_MARS_SAND.get())
+				.add(ItemRegistry.MARS_SAND.get())
+				.add(ItemRegistry.MOON_SAND.get())
+				.add(ItemRegistry.VENUS_SAND.get())
+		;
 
 		tag(ItemTags.DIRT)
 				.add(ItemRegistry.COARSE_MOON_SAND.get())

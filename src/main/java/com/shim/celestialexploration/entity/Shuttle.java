@@ -5,6 +5,8 @@ import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.capabilities.LoxTankCapability;
 import com.shim.celestialexploration.config.CelestialCommonConfig;
 import com.shim.celestialexploration.inventory.menus.ShuttleMenu;
+import com.shim.celestialexploration.packets.CelestialPacketHandler;
+import com.shim.celestialexploration.packets.ShuttleFuelTickPacket;
 import com.shim.celestialexploration.registry.*;
 import com.shim.celestialexploration.util.CelestialUtil;
 import com.shim.celestialexploration.util.Keybinds;
@@ -71,10 +73,8 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
     private static final EntityDataAccessor<Integer> DATA_ID_BUBBLE_TIME = SynchedEntityData.defineId(Shuttle.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Byte> DATA_ID_FLAGS = SynchedEntityData.defineId(Shuttle.class, EntityDataSerializers.BYTE);
     private static final EntityDataAccessor<Integer> DATA_ID_TIME_ON_GROUND = SynchedEntityData.defineId(Shuttle.class, EntityDataSerializers.INT);
-//    private static final EntityDataAccessor<CompoundTag> DATA_ID_TANK_ONE = SynchedEntityData.defineId(Shuttle.class, EntityDataSerializers.COMPOUND_TAG);
-//    private static final EntityDataAccessor<CompoundTag> DATA_ID_TANK_TWO = SynchedEntityData.defineId(Shuttle.class, EntityDataSerializers.COMPOUND_TAG);
-//    private static final EntityDataAccessor<CompoundTag> DATA_ID_TANK_THREE = SynchedEntityData.defineId(Shuttle.class, EntityDataSerializers.COMPOUND_TAG);
-//    private static final EntityDataAccessor<CompoundTag> DATA_ID_TANK_FOUR = SynchedEntityData.defineId(Shuttle.class, EntityDataSerializers.COMPOUND_TAG);
+    private static final EntityDataAccessor<Integer> DATA_ID_FUEL_TICKS = SynchedEntityData.defineId(Shuttle.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> DATA_ID_FUEL = SynchedEntityData.defineId(Shuttle.class, EntityDataSerializers.INT);
 
     private float outOfControlTicks;
     public float deltaRotation;
@@ -85,14 +85,15 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
     private double lerpYRot;
     private double lerpXRot;
     private Shuttle.Status status;
-    private static final float SHUTTLE_SPEED = .55F;
-    private static final float SHUTTLE_LOW_FUEL_SPEED = SHUTTLE_SPEED - .2F;
+    private static final float SHUTTLE_SPEED = .63F;
+    private static final float SHUTTLE_LOW_FUEL_SPEED = SHUTTLE_SPEED - .15F;
     private static final float SHUTTLE_NO_FUEL_SPEED = .2F;
     protected SimpleContainer inventory;
-    private int fuelTicks = 200;
-    private final int maxFuelTicks = CelestialCommonConfig.SHUTTLE_FUEL_RATE.get();
+//    private int fuelTicks = 200;
+    private static final int MAX_FUEL_TICKS = CelestialCommonConfig.SHUTTLE_FUEL_RATE.get();
     private int teleportationCooldown = 80;
-    public static int maxTimeOnGround = 10;
+    public static int maxTimeOnGround = 15;
+    private final int LOW_FUEL = 300;
 
     public Shuttle(EntityType<? extends Shuttle> p_38290_, Level p_38291_) {
         super(p_38290_, p_38291_);
@@ -142,7 +143,10 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
         this.entityData.define(DATA_ID_BUBBLE_TIME, 0);
         this.entityData.define(DATA_ID_FLAGS, (byte) 0);
         this.entityData.define(DATA_ID_TIME_ON_GROUND, 1);
-//        this.entityData.define(DATA_ID_TANK_ONE, null);
+        this.entityData.define(DATA_ID_FUEL_TICKS, MAX_FUEL_TICKS);
+        this.entityData.define(DATA_ID_FUEL, 0);
+
+        //        this.entityData.define(DATA_ID_TANK_ONE, null);
 //        this.entityData.define(DATA_ID_TANK_TWO, null);
 //        this.entityData.define(DATA_ID_TANK_THREE, null);
 //        this.entityData.define(DATA_ID_TANK_FOUR, null);
@@ -151,13 +155,11 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
 
     @Override
     public boolean canCollideWith(Entity p_38376_) {
-        return false;
-//        return canVehicleCollide(this, p_38376_);
+        return canVehicleCollide(this, p_38376_);
     }
 
     public static boolean canVehicleCollide(Entity p_38324_, Entity p_38325_) {
-        return false;
-//        return (p_38325_.canBeCollidedWith() || p_38325_.isPushable()) && !p_38324_.isPassengerOfSameVehicle(p_38325_);
+        return (p_38325_.canBeCollidedWith() || p_38325_.isPushable()) && !p_38324_.isPassengerOfSameVehicle(p_38325_);
     }
 
     @Override
@@ -256,29 +258,33 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
         return this.entityData.get(DATA_ID_TIME_ON_GROUND);
     }
 
-//    public void setTank(int tankNum) {
-//        switch(tankNum) {
-//            case 1: this.entityData.set(DATA_ID_TANK_ONE, getTankCap(this.inventory.getItem(0)).getLoxData());
-////            case 2: this.entityData.set(DATA_ID_TANK_TWO, getTankCap(this.inventory.getItem(1)).getLoxData());
-////            case 3: this.entityData.set(DATA_ID_TANK_THREE, getTankCap(this.inventory.getItem(2)).getLoxData());
-////            case 4: this.entityData.set(DATA_ID_TANK_FOUR, getTankCap(this.inventory.getItem(3)).getLoxData());
-//        }
-//    }
+    public void setFuelTicks(int ticks) {
+        this.entityData.set(DATA_ID_FUEL_TICKS, ticks);
+    }
 
-//    public CompoundTag getTank(int tankNum) {
-//        return switch (tankNum) {
-//            case 1 -> this.entityData.get(DATA_ID_TANK_ONE);
-////            case 2 -> this.entityData.get(DATA_ID_TANK_TWO);
-////            case 3 -> this.entityData.get(DATA_ID_TANK_THREE);
-////            case 4 -> this.entityData.get(DATA_ID_TANK_FOUR);
-//            default -> null;
-//        };
-//    }
+    public int getFuelTicks() {
+        return this.entityData.get(DATA_ID_FUEL_TICKS);
+    }
 
+    public void setFuelDataId(int mb) {
+        this.entityData.set(DATA_ID_FUEL, mb);
+    }
+
+    public int getFuelDataId() {
+        return this.entityData.get(DATA_ID_FUEL);
+    }
+
+    public boolean isFuelDataIdLowFuel() {
+        return getFuelDataId() <= LOW_FUEL;
+    }
+
+
+
+    public void decrementFuelTicks() {
+        this.setFuelTicks(this.getFuelTicks() - 1);
+    }
 
     public void tick() {
-//        Status oldStatus = this.status;
-
         this.status = this.getStatus();
         if (this.status != Shuttle.Status.UNDER_WATER && this.status != Shuttle.Status.UNDER_FLOWING_WATER) {
             this.outOfControlTicks = 0.0F;
@@ -307,12 +313,8 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
             if (this.level.isClientSide) {
                 this.controlShuttle();
                 if (this.isVehicle()) {
-                    if (this.getDeltaMovement().z > 0 || this.getDeltaMovement().x > 0) {
-                        --fuelTicks;
-                        if (fuelTicks <= 0) {
-                            this.useFuel();
-                            fuelTicks = maxFuelTicks;
-                        }
+                    if (this.getDeltaMovement().z != 0 || this.getDeltaMovement().x != 0) {
+                        CelestialPacketHandler.INSTANCE.sendToServer(new ShuttleFuelTickPacket(this.getId(), this.getFuelTicks()));
                     }
                 } else {
                     this.setDeltaMovement(Vec3.ZERO);
@@ -322,12 +324,20 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
             }
             this.move(MoverType.SELF, this.getDeltaMovement());
         }
+
+        if (!this.level.isClientSide) {
+            if (this.getFuelTicks() <= 0) {
+                this.useFuel();
+                this.setFuelTicks(MAX_FUEL_TICKS);
+            }
+            this.setFuelDataId(this.getFuel());
+        }
+
         ResourceKey<Level> currentDimension = this.level.dimension();
 
         if (isVehicle() && isTeleportHeight()) {
             if (!(currentDimension == DimensionRegistry.SPACE)) {
                 //TODO or FIXME does not allow for multiple passengers. Update if we want shuttle to allow multiple passengers in the future
-
                 if (this.level.dimension() == DimensionRegistry.VENUS) teleportToSpace(2);
                 if (this.level.dimension() == Level.OVERWORLD || this.level.dimension() == DimensionRegistry.MOON)
                     teleportToSpace(3);
@@ -340,10 +350,6 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
         if (this.isVehicle() && currentDimension == DimensionRegistry.SPACE) {
             ChunkPos shuttleChunkPos = new ChunkPos(this.blockPosition());
             ResourceKey<Level> destination = getTeleportLocation(this, shuttleChunkPos);
-
-//            if (this.level.isClientSide) {
-//                CelestialExploration.LOGGER.debug("Destination is: " + destination + " and cooldown is: " + this.teleportationCooldown);
-
                 if (destination != null) {
                     if (this.teleportationCooldown == 0) {
                         Entity passenger = this.getControllingPassenger();
@@ -352,17 +358,13 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
                         teleportShuttle(passenger, this, destination, teleportPosition);
                     } else {
                         this.teleportationCooldown--;
-//                        CelestialExploration.LOGGER.debug("Changing teleportationCooldown? " + this.teleportationCooldown);
                         this.displayTeleportMessage(this.teleportationCooldown);
                     }
                 }
                 if (destination == null) {
-//                    CelestialExploration.LOGGER.debug("Destination is null! Resetting teleportation cooldown!");
                     this.resetTelportationCooldown();
                 }
             }
-//        }
-
         this.checkInsideBlocks();
 
         List<Entity> list = this.level.getEntities(this, this.getBoundingBox().inflate(0.2F, -0.01F, 0.2F), EntitySelector.pushableBy(this));
@@ -388,8 +390,6 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
             assert passenger != null;
             ResourceKey<Level> destination = DimensionRegistry.SPACE;
             Vec3 earthLocation = new Vec3(CelestialUtil.getPlanetaryChunkCoordinates(planetOriginNum).x * 16, 165.0, CelestialUtil.getPlanetaryChunkCoordinates(planetOriginNum).z * 16);
-//            CelestialExploration.LOGGER.debug("Planet location is: " + earthLocation);
-
             this.teleportShuttle(passenger, this, destination, earthLocation);
         } else {
             this.teleportationCooldown--;
@@ -633,44 +633,24 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
     }
 
     public boolean hasFuel() {
-        boolean hasFuel = false;
-
         LoxTankCapability.ILoxTank firstTankCap = getTankCap(this.inventory.getItem(0));
         LoxTankCapability.ILoxTank secondTankCap = getTankCap(this.inventory.getItem(1));
         LoxTankCapability.ILoxTank thirdTankCap = getTankCap(this.inventory.getItem(2));
         LoxTankCapability.ILoxTank fourthTankCap = getTankCap(this.inventory.getItem(3));
 
         if (firstTankCap != null) {
-            hasFuel = !firstTankCap.isEmpty();
+            if (!firstTankCap.isEmpty()) return true;
         }
         if (secondTankCap != null) {
-            hasFuel = !secondTankCap.isEmpty();
+            if (!secondTankCap.isEmpty()) return true;
         }
         if (thirdTankCap != null) {
-            hasFuel = !thirdTankCap.isEmpty();
+            if (!thirdTankCap.isEmpty()) return true;
         }
         if (fourthTankCap != null) {
-            hasFuel = !fourthTankCap.isEmpty();
+            return !fourthTankCap.isEmpty();
         }
-
-        int fuelAmount = 0;
-
-        if (firstTankCap != null) {
-            fuelAmount += firstTankCap.getAmount();
-        }
-        if (secondTankCap != null) {
-            fuelAmount += secondTankCap.getAmount();
-        }
-        if (thirdTankCap != null) {
-            fuelAmount += thirdTankCap.getAmount();
-        }
-        if (fourthTankCap != null) {
-            fuelAmount += fourthTankCap.getAmount();
-        }
-
-//        CelestialExploration.LOGGER.debug("Fuel amount is: " + fuelAmount);
-
-        return hasFuel;
+        return false;
     }
 
     private void useFuel() {
@@ -722,7 +702,7 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
     }
 
     public boolean hasLowFuel() {
-        return getFuel() <= 300;
+        return getFuel() <= LOW_FUEL;
     }
 
     private LoxTankCapability.ILoxTank getTankCap(ItemStack tank) {
@@ -763,8 +743,8 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
             }
         }
 
-        if (this.hasFuel()) {
-            if (this.hasLowFuel()) return SHUTTLE_LOW_FUEL_SPEED;
+        if (this.getFuelDataId() > 0) {
+            if (this.getFuelDataId() <= LOW_FUEL) return SHUTTLE_LOW_FUEL_SPEED;
             return SHUTTLE_SPEED;
         }
         return SHUTTLE_NO_FUEL_SPEED;
@@ -779,7 +759,7 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
         if (this.isVehicle()) {
 
             float currentSpeed;
-            currentSpeed = getMaxSpeed();
+            currentSpeed = this.getMaxSpeed();
 
             LivingEntity livingentity = (LivingEntity) this.getControllingPassenger();
 //            this.yRotO = this.getYRot();
@@ -903,22 +883,17 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
 
         tag.put("Items", listtag);
 
-        tag.putInt("Fuel Ticks", fuelTicks);
         if (!this.inventory.getItem(0).isEmpty()) {
             tag.put("Fuel Tank 1", this.getTankCap(this.inventory.getItem(0)).getLoxData());
-//            tag.put(getTank(1));
         }
         if (!this.inventory.getItem(1).isEmpty()) {
             tag.put("Fuel Tank 2", this.getTankCap(this.inventory.getItem(1)).getLoxData());
-//            setTank(2);
         }
         if (!this.inventory.getItem(2).isEmpty()) {
             tag.put("Fuel Tank 3", this.getTankCap(this.inventory.getItem(2)).getLoxData());
-//            setTank(3);
         }
         if (!this.inventory.getItem(3).isEmpty()) {
             tag.put("Fuel Tank 4", this.getTankCap(this.inventory.getItem(3)).getLoxData());
-//            setTank(4);
         }
     }
 
@@ -937,11 +912,11 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
             }
         }
 
-        fuelTicks = tag.getInt("Fuel Ticks");
-
+//        fuelTicks = tag.getInt("Fuel Ticks");
+//
         if (tag.contains("Fuel Tank 1")) {
             this.getTankCap(this.inventory.getItem(0)).setLoxData(tag.getCompound("Fuel Tank 1"));
-            CelestialExploration.LOGGER.debug("Item slot 0: " + this.inventory.getItem(0) + " and tank cap: " + this.getTankCap(this.inventory.getItem(0)));
+            CelestialExploration.LOGGER.debug("Item slot 0: " + this.inventory.getItem(0) + " and tank cap: " + this.getTankCap(this.inventory.getItem(0)) + " & amount: " + this.getTankCap(this.inventory.getItem(0)).getAmount());
 
         }
         if (tag.contains("Fuel Tank 2")) {
@@ -953,6 +928,8 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
         if (tag.contains("Fuel Tank 4")) {
             this.getTankCap(this.inventory.getItem(3)).setLoxData(tag.getCompound("Fuel Tank 4"));
         }
+        this.updateContainerEquipment();
+
     }
 
     @Override
@@ -971,8 +948,8 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
             }
         }
 
-        fuelTicks = tag.getInt("Fuel Ticks");
-
+//        fuelTicks = tag.getInt("Fuel Ticks");
+//
         if (tag.contains("Fuel Tank 1")) {
             this.getTankCap(this.inventory.getItem(0)).setLoxData(tag.getCompound("Fuel Tank 1"));
             CelestialExploration.LOGGER.debug("Item slot 0: " + this.inventory.getItem(0) + " and tank cap amount: " + this.getTankCap(this.inventory.getItem(0)).getAmount());
@@ -988,6 +965,8 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
         if (tag.contains("Fuel Tank 4")) {
             this.getTankCap(this.inventory.getItem(3)).setLoxData(tag.getCompound("Fuel Tank 4"));
         }
+
+        this.updateContainerEquipment();
 
         super.load(tag);
     }
@@ -1131,6 +1110,7 @@ public class Shuttle extends Entity implements ContainerListener, MenuProvider {
     public <T> net.minecraftforge.common.util.LazyOptional<T> getCapability(net.minecraftforge.common.capabilities.Capability<T> capability, @Nullable net.minecraft.core.Direction facing) {
         if (capability == net.minecraftforge.items.CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && itemHandler != null)
             return itemHandler.cast();
+
         return super.getCapability(capability, facing);
     }
 

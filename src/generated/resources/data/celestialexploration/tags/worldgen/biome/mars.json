@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "celestialexploration:mars_craters",
+    "celestialexploration:mars_deep_craters",
+    "celestialexploration:mars_desert",
+    "celestialexploration:mars_dunes",
+    "celestialexploration:mars_dry_ice_flats",
+    "celestialexploration:mars_dry_ice_peaks",
+    "celestialexploration:mars_eroded_flats",
+    "celestialexploration:mars_flats",
+    "celestialexploration:mars_volcano_flats"
+  ]
+}

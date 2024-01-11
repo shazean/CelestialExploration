@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "celestialexploration:moon_craters",
+    "celestialexploration:moon_desert",
+    "celestialexploration:moon_lava_flats",
+    "celestialexploration:moon_plains",
+    "celestialexploration:moon_lower_plains"
+  ]
+}

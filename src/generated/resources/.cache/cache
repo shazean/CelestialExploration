@@ -1658,6 +1658,9 @@ bb45f77b38f0555e41963f4008749b2ce8fa224f data/celestialexploration/tags/items/ve
 49aee9827a87adcc03602e60a3ca0694c5f840ed data/celestialexploration/tags/items/venus_cobblestone.json
 8c8d2eeee6337c3024334727824ee46a4a73972a data/celestialexploration/tags/items/venus_deepslate.json
 6525db6db3fd7e71fe18d39302e3ae9c8c34e73f data/celestialexploration/tags/items/venus_stone.json
+df647189eabaf5c3a486497cb7211a8389d5eb9f data/celestialexploration/tags/worldgen/biome/mars.json
+d80140d0954f710240fef4b2df13cd3b0e7253f8 data/celestialexploration/tags/worldgen/biome/moon.json
+9943cfc872c0cb486a76b1fb38250b136f90d00d data/celestialexploration/tags/worldgen/biome/space.json
 74606b1b0f9f246cbe771bd7b3af0579087c66aa data/forge/tags/blocks/glass.json
 8e93e0414033ce1c23a33bf0fa0ee885804f7430 data/forge/tags/blocks/glass_panes.json
 74700d556ca80c7a1db5fd4efb09c3ddb26cad66 data/forge/tags/blocks/ore_rates/dense.json
@@ -2202,7 +2205,6 @@ c16a93cd0aaf166a93a51cafd52735ffeccae971 data/minecraft/tags/blocks/climbable.js
 e63f8d6c43fbe184e5fa8c5efd4f805fd3d29fae data/minecraft/tags/blocks/coal_ores.json
 9cdcccd30a8d9bb456d315b07775d1395bf83548 data/minecraft/tags/blocks/copper_ores.json
 79cb13f8b99233597b46dfbcd872a39ec0c021d6 data/minecraft/tags/blocks/diamond_ores.json
-cefd1023b70e6e60101f4834422b3a74a3a76251 data/minecraft/tags/blocks/dirt.json
 fead65f790e09cd58a26c05c82a47e2b286dbe21 data/minecraft/tags/blocks/emerald_ores.json
 03636f72460cc1b29dda0a83f301a03450265380 data/minecraft/tags/blocks/gold_ores.json
 363afd90be7c3f0fbf62c6206e93d8848c42c6ae data/minecraft/tags/blocks/iron_ores.json
@@ -2214,9 +2216,11 @@ ff0109a560289455feaa5248720ce601d1a33524 data/minecraft/tags/blocks/needs_diamon
 de57913241f136eb78a7a61c737168736f65ae8e data/minecraft/tags/blocks/needs_stone_tool.json
 42a911d8fdb174cf6990ce08ffa88deab707145d data/minecraft/tags/blocks/portals.json
 65c016cf49c0c56ab05045f16873b23a1bb81a3e data/minecraft/tags/blocks/redstone_ores.json
+1347524c7174b9540eaa36b785739b8f7e6d8311 data/minecraft/tags/blocks/sand.json
 0b6f63ac96fa9b1ba64a6c3a4015f20909e43e32 data/minecraft/tags/blocks/slabs.json
 f35743bf0881b846e253d997ec24c919aca89baf data/minecraft/tags/blocks/soul_fire_base_blocks.json
 ec68fb94b58d01048059c668aeb34b047cd840d1 data/minecraft/tags/blocks/stairs.json
 c16a93cd0aaf166a93a51cafd52735ffeccae971 data/minecraft/tags/blocks/unstable_bottom_center.json
 37d1441bbea1b5e597c7901b3ffc60b464757da6 data/minecraft/tags/blocks/walls.json
 cefd1023b70e6e60101f4834422b3a74a3a76251 data/minecraft/tags/items/dirt.json
+1f83aeafa1601af6cd300f2e127643c23810175d data/minecraft/tags/items/sand.json

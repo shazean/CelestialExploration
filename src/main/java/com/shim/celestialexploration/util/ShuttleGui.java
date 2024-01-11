@@ -41,7 +41,7 @@ public class ShuttleGui extends ForgeIngameGui implements IIngameOverlay {
     }
 
     protected void renderShuttleData(Shuttle shuttle, PoseStack poseStack, int width, int height) {
-        int fuel = shuttle.getFuel();
+        int fuel = shuttle.getFuelDataId();
         int maxFuel = 8000 * 4;
         double fuelPercent = (double) fuel / (double) maxFuel;
         int altitude = (int) shuttle.position().y;
@@ -55,9 +55,9 @@ public class ShuttleGui extends ForgeIngameGui implements IIngameOverlay {
         //SPEED
         if (speed == 0) {
             blit(poseStack, width - 12 - 45 + 11, 12 + 21, 46, 22,12, 4);  //NO MOVEMENT
-        } else if (!shuttle.hasFuel()) {
+        } else if (!(shuttle.getFuelDataId() > 0)) {
             blit(poseStack, width - 12 - 45 + 11, 12 + 21 - 3, 46, 22 + 4,12, 4); //NO FUEL, LOW SPEED
-        } else if (shuttle.hasLowFuel()) {
+        } else if (shuttle.isFuelDataIdLowFuel()) {
             blit(poseStack, width - 12 - 45 + 22, 12 + 21 - 9, 46 + 2, 22 + 8,10, 8); //LOW FUEL, MEDIUM SPEED
         } else {
             blit(poseStack, width - 12 - 45 + 22, 12 + 21, 46, 22 + 16,12, 4); //HAS FUEL, FULL SPEED

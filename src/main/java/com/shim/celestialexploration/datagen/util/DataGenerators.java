@@ -25,8 +25,7 @@ public class DataGenerators {
 			generator.addProvider(blockTags);
 			generator.addProvider(fluidTags);
 			generator.addProvider(new ModItemTags(generator, blockTags, event.getExistingFileHelper()));
-//			ModBiomeTags biomeTags = new ModBiomeTags(generator);
-//			generator.addProvider(biomeTags);
+			generator.addProvider(new ModBiomeTags(generator, CelestialExploration.MODID, event.getExistingFileHelper()));
 		}
 		if (event.includeClient()) {
 			generator.addProvider(new BlockStates(generator, event.getExistingFileHelper()));

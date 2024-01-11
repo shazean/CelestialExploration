@@ -14,18 +14,17 @@ import javax.annotation.Nonnull;
 
 public class LoxTankCapability {
     public interface ILoxTank {
-        public int getAmount();
-        public void setAmount(int amount);
-        public void incrementAmount();
-        public void decrementAmount();
-        public void decrementAmountByFifty();
+        int getAmount();
+        void setAmount(int amount);
+        void incrementAmount();
+        void decrementAmount();
+        void decrementAmountByFifty();
         CompoundTag getLoxData();
-        public void setFullness();
-        public int getFullness();
-        public boolean isFull();
-        public boolean isEmpty();
+        void setFullness();
+        int getFullness();
+        boolean isFull();
+        boolean isEmpty();
         void setLoxData(CompoundTag nbt);
-
     }
 
     public static class LoxTankHandler implements ILoxTank {
@@ -49,7 +48,6 @@ public class LoxTankCapability {
             if (loxAmount < DEFAULT_CAPACITY) {
                 loxAmount += 1000;
                 fullness = (int) (((double)loxAmount / (double)DEFAULT_CAPACITY) * 8);
-            } else {
             }
         }
 

@@ -15,7 +15,7 @@ public class CelestialCommonConfig {
 
         RANGE_OF_SPACE = BUILDER.comment("Size of space (calculated by # of chunks between the sun and Mercury)").defineInRange("Range of Space", 14, 6, 24);
         USE_GRAVITY_EFFECTS = BUILDER.comment("Should the gravity effects (i.e. low gravity on Mars) be applied to players?").define("Gravity Effects", true);
-        SHUTTLE_FUEL_RATE = BUILDER.comment("How quickly the shuttle depletes fuel (higher is slower)").defineInRange("Shuttle Fuel Rate", 200, 100, 500);
+        SHUTTLE_FUEL_RATE = BUILDER.comment("How quickly the shuttle depletes fuel, in # of ticks (higher is slower)").defineInRange("Shuttle Fuel Rate", 50, 20, 200);
 
         BUILDER.pop();
         SPEC = BUILDER.build();

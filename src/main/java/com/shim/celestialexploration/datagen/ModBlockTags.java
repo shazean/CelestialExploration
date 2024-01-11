@@ -276,12 +276,12 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(BlockRegistry.METEOR_LAPIS_ORE.get())
                 .add(BlockRegistry.METEOR_REDSTONE_ORE.get());
 
-        tag(BlockTags.DIRT)
-                .add(BlockRegistry.COARSE_MOON_SAND.get())
-                .add(BlockRegistry.COARSE_MARS_SAND.get())
+//        tag(BlockTags.DIRT)
+//                .add(BlockRegistry.COARSE_MOON_SAND.get())
+//                .add(BlockRegistry.COARSE_MARS_SAND.get())
 //                .add(BlockRegistry.COARSE_VENUS_SAND.get())
 
-        ;
+//        ;
 
         tag(BlockTags.COAL_ORES)
                 .add(BlockRegistry.METEOR_COAL_ORE.get());
@@ -413,6 +413,16 @@ public class ModBlockTags extends BlockTagsProvider {
         ;
 
         tag(Tags.Blocks.SAND)
+                .add(BlockRegistry.GLOWING_MOON_SAND.get())
+//                .add(BlockRegistry.COARSE_MOON_SAND.get())
+//                .add(BlockRegistry.COARSE_MARS_SAND.get())
+                .add(BlockRegistry.MARS_SAND.get())
+                .add(BlockRegistry.MOON_SAND.get())
+                .add(BlockRegistry.VENUS_SAND.get())
+                .add(BlockRegistry.FINE_VENUS_SAND.get())
+        ;
+
+        tag(BlockTags.SAND)
                 .add(BlockRegistry.GLOWING_MOON_SAND.get())
 //                .add(BlockRegistry.COARSE_MOON_SAND.get())
 //                .add(BlockRegistry.COARSE_MARS_SAND.get())

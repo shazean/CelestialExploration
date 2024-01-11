@@ -1,22 +1,11 @@
 package com.shim.celestialexploration.registry;
 
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.world.features.GlowingSandFeature;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.BiomeTags;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
 
 public class BiomeRegistry {
 
@@ -47,18 +36,20 @@ public class BiomeRegistry {
     /**
      * SPACE
      */
-    public static final ResourceKey<Biome> ASTEROID_FIELD = register("asteroid_field");
-    public static final ResourceKey<Biome> EMPTY_SPACE = register("empty_space");
-    public static final ResourceKey<Biome> LARGE_ASTEROID = register("large_asteroid");
-    public static final ResourceKey<Biome> SPARSE_ASTEROID_FIELD = register("sparse_asteroid_field");
-    public static final ResourceKey<Biome> MARS_ORBIT = register("mars_orbit");
-    public static final ResourceKey<Biome> EARTH_ORBIT = register("earth_orbit");
+    public static final ResourceKey<Biome> SPACE = register("space");
+//    public static final ResourceKey<Biome> EMPTY_SPACE = register("empty_space");
+//    public static final ResourceKey<Biome> LARGE_ASTEROID = register("large_asteroid");
+//    public static final ResourceKey<Biome> SPARSE_ASTEROID_FIELD = register("sparse_asteroid_field");
+//    public static final ResourceKey<Biome> MARS_ORBIT = register("mars_orbit");
+//    public static final ResourceKey<Biome> EARTH_ORBIT = register("earth_orbit");
 
     /**
      * TAGS
      */
-    public static final TagKey<Biome> MARS_BIOMES = create("mars_tag");
-    public static final TagKey<Biome> MOON_BIOMES = create("moon_tag");
+    public static final TagKey<Biome> MARS_BIOMES = create("mars");
+    public static final TagKey<Biome> MOON_BIOMES = create("moon");
+    public static final TagKey<Biome> SPACE_BIOMES = create("space");
+
 
 
     private static ResourceKey<Biome> register(String key) {
