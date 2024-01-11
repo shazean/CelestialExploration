@@ -6,3 +6,4 @@
 - `[NEW]` Added feature for shuttle to fly faster in space, also configurable
 - `[DEV]` Redid the internal logic of the oxygen compressor block entity
 - `[FIX]` Sorted out several oxygen compressor bugs
+- `[FIX]` Changed item models to be generated instead of handheld, except for steel rod
