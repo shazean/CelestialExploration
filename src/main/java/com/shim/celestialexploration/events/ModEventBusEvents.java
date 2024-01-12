@@ -13,6 +13,7 @@ import com.shim.celestialexploration.registry.EntityRegistry;
 import com.shim.celestialexploration.registry.ParticleRegistry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.client.model.PiglinModel;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.particle.FlameParticle;
@@ -41,6 +42,9 @@ public class ModEventBusEvents {
         event.put(EntityRegistry.VOIDFELLOW.get(), VoidFellow.setAttributes());
         event.put(EntityRegistry.VOIDED.get(), Voided.setAttributes());
         event.put(EntityRegistry.SULFUR_CUBE.get(), SulfurCube.setAttributes());
+        event.put(EntityRegistry.VOIDED_PIGLIN.get(), VoidedPiglin.setAttributes());
+        event.put(EntityRegistry.FLARE.get(), Flare.setAttributes());
+        event.put(EntityRegistry.GUST.get(), Gust.setAttributes());
 
     }
 
@@ -64,6 +68,15 @@ public class ModEventBusEvents {
         event.registerLayerDefinition(CelestialModelLayers.VOIDED, () -> humanoidLayer);
         event.registerLayerDefinition(CelestialModelLayers.VOIDED_INNER_ARMOR, () -> innerArmorLayer);
         event.registerLayerDefinition(CelestialModelLayers.VOIDED_OUTER_ARMOR, () -> outerArmorLayer);
+
+        LayerDefinition piglinLayer = LayerDefinition.create(PiglinModel.createMesh(CubeDeformation.NONE), 64, 64);
+
+        event.registerLayerDefinition(CelestialModelLayers.VOIDED_PIGLIN, () -> piglinLayer);
+        event.registerLayerDefinition(CelestialModelLayers.VOIDED_INNER_ARMOR, () -> innerArmorLayer);
+        event.registerLayerDefinition(CelestialModelLayers.VOIDED_OUTER_ARMOR, () -> outerArmorLayer);
+
+        event.registerLayerDefinition(CelestialModelLayers.GUST, () -> piglinLayer);
+
 
     }
 

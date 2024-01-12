@@ -106,6 +106,10 @@ public class ModEventClientBusEvents {
         EntityRenderers.register(EntityRegistry.TNT_MAGCART.get(), (context) -> new MagCartRenderer<>(context, CelestialModelLayers.TNT_MAGCART));
         EntityRenderers.register(EntityRegistry.VOIDED.get(), VoidedRenderer::new);
         EntityRenderers.register(EntityRegistry.SULFUR_CUBE.get(), SulfurCubeRenderer::new);
+        EntityRenderers.register(EntityRegistry.VOIDED_PIGLIN.get(), VoidedPiglinRenderer::new);
+        EntityRenderers.register(EntityRegistry.FLARE.get(), FlareRenderer::new);
+        EntityRenderers.register(EntityRegistry.GUST.get(), GustRenderer::new);
+
 
 
         MenuScreens.register(MenuRegistry.OXYGEN_COMPRESSOR_MENU.get(), OxygenCompressorScreen::new);

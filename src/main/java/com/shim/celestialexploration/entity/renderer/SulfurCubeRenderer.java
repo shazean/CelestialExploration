@@ -10,7 +10,6 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
-//import net.minecraft.world.entity.monster.MagmaCube;
 
 public class SulfurCubeRenderer extends MobRenderer<SulfurCube, LavaSlimeModel<SulfurCube>> {
     private static final ResourceLocation SULFURCUBE_LOCATION = new ResourceLocation(CelestialExploration.MODID, "textures/entity/slime/sulfurcube.png");

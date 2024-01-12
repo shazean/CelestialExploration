@@ -2,7 +2,10 @@ package com.shim.celestialexploration.registry;
 
 import com.google.common.collect.Sets;
 import com.shim.celestialexploration.CelestialExploration;
+import net.minecraft.client.model.PiglinModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
+import net.minecraft.client.model.geom.builders.CubeDeformation;
+import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -25,6 +28,13 @@ public class CelestialModelLayers {
     public static final ModelLayerLocation VOIDED = register("voided");
     public static final ModelLayerLocation VOIDED_INNER_ARMOR = registerInnerArmor("voided");
     public static final ModelLayerLocation VOIDED_OUTER_ARMOR = registerOuterArmor("voided");
+
+
+    public static final ModelLayerLocation VOIDED_PIGLIN = register("voided_piglin");
+    public static final ModelLayerLocation VOIDED_PIGLIN_INNER_ARMOR = registerInnerArmor("voided_piglin");
+    public static final ModelLayerLocation VOIDED_PIGLIN_OUTER_ARMOR = registerOuterArmor("voided_piglin");
+
+    public static final ModelLayerLocation GUST = register("gust");
 
 
     private static ModelLayerLocation registerInnerArmor(String p_171299_) {

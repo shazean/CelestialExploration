@@ -20,10 +20,7 @@ public class CelestialBiomes extends BiomeDictionary {
 
     private static void registerBiomes() {
         addTypes(BiomeRegistry.SPACE, SPACE);
-
         addTypes(BiomeRegistry.MOON_CRATERS, SPACE);
         addTypes(BiomeRegistry.MOON_DESERT, DRY);
-
     }
-
 }

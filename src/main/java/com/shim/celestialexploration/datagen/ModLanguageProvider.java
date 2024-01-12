@@ -387,6 +387,9 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(ItemRegistry.VOIDFELLOW_SPAWN_EGG.get(), "Space Fellow Spawn Egg");
 		add(ItemRegistry.VOIDED_SPAWN_EGG.get(), "Voided Spawn Egg");
 		add(ItemRegistry.SULFUR_CUBE_SPAWN_EGG.get(), "Sulfur Cube Spawn Egg");
+		add(ItemRegistry.VOIDED_PIGLIN_SPAWN_EGG.get(), "Voided Piglin Spawn Egg");
+		add(ItemRegistry.FLARE_SPAWN_EGG.get(), "Flare Spawn Egg");
+		add(ItemRegistry.GUST_SPAWN_EGG.get(), "Gust Spawn Egg");
 
 
 		/* MOBS */
@@ -397,6 +400,9 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(EntityRegistry.VOIDFELLOW.get(), "Space Fellow");
 		add(EntityRegistry.VOIDED.get(), "Voided");
 		add(EntityRegistry.SULFUR_CUBE.get(), "Sulfur Cube");
+		add(EntityRegistry.VOIDED_PIGLIN.get(), "Voided Piglin");
+		add(EntityRegistry.FLARE.get(), "Flare");
+		add(EntityRegistry.GUST.get(), "Gust");
 
 		/* SHUTTLE ITEMS */
 		add(ItemRegistry.WHITE_SHUTTLE.get(), "White Shuttle");

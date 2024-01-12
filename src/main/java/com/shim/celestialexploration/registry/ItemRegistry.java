@@ -432,13 +432,17 @@ public class ItemRegistry {
 			() -> new ForgeSpawnEggItem(EntityRegistry.SULFUR_CUBE,0x3e2800, 0x825300,
 					new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
 
+	public static final RegistryObject<Item> VOIDED_PIGLIN_SPAWN_EGG = ITEMS.register("voided_piglin_spawn_egg",
+			() -> new ForgeSpawnEggItem(EntityRegistry.VOIDED_PIGLIN,0, 0x3c2d62,
+					new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
 
+	public static final RegistryObject<Item> FLARE_SPAWN_EGG = ITEMS.register("flare_spawn_egg",
+			() -> new ForgeSpawnEggItem(EntityRegistry.FLARE,0, 0x3c2d62,
+					new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
 
-//	public static final RegistryObject<ModSpawnEgg> SULFURIC_SLIME_SPAWN_EGG = ITEMS.register("sulfuric_slime_spawn_egg", () -> new ModSpawnEgg(RegistryEntities.SULFURIC_SLIME, 0xbd9200, 0xa68000, new Item.Properties().tab(ItemGroup.TAB_MISC)));
-//	public static final RegistryObject<ModSpawnEgg> MARS_MALLOW_SPAWN_EGG = ITEMS.register("mars_mallow_spawn_egg", () -> new ModSpawnEgg(RegistryEntities.MARS_MALLOW, 0xffffff, 0xF3F3F3, new Item.Properties().tab(ItemGroup.TAB_MISC)));
-	
-//	public static final RegistryObject<Item> GEYSER = ITEMS.register("geyser", () -> new BlockItemBase(RegistryBlocks.GEYSER.get()));
-
+	public static final RegistryObject<Item> GUST_SPAWN_EGG = ITEMS.register("gust_spawn_egg",
+			() -> new ForgeSpawnEggItem(EntityRegistry.GUST,0, 0x3c2d62,
+					new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
 
 
 	public static final RegistryObject<Item> CERAMIC = fromBlock(BlockRegistry.CERAMIC);

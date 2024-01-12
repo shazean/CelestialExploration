@@ -6,6 +6,9 @@ import com.shim.celestialexploration.entity.vehicle.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.entity.monster.Blaze;
+import net.minecraft.world.entity.monster.Ghast;
+import net.minecraft.world.entity.monster.ZombifiedPiglin;
 import net.minecraft.world.entity.vehicle.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -44,6 +47,18 @@ public class EntityRegistry {
     public static final RegistryObject<EntityType<SulfurCube>> SULFUR_CUBE = ENTITY_TYPES.register("sulfur_cube", () -> EntityType.Builder.of(SulfurCube::new, MobCategory.MONSTER)
             .sized(2.04F, 2.04F).clientTrackingRange(10).fireImmune()
             .build(new ResourceLocation(CelestialExploration.MODID, "sulfur_cube").toString()));
+
+    public static final RegistryObject<EntityType<VoidedPiglin>> VOIDED_PIGLIN = ENTITY_TYPES.register("voided_piglin", () -> EntityType.Builder.of(VoidedPiglin::new, MobCategory.MONSTER)
+            .sized(0.6F, 1.95F).clientTrackingRange(8).fireImmune()
+            .build(new ResourceLocation(CelestialExploration.MODID, "voided_piglin").toString()));
+
+    public static final RegistryObject<EntityType<Flare>> FLARE = ENTITY_TYPES.register("flare", () -> EntityType.Builder.of(Flare::new, MobCategory.MONSTER)
+            .sized(0.6F, 1.8F).clientTrackingRange(8).fireImmune()
+            .build(new ResourceLocation(CelestialExploration.MODID, "flare").toString()));
+
+    public static final RegistryObject<EntityType<Gust>> GUST = ENTITY_TYPES.register("gust", () -> EntityType.Builder.of(Gust::new, MobCategory.MONSTER)
+            .sized(4.0F, 4.0F).clientTrackingRange(10).fireImmune()
+            .build(new ResourceLocation(CelestialExploration.MODID, "gust").toString()));
 
 
 
