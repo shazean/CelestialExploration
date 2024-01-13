@@ -67,7 +67,6 @@ public class SpaceshipRenderer<T extends Spaceship> extends EntityRenderer<T> {
         public void render(T p_225623_1_, float p_225623_2_, float p_225623_3_, PoseStack poseStack,
                                MultiBufferSource bufferSource, int p_225623_6_) {
 
-
                 Pair<ResourceLocation, SpaceshipModel> pair = getModelWithLocation(p_225623_1_);
                 ResourceLocation resourcelocation = pair.getFirst();
                 SpaceshipModel model = pair.getSecond();
@@ -75,14 +74,12 @@ public class SpaceshipRenderer<T extends Spaceship> extends EntityRenderer<T> {
                 poseStack.pushPose();
                 poseStack.translate(0.0D, 1.51D, 0.0D); //originally: 0.0D, 0.375D, 0.0D
 
-//                poseStack.translate(0.0D, 1.51D, 1.20D); //originally: 0.0D, 0.375D, 0.0D
                 poseStack.mulPose(Vector3f.YP.rotationDegrees(180.0F - p_225623_2_));
                 poseStack.scale(-1.0F, -1.0F, 1.0F);
 //                p_225623_4_.mulPose(Vector3f.YP.rotationDegrees(90.0F));
                 model.setupAnim(p_225623_1_, p_225623_3_, 0.0F, -0.1F, 0.0F, 0.0F);
                 VertexConsumer ivertexbuilder = bufferSource.getBuffer(model.renderType(this.getTextureLocation(p_225623_1_)));
                 model.renderToBuffer(poseStack, ivertexbuilder, p_225623_6_, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
-
 
                 if (!p_225623_1_.isSpectator()) {
                         for(RenderLayer<T, SpaceshipModel<T>> renderlayer : this.layers) {
@@ -92,8 +89,6 @@ public class SpaceshipRenderer<T extends Spaceship> extends EntityRenderer<T> {
 
                 poseStack.popPose();
                 super.render(p_225623_1_, p_225623_2_, p_225623_3_, poseStack, bufferSource, p_225623_6_);
-
-
         }
 
         public Pair<ResourceLocation, SpaceshipModel> getModelWithLocation(Spaceship spaceship) { return this.spaceshipResources.get(spaceship.getSpaceshipType()); }

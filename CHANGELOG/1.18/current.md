@@ -1,12 +1,1 @@
-- `[CHG]` Workbench fluid capacity changed to 4 buckets (from 8)
-- `[NEW]` Workbench fluid tooltips
-- `[NEW]` New damage source for solar blocks
-- `[CHG]` Tweaked spaceship flight speed
-- `[NEW]` Added config for spaceship flight speed
-- `[NEW]` Added feature for spaceship to fly faster in space, also configurable
-- `[DEV]` Redid the internal logic of the oxygen compressor block entity
-- `[FIX]` Sorted out several oxygen compressor bugs
-- `[FIX]` Changed item models to be generated instead of handheld, except for steel rod
-- `[NEW]` New Venusian mobs, including flare, gust, and voided piglin
-- `[CHG]` Shuttle is now spaceship
-- `[NEW]` Spaceship model and textures!
+- `[DEV]` Minor code cleanup
