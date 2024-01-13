@@ -1,7 +1,7 @@
 package com.shim.celestialexploration.registry;
 
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.entity.Shuttle;
+import com.shim.celestialexploration.entity.Spaceship;
 import com.shim.celestialexploration.entity.vehicle.AbstractMagCart;
 import com.shim.celestialexploration.item.*;
 import com.shim.celestialexploration.item.armor.AdvancedSpaceSuitArmorItem;
@@ -36,8 +36,8 @@ public class ItemRegistry {
 		return ITEMS.register(block.getId().getPath(), () -> new BlockItem(block.get(), BLOCK_ITEM_PROPERTIES));
 	}
 
-	public static <B extends Block> RegistryObject<Item> fromShuttleBlock(RegistryObject<B> block) {
-		return ITEMS.register(block.getId().getPath(), () -> new BlockItem(block.get(), SHUTTLE_ITEM_PROPERTIES));
+	public static <B extends Block> RegistryObject<Item> fromSpaceshipBlock(RegistryObject<B> block) {
+		return ITEMS.register(block.getId().getPath(), () -> new BlockItem(block.get(), SPACESHIP_ITEM_PROPERTIES));
 	}
 
 	public static <B extends Block> RegistryObject<Item> fromMiscBlock(RegistryObject<B> block) {
@@ -50,7 +50,7 @@ public class ItemRegistry {
 
 
 	public static final Item.Properties BLOCK_ITEM_PROPERTIES = new Item.Properties().tab(CelestialExploration.CELESTIAL_BLOCKS_TAB);
-	public static final Item.Properties SHUTTLE_ITEM_PROPERTIES = new Item.Properties().tab(CelestialExploration.SHUTTLE_TAB);
+	public static final Item.Properties SPACESHIP_ITEM_PROPERTIES = new Item.Properties().tab(CelestialExploration.SPACESHIP_TAB);
 	public static final Item.Properties ITEM_PROPERTIES = new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB);
 
 	/**
@@ -376,10 +376,10 @@ public class ItemRegistry {
 
 
 	public static final RegistryObject<Item> DRY_ICE = fromBlock(BlockRegistry.DRY_ICE);
-	public static final RegistryObject<Item> OXYGEN_COMPRESSOR = fromShuttleBlock(BlockRegistry.OXYGEN_COMPRESSOR);
-	public static final RegistryObject<Item> WORKBENCH = fromShuttleBlock(BlockRegistry.WORKBENCH);
+	public static final RegistryObject<Item> OXYGEN_COMPRESSOR = fromSpaceshipBlock(BlockRegistry.OXYGEN_COMPRESSOR);
+	public static final RegistryObject<Item> WORKBENCH = fromSpaceshipBlock(BlockRegistry.WORKBENCH);
 
-	public static final RegistryObject<Item> LOX_TANK = ITEMS.register("lox_tank", () -> new LoxTankItem(BlockRegistry.LOX_TANK.get(), new Item.Properties().tab(CelestialExploration.SHUTTLE_TAB).stacksTo(1)));
+	public static final RegistryObject<Item> LOX_TANK = ITEMS.register("lox_tank", () -> new LoxTankItem(BlockRegistry.LOX_TANK.get(), new Item.Properties().tab(CelestialExploration.SPACESHIP_TAB).stacksTo(1)));
 
 	public static final RegistryObject<Item> RUSTED_IRON_NUGGET = ITEMS.register("rusted_iron_nugget", () -> new Item((new Item.Properties()).tab(CelestialExploration.CELESTIAL_MISC_TAB)));
 //	public static final RegistryObject<Item> IRON_DUST = ITEMS.register("iron_dust", () -> new Item((new Item.Properties()).tab(CelestialExploration.CELESTIAL_MISC_TAB)));
@@ -503,30 +503,30 @@ public class ItemRegistry {
 
 
 
-	//SHUTTLE
-	public static final RegistryObject<Item> STEEL_FRAME = fromShuttleBlock(BlockRegistry.STEEL_FRAME);
+	//SPACESHIP
+	public static final RegistryObject<Item> STEEL_FRAME = fromSpaceshipBlock(BlockRegistry.STEEL_FRAME);
 //	public static final RegistryObject<Item> LAUNCH_PAD = ITEMS.register("launch_pad",  () -> new BlockItemBase(RegistryBlocks.LAUNCH_PAD.get()));
-	public static final RegistryObject<Item> SHUTTLE_CABIN = ITEMS.register("shuttle_cabin", () -> new Item((new Item.Properties()).stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB)));
-	public static final RegistryObject<Item> SHUTTLE_FRAME = ITEMS.register("shuttle_frame", () -> new Item((new Item.Properties()).stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB)));
-	public static final RegistryObject<Item> SHUTTLE_ENGINE = ITEMS.register("shuttle_engine", () -> new Item((new Item.Properties()).stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB)));
-//	public static final RegistryObject<Item> NOSE_CONE = ITEMS.register("nose_cone", () -> new Item((new Item.Properties()).stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB)));
+	public static final RegistryObject<Item> SPACESHIP_CABIN = ITEMS.register("spaceship_cabin", () -> new Item((new Item.Properties()).stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
+	public static final RegistryObject<Item> SPACESHIP_FRAME = ITEMS.register("spaceship_frame", () -> new Item((new Item.Properties()).stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
+	public static final RegistryObject<Item> SPACESHIP_ENGINE = ITEMS.register("spaceship_engine", () -> new Item((new Item.Properties()).stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
+//	public static final RegistryObject<Item> NOSE_CONE = ITEMS.register("nose_cone", () -> new Item((new Item.Properties()).stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
 	
-	public static final RegistryObject<Item> BLACK_SHUTTLE = ITEMS.register("black_shuttle", () -> new ShuttleItem(Shuttle.Type.BLACK, new Item.Properties().stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB)));
-	public static final RegistryObject<Item> GREY_SHUTTLE = ITEMS.register("grey_shuttle", () -> new ShuttleItem(Shuttle.Type.GREY, new Item.Properties().stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB)));
-	public static final RegistryObject<Item> LIGHT_GREY_SHUTTLE = ITEMS.register("light_grey_shuttle", () -> new ShuttleItem(Shuttle.Type.LIGHT_GREY, new Item.Properties().stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB)));
-	public static final RegistryObject<Item> WHITE_SHUTTLE = ITEMS.register("white_shuttle", () -> new ShuttleItem(Shuttle.Type.WHITE, new Item.Properties().stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB)));
-	public static final RegistryObject<Item> PINK_SHUTTLE = ITEMS.register("pink_shuttle", () -> new ShuttleItem(Shuttle.Type.PINK, new Item.Properties().stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB)));
-	public static final RegistryObject<Item> MAGENTA_SHUTTLE = ITEMS.register("magenta_shuttle", () -> new ShuttleItem(Shuttle.Type.MAGENTA, new Item.Properties().stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB)));
-	public static final RegistryObject<Item> RED_SHUTTLE = ITEMS.register("red_shuttle", () -> new ShuttleItem(Shuttle.Type.RED, new Item.Properties().stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB)));
-	public static final RegistryObject<Item> BROWN_SHUTTLE = ITEMS.register("brown_shuttle", () -> new ShuttleItem(Shuttle.Type.BROWN, new Item.Properties().stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB)));
-	public static final RegistryObject<Item> ORANGE_SHUTTLE = ITEMS.register("orange_shuttle", () -> new ShuttleItem(Shuttle.Type.ORANGE, new Item.Properties().stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB)));
-	public static final RegistryObject<Item> YELLOW_SHUTTLE = ITEMS.register("yellow_shuttle", () -> new ShuttleItem(Shuttle.Type.YELLOW, new Item.Properties().stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB)));
-	public static final RegistryObject<Item> LIME_SHUTTLE = ITEMS.register("lime_shuttle", () -> new ShuttleItem(Shuttle.Type.LIME, new Item.Properties().stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB)));
-	public static final RegistryObject<Item> GREEN_SHUTTLE = ITEMS.register("green_shuttle", () -> new ShuttleItem(Shuttle.Type.GREEN, new Item.Properties().stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB)));
-	public static final RegistryObject<Item> CYAN_SHUTTLE = ITEMS.register("cyan_shuttle", () -> new ShuttleItem(Shuttle.Type.CYAN, new Item.Properties().stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB)));
-	public static final RegistryObject<Item> LIGHT_BLUE_SHUTTLE = ITEMS.register("light_blue_shuttle", () -> new ShuttleItem(Shuttle.Type.LIGHT_BLUE, new Item.Properties().stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB)));
-	public static final RegistryObject<Item> BLUE_SHUTTLE = ITEMS.register("blue_shuttle", () -> new ShuttleItem(Shuttle.Type.BLUE, new Item.Properties().stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB)));
-	public static final RegistryObject<Item> PURPLE_SHUTTLE = ITEMS.register("purple_shuttle", () -> new ShuttleItem(Shuttle.Type.PURPLE, new Item.Properties().stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB)));
+	public static final RegistryObject<Item> BLACK_SPACESHIP = ITEMS.register("black_spaceship", () -> new SpaceshipItem(Spaceship.Type.BLACK, new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
+	public static final RegistryObject<Item> GREY_SPACESHIP = ITEMS.register("grey_spaceship", () -> new SpaceshipItem(Spaceship.Type.GREY, new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
+	public static final RegistryObject<Item> LIGHT_GREY_SPACESHIP = ITEMS.register("light_grey_spaceship", () -> new SpaceshipItem(Spaceship.Type.LIGHT_GREY, new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
+	public static final RegistryObject<Item> WHITE_SPACESHIP = ITEMS.register("white_spaceship", () -> new SpaceshipItem(Spaceship.Type.WHITE, new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
+	public static final RegistryObject<Item> PINK_SPACESHIP = ITEMS.register("pink_spaceship", () -> new SpaceshipItem(Spaceship.Type.PINK, new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
+	public static final RegistryObject<Item> MAGENTA_SPACESHIP = ITEMS.register("magenta_spaceship", () -> new SpaceshipItem(Spaceship.Type.MAGENTA, new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
+	public static final RegistryObject<Item> RED_SPACESHIP = ITEMS.register("red_spaceship", () -> new SpaceshipItem(Spaceship.Type.RED, new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
+	public static final RegistryObject<Item> BROWN_SPACESHIP = ITEMS.register("brown_spaceship", () -> new SpaceshipItem(Spaceship.Type.BROWN, new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
+	public static final RegistryObject<Item> ORANGE_SPACESHIP = ITEMS.register("orange_spaceship", () -> new SpaceshipItem(Spaceship.Type.ORANGE, new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
+	public static final RegistryObject<Item> YELLOW_SPACESHIP = ITEMS.register("yellow_spaceship", () -> new SpaceshipItem(Spaceship.Type.YELLOW, new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
+	public static final RegistryObject<Item> LIME_SPACESHIP = ITEMS.register("lime_spaceship", () -> new SpaceshipItem(Spaceship.Type.LIME, new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
+	public static final RegistryObject<Item> GREEN_SPACESHIP = ITEMS.register("green_spaceship", () -> new SpaceshipItem(Spaceship.Type.GREEN, new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
+	public static final RegistryObject<Item> CYAN_SPACESHIP = ITEMS.register("cyan_spaceship", () -> new SpaceshipItem(Spaceship.Type.CYAN, new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
+	public static final RegistryObject<Item> LIGHT_BLUE_SPACESHIP = ITEMS.register("light_blue_spaceship", () -> new SpaceshipItem(Spaceship.Type.LIGHT_BLUE, new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
+	public static final RegistryObject<Item> BLUE_SPACESHIP = ITEMS.register("blue_spaceship", () -> new SpaceshipItem(Spaceship.Type.BLUE, new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
+	public static final RegistryObject<Item> PURPLE_SPACESHIP = ITEMS.register("purple_spaceship", () -> new SpaceshipItem(Spaceship.Type.PURPLE, new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
 
 
 //	//Tools
@@ -608,18 +608,18 @@ public class ItemRegistry {
 	public static final RegistryObject<Item> CHEESE = ITEMS.register("cheese", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_FOOD).food(CHEESE_PROPERTIES)));
 
 	/* MAG LEV */
-	public static final RegistryObject<Item> MAG_RAIL = fromShuttleBlock(BlockRegistry.MAG_RAIL);
-	public static final RegistryObject<Item> POWERED_MAG_RAIL = fromShuttleBlock(BlockRegistry.POWERED_MAG_RAIL);
-	public static final RegistryObject<Item> DETECTOR_MAG_RAIL = fromShuttleBlock(BlockRegistry.DETECTOR_MAG_RAIL);
-	public static final RegistryObject<Item> ACTIVATOR_MAG_RAIL = fromShuttleBlock(BlockRegistry.ACTIVATOR_MAG_RAIL);
+	public static final RegistryObject<Item> MAG_RAIL = fromSpaceshipBlock(BlockRegistry.MAG_RAIL);
+	public static final RegistryObject<Item> POWERED_MAG_RAIL = fromSpaceshipBlock(BlockRegistry.POWERED_MAG_RAIL);
+	public static final RegistryObject<Item> DETECTOR_MAG_RAIL = fromSpaceshipBlock(BlockRegistry.DETECTOR_MAG_RAIL);
+	public static final RegistryObject<Item> ACTIVATOR_MAG_RAIL = fromSpaceshipBlock(BlockRegistry.ACTIVATOR_MAG_RAIL);
 
-	public static final RegistryObject<Item> MAGCART = ITEMS.register("magcart", () -> new MagCartItem(AbstractMagCart.Type.RIDEABLE, (new Item.Properties().stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB))));
-	public static final RegistryObject<Item> CHEST_MAGCART = ITEMS.register("chest_magcart", () -> new MagCartItem(AbstractMagCart.Type.CHEST, (new Item.Properties().stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB))));
+	public static final RegistryObject<Item> MAGCART = ITEMS.register("magcart", () -> new MagCartItem(AbstractMagCart.Type.RIDEABLE, (new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB))));
+	public static final RegistryObject<Item> CHEST_MAGCART = ITEMS.register("chest_magcart", () -> new MagCartItem(AbstractMagCart.Type.CHEST, (new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB))));
 	public static final RegistryObject<Item> COMMAND_BLOCK_MAGCART = ITEMS.register("command_block_magcart", () -> new MagCartItem(AbstractMagCart.Type.COMMAND_BLOCK, (new Item.Properties().stacksTo(1).rarity(Rarity.EPIC))));
-	public static final RegistryObject<Item> FURNACE_MAGCART = ITEMS.register("furnace_magcart", () -> new MagCartItem(AbstractMagCart.Type.FURNACE, (new Item.Properties().stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB))));
-	public static final RegistryObject<Item> HOPPER_MAGCART = ITEMS.register("hopper_magcart", () -> new MagCartItem(AbstractMagCart.Type.HOPPER, (new Item.Properties().stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB))));
-//	public static final RegistryObject<Item> SPAWNER_MAGCART = ITEMS.register("magcart", () -> new MagCartItem(AbstractMagCart.Type.RIDEABLE, (new Item.Properties().stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB))));
-	public static final RegistryObject<Item> TNT_MAGCART = ITEMS.register("tnt_magcart", () -> new MagCartItem(AbstractMagCart.Type.TNT, (new Item.Properties().stacksTo(1).tab(CelestialExploration.SHUTTLE_TAB))));
+	public static final RegistryObject<Item> FURNACE_MAGCART = ITEMS.register("furnace_magcart", () -> new MagCartItem(AbstractMagCart.Type.FURNACE, (new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB))));
+	public static final RegistryObject<Item> HOPPER_MAGCART = ITEMS.register("hopper_magcart", () -> new MagCartItem(AbstractMagCart.Type.HOPPER, (new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB))));
+//	public static final RegistryObject<Item> SPAWNER_MAGCART = ITEMS.register("magcart", () -> new MagCartItem(AbstractMagCart.Type.RIDEABLE, (new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB))));
+	public static final RegistryObject<Item> TNT_MAGCART = ITEMS.register("tnt_magcart", () -> new MagCartItem(AbstractMagCart.Type.TNT, (new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB))));
 
 	//	public static final Item MINECART = registerItem("minecart", new MinecartItem(AbstractMinecart.Type.RIDEABLE, (new Item.Properties()).stacksTo(1).tab(CreativeModeTab.TAB_TRANSPORTATION)));
 //	public static final Item CHEST_MINECART = registerItem("chest_minecart", new MinecartItem(AbstractMinecart.Type.CHEST, (new Item.Properties()).stacksTo(1).tab(CreativeModeTab.TAB_TRANSPORTATION)));

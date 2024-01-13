@@ -15,9 +15,9 @@ public class ModLanguageProvider extends LanguageProvider {
 	@Override
 	protected void addTranslations() {
 		/* TABS */
-		add("itemGroup.celestialblockstab", "Celestial Blocks");
-		add("itemGroup.shuttletab", "Shuttle Items");
-		add("itemGroup.celestialmisctab", "Celestial Items");
+		add("itemGroup.celestial_blocks_tab", "Celestial Blocks");
+		add("itemGroup.spaceship_tab", "Spaceship Items");
+		add("itemGroup.celestial_misc_tab", "Celestial Items");
 
 		/* EFFECTS */
 		add(EffectRegistry.LOW_GRAVITY.get(), "Low Gravity");
@@ -49,11 +49,11 @@ public class ModLanguageProvider extends LanguageProvider {
 		add("biome.celestialexploration.sparse_asteroid_field", "Sparse Asteroid Field");
 
 		/* KEYBINDS */
-		add("key.categories.shuttle_controls", "Shuttle Controls");
-		add("key.celestialexploration.flight_ascent", "Shuttle Ascent");
-		add("key.celestialexploration.flight_descent", "Shuttle Descent");
-		add("key.celestialexploration.turn_left", "Shuttle Strafe Left");
-		add("key.celestialexploration.turn_right", "Shuttle Strafe Right");
+		add("key.categories.spaceship_controls", "Spaceship Controls");
+		add("key.celestialexploration.flight_ascent", "Spaceship Ascent");
+		add("key.celestialexploration.flight_descent", "Spaceship Descent");
+		add("key.celestialexploration.turn_left", "Spaceship Strafe Left");
+		add("key.celestialexploration.turn_right", "Spaceship Strafe Right");
 
 		/* MOON */
 		add(BlockRegistry.MOON_BRICK_SLAB.get(), "Lunar Brick Slab");
@@ -404,30 +404,30 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(EntityRegistry.FLARE.get(), "Flare");
 		add(EntityRegistry.GUST.get(), "Gust");
 
-		/* SHUTTLE ITEMS */
-		add(ItemRegistry.WHITE_SHUTTLE.get(), "White Shuttle");
-		add(ItemRegistry.BLACK_SHUTTLE.get(), "Black Shuttle");
-		add(ItemRegistry.GREY_SHUTTLE.get(), "Grey Shuttle");
-		add(ItemRegistry.LIGHT_GREY_SHUTTLE.get(), "Light Grey Shuttle");
-		add(ItemRegistry.PINK_SHUTTLE.get(), "Pink Shuttle");
-		add(ItemRegistry.RED_SHUTTLE.get(), "Red Shuttle");
-		add(ItemRegistry.ORANGE_SHUTTLE.get(), "Orange Shuttle");
-		add(ItemRegistry.YELLOW_SHUTTLE.get(), "Yellow Shuttle");
-		add(ItemRegistry.LIME_SHUTTLE.get(), "Lime Shuttle");
-		add(ItemRegistry.GREEN_SHUTTLE.get(), "Green Shuttle");
-		add(ItemRegistry.CYAN_SHUTTLE.get(), "Cyan Shuttle");
-		add(ItemRegistry.BLUE_SHUTTLE.get(), "Blue Shuttle");
-		add(ItemRegistry.LIGHT_BLUE_SHUTTLE.get(), "Light Blue Shuttle");
-		add(ItemRegistry.PURPLE_SHUTTLE.get(), "Purple Shuttle");
-		add(ItemRegistry.MAGENTA_SHUTTLE.get(), "Magenta Shuttle");
-		add(ItemRegistry.BROWN_SHUTTLE.get(), "Brown Shuttle");
+		/* SPACESHIP ITEMS */
+		add(ItemRegistry.WHITE_SPACESHIP.get(), "White Spaceship");
+		add(ItemRegistry.BLACK_SPACESHIP.get(), "Black Spaceship");
+		add(ItemRegistry.GREY_SPACESHIP.get(), "Grey Spaceship");
+		add(ItemRegistry.LIGHT_GREY_SPACESHIP.get(), "Light Grey Spaceship");
+		add(ItemRegistry.PINK_SPACESHIP.get(), "Pink Spaceship");
+		add(ItemRegistry.RED_SPACESHIP.get(), "Red Spaceship");
+		add(ItemRegistry.ORANGE_SPACESHIP.get(), "Orange Spaceship");
+		add(ItemRegistry.YELLOW_SPACESHIP.get(), "Yellow Spaceship");
+		add(ItemRegistry.LIME_SPACESHIP.get(), "Lime Spaceship");
+		add(ItemRegistry.GREEN_SPACESHIP.get(), "Green Spaceship");
+		add(ItemRegistry.CYAN_SPACESHIP.get(), "Cyan Spaceship");
+		add(ItemRegistry.BLUE_SPACESHIP.get(), "Blue Spaceship");
+		add(ItemRegistry.LIGHT_BLUE_SPACESHIP.get(), "Light Blue Spaceship");
+		add(ItemRegistry.PURPLE_SPACESHIP.get(), "Purple Spaceship");
+		add(ItemRegistry.MAGENTA_SPACESHIP.get(), "Magenta Spaceship");
+		add(ItemRegistry.BROWN_SPACESHIP.get(), "Brown Spaceship");
 
-		/* SHUTTLE-RELATED */
+		/* SPACESHIP-RELATED */
 		add(BlockRegistry.STEEL_FRAME.get(), "Steel Frame");
-		add(ItemRegistry.SHUTTLE_FRAME.get(), "Shuttle Frame");
-		add(ItemRegistry.SHUTTLE_CABIN.get(), "Shuttle Cabin");
-		add(ItemRegistry.SHUTTLE_ENGINE.get(), "Shuttle Engine");
-//		add(ItemRegistry.NOSE_CONE.get(), "Shuttle Nose Cone");
+		add(ItemRegistry.SPACESHIP_FRAME.get(), "Spaceship Frame");
+		add(ItemRegistry.SPACESHIP_CABIN.get(), "Spaceship Cabin");
+		add(ItemRegistry.SPACESHIP_ENGINE.get(), "Spaceship Engine");
+//		add(ItemRegistry.NOSE_CONE.get(), "Spaceship Nose Cone");
 
 		/* FOOD */
 		add(ItemRegistry.MARSHMALLOW_GOO.get(), "Marshmallow Goo");

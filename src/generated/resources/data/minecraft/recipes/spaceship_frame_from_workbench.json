@@ -1,0 +1,22 @@
+{
+  "type": "celestialexploration:workbench_crafting",
+  "group": "celestialexploration",
+  "pattern": [
+    "C C",
+    " X ",
+    "C C"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:steel_frame"
+    },
+    "C": {
+      "item": "celestialexploration:ceramic_tile"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:spaceship_frame"
+  },
+  "fluid": "celestialexploration:molten_steel",
+  "buckets": 0.33
+}

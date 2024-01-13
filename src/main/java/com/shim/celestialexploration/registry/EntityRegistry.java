@@ -6,10 +6,6 @@ import com.shim.celestialexploration.entity.vehicle.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
-import net.minecraft.world.entity.monster.Blaze;
-import net.minecraft.world.entity.monster.Ghast;
-import net.minecraft.world.entity.monster.ZombifiedPiglin;
-import net.minecraft.world.entity.vehicle.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -63,9 +59,9 @@ public class EntityRegistry {
 
 
     //VEHICLES
-    public static final RegistryObject<EntityType<Shuttle>> SHUTTLE = ENTITY_TYPES.register("shuttle", () -> EntityType.Builder.<Shuttle>of(Shuttle::new, MobCategory.MISC)
-            .sized(3.1f, 3.1f)
-            .build(new ResourceLocation(CelestialExploration.MODID, "shuttle").toString()));
+    public static final RegistryObject<EntityType<Spaceship>> SPACESHIP = ENTITY_TYPES.register("spaceship", () -> EntityType.Builder.<Spaceship>of(Spaceship::new, MobCategory.MISC)
+            .sized(2.45f, 2.65f)
+            .build(new ResourceLocation(CelestialExploration.MODID, "spaceship").toString()));
 
     //MAG CARTS
     public static final RegistryObject<EntityType<MagCart>> MAGCART = ENTITY_TYPES.register("magcart", () -> EntityType.Builder.<MagCart>of(MagCart::new, MobCategory.MISC)

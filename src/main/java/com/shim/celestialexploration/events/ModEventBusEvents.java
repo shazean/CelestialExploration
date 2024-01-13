@@ -3,7 +3,7 @@ package com.shim.celestialexploration.events;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.entity.*;
 import com.shim.celestialexploration.entity.model.MagCartModel;
-import com.shim.celestialexploration.entity.model.ShuttleModel;
+import com.shim.celestialexploration.entity.model.SpaceshipModel;
 import com.shim.celestialexploration.particles.CelestialSlimeParticles;
 import com.shim.celestialexploration.particles.SulfurParticle;
 import com.shim.celestialexploration.recipes.WorkbenchCraftingRecipe;
@@ -26,7 +26,7 @@ import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-import static com.shim.celestialexploration.entity.renderer.ShuttleRenderer.createShuttleModelName;
+import static com.shim.celestialexploration.entity.renderer.SpaceshipRenderer.createSpaceshipModelName;
 import static net.minecraft.client.model.geom.LayerDefinitions.INNER_ARMOR_DEFORMATION;
 import static net.minecraft.client.model.geom.LayerDefinitions.OUTER_ARMOR_DEFORMATION;
 
@@ -50,8 +50,8 @@ public class ModEventBusEvents {
 
     @SubscribeEvent
     public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
-        for (Shuttle.Type shuttle$type : Shuttle.Type.values())
-            event.registerLayerDefinition(createShuttleModelName(shuttle$type), ShuttleModel::createBodyLayer);
+        for (Spaceship.Type spaceship$type : Spaceship.Type.values())
+            event.registerLayerDefinition(createSpaceshipModelName(spaceship$type), SpaceshipModel::createBodyLayer);
 
         event.registerLayerDefinition(CelestialModelLayers.MAGCART, MagCartModel::createBodyLayer);
         event.registerLayerDefinition(CelestialModelLayers.CHEST_MAGCART, MagCartModel::createBodyLayer);
@@ -137,7 +137,7 @@ public class ModEventBusEvents {
 //        EntityRenderers.register(EntityRegistry.LUNAR_SLIME.get(), LunarSlimeRenderer::new);
 //        EntityRenderers.register(EntityRegistry.MARS_MALLOW.get(), MarsMallowRenderer::new);
 //        EntityRenderers.register(EntityRegistry.LURKER.get(), LurkerRenderer::new);
-//        EntityRenderers.register(EntityRegistry.SHUTTLE.get(), ShuttleRenderer::new);
+//        EntityRenderers.register(EntityRegistry.SPACESHIP.get(), SpaceshipRenderer::new);
 //        EntityRenderers.register(EntityRegistry.VOIDFELLOW.get(), VoidFellowRenderer::new);
 //        EntityRenderers.register(EntityRegistry.MAGCART.get(), (context) -> new MagCartRenderer<>(context, CelestialModelLayers.MAGCART));
 //        EntityRenderers.register(EntityRegistry.CHEST_MAGCART.get(), (context) -> new MagCartRenderer<>(context, CelestialModelLayers.CHEST_MAGCART));
@@ -149,7 +149,7 @@ public class ModEventBusEvents {
 //        EntityRenderers.register(EntityRegistry.VOIDED.get(), VoidedRenderer::new);
 //
 //        MenuScreens.register(MenuRegistry.OXYGEN_COMPRESSOR_MENU.get(), OxygenCompressorScreen::new);
-//        MenuScreens.register(MenuRegistry.SHUTTLE_MENU.get(), ShuttleScreen::new);
+//        MenuScreens.register(MenuRegistry.SPACESHIP_MENU.get(), SpaceshipScreen::new);
 //        MenuScreens.register(MenuRegistry.WORKBENCH_MENU.get(), WorkbenchScreen::new);
 //
 //        OverlayRegistry.registerOverlay(event);

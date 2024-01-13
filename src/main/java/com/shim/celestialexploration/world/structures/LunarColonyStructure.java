@@ -42,9 +42,9 @@ public class LunarColonyStructure extends StructureFeature<JigsawConfiguration> 
     }
 
     /**
-     *        : WARNING!!! DO NOT FORGET THIS METHOD!!!! :
+     * : WARNING!!! DO NOT FORGET THIS METHOD!!!! :
      * If you do not override step method, your structure WILL crash the biome as it is being parsed!
-     *
+     * <p>
      * Generation step for when to generate the structure. there are 10 stages you can pick from!
      * This surface structure stage places the structure before plants and ores are generated.
      */
@@ -87,35 +87,83 @@ public class LunarColonyStructure extends StructureFeature<JigsawConfiguration> 
 //
 //
 //        return blockpos.getX() == 0 && blockpos.getZ() == 0;
+//
+//        BlockPos centerOfChunkPos = chunkPos.getMiddleBlockPosition(0);
+//        BlockPos initialPos;
+//        int i = 48;
+//
+//        initialPos = new BlockPos(centerOfChunkPos.getX(), centerOfChunkPos.getY(), centerOfChunkPos.getZ());
+//        NoiseColumn blockView = context.chunkGenerator().getBaseColumn(centerOfChunkPos.getX(), centerOfChunkPos.getZ(), context.heightAccessor());
+//        int maxHeight = Math.min(chunkGenerator.getMinY() + chunkGenerator.getGenDepth(), chunkGenerator.getSeaLevel());
+//
+//        while (initialPos.getY() < maxHeight) {
+//            BlockState state = blockView.getBlock(initialPos.getY());
+//            if (state.isAir()) break;
+//            initialPos = initialPos.above();
+//        }
+//
+//        for (int x = -i; x <= i; x++) {
+////            for (int z = -i; z <= i; z++) {
+//                blockView = context.chunkGenerator().getBaseColumn(initialPos.getX() + x, initialPos.getZ(), context.heightAccessor());
+//                BlockPos newPos = initialPos.above(4);
+//                BlockState state = blockView.getBlock(newPos.getY());
+//                if (state.isAir()) {
+//                    return false;
+//                }
+//
+//                newPos = initialPos.below(4);
+//                state = blockView.getBlock(newPos.getY());
+//                if (state.isAir()) {
+//                    return false;
+//                }
+////            }
+//        }
+//
+////        for (int x = -i; x <= i; x++) {
+//            for (int z = -i; z <= i; z++) {
+//                blockView = context.chunkGenerator().getBaseColumn(initialPos.getX(), initialPos.getZ() + z, context.heightAccessor());
+//                BlockPos newPos = initialPos.above(4);
+//                BlockState state = blockView.getBlock(newPos.getY());
+//                if (state.isAir()) {
+//                    return false;
+//                }
+//
+//                newPos = initialPos.below(4);
+//                state = blockView.getBlock(newPos.getY());
+//                if (state.isAir()) {
+//                    return false;
+//                }
+//            }
+////        }
 
         //CREDIT REPURPOSED STRUCTURES
-        BlockPos.MutableBlockPos mutable = new BlockPos.MutableBlockPos();
-        for (int curChunkX = chunkPos.x - 1; curChunkX <= chunkPos.x + 1; curChunkX++) {
-            for (int curChunkZ = chunkPos.z - 1; curChunkZ <= chunkPos.z + 1; curChunkZ++) {
-                mutable.set(curChunkX << 4, context.chunkGenerator().getSeaLevel() + 10, curChunkZ << 4);
-                NoiseColumn blockView = context.chunkGenerator().getBaseColumn(mutable.getX(), mutable.getZ(), context.heightAccessor());
-                int minValidSpace = 65;
-//                int maxHeight = Math.min(GeneralUtils.getMaxTerrainLimit(context.chunkGenerator()), context.chunkGenerator().getSeaLevel() + minValidSpace);
-                int maxHeight = Math.min(chunkGenerator.getMinY() + chunkGenerator.getGenDepth(), chunkGenerator.getSeaLevel() + minValidSpace);
-
-                while(mutable.getY() < maxHeight) {
-                    BlockState state = blockView.getBlock(mutable.getY());
-                    if(!state.isAir()) {
-                        return false;
-                    }
-                    mutable.move(Direction.UP);
-                }
-            }
-        }
+//        BlockPos.MutableBlockPos mutable = new BlockPos.MutableBlockPos();
+//        for (int curChunkX = chunkPos.x - 1; curChunkX <= chunkPos.x + 1; curChunkX++) {
+//            for (int curChunkZ = chunkPos.z - 1; curChunkZ <= chunkPos.z + 1; curChunkZ++) {
+//                mutable.set(curChunkX << 4, context.chunkGenerator().getSeaLevel() + 10, curChunkZ << 4);
+//                NoiseColumn blockView = context.chunkGenerator().getBaseColumn(mutable.getX(), mutable.getZ(), context.heightAccessor());
+//                int minValidSpace = 65;
+////                int maxHeight = Math.min(GeneralUtils.getMaxTerrainLimit(context.chunkGenerator()), context.chunkGenerator().getSeaLevel() + minValidSpace);
+//                int maxHeight = Math.min(chunkGenerator.getMinY() + chunkGenerator.getGenDepth(), chunkGenerator.getSeaLevel() + minValidSpace);
+//
+//                while(mutable.getY() < maxHeight) {
+//                    BlockState state = blockView.getBlock(mutable.getY());
+//                    if(!state.isAir()) { //!
+//                        return false;
+//                    }
+//                    mutable.move(Direction.UP);
+//                }
+//            }
+//        }
 
 
 //        NoiseColumn baseColumn = context.chunkGenerator().getBaseColumn(chunkpos.x, chunkpos.z, context.heightAccessor());
 //        int baseHeight = context.chunkGenerator().getBaseHeight(chunkpos.x, chunkpos.z, WORLD_SURFACE_WG, context.heightAccessor());
 
-        return true;
+//        return true;
         // Checks to make sure our structure does not spawn within 10 chunks of an Ocean Monument
         // to demonstrate how this method is good for checking extra conditions for spawning
-//        return !context.chunkGenerator().hasFeatureChunkInRange(BuiltinStructureSets.OCEAN_MONUMENTS, context.seed(), chunkPos.x, chunkPos.z, 10);
+        return !context.chunkGenerator().hasFeatureChunkInRange(BuiltinStructureSets.OCEAN_MONUMENTS, context.seed(), chunkPos.x, chunkPos.z, 10);
     }
 
     public static Optional<PieceGenerator<JigsawConfiguration>> createPiecesGenerator(PieceGeneratorSupplier.Context<JigsawConfiguration> context) {
@@ -132,7 +180,7 @@ public class LunarColonyStructure extends StructureFeature<JigsawConfiguration> 
         // Set's our spawning blockpos's y offset to be 60 blocks up.
         // Since we are going to have heightmap/terrain height spawning set to true further down, this will make it so we spawn 60 blocks above terrain.
         // If we wanted to spawn on ocean floor, we would set heightmap/terrain height spawning to false and the grab the y value of the terrain with OCEAN_FLOOR_WG heightmap.
-        blockpos = blockpos.below(15);
+        blockpos = blockpos.below(1);
 
         Optional<PieceGenerator<JigsawConfiguration>> structurePiecesGenerator =
                 JigsawPlacement.addPieces(
@@ -141,28 +189,15 @@ public class LunarColonyStructure extends StructureFeature<JigsawConfiguration> 
                         blockpos, // Position of the structure. Y value is ignored if last parameter is set to true.
                         false,  // Special boundary adjustments for villages. It's... hard to explain. Keep this false and make your pieces not be partially intersecting.
                         // Either not intersecting or fully contained will make children pieces spawn just fine. It's easier that way.
-                        false // Adds the terrain height's y value to the passed in blockpos's y value. (This uses WORLD_SURFACE_WG heightmap which stops at top water too)
+                        true // Adds the terrain height's y value to the passed in blockpos's y value. (This uses WORLD_SURFACE_WG heightmap which stops at top water too)
                         // Here, blockpos's y value is 60 which means the structure spawn 60 blocks above terrain height.
                         // Set this to false for structure to be place only at the passed in blockpos's Y value instead.
                         // Definitely keep this false when placing structures in the nether as otherwise, heightmap placing will put the structure on the Bedrock roof.
                 );
-
-        /*
-         * Note, you are always free to make your own JigsawPlacement class and implementation of how the structure
-         * should generate. It is tricky but extremely powerful if you are doing something that vanilla's jigsaw system cannot do.
-         * Such as for example, forcing 3 pieces to always spawn every time, limiting how often a piece spawns, or remove the intersection limitation of pieces.
-         *
-         * An example of a custom JigsawPlacement.addPieces in action can be found here (warning, it is using Mojmap mappings):
-         * https://github.com/TelepathicGrunt/RepurposedStructures/blob/1.18.2/src/main/java/com/telepathicgrunt/repurposedstructures/world/structures/pieces/PieceLimitedJigsawManager.java
-         */
-
-        if(structurePiecesGenerator.isPresent()) {
-            // I use to debug and quickly find out if the structure is spawning or not and where it is.
-            // This is returning the coordinates of the center starting piece.
+        if (structurePiecesGenerator.isPresent()) {
             CelestialExploration.LOGGER.log(Level.DEBUG, "Lunar colony at {}", blockpos);
         }
 
-        // Return the pieces generator that is now set up so that the game runs it when it needs to create the layout of structure pieces.
         return structurePiecesGenerator;
     }
 }

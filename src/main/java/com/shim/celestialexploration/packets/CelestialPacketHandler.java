@@ -23,11 +23,11 @@ public class CelestialPacketHandler {
 
     public static void init() {
         int i = 0;
-        INSTANCE.registerMessage(i++, ShuttleFuelTickPacket.class, ShuttleFuelTickPacket::encoder,
-                ShuttleFuelTickPacket::decoder, ShuttleFuelTickPacket::handle, Optional.of(NetworkDirection.PLAY_TO_SERVER));
+        INSTANCE.registerMessage(i++, SpaceshipFuelTickPacket.class, SpaceshipFuelTickPacket::encoder,
+                SpaceshipFuelTickPacket::decoder, SpaceshipFuelTickPacket::handle, Optional.of(NetworkDirection.PLAY_TO_SERVER));
 
-        INSTANCE.registerMessage(i++, ShuttleFuelCapPacket.class, ShuttleFuelCapPacket::encoder,
-                ShuttleFuelCapPacket::decoder, ShuttleFuelCapPacket::handle, Optional.of(NetworkDirection.PLAY_TO_CLIENT));
+        INSTANCE.registerMessage(i++, SpaceshipFuelCapPacket.class, SpaceshipFuelCapPacket::encoder,
+                SpaceshipFuelCapPacket::decoder, SpaceshipFuelCapPacket::handle, Optional.of(NetworkDirection.PLAY_TO_CLIENT));
 
 
     }

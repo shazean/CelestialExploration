@@ -1,0 +1,21 @@
+{
+  "type": "celestialexploration:workbench_crafting",
+  "group": "celestialexploration",
+  "pattern": [
+    " R ",
+    "TTT"
+  ],
+  "key": {
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "T": {
+      "item": "minecraft:redstone_torch"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:spaceship_engine"
+  },
+  "fluid": "celestialexploration:molten_steel",
+  "buckets": 0.495
+}

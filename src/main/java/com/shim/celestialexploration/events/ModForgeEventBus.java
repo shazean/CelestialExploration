@@ -2,7 +2,7 @@ package com.shim.celestialexploration.events;
 
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.config.CelestialCommonConfig;
-import com.shim.celestialexploration.entity.Shuttle;
+import com.shim.celestialexploration.entity.Spaceship;
 import com.shim.celestialexploration.item.armor.ThermalSpaceSuitArmorItem;
 import com.shim.celestialexploration.registry.DimensionRegistry;
 import com.shim.celestialexploration.registry.EffectRegistry;
@@ -24,9 +24,9 @@ public class ModForgeEventBus {
 
     @SubscribeEvent
     public static void onEntityMount(EntityMountEvent event) {
-        if (event.isDismounting() && event.getEntityBeingMounted() instanceof Shuttle shuttle) {
+        if (event.isDismounting() && event.getEntityBeingMounted() instanceof Spaceship shuttle) {
             if (!shuttle.isRemoved() && !event.getWorldObj().isClientSide) {
-                event.setCanceled(shuttle.getTimeOnGround() < Shuttle.maxTimeOnGround);
+                event.setCanceled(shuttle.getTimeOnGround() < Spaceship.maxTimeOnGround);
             }
         }
     }

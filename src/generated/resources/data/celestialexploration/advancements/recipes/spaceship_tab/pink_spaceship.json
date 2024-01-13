@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "celestialexploration:pink_spaceship"
+    ]
+  },
+  "criteria": {
+    "spaceship": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:white_spaceship"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "celestialexploration:pink_spaceship"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "spaceship",
+      "has_the_recipe"
+    ]
+  ]
+}

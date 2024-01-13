@@ -323,7 +323,7 @@ public class LootTables  extends BaseLootTableProvider {
 
 
 		/*
-		 * SHUTTLE-RELATED
+		 * SPACESHIP-RELATED
 		 */
 //		lootTables.put(BlockRegistry.ASSEMBLY_STATION.get(), createSimpleTable("assembly_station", BlockRegistry.ASSEMBLY_STATION.get()));
 		lootTables.put(BlockRegistry.OXYGEN_COMPRESSOR.get(), createSimpleTable("oxygen_compressor", BlockRegistry.OXYGEN_COMPRESSOR.get()));

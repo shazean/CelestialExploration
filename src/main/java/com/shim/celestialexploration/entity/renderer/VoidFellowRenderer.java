@@ -24,19 +24,19 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import java.util.Random;
 
 @OnlyIn(Dist.CLIENT)
-public class VoidFellowRenderer extends MobRenderer<VoidFellow, VoidFellowModel<VoidFellow>> {
+public class VoidFellowRenderer extends MobRenderer<VoidFellow, EndermanModel<VoidFellow>> {
     private static final ResourceLocation VOIDFELLOW_LOCATION = new ResourceLocation(CelestialExploration.MODID, "textures/entity/voidfellow/voidfellow.png");
     private final Random random = new Random();
 
     public VoidFellowRenderer(EntityRendererProvider.Context p_173992_) {
-        super(p_173992_, new VoidFellowModel(p_173992_.bakeLayer(ModelLayers.ENDERMAN)), 0.5F);
+        super(p_173992_, new EndermanModel(p_173992_.bakeLayer(ModelLayers.ENDERMAN)), 0.5F);
         this.addLayer(new VoidEyesLayer<>(this));
         this.addLayer(new VoidCarriedBlockLayer(this));
     }
 
     public void render(VoidFellow p_114339_, float p_114340_, float p_114341_, PoseStack p_114342_, MultiBufferSource p_114343_, int p_114344_) {
         BlockState blockstate = p_114339_.getCarriedBlock();
-        VoidFellowModel<VoidFellow> voidfellowmodel = this.getModel();
+        EndermanModel<VoidFellow> voidfellowmodel = this.getModel();
         voidfellowmodel.carrying = blockstate != null;
         voidfellowmodel.creepy = p_114339_.isCreepy();
         super.render(p_114339_, p_114340_, p_114341_, p_114342_, p_114343_, p_114344_);

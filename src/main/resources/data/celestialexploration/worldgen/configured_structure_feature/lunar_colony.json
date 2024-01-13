@@ -1,12 +1,12 @@
 {
-  "type": "minecraft:village",
+  "type": "celestialexploration:lunar_colony",
 
   "config": {
     "start_pool": "celestialexploration:lunar_colony/start_pool",
     "size": 2
   },
   "biomes": "#celestialexploration:has_structure/lunar_colony_biomes",
-  "adapt_noise": false,
+  "adapt_noise": true,
   "spawn_overrides": {
   }
 }

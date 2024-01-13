@@ -2,7 +2,7 @@ package com.shim.celestialexploration.registry;
 
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.inventory.menus.OxygenCompressorMenu;
-import com.shim.celestialexploration.inventory.menus.ShuttleMenu;
+import com.shim.celestialexploration.inventory.menus.SpaceshipMenu;
 import com.shim.celestialexploration.inventory.menus.WorkbenchMenu;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraftforge.common.extensions.IForgeMenuType;
@@ -20,7 +20,7 @@ public class MenuRegistry {
     }
 
     public static final RegistryObject<MenuType<OxygenCompressorMenu>> OXYGEN_COMPRESSOR_MENU = MENUS.register("oxygen_compressor", () -> IForgeMenuType.create(OxygenCompressorMenu::new));
-    public static final RegistryObject<MenuType<ShuttleMenu>> SHUTTLE_MENU = MENUS.register("shuttle", () -> IForgeMenuType.create(ShuttleMenu::new));
+    public static final RegistryObject<MenuType<SpaceshipMenu>> SPACESHIP_MENU = MENUS.register("spaceship", () -> IForgeMenuType.create(SpaceshipMenu::new));
     //    public static final RegistryObject<MenuType<AssemblyStationMenu>> ASSEMBLY_MENU = MENUS.register("assembly_menu", () -> IForgeMenuType.create(AssemblyStationMenu::new));
     public static final RegistryObject<MenuType<WorkbenchMenu>> WORKBENCH_MENU = MENUS.register("workbench", () -> IForgeMenuType.create(WorkbenchMenu::new));
 

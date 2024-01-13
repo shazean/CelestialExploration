@@ -4,13 +4,12 @@ import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.capabilities.LoxTankCapability;
 import com.shim.celestialexploration.entity.renderer.*;
 import com.shim.celestialexploration.inventory.screens.OxygenCompressorScreen;
-import com.shim.celestialexploration.inventory.screens.ShuttleScreen;
+import com.shim.celestialexploration.inventory.screens.SpaceshipScreen;
 import com.shim.celestialexploration.inventory.screens.WorkbenchScreen;
 import com.shim.celestialexploration.item.armor.*;
 import com.shim.celestialexploration.registry.*;
 import com.shim.celestialexploration.world.renderer.DimensionRenderers;
 import net.minecraft.client.gui.screens.MenuScreens;
-import net.minecraft.client.renderer.DimensionSpecialEffects;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderers;
@@ -95,7 +94,7 @@ public class ModEventClientBusEvents {
         EntityRenderers.register(EntityRegistry.LUNAR_SLIME.get(), LunarSlimeRenderer::new);
         EntityRenderers.register(EntityRegistry.MARS_MALLOW.get(), MarsMallowRenderer::new);
         EntityRenderers.register(EntityRegistry.LURKER.get(), LurkerRenderer::new);
-        EntityRenderers.register(EntityRegistry.SHUTTLE.get(), ShuttleRenderer::new);
+        EntityRenderers.register(EntityRegistry.SPACESHIP.get(), SpaceshipRenderer::new);
         EntityRenderers.register(EntityRegistry.VOIDFELLOW.get(), VoidFellowRenderer::new);
         EntityRenderers.register(EntityRegistry.MAGCART.get(), (context) -> new MagCartRenderer<>(context, CelestialModelLayers.MAGCART));
         EntityRenderers.register(EntityRegistry.CHEST_MAGCART.get(), (context) -> new MagCartRenderer<>(context, CelestialModelLayers.CHEST_MAGCART));
@@ -113,7 +112,7 @@ public class ModEventClientBusEvents {
 
 
         MenuScreens.register(MenuRegistry.OXYGEN_COMPRESSOR_MENU.get(), OxygenCompressorScreen::new);
-        MenuScreens.register(MenuRegistry.SHUTTLE_MENU.get(), ShuttleScreen::new);
+        MenuScreens.register(MenuRegistry.SPACESHIP_MENU.get(), SpaceshipScreen::new);
         MenuScreens.register(MenuRegistry.WORKBENCH_MENU.get(), WorkbenchScreen::new);
 
         OverlayRegistry.registerOverlay(event);

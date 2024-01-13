@@ -9,10 +9,10 @@ import net.minecraft.client.renderer.entity.layers.EyesLayer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
 
-public class VoidEyesLayer<T extends LivingEntity> extends EyesLayer<T, VoidFellowModel<T>> {
+public class VoidEyesLayer<T extends LivingEntity> extends EyesLayer<T, EndermanModel<T>> {
     private static final RenderType ENDERMAN_EYES = RenderType.eyes(new ResourceLocation(CelestialExploration.MODID, "textures/entity/voidfellow/voidfellow_eyes.png"));
 
-    public VoidEyesLayer(RenderLayerParent<T, VoidFellowModel<T>> p_116964_) {
+    public VoidEyesLayer(RenderLayerParent<T, EndermanModel<T>> p_116964_) {
         super(p_116964_);
     }
 

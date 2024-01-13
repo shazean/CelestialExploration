@@ -386,7 +386,7 @@ public class BlockStates extends BlockStateProvider {
 //		}
 
 		/**
-		 * SHUTTLE
+		 * SPACESHIP
 		 */
 //		simpleBlock(BlockRegistry.STEEL_FRAME.get());
 

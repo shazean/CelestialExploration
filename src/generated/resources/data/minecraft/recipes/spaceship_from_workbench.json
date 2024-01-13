@@ -1,0 +1,25 @@
+{
+  "type": "celestialexploration:workbench_crafting",
+  "group": "celestialexploration",
+  "pattern": [
+    "C",
+    "F",
+    "E"
+  ],
+  "key": {
+    "C": {
+      "item": "celestialexploration:spaceship_cabin"
+    },
+    "F": {
+      "item": "celestialexploration:spaceship_frame"
+    },
+    "E": {
+      "item": "celestialexploration:spaceship_engine"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:white_spaceship"
+  },
+  "fluid": "celestialexploration:molten_steel",
+  "buckets": 0.275
+}

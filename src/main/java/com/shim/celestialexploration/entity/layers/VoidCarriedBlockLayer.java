@@ -16,8 +16,8 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class VoidCarriedBlockLayer extends RenderLayer<VoidFellow, VoidFellowModel<VoidFellow>> {
-        public VoidCarriedBlockLayer(RenderLayerParent<VoidFellow, VoidFellowModel<VoidFellow>> p_116626_) {
+public class VoidCarriedBlockLayer extends RenderLayer<VoidFellow, EndermanModel<VoidFellow>> {
+        public VoidCarriedBlockLayer(RenderLayerParent<VoidFellow, EndermanModel<VoidFellow>> p_116626_) {
             super(p_116626_);
         }
 

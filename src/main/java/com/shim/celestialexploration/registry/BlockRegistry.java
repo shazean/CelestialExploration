@@ -350,7 +350,7 @@ public class BlockRegistry {
     public static final RegistryObject<Block> VENUS_PORTAL = BLOCKS.register("venus_portal", VenusPortalBlock::new);
 
     /**
-     * SHUTTLE BLOCKS
+     * SPACESHIP BLOCKS
      **/
     public static final RegistryObject<Block> STEEL_FRAME = BLOCKS.register("steel_frame", () -> new SteelFrameBlock(Block.Properties.of(Material.METAL, MaterialColor.METAL).strength(5.0F, 6.0F).sound(SoundType.METAL).dynamicShape()));
     //	public static final RegistryObject<Block> LAUNCH_PAD = BLOCKS.register("launch_pad", () -> new Block(Block.Properties.of(Material.HEAVY_METAL, MaterialColor.METAL).strength(5.0F, 6.0F).sound(SoundType.METAL)));
