@@ -1,1 +1,3 @@
 - `[DEV]` Minor code cleanup
+- `[NEW]` Small and medium crater and meteor sizes!
+- `[FIX]` Fixed broken venus and mars compressed cobblestone recipes

@@ -1,0 +1,11 @@
+{
+  "type": "celestialexploration:medium_crater",
+  "config": {
+    "start_pool": "celestialexploration:medium_crater",
+    "size": 1
+  },
+  "biomes": "#celestialexploration:has_structure/medium_crater_biomes",
+  "adapt_noise": false,
+  "spawn_overrides": {
+  }
+}

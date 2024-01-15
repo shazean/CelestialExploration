@@ -291,12 +291,12 @@ public class BlockRegistry {
     public static final RegistryObject<Block> JUPITER_DEEPSLATE = BLOCKS.register("jupiter_deepslate", () -> new RotatedPillarBlock(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)));
 
     //JUPITER MOONS
-//    public static final RegistryObject<Block> IO_CORE = BLOCKS.register("io_core", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F).noDrops().isValidSpawn(BlockRegistry::never)));
-//    public static final RegistryObject<Block> IO_STONE = BLOCKS.register("io_stone", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)));
-//    public static final RegistryObject<Block> IO_DEEPSLATE = BLOCKS.register("io_deepslate", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> IO_CORE = BLOCKS.register("io_core", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F).noDrops().isValidSpawn(BlockRegistry::never)));
+    public static final RegistryObject<Block> IO_STONE = BLOCKS.register("io_stone", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> IO_DEEPSLATE = BLOCKS.register("io_deepslate", () -> new RotatedPillarBlock(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> EUROPA_CORE = BLOCKS.register("europa_core", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F).noDrops().isValidSpawn(BlockRegistry::never)));
-//    public static final RegistryObject<Block> EUROPA_HYDRATE = BLOCKS.register("europa_hydrate", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> EUROPA_HYDRATE = BLOCKS.register("europa_hydrate", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> GANYMEDE_CORE = BLOCKS.register("ganymede_core", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F).noDrops().isValidSpawn(BlockRegistry::never)));
     public static final RegistryObject<Block> CALLISTO_CORE = BLOCKS.register("callisto_core", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F).noDrops().isValidSpawn(BlockRegistry::never)));

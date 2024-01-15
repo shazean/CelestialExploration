@@ -273,12 +273,12 @@ public class BlockStates extends BlockStateProvider {
 		simpleBlock(BlockRegistry.JUPITER_CORE.get());
 		axisBlock((RotatedPillarBlock) BlockRegistry.JUPITER_DEEPSLATE.get());
 
-//		simpleBlock(BlockRegistry.IO_STONE.get());
-//		simpleBlock(BlockRegistry.IO_CORE.get());
-//		axisBlock((RotatedPillarBlock) BlockRegistry.IO_DEEPSLATE.get());
+		simpleBlock(BlockRegistry.IO_STONE.get());
+		simpleBlock(BlockRegistry.IO_CORE.get());
+		axisBlock((RotatedPillarBlock) BlockRegistry.IO_DEEPSLATE.get());
 
 		simpleBlock(BlockRegistry.EUROPA_CORE.get());
-//		simpleBlock(BlockRegistry.EUROPA_HYDRATE.get());
+		simpleBlock(BlockRegistry.EUROPA_HYDRATE.get());
 
 		simpleBlock(BlockRegistry.GANYMEDE_CORE.get());
 		simpleBlock(BlockRegistry.CALLISTO_CORE.get());

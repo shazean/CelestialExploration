@@ -137,11 +137,8 @@ public class Recipes extends RecipeProvider {
 		ShapedRecipeBuilder.shaped(BlockRegistry.MOON_DEEPSLATE_PRESSURE_PLATE.get()).pattern("XX").define('X', BlockRegistry.MOON_DEEPSLATE.get()).group("celestialexploration").unlockedBy("moon_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.MOON_DEEPSLATE.get())).save(consumer);
 
 		ShapedRecipeBuilder.shaped(BlockRegistry.COMPRESSED_MOON_COBBLESTONE.get()).pattern("XXX").pattern("XXX").pattern("XXX").define('X', BlockRegistry.MOON_COBBLESTONE.get()).group("celestialexploration").unlockedBy("has_moon_cobblestone", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MOON_COBBLESTONE.get())).save(consumer);
-
 		ShapelessRecipeBuilder.shapeless(BlockRegistry.MOON_COBBLESTONE.get(), 9).requires(BlockRegistry.COMPRESSED_MOON_COBBLESTONE.get()).group("celestialexploration").unlockedBy("has_moon_cobblestone", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MOON_COBBLESTONE.get())).save(consumer);
-
 		ShapedRecipeBuilder.shaped(BlockRegistry.COMPRESSED_MOON_COBBLED_DEEPSLATE.get()).pattern("XXX").pattern("XXX").pattern("XXX").define('X', BlockRegistry.MOON_COBBLED_DEEPSLATE.get()).group("celestialexploration").unlockedBy("has_moon_cobbled_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MOON_COBBLED_DEEPSLATE.get())).save(consumer);
-
 		ShapelessRecipeBuilder.shapeless(BlockRegistry.MOON_COBBLED_DEEPSLATE.get(), 9).requires(BlockRegistry.COMPRESSED_MOON_COBBLED_DEEPSLATE.get()).group("celestialexploration").unlockedBy("has_moon_cobbled_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MOON_COBBLED_DEEPSLATE.get())).save(consumer);
 
 		/*MARS*/
@@ -245,6 +242,11 @@ public class Recipes extends RecipeProvider {
 		SimpleCookingRecipeBuilder.smelting(Ingredient.of(BlockRegistry.MARS_DEEPSLATE_BRICKS.get()), ItemRegistry.CRACKED_MARS_DEEPSLATE_BRICKS.get(), 1.0F, 100).unlockedBy("has_mars_deepslate_bricks", has(BlockRegistry.MARS_DEEPSLATE_BRICKS.get())).save(consumer);
 		SimpleCookingRecipeBuilder.smelting(Ingredient.of(BlockRegistry.MARS_DEEPSLATE_TILES.get()), ItemRegistry.CRACKED_MARS_DEEPSLATE_TILES.get(), 1.0F, 100).unlockedBy("has_mars_deepslate_tiles", has(BlockRegistry.MARS_DEEPSLATE_TILES.get())).save(consumer);
 
+		ShapedRecipeBuilder.shaped(BlockRegistry.COMPRESSED_MARS_COBBLESTONE.get()).pattern("XXX").pattern("XXX").pattern("XXX").define('X', BlockRegistry.MARS_COBBLESTONE.get()).group("celestialexploration").unlockedBy("has_mars_cobblestone", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MARS_COBBLESTONE.get())).save(consumer);
+		ShapelessRecipeBuilder.shapeless(BlockRegistry.MARS_COBBLESTONE.get(), 9).requires(BlockRegistry.COMPRESSED_MARS_COBBLESTONE.get()).group("celestialexploration").unlockedBy("has_mars_cobblestone", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MARS_COBBLESTONE.get())).save(consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.COMPRESSED_MARS_COBBLED_DEEPSLATE.get()).pattern("XXX").pattern("XXX").pattern("XXX").define('X', BlockRegistry.MOON_COBBLED_DEEPSLATE.get()).group("celestialexploration").unlockedBy("has_mars_cobbled_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MARS_COBBLED_DEEPSLATE.get())).save(consumer);
+		ShapelessRecipeBuilder.shapeless(BlockRegistry.MARS_COBBLED_DEEPSLATE.get(), 9).requires(BlockRegistry.COMPRESSED_MARS_COBBLED_DEEPSLATE.get()).group("celestialexploration").unlockedBy("has_mars_cobbled_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.MARS_COBBLED_DEEPSLATE.get())).save(consumer);
+
 		/*VENUS*/
 		SimpleCookingRecipeBuilder.smelting(Ingredient.of(BlockRegistry.VENUS_SAND.get()), Items.YELLOW_STAINED_GLASS, 1.0F, 100).unlockedBy("has_venus_sand", has(BlockRegistry.VENUS_SAND.get())).save(consumer, "venus_sand");
 //		SimpleCookingRecipeBuilder.smelting(Ingredient.of(BlockRegistry.COARSE_VENUS_SAND.get()), Items.ORANGE_STAINED_GLASS, 1.0F, 100).unlockedBy("has_venus_sand", has(BlockRegistry.COARSE_VENUS_SAND.get())).save(consumer, "coarse_venus_sand");
@@ -345,6 +347,10 @@ public class Recipes extends RecipeProvider {
 //		SimpleCookingRecipeBuilder.smelting(Ingredient.of(BlockRegistry.VENUS_DEEPSLATE_BRICKS.get()), ItemRegistry.CRACKED_VENUS_DEEPSLATE_BRICKS.get(), 1.0F, 100).unlockedBy("has_venus_deepslate_bricks", has(BlockRegistry.VENUS_DEEPSLATE_BRICKS.get())).save(consumer);
 //		SimpleCookingRecipeBuilder.smelting(Ingredient.of(BlockRegistry.VENUS_DEEPSLATE_TILES.get()), ItemRegistry.CRACKED_VENUS_DEEPSLATE_TILES.get(), 1.0F, 100).unlockedBy("has_venus_deepslate_tiles", has(BlockRegistry.VENUS_DEEPSLATE_TILES.get())).save(consumer);
 
+		ShapedRecipeBuilder.shaped(BlockRegistry.COMPRESSED_VENUS_COBBLESTONE.get()).pattern("XXX").pattern("XXX").pattern("XXX").define('X', BlockRegistry.VENUS_COBBLESTONE.get()).group("celestialexploration").unlockedBy("has_venus_cobblestone", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.VENUS_COBBLESTONE.get())).save(consumer);
+		ShapelessRecipeBuilder.shapeless(BlockRegistry.VENUS_COBBLESTONE.get(), 9).requires(BlockRegistry.COMPRESSED_VENUS_COBBLESTONE.get()).group("celestialexploration").unlockedBy("has_venus_cobblestone", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.VENUS_COBBLESTONE.get())).save(consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.COMPRESSED_VENUS_COBBLED_DEEPSLATE.get()).pattern("XXX").pattern("XXX").pattern("XXX").define('X', BlockRegistry.VENUS_COBBLED_DEEPSLATE.get()).group("celestialexploration").unlockedBy("has_venus_cobbled_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.VENUS_COBBLED_DEEPSLATE.get())).save(consumer);
+		ShapelessRecipeBuilder.shapeless(BlockRegistry.VENUS_COBBLED_DEEPSLATE.get(), 9).requires(BlockRegistry.COMPRESSED_VENUS_COBBLED_DEEPSLATE.get()).group("celestialexploration").unlockedBy("has_venus_cobbled_deepslate", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.VENUS_COBBLED_DEEPSLATE.get())).save(consumer);
 
 		/*METEOR*/
 //		SimpleCookingRecipeBuilder.smelting(Ingredient.of(BlockRegistry.METEOR.get()), ItemRegistry.METEOR_INGOT.get(), 1.0F, 100).unlockedBy("meteor", has(BlockRegistry.METEOR.get())).save(consumer, "meteor");

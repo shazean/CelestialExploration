@@ -268,11 +268,11 @@ public class ItemModels extends ItemModelProvider {
 		withExistingParent(ItemRegistry.JUPITER_CORE.get().getRegistryName().getPath(), modLoc("block/jupiter_core"));
 		withExistingParent(ItemRegistry.JUPITER_ATMOSPHERE.get().getRegistryName().getPath(), modLoc("block/jupiter_atmosphere"));
 		withExistingParent(ItemRegistry.JUPITER_DEEPSLATE.get().getRegistryName().getPath(), modLoc("block/jupiter_deepslate"));
-//		withExistingParent(ItemRegistry.IO_CORE.get().getRegistryName().getPath(), modLoc("block/io_core"));
-//		withExistingParent(ItemRegistry.IO_STONE.get().getRegistryName().getPath(), modLoc("block/io_stone"));
-//		withExistingParent(ItemRegistry.IO_DEEPSLATE.get().getRegistryName().getPath(), modLoc("block/io_deepslate"));
+		withExistingParent(ItemRegistry.IO_CORE.get().getRegistryName().getPath(), modLoc("block/io_core"));
+		withExistingParent(ItemRegistry.IO_STONE.get().getRegistryName().getPath(), modLoc("block/io_stone"));
+		withExistingParent(ItemRegistry.IO_DEEPSLATE.get().getRegistryName().getPath(), modLoc("block/io_deepslate"));
 		withExistingParent(ItemRegistry.EUROPA_CORE.get().getRegistryName().getPath(), modLoc("block/europa_core"));
-//		withExistingParent(ItemRegistry.EUROPA_HYDRATE.get().getRegistryName().getPath(), modLoc("block/europa_hydrate"));
+		withExistingParent(ItemRegistry.EUROPA_HYDRATE.get().getRegistryName().getPath(), modLoc("block/europa_hydrate"));
 		withExistingParent(ItemRegistry.GANYMEDE_CORE.get().getRegistryName().getPath(), modLoc("block/ganymede_core"));
 		withExistingParent(ItemRegistry.CALLISTO_CORE.get().getRegistryName().getPath(), modLoc("block/callisto_core"));
 		withExistingParent(ItemRegistry.SATURN_ATMOSPHERE.get().getRegistryName().getPath(), modLoc("block/saturn_atmosphere"));

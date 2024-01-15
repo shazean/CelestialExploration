@@ -304,12 +304,12 @@ public class ItemRegistry {
 	public static final RegistryObject<Item> JUPITER_CORE = fromNoTabBlock(BlockRegistry.JUPITER_CORE);
 	public static final RegistryObject<Item> JUPITER_DEEPSLATE = fromBlock(BlockRegistry.JUPITER_DEEPSLATE);
 
-//	public static final RegistryObject<Item> IO_CORE = fromNoTabBlock(BlockRegistry.IO_CORE);
-//	public static final RegistryObject<Item> IO_STONE = fromBlock(BlockRegistry.IO_STONE);
-//	public static final RegistryObject<Item> IO_DEEPSLATE = fromBlock(BlockRegistry.IO_DEEPSLATE);
+	public static final RegistryObject<Item> IO_CORE = fromNoTabBlock(BlockRegistry.IO_CORE);
+	public static final RegistryObject<Item> IO_STONE = fromBlock(BlockRegistry.IO_STONE);
+	public static final RegistryObject<Item> IO_DEEPSLATE = fromBlock(BlockRegistry.IO_DEEPSLATE);
 
 	public static final RegistryObject<Item> EUROPA_CORE = fromNoTabBlock(BlockRegistry.EUROPA_CORE);
-//	public static final RegistryObject<Item> EUROPA_HYDRATE = fromBlock(BlockRegistry.EUROPA_HYDRATE);
+	public static final RegistryObject<Item> EUROPA_HYDRATE = fromBlock(BlockRegistry.EUROPA_HYDRATE);
 	public static final RegistryObject<Item> GANYMEDE_CORE = fromNoTabBlock(BlockRegistry.GANYMEDE_CORE);
 	public static final RegistryObject<Item> CALLISTO_CORE = fromNoTabBlock(BlockRegistry.CALLISTO_CORE);
 
@@ -317,7 +317,7 @@ public class ItemRegistry {
 	public static final RegistryObject<Item> SATURN_CORE = fromNoTabBlock(BlockRegistry.SATURN_CORE);
 	public static final RegistryObject<Item> SATURN_DEEPSLATE = fromBlock(BlockRegistry.SATURN_DEEPSLATE);
 	public static final RegistryObject<Item> TITAN_CORE = fromNoTabBlock(BlockRegistry.TITAN_CORE);
-	public static final RegistryObject<Item> ENCELADUS_CORE = fromBlock(BlockRegistry.ENCELADUS_CORE);
+	public static final RegistryObject<Item> ENCELADUS_CORE = fromNoTabBlock(BlockRegistry.ENCELADUS_CORE);
 	public static final RegistryObject<Item> RHEA_CORE = fromNoTabBlock(BlockRegistry.RHEA_CORE);
 	public static final RegistryObject<Item> IAPETUS_CORE = fromNoTabBlock(BlockRegistry.IAPETUS_CORE);
 	public static final RegistryObject<Item> HYPERION_CORE = fromNoTabBlock(BlockRegistry.HYPERION_CORE);

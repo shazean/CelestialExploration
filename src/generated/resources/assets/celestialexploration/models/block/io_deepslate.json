@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "celestialexploration:block/io_deepslate_side",
+    "end": "celestialexploration:block/io_deepslate_end"
+  }
+}

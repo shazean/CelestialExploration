@@ -1,0 +1,17 @@
+{
+  "replace": false,
+
+  "_comment": " This biome tag can specify the biome directly. Or specify another biome tag by starting with # ",
+  "values": [
+    "celestialexploration:mars_craters",
+    "celestialexploration:mars_deep_craters",
+    "celestialexploration:mars_desert",
+    "celestialexploration:mars_dunes",
+    "celestialexploration:mars_flats",
+    "celestialexploration:mars_volcano_flats",
+    "celestialexploration:moon_craters",
+    "celestialexploration:moon_desert",
+    "celestialexploration:moon_lower_plains",
+    "celestialexploration:moon_plains"
+  ]
+}

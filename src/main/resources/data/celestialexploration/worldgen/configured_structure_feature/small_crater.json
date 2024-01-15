@@ -1,0 +1,11 @@
+{
+  "type": "celestialexploration:small_crater",
+  "config": {
+    "start_pool": "celestialexploration:small_crater",
+    "size": 1
+  },
+  "biomes": "#celestialexploration:has_structure/small_crater_biomes",
+  "adapt_noise": false,
+  "spawn_overrides": {
+  }
+}

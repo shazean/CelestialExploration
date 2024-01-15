@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "celestialexploration:small_crater",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 233592540,
+    "spacing": 10,
+    "separation": 3,
+    "type": "minecraft:random_spread"
+  }
+}
