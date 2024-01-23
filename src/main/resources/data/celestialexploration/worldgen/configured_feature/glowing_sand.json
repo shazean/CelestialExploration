@@ -1,4 +1,18 @@
 {
-  "type": "celestialexploration:glowing_sand",
-  "config": {}
+  "config": {
+    "targets": [
+      {
+        "target": {
+          "block": "celestialexploration:moon_sand",
+          "predicate_type": "minecraft:block_match"
+        },
+        "state": {
+          "Name": "celestialexploration:glowing_moon_sand"
+        }
+      }
+    ],
+    "size": 15,
+    "discard_chance_on_air_exposure": 0.0
+  },
+  "type": "minecraft:ore"
 }

@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "celestialexploration:venus_flare_tree",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 13924222,
+    "spacing": 30,
+    "separation": 12,
+  "type": "minecraft:random_spread"
+  }
+}

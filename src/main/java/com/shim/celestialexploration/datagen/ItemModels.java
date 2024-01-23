@@ -176,6 +176,7 @@ public class ItemModels extends ItemModelProvider {
 		withExistingParent(ItemRegistry.VENUS_DEEPSLATE_LAPIS_ORE.get().getRegistryName().getPath(), modLoc("block/venus_deepslate_lapis_ore"));
 		withExistingParent(ItemRegistry.GEYSER.get().getRegistryName().getPath(), modLoc("block/geyser"));
 
+		withExistingParent(ItemRegistry.CRACKED_VENUS_BRICKS.get().getRegistryName().getPath(), modLoc("block/cracked_venus_bricks"));
 
 		withExistingParent(ItemRegistry.COMPRESSED_VENUS_COBBLESTONE.get().getRegistryName().getPath(), modLoc("block/compressed_venus_cobblestone"));
 		withExistingParent(ItemRegistry.COMPRESSED_VENUS_COBBLED_DEEPSLATE.get().getRegistryName().getPath(), modLoc("block/compressed_venus_cobbled_deepslate"));
@@ -206,7 +207,7 @@ public class ItemModels extends ItemModelProvider {
 		slab("venus_deepslate_brick_slab", modLoc("block/venus_deepslate_bricks"), modLoc("block/venus_deepslate_bricks"), modLoc("block/venus_deepslate_bricks"));
 		wallInventory("venus_deepslate_brick_wall",  modLoc("block/venus_deepslate_bricks"));
 
-//		withExistingParent(ItemRegistry.CHISELED_MARS_DEEPSLATE_BRICKS.get().getRegistryName().getPath(), modLoc("block/chiseled_mars_deepslate_bricks"));
+		withExistingParent(ItemRegistry.CHISELED_VENUS_DEEPSLATE_BRICKS.get().getRegistryName().getPath(), modLoc("block/chiseled_venus_deepslate_bricks"));
 //		withExistingParent(ItemRegistry.CRACKED_MARS_DEEPSLATE_BRICKS.get().getRegistryName().getPath(), modLoc("block/cracked_mars_deepslate_bricks"));
 
 		withExistingParent(ItemRegistry.VENUS_POLISHED_DEEPSLATE.get().getRegistryName().getPath(), modLoc("block/venus_polished_deepslate"));
@@ -286,11 +287,11 @@ public class ItemModels extends ItemModelProvider {
 		withExistingParent(ItemRegistry.HYPERION_CORE.get().getRegistryName().getPath(), modLoc("block/hyperion_core"));
 		withExistingParent(ItemRegistry.URANUS_CORE.get().getRegistryName().getPath(), modLoc("block/uranus_core"));
 		withExistingParent(ItemRegistry.URANUS_DEEPSLATE.get().getRegistryName().getPath(), modLoc("block/uranus_deepslate"));
-		withExistingParent(ItemRegistry.URANUS_STONE.get().getRegistryName().getPath(), modLoc("block/uranus_stone"));
+		withExistingParent(ItemRegistry.URANUS_ATMOSPHERE.get().getRegistryName().getPath(), modLoc("block/uranus_atmosphere"));
 		withExistingParent(ItemRegistry.TITANIA_CORE.get().getRegistryName().getPath(), modLoc("block/titania_core"));
 		withExistingParent(ItemRegistry.OBERON_CORE.get().getRegistryName().getPath(), modLoc("block/oberon_core"));
 		withExistingParent(ItemRegistry.NEPTUNE_CORE.get().getRegistryName().getPath(), modLoc("block/neptune_core"));
-		withExistingParent(ItemRegistry.NEPTUNE_STONE.get().getRegistryName().getPath(), modLoc("block/neptune_stone"));
+		withExistingParent(ItemRegistry.NEPTUNE_ATMOSPHERE.get().getRegistryName().getPath(), modLoc("block/neptune_atmosphere"));
 		withExistingParent(ItemRegistry.NEPTUNE_DEEPSLATE.get().getRegistryName().getPath(), modLoc("block/neptune_deepslate"));
 		withExistingParent(ItemRegistry.TRITON_CORE.get().getRegistryName().getPath(), modLoc("block/triton_core"));
 //		withExistingParent(ItemRegistry.PLUTO_CORE.get().getRegistryName().getPath(), modLoc("block/pluto_core"));
@@ -328,6 +329,7 @@ public class ItemModels extends ItemModelProvider {
 		singleTexture(ItemRegistry.STEEL_NUGGET.get().getRegistryName().getPath(), new ResourceLocation("item/generated"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/steel_nugget"));
 //		singleTexture(ItemRegistry.COPPER_NUGGET.get().getRegistryName().getPath(), new ResourceLocation("item/generated"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/copper_nugget"));
 		singleTexture(ItemRegistry.STEEL_WOOL.get().getRegistryName().getPath(), new ResourceLocation("item/generated"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/steel_wool"));
+		singleTexture(ItemRegistry.FLARE_ROD.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/flare_rod"));
 
 
 		singleTexture(ItemRegistry.BLOCK_MOLD.get().getRegistryName().getPath(), new ResourceLocation("item/generated"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/block_mold"));

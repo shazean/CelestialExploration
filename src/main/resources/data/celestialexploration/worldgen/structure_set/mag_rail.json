@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "celestialexploration:mag_rail",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 8222590,
+    "spacing": 30,
+    "separation": 12,
+    "type": "minecraft:random_spread"
+  }
+}

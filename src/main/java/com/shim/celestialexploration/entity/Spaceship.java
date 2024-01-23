@@ -87,10 +87,10 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
     private static final float SPACESHIP_SPEED = (float) (double) CelestialCommonConfig.SPACESHIP_SPEED.get();
     private static final float SPACESHIP_LOW_FUEL_SPEED = SPACESHIP_SPEED - .15F;
     private static final float SPACESHIP_NO_FUEL_SPEED = .2F;
-    private static final float SPACESHIP_IN_SPACE_SPEED = SPACESHIP_SPEED + .1F;
+    private static final float SPACESHIP_IN_SPACE_SPEED = SPACESHIP_SPEED + .15F;
     protected SimpleContainer inventory;
     private static final int MAX_FUEL_TICKS = CelestialCommonConfig.SPACESHIP_FUEL_RATE.get();
-    private int teleportationCooldown = 80;
+    private int teleportationCooldown = 60;
     public static int maxTimeOnGround = 15;
     private final int LOW_FUEL = 300;
 
@@ -379,7 +379,7 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
             this.displayTeleportMessage(teleportationCooldown);
             assert passenger != null;
             ResourceKey<Level> destination = DimensionRegistry.SPACE;
-            Vec3 earthLocation = new Vec3(CelestialUtil.getPlanetaryChunkCoordinates(planetOriginNum).x * 16, 165.0, CelestialUtil.getPlanetaryChunkCoordinates(planetOriginNum).z * 16);
+            Vec3 earthLocation = new Vec3(CelestialUtil.getPlanetaryChunkCoordinates(planetOriginNum).x * 16, 135.0, CelestialUtil.getPlanetaryChunkCoordinates(planetOriginNum).z * 16);
             this.teleportSpaceship(passenger, this, destination, earthLocation);
         } else {
             this.teleportationCooldown--;
@@ -388,7 +388,7 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
     }
 
     public static ResourceKey<Level> getTeleportLocation(Spaceship spaceship, ChunkPos spaceshipChunkPos) {
-        if (spaceship.position().y > 150) return null;
+        if (spaceship.position().y > 130) return null;
 
         Vec3 mercuryLocation = new Vec3(CelestialUtil.getPlanetaryChunkCoordinates(1).x, spaceship.position().y, CelestialUtil.getPlanetaryChunkCoordinates(1).z);
         ChunkPos planetChunkPos = new ChunkPos((int) mercuryLocation.x, (int) mercuryLocation.z);
@@ -399,7 +399,7 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
         Vec3 venusLocation = new Vec3(CelestialUtil.getPlanetaryChunkCoordinates(2).x, spaceship.position().y, CelestialUtil.getPlanetaryChunkCoordinates(2).z);
         planetChunkPos = new ChunkPos((int) venusLocation.x, (int) venusLocation.z);
         if (CelestialUtil.isInRectangle(planetChunkPos.x, planetChunkPos.z, 2, spaceshipChunkPos.x, spaceshipChunkPos.z)) {
-            if (isNearBlockOfPlanet(spaceship, BlockRegistry.VENUS_STONE.get())) {
+            if (isNearBlockOfPlanet(spaceship, BlockRegistry.VENUS_CORE.get())) {
                 return DimensionRegistry.VENUS;
             }
         }
@@ -407,9 +407,9 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
         Vec3 earthLocation = new Vec3(CelestialUtil.getPlanetaryChunkCoordinates(3).x, spaceship.position().y, CelestialUtil.getPlanetaryChunkCoordinates(3).z);
         planetChunkPos = new ChunkPos((int) earthLocation.x, (int) earthLocation.z);
         if (CelestialUtil.isInRectangle(planetChunkPos.x, planetChunkPos.z, 4, spaceshipChunkPos.x, spaceshipChunkPos.z)) {
-            if (isNearBlockOfMoon(spaceship, BlockRegistry.MOON_DEEPSLATE.get())) { //BlockRegistry.MOON_CORE.get())) {
+            if (isNearBlockOfMoon(spaceship, BlockRegistry.MOON_CORE.get())) { //BlockRegistry.MOON_CORE.get())) {
                 return DimensionRegistry.MOON;
-            } else if (isNearBlockOfPlanet(spaceship, Blocks.DEEPSLATE)) { //Blocks.BEDROCK)) {
+            } else if (isNearBlockOfPlanet(spaceship, Blocks.BEDROCK)) { //Blocks.BEDROCK)) {
                 return Level.OVERWORLD;
             }
         }
@@ -417,7 +417,7 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
         Vec3 marsLocation = new Vec3(CelestialUtil.getPlanetaryChunkCoordinates(4).x, spaceship.position().y, CelestialUtil.getPlanetaryChunkCoordinates(4).z);
         planetChunkPos = new ChunkPos((int) marsLocation.x, (int) marsLocation.z);
         if (CelestialUtil.isInRectangle(planetChunkPos.x, planetChunkPos.z, 2, spaceshipChunkPos.x, spaceshipChunkPos.z)) {
-            if (isNearBlockOfPlanet(spaceship, BlockRegistry.MARS_DEEPSLATE.get())) { //BlockRegistry.MARS_CORE.get())) {
+            if (isNearBlockOfPlanet(spaceship, BlockRegistry.MARS_CORE.get())) { //BlockRegistry.MARS_CORE.get())) {
                 return DimensionRegistry.MARS;
             }
         }
@@ -463,7 +463,7 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
     public static boolean isNearBlockOfPlanet(Spaceship spaceship, Block blockToTest) {
         BlockPos pos;
         BlockState state;
-        int i = 25;
+        int i = 30;
 
         for (int x = -i; x <= i; x++) {
             for (int y = -i; y <= i; y++) {
@@ -480,7 +480,7 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
     public static boolean isNearBlockOfMoon(Spaceship spaceship, Block blockToTest) {
         BlockPos pos;
         BlockState state;
-        int i = 15;
+        int i = 18;
 
         for (int x = -i; x <= i; x++) {
             for (int y = -i; y <= i; y++) {

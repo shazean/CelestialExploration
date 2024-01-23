@@ -1,0 +1,15 @@
+{
+  "name": "celestialexploration:venus_flare_tree",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "celestialexploration:venus_flare_tree",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

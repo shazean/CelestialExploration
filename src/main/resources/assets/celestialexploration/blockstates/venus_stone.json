@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "celestialexploration:block/venus_stone"
+      },
+      {
+        "model": "celestialexploration:block/venus_stone_mirrored"
+      },
+      {
+        "model": "celestialexploration:block/venus_stone",
+        "y": 180
+      },
+      {
+        "model": "celestialexploration:block/venus_stone_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

@@ -17,6 +17,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fluids.FluidAttributes;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
@@ -97,7 +98,7 @@ public class FluidRegistry {
         .block(() -> FluidRegistry.SULFUR_BLOCK.get()).bucket(() -> FluidRegistry.SULFUR_BUCKET.get());
 
 
-    public static final RegistryObject<LiquidBlock> LOX_BLOCK = BlockRegistry.BLOCKS.register("lox", () -> new LiquidBlock(FluidRegistry.LOX, BlockBehaviour.Properties.of(Material.WATER).noCollission().strength(100f).noDrops()));
+    public static final RegistryObject<LiquidBlock> LOX_BLOCK = BlockRegistry.BLOCKS.register("lox", () -> new LiquidBlock(FluidRegistry.LOX, BlockBehaviour.Properties.of(Material.WATER, MaterialColor.COLOR_LIGHT_BLUE).noCollission().strength(100f).noDrops()));
     public static final RegistryObject<LiquidBlock> MOLTEN_IRON_BLOCK = BlockRegistry.BLOCKS.register("molten_iron", () -> new LiquidBlock(FluidRegistry.MOLTEN_IRON, BlockBehaviour.Properties.of(Material.LAVA).noCollission().strength(100f).noDrops()));
     public static final RegistryObject<LiquidBlock> MOLTEN_STEEL_BLOCK = BlockRegistry.BLOCKS.register("molten_steel", () -> new LiquidBlock(FluidRegistry.MOLTEN_STEEL, BlockBehaviour.Properties.of(Material.LAVA).noCollission().strength(100f).noDrops()));
     public static final RegistryObject<LiquidBlock> MOLTEN_COPPER_BLOCK = BlockRegistry.BLOCKS.register("molten_copper", () -> new LiquidBlock(FluidRegistry.MOLTEN_COPPER, BlockBehaviour.Properties.of(Material.LAVA).noCollission().strength(100f).noDrops()));

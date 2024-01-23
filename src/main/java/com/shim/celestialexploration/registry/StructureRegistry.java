@@ -19,12 +19,17 @@ public class StructureRegistry {
 
     //PLANETS
     public static final RegistryObject<StructureFeature<?>> SUN = DEFERRED_REGISTRY_STRUCTURE.register("sun", SunStructure::new);
+    public static final RegistryObject<StructureFeature<?>> SUN_TOP = DEFERRED_REGISTRY_STRUCTURE.register("sun_top", SunTopStructure::new);
+
     public static final RegistryObject<StructureFeature<?>> MERCURY = DEFERRED_REGISTRY_STRUCTURE.register("mercury", MercuryStructure::new);
     public static final RegistryObject<StructureFeature<?>> VENUS = DEFERRED_REGISTRY_STRUCTURE.register("venus", VenusStructure::new);
     public static final RegistryObject<StructureFeature<?>> EARTH = DEFERRED_REGISTRY_STRUCTURE.register("earth", EarthStructure::new);
     public static final RegistryObject<StructureFeature<?>> MARS = DEFERRED_REGISTRY_STRUCTURE.register("mars", MarsStructure::new);
     public static final RegistryObject<StructureFeature<?>> JUPITER = DEFERRED_REGISTRY_STRUCTURE.register("jupiter", JupiterStructure::new);
     public static final RegistryObject<StructureFeature<?>> SATURN = DEFERRED_REGISTRY_STRUCTURE.register("saturn", SaturnStructure::new);
+    public static final RegistryObject<StructureFeature<?>> TITAN = DEFERRED_REGISTRY_STRUCTURE.register("titan", TitanStructure::new);
+    public static final RegistryObject<StructureFeature<?>> IAPETUS = DEFERRED_REGISTRY_STRUCTURE.register("iapetus", IapetusStructure::new);
+
     public static final RegistryObject<StructureFeature<?>> URANUS = DEFERRED_REGISTRY_STRUCTURE.register("uranus", UranusStructure::new);
     public static final RegistryObject<StructureFeature<?>> NEPTUNE = DEFERRED_REGISTRY_STRUCTURE.register("neptune", NeptuneStructure::new);
 
@@ -33,8 +38,13 @@ public class StructureRegistry {
     public static final RegistryObject<StructureFeature<?>> MEDIUM_ASTEROID = DEFERRED_REGISTRY_STRUCTURE.register("medium_asteroid", MediumAsteroidStructure::new);
     public static final RegistryObject<StructureFeature<?>> SMALL_ASTEROID = DEFERRED_REGISTRY_STRUCTURE.register("small_asteroid", SmallAsteroidStructure::new);
 
+    //MAG RAILS
+    public static final RegistryObject<StructureFeature<?>> MAG_RAIL = DEFERRED_REGISTRY_STRUCTURE.register("mag_rail", MagRailStructure::new);
 
     //VILLAGES - LUNAR
     public static final RegistryObject<StructureFeature<?>> LUNAR_COLONY = DEFERRED_REGISTRY_STRUCTURE.register("lunar_colony", LunarColonyStructure::new);
+
+    //VENUS DUNGEONS
+    public static final RegistryObject<StructureFeature<?>> VENUS_FLARE_TREE = DEFERRED_REGISTRY_STRUCTURE.register("venus_flare_tree", VenusFlareTreeStructure::new);
 
 }

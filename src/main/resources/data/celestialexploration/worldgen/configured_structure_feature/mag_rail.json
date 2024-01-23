@@ -1,0 +1,11 @@
+{
+  "type": "celestialexploration:mag_rail",
+  "config": {
+    "start_pool": "celestialexploration:mag_rail/start_pool",
+    "size": 7
+  },
+  "biomes": "#celestialexploration:has_structure/mag_rail_biomes",
+  "adapt_noise": false,
+  "spawn_overrides": {
+  }
+}

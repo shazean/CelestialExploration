@@ -34,33 +34,32 @@ public class SolarBlock extends Block {
 //        if (!p_153780_.fireImmune() && p_153780_ instanceof LivingEntity && !EnchantmentHelper.hasFrostWalker((LivingEntity)p_153780_)) {
             p_153780_.hurt(CelestialDamageSource.TOUCHED_SUN, 120.0F);
 //        }
-
         super.stepOn(p_153777_, p_153778_, p_153779_, p_153780_);
     }
 
-    public void tick(BlockState p_54806_, ServerLevel p_54807_, BlockPos p_54808_, Random p_54809_) {
-        BubbleColumnBlock.updateColumn(p_54807_, p_54808_.above(), p_54806_);
-    }
-
-    public BlockState updateShape(BlockState p_54811_, Direction p_54812_, BlockState p_54813_, LevelAccessor p_54814_, BlockPos p_54815_, BlockPos p_54816_) {
-        if (p_54812_ == Direction.UP && p_54813_.is(Blocks.WATER)) {
-            p_54814_.scheduleTick(p_54815_, this, 20);
-        }
-
-        return super.updateShape(p_54811_, p_54812_, p_54813_, p_54814_, p_54815_, p_54816_);
-    }
-
-    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, Random rand) {
-        BlockPos blockpos = pos.above();
-        if (level.getFluidState(pos).is(FluidTags.WATER)) {
-
-            level.playSound((Player)null, pos, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 0.5F, 2.6F + (level.random.nextFloat() - level.random.nextFloat()) * 0.8F);
-            level.sendParticles(ParticleTypes.LARGE_SMOKE, (double)blockpos.getX() + 0.5D, (double)blockpos.getY() + 0.25D, (double)blockpos.getZ() + 0.5D, 8, 0.5D, 0.25D, 0.5D, 0.0D);
-        }
-
-    }
-
-    public void onPlace(BlockState p_54823_, Level p_54824_, BlockPos p_54825_, BlockState p_54826_, boolean p_54827_) {
-        p_54824_.scheduleTick(p_54825_, this, 20);
-    }
+//    public void tick(BlockState p_54806_, ServerLevel p_54807_, BlockPos p_54808_, Random p_54809_) {
+//        BubbleColumnBlock.updateColumn(p_54807_, p_54808_.above(), p_54806_);
+//    }
+//
+//    public BlockState updateShape(BlockState p_54811_, Direction p_54812_, BlockState p_54813_, LevelAccessor p_54814_, BlockPos p_54815_, BlockPos p_54816_) {
+//        if (p_54812_ == Direction.UP && p_54813_.is(Blocks.WATER)) {
+//            p_54814_.scheduleTick(p_54815_, this, 20);
+//        }
+//
+//        return super.updateShape(p_54811_, p_54812_, p_54813_, p_54814_, p_54815_, p_54816_);
+//    }
+//
+//    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, Random rand) {
+//        BlockPos blockpos = pos.above();
+//        if (level.getFluidState(pos).is(FluidTags.WATER)) {
+//
+//            level.playSound((Player)null, pos, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 0.5F, 2.6F + (level.random.nextFloat() - level.random.nextFloat()) * 0.8F);
+//            level.sendParticles(ParticleTypes.LARGE_SMOKE, (double)blockpos.getX() + 0.5D, (double)blockpos.getY() + 0.25D, (double)blockpos.getZ() + 0.5D, 8, 0.5D, 0.25D, 0.5D, 0.0D);
+//        }
+//
+//    }
+//
+//    public void onPlace(BlockState p_54823_, Level p_54824_, BlockPos p_54825_, BlockState p_54826_, boolean p_54827_) {
+//        p_54824_.scheduleTick(p_54825_, this, 20);
+//    }
 }

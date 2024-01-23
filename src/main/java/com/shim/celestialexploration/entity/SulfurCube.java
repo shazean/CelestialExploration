@@ -1,5 +1,6 @@
 package com.shim.celestialexploration.entity;
 
+import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.registry.FluidRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.FluidTags;
@@ -32,15 +33,17 @@ public class SulfurCube extends MagmaCube {
     }
 
     @Override
-    protected void jumpInLiquid(TagKey<Fluid> p_204065_) {
-        if (p_204065_ == FluidRegistry.SULFUR_TAG) {
+    protected void jumpInLiquid(TagKey<Fluid> fluidTagKey) {
+
+        CelestialExploration.LOGGER.debug("SulfurCube in: " +  fluidTagKey.toString());
+
+        if (fluidTagKey == FluidRegistry.SULFUR_TAG) {
+            CelestialExploration.LOGGER.debug("SulfurCube in Sulfur");
             Vec3 vec3 = this.getDeltaMovement();
             this.setDeltaMovement(vec3.x, (double)(0.22F + (float)this.getSize() * 0.05F), vec3.z);
             this.hasImpulse = true;
         } else {
-            super.jumpInLiquid(p_204065_);
+            super.jumpInLiquid(fluidTagKey);
         }
     }
-
-
 }

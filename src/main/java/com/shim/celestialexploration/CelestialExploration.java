@@ -126,6 +126,7 @@ public class CelestialExploration {
         SpawnPlacements.register(EntityRegistry.SULFUR_CUBE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, SulfurCube::checkSulfurCubeSpawnRules);
         SpawnPlacements.register(EntityRegistry.VOIDED_PIGLIN.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, VoidedPiglin::checkVoidedPiglinSpawnRules);
         SpawnPlacements.register(EntityRegistry.GUST.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, Gust::checkGustSpawnRules);
+//        SpawnPlacements.register(EntityRegistry.FLARE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, Flare::checkAnyLightMonsterSpawnRules);
 
         CelestialPacketHandler.init();
     }

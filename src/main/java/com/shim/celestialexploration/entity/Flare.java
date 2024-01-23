@@ -15,5 +15,4 @@ public class Flare extends Blaze {
     public static AttributeSupplier setAttributes() {
         return Monster.createMonsterAttributes().add(Attributes.ATTACK_DAMAGE, 6.0D).add(Attributes.MOVEMENT_SPEED, (double)0.23F).add(Attributes.FOLLOW_RANGE, 48.0D).build();
     }
-
 }

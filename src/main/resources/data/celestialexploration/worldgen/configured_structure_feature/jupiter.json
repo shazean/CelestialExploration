@@ -1,8 +1,8 @@
 {
   "type": "celestialexploration:jupiter",
   "config": {
-    "start_pool": "celestialexploration:jupiter",
-    "size": 1
+    "start_pool": "celestialexploration:jupiter/start_pool",
+    "size": 6
   },
   "biomes": "#celestialexploration:has_structure/space_structures",
   "adapt_noise": false,

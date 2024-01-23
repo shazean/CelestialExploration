@@ -1,0 +1,15 @@
+{
+  "name": "celestialexploration:sun/sun_east_top",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "celestialexploration:sun_east_up",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "celestialexploration:iapetus",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 239423246,
+    "spacing": 1,
+    "separation": 0,
+    "type": "minecraft:random_spread"
+  }
+}

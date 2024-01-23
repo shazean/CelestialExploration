@@ -1,27 +1,17 @@
 package com.shim.celestialexploration.datagen;
 
-import com.google.common.collect.ImmutableMap;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.blocks.ConnectedGlassBlock;
 import com.shim.celestialexploration.registry.BlockRegistry;
 
 import com.shim.celestialexploration.registry.FluidRegistry;
-import net.minecraft.core.Direction;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.Property;
-import net.minecraft.world.level.block.state.properties.WallSide;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.client.model.generators.MultiPartBlockStateBuilder;
 import net.minecraftforge.common.data.ExistingFileHelper;
-
-import java.util.Map;
-import java.util.function.Function;
 
 public class BlockStates extends BlockStateProvider {
 
@@ -38,9 +28,9 @@ public class BlockStates extends BlockStateProvider {
 		simpleBlock(BlockRegistry.MOON_BRICKS.get());
 		simpleBlock(BlockRegistry.MOON_IRON_ORE.get());
 		simpleBlock(BlockRegistry.MOON_REDSTONE_ORE.get());
-		simpleBlock(BlockRegistry.MOON_SAND.get());
-		simpleBlock(BlockRegistry.MOON_STONE.get());
-		simpleBlock(BlockRegistry.COARSE_MOON_SAND.get());
+//		simpleBlock(BlockRegistry.MOON_SAND.get());
+//		simpleBlock(BlockRegistry.MOON_STONE.get());
+//		simpleBlock(BlockRegistry.COARSE_MOON_SAND.get());
 
 		simpleBlock(BlockRegistry.CHISELED_MOON_BRICKS.get());
 		simpleBlock(BlockRegistry.GLOWING_MOON_SAND.get());
@@ -106,9 +96,9 @@ public class BlockStates extends BlockStateProvider {
 		simpleBlock(BlockRegistry.MARS_BRICKS.get());
 		simpleBlock(BlockRegistry.MARS_IRON_ORE.get());
 		simpleBlock(BlockRegistry.MARS_REDSTONE_ORE.get());
-		simpleBlock(BlockRegistry.MARS_SAND.get());
-		simpleBlock(BlockRegistry.COARSE_MARS_SAND.get());
-		simpleBlock(BlockRegistry.MARS_STONE.get());
+//		simpleBlock(BlockRegistry.MARS_SAND.get());
+//		simpleBlock(BlockRegistry.COARSE_MARS_SAND.get());
+//		simpleBlock(BlockRegistry.MARS_STONE.get());
 		stairsBlock((StairBlock) BlockRegistry.MARS_BRICK_STAIRS.get(), modLoc("block/mars_bricks"));
 		slabBlock((SlabBlock) BlockRegistry.MARS_BRICK_SLAB.get(), modLoc("block/mars_bricks"), modLoc("block/mars_bricks"));
 		wallBlock((WallBlock) BlockRegistry.MARS_BRICK_WALL.get(), modLoc("block/mars_bricks"));
@@ -174,9 +164,9 @@ public class BlockStates extends BlockStateProvider {
 		simpleBlock(BlockRegistry.VENUS_IRON_ORE.get());
 		simpleBlock(BlockRegistry.VENUS_REDSTONE_ORE.get());
 		simpleBlock(BlockRegistry.VENUS_LAPIS_ORE.get());
-		simpleBlock(BlockRegistry.VENUS_SAND.get());
+//		simpleBlock(BlockRegistry.VENUS_SAND.get());
 		simpleBlock(BlockRegistry.FINE_VENUS_SAND.get());
-		simpleBlock(BlockRegistry.VENUS_STONE.get());
+//		simpleBlock(BlockRegistry.VENUS_STONE.get());
 		stairsBlock((StairBlock) BlockRegistry.VENUS_BRICK_STAIRS.get(), modLoc("block/venus_bricks"));
 		slabBlock((SlabBlock) BlockRegistry.VENUS_BRICK_SLAB.get(), modLoc("block/venus_bricks"), modLoc("block/venus_bricks"));
 		wallBlock((WallBlock) BlockRegistry.VENUS_BRICK_WALL.get(), modLoc("block/venus_bricks"));
@@ -184,6 +174,8 @@ public class BlockStates extends BlockStateProvider {
 		axisBlock((RotatedPillarBlock) BlockRegistry.VENUS_DEEPSLATE.get());
 		simpleBlock(BlockRegistry.VENUS_COBBLED_DEEPSLATE.get());
 //		axisBlock((RotatedPillarBlock) BlockRegistry.VENUS_BRICK_PILLAR.get(), modLoc("block/mars_brick_pillar"));
+
+		simpleBlock(BlockRegistry.CRACKED_VENUS_BRICKS.get());
 
 		stairsBlock((StairBlock) BlockRegistry.VENUS_STONE_STAIRS.get(), modLoc("block/venus_stone"));
 		slabBlock((SlabBlock) BlockRegistry.VENUS_STONE_SLAB.get(), modLoc("block/venus_stone"), modLoc("block/venus_stone"));
@@ -205,7 +197,7 @@ public class BlockStates extends BlockStateProvider {
 		stairsBlock((StairBlock) BlockRegistry.VENUS_DEEPSLATE_BRICK_STAIRS.get(), modLoc("block/venus_deepslate_bricks"));
 		slabBlock((SlabBlock) BlockRegistry.VENUS_DEEPSLATE_BRICK_SLAB.get(), modLoc("block/venus_deepslate_bricks"), modLoc("block/venus_deepslate_bricks"));
 		wallBlock((WallBlock) BlockRegistry.VENUS_DEEPSLATE_BRICK_WALL.get(), modLoc("block/venus_deepslate_bricks"));
-//		simpleBlock(BlockRegistry.CHISELED_VENUS_DEEPSLATE_BRICKS.get());
+		simpleBlock(BlockRegistry.CHISELED_VENUS_DEEPSLATE_BRICKS.get());
 //		simpleBlock(BlockRegistry.CRACKED_MARS_DEEPSLATE_BRICKS.get());
 
 		simpleBlock(BlockRegistry.VENUS_POLISHED_DEEPSLATE.get());
@@ -294,14 +286,14 @@ public class BlockStates extends BlockStateProvider {
 		simpleBlock(BlockRegistry.DIONE_CORE.get());
 		simpleBlock(BlockRegistry.HYPERION_CORE.get());
 
-		simpleBlock(BlockRegistry.URANUS_STONE.get());
+		simpleBlock(BlockRegistry.URANUS_ATMOSPHERE.get());
 		simpleBlock(BlockRegistry.URANUS_CORE.get());
 		axisBlock((RotatedPillarBlock) BlockRegistry.URANUS_DEEPSLATE.get());
 
 		simpleBlock(BlockRegistry.TITANIA_CORE.get());
 		simpleBlock(BlockRegistry.OBERON_CORE.get());
 
-		simpleBlock(BlockRegistry.NEPTUNE_STONE.get());
+		simpleBlock(BlockRegistry.NEPTUNE_ATMOSPHERE.get());
 		simpleBlock(BlockRegistry.NEPTUNE_CORE.get());
 		axisBlock((RotatedPillarBlock) BlockRegistry.NEPTUNE_DEEPSLATE.get());
 

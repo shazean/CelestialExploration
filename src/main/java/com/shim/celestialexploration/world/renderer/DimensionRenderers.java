@@ -187,35 +187,34 @@ public class DimensionRenderers {
     @OnlyIn(Dist.CLIENT)
     public static class VenusEffects extends DimensionSpecialEffects {
         public VenusEffects() {
-            super(Float.NaN, true, SkyType.NORMAL, false, false);
+            super(Float.NaN, true, SkyType.NORMAL, false, true);
         }
 
-        @Override
-        public Vec3 getBrightnessDependentFogColor(Vec3 color, float brightness) {
-            return color.multiply(brightness * 0.94F + 0.06F, brightness * 0.94F + 0.06F, brightness * 0.91F + 0.09F);
+//        @Override
+//        public Vec3 getBrightnessDependentFogColor(Vec3 color, float brightness) {
+//            return color.multiply(brightness * 0.94F + 0.06F, brightness * 0.94F + 0.06F, brightness * 0.91F + 0.09F);
+//        }
+
+        public Vec3 getBrightnessDependentFogColor(Vec3 p_108901_, float p_108902_) {
+            return p_108901_;
         }
 
         @Override
         public boolean isFoggyAt(int x, int z) {
-            return false;
+            return true;
         }
 
-        @Override
-        public float[] getSunriseColor(float p_230492_1_, float p_230492_2_) {
-            return null;
-        }
-
-        VenusSkyHandler skyHandler = new VenusSkyHandler();
-
-        @Override
-        public void setSkyRenderHandler(ISkyRenderHandler skyRenderHandler) {
-            super.setSkyRenderHandler(skyHandler);
-        }
-
-        @Nullable
-        @Override
-        public ISkyRenderHandler getSkyRenderHandler() {
-            return skyHandler;
-        }
+//        VenusSkyHandler skyHandler = new VenusSkyHandler();
+//
+//        @Override
+//        public void setSkyRenderHandler(ISkyRenderHandler skyRenderHandler) {
+//            super.setSkyRenderHandler(skyHandler);
+//        }
+//
+//        @Nullable
+//        @Override
+//        public ISkyRenderHandler getSkyRenderHandler() {
+//            return skyHandler;
+//        }
     }
 }

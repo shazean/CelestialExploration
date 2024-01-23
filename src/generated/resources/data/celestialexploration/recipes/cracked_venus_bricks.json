@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "celestialexploration:venus_bricks"
+  },
+  "result": "celestialexploration:cracked_venus_bricks",
+  "experience": 1.0,
+  "cookingtime": 100
+}

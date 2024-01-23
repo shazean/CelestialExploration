@@ -180,6 +180,8 @@ public class ModLanguageProvider extends LanguageProvider {
 
 		/*VENUS*/
 		add(BlockRegistry.CHISELED_VENUS_BRICKS.get(), "Chiseled Venusian Bricks");
+		add(BlockRegistry.CRACKED_VENUS_BRICKS.get(), "Cracked Venusian Bricks");
+
 		add(BlockRegistry.VENUS_BRICK_SLAB.get(), "Venusian Brick Slab");
 		add(BlockRegistry.VENUS_BRICK_STAIRS.get(), "Venusian Brick Stairs");
 		add(BlockRegistry.VENUS_BRICK_WALL.get(), "Venusian Brick Wall");
@@ -201,7 +203,6 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(BlockRegistry.GEYSER.get(), "Sulfur Geyser");
 		add(BlockRegistry.VENUS_STONE_STAIRS.get(), "Venusian Stone Stairs");
 
-
 		add(BlockRegistry.VENUS_COBBLESTONE_SLAB.get(), "Venusian Cobblestone Slab");
 		add(BlockRegistry.VENUS_COBBLESTONE_STAIRS.get(), "Venusian Cobblestone Stairs");
 		add(BlockRegistry.VENUS_COBBLESTONE_WALL.get(), "Venusian Cobblestone Wall");
@@ -218,7 +219,7 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(BlockRegistry.VENUS_DEEPSLATE_BRICK_STAIRS.get(), "Venusian Deepslate Brick Stairs");
 		add(BlockRegistry.VENUS_DEEPSLATE_BRICK_WALL.get(), "Venusian Deepslate Brick Wall");
 //		add(BlockRegistry.CRACKED_VENUS_DEEPSLATE_BRICKS.get(), "Cracked Martian Deepslate Bricks");
-//		add(BlockRegistry.CHISELED_VENUS_DEEPSLATE_BRICKS.get(), "Chiseled Martian Deepslate Bricks");
+		add(BlockRegistry.CHISELED_VENUS_DEEPSLATE_BRICKS.get(), "Chiseled Venusian Deepslate Bricks");
 
 		add(BlockRegistry.VENUS_DEEPSLATE_TILES.get(), "Venusian Deepslate Tiles");
 		add(BlockRegistry.VENUS_DEEPSLATE_TILE_SLAB.get(), "Venusian Deepslate Tile Slab");
@@ -268,8 +269,19 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(BlockRegistry.SOLAR_FLARE.get(), "Solar Surface");
 		add(BlockRegistry.SUN_SPOT.get(), "Sun Spot");
 
-
-
+		add(BlockRegistry.MERCURY_STONE.get(), "Mercury Stone");
+		add(BlockRegistry.MERCURY_DEEPSLATE.get(), "Mercury Deepslate");
+		add(BlockRegistry.JUPITER_ATMOSPHERE.get(), "Jupiter Atmosphere");
+		add(BlockRegistry.JUPITER_DEEPSLATE.get(), "Jupiter Deepslate");
+		add(BlockRegistry.IO_STONE.get(), "Io Stone");
+		add(BlockRegistry.IO_DEEPSLATE.get(), "Io Deepslate");
+		add(BlockRegistry.EUROPA_HYDRATE.get(), "Europa Hydrate");
+		add(BlockRegistry.SATURN_ATMOSPHERE.get(), "Saturn Atmosphere");
+		add(BlockRegistry.SATURN_DEEPSLATE.get(), "Saturn Deepslate");
+		add(BlockRegistry.URANUS_ATMOSPHERE.get(), "Uranus Atmosphere");
+		add(BlockRegistry.URANUS_DEEPSLATE.get(), "Uranus Deepslate");
+		add(BlockRegistry.NEPTUNE_ATMOSPHERE.get(), "Neptune Atmosphere");
+		add(BlockRegistry.NEPTUNE_DEEPSLATE.get(), "Neptune Deepslate");
 
 
 
@@ -286,6 +298,7 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(ItemRegistry.STEEL_WOOL.get(), "Steel Wool");
 		add(BlockRegistry.STEEL_BLOCK.get(), "Steel Block");
 		add(ItemRegistry.SULFUR_CRYSTAL.get(), "Sulfur Crystal");
+		add(ItemRegistry.FLARE_ROD.get(), "Flare Rod");
 
 		add(BlockRegistry.CERAMIC.get(), "Ceramic");
 		add(BlockRegistry.CERAMIC_TILE.get(), "Ceramic Tile");

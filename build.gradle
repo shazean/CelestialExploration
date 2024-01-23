@@ -17,9 +17,9 @@ plugins {
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'com.matthewprenger.cursegradle'
 
-version = '1.0'
+version = System.getenv("CELESTIAL_VERSION") ?: new File(".release-info/1.18/VERSION").text.trim()
 group = 'com.shim.celestialexploration' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = 'celestialexploration'
+archivesBaseName = "celestialexploration-${project.target_mc_version}"
 
 // Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
@@ -198,9 +198,9 @@ jar {
         attributes([
                 "Specification-Title"     : "celestialexploration",
                 "Specification-Vendor"    : "shim",
-                "Specification-Version"   : "0", // We are version 0 of ourselves
+                "Specification-Version"   : project.version, // We are version 0 of ourselves
                 "Implementation-Title"    : project.name,
-                "Implementation-Version"  : project.jar.archiveVersion,
+                "Implementation-Version"  : project.version,
                 "Implementation-Vendor"   : "shim",
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])

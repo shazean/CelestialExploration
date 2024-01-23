@@ -1,0 +1,11 @@
+{
+  "type": "celestialexploration:iapetus",
+  "config": {
+    "start_pool": "celestialexploration:saturn/iapetus_pool",
+    "size": 7
+  },
+  "biomes": "#celestialexploration:has_structure/space_structures",
+  "adapt_noise": false,
+  "spawn_overrides": {
+  }
+}

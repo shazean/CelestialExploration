@@ -1,6 +1,5 @@
 {
   "type": "celestialexploration:lunar_colony",
-
   "config": {
     "start_pool": "celestialexploration:lunar_colony/start_pool",
     "size": 2

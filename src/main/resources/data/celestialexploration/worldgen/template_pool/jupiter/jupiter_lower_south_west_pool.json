@@ -1,0 +1,15 @@
+{
+  "name": "celestialexploration:jupiter/jupiter_lower_south_west_pool",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "celestialexploration:jupiter_lower_south_west",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

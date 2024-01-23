@@ -7,6 +7,7 @@ import com.shim.celestialexploration.registry.ItemRegistry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.data.tags.ItemTagsProvider;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -70,11 +71,11 @@ public class ModItemTags extends ItemTagsProvider {
 				.add(ItemRegistry.VENUS_SAND.get())
 		;
 
-		tag(ItemTags.DIRT)
-				.add(ItemRegistry.COARSE_MOON_SAND.get())
-				.add(ItemRegistry.COARSE_MARS_SAND.get())
+//		tag(ItemTags.DIRT)
+//				.add(ItemRegistry.COARSE_MOON_SAND.get())
+//				.add(ItemRegistry.COARSE_MARS_SAND.get())
 //				.add(ItemRegistry.COARSE_VENUS_SAND.get())
-		;
+//		;
 
 		tag(Tags.Items.STONE)
 				.add(ItemRegistry.MARS_STONE.get())
@@ -230,6 +231,30 @@ public class ModItemTags extends ItemTagsProvider {
 				.add(ItemRegistry.VENUS_REDSTONE_ORE.get())
 				.add(ItemRegistry.VENUS_DEEPSLATE_REDSTONE_ORE.get())
 		;
+
+		tag(ItemTags.WALLS)
+				.add(ItemRegistry.MARS_BRICK_WALL.get())
+				.add(ItemRegistry.METEOR_BRICK_WALL.get())
+				.add(ItemRegistry.MOON_BRICK_WALL.get())
+				.add(ItemRegistry.MARS_COBBLESTONE_WALL.get())
+				.add(ItemRegistry.MOON_COBBLESTONE_WALL.get())
+				.add(ItemRegistry.MARS_COBBLED_DEEPSLATE_WALL.get())
+				.add(ItemRegistry.MOON_COBBLED_DEEPSLATE_WALL.get())
+				.add(ItemRegistry.MARS_DEEPSLATE_BRICK_WALL.get())
+				.add(ItemRegistry.MARS_DEEPSLATE_TILE_WALL.get())
+				.add(ItemRegistry.MARS_POLISHED_DEEPSLATE_WALL.get())
+				.add(ItemRegistry.MOON_DEEPSLATE_BRICK_WALL.get())
+				.add(ItemRegistry.MOON_DEEPSLATE_TILE_WALL.get())
+				.add(ItemRegistry.MOON_POLISHED_DEEPSLATE_WALL.get())
+
+				.add(ItemRegistry.VENUS_BRICK_WALL.get())
+				.add(ItemRegistry.VENUS_COBBLESTONE_WALL.get())
+				.add(ItemRegistry.VENUS_COBBLED_DEEPSLATE_WALL.get())
+				.add(ItemRegistry.VENUS_DEEPSLATE_BRICK_WALL.get())
+				.add(ItemRegistry.VENUS_DEEPSLATE_TILE_WALL.get())
+				.add(ItemRegistry.VENUS_POLISHED_DEEPSLATE_WALL.get())
+		;
+
 
 		tag(ItemRegistry.MOON_TAG)
 				.add(ItemRegistry.MOON_STONE.get())
@@ -461,6 +486,17 @@ public class ModItemTags extends ItemTagsProvider {
 				.add(ItemRegistry.VENUS_COBBLED_DEEPSLATE.get())
 		;
 
+		tag(ItemTags.SOUL_FIRE_BASE_BLOCKS)
+				.add(ItemRegistry.VENUS_SAND.get())
+				.add(ItemRegistry.FINE_VENUS_SAND.get())
+				.add(ItemRegistry.VENUS_STONE.get())
+				.add(ItemRegistry.VENUS_COBBLESTONE.get())
+				.add(ItemRegistry.VENUS_DEEPSLATE.get())
+				.add(ItemRegistry.VENUS_COBBLED_DEEPSLATE.get())
+				.add(ItemRegistry.METEOR_SULFUR_ORE.get())
+				.add(ItemRegistry.GEYSER.get())
+		;
+
 
 		tag(ItemRegistry.METEOR_TAG)
 				.add(ItemRegistry.METEOR.get())
@@ -569,6 +605,9 @@ public class ModItemTags extends ItemTagsProvider {
 				.add(ItemRegistry.VENUS_DEEPSLATE_PRESSURE_PLATE.get())
 				.add(ItemRegistry.VENUS_STONE_PRESSURE_PLATE.get())
 		;
+
+		tag(Tags.Items.RODS_BLAZE)
+				.add(ItemRegistry.FLARE_ROD.get());
 	}
 
 	@Override

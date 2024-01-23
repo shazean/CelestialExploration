@@ -53,7 +53,6 @@ public class SaturnStructure extends StructureFeature<JigsawConfiguration> {
         if (!SaturnStructure.isFeatureChunk(context)) {
             return Optional.empty();
         }
-        CelestialExploration.LOGGER.debug("Saturn isFeatureChunk passing true!");
 
         BlockPos blockpos = context.chunkPos().getMiddleBlockPosition(0);
         blockpos = new BlockPos(blockpos.getX(), 64, blockpos.getZ());
@@ -61,7 +60,7 @@ public class SaturnStructure extends StructureFeature<JigsawConfiguration> {
         Optional<PieceGenerator<JigsawConfiguration>> structurePiecesGenerator = JigsawPlacement.addPieces(context, PoolElementStructurePiece::new, blockpos, false,false);
 
         if(structurePiecesGenerator.isPresent()) {
-            CelestialExploration.LOGGER.log(Level.DEBUG, "Saturn at {}", blockpos);
+//            CelestialExploration.LOGGER.log(Level.DEBUG, "Saturn at {}", blockpos);
         }
 
         return structurePiecesGenerator;

@@ -1,0 +1,11 @@
+{
+  "type": "celestialexploration:titan",
+  "config": {
+    "start_pool": "celestialexploration:saturn/titan_hyperion_pool",
+    "size": 7
+  },
+  "biomes": "#celestialexploration:has_structure/space_structures",
+  "adapt_noise": false,
+  "spawn_overrides": {
+  }
+}

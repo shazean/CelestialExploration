@@ -19,9 +19,9 @@
     "monster": [
       {
         "type": "celestialexploration:gust",
-        "weight": 50,
-        "minCount": 4,
-        "maxCount": 4
+        "weight": 30,
+        "minCount": 0,
+        "maxCount": 2
       },
       {
         "type": "celestialexploration:voided_piglin",
@@ -38,7 +38,7 @@
       {
         "type": "minecraft:hoglin",
         "weight": 2,
-        "minCount": 3,
+        "minCount": 0,
         "maxCount": 4
       },
       {
@@ -52,6 +52,12 @@
         "weight": 15,
         "minCount": 4,
         "maxCount": 4
+      },
+      {
+        "type": "minecraft:skeleton",
+        "weight": 10,
+        "minCount": 0,
+        "maxCount": 3
       }
     ]
   },

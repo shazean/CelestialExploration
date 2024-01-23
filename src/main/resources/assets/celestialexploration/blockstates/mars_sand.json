@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "celestialexploration:block/mars_sand"
+      },
+      {
+        "model": "celestialexploration:block/mars_sand",
+        "y": 90
+      },
+      {
+        "model": "celestialexploration:block/mars_sand",
+        "y": 180
+      },
+      {
+        "model": "celestialexploration:block/mars_sand",
+        "y": 270
+      }
+    ]
+  }
+}

@@ -266,7 +266,6 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(BlockRegistry.VENUS_DEEPSLATE_REDSTONE_ORE.get())
                 .add(BlockRegistry.VENUS_DEEPSLATE_LAPIS_ORE.get())
 
-
                 .add(BlockRegistry.METEOR_COAL_ORE.get())
                 .add(BlockRegistry.METEOR_COPPER_ORE.get())
                 .add(BlockRegistry.METEOR_DIAMOND_ORE.get())
@@ -411,6 +410,7 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(BlockRegistry.VENUS_DEEPSLATE_TILE_WALL.get())
                 .add(BlockRegistry.VENUS_POLISHED_DEEPSLATE_WALL.get())
         ;
+
 
         tag(Tags.Blocks.SAND)
                 .add(BlockRegistry.GLOWING_MOON_SAND.get())
@@ -659,7 +659,7 @@ public class ModBlockTags extends BlockTagsProvider {
 //                .add(BlockRegistry.CRACKED_VENUS_BRICKS.get())
 //                .add(BlockRegistry.CRACKED_VENUS_DEEPSLATE_BRICKS.get())
 //                .add(BlockRegistry.CRACKED_VENUS_DEEPSLATE_TILES.get())
-//                .add(BlockRegistry.CHISELED_VENUS_DEEPSLATE_BRICKS.get())
+                .add(BlockRegistry.CHISELED_VENUS_DEEPSLATE_BRICKS.get())
                 .add(BlockRegistry.VENUS_DEEPSLATE_BRICKS.get())
                 .add(BlockRegistry.VENUS_DEEPSLATE_BRICK_SLAB.get())
                 .add(BlockRegistry.VENUS_DEEPSLATE_BRICK_STAIRS.get())
@@ -704,10 +704,12 @@ public class ModBlockTags extends BlockTagsProvider {
         tag(BlockTags.SOUL_FIRE_BASE_BLOCKS)
                 .add(BlockRegistry.VENUS_SAND.get())
                 .add(BlockRegistry.VENUS_STONE.get())
+                .add(BlockRegistry.FINE_VENUS_SAND.get())
                 .add(BlockRegistry.VENUS_COBBLESTONE.get())
                 .add(BlockRegistry.VENUS_DEEPSLATE.get())
                 .add(BlockRegistry.VENUS_COBBLED_DEEPSLATE.get())
                 .add(BlockRegistry.METEOR_SULFUR_ORE.get())
+                .add(BlockRegistry.GEYSER.get())
         ;
 
         tag(BlockRegistry.METEOR_TAG)

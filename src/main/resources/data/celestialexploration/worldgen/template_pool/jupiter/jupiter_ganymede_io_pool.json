@@ -1,0 +1,15 @@
+{
+  "name": "celestialexploration:jupiter/jupiter_ganymede_io_pool",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "celestialexploration:ganymede_io",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

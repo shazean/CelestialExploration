@@ -1,0 +1,34 @@
+{
+  "type": "celestialexploration:venus_flare_tree",
+  "config": {
+    "start_pool": "celestialexploration:venus_flare_tree",
+    "size": 1
+  },
+  "biomes": "#celestialexploration:has_structure/venus_flare_tree_biomes",
+  "adapt_noise": false,
+  "spawn_overrides": {
+    "monster": {
+      "bounding_box": "full",
+      "spawns": [
+        {
+          "type": "minecraft:skeleton",
+          "weight": 50,
+          "minCount": 0,
+          "maxCount": 2
+        },
+        {
+          "type": "minecraft:piglin",
+          "weight": 25,
+          "minCount": 0,
+          "maxCount": 1
+        },
+        {
+          "type": "celestialexploration:voided_piglin",
+          "weight": 25,
+          "minCount": 0,
+          "maxCount": 1
+        }
+      ]
+    }
+  }
+}

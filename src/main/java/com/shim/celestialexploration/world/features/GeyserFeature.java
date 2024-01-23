@@ -1,6 +1,7 @@
 package com.shim.celestialexploration.world.features;
 
 import com.mojang.serialization.Codec;
+import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.registry.BlockRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
@@ -24,6 +25,7 @@ public class GeyserFeature extends Feature<NoneFeatureConfiguration> {
         Random random = context.random();
         BlockPos blockpos = context.origin();
         int quantity = random.nextInt(6) + 5;
+//        CelestialExploration.LOGGER.debug("Placed! At: " + blockpos);
 
         for (int i = 0; i < quantity; i++) {
             int x = random.nextInt(14) - 7;
@@ -36,13 +38,13 @@ public class GeyserFeature extends Feature<NoneFeatureConfiguration> {
             BlockState state2Above = context.level().getBlockState(newPos.above(2));
             BlockState state2Below = context.level().getBlockState(newPos.below(2));
 
-            if (state.is(BlockRegistry.VENUS_STONE.get()) && stateAbove.isAir()) {
+            if (state.is(BlockRegistry.VENUS_STONE.get()) || state.is(BlockRegistry.VENUS_SAND.get()) && stateAbove.isAir()) {
                 this.setBlock(worldgenlevel, newPos, BlockRegistry.GEYSER.get().defaultBlockState());
-            } else if (stateBelow.is(BlockRegistry.VENUS_STONE.get()) && state.isAir()) {
+            } else if (stateBelow.is(BlockRegistry.VENUS_STONE.get()) || state.is(BlockRegistry.VENUS_SAND.get()) && state.isAir()) {
                 this.setBlock(worldgenlevel, newPos.below(), BlockRegistry.GEYSER.get().defaultBlockState());
-            } else if (state2Below.is(BlockRegistry.VENUS_STONE.get()) && stateBelow.isAir()) {
+            } else if (state2Below.is(BlockRegistry.VENUS_STONE.get()) || state.is(BlockRegistry.VENUS_SAND.get()) && stateBelow.isAir()) {
                 this.setBlock(worldgenlevel, newPos.below(2), BlockRegistry.GEYSER.get().defaultBlockState());
-            } else if (stateAbove.is(BlockRegistry.VENUS_STONE.get()) && state2Above.isAir()) {
+            } else if (stateAbove.is(BlockRegistry.VENUS_STONE.get()) || state.is(BlockRegistry.VENUS_SAND.get()) && state2Above.isAir()) {
                 this.setBlock(worldgenlevel, newPos.above(), BlockRegistry.GEYSER.get().defaultBlockState());
             }
         }

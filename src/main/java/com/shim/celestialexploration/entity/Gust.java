@@ -23,6 +23,6 @@ public class Gust extends Ghast {
     }
 
     public static boolean checkGustSpawnRules(EntityType<Gust> p_32735_, LevelAccessor p_32736_, MobSpawnType p_32737_, BlockPos p_32738_, Random p_32739_) {
-        return p_32736_.getDifficulty() != Difficulty.PEACEFUL && p_32739_.nextInt(20) == 0 && checkMobSpawnRules(p_32735_, p_32736_, p_32737_, p_32738_, p_32739_);
+        return p_32736_.getDifficulty() != Difficulty.PEACEFUL && p_32739_.nextInt(30) == 0 && checkMobSpawnRules(p_32735_, p_32736_, p_32737_, p_32738_, p_32739_);
     }
 }

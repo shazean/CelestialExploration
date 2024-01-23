@@ -1,11 +1,20 @@
 package com.shim.celestialexploration.datagen;
 
+import com.shim.celestialexploration.blocks.AtmosphereBlock;
+import com.shim.celestialexploration.blocks.SolarBlock;
+import com.shim.celestialexploration.blocks.SolarFlareBlock;
 import com.shim.celestialexploration.datagen.util.BaseLootTableProvider;
 import com.shim.celestialexploration.registry.BlockRegistry;
 
 import com.shim.celestialexploration.registry.ItemRegistry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.RotatedPillarBlock;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MaterialColor;
+import net.minecraftforge.registries.RegistryObject;
 
 public class LootTables  extends BaseLootTableProvider {
 
@@ -156,6 +165,8 @@ public class LootTables  extends BaseLootTableProvider {
 		lootTables.put(BlockRegistry.VENUS_SAND.get(), createSimpleTable("venus_sand", BlockRegistry.VENUS_SAND.get()));
 		lootTables.put(BlockRegistry.FINE_VENUS_SAND.get(), createSimpleTable("coarse_venus_sand", BlockRegistry.FINE_VENUS_SAND.get()));
 
+		lootTables.put(BlockRegistry.CRACKED_VENUS_BRICKS.get(), createSimpleTable("cracked_venus_bricks", BlockRegistry.CRACKED_VENUS_BRICKS.get()));
+
 //		lootTables.put(BlockRegistry.VENUS_STONE.get(), createSimpleTable("venus_stone", BlockRegistry.VENUS_STONE.get()));
 //		lootTables.put(BlockRegistry.MARS_STONE.get(), createSilkTouchTable("mars_stone", BlockRegistry.MARS_STONE.get(), BlockRegistry.MARS_COBBLESTONE.get(), 1, 1));
 		lootTables.put(BlockRegistry.VENUS_IRON_ORE.get(), createOreTable("venus_iron_ore", BlockRegistry.VENUS_IRON_ORE.get(), Items.RAW_IRON));
@@ -173,6 +184,7 @@ public class LootTables  extends BaseLootTableProvider {
 
 		lootTables.put(BlockRegistry.COMPRESSED_VENUS_COBBLESTONE.get(), createSimpleTable("compressed_venus_cobblestone", BlockRegistry.COMPRESSED_VENUS_COBBLESTONE.get()));
 		lootTables.put(BlockRegistry.COMPRESSED_VENUS_COBBLED_DEEPSLATE.get(), createSimpleTable("compressed_venus_cobbled_deepslate", BlockRegistry.COMPRESSED_VENUS_COBBLED_DEEPSLATE.get()));
+
 
 		lootTables.put(BlockRegistry.VENUS_STONE_STAIRS.get(), createSimpleTable("venus_stone_stairs", BlockRegistry.VENUS_STONE_STAIRS.get()));
 		lootTables.put(BlockRegistry.VENUS_STONE_SLAB.get(), createSimpleTable("venus_stone_slab", BlockRegistry.VENUS_STONE_SLAB.get()));
@@ -193,7 +205,7 @@ public class LootTables  extends BaseLootTableProvider {
 		lootTables.put(BlockRegistry.VENUS_DEEPSLATE_BRICK_STAIRS.get(), createSimpleTable("venus_deepslate_brick_stairs", BlockRegistry.VENUS_DEEPSLATE_BRICK_STAIRS.get()));
 		lootTables.put(BlockRegistry.VENUS_DEEPSLATE_BRICK_WALL.get(), createSimpleTable("venus_deepslate_brick_wall", BlockRegistry.VENUS_DEEPSLATE_BRICK_WALL.get()));
 
-//		lootTables.put(BlockRegistry.CHISELED_MARS_DEEPSLATE_BRICKS.get(), createSimpleTable("chiseled_mars_deepslate_bricks", BlockRegistry.CHISELED_MARS_DEEPSLATE_BRICKS.get()));
+		lootTables.put(BlockRegistry.CHISELED_VENUS_DEEPSLATE_BRICKS.get(), createSimpleTable("chiseled_venus_deepslate_bricks", BlockRegistry.CHISELED_VENUS_DEEPSLATE_BRICKS.get()));
 //		lootTables.put(BlockRegistry.CRACKED_MARS_DEEPSLATE_BRICKS.get(), createSimpleTable("cracked_mars_deepslate_bricks", BlockRegistry.CRACKED_MARS_DEEPSLATE_BRICKS.get()));
 
 		lootTables.put(BlockRegistry.VENUS_POLISHED_DEEPSLATE.get(), createSimpleTable("venus_polished_deepslate", BlockRegistry.VENUS_POLISHED_DEEPSLATE.get()));
@@ -240,6 +252,23 @@ public class LootTables  extends BaseLootTableProvider {
 		lootTables.put(BlockRegistry.METEOR_BUTTON.get(), createSimpleTable("meteor_button", BlockRegistry.METEOR_BUTTON.get()));
 		lootTables.put(BlockRegistry.METEOR_PRESSURE_PLATE.get(), createSimpleTable("meteor_pressure_plate", BlockRegistry.METEOR_PRESSURE_PLATE.get()));
 
+
+		lootTables.put(BlockRegistry.SOLAR_PLASMA.get(), createSimpleTable("solar_plasma", BlockRegistry.SOLAR_PLASMA.get()));
+		lootTables.put(BlockRegistry.SUN_SPOT.get(), createSimpleTable("sun_spot", BlockRegistry.SUN_SPOT.get()));
+		lootTables.put(BlockRegistry.SOLAR_FLARE.get(), createSimpleTable("solar_flare", BlockRegistry.SOLAR_FLARE.get()));
+		lootTables.put(BlockRegistry.MERCURY_STONE.get(), createSimpleTable("mercury_stone", BlockRegistry.MERCURY_STONE.get()));
+		lootTables.put(BlockRegistry.MERCURY_DEEPSLATE.get(), createSimpleTable("mercury_deepslate", BlockRegistry.MERCURY_DEEPSLATE.get()));
+		lootTables.put(BlockRegistry.JUPITER_ATMOSPHERE.get(), createSimpleTable("jupiter_atmosphere", BlockRegistry.JUPITER_ATMOSPHERE.get()));
+		lootTables.put(BlockRegistry.JUPITER_DEEPSLATE.get(), createSimpleTable("jupiter_deepslate", BlockRegistry.JUPITER_DEEPSLATE.get()));
+		lootTables.put(BlockRegistry.IO_STONE.get(), createSimpleTable("io_stone", BlockRegistry.IO_STONE.get()));
+		lootTables.put(BlockRegistry.IO_DEEPSLATE.get(), createSimpleTable("io_deepslate", BlockRegistry.IO_DEEPSLATE.get()));
+		lootTables.put(BlockRegistry.EUROPA_HYDRATE.get(), createSimpleTable("europa_hydrate", BlockRegistry.EUROPA_HYDRATE.get()));
+		lootTables.put(BlockRegistry.SATURN_ATMOSPHERE.get(), createSimpleTable("saturn_atmosphere", BlockRegistry.SATURN_ATMOSPHERE.get()));
+		lootTables.put(BlockRegistry.SATURN_DEEPSLATE.get(), createSimpleTable("saturn_deepslate", BlockRegistry.SATURN_DEEPSLATE.get()));
+		lootTables.put(BlockRegistry.URANUS_ATMOSPHERE.get(), createSimpleTable("uranus_atmosphere", BlockRegistry.URANUS_ATMOSPHERE.get()));
+		lootTables.put(BlockRegistry.URANUS_DEEPSLATE.get(), createSimpleTable("uranus_deepslate", BlockRegistry.URANUS_DEEPSLATE.get()));
+		lootTables.put(BlockRegistry.NEPTUNE_ATMOSPHERE.get(), createSimpleTable("neptune_atmosphere", BlockRegistry.NEPTUNE_ATMOSPHERE.get()));
+		lootTables.put(BlockRegistry.NEPTUNE_DEEPSLATE.get(), createSimpleTable("neptune_deepslate", BlockRegistry.NEPTUNE_DEEPSLATE.get()));
 		/*
 		 * OTHER
 		 */
