@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "celestialexploration:block/venus_smooth_stone",
+    "top": "celestialexploration:block/venus_smooth_stone",
+    "side": "celestialexploration:block/venus_smooth_stone_slab_side"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=top": {
+      "model": "celestialexploration:block/small_venus_brick_slab_top"
+    },
+    "type=bottom": {
+      "model": "celestialexploration:block/small_venus_brick_slab"
+    },
+    "type=double": {
+      "model": "celestialexploration:block/small_venus_bricks"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "celestialexploration:block/moon_smooth_stone_slab"
+    },
+    "type=double": {
+      "model": "celestialexploration:block/moon_smooth_stone_slab_double"
+    },
+    "type=top": {
+      "model": "celestialexploration:block/moon_smooth_stone_slab_top"
+    }
+  }
+}

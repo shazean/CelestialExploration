@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "celestialexploration:small_venus_brick_stairs",
     "celestialexploration:mars_brick_stairs",
     "celestialexploration:meteor_brick_stairs",
     "celestialexploration:moon_brick_stairs",

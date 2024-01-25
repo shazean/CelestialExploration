@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "celestialexploration:moon_smooth_stone"
+  },
+  "result": "celestialexploration:moon_smooth_stone_slab",
+  "count": 2
+}

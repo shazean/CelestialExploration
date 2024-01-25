@@ -48,7 +48,7 @@ public class ModLanguageProvider extends LanguageProvider {
 		add("biome.celestialexploration.mars_orbit", "Martian Orbit");
 		add("biome.celestialexploration.sparse_asteroid_field", "Sparse Asteroid Field");
 
-		/* KEYBINDS */
+		/* KEYBINDINGS */
 		add("key.categories.spaceship_controls", "Spaceship Controls");
 		add("key.celestialexploration.flight_ascent", "Spaceship Ascent");
 		add("key.celestialexploration.flight_descent", "Spaceship Descent");
@@ -80,9 +80,9 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(BlockRegistry.MOON_COBBLESTONE_WALL.get(), "Lunar Cobblestone Wall");
 		add(BlockRegistry.MOON_COBBLED_DEEPSLATE_SLAB.get(), "Lunar Cobbled Deepslate Slab");
 		add(BlockRegistry.MOON_COBBLED_DEEPSLATE_STAIRS.get(), "Lunar Cobbled Deepslate Stairs");
-		add(BlockRegistry.MOON_COBBLED_DEEPSLATE_WALL.get(), "Lunar Cobbled Deeplsate Wall");
+		add(BlockRegistry.MOON_COBBLED_DEEPSLATE_WALL.get(), "Lunar Cobbled Deepslate Wall");
 		add(BlockRegistry.MOON_SMOOTH_STONE.get(), "Lunar Smooth Stone");
-//		add(BlockRegistry.MOON_SMOOTH_STONE_SLAB.get(), "Lunar Smooth Stone Slab");
+		add(BlockRegistry.MOON_SMOOTH_STONE_SLAB.get(), "Lunar Smooth Stone Slab");
 		add(BlockRegistry.CRACKED_MOON_BRICKS.get(), "Cracked Lunar Bricks");
 		add(BlockRegistry.MOON_DEEPSLATE_IRON_ORE.get(), "Lunar Deepslate Iron Ore");
 		add(BlockRegistry.MOON_DEEPSLATE_REDSTONE_ORE.get(), "Lunar Deepslate Redstone Ore");
@@ -142,10 +142,10 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(BlockRegistry.MARS_COBBLESTONE_WALL.get(), "Martian Cobblestone Wall");
 		add(BlockRegistry.MARS_COBBLED_DEEPSLATE_SLAB.get(), "Martian Cobbled Deepslate Slab");
 		add(BlockRegistry.MARS_COBBLED_DEEPSLATE_STAIRS.get(), "Martian Cobbled Deepslate Stairs");
-		add(BlockRegistry.MARS_COBBLED_DEEPSLATE_WALL.get(), "Martian Cobbled Deeplsate Wall");
+		add(BlockRegistry.MARS_COBBLED_DEEPSLATE_WALL.get(), "Martian Cobbled Deepslate Wall");
 
 		add(BlockRegistry.MARS_SMOOTH_STONE.get(), "Martian Smooth Stone");
-//		add(BlockRegistry.MARS_SMOOTH_STONE_SLAB.get(), "Martian Smooth Stone Slab");
+		add(BlockRegistry.MARS_SMOOTH_STONE_SLAB.get(), "Martian Smooth Stone Slab");
 		add(BlockRegistry.CRACKED_MARS_BRICKS.get(), "Cracked Martian Bricks");
 
 		add(BlockRegistry.MARS_DEEPSLATE_BRICKS.get(), "Martian Deepslate Bricks");
@@ -186,13 +186,19 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(BlockRegistry.VENUS_BRICK_STAIRS.get(), "Venusian Brick Stairs");
 		add(BlockRegistry.VENUS_BRICK_WALL.get(), "Venusian Brick Wall");
 		add(BlockRegistry.VENUS_BRICKS.get(), "Venusian Bricks");
+
+		add(BlockRegistry.SMALL_VENUS_BRICK_SLAB.get(), "Small Venusian Brick Slab");
+		add(BlockRegistry.SMALL_VENUS_BRICK_STAIRS.get(), "Small Venusian Brick Stairs");
+		add(BlockRegistry.SMALL_VENUS_BRICK_WALL.get(), "Small Venusian Brick Wall");
+		add(BlockRegistry.SMALL_VENUS_BRICKS.get(), "Small Venusian Bricks");
+
 		add(BlockRegistry.VENUS_IRON_ORE.get(), "Venusian Iron Ore");
 		add(BlockRegistry.VENUS_REDSTONE_ORE.get(), "Venusian Redstone Ore");
 		add(BlockRegistry.VENUS_LAPIS_ORE.get(), "Venusian Lapis Lazuli Ore");
 		add(BlockRegistry.VENUS_SAND.get(), "Venusian Regolith");
 		add(BlockRegistry.VENUS_STONE.get(), "Venusian Stone");
 		add(BlockRegistry.VENUS_COBBLESTONE.get(), "Venusian Cobblestone");
-//		add(BlockRegistry.VENUS_BRICK_PILLAR.get(), "Martian Brick Pillar");
+		add(BlockRegistry.VENUS_BRICK_PILLAR.get(), "Venusian Brick Pillar");
 		add(BlockRegistry.VENUS_DEEPSLATE.get(), "Venusian Deepslate");
 		add(BlockRegistry.VENUS_COBBLED_DEEPSLATE.get(), "Venusian Cobbled Deepslate");
 		add(BlockRegistry.VENUS_STONE_SLAB.get(), "Venusian Stone Slab");
@@ -208,24 +214,23 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(BlockRegistry.VENUS_COBBLESTONE_WALL.get(), "Venusian Cobblestone Wall");
 		add(BlockRegistry.VENUS_COBBLED_DEEPSLATE_SLAB.get(), "Venusian Cobbled Deepslate Slab");
 		add(BlockRegistry.VENUS_COBBLED_DEEPSLATE_STAIRS.get(), "Venusian Cobbled Deepslate Stairs");
-		add(BlockRegistry.VENUS_COBBLED_DEEPSLATE_WALL.get(), "Venusian Cobbled Deeplsate Wall");
+		add(BlockRegistry.VENUS_COBBLED_DEEPSLATE_WALL.get(), "Venusian Cobbled Deepslate Wall");
 
-//		add(BlockRegistry.VENUS_SMOOTH_STONE.get(), "Martian Smooth Stone");
-//		add(BlockRegistry.MARS_SMOOTH_STONE_SLAB.get(), "Martian Smooth Stone Slab");
-//		add(BlockRegistry.CRACKED_VENUS_BRICKS.get(), "Cracked Martian Bricks");
+		add(BlockRegistry.VENUS_SMOOTH_STONE.get(), "Venusian Smooth Stone");
+		add(BlockRegistry.VENUS_SMOOTH_STONE_SLAB.get(), "Venusian Smooth Stone Slab");
 
 		add(BlockRegistry.VENUS_DEEPSLATE_BRICKS.get(), "Venusian Deepslate Bricks");
 		add(BlockRegistry.VENUS_DEEPSLATE_BRICK_SLAB.get(), "Venusian Deepslate Brick Slab");
 		add(BlockRegistry.VENUS_DEEPSLATE_BRICK_STAIRS.get(), "Venusian Deepslate Brick Stairs");
 		add(BlockRegistry.VENUS_DEEPSLATE_BRICK_WALL.get(), "Venusian Deepslate Brick Wall");
-//		add(BlockRegistry.CRACKED_VENUS_DEEPSLATE_BRICKS.get(), "Cracked Martian Deepslate Bricks");
+		add(BlockRegistry.CRACKED_VENUS_DEEPSLATE_BRICKS.get(), "Cracked Venusian Deepslate Bricks");
 		add(BlockRegistry.CHISELED_VENUS_DEEPSLATE_BRICKS.get(), "Chiseled Venusian Deepslate Bricks");
 
 		add(BlockRegistry.VENUS_DEEPSLATE_TILES.get(), "Venusian Deepslate Tiles");
 		add(BlockRegistry.VENUS_DEEPSLATE_TILE_SLAB.get(), "Venusian Deepslate Tile Slab");
 		add(BlockRegistry.VENUS_DEEPSLATE_TILE_STAIRS.get(), "Venusian Deepslate Tile Stairs");
 		add(BlockRegistry.VENUS_DEEPSLATE_TILE_WALL.get(), "Venusian Deepslate Tile Wall");
-//		add(BlockRegistry.CRACKED_MARS_DEEPSLATE_TILES.get(), "Cracked Martian Deepslate Tiles");
+		add(BlockRegistry.CRACKED_VENUS_DEEPSLATE_TILES.get(), "Cracked Venusian Deepslate Tiles");
 
 		add(BlockRegistry.VENUS_POLISHED_DEEPSLATE.get(), "Venusian Polished Deepslate");
 		add(BlockRegistry.VENUS_POLISHED_DEEPSLATE_SLAB.get(), "Venusian Polished Deepslate Slab");
@@ -297,6 +302,12 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(ItemRegistry.STEEL_NUGGET.get(), "Steel Nugget");
 		add(ItemRegistry.STEEL_WOOL.get(), "Steel Wool");
 		add(BlockRegistry.STEEL_BLOCK.get(), "Steel Block");
+
+		add(BlockRegistry.AIRLOCK_DOOR.get(), "Airlock");
+		add(BlockRegistry.STEEL_DOOR.get(), "Steel Door");
+		add(BlockRegistry.STEEL_TRAPDOOR.get(), "Steel Trapdoor");
+		add(BlockRegistry.STEEL_BUTTON.get(), "Steel Button");
+
 		add(ItemRegistry.SULFUR_CRYSTAL.get(), "Sulfur Crystal");
 		add(ItemRegistry.FLARE_ROD.get(), "Flare Rod");
 

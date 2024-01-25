@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "celestialexploration",
+  "pattern": [
+    "X",
+    "X"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:venus_cobbled_deepslate_slab"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:chiseled_venus_deepslate_bricks"
+  }
+}

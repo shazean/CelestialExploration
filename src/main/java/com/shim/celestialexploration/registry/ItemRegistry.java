@@ -96,7 +96,7 @@ public class ItemRegistry {
 	public static final RegistryObject<Item> MOON_POLISHED_DEEPSLATE_STAIRS = fromBlock(BlockRegistry.MOON_POLISHED_DEEPSLATE_STAIRS);
 	//~SLABS
 	public static final RegistryObject<Item> MOON_STONE_SLAB = fromBlock(BlockRegistry.MOON_STONE_SLAB);
-	//	public static final RegistryObject<Item> MOON_SMOOTH_STONE_SLAB = fromBlock(BlockRegistry.MOON_SMOOTH_STONE_SLAB);
+	public static final RegistryObject<Item> MOON_SMOOTH_STONE_SLAB = fromBlock(BlockRegistry.MOON_SMOOTH_STONE_SLAB);
 	public static final RegistryObject<Item> MOON_COBBLESTONE_SLAB = fromBlock(BlockRegistry.MOON_COBBLESTONE_SLAB);
 	public static final RegistryObject<Item> MOON_BRICK_SLAB = fromBlock(BlockRegistry.MOON_BRICK_SLAB);
 	public static final RegistryObject<Item> MOON_COBBLED_DEEPSLATE_SLAB = fromBlock(BlockRegistry.MOON_COBBLED_DEEPSLATE_SLAB);
@@ -167,7 +167,7 @@ public class ItemRegistry {
 
 	//SLABS
 	public static final RegistryObject<Item> MARS_STONE_SLAB = fromBlock(BlockRegistry.MARS_STONE_SLAB);
-	//	public static final RegistryObject<Item> MARS_SMOOTH_STONE_SLAB = fromBlock(BlockRegistry.MARS_SMOOTH_STONE_SLAB);
+	public static final RegistryObject<Item> MARS_SMOOTH_STONE_SLAB = fromBlock(BlockRegistry.MARS_SMOOTH_STONE_SLAB);
 	public static final RegistryObject<Item> MARS_BRICK_SLAB = fromBlock(BlockRegistry.MARS_BRICK_SLAB);
 	public static final RegistryObject<Item> MARS_COBBLESTONE_SLAB = fromBlock(BlockRegistry.MARS_COBBLESTONE_SLAB);
 	public static final RegistryObject<Item> MARS_COBBLED_DEEPSLATE_SLAB = fromBlock(BlockRegistry.MARS_COBBLED_DEEPSLATE_SLAB);
@@ -200,10 +200,12 @@ public class ItemRegistry {
 
 	//	public static final RegistryObject<Item> MARS_SOIL = ITEMS.register("mars_soil", () -> new BlockItemBase(RegistryBlocks.MARS_SOIL.get()));
 	public static final RegistryObject<Item> VENUS_STONE = fromBlock(BlockRegistry.VENUS_STONE);
-//	public static final RegistryObject<Item> MARS_SMOOTH_STONE = fromBlock(BlockRegistry.VENUS_SMOOTH_STONE);
+	public static final RegistryObject<Item> VENUS_SMOOTH_STONE = fromBlock(BlockRegistry.VENUS_SMOOTH_STONE);
 
 	public static final RegistryObject<Item> VENUS_BRICKS = fromBlock(BlockRegistry.VENUS_BRICKS);
-//	public static final RegistryObject<Item> MARS_BRICK_PILLAR = fromBlock(BlockRegistry.VENUS_BRICK_PILLAR);
+	public static final RegistryObject<Item> SMALL_VENUS_BRICKS = fromBlock(BlockRegistry.SMALL_VENUS_BRICKS);
+
+	public static final RegistryObject<Item> VENUS_BRICK_PILLAR = fromBlock(BlockRegistry.VENUS_BRICK_PILLAR);
 	public static final RegistryObject<Item> CHISELED_VENUS_BRICKS = fromBlock(BlockRegistry.CHISELED_VENUS_BRICKS);
 	public static final RegistryObject<Item> CRACKED_VENUS_BRICKS = fromBlock(BlockRegistry.CRACKED_VENUS_BRICKS);
 	public static final RegistryObject<Item> VENUS_IRON_ORE = fromBlock(BlockRegistry.VENUS_IRON_ORE);
@@ -212,11 +214,11 @@ public class ItemRegistry {
 	public static final RegistryObject<Item> VENUS_COBBLESTONE = fromBlock(BlockRegistry.VENUS_COBBLESTONE);
 	public static final RegistryObject<Item> VENUS_DEEPSLATE = fromBlock(BlockRegistry.VENUS_DEEPSLATE);
 	public static final RegistryObject<Item> VENUS_DEEPSLATE_BRICKS = fromBlock(BlockRegistry.VENUS_DEEPSLATE_BRICKS);
-//	public static final RegistryObject<Item> CRACKED_MARS_DEEPSLATE_BRICKS = fromBlock(BlockRegistry.CRACKED_VENUS_DEEPSLATE_BRICKS);
+	public static final RegistryObject<Item> CRACKED_VENUS_DEEPSLATE_BRICKS = fromBlock(BlockRegistry.CRACKED_VENUS_DEEPSLATE_BRICKS);
 	public static final RegistryObject<Item> CHISELED_VENUS_DEEPSLATE_BRICKS = fromBlock(BlockRegistry.CHISELED_VENUS_DEEPSLATE_BRICKS);
 	public static final RegistryObject<Item> VENUS_COBBLED_DEEPSLATE = fromBlock(BlockRegistry.VENUS_COBBLED_DEEPSLATE);
 	public static final RegistryObject<Item> VENUS_DEEPSLATE_TILES = fromBlock(BlockRegistry.VENUS_DEEPSLATE_TILES);
-//	public static final RegistryObject<Item> CRACKED_MARS_DEEPSLATE_TILES = fromBlock(BlockRegistry.CRACKED_MARS_DEEPSLATE_TILES);
+	public static final RegistryObject<Item> CRACKED_VENUS_DEEPSLATE_TILES = fromBlock(BlockRegistry.CRACKED_VENUS_DEEPSLATE_TILES);
 	public static final RegistryObject<Item> VENUS_POLISHED_DEEPSLATE = fromBlock(BlockRegistry.VENUS_POLISHED_DEEPSLATE);
 	public static final RegistryObject<Item> VENUS_DEEPSLATE_IRON_ORE = fromBlock(BlockRegistry.VENUS_DEEPSLATE_IRON_ORE);
 	public static final RegistryObject<Item> VENUS_DEEPSLATE_REDSTONE_ORE = fromBlock(BlockRegistry.VENUS_DEEPSLATE_REDSTONE_ORE);
@@ -233,6 +235,7 @@ public class ItemRegistry {
 	//STAIRS
 	public static final RegistryObject<Item> VENUS_STONE_STAIRS = fromBlock(BlockRegistry.VENUS_STONE_STAIRS);
 	public static final RegistryObject<Item> VENUS_BRICK_STAIRS = fromBlock(BlockRegistry.VENUS_BRICK_STAIRS);
+	public static final RegistryObject<Item> SMALL_VENUS_BRICK_STAIRS = fromBlock(BlockRegistry.SMALL_VENUS_BRICK_STAIRS);
 	public static final RegistryObject<Item> VENUS_COBBLESTONE_STAIRS = fromBlock(BlockRegistry.VENUS_COBBLESTONE_STAIRS);
 	public static final RegistryObject<Item> VENUS_DEEPSLATE_BRICK_STAIRS = fromBlock(BlockRegistry.VENUS_DEEPSLATE_BRICK_STAIRS);
 	public static final RegistryObject<Item> VENUS_COBBLED_DEEPSLATE_STAIRS = fromBlock(BlockRegistry.VENUS_COBBLED_DEEPSLATE_STAIRS);
@@ -242,8 +245,9 @@ public class ItemRegistry {
 
 	//SLABS
 	public static final RegistryObject<Item> VENUS_STONE_SLAB = fromBlock(BlockRegistry.VENUS_STONE_SLAB);
-	//	public static final RegistryObject<Item> MARS_SMOOTH_STONE_SLAB = fromBlock(BlockRegistry.MARS_SMOOTH_STONE_SLAB);
+	public static final RegistryObject<Item> VENUS_SMOOTH_STONE_SLAB = fromBlock(BlockRegistry.VENUS_SMOOTH_STONE_SLAB);
 	public static final RegistryObject<Item> VENUS_BRICK_SLAB = fromBlock(BlockRegistry.VENUS_BRICK_SLAB);
+	public static final RegistryObject<Item> SMALL_VENUS_BRICK_SLAB = fromBlock(BlockRegistry.SMALL_VENUS_BRICK_SLAB);
 	public static final RegistryObject<Item> VENUS_COBBLESTONE_SLAB = fromBlock(BlockRegistry.VENUS_COBBLESTONE_SLAB);
 	public static final RegistryObject<Item> VENUS_COBBLED_DEEPSLATE_SLAB = fromBlock(BlockRegistry.VENUS_COBBLED_DEEPSLATE_SLAB);
 	public static final RegistryObject<Item> VENUS_DEEPSLATE_BRICK_SLAB = fromBlock(BlockRegistry.VENUS_DEEPSLATE_BRICK_SLAB);
@@ -252,6 +256,7 @@ public class ItemRegistry {
 
 	//WALLS
 	public static final RegistryObject<Item> VENUS_BRICK_WALL = fromBlock(BlockRegistry.VENUS_BRICK_WALL);
+	public static final RegistryObject<Item> SMALL_VENUS_BRICK_WALL = fromBlock(BlockRegistry.SMALL_VENUS_BRICK_WALL);
 	public static final RegistryObject<Item> VENUS_COBBLESTONE_WALL = fromBlock(BlockRegistry.VENUS_COBBLESTONE_WALL);
 	public static final RegistryObject<Item> VENUS_COBBLED_DEEPSLATE_WALL = fromBlock(BlockRegistry.VENUS_COBBLED_DEEPSLATE_WALL);
 	public static final RegistryObject<Item> VENUS_DEEPSLATE_BRICK_WALL = fromBlock(BlockRegistry.VENUS_DEEPSLATE_BRICK_WALL);
@@ -338,18 +343,6 @@ public class ItemRegistry {
 //	public static final RegistryObject<Item> HAUMEA_CORE = fromNoTabBlock(BlockRegistry.HAUMEA_CORE);
 //	public static final RegistryObject<Item> MAKEMAKE_CORE = fromNoTabBlock(BlockRegistry.MAKEMAKE_CORE);
 
-
-
-	//VENUS
-//	public static final RegistryObject<Item> VENUS_STONE = ITEMS.register("venus_stone", () -> new BlockItemBase(RegistryBlocks.VENUS_STONE.get()));	
-//	public static final RegistryObject<Item> VENUS_SAND = ITEMS.register("venus_sand", () -> new BlockItemBase(RegistryBlocks.VENUS_SAND.get()));
-//	public static final RegistryObject<Item> VENUS_BRICK = ITEMS.register("venus_brick", () -> new BlockItemBase(RegistryBlocks.VENUS_BRICK.get()));
-//	public static final RegistryObject<Item> VENUS_IRON_ORE = ITEMS.register("venus_iron_ore", () -> new BlockItemBase(RegistryBlocks.VENUS_IRON_ORE.get()));
-//	public static final RegistryObject<Item> VENUS_REDSTONE_ORE = ITEMS.register("venus_redstone_ore", () -> new BlockItemBase(RegistryBlocks.VENUS_REDSTONE_ORE.get()));
-//	public static final RegistryObject<Item> CHISELED_VENUS_BRICK = ITEMS.register("chiseled_venus_brick", () -> new BlockItemBase(RegistryBlocks.CHISELED_VENUS_BRICK.get()));
-//	public static final RegistryObject<Item> VENUS_BRICK_STAIRS = ITEMS.register("venus_brick_stairs", () -> new BlockItemBase(RegistryBlocks.VENUS_BRICK_STAIRS.get()));
-//	public static final RegistryObject<Item> VENUS_BRICK_SLAB = ITEMS.register("venus_brick_slab", () -> new BlockItemBase(RegistryBlocks.VENUS_BRICK_SLAB.get()));
-
 	
 	//MERCURY
 //	public static final RegistryObject<Item> MERCURY_STONE = ITEMS.register("mercury_stone", () -> new BlockItemBase(RegistryBlocks.MERCURY_STONE.get()));	
@@ -370,6 +363,10 @@ public class ItemRegistry {
 	//	public static final RegistryObject<Item> ECLIPSE_LANTERN = fromBlock(BlockRegistry.ECLIPSE_LANTERN);
 	//	public static final RegistryObject<Item> IGNEOUS_ROCK = fromBlock(BlockRegistry.IGNEOUS_ROCK);
 	public static final RegistryObject<Item> STEEL_BLOCK = fromBlock(BlockRegistry.STEEL_BLOCK);
+	public static final RegistryObject<Item> AIRLOCK_DOOR = fromBlock(BlockRegistry.AIRLOCK_DOOR);
+	public static final RegistryObject<Item> STEEL_DOOR = fromBlock(BlockRegistry.STEEL_DOOR);
+	public static final RegistryObject<Item> STEEL_TRAPDOOR = fromBlock(BlockRegistry.STEEL_TRAPDOOR);
+	public static final RegistryObject<Item> STEEL_BUTTON = fromBlock(BlockRegistry.STEEL_BUTTON);
 
 	public static final RegistryObject<Item> COMPRESSED_COBBLESTONE = fromBlock(BlockRegistry.COMPRESSED_COBBLESTONE);
 	public static final RegistryObject<Item> COMPRESSED_COBBLED_DEEPSLATE = fromBlock(BlockRegistry.COMPRESSED_COBBLED_DEEPSLATE);

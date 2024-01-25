@@ -19,7 +19,7 @@ modId="celestialexploration" #mandatory
 # The version number of the mod - there's a few well known ${} variables useable here or just hardcode it
 # ${file.jarVersion} will substitute the value of the Implementation-Version as read from the mod's JAR file metadata
 # see the associated build.gradle script for how to populate this completely automatically during a build
-version="0.4.0" #mandatory
+version="0.4.3" #mandatory
  # A display name for the mod
 displayName="Celestial Exploration" #mandatory
 # A URL to query for updates for this mod. See the JSON update specification https://mcforge.readthedocs.io/en/latest/gettingstarted/autoupdate/
@@ -27,9 +27,9 @@ displayName="Celestial Exploration" #mandatory
 # A URL for the "homepage" for this mod, displayed in the mod UI
 #displayURL="https://change.me.to.your.mods.homepage.example.invalid/" #optional
 # A file name (in the root of the mod JAR) containing a logo for display
-logoFile="examplemod.png" #optional
+logoFile="CE_logo.png" #optional
 # A text field displayed in the mod UI
-credits="shim, primal_zerg_" #optional
+credits="shim, primal_zerg_ (models)" #optional
 # A text field displayed in the mod UI
 authors="shim" #optional
 # The description text for the mod (multi line!) (#mandatory)

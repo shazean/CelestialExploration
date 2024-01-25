@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "celestialexploration:venus_smooth_stone"
+  },
+  "result": "celestialexploration:venus_smooth_stone_slab",
+  "count": 2
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "celestialexploration:block/moon_smooth_stone",
+    "side": "celestialexploration:block/moon_smooth_stone_slab_side"
+  }
+}

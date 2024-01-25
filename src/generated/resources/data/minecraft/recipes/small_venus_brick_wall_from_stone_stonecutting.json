@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "celestialexploration:venus_stone"
+  },
+  "result": "celestialexploration:small_venus_brick_wall",
+  "count": 1
+}

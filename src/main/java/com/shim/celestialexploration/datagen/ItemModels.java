@@ -57,7 +57,7 @@ public class ItemModels extends ItemModelProvider {
 		wallInventory("moon_cobbled_deepslate_wall",  modLoc("block/moon_cobbled_deepslate"));
 
 		withExistingParent(ItemRegistry.MOON_SMOOTH_STONE.get().getRegistryName().getPath(), modLoc("block/moon_smooth_stone"));
-//		slab("moon_smooth_stone_slab", modLoc("block/moon_smooth_stone_slab_side"), modLoc("block/moon_smooth_stone"), modLoc("block/moon_smooth_stone"));
+		slab("moon_smooth_stone_slab", modLoc("block/moon_smooth_stone_slab_side"), modLoc("block/moon_smooth_stone"), modLoc("block/moon_smooth_stone"));
 
 		withExistingParent(ItemRegistry.CRACKED_MOON_BRICKS.get().getRegistryName().getPath(), modLoc("block/cracked_moon_bricks"));
 
@@ -127,7 +127,7 @@ public class ItemModels extends ItemModelProvider {
 		wallInventory("mars_cobbled_deepslate_wall",  modLoc("block/mars_cobbled_deepslate"));
 
 		withExistingParent(ItemRegistry.MARS_SMOOTH_STONE.get().getRegistryName().getPath(), modLoc("block/mars_smooth_stone"));
-//		slab("mars_smooth_stone_slab", modLoc("block/mars_smooth_stone_slab_side"), modLoc("block/mars_smooth_stone"), modLoc("block/mars_smooth_stone"));
+		slab("mars_smooth_stone_slab", modLoc("block/mars_smooth_stone_slab_side"), modLoc("block/mars_smooth_stone"), modLoc("block/mars_smooth_stone"));
 
 		withExistingParent(ItemRegistry.CRACKED_MARS_BRICKS.get().getRegistryName().getPath(), modLoc("block/cracked_mars_bricks"));
 
@@ -161,6 +161,8 @@ public class ItemModels extends ItemModelProvider {
 		withExistingParent(ItemRegistry.VENUS_CORE.get().getRegistryName().getPath(), modLoc("block/venus_core"));
 		withExistingParent(ItemRegistry.CHISELED_VENUS_BRICKS.get().getRegistryName().getPath(), modLoc("block/chiseled_venus_bricks"));
 		withExistingParent(ItemRegistry.VENUS_BRICKS.get().getRegistryName().getPath(), modLoc("block/venus_bricks"));
+		withExistingParent(ItemRegistry.SMALL_VENUS_BRICKS.get().getRegistryName().getPath(), modLoc("block/small_venus_bricks"));
+
 		withExistingParent(ItemRegistry.VENUS_IRON_ORE.get().getRegistryName().getPath(), modLoc("block/venus_iron_ore"));
 		withExistingParent(ItemRegistry.VENUS_REDSTONE_ORE.get().getRegistryName().getPath(), modLoc("block/venus_redstone_ore"));
 		withExistingParent(ItemRegistry.VENUS_LAPIS_ORE.get().getRegistryName().getPath(), modLoc("block/venus_lapis_ore"));
@@ -170,7 +172,7 @@ public class ItemModels extends ItemModelProvider {
 		withExistingParent(ItemRegistry.VENUS_COBBLESTONE.get().getRegistryName().getPath(), modLoc("block/venus_cobblestone"));
 		withExistingParent(ItemRegistry.VENUS_DEEPSLATE.get().getRegistryName().getPath(), modLoc("block/venus_deepslate"));
 		withExistingParent(ItemRegistry.VENUS_COBBLED_DEEPSLATE.get().getRegistryName().getPath(), modLoc("block/venus_cobbled_deepslate"));
-//		withExistingParent(ItemRegistry.MARS_BRICK_PILLAR.get().getRegistryName().getPath(), modLoc("block/venus_brick_pillar"));
+		withExistingParent(ItemRegistry.VENUS_BRICK_PILLAR.get().getRegistryName().getPath(), modLoc("block/venus_brick_pillar"));
 		withExistingParent(ItemRegistry.VENUS_DEEPSLATE_IRON_ORE.get().getRegistryName().getPath(), modLoc("block/venus_deepslate_iron_ore"));
 		withExistingParent(ItemRegistry.VENUS_DEEPSLATE_REDSTONE_ORE.get().getRegistryName().getPath(), modLoc("block/venus_deepslate_redstone_ore"));
 		withExistingParent(ItemRegistry.VENUS_DEEPSLATE_LAPIS_ORE.get().getRegistryName().getPath(), modLoc("block/venus_deepslate_lapis_ore"));
@@ -186,6 +188,11 @@ public class ItemModels extends ItemModelProvider {
 		slab("venus_brick_slab", modLoc("block/venus_bricks"), modLoc("block/venus_bricks"), modLoc("block/venus_bricks"));
 		wallInventory("venus_brick_wall",  modLoc("block/venus_bricks"));
 
+		stairs("small_venus_brick_stairs", modLoc("block/small_venus_bricks"), modLoc("block/small_venus_bricks"), modLoc("block/small_venus_bricks"));
+		slab("small_venus_brick_slab", modLoc("block/small_venus_bricks"), modLoc("block/small_venus_bricks"), modLoc("block/small_venus_bricks"));
+		wallInventory("small_venus_brick_wall",  modLoc("block/small_venus_bricks"));
+
+
 		stairs("venus_stone_stairs", modLoc("block/venus_stone"), modLoc("block/venus_stone"), modLoc("block/venus_stone"));
 		slab("venus_stone_slab", modLoc("block/venus_stone"), modLoc("block/venus_stone"), modLoc("block/venus_stone"));
 
@@ -197,10 +204,8 @@ public class ItemModels extends ItemModelProvider {
 		slab("venus_cobbled_deepslate_slab", modLoc("block/venus_cobbled_deepslate"), modLoc("block/venus_cobbled_deepslate"), modLoc("block/venus_cobbled_deepslate"));
 		wallInventory("venus_cobbled_deepslate_wall",  modLoc("block/venus_cobbled_deepslate"));
 
-//		withExistingParent(ItemRegistry.VENUS_SMOOTH_STONE.get().getRegistryName().getPath(), modLoc("block/mars_smooth_stone"));
-//		slab("mars_smooth_stone_slab", modLoc("block/mars_smooth_stone_slab_side"), modLoc("block/mars_smooth_stone"), modLoc("block/mars_smooth_stone"));
-
-//		withExistingParent(ItemRegistry.CRACKED_MARS_BRICKS.get().getRegistryName().getPath(), modLoc("block/cracked_mars_bricks"));
+		withExistingParent(ItemRegistry.VENUS_SMOOTH_STONE.get().getRegistryName().getPath(), modLoc("block/venus_smooth_stone"));
+		slab("venus_smooth_stone_slab", modLoc("block/venus_smooth_stone_slab_side"), modLoc("block/venus_smooth_stone"), modLoc("block/venus_smooth_stone"));
 
 		withExistingParent(ItemRegistry.VENUS_DEEPSLATE_BRICKS.get().getRegistryName().getPath(), modLoc("block/venus_deepslate_bricks"));
 		stairs("venus_deepslate_brick_stairs", modLoc("block/venus_deepslate_bricks"), modLoc("block/venus_deepslate_bricks"), modLoc("block/venus_deepslate_bricks"));
@@ -208,7 +213,7 @@ public class ItemModels extends ItemModelProvider {
 		wallInventory("venus_deepslate_brick_wall",  modLoc("block/venus_deepslate_bricks"));
 
 		withExistingParent(ItemRegistry.CHISELED_VENUS_DEEPSLATE_BRICKS.get().getRegistryName().getPath(), modLoc("block/chiseled_venus_deepslate_bricks"));
-//		withExistingParent(ItemRegistry.CRACKED_MARS_DEEPSLATE_BRICKS.get().getRegistryName().getPath(), modLoc("block/cracked_mars_deepslate_bricks"));
+		withExistingParent(ItemRegistry.CRACKED_VENUS_DEEPSLATE_BRICKS.get().getRegistryName().getPath(), modLoc("block/cracked_venus_deepslate_bricks"));
 
 		withExistingParent(ItemRegistry.VENUS_POLISHED_DEEPSLATE.get().getRegistryName().getPath(), modLoc("block/venus_polished_deepslate"));
 		stairs("venus_polished_deepslate_stairs", modLoc("block/venus_polished_deepslate"), modLoc("block/venus_polished_deepslate"), modLoc("block/venus_polished_deepslate"));
@@ -219,7 +224,7 @@ public class ItemModels extends ItemModelProvider {
 		stairs("venus_deepslate_tile_stairs", modLoc("block/venus_deepslate_tiles"), modLoc("block/venus_deepslate_tiles"), modLoc("block/venus_deepslate_tiles"));
 		slab("venus_deepslate_tile_slab", modLoc("block/venus_deepslate_tiles"), modLoc("block/venus_deepslate_tiles"), modLoc("block/venus_deepslate_tiles"));
 		wallInventory("venus_deepslate_tile_wall",  modLoc("block/venus_deepslate_tiles"));
-//		withExistingParent(ItemRegistry.CRACKED_MARS_DEEPSLATE_TILES.get().getRegistryName().getPath(), modLoc("block/cracked_mars_deepslate_tiles"));
+		withExistingParent(ItemRegistry.CRACKED_VENUS_DEEPSLATE_TILES.get().getRegistryName().getPath(), modLoc("block/cracked_venus_deepslate_tiles"));
 
 		buttonInventory(ItemRegistry.VENUS_STONE_BUTTON.get().getRegistryName().getPath(), modLoc("block/venus_stone"));
 		pressurePlate(ItemRegistry.VENUS_STONE_PRESSURE_PLATE.get().getRegistryName().getPath(), modLoc("block/venus_stone"));
@@ -230,7 +235,7 @@ public class ItemModels extends ItemModelProvider {
 		withExistingParent(ItemRegistry.VENUS_LANTERN.get().getRegistryName().getPath(), modLoc("block/venus_lantern"));
 
 
-		/**
+		/*
 		 * METEOR
 		 */
 		withExistingParent(ItemRegistry.METEOR.get().getRegistryName().getPath(), modLoc("block/meteor"));
@@ -249,7 +254,6 @@ public class ItemModels extends ItemModelProvider {
 		withExistingParent(ItemRegistry.COMPRESSED_COBBLESTONE.get().getRegistryName().getPath(), modLoc("block/compressed_cobblestone"));
 		withExistingParent(ItemRegistry.COMPRESSED_COBBLED_DEEPSLATE.get().getRegistryName().getPath(), modLoc("block/compressed_cobbled_deepslate"));
 		withExistingParent(ItemRegistry.COMPRESSED_NETHERRACK.get().getRegistryName().getPath(), modLoc("block/compressed_netherrack"));
-
 
 		stairs("meteor_brick_stairs", modLoc("block/meteor_bricks"), modLoc("block/meteor_bricks"), modLoc("block/meteor_bricks"));
 		slab("meteor_brick_slab", modLoc("block/meteor_bricks"), modLoc("block/meteor_bricks"), modLoc("block/meteor_bricks"));
@@ -319,6 +323,10 @@ public class ItemModels extends ItemModelProvider {
 
 		withExistingParent(ItemRegistry.SILICA.get().getRegistryName().getPath(), modLoc("block/silica"));
 
+		singleTexture(ItemRegistry.AIRLOCK_DOOR.get().getRegistryName().getPath(), new ResourceLocation("item/generated"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/airlock_door"));
+		singleTexture(ItemRegistry.STEEL_DOOR.get().getRegistryName().getPath(), new ResourceLocation("item/generated"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/steel_door"));
+		withExistingParent(ItemRegistry.STEEL_TRAPDOOR.get().getRegistryName().getPath(), modLoc("block/steel_trapdoor_bottom"));
+		buttonInventory(ItemRegistry.STEEL_BUTTON.get().getRegistryName().getPath(), modLoc("block/steel_block"));
 
 		/**
 		 * ITEMS (not belonging to blocks)
