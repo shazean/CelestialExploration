@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_bottom",
+  "textures": {
+    "bottom": "celestialexploration:block/airlock_door_bottom",
+    "top": "celestialexploration:block/airlock_door_top"
+  }
+}

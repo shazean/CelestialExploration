@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "celestialexploration",
+  "pattern": [
+    "XX",
+    "XX",
+    "XX"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:steel_ingot"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:steel_door",
+    "count": 3
+  }
+}

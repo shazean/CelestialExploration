@@ -255,6 +255,22 @@ public class ModItemTags extends ItemTagsProvider {
 				.add(ItemRegistry.VENUS_POLISHED_DEEPSLATE_WALL.get())
 		;
 
+		tag(ItemTags.DOORS)
+				.add(ItemRegistry.AIRLOCK_DOOR.get())
+				.add(ItemRegistry.STEEL_DOOR.get());
+
+		tag(ItemTags.TRAPDOORS)
+				.add(ItemRegistry.STEEL_TRAPDOOR.get());
+
+		tag(ItemTags.BUTTONS)
+				.add(ItemRegistry.MOON_STONE_BUTTON.get())
+				.add(ItemRegistry.MOON_DEEPSLATE_BUTTON.get())
+				.add(ItemRegistry.MARS_STONE_BUTTON.get())
+				.add(ItemRegistry.MARS_DEEPSLATE_BUTTON.get())
+				.add(ItemRegistry.VENUS_STONE_BUTTON.get())
+				.add(ItemRegistry.VENUS_DEEPSLATE_BUTTON.get())
+				.add(ItemRegistry.METEOR_BUTTON.get())
+				.add(ItemRegistry.STEEL_BUTTON.get());
 
 		tag(ItemRegistry.MOON_TAG)
 				.add(ItemRegistry.MOON_STONE.get())

@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "celestialexploration:moon_stone_button",
+    "celestialexploration:moon_deepslate_button",
+    "celestialexploration:mars_stone_button",
+    "celestialexploration:mars_deepslate_button",
+    "celestialexploration:venus_stone_button",
+    "celestialexploration:venus_deepslate_button",
+    "celestialexploration:meteor_button",
+    "celestialexploration:steel_button"
+  ]
+}

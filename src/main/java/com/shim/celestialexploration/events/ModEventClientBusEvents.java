@@ -59,6 +59,10 @@ public class ModEventClientBusEvents {
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.REINFORCED_GLASS.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.REINFORCED_GLASS_PANE.get(), RenderType.translucent());
 
+        ItemBlockRenderTypes.setRenderLayer(BlockRegistry.AIRLOCK_DOOR.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BlockRegistry.STEEL_DOOR.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BlockRegistry.STEEL_TRAPDOOR.get(), RenderType.cutout());
+
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.JUPITER_ATMOSPHERE.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.SATURN_ATMOSPHERE.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.URANUS_ATMOSPHERE.get(), RenderType.translucent());
@@ -111,8 +115,6 @@ public class ModEventClientBusEvents {
         EntityRenderers.register(EntityRegistry.VOIDED_PIGLIN.get(), VoidedPiglinRenderer::new);
         EntityRenderers.register(EntityRegistry.FLARE.get(), FlareRenderer::new);
         EntityRenderers.register(EntityRegistry.GUST.get(), GustRenderer::new);
-
-
 
         MenuScreens.register(MenuRegistry.OXYGEN_COMPRESSOR_MENU.get(), OxygenCompressorScreen::new);
         MenuScreens.register(MenuRegistry.SPACESHIP_MENU.get(), SpaceshipScreen::new);

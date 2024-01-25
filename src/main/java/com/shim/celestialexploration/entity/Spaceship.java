@@ -14,6 +14,8 @@ import com.shim.celestialexploration.world.portal.CelestialTeleporter;
 import net.minecraft.BlockUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Holder;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.network.chat.Component;
@@ -27,6 +29,8 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.*;
@@ -41,20 +45,28 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.WaterlilyBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.chunk.ChunkSource;
+import net.minecraft.world.level.entity.LevelEntityGetter;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.saveddata.maps.MapItemSavedData;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraft.world.scores.Scoreboard;
+import net.minecraft.world.ticks.LevelTickAccess;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.wrapper.InvWrapper;
 import net.minecraftforge.network.NetworkHooks;
@@ -344,11 +356,12 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
                 if (this.teleportationCooldown == 0) {
                     Entity passenger = this.getControllingPassenger();
                     assert passenger != null;
-                    Vec3 teleportPosition = new Vec3(this.position().x, this.level.getMaxBuildHeight() - 10, this.position().z);
+
+                    Vec3 teleportPosition = new Vec3(this.position().x, this.position().y, this.position().z); //this.level.getMaxBuildHeight() - 10, this.position().z);
                     teleportSpaceship(passenger, this, destination, teleportPosition);
                 } else {
                     this.teleportationCooldown--;
-                    this.displayTeleportMessage(this.teleportationCooldown);
+                    this.displayTeleportMessage(this.teleportationCooldown, destination);
                 }
             }
             if (destination == null) {
@@ -376,14 +389,14 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
     public void teleportToSpace(int planetOriginNum) {
         if (this.teleportationCooldown == 0) {
             Entity passenger = this.getControllingPassenger();
-            this.displayTeleportMessage(teleportationCooldown);
+            this.displayTeleportMessage(teleportationCooldown, DimensionRegistry.SPACE);
             assert passenger != null;
             ResourceKey<Level> destination = DimensionRegistry.SPACE;
             Vec3 earthLocation = new Vec3(CelestialUtil.getPlanetaryChunkCoordinates(planetOriginNum).x * 16, 135.0, CelestialUtil.getPlanetaryChunkCoordinates(planetOriginNum).z * 16);
             this.teleportSpaceship(passenger, this, destination, earthLocation);
         } else {
             this.teleportationCooldown--;
-            this.displayTeleportMessage(teleportationCooldown);
+            this.displayTeleportMessage(teleportationCooldown, DimensionRegistry.SPACE);
         }
     }
 
@@ -448,12 +461,12 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
         return null;
     }
 
-    public void displayTeleportMessage(int teleportCooldown) {
+    public void displayTeleportMessage(int teleportCooldown, ResourceKey<Level> destination) {
         Entity entity = this.getControllingPassenger();
 
         if (entity instanceof Player) {
             if (teleportCooldown % 20 == 0) {
-                ((Player) entity).displayClientMessage(Component.nullToEmpty("Teleporting in… " + teleportCooldown / 20), true);
+                ((Player) entity).displayClientMessage(Component.nullToEmpty("Teleporting to " + destination.location().getPath().toUpperCase() + " in… " + teleportCooldown / 20), true);
             } else if (teleportCooldown == 0) {
                 ((Player) entity).displayClientMessage(Component.nullToEmpty("Teleporting!"), true);
             }
@@ -517,6 +530,10 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
                     this.resetTelportationCooldown();
                     passenger.changeDimension(destinationWorld, new CelestialTeleporter(destinationWorld));
                     Entity newSpaceship = spaceship.changeDimension(destinationWorld, new CelestialTeleporter(destinationWorld));
+
+                    if (!(destinationDim == DimensionRegistry.SPACE)) {
+                        locationInPlace = new Vec3(locationInPlace.x, passenger.level.getMaxBuildHeight() - 10, locationInPlace.z);
+                    }
 
                     if (passenger instanceof ServerPlayer player) {
                         ServerLevel level = player.getLevel();

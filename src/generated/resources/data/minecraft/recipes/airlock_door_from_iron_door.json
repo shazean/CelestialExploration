@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "celestialexploration",
+  "pattern": [
+    "GX",
+    "DX"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:steel_ingot"
+    },
+    "G": {
+      "tag": "forge:glass/colorless"
+    },
+    "D": {
+      "item": "minecraft:iron_door"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:airlock_door"
+  }
+}

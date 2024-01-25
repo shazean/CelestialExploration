@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top_rh",
+  "textures": {
+    "bottom": "celestialexploration:block/steel_door_bottom",
+    "top": "celestialexploration:block/steel_door_top"
+  }
+}
