@@ -1,0 +1,13 @@
+{
+  "name": "Mars",
+  "icon": "celestialexploration:mars_stone",
+  "category": "celestialexploration:planets",
+  "pages": [
+    "The red planet!$(br2)Mars can be found in space roughly north of the sun.$(br2)Natural resources: iron, redstone.$(br)Mobs: Voided, Skeletons, SpaceFellows, Rust Slimes, Mars Mallows",
+    {
+      "type": "patchouli:spotlight",
+      "text": "Martian bricks can be used to craft a portal to Mars, and then lit using a steel rod.$(br2)Note: Martian portals can only be used from the overworld to Mars.$(br2)This does mean you either need to be in creative mode or visit Mars for the first time using the spaceship!",
+      "item": "celestialexploration:mars_bricks"
+    }
+  ]
+}

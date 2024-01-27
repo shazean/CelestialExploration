@@ -6,6 +6,7 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.ISkyRenderHandler;
+import net.minecraftforge.client.IWeatherRenderHandler;
 import org.jetbrains.annotations.Nullable;
 
 @OnlyIn(Dist.CLIENT)
@@ -188,6 +189,8 @@ public class DimensionRenderers {
     public static class VenusEffects extends DimensionSpecialEffects {
         public VenusEffects() {
             super(Float.NaN, true, SkyType.NORMAL, false, true);
+            setWeatherRenderHandler(weatherHandler);
+            setWeatherParticleRenderHandler(particleHandler);
         }
 
 //        @Override
@@ -204,17 +207,9 @@ public class DimensionRenderers {
             return true;
         }
 
-//        VenusSkyHandler skyHandler = new VenusSkyHandler();
-//
-//        @Override
-//        public void setSkyRenderHandler(ISkyRenderHandler skyRenderHandler) {
-//            super.setSkyRenderHandler(skyHandler);
-//        }
-//
-//        @Nullable
-//        @Override
-//        public ISkyRenderHandler getSkyRenderHandler() {
-//            return skyHandler;
-//        }
+        VenusWeatherHandler weatherHandler = new VenusWeatherHandler();
+        VenusWeatherParticleHandler particleHandler = new VenusWeatherParticleHandler();
+
+
     }
 }

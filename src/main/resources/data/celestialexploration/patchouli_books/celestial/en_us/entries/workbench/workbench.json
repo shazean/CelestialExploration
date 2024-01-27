@@ -1,0 +1,17 @@
+{
+  "name": "Workbench",
+  "icon": "minecraft:writable_book",
+  "category": "celestialexploration:workbench",
+  "pages": [
+    "First step is to add fluid to the workbench.$(br2)For metals, you can add metal ingots or blocks to the upper left slot and smelt them down with a fuel item, like you would in a furnace.",
+    {
+      "type": "patchouli:image",
+      "images": [
+        "celestialexploration:textures/patchouli/workbench_smelting.png"
+      ]
+    },
+    "$(br2)To get water or lava in the fuel slot, simply add the appropriate bucket.$(br2)A fuel source (coal, etc.) is not needed for transferring via buckets.",
+    "Next, you can craft whatever the desired item is by putting the remaining elements in the crafting grid, like you would a crafting table. After this, it works pretty much exactly like a crafting table, but will also use up the appropriate amount of fluid in the tank.",
+    "The tank holds 8 buckets (8,000mb) worth of fluid. 1 block of iron = 1 bucket of molten iron.$(br2)JEI contains all of the recipes."
+  ]
+}

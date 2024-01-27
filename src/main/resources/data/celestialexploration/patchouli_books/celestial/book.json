@@ -1,0 +1,6 @@
+{
+  "name": "Celestial Guide Book",
+  "landing_text": "Welcome to Celestial Exploration!$(br2)You also can check out the full $(l:https://github.com/shazean/CelestialExploration/wiki)wiki$(/l)!",
+  "version": 1,
+  "show_progress": false
+}

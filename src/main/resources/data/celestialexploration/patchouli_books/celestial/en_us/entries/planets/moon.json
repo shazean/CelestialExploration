@@ -1,0 +1,49 @@
+{
+  "name": "The (Earth's) Moon",
+  "icon": "celestialexploration:moon_stone",
+  "category": "celestialexploration:planets",
+  "pages": [
+    "Look, look, the moon!$(br2)The moon can be found by heading to space from the overworld.$(br2)Natural resources: iron, redstone, lunar dust.$(br)Mobs: Voided, Skeletons, SpaceFellows, Lunar Slimes",
+    {
+      "type": "patchouli:spotlight",
+      "text": "Lunar bricks can be used to craft a portal to the moon, and then lit using a steel rod.$(br2)Note: lunar portals can only be used from the overworld to the moon.$(br2)This does mean you either need to be in creative mode or visit the moon for the first time using the spaceship!",
+      "item": "celestialexploration:moon_bricks"
+    },
+    {
+      "type": "patchouli:link",
+      "url": "https://science.nasa.gov/moon/facts/",
+      "link_text": "NASA",
+      "text": "Keep reading for some fun facts about the moon (credit to Nasa, link below)!"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Name",
+      "text": "The moon's name, or rather, lack thereof, is because the moon was observed long before anyone realized that other moons existed, until Galileo Galilei discovered four moons (the Galilean moons) around Jupiter.  However, the word \"Lunar\" comes from the latin word \"Luna\", which, you guessed it, means \"moon\", and is used to describe anything moon-related."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Atmosphere",
+      "text": "The moon has an atmosphere!  Well, kind of.  It's very thin and weak, so it doesn't protect from UV rays or meteorites or do any particularly interesting atmosphere-y things. Also interestingly enough, it's believed the moon may have once had a magnetic field, but now it's just as weak as its atmosphere."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Rotation",
+      "text": "Our moon is tide-locked! This means it rotates at just the right speed as it orbits the Earth that we only ever see one side of the moon. However, as it orbits the Earth and the Earth orbits the sun, the sun does see all of the sides of the moon.  This means there is no \"dark side\" of the moon… but there is a \"far side\"!"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Orbit",
+      "text": "It takes the moon 27 days to orbit the Earth.  However, because of the Earth's own rotation, it seems like it takes the moon 29 days to complete an orbit."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Origin",
+      "text": "Scientists believe that unlike other moons of other planets that might originate as stolen asteroids, our moon is actually a piece of the Earth, knocked off the then-still-molten planet and into orbit by a large meteorite hitting the Earth."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Surface",
+      "text": "The surface of the moon is very cratered, due to the lack of atmosphere. In fact, one crater, Tycho Crater, is over 52 miles wide! All of these craters have left the moon covered in fine dust called \"reoglith\". Recently, in the last few decades, we've also confirmed that there is water on the moon, and even large amounts of ice water in the shadowy parts of the lunar poles."
+    }
+  ]
+}

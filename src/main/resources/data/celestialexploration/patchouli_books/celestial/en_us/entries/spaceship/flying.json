@@ -1,0 +1,30 @@
+{
+  "name": "Using the Spaceship",
+  "icon": "celestialexploration:grey_spaceship",
+  "category": "celestialexploration:spaceship",
+  "pages": [
+    "After the spaceship has been fueled, right click on the center of the spaceship to mount it.",
+    {
+      "type": "patchouli:text",
+      "title": "Controls",
+      "text": "The spaceship flies a little like creative mode and a little like a boat.  The $(k:forward)$(k:left)$(k:back)$(k:right) keys are used for direction and turning. Space ascends, and Left Shift descends. Dismounting with $(k:sneak), but you will $(o)only$() dismount from the spaceship if it's on the ground.$(br2)All of these keybindings can be changed in the player keybinding settings."
+
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "celestialexploration:lox_tank",
+      "title": "Fuel",
+      "text": "Fuel is not technically required to fly the spaceship, but without fuel, the spaceship will move at a very slow speed.  However, the spaceship will always descend at normal speed. (This way if you ever lose fuel in midair, you’re not… totally stranded.)"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Navigation",
+      "text": "To get to space, fly up in the spaceship, about 10 blocks above block build height! You will teleport to space above the planet you came from. After that, find other planets! If you approach a planet/moon with a dimension while in the spaceship, you will teleport to block build height inside said dimension.$(br)The planets are laid out in a fibonacci spiral around the sun, with the sun at a rough coordinates of 0,0."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Portals?",
+      "text": "Yes! You can use the stone bricks from each dimension to craft a portal. This does mean you have to travel via spaceship to each planet first."
+    }
+  ]
+}

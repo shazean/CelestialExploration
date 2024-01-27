@@ -1,0 +1,22 @@
+{
+  "name": "Heavy Duty Space Suit",
+  "icon": "celestialexploration:heavy_duty_space_suit_helmet",
+  "category": "celestialexploration:space_suits",
+  "pages": [
+    "This is the space suit for high-mass, thick atmosphere planets, like Venus. This space suit is fire resistant and useful for surviving hot, fiery places.$(br2)Wearing the complete suit gives the player a small jump boost.",
+    {
+      "type": "patchouli:entity",
+      "entity": "minecraft:armor_stand{ArmorItems:[{id:\"celestialexploration:heavy_duty_space_suit_boots\",Count:1},{id:\"celestialexploration:heavy_duty_space_suit_leggings\",Count:1},{id:\"celestialexploration:heavy_duty_space_suit_chestplate\",Count:1},{id:\"celestialexploration:heavy_duty_space_suit_helmet\",Count:1}],NoBasePlate:1}",
+      "name": "Heavy Duty Space Suit",
+      "offset": 0.1
+    },
+    {
+      "type": "patchouli:spotlight",
+      "text": "The gold implemented in the chestpiece counts as gold armor to make you neutral with piglins.",
+      "item": {
+        "item": "celestialexploration:heavy_duty_space_suit_chestplate"
+      },
+      "title": "Heavy Duty Chestplate"
+    }
+  ]
+}

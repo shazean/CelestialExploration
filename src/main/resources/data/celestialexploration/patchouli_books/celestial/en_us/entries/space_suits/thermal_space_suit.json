@@ -1,0 +1,22 @@
+{
+  "name": "Thermal Space Suit",
+  "icon": "celestialexploration:thermal_space_suit_helmet",
+  "category": "celestialexploration:space_suits",
+  "pages": [
+    "This is the space suit for the low mass, thin atmosphere planets!$(br2)Wearing the complete thermal space suit will also give a small speed effect.",
+    {
+      "type": "patchouli:entity",
+      "entity": "minecraft:armor_stand{ArmorItems:[{id:\"celestialexploration:thermal_space_suit_boots\",Count:1},{id:\"celestialexploration:thermal_space_suit_leggings\",Count:1},{id:\"celestialexploration:thermal_space_suit_chestplate\",Count:1},{id:\"celestialexploration:thermal_space_suit_helmet\",Count:1}],NoBasePlate:1}",
+      "name": "Thermal Space Suit",
+      "offset": 0.1
+    },
+    {
+      "type": "patchouli:spotlight",
+      "text": "Wearing the thermal space suit boots will turn off the low gravity effects on the low mass planets like the moon and Mars.$(br2)The boots also can be used to walk on powdered snow.",
+      "item": {
+        "item": "celestialexploration:thermal_space_suit_boots"
+      },
+      "title": "Thermal Boots"
+    }
+  ]
+}

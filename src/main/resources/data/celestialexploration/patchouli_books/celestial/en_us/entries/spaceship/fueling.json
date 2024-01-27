@@ -1,0 +1,9 @@
+{
+  "name": "Fueling the Spaceship",
+  "icon": "celestialexploration:lox_tank",
+  "category": "celestialexploration:spaceship",
+  "pages": [
+    "TODO: how to use oxygen compressor",
+    "Once you’ve filled a liquid oxygen tank with fuel, it’s time to add it to the spaceship. Crouch-click on the center of the spaceship to open its GUI.$(br2)You can add up to four fuel tanks. This is also how you can access shuttle inventory for a little extra storage space!"
+  ]
+}

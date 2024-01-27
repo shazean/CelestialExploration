@@ -1,0 +1,14 @@
+{
+  "name": "Advanced Space Suit",
+  "icon": "celestialexploration:advanced_space_suit_helmet",
+  "category": "celestialexploration:space_suits",
+  "pages": [
+    "The advanced space suit is a nice middle ground space suit! It does not have the fancy effects or niche uses of the thermal or heavy duty space suits, but it is a little more durable and can be considered a little more of a catch-all space suit.",
+    {
+      "type": "patchouli:entity",
+      "entity": "minecraft:armor_stand{ArmorItems:[{id:\"celestialexploration:advanced_space_suit_boots\",Count:1},{id:\"celestialexploration:advanced_space_suit_leggings\",Count:1},{id:\"celestialexploration:advanced_space_suit_chestplate\",Count:1},{id:\"celestialexploration:advanced_space_suit_helmet\",Count:1}],NoBasePlate:1}",
+      "name": "Advanced Space Suit",
+      "offset": 0.1
+    }
+  ]
+}

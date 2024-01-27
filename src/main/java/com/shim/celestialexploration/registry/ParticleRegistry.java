@@ -21,6 +21,8 @@ public class ParticleRegistry {
     //OTHER PARTICLES
     public static final RegistryObject<SimpleParticleType> SULFUR_PARTICLE = PARTICLES.register("sulfur_particle", () -> new SimpleParticleType(false));
     public static final RegistryObject<SimpleParticleType> SULFUR_FIRE_FLAME = PARTICLES.register("sulfur_fire_flame_particle", () -> new SimpleParticleType(false));
+    public static final RegistryObject<SimpleParticleType> SULFUR_SPLASH_PARTICLE = PARTICLES.register("sulfur_splash_particle", () -> new SimpleParticleType(false));
+
 
     public static void register(IEventBus eventBus) {
         PARTICLES.register(eventBus);

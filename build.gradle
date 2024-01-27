@@ -64,6 +64,9 @@ minecraft {
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
             property 'forge.enabledGameTestNamespaces', 'examplemod'
 
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+
             mods {
                 celestialexploration {
                     source sourceSets.main
@@ -162,6 +165,8 @@ repositories {
         url = "https://modmaven.dev"
     }
 
+    maven { url 'https://maven.blamejared.com' }
+
 }
 
 dependencies {
@@ -187,8 +192,12 @@ dependencies {
 
     // compile against the JEI API but do not include it at runtime
     compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api")
-// at runtime, use the full JEI jar
+    // at runtime, use the full JEI jar
     runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")
+
+    compileOnly fg.deobf("vazkii.patchouli:Patchouli:${ptch_version}:api")
+    runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${ptch_version}")
+
 
 }
 

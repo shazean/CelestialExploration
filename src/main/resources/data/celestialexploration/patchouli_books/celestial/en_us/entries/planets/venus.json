@@ -1,0 +1,13 @@
+{
+  "name": "Venus",
+  "icon": "celestialexploration:venus_stone",
+  "category": "celestialexploration:planets",
+  "pages": [
+    "The stormy planet!$(br2)Venus can be found in space roughly south of the sun.$(br2)Natural resources: iron, redstone, lapis lazuli, sulfur, sulfur crystals.$(br)Mobs: Flare, Gust, Piglins, Hoglins, Voided Piglins, Skeletons, Sulfur Cubes",
+    {
+      "type": "patchouli:spotlight",
+      "text": "Venusian bricks can be used to craft a portal to Venus, and then lit using a steel rod.$(br2)Note: Venus portals can only be used from the overworld to Venus.$(br2)This does mean you either need to be in creative mode or visit Venus for the first time using the spaceship!",
+      "item": "celestialexploration:venus_bricks"
+    }
+  ]
+}

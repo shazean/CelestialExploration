@@ -1,0 +1,8 @@
+{
+  "name": "Crafting the Spaceship",
+  "icon": "celestialexploration:steel_ingot",
+  "category": "celestialexploration:spaceship",
+  "pages": [
+    "TODO$(br2)Recipe is included in JEI"
+  ]
+}
