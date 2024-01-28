@@ -3,18 +3,21 @@
   "values": [
     "celestialexploration:moon_iron_ore",
     "celestialexploration:moon_redstone_ore",
+    "celestialexploration:moon_bauxite_ore",
     "celestialexploration:mars_iron_ore",
     "celestialexploration:mars_redstone_ore",
     "celestialexploration:moon_deepslate_iron_ore",
     "celestialexploration:moon_deepslate_redstone_ore",
     "celestialexploration:mars_deepslate_iron_ore",
     "celestialexploration:mars_deepslate_redstone_ore",
+    "celestialexploration:mars_bauxite_ore",
     "celestialexploration:venus_redstone_ore",
     "celestialexploration:venus_iron_ore",
     "celestialexploration:venus_lapis_ore",
     "celestialexploration:venus_deepslate_iron_ore",
     "celestialexploration:venus_deepslate_redstone_ore",
     "celestialexploration:venus_deepslate_lapis_ore",
+    "celestialexploration:venus_bauxite_ore",
     "celestialexploration:meteor_coal_ore",
     "celestialexploration:meteor_copper_ore",
     "celestialexploration:meteor_diamond_ore",
@@ -22,6 +25,8 @@
     "celestialexploration:meteor_gold_ore",
     "celestialexploration:meteor_iron_ore",
     "celestialexploration:meteor_lapis_ore",
-    "celestialexploration:meteor_redstone_ore"
+    "celestialexploration:meteor_redstone_ore",
+    "celestialexploration:meteor_bauxite_ore",
+    "celestialexploration:bauxite_ore"
   ]
 }

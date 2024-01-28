@@ -62,6 +62,8 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(BlockRegistry.MOON_BRICKS.get(), "Lunar Bricks");
 		add(BlockRegistry.MOON_IRON_ORE.get(), "Lunar Iron Ore");
 		add(BlockRegistry.MOON_REDSTONE_ORE.get(), "Lunar Redstone Ore");
+		add(BlockRegistry.MOON_BAUXITE_ORE.get(), "Lunar Bauxite Ore");
+
 		add(BlockRegistry.MOON_SAND.get(), "Lunar Regolith");
 		add(BlockRegistry.MOON_STONE.get(), "Lunar Stone");
 		add(BlockRegistry.CHISELED_MOON_BRICKS.get(), "Chiseled Lunar Bricks");
@@ -124,6 +126,8 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(BlockRegistry.MARS_BRICKS.get(), "Martian Bricks");
 		add(BlockRegistry.MARS_IRON_ORE.get(), "Martian Iron Ore");
 		add(BlockRegistry.MARS_REDSTONE_ORE.get(), "Martian Redstone Ore");
+		add(BlockRegistry.MARS_BAUXITE_ORE.get(), "Martian Bauxite Ore");
+
 		add(BlockRegistry.MARS_SAND.get(), "Martian Regolith");
 		add(BlockRegistry.MARS_STONE.get(), "Martian Stone");
 		add(BlockRegistry.MARS_COBBLESTONE.get(), "Martian Cobblestone");
@@ -195,6 +199,8 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(BlockRegistry.VENUS_IRON_ORE.get(), "Venusian Iron Ore");
 		add(BlockRegistry.VENUS_REDSTONE_ORE.get(), "Venusian Redstone Ore");
 		add(BlockRegistry.VENUS_LAPIS_ORE.get(), "Venusian Lapis Lazuli Ore");
+		add(BlockRegistry.VENUS_BAUXITE_ORE.get(), "Venusian Bauxite Ore");
+
 		add(BlockRegistry.VENUS_SAND.get(), "Venusian Regolith");
 		add(BlockRegistry.VENUS_STONE.get(), "Venusian Stone");
 		add(BlockRegistry.VENUS_COBBLESTONE.get(), "Venusian Cobblestone");
@@ -264,6 +270,7 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(BlockRegistry.METEOR_IRON_ORE.get(), "Meteorite Iron Ore");
 		add(BlockRegistry.METEOR_LAPIS_ORE.get(), "Meteorite Lapis Lazuli Ore");
 		add(BlockRegistry.METEOR_SULFUR_ORE.get(), "Meteorite Sulfur Ore");
+		add(BlockRegistry.METEOR_BAUXITE_ORE.get(), "Meteorite Bauxite Ore");
 
 		add(BlockRegistry.METEOR_REDSTONE_ORE.get(), "Meteorite Redstone Ore");
 
@@ -376,6 +383,7 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(BlockRegistry.COMPRESSED_COBBLESTONE.get(), "Compressed Cobblestone");
 		add(BlockRegistry.COMPRESSED_COBBLED_DEEPSLATE.get(), "Compressed Cobbled Deepslate");
 		add(BlockRegistry.COMPRESSED_NETHERRACK.get(), "Compressed Netherrack");
+		add(BlockRegistry.BAUXITE_ORE.get(), "Bauxite Ore");
 
 		add(BlockRegistry.WORKBENCH.get(), "Workbench");
 		add(BlockRegistry.SILICA.get(), "Silica");

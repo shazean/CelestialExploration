@@ -1,0 +1,11 @@
+{
+  "type": "celestialexploration:workbench_smelting",
+  "group": "celestialexploration",
+  "ingredient": {
+    "item": "celestialexploration:aluminum_ingot"
+  },
+  "result": "celestialexploration:molten_aluminum",
+  "experience": 0.7,
+  "cookingtime": 100,
+  "buckets": 0.11
+}

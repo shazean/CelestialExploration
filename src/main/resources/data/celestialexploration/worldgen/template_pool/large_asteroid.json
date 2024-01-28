@@ -69,6 +69,15 @@
       "weight": 15,
       "element": {
         "location": "celestialexploration:large_asteroid",
+        "processors": "celestialexploration:asteroid_bauxite",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 15,
+      "element": {
+        "location": "celestialexploration:large_asteroid",
         "processors": "celestialexploration:asteroid_iron",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"

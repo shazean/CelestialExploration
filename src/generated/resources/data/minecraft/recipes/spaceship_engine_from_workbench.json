@@ -2,12 +2,15 @@
   "type": "celestialexploration:workbench_crafting",
   "group": "celestialexploration",
   "pattern": [
-    " R ",
+    "CRC",
     "TTT"
   ],
   "key": {
     "R": {
       "item": "minecraft:redstone"
+    },
+    "C": {
+      "item": "minecraft:copper_ingot"
     },
     "T": {
       "item": "minecraft:redstone_torch"

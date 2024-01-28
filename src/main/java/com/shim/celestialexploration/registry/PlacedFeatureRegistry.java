@@ -18,6 +18,10 @@ public class PlacedFeatureRegistry {
             CelestialOreFeatures.MOON_REDSTONE_ORE, CelestialOrePlacement.commonOrePlacement(4, // VeinsPerChunk
                     HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-64), VerticalAnchor.belowTop(64))));
 
+    public static final Holder<PlacedFeature> MOON_BAUXITE_ORE_PLACED = PlacementUtils.register("moon_bauxite_ore_placed",
+            CelestialOreFeatures.MOON_BAUXITE_ORE, CelestialOrePlacement.commonOrePlacement(7, // VeinsPerChunk
+                    HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(0), VerticalAnchor.belowTop(84))));
+
     public static final Holder<PlacedFeature> MARS_IRON_ORE_PLACED = PlacementUtils.register("mars_iron_ore_placed",
             CelestialOreFeatures.MARS_IRON_ORE, CelestialOrePlacement.commonOrePlacement(8, // VeinsPerChunk
                     HeightRangePlacement.triangle(VerticalAnchor.absolute(-64), VerticalAnchor.belowTop(112))));
@@ -25,6 +29,11 @@ public class PlacedFeatureRegistry {
     public static final Holder<PlacedFeature> MARS_REDSTONE_ORE_PLACED = PlacementUtils.register("mars_redstone_ore_placed",
             CelestialOreFeatures.MARS_REDSTONE_ORE, CelestialOrePlacement.commonOrePlacement(4, // VeinsPerChunk
                     HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-64), VerticalAnchor.belowTop(64))));
+
+    public static final Holder<PlacedFeature> MARS_BAUXITE_ORE_PLACED = PlacementUtils.register("mars_bauxite_ore_placed",
+            CelestialOreFeatures.MARS_BAUXITE_ORE, CelestialOrePlacement.commonOrePlacement(7, // VeinsPerChunk
+                    HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(0), VerticalAnchor.belowTop(84))));
+
 
     public static final Holder<PlacedFeature> VENUS_IRON_ORE_PLACED = PlacementUtils.register("venus_iron_ore_placed",
             CelestialOreFeatures.VENUS_IRON_ORE, CelestialOrePlacement.rareOrePlacement(2, // VeinsPerChunk
@@ -37,6 +46,14 @@ public class PlacedFeatureRegistry {
     public static final Holder<PlacedFeature> VENUS_LAPIS_ORE_PLACED = PlacementUtils.register("venus_lapis_ore_placed",
             CelestialOreFeatures.VENUS_LAPIS_ORE, CelestialOrePlacement.commonOrePlacement(6, // VeinsPerChunk
                     HeightRangePlacement.triangle(VerticalAnchor.absolute(-64), VerticalAnchor.belowTop(112))));
+
+    public static final Holder<PlacedFeature> VENUS_BAUXITE_ORE_PLACED = PlacementUtils.register("venus_bauxite_ore_placed",
+            CelestialOreFeatures.VENUS_BAUXITE_ORE, CelestialOrePlacement.commonOrePlacement(7, // VeinsPerChunk
+                    HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(0), VerticalAnchor.belowTop(84))));
+
+    public static final Holder<PlacedFeature> BAUXITE_ORE_PLACED = PlacementUtils.register("bauxite_ore_placed",
+            CelestialOreFeatures.BAUXITE_ORE, CelestialOrePlacement.commonOrePlacement(7, // VeinsPerChunk
+                    HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(0), VerticalAnchor.belowTop(84))));
 
 
 //    public static final Holder<PlacedFeature> METEOR_COAL_ORE_PLACED = PlacementUtils.register("meteor_coal_ore_placed",

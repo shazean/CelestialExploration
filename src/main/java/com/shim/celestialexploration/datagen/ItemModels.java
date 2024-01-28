@@ -24,6 +24,7 @@ public class ItemModels extends ItemModelProvider {
 		withExistingParent(ItemRegistry.MOON_BRICKS.get().getRegistryName().getPath(), modLoc("block/moon_bricks"));
 		withExistingParent(ItemRegistry.MOON_IRON_ORE.get().getRegistryName().getPath(), modLoc("block/moon_iron_ore"));
 		withExistingParent(ItemRegistry.MOON_REDSTONE_ORE.get().getRegistryName().getPath(), modLoc("block/moon_redstone_ore"));
+		withExistingParent(ItemRegistry.MOON_BAUXITE_ORE.get().getRegistryName().getPath(), modLoc("block/moon_bauxite_ore"));
 		withExistingParent(ItemRegistry.MOON_SAND.get().getRegistryName().getPath(), modLoc("block/moon_sand"));
 		withExistingParent(ItemRegistry.MOON_STONE.get().getRegistryName().getPath(), modLoc("block/moon_stone"));
 		withExistingParent(ItemRegistry.CHISELED_MOON_BRICKS.get().getRegistryName().getPath(), modLoc("block/chiseled_moon_bricks"));
@@ -95,6 +96,7 @@ public class ItemModels extends ItemModelProvider {
 		withExistingParent(ItemRegistry.MARS_BRICKS.get().getRegistryName().getPath(), modLoc("block/mars_bricks"));
 		withExistingParent(ItemRegistry.MARS_IRON_ORE.get().getRegistryName().getPath(), modLoc("block/mars_iron_ore"));
 		withExistingParent(ItemRegistry.MARS_REDSTONE_ORE.get().getRegistryName().getPath(), modLoc("block/mars_redstone_ore"));
+		withExistingParent(ItemRegistry.MARS_BAUXITE_ORE.get().getRegistryName().getPath(), modLoc("block/mars_bauxite_ore"));
 		withExistingParent(ItemRegistry.MARS_STONE.get().getRegistryName().getPath(), modLoc("block/mars_stone"));
 		withExistingParent(ItemRegistry.MARS_SAND.get().getRegistryName().getPath(), modLoc("block/mars_sand"));
 		withExistingParent(ItemRegistry.COARSE_MARS_SAND.get().getRegistryName().getPath(), modLoc("block/coarse_mars_sand"));
@@ -165,6 +167,7 @@ public class ItemModels extends ItemModelProvider {
 
 		withExistingParent(ItemRegistry.VENUS_IRON_ORE.get().getRegistryName().getPath(), modLoc("block/venus_iron_ore"));
 		withExistingParent(ItemRegistry.VENUS_REDSTONE_ORE.get().getRegistryName().getPath(), modLoc("block/venus_redstone_ore"));
+		withExistingParent(ItemRegistry.VENUS_BAUXITE_ORE.get().getRegistryName().getPath(), modLoc("block/venus_bauxite_ore"));
 		withExistingParent(ItemRegistry.VENUS_LAPIS_ORE.get().getRegistryName().getPath(), modLoc("block/venus_lapis_ore"));
 		withExistingParent(ItemRegistry.VENUS_STONE.get().getRegistryName().getPath(), modLoc("block/venus_stone"));
 		withExistingParent(ItemRegistry.VENUS_SAND.get().getRegistryName().getPath(), modLoc("block/venus_sand"));
@@ -250,10 +253,14 @@ public class ItemModels extends ItemModelProvider {
 		withExistingParent(ItemRegistry.METEOR_SULFUR_ORE.get().getRegistryName().getPath(), modLoc("block/meteor_sulfur_ore"));
 		withExistingParent(ItemRegistry.METEOR_REDSTONE_ORE.get().getRegistryName().getPath(), modLoc("block/meteor_redstone_ore"));
 		withExistingParent(ItemRegistry.CHISELED_METEOR_BRICKS.get().getRegistryName().getPath(), modLoc("block/chiseled_meteor_bricks"));
+		withExistingParent(ItemRegistry.METEOR_BAUXITE_ORE.get().getRegistryName().getPath(), modLoc("block/meteor_bauxite_ore"));
 
 		withExistingParent(ItemRegistry.COMPRESSED_COBBLESTONE.get().getRegistryName().getPath(), modLoc("block/compressed_cobblestone"));
 		withExistingParent(ItemRegistry.COMPRESSED_COBBLED_DEEPSLATE.get().getRegistryName().getPath(), modLoc("block/compressed_cobbled_deepslate"));
 		withExistingParent(ItemRegistry.COMPRESSED_NETHERRACK.get().getRegistryName().getPath(), modLoc("block/compressed_netherrack"));
+		withExistingParent(ItemRegistry.BAUXITE_ORE.get().getRegistryName().getPath(), modLoc("block/bauxite_ore"));
+
+
 
 		stairs("meteor_brick_stairs", modLoc("block/meteor_bricks"), modLoc("block/meteor_bricks"), modLoc("block/meteor_bricks"));
 		slab("meteor_brick_slab", modLoc("block/meteor_bricks"), modLoc("block/meteor_bricks"), modLoc("block/meteor_bricks"));
@@ -339,6 +346,9 @@ public class ItemModels extends ItemModelProvider {
 		singleTexture(ItemRegistry.STEEL_WOOL.get().getRegistryName().getPath(), new ResourceLocation("item/generated"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/steel_wool"));
 		singleTexture(ItemRegistry.FLARE_ROD.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/flare_rod"));
 
+		singleTexture(ItemRegistry.BAUXITE_INGOT.get().getRegistryName().getPath(), new ResourceLocation("item/generated"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/bauxite_ingot"));
+		singleTexture(ItemRegistry.ALUMINUM_INGOT.get().getRegistryName().getPath(), new ResourceLocation("item/generated"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/aluminum_ingot"));
+		singleTexture(ItemRegistry.RAW_BAUXITE.get().getRegistryName().getPath(), new ResourceLocation("item/generated"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/raw_bauxite"));
 
 		singleTexture(ItemRegistry.BLOCK_MOLD.get().getRegistryName().getPath(), new ResourceLocation("item/generated"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/block_mold"));
 		singleTexture(ItemRegistry.INGOT_MOLD.get().getRegistryName().getPath(), new ResourceLocation("item/generated"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/ingot_mold"));
@@ -346,15 +356,17 @@ public class ItemModels extends ItemModelProvider {
 		singleTexture(ItemRegistry.SULFUR_CRYSTAL.get().getRegistryName().getPath(), new ResourceLocation("item/generated"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/sulfur_crystal"));
 
 
-		/**
+		/*
 		 * FLUID BUCKETS
-		 **/
+		 */
 		singleTexture(FluidRegistry.LOX_BUCKET.get().getRegistryName().getPath(), new ResourceLocation("item/generated"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/lox_bucket"));
 		singleTexture(FluidRegistry.MOLTEN_IRON_BUCKET.get().getRegistryName().getPath(), new ResourceLocation("item/generated"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/lox_bucket"));
 		singleTexture(FluidRegistry.MOLTEN_STEEL_BUCKET.get().getRegistryName().getPath(), new ResourceLocation("item/generated"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/lox_bucket"));
 		singleTexture(FluidRegistry.MOLTEN_COPPER_BUCKET.get().getRegistryName().getPath(), new ResourceLocation("item/generated"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/lox_bucket"));
 		singleTexture(FluidRegistry.MOLTEN_GOLD_BUCKET.get().getRegistryName().getPath(), new ResourceLocation("item/generated"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/lox_bucket"));
 //		singleTexture(FluidRegistry.MOLTEN_NETHERITE_BUCKET.get().getRegistryName().getPath(), new ResourceLocation("item/generated"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/lox_bucket"));
+		singleTexture(FluidRegistry.MOLTEN_ALUMINUM_BUCKET.get().getRegistryName().getPath(), new ResourceLocation("item/generated"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/lox_bucket"));
+
 		singleTexture(FluidRegistry.SULFUR_BUCKET.get().getRegistryName().getPath(), new ResourceLocation("item/generated"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/sulfur_bucket"));
 
 

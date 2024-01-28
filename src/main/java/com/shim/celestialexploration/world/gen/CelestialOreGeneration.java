@@ -10,20 +10,24 @@ import java.util.List;
 
 public class CelestialOreGeneration {
     public static void generateOres(final BiomeLoadingEvent event) {
-        List<Holder<PlacedFeature>> base =
-                event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES);
+        List<Holder<PlacedFeature>> base = event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES);
 
         //MOON
         base.add(PlacedFeatureRegistry.MOON_IRON_ORE_PLACED);
         base.add(PlacedFeatureRegistry.MOON_REDSTONE_ORE_PLACED);
+        base.add(PlacedFeatureRegistry.MOON_BAUXITE_ORE_PLACED);
 
         //MARS
         base.add(PlacedFeatureRegistry.MARS_IRON_ORE_PLACED);
         base.add(PlacedFeatureRegistry.MARS_REDSTONE_ORE_PLACED);
+        base.add(PlacedFeatureRegistry.MARS_BAUXITE_ORE_PLACED);
 
         base.add(PlacedFeatureRegistry.VENUS_IRON_ORE_PLACED);
         base.add(PlacedFeatureRegistry.VENUS_REDSTONE_ORE_PLACED);
         base.add(PlacedFeatureRegistry.VENUS_LAPIS_ORE_PLACED);
+        base.add(PlacedFeatureRegistry.VENUS_BAUXITE_ORE_PLACED);
+
+        base.add(PlacedFeatureRegistry.BAUXITE_ORE_PLACED);
 
         //METEOR
 //        base.add(PlacedFeatureRegistry.METEOR_COAL_ORE_PLACED);

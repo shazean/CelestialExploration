@@ -1,0 +1,17 @@
+{
+  "type": "celestialexploration:workbench_crafting",
+  "group": "celestialexploration",
+  "pattern": [
+    "X"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:ingot_mold"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:aluminum_ingot"
+  },
+  "fluid": "celestialexploration:molten_aluminum",
+  "buckets": 0.11
+}

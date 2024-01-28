@@ -28,7 +28,9 @@ public class BlockStates extends BlockStateProvider {
 		simpleBlock(BlockRegistry.MOON_BRICKS.get());
 		simpleBlock(BlockRegistry.MOON_IRON_ORE.get());
 		simpleBlock(BlockRegistry.MOON_REDSTONE_ORE.get());
-//		simpleBlock(BlockRegistry.MOON_SAND.get());
+		simpleBlock(BlockRegistry.MOON_BAUXITE_ORE.get());
+
+		//		simpleBlock(BlockRegistry.MOON_SAND.get());
 //		simpleBlock(BlockRegistry.MOON_STONE.get());
 //		simpleBlock(BlockRegistry.COARSE_MOON_SAND.get());
 
@@ -94,6 +96,8 @@ public class BlockStates extends BlockStateProvider {
 		simpleBlock(BlockRegistry.MARS_BRICKS.get());
 		simpleBlock(BlockRegistry.MARS_IRON_ORE.get());
 		simpleBlock(BlockRegistry.MARS_REDSTONE_ORE.get());
+		simpleBlock(BlockRegistry.MARS_BAUXITE_ORE.get());
+
 //		simpleBlock(BlockRegistry.MARS_SAND.get());
 //		simpleBlock(BlockRegistry.COARSE_MARS_SAND.get());
 //		simpleBlock(BlockRegistry.MARS_STONE.get());
@@ -162,6 +166,8 @@ public class BlockStates extends BlockStateProvider {
 		simpleBlock(BlockRegistry.VENUS_IRON_ORE.get());
 		simpleBlock(BlockRegistry.VENUS_REDSTONE_ORE.get());
 		simpleBlock(BlockRegistry.VENUS_LAPIS_ORE.get());
+		simpleBlock(BlockRegistry.VENUS_BAUXITE_ORE.get());
+
 //		simpleBlock(BlockRegistry.VENUS_SAND.get());
 		simpleBlock(BlockRegistry.FINE_VENUS_SAND.get());
 //		simpleBlock(BlockRegistry.VENUS_STONE.get());
@@ -241,6 +247,8 @@ public class BlockStates extends BlockStateProvider {
 		simpleBlock(BlockRegistry.METEOR_IRON_ORE.get());
 		simpleBlock(BlockRegistry.METEOR_LAPIS_ORE.get());
 		simpleBlock(BlockRegistry.METEOR_SULFUR_ORE.get());
+		simpleBlock(BlockRegistry.METEOR_BAUXITE_ORE.get());
+
 		simpleBlock(BlockRegistry.METEOR_REDSTONE_ORE.get());
 		simpleBlock(BlockRegistry.CHISELED_METEOR_BRICKS.get());
 		stairsBlock((StairBlock) BlockRegistry.METEOR_BRICK_STAIRS.get(), modLoc("block/meteor_bricks"));
@@ -367,6 +375,7 @@ public class BlockStates extends BlockStateProvider {
 		simpleBlock(BlockRegistry.COMPRESSED_COBBLESTONE.get());
 		simpleBlock(BlockRegistry.COMPRESSED_COBBLED_DEEPSLATE.get());
 		simpleBlock(BlockRegistry.COMPRESSED_NETHERRACK.get());
+		simpleBlock(BlockRegistry.BAUXITE_ORE.get());
 
 		simpleBlock(BlockRegistry.SILICA.get());
 
@@ -399,6 +408,8 @@ public class BlockStates extends BlockStateProvider {
 		simpleBlock(FluidRegistry.MOLTEN_COPPER_BLOCK.get());
 		simpleBlock(FluidRegistry.MOLTEN_GOLD_BLOCK.get());
 //		simpleBlock(FluidRegistry.MOLTEN_NETHERITE_BLOCK.get());
+		simpleBlock(FluidRegistry.MOLTEN_ALUMINUM_BLOCK.get());
+
 		simpleBlock(FluidRegistry.SULFUR_BLOCK.get());
 
 

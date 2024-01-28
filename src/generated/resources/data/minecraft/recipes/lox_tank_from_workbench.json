@@ -2,13 +2,13 @@
   "type": "celestialexploration:workbench_crafting",
   "group": "celestialexploration",
   "pattern": [
-    "XXX",
-    "XGX",
-    "XXX"
+    "AGA",
+    "G G",
+    "AGA"
   ],
   "key": {
-    "X": {
-      "tag": "forge:cobblestone"
+    "A": {
+      "item": "celestialexploration:aluminum_ingot"
     },
     "G": {
       "tag": "forge:glass"

@@ -1,0 +1,11 @@
+{
+  "type": "celestialexploration:workbench_smelting",
+  "group": "celestialexploration",
+  "ingredient": {
+    "item": "celestialexploration:aluminum_block"
+  },
+  "result": "celestialexploration:molten_aluminum",
+  "experience": 0.7,
+  "cookingtime": 150,
+  "buckets": 1.0
+}

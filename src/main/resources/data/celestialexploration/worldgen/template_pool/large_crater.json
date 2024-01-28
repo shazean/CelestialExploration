@@ -34,6 +34,15 @@
     {
       "weight": 5,
       "element": {
+        "location": "celestialexploration:large_meteor_crater",
+        "processors": "celestialexploration:asteroid_bauxite",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 5,
+      "element": {
         "location": "celestialexploration:large_iron_meteor_crater",
         "processors": "minecraft:empty",
         "projection": "rigid",

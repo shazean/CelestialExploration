@@ -24,7 +24,7 @@ public class LootTables  extends BaseLootTableProvider {
 
     @Override
     protected void addTables() {
-    	/**
+    	/*
 		 * MOON
 		 */
     	lootTables.put(BlockRegistry.MOON_BRICK_SLAB.get(), createSimpleTable("moon_brick_slab", BlockRegistry.MOON_BRICK_SLAB.get()));
@@ -39,6 +39,8 @@ public class LootTables  extends BaseLootTableProvider {
     	lootTables.put(BlockRegistry.GLOWING_MOON_SAND.get(), createSilkTouchTable("glowing_moon_sand", BlockRegistry.GLOWING_MOON_SAND.get(), ItemRegistry.MOON_DUST.get(), 2, 5));
     	lootTables.put(BlockRegistry.MOON_IRON_ORE.get(), createOreTable("moon_iron_ore", BlockRegistry.MOON_IRON_ORE.get(), Items.RAW_IRON));
     	lootTables.put(BlockRegistry.MOON_REDSTONE_ORE.get(), createOreTable("moon_redstone_ore", BlockRegistry.MOON_REDSTONE_ORE.get(), Items.REDSTONE));
+		lootTables.put(BlockRegistry.MOON_BAUXITE_ORE.get(), createOreTable("moon_bauxite_ore", BlockRegistry.MOON_BAUXITE_ORE.get(), ItemRegistry.RAW_BAUXITE.get()));
+
 		lootTables.put(BlockRegistry.MOON_COBBLESTONE.get(), createSimpleTable("moon_cobblestone", BlockRegistry.MOON_COBBLESTONE.get()));
 		lootTables.put(BlockRegistry.MOON_DEEPSLATE.get(), createSilkTouchTable("moon_deepslate", BlockRegistry.MOON_DEEPSLATE.get(), BlockRegistry.MOON_COBBLED_DEEPSLATE.get(), 1, 1));
 		lootTables.put(BlockRegistry.MOON_COBBLED_DEEPSLATE.get(), createSimpleTable("moon_cobblestone", BlockRegistry.MOON_COBBLED_DEEPSLATE.get()));
@@ -104,6 +106,8 @@ public class LootTables  extends BaseLootTableProvider {
 //		lootTables.put(BlockRegistry.MARS_STONE.get(), createSilkTouchTable("mars_stone", BlockRegistry.MARS_STONE.get(), BlockRegistry.MARS_COBBLESTONE.get(), 1, 1));
 		lootTables.put(BlockRegistry.MARS_IRON_ORE.get(), createOreTable("mars_iron_ore", BlockRegistry.MARS_IRON_ORE.get(), Items.RAW_IRON));
     	lootTables.put(BlockRegistry.MARS_REDSTONE_ORE.get(), createOreTable("mars_redstone_ore", BlockRegistry.MARS_REDSTONE_ORE.get(), Items.REDSTONE));
+		lootTables.put(BlockRegistry.MARS_BAUXITE_ORE.get(), createOreTable("mars_bauxite_ore", BlockRegistry.MARS_BAUXITE_ORE.get(), ItemRegistry.RAW_BAUXITE.get()));
+
 		lootTables.put(BlockRegistry.MARS_COBBLESTONE.get(), createSimpleTable("mars_cobblestone", BlockRegistry.MARS_COBBLESTONE.get()));
 		lootTables.put(BlockRegistry.MARS_DEEPSLATE.get(), createSilkTouchTable("mars_deepslate", BlockRegistry.MARS_DEEPSLATE.get(), BlockRegistry.MARS_COBBLED_DEEPSLATE.get(), 1, 1));
 		lootTables.put(BlockRegistry.MARS_COBBLED_DEEPSLATE.get(), createSimpleTable("mars_cobblestone", BlockRegistry.MARS_COBBLED_DEEPSLATE.get()));
@@ -177,6 +181,8 @@ public class LootTables  extends BaseLootTableProvider {
 //		lootTables.put(BlockRegistry.MARS_STONE.get(), createSilkTouchTable("mars_stone", BlockRegistry.MARS_STONE.get(), BlockRegistry.MARS_COBBLESTONE.get(), 1, 1));
 		lootTables.put(BlockRegistry.VENUS_IRON_ORE.get(), createOreTable("venus_iron_ore", BlockRegistry.VENUS_IRON_ORE.get(), Items.RAW_IRON));
 		lootTables.put(BlockRegistry.VENUS_REDSTONE_ORE.get(), createOreTable("venus_redstone_ore", BlockRegistry.VENUS_REDSTONE_ORE.get(), Items.REDSTONE));
+		lootTables.put(BlockRegistry.VENUS_BAUXITE_ORE.get(), createOreTable("venus_bauxite_ore", BlockRegistry.VENUS_BAUXITE_ORE.get(), ItemRegistry.RAW_BAUXITE.get()));
+
 		lootTables.put(BlockRegistry.VENUS_LAPIS_ORE.get(), createOreTable("venus_lapis_ore", BlockRegistry.VENUS_LAPIS_ORE.get(), Items.LAPIS_LAZULI));
 		lootTables.put(BlockRegistry.VENUS_COBBLESTONE.get(), createSimpleTable("venus_cobblestone", BlockRegistry.VENUS_COBBLESTONE.get()));
 		lootTables.put(BlockRegistry.VENUS_DEEPSLATE.get(), createSilkTouchTable("venus_deepslate", BlockRegistry.VENUS_DEEPSLATE.get(), BlockRegistry.VENUS_COBBLED_DEEPSLATE.get(), 1, 1));
@@ -253,6 +259,8 @@ public class LootTables  extends BaseLootTableProvider {
     	lootTables.put(BlockRegistry.METEOR_LAPIS_ORE.get(), createOreTable("meteor_lapis_ore", BlockRegistry.METEOR_LAPIS_ORE.get(), Items.LAPIS_LAZULI));
 		lootTables.put(BlockRegistry.METEOR_SULFUR_ORE.get(), createOreTable("meteor_sulfur_ore", BlockRegistry.METEOR_SULFUR_ORE.get(), ItemRegistry.SULFUR_CRYSTAL.get()));
     	lootTables.put(BlockRegistry.METEOR_REDSTONE_ORE.get(), createOreTable("meteor_redstone_ore", BlockRegistry.METEOR_REDSTONE_ORE.get(), Items.REDSTONE));
+		lootTables.put(BlockRegistry.METEOR_BAUXITE_ORE.get(), createOreTable("meteor_bauxite_ore", BlockRegistry.METEOR_BAUXITE_ORE.get(), ItemRegistry.RAW_BAUXITE.get()));
+
 
     	lootTables.put(BlockRegistry.CHISELED_METEOR_BRICKS.get(), createSimpleTable("chiseled_meteor_bricks", BlockRegistry.CHISELED_METEOR_BRICKS.get()));
 
@@ -303,6 +311,9 @@ public class LootTables  extends BaseLootTableProvider {
 
 		lootTables.put(BlockRegistry.COMPRESSED_COBBLESTONE.get(), createSimpleTable("compressed_cobblestone", BlockRegistry.COMPRESSED_COBBLESTONE.get()));
 		lootTables.put(BlockRegistry.COMPRESSED_COBBLED_DEEPSLATE.get(), createSimpleTable("compressed_cobbled_deepslate", BlockRegistry.COMPRESSED_COBBLED_DEEPSLATE.get()));
+		lootTables.put(BlockRegistry.COMPRESSED_NETHERRACK.get(), createSimpleTable("compressed_netherrack", BlockRegistry.COMPRESSED_NETHERRACK.get()));
+		lootTables.put(BlockRegistry.BAUXITE_ORE.get(), createOreTable("bauxite_ore", BlockRegistry.BAUXITE_ORE.get(), ItemRegistry.RAW_BAUXITE.get()));
+
 
 		lootTables.put(BlockRegistry.WORKBENCH.get(), createSimpleTable("workbench", BlockRegistry.WORKBENCH.get()));
 		lootTables.put(BlockRegistry.SILICA.get(), createSimpleTable("silica", BlockRegistry.SILICA.get()));

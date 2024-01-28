@@ -27,6 +27,8 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(BlockRegistry.MOON_BRICK_WALL.get())
                 .add(BlockRegistry.MOON_IRON_ORE.get())
                 .add(BlockRegistry.MOON_REDSTONE_ORE.get())
+                .add(BlockRegistry.MOON_BAUXITE_ORE.get())
+
                 .add(BlockRegistry.MOON_DEEPSLATE_IRON_ORE.get())
                 .add(BlockRegistry.MOON_DEEPSLATE_REDSTONE_ORE.get())
                 .add(BlockRegistry.MOON_STONE.get())
@@ -69,6 +71,8 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(BlockRegistry.MARS_BRICKS.get())
                 .add(BlockRegistry.MARS_IRON_ORE.get())
                 .add(BlockRegistry.MARS_REDSTONE_ORE.get())
+                .add(BlockRegistry.MARS_BAUXITE_ORE.get())
+
                 .add(BlockRegistry.MARS_DEEPSLATE_IRON_ORE.get())
                 .add(BlockRegistry.MARS_DEEPSLATE_REDSTONE_ORE.get())
                 .add(BlockRegistry.MARS_STONE.get())
@@ -111,6 +115,7 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(BlockRegistry.VENUS_IRON_ORE.get())
                 .add(BlockRegistry.VENUS_REDSTONE_ORE.get())
                 .add(BlockRegistry.VENUS_LAPIS_ORE.get())
+                .add(BlockRegistry.VENUS_BAUXITE_ORE.get())
                 .add(BlockRegistry.VENUS_DEEPSLATE_LAPIS_ORE.get())
                 .add(BlockRegistry.VENUS_DEEPSLATE_IRON_ORE.get())
                 .add(BlockRegistry.VENUS_DEEPSLATE_REDSTONE_ORE.get())
@@ -164,7 +169,11 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(BlockRegistry.METEOR_IRON_ORE.get())
                 .add(BlockRegistry.METEOR_LAPIS_ORE.get())
                 .add(BlockRegistry.METEOR_REDSTONE_ORE.get())
+                .add(BlockRegistry.METEOR_BAUXITE_ORE.get())
                 .add(BlockRegistry.CHISELED_METEOR_BRICKS.get())
+
+                .add(BlockRegistry.BAUXITE_ORE.get())
+
 
                 /*CERAMIC*/
                 .add(BlockRegistry.CERAMIC.get())
@@ -252,12 +261,16 @@ public class ModBlockTags extends BlockTagsProvider {
         tag(Tags.Blocks.ORES)
                 .add(BlockRegistry.MOON_IRON_ORE.get())
                 .add(BlockRegistry.MOON_REDSTONE_ORE.get())
+                .add(BlockRegistry.MOON_BAUXITE_ORE.get())
+
                 .add(BlockRegistry.MARS_IRON_ORE.get())
                 .add(BlockRegistry.MARS_REDSTONE_ORE.get())
                 .add(BlockRegistry.MOON_DEEPSLATE_IRON_ORE.get())
                 .add(BlockRegistry.MOON_DEEPSLATE_REDSTONE_ORE.get())
                 .add(BlockRegistry.MARS_DEEPSLATE_IRON_ORE.get())
                 .add(BlockRegistry.MARS_DEEPSLATE_REDSTONE_ORE.get())
+                .add(BlockRegistry.MARS_BAUXITE_ORE.get())
+
 
                 .add(BlockRegistry.VENUS_REDSTONE_ORE.get())
                 .add(BlockRegistry.VENUS_IRON_ORE.get())
@@ -265,6 +278,8 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(BlockRegistry.VENUS_DEEPSLATE_IRON_ORE.get())
                 .add(BlockRegistry.VENUS_DEEPSLATE_REDSTONE_ORE.get())
                 .add(BlockRegistry.VENUS_DEEPSLATE_LAPIS_ORE.get())
+                .add(BlockRegistry.VENUS_BAUXITE_ORE.get())
+
 
                 .add(BlockRegistry.METEOR_COAL_ORE.get())
                 .add(BlockRegistry.METEOR_COPPER_ORE.get())
@@ -273,7 +288,13 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(BlockRegistry.METEOR_GOLD_ORE.get())
                 .add(BlockRegistry.METEOR_IRON_ORE.get())
                 .add(BlockRegistry.METEOR_LAPIS_ORE.get())
-                .add(BlockRegistry.METEOR_REDSTONE_ORE.get());
+                .add(BlockRegistry.METEOR_REDSTONE_ORE.get())
+
+                .add(BlockRegistry.METEOR_BAUXITE_ORE.get())
+                .add(BlockRegistry.BAUXITE_ORE.get())
+
+
+        ;
 
 //        tag(BlockTags.DIRT)
 //                .add(BlockRegistry.COARSE_MOON_SAND.get())
