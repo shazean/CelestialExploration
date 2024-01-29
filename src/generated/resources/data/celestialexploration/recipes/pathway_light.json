@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "celestialexploration",
+  "pattern": [
+    "XXX",
+    " T "
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:aluminum_ingot"
+    },
+    "T": {
+      "item": "minecraft:redstone_torch"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:pathway_light",
+    "count": 4
+  }
+}

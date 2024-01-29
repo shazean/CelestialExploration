@@ -383,7 +383,29 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(BlockRegistry.COMPRESSED_COBBLESTONE.get(), "Compressed Cobblestone");
 		add(BlockRegistry.COMPRESSED_COBBLED_DEEPSLATE.get(), "Compressed Cobbled Deepslate");
 		add(BlockRegistry.COMPRESSED_NETHERRACK.get(), "Compressed Netherrack");
+
 		add(BlockRegistry.BAUXITE_ORE.get(), "Bauxite Ore");
+		add(ItemRegistry.RAW_BAUXITE.get(), "Raw Bauxite");
+		add(ItemRegistry.BAUXITE_INGOT.get(), "Bauxite Ingot");
+		add(ItemRegistry.ALUMINUM_INGOT.get(), "Aluminum Ingot");
+		add(BlockRegistry.ALUMINUM_BLOCK.get(), "Aluminum Block");
+
+		add(BlockRegistry.INSULATED_PANEL.get(), "Insulated Panel");
+		add(BlockRegistry.INSULATED_PANEL_CORNER.get(), "Insulated Panel Corner");
+		add(BlockRegistry.PANEL.get(), "Panel");
+		add(BlockRegistry.PANEL_STAIRS.get(), "Panel Stairs");
+		add(BlockRegistry.PANEL_SLAB.get(), "Panel Slab");
+		add(BlockRegistry.PANEL_WALL.get(), "Panel Wall");
+		add(BlockRegistry.THIN_PANEL.get(), "Thin Panel");
+
+		add(BlockRegistry.PATHWAY_LIGHT.get(), "Pathway Light");
+
+		add(BlockRegistry.RED_BUTTON.get(), "Red Button");
+		add(BlockRegistry.YELLOW_BUTTON.get(), "Yellow Button");
+		add(BlockRegistry.BLUE_BUTTON.get(), "Blue Button");
+		add(BlockRegistry.GREEN_BUTTON.get(), "Green Button");
+		add(BlockRegistry.WHITE_BUTTON.get(), "White Button");
+		add(BlockRegistry.BLACK_BUTTON.get(), "Black Button");
 
 		add(BlockRegistry.WORKBENCH.get(), "Workbench");
 		add(BlockRegistry.SILICA.get(), "Silica");
@@ -493,6 +515,8 @@ public class ModLanguageProvider extends LanguageProvider {
 //		add(FluidRegistry.MOLTEN_NETHERITE_BLOCK.get(), "Molten Copper");
 		add(FluidRegistry.SULFUR_BLOCK.get(), "Sulfur");
 		add("fluid.celestialexploration.sulfur", "Sulfur");
+		add(FluidRegistry.MOLTEN_ALUMINUM_BLOCK.get(), "Molten Aluminum");
+		add("fluid.celestialexploration.molten_aluminum", "Molten Aluminum");
 
 		add(FluidRegistry.SULFUR_BUCKET.get(), "Sulfur Bucket");
 

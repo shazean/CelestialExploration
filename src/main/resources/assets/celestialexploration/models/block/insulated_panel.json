@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "celestialexploration:block/panel",
+    "side": "celestialexploration:block/panel",
+    "top": "celestialexploration:block/white_panel"
+  }
+}

@@ -368,10 +368,10 @@ public class ItemRegistry {
 	public static final RegistryObject<Item> STEEL_BLOCK = fromBlock(BlockRegistry.STEEL_BLOCK);
 	public static final RegistryObject<Item> ALUMINUM_BLOCK = fromBlock(BlockRegistry.ALUMINUM_BLOCK);
 
-	public static final RegistryObject<Item> AIRLOCK_DOOR = fromBlock(BlockRegistry.AIRLOCK_DOOR);
-	public static final RegistryObject<Item> STEEL_DOOR = fromBlock(BlockRegistry.STEEL_DOOR);
-	public static final RegistryObject<Item> STEEL_TRAPDOOR = fromBlock(BlockRegistry.STEEL_TRAPDOOR);
-	public static final RegistryObject<Item> STEEL_BUTTON = fromBlock(BlockRegistry.STEEL_BUTTON);
+	public static final RegistryObject<Item> AIRLOCK_DOOR = fromMiscBlock(BlockRegistry.AIRLOCK_DOOR);
+	public static final RegistryObject<Item> STEEL_DOOR = fromMiscBlock(BlockRegistry.STEEL_DOOR);
+	public static final RegistryObject<Item> STEEL_TRAPDOOR = fromMiscBlock(BlockRegistry.STEEL_TRAPDOOR);
+	public static final RegistryObject<Item> STEEL_BUTTON = fromMiscBlock(BlockRegistry.STEEL_BUTTON);
 
 	public static final RegistryObject<Item> COMPRESSED_COBBLESTONE = fromBlock(BlockRegistry.COMPRESSED_COBBLESTONE);
 	public static final RegistryObject<Item> COMPRESSED_COBBLED_DEEPSLATE = fromBlock(BlockRegistry.COMPRESSED_COBBLED_DEEPSLATE);
@@ -387,6 +387,23 @@ public class ItemRegistry {
 	public static final RegistryObject<Item> RUSTED_IRON_NUGGET = ITEMS.register("rusted_iron_nugget", () -> new Item((new Item.Properties()).tab(CelestialExploration.CELESTIAL_MISC_TAB)));
 //	public static final RegistryObject<Item> IRON_DUST = ITEMS.register("iron_dust", () -> new Item((new Item.Properties()).tab(CelestialExploration.CELESTIAL_MISC_TAB)));
 	public static final RegistryObject<Item> LUNAR_GOO = ITEMS.register("lunar_goo", () -> new Item((new Item.Properties()).tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+
+	public static final RegistryObject<Item> INSULATED_PANEL = fromBlock(BlockRegistry.INSULATED_PANEL);
+	public static final RegistryObject<Item> INSULATED_PANEL_CORNER = fromBlock(BlockRegistry.INSULATED_PANEL_CORNER);
+	public static final RegistryObject<Item> PANEL = fromBlock(BlockRegistry.PANEL);
+	public static final RegistryObject<Item> PANEL_STAIRS = fromBlock(BlockRegistry.PANEL_STAIRS);
+	public static final RegistryObject<Item> PANEL_SLAB = fromBlock(BlockRegistry.PANEL_SLAB);
+	public static final RegistryObject<Item> PANEL_WALL = fromBlock(BlockRegistry.PANEL_WALL);
+	public static final RegistryObject<Item> THIN_PANEL = fromMiscBlock(BlockRegistry.THIN_PANEL);
+
+	public static final RegistryObject<Item> RED_BUTTON = fromMiscBlock(BlockRegistry.RED_BUTTON);
+	public static final RegistryObject<Item> YELLOW_BUTTON = fromMiscBlock(BlockRegistry.YELLOW_BUTTON);
+	public static final RegistryObject<Item> BLUE_BUTTON = fromMiscBlock(BlockRegistry.BLUE_BUTTON);
+	public static final RegistryObject<Item> GREEN_BUTTON = fromMiscBlock(BlockRegistry.GREEN_BUTTON);
+	public static final RegistryObject<Item> WHITE_BUTTON = fromMiscBlock(BlockRegistry.WHITE_BUTTON);
+	public static final RegistryObject<Item> BLACK_BUTTON = fromMiscBlock(BlockRegistry.BLACK_BUTTON);
+
+	public static final RegistryObject<Item> PATHWAY_LIGHT = fromBlock(BlockRegistry.PATHWAY_LIGHT);
 
 	public static final RegistryObject<Item> LUMINOUS_BLUE_GLASS = fromBlock(BlockRegistry.LUMINOUS_BLUE_GLASS);
 	public static final RegistryObject<Item> LUMINOUS_WHITE_GLASS = fromBlock(BlockRegistry.LUMINOUS_WHITE_GLASS);
@@ -482,6 +499,41 @@ public class ItemRegistry {
 	public static final RegistryObject<Item> RED_CERAMIC_TILE = fromBlock(BlockRegistry.RED_CERAMIC_TILE);
 	public static final RegistryObject<Item> PINK_CERAMIC = fromBlock(BlockRegistry.PINK_CERAMIC);
 	public static final RegistryObject<Item> PINK_CERAMIC_TILE = fromBlock(BlockRegistry.PINK_CERAMIC_TILE);
+
+//	public static final RegistryObject<Item> CERAMIC_STAIRS = fromBlock(BlockRegistry.CERAMIC_STAIRS);
+//	public static final RegistryObject<Item> CERAMIC_SLAB = fromBlock(BlockRegistry.CERAMIC_SLAB);
+//	public static final RegistryObject<Item> WHITE_CERAMIC_STAIRS = fromBlock(BlockRegistry.WHITE_CERAMIC_STAIRS);
+//	public static final RegistryObject<Item> WHITE_CERAMIC_SLAB = fromBlock(BlockRegistry.WHITE_CERAMIC_SLAB);
+//	public static final RegistryObject<Item> LIGHT_GREY_CERAMIC_STAIRS = fromBlock(BlockRegistry.LIGHT_GREY_CERAMIC_STAIRS);
+//	public static final RegistryObject<Item> LIGHT_GREY_CERAMIC_SLAB = fromBlock(BlockRegistry.LIGHT_GREY_CERAMIC_SLAB);
+//	public static final RegistryObject<Item> GREY_CERAMIC_STAIRS = fromBlock(BlockRegistry.GREY_CERAMIC_STAIRS);
+//	public static final RegistryObject<Item> GREY_CERAMIC_SLAB = fromBlock(BlockRegistry.GREY_CERAMIC_SLAB);
+//	public static final RegistryObject<Item> BLACK_CERAMIC_STAIRS = fromBlock(BlockRegistry.BLACK_CERAMIC_STAIRS);
+//	public static final RegistryObject<Item> BLACK_CERAMIC_SLAB = fromBlock(BlockRegistry.BLACK_CERAMIC_SLAB);
+//	public static final RegistryObject<Item> PURPLE_CERAMIC_STAIRS = fromBlock(BlockRegistry.PURPLE_CERAMIC_STAIRS);
+//	public static final RegistryObject<Item> PURPLE_CERAMIC_SLAB = fromBlock(BlockRegistry.PURPLE_CERAMIC_SLAB);
+//	public static final RegistryObject<Item> MAGENTA_CERAMIC_STAIRS = fromBlock(BlockRegistry.MAGENTA_CERAMIC_STAIRS);
+//	public static final RegistryObject<Item> MAGENTA_CERAMIC_SLAB = fromBlock(BlockRegistry.MAGENTA_CERAMIC_SLAB);
+//	public static final RegistryObject<Item> BLUE_CERAMIC_STAIRS = fromBlock(BlockRegistry.BLUE_CERAMIC_STAIRS);
+//	public static final RegistryObject<Item> BLUE_CERAMIC_SLAB = fromBlock(BlockRegistry.BLUE_CERAMIC_SLAB);
+//	public static final RegistryObject<Item> LIGHT_BLUE_CERAMIC_STAIRS = fromBlock(BlockRegistry.LIGHT_BLUE_CERAMIC_STAIRS);
+//	public static final RegistryObject<Item> LIGHT_BLUE_CERAMIC_SLAB = fromBlock(BlockRegistry.LIGHT_BLUE_CERAMIC_SLAB);
+//	public static final RegistryObject<Item> CYAN_CERAMIC_STAIRS = fromBlock(BlockRegistry.CYAN_CERAMIC_STAIRS);
+//	public static final RegistryObject<Item> CYAN_CERAMIC_SLAB = fromBlock(BlockRegistry.CYAN_CERAMIC_SLAB);
+//	public static final RegistryObject<Item> GREEN_CERAMIC_STAIRS = fromBlock(BlockRegistry.GREEN_CERAMIC_STAIRS);
+//	public static final RegistryObject<Item> GREEN_CERAMIC_SLAB = fromBlock(BlockRegistry.GREEN_CERAMIC_SLAB);
+//	public static final RegistryObject<Item> LIME_CERAMIC_STAIRS = fromBlock(BlockRegistry.LIME_CERAMIC_STAIRS);
+//	public static final RegistryObject<Item> LIME_CERAMIC_SLAB = fromBlock(BlockRegistry.LIME_CERAMIC_SLAB);
+//	public static final RegistryObject<Item> YELLOW_CERAMIC_STAIRS = fromBlock(BlockRegistry.YELLOW_CERAMIC_STAIRS);
+//	public static final RegistryObject<Item> YELLOW_CERAMIC_SLAB = fromBlock(BlockRegistry.YELLOW_CERAMIC_SLAB);
+//	public static final RegistryObject<Item> ORANGE_CERAMIC_STAIRS = fromBlock(BlockRegistry.ORANGE_CERAMIC_STAIRS);
+//	public static final RegistryObject<Item> ORANGE_CERAMIC_SLAB = fromBlock(BlockRegistry.ORANGE_CERAMIC_SLAB);
+//	public static final RegistryObject<Item> BROWN_CERAMIC_STAIRS = fromBlock(BlockRegistry.BROWN_CERAMIC_STAIRS);
+//	public static final RegistryObject<Item> BROWN_CERAMIC_SLAB = fromBlock(BlockRegistry.BROWN_CERAMIC_SLAB);
+//	public static final RegistryObject<Item> RED_CERAMIC_STAIRS = fromBlock(BlockRegistry.RED_CERAMIC_STAIRS);
+//	public static final RegistryObject<Item> RED_CERAMIC_SLAB = fromBlock(BlockRegistry.RED_CERAMIC_SLAB);
+//	public static final RegistryObject<Item> PINK_CERAMIC_STAIRS = fromBlock(BlockRegistry.PINK_CERAMIC_STAIRS);
+//	public static final RegistryObject<Item> PINK_CERAMIC_SLAB = fromBlock(BlockRegistry.PINK_CERAMIC_SLAB);
 
 	public static final RegistryObject<Item> PAINTED_WHITE_CERAMIC = fromBlock(BlockRegistry.PAINTED_WHITE_CERAMIC);
 	public static final RegistryObject<Item> PAINTED_LIGHT_GREY_CERAMIC = fromBlock(BlockRegistry.PAINTED_LIGHT_GREY_CERAMIC);

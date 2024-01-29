@@ -171,51 +171,51 @@ public class BlockStates extends BlockStateProvider {
 //		simpleBlock(BlockRegistry.VENUS_SAND.get());
 		simpleBlock(BlockRegistry.FINE_VENUS_SAND.get());
 //		simpleBlock(BlockRegistry.VENUS_STONE.get());
-		stairsBlock((StairBlock) BlockRegistry.VENUS_BRICK_STAIRS.get(), modLoc("block/venus_bricks"));
-		slabBlock((SlabBlock) BlockRegistry.VENUS_BRICK_SLAB.get(), modLoc("block/venus_bricks"), modLoc("block/venus_bricks"));
-		wallBlock((WallBlock) BlockRegistry.VENUS_BRICK_WALL.get(), modLoc("block/venus_bricks"));
+		stairsBlock(BlockRegistry.VENUS_BRICK_STAIRS.get(), modLoc("block/venus_bricks"));
+		slabBlock(BlockRegistry.VENUS_BRICK_SLAB.get(), modLoc("block/venus_bricks"), modLoc("block/venus_bricks"));
+		wallBlock(BlockRegistry.VENUS_BRICK_WALL.get(), modLoc("block/venus_bricks"));
 		simpleBlock(BlockRegistry.VENUS_COBBLESTONE.get());
 		axisBlock((RotatedPillarBlock) BlockRegistry.VENUS_DEEPSLATE.get());
 		simpleBlock(BlockRegistry.VENUS_COBBLED_DEEPSLATE.get());
 		axisBlock((RotatedPillarBlock) BlockRegistry.VENUS_BRICK_PILLAR.get(), modLoc("block/venus_brick_pillar"));
 
 		simpleBlock(BlockRegistry.SMALL_VENUS_BRICKS.get());
-		stairsBlock((StairBlock) BlockRegistry.SMALL_VENUS_BRICK_STAIRS.get(), modLoc("block/small_venus_bricks"));
-		slabBlock((SlabBlock) BlockRegistry.SMALL_VENUS_BRICK_SLAB.get(), modLoc("block/small_venus_bricks"), modLoc("block/small_venus_bricks"));
-		wallBlock((WallBlock) BlockRegistry.SMALL_VENUS_BRICK_WALL.get(), modLoc("block/small_venus_bricks"));
+		stairsBlock(BlockRegistry.SMALL_VENUS_BRICK_STAIRS.get(), modLoc("block/small_venus_bricks"));
+		slabBlock(BlockRegistry.SMALL_VENUS_BRICK_SLAB.get(), modLoc("block/small_venus_bricks"), modLoc("block/small_venus_bricks"));
+		wallBlock(BlockRegistry.SMALL_VENUS_BRICK_WALL.get(), modLoc("block/small_venus_bricks"));
 
 
 		simpleBlock(BlockRegistry.CRACKED_VENUS_BRICKS.get());
 
-		stairsBlock((StairBlock) BlockRegistry.VENUS_STONE_STAIRS.get(), modLoc("block/venus_stone"));
-		slabBlock((SlabBlock) BlockRegistry.VENUS_STONE_SLAB.get(), modLoc("block/venus_stone"), modLoc("block/venus_stone"));
+		stairsBlock(BlockRegistry.VENUS_STONE_STAIRS.get(), modLoc("block/venus_stone"));
+		slabBlock(BlockRegistry.VENUS_STONE_SLAB.get(), modLoc("block/venus_stone"), modLoc("block/venus_stone"));
 
-		stairsBlock((StairBlock) BlockRegistry.VENUS_COBBLESTONE_STAIRS.get(), modLoc("block/venus_cobblestone"));
-		slabBlock((SlabBlock) BlockRegistry.VENUS_COBBLESTONE_SLAB.get(), modLoc("block/venus_cobblestone"), modLoc("block/venus_cobblestone"));
-		wallBlock((WallBlock) BlockRegistry.VENUS_COBBLESTONE_WALL.get(), modLoc("block/venus_cobblestone"));
+		stairsBlock(BlockRegistry.VENUS_COBBLESTONE_STAIRS.get(), modLoc("block/venus_cobblestone"));
+		slabBlock(BlockRegistry.VENUS_COBBLESTONE_SLAB.get(), modLoc("block/venus_cobblestone"), modLoc("block/venus_cobblestone"));
+		wallBlock(BlockRegistry.VENUS_COBBLESTONE_WALL.get(), modLoc("block/venus_cobblestone"));
 
-		stairsBlock((StairBlock) BlockRegistry.VENUS_COBBLED_DEEPSLATE_STAIRS.get(), modLoc("block/venus_cobbled_deepslate"));
-		slabBlock((SlabBlock) BlockRegistry.VENUS_COBBLED_DEEPSLATE_SLAB.get(), modLoc("block/venus_cobbled_deepslate"), modLoc("block/venus_cobbled_deepslate"));
-		wallBlock((WallBlock) BlockRegistry.VENUS_COBBLED_DEEPSLATE_WALL.get(), modLoc("block/venus_cobbled_deepslate"));
+		stairsBlock(BlockRegistry.VENUS_COBBLED_DEEPSLATE_STAIRS.get(), modLoc("block/venus_cobbled_deepslate"));
+		slabBlock(BlockRegistry.VENUS_COBBLED_DEEPSLATE_SLAB.get(), modLoc("block/venus_cobbled_deepslate"), modLoc("block/venus_cobbled_deepslate"));
+		wallBlock(BlockRegistry.VENUS_COBBLED_DEEPSLATE_WALL.get(), modLoc("block/venus_cobbled_deepslate"));
 
 		simpleBlock(BlockRegistry.VENUS_SMOOTH_STONE.get());
 
 		simpleBlock(BlockRegistry.VENUS_DEEPSLATE_BRICKS.get());
-		stairsBlock((StairBlock) BlockRegistry.VENUS_DEEPSLATE_BRICK_STAIRS.get(), modLoc("block/venus_deepslate_bricks"));
-		slabBlock((SlabBlock) BlockRegistry.VENUS_DEEPSLATE_BRICK_SLAB.get(), modLoc("block/venus_deepslate_bricks"), modLoc("block/venus_deepslate_bricks"));
-		wallBlock((WallBlock) BlockRegistry.VENUS_DEEPSLATE_BRICK_WALL.get(), modLoc("block/venus_deepslate_bricks"));
+		stairsBlock(BlockRegistry.VENUS_DEEPSLATE_BRICK_STAIRS.get(), modLoc("block/venus_deepslate_bricks"));
+		slabBlock(BlockRegistry.VENUS_DEEPSLATE_BRICK_SLAB.get(), modLoc("block/venus_deepslate_bricks"), modLoc("block/venus_deepslate_bricks"));
+		wallBlock(BlockRegistry.VENUS_DEEPSLATE_BRICK_WALL.get(), modLoc("block/venus_deepslate_bricks"));
 		simpleBlock(BlockRegistry.CHISELED_VENUS_DEEPSLATE_BRICKS.get());
 		simpleBlock(BlockRegistry.CRACKED_VENUS_DEEPSLATE_BRICKS.get());
 
 		simpleBlock(BlockRegistry.VENUS_POLISHED_DEEPSLATE.get());
-		stairsBlock((StairBlock) BlockRegistry.VENUS_POLISHED_DEEPSLATE_STAIRS.get(), modLoc("block/venus_polished_deepslate"));
-		slabBlock((SlabBlock) BlockRegistry.VENUS_POLISHED_DEEPSLATE_SLAB.get(), modLoc("block/venus_polished_deepslate"), modLoc("block/venus_polished_deepslate"));
-		wallBlock((WallBlock) BlockRegistry.VENUS_POLISHED_DEEPSLATE_WALL.get(), modLoc("block/venus_polished_deepslate"));
+		stairsBlock(BlockRegistry.VENUS_POLISHED_DEEPSLATE_STAIRS.get(), modLoc("block/venus_polished_deepslate"));
+		slabBlock(BlockRegistry.VENUS_POLISHED_DEEPSLATE_SLAB.get(), modLoc("block/venus_polished_deepslate"), modLoc("block/venus_polished_deepslate"));
+		wallBlock(BlockRegistry.VENUS_POLISHED_DEEPSLATE_WALL.get(), modLoc("block/venus_polished_deepslate"));
 
 		simpleBlock(BlockRegistry.VENUS_DEEPSLATE_TILES.get());
-		stairsBlock((StairBlock) BlockRegistry.VENUS_DEEPSLATE_TILE_STAIRS.get(), modLoc("block/venus_deepslate_tiles"));
-		slabBlock((SlabBlock) BlockRegistry.VENUS_DEEPSLATE_TILE_SLAB.get(), modLoc("block/venus_deepslate_tiles"), modLoc("block/venus_deepslate_tiles"));
-		wallBlock((WallBlock) BlockRegistry.VENUS_DEEPSLATE_TILE_WALL.get(), modLoc("block/venus_deepslate_tiles"));
+		stairsBlock(BlockRegistry.VENUS_DEEPSLATE_TILE_STAIRS.get(), modLoc("block/venus_deepslate_tiles"));
+		slabBlock(BlockRegistry.VENUS_DEEPSLATE_TILE_SLAB.get(), modLoc("block/venus_deepslate_tiles"), modLoc("block/venus_deepslate_tiles"));
+		wallBlock(BlockRegistry.VENUS_DEEPSLATE_TILE_WALL.get(), modLoc("block/venus_deepslate_tiles"));
 		simpleBlock(BlockRegistry.CRACKED_VENUS_DEEPSLATE_TILES.get());
 
 		buttonBlock((ButtonBlock) BlockRegistry.VENUS_STONE_BUTTON.get(), modLoc("block/venus_stone"));
@@ -324,10 +324,26 @@ public class BlockStates extends BlockStateProvider {
 //		simpleBlock(BlockRegistry.SOLAR_PANEL.get());
 //		simpleBlock(BlockRegistry.IGNEOUS_ROCK.get());
 		simpleBlock(BlockRegistry.STEEL_BLOCK.get());
-		doorBlock((DoorBlock) BlockRegistry.AIRLOCK_DOOR.get(), modLoc("block/airlock_door_bottom"), modLoc("block/airlock_door_top"));
-		doorBlock((DoorBlock) BlockRegistry.STEEL_DOOR.get(), modLoc("block/steel_door_bottom"), modLoc("block/steel_door_top"));
-		trapdoorBlock((TrapDoorBlock) BlockRegistry.STEEL_TRAPDOOR.get(), modLoc("block/steel_trapdoor"), true);
-		buttonBlock((ButtonBlock) BlockRegistry.STEEL_BUTTON.get(), modLoc("block/steel_block"));
+		doorBlock(BlockRegistry.AIRLOCK_DOOR.get(), modLoc("block/airlock_door_bottom"), modLoc("block/airlock_door_top"));
+		doorBlock(BlockRegistry.STEEL_DOOR.get(), modLoc("block/steel_door_bottom"), modLoc("block/steel_door_top"));
+		trapdoorBlock(BlockRegistry.STEEL_TRAPDOOR.get(), modLoc("block/steel_trapdoor"), true);
+		buttonBlock(BlockRegistry.STEEL_BUTTON.get(), modLoc("block/steel_block"));
+
+		simpleBlock(BlockRegistry.ALUMINUM_BLOCK.get());
+
+		simpleBlock(BlockRegistry.PANEL.get());
+		paneBlock((BlockRegistry.THIN_PANEL.get()), modLoc("block/panel"), modLoc("block/thin_panel_top"));
+		stairsBlock(BlockRegistry.PANEL_STAIRS.get(), modLoc("block/panel"));
+		slabBlock(BlockRegistry.PANEL_SLAB.get(), modLoc("block/panel"), modLoc("block/panel"));
+		wallBlock(BlockRegistry.PANEL_WALL.get(), modLoc("block/panel"));
+
+		buttonBlock(BlockRegistry.RED_BUTTON.get(), mcLoc("block/red_stained_glass"));
+		buttonBlock(BlockRegistry.YELLOW_BUTTON.get(), mcLoc("block/yellow_stained_glass"));
+		buttonBlock(BlockRegistry.BLUE_BUTTON.get(), mcLoc("block/blue_stained_glass"));
+		buttonBlock(BlockRegistry.GREEN_BUTTON.get(), mcLoc("block/green_stained_glass"));
+		buttonBlock(BlockRegistry.WHITE_BUTTON.get(), mcLoc("block/white_stained_glass"));
+		buttonBlock(BlockRegistry.BLACK_BUTTON.get(), mcLoc("block/black_stained_glass"));
+
 
 		simpleBlock(BlockRegistry.CERAMIC.get());
 		paneBlock(BlockRegistry.CERAMIC_TILE.get(), modLoc("block/ceramic"), modLoc("block/ceramic_tile_top"));
@@ -364,6 +380,42 @@ public class BlockStates extends BlockStateProvider {
 		paneBlock(BlockRegistry.RED_CERAMIC_TILE.get(), modLoc("block/red_ceramic"), modLoc("block/red_ceramic_tile_top"));
 		simpleBlock(BlockRegistry.PINK_CERAMIC.get());
 		paneBlock(BlockRegistry.PINK_CERAMIC_TILE.get(), modLoc("block/pink_ceramic"), modLoc("block/pink_ceramic_tile_top"));
+
+//		stairsBlock(BlockRegistry.CERAMIC_STAIRS.get(), modLoc("block/ceramic"));
+//		slabBlock(BlockRegistry.CERAMIC_SLAB.get(), modLoc("block/ceramic"), modLoc("block/ceramic"));
+//		stairsBlock(BlockRegistry.WHITE_CERAMIC_STAIRS.get(), modLoc("block/white_ceramic"));
+//		slabBlock(BlockRegistry.WHITE_CERAMIC_SLAB.get(), modLoc("block/white_ceramic"), modLoc("block/white_ceramic"));
+//		stairsBlock(BlockRegistry.LIGHT_GREY_CERAMIC_STAIRS.get(), modLoc("block/light_grey_ceramic"));
+//		slabBlock(BlockRegistry.LIGHT_GREY_CERAMIC_SLAB.get(), modLoc("block/light_grey_ceramic"), modLoc("block/light_grey_ceramic"));
+//		stairsBlock(BlockRegistry.GREY_CERAMIC_STAIRS.get(), modLoc("block/grey_ceramic"));
+//		slabBlock(BlockRegistry.GREY_CERAMIC_SLAB.get(), modLoc("block/grey_ceramic"), modLoc("block/grey_ceramic"));
+//		stairsBlock(BlockRegistry.BLACK_CERAMIC_STAIRS.get(), modLoc("block/black_ceramic"));
+//		slabBlock(BlockRegistry.BLACK_CERAMIC_SLAB.get(), modLoc("block/black_ceramic"), modLoc("block/black_ceramic"));
+//		stairsBlock(BlockRegistry.PURPLE_CERAMIC_STAIRS.get(), modLoc("block/purple_ceramic"));
+//		slabBlock(BlockRegistry.PURPLE_CERAMIC_SLAB.get(), modLoc("block/purple_ceramic"), modLoc("block/purple_ceramic"));
+//		stairsBlock(BlockRegistry.MAGENTA_CERAMIC_STAIRS.get(), modLoc("block/magenta_ceramic"));
+//		slabBlock(BlockRegistry.MAGENTA_CERAMIC_SLAB.get(), modLoc("block/magenta_ceramic"), modLoc("block/magenta_ceramic"));
+//		stairsBlock(BlockRegistry.BLUE_CERAMIC_STAIRS.get(), modLoc("block/blue_ceramic"));
+//		slabBlock(BlockRegistry.BLUE_CERAMIC_SLAB.get(), modLoc("block/blue_ceramic"), modLoc("block/blue_ceramic"));
+//		stairsBlock(BlockRegistry.LIGHT_BLUE_CERAMIC_STAIRS.get(), modLoc("block/light_blue_ceramic"));
+//		slabBlock(BlockRegistry.LIGHT_BLUE_CERAMIC_SLAB.get(), modLoc("block/light_blue_ceramic"), modLoc("block/light_blue_ceramic"));
+//		stairsBlock(BlockRegistry.CYAN_CERAMIC_STAIRS.get(), modLoc("block/cyan_ceramic"));
+//		slabBlock(BlockRegistry.CYAN_CERAMIC_SLAB.get(), modLoc("block/cyan_ceramic"), modLoc("block/cyan_ceramic"));
+//		stairsBlock(BlockRegistry.GREEN_CERAMIC_STAIRS.get(), modLoc("block/green_ceramic"));
+//		slabBlock(BlockRegistry.GREEN_CERAMIC_SLAB.get(), modLoc("block/green_ceramic"), modLoc("block/green_ceramic"));
+//		stairsBlock(BlockRegistry.LIME_CERAMIC_STAIRS.get(), modLoc("block/lime_ceramic"));
+//		slabBlock(BlockRegistry.LIME_CERAMIC_SLAB.get(), modLoc("block/lime_ceramic"), modLoc("block/lime_ceramic"));
+//		stairsBlock(BlockRegistry.YELLOW_CERAMIC_STAIRS.get(), modLoc("block/yellow_ceramic"));
+//		slabBlock(BlockRegistry.YELLOW_CERAMIC_SLAB.get(), modLoc("block/yellow_ceramic"), modLoc("block/yellow_ceramic"));
+//		stairsBlock(BlockRegistry.ORANGE_CERAMIC_STAIRS.get(), modLoc("block/orange_ceramic"));
+//		slabBlock(BlockRegistry.ORANGE_CERAMIC_SLAB.get(), modLoc("block/orange_ceramic"), modLoc("block/orange_ceramic"));
+//		stairsBlock(BlockRegistry.BROWN_CERAMIC_STAIRS.get(), modLoc("block/brown_ceramic"));
+//		slabBlock(BlockRegistry.BROWN_CERAMIC_SLAB.get(), modLoc("block/brown_ceramic"), modLoc("block/brown_ceramic"));
+//		stairsBlock(BlockRegistry.RED_CERAMIC_STAIRS.get(), modLoc("block/red_ceramic"));
+//		slabBlock(BlockRegistry.RED_CERAMIC_SLAB.get(), modLoc("block/red_ceramic"), modLoc("block/red_ceramic"));
+//		stairsBlock(BlockRegistry.PINK_CERAMIC_STAIRS.get(), modLoc("block/pink_ceramic"));
+//		slabBlock(BlockRegistry.PINK_CERAMIC_SLAB.get(), modLoc("block/pink_ceramic"), modLoc("block/pink_ceramic_tile_top"));
+
 
 		simpleBlock(BlockRegistry.DRY_ICE.get());
 

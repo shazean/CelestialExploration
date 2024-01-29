@@ -174,6 +174,9 @@ public class ModBlockTags extends BlockTagsProvider {
 
                 .add(BlockRegistry.BAUXITE_ORE.get())
 
+                .add(BlockRegistry.STEEL_BLOCK.get())
+                .add(BlockRegistry.ALUMINUM_BLOCK.get())
+
 
                 /*CERAMIC*/
                 .add(BlockRegistry.CERAMIC.get())
@@ -233,7 +236,12 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(BlockRegistry.MOON_DEEPSLATE_IRON_ORE.get())
                 .add(BlockRegistry.MARS_DEEPSLATE_IRON_ORE.get())
                 .add(BlockRegistry.VENUS_IRON_ORE.get())
-                .add(BlockRegistry.VENUS_DEEPSLATE_IRON_ORE.get());
+                .add(BlockRegistry.VENUS_DEEPSLATE_IRON_ORE.get())
+                .add(BlockRegistry.MOON_BAUXITE_ORE.get())
+                .add(BlockRegistry.MARS_BAUXITE_ORE.get())
+                .add(BlockRegistry.VENUS_BAUXITE_ORE.get())
+                .add(BlockRegistry.BAUXITE_ORE.get())
+        ;
 
         tag(BlockTags.NEEDS_IRON_TOOL)
                 .add(BlockRegistry.MOON_REDSTONE_ORE.get())
@@ -433,13 +441,13 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(BlockRegistry.VENUS_DEEPSLATE_TILE_WALL.get())
                 .add(BlockRegistry.VENUS_POLISHED_DEEPSLATE_WALL.get())
                 .add(BlockRegistry.SMALL_VENUS_BRICK_WALL.get())
+
+                .add(BlockRegistry.PANEL_WALL.get())
         ;
 
 
         tag(Tags.Blocks.SAND)
                 .add(BlockRegistry.GLOWING_MOON_SAND.get())
-//                .add(BlockRegistry.COARSE_MOON_SAND.get())
-//                .add(BlockRegistry.COARSE_MARS_SAND.get())
                 .add(BlockRegistry.MARS_SAND.get())
                 .add(BlockRegistry.MOON_SAND.get())
                 .add(BlockRegistry.VENUS_SAND.get())
@@ -448,8 +456,6 @@ public class ModBlockTags extends BlockTagsProvider {
 
         tag(BlockTags.SAND)
                 .add(BlockRegistry.GLOWING_MOON_SAND.get())
-//                .add(BlockRegistry.COARSE_MOON_SAND.get())
-//                .add(BlockRegistry.COARSE_MARS_SAND.get())
                 .add(BlockRegistry.MARS_SAND.get())
                 .add(BlockRegistry.MOON_SAND.get())
                 .add(BlockRegistry.VENUS_SAND.get())
@@ -477,6 +483,14 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(BlockRegistry.VENUS_STONE_BUTTON.get())
                 .add(BlockRegistry.VENUS_DEEPSLATE_BUTTON.get())
                 .add(BlockRegistry.METEOR_BUTTON.get())
+
+                .add(BlockRegistry.RED_BUTTON.get())
+                .add(BlockRegistry.YELLOW_BUTTON.get())
+                .add(BlockRegistry.BLUE_BUTTON.get())
+                .add(BlockRegistry.GREEN_BUTTON.get())
+                .add(BlockRegistry.WHITE_BUTTON.get())
+                .add(BlockRegistry.BLACK_BUTTON.get())
+
                 .add(BlockRegistry.STEEL_BUTTON.get());
         
         //TODO

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "celestialexploration",
+  "ingredients": [
+    {
+      "item": "celestialexploration:yellow_ceramic"
+    }
+  ],
+  "result": {
+    "item": "celestialexploration:yellow_button"
+  }
+}

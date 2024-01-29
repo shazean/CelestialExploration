@@ -392,6 +392,37 @@ public class Recipes extends RecipeProvider {
 		SimpleCookingRecipeBuilder.smelting(Ingredient.of(ItemRegistry.RAW_BAUXITE.get()), ItemRegistry.BAUXITE_INGOT.get(), 1.0F, 100).unlockedBy("has_raw_bauxite", has(ItemRegistry.RAW_BAUXITE.get())).save(consumer);
 		ShapelessRecipeBuilder.shapeless(ItemRegistry.ALUMINUM_INGOT.get(), 3).requires(Items.IRON_INGOT).requires(ItemRegistry.BAUXITE_INGOT.get()).requires(ItemRegistry.BAUXITE_INGOT.get()).group("celestialexploration").unlockedBy("has_raw_bauxite", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.RAW_BAUXITE.get())).save(consumer);
 		ShapelessRecipeBuilder.shapeless(ItemRegistry.ALUMINUM_INGOT.get(), 3).requires(Items.COPPER_INGOT).requires(ItemRegistry.BAUXITE_INGOT.get()).requires(ItemRegistry.BAUXITE_INGOT.get()).group("celestialexploration").unlockedBy("has_raw_bauxite", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.RAW_BAUXITE.get())).save(consumer, "aluminum_from_copper");
+		ShapedRecipeBuilder.shaped(BlockRegistry.ALUMINUM_BLOCK.get()).pattern("XXX").pattern("XXX").pattern("XXX").define('X', ItemRegistry.ALUMINUM_INGOT.get()).group("celestialexploration").unlockedBy("aluminum", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.ALUMINUM_INGOT.get())).save(consumer);
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.ALUMINUM_INGOT.get(), 9).requires(ItemRegistry.ALUMINUM_BLOCK.get()).group("celestialexploration").unlockedBy("aluminum", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.ALUMINUM_INGOT.get())).save(consumer, "aluminum_ingot_from_block");
+
+		ShapedRecipeBuilder.shaped(BlockRegistry.INSULATED_PANEL.get(), 4).pattern("XC").pattern("XC").define('X', ItemRegistry.ALUMINUM_INGOT.get()).define('C', ItemRegistry.WHITE_CERAMIC.get()).group("celestialexploration").unlockedBy("aluminum", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.ALUMINUM_INGOT.get())).save(consumer);
+
+		ShapedRecipeBuilder.shaped(BlockRegistry.PATHWAY_LIGHT.get(), 4).pattern("XXX").pattern(" T ").define('X', ItemRegistry.ALUMINUM_INGOT.get()).define('T', Items.REDSTONE_TORCH).group("celestialexploration").unlockedBy("aluminum", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.ALUMINUM_INGOT.get())).save(consumer);
+
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.INSULATED_PANEL.get()), BlockRegistry.INSULATED_PANEL_CORNER.get(), 1).unlockedBy("aluminum", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.ALUMINUM_INGOT.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.INSULATED_PANEL_CORNER.get()), BlockRegistry.INSULATED_PANEL.get(), 1).unlockedBy("aluminum", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.ALUMINUM_INGOT.get())).save(consumer, "insulated_panel_stonecutting");
+
+		ShapedRecipeBuilder.shaped(BlockRegistry.PANEL.get()).pattern("XX").pattern("XX").define('X', ItemRegistry.ALUMINUM_INGOT.get()).group("celestialexploration").unlockedBy("meteor", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.ALUMINUM_INGOT.get())).save(consumer);
+//		ShapedRecipeBuilder.shaped(BlockRegistry.PANEL_WALL.get()).pattern("XXX").pattern("XX").define('X', BlockRegistry.METEOR.get()).group("celestialexploration").unlockedBy("aluminum", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.ALUMINUM_INGOT.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.PANEL.get()), BlockRegistry.PANEL_WALL.get(), 1).unlockedBy("aluminum", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.ALUMINUM_INGOT.get())).save(consumer);
+
+		ShapedRecipeBuilder.shaped(BlockRegistry.PANEL_STAIRS.get(), 4).pattern("X  ").pattern("XX ").pattern("XXX").define('X', BlockRegistry.PANEL.get()).group("celestialexploration").unlockedBy("aluminum", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.ALUMINUM_INGOT.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.PANEL.get()), BlockRegistry.PANEL_STAIRS.get(), 1).unlockedBy("aluminum", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.ALUMINUM_INGOT.get())).save(consumer, "panel_stairs_stonecutting");
+
+		ShapedRecipeBuilder.shaped(BlockRegistry.PANEL_SLAB.get(), 6).pattern("XXX").define('X', BlockRegistry.PANEL.get()).group("celestialexploration").unlockedBy("aluminum", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.ALUMINUM_INGOT.get())).save(consumer);
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ItemRegistry.PANEL.get()), BlockRegistry.PANEL_SLAB.get(), 2).unlockedBy("aluminum", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.ALUMINUM_INGOT.get())).save(consumer, "panel_slab_stonecutting");
+
+		ShapedRecipeBuilder.shaped(BlockRegistry.THIN_PANEL.get(), 16).pattern("XXX").pattern("XXX").define('X', BlockRegistry.PANEL.get()).group("celestialexploration").unlockedBy("aluminum", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.ALUMINUM_INGOT.get())).save(consumer);
+
+
+
+
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.RED_BUTTON.get()).requires(ItemRegistry.RED_CERAMIC.get()).group("celestialexploration").unlockedBy("ceramic", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.CERAMIC.get())).save(consumer);
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.YELLOW_BUTTON.get()).requires(ItemRegistry.YELLOW_CERAMIC.get()).group("celestialexploration").unlockedBy("ceramic", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.CERAMIC.get())).save(consumer);
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.BLUE_BUTTON.get()).requires(ItemRegistry.BLUE_CERAMIC.get()).group("celestialexploration").unlockedBy("ceramic", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.CERAMIC.get())).save(consumer);
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.GREEN_BUTTON.get()).requires(ItemRegistry.GREEN_CERAMIC.get()).group("celestialexploration").unlockedBy("ceramic", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.CERAMIC.get())).save(consumer);
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.WHITE_BUTTON.get()).requires(ItemRegistry.WHITE_CERAMIC.get()).group("celestialexploration").unlockedBy("ceramic", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.CERAMIC.get())).save(consumer);
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.BLACK_BUTTON.get()).requires(ItemRegistry.BLACK_CERAMIC.get()).group("celestialexploration").unlockedBy("ceramic", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.CERAMIC.get())).save(consumer);
 
 
 
@@ -622,7 +653,7 @@ public class Recipes extends RecipeProvider {
 
 		//WORKBENCH - ALUMINUM
 		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_ALUMINUM.get(), Ingredient.of(ItemRegistry.ALUMINUM_INGOT.get()), 0.7F, 100, 0.11F).group("celestialexploration").unlockedBy("workbench", has(ItemRegistry.ALUMINUM_INGOT.get())).save(consumer, "aluminum_ingot_workbench");
-		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_ALUMINUM.get(), Ingredient.of(BlockRegistry.ALUMINUM_BLOCK.get()), 0.7F, 150, 1.0F).group("celestialexploration").unlockedBy("workbench", has(ItemRegistry.ALUMINUM_BLOCK.get())).save(consumer, "aluminum_block_workbench");
+		WorkbenchRecipeBuilder.smelting(FluidRegistry.MOLTEN_ALUMINUM.get(), Ingredient.of(BlockRegistry.ALUMINUM_BLOCK.get()), 0.7F, 150, 1.0F).group("celestialexploration").unlockedBy("workbench", has(ItemRegistry.ALUMINUM_INGOT.get())).save(consumer, "aluminum_block_workbench");
 
 
 		/*

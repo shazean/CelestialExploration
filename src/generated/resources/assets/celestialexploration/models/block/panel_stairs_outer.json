@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "side": "celestialexploration:block/panel",
+    "bottom": "celestialexploration:block/panel",
+    "top": "celestialexploration:block/panel"
+  }
+}

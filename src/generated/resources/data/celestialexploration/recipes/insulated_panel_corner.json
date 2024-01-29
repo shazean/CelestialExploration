@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "celestialexploration:insulated_panel"
+  },
+  "result": "celestialexploration:insulated_panel_corner",
+  "count": 1
+}

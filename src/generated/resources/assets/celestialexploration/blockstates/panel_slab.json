@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=top": {
+      "model": "celestialexploration:block/panel_slab_top"
+    },
+    "type=bottom": {
+      "model": "celestialexploration:block/panel_slab"
+    },
+    "type=double": {
+      "model": "celestialexploration:block/panel"
+    }
+  }
+}

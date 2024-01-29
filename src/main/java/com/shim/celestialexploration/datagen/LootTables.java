@@ -299,6 +299,22 @@ public class LootTables  extends BaseLootTableProvider {
 		lootTables.put(BlockRegistry.STEEL_TRAPDOOR.get(), createSimpleTable("steel_trapdoor", BlockRegistry.STEEL_TRAPDOOR.get()));
 		lootTables.put(BlockRegistry.STEEL_BUTTON.get(), createSimpleTable("steel_button", BlockRegistry.STEEL_BUTTON.get()));
 
+		lootTables.put(BlockRegistry.INSULATED_PANEL.get(), createSimpleTable("insulated_panel", BlockRegistry.INSULATED_PANEL.get()));
+		lootTables.put(BlockRegistry.INSULATED_PANEL_CORNER.get(), createSimpleTable("insulated_panel_corner", BlockRegistry.INSULATED_PANEL_CORNER.get()));
+		lootTables.put(BlockRegistry.PANEL.get(), createSimpleTable("panel", BlockRegistry.PANEL.get()));
+		lootTables.put(BlockRegistry.PANEL_STAIRS.get(), createSimpleTable("panel_stairs", BlockRegistry.PANEL_STAIRS.get()));
+		lootTables.put(BlockRegistry.PANEL_SLAB.get(), createSimpleTable("panel_slab", BlockRegistry.PANEL_SLAB.get()));
+		lootTables.put(BlockRegistry.PANEL_WALL.get(), createSimpleTable("panel_wall", BlockRegistry.PANEL_WALL.get()));
+		lootTables.put(BlockRegistry.THIN_PANEL.get(), createSimpleTable("thin_panel", BlockRegistry.THIN_PANEL.get()));
+
+
+		lootTables.put(BlockRegistry.RED_BUTTON.get(), createSimpleTable("red_button", BlockRegistry.RED_BUTTON.get()));
+		lootTables.put(BlockRegistry.YELLOW_BUTTON.get(), createSimpleTable("yellow_button", BlockRegistry.YELLOW_BUTTON.get()));
+		lootTables.put(BlockRegistry.BLUE_BUTTON.get(), createSimpleTable("blue_button", BlockRegistry.BLUE_BUTTON.get()));
+		lootTables.put(BlockRegistry.GREEN_BUTTON.get(), createSimpleTable("green_button", BlockRegistry.GREEN_BUTTON.get()));
+		lootTables.put(BlockRegistry.WHITE_BUTTON.get(), createSimpleTable("white_button", BlockRegistry.WHITE_BUTTON.get()));
+		lootTables.put(BlockRegistry.BLACK_BUTTON.get(), createSimpleTable("black_stone_button", BlockRegistry.BLACK_BUTTON.get()));
+
 
 		lootTables.put(BlockRegistry.LUMINOUS_BLUE_GLASS.get(), createSilkTouchTable("luminous_blue_glass", BlockRegistry.LUMINOUS_BLUE_GLASS.get(), ItemRegistry.MOON_DUST.get(), 1, 1));
 		lootTables.put(BlockRegistry.LUMINOUS_WHITE_GLASS.get(), createSilkTouchTable("luminous_white_glass", BlockRegistry.LUMINOUS_WHITE_GLASS.get(), ItemRegistry.MOON_DUST.get(), 1, 1));
@@ -353,6 +369,39 @@ public class LootTables  extends BaseLootTableProvider {
 		lootTables.put(BlockRegistry.RED_CERAMIC_TILE.get(), createSilkTouchTable("red_ceramic_tile", BlockRegistry.RED_CERAMIC_TILE.get(), BlockRegistry.SILICA.get(), 1, 1));
 		lootTables.put(BlockRegistry.PINK_CERAMIC.get(), createSilkTouchTable("pink_ceramic", BlockRegistry.PINK_CERAMIC.get(), BlockRegistry.SILICA.get(), 1, 1));
 		lootTables.put(BlockRegistry.PINK_CERAMIC_TILE.get(), createSilkTouchTable("pink_ceramic_tile", BlockRegistry.PINK_CERAMIC_TILE.get(), BlockRegistry.SILICA.get(), 1, 1));
+
+//		lootTables.put(BlockRegistry.WHITE_CERAMIC_STAIRS.get(), createSilkTouchTable("white_ceramic_stairs", BlockRegistry.WHITE_CERAMIC_STAIRS.get(), BlockRegistry.SILICA.get(), 1, 1));
+//		lootTables.put(BlockRegistry.WHITE_CERAMIC_SLAB.get(), createSilkTouchTable("white_ceramic_slab", BlockRegistry.WHITE_CERAMIC_SLAB.get(), BlockRegistry.SILICA.get(), 1, 1));
+//		lootTables.put(BlockRegistry.LIGHT_GREY_CERAMIC_STAIRS.get(), createSilkTouchTable("light_grey_ceramic_stairs", BlockRegistry.LIGHT_GREY_CERAMIC_STAIRS.get(), BlockRegistry.SILICA.get(), 1, 1));
+//		lootTables.put(BlockRegistry.LIGHT_GREY_CERAMIC_SLAB.get(), createSilkTouchTable("light_grey_ceramic_slab", BlockRegistry.LIGHT_GREY_CERAMIC_SLAB.get(), BlockRegistry.SILICA.get(), 1, 1));
+//		lootTables.put(BlockRegistry.GREY_CERAMIC_STAIRS.get(), createSilkTouchTable("grey_ceramic_stairs", BlockRegistry.GREY_CERAMIC_STAIRS.get(), BlockRegistry.SILICA.get(), 1, 1));
+//		lootTables.put(BlockRegistry.GREY_CERAMIC_SLAB.get(), createSilkTouchTable("grey_ceramic_slab", BlockRegistry.GREY_CERAMIC_SLAB.get(), BlockRegistry.SILICA.get(), 1, 1));
+//		lootTables.put(BlockRegistry.BLACK_CERAMIC_STAIRS.get(), createSilkTouchTable("black_ceramic_stairs", BlockRegistry.BLACK_CERAMIC_STAIRS.get(), BlockRegistry.SILICA.get(), 1, 1));
+//		lootTables.put(BlockRegistry.BLACK_CERAMIC_SLAB.get(), createSilkTouchTable("black_ceramic_slab", BlockRegistry.BLACK_CERAMIC_SLAB.get(), BlockRegistry.SILICA.get(), 1, 1));
+//		lootTables.put(BlockRegistry.PURPLE_CERAMIC_STAIRS.get(), createSilkTouchTable("purple_ceramic_stairs", BlockRegistry.PURPLE_CERAMIC_STAIRS.get(), BlockRegistry.SILICA.get(), 1, 1));
+//		lootTables.put(BlockRegistry.PURPLE_CERAMIC_SLAB.get(), createSilkTouchTable("purple_ceramic_slab", BlockRegistry.PURPLE_CERAMIC_SLAB.get(), BlockRegistry.SILICA.get(), 1, 1));
+//		lootTables.put(BlockRegistry.MAGENTA_CERAMIC_STAIRS.get(), createSilkTouchTable("magenta_ceramic_stairs", BlockRegistry.MAGENTA_CERAMIC_STAIRS.get(), BlockRegistry.SILICA.get(), 1, 1));
+//		lootTables.put(BlockRegistry.MAGENTA_CERAMIC_SLAB.get(), createSilkTouchTable("magenta_ceramic_slab", BlockRegistry.MAGENTA_CERAMIC_SLAB.get(), BlockRegistry.SILICA.get(), 1, 1));
+//		lootTables.put(BlockRegistry.BLUE_CERAMIC_STAIRS.get(), createSilkTouchTable("blue_ceramic_stairs", BlockRegistry.BLUE_CERAMIC_STAIRS.get(), BlockRegistry.SILICA.get(), 1, 1));
+//		lootTables.put(BlockRegistry.BLUE_CERAMIC_SLAB.get(), createSilkTouchTable("blue_ceramic_slab", BlockRegistry.BLUE_CERAMIC_SLAB.get(), BlockRegistry.SILICA.get(), 1, 1));
+//		lootTables.put(BlockRegistry.LIGHT_BLUE_CERAMIC_STAIRS.get(), createSilkTouchTable("light_blue_ceramic_stairs", BlockRegistry.LIGHT_BLUE_CERAMIC_STAIRS.get(), BlockRegistry.SILICA.get(), 1, 1));
+//		lootTables.put(BlockRegistry.LIGHT_BLUE_CERAMIC_SLAB.get(), createSilkTouchTable("light_blue_ceramic_slab", BlockRegistry.LIGHT_BLUE_CERAMIC_SLAB.get(), BlockRegistry.SILICA.get(), 1, 1));
+//		lootTables.put(BlockRegistry.CYAN_CERAMIC_STAIRS.get(), createSilkTouchTable("cyan_ceramic_stairs", BlockRegistry.CYAN_CERAMIC_STAIRS.get(), BlockRegistry.SILICA.get(), 1, 1));
+//		lootTables.put(BlockRegistry.CYAN_CERAMIC_SLAB.get(), createSilkTouchTable("cyan_ceramic_slab", BlockRegistry.CYAN_CERAMIC_SLAB.get(), BlockRegistry.SILICA.get(), 1, 1));
+//		lootTables.put(BlockRegistry.GREEN_CERAMIC_STAIRS.get(), createSilkTouchTable("green_ceramic_stairs", BlockRegistry.GREEN_CERAMIC_STAIRS.get(), BlockRegistry.SILICA.get(), 1, 1));
+//		lootTables.put(BlockRegistry.GREEN_CERAMIC_SLAB.get(), createSilkTouchTable("green_ceramic_slab", BlockRegistry.GREEN_CERAMIC_SLAB.get(), BlockRegistry.SILICA.get(), 1, 1));
+//		lootTables.put(BlockRegistry.LIME_CERAMIC_STAIRS.get(), createSilkTouchTable("lime_ceramic_stairs", BlockRegistry.LIME_CERAMIC_STAIRS.get(), BlockRegistry.SILICA.get(), 1, 1));
+//		lootTables.put(BlockRegistry.LIME_CERAMIC_SLAB.get(), createSilkTouchTable("lime_ceramic_slab", BlockRegistry.LIME_CERAMIC_SLAB.get(), BlockRegistry.SILICA.get(), 1, 1));
+//		lootTables.put(BlockRegistry.YELLOW_CERAMIC_STAIRS.get(), createSilkTouchTable("yellow_ceramic_stairs", BlockRegistry.YELLOW_CERAMIC_STAIRS.get(), BlockRegistry.SILICA.get(), 1, 1));
+//		lootTables.put(BlockRegistry.YELLOW_CERAMIC_SLAB.get(), createSilkTouchTable("yellow_ceramic_slab", BlockRegistry.YELLOW_CERAMIC_SLAB.get(), BlockRegistry.SILICA.get(), 1, 1));
+//		lootTables.put(BlockRegistry.ORANGE_CERAMIC_STAIRS.get(), createSilkTouchTable("orange_ceramic_stairs", BlockRegistry.ORANGE_CERAMIC_STAIRS.get(), BlockRegistry.SILICA.get(), 1, 1));
+//		lootTables.put(BlockRegistry.ORANGE_CERAMIC_SLAB.get(), createSilkTouchTable("orange_ceramic_slab", BlockRegistry.ORANGE_CERAMIC_SLAB.get(), BlockRegistry.SILICA.get(), 1, 1));
+//		lootTables.put(BlockRegistry.BROWN_CERAMIC_STAIRS.get(), createSilkTouchTable("brown_ceramic_stairs", BlockRegistry.BROWN_CERAMIC_STAIRS.get(), BlockRegistry.SILICA.get(), 1, 1));
+//		lootTables.put(BlockRegistry.BROWN_CERAMIC_SLAB.get(), createSilkTouchTable("brown_ceramic_slab", BlockRegistry.BROWN_CERAMIC_SLAB.get(), BlockRegistry.SILICA.get(), 1, 1));
+//		lootTables.put(BlockRegistry.RED_CERAMIC_STAIRS.get(), createSilkTouchTable("red_ceramic_stairs", BlockRegistry.RED_CERAMIC_STAIRS.get(), BlockRegistry.SILICA.get(), 1, 1));
+//		lootTables.put(BlockRegistry.RED_CERAMIC_SLAB.get(), createSilkTouchTable("red_ceramic_slab", BlockRegistry.RED_CERAMIC_SLAB.get(), BlockRegistry.SILICA.get(), 1, 1));
+//		lootTables.put(BlockRegistry.PINK_CERAMIC_STAIRS.get(), createSilkTouchTable("pink_ceramic_stairs", BlockRegistry.PINK_CERAMIC_STAIRS.get(), BlockRegistry.SILICA.get(), 1, 1));
+//		lootTables.put(BlockRegistry.PINK_CERAMIC_SLAB.get(), createSilkTouchTable("pink_ceramic_slab", BlockRegistry.PINK_CERAMIC_SLAB.get(), BlockRegistry.SILICA.get(), 1, 1));
 
 
 		lootTables.put(BlockRegistry.PAINTED_WHITE_CERAMIC.get(), createSilkTouchTable("painted_white_ceramic", BlockRegistry.PAINTED_WHITE_CERAMIC.get(), BlockRegistry.SILICA.get(), 1, 1));

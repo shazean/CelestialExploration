@@ -6,6 +6,10 @@
     "celestialexploration:moon_deepslate_iron_ore",
     "celestialexploration:mars_deepslate_iron_ore",
     "celestialexploration:venus_iron_ore",
-    "celestialexploration:venus_deepslate_iron_ore"
+    "celestialexploration:venus_deepslate_iron_ore",
+    "celestialexploration:moon_bauxite_ore",
+    "celestialexploration:mars_bauxite_ore",
+    "celestialexploration:venus_bauxite_ore",
+    "celestialexploration:bauxite_ore"
   ]
 }

@@ -320,6 +320,25 @@ public class ItemModels extends ItemModelProvider {
 //		withExistingParent(ItemRegistry.ECLIPSE_LANTERN.get().getRegistryName().getPath(), modLoc("block/eclipse_lantern"));
 		withExistingParent(ItemRegistry.DRY_ICE.get().getRegistryName().getPath(), modLoc("block/dry_ice"));
 
+		withExistingParent(ItemRegistry.INSULATED_PANEL.get().getRegistryName().getPath(), modLoc("block/insulated_panel"));
+		withExistingParent(ItemRegistry.INSULATED_PANEL_CORNER.get().getRegistryName().getPath(), modLoc("block/insulated_panel_corner"));
+		withExistingParent(ItemRegistry.PANEL.get().getRegistryName().getPath(), modLoc("block/panel"));
+		stairs("panel_stairs", modLoc("block/panel"), modLoc("block/panel"), modLoc("block/panel"));
+		slab("panel_slab", modLoc("block/panel"), modLoc("block/panel"), modLoc("block/panel"));
+		wallInventory("panel_wall",  modLoc("block/panel"));
+		singleTexture(ItemRegistry.THIN_PANEL.get().getRegistryName().getPath(), new ResourceLocation("item/generated"), "layer0", new ResourceLocation(CelestialExploration.MODID, "block/panel"));
+
+		buttonInventory(ItemRegistry.RED_BUTTON.get().getRegistryName().getPath(), modLoc("block/red_ceramic"));
+		buttonInventory(ItemRegistry.YELLOW_BUTTON.get().getRegistryName().getPath(), modLoc("block/yellow_ceramic"));
+		buttonInventory(ItemRegistry.BLUE_BUTTON.get().getRegistryName().getPath(), modLoc("block/blue_ceramic"));
+		buttonInventory(ItemRegistry.GREEN_BUTTON.get().getRegistryName().getPath(), modLoc("block/green_ceramic"));
+		buttonInventory(ItemRegistry.WHITE_BUTTON.get().getRegistryName().getPath(), modLoc("block/white_ceramic"));
+		buttonInventory(ItemRegistry.BLACK_BUTTON.get().getRegistryName().getPath(), modLoc("block/black_ceramic"));
+
+		withExistingParent(ItemRegistry.PATHWAY_LIGHT.get().getRegistryName().getPath(), modLoc("block/pathway_light"));
+
+		withExistingParent(ItemRegistry.ALUMINUM_BLOCK.get().getRegistryName().getPath(), modLoc("block/aluminum_block"));
+
 		withExistingParent(ItemRegistry.LUMINOUS_BLUE_GLASS.get().getRegistryName().getPath(), modLoc("block/luminous_blue_glass"));
 		withExistingParent(ItemRegistry.LUMINOUS_WHITE_GLASS.get().getRegistryName().getPath(), modLoc("block/luminous_white_glass"));
 		singleTexture(ItemRegistry.LUMINOUS_BLUE_GLASS_PANE.get().getRegistryName().getPath(), new ResourceLocation("item/generated"), "layer0", new ResourceLocation(CelestialExploration.MODID, "block/luminous_blue_glass"));
@@ -457,6 +476,43 @@ public class ItemModels extends ItemModelProvider {
 		singleTexture(ItemRegistry.RED_CERAMIC_TILE.get().getRegistryName().getPath(), new ResourceLocation("item/generated"), "layer0", new ResourceLocation(CelestialExploration.MODID, "block/red_ceramic"));
 		withExistingParent(ItemRegistry.PINK_CERAMIC.get().getRegistryName().getPath(), modLoc("block/pink_ceramic"));
 		singleTexture(ItemRegistry.PINK_CERAMIC_TILE.get().getRegistryName().getPath(), new ResourceLocation("item/generated"), "layer0", new ResourceLocation(CelestialExploration.MODID, "block/pink_ceramic"));
+
+//		stairs("ceramic_stairs", modLoc("block/ceramic"), modLoc("block/ceramic"), modLoc("block/ceramic"));
+//		slab("ceramic_slab", modLoc("block/ceramic"), modLoc("block/ceramic"), modLoc("block/ceramic"));
+//		stairs("white_ceramic_stairs", modLoc("block/white_ceramic"), modLoc("block/white_ceramic"), modLoc("block/white_ceramic"));
+//		slab("white_ceramic_slab", modLoc("block/white_ceramic"), modLoc("block/white_ceramic"), modLoc("block/white_ceramic"));
+////		stairs("white_ceramic_stairs", modLoc("block/white_ceramic"), modLoc("block/white_ceramic"), modLoc("block/white_ceramic"));
+//		slab("light_grey_ceramic_slab", modLoc("block/light_grey_ceramic"), modLoc("block/light_grey_ceramic"), modLoc("block/light_grey_ceramic"));
+//		stairs("light_grey_ceramic_stairs", modLoc("block/light_grey_ceramic"), modLoc("block/light_grey_ceramic"), modLoc("block/light_grey_ceramic"));
+//		slab("grey_slab_ceramic", modLoc("block/grey_ceramic"), modLoc("block/grey_ceramic"), modLoc("block/grey_ceramic"));
+//		stairs("grey_stairs_ceramic", modLoc("block/grey_ceramic"), modLoc("block/grey_ceramic"), modLoc("block/grey_ceramic"));
+//		slab("black_ceramic_slab", modLoc("block/black_ceramic"), modLoc("block/black_ceramic"), modLoc("block/black_ceramic"));
+//		stairs("black_ceramic_stairs", modLoc("block/black_ceramic"), modLoc("block/black_ceramic"), modLoc("block/black_ceramic"));
+//		slab("purple_ceramic_slab", modLoc("block/purple_ceramic"), modLoc("block/purple_ceramic"), modLoc("block/purple_ceramic"));
+//		stairs("purple_ceramic_stairs", modLoc("block/purple_ceramic"), modLoc("block/purple_ceramic"), modLoc("block/purple_ceramic"));
+//		slab("magenta_ceramic_slab", modLoc("block/magenta_ceramic"), modLoc("block/magenta_ceramic"), modLoc("block/magenta_ceramic"));
+//		stairs("magenta_ceramic_stairs", modLoc("block/magenta_ceramic"), modLoc("block/magenta_ceramic"), modLoc("block/magenta_ceramic"));
+//		slab("blue_ceramic_slab", modLoc("block/blue_ceramic"), modLoc("block/blue_ceramic"), modLoc("block/blue_ceramic"));
+//		stairs("blue_ceramic_stairs", modLoc("block/blue_ceramic"), modLoc("block/blue_ceramic"), modLoc("block/blue_ceramic"));
+//		slab("light_blue_ceramic_slab", modLoc("block/light_blue_ceramic"), modLoc("block/light_blue_ceramic"), modLoc("block/light_blue_ceramic"));
+//		stairs("light_blue_ceramic_stairs", modLoc("block/light_blue_ceramic"), modLoc("block/light_blue_ceramic"), modLoc("block/light_blue_ceramic"));
+//		slab("cyan_ceramic_slab", modLoc("block/cyan_ceramic"), modLoc("block/cyan_ceramic"), modLoc("block/cyan_ceramic"));
+//		stairs("cyan_ceramic_stairs", modLoc("block/cyan_ceramic"), modLoc("block/cyan_ceramic"), modLoc("block/cyan_ceramic"));
+//		slab("green_ceramic_slab", modLoc("block/green_ceramic"), modLoc("block/green_ceramic"), modLoc("block/green_ceramic"));
+//		stairs("green_ceramic_stairs", modLoc("block/green_ceramic"), modLoc("block/green_ceramic"), modLoc("block/green_ceramic"));
+//		slab("lime_ceramic_slab", modLoc("block/lime_ceramic"), modLoc("block/lime_ceramic"), modLoc("block/lime_ceramic"));
+//		stairs("lime_ceramic_stairs", modLoc("block/lime_ceramic"), modLoc("block/lime_ceramic"), modLoc("block/lime_ceramic"));
+//		slab("yellow_ceramic_slab", modLoc("block/yellow_ceramic"), modLoc("block/yellow_ceramic"), modLoc("block/yellow_ceramic"));
+//		stairs("yellow_ceramic_stairs", modLoc("block/yellow_ceramic"), modLoc("block/yellow_ceramic"), modLoc("block/yellow_ceramic"));
+//		slab("orange_ceramic_slab", modLoc("block/orange_ceramic"), modLoc("block/orange_ceramic"), modLoc("block/orange_ceramic"));
+//		stairs("orange_ceramic_stairs", modLoc("block/orange_ceramic"), modLoc("block/orange_ceramic"), modLoc("block/orange_ceramic"));
+//		slab("brown_ceramic_slab", modLoc("block/brown_ceramic"), modLoc("block/brown_ceramic"), modLoc("block/brown_ceramic"));
+//		stairs("brown_ceramic_stairs", modLoc("block/brown_ceramic"), modLoc("block/brown_ceramic"), modLoc("block/brown_ceramic"));
+//		slab("red_ceramic_slab", modLoc("block/red_ceramic"), modLoc("block/red_ceramic"), modLoc("block/red_ceramic"));
+//		stairs("red_ceramic_stairs", modLoc("block/red_ceramic"), modLoc("block/red_ceramic"), modLoc("block/red_ceramic"));
+//		slab("pink_ceramic_slab", modLoc("block/pink_ceramic"), modLoc("block/pink_ceramic"), modLoc("block/pink_ceramic"));
+//		stairs("pink_ceramic_stairs", modLoc("block/pink_ceramic"), modLoc("block/pink_ceramic"), modLoc("block/pink_ceramic"));
+
 
 		withExistingParent(ItemRegistry.PAINTED_WHITE_CERAMIC.get().getRegistryName().getPath(), modLoc("block/painted_white_ceramic"));
 		withExistingParent(ItemRegistry.PAINTED_LIGHT_GREY_CERAMIC.get().getRegistryName().getPath(), modLoc("block/painted_light_grey_ceramic"));

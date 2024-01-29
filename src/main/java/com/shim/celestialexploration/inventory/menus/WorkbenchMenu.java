@@ -133,6 +133,7 @@ public class WorkbenchMenu extends RecipeBookMenu<WorkbenchCraftingContainer> {
             case 4 -> "Molten Steel";
             case 5 -> "Molten Copper";
             case 6 -> "Molten Gold";
+            case 8 -> "Molten Aluminum";
             default -> throw new IllegalStateException("Unexpected value: " + index);
         };
     }

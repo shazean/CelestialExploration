@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "celestialexploration:block/insulated_panel",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "celestialexploration:block/insulated_panel"
+    },
+    "axis=z": {
+      "model": "celestialexploration:block/insulated_panel",
+      "x": 90
+    }
+  }
+}

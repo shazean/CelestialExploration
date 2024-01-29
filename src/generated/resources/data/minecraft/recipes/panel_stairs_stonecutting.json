@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "celestialexploration:panel"
+  },
+  "result": "celestialexploration:panel_stairs",
+  "count": 1
+}

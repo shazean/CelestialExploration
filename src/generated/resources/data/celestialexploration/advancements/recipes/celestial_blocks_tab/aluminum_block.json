@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "celestialexploration:aluminum_block"
+    ]
+  },
+  "criteria": {
+    "aluminum": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:aluminum_ingot"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "celestialexploration:aluminum_block"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "aluminum",
+      "has_the_recipe"
+    ]
+  ]
+}

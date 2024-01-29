@@ -315,6 +315,8 @@ public class WorkbenchBlockEntity extends BlockEntity implements MenuProvider {
             blockEntity.fluidType = 6;
 //        } else if (blockEntity.fluidHandler.getFluid().getFluid().isSame(FluidRegistry.MOLTEN_NETHERITE.get())) {
 //            blockEntity.fluidType = 7;
+        } else if (blockEntity.fluidHandler.getFluid().getFluid().isSame(FluidRegistry.MOLTEN_ALUMINUM.get())) {
+            blockEntity.fluidType = 8;
         }
     }
 
@@ -327,6 +329,7 @@ public class WorkbenchBlockEntity extends BlockEntity implements MenuProvider {
             case 5 -> new FluidStack(FluidRegistry.MOLTEN_COPPER.get(), amount);
             case 6 -> new FluidStack(FluidRegistry.MOLTEN_GOLD.get(), amount);
 //            case 7 -> new FluidStack(FluidRegistry.MOLTEN_NETHERITE.get(), amount);
+            case 8 -> new FluidStack(FluidRegistry.MOLTEN_ALUMINUM.get(), amount);
             default -> throw new IllegalStateException("Unexpected value: " + index);
         };
     }

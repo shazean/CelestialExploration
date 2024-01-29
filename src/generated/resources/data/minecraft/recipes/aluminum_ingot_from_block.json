@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "celestialexploration",
+  "ingredients": [
+    {
+      "item": "celestialexploration:aluminum_block"
+    }
+  ],
+  "result": {
+    "item": "celestialexploration:aluminum_ingot",
+    "count": 9
+  }
+}

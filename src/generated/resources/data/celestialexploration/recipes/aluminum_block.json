@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "celestialexploration",
+  "pattern": [
+    "XXX",
+    "XXX",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:aluminum_ingot"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:aluminum_block"
+  }
+}

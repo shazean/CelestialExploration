@@ -1,2 +1,5 @@
-- `[NEW]` Custom weather handler for Venus—so now it's sulfur rain!
-- `[NEW]` Patchouli book!
+- `[NEW]` Bauxite ore and aluminum ingot
+- `[CHG]` Altered spaceship recipe to use aluminum
+- `[NEW]` Space station blocks, including insulated panels, panels, thin panels
+- `[NEW]` Pathway light block that lights up as you walk on it
+- `[NEW]` New colored buttons

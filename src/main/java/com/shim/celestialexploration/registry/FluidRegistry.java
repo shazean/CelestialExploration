@@ -101,7 +101,7 @@ public class FluidRegistry {
     public static final ForgeFlowingFluid.Properties MOLTEN_ALUMINUM_PROPERTIES = new ForgeFlowingFluid.Properties(
             () -> MOLTEN_ALUMINUM.get(), () -> MOLTEN_ALUMINUM_FLOWING.get(), FluidAttributes.builder(WATER_STILL, WATER_FLOWING_RL)
             .density(15).luminosity(2).viscosity(5).sound(SoundEvents.LAVA_AMBIENT).overlay(WATER_OVERLAY_RL)
-            .color(0xfadc9613)).slopeFindDistance(2).levelDecreasePerBlock(2)
+            .color(0xfaD3D4DF)).slopeFindDistance(2).levelDecreasePerBlock(2)
             .block(() -> FluidRegistry.MOLTEN_ALUMINUM_BLOCK.get()).bucket(() -> FluidRegistry.MOLTEN_ALUMINUM_BUCKET.get());
 
 

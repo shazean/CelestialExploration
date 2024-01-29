@@ -174,6 +174,8 @@ public class WorkbenchBlock extends BaseEntityBlock {
             return new ItemStack(Items.COPPER_BLOCK);
         } else if (fluid.containsFluid(new FluidStack(FluidRegistry.MOLTEN_GOLD.get(), 1))) {
            return new ItemStack(Items.GOLD_BLOCK);
+        } else if (fluid.containsFluid(new FluidStack(FluidRegistry.MOLTEN_ALUMINUM.get(), 1))) {
+            return new ItemStack(ItemRegistry.ALUMINUM_BLOCK.get());
         } else {
             return ItemStack.EMPTY;
         }
@@ -193,6 +195,8 @@ public class WorkbenchBlock extends BaseEntityBlock {
             return new ItemStack(Items.COPPER_INGOT);
         } else if (fluid.containsFluid(new FluidStack(FluidRegistry.MOLTEN_GOLD.get(), 1))) {
             return new ItemStack(Items.GOLD_INGOT);
+        } else if (fluid.containsFluid(new FluidStack(FluidRegistry.MOLTEN_ALUMINUM.get(), 1))) {
+            return new ItemStack(ItemRegistry.ALUMINUM_INGOT.get());
         } else {
             return ItemStack.EMPTY;
         }
