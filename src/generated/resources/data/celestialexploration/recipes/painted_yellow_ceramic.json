@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "group": "celestialexploration",
+  "ingredient": {
+    "item": "celestialexploration:yellow_ceramic"
+  },
+  "result": "celestialexploration:painted_yellow_ceramic",
+  "experience": 1.0,
+  "cookingtime": 100
+}

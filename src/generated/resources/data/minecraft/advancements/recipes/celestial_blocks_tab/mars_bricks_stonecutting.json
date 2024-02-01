@@ -6,7 +6,7 @@
     ]
   },
   "criteria": {
-    "mars_stone": {
+    "has_mars_stone": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
@@ -27,7 +27,7 @@
   },
   "requirements": [
     [
-      "mars_stone",
+      "has_mars_stone",
       "has_the_recipe"
     ]
   ]

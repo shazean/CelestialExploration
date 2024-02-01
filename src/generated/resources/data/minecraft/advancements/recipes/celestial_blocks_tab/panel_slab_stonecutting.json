@@ -6,13 +6,13 @@
     ]
   },
   "criteria": {
-    "aluminum": {
+    "has_panel": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "celestialexploration:aluminum_ingot"
+              "celestialexploration:panel"
             ]
           }
         ]
@@ -27,7 +27,7 @@
   },
   "requirements": [
     [
-      "aluminum",
+      "has_panel",
       "has_the_recipe"
     ]
   ]

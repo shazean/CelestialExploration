@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "ingredient": {
-    "item": "celestialexploration:moon_stone"
-  },
-  "result": "celestialexploration:moon_smooth_stone",
-  "experience": 1.0,
-  "cookingtime": 100
-}

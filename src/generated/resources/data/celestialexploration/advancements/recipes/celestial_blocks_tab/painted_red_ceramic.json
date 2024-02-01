@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "celestialexploration:painted_red_ceramic"
+    ]
+  },
+  "criteria": {
+    "has_ceramic": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:ceramic"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "celestialexploration:painted_red_ceramic"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ceramic",
+      "has_the_recipe"
+    ]
+  ]
+}

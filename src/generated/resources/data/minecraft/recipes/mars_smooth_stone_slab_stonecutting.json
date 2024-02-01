@@ -1,5 +1,6 @@
 {
   "type": "minecraft:stonecutting",
+  "group": "celestialexploration",
   "ingredient": {
     "item": "celestialexploration:mars_smooth_stone"
   },

@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "celestialexploration:venus_stone_pressure_plate"
+    ]
+  },
+  "criteria": {
+    "venus_stone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:venus_stone"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "celestialexploration:venus_stone_pressure_plate"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "venus_stone",
+      "has_the_recipe"
+    ]
+  ]
+}

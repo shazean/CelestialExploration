@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "group": "celestialexploration",
+  "ingredient": {
+    "item": "celestialexploration:venus_cobbled_deepslate"
+  },
+  "result": "celestialexploration:venus_deepslate",
+  "experience": 0.1,
+  "cookingtime": 200
+}

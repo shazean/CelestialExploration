@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "group": "celestialexploration",
+  "ingredient": {
+    "item": "celestialexploration:silica"
+  },
+  "result": "celestialexploration:ceramic",
+  "experience": 1.05,
+  "cookingtime": 100
+}

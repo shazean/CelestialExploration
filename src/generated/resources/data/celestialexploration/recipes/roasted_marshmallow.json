@@ -5,6 +5,6 @@
     "item": "celestialexploration:marshmallow"
   },
   "result": "celestialexploration:roasted_marshmallow",
-  "experience": 1.0,
-  "cookingtime": 30
+  "experience": 0.1,
+  "cookingtime": 100
 }

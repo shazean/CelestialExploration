@@ -6,13 +6,13 @@
     ]
   },
   "criteria": {
-    "clay": {
+    "has_ceramic": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:clay"
+              "celestialexploration:ceramic"
             ]
           }
         ]
@@ -27,7 +27,7 @@
   },
   "requirements": [
     [
-      "clay",
+      "has_ceramic",
       "has_the_recipe"
     ]
   ]

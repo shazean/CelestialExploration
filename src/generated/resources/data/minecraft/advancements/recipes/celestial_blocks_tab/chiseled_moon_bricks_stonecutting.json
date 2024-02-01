@@ -6,7 +6,7 @@
     ]
   },
   "criteria": {
-    "moon_stone": {
+    "has_moon_bricks": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
@@ -27,7 +27,7 @@
   },
   "requirements": [
     [
-      "moon_stone",
+      "has_moon_bricks",
       "has_the_recipe"
     ]
   ]

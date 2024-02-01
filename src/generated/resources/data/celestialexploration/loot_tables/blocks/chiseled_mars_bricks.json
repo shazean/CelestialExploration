@@ -2,7 +2,7 @@
   "type": "minecraft:block",
   "pools": [
     {
-      "name": "chiseled_mars_bricks",
+      "name": "chiseled_MARS_bricks",
       "rolls": 1.0,
       "bonus_rolls": 0.0,
       "entries": [

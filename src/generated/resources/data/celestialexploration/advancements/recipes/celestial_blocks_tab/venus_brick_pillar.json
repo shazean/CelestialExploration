@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "celestialexploration:venus_brick_pillar"
+    ]
+  },
+  "criteria": {
+    "venus_stone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:venus_stone"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "celestialexploration:venus_brick_pillar"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "venus_stone",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,19 +1,17 @@
 {
-  "type": "minecraft:crafting_shapeless",
+  "type": "minecraft:crafting_shaped",
   "group": "celestialexploration",
-  "ingredients": [
-    {
-      "item": "minecraft:coal"
-    },
-    {
-      "item": "minecraft:iron_ingot"
-    },
-    {
-      "item": "minecraft:iron_ingot"
-    }
+  "pattern": [
+    "XXX",
+    "XXX",
+    "XXX"
   ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:steel_nugget"
+    }
+  },
   "result": {
-    "item": "celestialexploration:steel_ingot",
-    "count": 2
+    "item": "celestialexploration:steel_ingot"
   }
 }

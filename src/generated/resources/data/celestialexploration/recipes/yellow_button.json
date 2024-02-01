@@ -3,7 +3,7 @@
   "group": "celestialexploration",
   "ingredients": [
     {
-      "item": "celestialexploration:yellow_ceramic"
+      "item": "minecraft:yellow_stained_glass"
     }
   ],
   "result": {

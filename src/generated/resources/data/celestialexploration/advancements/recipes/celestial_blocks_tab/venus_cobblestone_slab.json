@@ -6,13 +6,13 @@
     ]
   },
   "criteria": {
-    "venus_cobblestone": {
+    "has_venus_cobblestone": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "celestialexploration:venus_stone"
+              "celestialexploration:venus_cobblestone"
             ]
           }
         ]
@@ -27,7 +27,7 @@
   },
   "requirements": [
     [
-      "venus_cobblestone",
+      "has_venus_cobblestone",
       "has_the_recipe"
     ]
   ]

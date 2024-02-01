@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:blasting",
+  "group": "celestialexploration",
+  "ingredient": {
+    "item": "celestialexploration:raw_bauxite"
+  },
+  "result": "celestialexploration:bauxite_ingot",
+  "experience": 0.7,
+  "cookingtime": 100
+}

@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "ingredient": {
-    "item": "celestialexploration:lime_ceramic"
-  },
-  "result": "celestialexploration:painted_lime_ceramic",
-  "experience": 1.0,
-  "cookingtime": 100
-}

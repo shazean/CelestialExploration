@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "ingredient": {
-    "item": "celestialexploration:moon_sand"
-  },
-  "result": "minecraft:white_stained_glass",
-  "experience": 1.0,
-  "cookingtime": 100
-}

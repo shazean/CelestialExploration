@@ -1,7 +1,8 @@
 {
   "type": "minecraft:stonecutting",
+  "group": "celestialexploration",
   "ingredient": {
-    "tag": "celestialexploration:venus_stone"
+    "item": "celestialexploration:venus_stone"
   },
   "result": "celestialexploration:chiseled_venus_bricks",
   "count": 1

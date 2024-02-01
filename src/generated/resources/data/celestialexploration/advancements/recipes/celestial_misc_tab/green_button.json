@@ -6,13 +6,13 @@
     ]
   },
   "criteria": {
-    "ceramic": {
+    "has_green_stained_glass": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "celestialexploration:ceramic"
+              "minecraft:green_stained_glass"
             ]
           }
         ]
@@ -27,7 +27,7 @@
   },
   "requirements": [
     [
-      "ceramic",
+      "has_green_stained_glass",
       "has_the_recipe"
     ]
   ]

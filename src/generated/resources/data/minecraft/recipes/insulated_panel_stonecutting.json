@@ -1,5 +1,6 @@
 {
   "type": "minecraft:stonecutting",
+  "group": "celestialexploration",
   "ingredient": {
     "item": "celestialexploration:insulated_panel_corner"
   },

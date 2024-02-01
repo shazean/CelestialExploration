@@ -2,13 +2,13 @@
   "type": "minecraft:crafting_shaped",
   "group": "celestialexploration",
   "pattern": [
-    "sSs",
+    "SsS",
     "G G",
-    "sSs"
+    "SsS"
   ],
   "key": {
     "S": {
-      "item": "celestialexploration:steel_block"
+      "item": "celestialexploration:steel_ingot"
     },
     "s": {
       "item": "celestialexploration:aluminum_ingot"

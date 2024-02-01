@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "group": "celestialexploration",
+  "ingredient": {
+    "item": "celestialexploration:venus_cobblestone"
+  },
+  "result": "celestialexploration:venus_stone",
+  "experience": 0.1,
+  "cookingtime": 200
+}

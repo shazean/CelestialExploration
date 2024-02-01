@@ -6,13 +6,13 @@
     ]
   },
   "criteria": {
-    "iron": {
+    "has_steel_ingot": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:iron_ingot"
+              "celestialexploration:steel_ingot"
             ]
           }
         ]
@@ -27,7 +27,7 @@
   },
   "requirements": [
     [
-      "iron",
+      "has_steel_ingot",
       "has_the_recipe"
     ]
   ]

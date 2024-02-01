@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "celestialexploration:venus_cobbled_deepslate"
-  },
-  "result": "celestialexploration:venus_polished_deepslate_stairs",
-  "count": 1
-}

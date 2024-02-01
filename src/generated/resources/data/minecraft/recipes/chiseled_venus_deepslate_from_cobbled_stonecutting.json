@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "tag": "celestialexploration:venus_cobbled_deepslate"
-  },
-  "result": "celestialexploration:chiseled_venus_deepslate_bricks",
-  "count": 1
-}

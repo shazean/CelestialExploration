@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:molten_gold_from_deepslate_gold_ore_workbench"
+    ]
+  },
+  "criteria": {
+    "has_deepslate_gold_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:deepslate_gold_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:molten_gold_from_deepslate_gold_ore_workbench"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_deepslate_gold_ore",
+      "has_the_recipe"
+    ]
+  ]
+}

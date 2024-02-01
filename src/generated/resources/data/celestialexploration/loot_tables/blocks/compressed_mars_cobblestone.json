@@ -2,7 +2,7 @@
   "type": "minecraft:block",
   "pools": [
     {
-      "name": "compressed_mars_cobblestone",
+      "name": "compressed_MARS_cobblestone",
       "rolls": 1.0,
       "bonus_rolls": 0.0,
       "entries": [

@@ -2,7 +2,7 @@
   "type": "minecraft:block",
   "pools": [
     {
-      "name": "compressed_mars_cobbled_deepslate",
+      "name": "compressed_MARS_cobbled_deepslate",
       "rolls": 1.0,
       "bonus_rolls": 0.0,
       "entries": [

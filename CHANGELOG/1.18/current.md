@@ -3,3 +3,4 @@
 - `[NEW]` Space station blocks, including insulated panels, panels, thin panels
 - `[NEW]` Pathway light block that lights up as you walk on it
 - `[NEW]` New colored buttons
+- `[DEV]` Code organization

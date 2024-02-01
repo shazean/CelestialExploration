@@ -6,13 +6,13 @@
     ]
   },
   "criteria": {
-    "moon_cobblestone": {
+    "has_moon_cobblestone": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "celestialexploration:moon_stone"
+              "celestialexploration:moon_cobblestone"
             ]
           }
         ]
@@ -27,7 +27,7 @@
   },
   "requirements": [
     [
-      "moon_cobblestone",
+      "has_moon_cobblestone",
       "has_the_recipe"
     ]
   ]

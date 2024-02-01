@@ -6,7 +6,7 @@
     ]
   },
   "criteria": {
-    "marshmallow": {
+    "has_marshmallow_goo": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
@@ -27,7 +27,7 @@
   },
   "requirements": [
     [
-      "marshmallow",
+      "has_marshmallow_goo",
       "has_the_recipe"
     ]
   ]

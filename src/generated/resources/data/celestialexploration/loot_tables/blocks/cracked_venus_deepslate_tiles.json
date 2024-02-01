@@ -2,7 +2,7 @@
   "type": "minecraft:block",
   "pools": [
     {
-      "name": "cracked_venus_deepslate_tiles",
+      "name": "cracked_VENUS_deepslate_tiles",
       "rolls": 1.0,
       "bonus_rolls": 0.0,
       "entries": [

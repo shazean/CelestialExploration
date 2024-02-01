@@ -2,7 +2,7 @@
   "type": "minecraft:block",
   "pools": [
     {
-      "name": "compressed_venus_cobblestone",
+      "name": "compressed_VENUS_cobblestone",
       "rolls": 1.0,
       "bonus_rolls": 0.0,
       "entries": [

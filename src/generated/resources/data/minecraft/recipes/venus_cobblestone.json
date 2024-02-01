@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "ingredient": {
-    "item": "celestialexploration:venus_cobblestone"
-  },
-  "result": "celestialexploration:venus_stone",
-  "experience": 1.0,
-  "cookingtime": 100
-}

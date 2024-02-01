@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:bauxite_ore_blasting"
+    ]
+  },
+  "criteria": {
+    "has_bauxite_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:bauxite_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:bauxite_ore_blasting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_bauxite_ore",
+      "has_the_recipe"
+    ]
+  ]
+}

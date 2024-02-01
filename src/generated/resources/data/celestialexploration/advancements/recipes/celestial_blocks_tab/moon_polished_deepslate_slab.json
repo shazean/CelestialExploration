@@ -6,13 +6,13 @@
     ]
   },
   "criteria": {
-    "has_moon_deepslate": {
+    "has_moon_cobbled_deepslate": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "celestialexploration:moon_deepslate"
+              "celestialexploration:moon_cobbled_deepslate"
             ]
           }
         ]
@@ -27,7 +27,7 @@
   },
   "requirements": [
     [
-      "has_moon_deepslate",
+      "has_moon_cobbled_deepslate",
       "has_the_recipe"
     ]
   ]

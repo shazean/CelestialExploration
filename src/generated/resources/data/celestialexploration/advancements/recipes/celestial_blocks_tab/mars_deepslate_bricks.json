@@ -6,13 +6,13 @@
     ]
   },
   "criteria": {
-    "mars_deepslate": {
+    "has_mars_cobbled_deepslate": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "celestialexploration:mars_deepslate"
+              "celestialexploration:mars_cobbled_deepslate"
             ]
           }
         ]
@@ -27,7 +27,7 @@
   },
   "requirements": [
     [
-      "mars_deepslate",
+      "has_mars_cobbled_deepslate",
       "has_the_recipe"
     ]
   ]

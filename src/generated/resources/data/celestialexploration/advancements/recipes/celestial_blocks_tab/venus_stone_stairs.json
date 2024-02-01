@@ -6,7 +6,7 @@
     ]
   },
   "criteria": {
-    "venus_stone": {
+    "has_venus_stone": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
@@ -27,7 +27,7 @@
   },
   "requirements": [
     [
-      "venus_stone",
+      "has_venus_stone",
       "has_the_recipe"
     ]
   ]

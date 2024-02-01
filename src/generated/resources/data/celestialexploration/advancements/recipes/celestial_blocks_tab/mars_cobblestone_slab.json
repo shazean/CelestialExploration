@@ -6,13 +6,13 @@
     ]
   },
   "criteria": {
-    "mars_cobblestone": {
+    "has_mars_cobblestone": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "celestialexploration:mars_stone"
+              "celestialexploration:mars_cobblestone"
             ]
           }
         ]
@@ -27,7 +27,7 @@
   },
   "requirements": [
     [
-      "mars_cobblestone",
+      "has_mars_cobblestone",
       "has_the_recipe"
     ]
   ]

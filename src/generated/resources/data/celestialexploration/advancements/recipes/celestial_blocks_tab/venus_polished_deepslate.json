@@ -6,13 +6,13 @@
     ]
   },
   "criteria": {
-    "venus_deepslate": {
+    "has_venus_cobbled_deepslate": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "celestialexploration:venus_deepslate"
+              "celestialexploration:venus_cobbled_deepslate"
             ]
           }
         ]
@@ -27,7 +27,7 @@
   },
   "requirements": [
     [
-      "venus_deepslate",
+      "has_venus_cobbled_deepslate",
       "has_the_recipe"
     ]
   ]

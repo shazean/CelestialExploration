@@ -48,13 +48,13 @@ public class BlockRegistry {
     public static final RegistryObject<Block> MOON_STONE = BLOCKS.register("moon_stone", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)));
     public static final RegistryObject<Block> MOON_SMOOTH_STONE = BLOCKS.register("moon_smooth_stone", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)));
     public static final RegistryObject<Block> MOON_BRICKS = BLOCKS.register("moon_bricks", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)));
-    public static final RegistryObject<Block> MOON_BRICK_PILLAR = BLOCKS.register("moon_brick_pillar", () -> new RotatedPillarBlock(Block.Properties.copy(MOON_BRICKS.get())));
+    public static final RegistryObject<RotatedPillarBlock> MOON_BRICK_PILLAR = BLOCKS.register("moon_brick_pillar", () -> new RotatedPillarBlock(Block.Properties.copy(MOON_BRICKS.get())));
     public static final RegistryObject<Block> CHISELED_MOON_BRICKS = BLOCKS.register("chiseled_moon_bricks", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)));
     public static final RegistryObject<Block> CRACKED_MOON_BRICKS = BLOCKS.register("cracked_moon_bricks", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)));
     public static final RegistryObject<Block> MOON_IRON_ORE = BLOCKS.register("moon_iron_ore", () -> new Block(Block.Properties.of(Material.STONE).strength(3.0f, 3.0f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
     public static final RegistryObject<Block> MOON_REDSTONE_ORE = BLOCKS.register("moon_redstone_ore", () -> new RedStoneOreBlock(Block.Properties.of(Material.STONE).strength(3.0f, 3.0f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
     public static final RegistryObject<Block> MOON_COBBLESTONE = BLOCKS.register("moon_cobblestone", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)));
-    public static final RegistryObject<Block> MOON_DEEPSLATE = BLOCKS.register("moon_deepslate", () -> new RotatedPillarBlock(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)));
+    public static final RegistryObject<RotatedPillarBlock> MOON_DEEPSLATE = BLOCKS.register("moon_deepslate", () -> new RotatedPillarBlock(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)));
     public static final RegistryObject<Block> MOON_DEEPSLATE_BRICKS = BLOCKS.register("moon_deepslate_bricks", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)));
     public static final RegistryObject<Block> CHISELED_MOON_DEEPSLATE_BRICKS = BLOCKS.register("chiseled_moon_deepslate_bricks", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)));
     public static final RegistryObject<Block> CRACKED_MOON_DEEPSLATE_BRICKS = BLOCKS.register("cracked_moon_deepslate_bricks", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)));
@@ -74,39 +74,39 @@ public class BlockRegistry {
     public static final RegistryObject<Block> COMPRESSED_MOON_COBBLED_DEEPSLATE = BLOCKS.register("compressed_moon_cobbled_deepslate", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 8.0f).sound(SoundType.STONE)));
 
     //STAIRS
-    public static final RegistryObject<Block> MOON_STONE_STAIRS = BLOCKS.register("moon_stone_stairs", () -> new StairBlock(MOON_STONE.get().defaultBlockState(), Block.Properties.copy(MOON_STONE.get())));
-    public static final RegistryObject<Block> MOON_BRICK_STAIRS = BLOCKS.register("moon_brick_stairs", () -> new StairBlock(MOON_BRICKS.get().defaultBlockState(), Block.Properties.copy(MOON_BRICKS.get())));
-    public static final RegistryObject<Block> MOON_COBBLESTONE_STAIRS = BLOCKS.register("moon_cobblestone_stairs", () -> new StairBlock(MOON_COBBLESTONE.get().defaultBlockState(), Block.Properties.copy(MOON_COBBLESTONE.get())));
-    public static final RegistryObject<Block> MOON_DEEPSLATE_BRICK_STAIRS = BLOCKS.register("moon_deepslate_brick_stairs", () -> new StairBlock(MOON_DEEPSLATE_BRICKS.get().defaultBlockState(), Block.Properties.copy(MOON_DEEPSLATE_BRICKS.get())));
-    public static final RegistryObject<Block> MOON_DEEPSLATE_TILE_STAIRS = BLOCKS.register("moon_deepslate_tile_stairs", () -> new StairBlock(MOON_DEEPSLATE_TILES.get().defaultBlockState(), Block.Properties.copy(MOON_DEEPSLATE_TILES.get())));
-    public static final RegistryObject<Block> MOON_POLISHED_DEEPSLATE_STAIRS = BLOCKS.register("moon_polished_deepslate_stairs", () -> new StairBlock(MOON_POLISHED_DEEPSLATE.get().defaultBlockState(), Block.Properties.copy(MOON_POLISHED_DEEPSLATE.get())));
-    public static final RegistryObject<Block> MOON_COBBLED_DEEPSLATE_STAIRS = BLOCKS.register("moon_cobbled_deepslate_stairs", () -> new StairBlock(MOON_COBBLED_DEEPSLATE.get().defaultBlockState(), Block.Properties.copy(MOON_COBBLED_DEEPSLATE.get())));
+    public static final RegistryObject<StairBlock> MOON_STONE_STAIRS = BLOCKS.register("moon_stone_stairs", () -> new StairBlock(MOON_STONE.get().defaultBlockState(), Block.Properties.copy(MOON_STONE.get())));
+    public static final RegistryObject<StairBlock> MOON_BRICK_STAIRS = BLOCKS.register("moon_brick_stairs", () -> new StairBlock(MOON_BRICKS.get().defaultBlockState(), Block.Properties.copy(MOON_BRICKS.get())));
+    public static final RegistryObject<StairBlock> MOON_COBBLESTONE_STAIRS = BLOCKS.register("moon_cobblestone_stairs", () -> new StairBlock(MOON_COBBLESTONE.get().defaultBlockState(), Block.Properties.copy(MOON_COBBLESTONE.get())));
+    public static final RegistryObject<StairBlock> MOON_DEEPSLATE_BRICK_STAIRS = BLOCKS.register("moon_deepslate_brick_stairs", () -> new StairBlock(MOON_DEEPSLATE_BRICKS.get().defaultBlockState(), Block.Properties.copy(MOON_DEEPSLATE_BRICKS.get())));
+    public static final RegistryObject<StairBlock> MOON_DEEPSLATE_TILE_STAIRS = BLOCKS.register("moon_deepslate_tile_stairs", () -> new StairBlock(MOON_DEEPSLATE_TILES.get().defaultBlockState(), Block.Properties.copy(MOON_DEEPSLATE_TILES.get())));
+    public static final RegistryObject<StairBlock> MOON_POLISHED_DEEPSLATE_STAIRS = BLOCKS.register("moon_polished_deepslate_stairs", () -> new StairBlock(MOON_POLISHED_DEEPSLATE.get().defaultBlockState(), Block.Properties.copy(MOON_POLISHED_DEEPSLATE.get())));
+    public static final RegistryObject<StairBlock> MOON_COBBLED_DEEPSLATE_STAIRS = BLOCKS.register("moon_cobbled_deepslate_stairs", () -> new StairBlock(MOON_COBBLED_DEEPSLATE.get().defaultBlockState(), Block.Properties.copy(MOON_COBBLED_DEEPSLATE.get())));
 
     //SLAB
-    public static final RegistryObject<Block> MOON_STONE_SLAB = BLOCKS.register("moon_stone_slab", () -> new SlabBlock(Block.Properties.copy(MOON_STONE.get())));
-    public static final RegistryObject<Block> MOON_SMOOTH_STONE_SLAB = BLOCKS.register("moon_smooth_stone_slab", () -> new SlabBlock(Block.Properties.copy(MOON_SMOOTH_STONE.get())));
-    public static final RegistryObject<Block> MOON_BRICK_SLAB = BLOCKS.register("moon_brick_slab", () -> new SlabBlock(Block.Properties.copy(MOON_BRICKS.get())));
-    public static final RegistryObject<Block> MOON_COBBLESTONE_SLAB = BLOCKS.register("moon_cobblestone_slab", () -> new SlabBlock(Block.Properties.copy(MOON_COBBLESTONE.get())));
-    public static final RegistryObject<Block> MOON_DEEPSLATE_BRICK_SLAB = BLOCKS.register("moon_deepslate_brick_slab", () -> new SlabBlock(Block.Properties.copy(MOON_DEEPSLATE_BRICKS.get())));
-    public static final RegistryObject<Block> MOON_COBBLED_DEEPSLATE_SLAB = BLOCKS.register("moon_cobbled_deepslate_slab", () -> new SlabBlock(Block.Properties.copy(MOON_COBBLED_DEEPSLATE.get())));
-    public static final RegistryObject<Block> MOON_DEEPSLATE_TILE_SLAB = BLOCKS.register("moon_deepslate_tile_slab", () -> new SlabBlock(Block.Properties.copy(MOON_DEEPSLATE_TILES.get())));
-    public static final RegistryObject<Block> MOON_POLISHED_DEEPSLATE_SLAB = BLOCKS.register("moon_polished_deepslate_slab", () -> new SlabBlock(Block.Properties.copy(MOON_POLISHED_DEEPSLATE.get())));
+    public static final RegistryObject<SlabBlock> MOON_STONE_SLAB = BLOCKS.register("moon_stone_slab", () -> new SlabBlock(Block.Properties.copy(MOON_STONE.get())));
+    public static final RegistryObject<SlabBlock> MOON_SMOOTH_STONE_SLAB = BLOCKS.register("moon_smooth_stone_slab", () -> new SlabBlock(Block.Properties.copy(MOON_SMOOTH_STONE.get())));
+    public static final RegistryObject<SlabBlock> MOON_BRICK_SLAB = BLOCKS.register("moon_brick_slab", () -> new SlabBlock(Block.Properties.copy(MOON_BRICKS.get())));
+    public static final RegistryObject<SlabBlock> MOON_COBBLESTONE_SLAB = BLOCKS.register("moon_cobblestone_slab", () -> new SlabBlock(Block.Properties.copy(MOON_COBBLESTONE.get())));
+    public static final RegistryObject<SlabBlock> MOON_DEEPSLATE_BRICK_SLAB = BLOCKS.register("moon_deepslate_brick_slab", () -> new SlabBlock(Block.Properties.copy(MOON_DEEPSLATE_BRICKS.get())));
+    public static final RegistryObject<SlabBlock> MOON_COBBLED_DEEPSLATE_SLAB = BLOCKS.register("moon_cobbled_deepslate_slab", () -> new SlabBlock(Block.Properties.copy(MOON_COBBLED_DEEPSLATE.get())));
+    public static final RegistryObject<SlabBlock> MOON_DEEPSLATE_TILE_SLAB = BLOCKS.register("moon_deepslate_tile_slab", () -> new SlabBlock(Block.Properties.copy(MOON_DEEPSLATE_TILES.get())));
+    public static final RegistryObject<SlabBlock> MOON_POLISHED_DEEPSLATE_SLAB = BLOCKS.register("moon_polished_deepslate_slab", () -> new SlabBlock(Block.Properties.copy(MOON_POLISHED_DEEPSLATE.get())));
 
     //WALL
-    public static final RegistryObject<Block> MOON_BRICK_WALL = BLOCKS.register("moon_brick_wall", () -> new WallBlock(Block.Properties.of(Material.STONE).strength(6.0f).sound(SoundType.STONE)));
-    public static final RegistryObject<Block> MOON_COBBLESTONE_WALL = BLOCKS.register("moon_cobblestone_wall", () -> new WallBlock(Block.Properties.copy(MOON_COBBLESTONE.get())));
-    public static final RegistryObject<Block> MOON_DEEPSLATE_BRICK_WALL = BLOCKS.register("moon_deepslate_brick_wall", () -> new WallBlock(Block.Properties.copy(MOON_DEEPSLATE_BRICKS.get())));
-    public static final RegistryObject<Block> MOON_COBBLED_DEEPSLATE_WALL = BLOCKS.register("moon_cobbled_deepslate_wall", () -> new WallBlock(Block.Properties.copy(MOON_COBBLED_DEEPSLATE.get())));
-    public static final RegistryObject<Block> MOON_DEEPSLATE_TILE_WALL = BLOCKS.register("moon_deepslate_tile_wall", () -> new WallBlock(Block.Properties.copy(MOON_DEEPSLATE_TILES.get())));
-    public static final RegistryObject<Block> MOON_POLISHED_DEEPSLATE_WALL = BLOCKS.register("moon_polished_deepslate_wall", () -> new WallBlock(Block.Properties.copy(MOON_POLISHED_DEEPSLATE.get())));
+    public static final RegistryObject<WallBlock> MOON_BRICK_WALL = BLOCKS.register("moon_brick_wall", () -> new WallBlock(Block.Properties.of(Material.STONE).strength(6.0f).sound(SoundType.STONE)));
+    public static final RegistryObject<WallBlock> MOON_COBBLESTONE_WALL = BLOCKS.register("moon_cobblestone_wall", () -> new WallBlock(Block.Properties.copy(MOON_COBBLESTONE.get())));
+    public static final RegistryObject<WallBlock> MOON_DEEPSLATE_BRICK_WALL = BLOCKS.register("moon_deepslate_brick_wall", () -> new WallBlock(Block.Properties.copy(MOON_DEEPSLATE_BRICKS.get())));
+    public static final RegistryObject<WallBlock> MOON_COBBLED_DEEPSLATE_WALL = BLOCKS.register("moon_cobbled_deepslate_wall", () -> new WallBlock(Block.Properties.copy(MOON_COBBLED_DEEPSLATE.get())));
+    public static final RegistryObject<WallBlock> MOON_DEEPSLATE_TILE_WALL = BLOCKS.register("moon_deepslate_tile_wall", () -> new WallBlock(Block.Properties.copy(MOON_DEEPSLATE_TILES.get())));
+    public static final RegistryObject<WallBlock> MOON_POLISHED_DEEPSLATE_WALL = BLOCKS.register("moon_polished_deepslate_wall", () -> new WallBlock(Block.Properties.copy(MOON_POLISHED_DEEPSLATE.get())));
 
     //BUTTON
-    public static final RegistryObject<Block> MOON_STONE_BUTTON = BLOCKS.register("moon_stone_button", () -> new StoneButtonBlock(Block.Properties.copy(MOON_STONE.get())));
-    public static final RegistryObject<Block> MOON_DEEPSLATE_BUTTON = BLOCKS.register("moon_deepslate_button", () -> new StoneButtonBlock(Block.Properties.copy(MOON_DEEPSLATE.get())));
+    public static final RegistryObject<ButtonBlock> MOON_STONE_BUTTON = BLOCKS.register("moon_stone_button", () -> new StoneButtonBlock(Block.Properties.copy(MOON_STONE.get())));
+    public static final RegistryObject<ButtonBlock> MOON_DEEPSLATE_BUTTON = BLOCKS.register("moon_deepslate_button", () -> new StoneButtonBlock(Block.Properties.copy(MOON_DEEPSLATE.get())));
 
     //PRESSURE PLATE
-    public static final RegistryObject<Block> MOON_STONE_PRESSURE_PLATE = BLOCKS.register("moon_stone_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, Block.Properties.copy(MOON_STONE.get())));
-    public static final RegistryObject<Block> MOON_DEEPSLATE_PRESSURE_PLATE = BLOCKS.register("moon_deepslate_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, Block.Properties.copy(MOON_DEEPSLATE.get())));
+    public static final RegistryObject<PressurePlateBlock> MOON_STONE_PRESSURE_PLATE = BLOCKS.register("moon_stone_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, Block.Properties.copy(MOON_STONE.get())));
+    public static final RegistryObject<PressurePlateBlock> MOON_DEEPSLATE_PRESSURE_PLATE = BLOCKS.register("moon_deepslate_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, Block.Properties.copy(MOON_DEEPSLATE.get())));
 
 
 
@@ -120,7 +120,7 @@ public class BlockRegistry {
     public static final RegistryObject<Block> MARS_STONE = BLOCKS.register("mars_stone", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)));
     public static final RegistryObject<Block> MARS_SMOOTH_STONE = BLOCKS.register("mars_smooth_stone", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)));
     public static final RegistryObject<Block> MARS_BRICKS = BLOCKS.register("mars_bricks", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)));
-    public static final RegistryObject<Block> MARS_BRICK_PILLAR = BLOCKS.register("mars_brick_pillar", () -> new RotatedPillarBlock(Block.Properties.copy(MARS_BRICKS.get())));
+    public static final RegistryObject<RotatedPillarBlock> MARS_BRICK_PILLAR = BLOCKS.register("mars_brick_pillar", () -> new RotatedPillarBlock(Block.Properties.copy(MARS_BRICKS.get())));
     public static final RegistryObject<Block> CHISELED_MARS_BRICKS = BLOCKS.register("chiseled_mars_bricks", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)));
     public static final RegistryObject<Block> CRACKED_MARS_BRICKS = BLOCKS.register("cracked_mars_bricks", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)));
     public static final RegistryObject<Block> MARS_IRON_ORE = BLOCKS.register("mars_iron_ore", () -> new Block(Block.Properties.of(Material.STONE).strength(3.0f, 3.0f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
@@ -141,39 +141,39 @@ public class BlockRegistry {
     public static final RegistryObject<Block> MARS_BAUXITE_ORE = BLOCKS.register("mars_bauxite_ore", () -> new Block(Block.Properties.of(Material.STONE).strength(3.0f, 3.0f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     //STAIRS
-    public static final RegistryObject<Block> MARS_STONE_STAIRS = BLOCKS.register("mars_stone_stairs", () -> new StairBlock(MARS_STONE.get().defaultBlockState(), Block.Properties.copy(MARS_STONE.get())));
-    public static final RegistryObject<Block> MARS_BRICK_STAIRS = BLOCKS.register("mars_brick_stairs", () -> new StairBlock(MARS_BRICKS.get().defaultBlockState(), Block.Properties.copy(MARS_BRICKS.get())));
-    public static final RegistryObject<Block> MARS_COBBLESTONE_STAIRS = BLOCKS.register("mars_cobblestone_stairs", () -> new StairBlock(MARS_COBBLESTONE.get().defaultBlockState(), Block.Properties.copy(MARS_COBBLESTONE.get())));
-    public static final RegistryObject<Block> MARS_DEEPSLATE_BRICK_STAIRS = BLOCKS.register("mars_deepslate_brick_stairs", () -> new StairBlock(MARS_DEEPSLATE_BRICKS.get().defaultBlockState(), Block.Properties.copy(MARS_DEEPSLATE_BRICKS.get())));
-    public static final RegistryObject<Block> MARS_COBBLED_DEEPSLATE_STAIRS = BLOCKS.register("mars_cobbled_deepslate_stairs", () -> new StairBlock(MARS_COBBLED_DEEPSLATE.get().defaultBlockState(), Block.Properties.copy(MARS_COBBLED_DEEPSLATE.get())));
-    public static final RegistryObject<Block> MARS_DEEPSLATE_TILE_STAIRS = BLOCKS.register("mars_deepslate_tile_stairs", () -> new StairBlock(MARS_DEEPSLATE_TILES.get().defaultBlockState(), Block.Properties.copy(MARS_DEEPSLATE_TILES.get())));
-    public static final RegistryObject<Block> MARS_POLISHED_DEEPSLATE_STAIRS = BLOCKS.register("mars_polished_deepslate_stairs", () -> new StairBlock(MARS_POLISHED_DEEPSLATE.get().defaultBlockState(), Block.Properties.copy(MARS_POLISHED_DEEPSLATE.get())));
+    public static final RegistryObject<StairBlock> MARS_STONE_STAIRS = BLOCKS.register("mars_stone_stairs", () -> new StairBlock(MARS_STONE.get().defaultBlockState(), Block.Properties.copy(MARS_STONE.get())));
+    public static final RegistryObject<StairBlock> MARS_BRICK_STAIRS = BLOCKS.register("mars_brick_stairs", () -> new StairBlock(MARS_BRICKS.get().defaultBlockState(), Block.Properties.copy(MARS_BRICKS.get())));
+    public static final RegistryObject<StairBlock> MARS_COBBLESTONE_STAIRS = BLOCKS.register("mars_cobblestone_stairs", () -> new StairBlock(MARS_COBBLESTONE.get().defaultBlockState(), Block.Properties.copy(MARS_COBBLESTONE.get())));
+    public static final RegistryObject<StairBlock> MARS_DEEPSLATE_BRICK_STAIRS = BLOCKS.register("mars_deepslate_brick_stairs", () -> new StairBlock(MARS_DEEPSLATE_BRICKS.get().defaultBlockState(), Block.Properties.copy(MARS_DEEPSLATE_BRICKS.get())));
+    public static final RegistryObject<StairBlock> MARS_COBBLED_DEEPSLATE_STAIRS = BLOCKS.register("mars_cobbled_deepslate_stairs", () -> new StairBlock(MARS_COBBLED_DEEPSLATE.get().defaultBlockState(), Block.Properties.copy(MARS_COBBLED_DEEPSLATE.get())));
+    public static final RegistryObject<StairBlock> MARS_DEEPSLATE_TILE_STAIRS = BLOCKS.register("mars_deepslate_tile_stairs", () -> new StairBlock(MARS_DEEPSLATE_TILES.get().defaultBlockState(), Block.Properties.copy(MARS_DEEPSLATE_TILES.get())));
+    public static final RegistryObject<StairBlock> MARS_POLISHED_DEEPSLATE_STAIRS = BLOCKS.register("mars_polished_deepslate_stairs", () -> new StairBlock(MARS_POLISHED_DEEPSLATE.get().defaultBlockState(), Block.Properties.copy(MARS_POLISHED_DEEPSLATE.get())));
 
     //SLAB
-    public static final RegistryObject<Block> MARS_STONE_SLAB = BLOCKS.register("mars_stone_slab", () -> new SlabBlock(Block.Properties.copy(MARS_STONE.get())));
-    public static final RegistryObject<Block> MARS_SMOOTH_STONE_SLAB = BLOCKS.register("mars_smooth_stone_slab", () -> new SlabBlock(Block.Properties.copy(MARS_SMOOTH_STONE.get())));
-    public static final RegistryObject<Block> MARS_BRICK_SLAB = BLOCKS.register("mars_brick_slab", () -> new SlabBlock(Block.Properties.copy(MARS_BRICKS.get())));
-    public static final RegistryObject<Block> MARS_COBBLESTONE_SLAB = BLOCKS.register("mars_cobblestone_slab", () -> new SlabBlock(Block.Properties.copy(MARS_COBBLESTONE.get())));
-    public static final RegistryObject<Block> MARS_DEEPSLATE_BRICK_SLAB = BLOCKS.register("mars_deepslate_brick_slab", () -> new SlabBlock(Block.Properties.copy(MARS_DEEPSLATE_BRICKS.get())));
-    public static final RegistryObject<Block> MARS_COBBLED_DEEPSLATE_SLAB = BLOCKS.register("mars_cobbled_deepslate_slab", () -> new SlabBlock(Block.Properties.copy(MARS_COBBLED_DEEPSLATE.get())));
-    public static final RegistryObject<Block> MARS_DEEPSLATE_TILE_SLAB = BLOCKS.register("mars_deepslate_tile_slab", () -> new SlabBlock(Block.Properties.copy(MARS_DEEPSLATE_TILES.get())));
-    public static final RegistryObject<Block> MARS_POLISHED_DEEPSLATE_SLAB = BLOCKS.register("mars_polished_deepslate_slab", () -> new SlabBlock(Block.Properties.copy(MARS_POLISHED_DEEPSLATE.get())));
+    public static final RegistryObject<SlabBlock> MARS_STONE_SLAB = BLOCKS.register("mars_stone_slab", () -> new SlabBlock(Block.Properties.copy(MARS_STONE.get())));
+    public static final RegistryObject<SlabBlock> MARS_SMOOTH_STONE_SLAB = BLOCKS.register("mars_smooth_stone_slab", () -> new SlabBlock(Block.Properties.copy(MARS_SMOOTH_STONE.get())));
+    public static final RegistryObject<SlabBlock> MARS_BRICK_SLAB = BLOCKS.register("mars_brick_slab", () -> new SlabBlock(Block.Properties.copy(MARS_BRICKS.get())));
+    public static final RegistryObject<SlabBlock> MARS_COBBLESTONE_SLAB = BLOCKS.register("mars_cobblestone_slab", () -> new SlabBlock(Block.Properties.copy(MARS_COBBLESTONE.get())));
+    public static final RegistryObject<SlabBlock> MARS_DEEPSLATE_BRICK_SLAB = BLOCKS.register("mars_deepslate_brick_slab", () -> new SlabBlock(Block.Properties.copy(MARS_DEEPSLATE_BRICKS.get())));
+    public static final RegistryObject<SlabBlock> MARS_COBBLED_DEEPSLATE_SLAB = BLOCKS.register("mars_cobbled_deepslate_slab", () -> new SlabBlock(Block.Properties.copy(MARS_COBBLED_DEEPSLATE.get())));
+    public static final RegistryObject<SlabBlock> MARS_DEEPSLATE_TILE_SLAB = BLOCKS.register("mars_deepslate_tile_slab", () -> new SlabBlock(Block.Properties.copy(MARS_DEEPSLATE_TILES.get())));
+    public static final RegistryObject<SlabBlock> MARS_POLISHED_DEEPSLATE_SLAB = BLOCKS.register("mars_polished_deepslate_slab", () -> new SlabBlock(Block.Properties.copy(MARS_POLISHED_DEEPSLATE.get())));
 
     //WALL
-    public static final RegistryObject<Block> MARS_BRICK_WALL = BLOCKS.register("mars_brick_wall", () -> new WallBlock(Block.Properties.of(Material.STONE).strength(6.0f).sound(SoundType.STONE)));
-    public static final RegistryObject<Block> MARS_COBBLESTONE_WALL = BLOCKS.register("mars_cobblestone_wall", () -> new WallBlock(Block.Properties.copy(MARS_COBBLESTONE.get())));
-    public static final RegistryObject<Block> MARS_DEEPSLATE_BRICK_WALL = BLOCKS.register("mars_deepslate_brick_wall", () -> new WallBlock(Block.Properties.of(Material.STONE).strength(6.0f).sound(SoundType.STONE)));
-    public static final RegistryObject<Block> MARS_COBBLED_DEEPSLATE_WALL = BLOCKS.register("mars_cobbled_deepslate_wall", () -> new WallBlock(Block.Properties.copy(MARS_COBBLED_DEEPSLATE.get())));
-    public static final RegistryObject<Block> MARS_DEEPSLATE_TILE_WALL = BLOCKS.register("mars_deepslate_tile_wall", () -> new WallBlock(Block.Properties.copy(MARS_DEEPSLATE_TILES.get())));
-    public static final RegistryObject<Block> MARS_POLISHED_DEEPSLATE_WALL = BLOCKS.register("mars_polished_deepslate_wall", () -> new WallBlock(Block.Properties.copy(MARS_POLISHED_DEEPSLATE.get())));
+    public static final RegistryObject<WallBlock> MARS_BRICK_WALL = BLOCKS.register("mars_brick_wall", () -> new WallBlock(Block.Properties.of(Material.STONE).strength(6.0f).sound(SoundType.STONE)));
+    public static final RegistryObject<WallBlock> MARS_COBBLESTONE_WALL = BLOCKS.register("mars_cobblestone_wall", () -> new WallBlock(Block.Properties.copy(MARS_COBBLESTONE.get())));
+    public static final RegistryObject<WallBlock> MARS_DEEPSLATE_BRICK_WALL = BLOCKS.register("mars_deepslate_brick_wall", () -> new WallBlock(Block.Properties.of(Material.STONE).strength(6.0f).sound(SoundType.STONE)));
+    public static final RegistryObject<WallBlock> MARS_COBBLED_DEEPSLATE_WALL = BLOCKS.register("mars_cobbled_deepslate_wall", () -> new WallBlock(Block.Properties.copy(MARS_COBBLED_DEEPSLATE.get())));
+    public static final RegistryObject<WallBlock> MARS_DEEPSLATE_TILE_WALL = BLOCKS.register("mars_deepslate_tile_wall", () -> new WallBlock(Block.Properties.copy(MARS_DEEPSLATE_TILES.get())));
+    public static final RegistryObject<WallBlock> MARS_POLISHED_DEEPSLATE_WALL = BLOCKS.register("mars_polished_deepslate_wall", () -> new WallBlock(Block.Properties.copy(MARS_POLISHED_DEEPSLATE.get())));
 
     //BUTTON
-    public static final RegistryObject<Block> MARS_STONE_BUTTON = BLOCKS.register("mars_stone_button", () -> new StoneButtonBlock(Block.Properties.copy(MOON_STONE.get())));
-    public static final RegistryObject<Block> MARS_DEEPSLATE_BUTTON = BLOCKS.register("mars_deepslate_button", () -> new StoneButtonBlock(Block.Properties.copy(MARS_DEEPSLATE.get())));
+    public static final RegistryObject<ButtonBlock> MARS_STONE_BUTTON = BLOCKS.register("mars_stone_button", () -> new StoneButtonBlock(Block.Properties.copy(MOON_STONE.get())));
+    public static final RegistryObject<ButtonBlock> MARS_DEEPSLATE_BUTTON = BLOCKS.register("mars_deepslate_button", () -> new StoneButtonBlock(Block.Properties.copy(MARS_DEEPSLATE.get())));
 
     //PRESSURE PLATE
-    public static final RegistryObject<Block> MARS_DEEPSLATE_PRESSURE_PLATE = BLOCKS.register("mars_deepslate_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, Block.Properties.copy(MARS_DEEPSLATE.get()).isValidSpawn(BlockRegistry::never)));
-    public static final RegistryObject<Block> MARS_STONE_PRESSURE_PLATE = BLOCKS.register("mars_stone_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, Block.Properties.copy(MOON_STONE.get()).isValidSpawn(BlockRegistry::never)));
+    public static final RegistryObject<PressurePlateBlock> MARS_DEEPSLATE_PRESSURE_PLATE = BLOCKS.register("mars_deepslate_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, Block.Properties.copy(MARS_DEEPSLATE.get()).isValidSpawn(BlockRegistry::never)));
+    public static final RegistryObject<PressurePlateBlock> MARS_STONE_PRESSURE_PLATE = BLOCKS.register("mars_stone_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, Block.Properties.copy(MOON_STONE.get()).isValidSpawn(BlockRegistry::never)));
 
     public static final RegistryObject<Block> MARS_LANTERN = BLOCKS.register("mars_lantern", () -> new Block(Block.Properties.of(Material.GLASS, MaterialColor.QUARTZ).strength(0.3F).sound(SoundType.GLASS).lightLevel((light) -> {
         return 13;

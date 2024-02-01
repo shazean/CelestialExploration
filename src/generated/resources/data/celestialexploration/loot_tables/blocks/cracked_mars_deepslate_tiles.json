@@ -2,7 +2,7 @@
   "type": "minecraft:block",
   "pools": [
     {
-      "name": "cracked_mars_deepslate_tiles",
+      "name": "cracked_MARS_deepslate_tiles",
       "rolls": 1.0,
       "bonus_rolls": 0.0,
       "entries": [
