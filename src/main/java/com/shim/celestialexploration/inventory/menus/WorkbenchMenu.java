@@ -122,6 +122,7 @@ public class WorkbenchMenu extends RecipeBookMenu<WorkbenchCraftingContainer> {
         int index = this.data.get(6);
 
         return switch (index) {
+            case 0 -> "Empty";
             case 1 -> "Water";
             case 2 -> "Lava";
             case 3 -> "Molten Iron";
@@ -129,7 +130,8 @@ public class WorkbenchMenu extends RecipeBookMenu<WorkbenchCraftingContainer> {
             case 5 -> "Molten Copper";
             case 6 -> "Molten Gold";
             case 8 -> "Molten Aluminum";
-            default -> throw new IllegalStateException("Unexpected value: " + index);
+            default -> "Unknown Fluid";
+//            default -> throw new IllegalStateException("Unexpected value: " + index);
         };
     }
 
