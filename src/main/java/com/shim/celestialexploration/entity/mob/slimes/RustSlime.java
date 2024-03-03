@@ -1,4 +1,4 @@
-package com.shim.celestialexploration.entity;
+package com.shim.celestialexploration.entity.mob.slimes;
 
 import com.shim.celestialexploration.registry.ParticleRegistry;
 import net.minecraft.core.BlockPos;

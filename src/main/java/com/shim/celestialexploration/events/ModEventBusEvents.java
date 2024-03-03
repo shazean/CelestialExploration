@@ -2,6 +2,13 @@ package com.shim.celestialexploration.events;
 
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.entity.*;
+import com.shim.celestialexploration.entity.mob.*;
+import com.shim.celestialexploration.entity.mob.piglins.AstralPiglin;
+import com.shim.celestialexploration.entity.mob.piglins.VoidedPiglin;
+import com.shim.celestialexploration.entity.mob.slimes.LunarSlime;
+import com.shim.celestialexploration.entity.mob.slimes.MarsMallow;
+import com.shim.celestialexploration.entity.mob.slimes.RustSlime;
+import com.shim.celestialexploration.entity.mob.slimes.SulfurCube;
 import com.shim.celestialexploration.entity.model.MagCartModel;
 import com.shim.celestialexploration.entity.model.SpaceshipModel;
 import com.shim.celestialexploration.particles.CelestialPortalParticle;
@@ -13,6 +20,8 @@ import com.shim.celestialexploration.registry.CelestialModelLayers;
 import com.shim.celestialexploration.registry.EntityRegistry;
 import com.shim.celestialexploration.registry.ParticleRegistry;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.model.GhastModel;
+import net.minecraft.client.model.HoglinModel;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.PiglinModel;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
@@ -47,6 +56,9 @@ public class ModEventBusEvents {
         event.put(EntityRegistry.VOIDED_PIGLIN.get(), VoidedPiglin.setAttributes());
         event.put(EntityRegistry.FLARE.get(), Flare.setAttributes());
         event.put(EntityRegistry.GUST.get(), Gust.setAttributes());
+        event.put(EntityRegistry.ASTRAL_PIGLIN.get(), AstralPiglin.setAttributes());
+        event.put(EntityRegistry.ASTRAL_HOGLIN.get(), AstralHoglin.setAttributes());
+        event.put(EntityRegistry.VOIDED_ZOGLIN.get(), VoidedZoglin.setAttributes());
 
     }
 
@@ -74,10 +86,25 @@ public class ModEventBusEvents {
         LayerDefinition piglinLayer = LayerDefinition.create(PiglinModel.createMesh(CubeDeformation.NONE), 64, 64);
 
         event.registerLayerDefinition(CelestialModelLayers.VOIDED_PIGLIN, () -> piglinLayer);
-        event.registerLayerDefinition(CelestialModelLayers.VOIDED_INNER_ARMOR, () -> innerArmorLayer);
-        event.registerLayerDefinition(CelestialModelLayers.VOIDED_OUTER_ARMOR, () -> outerArmorLayer);
+        event.registerLayerDefinition(CelestialModelLayers.VOIDED_PIGLIN_INNER_ARMOR, () -> innerArmorLayer);
+        event.registerLayerDefinition(CelestialModelLayers.VOIDED_PIGLIN_OUTER_ARMOR, () -> outerArmorLayer);
 
-        event.registerLayerDefinition(CelestialModelLayers.GUST, () -> piglinLayer);
+        event.registerLayerDefinition(CelestialModelLayers.ASTRAL_PIGLIN, () -> piglinLayer);
+        event.registerLayerDefinition(CelestialModelLayers.ASTRAL_PIGLIN_INNER_ARMOR, () -> innerArmorLayer);
+        event.registerLayerDefinition(CelestialModelLayers.ASTRAL_PIGLIN_OUTER_ARMOR, () -> outerArmorLayer);
+
+        LayerDefinition hoglinLayer = HoglinModel.createBodyLayer();
+
+        event.registerLayerDefinition(CelestialModelLayers.VOIDED_ZOGLIN, () -> hoglinLayer);
+        event.registerLayerDefinition(CelestialModelLayers.VOIDED_ZOGLIN_INNER_ARMOR, () -> innerArmorLayer);
+        event.registerLayerDefinition(CelestialModelLayers.VOIDED_ZOGLIN_OUTER_ARMOR, () -> outerArmorLayer);
+
+        event.registerLayerDefinition(CelestialModelLayers.ASTRAL_HOGLIN, () -> hoglinLayer);
+        event.registerLayerDefinition(CelestialModelLayers.ASTRAL_HOGLIN_INNER_ARMOR, () -> innerArmorLayer);
+        event.registerLayerDefinition(CelestialModelLayers.ASTRAL_HOGLIN_OUTER_ARMOR, () -> outerArmorLayer);
+
+
+        event.registerLayerDefinition(CelestialModelLayers.GUST, GhastModel::createBodyLayer);
 
     }
 
@@ -94,7 +121,6 @@ public class ModEventBusEvents {
         Minecraft.getInstance().particleEngine.register(ParticleRegistry.MARS_PORTAL_PARTICLES.get(), CelestialPortalParticle.MarsProvider::new);
         Minecraft.getInstance().particleEngine.register(ParticleRegistry.VENUS_PORTAL_PARTICLES.get(), CelestialPortalParticle.VenusProvider::new);
         Minecraft.getInstance().particleEngine.register(ParticleRegistry.MOON_PORTAL_PARTICLES.get(), CelestialPortalParticle.MoonProvider::new);
-
 
     }
 

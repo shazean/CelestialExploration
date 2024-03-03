@@ -1,9 +1,8 @@
-package com.shim.celestialexploration.entity;
+package com.shim.celestialexploration.entity.mob.slimes;
 
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.registry.FluidRegistry;
 import net.minecraft.core.BlockPos;
-import net.minecraft.tags.FluidTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.EntityType;

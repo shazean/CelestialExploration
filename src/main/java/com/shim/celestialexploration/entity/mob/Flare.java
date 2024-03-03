@@ -1,4 +1,4 @@
-package com.shim.celestialexploration.entity;
+package com.shim.celestialexploration.entity.mob;
 
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;

@@ -2,7 +2,7 @@ package com.shim.celestialexploration.entity.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.entity.Lurker;
+import com.shim.celestialexploration.entity.mob.Lurker;
 import com.shim.celestialexploration.entity.layers.LurkerHelmetLayer;
 import com.shim.celestialexploration.entity.layers.LurkerPowerLayer;
 import com.shim.celestialexploration.entity.model.LurkerModel;

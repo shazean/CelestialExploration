@@ -11,6 +11,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
@@ -68,6 +69,12 @@ public class ModForgeEventBus {
                 } else {
                     player.removeEffect(EffectRegistry.LOW_GRAVITY.get());
                 }
+            }
+        } else if (entity instanceof LivingEntity livingEntity) {
+            if (dimension == DimensionRegistry.MARS || dimension == DimensionRegistry.MOON) {
+                livingEntity.addEffect(new MobEffectInstance(EffectRegistry.LOW_GRAVITY.get(), 120000, 0, false, false, true));
+            } else {
+                livingEntity.removeEffect(EffectRegistry.LOW_GRAVITY.get());
             }
         }
     }

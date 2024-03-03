@@ -1,4 +1,4 @@
-package com.shim.celestialexploration.entity;
+package com.shim.celestialexploration.entity.mob.slimes;
 
 import com.shim.celestialexploration.registry.ParticleRegistry;
 import net.minecraft.core.BlockPos;
@@ -10,15 +10,17 @@ import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.monster.Slime;
-import net.minecraft.world.level.*;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.ServerLevelAccessor;
 
 import java.util.Random;
 
 import static net.minecraft.world.entity.monster.Monster.isDarkEnoughToSpawn;
 
-public class MarsMallow extends Slime {
+public class LunarSlime extends Slime {
 
-    public MarsMallow(EntityType<? extends Slime> p_33588_, Level p_33589_) {
+    public LunarSlime(EntityType<? extends Slime> p_33588_, Level p_33589_) {
         super(p_33588_, p_33589_);
     }
 
@@ -29,13 +31,14 @@ public class MarsMallow extends Slime {
 
     @Override
     protected ParticleOptions getParticleType() {
-        return ParticleRegistry.MARS_MALLOW_SLIME_PARTICLES.get();
+        return ParticleRegistry.LUNAR_SLIME_PARTICLES.get();
     }
 
-    public static boolean checkMarsMallowSpawnRules(EntityType<MarsMallow> slime, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, Random random) {
+    public static boolean checkLunarSlimeSpawnRules(EntityType<LunarSlime> slime, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, Random random) {
         if (level.getDifficulty() == Difficulty.PEACEFUL || pos.getY() > 64) {
             return false;
         }
         return isDarkEnoughToSpawn((ServerLevelAccessor) level, pos, random) && checkMobSpawnRules(slime, level, spawnType, pos, random);
     }
+
 }

@@ -1,6 +1,5 @@
-package com.shim.celestialexploration.entity;
+package com.shim.celestialexploration.entity.mob;
 
-import com.shim.celestialexploration.registry.ItemRegistry;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;

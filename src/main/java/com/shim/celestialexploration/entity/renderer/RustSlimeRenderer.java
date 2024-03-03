@@ -2,7 +2,7 @@ package com.shim.celestialexploration.entity.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.entity.RustSlime;
+import com.shim.celestialexploration.entity.mob.slimes.RustSlime;
 import com.shim.celestialexploration.entity.layers.RustSlimeOuterLayer;
 import com.shim.celestialexploration.entity.model.RustSlimeModel;
 import net.minecraft.client.model.geom.ModelLayers;

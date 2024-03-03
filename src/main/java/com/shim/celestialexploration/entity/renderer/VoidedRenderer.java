@@ -2,7 +2,7 @@ package com.shim.celestialexploration.entity.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.entity.Voided;
+import com.shim.celestialexploration.entity.mob.Voided;
 import com.shim.celestialexploration.entity.model.VoidedModel;
 import com.shim.celestialexploration.registry.CelestialModelLayers;
 import net.minecraft.client.model.geom.ModelLayerLocation;

@@ -481,6 +481,9 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(ItemRegistry.VOIDED_PIGLIN_SPAWN_EGG.get(), "Voided Piglin Spawn Egg");
 		add(ItemRegistry.FLARE_SPAWN_EGG.get(), "Flare Spawn Egg");
 		add(ItemRegistry.GUST_SPAWN_EGG.get(), "Gust Spawn Egg");
+		add(ItemRegistry.ASTRAL_PIGLIN_SPAWN_EGG.get(), "Astral Piglin Spawn Egg");
+		add(ItemRegistry.ASTRAL_HOGLIN_SPAWN_EGG.get(), "Astral Hoglin Spawn Egg");
+		add(ItemRegistry.VOIDED_ZOGLIN_SPAWN_EGG.get(), "Voided Zoglin Spawn Egg");
 
 		//---- MOBS -------------------------------------------------------------------------------
 		add(EntityRegistry.LUNAR_SLIME.get(), "Lunar Slime");
@@ -493,7 +496,10 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(EntityRegistry.VOIDED_PIGLIN.get(), "Voided Piglin");
 		add(EntityRegistry.FLARE.get(), "Flare");
 		add(EntityRegistry.GUST.get(), "Gust");
-		
+		add(EntityRegistry.ASTRAL_PIGLIN.get(), "Astral Piglin");
+		add(EntityRegistry.ASTRAL_HOGLIN.get(), "Astral Hoglin");
+		add(EntityRegistry.VOIDED_ZOGLIN.get(), "Voided Zoglin");
+
 		//---- FLUIDS -------------------------------------------------------------------------------
 		add("fluid.celestialexploration.lox", "Liquid Oxygen");
 		add(FluidRegistry.MOLTEN_IRON_BLOCK.get(), "Molten Iron");
@@ -550,5 +556,7 @@ public class ModLanguageProvider extends LanguageProvider {
 
 		//---- DAMAGE SOURCES -------------------------------------------------------------------------------
 		add("death.attack.celestialexploration.touchedSun", "%1$s flew into the sun");
+		add("death.attack.celestialexploration.coldFloor", "%1$s got cold feet");
+
 	}
 }

@@ -34,6 +34,19 @@ public class CelestialModelLayers {
     public static final ModelLayerLocation VOIDED_PIGLIN_INNER_ARMOR = registerInnerArmor("voided_piglin");
     public static final ModelLayerLocation VOIDED_PIGLIN_OUTER_ARMOR = registerOuterArmor("voided_piglin");
 
+    public static final ModelLayerLocation ASTRAL_PIGLIN = register("astral_piglin");
+    public static final ModelLayerLocation ASTRAL_PIGLIN_INNER_ARMOR = registerInnerArmor("astral_piglin");
+    public static final ModelLayerLocation ASTRAL_PIGLIN_OUTER_ARMOR = registerOuterArmor("astral_piglin");
+
+    public static final ModelLayerLocation VOIDED_ZOGLIN = register("voided_zoglin");
+    public static final ModelLayerLocation VOIDED_ZOGLIN_INNER_ARMOR = registerInnerArmor("voided_zoglin");
+    public static final ModelLayerLocation VOIDED_ZOGLIN_OUTER_ARMOR = registerOuterArmor("voided_zoglin");
+
+    public static final ModelLayerLocation ASTRAL_HOGLIN = register("astral_hoglin");
+    public static final ModelLayerLocation ASTRAL_HOGLIN_INNER_ARMOR = registerInnerArmor("astral_hoglin");
+    public static final ModelLayerLocation ASTRAL_HOGLIN_OUTER_ARMOR = registerOuterArmor("astral_hoglin");
+
+
     public static final ModelLayerLocation GUST = register("gust");
 
 

@@ -2,6 +2,13 @@ package com.shim.celestialexploration.registry;
 
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.entity.*;
+import com.shim.celestialexploration.entity.mob.*;
+import com.shim.celestialexploration.entity.mob.piglins.AstralPiglin;
+import com.shim.celestialexploration.entity.mob.piglins.VoidedPiglin;
+import com.shim.celestialexploration.entity.mob.slimes.LunarSlime;
+import com.shim.celestialexploration.entity.mob.slimes.MarsMallow;
+import com.shim.celestialexploration.entity.mob.slimes.RustSlime;
+import com.shim.celestialexploration.entity.mob.slimes.SulfurCube;
 import com.shim.celestialexploration.entity.vehicle.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
@@ -48,6 +55,10 @@ public class EntityRegistry {
             .sized(0.6F, 1.95F).clientTrackingRange(8).fireImmune()
             .build(new ResourceLocation(CelestialExploration.MODID, "voided_piglin").toString()));
 
+    public static final RegistryObject<EntityType<AstralPiglin>> ASTRAL_PIGLIN = ENTITY_TYPES.register("astral_piglin", () -> EntityType.Builder.of(AstralPiglin::new, MobCategory.MONSTER)
+            .sized(0.6F, 1.95F).clientTrackingRange(8).fireImmune()
+            .build(new ResourceLocation(CelestialExploration.MODID, "astral_piglin").toString()));
+
     public static final RegistryObject<EntityType<Flare>> FLARE = ENTITY_TYPES.register("flare", () -> EntityType.Builder.of(Flare::new, MobCategory.MONSTER)
             .sized(0.6F, 1.8F).clientTrackingRange(8).fireImmune()
             .build(new ResourceLocation(CelestialExploration.MODID, "flare").toString()));
@@ -55,6 +66,14 @@ public class EntityRegistry {
     public static final RegistryObject<EntityType<Gust>> GUST = ENTITY_TYPES.register("gust", () -> EntityType.Builder.of(Gust::new, MobCategory.MONSTER)
             .sized(4.0F, 4.0F).clientTrackingRange(10).fireImmune()
             .build(new ResourceLocation(CelestialExploration.MODID, "gust").toString()));
+
+    public static final RegistryObject<EntityType<VoidedZoglin>> VOIDED_ZOGLIN = ENTITY_TYPES.register("voided_zoglin", () -> EntityType.Builder.of(VoidedZoglin::new, MobCategory.MONSTER)
+            .sized(0.6F, 1.95F).clientTrackingRange(8).fireImmune()
+            .build(new ResourceLocation(CelestialExploration.MODID, "voided_zoglin").toString()));
+
+    public static final RegistryObject<EntityType<AstralHoglin>> ASTRAL_HOGLIN = ENTITY_TYPES.register("astral_hoglin", () -> EntityType.Builder.of(AstralHoglin::new, MobCategory.MONSTER)
+            .sized(0.6F, 1.95F).clientTrackingRange(8).fireImmune()
+            .build(new ResourceLocation(CelestialExploration.MODID, "astral_hoglin").toString()));
 
 
 

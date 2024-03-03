@@ -2,7 +2,12 @@ package com.shim.celestialexploration;
 
 import com.shim.celestialexploration.config.CelestialClientConfig;
 import com.shim.celestialexploration.config.CelestialCommonConfig;
-import com.shim.celestialexploration.entity.*;
+import com.shim.celestialexploration.entity.mob.*;
+import com.shim.celestialexploration.entity.mob.piglins.VoidedPiglin;
+import com.shim.celestialexploration.entity.mob.slimes.LunarSlime;
+import com.shim.celestialexploration.entity.mob.slimes.MarsMallow;
+import com.shim.celestialexploration.entity.mob.slimes.RustSlime;
+import com.shim.celestialexploration.entity.mob.slimes.SulfurCube;
 import com.shim.celestialexploration.packets.CelestialPacketHandler;
 import com.shim.celestialexploration.registry.*;
 import com.shim.celestialexploration.util.Keybinds;

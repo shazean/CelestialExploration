@@ -36,7 +36,7 @@
         "maxCount": 4
       },
       {
-        "type": "minecraft:hoglin",
+        "type": "celestialexploration:astral_hoglin",
         "weight": 9,
         "minCount": 0,
         "maxCount": 4
@@ -48,7 +48,7 @@
         "maxCount": 4
       },
       {
-        "type": "minecraft:piglin",
+        "type": "celestialexploration:astral_piglin",
         "weight": 15,
         "minCount": 4,
         "maxCount": 4

@@ -2,13 +2,12 @@ package com.shim.celestialexploration.entity.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.entity.Gust;
+import com.shim.celestialexploration.entity.mob.Gust;
 import net.minecraft.client.model.GhastModel;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.monster.Ghast;
 
 public class GustRenderer extends MobRenderer<Gust, GhastModel<Gust>> {
     private static final ResourceLocation GUST_LOCATION = new ResourceLocation(CelestialExploration.MODID, "textures/entity/gust/gust.png");

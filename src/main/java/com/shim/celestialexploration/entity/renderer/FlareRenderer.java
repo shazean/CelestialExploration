@@ -1,14 +1,13 @@
 package com.shim.celestialexploration.entity.renderer;
 
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.entity.Flare;
+import com.shim.celestialexploration.entity.mob.Flare;
 import net.minecraft.client.model.BlazeModel;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.monster.Blaze;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 

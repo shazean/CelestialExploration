@@ -1,4 +1,4 @@
-package com.shim.celestialexploration.entity;
+package com.shim.celestialexploration.entity.mob;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.Difficulty;

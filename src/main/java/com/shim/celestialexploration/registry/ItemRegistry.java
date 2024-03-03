@@ -456,12 +456,24 @@ public class ItemRegistry {
 			() -> new ForgeSpawnEggItem(EntityRegistry.VOIDED_PIGLIN,0, 0x3c2d62,
 					new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
 
+	public static final RegistryObject<Item> ASTRAL_PIGLIN_SPAWN_EGG = ITEMS.register("astral_piglin_spawn_egg",
+			() -> new ForgeSpawnEggItem(EntityRegistry.ASTRAL_PIGLIN,0, 0x3c2d62,
+					new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+
 	public static final RegistryObject<Item> FLARE_SPAWN_EGG = ITEMS.register("flare_spawn_egg",
 			() -> new ForgeSpawnEggItem(EntityRegistry.FLARE,0, 0x3c2d62,
 					new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
 
 	public static final RegistryObject<Item> GUST_SPAWN_EGG = ITEMS.register("gust_spawn_egg",
 			() -> new ForgeSpawnEggItem(EntityRegistry.GUST,0, 0x3c2d62,
+					new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+
+	public static final RegistryObject<Item> VOIDED_ZOGLIN_SPAWN_EGG = ITEMS.register("voided_zoglin_spawn_egg",
+			() -> new ForgeSpawnEggItem(EntityRegistry.VOIDED_ZOGLIN,0, 0x3c2d62,
+					new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+
+	public static final RegistryObject<Item> ASTRAL_HOGLIN_SPAWN_EGG = ITEMS.register("astral_hoglin_spawn_egg",
+			() -> new ForgeSpawnEggItem(EntityRegistry.ASTRAL_HOGLIN,0, 0x3c2d62,
 					new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
 
 

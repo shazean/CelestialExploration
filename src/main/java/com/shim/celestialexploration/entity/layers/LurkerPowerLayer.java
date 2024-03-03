@@ -1,7 +1,7 @@
 package com.shim.celestialexploration.entity.layers;
 
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.entity.Lurker;
+import com.shim.celestialexploration.entity.mob.Lurker;
 import com.shim.celestialexploration.entity.model.LurkerModel;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.EntityModelSet;

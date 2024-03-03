@@ -2,7 +2,7 @@ package com.shim.celestialexploration.entity.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.entity.MarsMallow;
+import com.shim.celestialexploration.entity.mob.slimes.MarsMallow;
 import com.shim.celestialexploration.entity.layers.MarsMallowOuterLayer;
 import com.shim.celestialexploration.entity.model.MarsMallowModel;
 import net.minecraft.client.model.geom.ModelLayers;

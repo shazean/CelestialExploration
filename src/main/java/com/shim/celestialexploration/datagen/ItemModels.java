@@ -553,5 +553,6 @@ public class ItemModels extends ItemModelProvider {
 		singleTexture(ItemRegistry.INGOT_MOLD.get().getRegistryName().getPath(), new ResourceLocation("item/generated"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/ingot_mold"));
 		singleTexture(ItemRegistry.SULFUR_CRYSTAL.get().getRegistryName().getPath(), new ResourceLocation("item/generated"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/sulfur_crystal"));
 		singleTexture(ItemRegistry.LUNAR_GOO.get().getRegistryName().getPath(), new ResourceLocation("item/generated"), "layer0", new ResourceLocation(CelestialExploration.MODID, "item/lunar_goo"));
+
 	}
 }
