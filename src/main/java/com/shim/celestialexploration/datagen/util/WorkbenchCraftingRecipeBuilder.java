@@ -40,7 +40,6 @@ public class WorkbenchCraftingRecipeBuilder implements RecipeBuilder {
     private String group;
 //    private final WorkbenchCraftingRecipe.Serializer serializer;
 
-
     private WorkbenchCraftingRecipeBuilder(ItemLike item, int count, Fluid fluid, float buckets) {
         this.result = item.asItem();
         this.count = count;
@@ -72,8 +71,8 @@ public class WorkbenchCraftingRecipeBuilder implements RecipeBuilder {
     }
 
     @Override
-    public RecipeBuilder group(@org.jetbrains.annotations.Nullable String p_176495_) {
-        this.group = p_176495_;
+    public RecipeBuilder group(@org.jetbrains.annotations.Nullable String group) {
+        this.group = group;
         return this;
     }
 
@@ -145,17 +144,17 @@ public class WorkbenchCraftingRecipeBuilder implements RecipeBuilder {
         private final Advancement.Builder advancement;
         private final ResourceLocation advancementId;
 
-        public Result(ResourceLocation p_126287_, String p_126288_, Item result, int count, List<String> pattern, Map<Character, Ingredient> key, Fluid fluid, float buckets, Advancement.Builder p_126293_, ResourceLocation p_126294_) {
-            this.id = p_126287_;
-            this.group = p_126288_;
+        public Result(ResourceLocation id, String group, Item result, int count, List<String> pattern, Map<Character, Ingredient> key, Fluid fluid, float buckets, Advancement.Builder advancement, ResourceLocation advancementId) {
+            this.id = id;
+            this.group = group;
             this.result = result;
             this.count = count;
             this.pattern = pattern;
             this.key = key;
             this.fluid = fluid;
             this.buckets = buckets;
-            this.advancement = p_126293_;
-            this.advancementId = p_126294_;
+            this.advancement = advancement;
+            this.advancementId = advancementId;
         }
 
         public void serializeRecipeData(JsonObject json) {
@@ -184,11 +183,6 @@ public class WorkbenchCraftingRecipeBuilder implements RecipeBuilder {
             }
 
             json.add("result", jsonobject1);
-
-
-//            if (!this.group.isEmpty()) {
-//                json.addProperty("group", this.group);
-//            }
 //
 //            json.add("ingredient", this.ingredient.toJson());
             json.addProperty("fluid", Registry.FLUID.getKey(this.fluid).toString());

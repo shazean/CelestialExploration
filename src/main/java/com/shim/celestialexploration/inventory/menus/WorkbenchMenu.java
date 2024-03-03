@@ -1,5 +1,6 @@
 package com.shim.celestialexploration.inventory.menus;
 
+import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.blocks.blockentities.WorkbenchBlockEntity;
 import com.shim.celestialexploration.inventory.FuelSlot;
 import com.shim.celestialexploration.inventory.WorkbenchResultSlot;
@@ -7,6 +8,7 @@ import com.shim.celestialexploration.inventory.containers.WorkbenchCraftingConta
 import com.shim.celestialexploration.recipes.WorkbenchCraftingRecipe;
 import com.shim.celestialexploration.registry.BlockRegistry;
 import com.shim.celestialexploration.registry.MenuRegistry;
+import com.shim.celestialexploration.util.CelestialUtil;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.protocol.game.ClientboundContainerSetSlotPacket;
 import net.minecraft.server.level.ServerPlayer;
@@ -19,6 +21,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
@@ -29,15 +32,13 @@ public class WorkbenchMenu extends RecipeBookMenu<WorkbenchCraftingContainer> {
     private final WorkbenchBlockEntity blockEntity;
     private final Level level;
     private final ContainerData data;
-//    private FluidTank tank;
     private final WorkbenchCraftingContainer craftSlots;
     private final ResultContainer resultSlots = new ResultContainer();
     private final Player player;
     private final ContainerLevelAccess access;
-//    private final FluidTank tank;
 
     public WorkbenchMenu(int containerId, Inventory inv, FriendlyByteBuf extraData) {
-        this(containerId, inv, inv.player.level.getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(7), ContainerLevelAccess.NULL);
+        this(containerId, inv, inv.player.level.getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(8), ContainerLevelAccess.NULL);
     }
 
     public WorkbenchMenu(int containerId, Inventory inv, BlockEntity entity, ContainerData data, ContainerLevelAccess access) {
@@ -49,28 +50,12 @@ public class WorkbenchMenu extends RecipeBookMenu<WorkbenchCraftingContainer> {
         this.level = inv.player.level;
         this.data = data;
         this.access = access;
-//        this.tank = ((WorkbenchBlockEntity) entity).getFluidTank();
         this.craftSlots = new WorkbenchCraftingContainer(this, 3, 3, ((WorkbenchBlockEntity) entity).getFluidTank());
 
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
 
         this.blockEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(handler -> {
-//            this.addSlot(new SlotItemHandler(handler, 0, 66, 17)); //component slot 1
-//            this.addSlot(new SlotItemHandler(handler, 1, 84, 17)); //component slot 2
-//            this.addSlot(new SlotItemHandler(handler, 2, 102, 17)); //component slot 3
-//            this.addSlot(new SlotItemHandler(handler, 3, 66, 35)); //component slot 4
-//            this.addSlot(new SlotItemHandler(handler, 4, 84, 35)); //component slot 5
-//            this.addSlot(new SlotItemHandler(handler, 5, 102, 35)); //component slot 6
-//            this.addSlot(new SlotItemHandler(handler, 6, 66, 53)); //component slot 7
-//            this.addSlot(new SlotItemHandler(handler, 7, 84, 53)); //component slot 8
-//            this.addSlot(new SlotItemHandler(handler, 8, 102, 53)); //component slot 9
-//            this.addSlot(new ResultSlot(player, this.craftSlots, this.resultSlots, 9, 144, 35)); //result slot
-//
-//            this.addSlot(new SlotItemHandler(handler, 10, 13, 17)); //smelting slot
-//            this.addSlot(new FuelSlot(handler, 11, 13, 53)); //fuel slot
-
-
             this.addSlot(new SlotItemHandler(handler, 0, 13, 17)); //smelting slot
             this.addSlot(new FuelSlot(handler, 1, 13, 53)); //fuel slot
             this.addSlot(new Slot(this.craftSlots, 0, 66, 17)); //component slot 1
@@ -85,58 +70,27 @@ public class WorkbenchMenu extends RecipeBookMenu<WorkbenchCraftingContainer> {
             this.addSlot(new WorkbenchResultSlot(player, this.craftSlots, this.resultSlots, 9, 144, 35)); //result slot
         });
 
-        this.blockEntity.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY).ifPresent(handler -> {
-        });
-
-//        this.tank = tank;
-
-//        fluid.getFluid().getAttributes().getStillTexture();
-
         addDataSlots(data);
     }
 
-//    public FluidTank getFluid() {
-//        return tank;
-//    }
+    public FluidStack getFluid() {
+        return CelestialUtil.getFluidFromId(this.data.get(6), this.data.get(4));
+    }
+
+    public int getMaxFluidAmount() {
+        return this.data.get(5);
+    }
 
     public boolean isSmelting() {
         return data.get(0) > 0;
     }
 
     public int getFluidLevel() {
-        int progress = this.data.get(4);
-        int maxProgress = this.data.get(5);
+        int progress = this.getFluid().getAmount(); //this.data.get(4);
+        int maxProgress = this.data.get(5); //
         int progressSize = 52;
-//        int i = maxProgress != 0 && progress != 0 ? progress * progressSize / maxProgress : 0;
-
-//        CelestialExploration.LOGGER.debug("fluid level: progress" + progress + " of " + maxProgress + " and should be displaying " + i);
 
         return maxProgress != 0 && progress != 0 ? progress * progressSize / maxProgress : 0;
-    }
-
-    public int getFluidType() {
-        return this.data.get(6);
-    }
-
-    public String getFluidTypeString() {
-        int index = this.data.get(6);
-
-        return switch (index) {
-            case 0 -> "Empty";
-            case 1 -> "Water";
-            case 2 -> "Lava";
-            case 3 -> "Molten Iron";
-            case 4 -> "Molten Steel";
-            case 5 -> "Molten Copper";
-            case 6 -> "Molten Gold";
-            case 8 -> "Molten Aluminum";
-            default -> "Unknown Fluid";
-//            default -> throw new IllegalStateException("Unexpected value: " + index);
-        };
-    }
-
-    public int getFluidQuantity() {
-        return this.data.get(4);
     }
 
     public int getScaledProgress() {

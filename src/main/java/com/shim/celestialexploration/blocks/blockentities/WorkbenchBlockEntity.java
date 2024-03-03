@@ -1,19 +1,27 @@
 package com.shim.celestialexploration.blocks.blockentities;
 
+import com.google.common.collect.Lists;
 import com.shim.celestialexploration.blocks.WorkbenchBlock;
+import com.shim.celestialexploration.inventory.SimpleFluidContainerData;
 import com.shim.celestialexploration.inventory.menus.WorkbenchMenu;
 import com.shim.celestialexploration.recipes.WorkbenchSmeltingRecipe;
 import com.shim.celestialexploration.registry.BlockEntityRegistry;
 import com.shim.celestialexploration.registry.FluidRegistry;
+import com.shim.celestialexploration.util.CelestialUtil;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -22,11 +30,14 @@ import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.AbstractCookingRecipe;
+import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fluids.FluidAttributes;
@@ -41,6 +52,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.Nonnull;
+import java.util.List;
 import java.util.Optional;
 
 public class WorkbenchBlockEntity extends BlockEntity implements MenuProvider {
@@ -60,7 +72,12 @@ public class WorkbenchBlockEntity extends BlockEntity implements MenuProvider {
         }
     };
 
-    protected FluidTank fluidHandler = new FluidTank(maxFluidLevel);
+    protected FluidTank fluidHandler = new FluidTank(maxFluidLevel) {
+        @Override
+        protected void onContentsChanged() {
+            setChanged();
+        }
+    };
 
     private LazyOptional<IFluidHandler> lazyFluidHandler = LazyOptional.of(() -> fluidHandler);
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
@@ -88,13 +105,12 @@ public class WorkbenchBlockEntity extends BlockEntity implements MenuProvider {
                     case 2 -> WorkbenchBlockEntity.this.fuelBurnTime = value;
                     case 3 -> WorkbenchBlockEntity.this.maxFuelBurnTime = value;
                     case 4 -> WorkbenchBlockEntity.this.fluidLevel = value;
-                    case 5 -> maxFluidLevel = value;
+                    case 5 -> {}
                     case 6 -> WorkbenchBlockEntity.this.fluidType = value;
                 }
             }
-
             public int getCount() {
-                return 7;
+                return 8;
             }
         };
 
@@ -162,7 +178,6 @@ public class WorkbenchBlockEntity extends BlockEntity implements MenuProvider {
         fuelBurnTime = nbt.getInt("workbench_smelting.fuelBurnTime");
         fluidLevel = nbt.getInt("workbench_smelting.fluidLevel");
         fluidType = nbt.getInt("workbench_smelting.fluidType");
-//        fluidHandler.setFluid(getFluidTypeFromIndex(fluidType, fluidLevel));
     }
 
     public void drops() {
@@ -196,9 +211,11 @@ public class WorkbenchBlockEntity extends BlockEntity implements MenuProvider {
         ItemStack fuelItem = blockEntity.itemHandler.getStackInSlot(1);
         ItemStack smeltItem = blockEntity.itemHandler.getStackInSlot(0);
 
-        if (smeltItem.getItem() instanceof BucketItem && hasRecipe(blockEntity)) {
-            smeltItem(blockEntity);
-            blockEntity.itemHandler.setStackInSlot(0, new ItemStack(Items.BUCKET, 1));
+        if (smeltItem.getItem() instanceof BucketItem bucket && hasRecipe(blockEntity)) {
+            if (canAddFluid(blockEntity, new FluidStack(bucket.getFluid(), FluidAttributes.BUCKET_VOLUME))) {
+                smeltItem(blockEntity);
+                blockEntity.itemHandler.setStackInSlot(0, new ItemStack(Items.BUCKET, 1));
+            }
         }
 
         if (blockEntity.isLit() || (!fuelItem.isEmpty() && !smeltItem.isEmpty())) {
@@ -237,7 +254,6 @@ public class WorkbenchBlockEntity extends BlockEntity implements MenuProvider {
                         blockEntity.progress = 0;
                         blockEntity.maxProgress = recipe.get().getCookingTime();
                         smeltItem(blockEntity);
-                        //TODO reward XP?
                         changed = true;
                     }
                 }
@@ -295,67 +311,17 @@ public class WorkbenchBlockEntity extends BlockEntity implements MenuProvider {
             fluid.setAmount((int) ((float) FluidAttributes.BUCKET_VOLUME * recipe.get().getBuckets()));
             entity.fluidHandler.fill(fluid, IFluidHandler.FluidAction.EXECUTE);
             entity.fluidLevel = entity.fluidHandler.getFluidAmount();
-            setFluidType(entity);
-
+            entity.fluidType = CelestialUtil.getIdFromFluid(entity.fluidHandler.getFluid());
         }
-    }
-
-    private static void setFluidType(WorkbenchBlockEntity blockEntity) {
-        if (blockEntity.fluidHandler.getFluid().getFluid().isSame(Fluids.WATER)) {
-            blockEntity.fluidType = 1;
-        } else if (blockEntity.fluidHandler.getFluid().getFluid().isSame(Fluids.LAVA)) {
-            blockEntity.fluidType = 2;
-        } else if (blockEntity.fluidHandler.getFluid().getFluid().isSame(FluidRegistry.MOLTEN_IRON.get())) {
-            blockEntity.fluidType = 3;
-        } else if (blockEntity.fluidHandler.getFluid().getFluid().isSame(FluidRegistry.MOLTEN_STEEL.get())) {
-            blockEntity.fluidType = 4;
-        } else if (blockEntity.fluidHandler.getFluid().getFluid().isSame(FluidRegistry.MOLTEN_COPPER.get())) {
-            blockEntity.fluidType = 5;
-        } else if (blockEntity.fluidHandler.getFluid().getFluid().isSame(FluidRegistry.MOLTEN_GOLD.get())) {
-            blockEntity.fluidType = 6;
-//        } else if (blockEntity.fluidHandler.getFluid().getFluid().isSame(FluidRegistry.MOLTEN_NETHERITE.get())) {
-//            blockEntity.fluidType = 7;
-        } else if (blockEntity.fluidHandler.getFluid().getFluid().isSame(FluidRegistry.MOLTEN_ALUMINUM.get())) {
-            blockEntity.fluidType = 8;
-        }
-    }
-
-    private static FluidStack getFluidTypeFromIndex(int index, int amount) {
-        return switch (index) {
-            case 1 -> new FluidStack(Fluids.WATER, amount);
-            case 2 -> new FluidStack(Fluids.LAVA, amount);
-            case 3 -> new FluidStack(FluidRegistry.MOLTEN_IRON.get(), amount);
-            case 4 -> new FluidStack(FluidRegistry.MOLTEN_STEEL.get(), amount);
-            case 5 -> new FluidStack(FluidRegistry.MOLTEN_COPPER.get(), amount);
-            case 6 -> new FluidStack(FluidRegistry.MOLTEN_GOLD.get(), amount);
-//            case 7 -> new FluidStack(FluidRegistry.MOLTEN_NETHERITE.get(), amount);
-            case 8 -> new FluidStack(FluidRegistry.MOLTEN_ALUMINUM.get(), amount);
-            default -> throw new IllegalStateException("Unexpected value: " + index);
-        };
-    }
-
-    private void resetProgress() {
-        this.progress = 0;
     }
 
     private static boolean canAddFluid(WorkbenchBlockEntity blockEntity, FluidStack result) {
         if (!blockEntity.fluidHandler.isFluidValid(result)) {
             return false;
-        } else if (blockEntity.fluidHandler.getSpace() == 0) {
-            return false;
-        }
-        return true;
+        } else return blockEntity.fluidHandler.getSpace() != 0;
     }
 
     private static boolean hasRoomForFluid(WorkbenchBlockEntity blockEntity, WorkbenchSmeltingRecipe recipe) {
         return blockEntity.fluidHandler.getSpace() >= (int) (recipe.getBuckets() * (float) FluidAttributes.BUCKET_VOLUME);
     }
-
-//    private static boolean canInsertItemIntoResultSlot(SimpleContainer inventory, ItemStack result) {
-//        return inventory.getItem(10).getItem() == result.getItem() || inventory.getItem(10).isEmpty();
-//    }
-//
-//    private static boolean canInsertAmountIntoResultSlot(SimpleContainer inventory) {
-//        return inventory.getItem(10).getMaxStackSize() > inventory.getItem(10).getCount();
-//    }
 }

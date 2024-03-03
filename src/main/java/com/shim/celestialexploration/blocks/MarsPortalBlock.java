@@ -2,9 +2,11 @@ package com.shim.celestialexploration.blocks;
 
 import com.shim.celestialexploration.registry.BlockRegistry;
 import com.shim.celestialexploration.registry.DimensionRegistry;
+import com.shim.celestialexploration.registry.ParticleRegistry;
 import com.shim.celestialexploration.world.portal.MarsTeleporter;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
@@ -59,6 +61,7 @@ public class MarsPortalBlock extends Block {
                 return X_AABB;
         }
     }
+
 
     public boolean trySpawnPortal(LevelAccessor worldIn, BlockPos pos) {
         MarsPortalBlock.Size MarsPortalBlock$size = this.isPortal(worldIn, pos);
@@ -163,8 +166,7 @@ public class MarsPortalBlock extends Block {
                 zSpeed = rand.nextFloat() * 2.0F * (float)j;
             }
 
-            // TODO: Particles
-            // worldIn.addParticle(PARTICLE_TYPE, x, y, z, xSpeed, ySpeed, zSpeed);
+             worldIn.addParticle(ParticleRegistry.MARS_PORTAL_PARTICLES.get(), x, y, z, xSpeed, ySpeed, zSpeed);
         }
     }
 

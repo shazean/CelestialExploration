@@ -177,6 +177,4 @@ public class CelestialExploration {
         if (entityIn == null) return null;
         return entityIn.getCapability(capability).isPresent() ? entityIn.getCapability(capability).orElseThrow(() -> new IllegalArgumentException("Lazy optional must not be empty")) : null;
     }
-
-
 }

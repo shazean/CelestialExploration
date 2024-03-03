@@ -34,7 +34,6 @@ public class WorkbenchRecipeBuilder implements RecipeBuilder {
     private String group;
     private final WorkbenchSmeltingRecipe.Serializer serializer;
 
-
     private WorkbenchRecipeBuilder(FlowingFluid p_126243_, Ingredient p_126244_, float experience, int cookingTime, float buckets, WorkbenchSmeltingRecipe.Serializer p_126247_) {
         this.result = p_126243_;
         this.ingredient = p_126244_;
@@ -123,7 +122,6 @@ public class WorkbenchRecipeBuilder implements RecipeBuilder {
             json.addProperty("experience", this.experience);
             json.addProperty("cookingtime", this.cookingTime);
             json.addProperty("buckets", this.buckets);
-
         }
 
         public RecipeSerializer<?> getType() {

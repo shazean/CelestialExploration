@@ -1,11 +1,13 @@
 package com.shim.celestialexploration.inventory;
 
+import com.shim.celestialexploration.blocks.blockentities.WorkbenchBlockEntity;
 import com.shim.celestialexploration.inventory.containers.WorkbenchCraftingContainer;
 import com.shim.celestialexploration.item.BlockMoldItem;
 import com.shim.celestialexploration.item.IngotMoldItem;
 import com.shim.celestialexploration.recipes.WorkbenchCraftingRecipe;
 import com.shim.celestialexploration.registry.ItemRegistry;
 import net.minecraft.core.NonNullList;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.RecipeHolder;
@@ -13,6 +15,7 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 
 import java.util.Optional;
@@ -49,11 +52,13 @@ public class WorkbenchResultSlot extends Slot {
         this.removeCount += p_40183_;
     }
 
-    protected void checkTakeAchievements(ItemStack p_40185_) {
+    protected void checkTakeAchievements(ItemStack itemStack) {
         if (this.removeCount > 0) {
-            p_40185_.onCraftedBy(this.player.level, this.player, this.removeCount);
-            net.minecraftforge.event.ForgeEventFactory.firePlayerCraftingEvent(this.player, p_40185_, this.craftSlots);
+            itemStack.onCraftedBy(this.player.level, this.player, this.removeCount);
+            net.minecraftforge.event.ForgeEventFactory.firePlayerCraftingEvent(this.player, itemStack, this.craftSlots);
         }
+
+        //TODO grant experience
 
         if (this.container instanceof RecipeHolder) {
             ((RecipeHolder)this.container).awardUsedRecipes(this.player);

@@ -179,7 +179,7 @@ public class Recipes extends RecipeProvider {
 		smeltingAndBlasting(ItemRegistry.BAUXITE_ORE.get(), ItemRegistry.BAUXITE_INGOT.get(), 0.7F, 200, 100, ItemRegistry.BAUXITE_ORE.get(), consumer);
 
 		//STEEL
-		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.STEEL_INGOT.get(), 2, FluidRegistry.MOLTEN_IRON.get(), 0.11F).pattern("X").define('X', Items.COAL).group("celestialexploration").unlockedBy("has_iron", has(Items.IRON_INGOT)).save(consumer, "steel_ingot_from_workbench");
+		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.STEEL_INGOT.get(), 2, FluidRegistry.MOLTEN_IRON.get(), 0.1111F).pattern("X").define('X', Items.COAL).group("celestialexploration").unlockedBy("has_iron", has(Items.IRON_INGOT)).save(consumer, "steel_ingot_from_workbench");
 		ingotAndBlock(ItemRegistry.STEEL_INGOT.get(), ItemRegistry.STEEL_BLOCK.get(), ItemRegistry.STEEL_INGOT.get(), consumer);
 		ingotAndBlock(ItemRegistry.STEEL_NUGGET.get(), ItemRegistry.STEEL_INGOT.get(), ItemRegistry.STEEL_INGOT.get(), consumer);
 
@@ -302,42 +302,42 @@ public class Recipes extends RecipeProvider {
 		workbenchSmelting(Fluids.LAVA, Items.LAVA_BUCKET, 0.0F, 1, 1.0F, ItemRegistry.WORKBENCH.get(), consumer);
 
 		//IRON
-		workbenchSmelting(FluidRegistry.MOLTEN_IRON.get(), Items.IRON_INGOT, 0.7F, 100, 0.11F, Items.IRON_INGOT, consumer);
-		workbenchSmelting(FluidRegistry.MOLTEN_IRON.get(), Items.RAW_IRON, 0.7F, 100, 0.11F, Items.RAW_IRON, consumer);
-		workbenchSmelting(FluidRegistry.MOLTEN_IRON.get(), Items.IRON_ORE, 0.1F, 100, 0.11F, Items.IRON_ORE, consumer);
-		workbenchSmelting(FluidRegistry.MOLTEN_IRON.get(), Items.DEEPSLATE_IRON_ORE, 0.1F, 100, 0.11F, Items.DEEPSLATE_IRON_ORE, consumer);
-		workbenchSmelting(FluidRegistry.MOLTEN_IRON.get(), ItemRegistry.MARS_IRON_ORE.get(), 0.1F, 100, 0.11F, ItemRegistry.MARS_IRON_ORE.get(), consumer);
-		workbenchSmelting(FluidRegistry.MOLTEN_IRON.get(), ItemRegistry.MARS_DEEPSLATE_IRON_ORE.get(), 0.1F, 100, 0.11F, ItemRegistry.MARS_DEEPSLATE_IRON_ORE.get(), consumer);
-		workbenchSmelting(FluidRegistry.MOLTEN_IRON.get(), ItemRegistry.MOON_IRON_ORE.get(), 0.1F, 100, 0.11F, ItemRegistry.MOON_IRON_ORE.get(), consumer);
-		workbenchSmelting(FluidRegistry.MOLTEN_IRON.get(), ItemRegistry.MOON_DEEPSLATE_IRON_ORE.get(), 0.1F, 100, 0.11F, ItemRegistry.MOON_DEEPSLATE_IRON_ORE.get(), consumer);
-		workbenchSmelting(FluidRegistry.MOLTEN_IRON.get(), ItemRegistry.METEOR_IRON_ORE.get(), 0.1F, 100, 0.11F, ItemRegistry.METEOR_IRON_ORE.get(), consumer);
+		workbenchSmelting(FluidRegistry.MOLTEN_IRON.get(), Items.IRON_INGOT, 0.7F, 100, 0.1111F, Items.IRON_INGOT, consumer);
+		workbenchSmelting(FluidRegistry.MOLTEN_IRON.get(), Items.RAW_IRON, 0.7F, 100, 0.1111F, Items.RAW_IRON, consumer);
+		workbenchSmelting(FluidRegistry.MOLTEN_IRON.get(), Items.IRON_ORE, 0.1F, 100, 0.1111F, Items.IRON_ORE, consumer);
+		workbenchSmelting(FluidRegistry.MOLTEN_IRON.get(), Items.DEEPSLATE_IRON_ORE, 0.1F, 100, 0.1111F, Items.DEEPSLATE_IRON_ORE, consumer);
+		workbenchSmelting(FluidRegistry.MOLTEN_IRON.get(), ItemRegistry.MARS_IRON_ORE.get(), 0.1F, 100, 0.1111F, ItemRegistry.MARS_IRON_ORE.get(), consumer);
+		workbenchSmelting(FluidRegistry.MOLTEN_IRON.get(), ItemRegistry.MARS_DEEPSLATE_IRON_ORE.get(), 0.1F, 100, 0.1111F, ItemRegistry.MARS_DEEPSLATE_IRON_ORE.get(), consumer);
+		workbenchSmelting(FluidRegistry.MOLTEN_IRON.get(), ItemRegistry.MOON_IRON_ORE.get(), 0.1F, 100, 0.1111F, ItemRegistry.MOON_IRON_ORE.get(), consumer);
+		workbenchSmelting(FluidRegistry.MOLTEN_IRON.get(), ItemRegistry.MOON_DEEPSLATE_IRON_ORE.get(), 0.1F, 100, 0.1111F, ItemRegistry.MOON_DEEPSLATE_IRON_ORE.get(), consumer);
+		workbenchSmelting(FluidRegistry.MOLTEN_IRON.get(), ItemRegistry.METEOR_IRON_ORE.get(), 0.1F, 100, 0.1111F, ItemRegistry.METEOR_IRON_ORE.get(), consumer);
 		workbenchSmelting(FluidRegistry.MOLTEN_IRON.get(), Items.IRON_BLOCK, 0.7F, 150, 1.0F, Items.IRON_INGOT, consumer);
 
 		//COPPER
-		workbenchSmelting(FluidRegistry.MOLTEN_COPPER.get(), Items.COPPER_INGOT, 0.7F, 100, .11F, Items.COPPER_INGOT, consumer);
-		workbenchSmelting(FluidRegistry.MOLTEN_COPPER.get(), Items.RAW_COPPER, 0.7F, 100, 0.11F, Items.RAW_COPPER, consumer);
-		workbenchSmelting(FluidRegistry.MOLTEN_COPPER.get(), Items.COPPER_ORE, 0.1F, 100, 0.11F, Items.IRON_ORE, consumer);
-		workbenchSmelting(FluidRegistry.MOLTEN_COPPER.get(), Items.DEEPSLATE_COPPER_ORE, 0.1F, 100, 0.11F, Items.DEEPSLATE_COPPER_ORE, consumer);
-		workbenchSmelting(FluidRegistry.MOLTEN_COPPER.get(), ItemRegistry.METEOR_COPPER_ORE.get(), 0.1F, 100, 0.11F, ItemRegistry.METEOR_COPPER_ORE.get(), consumer);
+		workbenchSmelting(FluidRegistry.MOLTEN_COPPER.get(), Items.COPPER_INGOT, 0.7F, 100, .1111F, Items.COPPER_INGOT, consumer);
+		workbenchSmelting(FluidRegistry.MOLTEN_COPPER.get(), Items.RAW_COPPER, 0.7F, 100, 0.1111F, Items.RAW_COPPER, consumer);
+		workbenchSmelting(FluidRegistry.MOLTEN_COPPER.get(), Items.COPPER_ORE, 0.1F, 100, 0.1111F, Items.IRON_ORE, consumer);
+		workbenchSmelting(FluidRegistry.MOLTEN_COPPER.get(), Items.DEEPSLATE_COPPER_ORE, 0.1F, 100, 0.1111F, Items.DEEPSLATE_COPPER_ORE, consumer);
+		workbenchSmelting(FluidRegistry.MOLTEN_COPPER.get(), ItemRegistry.METEOR_COPPER_ORE.get(), 0.1F, 100, 0.1111F, ItemRegistry.METEOR_COPPER_ORE.get(), consumer);
 		workbenchSmelting(FluidRegistry.MOLTEN_COPPER.get(), Items.COPPER_BLOCK, 0.7F, 150, 1.0F, Items.COPPER_BLOCK, consumer);
 		workbenchSmelting(FluidRegistry.MOLTEN_COPPER.get(), Items.EXPOSED_COPPER, 0.7F, 150, 1.0F, Items.COPPER_BLOCK, consumer);
 		workbenchSmelting(FluidRegistry.MOLTEN_COPPER.get(), Items.OXIDIZED_COPPER, 0.7F, 150, 1.0F, Items.COPPER_BLOCK, consumer);
 		workbenchSmelting(FluidRegistry.MOLTEN_COPPER.get(), Items.WEATHERED_COPPER, 0.7F, 150, 1.0F, Items.COPPER_BLOCK, consumer);
 
 		//GOLD
-		workbenchSmelting(FluidRegistry.MOLTEN_GOLD.get(), Items.GOLD_INGOT, 0.7F, 100, 0.11F, Items.GOLD_INGOT, consumer);
-		workbenchSmelting(FluidRegistry.MOLTEN_GOLD.get(), Items.RAW_GOLD, 0.7F, 100, 0.11F, Items.RAW_GOLD, consumer);
-		workbenchSmelting(FluidRegistry.MOLTEN_GOLD.get(), Items.GOLD_ORE, 0.1F, 100, 0.11F, Items.GOLD_ORE, consumer);
-		workbenchSmelting(FluidRegistry.MOLTEN_GOLD.get(), Items.DEEPSLATE_GOLD_ORE, 0.1F, 100, 0.11F, Items.DEEPSLATE_GOLD_ORE, consumer);
-		workbenchSmelting(FluidRegistry.MOLTEN_GOLD.get(), ItemRegistry.METEOR_GOLD_ORE.get(), 0.1F, 100, 0.11F, ItemRegistry.METEOR_IRON_ORE.get(), consumer);
+		workbenchSmelting(FluidRegistry.MOLTEN_GOLD.get(), Items.GOLD_INGOT, 0.7F, 100, 0.1111F, Items.GOLD_INGOT, consumer);
+		workbenchSmelting(FluidRegistry.MOLTEN_GOLD.get(), Items.RAW_GOLD, 0.7F, 100, 0.1111F, Items.RAW_GOLD, consumer);
+		workbenchSmelting(FluidRegistry.MOLTEN_GOLD.get(), Items.GOLD_ORE, 0.1F, 100, 0.1111F, Items.GOLD_ORE, consumer);
+		workbenchSmelting(FluidRegistry.MOLTEN_GOLD.get(), Items.DEEPSLATE_GOLD_ORE, 0.1F, 100, 0.111F, Items.DEEPSLATE_GOLD_ORE, consumer);
+		workbenchSmelting(FluidRegistry.MOLTEN_GOLD.get(), ItemRegistry.METEOR_GOLD_ORE.get(), 0.1F, 100, 0.1111F, ItemRegistry.METEOR_IRON_ORE.get(), consumer);
 		workbenchSmelting(FluidRegistry.MOLTEN_GOLD.get(), Items.GOLD_BLOCK, 0.7F, 150, 1.0F, Items.GOLD_INGOT, consumer);
 
 		//STEEL
-		workbenchSmelting(FluidRegistry.MOLTEN_STEEL.get(), ItemRegistry.STEEL_INGOT.get(), 0.7F, 100, 0.11F, ItemRegistry.STEEL_INGOT.get(), consumer);
+		workbenchSmelting(FluidRegistry.MOLTEN_STEEL.get(), ItemRegistry.STEEL_INGOT.get(), 0.7F, 100, 0.1111F, ItemRegistry.STEEL_INGOT.get(), consumer);
 		workbenchSmelting(FluidRegistry.MOLTEN_STEEL.get(), ItemRegistry.STEEL_BLOCK.get(), 0.7F, 150, 1.0F, ItemRegistry.STEEL_INGOT.get(), consumer);
 
 		//ALUMINUM
-		workbenchSmelting(FluidRegistry.MOLTEN_ALUMINUM.get(), ItemRegistry.ALUMINUM_INGOT.get(), 0.7F, 100, 0.11F, ItemRegistry.ALUMINUM_INGOT.get(), consumer);
+		workbenchSmelting(FluidRegistry.MOLTEN_ALUMINUM.get(), ItemRegistry.ALUMINUM_INGOT.get(), 0.7F, 100, 0.111F, ItemRegistry.ALUMINUM_INGOT.get(), consumer);
 		workbenchSmelting(FluidRegistry.MOLTEN_ALUMINUM.get(), ItemRegistry.ALUMINUM_BLOCK.get(), 0.7F, 150, 1.0F, ItemRegistry.ALUMINUM_INGOT.get(), consumer);
 
 		//REMOVAL
@@ -347,13 +347,13 @@ public class Recipes extends RecipeProvider {
 		ShapedRecipeBuilder.shaped(ItemRegistry.BLOCK_MOLD.get(), 8).pattern("XXX").pattern("XCX").pattern("XXX").define('C', Items.STONE).define('X', Tags.Items.COBBLESTONE).group("celestialexploration").unlockedBy("has_iron_ingot", has(Items.IRON_INGOT)).save(consumer);
 		ShapedRecipeBuilder.shaped(ItemRegistry.INGOT_MOLD.get(), 8).pattern("XXX").pattern("XCX").pattern("XXX").define('C', Tags.Items.INGOTS).define('X', Tags.Items.COBBLESTONE).group("celestialexploration").unlockedBy("has_iron_ingot", has(Items.IRON_INGOT)).save(consumer);
 
-		WorkbenchCraftingRecipeBuilder.shaped(Items.IRON_INGOT, FluidRegistry.MOLTEN_IRON.get(), 0.11F).pattern("X").define('X', ItemRegistry.INGOT_MOLD.get()).group("celestialexploration").unlockedBy("has_iron", has(Items.IRON_INGOT)).save(consumer, "iron_ingot_from_molten_iron");
+		WorkbenchCraftingRecipeBuilder.shaped(Items.IRON_INGOT, FluidRegistry.MOLTEN_IRON.get(), 0.1111F).pattern("X").define('X', ItemRegistry.INGOT_MOLD.get()).group("celestialexploration").unlockedBy("has_iron", has(Items.IRON_INGOT)).save(consumer, "iron_ingot_from_molten_iron");
 		WorkbenchCraftingRecipeBuilder.shaped(Items.IRON_BLOCK, FluidRegistry.MOLTEN_IRON.get(), 1.0F).pattern("X").define('X', ItemRegistry.BLOCK_MOLD.get()).group("celestialexploration").unlockedBy("has_iron", has(Items.IRON_INGOT)).save(consumer, "iron_block_from_molten_iron");
-		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.STEEL_INGOT.get(), FluidRegistry.MOLTEN_STEEL.get(), 0.11F).pattern("X").define('X', ItemRegistry.INGOT_MOLD.get()).group("celestialexploration").unlockedBy("has_steel", has(ItemRegistry.STEEL_INGOT.get())).save(consumer, "steel_ingot_from_molten_steel");
+		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.STEEL_INGOT.get(), FluidRegistry.MOLTEN_STEEL.get(), 0.1111F).pattern("X").define('X', ItemRegistry.INGOT_MOLD.get()).group("celestialexploration").unlockedBy("has_steel", has(ItemRegistry.STEEL_INGOT.get())).save(consumer, "steel_ingot_from_molten_steel");
 		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.STEEL_BLOCK.get(), FluidRegistry.MOLTEN_STEEL.get(), 1.0F).pattern("X").define('X', ItemRegistry.BLOCK_MOLD.get()).group("celestialexploration").unlockedBy("has_steel", has(ItemRegistry.STEEL_INGOT.get())).save(consumer, "steel_block_from_molten_steel");
 		WorkbenchCraftingRecipeBuilder.shaped(Items.COPPER_INGOT, FluidRegistry.MOLTEN_COPPER.get(), 0.11F).pattern("X").define('X', ItemRegistry.INGOT_MOLD.get()).group("celestialexploration").unlockedBy("has_copper", has(Items.COPPER_INGOT)).save(consumer, "copper_ingot_from_molten_copper");
 		WorkbenchCraftingRecipeBuilder.shaped(Items.COPPER_BLOCK, FluidRegistry.MOLTEN_COPPER.get(), 1.0F).pattern("X").define('X', ItemRegistry.BLOCK_MOLD.get()).group("celestialexploration").unlockedBy("has_copper", has(Items.COPPER_INGOT)).save(consumer, "copper_block_from_molten_copper");
-		WorkbenchCraftingRecipeBuilder.shaped(Items.GOLD_INGOT, FluidRegistry.MOLTEN_GOLD.get(), 0.11F).pattern("X").define('X', ItemRegistry.INGOT_MOLD.get()).group("celestialexploration").unlockedBy("has_gold", has(Items.GOLD_INGOT)).save(consumer, "gold_ingot_from_molten_gold");
+		WorkbenchCraftingRecipeBuilder.shaped(Items.GOLD_INGOT, FluidRegistry.MOLTEN_GOLD.get(), 0.1111F).pattern("X").define('X', ItemRegistry.INGOT_MOLD.get()).group("celestialexploration").unlockedBy("has_gold", has(Items.GOLD_INGOT)).save(consumer, "gold_ingot_from_molten_gold");
 		WorkbenchCraftingRecipeBuilder.shaped(Items.GOLD_BLOCK, FluidRegistry.MOLTEN_GOLD.get(), 1.0F).pattern("X").define('X', ItemRegistry.BLOCK_MOLD.get()).group("celestialexploration").unlockedBy("has_gold", has(Items.GOLD_INGOT)).save(consumer, "gold_block_from_molten_gold");
 
 		//---- GLASS/CERAMICS -------------------------------------------------------------------------------

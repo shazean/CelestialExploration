@@ -500,7 +500,6 @@ public class BlockRegistry {
 
     public static final RegistryObject<Block> PATHWAY_LIGHT = BLOCKS.register("pathway_light", () -> new PathwayLightBlock(Block.Properties.of(Material.METAL).strength(0.1F).sound(SoundType.METAL).lightLevel(litBlockEmission(9))));
 
-
     public static final RegistryObject<Block> BAUXITE_ORE = BLOCKS.register("bauxite_ore", () -> new Block(Block.Properties.of(Material.STONE).strength(3.0f, 3.0f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     //GLASS

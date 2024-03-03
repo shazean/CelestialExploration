@@ -2,6 +2,7 @@ package com.shim.celestialexploration.blocks;
 
 import com.shim.celestialexploration.registry.BlockRegistry;
 import com.shim.celestialexploration.registry.DimensionRegistry;
+import com.shim.celestialexploration.registry.ParticleRegistry;
 import com.shim.celestialexploration.world.portal.MoonTeleporter;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -163,8 +164,7 @@ public class MoonPortalBlock extends Block {
                 zSpeed = rand.nextFloat() * 2.0F * (float)j;
             }
 
-            // TODO: Particles
-            // worldIn.addParticle(PARTICLE_TYPE, x, y, z, xSpeed, ySpeed, zSpeed);
+            worldIn.addParticle(ParticleRegistry.MOON_PORTAL_PARTICLES.get(), x, y, z, xSpeed, ySpeed, zSpeed);
         }
     }
 
