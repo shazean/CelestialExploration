@@ -1,0 +1,27 @@
+{
+	"display": {
+		"icon": {
+			"item": "celestialexploration:white_spaceship"
+		},
+		"title": {
+      		"translate": "advancements.celestial.enter_space.title"
+		},
+		"description": {
+      		"translate": "advancements.celestial.enter_space.description"
+		},
+	    "background": "minecraft:textures/gui/advancements/backgrounds/stone.png",
+		"frame": "task",
+		"show_toast": true,
+		"announce_to_chat": true,
+		"hidden": false
+	},
+	"criteria": {
+		"entered_moon": {
+			"trigger": "minecraft:changed_dimension",
+			"conditions": {
+				"from": "minecraft:overworld",
+				"to": "celestialexploration:space"
+			}
+		}
+	}
+}

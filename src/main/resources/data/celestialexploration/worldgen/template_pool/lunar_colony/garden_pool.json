@@ -1,0 +1,17 @@
+{
+  "name": "celestialexploration:lunar_colony/garden_pool",
+
+  "fallback": "celestialexploration:large_crater",
+
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "celestialexploration:lunar_garden",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

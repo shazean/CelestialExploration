@@ -1,0 +1,40 @@
+{
+  "display": {
+    "icon": {
+      "item": "celestialexploration:solar_flare"
+    },
+    "title": {
+      "translate": "advancements.celestial.fly_into_sun.title"
+    },
+    "description": {
+      "translate": "advancements.celestial.fly_into_sun.description"
+    },
+    "background": "minecraft:textures/gui/advancements/backgrounds/stone.png",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+    "parent": "celestialexploration:enter_space",
+    "criteria": {
+      "step_on_sun": {
+        "trigger": "minecraft:enter_block",
+        "conditions": {
+          "player": {
+            "stepping_on": {
+              "block": {
+                "blocks": [
+                  "celestialexploration:solar_flare"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "requirements": [
+      [
+        "step_on_sun"
+      ]
+    ]
+  }

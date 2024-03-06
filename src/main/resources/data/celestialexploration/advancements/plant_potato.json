@@ -3,13 +3,18 @@
 		"icon": {
 			"item": "minecraft:potato"
 		},
-		"title": "I'm the best botanist on this planet",
-		"description": "Plant potatoes on Mars",
+		"title": {
+      		"translate": "advancements.celestial.plant_potato.title"
+    	},
+		"description": {
+      		"translate": "advancements.celestial.plant_potato.description"
+    	},
 		"frame": "task",
 		"show_toast": true,
 		"announce_to_chat": true,
 		"hidden": false
 	},
+	"parent": "celestialexploration:enter_space",
 	"criteria": {
 		"potato": {
 			"trigger": "minecraft:placed_block",

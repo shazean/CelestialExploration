@@ -1,4 +1,0 @@
-- `[FIX]` Fixed crash from workbench
-- `[NEW]` Portal particles
-- `[CHG]` Dry ice behaves like dry ice instead of like water ice
-- `[NEW]` New piglin/hoglin mobs on Venus

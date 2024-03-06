@@ -1,0 +1,17 @@
+{
+  "name": "celestialexploration:lunar_colony/small_hallway_pool",
+
+  "fallback": "minecraft:empty",
+
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "celestialexploration:lunar_small_hallway",
+        "processors": "minecraft:empty",
+        "projection": "terrain_matching",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

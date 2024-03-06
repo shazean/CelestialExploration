@@ -3,13 +3,18 @@
 		"icon": {
 			"item": "celestialexploration:moon_sand"
 		},
-		"title": "One small step for man…",
-		"description": "Reach the moon",
+		"title": {
+      		"translate": "advancements.celestial.enter_moon.title"
+    	},
+		"description": {
+      		"translate": "advancements.celestial.enter_moon.description"
+    	},
 		"frame": "task",
 		"show_toast": true,
 		"announce_to_chat": true,
 		"hidden": false
 	},
+	"parent": "celestialexploration:enter_space",
 	"criteria": {
 		"entered_moon": {
 			"trigger": "minecraft:changed_dimension",

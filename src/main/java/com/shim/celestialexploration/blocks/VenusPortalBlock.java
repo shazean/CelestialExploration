@@ -6,6 +6,7 @@ import com.shim.celestialexploration.registry.ParticleRegistry;
 import com.shim.celestialexploration.world.portal.VenusTeleporter;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
@@ -52,13 +53,11 @@ public class VenusPortalBlock extends Block {
 
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
-        switch(state.getValue(AXIS)) {
-            case Z:
-                return Z_AABB;
-            case X:
-            default:
-                return X_AABB;
-        }
+        return switch (state.getValue(AXIS)) {
+            case Z -> Z_AABB;
+            case X -> X_AABB;
+            default -> X_AABB;
+        };
     }
 
     public boolean trySpawnPortal(LevelAccessor worldIn, BlockPos pos) {
@@ -175,20 +174,14 @@ public class VenusPortalBlock extends Block {
 
     @Override
     public BlockState rotate(BlockState state, Rotation rot) {
-        switch(rot) {
-            case COUNTERCLOCKWISE_90:
-            case CLOCKWISE_90:
-                switch(state.getValue(AXIS)) {
-                    case Z:
-                        return state.setValue(AXIS, Direction.Axis.X);
-                    case X:
-                        return state.setValue(AXIS, Direction.Axis.Z);
-                    default:
-                        return state;
-                }
-            default:
-                return state;
-        }
+        return switch (rot) {
+            case COUNTERCLOCKWISE_90, CLOCKWISE_90 -> switch (state.getValue(AXIS)) {
+                case Z -> state.setValue(AXIS, Direction.Axis.X);
+                case X -> state.setValue(AXIS, Direction.Axis.Z);
+                default -> state;
+            };
+            default -> state;
+        };
     }
 
     @Override
@@ -323,7 +316,6 @@ public class VenusPortalBlock extends Block {
                     this.level.setBlock(blockpos.above(j), BlockRegistry.VENUS_PORTAL.get().defaultBlockState().setValue(VenusPortalBlock.AXIS, this.axis), 18);
                 }
             }
-
         }
 
         private boolean isPortalCountValidForSize() {

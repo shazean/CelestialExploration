@@ -555,8 +555,18 @@ public class ModLanguageProvider extends LanguageProvider {
 		add("key.celestialexploration.turn_right", "Spaceship Strafe Right");
 
 		//---- DAMAGE SOURCES -------------------------------------------------------------------------------
-		add("death.attack.celestialexploration.touchedSun", "%1$s flew into the sun");
+		add("death.attack.celestialexploration.touchedSun", "%1$s discovered the heat of the sun");
 		add("death.attack.celestialexploration.coldFloor", "%1$s got cold feet");
+
+		//---- ADVANCEMENTS -------------------------------------------------------------------------------
+		add("advancements.celestial.fly_into_sun.title", "Icarus");
+		add("advancements.celestial.fly_into_sun.description", "Fly into the sun");
+		add("advancements.celestial.enter_space.title", "To Infinity… And Beyond!");
+		add("advancements.celestial.enter_space.description", "Enter space");
+		add("advancements.celestial.enter_moon.title", "One Small Step For Man…");
+		add("advancements.celestial.enter_moon.description", "Reach the moon");
+		add("advancements.celestial.plant_potato.title", "The Best Botanist On This Planet");
+		add("advancements.celestial.plant_potato.description", "Plant potatoes on Mars");
 
 	}
 }

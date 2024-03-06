@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    "celestialexploration:white_spaceship",
+    "celestialexploration:light_grey_spaceship",
+    "celestialexploration:grey_spaceship",
+    "celestialexploration:black_spaceship",
+    "celestialexploration:purple_spaceship",
+    "celestialexploration:magenta_spaceship",
+    "celestialexploration:blue_spaceship",
+    "celestialexploration:light_blue_spaceship",
+    "celestialexploration:cyan_spaceship",
+    "celestialexploration:green_spaceship",
+    "celestialexploration:lime_spaceship",
+    "celestialexploration:yellow_spaceship",
+    "celestialexploration:orange_spaceship",
+    "celestialexploration:brown_spaceship",
+    "celestialexploration:red_spaceship",
+    "celestialexploration:pink_spaceship"
+  ]
+}

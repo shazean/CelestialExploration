@@ -624,6 +624,25 @@ public class ModItemTags extends ItemTagsProvider {
 
 		tag(Tags.Items.RODS_BLAZE)
 				.add(ItemRegistry.FLARE_ROD.get());
+
+		tag(ItemRegistry.SPACESHIP_TAG)
+				.add(ItemRegistry.WHITE_SPACESHIP.get())
+				.add(ItemRegistry.LIGHT_GREY_SPACESHIP.get())
+				.add(ItemRegistry.GREY_SPACESHIP.get())
+				.add(ItemRegistry.BLACK_SPACESHIP.get())
+				.add(ItemRegistry.PURPLE_SPACESHIP.get())
+				.add(ItemRegistry.MAGENTA_SPACESHIP.get())
+				.add(ItemRegistry.BLUE_SPACESHIP.get())
+				.add(ItemRegistry.LIGHT_BLUE_SPACESHIP.get())
+				.add(ItemRegistry.CYAN_SPACESHIP.get())
+				.add(ItemRegistry.GREEN_SPACESHIP.get())
+				.add(ItemRegistry.LIME_SPACESHIP.get())
+				.add(ItemRegistry.YELLOW_SPACESHIP.get())
+				.add(ItemRegistry.ORANGE_SPACESHIP.get())
+				.add(ItemRegistry.BROWN_SPACESHIP.get())
+				.add(ItemRegistry.RED_SPACESHIP.get())
+				.add(ItemRegistry.PINK_SPACESHIP.get());
+		
 	}
 
 	@Override

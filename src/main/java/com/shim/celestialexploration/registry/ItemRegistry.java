@@ -11,6 +11,7 @@ import com.shim.celestialexploration.item.armor.SpaceSuitArmorItem;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
@@ -656,7 +657,6 @@ public class ItemRegistry {
 	public static final RegistryObject<Item> STEEL_WOOL = ITEMS.register("steel_wool", () -> new Item((new Item.Properties()).tab(CreativeModeTab.TAB_MATERIALS)));
 	public static final RegistryObject<Item> SULFUR_CRYSTAL = ITEMS.register("sulfur_crystal", () -> new Item((new Item.Properties()).tab(CreativeModeTab.TAB_MATERIALS)));
 
-
 	/**
 	 * FOOD PROPERTIES
 	 */
@@ -732,6 +732,8 @@ public class ItemRegistry {
 	public static final TagKey<Item> MAG_RAIL_TAG = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "mag_rail"));
 
 	public static final TagKey<Item> STONE_PRESSURE_PLATE_TAG = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "stone_pressure_plate"));
+
+	public static final TagKey<Item>  SPACESHIP_TAG = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "spaceship"));
 
 
 }
