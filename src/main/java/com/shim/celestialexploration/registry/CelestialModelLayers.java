@@ -29,7 +29,6 @@ public class CelestialModelLayers {
     public static final ModelLayerLocation VOIDED_INNER_ARMOR = registerInnerArmor("voided");
     public static final ModelLayerLocation VOIDED_OUTER_ARMOR = registerOuterArmor("voided");
 
-
     public static final ModelLayerLocation VOIDED_PIGLIN = register("voided_piglin");
     public static final ModelLayerLocation VOIDED_PIGLIN_INNER_ARMOR = registerInnerArmor("voided_piglin");
     public static final ModelLayerLocation VOIDED_PIGLIN_OUTER_ARMOR = registerOuterArmor("voided_piglin");
@@ -46,9 +45,10 @@ public class CelestialModelLayers {
     public static final ModelLayerLocation ASTRAL_HOGLIN_INNER_ARMOR = registerInnerArmor("astral_hoglin");
     public static final ModelLayerLocation ASTRAL_HOGLIN_OUTER_ARMOR = registerOuterArmor("astral_hoglin");
 
-
     public static final ModelLayerLocation GUST = register("gust");
 
+    public static final ModelLayerLocation LURKER_HEAD = register("lurker_head");
+    public static final ModelLayerLocation VOIDED_HEAD = register("voided_head");
 
     private static ModelLayerLocation registerInnerArmor(String p_171299_) {
         return register(p_171299_, "inner_armor");
@@ -74,5 +74,4 @@ public class CelestialModelLayers {
     private static ModelLayerLocation createLocation(String p_171301_, String p_171302_) {
         return new ModelLayerLocation(new ResourceLocation(CelestialExploration.MODID, p_171301_), p_171302_);
     }
-
 }

@@ -2,13 +2,17 @@
   "type": "minecraft:block",
   "pools": [
     {
-      "name": "geyser",
       "rolls": 1.0,
       "bonus_rolls": 0.0,
       "entries": [
         {
           "type": "minecraft:item",
           "name": "celestialexploration:geyser"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
         }
       ]
     }

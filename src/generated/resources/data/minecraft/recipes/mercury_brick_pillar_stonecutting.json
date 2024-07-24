@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:stonecutting",
+  "group": "celestialexploration",
+  "ingredient": {
+    "item": "celestialexploration:mercury_stone"
+  },
+  "result": "celestialexploration:mercury_brick_pillar",
+  "count": 1
+}

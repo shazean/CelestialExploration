@@ -1,7 +1,6 @@
 package com.shim.celestialexploration.entity.layers;
 
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.entity.model.VoidFellowModel;
 import net.minecraft.client.model.EndermanModel;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.RenderLayerParent;

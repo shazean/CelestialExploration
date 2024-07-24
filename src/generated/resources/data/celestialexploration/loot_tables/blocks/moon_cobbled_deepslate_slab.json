@@ -2,12 +2,30 @@
   "type": "minecraft:block",
   "pools": [
     {
-      "name": "moon_cobbled_deepslate_slab",
       "rolls": 1.0,
       "bonus_rolls": 0.0,
       "entries": [
         {
           "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "celestialexploration:moon_cobbled_deepslate_slab",
+                  "properties": {
+                    "type": "double"
+                  }
+                }
+              ],
+              "count": 2.0,
+              "add": false
+            },
+            {
+              "function": "minecraft:explosion_decay"
+            }
+          ],
           "name": "celestialexploration:moon_cobbled_deepslate_slab"
         }
       ]

@@ -2,7 +2,7 @@
   "type": "minecraft:smelting",
   "group": "celestialexploration",
   "ingredient": {
-    "item": "celestialexploration:mars_sand"
+    "item": "celestialexploration:mercury_sand"
   },
   "result": "minecraft:brown_stained_glass",
   "experience": 0.1,

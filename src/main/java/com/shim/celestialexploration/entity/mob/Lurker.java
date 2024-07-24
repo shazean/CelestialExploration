@@ -1,5 +1,6 @@
 package com.shim.celestialexploration.entity.mob;
 
+import com.shim.celestialexploration.registry.ItemRegistry;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -18,18 +19,17 @@ public class Lurker extends Creeper {
     public static AttributeSupplier setAttributes() {
         return Mob.createMobAttributes()
                 .add(Attributes.ATTACK_DAMAGE, 3.0f)
-                .add(Attributes.MOVEMENT_SPEED, 0.5D).build();
+                .add(Attributes.MOVEMENT_SPEED, 0.4D).build();
     }
 
     @Override
-    protected void dropCustomDeathLoot(DamageSource p_32292_, int p_32293_, boolean p_32294_) {
-        super.dropCustomDeathLoot(p_32292_, p_32293_, p_32294_);
-        Entity entity = p_32292_.getEntity();
-        if (entity != this && entity instanceof Lurker) {
-            Lurker lurker = (Lurker)entity;
+    protected void dropCustomDeathLoot(DamageSource source, int p_32293_, boolean p_32294_) {
+        super.dropCustomDeathLoot(source, p_32293_, p_32294_);
+        Entity entity = source.getEntity();
+        if (entity != this && entity instanceof Lurker lurker) {
             if (lurker.canDropMobsSkull()) {
                 lurker.increaseDroppedSkulls();
-                this.spawnAtLocation(Items.CREEPER_HEAD);
+                this.spawnAtLocation(ItemRegistry.LURKER_HEAD.get());
             }
         }
     }

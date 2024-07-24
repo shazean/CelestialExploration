@@ -2,7 +2,6 @@
   "type": "minecraft:block",
   "pools": [
     {
-      "name": "meteor_gold_ore",
       "rolls": 1.0,
       "bonus_rolls": 0.0,
       "entries": [

@@ -1,0 +1,25 @@
+{
+  "replace": false,
+  "values": [
+    "celestialexploration:mercury_deepslate",
+    "celestialexploration:cracked_mercury_deepslate_bricks",
+    "celestialexploration:cracked_mercury_deepslate_tiles",
+    "celestialexploration:chiseled_mercury_deepslate_bricks",
+    "celestialexploration:mercury_deepslate_bricks",
+    "celestialexploration:mercury_deepslate_brick_slab",
+    "celestialexploration:mercury_deepslate_brick_stairs",
+    "celestialexploration:mercury_deepslate_brick_wall",
+    "celestialexploration:mercury_deepslate_tiles",
+    "celestialexploration:mercury_deepslate_tile_slab",
+    "celestialexploration:mercury_deepslate_tile_stairs",
+    "celestialexploration:mercury_deepslate_tile_wall",
+    "celestialexploration:mercury_polished_deepslate",
+    "celestialexploration:mercury_polished_deepslate_slab",
+    "celestialexploration:mercury_polished_deepslate_stairs",
+    "celestialexploration:mercury_polished_deepslate_wall",
+    "celestialexploration:mercury_cobbled_deepslate",
+    "celestialexploration:mercury_cobbled_deepslate_slab",
+    "celestialexploration:mercury_cobbled_deepslate_stairs",
+    "celestialexploration:mercury_cobbled_deepslate_wall"
+  ]
+}

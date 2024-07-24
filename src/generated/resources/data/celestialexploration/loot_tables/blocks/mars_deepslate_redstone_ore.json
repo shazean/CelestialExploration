@@ -2,7 +2,6 @@
   "type": "minecraft:block",
   "pools": [
     {
-      "name": "mars_deepslate_redstone_ore",
       "rolls": 1.0,
       "bonus_rolls": 0.0,
       "entries": [
@@ -40,7 +39,7 @@
                   "function": "minecraft:explosion_decay"
                 }
               ],
-              "name": "minecraft:redstone"
+              "name": "minecraft:raw_iron"
             }
           ]
         }

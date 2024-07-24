@@ -22,6 +22,7 @@ public class CelestialOreGeneration {
         base.add(PlacedFeatureRegistry.MARS_REDSTONE_ORE_PLACED);
         base.add(PlacedFeatureRegistry.MARS_BAUXITE_ORE_PLACED);
 
+        //VENUS
         base.add(PlacedFeatureRegistry.VENUS_IRON_ORE_PLACED);
         base.add(PlacedFeatureRegistry.VENUS_REDSTONE_ORE_PLACED);
         base.add(PlacedFeatureRegistry.VENUS_LAPIS_ORE_PLACED);
@@ -38,5 +39,12 @@ public class CelestialOreGeneration {
 //        base.add(PlacedFeatureRegistry.METEOR_IRON_ORE_PLACED);
 //        base.add(PlacedFeatureRegistry.METEOR_LAPIS_ORE_PLACED);
 //        base.add(PlacedFeatureRegistry.METEOR_REDSTONE_ORE_PLACED);
+
+        //MERCURY
+        base.add(PlacedFeatureRegistry.MERCURY_IRON_ORE_PLACED);
+        base.add(PlacedFeatureRegistry.MERCURY_REDSTONE_ORE_PLACED);
+        base.add(PlacedFeatureRegistry.MERCURY_SULFUR_ORE_PLACED);
+        base.add(PlacedFeatureRegistry.MERCURY_COAL_ORE_PLACED);
+        base.add(PlacedFeatureRegistry.MERCURY_BAUXITE_ORE_PLACED);
     }
 }

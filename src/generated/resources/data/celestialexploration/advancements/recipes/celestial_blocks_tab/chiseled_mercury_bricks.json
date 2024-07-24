@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "celestialexploration:chiseled_mercury_bricks"
+    ]
+  },
+  "criteria": {
+    "mercury_stone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:mercury_stone"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "celestialexploration:chiseled_mercury_bricks"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "mercury_stone",
+      "has_the_recipe"
+    ]
+  ]
+}

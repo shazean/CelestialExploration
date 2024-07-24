@@ -4,20 +4,31 @@ import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.config.CelestialCommonConfig;
 import com.shim.celestialexploration.entity.Spaceship;
 import com.shim.celestialexploration.item.armor.ThermalSpaceSuitArmorItem;
+import com.shim.celestialexploration.registry.BlockRegistry;
 import com.shim.celestialexploration.registry.DimensionRegistry;
 import com.shim.celestialexploration.registry.EffectRegistry;
+import com.shim.celestialexploration.util.DimensionUtil;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.EntityMountEvent;
 import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.LogicalSide;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = CelestialExploration.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
@@ -25,9 +36,54 @@ public class ModForgeEventBus {
 
     @SubscribeEvent
     public static void onEntityMount(EntityMountEvent event) {
-        if (event.isDismounting() && event.getEntityBeingMounted() instanceof Spaceship shuttle) {
-            if (!shuttle.isRemoved() && !event.getWorldObj().isClientSide) {
-                event.setCanceled(shuttle.getTimeOnGround() < Spaceship.maxTimeOnGround);
+        if (event.isDismounting() && event.getEntityBeingMounted() instanceof Spaceship spaceship) {
+            if (!spaceship.isRemoved() && !event.getWorldObj().isClientSide) {
+                event.setCanceled(spaceship.getTimeOnGround() < Spaceship.maxTimeOnGround);
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void clickEvent(PlayerInteractEvent.RightClickBlock event) {
+        Player player = event.getPlayer();
+
+        if (event.getSide() == LogicalSide.SERVER && player != null) {
+            if (event.getItemStack() != null && event.getItemStack().getItem() == Items.FLINT_AND_STEEL) {
+                Level level = event.getWorld();
+
+                if(player.level.dimension() == DimensionRegistry.MARS
+                        || player.level.dimension() == DimensionRegistry.MOON
+                        || player.level.dimension() == DimensionRegistry.VENUS
+                        || player.level.dimension() == DimensionRegistry.MERCURY
+
+                        || player.level.dimension() == Level.OVERWORLD) {
+
+                    for(Direction direction : Direction.Plane.VERTICAL) {
+                        BlockPos framePos = event.getPos().relative(direction);
+
+                        if(BlockRegistry.MARS_PORTAL.get().trySpawnPortal(level, framePos)) {
+                            level.playSound(player, framePos, SoundEvents.PORTAL_TRIGGER, SoundSource.BLOCKS, 1.0F, 1.0F);
+                            event.setCanceled(true);
+                            event.setCancellationResult(InteractionResult.CONSUME);
+                        }
+                        else if(BlockRegistry.MOON_PORTAL.get().trySpawnPortal(level, framePos)) {
+
+                            level.playSound(player, framePos, SoundEvents.PORTAL_TRIGGER, SoundSource.BLOCKS, 1.0F, 1.0F);
+                            event.setCanceled(true);
+                            event.setCancellationResult(InteractionResult.CONSUME);
+                        }
+                        else if(BlockRegistry.VENUS_PORTAL.get().trySpawnPortal(level, framePos)) {
+                            level.playSound(player, framePos, SoundEvents.PORTAL_TRIGGER, SoundSource.BLOCKS, 1.0F, 1.0F);
+                            event.setCanceled(true);
+                            event.setCancellationResult(InteractionResult.CONSUME);
+                        }
+                        else if(BlockRegistry.MERCURY_PORTAL.get().trySpawnPortal(level, framePos)) {
+                            level.playSound(player, framePos, SoundEvents.PORTAL_TRIGGER, SoundSource.BLOCKS, 1.0F, 1.0F);
+                            event.setCanceled(true);
+                            event.setCancellationResult(InteractionResult.CONSUME);
+                        }
+                    }
+                }
             }
         }
     }
@@ -64,14 +120,16 @@ public class ModForgeEventBus {
             if (itemStack.getItem() instanceof ThermalSpaceSuitArmorItem && ((ThermalSpaceSuitArmorItem) itemStack.getItem()).isGravityBoots(itemStack)) {
                 player.removeEffect(EffectRegistry.LOW_GRAVITY.get());
             } else {
-                if (dimension == DimensionRegistry.MARS || dimension == DimensionRegistry.MOON) {
+                if (DimensionUtil.isLowGravityDimension(dimension)) {
+//                if (dimension == DimensionRegistry.MARS || dimension == DimensionRegistry.MOON) {
                     player.addEffect(new MobEffectInstance(EffectRegistry.LOW_GRAVITY.get(), 120000, 0, false, false, true));
                 } else {
                     player.removeEffect(EffectRegistry.LOW_GRAVITY.get());
                 }
             }
         } else if (entity instanceof LivingEntity livingEntity) {
-            if (dimension == DimensionRegistry.MARS || dimension == DimensionRegistry.MOON) {
+            if (DimensionUtil.isLowGravityDimension(dimension)) {
+//                if (dimension == DimensionRegistry.MARS || dimension == DimensionRegistry.MOON) {
                 livingEntity.addEffect(new MobEffectInstance(EffectRegistry.LOW_GRAVITY.get(), 120000, 0, false, false, true));
             } else {
                 livingEntity.removeEffect(EffectRegistry.LOW_GRAVITY.get());
@@ -95,7 +153,8 @@ public class ModForgeEventBus {
                 player.removeEffect(EffectRegistry.LOW_GRAVITY.get());
             } else {
                 ResourceKey<Level> dimension = player.level.dimension();
-                if (dimension == DimensionRegistry.MARS || dimension == DimensionRegistry.MOON) {
+                if (DimensionUtil.isLowGravityDimension(dimension)) {
+//                    if (dimension == DimensionRegistry.MARS || dimension == DimensionRegistry.MOON) {
                     player.addEffect(new MobEffectInstance(EffectRegistry.LOW_GRAVITY.get(), 120000, 0, false, false, true));
                 }
             }

@@ -2,13 +2,17 @@
   "type": "minecraft:block",
   "pools": [
     {
-      "name": "insulated_panel_corner",
       "rolls": 1.0,
       "bonus_rolls": 0.0,
       "entries": [
         {
           "type": "minecraft:item",
           "name": "celestialexploration:insulated_panel_corner"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
         }
       ]
     }

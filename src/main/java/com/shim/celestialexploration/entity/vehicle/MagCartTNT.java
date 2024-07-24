@@ -2,6 +2,7 @@ package com.shim.celestialexploration.entity.vehicle;
 
 import com.shim.celestialexploration.registry.BlockRegistry;
 import com.shim.celestialexploration.registry.EntityRegistry;
+import com.shim.celestialexploration.registry.TagRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -146,11 +147,11 @@ public class MagCartTNT extends AbstractMagCart {
     }
 
     public float getBlockExplosionResistance(Explosion p_38675_, BlockGetter p_38676_, BlockPos p_38677_, BlockState p_38678_, FluidState p_38679_, float p_38680_) {
-        return !this.isPrimed() || !p_38678_.is(BlockRegistry.MAG_RAIL_TAG) && !p_38676_.getBlockState(p_38677_.above()).is(BlockRegistry.MAG_RAIL_TAG) ? super.getBlockExplosionResistance(p_38675_, p_38676_, p_38677_, p_38678_, p_38679_, p_38680_) : 0.0F;
+        return !this.isPrimed() || !p_38678_.is(TagRegistry.Blocks.MAG_RAIL) && !p_38676_.getBlockState(p_38677_.above()).is(TagRegistry.Blocks.MAG_RAIL) ? super.getBlockExplosionResistance(p_38675_, p_38676_, p_38677_, p_38678_, p_38679_, p_38680_) : 0.0F;
     }
 
     public boolean shouldBlockExplode(Explosion p_38669_, BlockGetter p_38670_, BlockPos p_38671_, BlockState p_38672_, float p_38673_) {
-        return (!this.isPrimed() || !p_38672_.is(BlockRegistry.MAG_RAIL_TAG) && !p_38670_.getBlockState(p_38671_.above()).is(BlockRegistry.MAG_RAIL_TAG)) && super.shouldBlockExplode(p_38669_, p_38670_, p_38671_, p_38672_, p_38673_);
+        return (!this.isPrimed() || !p_38672_.is(TagRegistry.Blocks.MAG_RAIL) && !p_38670_.getBlockState(p_38671_.above()).is(TagRegistry.Blocks.MAG_RAIL)) && super.shouldBlockExplode(p_38669_, p_38670_, p_38671_, p_38672_, p_38673_);
     }
 
     protected void readAdditionalSaveData(CompoundTag p_38682_) {

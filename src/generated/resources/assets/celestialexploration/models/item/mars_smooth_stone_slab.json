@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/slab",
   "textures": {
-    "side": "celestialexploration:block/mars_smooth_stone_slab_side",
+    "side": "celestialexploration:block/mars_smooth_stone",
     "bottom": "celestialexploration:block/mars_smooth_stone",
     "top": "celestialexploration:block/mars_smooth_stone"
   }

@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "celestialexploration:block/lurker_wall_head"
+      "model": "minecraft:block/skull"
     }
   }
 }

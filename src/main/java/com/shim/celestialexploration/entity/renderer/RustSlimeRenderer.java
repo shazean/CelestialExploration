@@ -4,7 +4,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.entity.mob.slimes.RustSlime;
 import com.shim.celestialexploration.entity.layers.RustSlimeOuterLayer;
-import com.shim.celestialexploration.entity.model.RustSlimeModel;
+import net.minecraft.client.model.SlimeModel;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -15,11 +15,11 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class RustSlimeRenderer extends MobRenderer<RustSlime, RustSlimeModel<RustSlime>> {
+public class RustSlimeRenderer extends MobRenderer<RustSlime, SlimeModel<RustSlime>> {
     private static final ResourceLocation SLIME_LOCATION = new ResourceLocation(CelestialExploration.MODID, "textures/entity/slime/rust.png");
 
     public RustSlimeRenderer(EntityRendererProvider.Context p_174391_) {
-        super(p_174391_, new RustSlimeModel<>(p_174391_.bakeLayer(ModelLayers.SLIME)), 0.25F);
+        super(p_174391_, new SlimeModel<>(p_174391_.bakeLayer(ModelLayers.SLIME)), 0.25F);
         this.addLayer(new RustSlimeOuterLayer<>(this, p_174391_.getModelSet()));
     }
 

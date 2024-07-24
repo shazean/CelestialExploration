@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "celestialexploration",
+  "pattern": [
+    "X",
+    "X"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:mercury_brick_slab"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:chiseled_mercury_bricks"
+  }
+}

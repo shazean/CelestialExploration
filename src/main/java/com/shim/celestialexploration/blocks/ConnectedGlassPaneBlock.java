@@ -1,6 +1,7 @@
 package com.shim.celestialexploration.blocks;
 
 import com.shim.celestialexploration.registry.BlockRegistry;
+import com.shim.celestialexploration.registry.TagRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;
@@ -197,7 +198,7 @@ public class ConnectedGlassPaneBlock extends IronBarsBlock {
 //        return true;
 //        return !isExceptionForConnection(state) && p_54219_ || state.getBlock() instanceof ConnectedGlassPaneBlock || state.is(BlockTags.WALLS);
 //        return !(state.getBlock() instanceof AirBlock);
-        return state.is(BlockRegistry.CONNECTED_GLASS_PANE_TAG);
+        return state.is(TagRegistry.Blocks.CONNECTED_GLASS_PANE);
     }
 
 //    @Override

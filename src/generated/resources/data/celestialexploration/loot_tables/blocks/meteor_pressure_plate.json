@@ -2,13 +2,17 @@
   "type": "minecraft:block",
   "pools": [
     {
-      "name": "meteor_pressure_plate",
       "rolls": 1.0,
       "bonus_rolls": 0.0,
       "entries": [
         {
           "type": "minecraft:item",
           "name": "celestialexploration:meteor_pressure_plate"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
         }
       ]
     }

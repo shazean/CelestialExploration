@@ -23,7 +23,7 @@ import java.util.Map;
 public class ThermalSpaceSuitArmorItem extends GeoArmorItem implements IAnimatable {
     private AnimationFactory factory = new AnimationFactory(this);
 
-    private static final Map<ArmorMaterial, MobEffectInstance> MATERIAL_TO_EFFECT_MAP = (new ImmutableMap.Builder<ArmorMaterial, MobEffectInstance>()).put(ModArmorMaterials.THERMAL_SPACE_SUIT, new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 200, 0, false, false)).build();
+    private static final Map<ArmorMaterial, MobEffectInstance> MATERIAL_TO_EFFECT_MAP = (new ImmutableMap.Builder<ArmorMaterial, MobEffectInstance>()).put(ModArmorMaterials.THERMAL_SPACESUIT, new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 200, 0, false, false)).build();
 
 
     public ThermalSpaceSuitArmorItem(ArmorMaterial material, EquipmentSlot slot, Properties settings) {

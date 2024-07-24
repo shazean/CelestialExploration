@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "celestialexploration",
+  "ingredients": [
+    {
+      "item": "celestialexploration:mercury_deepslate"
+    }
+  ],
+  "result": {
+    "item": "celestialexploration:mercury_deepslate_button"
+  }
+}

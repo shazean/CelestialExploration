@@ -8,6 +8,7 @@ import com.shim.celestialexploration.blocks.BaseMagRailBlock;
 import com.shim.celestialexploration.blocks.PoweredMagRailBlock;
 import com.shim.celestialexploration.registry.BlockRegistry;
 import com.shim.celestialexploration.registry.ItemRegistry;
+import com.shim.celestialexploration.registry.TagRegistry;
 import net.minecraft.BlockUtil;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
@@ -233,7 +234,7 @@ public abstract class  AbstractMagCart extends Entity implements IAbstractMagCar
 
     protected float getBlockSpeedFactor() {
         BlockState blockstate = this.level.getBlockState(this.blockPosition());
-        return blockstate.is(BlockRegistry.MAG_RAIL_TAG) ? 1.0F : super.getBlockSpeedFactor();
+        return blockstate.is(TagRegistry.Blocks.MAG_RAIL) ? 1.0F : super.getBlockSpeedFactor();
     }
 
     public void destroy(DamageSource source) {
@@ -303,7 +304,7 @@ public abstract class  AbstractMagCart extends Entity implements IAbstractMagCar
             int k = Mth.floor(this.getX());
             int i = Mth.floor(this.getY());
             int j = Mth.floor(this.getZ());
-            if (this.level.getBlockState(new BlockPos(k, i - 1, j)).is(BlockRegistry.MAG_RAIL_TAG)) {
+            if (this.level.getBlockState(new BlockPos(k, i - 1, j)).is(TagRegistry.Blocks.MAG_RAIL)) {
                 --i;
             }
 
@@ -579,7 +580,7 @@ public abstract class  AbstractMagCart extends Entity implements IAbstractMagCar
         int i = Mth.floor(x);
         int j = Mth.floor(y);
         int k = Mth.floor(z);
-        if (this.level.getBlockState(new BlockPos(i, j - 1, k)).is(BlockRegistry.MAG_RAIL_TAG)) {
+        if (this.level.getBlockState(new BlockPos(i, j - 1, k)).is(TagRegistry.Blocks.MAG_RAIL)) {
             --j;
         }
 
@@ -618,7 +619,7 @@ public abstract class  AbstractMagCart extends Entity implements IAbstractMagCar
         int i = Mth.floor(x);
         int j = Mth.floor(y);
         int k = Mth.floor(z);
-        if (this.level.getBlockState(new BlockPos(i, j - 1, k)).is(BlockRegistry.MAG_RAIL_TAG)) {
+        if (this.level.getBlockState(new BlockPos(i, j - 1, k)).is(TagRegistry.Blocks.MAG_RAIL)) {
             --j;
         }
 
@@ -851,7 +852,7 @@ public abstract class  AbstractMagCart extends Entity implements IAbstractMagCar
         if (!canUseRail()) return getMaxSpeed();
         BlockPos pos = this.getCurrentRailPosition();
         BlockState state = this.level.getBlockState(pos);
-        if (!state.is(BlockRegistry.MAG_RAIL_TAG)) return getMaxSpeed();
+        if (!state.is(TagRegistry.Blocks.MAG_RAIL)) return getMaxSpeed();
 
         float railMaxSpeed = ((BaseMagRailBlock)state.getBlock()).getRailMaxSpeed(state, this.level, pos, this);
         return Math.min(railMaxSpeed, getCurrentCartSpeedCapOnRail());

@@ -2,13 +2,17 @@
   "type": "minecraft:block",
   "pools": [
     {
-      "name": "panel_slab",
       "rolls": 1.0,
       "bonus_rolls": 0.0,
       "entries": [
         {
           "type": "minecraft:item",
           "name": "celestialexploration:panel_slab"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
         }
       ]
     }

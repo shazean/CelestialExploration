@@ -4,7 +4,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.entity.mob.slimes.LunarSlime;
 import com.shim.celestialexploration.entity.layers.LunarSlimeOuterLayer;
-import com.shim.celestialexploration.entity.model.LunarSlimeModel;
+import net.minecraft.client.model.SlimeModel;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -15,11 +15,11 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class LunarSlimeRenderer extends MobRenderer<LunarSlime, LunarSlimeModel<LunarSlime>> {
+public class LunarSlimeRenderer extends MobRenderer<LunarSlime, SlimeModel<LunarSlime>> {
     private static final ResourceLocation SLIME_LOCATION = new ResourceLocation(CelestialExploration.MODID, "textures/entity/slime/lunar.png");
 
     public LunarSlimeRenderer(EntityRendererProvider.Context p_174391_) {
-        super(p_174391_, new LunarSlimeModel<>(p_174391_.bakeLayer(ModelLayers.SLIME)), 0.25F);
+        super(p_174391_, new SlimeModel<>(p_174391_.bakeLayer(ModelLayers.SLIME)), 0.25F);
         this.addLayer(new LunarSlimeOuterLayer<>(this, p_174391_.getModelSet()));
     }
 
@@ -27,7 +27,6 @@ public class LunarSlimeRenderer extends MobRenderer<LunarSlime, LunarSlimeModel<
         this.shadowRadius = 0.25F * (float)p_115976_.getSize();
         super.render(p_115976_, p_115977_, p_115978_, p_115979_, p_115980_, p_115981_);
     }
-
 
     protected void scale(LunarSlime p_115983_, PoseStack p_115984_, float p_115985_) {
         float f = 0.999F;

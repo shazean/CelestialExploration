@@ -1,13 +1,15 @@
 package com.shim.celestialexploration.datagen;
 
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.registry.BlockRegistry;
 import com.shim.celestialexploration.registry.ItemRegistry;
 
+import com.shim.celestialexploration.registry.TagRegistry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.data.tags.ItemTagsProvider;
+import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -24,625 +26,58 @@ public class ModItemTags extends ItemTagsProvider {
 
 	@Override
 	protected void addTags() {
-		tag(Tags.Items.ORES)
-				.add(ItemRegistry.MOON_IRON_ORE.get())
-				.add(ItemRegistry.MOON_REDSTONE_ORE.get())
-				.add(ItemRegistry.MOON_DEEPSLATE_IRON_ORE.get())
-				.add(ItemRegistry.MOON_DEEPSLATE_REDSTONE_ORE.get())
-				.add(ItemRegistry.MARS_DEEPSLATE_IRON_ORE.get())
-				.add(ItemRegistry.MARS_DEEPSLATE_REDSTONE_ORE.get())
 
-				.add(ItemRegistry.MARS_REDSTONE_ORE.get())
-				.add(ItemRegistry.MARS_IRON_ORE.get())
-				.add(ItemRegistry.METEOR_COAL_ORE.get())
-				.add(ItemRegistry.METEOR_COPPER_ORE.get())
-				.add(ItemRegistry.METEOR_DIAMOND_ORE.get())
-				.add(ItemRegistry.METEOR_EMERALD_ORE.get())
-				.add(ItemRegistry.METEOR_GOLD_ORE.get())
-				.add(ItemRegistry.METEOR_IRON_ORE.get())
-				.add(ItemRegistry.METEOR_LAPIS_ORE.get())
-				.add(ItemRegistry.METEOR_REDSTONE_ORE.get())
+		this.copy(BlockTags.COAL_ORES, ItemTags.COAL_ORES);
+		this.copy(BlockTags.COPPER_ORES, ItemTags.COPPER_ORES);
+		this.copy(BlockTags.DIAMOND_ORES, ItemTags.DIAMOND_ORES);
+		this.copy(BlockTags.EMERALD_ORES, ItemTags.EMERALD_ORES);
+		this.copy(BlockTags.GOLD_ORES, ItemTags.GOLD_ORES);
+		this.copy(BlockTags.LAPIS_ORES, ItemTags.LAPIS_ORES);
+		this.copy(BlockTags.IRON_ORES, ItemTags.IRON_ORES);
+		this.copy(BlockTags.REDSTONE_ORES, ItemTags.REDSTONE_ORES);
 
-				.add(ItemRegistry.VENUS_DEEPSLATE_REDSTONE_ORE.get())
-				.add(ItemRegistry.VENUS_DEEPSLATE_IRON_ORE.get())
-				.add(ItemRegistry.VENUS_DEEPSLATE_LAPIS_ORE.get())
+		this.copy(BlockTags.SAND, ItemTags.SAND);
+		this.copy(BlockTags.SLABS, ItemTags.SLABS);
+		this.copy(BlockTags.STAIRS, ItemTags.STAIRS);
+		this.copy(BlockTags.WALLS, ItemTags.WALLS);
+		this.copy(BlockTags.DOORS, ItemTags.DOORS);
+		this.copy(BlockTags.TRAPDOORS, ItemTags.TRAPDOORS);
+		this.copy(BlockTags.BUTTONS, ItemTags.BUTTONS);
+		this.copy(BlockTags.SOUL_FIRE_BASE_BLOCKS, ItemTags.SOUL_FIRE_BASE_BLOCKS);
 
-				.add(ItemRegistry.VENUS_REDSTONE_ORE.get())
-				.add(ItemRegistry.VENUS_IRON_ORE.get())
-				.add(ItemRegistry.VENUS_LAPIS_ORE.get())
+		this.copy(Tags.Blocks.ORES, Tags.Items.ORES);
+		this.copy(Tags.Blocks.ORE_RATES_DENSE, Tags.Items.ORE_RATES_DENSE);
+		this.copy(Tags.Blocks.ORE_RATES_SINGULAR, Tags.Items.ORE_RATES_SINGULAR);
+		this.copy(Tags.Blocks.ORE_RATES_SPARSE, Tags.Items.ORE_RATES_SPARSE);
+		this.copy(Tags.Blocks.SAND, Tags.Items.SAND);
+		this.copy(Tags.Blocks.GLASS, Tags.Items.GLASS);
+		this.copy(Tags.Blocks.GLASS_PANES, Tags.Items.GLASS_PANES);
 
-		;
+		this.copy(TagRegistry.Blocks.MOON_STONE, TagRegistry.Items.MOON_STONE);
+		this.copy(TagRegistry.Blocks.MOON_COBBLESTONE, TagRegistry.Items.MOON_COBBLESTONE);
+		this.copy(TagRegistry.Blocks.MOON_DEEPSLATE, TagRegistry.Items.MOON_DEEPSLATE);
+		this.copy(TagRegistry.Blocks.MOON_COBBLED_DEEPSLATE, TagRegistry.Items.MOON_COBBLED_DEEPSLATE);
+		this.copy(TagRegistry.Blocks.MARS_STONE, TagRegistry.Items.MARS_STONE);
+		this.copy(TagRegistry.Blocks.MARS_COBBLESTONE, TagRegistry.Items.MARS_COBBLESTONE);
+		this.copy(TagRegistry.Blocks.MARS_DEEPSLATE, TagRegistry.Items.MARS_DEEPSLATE);
+		this.copy(TagRegistry.Blocks.MARS_COBBLED_DEEPSLATE, TagRegistry.Items.MARS_COBBLED_DEEPSLATE);
+		this.copy(TagRegistry.Blocks.VENUS_STONE, TagRegistry.Items.VENUS_STONE);
+		this.copy(TagRegistry.Blocks.VENUS_COBBLESTONE, TagRegistry.Items.VENUS_COBBLESTONE);
+		this.copy(TagRegistry.Blocks.VENUS_DEEPSLATE, TagRegistry.Items.VENUS_DEEPSLATE);
+		this.copy(TagRegistry.Blocks.VENUS_COBBLED_DEEPSLATE, TagRegistry.Items.VENUS_COBBLED_DEEPSLATE);
 
-		tag(Tags.Items.SAND)
-				.add(ItemRegistry.GLOWING_MOON_SAND.get())
-//				.add(ItemRegistry.COARSE_MOON_SAND.get())
-//				.add(ItemRegistry.COARSE_MARS_SAND.get())
-				.add(ItemRegistry.MARS_SAND.get())
-				.add(ItemRegistry.MOON_SAND.get())
-				.add(ItemRegistry.VENUS_SAND.get())
-		;
+		this.copy(TagRegistry.Blocks.METEOR, TagRegistry.Items.METEOR);
+		this.copy(TagRegistry.Blocks.MERCURY_STONE, TagRegistry.Items.MERCURY_STONE);
+		this.copy(TagRegistry.Blocks.MERCURY_COBBLESTONE, TagRegistry.Items.MERCURY_COBBLESTONE);
+		this.copy(TagRegistry.Blocks.MERCURY_DEEPSLATE, TagRegistry.Items.MERCURY_DEEPSLATE);
+		this.copy(TagRegistry.Blocks.MERCURY_COBBLED_DEEPSLATE, TagRegistry.Items.MERCURY_COBBLED_DEEPSLATE);
+		this.copy(TagRegistry.Blocks.DYED_CERAMIC, TagRegistry.Items.DYED_CERAMIC);
+		this.copy(TagRegistry.Blocks.DYED_CERAMIC, TagRegistry.Items.DYED_CERAMIC);
 
-		tag(ItemTags.SAND)
-				.add(ItemRegistry.GLOWING_MOON_SAND.get())
-//				.add(ItemRegistry.COARSE_MOON_SAND.get())
-//				.add(ItemRegistry.COARSE_MARS_SAND.get())
-				.add(ItemRegistry.MARS_SAND.get())
-				.add(ItemRegistry.MOON_SAND.get())
-				.add(ItemRegistry.VENUS_SAND.get())
-		;
+		this.copy(TagRegistry.Blocks.PAINTED_CERAMIC, TagRegistry.Items.PAINTED_CERAMIC);
 
-//		tag(ItemTags.DIRT)
-//				.add(ItemRegistry.COARSE_MOON_SAND.get())
-//				.add(ItemRegistry.COARSE_MARS_SAND.get())
-//				.add(ItemRegistry.COARSE_VENUS_SAND.get())
-//		;
-
-		tag(Tags.Items.STONE)
-				.add(ItemRegistry.MARS_STONE.get())
-				.add(ItemRegistry.METEOR.get())
-//				.add(ItemRegistry.MARS_COBBLESTONE.get())
-//				.add(ItemRegistry.MARS_DEEPSLATE.get())
-//				.add(ItemRegistry.MARS_COBBLED_DEEPSLATE.get())
-//				.add(ItemRegistry.MARS_STONE_SLAB.get())
-//				.add(ItemRegistry.MARS_COBBLESTONE_SLAB.get())
-//				.add(ItemRegistry.MARS_COBBLESTONE_STAIRS.get())
-//				.add(ItemRegistry.MARS_COBBLESTONE_WALL.get())
-//				.add(ItemRegistry.MARS_COBBLED_DEEPSLATE_SLAB.get())
-//				.add(ItemRegistry.MARS_COBBLED_DEEPSLATE_STAIRS.get())
-//				.add(ItemRegistry.MARS_COBBLED_DEEPSLATE_WALL.get())
-				.add(ItemRegistry.MARS_SMOOTH_STONE.get())
-//				.add(ItemRegistry.MARS_SMOOTH_STONE_SLAB.get())
-//				.add(ItemRegistry.CRACKED_MARS_BRICKS.get())
-//				.add(ItemRegistry.CRACKED_MARS_DEEPSLATE_BRICKS.get())
-//				.add(ItemRegistry.CRACKED_MARS_DEEPSLATE_TILES.get())
-//				.add(ItemRegistry.CHISELED_MARS_DEEPSLATE_BRICKS.get())
-//				.add(ItemRegistry.MARS_DEEPSLATE_BRICKS.get())
-//				.add(ItemRegistry.MARS_DEEPSLATE_BRICK_SLAB.get())
-//				.add(ItemRegistry.MARS_DEEPSLATE_BRICK_STAIRS.get())
-//				.add(ItemRegistry.MARS_DEEPSLATE_BRICK_WALL.get())
-//				.add(ItemRegistry.MARS_DEEPSLATE_TILES.get())
-//				.add(ItemRegistry.MARS_DEEPSLATE_TILE_SLAB.get())
-//				.add(ItemRegistry.MARS_DEEPSLATE_TILE_STAIRS.get())
-//				.add(ItemRegistry.MARS_DEEPSLATE_TILE_WALL.get())
-//				.add(ItemRegistry.MARS_POLISHED_DEEPSLATE.get())
-//				.add(ItemRegistry.MARS_POLISHED_DEEPSLATE_SLAB.get())
-//				.add(ItemRegistry.MARS_POLISHED_DEEPSLATE_STAIRS.get())
-//				.add(ItemRegistry.MARS_POLISHED_DEEPSLATE_WALL.get())
-				.add(ItemRegistry.MOON_STONE.get())
-//				.add(ItemRegistry.MOON_BRICK_SLAB.get())
-//				.add(ItemRegistry.MOON_BRICK_STAIRS.get())
-//				.add(ItemRegistry.MOON_BRICK_WALL.get())
-//				.add(ItemRegistry.MOON_BRICKS.get())
-//				.add(ItemRegistry.CHISELED_MOON_BRICKS.get())
-//				.add(ItemRegistry.MOON_IRON_ORE.get())
-//				.add(ItemRegistry.MOON_REDSTONE_ORE.get())
-//				.add(ItemRegistry.MOON_DEEPSLATE_IRON_ORE.get())
-//				.add(ItemRegistry.MOON_DEEPSLATE_REDSTONE_ORE.get())
-//				.add(ItemRegistry.MARS_DEEPSLATE_IRON_ORE.get())
-//				.add(ItemRegistry.MARS_DEEPSLATE_REDSTONE_ORE.get())
-//				.add(ItemRegistry.MOON_BRICK_PILLAR.get())
-//				.add(ItemRegistry.MOON_DEEPSLATE.get())
-//				.add(ItemRegistry.MOON_COBBLED_DEEPSLATE.get())
-//				.add(ItemRegistry.MOON_COBBLESTONE.get())
-//				.add(ItemRegistry.MOON_STONE_SLAB.get())
-//				.add(ItemRegistry.MOON_COBBLESTONE_SLAB.get())
-//				.add(ItemRegistry.MOON_COBBLESTONE_STAIRS.get())
-//				.add(ItemRegistry.MOON_COBBLESTONE_WALL.get())
-//				.add(ItemRegistry.MOON_COBBLED_DEEPSLATE_SLAB.get())
-//				.add(ItemRegistry.MOON_COBBLED_DEEPSLATE_STAIRS.get())
-//				.add(ItemRegistry.MOON_COBBLED_DEEPSLATE_WALL.get())
-				.add(ItemRegistry.MOON_SMOOTH_STONE.get())
-//				.add(ItemRegistry.MOON_SMOOTH_STONE_SLAB.get())
-//				.add(ItemRegistry.CRACKED_MOON_BRICKS.get())
-//				.add(ItemRegistry.CRACKED_MOON_DEEPSLATE_BRICKS.get())
-//				.add(ItemRegistry.CRACKED_MOON_DEEPSLATE_TILES.get())
-//				.add(ItemRegistry.CHISELED_MOON_DEEPSLATE_BRICKS.get())
-//				.add(ItemRegistry.MOON_DEEPSLATE_BRICKS.get())
-//				.add(ItemRegistry.MOON_DEEPSLATE_BRICK_SLAB.get())
-//				.add(ItemRegistry.MOON_DEEPSLATE_BRICK_STAIRS.get())
-//				.add(ItemRegistry.MOON_DEEPSLATE_BRICK_WALL.get())
-//				.add(ItemRegistry.MOON_DEEPSLATE_TILES.get())
-//				.add(ItemRegistry.MOON_DEEPSLATE_TILE_SLAB.get())
-//				.add(ItemRegistry.MOON_DEEPSLATE_TILE_STAIRS.get())
-//				.add(ItemRegistry.MOON_DEEPSLATE_TILE_WALL.get())
-//				.add(ItemRegistry.MOON_POLISHED_DEEPSLATE.get())
-//				.add(ItemRegistry.MOON_POLISHED_DEEPSLATE_SLAB.get())
-//				.add(ItemRegistry.MOON_POLISHED_DEEPSLATE_STAIRS.get())
-//				.add(ItemRegistry.MOON_POLISHED_DEEPSLATE_WALL.get())
-				.add(ItemRegistry.VENUS_STONE.get())
-		;
-
-		tag(Tags.Items.COBBLESTONE)
-				.add(ItemRegistry.MARS_COBBLESTONE.get())
-//				.add(ItemRegistry.MARS_COBBLESTONE_SLAB.get())
-//				.add(ItemRegistry.MARS_COBBLESTONE_STAIRS.get())
-//				.add(ItemRegistry.MARS_COBBLESTONE_WALL.get())
-				.add(ItemRegistry.MOON_COBBLESTONE.get())
-//				.add(ItemRegistry.MOON_COBBLESTONE_SLAB.get())
-//				.add(ItemRegistry.MOON_COBBLESTONE_STAIRS.get())
-//				.add(ItemRegistry.MOON_COBBLESTONE_WALL.get())
-				.add(ItemRegistry.VENUS_COBBLESTONE.get())
-		;
-
-//		tag(Tags.Items.COBBLESTONE_DEEPSLATE)
-//				.add(ItemRegistry.MARS_COBBLED_DEEPSLATE.get())
-////				.add(ItemRegistry.MARS_COBBLED_DEEPSLATE_SLAB.get())
-////				.add(ItemRegistry.MARS_COBBLED_DEEPSLATE_STAIRS.get())
-////				.add(ItemRegistry.MARS_COBBLED_DEEPSLATE_WALL.get())
-//				.add(ItemRegistry.MOON_COBBLED_DEEPSLATE.get())
-////				.add(ItemRegistry.MOON_COBBLED_DEEPSLATE_SLAB.get())
-////				.add(ItemRegistry.MOON_COBBLED_DEEPSLATE_STAIRS.get())
-////				.add(ItemRegistry.MOON_COBBLED_DEEPSLATE_WALL.get())
-//				.add(ItemRegistry.VENUS_COBBLED_DEEPSLATE.get())
-//		;
-
-		tag(Tags.Items.ORES_COAL)
-				.add(ItemRegistry.METEOR_COAL_ORE.get());
-
-		tag(Tags.Items.ORES_COPPER)
-				.add(ItemRegistry.METEOR_COPPER_ORE.get());
-
-		tag(Tags.Items.ORES_DIAMOND)
-				.add(ItemRegistry.METEOR_DIAMOND_ORE.get());
-
-		tag(Tags.Items.ORES_EMERALD)
-				.add(ItemRegistry.METEOR_EMERALD_ORE.get());
-
-		tag(Tags.Items.ORES_GOLD)
-				.add(ItemRegistry.METEOR_GOLD_ORE.get())
-
-		;
-
-		tag(Tags.Items.ORES_IRON)
-				.add(ItemRegistry.MARS_IRON_ORE.get())
-				.add(ItemRegistry.METEOR_IRON_ORE.get())
-				.add(ItemRegistry.MOON_IRON_ORE.get())
-				.add(ItemRegistry.MOON_DEEPSLATE_IRON_ORE.get())
-				.add(ItemRegistry.MARS_DEEPSLATE_IRON_ORE.get())
-				.add(ItemRegistry.VENUS_IRON_ORE.get())
-				.add(ItemRegistry.VENUS_DEEPSLATE_IRON_ORE.get())
-		;
-
-		tag(Tags.Items.ORES_LAPIS)
-				.add(ItemRegistry.METEOR_LAPIS_ORE.get())
-				.add(ItemRegistry.VENUS_LAPIS_ORE.get())
-				.add(ItemRegistry.VENUS_DEEPSLATE_LAPIS_ORE.get())
-		;
-
-		tag(Tags.Items.GLASS)
-				.add(ItemRegistry.LUMINOUS_BLUE_GLASS.get())
-//				.add(ItemRegistry.LUMINOUS_BLUE_GLASS_PANE.get())
-				.add(ItemRegistry.LUMINOUS_WHITE_GLASS.get())
-				.add(ItemRegistry.REINFORCED_GLASS.get())
-//				.add(ItemRegistry.LUMINOUS_WHITE_GLASS_PANE.get())
-	 			;
-
-		tag(Tags.Items.GLASS_PANES)
-				.add(ItemRegistry.LUMINOUS_BLUE_GLASS_PANE.get())
-				.add(ItemRegistry.LUMINOUS_WHITE_GLASS_PANE.get())
-				.add(ItemRegistry.REINFORCED_GLASS_PANE.get());
-
-		tag(Tags.Items.ORES_REDSTONE)
-				.add(ItemRegistry.MARS_REDSTONE_ORE.get())
-				.add(ItemRegistry.MOON_REDSTONE_ORE.get())
-				.add(ItemRegistry.METEOR_REDSTONE_ORE.get())
-				.add(ItemRegistry.MOON_DEEPSLATE_REDSTONE_ORE.get())
-				.add(ItemRegistry.MARS_DEEPSLATE_REDSTONE_ORE.get())
-				.add(ItemRegistry.VENUS_REDSTONE_ORE.get())
-				.add(ItemRegistry.VENUS_DEEPSLATE_REDSTONE_ORE.get())
-		;
-
-		tag(ItemTags.WALLS)
-				.add(ItemRegistry.MARS_BRICK_WALL.get())
-				.add(ItemRegistry.METEOR_BRICK_WALL.get())
-				.add(ItemRegistry.MOON_BRICK_WALL.get())
-				.add(ItemRegistry.MARS_COBBLESTONE_WALL.get())
-				.add(ItemRegistry.MOON_COBBLESTONE_WALL.get())
-				.add(ItemRegistry.MARS_COBBLED_DEEPSLATE_WALL.get())
-				.add(ItemRegistry.MOON_COBBLED_DEEPSLATE_WALL.get())
-				.add(ItemRegistry.MARS_DEEPSLATE_BRICK_WALL.get())
-				.add(ItemRegistry.MARS_DEEPSLATE_TILE_WALL.get())
-				.add(ItemRegistry.MARS_POLISHED_DEEPSLATE_WALL.get())
-				.add(ItemRegistry.MOON_DEEPSLATE_BRICK_WALL.get())
-				.add(ItemRegistry.MOON_DEEPSLATE_TILE_WALL.get())
-				.add(ItemRegistry.MOON_POLISHED_DEEPSLATE_WALL.get())
-
-				.add(ItemRegistry.VENUS_BRICK_WALL.get())
-				.add(ItemRegistry.VENUS_COBBLESTONE_WALL.get())
-				.add(ItemRegistry.VENUS_COBBLED_DEEPSLATE_WALL.get())
-				.add(ItemRegistry.VENUS_DEEPSLATE_BRICK_WALL.get())
-				.add(ItemRegistry.VENUS_DEEPSLATE_TILE_WALL.get())
-				.add(ItemRegistry.VENUS_POLISHED_DEEPSLATE_WALL.get())
-		;
-
-		tag(ItemTags.DOORS)
-				.add(ItemRegistry.AIRLOCK_DOOR.get())
-				.add(ItemRegistry.STEEL_DOOR.get());
-
-		tag(ItemTags.TRAPDOORS)
-				.add(ItemRegistry.STEEL_TRAPDOOR.get());
-
-		tag(ItemTags.BUTTONS)
-				.add(ItemRegistry.MOON_STONE_BUTTON.get())
-				.add(ItemRegistry.MOON_DEEPSLATE_BUTTON.get())
-				.add(ItemRegistry.MARS_STONE_BUTTON.get())
-				.add(ItemRegistry.MARS_DEEPSLATE_BUTTON.get())
-				.add(ItemRegistry.VENUS_STONE_BUTTON.get())
-				.add(ItemRegistry.VENUS_DEEPSLATE_BUTTON.get())
-				.add(ItemRegistry.METEOR_BUTTON.get())
-				.add(ItemRegistry.STEEL_BUTTON.get());
-
-		tag(ItemRegistry.MOON_TAG)
-				.add(ItemRegistry.MOON_STONE.get())
-				.add(ItemRegistry.MOON_BRICK_SLAB.get())
-				.add(ItemRegistry.MOON_BRICK_STAIRS.get())
-				.add(ItemRegistry.MOON_BRICK_WALL.get())
-				.add(ItemRegistry.MOON_BRICKS.get())
-				.add(ItemRegistry.CHISELED_MOON_BRICKS.get())
-				.add(ItemRegistry.MOON_IRON_ORE.get())
-				.add(ItemRegistry.MOON_REDSTONE_ORE.get())
-				.add(ItemRegistry.MOON_SAND.get())
-				.add(ItemRegistry.GLOWING_MOON_SAND.get())
-				.add(ItemRegistry.COARSE_MOON_SAND.get())
-				.add(ItemRegistry.MOON_BRICK_PILLAR.get())
-				.add(ItemRegistry.MOON_DEEPSLATE_IRON_ORE.get())
-				.add(ItemRegistry.MOON_DEEPSLATE_REDSTONE_ORE.get())
-				.add(ItemRegistry.MOON_DEEPSLATE.get())
-				.add(ItemRegistry.MOON_COBBLED_DEEPSLATE.get())
-				.add(ItemRegistry.MOON_COBBLESTONE.get())
-				.add(ItemRegistry.MOON_STONE_SLAB.get())
-				.add(ItemRegistry.MOON_COBBLESTONE_SLAB.get())
-				.add(ItemRegistry.MOON_COBBLESTONE_STAIRS.get())
-				.add(ItemRegistry.MOON_COBBLESTONE_WALL.get())
-				.add(ItemRegistry.MOON_COBBLED_DEEPSLATE_SLAB.get())
-				.add(ItemRegistry.MOON_COBBLED_DEEPSLATE_STAIRS.get())
-				.add(ItemRegistry.MOON_COBBLED_DEEPSLATE_WALL.get())
-				.add(ItemRegistry.MOON_SMOOTH_STONE.get())
-//				.add(ItemRegistry.MOON_SMOOTH_STONE_SLAB.get())
-				.add(ItemRegistry.CRACKED_MOON_BRICKS.get())
-				.add(ItemRegistry.CRACKED_MOON_DEEPSLATE_BRICKS.get())
-				.add(ItemRegistry.CRACKED_MOON_DEEPSLATE_TILES.get())
-				.add(ItemRegistry.CHISELED_MOON_DEEPSLATE_BRICKS.get())
-				.add(ItemRegistry.MOON_DEEPSLATE_BRICKS.get())
-				.add(ItemRegistry.MOON_DEEPSLATE_BRICK_SLAB.get())
-				.add(ItemRegistry.MOON_DEEPSLATE_BRICK_STAIRS.get())
-				.add(ItemRegistry.MOON_DEEPSLATE_BRICK_WALL.get())
-				.add(ItemRegistry.MOON_DEEPSLATE_TILES.get())
-				.add(ItemRegistry.MOON_DEEPSLATE_TILE_SLAB.get())
-				.add(ItemRegistry.MOON_DEEPSLATE_TILE_STAIRS.get())
-				.add(ItemRegistry.MOON_DEEPSLATE_TILE_WALL.get())
-				.add(ItemRegistry.MOON_POLISHED_DEEPSLATE.get())
-				.add(ItemRegistry.MOON_POLISHED_DEEPSLATE_SLAB.get())
-				.add(ItemRegistry.MOON_POLISHED_DEEPSLATE_STAIRS.get())
-				.add(ItemRegistry.MOON_POLISHED_DEEPSLATE_WALL.get());
-
-		tag(ItemRegistry.MOON_STONE_TAG)
-				.add(ItemRegistry.MOON_STONE.get())
-//				.add(ItemRegistry.MOON_BRICK_SLAB.get())
-//				.add(ItemRegistry.MOON_BRICK_STAIRS.get())
-//				.add(ItemRegistry.MOON_BRICK_WALL.get())
-				.add(ItemRegistry.MOON_BRICKS.get())
-				.add(ItemRegistry.CHISELED_MOON_BRICKS.get())
-				.add(ItemRegistry.MOON_BRICK_PILLAR.get())
-//				.add(ItemRegistry.MOON_STONE_SLAB.get())
-				.add(ItemRegistry.MOON_SMOOTH_STONE.get())
-//				.add(ItemRegistry.MOON_SMOOTH_STONE_SLAB.get())
-				.add(ItemRegistry.CRACKED_MOON_BRICKS.get());
-
-		tag(ItemRegistry.MOON_COBBLESTONE_TAG)
-				.add(ItemRegistry.MOON_COBBLESTONE.get())
-//				.add(ItemRegistry.MOON_COBBLESTONE_SLAB.get())
-//				.add(ItemRegistry.MOON_COBBLESTONE_STAIRS.get())
-//				.add(ItemRegistry.MOON_COBBLESTONE_WALL.get())
-				;
-
-		tag(ItemRegistry.MOON_DEEPSLATE_TAG)
-				.add(ItemRegistry.MOON_DEEPSLATE.get())
-				.add(ItemRegistry.CRACKED_MOON_DEEPSLATE_BRICKS.get())
-				.add(ItemRegistry.CRACKED_MOON_DEEPSLATE_TILES.get())
-				.add(ItemRegistry.CHISELED_MOON_DEEPSLATE_BRICKS.get())
-				.add(ItemRegistry.MOON_DEEPSLATE_BRICKS.get())
-				.add(ItemRegistry.MOON_DEEPSLATE_TILES.get())
-				.add(ItemRegistry.MOON_POLISHED_DEEPSLATE.get())
-				;
-
-		tag(ItemRegistry.MOON_COBBLED_DEEPSLATE_TAG)
-				.add(ItemRegistry.MOON_COBBLED_DEEPSLATE.get())
-//				.add(ItemRegistry.MOON_COBBLED_DEEPSLATE_SLAB.get())
-//				.add(ItemRegistry.MOON_COBBLED_DEEPSLATE_STAIRS.get())
-//				.add(ItemRegistry.MOON_COBBLED_DEEPSLATE_WALL.get())
-		;
-
-		tag(ItemRegistry.MARS_TAG)
-				.add(ItemRegistry.MARS_STONE.get())
-				.add(ItemRegistry.MARS_BRICK_SLAB.get())
-				.add(ItemRegistry.MARS_BRICK_STAIRS.get())
-				.add(ItemRegistry.MARS_BRICK_WALL.get())
-				.add(ItemRegistry.MARS_BRICKS.get())
-				.add(ItemRegistry.CHISELED_MARS_BRICKS.get())
-				.add(ItemRegistry.MARS_IRON_ORE.get())
-				.add(ItemRegistry.MARS_REDSTONE_ORE.get())
-				.add(ItemRegistry.MARS_SAND.get())
-				.add(ItemRegistry.COARSE_MARS_SAND.get())
-				.add(ItemRegistry.MARS_BRICK_PILLAR.get())
-				.add(ItemRegistry.MARS_DEEPSLATE.get())
-				.add(ItemRegistry.MARS_COBBLED_DEEPSLATE.get())
-				.add(ItemRegistry.MARS_COBBLESTONE.get())
-				.add(ItemRegistry.MARS_STONE_SLAB.get())
-				.add(ItemRegistry.MARS_COBBLESTONE_SLAB.get())
-				.add(ItemRegistry.MARS_COBBLESTONE_STAIRS.get())
-				.add(ItemRegistry.MARS_COBBLESTONE_WALL.get())
-				.add(ItemRegistry.MARS_COBBLED_DEEPSLATE_SLAB.get())
-				.add(ItemRegistry.MARS_COBBLED_DEEPSLATE_STAIRS.get())
-				.add(ItemRegistry.MARS_COBBLED_DEEPSLATE_WALL.get())
-				.add(ItemRegistry.MARS_DEEPSLATE_IRON_ORE.get())
-				.add(ItemRegistry.MARS_DEEPSLATE_REDSTONE_ORE.get())
-
-				.add(ItemRegistry.MARS_SMOOTH_STONE.get())
-//				.add(ItemRegistry.MARS_SMOOTH_STONE_SLAB.get())
-				.add(ItemRegistry.CRACKED_MARS_BRICKS.get())
-				.add(ItemRegistry.CRACKED_MARS_DEEPSLATE_BRICKS.get())
-				.add(ItemRegistry.CRACKED_MARS_DEEPSLATE_TILES.get())
-				.add(ItemRegistry.CHISELED_MARS_DEEPSLATE_BRICKS.get())
-				.add(ItemRegistry.MARS_DEEPSLATE_BRICKS.get())
-				.add(ItemRegistry.MARS_DEEPSLATE_BRICK_SLAB.get())
-				.add(ItemRegistry.MARS_DEEPSLATE_BRICK_STAIRS.get())
-				.add(ItemRegistry.MARS_DEEPSLATE_BRICK_WALL.get())
-				.add(ItemRegistry.MARS_DEEPSLATE_TILES.get())
-				.add(ItemRegistry.MARS_DEEPSLATE_TILE_SLAB.get())
-				.add(ItemRegistry.MARS_DEEPSLATE_TILE_STAIRS.get())
-				.add(ItemRegistry.MARS_DEEPSLATE_TILE_WALL.get())
-				.add(ItemRegistry.MARS_POLISHED_DEEPSLATE.get())
-				.add(ItemRegistry.MARS_POLISHED_DEEPSLATE_SLAB.get())
-				.add(ItemRegistry.MARS_POLISHED_DEEPSLATE_STAIRS.get())
-				.add(ItemRegistry.MARS_POLISHED_DEEPSLATE_WALL.get());
-
-		tag(ItemRegistry.MARS_STONE_TAG)
-				.add(ItemRegistry.MARS_STONE.get())
-//				.add(ItemRegistry.MARS_BRICK_SLAB.get())
-//				.add(ItemRegistry.MARS_BRICK_STAIRS.get())
-//				.add(ItemRegistry.MARS_BRICK_WALL.get())
-				.add(ItemRegistry.MARS_BRICKS.get())
-				.add(ItemRegistry.CHISELED_MARS_BRICKS.get())
-				.add(ItemRegistry.MARS_BRICK_PILLAR.get())
-//				.add(ItemRegistry.MARS_STONE_SLAB.get())
-				.add(ItemRegistry.MARS_SMOOTH_STONE.get())
-//				.add(ItemRegistry.MARS_SMOOTH_STONE_SLAB.get())
-				.add(ItemRegistry.CRACKED_MARS_BRICKS.get());
-
-		tag(ItemRegistry.MARS_COBBLESTONE_TAG)
-				.add(ItemRegistry.MARS_COBBLESTONE.get())
-//				.add(ItemRegistry.MARS_COBBLESTONE_SLAB.get())
-//				.add(ItemRegistry.MARS_COBBLESTONE_STAIRS.get())
-//				.add(ItemRegistry.MARS_COBBLESTONE_WALL.get())
-		;
-
-		tag(ItemRegistry.MARS_DEEPSLATE_TAG)
-				.add(ItemRegistry.MARS_DEEPSLATE.get())
-				.add(ItemRegistry.CRACKED_MARS_DEEPSLATE_BRICKS.get())
-				.add(ItemRegistry.CRACKED_MARS_DEEPSLATE_TILES.get())
-				.add(ItemRegistry.CHISELED_MARS_DEEPSLATE_BRICKS.get())
-				.add(ItemRegistry.MARS_DEEPSLATE_BRICKS.get())
-				.add(ItemRegistry.MARS_DEEPSLATE_TILES.get())
-				.add(ItemRegistry.MARS_POLISHED_DEEPSLATE.get())
-		;
-
-		tag(ItemRegistry.MARS_COBBLED_DEEPSLATE_TAG)
-				.add(ItemRegistry.MARS_COBBLED_DEEPSLATE.get())
-		;
-
-		tag(ItemRegistry.VENUS_TAG)
-				.add(ItemRegistry.VENUS_STONE.get())
-				.add(ItemRegistry.VENUS_BRICK_SLAB.get())
-				.add(ItemRegistry.VENUS_BRICK_STAIRS.get())
-				.add(ItemRegistry.VENUS_BRICK_WALL.get())
-				.add(ItemRegistry.VENUS_BRICKS.get())
-				.add(ItemRegistry.CHISELED_VENUS_BRICKS.get())
-				.add(ItemRegistry.VENUS_IRON_ORE.get())
-				.add(ItemRegistry.VENUS_REDSTONE_ORE.get())
-				.add(ItemRegistry.VENUS_SAND.get())
-				.add(ItemRegistry.FINE_VENUS_SAND.get())
-//				.add(ItemRegistry.VENUS_BRICK_PILLAR.get())
-				.add(ItemRegistry.VENUS_DEEPSLATE.get())
-				.add(ItemRegistry.VENUS_COBBLED_DEEPSLATE.get())
-				.add(ItemRegistry.VENUS_COBBLESTONE.get())
-				.add(ItemRegistry.VENUS_STONE_SLAB.get())
-				.add(ItemRegistry.VENUS_COBBLESTONE_SLAB.get())
-				.add(ItemRegistry.VENUS_COBBLESTONE_STAIRS.get())
-				.add(ItemRegistry.VENUS_COBBLESTONE_WALL.get())
-				.add(ItemRegistry.VENUS_COBBLED_DEEPSLATE_SLAB.get())
-				.add(ItemRegistry.VENUS_COBBLED_DEEPSLATE_STAIRS.get())
-				.add(ItemRegistry.VENUS_COBBLED_DEEPSLATE_WALL.get())
-				.add(ItemRegistry.VENUS_DEEPSLATE_IRON_ORE.get())
-				.add(ItemRegistry.VENUS_DEEPSLATE_REDSTONE_ORE.get())
-
-//				.add(ItemRegistry.VENUS_SMOOTH_STONE.get())
-//				.add(ItemRegistry.VENUS_SMOOTH_STONE_SLAB.get())
-//				.add(ItemRegistry.CRACKED_VENUS_BRICKS.get())
-//				.add(ItemRegistry.CRACKED_VENUS_DEEPSLATE_BRICKS.get())
-//				.add(ItemRegistry.CRACKED_VENUS_DEEPSLATE_TILES.get())
-//				.add(ItemRegistry.CHISELED_VENUS_DEEPSLATE_BRICKS.get())
-				.add(ItemRegistry.VENUS_DEEPSLATE_BRICKS.get())
-				.add(ItemRegistry.VENUS_DEEPSLATE_BRICK_SLAB.get())
-				.add(ItemRegistry.VENUS_DEEPSLATE_BRICK_STAIRS.get())
-				.add(ItemRegistry.VENUS_DEEPSLATE_BRICK_WALL.get())
-				.add(ItemRegistry.VENUS_DEEPSLATE_TILES.get())
-				.add(ItemRegistry.VENUS_DEEPSLATE_TILE_SLAB.get())
-				.add(ItemRegistry.VENUS_DEEPSLATE_TILE_STAIRS.get())
-				.add(ItemRegistry.VENUS_DEEPSLATE_TILE_WALL.get())
-				.add(ItemRegistry.VENUS_POLISHED_DEEPSLATE.get())
-				.add(ItemRegistry.VENUS_POLISHED_DEEPSLATE_SLAB.get())
-				.add(ItemRegistry.VENUS_POLISHED_DEEPSLATE_STAIRS.get())
-				.add(ItemRegistry.VENUS_POLISHED_DEEPSLATE_WALL.get());
-
-		tag(ItemRegistry.VENUS_STONE_TAG)
-				.add(ItemRegistry.VENUS_STONE.get())
-				.add(ItemRegistry.VENUS_BRICKS.get())
-				.add(ItemRegistry.CHISELED_VENUS_BRICKS.get())
-//				.add(ItemRegistry.VENUS_BRICK_PILLAR.get())
-//				.add(ItemRegistry.VENUS_SMOOTH_STONE.get())
-//				.add(ItemRegistry.CRACKED_VENUS_BRICKS.get());
-		;
-
-		tag(ItemRegistry.VENUS_COBBLESTONE_TAG)
-				.add(ItemRegistry.VENUS_COBBLESTONE.get())
-		;
-
-		tag(ItemRegistry.VENUS_DEEPSLATE_TAG)
-				.add(ItemRegistry.VENUS_DEEPSLATE.get())
-//				.add(ItemRegistry.CRACKED_VENUS_DEEPSLATE_BRICKS.get())
-//				.add(ItemRegistry.CRACKED_VENUS_DEEPSLATE_TILES.get())
-//				.add(ItemRegistry.CHISELED_VENUS_DEEPSLATE_BRICKS.get())
-				.add(ItemRegistry.VENUS_DEEPSLATE_BRICKS.get())
-				.add(ItemRegistry.VENUS_DEEPSLATE_TILES.get())
-				.add(ItemRegistry.VENUS_POLISHED_DEEPSLATE.get())
-		;
-
-		tag(ItemRegistry.VENUS_COBBLED_DEEPSLATE_TAG)
-				.add(ItemRegistry.VENUS_COBBLED_DEEPSLATE.get())
-		;
-
-		tag(ItemTags.SOUL_FIRE_BASE_BLOCKS)
-				.add(ItemRegistry.VENUS_SAND.get())
-				.add(ItemRegistry.FINE_VENUS_SAND.get())
-				.add(ItemRegistry.VENUS_STONE.get())
-				.add(ItemRegistry.VENUS_COBBLESTONE.get())
-				.add(ItemRegistry.VENUS_DEEPSLATE.get())
-				.add(ItemRegistry.VENUS_COBBLED_DEEPSLATE.get())
-				.add(ItemRegistry.METEOR_SULFUR_ORE.get())
-				.add(ItemRegistry.GEYSER.get())
-		;
-
-
-		tag(ItemRegistry.METEOR_TAG)
-				.add(ItemRegistry.METEOR.get())
-//				.add(ItemRegistry.METEOR_BRICK_SLAB.get())
-//				.add(ItemRegistry.METEOR_BRICK_STAIRS.get())
-//				.add(ItemRegistry.METEOR_BRICK_WALL.get())
-				.add(ItemRegistry.METEOR_BRICKS.get())
-				.add(ItemRegistry.CHISELED_METEOR_BRICKS.get())
-				.add(ItemRegistry.METEOR_REDSTONE_ORE.get())
-//				.add(ItemRegistry.METEOR_GOLD_ORE.get())
-//				.add(ItemRegistry.METEOR_DIAMOND_ORE.get())
-//				.add(ItemRegistry.METEOR_LAPIS_ORE.get())
-//				.add(ItemRegistry.METEOR_EMERALD_ORE.get())
-//				.add(ItemRegistry.METEOR_COPPER_ORE.get())
-//				.add(ItemRegistry.METEOR_COAL_ORE.get())
-//				.add(ItemRegistry.METEOR_IRON_ORE.get());
-		;
-
-		tag(Tags.Items.GLASS)
-				.add(ItemRegistry.LUMINOUS_WHITE_GLASS.get())
-				.add(ItemRegistry.LUMINOUS_BLUE_GLASS.get())
-				.add(ItemRegistry.REINFORCED_GLASS.get());
-
-		tag(Tags.Items.GLASS_PANES)
-				.add(ItemRegistry.LUMINOUS_BLUE_GLASS_PANE.get())
-				.add(ItemRegistry.LUMINOUS_WHITE_GLASS_PANE.get())
-				.add(ItemRegistry.REINFORCED_GLASS_PANE.get());
-
-		tag(Tags.Items.GLASS_COLORLESS)
-				.add(ItemRegistry.REINFORCED_GLASS.get());
-
-		tag(Tags.Items.GLASS_BLUE)
-				.add(ItemRegistry.LUMINOUS_BLUE_GLASS.get());
-
-		tag(Tags.Items.GLASS_WHITE)
-				.add(ItemRegistry.LUMINOUS_WHITE_GLASS.get());
-
-		tag(Tags.Items.GLASS_PANES_BLUE)
-				.add(ItemRegistry.LUMINOUS_BLUE_GLASS_PANE.get());
-
-		tag(Tags.Items.GLASS_PANES_WHITE)
-				.add(ItemRegistry.LUMINOUS_WHITE_GLASS_PANE.get());
-
-		tag(ItemRegistry.DYED_CERAMIC_TAG)
-				.add(ItemRegistry.WHITE_CERAMIC.get())
-				.add(ItemRegistry.LIGHT_GREY_CERAMIC.get())
-				.add(ItemRegistry.GREY_CERAMIC.get())
-				.add(ItemRegistry.BLACK_CERAMIC.get())
-				.add(ItemRegistry.PURPLE_CERAMIC.get())
-				.add(ItemRegistry.MAGENTA_CERAMIC.get())
-				.add(ItemRegistry.BLUE_CERAMIC.get())
-				.add(ItemRegistry.LIGHT_BLUE_CERAMIC.get())
-				.add(ItemRegistry.CYAN_CERAMIC.get())
-				.add(ItemRegistry.GREEN_CERAMIC.get())
-				.add(ItemRegistry.LIME_CERAMIC.get())
-				.add(ItemRegistry.YELLOW_CERAMIC.get())
-				.add(ItemRegistry.ORANGE_CERAMIC.get())
-				.add(ItemRegistry.BROWN_CERAMIC.get())
-				.add(ItemRegistry.RED_CERAMIC.get())
-				.add(ItemRegistry.PINK_CERAMIC.get());
-
-		tag(ItemRegistry.DYED_CERAMIC_TILE_TAG)
-                .add(ItemRegistry.WHITE_CERAMIC_TILE.get())
-                .add(ItemRegistry.LIGHT_GREY_CERAMIC_TILE.get())
-                .add(ItemRegistry.GREY_CERAMIC_TILE.get())
-                .add(ItemRegistry.BLACK_CERAMIC_TILE.get())
-                .add(ItemRegistry.PURPLE_CERAMIC_TILE.get())
-                .add(ItemRegistry.MAGENTA_CERAMIC_TILE.get())
-                .add(ItemRegistry.BLUE_CERAMIC_TILE.get())
-                .add(ItemRegistry.LIGHT_BLUE_CERAMIC_TILE.get())
-                .add(ItemRegistry.CYAN_CERAMIC_TILE.get())
-                .add(ItemRegistry.GREEN_CERAMIC_TILE.get())
-                .add(ItemRegistry.LIME_CERAMIC_TILE.get())
-                .add(ItemRegistry.YELLOW_CERAMIC_TILE.get())
-                .add(ItemRegistry.ORANGE_CERAMIC_TILE.get())
-                .add(ItemRegistry.BROWN_CERAMIC_TILE.get())
-                .add(ItemRegistry.RED_CERAMIC_TILE.get())
-                .add(ItemRegistry.PINK_CERAMIC_TILE.get());
-
-		tag(ItemRegistry.PAINTED_CERAMIC_TAG)
-				.add(ItemRegistry.PAINTED_WHITE_CERAMIC.get())
-				.add(ItemRegistry.PAINTED_LIGHT_GREY_CERAMIC.get())
-				.add(ItemRegistry.PAINTED_GREY_CERAMIC.get())
-				.add(ItemRegistry.PAINTED_BLACK_CERAMIC.get())
-				.add(ItemRegistry.PAINTED_PURPLE_CERAMIC.get())
-				.add(ItemRegistry.PAINTED_MAGENTA_CERAMIC.get())
-				.add(ItemRegistry.PAINTED_BLUE_CERAMIC.get())
-				.add(ItemRegistry.PAINTED_LIGHT_BLUE_CERAMIC.get())
-				.add(ItemRegistry.PAINTED_CYAN_CERAMIC.get())
-				.add(ItemRegistry.PAINTED_GREEN_CERAMIC.get())
-				.add(ItemRegistry.PAINTED_LIME_CERAMIC.get())
-				.add(ItemRegistry.PAINTED_YELLOW_CERAMIC.get())
-				.add(ItemRegistry.PAINTED_ORANGE_CERAMIC.get())
-				.add(ItemRegistry.PAINTED_BROWN_CERAMIC.get())
-				.add(ItemRegistry.PAINTED_RED_CERAMIC.get())
-				.add(ItemRegistry.PAINTED_PINK_CERAMIC.get());
-
-		tag(ItemRegistry.STONE_PRESSURE_PLATE_TAG)
-				.add(ItemRegistry.MOON_STONE_PRESSURE_PLATE.get())
-				.add(ItemRegistry.MOON_DEEPSLATE_PRESSURE_PLATE.get())
-				.add(ItemRegistry.MARS_STONE_PRESSURE_PLATE.get())
-				.add(ItemRegistry.MARS_DEEPSLATE_PRESSURE_PLATE.get())
-				.add(ItemRegistry.METEOR_PRESSURE_PLATE.get())
-				.add(Items.STONE_PRESSURE_PLATE)
-				.add(Items.POLISHED_BLACKSTONE_PRESSURE_PLATE)
-				.add(ItemRegistry.VENUS_DEEPSLATE_PRESSURE_PLATE.get())
-				.add(ItemRegistry.VENUS_STONE_PRESSURE_PLATE.get())
-		;
-
-		tag(Tags.Items.RODS_BLAZE)
-				.add(ItemRegistry.FLARE_ROD.get());
-
-		tag(ItemRegistry.SPACESHIP_TAG)
-				.add(ItemRegistry.WHITE_SPACESHIP.get())
-				.add(ItemRegistry.LIGHT_GREY_SPACESHIP.get())
-				.add(ItemRegistry.GREY_SPACESHIP.get())
-				.add(ItemRegistry.BLACK_SPACESHIP.get())
-				.add(ItemRegistry.PURPLE_SPACESHIP.get())
-				.add(ItemRegistry.MAGENTA_SPACESHIP.get())
-				.add(ItemRegistry.BLUE_SPACESHIP.get())
-				.add(ItemRegistry.LIGHT_BLUE_SPACESHIP.get())
-				.add(ItemRegistry.CYAN_SPACESHIP.get())
-				.add(ItemRegistry.GREEN_SPACESHIP.get())
-				.add(ItemRegistry.LIME_SPACESHIP.get())
-				.add(ItemRegistry.YELLOW_SPACESHIP.get())
-				.add(ItemRegistry.ORANGE_SPACESHIP.get())
-				.add(ItemRegistry.BROWN_SPACESHIP.get())
-				.add(ItemRegistry.RED_SPACESHIP.get())
-				.add(ItemRegistry.PINK_SPACESHIP.get());
-		
+		this.copy(TagRegistry.Blocks.REGOLITH, TagRegistry.Items.REGOLITH);
+		this.copy(TagRegistry.Blocks.MAG_RAIL, TagRegistry.Items.MAG_RAIL);
 	}
 
 	@Override

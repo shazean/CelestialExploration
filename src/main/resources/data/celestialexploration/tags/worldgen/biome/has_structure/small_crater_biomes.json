@@ -12,6 +12,10 @@
     "celestialexploration:moon_craters",
     "celestialexploration:moon_desert",
     "celestialexploration:moon_lower_plains",
-    "celestialexploration:moon_plains"
+    "celestialexploration:moon_plains",
+    "celestialexploration:mercury_cratered_plains",
+    "celestialexploration:mercury_desert",
+    "celestialexploration:mercury_plains",
+    "celestialexploration:mercury_ridges"
   ]
 }

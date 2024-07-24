@@ -1,0 +1,28 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "farmersdelight"
+    }
+  ],
+  "type": "create:cutting",
+  "ingredients": [
+    {
+      "item": "minecraft:acacia_wood"
+    }
+  ],
+  "results": [
+    {
+      "item": "minecraft:stripped_acacia_wood"
+    },
+    {
+      "item": "farmersdelight:tree_bark",
+      "chance": 1.50
+    }
+  ],
+  "processingTime": 50
+}

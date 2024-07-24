@@ -3,7 +3,7 @@ package com.shim.celestialexploration.world.portal;
 import com.shim.celestialexploration.blocks.VenusPortalBlock;
 import com.shim.celestialexploration.registry.BlockRegistry;
 import com.shim.celestialexploration.registry.DimensionRegistry;
-import com.shim.celestialexploration.registry.PortalRegistry;
+import com.shim.celestialexploration.registry.PoiRegistry;
 import net.minecraft.BlockUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -131,7 +131,7 @@ public class VenusTeleporter implements ITeleporter {
         PoiManager poiManager = this.level.getPoiManager();
         poiManager.ensureLoadedAndValid(this.level, pos, 64);
         Optional<PoiRecord> optional = poiManager.getInSquare((poiType) ->
-                poiType == PortalRegistry.VENUS_PORTAL.get(), pos, 64, PoiManager.Occupancy.ANY).sorted(Comparator.<PoiRecord>comparingDouble((poi) ->
+                poiType == PoiRegistry.VENUS_PORTAL.get(), pos, 64, PoiManager.Occupancy.ANY).sorted(Comparator.<PoiRecord>comparingDouble((poi) ->
                 poi.getPos().distSqr(pos)).thenComparingInt((poi) ->
                 poi.getPos().getY())).filter((poi) ->
                 this.level.getBlockState(poi.getPos()).hasProperty(BlockStateProperties.HORIZONTAL_AXIS)).findFirst();

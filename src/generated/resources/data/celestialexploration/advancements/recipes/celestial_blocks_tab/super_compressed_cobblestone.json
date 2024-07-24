@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "celestialexploration:super_compressed_cobblestone"
+    ]
+  },
+  "criteria": {
+    "has_compressed_cobblestone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:compressed_cobblestone"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "celestialexploration:super_compressed_cobblestone"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_compressed_cobblestone",
+      "has_the_recipe"
+    ]
+  ]
+}

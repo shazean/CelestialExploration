@@ -5,7 +5,7 @@ import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.entity.mob.Lurker;
 import com.shim.celestialexploration.entity.layers.LurkerHelmetLayer;
 import com.shim.celestialexploration.entity.layers.LurkerPowerLayer;
-import com.shim.celestialexploration.entity.model.LurkerModel;
+import net.minecraft.client.model.CreeperModel;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
@@ -15,11 +15,11 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class LurkerRenderer extends MobRenderer<Lurker, LurkerModel<Lurker>> {
+public class LurkerRenderer extends MobRenderer<Lurker, CreeperModel<Lurker>> {
     private static final ResourceLocation LURKER_LOCATION = new ResourceLocation(CelestialExploration.MODID, "textures/entity/lurker/lurker.png");
 
     public LurkerRenderer(EntityRendererProvider.Context p_173958_) {
-        super(p_173958_, new LurkerModel<>(p_173958_.bakeLayer(ModelLayers.CREEPER)), 0.5F);
+        super(p_173958_, new CreeperModel<>(p_173958_.bakeLayer(ModelLayers.CREEPER)), 0.5F);
         this.addLayer(new LurkerPowerLayer(this, p_173958_.getModelSet()));
         this.addLayer(new LurkerHelmetLayer(this));
     }

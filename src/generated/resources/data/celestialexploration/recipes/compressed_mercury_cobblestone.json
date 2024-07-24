@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "celestialexploration",
+  "pattern": [
+    "XXX",
+    "XXX",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:mercury_cobblestone"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:compressed_mercury_cobblestone"
+  }
+}

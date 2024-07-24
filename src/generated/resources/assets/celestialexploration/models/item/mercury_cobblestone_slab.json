@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "side": "celestialexploration:block/mercury_cobblestone",
+    "bottom": "celestialexploration:block/mercury_cobblestone",
+    "top": "celestialexploration:block/mercury_cobblestone"
+  }
+}

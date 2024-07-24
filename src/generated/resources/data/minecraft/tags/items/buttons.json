@@ -1,13 +1,19 @@
 {
   "replace": false,
   "values": [
-    "celestialexploration:moon_stone_button",
-    "celestialexploration:moon_deepslate_button",
     "celestialexploration:mars_stone_button",
     "celestialexploration:mars_deepslate_button",
     "celestialexploration:venus_stone_button",
     "celestialexploration:venus_deepslate_button",
     "celestialexploration:meteor_button",
+    "celestialexploration:mercury_stone_button",
+    "celestialexploration:mercury_deepslate_button",
+    "celestialexploration:red_button",
+    "celestialexploration:yellow_button",
+    "celestialexploration:blue_button",
+    "celestialexploration:green_button",
+    "celestialexploration:white_button",
+    "celestialexploration:black_button",
     "celestialexploration:steel_button"
   ]
 }

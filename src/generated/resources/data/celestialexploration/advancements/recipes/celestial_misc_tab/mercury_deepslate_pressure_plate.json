@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "celestialexploration:mercury_deepslate_pressure_plate"
+    ]
+  },
+  "criteria": {
+    "mercury_deepslate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:mercury_deepslate"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "celestialexploration:mercury_deepslate_pressure_plate"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "mercury_deepslate",
+      "has_the_recipe"
+    ]
+  ]
+}

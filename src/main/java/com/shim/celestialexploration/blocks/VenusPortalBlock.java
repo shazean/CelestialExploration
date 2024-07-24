@@ -3,6 +3,7 @@ package com.shim.celestialexploration.blocks;
 import com.shim.celestialexploration.registry.BlockRegistry;
 import com.shim.celestialexploration.registry.DimensionRegistry;
 import com.shim.celestialexploration.registry.ParticleRegistry;
+import com.shim.celestialexploration.registry.TagRegistry;
 import com.shim.celestialexploration.world.portal.VenusTeleporter;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -235,13 +236,13 @@ public class VenusPortalBlock extends Block {
             for(i = 0; i < 22; ++i) {
                 BlockPos blockpos = pos.relative(directionIn, i);
                 if(!this.canConnect(this.level.getBlockState(blockpos)) ||
-                        !(this.level.getBlockState(blockpos.below()).is(BlockRegistry.VENUS_PORTAL_FRAME_BLOCK))) {
+                        !(this.level.getBlockState(blockpos.below()).is(TagRegistry.Blocks.VENUS_PORTAL_FRAME_BLOCK))) {
                     break;
                 }
             }
 
             BlockPos framePos = pos.relative(directionIn, i);
-            return this.level.getBlockState(framePos).is(BlockRegistry.VENUS_PORTAL_FRAME_BLOCK) ? i : 0;
+            return this.level.getBlockState(framePos).is(TagRegistry.Blocks.VENUS_PORTAL_FRAME_BLOCK) ? i : 0;
         }
 
         public int getHeight() {
@@ -269,12 +270,12 @@ public class VenusPortalBlock extends Block {
 
                     if (i == 0) {
                         BlockPos framePos = blockpos.relative(this.leftDir);
-                        if (!(this.level.getBlockState(framePos).is(BlockRegistry.VENUS_PORTAL_FRAME_BLOCK))) {
+                        if (!(this.level.getBlockState(framePos).is(TagRegistry.Blocks.VENUS_PORTAL_FRAME_BLOCK))) {
                             break label56;
                         }
                     } else if (i == this.width - 1) {
                         BlockPos framePos = blockpos.relative(this.rightDir);
-                        if (!(this.level.getBlockState(framePos).is(BlockRegistry.VENUS_PORTAL_FRAME_BLOCK))) {
+                        if (!(this.level.getBlockState(framePos).is(TagRegistry.Blocks.VENUS_PORTAL_FRAME_BLOCK))) {
                             break label56;
                         }
                     }
@@ -283,7 +284,7 @@ public class VenusPortalBlock extends Block {
 
             for(int j = 0; j < this.width; ++j) {
                 BlockPos framePos = this.bottomLeft.relative(this.rightDir, j).above(this.height);
-                if (!(this.level.getBlockState(framePos).is(BlockRegistry.VENUS_PORTAL_FRAME_BLOCK))) {
+                if (!(this.level.getBlockState(framePos).is(TagRegistry.Blocks.VENUS_PORTAL_FRAME_BLOCK))) {
                     this.height = 0;
                     break;
                 }

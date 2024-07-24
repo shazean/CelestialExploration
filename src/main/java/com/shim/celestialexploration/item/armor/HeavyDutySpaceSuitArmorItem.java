@@ -24,7 +24,7 @@ import java.util.Map;
 public class HeavyDutySpaceSuitArmorItem extends GeoArmorItem implements IAnimatable {
     private AnimationFactory factory = new AnimationFactory(this);
 
-    private static final Map<ArmorMaterial, MobEffectInstance> MATERIAL_TO_EFFECT_MAP = (new ImmutableMap.Builder<ArmorMaterial, MobEffectInstance>()).put(ModArmorMaterials.HEAVY_DUTY_SPACE_SUIT, new MobEffectInstance(MobEffects.JUMP, 300, 1, false, false, false)).build();
+    private static final Map<ArmorMaterial, MobEffectInstance> MATERIAL_TO_EFFECT_MAP = (new ImmutableMap.Builder<ArmorMaterial, MobEffectInstance>()).put(ModArmorMaterials.HEAVY_DUTY_SPACESUIT, new MobEffectInstance(MobEffects.JUMP, 300, 1, false, false, false)).build();
 
     public HeavyDutySpaceSuitArmorItem(ArmorMaterial material, EquipmentSlot slot, Properties settings) {
         super(material, slot, settings);

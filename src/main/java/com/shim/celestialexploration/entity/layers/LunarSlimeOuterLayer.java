@@ -2,8 +2,6 @@ package com.shim.celestialexploration.entity.layers;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.shim.celestialexploration.entity.model.LunarSlimeModel;
-import com.shim.celestialexploration.entity.model.RustSlimeModel;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.SlimeModel;
@@ -19,12 +17,12 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class LunarSlimeOuterLayer<T extends LivingEntity> extends RenderLayer<T, LunarSlimeModel<T>> {
+public class LunarSlimeOuterLayer<T extends LivingEntity> extends RenderLayer<T, SlimeModel<T>> {
     private final EntityModel<T> model;
 
-    public LunarSlimeOuterLayer(RenderLayerParent<T, LunarSlimeModel<T>> p_174536_, EntityModelSet p_174537_) {
+    public LunarSlimeOuterLayer(RenderLayerParent<T, SlimeModel<T>> p_174536_, EntityModelSet p_174537_) {
         super(p_174536_);
-        this.model = new LunarSlimeModel<>(p_174537_.bakeLayer(ModelLayers.SLIME_OUTER));
+        this.model = new SlimeModel<>(p_174537_.bakeLayer(ModelLayers.SLIME_OUTER));
     }
 
     public void render(PoseStack p_117470_, MultiBufferSource p_117471_, int p_117472_, T p_117473_, float p_117474_, float p_117475_, float p_117476_, float p_117477_, float p_117478_, float p_117479_) {

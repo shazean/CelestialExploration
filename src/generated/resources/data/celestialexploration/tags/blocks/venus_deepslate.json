@@ -2,8 +2,20 @@
   "replace": false,
   "values": [
     "celestialexploration:venus_deepslate",
+    "celestialexploration:cracked_venus_deepslate_bricks",
+    "celestialexploration:cracked_venus_deepslate_tiles",
+    "celestialexploration:chiseled_venus_deepslate_bricks",
     "celestialexploration:venus_deepslate_bricks",
+    "celestialexploration:venus_deepslate_brick_slab",
+    "celestialexploration:venus_deepslate_brick_stairs",
+    "celestialexploration:venus_deepslate_brick_wall",
     "celestialexploration:venus_deepslate_tiles",
-    "celestialexploration:venus_polished_deepslate"
+    "celestialexploration:venus_deepslate_tile_slab",
+    "celestialexploration:venus_deepslate_tile_stairs",
+    "celestialexploration:venus_deepslate_tile_wall",
+    "celestialexploration:venus_polished_deepslate",
+    "celestialexploration:venus_polished_deepslate_slab",
+    "celestialexploration:venus_polished_deepslate_stairs",
+    "celestialexploration:venus_polished_deepslate_wall"
   ]
 }

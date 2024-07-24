@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "celestialexploration",
+  "ingredients": [
+    {
+      "item": "celestialexploration:super_compressed_mercury_cobblestone"
+    }
+  ],
+  "result": {
+    "item": "celestialexploration:compressed_mercury_cobblestone",
+    "count": 9
+  }
+}

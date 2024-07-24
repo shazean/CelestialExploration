@@ -5,7 +5,7 @@
 
   "elements": [
     {
-      "weight": 20,
+      "weight": 80,
       "element": {
         "location": "celestialexploration:large_crater",
         "processors": "minecraft:empty",

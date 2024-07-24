@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "celestialexploration:mars_redstone_ore",
+    "celestialexploration:mars_deepslate_redstone_ore",
+    "celestialexploration:venus_redstone_ore",
+    "celestialexploration:venus_deepslate_redstone_ore",
+    "celestialexploration:meteor_redstone_ore",
+    "celestialexploration:mercury_deepslate_redstone_ore"
+  ]
+}

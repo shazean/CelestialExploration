@@ -3,8 +3,8 @@ package com.shim.celestialexploration.entity.layers;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
 import com.shim.celestialexploration.entity.mob.Lurker;
-import com.shim.celestialexploration.entity.model.LurkerModel;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.model.CreeperModel;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
@@ -12,8 +12,8 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class LurkerHelmetLayer extends RenderLayer<Lurker, LurkerModel<Lurker>> {
-    public LurkerHelmetLayer(RenderLayerParent<Lurker, LurkerModel<Lurker>> p_116994_) {
+public class LurkerHelmetLayer extends RenderLayer<Lurker, CreeperModel<Lurker>> {
+    public LurkerHelmetLayer(RenderLayerParent<Lurker, CreeperModel<Lurker>> p_116994_) {
         super(p_116994_);
     }
 

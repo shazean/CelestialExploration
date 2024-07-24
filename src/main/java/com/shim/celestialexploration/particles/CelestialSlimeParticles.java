@@ -1,5 +1,6 @@
 package com.shim.celestialexploration.particles;
 
+import com.shim.celestialexploration.registry.BlockRegistry;
 import com.shim.celestialexploration.registry.ItemRegistry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
@@ -92,7 +93,7 @@ public class CelestialSlimeParticles extends TextureSheetParticle {
         public SulfurProvider(SpriteSet spriteSet) {}
 
         public Particle createParticle(SimpleParticleType p_105705_, ClientLevel p_105706_, double p_105707_, double p_105708_, double p_105709_, double p_105710_, double p_105711_, double p_105712_) {
-            return new CelestialSlimeParticles(p_105706_, p_105707_, p_105708_, p_105709_, new ItemStack(ItemRegistry.VENUS_DEEPSLATE.get())); //TODO?
+            return new CelestialSlimeParticles(p_105706_, p_105707_, p_105708_, p_105709_, new ItemStack(BlockRegistry.VENUS_DEEPSLATE.get())); //TODO?
         }
     }
 

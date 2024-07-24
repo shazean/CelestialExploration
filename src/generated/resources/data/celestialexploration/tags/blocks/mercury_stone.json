@@ -1,0 +1,16 @@
+{
+  "replace": false,
+  "values": [
+    "celestialexploration:mercury_stone",
+    "celestialexploration:mercury_stone_slab",
+    "celestialexploration:mercury_smooth_stone",
+    "celestialexploration:mercury_smooth_stone_slab",
+    "celestialexploration:mercury_bricks",
+    "celestialexploration:mercury_brick_slab",
+    "celestialexploration:mercury_brick_stairs",
+    "celestialexploration:mercury_brick_wall",
+    "celestialexploration:chiseled_mercury_bricks",
+    "celestialexploration:mercury_brick_pillar",
+    "celestialexploration:cracked_mercury_bricks"
+  ]
+}

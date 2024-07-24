@@ -4,10 +4,7 @@ import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.blocks.blockentities.LoxTankBlockEntity;
 import com.shim.celestialexploration.blocks.blockentities.WorkbenchBlockEntity;
 import com.shim.celestialexploration.capabilities.LoxTankCapability;
-import com.shim.celestialexploration.registry.BlockEntityRegistry;
-import com.shim.celestialexploration.registry.CapabilityRegistry;
-import com.shim.celestialexploration.registry.FluidRegistry;
-import com.shim.celestialexploration.registry.ItemRegistry;
+import com.shim.celestialexploration.registry.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
@@ -169,13 +166,13 @@ public class WorkbenchBlock extends BaseEntityBlock {
         } else if (fluid.containsFluid(new FluidStack(FluidRegistry.MOLTEN_IRON.get(), 1))) {
             return new ItemStack(Items.IRON_BLOCK);
         } else if (fluid.containsFluid(new FluidStack(FluidRegistry.MOLTEN_STEEL.get(), 1))) {
-           return new ItemStack(ItemRegistry.STEEL_BLOCK.get());
+           return new ItemStack(BlockRegistry.STEEL_BLOCK.get());
         } else if (fluid.containsFluid(new FluidStack(FluidRegistry.MOLTEN_COPPER.get(), 1))) {
             return new ItemStack(Items.COPPER_BLOCK);
         } else if (fluid.containsFluid(new FluidStack(FluidRegistry.MOLTEN_GOLD.get(), 1))) {
            return new ItemStack(Items.GOLD_BLOCK);
         } else if (fluid.containsFluid(new FluidStack(FluidRegistry.MOLTEN_ALUMINUM.get(), 1))) {
-            return new ItemStack(ItemRegistry.ALUMINUM_BLOCK.get());
+            return new ItemStack(BlockRegistry.ALUMINUM_BLOCK.get());
         } else {
             return ItemStack.EMPTY;
         }

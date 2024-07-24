@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:stonecutting",
+  "group": "celestialexploration",
+  "ingredient": {
+    "item": "celestialexploration:mercury_cobbled_deepslate"
+  },
+  "result": "celestialexploration:mercury_deepslate_tile_stairs",
+  "count": 1
+}

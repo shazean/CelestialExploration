@@ -406,7 +406,9 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
         Vec3 mercuryLocation = new Vec3(CelestialUtil.getPlanetaryChunkCoordinates(1).x, spaceship.position().y, CelestialUtil.getPlanetaryChunkCoordinates(1).z);
         ChunkPos planetChunkPos = new ChunkPos((int) mercuryLocation.x, (int) mercuryLocation.z);
         if (CelestialUtil.isInRectangle(planetChunkPos.x, planetChunkPos.z, 2, spaceshipChunkPos.x, spaceshipChunkPos.z)) {
-//                return DimensionRegistry.MERCURY;
+            if (isNearBlockOfPlanet(spaceship, BlockRegistry.MERCURY_CORE.get())) {
+                return DimensionRegistry.MERCURY;
+            }
         }
 
         Vec3 venusLocation = new Vec3(CelestialUtil.getPlanetaryChunkCoordinates(2).x, spaceship.position().y, CelestialUtil.getPlanetaryChunkCoordinates(2).z);

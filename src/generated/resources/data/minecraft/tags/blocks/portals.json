@@ -3,6 +3,7 @@
   "values": [
     "celestialexploration:mars_portal",
     "celestialexploration:moon_portal",
-    "celestialexploration:venus_portal"
+    "celestialexploration:venus_portal",
+    "celestialexploration:mercury_portal"
   ]
 }

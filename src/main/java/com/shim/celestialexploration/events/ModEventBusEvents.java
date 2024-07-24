@@ -1,7 +1,8 @@
 package com.shim.celestialexploration.events;
 
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.entity.*;
+import com.shim.celestialexploration.blocks.CelestialSkullRenderer;
+import com.shim.celestialexploration.entity.Spaceship;
 import com.shim.celestialexploration.entity.mob.*;
 import com.shim.celestialexploration.entity.mob.piglins.AstralPiglin;
 import com.shim.celestialexploration.entity.mob.piglins.VoidedPiglin;
@@ -19,32 +20,20 @@ import com.shim.celestialexploration.recipes.WorkbenchSmeltingRecipe;
 import com.shim.celestialexploration.registry.CelestialModelLayers;
 import com.shim.celestialexploration.registry.EntityRegistry;
 import com.shim.celestialexploration.registry.ParticleRegistry;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.GhastModel;
-import net.minecraft.client.model.HoglinModel;
-import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.model.PiglinModel;
+import net.minecraft.client.model.*;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.particle.FlameParticle;
 import net.minecraft.client.particle.WaterDropParticle;
 import net.minecraft.core.Registry;
-import net.minecraft.world.entity.npc.VillagerProfession;
-import net.minecraft.world.entity.npc.VillagerTrades;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.ParticleFactoryRegisterEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
-import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-
-import java.util.List;
 
 import static com.shim.celestialexploration.entity.renderer.SpaceshipRenderer.createSpaceshipModelName;
 import static net.minecraft.client.model.geom.LayerDefinitions.INNER_ARMOR_DEFORMATION;
@@ -68,7 +57,6 @@ public class ModEventBusEvents {
         event.put(EntityRegistry.ASTRAL_PIGLIN.get(), AstralPiglin.setAttributes());
         event.put(EntityRegistry.ASTRAL_HOGLIN.get(), AstralHoglin.setAttributes());
         event.put(EntityRegistry.VOIDED_ZOGLIN.get(), VoidedZoglin.setAttributes());
-
     }
 
     @SubscribeEvent
@@ -112,9 +100,20 @@ public class ModEventBusEvents {
         event.registerLayerDefinition(CelestialModelLayers.ASTRAL_HOGLIN_INNER_ARMOR, () -> innerArmorLayer);
         event.registerLayerDefinition(CelestialModelLayers.ASTRAL_HOGLIN_OUTER_ARMOR, () -> outerArmorLayer);
 
-
         event.registerLayerDefinition(CelestialModelLayers.GUST, GhastModel::createBodyLayer);
 
+        LayerDefinition skullDefinition = SkullModel.createMobHeadLayer();
+        LayerDefinition humanoidHeadLayer = SkullModel.createHumanoidHeadLayer();
+
+        event.registerLayerDefinition(CelestialModelLayers.LURKER_HEAD, () -> skullDefinition);
+        event.registerLayerDefinition(CelestialModelLayers.VOIDED_HEAD, () -> humanoidHeadLayer);
+
+    }
+
+    @SubscribeEvent
+    public static void registerSkulls(EntityRenderersEvent.CreateSkullModels event) {
+        event.registerSkullModel(CelestialSkullRenderer.Types.LURKER, new SkullModel(event.getEntityModelSet().bakeLayer(CelestialModelLayers.LURKER_HEAD)));
+        event.registerSkullModel(CelestialSkullRenderer.Types.VOIDED, new SkullModel(event.getEntityModelSet().bakeLayer(CelestialModelLayers.VOIDED_HEAD)));
     }
 
     @SubscribeEvent
@@ -130,13 +129,12 @@ public class ModEventBusEvents {
         Minecraft.getInstance().particleEngine.register(ParticleRegistry.MARS_PORTAL_PARTICLES.get(), CelestialPortalParticle.MarsProvider::new);
         Minecraft.getInstance().particleEngine.register(ParticleRegistry.VENUS_PORTAL_PARTICLES.get(), CelestialPortalParticle.VenusProvider::new);
         Minecraft.getInstance().particleEngine.register(ParticleRegistry.MOON_PORTAL_PARTICLES.get(), CelestialPortalParticle.MoonProvider::new);
-
+        Minecraft.getInstance().particleEngine.register(ParticleRegistry.MERCURY_PORTAL_PARTICLES.get(), CelestialPortalParticle.MercuryProvider::new);
     }
 
     @SubscribeEvent
     public static void registerRecipeTypes(final RegistryEvent.Register<RecipeSerializer<?>> event) {
         Registry.register(Registry.RECIPE_TYPE, WorkbenchSmeltingRecipe.Type.ID, WorkbenchSmeltingRecipe.Type.INSTANCE);
         Registry.register(Registry.RECIPE_TYPE, WorkbenchCraftingRecipe.Type.ID, WorkbenchCraftingRecipe.Type.INSTANCE);
-
     }
 }

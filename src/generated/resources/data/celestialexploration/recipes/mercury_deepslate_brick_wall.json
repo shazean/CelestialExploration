@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "celestialexploration",
+  "pattern": [
+    "XXX",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:mercury_deepslate_bricks"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:mercury_deepslate_brick_wall",
+    "count": 6
+  }
+}

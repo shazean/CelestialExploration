@@ -3,8 +3,8 @@ package com.shim.celestialexploration.entity.renderer;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.entity.mob.Voided;
-import com.shim.celestialexploration.entity.model.VoidedModel;
 import com.shim.celestialexploration.registry.CelestialModelLayers;
+import net.minecraft.client.model.ZombieModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.entity.AbstractZombieRenderer;
@@ -14,7 +14,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class VoidedRenderer extends AbstractZombieRenderer<Voided, VoidedModel<Voided>> {
+public class VoidedRenderer extends AbstractZombieRenderer<Voided, ZombieModel<Voided>> {
     private static final ResourceLocation VOIDED_LOCATION = new ResourceLocation(CelestialExploration.MODID, "textures/entity/voided.png");
 
     public VoidedRenderer(EntityRendererProvider.Context context) {
@@ -27,8 +27,10 @@ public class VoidedRenderer extends AbstractZombieRenderer<Voided, VoidedModel<V
 //        this(p_174456_, ModelLayers.ZOMBIE, ModelLayers.ZOMBIE_INNER_ARMOR, ModelLayers.ZOMBIE_OUTER_ARMOR);
 //    }
 
-    public VoidedRenderer(EntityRendererProvider.Context p_174458_, ModelLayerLocation p_174459_, ModelLayerLocation p_174460_, ModelLayerLocation p_174461_) {
-        super(p_174458_, new VoidedModel<>(p_174458_.bakeLayer(p_174459_)), new VoidedModel<>(p_174458_.bakeLayer(p_174460_)), new VoidedModel<>(p_174458_.bakeLayer(p_174461_)));
+    public VoidedRenderer(EntityRendererProvider.Context context, ModelLayerLocation p_174459_, ModelLayerLocation p_174460_, ModelLayerLocation p_174461_) {
+        super(context, new ZombieModel<>(context.bakeLayer(p_174459_)),
+                new ZombieModel<>(context.bakeLayer(p_174460_)),
+                new ZombieModel<>(context.bakeLayer(p_174461_)));
     }
 
 

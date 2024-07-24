@@ -1,17 +1,13 @@
 package com.shim.celestialexploration.datagen;
 
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.blocks.ConnectedGlassBlock;
 import com.shim.celestialexploration.registry.BlockRegistry;
-
 import com.shim.celestialexploration.registry.FluidRegistry;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
-import net.minecraftforge.client.model.generators.ModelFile;
-import net.minecraftforge.client.model.generators.MultiPartBlockStateBuilder;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.registries.RegistryObject;
 
 public class BlockStates extends BlockStateProvider {
 
@@ -34,6 +30,7 @@ public class BlockStates extends BlockStateProvider {
 		slabBlock(BlockRegistry.MOON_COBBLESTONE_SLAB.get(), modLoc("block/moon_cobblestone"), modLoc("block/moon_cobblestone"));
 		wallBlock(BlockRegistry.MOON_COBBLESTONE_WALL.get(), modLoc("block/moon_cobblestone"));
 		simpleBlock(BlockRegistry.COMPRESSED_MOON_COBBLESTONE.get());
+		simpleBlock(BlockRegistry.SUPER_COMPRESSED_MOON_COBBLESTONE.get());
 
 		simpleBlock(BlockRegistry.MOON_BRICKS.get());
 		stairsBlock(BlockRegistry.MOON_BRICK_STAIRS.get(), modLoc("block/moon_bricks"));
@@ -55,6 +52,7 @@ public class BlockStates extends BlockStateProvider {
 		buttonBlock(BlockRegistry.MOON_DEEPSLATE_BUTTON.get(), modLoc("block/moon_deepslate_side"));
 		pressurePlateBlock(BlockRegistry.MOON_DEEPSLATE_PRESSURE_PLATE.get(), modLoc("block/moon_deepslate_side"));
 		simpleBlock(BlockRegistry.COMPRESSED_MOON_COBBLED_DEEPSLATE.get());
+		simpleBlock(BlockRegistry.SUPER_COMPRESSED_MOON_COBBLED_DEEPSLATE.get());
 
 		simpleBlock(BlockRegistry.MOON_POLISHED_DEEPSLATE.get());
 		stairsBlock(BlockRegistry.MOON_POLISHED_DEEPSLATE_STAIRS.get(), modLoc("block/moon_polished_deepslate"));
@@ -98,6 +96,7 @@ public class BlockStates extends BlockStateProvider {
 		slabBlock(BlockRegistry.MARS_COBBLESTONE_SLAB.get(), modLoc("block/mars_cobblestone"), modLoc("block/mars_cobblestone"));
 		wallBlock(BlockRegistry.MARS_COBBLESTONE_WALL.get(), modLoc("block/mars_cobblestone"));
 		simpleBlock(BlockRegistry.COMPRESSED_MARS_COBBLESTONE.get());
+		simpleBlock(BlockRegistry.SUPER_COMPRESSED_MARS_COBBLESTONE.get());
 
 		simpleBlock(BlockRegistry.MARS_BRICKS.get());
 		stairsBlock(BlockRegistry.MARS_BRICK_STAIRS.get(), modLoc("block/mars_bricks"));
@@ -119,6 +118,7 @@ public class BlockStates extends BlockStateProvider {
 		buttonBlock(BlockRegistry.MARS_DEEPSLATE_BUTTON.get(), modLoc("block/mars_deepslate_side"));
 		pressurePlateBlock(BlockRegistry.MARS_DEEPSLATE_PRESSURE_PLATE.get(), modLoc("block/mars_deepslate_side"));
 		simpleBlock(BlockRegistry.COMPRESSED_MARS_COBBLED_DEEPSLATE.get());
+		simpleBlock(BlockRegistry.SUPER_COMPRESSED_MARS_COBBLED_DEEPSLATE.get());
 
 		simpleBlock(BlockRegistry.MARS_POLISHED_DEEPSLATE.get());
 		stairsBlock(BlockRegistry.MARS_POLISHED_DEEPSLATE_STAIRS.get(), modLoc("block/mars_polished_deepslate"));
@@ -161,6 +161,7 @@ public class BlockStates extends BlockStateProvider {
 		slabBlock(BlockRegistry.VENUS_COBBLESTONE_SLAB.get(), modLoc("block/venus_cobblestone"), modLoc("block/venus_cobblestone"));
 		wallBlock(BlockRegistry.VENUS_COBBLESTONE_WALL.get(), modLoc("block/venus_cobblestone"));
 		simpleBlock(BlockRegistry.COMPRESSED_VENUS_COBBLESTONE.get());
+		simpleBlock(BlockRegistry.SUPER_COMPRESSED_VENUS_COBBLESTONE.get());
 
 		simpleBlock(BlockRegistry.VENUS_BRICKS.get());
 		stairsBlock(BlockRegistry.VENUS_BRICK_STAIRS.get(), modLoc("block/venus_bricks"));
@@ -175,7 +176,6 @@ public class BlockStates extends BlockStateProvider {
 		slabBlock(BlockRegistry.SMALL_VENUS_BRICK_SLAB.get(), modLoc("block/small_venus_bricks"), modLoc("block/small_venus_bricks"));
 		wallBlock(BlockRegistry.SMALL_VENUS_BRICK_WALL.get(), modLoc("block/small_venus_bricks"));
 
-
 		simpleBlock(BlockRegistry.VENUS_SMOOTH_STONE.get());
 
 		//DEEPSLATE
@@ -188,6 +188,7 @@ public class BlockStates extends BlockStateProvider {
 		buttonBlock((ButtonBlock) BlockRegistry.VENUS_DEEPSLATE_BUTTON.get(), modLoc("block/venus_deepslate_side"));
 		pressurePlateBlock((PressurePlateBlock) BlockRegistry.VENUS_DEEPSLATE_PRESSURE_PLATE.get(), modLoc("block/venus_deepslate_side"));
 		simpleBlock(BlockRegistry.COMPRESSED_VENUS_COBBLED_DEEPSLATE.get());
+		simpleBlock(BlockRegistry.SUPER_COMPRESSED_VENUS_COBBLED_DEEPSLATE.get());
 
 		simpleBlock(BlockRegistry.VENUS_POLISHED_DEEPSLATE.get());
 		stairsBlock(BlockRegistry.VENUS_POLISHED_DEEPSLATE_STAIRS.get(), modLoc("block/venus_polished_deepslate"));
@@ -251,12 +252,75 @@ public class BlockStates extends BlockStateProvider {
 		simpleBlock(BlockRegistry.SOLAR_FLARE.get());
 		simpleBlock(BlockRegistry.SUN_SPOT.get());
 
-		//---- OTHER PLANETS -------------------------------------------------------------------------------
-		//MERCURY
-		simpleBlock(BlockRegistry.MERCURY_STONE.get());
-		simpleBlock(BlockRegistry.MERCURY_CORE.get());
-		axisBlock((RotatedPillarBlock) BlockRegistry.MERCURY_DEEPSLATE.get());
+		//---- MERCURY -------------------------------------------------------------------------------
+		//STONE
+		stairsBlock(BlockRegistry.MERCURY_STONE_STAIRS.get(), modLoc("block/mercury_stone"));
+		slabBlock(BlockRegistry.MERCURY_STONE_SLAB.get(), modLoc("block/mercury_stone"), modLoc("block/mercury_stone"));
+		buttonBlock(BlockRegistry.MERCURY_STONE_BUTTON.get(), modLoc("block/mercury_stone"));
+		pressurePlateBlock(BlockRegistry.MERCURY_STONE_PRESSURE_PLATE.get(), modLoc("block/mercury_stone"));
 
+		simpleBlock(BlockRegistry.MERCURY_COBBLESTONE.get());
+		stairsBlock(BlockRegistry.MERCURY_COBBLESTONE_STAIRS.get(), modLoc("block/mercury_cobblestone"));
+		slabBlock(BlockRegistry.MERCURY_COBBLESTONE_SLAB.get(), modLoc("block/mercury_cobblestone"), modLoc("block/mercury_cobblestone"));
+		wallBlock(BlockRegistry.MERCURY_COBBLESTONE_WALL.get(), modLoc("block/mercury_cobblestone"));
+		simpleBlock(BlockRegistry.COMPRESSED_MERCURY_COBBLESTONE.get());
+		simpleBlock(BlockRegistry.SUPER_COMPRESSED_MERCURY_COBBLESTONE.get());
+
+		simpleBlock(BlockRegistry.MERCURY_BRICKS.get());
+		stairsBlock(BlockRegistry.MERCURY_BRICK_STAIRS.get(), modLoc("block/mercury_bricks"));
+		slabBlock(BlockRegistry.MERCURY_BRICK_SLAB.get(), modLoc("block/mercury_bricks"), modLoc("block/mercury_bricks"));
+		wallBlock(BlockRegistry.MERCURY_BRICK_WALL.get(), modLoc("block/mercury_bricks"));
+		simpleBlock(BlockRegistry.CHISELED_MERCURY_BRICKS.get());
+		axisBlock(BlockRegistry.MERCURY_BRICK_PILLAR.get(), modLoc("block/mercury_brick_pillar"));
+		simpleBlock(BlockRegistry.CRACKED_MERCURY_BRICKS.get());
+
+		simpleBlock(BlockRegistry.MERCURY_SMOOTH_STONE.get());
+
+		//DEEPSLATE
+		axisBlock(BlockRegistry.MERCURY_DEEPSLATE.get());
+
+		simpleBlock(BlockRegistry.MERCURY_COBBLED_DEEPSLATE.get());
+		stairsBlock(BlockRegistry.MERCURY_COBBLED_DEEPSLATE_STAIRS.get(), modLoc("block/mercury_cobbled_deepslate"));
+		slabBlock(BlockRegistry.MERCURY_COBBLED_DEEPSLATE_SLAB.get(), modLoc("block/mercury_cobbled_deepslate"), modLoc("block/mercury_cobbled_deepslate"));
+		wallBlock(BlockRegistry.MERCURY_COBBLED_DEEPSLATE_WALL.get(), modLoc("block/mercury_cobbled_deepslate"));
+		buttonBlock(BlockRegistry.MERCURY_DEEPSLATE_BUTTON.get(), modLoc("block/mercury_deepslate_side"));
+		pressurePlateBlock(BlockRegistry.MERCURY_DEEPSLATE_PRESSURE_PLATE.get(), modLoc("block/mercury_deepslate_side"));
+		simpleBlock(BlockRegistry.COMPRESSED_MERCURY_COBBLED_DEEPSLATE.get());
+		simpleBlock(BlockRegistry.SUPER_COMPRESSED_MERCURY_COBBLED_DEEPSLATE.get());
+
+		simpleBlock(BlockRegistry.MERCURY_POLISHED_DEEPSLATE.get());
+		stairsBlock(BlockRegistry.MERCURY_POLISHED_DEEPSLATE_STAIRS.get(), modLoc("block/mercury_polished_deepslate"));
+		slabBlock(BlockRegistry.MERCURY_POLISHED_DEEPSLATE_SLAB.get(), modLoc("block/mercury_polished_deepslate"), modLoc("block/mercury_polished_deepslate"));
+		wallBlock(BlockRegistry.MERCURY_POLISHED_DEEPSLATE_WALL.get(), modLoc("block/mercury_polished_deepslate"));
+
+		simpleBlock(BlockRegistry.MERCURY_DEEPSLATE_BRICKS.get());
+		stairsBlock(BlockRegistry.MERCURY_DEEPSLATE_BRICK_STAIRS.get(), modLoc("block/mercury_deepslate_bricks"));
+		slabBlock(BlockRegistry.MERCURY_DEEPSLATE_BRICK_SLAB.get(), modLoc("block/mercury_deepslate_bricks"), modLoc("block/mercury_deepslate_bricks"));
+		wallBlock(BlockRegistry.MERCURY_DEEPSLATE_BRICK_WALL.get(), modLoc("block/mercury_deepslate_bricks"));
+		simpleBlock(BlockRegistry.CHISELED_MERCURY_DEEPSLATE_BRICKS.get());
+		simpleBlock(BlockRegistry.CRACKED_MERCURY_DEEPSLATE_BRICKS.get());
+
+		simpleBlock(BlockRegistry.MERCURY_DEEPSLATE_TILES.get());
+		stairsBlock(BlockRegistry.MERCURY_DEEPSLATE_TILE_STAIRS.get(), modLoc("block/mercury_deepslate_tiles"));
+		slabBlock(BlockRegistry.MERCURY_DEEPSLATE_TILE_SLAB.get(), modLoc("block/mercury_deepslate_tiles"), modLoc("block/mercury_deepslate_tiles"));
+		wallBlock(BlockRegistry.MERCURY_DEEPSLATE_TILE_WALL.get(), modLoc("block/mercury_deepslate_tiles"));
+		simpleBlock(BlockRegistry.CRACKED_MERCURY_DEEPSLATE_TILES.get());
+
+		//ORES
+		simpleBlock(BlockRegistry.MERCURY_BAUXITE_ORE.get());
+		simpleBlock(BlockRegistry.MERCURY_SULFUR_ORE.get());
+		simpleBlock(BlockRegistry.MERCURY_COAL_ORE.get());
+		simpleBlock(BlockRegistry.MERCURY_DEEPSLATE_IRON_ORE.get());
+		simpleBlock(BlockRegistry.MERCURY_DEEPSLATE_COAL_ORE.get());
+		simpleBlock(BlockRegistry.MERCURY_DEEPSLATE_REDSTONE_ORE.get());
+
+		//OTHER
+		simpleBlock(BlockRegistry.MERCURY_CORE.get());
+		simpleBlock(BlockRegistry.MERCURY_LANTERN.get());
+
+
+		//---- OTHER PLANETS -------------------------------------------------------------------------------
+		
 		//JUPITER
 		simpleBlock(BlockRegistry.JUPITER_ATMOSPHERE.get());
 		simpleBlock(BlockRegistry.JUPITER_CORE.get());
@@ -428,6 +492,10 @@ public class BlockStates extends BlockStateProvider {
 		simpleBlock(BlockRegistry.COMPRESSED_COBBLESTONE.get());
 		simpleBlock(BlockRegistry.COMPRESSED_COBBLED_DEEPSLATE.get());
 		simpleBlock(BlockRegistry.COMPRESSED_NETHERRACK.get());
+		simpleBlock(BlockRegistry.SUPER_COMPRESSED_COBBLESTONE.get());
+		simpleBlock(BlockRegistry.SUPER_COMPRESSED_COBBLED_DEEPSLATE.get());
+		simpleBlock(BlockRegistry.SUPER_COMPRESSED_NETHERRACK.get());
+
 		simpleBlock(BlockRegistry.BAUXITE_ORE.get());
 	}
 }

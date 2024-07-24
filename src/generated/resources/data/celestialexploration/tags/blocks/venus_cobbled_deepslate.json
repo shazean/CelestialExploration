@@ -1,6 +1,9 @@
 {
   "replace": false,
   "values": [
-    "celestialexploration:venus_cobbled_deepslate"
+    "celestialexploration:venus_cobbled_deepslate",
+    "celestialexploration:venus_cobbled_deepslate_slab",
+    "celestialexploration:venus_cobbled_deepslate_stairs",
+    "celestialexploration:venus_cobbled_deepslate_wall"
   ]
 }

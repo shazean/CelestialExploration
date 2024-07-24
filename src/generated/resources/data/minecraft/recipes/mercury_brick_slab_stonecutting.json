@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "tag": "celestialexploration:mercury_stone"
+  },
+  "result": "celestialexploration:mercury_brick_slab",
+  "count": 2
+}

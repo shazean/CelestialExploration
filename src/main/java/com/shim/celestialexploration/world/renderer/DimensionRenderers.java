@@ -13,56 +13,11 @@ import org.jetbrains.annotations.Nullable;
 public class DimensionRenderers {
 
     public static void setDimensionEffects() {
-
-        DimensionSpecialEffects.EFFECTS.put(DimensionRegistry.MARS_EFFECTS, new MarsEffects());
+        DimensionSpecialEffects.EFFECTS.put(DimensionRegistry.MARS.location(), new MarsEffects());
         DimensionSpecialEffects.EFFECTS.put(DimensionRegistry.MOON.location(), new MoonEffects());
         DimensionSpecialEffects.EFFECTS.put(DimensionRegistry.SPACE.location(), new SpaceEffects());
         DimensionSpecialEffects.EFFECTS.put(DimensionRegistry.VENUS.location(), new VenusEffects());
-
-
-//        DimensionRenderInfo.EFFECTS.put(RegistryDimensions.VENUS_DIMENSION.location(),
-//                new DimensionRenderInfo(128.0F, true, DimensionRenderInfo.FogType.NORMAL, false, false) {
-//
-//                    private final float[] sunriseCol = new float[4];
-//
-//                    @Override
-//                    public Vector3d getBrightnessDependentFogColor(Vector3d color, float brightness) {
-//                        return color.multiply(brightness * 0.94F + 0.06F, brightness * 0.94F + 0.06F, brightness * 0.91F + 0.09F);
-//                    }
-//
-//                    @Override
-//                    public boolean isFoggyAt(int x, int z) {
-//                        return true;
-//                    }
-//
-//                    //			@Override
-//                    //			public float[] getSunriseColor(float p_230492_1_, float p_230492_2_) {
-//                    //				float f = 0.4F;
-//                    //				float f1 = MathHelper.cos(p_230492_1_ * ((float)Math.PI * 2F)) - 0.0F;
-//                    //				float f2 = -0.0F;
-//                    //				if (f1 >= -0.4F && f1 <= 0.4F) {
-//                    //					float f3 = (f1 - -0.0F) / 0.4F * 0.5F + 0.5F;
-//                    //					float f4 = 1.0F - (1.0F - MathHelper.sin(f3 * (float)Math.PI)) * 0.99F;
-//                    //					f4 = f4 * f4;
-//                    //					this.sunriseCol[0] = f3 * 0.3F - 4.7F;
-//                    //					this.sunriseCol[1] = f3 * f3 * 0.7F + 1.2F;
-//                    //					this.sunriseCol[2] = f3 * f3 * 0.0F + 1.2F;
-//                    //					this.sunriseCol[3] = f4;
-//                    //					return this.sunriseCol;
-//                    //				} else {
-//                    //					return null;
-//                    //				}
-//                    //			}
-//
-//                    CelestialWeatherRenderer weatherHandler = new CelestialWeatherRenderer();
-//
-//                    @Override
-//                    public void setWeatherRenderHandler(IWeatherRenderHandler weatherRenderHandler) {
-//                        // TODO Auto-generated method stub
-//                        super.setWeatherRenderHandler(this.weatherHandler);
-//                    }
-//
-//                });
+        DimensionSpecialEffects.EFFECTS.put(DimensionRegistry.MERCURY.location(), new MercuryEffects());
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -212,4 +167,40 @@ public class DimensionRenderers {
 
 
     }
+
+    @OnlyIn(Dist.CLIENT)
+    public static class MercuryEffects extends DimensionSpecialEffects {
+        public MercuryEffects() {
+            super(Float.NaN, true, SkyType.NORMAL, false, false);
+        }
+
+        @Override
+        public Vec3 getBrightnessDependentFogColor(Vec3 color, float brightness) {
+            return color.multiply(brightness * 0.94F + 0.06F, brightness * 0.94F + 0.06F, brightness * 0.91F + 0.09F);
+        }
+
+        @Override
+        public boolean isFoggyAt(int x, int z) {
+            return false;
+        }
+
+        @Override
+        public float[] getSunriseColor(float p_230492_1_, float p_230492_2_) {
+            return null;
+        }
+
+        MercurySkyHandler skyHandler = new MercurySkyHandler();
+
+        @Override
+        public void setSkyRenderHandler(ISkyRenderHandler skyRenderHandler) {
+            super.setSkyRenderHandler(skyHandler);
+        }
+
+        @Nullable
+        @Override
+        public ISkyRenderHandler getSkyRenderHandler() {
+            return skyHandler;
+        }
+    }
+
 }

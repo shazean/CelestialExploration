@@ -1,5 +1,6 @@
 package com.shim.celestialexploration;
 
+import com.shim.celestialexploration.blocks.CelestialSkullRenderer;
 import com.shim.celestialexploration.config.CelestialClientConfig;
 import com.shim.celestialexploration.config.CelestialCommonConfig;
 import com.shim.celestialexploration.entity.mob.*;
@@ -14,14 +15,12 @@ import com.shim.celestialexploration.util.Keybinds;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -71,7 +70,7 @@ public class CelestialExploration {
         ContainerRegistry.register(modEventBus);
         BlockEntityRegistry.register(modEventBus);
         MenuRegistry.register(modEventBus);
-        PortalRegistry.register(modEventBus);
+        PoiRegistry.register(modEventBus);
         EffectRegistry.register(modEventBus);
         EntityRegistry.register(modEventBus);
         FeatureRegistry.register(modEventBus);
@@ -98,7 +97,7 @@ public class CelestialExploration {
     public static final CreativeModeTab CELESTIAL_BLOCKS_TAB = new CreativeModeTab("celestial_blocks_tab") {
         @Override
         public ItemStack makeIcon() {
-            return new ItemStack(ItemRegistry.MOON_STONE.get());
+            return new ItemStack(BlockRegistry.MOON_STONE.get());
         }
     };
 
@@ -131,7 +130,8 @@ public class CelestialExploration {
         SpawnPlacements.register(EntityRegistry.SULFUR_CUBE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, SulfurCube::checkSulfurCubeSpawnRules);
         SpawnPlacements.register(EntityRegistry.VOIDED_PIGLIN.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, VoidedPiglin::checkVoidedPiglinSpawnRules);
         SpawnPlacements.register(EntityRegistry.GUST.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, Gust::checkGustSpawnRules);
-//        SpawnPlacements.register(EntityRegistry.FLARE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, Flare::checkAnyLightMonsterSpawnRules);
+
+        event.enqueueWork(CelestialSkullRenderer::setSkullRenderers);
 
         CelestialPacketHandler.init();
     }

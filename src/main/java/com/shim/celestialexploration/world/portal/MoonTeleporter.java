@@ -3,7 +3,7 @@ package com.shim.celestialexploration.world.portal;
 import com.shim.celestialexploration.blocks.MoonPortalBlock;
 import com.shim.celestialexploration.registry.BlockRegistry;
 import com.shim.celestialexploration.registry.DimensionRegistry;
-import com.shim.celestialexploration.registry.PortalRegistry;
+import com.shim.celestialexploration.registry.PoiRegistry;
 import net.minecraft.BlockUtil;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.ai.village.poi.PoiManager;
@@ -41,7 +41,7 @@ public class MoonTeleporter implements ITeleporter {
         PoiManager poiManager = this.level.getPoiManager();
         poiManager.ensureLoadedAndValid(this.level, pos, 64);
         Optional<PoiRecord> optional = poiManager.getInSquare((poiType) ->
-                poiType == PortalRegistry.MOON_PORTAL.get(), pos, 64, PoiManager.Occupancy.ANY).sorted(Comparator.<PoiRecord>comparingDouble((poi) ->
+                poiType == PoiRegistry.MOON_PORTAL.get(), pos, 64, PoiManager.Occupancy.ANY).sorted(Comparator.<PoiRecord>comparingDouble((poi) ->
                 poi.getPos().distSqr(pos)).thenComparingInt((poi) ->
                 poi.getPos().getY())).filter((poi) ->
                 this.level.getBlockState(poi.getPos()).hasProperty(BlockStateProperties.HORIZONTAL_AXIS)).findFirst();

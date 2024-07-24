@@ -1,6 +1,7 @@
 package com.shim.celestialexploration.entity.vehicle;
 
 import com.shim.celestialexploration.registry.BlockRegistry;
+import com.shim.celestialexploration.registry.TagRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
@@ -24,7 +25,7 @@ public interface IAbstractMagCart {
         int y = Mth.floor(self().getY());
         int z = Mth.floor(self().getZ());
         BlockPos pos = new BlockPos(x, y, z);
-        if (self().level.getBlockState(pos.below()).is(BlockRegistry.MAG_RAIL_TAG)) pos = pos.below();
+        if (self().level.getBlockState(pos.below()).is(TagRegistry.Blocks.MAG_RAIL)) pos = pos.below();
         return pos;
     }
 

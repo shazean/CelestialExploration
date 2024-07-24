@@ -50,6 +50,7 @@ public class ModEventClientBusEvents {
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.MARS_PORTAL.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.MOON_PORTAL.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.VENUS_PORTAL.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BlockRegistry.MERCURY_PORTAL.get(), RenderType.translucent());
 
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.LUMINOUS_BLUE_GLASS.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.LUMINOUS_WHITE_GLASS.get(), RenderType.translucent());
@@ -125,7 +126,6 @@ public class ModEventClientBusEvents {
         EntityRenderers.register(EntityRegistry.ASTRAL_PIGLIN.get(), AstralPiglinRenderer::new);
         EntityRenderers.register(EntityRegistry.ASTRAL_HOGLIN.get(), AstralHoglinRenderer::new);
         EntityRenderers.register(EntityRegistry.VOIDED_ZOGLIN.get(), VoidedZoglinRenderer::new);
-
 
         MenuScreens.register(MenuRegistry.OXYGEN_COMPRESSOR_MENU.get(), OxygenCompressorScreen::new);
         MenuScreens.register(MenuRegistry.SPACESHIP_MENU.get(), SpaceshipScreen::new);

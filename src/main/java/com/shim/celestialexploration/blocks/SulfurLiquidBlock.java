@@ -21,7 +21,6 @@ public class SulfurLiquidBlock extends LiquidBlock {
         super(p_54694_, p_54695_);
     }
 
-
     @Override
     public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
         if (!entity.fireImmune()) {
@@ -56,13 +55,10 @@ public class SulfurLiquidBlock extends LiquidBlock {
 //                }
             }
         }
-
         return true;
     }
 
     private void fizz(LevelAccessor p_54701_, BlockPos p_54702_) {
         p_54701_.levelEvent(1501, p_54702_, 0);
     }
-
-
 }

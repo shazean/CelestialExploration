@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:stonecutting",
+  "group": "celestialexploration",
+  "ingredient": {
+    "item": "celestialexploration:mercury_smooth_stone"
+  },
+  "result": "celestialexploration:mercury_smooth_stone_slab",
+  "count": 2
+}
