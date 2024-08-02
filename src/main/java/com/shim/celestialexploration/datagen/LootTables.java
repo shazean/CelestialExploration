@@ -147,6 +147,8 @@ public class LootTables extends BaseLootTableProvider {
 		lootTables.put(BlockRegistry.MERCURY_BAUXITE_ORE.get(), createBauxiteOreTable(BlockRegistry.MERCURY_BAUXITE_ORE.get()));
 		lootTables.put(BlockRegistry.MERCURY_SULFUR_ORE.get(), createSulfurOreTable(BlockRegistry.MERCURY_SULFUR_ORE.get()));
 		lootTables.put(BlockRegistry.MERCURY_COAL_ORE.get(), createCoalOreTable(BlockRegistry.MERCURY_COAL_ORE.get()));
+		lootTables.put(BlockRegistry.MERCURY_DIAMOND_ORE.get(), createOreTable(BlockRegistry.MERCURY_DIAMOND_ORE.get(), Items.DIAMOND));
+		lootTables.put(BlockRegistry.MERCURY_DEEPSLATE_DIAMOND_ORE.get(), createOreTable(BlockRegistry.MERCURY_DIAMOND_ORE.get(), Items.DIAMOND));
 		lootTables.put(BlockRegistry.MERCURY_DEEPSLATE_IRON_ORE.get(), createIronOreTable(BlockRegistry.MERCURY_DEEPSLATE_IRON_ORE.get()));
 		lootTables.put(BlockRegistry.MERCURY_DEEPSLATE_COAL_ORE.get(), createCoalOreTable(BlockRegistry.MERCURY_DEEPSLATE_COAL_ORE.get()));
 		lootTables.put(BlockRegistry.MERCURY_DEEPSLATE_REDSTONE_ORE.get(), createRedstoneOreTable(BlockRegistry.MERCURY_DEEPSLATE_REDSTONE_ORE.get()));

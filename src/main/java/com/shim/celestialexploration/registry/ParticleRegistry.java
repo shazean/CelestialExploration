@@ -17,6 +17,7 @@ public class ParticleRegistry {
     public static final RegistryObject<SimpleParticleType> LUNAR_SLIME_PARTICLES = PARTICLES.register("lunar_slime_particles", () -> new SimpleParticleType(false));
     public static final RegistryObject<SimpleParticleType> MARS_MALLOW_SLIME_PARTICLES = PARTICLES.register("mars_mallow_slime_particles", () -> new SimpleParticleType(false));
     public static final RegistryObject<SimpleParticleType> SULFUR_CUBE_PARTICLES = PARTICLES.register("sulfur_cube_particles", () -> new SimpleParticleType(false));
+    public static final RegistryObject<SimpleParticleType> QUICKSILVER_SLIME_PARTICLES = PARTICLES.register("quicksilver_slime_particles", () -> new SimpleParticleType(false));
 
     //OTHER PARTICLES
     public static final RegistryObject<SimpleParticleType> SULFUR_PARTICLE = PARTICLES.register("sulfur_particle", () -> new SimpleParticleType(false));

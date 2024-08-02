@@ -14,8 +14,6 @@ import com.shim.celestialexploration.world.portal.CelestialTeleporter;
 import net.minecraft.BlockUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
-import net.minecraft.core.RegistryAccess;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.network.chat.Component;
@@ -29,8 +27,6 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.*;
@@ -45,28 +41,23 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.level.ChunkPos;
+import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.WaterlilyBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkSource;
-import net.minecraft.world.level.entity.LevelEntityGetter;
 import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.saveddata.maps.MapItemSavedData;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraft.world.scores.Scoreboard;
-import net.minecraft.world.ticks.LevelTickAccess;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.wrapper.InvWrapper;
 import net.minecraftforge.network.NetworkHooks;
@@ -340,32 +331,49 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
         if (isVehicle() && isTeleportHeight()) {
             if (!(currentDimension == DimensionRegistry.SPACE)) {
                 //TODO or FIXME does not allow for multiple passengers. Update if we want spaceship to allow multiple passengers in the future
-                if (this.level.dimension() == DimensionRegistry.VENUS) teleportToSpace(2);
-                if (this.level.dimension() == Level.OVERWORLD || this.level.dimension() == DimensionRegistry.MOON)
-                    teleportToSpace(3);
-                if (this.level.dimension() == DimensionRegistry.MARS) teleportToSpace(4);
+                if (currentDimension == DimensionRegistry.MERCURY) teleportToSpace(1);
+                else if (currentDimension == DimensionRegistry.VENUS) teleportToSpace(2);
+                else if (currentDimension == Level.OVERWORLD || this.level.dimension() == DimensionRegistry.MOON) teleportToSpace(3);
+                else if (currentDimension == DimensionRegistry.MARS) teleportToSpace(4);
             } else {
                 resetTelportationCooldown();
             }
         }
 
         if (this.isVehicle() && currentDimension == DimensionRegistry.SPACE) {
+//            CelestialExploration.LOGGER.debug("isVehicle, and in SPACE");
             ChunkPos spaceshipChunkPos = new ChunkPos(this.blockPosition());
-            ResourceKey<Level> destination = getTeleportLocation(this, spaceshipChunkPos);
-            if (destination != null) {
-                if (this.teleportationCooldown == 0) {
-                    Entity passenger = this.getControllingPassenger();
-                    assert passenger != null;
 
-                    Vec3 teleportPosition = new Vec3(this.position().x, this.position().y, this.position().z); //this.level.getMaxBuildHeight() - 10, this.position().z);
-                    teleportSpaceship(passenger, this, destination, teleportPosition);
-                } else {
-                    this.teleportationCooldown--;
-                    this.displayTeleportMessage(this.teleportationCooldown, destination);
+            if (this.getControllingPassenger() instanceof Player player) {
+
+                if (this.position().y < 130 && this.position().y > 35) {
+
+                    BlockHitResult hitResult;
+                    if (this.getMaxSpeed() >= SPACESHIP_LOW_FUEL_SPEED) {
+                        hitResult = (BlockHitResult) player.pick(35.0D, 0.0F, false);
+                    } else {
+                        hitResult = (BlockHitResult) player.pick(18.0D, 0.0F, false);
+                    }
+
+                    BlockState blockState = this.level.getBlockState(hitResult.getBlockPos());
+                    ResourceKey<Level> destination = getTeleportLocation(this, spaceshipChunkPos, blockState);
+
+                    if (destination != null) {
+                        if (this.teleportationCooldown == 0) {
+                            Entity passenger = this.getControllingPassenger();
+                            assert passenger != null;
+
+                            Vec3 teleportPosition = new Vec3(this.position().x, this.position().y, this.position().z); //this.level.getMaxBuildHeight() - 10, this.position().z);
+                            teleportSpaceship(passenger, this, destination, teleportPosition);
+                        } else {
+                            this.teleportationCooldown--;
+                            this.displayTeleportMessage(this.teleportationCooldown, destination);
+                        }
+                    }
+                    if (destination == null) {
+                        this.resetTelportationCooldown();
+                    }
                 }
-            }
-            if (destination == null) {
-                this.resetTelportationCooldown();
             }
         }
         this.checkInsideBlocks();
@@ -400,13 +408,15 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
         }
     }
 
-    public static ResourceKey<Level> getTeleportLocation(Spaceship spaceship, ChunkPos spaceshipChunkPos) {
-        if (spaceship.position().y > 130) return null;
+    public static ResourceKey<Level> getTeleportLocation(Spaceship spaceship, ChunkPos spaceshipChunkPos, BlockState blockWeSee) {
+//        if (spaceship.position().y > 130 || spaceship.position().y < 40) return null;
 
         Vec3 mercuryLocation = new Vec3(CelestialUtil.getPlanetaryChunkCoordinates(1).x, spaceship.position().y, CelestialUtil.getPlanetaryChunkCoordinates(1).z);
         ChunkPos planetChunkPos = new ChunkPos((int) mercuryLocation.x, (int) mercuryLocation.z);
         if (CelestialUtil.isInRectangle(planetChunkPos.x, planetChunkPos.z, 2, spaceshipChunkPos.x, spaceshipChunkPos.z)) {
-            if (isNearBlockOfPlanet(spaceship, BlockRegistry.MERCURY_CORE.get())) {
+//            if (blockWeSee.is(BlockRegistry.VENUS_STONE.get()) || blockWeSee.is(BlockRegistry.VENUS_CORE.get()) || blockWeSee.is(BlockRegistry.VENUS_DEEPSLATE.get()) || blockWeSee.is(Blocks.YELLOW_STAINED_GLASS)) {
+//            if (isNearBlockOfPlanet(spaceship, BlockRegistry.MERCURY_CORE.get())) {
+            if (blockWeSee.is(BlockRegistry.MERCURY_STONE.get()) || blockWeSee.is(BlockRegistry.MERCURY_CORE.get()) || blockWeSee.is(BlockRegistry.MERCURY_DEEPSLATE.get())) {
                 return DimensionRegistry.MERCURY;
             }
         }
@@ -414,7 +424,10 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
         Vec3 venusLocation = new Vec3(CelestialUtil.getPlanetaryChunkCoordinates(2).x, spaceship.position().y, CelestialUtil.getPlanetaryChunkCoordinates(2).z);
         planetChunkPos = new ChunkPos((int) venusLocation.x, (int) venusLocation.z);
         if (CelestialUtil.isInRectangle(planetChunkPos.x, planetChunkPos.z, 2, spaceshipChunkPos.x, spaceshipChunkPos.z)) {
-            if (isNearBlockOfPlanet(spaceship, BlockRegistry.VENUS_CORE.get())) {
+//            if (isNearBlockOfPlanet(spaceship, BlockRegistry.VENUS_CORE.get())) {
+            if (blockWeSee.is(BlockRegistry.VENUS_STONE.get()) || blockWeSee.is(BlockRegistry.VENUS_CORE.get()) || blockWeSee.is(BlockRegistry.VENUS_DEEPSLATE.get()) || blockWeSee.is(Blocks.YELLOW_STAINED_GLASS)) {
+
+//                CelestialExploration.LOGGER.debug("is near Venus core block");
                 return DimensionRegistry.VENUS;
             }
         }
@@ -422,9 +435,11 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
         Vec3 earthLocation = new Vec3(CelestialUtil.getPlanetaryChunkCoordinates(3).x, spaceship.position().y, CelestialUtil.getPlanetaryChunkCoordinates(3).z);
         planetChunkPos = new ChunkPos((int) earthLocation.x, (int) earthLocation.z);
         if (CelestialUtil.isInRectangle(planetChunkPos.x, planetChunkPos.z, 4, spaceshipChunkPos.x, spaceshipChunkPos.z)) {
-            if (isNearBlockOfMoon(spaceship, BlockRegistry.MOON_CORE.get())) { //BlockRegistry.MOON_CORE.get())) {
+//            if (isNearBlockOfMoon(spaceship, BlockRegistry.MOON_CORE.get())) { //BlockRegistry.MOON_CORE.get())) {
+            if (blockWeSee.is(BlockRegistry.MOON_STONE.get()) || blockWeSee.is(BlockRegistry.MOON_CORE.get()) || blockWeSee.is(BlockRegistry.MOON_DEEPSLATE.get())) {
                 return DimensionRegistry.MOON;
-            } else if (isNearBlockOfPlanet(spaceship, Blocks.BEDROCK)) { //Blocks.BEDROCK)) {
+//            } else if (isNearBlockOfPlanet(spaceship, Blocks.BEDROCK)) { //Blocks.BEDROCK)) {
+            } else if (blockWeSee.is(Blocks.STONE) || blockWeSee.is(Blocks.SANDSTONE) || blockWeSee.is(Blocks.DEEPSLATE) || blockWeSee.is(Blocks.WHITE_STAINED_GLASS) || blockWeSee.is(Blocks.GRASS_BLOCK) || blockWeSee.is(Blocks.SMOOTH_QUARTZ) || blockWeSee.is(Blocks.BLUE_STAINED_GLASS) || blockWeSee.is(Blocks.ICE) || blockWeSee.is(Blocks.PACKED_ICE) || blockWeSee.is(Blocks.BEDROCK)) {
                 return Level.OVERWORLD;
             }
         }
@@ -432,7 +447,8 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
         Vec3 marsLocation = new Vec3(CelestialUtil.getPlanetaryChunkCoordinates(4).x, spaceship.position().y, CelestialUtil.getPlanetaryChunkCoordinates(4).z);
         planetChunkPos = new ChunkPos((int) marsLocation.x, (int) marsLocation.z);
         if (CelestialUtil.isInRectangle(planetChunkPos.x, planetChunkPos.z, 2, spaceshipChunkPos.x, spaceshipChunkPos.z)) {
-            if (isNearBlockOfPlanet(spaceship, BlockRegistry.MARS_CORE.get())) { //BlockRegistry.MARS_CORE.get())) {
+//            if (isNearBlockOfPlanet(spaceship, BlockRegistry.MARS_CORE.get())) { //BlockRegistry.MARS_CORE.get())) {
+            if (blockWeSee.is(BlockRegistry.MARS_STONE.get()) || blockWeSee.is(BlockRegistry.MARS_CORE.get()) || blockWeSee.is(BlockRegistry.DRY_ICE.get()) || blockWeSee.is(BlockRegistry.MARS_DEEPSLATE.get())) {
                 return DimensionRegistry.MARS;
             }
         }
@@ -452,7 +468,7 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
         Vec3 uranusLocation = new Vec3(CelestialUtil.getPlanetaryChunkCoordinates(7).x, spaceship.position().y, CelestialUtil.getPlanetaryChunkCoordinates(7).z);
         planetChunkPos = new ChunkPos((int) uranusLocation.x, (int) uranusLocation.z);
         if (CelestialUtil.isInRectangle(planetChunkPos.x, planetChunkPos.z, 2, spaceshipChunkPos.x, spaceshipChunkPos.z)) {
-//                return DimensionRegistry.JUPITER;
+//                return DimensionRegistry.URANUS;
         }
 
         Vec3 neptuneLocation = new Vec3(CelestialUtil.getPlanetaryChunkCoordinates(8).x, spaceship.position().y, CelestialUtil.getPlanetaryChunkCoordinates(8).z);
@@ -467,7 +483,7 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
         Entity entity = this.getControllingPassenger();
 
         if (entity instanceof Player) {
-            if (teleportCooldown % 20 == 0) {
+            if (teleportCooldown % 20 == 0 && teleportCooldown != 0) {
                 ((Player) entity).displayClientMessage(Component.nullToEmpty("Teleporting to " + destination.location().getPath().toUpperCase() + " in… " + teleportCooldown / 20), true);
             } else if (teleportCooldown == 0) {
                 ((Player) entity).displayClientMessage(Component.nullToEmpty("Teleporting!"), true);

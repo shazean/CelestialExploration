@@ -1,4 +1,4 @@
-package com.shim.celestialexploration.world.features;
+package com.shim.celestialexploration.world.features.placement;
 
 import net.minecraft.world.level.levelgen.placement.*;
 

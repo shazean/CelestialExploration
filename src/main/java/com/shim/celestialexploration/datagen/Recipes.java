@@ -214,7 +214,7 @@ public class Recipes extends RecipeProvider {
 
 		//OTHER
 		smelting(BlockRegistry.MERCURY_SAND.get(), Items.BROWN_STAINED_GLASS, 0.1F, 200, BlockRegistry.MERCURY_SAND.get(), consumer);
-//		ShapedRecipeBuilder.shaped(BlockRegistry.MERCURY_LANTERN.get()).pattern("XCX").pattern("C#C").pattern("XCX").define('X', BlockRegistry.MERCURY_STONE.get()).define('#', Items.IRON_INGOT).define('C', BlockRegistry.MERCURY_DUST.get()).group("celestialexploration").unlockedBy("has_mercury_dust", has(BlockRegistry.MERCURY_DUST.get())).save(consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.MERCURY_LANTERN.get()).pattern("XCX").pattern("C#C").pattern("XCX").define('X', ItemRegistry.CINNABAR.get()).define('C', Items.IRON_INGOT).define('#', Items.TORCH).group("celestialexploration").unlockedBy("has_cinnabar", has(ItemRegistry.CINNABAR.get())).save(consumer);
 
 		//---- ORES/ALLOYS -------------------------------------------------------------------------------
 		//BAUXITE/ALUMINUM
@@ -236,6 +236,7 @@ public class Recipes extends RecipeProvider {
 		//ASSORTED
 		ShapelessRecipeBuilder.shapeless(Items.IRON_NUGGET).requires(ItemRegistry.RUSTED_IRON_NUGGET.get()).group("celestialexploration").unlockedBy("rusted_iron_nugget", has(ItemRegistry.RUSTED_IRON_NUGGET.get())).save(consumer, "iron_nugget_from_rusted_iron_nugget");
 		SimpleCookingRecipeBuilder.smelting(Ingredient.of(ItemRegistry.RUSTED_IRON_NUGGET.get()), Items.IRON_NUGGET, 1.0F, 30).unlockedBy("has_rusted_iron_nugget", has(ItemRegistry.RUSTED_IRON_NUGGET.get())).group("celestialexploration").save(consumer, "smelting_rusted_iron_nugget");
+		singleItem(ItemRegistry.CINNABAR.get(), Items.RED_DYE, 1, ItemRegistry.CINNABAR.get(), consumer);
 
 		ShapelessRecipeBuilder.shapeless(ItemRegistry.STEEL_INGOT.get(), 2).requires(Items.COAL).requires(Items.IRON_INGOT).requires(Items.IRON_INGOT).group("celestialexploration").unlockedBy("iron", has(Items.IRON_INGOT)).save(consumer, "steel_ingot_crafted");
 		ShapedRecipeBuilder.shaped(ItemRegistry.STEEL_ROD.get(), 8).pattern("X").pattern("X").pattern("X").define('X', ItemRegistry.STEEL_INGOT.get()).group("celestialexploration").unlockedBy("steel", has(ItemRegistry.STEEL_INGOT.get())).save(consumer);

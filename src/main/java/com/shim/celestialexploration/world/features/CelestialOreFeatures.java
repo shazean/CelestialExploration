@@ -71,14 +71,10 @@ public class CelestialOreFeatures {
     public static final List<OreConfiguration.TargetBlockState> BAUXITE_ORES = List.of(
             OreConfiguration.target(OreFeatures.STONE_ORE_REPLACEABLES, BlockRegistry.BAUXITE_ORE.get().defaultBlockState()));
 
-
-
     public static final List<OreConfiguration.TargetBlockState> MERCURY_IRON_ORES = List.of(
-//            OreConfiguration.target(MERCURY_ORE_REPLACEABLES, BlockRegistry.MERCURY_IRON_ORE.get().defaultBlockState()),
             OreConfiguration.target(MERCURY_DEEPSLATE_ORE_REPLACEABLES, BlockRegistry.MERCURY_DEEPSLATE_IRON_ORE.get().defaultBlockState()));
 
     public static final List<OreConfiguration.TargetBlockState> MERCURY_REDSTONE_ORES = List.of(
-//            OreConfiguration.target(MERCURY_ORE_REPLACEABLES, BlockRegistry.MERCURY_REDSTONE_ORE.get().defaultBlockState()),
             OreConfiguration.target(MERCURY_ORE_REPLACEABLES, BlockRegistry.MERCURY_DEEPSLATE_REDSTONE_ORE.get().defaultBlockState()));
 
     public static final List<OreConfiguration.TargetBlockState> MERCURY_BAUXITE_ORES = List.of(
@@ -86,31 +82,43 @@ public class CelestialOreFeatures {
 
     public static final List<OreConfiguration.TargetBlockState> MERCURY_COAL_ORES = List.of(
             OreConfiguration.target(MERCURY_ORE_REPLACEABLES, BlockRegistry.MERCURY_COAL_ORE.get().defaultBlockState()),
-            OreConfiguration.target(MERCURY_ORE_REPLACEABLES, BlockRegistry.MERCURY_DEEPSLATE_COAL_ORE.get().defaultBlockState()));
+            OreConfiguration.target(MERCURY_DEEPSLATE_ORE_REPLACEABLES, BlockRegistry.MERCURY_DEEPSLATE_COAL_ORE.get().defaultBlockState()));
 
     public static final List<OreConfiguration.TargetBlockState> MERCURY_SULFUR_ORES = List.of(
             OreConfiguration.target(MERCURY_ORE_REPLACEABLES, BlockRegistry.MERCURY_SULFUR_ORE.get().defaultBlockState()));
 
+    public static final List<OreConfiguration.TargetBlockState> MERCURY_DIAMOND_ORES = List.of(
+            OreConfiguration.target(MERCURY_ORE_REPLACEABLES, BlockRegistry.MERCURY_DIAMOND_ORE.get().defaultBlockState()),
+            OreConfiguration.target(MERCURY_DEEPSLATE_ORE_REPLACEABLES, BlockRegistry.MERCURY_DEEPSLATE_DIAMOND_ORE.get().defaultBlockState()));
+
 
 
     public static final Holder<ConfiguredFeature<OreConfiguration, ?>> MOON_IRON_ORE = FeatureUtils.register("moon_iron_ore", Feature.ORE, new OreConfiguration(MOON_IRON_ORES, 7));
-    public static final Holder<ConfiguredFeature<OreConfiguration, ?>> MOON_REDSTONE_ORE = FeatureUtils.register("moon_redstone_ore", Feature.ORE, new OreConfiguration(MOON_REDSTONE_ORES, 5));
+    public static final Holder<ConfiguredFeature<OreConfiguration, ?>> MOON_IRON_ORE_SMALL = FeatureUtils.register("moon_iron_ore_small", Feature.ORE, new OreConfiguration(MOON_IRON_ORES, 4));
+    public static final Holder<ConfiguredFeature<OreConfiguration, ?>> MOON_REDSTONE_ORE = FeatureUtils.register("moon_redstone_ore", Feature.ORE, new OreConfiguration(MOON_REDSTONE_ORES, 8));
     public static final Holder<ConfiguredFeature<OreConfiguration, ?>> MOON_BAUXITE_ORE = FeatureUtils.register("moon_bauxite_ore", Feature.ORE, new OreConfiguration(MOON_BAUXITE_ORES, 8));
 
-    public static final Holder<ConfiguredFeature<OreConfiguration, ?>> MARS_IRON_ORE = FeatureUtils.register("mars_iron_ore", Feature.ORE, new OreConfiguration(MARS_IRON_ORES, 10));
-    public static final Holder<ConfiguredFeature<OreConfiguration, ?>> MARS_REDSTONE_ORE = FeatureUtils.register("mars_redstone_ore", Feature.ORE, new OreConfiguration(MARS_REDSTONE_ORES, 5));
+    public static final Holder<ConfiguredFeature<OreConfiguration, ?>> MARS_IRON_ORE = FeatureUtils.register("mars_iron_ore", Feature.ORE, new OreConfiguration(MARS_IRON_ORES, 12));
+    public static final Holder<ConfiguredFeature<OreConfiguration, ?>> MARS_IRON_ORE_SMALL = FeatureUtils.register("mars_iron_ore_small", Feature.ORE, new OreConfiguration(MARS_IRON_ORES, 4));
+    public static final Holder<ConfiguredFeature<OreConfiguration, ?>> MARS_REDSTONE_ORE = FeatureUtils.register("mars_redstone_ore", Feature.ORE, new OreConfiguration(MARS_REDSTONE_ORES, 8));
     public static final Holder<ConfiguredFeature<OreConfiguration, ?>> MARS_BAUXITE_ORE = FeatureUtils.register("mars_bauxite_ore", Feature.ORE, new OreConfiguration(MARS_BAUXITE_ORES, 8));
 
-    public static final Holder<ConfiguredFeature<OreConfiguration, ?>> VENUS_IRON_ORE = FeatureUtils.register("venus_iron_ore", Feature.ORE, new OreConfiguration(VENUS_IRON_ORES, 3));
-    public static final Holder<ConfiguredFeature<OreConfiguration, ?>> VENUS_REDSTONE_ORE = FeatureUtils.register("venus_redstone_ore", Feature.ORE, new OreConfiguration(VENUS_REDSTONE_ORES, 3));
-    public static final Holder<ConfiguredFeature<OreConfiguration, ?>> VENUS_LAPIS_ORE = FeatureUtils.register("venus_lapis_ore", Feature.ORE, new OreConfiguration(VENUS_LAPIS_ORES, 4));
+    public static final Holder<ConfiguredFeature<OreConfiguration, ?>> VENUS_IRON_ORE = FeatureUtils.register("venus_iron_ore", Feature.ORE, new OreConfiguration(VENUS_IRON_ORES, 7));
+    public static final Holder<ConfiguredFeature<OreConfiguration, ?>> VENUS_IRON_ORE_SMALL = FeatureUtils.register("venus_iron_ore_small", Feature.ORE, new OreConfiguration(VENUS_IRON_ORES, 4));
+    public static final Holder<ConfiguredFeature<OreConfiguration, ?>> VENUS_REDSTONE_ORE = FeatureUtils.register("venus_redstone_ore", Feature.ORE, new OreConfiguration(VENUS_REDSTONE_ORES, 8));
+    public static final Holder<ConfiguredFeature<OreConfiguration, ?>> VENUS_LAPIS_ORE = FeatureUtils.register("venus_lapis_ore", Feature.ORE, new OreConfiguration(VENUS_LAPIS_ORES, 7));
+    public static final Holder<ConfiguredFeature<OreConfiguration, ?>> VENUS_LAPIS_ORE_BURIED = FeatureUtils.register("venus_lapis_ore_buried", Feature.ORE, new OreConfiguration(VENUS_LAPIS_ORES, 7, 1.0F));
+
     public static final Holder<ConfiguredFeature<OreConfiguration, ?>> VENUS_BAUXITE_ORE = FeatureUtils.register("venus_bauxite_ore", Feature.ORE, new OreConfiguration(VENUS_BAUXITE_ORES, 8));
 
-    public static final Holder<ConfiguredFeature<OreConfiguration, ?>> MERCURY_IRON_ORE = FeatureUtils.register("mercury_iron_ore", Feature.ORE, new OreConfiguration(MERCURY_IRON_ORES, 5));
-    public static final Holder<ConfiguredFeature<OreConfiguration, ?>> MERCURY_REDSTONE_ORE = FeatureUtils.register("mercury_redstone_ore", Feature.ORE, new OreConfiguration(MERCURY_REDSTONE_ORES, 5));
+    public static final Holder<ConfiguredFeature<OreConfiguration, ?>> MERCURY_IRON_ORE = FeatureUtils.register("mercury_iron_ore", Feature.ORE, new OreConfiguration(MERCURY_IRON_ORES, 7));
+    public static final Holder<ConfiguredFeature<OreConfiguration, ?>> MERCURY_IRON_ORE_SMALL = FeatureUtils.register("mercury_iron_ore_small", Feature.ORE, new OreConfiguration(MERCURY_IRON_ORES, 4));
+    public static final Holder<ConfiguredFeature<OreConfiguration, ?>> MERCURY_REDSTONE_ORE = FeatureUtils.register("mercury_redstone_ore", Feature.ORE, new OreConfiguration(MERCURY_REDSTONE_ORES, 8));
     public static final Holder<ConfiguredFeature<OreConfiguration, ?>> MERCURY_SULFUR_ORE = FeatureUtils.register("mercury_sulfur_ore", Feature.ORE, new OreConfiguration(MERCURY_SULFUR_ORES, 3));
     public static final Holder<ConfiguredFeature<OreConfiguration, ?>> MERCURY_BAUXITE_ORE = FeatureUtils.register("mercury_bauxite_ore", Feature.ORE, new OreConfiguration(MERCURY_BAUXITE_ORES, 5));
-    public static final Holder<ConfiguredFeature<OreConfiguration, ?>> MERCURY_COAL_ORE = FeatureUtils.register("mercury_coal_ore", Feature.ORE, new OreConfiguration(MERCURY_COAL_ORES, 8));
+    public static final Holder<ConfiguredFeature<OreConfiguration, ?>> MERCURY_COAL_ORE = FeatureUtils.register("mercury_coal_ore", Feature.ORE, new OreConfiguration(MERCURY_COAL_ORES, 17));
+    public static final Holder<ConfiguredFeature<OreConfiguration, ?>> MERCURY_COAL_ORE_LOWER = FeatureUtils.register("mercury_coal_ore_lower", Feature.ORE, new OreConfiguration(MERCURY_COAL_ORES, 17, 0.5F));
+    public static final Holder<ConfiguredFeature<OreConfiguration, ?>> MERCURY_DIAMOND_ORE = FeatureUtils.register("mercury_diamond_ore", Feature.ORE, new OreConfiguration(MERCURY_DIAMOND_ORES, 8, 0.5F));
 
     public static final Holder<ConfiguredFeature<OreConfiguration, ?>> BAUXITE_ORE = FeatureUtils.register("bauxite_ore", Feature.ORE, new OreConfiguration(BAUXITE_ORES, 13));
 

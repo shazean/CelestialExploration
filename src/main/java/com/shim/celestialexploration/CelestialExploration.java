@@ -5,10 +5,7 @@ import com.shim.celestialexploration.config.CelestialClientConfig;
 import com.shim.celestialexploration.config.CelestialCommonConfig;
 import com.shim.celestialexploration.entity.mob.*;
 import com.shim.celestialexploration.entity.mob.piglins.VoidedPiglin;
-import com.shim.celestialexploration.entity.mob.slimes.LunarSlime;
-import com.shim.celestialexploration.entity.mob.slimes.MarsMallow;
-import com.shim.celestialexploration.entity.mob.slimes.RustSlime;
-import com.shim.celestialexploration.entity.mob.slimes.SulfurCube;
+import com.shim.celestialexploration.entity.mob.slimes.*;
 import com.shim.celestialexploration.packets.CelestialPacketHandler;
 import com.shim.celestialexploration.registry.*;
 import com.shim.celestialexploration.util.Keybinds;
@@ -79,6 +76,10 @@ public class CelestialExploration {
         ParticleRegistry.register(modEventBus);
         RecipeRegistry.register(modEventBus);
 
+        BiomeRegistry.BIOMES.register(modEventBus);
+        DimensionRegistry.BIOME_SOURCE.register(modEventBus);
+        NoiseGenRegistry.NOISES.register(modEventBus);
+
         modEventBus.addListener(CapabilityRegistry::registerCapabilities);
         MinecraftForge.EVENT_BUS.addGenericListener(ItemStack.class, CapabilityRegistry::attachItemCapabilities);
         MinecraftForge.EVENT_BUS.addGenericListener(BlockEntity.class, CapabilityRegistry::attachBlockCapabilities);
@@ -124,6 +125,8 @@ public class CelestialExploration {
         SpawnPlacements.register(EntityRegistry.MARS_MALLOW.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, MarsMallow::checkMarsMallowSpawnRules);
         SpawnPlacements.register(EntityRegistry.RUST_SLIME.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, RustSlime::checkRustSlimeSpawnRules);
         SpawnPlacements.register(EntityRegistry.LUNAR_SLIME.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, LunarSlime::checkLunarSlimeSpawnRules);
+        SpawnPlacements.register(EntityRegistry.QUICKSILVER_SLIME.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, QuicksilverSlime::checkQuicksilverSlimeSpawnRules);
+        SpawnPlacements.register(EntityRegistry.VISCOUS_SLIME.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, ViscousSlime::checkViscousSlimeSpawnRules);
         SpawnPlacements.register(EntityRegistry.LURKER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, Lurker::checkMonsterSpawnRules);
         SpawnPlacements.register(EntityRegistry.VOIDED.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, Voided::checkMonsterSpawnRules);
         SpawnPlacements.register(EntityRegistry.VOIDFELLOW.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, VoidFellow::checkMonsterSpawnRules);

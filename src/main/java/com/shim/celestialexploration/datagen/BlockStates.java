@@ -310,6 +310,8 @@ public class BlockStates extends BlockStateProvider {
 		simpleBlock(BlockRegistry.MERCURY_BAUXITE_ORE.get());
 		simpleBlock(BlockRegistry.MERCURY_SULFUR_ORE.get());
 		simpleBlock(BlockRegistry.MERCURY_COAL_ORE.get());
+		simpleBlock(BlockRegistry.MERCURY_DIAMOND_ORE.get());
+		simpleBlock(BlockRegistry.MERCURY_DEEPSLATE_DIAMOND_ORE.get());
 		simpleBlock(BlockRegistry.MERCURY_DEEPSLATE_IRON_ORE.get());
 		simpleBlock(BlockRegistry.MERCURY_DEEPSLATE_COAL_ORE.get());
 		simpleBlock(BlockRegistry.MERCURY_DEEPSLATE_REDSTONE_ORE.get());

@@ -328,6 +328,8 @@ public class ItemModels extends ItemModelProvider {
 		self(BlockRegistry.MERCURY_BAUXITE_ORE.get());
 		self(BlockRegistry.MERCURY_SULFUR_ORE.get());
 		self(BlockRegistry.MERCURY_COAL_ORE.get());
+		self(BlockRegistry.MERCURY_DIAMOND_ORE.get());
+		self(BlockRegistry.MERCURY_DEEPSLATE_DIAMOND_ORE.get());
 		self(BlockRegistry.MERCURY_DEEPSLATE_IRON_ORE.get());
 		self(BlockRegistry.MERCURY_DEEPSLATE_COAL_ORE.get());
 		self(BlockRegistry.MERCURY_DEEPSLATE_REDSTONE_ORE.get());
@@ -591,11 +593,14 @@ public class ItemModels extends ItemModelProvider {
 		generatedItem(ItemRegistry.INGOT_MOLD.get());
 		generatedItem(ItemRegistry.SULFUR_CRYSTAL.get());
 		generatedItem(ItemRegistry.LUNAR_GOO.get());
+		generatedItem(ItemRegistry.CINNABAR.get());
 
 //		SPAWN EGGS
 		spawnEgg(ItemRegistry.RUST_SPAWN_EGG.get());
 		spawnEgg(ItemRegistry.LUNAR_SPAWN_EGG.get());
 		spawnEgg(ItemRegistry.MARS_MALLOW_SPAWN_EGG.get());
+		spawnEgg(ItemRegistry.QUICKSILVER_SPAWN_EGG.get());
+		spawnEgg(ItemRegistry.VISCOUS_SPAWN_EGG.get());
 		spawnEgg(ItemRegistry.LURKER_SPAWN_EGG.get());
 		spawnEgg(ItemRegistry.VOIDFELLOW_SPAWN_EGG.get());
 		spawnEgg(ItemRegistry.VOIDED_SPAWN_EGG.get());

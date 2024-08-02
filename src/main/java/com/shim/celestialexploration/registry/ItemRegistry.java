@@ -116,6 +116,8 @@ public class ItemRegistry {
 	public static final RegistryObject<Item> RUST_SPAWN_EGG = registerItem("rust_spawn_egg", "Rust Slime Spawn egg", () -> new ForgeSpawnEggItem(EntityRegistry.RUST_SLIME,0x7f3414, 0x984521, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
 	public static final RegistryObject<Item> LUNAR_SPAWN_EGG = registerItem("lunar_spawn_egg", "Lunar Slime Spawn Egg", () -> new ForgeSpawnEggItem(EntityRegistry.LUNAR_SLIME,0xd5d5d5, 0xfafafa, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
 	public static final RegistryObject<Item> MARS_MALLOW_SPAWN_EGG = registerItem("mars_mallow_spawn_egg", "Mars Mallow Spawn Egg", () -> new ForgeSpawnEggItem(EntityRegistry.MARS_MALLOW,0xcda568, 0xfaf5ee, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> QUICKSILVER_SPAWN_EGG = registerItem("quicksilver_spawn_egg", "Quicksilver Spawn Egg", () -> new ForgeSpawnEggItem(EntityRegistry.QUICKSILVER_SLIME,0xd5d5d5, 0xfafafa, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> VISCOUS_SPAWN_EGG = registerItem("viscous_spawn_egg", "Viscous Spawn Egg", () -> new ForgeSpawnEggItem(EntityRegistry.VISCOUS_SLIME,0xcda568, 0xfaf5ee, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
 	public static final RegistryObject<Item> LURKER_SPAWN_EGG = registerItem("lurker_spawn_egg", "Lurker Spawn Egg", () -> new ForgeSpawnEggItem(EntityRegistry.LURKER,0, 0x894731, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
 	public static final RegistryObject<Item> VOIDFELLOW_SPAWN_EGG = registerItem("voidfellow_spawn_egg", "Space Fellow Spawn Egg", () -> new ForgeSpawnEggItem(EntityRegistry.VOIDFELLOW,0, 0xffffff, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
 	public static final RegistryObject<Item> VOIDED_SPAWN_EGG = registerItem("voided_spawn_egg", "Voided Spawn Egg", () -> new ForgeSpawnEggItem(EntityRegistry.VOIDED,0, 0x3c2d42, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
@@ -147,6 +149,7 @@ public class ItemRegistry {
 	public static final RegistryObject<Item> INGOT_MOLD = registerItem("ingot_mold", "Ingot Mold", () -> new Item(new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
 	public static final RegistryObject<Item> STEEL_WOOL = registerItem("steel_wool", "Steel Wool", () -> new Item((new Item.Properties()).tab(CreativeModeTab.TAB_MATERIALS)));
 	public static final RegistryObject<Item> SULFUR_CRYSTAL = registerItem("sulfur_crystal", "Sulfur Crystal", () -> new Item((new Item.Properties()).tab(CreativeModeTab.TAB_MATERIALS)));
+	public static final RegistryObject<Item> CINNABAR = registerItem("cinnabar", "Cinnarbar", () -> new Item((new Item.Properties()).tab(CreativeModeTab.TAB_MATERIALS)));
 
 	//---- FOOD -------------------------------------------------------------------------------
 	public static final RegistryObject<Item> MARSHMALLOW_GOO = registerFood("marshmallow_goo", "Marshmallow Goo", 1, 0.1F);

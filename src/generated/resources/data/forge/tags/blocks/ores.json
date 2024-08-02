@@ -28,8 +28,12 @@
     "celestialexploration:meteor_redstone_ore",
     "celestialexploration:meteor_bauxite_ore",
     "celestialexploration:mercury_bauxite_ore",
+    "celestialexploration:mercury_coal_ore",
+    "celestialexploration:mercury_deepslate_coal_ore",
     "celestialexploration:mercury_deepslate_iron_ore",
     "celestialexploration:mercury_deepslate_redstone_ore",
+    "celestialexploration:mercury_diamond_ore",
+    "celestialexploration:mercury_deepslate_diamond_ore",
     "celestialexploration:bauxite_ore"
   ]
 }

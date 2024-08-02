@@ -4,6 +4,8 @@ import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.registry.*;
 
 import net.minecraft.data.DataGenerator;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.LanguageProvider;
@@ -20,33 +22,34 @@ public class ModLanguageProvider extends LanguageProvider {
 
 		for (RegistryObject<? extends Block> block : BlockRegistry.BLOCK_LANG_EN_US.keySet()) this.add(block.get(), BlockRegistry.BLOCK_LANG_EN_US.get(block));
 		for (RegistryObject<? extends Item> item : ItemRegistry.ITEM_LANG_EN_US.keySet()) this.add(item.get(), ItemRegistry.ITEM_LANG_EN_US.get(item));
+		for (RegistryObject<? extends EntityType> entity : EntityRegistry.ENTITY_LANG_EN_US.keySet()) this.add(entity.get(), EntityRegistry.ENTITY_LANG_EN_US.get(entity));
 
-		//---- SPACESHIP -------------------------------------------------------------------------------
-		add(EntityRegistry.SPACESHIP.get(), "Spaceship");
-
-		//---- MAG LEV -------------------------------------------------------------------------------
-		add(EntityRegistry.MAGCART.get(), "Magcart");
-		add(EntityRegistry.CHEST_MAGCART.get(), "Chest Magcart");
-		add(EntityRegistry.COMMAND_BLOCK_MAGCART.get(), "Command Block Magcart");
-		add(EntityRegistry.FURNACE_MAGCART.get(), "Furnace Magcart");
-		add(EntityRegistry.HOPPER_MAGCART.get(), "Hopper Magcart");
-		add(EntityRegistry.SPAWNER_MAGCART.get(), "Spawner Magcart");
-		add(EntityRegistry.TNT_MAGCART.get(), "TNT Magcart");
-
-		//---- MOBS -------------------------------------------------------------------------------
-		add(EntityRegistry.LUNAR_SLIME.get(), "Lunar Slime");
-		add(EntityRegistry.MARS_MALLOW.get(), "Mars Mallow");
-		add(EntityRegistry.RUST_SLIME.get(), "Rust Slime");
-		add(EntityRegistry.LURKER.get(), "Lurker");
-		add(EntityRegistry.VOIDFELLOW.get(), "Space Fellow");
-		add(EntityRegistry.VOIDED.get(), "Voided");
-		add(EntityRegistry.SULFUR_CUBE.get(), "Sulfur Cube");
-		add(EntityRegistry.VOIDED_PIGLIN.get(), "Voided Piglin");
-		add(EntityRegistry.FLARE.get(), "Flare");
-		add(EntityRegistry.GUST.get(), "Gust");
-		add(EntityRegistry.ASTRAL_PIGLIN.get(), "Astral Piglin");
-		add(EntityRegistry.ASTRAL_HOGLIN.get(), "Astral Hoglin");
-		add(EntityRegistry.VOIDED_ZOGLIN.get(), "Voided Zoglin");
+//		//---- SPACESHIP -------------------------------------------------------------------------------
+//		add(EntityRegistry.SPACESHIP.get(), "Spaceship");
+//
+//		//---- MAG LEV -------------------------------------------------------------------------------
+//		add(EntityRegistry.MAGCART.get(), "Magcart");
+//		add(EntityRegistry.CHEST_MAGCART.get(), "Chest Magcart");
+//		add(EntityRegistry.COMMAND_BLOCK_MAGCART.get(), "Command Block Magcart");
+//		add(EntityRegistry.FURNACE_MAGCART.get(), "Furnace Magcart");
+//		add(EntityRegistry.HOPPER_MAGCART.get(), "Hopper Magcart");
+//		add(EntityRegistry.SPAWNER_MAGCART.get(), "Spawner Magcart");
+//		add(EntityRegistry.TNT_MAGCART.get(), "TNT Magcart");
+//
+//		//---- MOBS -------------------------------------------------------------------------------
+//		add(EntityRegistry.LUNAR_SLIME.get(), "Lunar Slime");
+//		add(EntityRegistry.MARS_MALLOW.get(), "Mars Mallow");
+//		add(EntityRegistry.RUST_SLIME.get(), "Rust Slime");
+//		add(EntityRegistry.LURKER.get(), "Lurker");
+//		add(EntityRegistry.VOIDFELLOW.get(), "Space Fellow");
+//		add(EntityRegistry.VOIDED.get(), "Voided");
+//		add(EntityRegistry.SULFUR_CUBE.get(), "Sulfur Cube");
+//		add(EntityRegistry.VOIDED_PIGLIN.get(), "Voided Piglin");
+//		add(EntityRegistry.FLARE.get(), "Flare");
+//		add(EntityRegistry.GUST.get(), "Gust");
+//		add(EntityRegistry.ASTRAL_PIGLIN.get(), "Astral Piglin");
+//		add(EntityRegistry.ASTRAL_HOGLIN.get(), "Astral Hoglin");
+//		add(EntityRegistry.VOIDED_ZOGLIN.get(), "Voided Zoglin");
 
 		//---- FLUIDS -------------------------------------------------------------------------------
 		add("fluid.celestialexploration.lox", "Liquid Oxygen");

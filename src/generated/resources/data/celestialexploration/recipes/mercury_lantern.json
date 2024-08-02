@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "celestialexploration",
+  "pattern": [
+    "XCX",
+    "C#C",
+    "XCX"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:mercury_stone"
+    },
+    "C": {
+      "item": "minecraft:iron_ingot"
+    },
+    "#": {
+      "item": "minecraft:torch"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:mercury_lantern"
+  }
+}

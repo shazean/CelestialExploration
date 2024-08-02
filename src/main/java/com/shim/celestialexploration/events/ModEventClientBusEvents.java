@@ -107,6 +107,9 @@ public class ModEventClientBusEvents {
 
         EntityRenderers.register(EntityRegistry.RUST_SLIME.get(), RustSlimeRenderer::new);
         EntityRenderers.register(EntityRegistry.LUNAR_SLIME.get(), LunarSlimeRenderer::new);
+        EntityRenderers.register(EntityRegistry.QUICKSILVER_SLIME.get(), QuicksilverSlimeRenderer::new);
+        EntityRenderers.register(EntityRegistry.VISCOUS_SLIME.get(), ViscousSlimeRenderer::new);
+
         EntityRenderers.register(EntityRegistry.MARS_MALLOW.get(), MarsMallowRenderer::new);
         EntityRenderers.register(EntityRegistry.LURKER.get(), LurkerRenderer::new);
         EntityRenderers.register(EntityRegistry.SPACESHIP.get(), SpaceshipRenderer::new);

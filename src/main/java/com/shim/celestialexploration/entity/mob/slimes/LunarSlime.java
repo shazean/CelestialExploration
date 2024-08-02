@@ -40,5 +40,4 @@ public class LunarSlime extends Slime {
         }
         return isDarkEnoughToSpawn((ServerLevelAccessor) level, pos, random) && checkMobSpawnRules(slime, level, spawnType, pos, random);
     }
-
 }

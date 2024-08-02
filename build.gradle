@@ -195,8 +195,8 @@ dependencies {
     // at runtime, use the full JEI jar
     runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")
 
-//    compileOnly fg.deobf("vazkii.patchouli:Patchouli:${ptch_version}:api")
-//    runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${ptch_version}")
+    compileOnly fg.deobf("vazkii.patchouli:Patchouli:${ptch_version}:api")
+    runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${ptch_version}")
 
 }
 

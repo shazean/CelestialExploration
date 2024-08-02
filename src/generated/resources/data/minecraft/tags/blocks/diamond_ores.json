@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
+    "celestialexploration:mercury_diamond_ore",
+    "celestialexploration:mercury_deepslate_diamond_ore",
     "celestialexploration:meteor_diamond_ore"
   ]
 }
