@@ -23,4 +23,7 @@ public class BlockEntityRegistry {
     public static final RegistryObject<BlockEntityType<GeyserBlockEntity>> GEYSER_BLOCK_ENTITY = BLOCK_ENTITIES.register("geyser", () -> BlockEntityType.Builder.of(GeyserBlockEntity::new, BlockRegistry.GEYSER.get()).build(null));
     public static final RegistryObject<BlockEntityType<PathwayLightBlockEntity>> PATHWAY_LIGHT_BLOCK_ENTITY = BLOCK_ENTITIES.register("pathway_light", () -> BlockEntityType.Builder.of(PathwayLightBlockEntity::new, BlockRegistry.PATHWAY_LIGHT.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<SolarPanelBlockEntity>> SOLAR_PANEL_BLOCK_ENTITY = BLOCK_ENTITIES.register("solar_panel", () -> BlockEntityType.Builder.of(SolarPanelBlockEntity::new, BlockRegistry.SOLAR_PANEL.get()).build(null));
+
+
 }

@@ -3,6 +3,7 @@ package com.shim.celestialexploration.util;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.shim.celestialexploration.CelestialExploration;
+import com.shim.celestialexploration.config.CelestialClientConfig;
 import com.shim.celestialexploration.entity.Spaceship;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
@@ -28,7 +29,7 @@ public class SpaceshipGui extends ForgeIngameGui implements IIngameOverlay {
     @Override
     public void render(ForgeIngameGui gui, PoseStack poseStack, float partialTick, int width, int height) {
 
-        if (!MINECRAFT.options.hideGui && gui.shouldDrawSurvivalElements()) {
+        if (!MINECRAFT.options.hideGui && (gui.shouldDrawSurvivalElements() || CelestialClientConfig.HUD_IN_CREATIVE.get())) {
             gui.setupOverlayRenderState(true, false);
             Player player = MINECRAFT.player;
             Entity mount = player.getVehicle();
@@ -49,36 +50,68 @@ public class SpaceshipGui extends ForgeIngameGui implements IIngameOverlay {
         double speed = spaceship.getCurrentSpeed();
         Level level = spaceship.getLevel();
 
+        int xAdjustment;
+        int yAdjustment;
+
+        switch (CelestialClientConfig.HUD_LOCATION.get()) {
+            case TOP_RIGHT -> {
+                xAdjustment = width - 12;
+                yAdjustment = 12;
+            }
+            case TOP_LEFT -> {
+                xAdjustment = 12 + 45;
+                yAdjustment = 12;
+            }
+            case BOTTOM_RIGHT -> {
+                xAdjustment = width - 12;
+                yAdjustment = height - 12 - 45 - 6;
+            }
+            case BOTTOM_LEFT -> {
+                xAdjustment = 12 + 45;
+                yAdjustment = height - 12 - 45 - 6;
+            }
+            default -> {
+                xAdjustment = width - 12;
+                yAdjustment = 12;
+            }
+        }
+
         //placement, X; placement Y, grab starting at, X; grab starting at, Y; width?; height?;
-        blit(poseStack, width - 12 - 45, 12, 0, 19,45, 45); //SPEEDOMETER BASE
+        blit(poseStack, xAdjustment - 45, yAdjustment, 0, 19, 45, 45); //SPEEDOMETER BASE
 
         //SPEED
         if (speed == 0) {
-            blit(poseStack, width - 12 - 45 + 11, 12 + 21, 46, 22,12, 4);  //NO MOVEMENT
+            blit(poseStack, xAdjustment - 45 + 11, yAdjustment + 21, 46, 22, 12, 4);  //NO MOVEMENT width - 12 - 45 + 11, 12 + 21
+        } else if (spaceship.getControllingPassenger() instanceof Player player && player.isCreative()) {
+            blit(poseStack, xAdjustment - 45 + 22, yAdjustment + 21, 46, 22 + 16, 12, 4); //HAS FUEL, FULL SPEED
         } else if (!(spaceship.getFuelDataId() > 0)) {
-            blit(poseStack, width - 12 - 45 + 11, 12 + 21 - 3, 46, 22 + 4,12, 4); //NO FUEL, LOW SPEED
+            blit(poseStack, xAdjustment - 45 + 11, yAdjustment + 21 - 3, 46, 22 + 4, 12, 4); //NO FUEL, LOW SPEED
         } else if (spaceship.isFuelDataIdLowFuel()) {
-            blit(poseStack, width - 12 - 45 + 22, 12 + 21 - 9, 46 + 2, 22 + 8,10, 8); //LOW FUEL, MEDIUM SPEED
+            blit(poseStack, xAdjustment - 45 + 22, yAdjustment + 21 - 9, 46 + 2, 22 + 8, 10, 8); //LOW FUEL, MEDIUM SPEED
         } else {
-            blit(poseStack, width - 12 - 45 + 22, 12 + 21, 46, 22 + 16,12, 4); //HAS FUEL, FULL SPEED
+            blit(poseStack, xAdjustment - 45 + 22, yAdjustment + 21, 46, 22 + 16, 12, 4); //HAS FUEL, FULL SPEED
         }
 
         //FUEL LEVEL
-        blit(poseStack, width - 12 - 45, 12 + 45 + 1, 0, 19 + 45, 45, 7);  //EMPTY BAR
-        blit(poseStack, width - 12 - 45, 12 + 45 + 1, 0, 19 + 45 + 8, (int) ((double) 45 * fuelPercent), 7);  //EMPTY BAR
+        blit(poseStack, xAdjustment - 45, yAdjustment + 45 + 1, 0, 19 + 45, 45, 7);  //EMPTY BAR
+        if (spaceship.getControllingPassenger() instanceof Player player && player.isCreative()) {
+            blit(poseStack, xAdjustment - 45, yAdjustment + 45 + 1, 0, 19 + 45 + 8, (int) ((double) 45), 7);  //FUEL BAR
+        } else {
+            blit(poseStack, xAdjustment - 45, yAdjustment + 45 + 1, 0, 19 + 45 + 8, (int) ((double) 45 * fuelPercent), 7);  //FUEL BAR
+         }
 
         //ALTIMETER LIGHTS
         int heightInThirds = (level.getMaxBuildHeight() + Math.abs(level.getMinBuildHeight())) / 3;
         if (altitude > level.getMaxBuildHeight()) {
-            blit(poseStack, width - 12 - 45 + 22 + 10, 12 + 21 + 1 + 9, 46, 22 + 16 + 12,3, 7);
+            blit(poseStack, xAdjustment - 45 + 22 + 10, yAdjustment + 21 + 1 + 9, 46, 22 + 16 + 12,3, 7);
         } else if (altitude > (heightInThirds * 2) + level.getMinBuildHeight()) {
-            blit(poseStack, width - 12 - 45 + 22 + 10, 12 + 21 + 1 + 9 + 2, 46, 22 + 16 + 12 + 2,3, 5);
+            blit(poseStack, xAdjustment - 45 + 22 + 10, yAdjustment + 21 + 1 + 9 + 2, 46, 22 + 16 + 12 + 2,3, 5);
         } else if (altitude > heightInThirds + level.getMinBuildHeight()) {
-            blit(poseStack, width - 12 - 45 + 22 + 10, 12 + 21 + 1 + 9 + 4, 46, 22 + 16 + 12 + 4,3, 3);
+            blit(poseStack, xAdjustment - 45 + 22 + 10, yAdjustment + 21 + 1 + 9 + 4, 46, 22 + 16 + 12 + 4,3, 3);
         } else if (altitude > level.getMinBuildHeight()) {
-            blit(poseStack, width - 12 - 45 + 22 + 10, 12 + 21 + 1 + 9 + 6, 46, 22 + 16 + 12 + 6,3, 1);
+            blit(poseStack, xAdjustment - 45 + 22 + 10, yAdjustment + 21 + 1 + 9 + 6, 46, 22 + 16 + 12 + 6,3, 1);
         }
 
-        MINECRAFT.font.draw(poseStack, String.valueOf(altitude), width - 12 - 34, 12 + 31, 0xffffff); //ALTITUDE READOUT
+        MINECRAFT.font.draw(poseStack, String.valueOf(altitude), xAdjustment - 34, yAdjustment + 31, 0xffffff); //ALTITUDE READOUT
     }
 }

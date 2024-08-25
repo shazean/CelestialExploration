@@ -19,8 +19,8 @@ public class Voided extends Zombie {
         return Monster.createMonsterAttributes().add(Attributes.FOLLOW_RANGE, 35.0D).add(Attributes.MOVEMENT_SPEED, (double)0.23F).add(Attributes.ATTACK_DAMAGE, 3.0D).add(Attributes.ARMOR, 2.0D).add(Attributes.SPAWN_REINFORCEMENTS_CHANCE).build();
     }
 
-    @Override
-    protected ItemStack getSkull() {
-        return new ItemStack(ItemRegistry.LURKER_HEAD.get());
-    }
+//    @Override
+//    protected ItemStack getSkull() {
+//        return new ItemStack(ItemRegistry.VOIDED_HEAD.get());
+//    }
 }

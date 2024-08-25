@@ -142,7 +142,9 @@ public class CelestialSurfaceRules {
     public static SurfaceRules.RuleSource space() {
         ImmutableList.Builder<SurfaceRules.RuleSource> builder = ImmutableList.builder();
 
-        builder.add(SurfaceRules.ifTrue(SurfaceRules.isBiome(CelestialBiomeKeys.SPACE), AIR));
+        builder.add(SurfaceRules.ifTrue(SurfaceRules.verticalGradient("air", VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(5)), AIR));
+
+//        builder.add(SurfaceRules.ifTrue(SurfaceRules.isBiome(CelestialBiomeKeys.SPACE), AIR));
 
         return SurfaceRules.sequence(builder.build().toArray(SurfaceRules.RuleSource[]::new));
     }

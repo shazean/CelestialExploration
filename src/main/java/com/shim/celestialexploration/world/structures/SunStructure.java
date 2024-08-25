@@ -79,6 +79,7 @@ public class SunStructure extends StructureFeature<JigsawConfiguration> {
         // Grabs the chunk position we are at
         ChunkPos chunkpos = context.chunkPos();
         return chunkpos.x == 0 && chunkpos.z == 0;
+//        return false;
     }
 
     public static Optional<PieceGenerator<JigsawConfiguration>> createPiecesGenerator(PieceGeneratorSupplier.Context<JigsawConfiguration> context) {

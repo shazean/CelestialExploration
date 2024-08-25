@@ -1,22 +1,22 @@
 package com.shim.celestialexploration.item.armor;
 
 import com.shim.celestialexploration.CelestialExploration;
+import mod.azure.azurelib.model.GeoModel;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
 
-public class SpaceSuitModel extends AnimatedGeoModel<SpaceSuitArmorItem> {
+public class SpaceSuitModel extends GeoModel<SpaceSuitArmorItem> {
     @Override
-    public ResourceLocation getModelLocation(SpaceSuitArmorItem object) {
-        return new ResourceLocation(CelestialExploration.MODID, "geo/space_suit.geo.json");
+    public ResourceLocation getModelResource(SpaceSuitArmorItem object) {
+        return new ResourceLocation(CelestialExploration.MODID, "geo/spacesuit.geo.json");
     }
 
     @Override
-    public ResourceLocation getTextureLocation(SpaceSuitArmorItem object) {
-        return new ResourceLocation(CelestialExploration.MODID, "textures/models/armor/space_suit.png");
+    public ResourceLocation getTextureResource(SpaceSuitArmorItem object) {
+        return new ResourceLocation(CelestialExploration.MODID, "textures/models/armor/basic_spacesuit.png");
     }
 
     @Override
-    public ResourceLocation getAnimationFileLocation(SpaceSuitArmorItem animatable) {
-        return new ResourceLocation(CelestialExploration.MODID, "animations/space_suit.animation.json");
+    public ResourceLocation getAnimationResource(SpaceSuitArmorItem animatable) {
+        return new ResourceLocation(CelestialExploration.MODID, "animations/spacesuit.animation.json");
     }
 }

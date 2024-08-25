@@ -582,7 +582,8 @@ public class BlockRegistry {
     public static final RegistryObject<Block> VOIDED_WALL_HEAD = BLOCKS.register("voided_wall_head", () -> new WallSkullBlock(CelestialSkullRenderer.Types.VOIDED, BlockBehaviour.Properties.of(Material.DECORATION).strength(1.0F).lootFrom(VOIDED_HEAD)));
 
 
-    //	public static final RegistryObject<SolarPanelBlock> SOLAR_PANEL = BLOCKS.register("solar_panel", SolarPanelBlock::new);
+    	public static final RegistryObject<SolarPanelBlock> SOLAR_PANEL = registerBlockDropsSelf("solar_panel", "Solar Panel", () -> new SolarPanelBlock(Block.Properties.of(Material.GLASS).strength(0.3F).sound(SoundType.GLASS)), CelestialExploration.SPACESHIP_TAB);
+
     //	public static final RegistryObject<Block> LAUNCH_PAD = BLOCKS.register("launch_pad", () -> new Block(Block.Properties.of(Material.HEAVY_METAL, MaterialColor.METAL).strength(5.0F, 6.0F).sound(SoundType.METAL)));
     //	public static final RegistryObject<Block> SOLAR_PANEL = BLOCKS.register("solar_panel", () -> new SolarPanelBlock(Block.Properties.of(Material.DECORATION, MaterialColor.METAL).noCollission().sound(SoundType.METAL).lightLevel(litBlockEmission(1))));
     //	public static final RegistryObject<Block> SOLAR_LANTERN = BLOCKS.register("solar_lantern", () -> new Block(Block.Properties.of(Material.GLASS, MaterialColor.FIRE).strength(0.3F).sound(SoundType.GLASS).lightLevel((p_235455_0_) -> 20)));

@@ -82,6 +82,7 @@ public class MercuryStructure extends StructureFeature<JigsawConfiguration> {
         Vec3 coordinates = CelestialUtil.getPlanetaryChunkCoordinates(1);
 
         return chunkpos.x == coordinates.x && chunkpos.z == coordinates.z;
+//        return false;
 
         // Checks to make sure our structure does not spawn within 10 chunks of an Ocean Monument
         // to demonstrate how this method is good for checking extra conditions for spawning

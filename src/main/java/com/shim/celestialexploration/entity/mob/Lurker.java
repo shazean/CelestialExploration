@@ -29,7 +29,7 @@ public class Lurker extends Creeper {
         if (entity != this && entity instanceof Lurker lurker) {
             if (lurker.canDropMobsSkull()) {
                 lurker.increaseDroppedSkulls();
-                this.spawnAtLocation(ItemRegistry.LURKER_HEAD.get());
+//                this.spawnAtLocation(ItemRegistry.LURKER_HEAD.get());
             }
         }
     }

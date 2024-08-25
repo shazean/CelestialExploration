@@ -1,6 +1,7 @@
 package com.shim.celestialexploration.item.armor;
 
-import software.bernie.geckolib3.renderers.geo.GeoArmorRenderer;
+
+import mod.azure.azurelib.renderer.GeoArmorRenderer;
 
 public class HeavyDutySpaceSuitRenderer extends GeoArmorRenderer<HeavyDutySpaceSuitArmorItem> {
 
@@ -11,14 +12,14 @@ public class HeavyDutySpaceSuitRenderer extends GeoArmorRenderer<HeavyDutySpaceS
         super(new HeavyDutySpaceSuitModel());
 //        this.modelProvider = new SpaceSuitModel();
 
-        this.headBone = "armorHead";
-        this.bodyBone = "armorBody";
-        this.rightArmBone = "armorRightArm";
-        this.leftArmBone = "armorLeftArm";
-        this.rightLegBone = "armorRightLeg";
-        this.leftLegBone = "armorLeftLeg";
-        this.rightBootBone = "armorRightBoot";
-        this.leftBootBone = "armorLeftBoot";
+//        this.headBone = "armorHead";
+//        this.bodyBone = "armorBody";
+//        this.rightArmBone = "armorRightArm";
+//        this.leftArmBone = "armorLeftArm";
+//        this.rightLegBone = "armorRightLeg";
+//        this.leftLegBone = "armorLeftLeg";
+//        this.rightBootBone = "armorRightBoot";
+//        this.leftBootBone = "armorLeftBoot";
     }
 
 }

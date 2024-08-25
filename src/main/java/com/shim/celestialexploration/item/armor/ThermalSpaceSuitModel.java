@@ -1,22 +1,22 @@
 package com.shim.celestialexploration.item.armor;
 
 import com.shim.celestialexploration.CelestialExploration;
+import mod.azure.azurelib.model.GeoModel;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
 
-public class ThermalSpaceSuitModel extends AnimatedGeoModel<ThermalSpaceSuitArmorItem> {
+public class ThermalSpaceSuitModel extends GeoModel<ThermalSpaceSuitArmorItem> {
     @Override
-    public ResourceLocation getModelLocation(ThermalSpaceSuitArmorItem object) {
-        return new ResourceLocation(CelestialExploration.MODID, "geo/space_suit.geo.json");
+    public ResourceLocation getModelResource(ThermalSpaceSuitArmorItem object) {
+        return new ResourceLocation(CelestialExploration.MODID, "geo/spacesuit.geo.json");
     }
 
     @Override
-    public ResourceLocation getTextureLocation(ThermalSpaceSuitArmorItem object) {
-        return new ResourceLocation(CelestialExploration.MODID, "textures/models/armor/thermal_space_suit.png");
+    public ResourceLocation getTextureResource(ThermalSpaceSuitArmorItem object) {
+        return new ResourceLocation(CelestialExploration.MODID, "textures/models/armor/thermal_spacesuit.png");
     }
 
     @Override
-    public ResourceLocation getAnimationFileLocation(ThermalSpaceSuitArmorItem animatable) {
-        return new ResourceLocation(CelestialExploration.MODID, "animations/space_suit.animation.json");
+    public ResourceLocation getAnimationResource(ThermalSpaceSuitArmorItem animatable) {
+        return new ResourceLocation(CelestialExploration.MODID, "animations/spacesuit.animation.json");
     }
 }

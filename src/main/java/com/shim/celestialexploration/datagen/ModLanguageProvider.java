@@ -104,9 +104,11 @@ public class ModLanguageProvider extends LanguageProvider {
 		add("key.celestialexploration.flight_descent", "Spaceship Descent");
 		add("key.celestialexploration.turn_left", "Spaceship Strafe Left");
 		add("key.celestialexploration.turn_right", "Spaceship Strafe Right");
+		add("key.celestialexploration.open_shuttle_inventory", "Open Spaceship Inventory");
+
 
 		//---- DAMAGE SOURCES -------------------------------------------------------------------------------
-		add("death.attack.celestialexploration.touchedSun", "%1$s discovered the heat of the sun");
+		add("death.attack.celestialexploration.touchedSun", "%1$s discovered the sun is hot");
 		add("death.attack.celestialexploration.coldFloor", "%1$s got cold feet");
 
 		//---- ADVANCEMENTS -------------------------------------------------------------------------------

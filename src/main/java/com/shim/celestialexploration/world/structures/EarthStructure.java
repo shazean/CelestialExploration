@@ -77,9 +77,13 @@ public class EarthStructure extends StructureFeature<JigsawConfiguration> {
      */
     private static boolean isFeatureChunk(PieceGeneratorSupplier.Context<JigsawConfiguration> context) {
         // Grabs the chunk position we are at
+
+
         ChunkPos chunkpos = context.chunkPos();
         Vec3 coordinates = CelestialUtil.getPlanetaryChunkCoordinates(3);
         return chunkpos.x == coordinates.x && chunkpos.z == coordinates.z;
+//        return false;
+
     }
 
     public static @NotNull Optional<PieceGenerator<JigsawConfiguration>> createPiecesGenerator(PieceGeneratorSupplier.Context<JigsawConfiguration> context) {

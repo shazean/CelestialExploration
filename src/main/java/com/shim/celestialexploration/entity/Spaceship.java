@@ -11,9 +11,16 @@ import com.shim.celestialexploration.registry.*;
 import com.shim.celestialexploration.util.CelestialUtil;
 import com.shim.celestialexploration.util.Keybinds;
 import com.shim.celestialexploration.world.portal.CelestialTeleporter;
+import mod.azure.azurelib.animatable.GeoEntity;
+import mod.azure.azurelib.core.animatable.instance.AnimatableInstanceCache;
+import mod.azure.azurelib.core.animation.AnimatableManager;
+import mod.azure.azurelib.core.animation.AnimationController;
+import mod.azure.azurelib.core.animation.RawAnimation;
+import mod.azure.azurelib.util.AzureLibUtil;
 import net.minecraft.BlockUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.network.chat.Component;
@@ -47,6 +54,7 @@ import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.WaterlilyBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
@@ -63,10 +71,12 @@ import net.minecraftforge.items.wrapper.InvWrapper;
 import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.NotNull;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
+import java.util.Random;
 
-public class Spaceship extends Entity implements ContainerListener, MenuProvider {
+public class Spaceship extends Entity implements ContainerListener, MenuProvider, GeoEntity {
     private static final EntityDataAccessor<Integer> DATA_ID_HURT = SynchedEntityData.defineId(Spaceship.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> DATA_ID_HURTDIR = SynchedEntityData.defineId(Spaceship.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Float> DATA_ID_DAMAGE = SynchedEntityData.defineId(Spaceship.class, EntityDataSerializers.FLOAT);
@@ -96,6 +106,7 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
     private int teleportationCooldown = 60;
     public static int maxTimeOnGround = 15;
     private final int LOW_FUEL = 300;
+    private final AnimatableInstanceCache cache = AzureLibUtil.createInstanceCache(this);
 
     public Spaceship(EntityType<? extends Spaceship> p_38290_, Level p_38291_) {
         super(p_38290_, p_38291_);
@@ -110,6 +121,42 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
         this.yo = p_38295_;
         this.zo = p_38296_;
         this.setNoGravity(true);
+    }
+
+    @Override
+    public AnimatableInstanceCache getAnimatableInstanceCache() {
+        return cache;
+    }
+
+    @Override
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+        controllers.add(new AnimationController<>(this, "spaceship", 0, event ->
+        {
+//            if (event.isMoving()) {
+//                CelestialExploration.LOGGER.debug("is moving!");
+                return event.setAndContinue(RawAnimation.begin().thenPlay("flying"));
+//            }
+//            else {
+//                CelestialExploration.LOGGER.debug("is idle");
+//                return event.setAndContinue(RawAnimation.begin().thenPlay("idle"));
+//            }
+//            return event.setAndContinue(
+//                    // If moving, play the walking animation
+//                    event.isMoving() ? RawAnimation.begin().thenLoop("flying"):
+//                            // If not moving, play the idle animation
+//                            RawAnimation.begin().thenLoop("idle"));
+        })
+//                // Sets a Sound KeyFrame
+//                .setSoundKeyframeHandler(event -> {
+//                    //Plays the step sound on the walk keyframes in an animation
+//                    if (event.getKeyframeData().getSound().matches("walk"))
+//                        if (level().isClientSide())
+//                            level().playLocalSound(
+//                                    this.getX(), this.getY(), this.getZ(),
+//                                    DoomSounds.PINKY_STEP,
+//                                    SoundSource.HOSTILE, 0.25F, 1.0F, false);
+//                })
+        );
     }
 
     @Override
@@ -237,7 +284,7 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
         this.lerpZ = lerpZ;
         this.lerpYRot = lerpYRot;
         this.lerpXRot = lerpXRot;
-        this.lerpSteps = 10;
+        this.lerpSteps = 10; //10
     }
 
     public @NotNull Direction getMotionDirection() {
@@ -271,7 +318,6 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
     public boolean isFuelDataIdLowFuel() {
         return getFuelDataId() <= LOW_FUEL;
     }
-
 
     public void decrementFuelTicks() {
         this.setFuelTicks(this.getFuelTicks() - 1);
@@ -318,6 +364,14 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
             this.move(MoverType.SELF, this.getDeltaMovement());
         }
 
+//        if (this.isVehicle() && this.getControllingPassenger() instanceof Player player) {
+//            if (this.level.isClientSide) {
+//                if (Keybinds.OPEN_SHUTTLE_INVENTORY.isDown()) {
+//                    openMenu(player);
+//                }
+//            }
+//        }
+
         if (!this.level.isClientSide) {
             if (this.getFuelTicks() <= 0) {
                 this.useFuel();
@@ -361,10 +415,20 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
                     if (destination != null) {
                         if (this.teleportationCooldown == 0) {
                             Entity passenger = this.getControllingPassenger();
+
+                            Entity secondPassenger = null;
+                            if (this.getPassengers().size() > 1) secondPassenger = this.getPassengers().get(1);
+
                             assert passenger != null;
 
                             Vec3 teleportPosition = new Vec3(this.position().x, this.position().y, this.position().z); //this.level.getMaxBuildHeight() - 10, this.position().z);
-                            teleportSpaceship(passenger, this, destination, teleportPosition);
+//                            if (!this.level.isClientSide) {
+//                                ServerLevel serverLevel = (ServerLevel) this.getLevel();
+//                                Vec3 teleportPosition = new Vec3(serverLevel.getSharedSpawnPos().getX(), this.position().y, serverLevel.getSharedSpawnPos().getY());
+                                teleportSpaceship(passenger, secondPassenger, this, destination, teleportPosition);
+//
+//                            }
+
                         } else {
                             this.teleportationCooldown--;
                             this.displayTeleportMessage(this.teleportationCooldown, destination);
@@ -397,11 +461,14 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
     public void teleportToSpace(int planetOriginNum) {
         if (this.teleportationCooldown == 0) {
             Entity passenger = this.getControllingPassenger();
+            Entity secondPassenger = null;
+            if (this.getPassengers().size() > 1) secondPassenger = this.getPassengers().get(1);
+
             this.displayTeleportMessage(teleportationCooldown, DimensionRegistry.SPACE);
             assert passenger != null;
             ResourceKey<Level> destination = DimensionRegistry.SPACE;
             Vec3 earthLocation = new Vec3(CelestialUtil.getPlanetaryChunkCoordinates(planetOriginNum).x * 16, 135.0, CelestialUtil.getPlanetaryChunkCoordinates(planetOriginNum).z * 16);
-            this.teleportSpaceship(passenger, this, destination, earthLocation);
+            this.teleportSpaceship(passenger, secondPassenger, this, destination, earthLocation);
         } else {
             this.teleportationCooldown--;
             this.displayTeleportMessage(teleportationCooldown, DimensionRegistry.SPACE);
@@ -537,7 +604,7 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
         return this.teleportationCooldown;
     }
 
-    protected void teleportSpaceship(Entity passenger, Spaceship spaceship, ResourceKey<Level> destinationDim, Vec3 locationInPlace) {
+    protected void teleportSpaceship(Entity passenger, @Nullable Entity secondPassenger, Spaceship spaceship, ResourceKey<Level> destinationDim, Vec3 locationInPlace) {
         if (passenger.canChangeDimensions()) {
 
             Level entityWorld = passenger.level;
@@ -545,29 +612,68 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
             if (minecraftserver != null) {
                 ServerLevel destinationWorld = minecraftserver.getLevel(destinationDim);
                 if (destinationWorld != null) {
+
                     this.resetTelportationCooldown();
-                    passenger.changeDimension(destinationWorld, new CelestialTeleporter(destinationWorld));
-                    Entity newSpaceship = spaceship.changeDimension(destinationWorld, new CelestialTeleporter(destinationWorld));
 
                     if (!(destinationDim == DimensionRegistry.SPACE)) {
-                        locationInPlace = new Vec3(locationInPlace.x, passenger.level.getMaxBuildHeight() - 10, locationInPlace.z);
+                        locationInPlace = new Vec3(locationInPlace.x, destinationWorld.getMaxBuildHeight() - 10, locationInPlace.z);
                     }
-
-                    if (passenger instanceof ServerPlayer player) {
-                        ServerLevel level = player.getLevel();
-                        level.getProfiler().push("placing");
-                        player.moveTo(locationInPlace.x, locationInPlace.y, locationInPlace.z);
-                        level.getProfiler().pop();
-                    } else {
-                        passenger.moveTo(locationInPlace);
-                    }
-                    assert newSpaceship != null;
-                    newSpaceship.moveTo(locationInPlace.x, locationInPlace.y, locationInPlace.z);
-                    ((Spaceship) newSpaceship).hasFuel();
 
                     if (!this.level.isClientSide) {
-                        passenger.startRiding(newSpaceship);
+                        ServerLevel level = (ServerLevel) passenger.getLevel();
+                        level.getProfiler().push("placing");
+                        this.moveTo(locationInPlace);
+                        passenger.moveTo(locationInPlace);
+                        if (secondPassenger != null) secondPassenger.moveTo(locationInPlace);
+                        level.getProfiler().pop();
                     }
+
+                    Entity newPassenger = null;
+                    Entity newSecondPassenger = null;
+
+                    if (passenger instanceof Player) {
+                        passenger.changeDimension(destinationWorld, new CelestialTeleporter(destinationWorld));
+                    } else {
+                        newPassenger = passenger.changeDimension(destinationWorld, new CelestialTeleporter(destinationWorld));
+                    }
+                    if (secondPassenger instanceof Player) {
+                        secondPassenger.changeDimension(destinationWorld, new CelestialTeleporter(destinationWorld));
+                    } else if (secondPassenger != null) {
+                        newSecondPassenger = secondPassenger.changeDimension(destinationWorld, new CelestialTeleporter(destinationWorld));
+                    }
+
+                    Entity newSpaceship = spaceship.changeDimension(destinationWorld, new CelestialTeleporter(destinationWorld));
+
+                    if (!this.level.isClientSide) {
+                        assert newSpaceship != null;
+
+                        if (passenger instanceof ServerPlayer) {
+                            passenger.startRiding(newSpaceship);
+                        } else {
+                            newPassenger.startRiding(newSpaceship);
+                        }
+
+                        if (secondPassenger instanceof ServerPlayer) {
+                            secondPassenger.startRiding(newSpaceship);
+                        } else if (secondPassenger != null) {
+                            newSecondPassenger.startRiding(newSpaceship);
+                        }
+                    }
+//                    if (passenger instanceof ServerPlayer player) {
+//                        ServerLevel level = player.getLevel();
+//                        level.getProfiler().push("placing");
+//                        player.moveTo(locationInPlace.x, locationInPlace.y, locationInPlace.z);
+//                        level.getProfiler().pop();
+//                    } else {
+//                        passenger.moveTo(locationInPlace);
+//                    }
+//                    assert newSpaceship != null;
+//                    newSpaceship.moveTo(locationInPlace.x, locationInPlace.y, locationInPlace.z);
+//                    ((Spaceship) newSpaceship).hasFuel();
+//
+//                    if (!this.level.isClientSide) {
+//                        passenger.startRiding(newSpaceship);
+//                    }
                 }
             }
         }
@@ -747,21 +853,35 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
         return this.getDeltaMovement().x;
     }
 
+    public static Vec3 translateWithXRotation(@Nonnull Vec3 baseIn, double rotationIn, double xOffsetIn, double yOffsetIn, double zOffsetIn) {
+        double rotation = Math.toRadians(rotationIn);
+        double offsetXRotated = (xOffsetIn * -Math.sin(rotation)) + (zOffsetIn * Math.cos(rotation));
+        double offsetZRotated = (xOffsetIn * Math.cos(rotation)) + (zOffsetIn * Math.sin(rotation));
+        return new Vec3(baseIn.x + offsetXRotated, baseIn.y + yOffsetIn, baseIn.z + offsetZRotated);
+    }
 
     private void controlSpaceship() {
         if (this.isVehicle()) {
             float currentSpeed;
             currentSpeed = this.getMaxSpeed();
 
-            LivingEntity livingentity = (LivingEntity) this.getControllingPassenger();
-            assert livingentity != null;
-            float f = livingentity.zza * currentSpeed;
+            LivingEntity passenger = (LivingEntity) this.getControllingPassenger();
+            assert passenger != null;
+            float f = passenger.zza * currentSpeed;
 
             if (Keybinds.TURN_LEFT_KEY.isDown()) {
-                this.setYRot(livingentity.getYRot());
+                this.setYRot(passenger.getYRot());
+                this.setYBodyRot(passenger.getYRot());
+//                Vec3 particleLocation = translateWithXRotation(this.position(), this.getYRot(), 2, 1, 0);
+//                this.level.addParticle(ParticleTypes.ASH, particleLocation.x, particleLocation.y, particleLocation.z, 0.0D, 0.0D, 0.0D);
+
                 --this.deltaRotation;
             } else if (Keybinds.TURN_RIGHT_KEY.isDown()) {
-                this.setYRot(livingentity.getYRot());
+                this.setYRot(passenger.getYRot());
+                this.setYBodyRot(passenger.getYRot());
+                this.setYHeadRot(passenger.getYHeadRot());
+
+//                this.rotate(Rotation.getRandom(new Random()));
                 ++this.deltaRotation;
             } else {
                 this.deltaRotation = 0;
@@ -781,34 +901,36 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
         return 0.45D;
     }
 
-    public void positionRider(Entity p_38379_) {
-        if (this.hasPassenger(p_38379_)) {
-            float f = 1.1F; //4.0F
+    public void positionRider(Entity passenger) {
+        if (this.hasPassenger(passenger)) {
+            float f = .9F; //.25F //4.0F
 
-            if (p_38379_ instanceof Animal) {
+//            if (passenger instanceof Animal) {
+//                f += 0.2F;
+//            }
+
+            float f1 = (float) ((this.isRemoved() ? (double) 0.01F : this.getPassengersRidingOffset()) + passenger.getMyRidingOffset());
+            if (this.getPassengers().size() > 1) {
+                int i = this.getPassengers().indexOf(passenger);
+                if (i == 0) {
+                    f = -0.5F; //0.2F
+                }
+//                else {
+//                    f = .25F; //1.1F;
+//                }
+
+
+            }
+            if (passenger instanceof Animal) {
                 f += 0.2F;
             }
 
-            float f1 = (float) ((this.isRemoved() ? (double) 0.01F : this.getPassengersRidingOffset()) + p_38379_.getMyRidingOffset());
-            if (this.getPassengers().size() > 1) {
-                int i = this.getPassengers().indexOf(p_38379_);
-                if (i == 0) {
-                    f = -0.0F; //0.2F
-                } else {
-                    f = 1.1F;
-                }
-
-                if (p_38379_ instanceof Animal) {
-                    f += 0.2F;
-                }
-            }
-
             Vec3 vec3 = (new Vec3(f, 0.0D, 0.0D)).yRot(-this.getYRot() * ((float) Math.PI / 180F) - ((float) Math.PI / 2F));
-            p_38379_.setPos(this.getX() + vec3.x, this.getY() + (double) f1, this.getZ() + vec3.z);
-            p_38379_.setYRot(p_38379_.getYRot() + this.deltaRotation);
-            p_38379_.setYHeadRot(p_38379_.getYHeadRot() + this.deltaRotation);
-            p_38379_.setYHeadRot(p_38379_.getYHeadRot() + this.deltaRotation);
-            this.clampRotation(p_38379_);
+            passenger.setPos(this.getX() + vec3.x, this.getY() + (double) f1, this.getZ() + vec3.z);
+            passenger.setYRot(passenger.getYRot() + this.deltaRotation);
+            passenger.setYHeadRot(passenger.getYHeadRot() + this.deltaRotation);
+            passenger.setYHeadRot(passenger.getYHeadRot() + this.deltaRotation);
+            this.clampRotation(passenger);
 //            if (p_38379_ instanceof Animal && this.getPassengers().size() > 1) {
 //                int j = p_38379_.getId() % 2 == 0 ? 90 : 270;
 //                p_38379_.setYBodyRot(((Animal) p_38379_).yBodyRot + (float) j);
@@ -1022,6 +1144,13 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
         } else {
             return InteractionResult.PASS;
         }
+    }
+
+    public InteractionResult openMenu(Player player) {
+        if (player instanceof ServerPlayer) {
+            NetworkHooks.openGui((ServerPlayer) player, this, buf -> buf.writeInt(this.getId()));
+        }
+        return InteractionResult.sidedSuccess(this.level.isClientSide());
     }
 
     protected void checkFallDamage(double p_38307_, boolean p_38308_, BlockState p_38309_, BlockPos p_38310_) {

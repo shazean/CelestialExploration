@@ -445,6 +445,8 @@ public class ItemModels extends ItemModelProvider {
 
 		self(BlockRegistry.PATHWAY_LIGHT.get());
 
+		self(BlockRegistry.SOLAR_PANEL.get());
+
 		generatedBlockItem(BlockRegistry.AIRLOCK_DOOR.get(), "item/airlock_door");
 		generatedBlockItem(BlockRegistry.STEEL_DOOR.get(), "item/steel_door");
 		withExistingParent(BlockRegistry.STEEL_TRAPDOOR.get().getRegistryName().getPath(), modLoc("block/steel_trapdoor_bottom"));
@@ -614,6 +616,8 @@ public class ItemModels extends ItemModelProvider {
 
 		this.withExistingParent(BlockRegistry.LURKER_HEAD.get().getRegistryName().getPath(), this.mcLoc("item/template_skull"));
 		this.withExistingParent(BlockRegistry.VOIDED_HEAD.get().getRegistryName().getPath(), this.mcLoc("item/template_skull"));
+
+		generatedItem(ItemRegistry.CONTROL_PANEL.get());
 
 	}
 

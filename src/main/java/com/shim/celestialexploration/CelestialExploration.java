@@ -1,14 +1,17 @@
 package com.shim.celestialexploration;
 
-import com.shim.celestialexploration.blocks.CelestialSkullRenderer;
 import com.shim.celestialexploration.config.CelestialClientConfig;
 import com.shim.celestialexploration.config.CelestialCommonConfig;
-import com.shim.celestialexploration.entity.mob.*;
+import com.shim.celestialexploration.entity.mob.Gust;
+import com.shim.celestialexploration.entity.mob.Lurker;
+import com.shim.celestialexploration.entity.mob.VoidFellow;
+import com.shim.celestialexploration.entity.mob.Voided;
 import com.shim.celestialexploration.entity.mob.piglins.VoidedPiglin;
 import com.shim.celestialexploration.entity.mob.slimes.*;
 import com.shim.celestialexploration.packets.CelestialPacketHandler;
 import com.shim.celestialexploration.registry.*;
 import com.shim.celestialexploration.util.Keybinds;
+import mod.azure.azurelib.AzureLib;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
@@ -31,7 +34,6 @@ import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import software.bernie.geckolib3.GeckoLib;
 
 import javax.annotation.Nullable;
 import java.util.stream.Collectors;
@@ -90,7 +92,8 @@ public class CelestialExploration {
         ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, CelestialClientConfig.SPEC, "celestialexploration-client.toml");
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, CelestialCommonConfig.SPEC, "celestialexploration-common.toml");
 
-        GeckoLib.initialize();
+        AzureLib.initialize();
+//        GeckoLib.initialize();
 
         bus.addListener((InputEvent.KeyInputEvent e) -> onKeyPress(e.getKey(), e.getAction(), e.getModifiers()));
     }
@@ -134,7 +137,6 @@ public class CelestialExploration {
         SpawnPlacements.register(EntityRegistry.VOIDED_PIGLIN.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, VoidedPiglin::checkVoidedPiglinSpawnRules);
         SpawnPlacements.register(EntityRegistry.GUST.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, Gust::checkGustSpawnRules);
 
-        event.enqueueWork(CelestialSkullRenderer::setSkullRenderers);
 
         CelestialPacketHandler.init();
     }

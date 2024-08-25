@@ -299,6 +299,9 @@ public class Recipes extends RecipeProvider {
 		ShapedRecipeBuilder.shaped(BlockRegistry.STEEL_TRAPDOOR.get(), 2).pattern("XXX").pattern("XXX").define('X', ItemRegistry.STEEL_INGOT.get()).group("celestialexploration").unlockedBy("steel", has(ItemRegistry.STEEL_INGOT.get())).save(consumer);
 		ShapedRecipeBuilder.shaped(BlockRegistry.STEEL_BUTTON.get()).pattern("XX").pattern("XX").define('X', ItemRegistry.STEEL_NUGGET.get()).group("celestialexploration").unlockedBy("steel", has(ItemRegistry.STEEL_INGOT.get())).save(consumer);
 
+		ShapedRecipeBuilder.shaped(BlockRegistry.SOLAR_PANEL.get()).pattern("GGG").pattern("QQQ").pattern("SSS").define('G', Items.GLASS).define('Q', Items.QUARTZ_BLOCK).define('S', ItemRegistry.ALUMINUM_INGOT.get()).group("celestialexploration").unlockedBy("steel", has(ItemRegistry.STEEL_INGOT.get())).save(consumer);
+
+
 		singleItem(Blocks.RED_STAINED_GLASS, BlockRegistry.RED_BUTTON.get(), 1, Blocks.RED_STAINED_GLASS, consumer);
 		singleItem(Blocks.YELLOW_STAINED_GLASS, BlockRegistry.YELLOW_BUTTON.get(), 1, Blocks.YELLOW_STAINED_GLASS, consumer);
 		singleItem(Blocks.BLUE_STAINED_GLASS, BlockRegistry.BLUE_BUTTON.get(), 1, Blocks.BLUE_STAINED_GLASS, consumer);

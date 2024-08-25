@@ -29,6 +29,9 @@ public class CelestialPacketHandler {
         INSTANCE.registerMessage(i++, SpaceshipFuelCapPacket.class, SpaceshipFuelCapPacket::encoder,
                 SpaceshipFuelCapPacket::decoder, SpaceshipFuelCapPacket::handle, Optional.of(NetworkDirection.PLAY_TO_CLIENT));
 
+//        INSTANCE.registerMessage(i++, ControlPanelPacket.class, ControlPanelPacket::write,
+//                ControlPanelPacket::decoder, ControlPanelPacket::handle, Optional.of(NetworkDirection.PLAY_TO_SERVER));
+
 
     }
 }

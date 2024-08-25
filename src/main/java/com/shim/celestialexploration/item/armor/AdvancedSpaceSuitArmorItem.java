@@ -1,44 +1,44 @@
 package com.shim.celestialexploration.item.armor;
 
+import mod.azure.azurelib.animatable.GeoItem;
+import mod.azure.azurelib.core.animatable.instance.AnimatableInstanceCache;
+import mod.azure.azurelib.core.animation.AnimatableManager;
+import mod.azure.azurelib.core.animation.AnimationController;
+import mod.azure.azurelib.core.animation.RawAnimation;
+import mod.azure.azurelib.util.AzureLibUtil;
+import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.manager.AnimationData;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
-import software.bernie.geckolib3.item.GeoArmorItem;
+import net.minecraftforge.client.IItemRenderProperties;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class AdvancedSpaceSuitArmorItem extends GeoArmorItem implements IAnimatable {
-    private AnimationFactory factory = new AnimationFactory(this);
+import java.util.function.Consumer;
 
-//    private static final Map<ArmorMaterial, MobEffectInstance> MATERIAL_TO_EFFECT_MAP =
-//            (new ImmutableMap.Builder<ArmorMaterial, MobEffectInstance>())
-//                    .put(ModArmorMaterials.SPACE_SUIT, new MobEffectInstance(MobEffects.LUCK, 200, 1)).build();
+public class AdvancedSpaceSuitArmorItem extends ArmorItem implements GeoItem {
+    private final AnimatableInstanceCache cache = AzureLibUtil.createInstanceCache(this);
 
-    public AdvancedSpaceSuitArmorItem(ArmorMaterial material, EquipmentSlot slot, Properties settings) {
-        super(material, slot, settings);
+    public AdvancedSpaceSuitArmorItem(ArmorMaterial material, EquipmentSlot slot, Properties properties) {
+        super(material, slot, properties);
     }
 
     @Override
-    public void registerControllers(AnimationData data) {
-//        data.addAnimationController(new AnimationController<SpaceSuitArmorItem>(this, "idle",
-//                20, this::predicate));
+    public AnimatableInstanceCache getAnimatableInstanceCache() {
+        return cache;
     }
 
     @Override
-    public AnimationFactory getFactory() {
-        return this.factory;
-    }
-
-    private <P extends IAnimatable> PlayState predicate(AnimationEvent<P> event) {
-//        event.getController().setAnimation(new AnimationBuilder().addAnimation("idle", true));
-        return PlayState.STOP;
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+        controllers.add(new AnimationController<>(this, "controllerName", 0, event ->
+        {
+            return event.setAndContinue(RawAnimation.begin().thenLoop("spacesuit.idle"));
+        }));
     }
 
     @Override
@@ -48,6 +48,30 @@ public class AdvancedSpaceSuitArmorItem extends GeoArmorItem implements IAnimata
 //                evaluateArmorEffects(player);
             }
         }
+    }
+
+    @Override
+    public void initializeClient(Consumer<IItemRenderProperties> consumer) {
+        consumer.accept(new IItemRenderProperties() {
+            private AdvancedSpaceSuitRenderer renderer;
+
+            @Nullable
+            @Override
+            public HumanoidModel<?> getArmorModel(LivingEntity livingEntity, ItemStack itemStack, EquipmentSlot armorSlot, HumanoidModel<?> original) {
+                if (renderer == null)
+                    renderer = new AdvancedSpaceSuitRenderer();
+                renderer.prepForRender(livingEntity, itemStack, armorSlot, original);
+                return this.renderer;
+            }
+
+//            @Override
+//            public @NotNull HumanoidModel<?> getHumanoidArmorModel(LivingEntity livingEntity, ItemStack itemStack, EquipmentSlot equipmentSlot, HumanoidModel<?> original) {
+//                if (renderer == null)
+//                    return new AdvancedSpaceSuitRenderer();
+//                renderer.prepForRender(livingEntity, itemStack, equipmentSlot, original);
+//                return this.renderer;
+//            }
+        });
     }
 
 //    private void evaluateArmorEffects(Player player) {

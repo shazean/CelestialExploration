@@ -1,6 +1,7 @@
 package com.shim.celestialexploration.events;
 
 import com.shim.celestialexploration.CelestialExploration;
+import com.shim.celestialexploration.blocks.CelestialSkullRenderer;
 import com.shim.celestialexploration.capabilities.LoxTankCapability;
 import com.shim.celestialexploration.entity.renderer.*;
 import com.shim.celestialexploration.inventory.screens.OxygenCompressorScreen;
@@ -9,7 +10,9 @@ import com.shim.celestialexploration.inventory.screens.WorkbenchScreen;
 import com.shim.celestialexploration.item.armor.*;
 import com.shim.celestialexploration.registry.*;
 import com.shim.celestialexploration.world.renderer.DimensionRenderers;
+import mod.azure.azurelib.renderer.GeoArmorRenderer;
 import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.client.model.SkullModel;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderers;
@@ -21,22 +24,29 @@ import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import software.bernie.geckolib3.renderers.geo.GeoArmorRenderer;
 
 @OnlyIn(Dist.CLIENT)
 @Mod.EventBusSubscriber(modid = CelestialExploration.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ModEventClientBusEvents {
     @SubscribeEvent
     public static void registerArmorRenderers(final EntityRenderersEvent.AddLayers event) {
-        GeoArmorRenderer.registerArmorRenderer(SpaceSuitArmorItem.class, new SpaceSuitRenderer());
-        GeoArmorRenderer.registerArmorRenderer(HeavyDutySpaceSuitArmorItem.class, new HeavyDutySpaceSuitRenderer());
-        GeoArmorRenderer.registerArmorRenderer(ThermalSpaceSuitArmorItem.class, new ThermalSpaceSuitRenderer());
-        GeoArmorRenderer.registerArmorRenderer(AdvancedSpaceSuitArmorItem.class, new AdvancedSpaceSuitRenderer());
+//        GeoArmorRenderer.registerArmorRenderer(SpaceSuitArmorItem.class, new SpaceSuitRenderer());
+//        GeoArmorRenderer.registerArmorRenderer(HeavyDutySpaceSuitArmorItem.class, new HeavyDutySpaceSuitRenderer());
+//        GeoArmorRenderer.registerArmorRenderer(ThermalSpaceSuitArmorItem.class, new ThermalSpaceSuitRenderer());
+//        GeoArmorRenderer.registerArmorRenderer(AdvancedSpaceSuitArmorItem.class, new AdvancedSpaceSuitRenderer());
+    }
+
+    @SubscribeEvent
+    public static void registerSkulls(EntityRenderersEvent.CreateSkullModels event) {
+        event.registerSkullModel(CelestialSkullRenderer.Types.LURKER, new SkullModel(event.getEntityModelSet().bakeLayer(CelestialModelLayers.LURKER_HEAD)));
+        event.registerSkullModel(CelestialSkullRenderer.Types.VOIDED, new SkullModel(event.getEntityModelSet().bakeLayer(CelestialModelLayers.VOIDED_HEAD)));
     }
 
     @SubscribeEvent
     public static void clientSetup(final FMLClientSetupEvent event) {
         event.enqueueWork(DimensionRenderers::setDimensionEffects);
+
+        event.enqueueWork(CelestialSkullRenderer::setSkullRenderers);
 
         event.enqueueWork(() -> ItemProperties.register(ItemRegistry.LOX_TANK.get(), new ResourceLocation("filled"), (stack, level, living, id) -> {
             LoxTankCapability.ILoxTank loxTank = CelestialExploration.getCapability(stack, CapabilityRegistry.LOX_TANK_CAPABILITY);

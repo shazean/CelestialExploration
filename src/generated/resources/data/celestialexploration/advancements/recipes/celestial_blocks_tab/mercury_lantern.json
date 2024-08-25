@@ -6,13 +6,13 @@
     ]
   },
   "criteria": {
-    "has_iron": {
+    "has_cinnabar": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:iron_ingot"
+              "celestialexploration:cinnabar"
             ]
           }
         ]
@@ -27,7 +27,7 @@
   },
   "requirements": [
     [
-      "has_iron",
+      "has_cinnabar",
       "has_the_recipe"
     ]
   ]

@@ -1,7 +1,6 @@
 package com.shim.celestialexploration.events;
 
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.blocks.CelestialSkullRenderer;
 import com.shim.celestialexploration.entity.Spaceship;
 import com.shim.celestialexploration.entity.mob.*;
 import com.shim.celestialexploration.entity.mob.piglins.AstralPiglin;
@@ -9,8 +8,10 @@ import com.shim.celestialexploration.entity.mob.piglins.VoidedPiglin;
 import com.shim.celestialexploration.entity.mob.slimes.*;
 import com.shim.celestialexploration.entity.model.MagCartModel;
 import com.shim.celestialexploration.entity.model.SpaceshipModel;
+import com.shim.celestialexploration.entity.renderer.SpaceshipRenderer;
 import com.shim.celestialexploration.particles.CelestialPortalParticle;
 import com.shim.celestialexploration.particles.CelestialSlimeParticles;
+import com.shim.celestialexploration.particles.SpaceshipParticles;
 import com.shim.celestialexploration.particles.SulfurParticle;
 import com.shim.celestialexploration.recipes.WorkbenchCraftingRecipe;
 import com.shim.celestialexploration.recipes.WorkbenchSmeltingRecipe;
@@ -32,7 +33,6 @@ import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-import static com.shim.celestialexploration.entity.renderer.SpaceshipRenderer.createSpaceshipModelName;
 import static net.minecraft.client.model.geom.LayerDefinitions.INNER_ARMOR_DEFORMATION;
 import static net.minecraft.client.model.geom.LayerDefinitions.OUTER_ARMOR_DEFORMATION;
 
@@ -60,10 +60,10 @@ public class ModEventBusEvents {
 
     }
 
-    @SubscribeEvent
+        @SubscribeEvent
     public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
-        for (Spaceship.Type spaceship$type : Spaceship.Type.values())
-            event.registerLayerDefinition(createSpaceshipModelName(spaceship$type), SpaceshipModel::createBodyLayer);
+//        for (Spaceship.Type spaceship$type : Spaceship.Type.values())
+//            event.registerLayerDefinition(SpaceshipRenderer.createSpaceshipModelName(spaceship$type), SpaceshipModel::createBodyLayer);
 
         event.registerLayerDefinition(CelestialModelLayers.MAGCART, MagCartModel::createBodyLayer);
         event.registerLayerDefinition(CelestialModelLayers.CHEST_MAGCART, MagCartModel::createBodyLayer);
@@ -103,19 +103,14 @@ public class ModEventBusEvents {
 
         event.registerLayerDefinition(CelestialModelLayers.GUST, GhastModel::createBodyLayer);
 
-        LayerDefinition skullDefinition = SkullModel.createMobHeadLayer();
+        LayerDefinition skullLayer = SkullModel.createMobHeadLayer();
         LayerDefinition humanoidHeadLayer = SkullModel.createHumanoidHeadLayer();
 
-        event.registerLayerDefinition(CelestialModelLayers.LURKER_HEAD, () -> skullDefinition);
+        event.registerLayerDefinition(CelestialModelLayers.LURKER_HEAD, () -> skullLayer);
         event.registerLayerDefinition(CelestialModelLayers.VOIDED_HEAD, () -> humanoidHeadLayer);
 
     }
 
-    @SubscribeEvent
-    public static void registerSkulls(EntityRenderersEvent.CreateSkullModels event) {
-        event.registerSkullModel(CelestialSkullRenderer.Types.LURKER, new SkullModel(event.getEntityModelSet().bakeLayer(CelestialModelLayers.LURKER_HEAD)));
-        event.registerSkullModel(CelestialSkullRenderer.Types.VOIDED, new SkullModel(event.getEntityModelSet().bakeLayer(CelestialModelLayers.VOIDED_HEAD)));
-    }
 
     @SubscribeEvent
     public static void registerParticleFactories(final ParticleFactoryRegisterEvent event) {
@@ -133,6 +128,9 @@ public class ModEventBusEvents {
         Minecraft.getInstance().particleEngine.register(ParticleRegistry.VENUS_PORTAL_PARTICLES.get(), CelestialPortalParticle.VenusProvider::new);
         Minecraft.getInstance().particleEngine.register(ParticleRegistry.MOON_PORTAL_PARTICLES.get(), CelestialPortalParticle.MoonProvider::new);
         Minecraft.getInstance().particleEngine.register(ParticleRegistry.MERCURY_PORTAL_PARTICLES.get(), CelestialPortalParticle.MercuryProvider::new);
+
+        Minecraft.getInstance().particleEngine.register(ParticleRegistry.SPACESHIP_PARTICLES.get(), SpaceshipParticles.Provider::new);
+
     }
 
     @SubscribeEvent

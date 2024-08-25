@@ -1,0 +1,45 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"flying": {
+			"loop": true,
+			"animation_length": 4,
+			"bones": {
+				"engineSquaresL": {
+					"rotation": {
+						"vector": [0, "Math.sin(query.anim_time * 90) * 5", "Math.abs(query.anim_time * 90) * -1"]
+					}
+				},
+				"engineSquaresR": {
+					"rotation": {
+						"vector": [0, "Math.sin(query.anim_time * 90) * 5", "Math.abs(query.anim_time * 90) * -1"]
+					}
+				},
+				"boosterSquareL": {
+					"rotation": {
+						"vector": [0, "Math.cos(query.anim_time * 180) * 15", "Math.abs(query.anim_time * 270) * -1"]
+					}
+				},
+				"boosterSquareR": {
+					"rotation": {
+						"vector": [0, "Math.cos(query.anim_time * 180) * 15", "Math.abs(query.anim_time * 270) * -1"]
+					}
+				},
+				"smallSquareL": {
+					"rotation": {
+						"vector": [0, "Math.cos(query.anim_time * 180) * 15", "Math.abs(query.anim_time * 270) * -1"]
+					}
+				},
+				"smallSquareR": {
+					"rotation": {
+						"vector": [0, "Math.cos(query.anim_time * 180) * 15", "Math.abs(query.anim_time * 270) * -1"]
+					}
+				}
+			}
+		},
+		"idle": {
+			"loop": true
+		}
+	},
+	"azurelib_format_version": 2
+}

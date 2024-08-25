@@ -1,8 +1,0 @@
-- `[IMPORTANT!]` This version may not be compatible with worlds created in previous versions! Update at your own risk!
-- `[DEV]` Updated system for adding dimensions and biomes, which will make my life easier as I continue adding planets/moons
-- `[NEW]` On that note, Mercury!
-- `[NEW]` And with that, new mercury blocks, i.e. stone, deepslate, bricks, lanterns, etc.
-- `[NEW]` Quicksilver and viscous slime mobs on Mercury
-- `[CHG]` Updated behind-the-scenes system for getting to/from planets and space via spaceship…
-- `[FIX]` …which means I also fixed a bug where the spaceship wouldn't teleport to the planets
-- `[CHG]` Updated min and max height for the moon, and underground noise generation

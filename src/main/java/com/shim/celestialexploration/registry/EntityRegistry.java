@@ -108,6 +108,11 @@ public class EntityRegistry {
     public static final RegistryObject<EntityType<MagCartTNT>> TNT_MAGCART = registerEntityType("tnt_magcart", "TNT Magcart", () -> EntityType.Builder.<MagCartTNT>of(MagCartTNT::new, MobCategory.MISC)
             .sized(0.98f, 1.5f).clientTrackingRange(8).build(new ResourceLocation(CelestialExploration.MODID, "tnt_magcart").toString()));
 
+
+    public static final RegistryObject<EntityType<ControlPanel>> CONTROL_PANEL = registerEntityType("control_panel_1", "Control Panel", () -> EntityType.Builder.<ControlPanel>of(ControlPanel::new, MobCategory.MISC)
+            .sized(0.5F, 0.5F).clientTrackingRange(10).updateInterval(Integer.MAX_VALUE).build(new ResourceLocation(CelestialExploration.MODID, "control_panel").toString()));
+
+
     public static void register(IEventBus eventbus) {
         ENTITY_TYPES.register(eventbus);
     }
