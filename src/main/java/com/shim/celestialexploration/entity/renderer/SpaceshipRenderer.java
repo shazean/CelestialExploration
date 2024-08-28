@@ -56,8 +56,8 @@ public class SpaceshipRenderer extends GeoEntityRenderer<Spaceship> {
 //            float headPitch = Mth.lerp(partialTick, animatable.xRotO, animatable.getXRot());
             float motionThreshold = this.getMotionAnimThreshold(animatable);
             Vec3 velocity = animatable.getDeltaMovement();
-//            float avgVelocity = (float)(Math.abs(velocity.x) + Math.abs(velocity.z)) / 2.0F;
-            float avgVelocity = (float)(Math.abs(velocity.x) + Math.abs(velocity.z) + Math.abs(velocity.y)) / 3.0F;
+            float avgVelocity = (float)(Math.abs(velocity.x) + Math.abs(velocity.z)) / 2.0F;
+//            float avgVelocity = (float)(Math.abs(velocity.x) + Math.abs(velocity.z) + Math.abs(velocity.y)) / 3.0F;
 
 //            CelestialExploration.LOGGER.debug("average velocity: " + avgVelocity);
             AnimationState<Spaceship> animationState = new AnimationState<>(animatable, 1, 1, partialTick, avgVelocity >= motionThreshold);

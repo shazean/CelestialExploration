@@ -1,6 +1,7 @@
 package com.shim.celestialexploration.blocks;
 
 import com.shim.celestialexploration.item.armor.ThermalSpaceSuitArmorItem;
+import com.shim.celestialexploration.registry.CelestialDamageSource;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -42,7 +43,7 @@ public class DryIceBlock extends HalfTransparentBlock {
             ItemStack itemStack = player.getItemBySlot(EquipmentSlot.FEET);
 
             if (!(itemStack.getItem() instanceof ThermalSpaceSuitArmorItem && ((ThermalSpaceSuitArmorItem) itemStack.getItem()).isGravityBoots(itemStack))) {
-                entity.hurt(DamageSource.HOT_FLOOR, 1.0F);
+                entity.hurt(CelestialDamageSource.COLD_FLOOR, 1.0F);
             }
 
             super.stepOn(p_153777_, p_153778_, p_153779_, entity);

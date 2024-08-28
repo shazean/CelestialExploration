@@ -16,6 +16,7 @@ import mod.azure.azurelib.core.animatable.instance.AnimatableInstanceCache;
 import mod.azure.azurelib.core.animation.AnimatableManager;
 import mod.azure.azurelib.core.animation.AnimationController;
 import mod.azure.azurelib.core.animation.RawAnimation;
+import mod.azure.azurelib.core.object.PlayState;
 import mod.azure.azurelib.util.AzureLibUtil;
 import net.minecraft.BlockUtil;
 import net.minecraft.core.BlockPos;
@@ -107,6 +108,7 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
     public static int maxTimeOnGround = 15;
     private final int LOW_FUEL = 300;
     private final AnimatableInstanceCache cache = AzureLibUtil.createInstanceCache(this);
+//    private boolean isFlying;
 
     public Spaceship(EntityType<? extends Spaceship> p_38290_, Level p_38291_) {
         super(p_38290_, p_38291_);
@@ -128,15 +130,21 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
         return cache;
     }
 
+    private static final RawAnimation flyingAnimation = RawAnimation.begin().thenLoop("flying");
+    private static final RawAnimation idleAnimation = RawAnimation.begin().thenLoop("idle");
+
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(new AnimationController<>(this, "spaceship", 0, event ->
-        {
+        controllers.add(new AnimationController<>(this, "spaceship", 0, event -> {
+
+//            CelestialExploration.LOGGER.debug("isMoving:" + event.isMoving());
+
 //            if (event.isMoving()) {
 //                CelestialExploration.LOGGER.debug("is moving!");
-                return event.setAndContinue(RawAnimation.begin().thenPlay("flying"));
-//            }
-//            else {
+                return event.setAndContinue(flyingAnimation);
+//                return event.setAndContinue(RawAnimation.begin().thenLoop("flying"));
+//            } else {
+//                return event.setAndContinue(idleAnimation);
 //                CelestialExploration.LOGGER.debug("is idle");
 //                return event.setAndContinue(RawAnimation.begin().thenPlay("idle"));
 //            }
