@@ -1,0 +1,1 @@
+- `[FIX]` Workbench now grants experience for certain recipes

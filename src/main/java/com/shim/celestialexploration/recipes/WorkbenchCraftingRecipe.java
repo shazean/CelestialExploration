@@ -42,9 +42,11 @@ public class WorkbenchCraftingRecipe implements Recipe<WorkbenchCraftingContaine
     final int height;
     private final FluidStack fluidIngredient;
     private final float buckets;
+    private final float experience;
 
 
-    public WorkbenchCraftingRecipe(ResourceLocation id, String group, int width, int height, NonNullList<Ingredient> recipeItems, FluidStack fluidIngredient, float buckets, ItemStack result) {
+
+    public WorkbenchCraftingRecipe(ResourceLocation id, String group, int width, int height, NonNullList<Ingredient> recipeItems, FluidStack fluidIngredient, float buckets, ItemStack result, float experience) {
         this.id = id;
         this.group = group;
         this.width = width;
@@ -53,6 +55,7 @@ public class WorkbenchCraftingRecipe implements Recipe<WorkbenchCraftingContaine
         this.fluidIngredient = fluidIngredient;
         this.buckets = buckets;
         this.result = result;
+        this.experience = experience;
     }
 
     @Override
@@ -66,6 +69,10 @@ public class WorkbenchCraftingRecipe implements Recipe<WorkbenchCraftingContaine
 
     public int getWidth() {
         return width;
+    }
+
+    public float getExperience() {
+        return experience;
     }
 
     @Override
@@ -328,10 +335,12 @@ public class WorkbenchCraftingRecipe implements Recipe<WorkbenchCraftingContaine
 
             FluidStack fluidIngredient = CelestialJsonHelper.getFluidStackFromJson(json, true, true, "fluid");
             float buckets = GsonHelper.getAsFloat(json, "buckets", 0.0F);
+            float experience = GsonHelper.getAsFloat(json, "experience", 0.0F);
+
 
             ItemStack result = itemStackFromJson(GsonHelper.getAsJsonObject(json, "result"));
 //            CelestialExploration.LOGGER.debug("ingredients:" + ingredients + " result: " + result);
-            return new WorkbenchCraftingRecipe(id, group, width, height, ingredients, fluidIngredient, buckets, result);
+            return new WorkbenchCraftingRecipe(id, group, width, height, ingredients, fluidIngredient, buckets, result, experience);
         }
 
         @Override
@@ -348,7 +357,9 @@ public class WorkbenchCraftingRecipe implements Recipe<WorkbenchCraftingContaine
             FluidStack fluidIngredient = buf.readFluidStack();
             float buckets = buf.readFloat();
             ItemStack result = buf.readItem();
-            return new WorkbenchCraftingRecipe(id, group, width, height, ingredients, fluidIngredient, buckets, result);
+            float experience = buf.readFloat();
+
+            return new WorkbenchCraftingRecipe(id, group, width, height, ingredients, fluidIngredient, buckets, result, experience);
         }
 
         @Override
@@ -364,6 +375,8 @@ public class WorkbenchCraftingRecipe implements Recipe<WorkbenchCraftingContaine
             buf.writeFloat(recipe.buckets);
 
             buf.writeItem(recipe.result);
+            buf.writeFloat(recipe.experience);
+
         }
 
         @Override

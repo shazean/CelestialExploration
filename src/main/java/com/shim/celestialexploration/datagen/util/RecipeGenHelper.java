@@ -41,19 +41,19 @@ public class RecipeGenHelper {
 
 
     public static void workbenchSmelting(FlowingFluid fluidResult, Item itemToSmelt, float experience, int cookingTime, float buckets, Item unlockedBy, Consumer<FinishedRecipe> consumer) {
-        WorkbenchRecipeBuilder.smelting(fluidResult, Ingredient.of(itemToSmelt), experience, cookingTime, buckets).group("celestialexploration").unlockedBy("has_" + unlockedBy.getRegistryName().getPath(), has(unlockedBy)).save(consumer, fluidResult.getRegistryName().getPath() + "_from_" + itemToSmelt.getRegistryName().getPath() + "_workbench");
+        WorkbenchSmeltingRecipeBuilder.smelting(fluidResult, Ingredient.of(itemToSmelt), experience, cookingTime, buckets).group("celestialexploration").unlockedBy("has_" + unlockedBy.getRegistryName().getPath(), has(unlockedBy)).save(consumer, fluidResult.getRegistryName().getPath() + "_from_" + itemToSmelt.getRegistryName().getPath() + "_workbench");
     }
 
     public static void workbenchSmelting(FlowingFluid fluidResult, Item itemToSmelt, float experience, int cookingTime, float buckets, Block unlockedBy, Consumer<FinishedRecipe> consumer) {
-        WorkbenchRecipeBuilder.smelting(fluidResult, Ingredient.of(itemToSmelt), experience, cookingTime, buckets).group("celestialexploration").unlockedBy("has_" + unlockedBy.getRegistryName().getPath(), has(unlockedBy)).save(consumer, fluidResult.getRegistryName().getPath() + "_from_" + itemToSmelt.getRegistryName().getPath() + "_workbench");
+        WorkbenchSmeltingRecipeBuilder.smelting(fluidResult, Ingredient.of(itemToSmelt), experience, cookingTime, buckets).group("celestialexploration").unlockedBy("has_" + unlockedBy.getRegistryName().getPath(), has(unlockedBy)).save(consumer, fluidResult.getRegistryName().getPath() + "_from_" + itemToSmelt.getRegistryName().getPath() + "_workbench");
     }
 
     public static void workbenchSmelting(FlowingFluid fluidResult, Block itemToSmelt, float experience, int cookingTime, float buckets, Block unlockedBy, Consumer<FinishedRecipe> consumer) {
-        WorkbenchRecipeBuilder.smelting(fluidResult, Ingredient.of(itemToSmelt), experience, cookingTime, buckets).group("celestialexploration").unlockedBy("has_" + unlockedBy.getRegistryName().getPath(), has(unlockedBy)).save(consumer, fluidResult.getRegistryName().getPath() + "_from_" + itemToSmelt.getRegistryName().getPath() + "_workbench");
+        WorkbenchSmeltingRecipeBuilder.smelting(fluidResult, Ingredient.of(itemToSmelt), experience, cookingTime, buckets).group("celestialexploration").unlockedBy("has_" + unlockedBy.getRegistryName().getPath(), has(unlockedBy)).save(consumer, fluidResult.getRegistryName().getPath() + "_from_" + itemToSmelt.getRegistryName().getPath() + "_workbench");
     }
 
     public static void workbenchSmelting(FlowingFluid fluidResult, Block itemToSmelt, float experience, int cookingTime, float buckets, Item unlockedBy, Consumer<FinishedRecipe> consumer) {
-        WorkbenchRecipeBuilder.smelting(fluidResult, Ingredient.of(itemToSmelt), experience, cookingTime, buckets).group("celestialexploration").unlockedBy("has_" + unlockedBy.getRegistryName().getPath(), has(unlockedBy)).save(consumer, fluidResult.getRegistryName().getPath() + "_from_" + itemToSmelt.getRegistryName().getPath() + "_workbench");
+        WorkbenchSmeltingRecipeBuilder.smelting(fluidResult, Ingredient.of(itemToSmelt), experience, cookingTime, buckets).group("celestialexploration").unlockedBy("has_" + unlockedBy.getRegistryName().getPath(), has(unlockedBy)).save(consumer, fluidResult.getRegistryName().getPath() + "_from_" + itemToSmelt.getRegistryName().getPath() + "_workbench");
     }
 
     public static void stairsCraftAndStonecutting(Block item, Block stairsItem, Block unlockedBy, Consumer<FinishedRecipe> consumer) {

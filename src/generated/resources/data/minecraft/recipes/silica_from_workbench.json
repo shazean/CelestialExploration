@@ -15,5 +15,6 @@
     "count": 4
   },
   "fluid": "minecraft:water",
-  "buckets": 0.25
+  "buckets": 0.25,
+  "experience": 0.0
 }

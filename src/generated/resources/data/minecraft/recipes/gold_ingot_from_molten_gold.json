@@ -13,5 +13,6 @@
     "item": "minecraft:gold_ingot"
   },
   "fluid": "celestialexploration:molten_gold",
-  "buckets": 0.1111
+  "buckets": 0.1111,
+  "experience": 0.0
 }

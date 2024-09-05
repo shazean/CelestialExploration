@@ -21,5 +21,6 @@
     "item": "celestialexploration:spaceship_cabin"
   },
   "fluid": "celestialexploration:molten_aluminum",
-  "buckets": 0.44
+  "buckets": 0.44,
+  "experience": 2.8
 }

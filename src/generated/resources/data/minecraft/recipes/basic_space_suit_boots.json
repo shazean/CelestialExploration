@@ -17,5 +17,6 @@
     "item": "celestialexploration:basic_spacesuit_boots"
   },
   "fluid": "celestialexploration:molten_steel",
-  "buckets": 0.22
+  "buckets": 0.22,
+  "experience": 1.4
 }

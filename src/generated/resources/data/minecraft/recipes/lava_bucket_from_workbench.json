@@ -13,5 +13,6 @@
     "item": "minecraft:lava_bucket"
   },
   "fluid": "minecraft:lava",
-  "buckets": 1.0
+  "buckets": 1.0,
+  "experience": 0.0
 }

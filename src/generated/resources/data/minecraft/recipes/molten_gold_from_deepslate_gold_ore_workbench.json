@@ -6,6 +6,6 @@
   },
   "result": "celestialexploration:molten_gold",
   "experience": 0.1,
-  "cookingtime": 100,
+  "smeltingTime": 100,
   "buckets": 0.111
 }

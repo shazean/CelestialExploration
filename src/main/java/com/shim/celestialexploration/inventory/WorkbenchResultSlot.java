@@ -1,23 +1,27 @@
 package com.shim.celestialexploration.inventory;
 
-import com.shim.celestialexploration.blocks.blockentities.WorkbenchBlockEntity;
+import com.google.common.collect.Lists;
+import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.inventory.containers.WorkbenchCraftingContainer;
-import com.shim.celestialexploration.item.BlockMoldItem;
-import com.shim.celestialexploration.item.IngotMoldItem;
 import com.shim.celestialexploration.recipes.WorkbenchCraftingRecipe;
-import com.shim.celestialexploration.registry.ItemRegistry;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import net.minecraft.core.NonNullList;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.Mth;
 import net.minecraft.world.Container;
+import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.RecipeHolder;
 import net.minecraft.world.inventory.Slot;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 
+import java.util.List;
 import java.util.Optional;
 
 public class WorkbenchResultSlot extends Slot {
@@ -40,6 +44,8 @@ public class WorkbenchResultSlot extends Slot {
             this.removeCount += Math.min(p_40173_, this.getItem().getCount());
         }
 
+        CelestialExploration.LOGGER.debug("workbenchResultSlot: remove");
+
         return super.remove(p_40173_);
     }
 
@@ -53,29 +59,97 @@ public class WorkbenchResultSlot extends Slot {
     }
 
     protected void checkTakeAchievements(ItemStack itemStack) {
+        CelestialExploration.LOGGER.debug("checkTakeAchievements");
+
+        CelestialExploration.LOGGER.debug("checkTakeAchievements, player is:" + this.player + ", container is: " + this.container);
+
+
+//        if (this.player instanceof ServerPlayer && this.container instanceof RecipeHolder) {
+//            CelestialExploration.LOGGER.debug("checkTakeAchievements, serverPlayer, is workbenchBlockEntity");
+//            ((WorkbenchBlockEntity)this.container).awardUsedRecipesAndPopExperience((ServerPlayer)this.player);
+//        }
+
+
         if (this.removeCount > 0) {
             itemStack.onCraftedBy(this.player.level, this.player, this.removeCount);
             net.minecraftforge.event.ForgeEventFactory.firePlayerCraftingEvent(this.player, itemStack, this.craftSlots);
         }
 
+
         //TODO grant experience
 
         if (this.container instanceof RecipeHolder) {
             ((RecipeHolder)this.container).awardUsedRecipes(this.player);
+//            if (this.player instanceof ServerPlayer serverPlayer) popExperience(serverPlayer, recipe);
+
         }
 
         this.removeCount = 0;
     }
 
+    public void popExperience(ServerPlayer player, WorkbenchCraftingRecipe recipe) {
+        CelestialExploration.LOGGER.debug("popExperience");
+
+        Object2IntOpenHashMap<ResourceLocation> recipesUsed = new Object2IntOpenHashMap<>();
+        ResourceLocation resourcelocation = recipe.getId();
+        recipesUsed.addTo(resourcelocation, 1);
+
+        for(Object2IntMap.Entry<ResourceLocation> entry : recipesUsed.object2IntEntrySet()) {
+            player.level.getRecipeManager().byKey(entry.getKey()).ifPresent((recipe1) -> {
+                createExperience(player.getLevel(), player.position(), entry.getIntValue(), ((WorkbenchCraftingRecipe)recipe1).getExperience());
+            });
+        }
+    }
+
+//    public List<Recipe<?>> getRecipesToAwardAndPopExperience(ServerLevel level, Vec3 pos) {
+//        List<Recipe<?>> list = Lists.newArrayList();
+//        CelestialExploration.LOGGER.debug("getRecipesToAwardAndPopExperience");
+//
+//
+//
+//        for(Object2IntMap.Entry<ResourceLocation> entry : this.recipesUsed.object2IntEntrySet()) {
+//            level.getRecipeManager().byKey(entry.getKey()).ifPresent((recipe) -> {
+//                list.add(recipe);
+//                createExperience(level, pos, entry.getIntValue(), ((WorkbenchCraftingRecipe)recipe).getExperience());
+//            });
+//        }
+//
+//        return list;
+//    }
+
+    private static void createExperience(ServerLevel level, Vec3 position, int p_155001_, float p_155002_) {
+        CelestialExploration.LOGGER.debug("createExperience, int: " + p_155001_ + "float: " + p_155002_);
+
+        int i = Mth.floor((float)p_155001_ * p_155002_);
+        float f = Mth.frac((float)p_155001_ * p_155002_);
+        if (f != 0.0F && Math.random() < (double)f) {
+            ++i;
+        }
+
+        CelestialExploration.LOGGER.debug("createExperience, i:" + i);
+
+
+        ExperienceOrb.award(level, position, i);
+
+    }
+
     public void onTake(Player player, ItemStack p_150639_) {
         this.checkTakeAchievements(p_150639_);
+
+
         net.minecraftforge.common.ForgeHooks.setCraftingPlayer(player);
         NonNullList<ItemStack> nonnulllist = player.level.getRecipeManager().getRemainingItemsFor(WorkbenchCraftingRecipe.Type.INSTANCE, this.craftSlots, player.level);
         net.minecraftforge.common.ForgeHooks.setCraftingPlayer(null);
 
         Optional<WorkbenchCraftingRecipe> recipe = player.level.getRecipeManager().getRecipeFor(WorkbenchCraftingRecipe.Type.INSTANCE, this.craftSlots, player.level);
 
+
+
         if (recipe.isPresent()) {
+
+            if (player instanceof ServerPlayer serverPlayer) this.popExperience(serverPlayer, recipe.get());
+
+
             float buckets = recipe.get().getBuckets();
 
             int millibuckets = (int) (buckets * 1000.0);

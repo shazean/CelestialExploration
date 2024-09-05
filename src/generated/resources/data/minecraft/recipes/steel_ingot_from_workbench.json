@@ -14,5 +14,6 @@
     "count": 2
   },
   "fluid": "celestialexploration:molten_iron",
-  "buckets": 0.1111
+  "buckets": 0.1111,
+  "experience": 0.7
 }

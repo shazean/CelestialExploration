@@ -13,5 +13,6 @@
     "item": "minecraft:iron_block"
   },
   "fluid": "celestialexploration:molten_iron",
-  "buckets": 1.0
+  "buckets": 1.0,
+  "experience": 0.0
 }

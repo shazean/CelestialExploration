@@ -20,5 +20,6 @@
     "item": "celestialexploration:basic_spacesuit_helmet"
   },
   "fluid": "celestialexploration:molten_steel",
-  "buckets": 0.33
+  "buckets": 0.33,
+  "experience": 2.1
 }

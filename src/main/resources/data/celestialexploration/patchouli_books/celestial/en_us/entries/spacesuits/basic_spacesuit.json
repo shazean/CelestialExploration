@@ -1,0 +1,14 @@
+{
+  "name": "Basic Spacesuit",
+  "icon": "celestialexploration:basic_spacesuit_helmet",
+  "category": "celestialexploration:spacesuits",
+  "pages": [
+    "This is the basic spacesuit. It doesn’t have any special features, other than being a spacesuit, and is fairly equivalent to iron armor.",
+    {
+      "type": "patchouli:entity",
+      "entity": "minecraft:armor_stand{ArmorItems:[{id:\"celestialexploration:basic_spacesuit_boots\",Count:1},{id:\"celestialexploration:basic_spacesuit_leggings\",Count:1},{id:\"celestialexploration:basic_spacesuit_chestplate\",Count:1},{id:\"celestialexploration:basic_spacesuit_helmet\",Count:1}],NoBasePlate:1}",
+      "name": "Basic Spacesuit",
+      "offset": 0.1
+    }
+  ]
+}

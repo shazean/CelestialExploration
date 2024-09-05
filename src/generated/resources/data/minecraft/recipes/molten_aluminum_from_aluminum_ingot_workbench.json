@@ -6,6 +6,6 @@
   },
   "result": "celestialexploration:molten_aluminum",
   "experience": 0.7,
-  "cookingtime": 100,
+  "smeltingTime": 100,
   "buckets": 0.111
 }

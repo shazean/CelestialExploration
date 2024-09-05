@@ -21,5 +21,6 @@
     "item": "celestialexploration:oxygen_compressor"
   },
   "fluid": "celestialexploration:molten_steel",
-  "buckets": 0.22
+  "buckets": 0.22,
+  "experience": 1.4
 }

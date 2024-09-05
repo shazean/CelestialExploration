@@ -18,5 +18,6 @@
     "item": "celestialexploration:spaceship_frame"
   },
   "fluid": "celestialexploration:molten_steel",
-  "buckets": 0.33
+  "buckets": 0.33,
+  "experience": 2.1
 }

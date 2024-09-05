@@ -159,11 +159,12 @@ public class WorkbenchBlock extends BaseEntityBlock {
     }
 
     private static ItemStack getFullBucketItem(FluidStack fluid) {
-        if (fluid.containsFluid(new FluidStack(Fluids.WATER, 1))) {
-            return new ItemStack(Items.WATER_BUCKET);
-        } else if (fluid.containsFluid(new FluidStack(Fluids.LAVA, 1))) {
-            return new ItemStack(Items.LAVA_BUCKET);
-        } else if (fluid.containsFluid(new FluidStack(FluidRegistry.MOLTEN_IRON.get(), 1))) {
+//        if (fluid.containsFluid(new FluidStack(Fluids.WATER, 1))) {
+//            return new ItemStack(Items.WATER_BUCKET);
+//        } else if (fluid.containsFluid(new FluidStack(Fluids.LAVA, 1))) {
+//            return new ItemStack(Items.LAVA_BUCKET);
+//        } else
+        if (fluid.containsFluid(new FluidStack(FluidRegistry.MOLTEN_IRON.get(), 1))) {
             return new ItemStack(Items.IRON_BLOCK);
         } else if (fluid.containsFluid(new FluidStack(FluidRegistry.MOLTEN_STEEL.get(), 1))) {
            return new ItemStack(BlockRegistry.STEEL_BLOCK.get());

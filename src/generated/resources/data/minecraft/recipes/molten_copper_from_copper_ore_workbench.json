@@ -6,6 +6,6 @@
   },
   "result": "celestialexploration:molten_copper",
   "experience": 0.1,
-  "cookingtime": 100,
+  "smeltingTime": 100,
   "buckets": 0.1111
 }

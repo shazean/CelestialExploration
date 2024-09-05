@@ -11,6 +11,7 @@ import com.shim.celestialexploration.item.armor.*;
 import com.shim.celestialexploration.registry.*;
 import com.shim.celestialexploration.world.renderer.DimensionRenderers;
 import mod.azure.azurelib.renderer.GeoArmorRenderer;
+import net.minecraft.client.RecipeBookCategories;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.model.SkullModel;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
@@ -18,6 +19,9 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.inventory.RecipeBookType;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -145,5 +149,10 @@ public class ModEventClientBusEvents {
         MenuScreens.register(MenuRegistry.WORKBENCH_MENU.get(), WorkbenchScreen::new);
 
         OverlayRegistry.registerOverlay(event);
+
+        RecipeBookCategories.create("celestialexploration:workbench_crafting",  new ItemStack[] { new ItemStack((ItemLike)BlockRegistry.WORKBENCH.get()) });
+        RecipeBookCategories.create("celestialexploration:workbench_smelting", new ItemStack(BlockRegistry.WORKBENCH.get()));
+
     }
+
 }

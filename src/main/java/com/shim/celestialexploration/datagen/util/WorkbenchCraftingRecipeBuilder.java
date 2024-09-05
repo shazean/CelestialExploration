@@ -35,32 +35,34 @@ public class WorkbenchCraftingRecipeBuilder implements RecipeBuilder {
     private final Map<Character, Ingredient> key = Maps.newLinkedHashMap();
     private final Fluid fluid;
     private final float buckets;
+    private final float experience;
     private final Advancement.Builder advancement = Advancement.Builder.advancement();
     @Nullable
     private String group;
 //    private final WorkbenchCraftingRecipe.Serializer serializer;
 
-    private WorkbenchCraftingRecipeBuilder(ItemLike item, int count, Fluid fluid, float buckets) {
+    private WorkbenchCraftingRecipeBuilder(ItemLike item, int count, Fluid fluid, float buckets, float experience) {
         this.result = item.asItem();
         this.count = count;
         this.fluid = fluid;
         this.buckets = buckets;
+        this.experience = experience;
     }
 
-    public static WorkbenchCraftingRecipeBuilder shaped(ItemLike item, Fluid fluid) {
-        return shaped(item, 1, fluid);
+    public static WorkbenchCraftingRecipeBuilder shaped(ItemLike item, Fluid fluid, float experience) {
+        return shaped(item, 1, fluid, experience);
     }
 
-    public static WorkbenchCraftingRecipeBuilder shaped(ItemLike item, int count, Fluid fluid) {
-        return shaped(item, count, fluid, 1.0F);
+    public static WorkbenchCraftingRecipeBuilder shaped(ItemLike item, int count, Fluid fluid, float experience) {
+        return shaped(item, count, fluid, 1.0F, experience);
     }
 
-    public static WorkbenchCraftingRecipeBuilder shaped(ItemLike item, Fluid fluid, float buckets) {
-        return shaped(item, 1, fluid, buckets);
+    public static WorkbenchCraftingRecipeBuilder shaped(ItemLike item, Fluid fluid, float buckets, float experience) {
+        return shaped(item, 1, fluid, buckets, experience);
     }
 
-    public static WorkbenchCraftingRecipeBuilder shaped(ItemLike item, int count, Fluid fluid, float buckets) {
-        return new WorkbenchCraftingRecipeBuilder(item, count, fluid, buckets);
+    public static WorkbenchCraftingRecipeBuilder shaped(ItemLike item, int count, Fluid fluid, float buckets, float experience) {
+        return new WorkbenchCraftingRecipeBuilder(item, count, fluid, buckets, experience);
     }
 
 
@@ -122,7 +124,7 @@ public class WorkbenchCraftingRecipeBuilder implements RecipeBuilder {
         this.ensureValid(p_176504_);
         this.advancement.parent(new ResourceLocation("recipes/root")).addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(p_176504_)).rewards(AdvancementRewards.Builder.recipe(p_176504_)).requirements(RequirementsStrategy.OR);
         p_176503_.accept(new WorkbenchCraftingRecipeBuilder.Result(p_176504_,
-                this.group == null ? "" : this.group, this.result, this.count, this.rows, this.key, this.fluid, this.buckets, this.advancement,
+                this.group == null ? "" : this.group, this.result, this.count, this.rows, this.key, this.fluid, this.buckets, this.experience, this.advancement,
                 new ResourceLocation(CelestialExploration.MODID, "recipes/" + p_176504_.getPath())));
     }
 
@@ -141,10 +143,11 @@ public class WorkbenchCraftingRecipeBuilder implements RecipeBuilder {
         private final Map<Character, Ingredient> key;
         private final Fluid fluid;
         private final float buckets;
+        private final float experience;
         private final Advancement.Builder advancement;
         private final ResourceLocation advancementId;
 
-        public Result(ResourceLocation id, String group, Item result, int count, List<String> pattern, Map<Character, Ingredient> key, Fluid fluid, float buckets, Advancement.Builder advancement, ResourceLocation advancementId) {
+        public Result(ResourceLocation id, String group, Item result, int count, List<String> pattern, Map<Character, Ingredient> key, Fluid fluid, float buckets, float experience, Advancement.Builder advancement, ResourceLocation advancementId) {
             this.id = id;
             this.group = group;
             this.result = result;
@@ -153,6 +156,7 @@ public class WorkbenchCraftingRecipeBuilder implements RecipeBuilder {
             this.key = key;
             this.fluid = fluid;
             this.buckets = buckets;
+            this.experience = experience;
             this.advancement = advancement;
             this.advancementId = advancementId;
         }
@@ -189,6 +193,7 @@ public class WorkbenchCraftingRecipeBuilder implements RecipeBuilder {
 //            json.addProperty("experience", this.experience);
 //            json.addProperty("cookingtime", this.cookingTime);
             json.addProperty("buckets", this.buckets);
+            json.addProperty("experience", this.experience);
 
         }
 

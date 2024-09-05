@@ -1,14 +1,17 @@
 package com.shim.celestialexploration.blocks.blockentities;
 
 import com.google.common.collect.Lists;
+import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.blocks.WorkbenchBlock;
 import com.shim.celestialexploration.inventory.SimpleFluidContainerData;
 import com.shim.celestialexploration.inventory.menus.WorkbenchMenu;
+import com.shim.celestialexploration.recipes.WorkbenchCraftingRecipe;
 import com.shim.celestialexploration.recipes.WorkbenchSmeltingRecipe;
 import com.shim.celestialexploration.registry.BlockEntityRegistry;
 import com.shim.celestialexploration.registry.FluidRegistry;
 import com.shim.celestialexploration.util.CelestialUtil;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -254,6 +257,8 @@ public class WorkbenchBlockEntity extends BlockEntity implements MenuProvider {
                         blockEntity.progress = 0;
                         blockEntity.maxProgress = recipe.get().getCookingTime();
                         smeltItem(blockEntity);
+                        blockEntity.setRecipeUsed(recipe.get());
+
                         changed = true;
                     }
                 }
@@ -290,6 +295,48 @@ public class WorkbenchBlockEntity extends BlockEntity implements MenuProvider {
         Optional<WorkbenchSmeltingRecipe> match = level.getRecipeManager().getRecipeFor(WorkbenchSmeltingRecipe.Type.INSTANCE, inventory, level);
 
         return match.isPresent();
+    }
+
+    private final Object2IntOpenHashMap<ResourceLocation> recipesUsed = new Object2IntOpenHashMap<>();
+
+    public void setRecipeUsed(@javax.annotation.Nullable Recipe<?> p_58345_) {
+        if (p_58345_ != null) {
+            ResourceLocation resourcelocation = p_58345_.getId();
+            this.recipesUsed.addTo(resourcelocation, 1);
+        }
+    }
+
+    public void awardUsedRecipesAndPopExperience(ServerPlayer player) {
+        CelestialExploration.LOGGER.debug("awardUsedRecipesAndPopExperience");
+        List<Recipe<?>> list = this.getRecipesToAwardAndPopExperience(player.getLevel(), player.position());
+        player.awardRecipes(list);
+        this.recipesUsed.clear();
+
+    }
+
+    public List<Recipe<?>> getRecipesToAwardAndPopExperience(ServerLevel level, Vec3 pos) {
+        List<Recipe<?>> list = Lists.newArrayList();
+        CelestialExploration.LOGGER.debug("getRecipesToAwardAndPopExperience");
+
+
+        for(Object2IntMap.Entry<ResourceLocation> entry : this.recipesUsed.object2IntEntrySet()) {
+            level.getRecipeManager().byKey(entry.getKey()).ifPresent((recipe) -> {
+                list.add(recipe);
+                createExperience(level, pos, entry.getIntValue(), ((WorkbenchCraftingRecipe)recipe).getExperience());
+            });
+        }
+
+        return list;
+    }
+
+    private static void createExperience(ServerLevel level, Vec3 position, int p_155001_, float p_155002_) {
+        int i = Mth.floor((float)p_155001_ * p_155002_);
+        float f = Mth.frac((float)p_155001_ * p_155002_);
+        if (f != 0.0F && Math.random() < (double)f) {
+            ++i;
+        }
+
+        ExperienceOrb.award(level, position, i);
     }
 
 
