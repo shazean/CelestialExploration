@@ -52,17 +52,5 @@ public class BiomeRegistry {
     public static final RegistryObject<Biome> MERCURY_RIDGES = BIOMES.register("mercury_ridges", MercuryBiomes::ridges);
 
 
-    /**
-     * TAGS
-     */
-    public static final TagKey<Biome> MARS_BIOMES = create("mars");
-    public static final TagKey<Biome> MOON_BIOMES = create("moon");
-    public static final TagKey<Biome> SPACE_BIOMES = create("space");
-    public static final TagKey<Biome> VENUS_BIOMES = create("venus");
-    public static final TagKey<Biome> MERCURY_BIOMES = create("mercury");
 
-
-    private static TagKey<Biome> create(String key) {
-        return TagKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(CelestialExploration.MODID, key));
-    }
 }

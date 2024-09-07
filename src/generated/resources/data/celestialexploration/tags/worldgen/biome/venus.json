@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "celestialexploration:venus_desert",
+    "celestialexploration:venus_lower_plains",
+    "celestialexploration:venus_plains",
+    "celestialexploration:venus_flats",
+    "celestialexploration:sulfur_river",
+    "celestialexploration:sulfur_ocean"
+  ]
+}

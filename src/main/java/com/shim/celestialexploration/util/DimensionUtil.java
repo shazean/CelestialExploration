@@ -31,10 +31,11 @@ public class DimensionUtil {
         return DIMENSION_GRAVITY.get(dimension).equals(gravityType.HIGH);
     }
 
+
     public enum gravityType {
         EXTRA_LOW,
         LOW,
         NORMAL,
-        HIGH;
+        HIGH
     }
 }

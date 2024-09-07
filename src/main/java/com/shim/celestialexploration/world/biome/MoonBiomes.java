@@ -16,6 +16,7 @@ public class MoonBiomes extends CelestialBiomes {
 
         CelestialBiomes.addCarversAndLakes(biomeBuilder);
 
+
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.DISK_MOON_SAND);
         addMoonOres(biomeBuilder);
 
@@ -43,6 +44,7 @@ public class MoonBiomes extends CelestialBiomes {
     public static Biome lavaFlats() {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
+
 
 
         CelestialBiomes.addCarversAndLakes(biomeBuilder);

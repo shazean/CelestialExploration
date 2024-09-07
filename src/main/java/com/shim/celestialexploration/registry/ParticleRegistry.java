@@ -24,6 +24,7 @@ public class ParticleRegistry {
     public static final RegistryObject<SimpleParticleType> SULFUR_FIRE_FLAME = PARTICLES.register("sulfur_fire_flame_particle", () -> new SimpleParticleType(false));
     public static final RegistryObject<SimpleParticleType> SULFUR_SPLASH_PARTICLE = PARTICLES.register("sulfur_splash_particle", () -> new SimpleParticleType(false));
 
+    public static final RegistryObject<SimpleParticleType> DUST_PARTICLE = PARTICLES.register("dust_particle", () -> new SimpleParticleType(false));
 
     //PORTAL PARTICLES
     public static final RegistryObject<SimpleParticleType> MARS_PORTAL_PARTICLES = PARTICLES.register("mars_portal_particles", () -> new SimpleParticleType(false));
@@ -33,10 +34,8 @@ public class ParticleRegistry {
 
     public static final RegistryObject<SimpleParticleType> SPACESHIP_PARTICLES = PARTICLES.register("spaceship_particles", () -> new SimpleParticleType(false));
 
-
     public static void register(IEventBus eventBus) {
         PARTICLES.register(eventBus);
     }
-
 }
 

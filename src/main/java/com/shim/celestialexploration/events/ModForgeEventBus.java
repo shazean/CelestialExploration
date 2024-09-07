@@ -15,7 +15,9 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -23,6 +25,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.EntityMountEvent;
 import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
@@ -133,6 +136,16 @@ public class ModForgeEventBus {
                 livingEntity.addEffect(new MobEffectInstance(EffectRegistry.LOW_GRAVITY.get(), 120000, 0, false, false, true));
             } else {
                 livingEntity.removeEffect(EffectRegistry.LOW_GRAVITY.get());
+            }
+        }
+
+        if (event.getWorld().isRaining() && dimension.equals(DimensionRegistry.MARS)) { //FIXME, update way of checking if dimension (and biome?) has sandstorms
+            if (entity instanceof LivingEntity livingEntity) {
+                livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 12000, 1, false, false, true));
+            }
+        } else if (!event.getWorld().isRaining() && dimension.equals(DimensionRegistry.MARS)) {
+            if (entity instanceof LivingEntity livingEntity) {
+                livingEntity.removeEffect(MobEffects.MOVEMENT_SLOWDOWN);
             }
         }
     }

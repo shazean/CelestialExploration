@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "#celestialexploration:mars",
+    "#celestialexploration:moon",
+    "#celestialexploration:space",
+    "#celestialexploration:venus",
+    "#celestialexploration:mercury"
+  ]
+}

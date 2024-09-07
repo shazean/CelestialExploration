@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "celestialexploration:mercury_cratered_plains",
+    "celestialexploration:mercury_desert",
+    "celestialexploration:mercury_deep_cratered_plains",
+    "celestialexploration:mercury_plains",
+    "celestialexploration:mercury_ridges"
+  ]
+}

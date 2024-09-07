@@ -11,6 +11,7 @@ public class CelestialCommonConfig {
     public static final ForgeConfigSpec.ConfigValue<Integer> SPACESHIP_FUEL_RATE;
     public static final ForgeConfigSpec.ConfigValue<Double> SPACESHIP_SPEED;
     public static final ForgeConfigSpec.ConfigValue<Boolean> SPACESHIP_FASTER_IN_SPACE;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> STORMS;
 
     static {
         BUILDER.push("Configs for Celestial Exploration");
@@ -20,6 +21,7 @@ public class CelestialCommonConfig {
         SPACESHIP_FUEL_RATE = BUILDER.comment("How quickly the spaceship depletes fuel, in # of ticks (higher is slower)").defineInRange("Spaceship Fuel Rate", 60, 20, 200);
         SPACESHIP_SPEED = BUILDER.comment("Speed of the spaceship").defineInRange("Spaceship Speed", 1.0D, 0.40D, 1.80D);
         SPACESHIP_FASTER_IN_SPACE = BUILDER.comment("Should the spaceship move faster through the space dimension?").define("Spaceship Faster in Space", true);
+        STORMS = BUILDER.comment("Should there be storms on appropriate planets (i.e. dust storms on Mars)? If true, storms will occur when it's raining on the overworld.").define("Storms (Dust Storms, etc.)", true);
 
         BUILDER.pop();
         SPEC = BUILDER.build();

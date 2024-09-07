@@ -2,11 +2,13 @@ buildscript {
     repositories {
         // These repositories are only for Gradle plugins, put any other repositories in the repository block further below
         maven { url = 'https://maven.minecraftforge.net' }
+        maven { url = 'https://repo.spongepowered.org/maven' }
         mavenCentral()
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
         classpath "gradle.plugin.com.matthewprenger:CurseGradle:1.4.0"
+        classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
     }
 }
 // Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
@@ -16,6 +18,8 @@ plugins {
 }
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'com.matthewprenger.cursegradle'
+apply plugin: 'org.spongepowered.mixin'
+
 
 version = System.getenv("CELESTIAL_VERSION") ?: new File(".release-info/1.18/VERSION").text.trim()
 group = 'com.shim.celestialexploration' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
@@ -60,6 +64,8 @@ minecraft {
             // You can set various levels here.
             // Please read: https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels
             property 'forge.logging.console.level', 'debug'
+
+            arg "-mixin.config=celestialexploration.mixins.json"
 
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
             property 'forge.enabledGameTestNamespaces', 'examplemod'
@@ -185,15 +191,21 @@ dependencies {
     //AzureLib
     implementation fg.deobf("mod.azure.azurelib:azurelib-forge-1.18.2:${azurelib_version}")
 
+    // Apply Mixin AP
+    annotationProcessor 'org.spongepowered:mixin:0.8.4:processor'
 
     // compile against the JEI API but do not include it at runtime
     compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api")
     // at runtime, use the full JEI jar
     runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")
 
-    compileOnly fg.deobf("vazkii.patchouli:Patchouli:${ptch_version}:api")
-    runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${ptch_version}")
+//    compileOnly fg.deobf("vazkii.patchouli:Patchouli:${ptch_version}:api")
+//    runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${ptch_version}")
 
+}
+
+mixin {
+    add sourceSets.main, "celestialexploration.mixin-refmap.json"
 }
 
 // Example for how to get properties into the manifest for reading at runtime.

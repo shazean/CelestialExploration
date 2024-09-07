@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "package": "com.shim.celestialexploration.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "celestialexploration.mixin-refmap.json",
+  "mixins": [
+    "BiomeShouldSnowMixin"
+  ],
+  "client": [
+  ],
+  "minVersion": "0.8"
+}

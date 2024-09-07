@@ -1,11 +1,13 @@
 package com.shim.celestialexploration.registry;
 
 import com.shim.celestialexploration.CelestialExploration;
+import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 
 public class TagRegistry {
@@ -96,4 +98,26 @@ public class TagRegistry {
         public static final TagKey<Item>  SPACESHIP = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "spaceship"));
 
     }
+
+    public class Biomes {
+
+        public static final TagKey<Biome> MARS_BIOMES = create("mars");
+        public static final TagKey<Biome> MOON_BIOMES = create("moon");
+        public static final TagKey<Biome> SPACE_BIOMES = create("space");
+        public static final TagKey<Biome> VENUS_BIOMES = create("venus");
+        public static final TagKey<Biome> MERCURY_BIOMES = create("mercury");
+        public static final TagKey<Biome> NO_SNOW_BIOMES = create("no_snow");
+
+        public static final TagKey<Biome> PLANETS = create("planets");
+        public static final TagKey<Biome> MOONS = create("moons");
+        public static final TagKey<Biome> CELESTIAL_BODIES = create("celestial_bodies");
+
+
+    }
+
+    private static TagKey<Biome> create(String key) {
+        return TagKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(CelestialExploration.MODID, key));
+    }
+
+
 }

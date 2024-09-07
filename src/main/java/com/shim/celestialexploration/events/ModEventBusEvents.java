@@ -9,10 +9,7 @@ import com.shim.celestialexploration.entity.mob.slimes.*;
 import com.shim.celestialexploration.entity.model.MagCartModel;
 import com.shim.celestialexploration.entity.model.SpaceshipModel;
 import com.shim.celestialexploration.entity.renderer.SpaceshipRenderer;
-import com.shim.celestialexploration.particles.CelestialPortalParticle;
-import com.shim.celestialexploration.particles.CelestialSlimeParticles;
-import com.shim.celestialexploration.particles.SpaceshipParticles;
-import com.shim.celestialexploration.particles.SulfurParticle;
+import com.shim.celestialexploration.particles.*;
 import com.shim.celestialexploration.recipes.WorkbenchCraftingRecipe;
 import com.shim.celestialexploration.recipes.WorkbenchSmeltingRecipe;
 import com.shim.celestialexploration.registry.CelestialModelLayers;
@@ -123,6 +120,8 @@ public class ModEventBusEvents {
         Minecraft.getInstance().particleEngine.register(ParticleRegistry.SULFUR_PARTICLE.get(), SulfurParticle.Provider::new);
         Minecraft.getInstance().particleEngine.register(ParticleRegistry.SULFUR_FIRE_FLAME.get(), FlameParticle.Provider::new);
         Minecraft.getInstance().particleEngine.register(ParticleRegistry.SULFUR_SPLASH_PARTICLE.get(), WaterDropParticle.Provider::new);
+        Minecraft.getInstance().particleEngine.register(ParticleRegistry.DUST_PARTICLE.get(), DustStormParticle.Provider::new);
+
 
         Minecraft.getInstance().particleEngine.register(ParticleRegistry.MARS_PORTAL_PARTICLES.get(), CelestialPortalParticle.MarsProvider::new);
         Minecraft.getInstance().particleEngine.register(ParticleRegistry.VENUS_PORTAL_PARTICLES.get(), CelestialPortalParticle.VenusProvider::new);

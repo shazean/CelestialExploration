@@ -104,7 +104,7 @@ public class ModLanguageProvider extends LanguageProvider {
 		add("key.celestialexploration.flight_descent", "Spaceship Descent");
 		add("key.celestialexploration.turn_left", "Spaceship Strafe Left");
 		add("key.celestialexploration.turn_right", "Spaceship Strafe Right");
-		add("key.celestialexploration.open_shuttle_inventory", "Open Spaceship Inventory");
+//		add("key.celestialexploration.open_shuttle_inventory", "Open Spaceship Inventory");
 
 
 		//---- DAMAGE SOURCES -------------------------------------------------------------------------------
@@ -114,11 +114,23 @@ public class ModLanguageProvider extends LanguageProvider {
 		//---- ADVANCEMENTS -------------------------------------------------------------------------------
 		add("advancements.celestial.fly_into_sun.title", "Icarus");
 		add("advancements.celestial.fly_into_sun.description", "Fly into the sun");
-		add("advancements.celestial.enter_space.title", "To Infinity… And Beyond!");
+		add("advancements.celestial.enter_space.title", "To Infinity… and Beyond!");
 		add("advancements.celestial.enter_space.description", "Enter space");
 		add("advancements.celestial.enter_moon.title", "One Small Step For Man…");
 		add("advancements.celestial.enter_moon.description", "Reach the moon");
 		add("advancements.celestial.plant_potato.title", "The Best Botanist On This Planet");
 		add("advancements.celestial.plant_potato.description", "Plant potatoes on Mars");
+		add("advancements.celestial.enter_mars.title", "The Red Planet");
+		add("advancements.celestial.enter_mars.description", "Reach Mars");
+		add("advancements.celestial.enter_venus.title", "Goddess of Beauty… And Sulfur?");
+		add("advancements.celestial.enter_venus.description", "Reach Venus");
+		add("advancements.celestial.enter_mercury.title", "Runner Up Dwarf Planet");
+		add("advancements.celestial.enter_mercury.description", "Reach Mercury");
+		add("advancements.celestial.obtain_spacesuit.title", "Space Pajamas");
+		add("advancements.celestial.obtain_spacesuit.description", "Acquire a spacesuit");
+		add("advancements.celestial.obtain_spaceship.title", "Rocketman");
+		add("advancements.celestial.obtain_spaceship.description", "Craft a spaceship");
+
+
 	}
 }

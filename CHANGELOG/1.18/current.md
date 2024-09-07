@@ -1,1 +1,3 @@
 - `[FIX]` Workbench now grants experience for certain recipes
+- `[FIX]` Fixed snow appearing on ground on Mars and the moon during overworld rain storms
+- `[NEW]` Martian dust storms (which can be turned off in config)

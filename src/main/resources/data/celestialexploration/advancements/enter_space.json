@@ -16,7 +16,7 @@
 		"hidden": false
 	},
 	"criteria": {
-		"entered_moon": {
+		"entered_space": {
 			"trigger": "minecraft:changed_dimension",
 			"conditions": {
 				"from": "minecraft:overworld",
