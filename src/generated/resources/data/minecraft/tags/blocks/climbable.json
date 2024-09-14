@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "celestialexploration:steel_frame"
+    "celestialexploration:steel_frame",
+    "celestialexploration:steel_ladder"
   ]
 }

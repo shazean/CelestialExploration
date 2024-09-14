@@ -3,6 +3,7 @@ package com.shim.celestialexploration.registry;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.blocks.*;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.BlockItem;
@@ -58,6 +59,12 @@ public class BlockRegistry {
         ItemRegistry.ITEMS.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tabIn)));
         BLOCK_LANG_EN_US.put(block, localizationIn);
         BLOCKS_LOOT_TABLE.add(block);
+        return block;
+    }
+
+    private static <T extends Block> RegistryObject<T> registerBlockNoItem(String nameIn, String localizationIn, Supplier<T> blockIn) {
+        RegistryObject<T> block = BLOCKS.register(nameIn, blockIn);
+        BLOCK_LANG_EN_US.put(block, localizationIn);
         return block;
     }
 
@@ -363,6 +370,7 @@ public class BlockRegistry {
     public static final RegistryObject<Block> MERCURY_CORE = registerCoreBlock("mercury_core", "Mercurian Core", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F).noDrops().isValidSpawn(BlockRegistry::never)));
     public static final RegistryObject<Block> MERCURY_SAND = registerBlockDropsSelf("mercury_sand", "Mercurian Regolith", () -> new SandBlock(0xE7E2E2, Block.Properties.of(Material.SAND).strength(0.5F).sound(SoundType.SAND)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
     public static final RegistryObject<Block> COARSE_MERCURY_SAND = registerBlockDropsSelf("coarse_mercury_sand", "Coarse Mercurian Regolith", () -> new Block(Block.Properties.of(Material.DIRT).strength(0.5F).sound(SoundType.GRAVEL)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+    public static final RegistryObject<Block> MERCURY_SAND_PATH = registerBlock("mercury_sand_path", "Mercurian Regolith Path", () -> new CelestialPathBlock(Block.Properties.of(Material.SAND).strength(0.5F).sound(SoundType.SAND), MERCURY_SAND.get()), CelestialExploration.CELESTIAL_BLOCKS_TAB);
     public static final RegistryObject<Block> MERCURY_LANTERN = registerBlock("mercury_lantern", "Mercurian Lantern", () -> new Block(Block.Properties.of(Material.GLASS, MaterialColor.QUARTZ).strength(0.3F).sound(SoundType.GLASS).lightLevel((light) -> 13)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
 
     //---- CELESTIAL OBJECTS -------------------------------------------------------------------------------
@@ -469,14 +477,23 @@ public class BlockRegistry {
     //---- SPACESHIP-RELATED -------------------------------------------------------------------------------
     public static final RegistryObject<Block> OXYGEN_COMPRESSOR = registerBlockDropsSelf("oxygen_compressor", "Oxygen Compressor", () -> new OxygenCompressorBlock(Block.Properties.of(Material.METAL, MaterialColor.METAL).lightLevel(litBlockEmission(10)).strength(3.5F).sound(SoundType.METAL)), CelestialExploration.SPACESHIP_TAB);
     public static final RegistryObject<Block> WORKBENCH = registerBlockDropsSelf("workbench", "Workbench", () -> new WorkbenchBlock(Block.Properties.of(Material.METAL, MaterialColor.METAL).lightLevel(litBlockEmission(10)).strength(3.5F).sound(SoundType.METAL)), CelestialExploration.SPACESHIP_TAB);
-    public static final RegistryObject<Block> LOX_TANK = BLOCKS.register("lox_tank", () -> new LoxTankBlock(Block.Properties.of(Material.STONE, MaterialColor.COLOR_BROWN).noOcclusion().strength(0.5F).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> LOX_TANK = registerBlockNoItem("lox_tank", "Liquid Oxygen Tank", () -> new LoxTankBlock(Block.Properties.of(Material.STONE, MaterialColor.COLOR_BROWN).noOcclusion().strength(0.5F).sound(SoundType.STONE)));
     public static final RegistryObject<Block> STEEL_FRAME = registerBlockDropsSelf("steel_frame", "Steel Frame", () -> new SteelFrameBlock(Block.Properties.of(Material.METAL, MaterialColor.METAL).strength(5.0F, 6.0F).sound(SoundType.METAL).dynamicShape()), CelestialExploration.SPACESHIP_TAB);
 
     //---- SPACE STATION -------------------------------------------------------------------------------
     public static final RegistryObject<DoorBlock> AIRLOCK_DOOR = registerBlock("airlock_door", "Airlock Door", () -> new DoorBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.METAL).requiresCorrectToolForDrops().strength(5.0F).sound(SoundType.METAL).noOcclusion()), CelestialExploration.CELESTIAL_MISC_TAB);
+    public static final RegistryObject<TrapDoorBlock> AIRLOCK_TRAPDOOR = registerBlockDropsSelf("airlock_trapdoor", "Airlock Trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.METAL).requiresCorrectToolForDrops().strength(5.0F).sound(SoundType.METAL).noOcclusion()), CelestialExploration.CELESTIAL_MISC_TAB);
     public static final RegistryObject<DoorBlock> STEEL_DOOR = registerBlock("steel_door", "Steel Door", () -> new DoorBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.METAL).requiresCorrectToolForDrops().strength(5.0F).sound(SoundType.METAL).noOcclusion()), CelestialExploration.CELESTIAL_MISC_TAB);
     public static final RegistryObject<TrapDoorBlock> STEEL_TRAPDOOR = registerBlockDropsSelf("steel_trapdoor", "Steel Trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.of(Material.METAL).requiresCorrectToolForDrops().strength(5.0F).sound(SoundType.METAL).noOcclusion().isValidSpawn(BlockRegistry::never)), CelestialExploration.CELESTIAL_MISC_TAB);
     public static final RegistryObject<ButtonBlock> STEEL_BUTTON = registerBlockDropsSelf("steel_button", "Steel Button", () -> new StoneButtonBlock(BlockBehaviour.Properties.of(Material.DECORATION).strength(0.5F).noCollission()), CelestialExploration.CELESTIAL_MISC_TAB);
+    public static final RegistryObject<LadderBlock> STEEL_LADDER = registerBlockDropsSelf("steel_ladder", "Steel Ladder", () -> new LadderBlock(BlockBehaviour.Properties.of(Material.DECORATION).strength(0.4F).sound(SoundType.LADDER).noOcclusion()), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+    public static final RegistryObject<ButtonBlock> AIRLOCK_BUTTON = registerBlockDropsSelf("airlock_button", "Airlock Button", () -> new WoodButtonBlock(BlockBehaviour.Properties.of(Material.DECORATION).strength(0.5F).noCollission()), CelestialExploration.CELESTIAL_MISC_TAB);
+
+    public static final RegistryObject<Block> GLOW_STRIP = registerBlockDropsSelf("glow_strip", "Glow Strip", () -> new GlowStripBlock(BlockBehaviour.Properties.of(Material.DECORATION).noCollission().instabreak().lightLevel((p_152607_) -> 15).sound(SoundType.GLASS), false), CelestialExploration.CELESTIAL_MISC_TAB);
+    public static final RegistryObject<Block> HORIZONTAL_GLOW_STRIP = registerBlockDropsSelf("horizontal_glow_strip", "Horizontal Glow Strip", () -> new GlowStripBlock(BlockBehaviour.Properties.of(Material.DECORATION).noCollission().instabreak().lightLevel((p_152607_) -> 15).sound(SoundType.GLASS), true), CelestialExploration.CELESTIAL_MISC_TAB);
+
+    public static final RegistryObject<AirlockDoorBlock> AIRLOCK_PANEL_DOOR = registerBlock("airlock_panel_door", "Airlock Panel Door", () -> new AirlockDoorBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.METAL).requiresCorrectToolForDrops().strength(5.0F).sound(SoundType.METAL).noOcclusion()), CelestialExploration.CELESTIAL_MISC_TAB);
+
 
     public static final RegistryObject<RotatedPillarBlock> INSULATED_PANEL = registerBlockDropsSelf("insulated_panel", "Insulated Panel", () -> new RotatedPillarBlock(Block.Properties.of(Material.METAL).strength(3.0f, 3.0f).requiresCorrectToolForDrops().sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
     public static final RegistryObject<RotatedDirectionalBlock> INSULATED_PANEL_CORNER = registerBlockDropsSelf("insulated_panel_corner", "Insulated Panel Corner", () -> new RotatedDirectionalBlock(Block.Properties.of(Material.METAL).strength(3.0f, 3.0f).requiresCorrectToolForDrops().sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
@@ -487,12 +504,12 @@ public class BlockRegistry {
 
     public static final RegistryObject<IronBarsBlock> THIN_PANEL = registerBlockDropsSelf("thin_panel", "Thin Panel", () -> new IronBarsBlock(Block.Properties.of(Material.METAL).strength(0.3F).sound(SoundType.GLASS).isValidSpawn(BlockRegistry::never).isRedstoneConductor(BlockRegistry::never).isSuffocating(BlockRegistry::never).isViewBlocking(BlockRegistry::never).noOcclusion()), CelestialExploration.CELESTIAL_BLOCKS_TAB);
 
-    public static final RegistryObject<ButtonBlock> RED_BUTTON = registerBlockDropsSelf("red_button", "Red Button", () -> new StoneButtonBlock(Block.Properties.copy(Blocks.GLASS).lightLevel((light) -> 4)), CelestialExploration.CELESTIAL_MISC_TAB);
-    public static final RegistryObject<ButtonBlock> YELLOW_BUTTON = registerBlockDropsSelf("yellow_button", "Yellow Button", () -> new StoneButtonBlock(Block.Properties.copy(Blocks.GLASS).lightLevel((light) -> 4)), CelestialExploration.CELESTIAL_MISC_TAB);
-    public static final RegistryObject<ButtonBlock> BLUE_BUTTON = registerBlockDropsSelf("blue_button", "Blue Button", () -> new StoneButtonBlock(Block.Properties.copy(Blocks.GLASS).lightLevel((light) -> 4)), CelestialExploration.CELESTIAL_MISC_TAB);
-    public static final RegistryObject<ButtonBlock> GREEN_BUTTON = registerBlockDropsSelf("green_button", "Green Button", () -> new StoneButtonBlock(Block.Properties.copy(Blocks.GLASS).lightLevel((light) -> 4)), CelestialExploration.CELESTIAL_MISC_TAB);
-    public static final RegistryObject<ButtonBlock> WHITE_BUTTON = registerBlockDropsSelf("white_button", "White Button", () -> new StoneButtonBlock(Block.Properties.copy(Blocks.GLASS).lightLevel((light) -> 4)), CelestialExploration.CELESTIAL_MISC_TAB);
-    public static final RegistryObject<ButtonBlock> BLACK_BUTTON = registerBlockDropsSelf("black_button", "Black Button", () -> new StoneButtonBlock(Block.Properties.copy(Blocks.GLASS).lightLevel((light) -> 4)), CelestialExploration.CELESTIAL_MISC_TAB);
+    public static final RegistryObject<ButtonBlock> RED_BUTTON = registerBlockDropsSelf("red_button", "Red Button", () -> new WoodButtonBlock(Block.Properties.copy(Blocks.GLASS).lightLevel((light) -> 4)), CelestialExploration.CELESTIAL_MISC_TAB);
+    public static final RegistryObject<ButtonBlock> YELLOW_BUTTON = registerBlockDropsSelf("yellow_button", "Yellow Button", () -> new WoodButtonBlock(Block.Properties.copy(Blocks.GLASS).lightLevel((light) -> 4)), CelestialExploration.CELESTIAL_MISC_TAB);
+    public static final RegistryObject<ButtonBlock> BLUE_BUTTON = registerBlockDropsSelf("blue_button", "Blue Button", () -> new WoodButtonBlock(Block.Properties.copy(Blocks.GLASS).lightLevel((light) -> 4)), CelestialExploration.CELESTIAL_MISC_TAB);
+    public static final RegistryObject<ButtonBlock> GREEN_BUTTON = registerBlockDropsSelf("green_button", "Green Button", () -> new WoodButtonBlock(Block.Properties.copy(Blocks.GLASS).lightLevel((light) -> 4)), CelestialExploration.CELESTIAL_MISC_TAB);
+    public static final RegistryObject<ButtonBlock> WHITE_BUTTON = registerBlockDropsSelf("white_button", "White Button", () -> new WoodButtonBlock(Block.Properties.copy(Blocks.GLASS).lightLevel((light) -> 4)), CelestialExploration.CELESTIAL_MISC_TAB);
+    public static final RegistryObject<ButtonBlock> BLACK_BUTTON = registerBlockDropsSelf("black_button", "Black Button", () -> new WoodButtonBlock(Block.Properties.copy(Blocks.GLASS).lightLevel((light) -> 4)), CelestialExploration.CELESTIAL_MISC_TAB);
 
     public static final RegistryObject<Block> PATHWAY_LIGHT = registerBlockDropsSelf("pathway_light", "Pathway Light", () -> new PathwayLightBlock(Block.Properties.of(Material.METAL).strength(0.1F).sound(SoundType.METAL).lightLevel(litBlockEmission(9))), CelestialExploration.CELESTIAL_BLOCKS_TAB);
 

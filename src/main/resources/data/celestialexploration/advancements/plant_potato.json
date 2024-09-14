@@ -12,9 +12,9 @@
 		"frame": "task",
 		"show_toast": true,
 		"announce_to_chat": true,
-		"hidden": false
+		"hidden": true
 	},
-	"parent": "celestialexploration:enter_space",
+	"parent": "celestialexploration:enter_mars",
 	"criteria": {
 		"potato": {
 			"trigger": "minecraft:placed_block",

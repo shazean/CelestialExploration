@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "celestialexploration",
+  "ingredients": [
+    {
+      "item": "minecraft:torch"
+    },
+    {
+      "item": "celestialexploration:steel_ingot"
+    }
+  ],
+  "result": {
+    "item": "celestialexploration:glow_strip"
+  }
+}

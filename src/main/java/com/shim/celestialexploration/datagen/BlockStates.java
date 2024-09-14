@@ -4,8 +4,10 @@ import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.registry.BlockRegistry;
 import com.shim.celestialexploration.registry.FluidRegistry;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
+import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -380,8 +382,10 @@ public class BlockStates extends BlockStateProvider {
 		//---- SPACE STATION -------------------------------------------------------------------------------
 		doorBlock(BlockRegistry.AIRLOCK_DOOR.get(), modLoc("block/airlock_door_bottom"), modLoc("block/airlock_door_top"));
 		doorBlock(BlockRegistry.STEEL_DOOR.get(), modLoc("block/steel_door_bottom"), modLoc("block/steel_door_top"));
+		trapdoorBlock(BlockRegistry.AIRLOCK_TRAPDOOR.get(), modLoc("block/airlock_trapdoor"), true);
 		trapdoorBlock(BlockRegistry.STEEL_TRAPDOOR.get(), modLoc("block/steel_trapdoor"), true);
 		buttonBlock(BlockRegistry.STEEL_BUTTON.get(), modLoc("block/steel_block"));
+		buttonBlock(BlockRegistry.AIRLOCK_BUTTON.get(), modLoc("block/airlock_button"), modLoc("block/airlock_button_pressed"));
 
 		simpleBlock(BlockRegistry.PANEL.get());
 		paneBlock((BlockRegistry.THIN_PANEL.get()), modLoc("block/panel"), modLoc("block/thin_panel_top"));
@@ -389,12 +393,12 @@ public class BlockStates extends BlockStateProvider {
 		slabBlock(BlockRegistry.PANEL_SLAB.get(), modLoc("block/panel"), modLoc("block/panel"));
 		wallBlock(BlockRegistry.PANEL_WALL.get(), modLoc("block/panel"));
 
-		buttonBlock(BlockRegistry.RED_BUTTON.get(), mcLoc("block/red_stained_glass"));
-		buttonBlock(BlockRegistry.YELLOW_BUTTON.get(), mcLoc("block/yellow_stained_glass"));
-		buttonBlock(BlockRegistry.BLUE_BUTTON.get(), mcLoc("block/blue_stained_glass"));
-		buttonBlock(BlockRegistry.GREEN_BUTTON.get(), mcLoc("block/green_stained_glass"));
-		buttonBlock(BlockRegistry.WHITE_BUTTON.get(), mcLoc("block/white_stained_glass"));
-		buttonBlock(BlockRegistry.BLACK_BUTTON.get(), mcLoc("block/black_stained_glass"));
+		buttonBlock(BlockRegistry.RED_BUTTON.get(), mcLoc("block/red_stained_glass"), modLoc("block/red_button_pressed"));
+		buttonBlock(BlockRegistry.YELLOW_BUTTON.get(), mcLoc("block/yellow_stained_glass"), modLoc("block/yellow_button_pressed"));
+		buttonBlock(BlockRegistry.BLUE_BUTTON.get(), mcLoc("block/blue_stained_glass"), modLoc("block/blue_button_pressed"));
+		buttonBlock(BlockRegistry.GREEN_BUTTON.get(), mcLoc("block/green_stained_glass"), modLoc("block/green_button_pressed"));
+		buttonBlock(BlockRegistry.WHITE_BUTTON.get(), mcLoc("block/white_stained_glass"), modLoc("block/white_button_pressed"));
+		buttonBlock(BlockRegistry.BLACK_BUTTON.get(), mcLoc("block/black_stained_glass"), modLoc("block/black_button_pressed"));
 
 		//---- GLASS/CERAMICS -------------------------------------------------------------------------------
 		//GLASS
@@ -500,4 +504,16 @@ public class BlockStates extends BlockStateProvider {
 
 		simpleBlock(BlockRegistry.BAUXITE_ORE.get());
 	}
+
+	public void buttonBlock(ButtonBlock block, ResourceLocation texture, ResourceLocation texturePressed) {
+		ModelFile button = models().button(name(block), texture);
+		ModelFile buttonPressed = models().buttonPressed(name(block) + "_pressed", texturePressed);
+		buttonBlock(block, button, buttonPressed);
+	}
+
+	private String name(Block block) {
+		return block.getRegistryName().getPath();
+	}
+
+
 }

@@ -1,0 +1,6 @@
+{
+  "parent": "celestialexploration:block/panel_door_open",
+  "textures": {
+    "all": "celestialexploration:block/reinforced_glass_center"
+  }
+}

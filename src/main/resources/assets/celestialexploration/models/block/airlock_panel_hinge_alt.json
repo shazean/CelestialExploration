@@ -1,0 +1,6 @@
+{
+  "parent": "celestialexploration:block/panel_door_rh",
+  "textures": {
+    "all": "celestialexploration:block/airlock_panel_hinge"
+  }
+}

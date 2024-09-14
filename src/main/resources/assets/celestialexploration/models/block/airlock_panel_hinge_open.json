@@ -1,0 +1,7 @@
+{
+  "parent": "celestialexploration:block/panel_door_hinge_open",
+  "textures": {
+    "side": "celestialexploration:block/airlock_panel_hinge_open",
+    "front": "celestialexploration:block/airlock_panel_hinge_open_side"
+  }
+}

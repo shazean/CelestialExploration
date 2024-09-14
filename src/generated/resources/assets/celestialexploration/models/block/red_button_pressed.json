@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/button_pressed",
   "textures": {
-    "texture": "minecraft:block/red_stained_glass"
+    "texture": "celestialexploration:block/red_button_pressed"
   }
 }

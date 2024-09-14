@@ -55,7 +55,7 @@ public class ItemRegistry {
 	public static final Item.Properties ITEM_PROPERTIES = new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB);
 
 	//---- SPACESHIP -------------------------------------------------------------------------------
-	public static final RegistryObject<Item> LOX_TANK = registerItem("lox_tank", "Liquid Oxygen Tank", () -> new LoxTankItem(BlockRegistry.LOX_TANK.get(), new Item.Properties().tab(CelestialExploration.SPACESHIP_TAB).stacksTo(1)));
+	public static final RegistryObject<Item> LOX_TANK = ITEMS.register("lox_tank", () -> new LoxTankItem(BlockRegistry.LOX_TANK.get(), new Item.Properties().tab(CelestialExploration.SPACESHIP_TAB).stacksTo(1)));
 
 	public static final RegistryObject<Item> SPACESHIP_CABIN = registerItem("spaceship_cabin", "Spaceship Cabin", () -> new Item((new Item.Properties()).stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
 	public static final RegistryObject<Item> SPACESHIP_FRAME = registerItem("spaceship_frame", "Spaceship Frame", () -> new Item((new Item.Properties()).stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));

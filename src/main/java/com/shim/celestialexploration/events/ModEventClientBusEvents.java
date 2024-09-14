@@ -113,6 +113,7 @@ public class ModEventClientBusEvents {
 
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.LOX_TANK.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.STEEL_FRAME.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BlockRegistry.STEEL_LADDER.get(), RenderType.cutout());
 
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.MAG_RAIL.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.POWERED_MAG_RAIL.get(), RenderType.cutout());

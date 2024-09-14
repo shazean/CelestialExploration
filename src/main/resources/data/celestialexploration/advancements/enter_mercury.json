@@ -14,7 +14,7 @@
 		"announce_to_chat": true,
 		"hidden": false
 	},
-	"parent": "celestialexploration:enter_space",
+	"parent": "celestialexploration:enter_venus",
 	"criteria": {
 		"entered_moon": {
 			"trigger": "minecraft:changed_dimension",

@@ -70,7 +70,6 @@ public abstract class BaseMagRailBlock extends Block implements SimpleWaterlogge
         if (this.isStraight) {
             state.neighborChanged(level, pos, this, pos, p_49393_);
         }
-
         return state;
     }
 

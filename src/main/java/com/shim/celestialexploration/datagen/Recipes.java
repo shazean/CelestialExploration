@@ -214,11 +214,12 @@ public class Recipes extends RecipeProvider {
 		ShapelessRecipeBuilder.shapeless(ItemRegistry.ALUMINUM_INGOT.get(), 3).requires(Items.IRON_INGOT).requires(ItemRegistry.BAUXITE_INGOT.get()).requires(ItemRegistry.BAUXITE_INGOT.get()).group("celestialexploration").unlockedBy("has_raw_bauxite", has(ItemRegistry.RAW_BAUXITE.get())).save(consumer);
 		ShapelessRecipeBuilder.shapeless(ItemRegistry.ALUMINUM_INGOT.get(), 3).requires(Items.COPPER_INGOT).requires(ItemRegistry.BAUXITE_INGOT.get()).requires(ItemRegistry.BAUXITE_INGOT.get()).group("celestialexploration").unlockedBy("has_raw_bauxite", has(ItemRegistry.RAW_BAUXITE.get())).save(consumer, "aluminum_from_copper");
 		ingotAndBlock(ItemRegistry.ALUMINUM_INGOT.get(), BlockRegistry.ALUMINUM_BLOCK.get(), ItemRegistry.ALUMINUM_INGOT.get(), consumer);
-//		smeltingAndBlasting(BlockRegistry.MOON_BAUXITE_ORE.get(), BlockRegistry.BAUXITE_INGOT.get(), 0.7F, 200, 100, BlockRegistry.MOON_BAUXITE_ORE.get(), consumer);
+		smeltingAndBlasting(BlockRegistry.MOON_BAUXITE_ORE.get(), ItemRegistry.BAUXITE_INGOT.get(), 0.7F, 200, 100, BlockRegistry.MOON_BAUXITE_ORE.get(), consumer);
 		smeltingAndBlasting(BlockRegistry.MARS_BAUXITE_ORE.get(), ItemRegistry.BAUXITE_INGOT.get(), 0.7F, 200, 100, BlockRegistry.MARS_BAUXITE_ORE.get(), consumer);
 		smeltingAndBlasting(BlockRegistry.VENUS_BAUXITE_ORE.get(), ItemRegistry.BAUXITE_INGOT.get(), 0.7F, 200, 100, BlockRegistry.VENUS_BAUXITE_ORE.get(), consumer);
 		smeltingAndBlasting(BlockRegistry.MERCURY_BAUXITE_ORE.get(), ItemRegistry.BAUXITE_INGOT.get(), 0.7F, 200, 100, BlockRegistry.MERCURY_BAUXITE_ORE.get(), consumer);
 		smeltingAndBlasting(BlockRegistry.BAUXITE_ORE.get(), ItemRegistry.BAUXITE_INGOT.get(), 0.7F, 200, 100, BlockRegistry.BAUXITE_ORE.get(), consumer);
+		smeltingAndBlasting(BlockRegistry.METEOR_BAUXITE_ORE.get(), ItemRegistry.BAUXITE_INGOT.get(), 0.7F, 200, 100, BlockRegistry.BAUXITE_ORE.get(), consumer);
 
 		//STEEL
 		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.STEEL_INGOT.get(), 2, FluidRegistry.MOLTEN_IRON.get(), 0.1111F, 0.7F).pattern("X").define('X', Items.COAL).group("celestialexploration").unlockedBy("has_iron", has(Items.IRON_INGOT)).save(consumer, "steel_ingot_from_workbench");
@@ -284,14 +285,23 @@ public class Recipes extends RecipeProvider {
 		ShapedRecipeBuilder.shaped(BlockRegistry.PANEL.get()).pattern("XX").pattern("XX").define('X', ItemRegistry.ALUMINUM_INGOT.get()).group("celestialexploration").unlockedBy("meteor", has(ItemRegistry.ALUMINUM_INGOT.get())).save(consumer);
 		stairsSlabWallCraftStonecutting(BlockRegistry.PANEL.get(), BlockRegistry.PANEL_STAIRS.get(), BlockRegistry.PANEL_SLAB.get(), BlockRegistry.PANEL_WALL.get(), BlockRegistry.PANEL.get(), consumer);
 		pane(BlockRegistry.PANEL.get(), BlockRegistry.THIN_PANEL.get(), BlockRegistry.PANEL.get(), consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.STEEL_LADDER.get()).pattern("X X").pattern("XXX").pattern("X X").define('X', ItemRegistry.STEEL_INGOT.get()).group("celestialexploration").unlockedBy("steel", has(ItemRegistry.STEEL_INGOT.get())).save(consumer);
 
-		ShapedRecipeBuilder.shaped(BlockRegistry.AIRLOCK_DOOR.get()).pattern("GX").pattern("DX").define('X', ItemRegistry.STEEL_INGOT.get()).define('G', Tags.Items.GLASS_COLORLESS).define('D', BlockRegistry.STEEL_DOOR.get()).group("celestialexploration").unlockedBy("steel", has(ItemRegistry.STEEL_INGOT.get())).save(consumer);
-		ShapedRecipeBuilder.shaped(BlockRegistry.AIRLOCK_DOOR.get()).pattern("GX").pattern("DX").define('X', ItemRegistry.STEEL_INGOT.get()).define('G', Tags.Items.GLASS_COLORLESS).define('D', Items.IRON_DOOR).group("celestialexploration").unlockedBy("steel", has(ItemRegistry.STEEL_INGOT.get())).save(consumer, "airlock_door_from_iron_door");
+		ShapedRecipeBuilder.shaped(BlockRegistry.AIRLOCK_DOOR.get()).pattern("GX").pattern("DX").define('X', ItemRegistry.ALUMINUM_INGOT.get()).define('G', Tags.Items.GLASS_COLORLESS).define('D', BlockRegistry.STEEL_DOOR.get()).group("celestialexploration").unlockedBy("steel", has(ItemRegistry.STEEL_INGOT.get())).save(consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.AIRLOCK_DOOR.get()).pattern("GX").pattern("DX").define('X', ItemRegistry.ALUMINUM_INGOT.get()).define('G', Tags.Items.GLASS_COLORLESS).define('D', Items.IRON_DOOR).group("celestialexploration").unlockedBy("steel", has(ItemRegistry.STEEL_INGOT.get())).save(consumer, "airlock_door_from_iron_door");
+
+		ShapedRecipeBuilder.shaped(BlockRegistry.AIRLOCK_TRAPDOOR.get(), 2).pattern("XGX").pattern("XXX").define('G', Tags.Items.GLASS_COLORLESS).define('X', ItemRegistry.ALUMINUM_INGOT.get()).group("celestialexploration").unlockedBy("steel", has(ItemRegistry.STEEL_INGOT.get())).save(consumer);
+
 		ShapedRecipeBuilder.shaped(BlockRegistry.STEEL_DOOR.get(), 3).pattern("XX").pattern("XX").pattern("XX").define('X', ItemRegistry.STEEL_INGOT.get()).group("celestialexploration").unlockedBy("steel", has(ItemRegistry.STEEL_INGOT.get())).save(consumer);
 		ShapedRecipeBuilder.shaped(BlockRegistry.STEEL_TRAPDOOR.get(), 2).pattern("XXX").pattern("XXX").define('X', ItemRegistry.STEEL_INGOT.get()).group("celestialexploration").unlockedBy("steel", has(ItemRegistry.STEEL_INGOT.get())).save(consumer);
 		ShapedRecipeBuilder.shaped(BlockRegistry.STEEL_BUTTON.get()).pattern("XX").pattern("XX").define('X', ItemRegistry.STEEL_NUGGET.get()).group("celestialexploration").unlockedBy("steel", has(ItemRegistry.STEEL_INGOT.get())).save(consumer);
 
 		ShapedRecipeBuilder.shaped(BlockRegistry.SOLAR_PANEL.get()).pattern("GGG").pattern("QQQ").pattern("SSS").define('G', Items.GLASS).define('Q', Items.QUARTZ_BLOCK).define('S', ItemRegistry.ALUMINUM_INGOT.get()).group("celestialexploration").unlockedBy("steel", has(ItemRegistry.STEEL_INGOT.get())).save(consumer);
+
+		ShapelessRecipeBuilder.shapeless(BlockRegistry.GLOW_STRIP.get()).requires(Items.TORCH).requires(Items.IRON_INGOT).group("celestialexploration").unlockedBy("torch", has(Items.TORCH)).save(consumer, "glow_strip_from_iron");
+		ShapelessRecipeBuilder.shapeless(BlockRegistry.GLOW_STRIP.get()).requires(Items.TORCH).requires(ItemRegistry.STEEL_INGOT.get()).group("celestialexploration").unlockedBy("torch", has(Items.TORCH)).save(consumer, "glow_strip_from_steel");
+		singleItem(BlockRegistry.GLOW_STRIP.get(), BlockRegistry.HORIZONTAL_GLOW_STRIP.get(), 1, Blocks.TORCH, consumer);
+		singleItem(BlockRegistry.HORIZONTAL_GLOW_STRIP.get(), BlockRegistry.GLOW_STRIP.get(), 1, Blocks.TORCH, consumer);
 
 
 		singleItem(Blocks.RED_STAINED_GLASS, BlockRegistry.RED_BUTTON.get(), 1, Blocks.RED_STAINED_GLASS, consumer);

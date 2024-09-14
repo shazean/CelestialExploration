@@ -77,6 +77,7 @@ public class CelestialExploration {
         StructureRegistry.DEFERRED_REGISTRY_STRUCTURE.register(modEventBus);
         ParticleRegistry.register(modEventBus);
         RecipeRegistry.register(modEventBus);
+        VillagerRegistry.register(modEventBus);
 
         BiomeRegistry.BIOMES.register(modEventBus);
         DimensionRegistry.BIOME_SOURCE.register(modEventBus);
@@ -139,6 +140,12 @@ public class CelestialExploration {
 
 
         CelestialPacketHandler.init();
+
+        event.enqueueWork(() -> {
+
+            VillagerRegistry.registerPOIs();
+
+        });
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event)

@@ -269,7 +269,8 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(BlockRegistry.STEEL_DOOR.get());
 
         tag(BlockTags.TRAPDOORS)
-                .add(BlockRegistry.STEEL_TRAPDOOR.get());
+                .add(BlockRegistry.STEEL_TRAPDOOR.get())
+                .add(BlockRegistry.AIRLOCK_TRAPDOOR.get());
 
         //BUTTONS, PRESSURE PLATES
         tag(BlockTags.BUTTONS)
@@ -293,7 +294,8 @@ public class ModBlockTags extends BlockTagsProvider {
 
         //OTHER
         tag(BlockTags.CLIMBABLE)
-                .add(BlockRegistry.STEEL_FRAME.get());
+                .add(BlockRegistry.STEEL_FRAME.get())
+                .add(BlockRegistry.STEEL_LADDER.get());
 
         tag(BlockTags.UNSTABLE_BOTTOM_CENTER)
                 .add(BlockRegistry.STEEL_FRAME.get());

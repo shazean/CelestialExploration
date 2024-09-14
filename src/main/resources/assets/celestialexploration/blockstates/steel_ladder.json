@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "celestialexploration:block/steel_ladder",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "celestialexploration:block/steel_ladder"
+    },
+    "facing=south": {
+      "model": "celestialexploration:block/steel_ladder",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "celestialexploration:block/steel_ladder",
+      "y": 270
+    }
+  }
+}

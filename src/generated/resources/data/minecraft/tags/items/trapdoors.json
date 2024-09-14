@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "celestialexploration:steel_trapdoor"
+    "celestialexploration:steel_trapdoor",
+    "celestialexploration:airlock_trapdoor"
   ]
 }

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "celestialexploration",
+  "ingredients": [
+    {
+      "item": "celestialexploration:glow_strip"
+    }
+  ],
+  "result": {
+    "item": "celestialexploration:horizontal_glow_strip"
+  }
+}

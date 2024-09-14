@@ -15,6 +15,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
+  "parent": "celestialexploration:root",
   "criteria": {
     "basic_spacesuit_helmet": {
       "trigger": "minecraft:inventory_changed",

@@ -14,6 +14,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -24,7 +25,11 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.EntityMountEvent;
@@ -87,8 +92,17 @@ public class ModForgeEventBus {
                         }
                     }
                 }
+            } else if (event.getItemStack() != null && event.getItemStack().getItem() instanceof ShovelItem) {
+                Level level = event.getWorld();
+
+                BlockState block = level.getBlockState(event.getHitVec().getBlockPos());
+                if (block.is(BlockRegistry.MERCURY_SAND.get())) {
+                    level.setBlock(event.getHitVec().getBlockPos(), BlockRegistry.MERCURY_SAND_PATH.get().defaultBlockState(), 1);
+                }
+
             }
-        }
+
+            }
     }
 
 //    @SubscribeEvent

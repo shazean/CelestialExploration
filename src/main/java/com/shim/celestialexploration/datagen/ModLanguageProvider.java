@@ -112,6 +112,8 @@ public class ModLanguageProvider extends LanguageProvider {
 		add("death.attack.celestialexploration.coldFloor", "%1$s got cold feet");
 
 		//---- ADVANCEMENTS -------------------------------------------------------------------------------
+		add("advancements.celestial.root.title", "Exploration");
+		add("advancements.celestial.root.description", "Exploration of outer space");
 		add("advancements.celestial.fly_into_sun.title", "Icarus");
 		add("advancements.celestial.fly_into_sun.description", "Fly into the sun");
 		add("advancements.celestial.enter_space.title", "To Infinity… and Beyond!");
@@ -130,6 +132,10 @@ public class ModLanguageProvider extends LanguageProvider {
 		add("advancements.celestial.obtain_spacesuit.description", "Acquire a spacesuit");
 		add("advancements.celestial.obtain_spaceship.title", "Rocketman");
 		add("advancements.celestial.obtain_spaceship.description", "Craft a spaceship");
+		add("advancements.celestial.place_airlock.title", "Breathing Room");
+		add("advancements.celestial.place_airlock.description", "Place an airlock door");
+		add("advancements.celestial.kill_mob_in_space.title", "Space Invaders");
+		add("advancements.celestial.kill_mob_in_space.description", "Defeat a mob in outer space");
 
 
 	}

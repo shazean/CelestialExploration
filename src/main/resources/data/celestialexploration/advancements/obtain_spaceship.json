@@ -15,6 +15,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
+  "parent": "celestialexploration:obtain_spacesuit",
   "criteria": {
     "spaceship": {
       "trigger": "minecraft:inventory_changed",

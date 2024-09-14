@@ -25,8 +25,8 @@ public class ItemModels extends ItemModelProvider {
 		self(BlockRegistry.MOON_STONE.get());
 		stairsItem(BlockRegistry.MOON_STONE_STAIRS.get(), "moon_stone");
 		slabItem(BlockRegistry.MOON_STONE_SLAB.get(), "moon_stone");
-		buttonInventory(BlockRegistry.MOON_STONE_BUTTON.get().getRegistryName().getPath(), modLoc("block/moon_stone"));
-		pressurePlate(BlockRegistry.MOON_STONE_PRESSURE_PLATE.get().getRegistryName().getPath(), modLoc("block/moon_stone"));
+		buttonInventory(name(BlockRegistry.MOON_STONE_BUTTON.get()), modLoc("block/moon_stone"));
+		pressurePlate(name(BlockRegistry.MOON_STONE_PRESSURE_PLATE.get()), modLoc("block/moon_stone"));
 
 		self(BlockRegistry.MOON_COBBLESTONE.get());
 		stairsItem(BlockRegistry.MOON_COBBLESTONE_STAIRS.get(), "moon_cobblestone");
@@ -48,8 +48,8 @@ public class ItemModels extends ItemModelProvider {
 
 		//DEEPSLATE
 		self(BlockRegistry.MOON_DEEPSLATE.get());
-		buttonInventory(BlockRegistry.MOON_DEEPSLATE_BUTTON.get().getRegistryName().getPath(), modLoc("block/moon_deepslate_side"));
-		pressurePlate(BlockRegistry.MOON_DEEPSLATE_PRESSURE_PLATE.get().getRegistryName().getPath(), modLoc("block/moon_deepslate_side"));
+		buttonInventory(name(BlockRegistry.MOON_DEEPSLATE_BUTTON.get()), modLoc("block/moon_deepslate_side"));
+		pressurePlate(name(BlockRegistry.MOON_DEEPSLATE_PRESSURE_PLATE.get()), modLoc("block/moon_deepslate_side"));
 
 		self(BlockRegistry.MOON_COBBLED_DEEPSLATE.get());
 		stairsItem(BlockRegistry.MOON_COBBLED_DEEPSLATE_STAIRS.get(), "moon_cobbled_deepslate");
@@ -95,8 +95,8 @@ public class ItemModels extends ItemModelProvider {
 		self(BlockRegistry.MARS_STONE.get());
 		stairsItem(BlockRegistry.MARS_STONE_STAIRS.get(), "mars_stone");
 		slabItem(BlockRegistry.MARS_STONE_SLAB.get(), "mars_stone");
-		buttonInventory(BlockRegistry.MARS_STONE_BUTTON.get().getRegistryName().getPath(), modLoc("block/mars_stone"));
-		pressurePlate(BlockRegistry.MARS_STONE_PRESSURE_PLATE.get().getRegistryName().getPath(), modLoc("block/mars_stone"));
+		buttonInventory(name(BlockRegistry.MARS_STONE_BUTTON.get()), modLoc("block/mars_stone"));
+		pressurePlate(name(BlockRegistry.MARS_STONE_PRESSURE_PLATE.get()), modLoc("block/mars_stone"));
 
 		self(BlockRegistry.MARS_COBBLESTONE.get());
 		stairsItem(BlockRegistry.MARS_COBBLESTONE_STAIRS.get(), "mars_cobblestone");
@@ -118,8 +118,8 @@ public class ItemModels extends ItemModelProvider {
 		
 		//DEEPSLATE
 		self(BlockRegistry.MARS_DEEPSLATE.get());
-		buttonInventory(BlockRegistry.MARS_DEEPSLATE_BUTTON.get().getRegistryName().getPath(), modLoc("block/mars_deepslate_side"));
-		pressurePlate(BlockRegistry.MARS_DEEPSLATE_PRESSURE_PLATE.get().getRegistryName().getPath(), modLoc("block/mars_deepslate_side"));
+		buttonInventory(name(BlockRegistry.MARS_DEEPSLATE_BUTTON.get()), modLoc("block/mars_deepslate_side"));
+		pressurePlate(name(BlockRegistry.MARS_DEEPSLATE_PRESSURE_PLATE.get()), modLoc("block/mars_deepslate_side"));
 
 		self(BlockRegistry.MARS_COBBLED_DEEPSLATE.get());
 		stairsItem(BlockRegistry.MARS_COBBLED_DEEPSLATE_STAIRS.get(), "mars_cobbled_deepslate");
@@ -164,8 +164,8 @@ public class ItemModels extends ItemModelProvider {
 		self(BlockRegistry.VENUS_STONE.get());
 		stairsItem(BlockRegistry.VENUS_STONE_STAIRS.get(), "venus_stone");
 		slabItem(BlockRegistry.VENUS_STONE_SLAB.get(), "venus_stone");
-		buttonInventory(BlockRegistry.VENUS_STONE_BUTTON.get().getRegistryName().getPath(), modLoc("block/venus_stone"));
-		pressurePlate(BlockRegistry.VENUS_STONE_PRESSURE_PLATE.get().getRegistryName().getPath(), modLoc("block/venus_stone"));
+		buttonInventory(name(BlockRegistry.VENUS_STONE_BUTTON.get()), modLoc("block/venus_stone"));
+		pressurePlate(name(BlockRegistry.VENUS_STONE_PRESSURE_PLATE.get()), modLoc("block/venus_stone"));
 
 		self(BlockRegistry.VENUS_COBBLESTONE.get());
 		stairsItem(BlockRegistry.VENUS_COBBLESTONE_STAIRS.get(), "venus_cobblestone");
@@ -192,8 +192,8 @@ public class ItemModels extends ItemModelProvider {
 		
 		//DEEPSLATE
 		self(BlockRegistry.VENUS_DEEPSLATE.get());
-		buttonInventory(BlockRegistry.VENUS_DEEPSLATE_BUTTON.get().getRegistryName().getPath(), modLoc("block/venus_deepslate_side"));
-		pressurePlate(BlockRegistry.VENUS_DEEPSLATE_PRESSURE_PLATE.get().getRegistryName().getPath(), modLoc("block/venus_deepslate_side"));
+		buttonInventory(name(BlockRegistry.VENUS_DEEPSLATE_BUTTON.get()), modLoc("block/venus_deepslate_side"));
+		pressurePlate(name(BlockRegistry.VENUS_DEEPSLATE_PRESSURE_PLATE.get()), modLoc("block/venus_deepslate_side"));
 
 		self(BlockRegistry.VENUS_COBBLED_DEEPSLATE.get());
 		stairsItem(BlockRegistry.VENUS_COBBLED_DEEPSLATE_STAIRS.get(), "venus_cobbled_deepslate");
@@ -241,8 +241,8 @@ public class ItemModels extends ItemModelProvider {
 		//---- CELESTIAL OBJECTS -------------------------------------------------------------------------------
 		//METEOR
 		self(BlockRegistry.METEOR.get());
-		buttonInventory(BlockRegistry.METEOR_BUTTON.get().getRegistryName().getPath(), modLoc("block/meteor"));
-		pressurePlate(BlockRegistry.METEOR_PRESSURE_PLATE.get().getRegistryName().getPath(), modLoc("block/meteor"));
+		buttonInventory(name(BlockRegistry.METEOR_BUTTON.get()), modLoc("block/meteor"));
+		pressurePlate(name(BlockRegistry.METEOR_PRESSURE_PLATE.get()), modLoc("block/meteor"));
 
 		self(BlockRegistry.METEOR_BRICKS.get());
 		stairsItem(BlockRegistry.METEOR_BRICK_STAIRS.get(), "meteor_bricks");
@@ -274,8 +274,8 @@ public class ItemModels extends ItemModelProvider {
 		self(BlockRegistry.MERCURY_STONE.get());
 		stairsItem(BlockRegistry.MERCURY_STONE_STAIRS.get(), "mercury_stone");
 		slabItem(BlockRegistry.MERCURY_STONE_SLAB.get(), "mercury_stone");
-		buttonInventory(BlockRegistry.MERCURY_STONE_BUTTON.get().getRegistryName().getPath(), modLoc("block/mercury_stone"));
-		pressurePlate(BlockRegistry.MERCURY_STONE_PRESSURE_PLATE.get().getRegistryName().getPath(), modLoc("block/mercury_stone"));
+		buttonInventory(name(BlockRegistry.MERCURY_STONE_BUTTON.get()), modLoc("block/mercury_stone"));
+		pressurePlate(name(BlockRegistry.MERCURY_STONE_PRESSURE_PLATE.get()), modLoc("block/mercury_stone"));
 
 		self(BlockRegistry.MERCURY_COBBLESTONE.get());
 		stairsItem(BlockRegistry.MERCURY_COBBLESTONE_STAIRS.get(), "mercury_cobblestone");
@@ -296,8 +296,8 @@ public class ItemModels extends ItemModelProvider {
 		slabItem(BlockRegistry.MERCURY_SMOOTH_STONE_SLAB.get(), "mercury_smooth_stone");
 		//DEEPSLATE
 		self(BlockRegistry.MERCURY_DEEPSLATE.get());
-		buttonInventory(BlockRegistry.MERCURY_DEEPSLATE_BUTTON.get().getRegistryName().getPath(), modLoc("block/mercury_deepslate_side"));
-		pressurePlate(BlockRegistry.MERCURY_DEEPSLATE_PRESSURE_PLATE.get().getRegistryName().getPath(), modLoc("block/mercury_deepslate_side"));
+		buttonInventory(name(BlockRegistry.MERCURY_DEEPSLATE_BUTTON.get()), modLoc("block/mercury_deepslate_side"));
+		pressurePlate(name(BlockRegistry.MERCURY_DEEPSLATE_PRESSURE_PLATE.get()), modLoc("block/mercury_deepslate_side"));
 
 		self(BlockRegistry.MERCURY_COBBLED_DEEPSLATE.get());
 		stairsItem(BlockRegistry.MERCURY_COBBLED_DEEPSLATE_STAIRS.get(), "mercury_cobbled_deepslate");
@@ -338,6 +338,7 @@ public class ItemModels extends ItemModelProvider {
 		self(BlockRegistry.MERCURY_CORE.get());
 		self(BlockRegistry.MERCURY_SAND.get());
 		self(BlockRegistry.COARSE_MERCURY_SAND.get());
+		self(BlockRegistry.MERCURY_SAND_PATH.get());
 		self(BlockRegistry.MERCURY_LANTERN.get());
 
 
@@ -435,22 +436,29 @@ public class ItemModels extends ItemModelProvider {
 		slab("panel_slab", modLoc("block/panel"), modLoc("block/panel"), modLoc("block/panel"));
 		wallInventory("panel_wall",  modLoc("block/panel"));
 		generatedBlockItem(BlockRegistry.THIN_PANEL.get(), "block/panel");
+		generatedBlockItem(BlockRegistry.STEEL_LADDER.get());
 
-		buttonInventory(BlockRegistry.RED_BUTTON.get().getRegistryName().getPath(), modLoc("block/red_ceramic"));
-		buttonInventory(BlockRegistry.YELLOW_BUTTON.get().getRegistryName().getPath(), modLoc("block/yellow_ceramic"));
-		buttonInventory(BlockRegistry.BLUE_BUTTON.get().getRegistryName().getPath(), modLoc("block/blue_ceramic"));
-		buttonInventory(BlockRegistry.GREEN_BUTTON.get().getRegistryName().getPath(), modLoc("block/green_ceramic"));
-		buttonInventory(BlockRegistry.WHITE_BUTTON.get().getRegistryName().getPath(), modLoc("block/white_ceramic"));
-		buttonInventory(BlockRegistry.BLACK_BUTTON.get().getRegistryName().getPath(), modLoc("block/black_ceramic"));
+
+		buttonInventory(name(BlockRegistry.RED_BUTTON.get()), modLoc("block/red_ceramic"));
+		buttonInventory(name(BlockRegistry.YELLOW_BUTTON.get()), modLoc("block/yellow_ceramic"));
+		buttonInventory(name(BlockRegistry.BLUE_BUTTON.get()), modLoc("block/blue_ceramic"));
+		buttonInventory(name(BlockRegistry.GREEN_BUTTON.get()), modLoc("block/green_ceramic"));
+		buttonInventory(name(BlockRegistry.WHITE_BUTTON.get()), modLoc("block/white_ceramic"));
+		buttonInventory(name(BlockRegistry.BLACK_BUTTON.get()), modLoc("block/black_ceramic"));
 
 		self(BlockRegistry.PATHWAY_LIGHT.get());
-
 		self(BlockRegistry.SOLAR_PANEL.get());
+		self(BlockRegistry.GLOW_STRIP.get());
+		self(BlockRegistry.HORIZONTAL_GLOW_STRIP.get());
+
+		generatedBlockItem(BlockRegistry.AIRLOCK_PANEL_DOOR.get(), "block/airlock_panel_hinge");
 
 		generatedBlockItem(BlockRegistry.AIRLOCK_DOOR.get(), "item/airlock_door");
 		generatedBlockItem(BlockRegistry.STEEL_DOOR.get(), "item/steel_door");
-		withExistingParent(BlockRegistry.STEEL_TRAPDOOR.get().getRegistryName().getPath(), modLoc("block/steel_trapdoor_bottom"));
-		buttonInventory(BlockRegistry.STEEL_BUTTON.get().getRegistryName().getPath(), modLoc("block/steel_block"));
+		withExistingParent(name(BlockRegistry.AIRLOCK_TRAPDOOR.get()), modLoc("block/airlock_trapdoor_bottom"));
+		withExistingParent(name(BlockRegistry.STEEL_TRAPDOOR.get()), modLoc("block/steel_trapdoor_bottom"));
+		buttonInventory(name(BlockRegistry.STEEL_BUTTON.get()), modLoc("block/steel_block"));
+		buttonInventory(name(BlockRegistry.AIRLOCK_BUTTON.get()), modLoc("block/airlock_button"));
 
 		//---- MAG LEV -------------------------------------------------------------------------------
 		generatedBlockItem(BlockRegistry.MAG_RAIL.get());
@@ -497,7 +505,7 @@ public class ItemModels extends ItemModelProvider {
 		generatedBlockItem(BlockRegistry.LUMINOUS_BLUE_GLASS_PANE.get(), "block/luminous_blue_glass");
 		generatedBlockItem(BlockRegistry.LUMINOUS_WHITE_GLASS_PANE.get(), "block/luminous_blue_glass");
 
-		withExistingParent(BlockRegistry.REINFORCED_GLASS.get().getRegistryName().getPath(), modLoc("block/reinforced_glass_inventory"));
+		withExistingParent(name(BlockRegistry.REINFORCED_GLASS.get()), modLoc("block/reinforced_glass_inventory"));
 		generatedBlockItem(BlockRegistry.REINFORCED_GLASS_PANE.get(), "block/reinforced_glass");
 
 		//CERAMIC
@@ -570,11 +578,11 @@ public class ItemModels extends ItemModelProvider {
 		//---- MISC -------------------------------------------------------------------------------
 		//BUCKETS
 		generatedItem(FluidRegistry.LOX_BUCKET.get());
-		singleTexture(FluidRegistry.MOLTEN_IRON_BUCKET.get().getRegistryName().getPath(), new ResourceLocation("item/generated"), "layer0", new ResourceLocation("item/lava_bucket"));
-		singleTexture(FluidRegistry.MOLTEN_STEEL_BUCKET.get().getRegistryName().getPath(), new ResourceLocation("item/generated"), "layer0", new ResourceLocation("item/lava_bucket"));
-		singleTexture(FluidRegistry.MOLTEN_COPPER_BUCKET.get().getRegistryName().getPath(), new ResourceLocation("item/generated"), "layer0", new ResourceLocation("item/lava_bucket"));
-		singleTexture(FluidRegistry.MOLTEN_GOLD_BUCKET.get().getRegistryName().getPath(), new ResourceLocation("item/generated"), "layer0", new ResourceLocation("item/lava_bucket"));
-		singleTexture(FluidRegistry.MOLTEN_ALUMINUM_BUCKET.get().getRegistryName().getPath(), new ResourceLocation("item/generated"), "layer0", new ResourceLocation("item/lava_bucket"));
+		singleTexture(name(FluidRegistry.MOLTEN_IRON_BUCKET.get()), new ResourceLocation("item/generated"), "layer0", new ResourceLocation("item/lava_bucket"));
+		singleTexture(name(FluidRegistry.MOLTEN_STEEL_BUCKET.get()), new ResourceLocation("item/generated"), "layer0", new ResourceLocation("item/lava_bucket"));
+		singleTexture(name(FluidRegistry.MOLTEN_COPPER_BUCKET.get()), new ResourceLocation("item/generated"), "layer0", new ResourceLocation("item/lava_bucket"));
+		singleTexture(name(FluidRegistry.MOLTEN_GOLD_BUCKET.get()), new ResourceLocation("item/generated"), "layer0", new ResourceLocation("item/lava_bucket"));
+		singleTexture(name(FluidRegistry.MOLTEN_ALUMINUM_BUCKET.get()), new ResourceLocation("item/generated"), "layer0", new ResourceLocation("item/lava_bucket"));
 		generatedItem(FluidRegistry.SULFUR_BUCKET.get());
 
 		//BLOCKS
@@ -614,49 +622,57 @@ public class ItemModels extends ItemModelProvider {
 		spawnEgg(ItemRegistry.VOIDED_ZOGLIN_SPAWN_EGG.get());
 		spawnEgg(ItemRegistry.ASTRAL_HOGLIN_SPAWN_EGG.get());
 
-		this.withExistingParent(BlockRegistry.LURKER_HEAD.get().getRegistryName().getPath(), this.mcLoc("item/template_skull"));
-		this.withExistingParent(BlockRegistry.VOIDED_HEAD.get().getRegistryName().getPath(), this.mcLoc("item/template_skull"));
+		this.withExistingParent(name(BlockRegistry.LURKER_HEAD.get()), this.mcLoc("item/template_skull"));
+		this.withExistingParent(name(BlockRegistry.VOIDED_HEAD.get()), this.mcLoc("item/template_skull"));
 
 		generatedItem(ItemRegistry.CONTROL_PANEL.get());
 
 	}
 
+	private String name(Block block) {
+		return block.getRegistryName().getPath();
+	}
+
+	private String name(Item item) {
+		return item.getRegistryName().getPath();
+	}
+
+
 	protected void self(Block block) {
-		this.withExistingParent(block.getRegistryName().getPath(), this.modLoc("block/" + block.getRegistryName().getPath()));
+		this.withExistingParent(name(block), this.modLoc("block/" + name(block)));
 	}
 
 	protected void spawnEgg(Item item) {
-		this.withExistingParent(item.getRegistryName().getPath(), this.mcLoc("item/template_spawn_egg"));
+		this.withExistingParent(name(item), this.mcLoc("item/template_spawn_egg"));
 	}
 
 	public void generatedBlockItem(Block item) {
-		this.singleTexture(item.getRegistryName().getPath(), new ResourceLocation("item/generated"), "layer0", modLoc("block/" + item.getRegistryName().getPath()));
+		this.singleTexture(name(item), new ResourceLocation("item/generated"), "layer0", modLoc("block/" + name(item)));
 	}
 
 	public void generatedBlockItem(Block item, String path) {
-		this.singleTexture(item.getRegistryName().getPath(), new ResourceLocation("item/generated"), "layer0", modLoc(path));
+		this.singleTexture(name(item), new ResourceLocation("item/generated"), "layer0", modLoc(path));
 	}
-
 
 	//for all non hand-held single-texture items
 	public void generatedItem(Item item) {
-		this.singleTexture(item.getRegistryName().getPath(), new ResourceLocation("item/generated"), "layer0", modLoc("item/" + item.getRegistryName().getPath()));
+		this.singleTexture(name(item), new ResourceLocation("item/generated"), "layer0", modLoc("item/" + name(item)));
 	}
 
 	//for weapons, tools, sticks, etc.
 	public void handheldItem(Item item) {
-		this.singleTexture(item.getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", modLoc("item/" + item.getRegistryName().getPath()));
+		this.singleTexture(name(item), new ResourceLocation("item/handheld"), "layer0", modLoc("item/" + name(item)));
 	}
 
 	public void stairsItem(Block stairs, String textureName) {
-		stairs(stairs.getRegistryName().getPath(), modLoc("block/" + textureName), modLoc("block/" + textureName), modLoc("block/" + textureName));
+		stairs(name(stairs), modLoc("block/" + textureName), modLoc("block/" + textureName), modLoc("block/" + textureName));
 	}
 
 	public void slabItem(Block slab, String textureName) {
-		slab(slab.getRegistryName().getPath(), modLoc("block/" + textureName), modLoc("block/" + textureName), modLoc("block/" + textureName));
+		slab(name(slab), modLoc("block/" + textureName), modLoc("block/" + textureName), modLoc("block/" + textureName));
 	}
 
 	public void wallItem(Block wall, String textureName) {
-		wallInventory(wall.getRegistryName().getPath(), modLoc("block/" + textureName));
+		wallInventory(name(wall), modLoc("block/" + textureName));
 	}
 }

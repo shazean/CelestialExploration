@@ -155,6 +155,7 @@ public class LootTables extends BaseLootTableProvider {
 
 		//OTHER
 		lootTables.put(BlockRegistry.MERCURY_LANTERN.get(), createSilkTouchTable(BlockRegistry.MERCURY_LANTERN.get(), BlockRegistry.MERCURY_STONE.get(), 1, 1)); //FIXME
+		lootTables.put(BlockRegistry.MERCURY_SAND_PATH.get(), createSimpleTable(BlockRegistry.MERCURY_SAND.get()));
 
 		//---- ORES/ALLOYS -------------------------------------------------------------------------------
 		lootTables.put(BlockRegistry.BAUXITE_ORE.get(), createBauxiteOreTable(BlockRegistry.BAUXITE_ORE.get()));

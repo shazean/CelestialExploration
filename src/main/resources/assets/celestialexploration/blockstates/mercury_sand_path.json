@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "celestialexploration:block/mercury_sand_path"
+      },
+      {
+        "model": "celestialexploration:block/mercury_sand_path",
+        "y": 90
+      },
+      {
+        "model": "celestialexploration:block/mercury_sand_path",
+        "y": 180
+      },
+      {
+        "model": "celestialexploration:block/mercury_sand_path",
+        "y": 270
+      }
+    ]
+  }
+}
