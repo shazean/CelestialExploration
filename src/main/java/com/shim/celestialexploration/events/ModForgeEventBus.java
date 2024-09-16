@@ -126,40 +126,53 @@ public class ModForgeEventBus {
 
     @SubscribeEvent
     public static void onEntityJoin(EntityJoinWorldEvent event) {
-        if (!CelestialCommonConfig.USE_GRAVITY_EFFECTS.get()) return;
-
         Entity entity = event.getEntity();
         ResourceKey<Level> dimension = event.getWorld().dimension();
-        if (entity instanceof ServerPlayer player) {
 
-            ItemStack itemStack = player.getItemBySlot(EquipmentSlot.FEET);
+        if (CelestialCommonConfig.USE_GRAVITY_EFFECTS.get()) {
 
-            if (itemStack.getItem() instanceof ThermalSpaceSuitArmorItem && ((ThermalSpaceSuitArmorItem) itemStack.getItem()).isGravityBoots(itemStack)) {
-                player.removeEffect(EffectRegistry.LOW_GRAVITY.get());
-            } else {
-                if (DimensionUtil.isLowGravityDimension(dimension)) {
-//                if (dimension == DimensionRegistry.MARS || dimension == DimensionRegistry.MOON) {
-                    player.addEffect(new MobEffectInstance(EffectRegistry.LOW_GRAVITY.get(), 120000, 0, false, false, true));
-                } else {
+            if (entity instanceof ServerPlayer player) {
+                ItemStack itemStack = player.getItemBySlot(EquipmentSlot.FEET);
+
+                if (itemStack.getItem() instanceof ThermalSpaceSuitArmorItem && ((ThermalSpaceSuitArmorItem) itemStack.getItem()).isGravityBoots(itemStack)) {
                     player.removeEffect(EffectRegistry.LOW_GRAVITY.get());
+                } else {
+                    if (DimensionUtil.isLowGravityDimension(dimension)) {
+                        player.addEffect(new MobEffectInstance(EffectRegistry.LOW_GRAVITY.get(), 120000, 0, false, false, true));
+                    } else {
+                        player.removeEffect(EffectRegistry.LOW_GRAVITY.get());
+                    }
                 }
-            }
-        } else if (entity instanceof LivingEntity livingEntity) {
-            if (DimensionUtil.isLowGravityDimension(dimension)) {
-//                if (dimension == DimensionRegistry.MARS || dimension == DimensionRegistry.MOON) {
-                livingEntity.addEffect(new MobEffectInstance(EffectRegistry.LOW_GRAVITY.get(), 120000, 0, false, false, true));
-            } else {
-                livingEntity.removeEffect(EffectRegistry.LOW_GRAVITY.get());
+
+                if (DimensionUtil.isHighGravityDimension(dimension)) {
+                    player.addEffect(new MobEffectInstance(EffectRegistry.HIGH_GRAVITY.get(), 120000, 0, false, false, true));
+                } else {
+                    player.removeEffect(EffectRegistry.HIGH_GRAVITY.get());
+                }
+            } else if (entity instanceof LivingEntity livingEntity) {
+                if (DimensionUtil.isLowGravityDimension(dimension)) {
+                    livingEntity.addEffect(new MobEffectInstance(EffectRegistry.LOW_GRAVITY.get(), 120000, 0, false, false, true));
+                } else  {
+                    livingEntity.removeEffect(EffectRegistry.LOW_GRAVITY.get());
+                }
+
+                if (DimensionUtil.isHighGravityDimension(dimension)) {
+                    livingEntity.addEffect(new MobEffectInstance(EffectRegistry.HIGH_GRAVITY.get(), 120000, 0, false, false, true));
+                } else  {
+                    livingEntity.removeEffect(EffectRegistry.HIGH_GRAVITY.get());
+                }
             }
         }
 
-        if (event.getWorld().isRaining() && dimension.equals(DimensionRegistry.MARS)) { //FIXME, update way of checking if dimension (and biome?) has sandstorms
-            if (entity instanceof LivingEntity livingEntity) {
-                livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 12000, 1, false, false, true));
-            }
-        } else if (!event.getWorld().isRaining() && dimension.equals(DimensionRegistry.MARS)) {
-            if (entity instanceof LivingEntity livingEntity) {
-                livingEntity.removeEffect(MobEffects.MOVEMENT_SLOWDOWN);
+        if (CelestialCommonConfig.STORMS.get()) {
+            if (event.getWorld().isRaining() && dimension.equals(DimensionRegistry.MARS)) { //FIXME, update way of checking if dimension (and biome?) has sandstorms
+                if (entity instanceof LivingEntity livingEntity) {
+                    livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 12000, 1, false, false, true));
+                }
+            } else if (!event.getWorld().isRaining() && dimension.equals(DimensionRegistry.MARS)) {
+                if (entity instanceof LivingEntity livingEntity) {
+                    livingEntity.removeEffect(MobEffects.MOVEMENT_SLOWDOWN);
+                }
             }
         }
     }
@@ -178,10 +191,11 @@ public class ModForgeEventBus {
 
             if (itemStack.getItem() instanceof ThermalSpaceSuitArmorItem && ((ThermalSpaceSuitArmorItem) itemStack.getItem()).isGravityBoots(itemStack)) {
                 player.removeEffect(EffectRegistry.LOW_GRAVITY.get());
+                player.removeEffect(EffectRegistry.EXTRA_LOW_GRAVITY.get());
+
             } else {
                 ResourceKey<Level> dimension = player.level.dimension();
                 if (DimensionUtil.isLowGravityDimension(dimension)) {
-//                    if (dimension == DimensionRegistry.MARS || dimension == DimensionRegistry.MOON) {
                     player.addEffect(new MobEffectInstance(EffectRegistry.LOW_GRAVITY.get(), 120000, 0, false, false, true));
                 }
             }

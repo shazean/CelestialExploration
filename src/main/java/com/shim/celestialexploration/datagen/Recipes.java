@@ -505,5 +505,7 @@ public class Recipes extends RecipeProvider {
 		ingotAndBlock(BlockRegistry.COMPRESSED_COBBLED_DEEPSLATE.get(), BlockRegistry.SUPER_COMPRESSED_COBBLED_DEEPSLATE.get(), BlockRegistry.COMPRESSED_COBBLED_DEEPSLATE.get(), consumer);
 		ingotAndBlock(BlockRegistry.COMPRESSED_NETHERRACK.get(), BlockRegistry.SUPER_COMPRESSED_NETHERRACK.get(), BlockRegistry.COMPRESSED_NETHERRACK.get(), consumer);
 
+		ShapelessRecipeBuilder.shapeless(BlockRegistry.PLANET_CHART.get()).requires(ItemTags.PLANKS).requires(Items.PAPER).requires(Items.BLACK_DYE).group("celestialexploration").unlockedBy("crafting_table", has(Items.CRAFTING_TABLE)).save(consumer);
+
 	}
 }

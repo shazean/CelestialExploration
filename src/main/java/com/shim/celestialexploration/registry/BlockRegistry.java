@@ -3,7 +3,6 @@ package com.shim.celestialexploration.registry;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.blocks.*;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.BlockItem;
@@ -21,7 +20,6 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
@@ -592,6 +590,9 @@ public class BlockRegistry {
 
     //---- MISC -------------------------------------------------------------------------------
     public static final RegistryObject<Block> DRY_ICE = registerBlockDropsSelf("dry_ice", "Dry Ice", () -> new DryIceBlock(Block.Properties.of(Material.ICE).friction(0.98F).randomTicks().strength(0.5F).sound(SoundType.GLASS).noOcclusion()), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+    public static final RegistryObject<Block> PLANET_CHART = registerBlockDropsSelf("planet_chart", "Planet Chart", () -> new PlanetChartBlock(Block.Properties.of(Material.WOOD).strength(0.5F).sound(SoundType.WOOD).noOcclusion()), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+    public static final RegistryObject<Block> GRINDING_WHEEL = registerBlockDropsSelf("grinding_wheel", "Grinding Wheel", () -> new Block(Block.Properties.of(Material.STONE).strength(0.5F).sound(SoundType.STONE).noOcclusion()), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+
 
     public static final RegistryObject<Block> LURKER_HEAD = BLOCKS.register("lurker_head", () -> new SkullBlock(CelestialSkullRenderer.Types.LURKER, BlockBehaviour.Properties.of(Material.DECORATION).strength(1.0F)));
     public static final RegistryObject<Block> LURKER_WALL_HEAD = BLOCKS.register("lurker_wall_head", () -> new WallSkullBlock(CelestialSkullRenderer.Types.LURKER, BlockBehaviour.Properties.of(Material.DECORATION).strength(1.0F).lootFrom(LURKER_HEAD)));

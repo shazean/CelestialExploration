@@ -1,15 +1,17 @@
 package com.shim.celestialexploration.util;
 
 import com.shim.celestialexploration.config.CelestialCommonConfig;
-import com.shim.celestialexploration.registry.DimensionRegistry;
 import com.shim.celestialexploration.registry.FluidRegistry;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.Level;
+import net.minecraft.Util;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.fluids.FluidStack;
 
-import java.awt.*;
+import java.util.ArrayList;
 
 public class CelestialUtil {
 
@@ -136,6 +138,37 @@ public class CelestialUtil {
             case 8 -> new FluidStack(FluidRegistry.MOLTEN_ALUMINUM.get(), amount);
             default -> FluidStack.EMPTY;
         };
+    }
+
+    private static final ArrayList<CelestialBodyDetails> PLANET_DETAILS = Util.make(new ArrayList<>(), (list) -> {
+        list.add(new CelestialBodyDetails(new TranslatableComponent("celestialexploration.planet_details.sun_name"), new Vec2(0, 0), new TranslatableComponent("celestialexploration.planet_details.sun_resources")));
+        list.add(new CelestialBodyDetails(new TranslatableComponent("celestialexploration.planet_details.mercury_name"), new Vec2((float) getPlanetaryChunkCoordinates(1).x * 16, (float) getPlanetaryChunkCoordinates(1).z * 16), new TranslatableComponent("celestialexploration.planet_details.mercury_resources")));
+        list.add(new CelestialBodyDetails(new TranslatableComponent("celestialexploration.planet_details.venus_name"), new Vec2((float) getPlanetaryChunkCoordinates(2).x * 16, (float) getPlanetaryChunkCoordinates(2).z * 16), new TranslatableComponent("celestialexploration.planet_details.venus_resources")));
+        list.add(new CelestialBodyDetails(new TranslatableComponent("celestialexploration.planet_details.overworld_name"), new Vec2((float) getPlanetaryChunkCoordinates(3).x * 16, (float) getPlanetaryChunkCoordinates(3).z * 16), new TranslatableComponent("celestialexploration.planet_details.overworld_resources"), new TranslatableComponent("celestialexploration.planet_details.overworld_moons")));
+        list.add(new CelestialBodyDetails(new TranslatableComponent("celestialexploration.planet_details.mars_name"), new Vec2((float) getPlanetaryChunkCoordinates(4).x * 16, (float) getPlanetaryChunkCoordinates(4).z * 16), new TranslatableComponent("celestialexploration.planet_details.mars_resources")));
+        list.add(new CelestialBodyDetails(new TranslatableComponent("celestialexploration.planet_details.jupiter_name"), new Vec2((float) getPlanetaryChunkCoordinates(5).x * 16, (float) getPlanetaryChunkCoordinates(5).z * 16), new TranslatableComponent("celestialexploration.planet_details.jupiter_resources"), new TranslatableComponent("celestialexploration.planet_details.jupiter_moons")));
+        list.add(new CelestialBodyDetails(new TranslatableComponent("celestialexploration.planet_details.saturn_name"), new Vec2((float) getPlanetaryChunkCoordinates(6).x * 16, (float) getPlanetaryChunkCoordinates(6).z * 16), new TranslatableComponent("celestialexploration.planet_details.saturn_resources"), new TranslatableComponent("celestialexploration.planet_details.saturn_moons")));
+        list.add(new CelestialBodyDetails(new TranslatableComponent("celestialexploration.planet_details.uranus_name"), new Vec2((float) getPlanetaryChunkCoordinates(7).x * 16, (float) getPlanetaryChunkCoordinates(7).z * 16), new TranslatableComponent("celestialexploration.planet_details.uranus_resources"), new TranslatableComponent("celestialexploration.planet_details.uranus_moons")));
+        list.add(new CelestialBodyDetails(new TranslatableComponent("celestialexploration.planet_details.neptune_name"), new Vec2((float) getPlanetaryChunkCoordinates(8).x * 16, (float) getPlanetaryChunkCoordinates(8).z * 16), new TranslatableComponent("celestialexploration.planet_details.neptune_resources"), new TranslatableComponent("celestialexploration.planet_details.neptune_moons")));
+    });
+
+    public static CelestialBodyDetails getPlanetDetail(int index) {
+        return PLANET_DETAILS.get(index);
+    }
+
+    public record CelestialBodyDetails(Component name, Component location, Component resources, Component moons) {
+        protected static Component coordinatesString = new TranslatableComponent("celestialexploration.planet_details.location");
+        protected static Component moonsString = new TranslatableComponent("celestialexploration.planet_details.moons");
+        protected static Component noMoons = new TranslatableComponent("celestialexploration.planet_details.no_moons");
+        protected static Component resourcesString = new TranslatableComponent("celestialexploration.planet_details.resources");
+
+        CelestialBodyDetails(Component name, Vec2 coordinates, Component resources) {
+            this(name, coordinates, resources, noMoons);
+        }
+
+        CelestialBodyDetails(Component name, Vec2 coordinates, Component resources, Component moons) {
+            this(name, new TextComponent(coordinatesString.getString() + ": " + (int)coordinates.x + "," + (int)coordinates.y), new TextComponent(resourcesString.getString() + ": " + resources.getString()), new TextComponent(moonsString.getString() + ": " + moons.getString()));
+        }
     }
 
 }

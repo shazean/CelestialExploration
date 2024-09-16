@@ -37,16 +37,12 @@ public class OxygenCompressorMenu extends AbstractContainerMenu {
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
 
-        CelestialExploration.LOGGER.debug("inventory slot 1: " + inv.getItem(36) + ", "+ inv.getItem(37) + ", "+ inv.getItem(38) + ", "+ inv.getItem(39) + ", "+ inv.getItem(40));
-
         this.blockEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(handler -> {
             this.addSlot(new FuelSlot(handler, 0, 31, 51));
             this.addSlot(new OxygenTankSlot(handler, 1, 106, 23));
             this.addSlot(new OxygenTankSlot(handler, 2, 130, 23));
             this.addSlot(new OxygenTankSlot(handler, 3, 106, 47));
             this.addSlot(new OxygenTankSlot(handler, 4, 130, 47));
-
-            CelestialExploration.LOGGER.debug("menu slot 0: " + this.getSlot(35).getItem() + ", " + this.getSlot(36).getItem() + ", " + this.getSlot(37).getItem());
         });
 
         addDataSlots(data);

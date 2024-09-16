@@ -23,11 +23,9 @@ import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.fluids.FluidAttributes;
 import net.minecraftforge.fluids.FluidStack;
 
 import javax.annotation.Nonnull;
@@ -78,7 +76,7 @@ public class WorkbenchSmeltingRecipeCategory implements IRecipeCategory<Workbenc
 
     @Override
     public Component getTitle() {
-        return new TextComponent("Workbench Smelting");
+        return new TranslatableComponent("recipe.celestialexploration.workbench.smelting");
     }
 
     @Override

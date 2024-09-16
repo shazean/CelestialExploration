@@ -115,7 +115,7 @@ public class WorkbenchScreen extends AbstractContainerScreen<WorkbenchMenu> {
             if (!menu.getFluid().isEmpty()) {
                 tooltip = Lists.newArrayList();
                 this.tooltip.add(menu.getFluid().getDisplayName());
-                this.tooltip.add(new TranslatableComponent(menu.getFluid().getAmount() + " / " + menu.getMaxFluidAmount()));
+                this.tooltip.add(new TextComponent(menu.getFluid().getAmount() + " / " + menu.getMaxFluidAmount()));
                 this.renderComponentTooltip(poseStack, this.tooltip, mouseX, mouseY);
             }
         }

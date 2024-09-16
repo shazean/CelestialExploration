@@ -5,6 +5,7 @@ import com.shim.celestialexploration.blocks.CelestialSkullRenderer;
 import com.shim.celestialexploration.capabilities.LoxTankCapability;
 import com.shim.celestialexploration.entity.renderer.*;
 import com.shim.celestialexploration.inventory.screens.OxygenCompressorScreen;
+import com.shim.celestialexploration.inventory.screens.PlanetChartScreen;
 import com.shim.celestialexploration.inventory.screens.SpaceshipScreen;
 import com.shim.celestialexploration.inventory.screens.WorkbenchScreen;
 import com.shim.celestialexploration.item.armor.*;
@@ -146,6 +147,7 @@ public class ModEventClientBusEvents {
         EntityRenderers.register(EntityRegistry.VOIDED_ZOGLIN.get(), VoidedZoglinRenderer::new);
 
         MenuScreens.register(MenuRegistry.OXYGEN_COMPRESSOR_MENU.get(), OxygenCompressorScreen::new);
+        MenuScreens.register(MenuRegistry.PLANET_CHART_MENU.get(), PlanetChartScreen::new);
         MenuScreens.register(MenuRegistry.SPACESHIP_MENU.get(), SpaceshipScreen::new);
         MenuScreens.register(MenuRegistry.WORKBENCH_MENU.get(), WorkbenchScreen::new);
 

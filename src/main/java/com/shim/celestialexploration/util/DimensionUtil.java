@@ -13,6 +13,7 @@ import java.util.Map;
 public class DimensionUtil {
     private static final Map<ResourceKey<Level>, gravityType> DIMENSION_GRAVITY = Util.make(new Object2ObjectArrayMap<>(), (dimension) -> {
         dimension.defaultReturnValue(gravityType.NORMAL);
+        dimension.put(DimensionRegistry.SPACE, gravityType.EXTRA_LOW);
         dimension.put(DimensionRegistry.MOON, gravityType.LOW);
         dimension.put(DimensionRegistry.MARS, gravityType.LOW);
         dimension.put(DimensionRegistry.VENUS, gravityType.NORMAL);
@@ -25,6 +26,10 @@ public class DimensionUtil {
 
     public static boolean isLowGravityDimension(ResourceKey<Level> dimension) {
         return DIMENSION_GRAVITY.get(dimension).equals(gravityType.LOW);
+    }
+
+    public static boolean isExtraLowGravityDimension(ResourceKey<Level> dimension) {
+        return DIMENSION_GRAVITY.get(dimension).equals(gravityType.EXTRA_LOW);
     }
 
     public static boolean isHighGravityDimension(ResourceKey<Level> dimension) {

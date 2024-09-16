@@ -4,6 +4,8 @@ import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.registry.*;
 
 import net.minecraft.data.DataGenerator;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
@@ -88,6 +90,10 @@ public class ModLanguageProvider extends LanguageProvider {
 		add("biome.celestialexploration.venus_sulfur_flats", "Venusian Sulfur Flats");
 		add("biome.celestialexploration.space", "Space");
 
+		//---- MENUS -------------------------------------------------------------------------------
+		add("container.celestialexploration.oxygen_compressor", "Oxygen Compressor");
+		add("container.celestialexploration.workbench", "Workbench");
+
 		//---- EFFECTS -------------------------------------------------------------------------------
 		add(EffectRegistry.LOW_GRAVITY.get(), "Low Gravity");
 		add(EffectRegistry.EXTRA_LOW_GRAVITY.get(), "Extra Low Gravity");
@@ -105,7 +111,6 @@ public class ModLanguageProvider extends LanguageProvider {
 		add("key.celestialexploration.turn_left", "Spaceship Strafe Left");
 		add("key.celestialexploration.turn_right", "Spaceship Strafe Right");
 //		add("key.celestialexploration.open_shuttle_inventory", "Open Spaceship Inventory");
-
 
 		//---- DAMAGE SOURCES -------------------------------------------------------------------------------
 		add("death.attack.celestialexploration.touchedSun", "%1$s discovered the sun is hot");
@@ -137,6 +142,47 @@ public class ModLanguageProvider extends LanguageProvider {
 		add("advancements.celestial.kill_mob_in_space.title", "Space Invaders");
 		add("advancements.celestial.kill_mob_in_space.description", "Defeat a mob in outer space");
 
+		//---- RECIPE-RELATED -------------------------------------------------------------------------------
+		add("recipe.celestialexploration.workbench.smelting", "Workbench Smelting");
+		add("recipe.celestialexploration.workbench.crafting", "Workbench Crafting");
+
+		//---- OTHER -------------------------------------------------------------------------------
+		add("celestialexploration.planet_details.location", "Coordinates");
+		add("celestialexploration.planet_details.moons", "Notable Moons");
+		add("celestialexploration.planet_details.no_moons", "NONE");
+		add("celestialexploration.planet_details.resources", "Notable Resources");
+
+		add("celestialexploration.planet_details.sun_name", "The Sun");
+		add("celestialexploration.planet_details.sun_resources", "NONE");
+
+		add("celestialexploration.planet_details.mercury_name", "Mercury");
+		add("celestialexploration.planet_details.mercury_resources", "meteors, coal, diamond");
+
+		add("celestialexploration.planet_details.venus_name", "Venus");
+		add("celestialexploration.planet_details.venus_resources", "sulfur, lapis lazuli");
+
+		add("celestialexploration.planet_details.overworld_name", "Overworld");
+		add("celestialexploration.planet_details.overworld_resources", "overworld/vanilla resources");
+		add("celestialexploration.planet_details.overworld_moons", "Moon");
+
+		add("celestialexploration.planet_details.mars_name", "Mars");
+		add("celestialexploration.planet_details.mars_resources", "iron");
+
+		add("celestialexploration.planet_details.jupiter_name", "Jupiter");
+		add("celestialexploration.planet_details.jupiter_resources", "TBD");
+		add("celestialexploration.planet_details.jupiter_moons", "TBD");
+
+		add("celestialexploration.planet_details.saturn_name", "Saturn");
+		add("celestialexploration.planet_details.saturn_resources", "TBD");
+		add("celestialexploration.planet_details.saturn_moons", "TBD");
+
+		add("celestialexploration.planet_details.uranus_name", "Uranus");
+		add("celestialexploration.planet_details.uranus_resources", "TBD");
+		add("celestialexploration.planet_details.uranus_moons", "TBD");
+
+		add("celestialexploration.planet_details.neptune_name", "Neptune");
+		add("celestialexploration.planet_details.neptune_resources", "TBD");
+		add("celestialexploration.planet_details.neptune_moons", "TBD");
 
 	}
 }

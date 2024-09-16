@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "celestialexploration:block/planet_chart_front",
+    "north": "celestialexploration:block/planet_chart_front",
+    "south": "celestialexploration:block/planet_chart_front",
+    "east": "celestialexploration:block/planet_chart_side",
+    "west": "celestialexploration:block/planet_chart_side",
+    "up": "celestialexploration:block/planet_chart_top",
+    "down": "minecraft:block/oak_planks"
+  }
+}

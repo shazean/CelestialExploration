@@ -66,7 +66,6 @@ public class CelestialExploration {
 
         ItemRegistry.register(modEventBus);
         BlockRegistry.register(modEventBus);
-        ContainerRegistry.register(modEventBus);
         BlockEntityRegistry.register(modEventBus);
         MenuRegistry.register(modEventBus);
         PoiRegistry.register(modEventBus);

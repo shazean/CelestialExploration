@@ -594,6 +594,9 @@ public class ItemModels extends ItemModelProvider {
 		self(BlockRegistry.SUPER_COMPRESSED_COBBLED_DEEPSLATE.get());
 		self(BlockRegistry.SUPER_COMPRESSED_NETHERRACK.get());
 
+		self(BlockRegistry.PLANET_CHART.get());
+
+
 		//ITEMS
 		generatedItem(ItemRegistry.MOON_DUST.get());
 		handheldItem(ItemRegistry.STEEL_ROD.get());

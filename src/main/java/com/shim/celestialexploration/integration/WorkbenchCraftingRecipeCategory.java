@@ -1,6 +1,5 @@
 package com.shim.celestialexploration.integration;
 
-import com.ibm.icu.impl.Pair;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.blocks.blockentities.WorkbenchBlockEntity;
 import com.shim.celestialexploration.recipes.WorkbenchCraftingRecipe;
@@ -15,18 +14,14 @@ import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.fluids.FluidAttributes;
 import net.minecraftforge.fluids.FluidStack;
-import org.antlr.v4.misc.MutableInt;
 
 import javax.annotation.Nonnull;
-import java.util.ArrayList;
-import java.util.List;
 
 public class WorkbenchCraftingRecipeCategory implements IRecipeCategory<WorkbenchCraftingRecipe> {
     public final static ResourceLocation UID = new ResourceLocation(CelestialExploration.MODID, "workbench_crafting");
@@ -59,7 +54,7 @@ public class WorkbenchCraftingRecipeCategory implements IRecipeCategory<Workbenc
 
     @Override
     public Component getTitle() {
-        return new TextComponent("Workbench Crafting");
+        return new TranslatableComponent("recipe.celestialexploration.workbench.crafting");
     }
 
     @Override
