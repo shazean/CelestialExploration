@@ -5,5 +5,5 @@ import net.minecraft.network.protocol.game.ClientboundAddPaintingPacket;
 
 public interface CelestialClientPacketListener extends PacketListener {
 
-    void handleAddControlPanel(ControlPanelPacket packet);
+//    void handleAddControlPanel(ControlPanelPacket packet);
 }
