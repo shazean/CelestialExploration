@@ -11,7 +11,10 @@ import com.shim.celestialexploration.entity.mob.slimes.*;
 import com.shim.celestialexploration.packets.CelestialPacketHandler;
 import com.shim.celestialexploration.registry.*;
 import com.shim.celestialexploration.util.Keybinds;
+import com.shim.celestialexploration.registry.CelestialStructurePieceType;
+import com.shim.celestialexploration.world.structures.ResearchTunnelPieces;
 import mod.azure.azurelib.AzureLib;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
@@ -85,6 +88,7 @@ public class CelestialExploration {
         modEventBus.addListener(CapabilityRegistry::registerCapabilities);
         MinecraftForge.EVENT_BUS.addGenericListener(ItemStack.class, CapabilityRegistry::attachItemCapabilities);
         MinecraftForge.EVENT_BUS.addGenericListener(BlockEntity.class, CapabilityRegistry::attachBlockCapabilities);
+        MinecraftForge.EVENT_BUS.addGenericListener(Entity.class, CapabilityRegistry::attachEntityCapabilities);
 
 //        bus.addListener(EventPriority.NORMAL, Structures::addDimensionalSpacing);
 //        bus.addListener(EventPriority.NORMAL, Structures::setupStructureSpawns);
@@ -144,6 +148,11 @@ public class CelestialExploration {
 
             VillagerRegistry.registerPOIs();
 
+            CelestialStructurePieceType.RESEARCH_TUNNEL_CORRIDOR = CelestialStructurePieceType.register("RTCorridor", ResearchTunnelPieces.ResearchTunnelCorridor::new);
+            CelestialStructurePieceType.RESEARCH_TUNNEL_CROSSING = CelestialStructurePieceType.register("RTCrossing", ResearchTunnelPieces.ResearchTunnelCrossing::new);
+            CelestialStructurePieceType.RESEARCH_TUNNEL_ROOM = CelestialStructurePieceType.register("RTRoom", ResearchTunnelPieces.ResearchTunnelRoom::new);
+            CelestialStructurePieceType.RESEARCH_TUNNEL_STAIRS = CelestialStructurePieceType.register("RTStairs", ResearchTunnelPieces.ResearchTunnelStairs::new);
+
         });
     }
 
@@ -179,6 +188,12 @@ public class CelestialExploration {
 
     @Nullable
     public static <T> T getCapability(BlockEntity entityIn, Capability<T> capability) {
+        if (entityIn == null) return null;
+        return entityIn.getCapability(capability).isPresent() ? entityIn.getCapability(capability).orElseThrow(() -> new IllegalArgumentException("Lazy optional must not be empty")) : null;
+    }
+
+    @Nullable
+    public static <T> T getCapability(Entity entityIn, Capability<T> capability) {
         if (entityIn == null) return null;
         return entityIn.getCapability(capability).isPresent() ? entityIn.getCapability(capability).orElseThrow(() -> new IllegalArgumentException("Lazy optional must not be empty")) : null;
     }

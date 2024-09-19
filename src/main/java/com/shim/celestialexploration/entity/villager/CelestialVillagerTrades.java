@@ -22,24 +22,24 @@ public class CelestialVillagerTrades {
 
     @SubscribeEvent
     public static void addCustomTrades(VillagerTradesEvent event) {
-        if (event.getType() == VillagerRegistry.ASTRONOMER.get()) {
-            Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
-
-            int villagerLevel = 1;
-
-            trades.get(villagerLevel).add((trader, rand) -> getItemForEmeralds(
-                    new ItemStack(ItemRegistry.MOON_DUST.get(), 4), 1, 3, 1, 0.02F));
-        }
-
-        if (event.getType() == VillagerRegistry.ENGINEER.get()) {
-            Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
-
-            int villagerLevel = 1;
-
-            trades.get(villagerLevel).add((trader, rand) -> offer(
-                    new ItemStack(ItemRegistry.MOON_DUST.get(), 2), new ItemStack(Items.IRON_INGOT, 2),
-                    new ItemStack(BlockRegistry.LUNAR_LANTERN.get()), 2, 1, 0.02F));
-        }
+//        if (event.getType() == VillagerRegistry.ASTRONOMER.get()) {
+//            Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
+//
+//            int villagerLevel = 1;
+//
+//            trades.get(villagerLevel).add((trader, rand) -> getItemForEmeralds(
+//                    new ItemStack(ItemRegistry.MOON_DUST.get(), 4), 1, 3, 1, 0.02F));
+//        }
+//
+//        if (event.getType() == VillagerRegistry.ENGINEER.get()) {
+//            Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
+//
+//            int villagerLevel = 1;
+//
+//            trades.get(villagerLevel).add((trader, rand) -> offer(
+//                    new ItemStack(ItemRegistry.MOON_DUST.get(), 2), new ItemStack(Items.IRON_INGOT, 2),
+//                    new ItemStack(BlockRegistry.LUNAR_LANTERN.get()), 2, 1, 0.02F));
+//        }
 
 //        if (event.getType() == VillagerRegistry.GEOLOGIST.get()) {
 //            Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();

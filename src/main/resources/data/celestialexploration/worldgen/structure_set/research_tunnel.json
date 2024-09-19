@@ -1,0 +1,26 @@
+{
+  "structures": [
+    {
+      "structure": "celestialexploration:research_tunnel_mars",
+      "weight": 1
+    },
+    {
+      "structure": "celestialexploration:research_tunnel_moon",
+      "weight": 1
+    },
+    {
+      "structure": "celestialexploration:research_tunnel_venus",
+      "weight": 1
+    },
+    {
+      "structure": "celestialexploration:research_tunnel_mercury",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 26942323,
+    "spacing": 1,
+    "separation": 0,
+    "type": "minecraft:random_spread"
+  }
+}

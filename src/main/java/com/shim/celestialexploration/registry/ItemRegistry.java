@@ -151,7 +151,7 @@ public class ItemRegistry {
 	public static final RegistryObject<Item> SULFUR_CRYSTAL = registerItem("sulfur_crystal", "Sulfur Crystal", () -> new Item((new Item.Properties()).tab(CreativeModeTab.TAB_MATERIALS)));
 	public static final RegistryObject<Item> CINNABAR = registerItem("cinnabar", "Cinnarbar", () -> new Item((new Item.Properties()).tab(CreativeModeTab.TAB_MATERIALS)));
 
-	public static final RegistryObject<Item> CONTROL_PANEL = registerItem("control_panel", "Control Panel", () -> new ControlPanelItem(new Item.Properties().tab(CelestialExploration.SPACESHIP_TAB)));
+//	public static final RegistryObject<Item> CONTROL_PANEL = registerItem("control_panel", "Control Panel", () -> new ControlPanelItem(new Item.Properties().tab(CelestialExploration.SPACESHIP_TAB)));
 
 	//---- FOOD -------------------------------------------------------------------------------
 	public static final RegistryObject<Item> MARSHMALLOW_GOO = registerFood("marshmallow_goo", "Marshmallow Goo", 1, 0.1F);

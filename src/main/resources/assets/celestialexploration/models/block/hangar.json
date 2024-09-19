@@ -1,0 +1,23 @@
+{
+  "parent": "celestialexploration:block/panel_door",
+  "textures": {
+    "all": "celestialexploration:block/hangar_center",
+    "particle": "celestialexploration:block/hangar_center"
+  },
+  "elements": [
+    {
+      "from": [0, 0, 1],
+      "to": [16, 16, 6],
+      "rotation": {"angle": 0, "axis": "y", "origin": [0, 0, 17]},
+      "color": 3,
+      "faces": {
+        "north": {"uv": [0, 0, 16, 16], "texture": "#all"},
+        "east": {"uv": [0, 0, 5, 16], "texture": "#all"},
+        "south": {"uv": [0, 0, 16, 16], "texture": "#all"},
+        "west": {"uv": [0, 0, 5, 16], "texture": "#all"},
+        "up": {"uv": [0, 0, 5, 16], "rotation": 270, "texture": "#all"},
+        "down": {"uv": [0, 0, 5, 16], "rotation": 90, "texture": "#all"}
+      }
+    }
+  ]
+}

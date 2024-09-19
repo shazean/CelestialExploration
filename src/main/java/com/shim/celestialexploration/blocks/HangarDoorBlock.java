@@ -1,10 +1,7 @@
 package com.shim.celestialexploration.blocks;
 
-import com.shim.celestialexploration.CelestialExploration;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.util.datafix.fixes.ChunkPalettedStorageFix;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -16,7 +13,10 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.*;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec2;
@@ -24,25 +24,24 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import org.lwjgl.system.CallbackI;
 
 import javax.annotation.Nullable;
 
-public class AirlockDoorBlock extends Block {
-    public static final EnumProperty<CelestialProperties.AirlockDoorHingeSide> HINGE = CelestialProperties.HINGE;
-//    public static final EnumProperty<DoorPieceType> DOOR_PIECE = EnumProperty.create("door_piece", DoorPieceType.class);
+public class HangarDoorBlock extends Block {
+    public static final EnumProperty<CelestialProperties.AirlockDoorHingeSide> HINGE = EnumProperty.create("hinge", CelestialProperties.AirlockDoorHingeSide.class);
+    //    public static final EnumProperty<DoorPieceType> DOOR_PIECE = EnumProperty.create("door_piece", DoorPieceType.class);
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
     public static final BooleanProperty OPEN = BlockStateProperties.OPEN;
     public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
-    protected static final VoxelShape SOUTH_AABB = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 3.0D);
-    protected static final VoxelShape NORTH_AABB = Block.box(0.0D, 0.0D, 13.0D, 16.0D, 16.0D, 16.0D);
-    protected static final VoxelShape WEST_AABB = Block.box(13.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
-    protected static final VoxelShape EAST_AABB = Block.box(0.0D, 0.0D, 0.0D, 3.0D, 16.0D, 16.0D);
-    protected static final VoxelShape SW_CORNER_AABB = Block.box(0.0D, 0.0D, 11.0D, 5.0D, 16.0D, 16.0D);
-    protected static final VoxelShape NW_CORNER_AABB = Block.box(0.0D, 0.0D, 0.0D, 5.0D, 16.0D, 5.0D);
-    protected static final VoxelShape NE_CORNER_AABB = Block.box(11.0D, 0.0D, 0.0D, 16.0D, 16.0D, 5.0D);
-    protected static final VoxelShape SE_CORNER_AABB = Block.box(11.0D, 0.0D, 11.0D, 16.0D, 16.0D, 16.0D);
-    protected static final Vec2 MAX_SIZE = new Vec2(5, 5);
+    protected static final VoxelShape SOUTH_AABB = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 7.0D);
+    protected static final VoxelShape NORTH_AABB = Block.box(0.0D, 0.0D, 9.0D, 16.0D, 16.0D, 16.0D);
+    protected static final VoxelShape WEST_AABB = Block.box(9.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
+    protected static final VoxelShape EAST_AABB = Block.box(0.0D, 0.0D, 0.0D, 7.0D, 16.0D, 16.0D);
+//    protected static final VoxelShape SW_CORNER_AABB = Block.box(0.0D, 0.0D, 11.0D, 5.0D, 16.0D, 16.0D);
+//    protected static final VoxelShape NW_CORNER_AABB = Block.box(0.0D, 0.0D, 0.0D, 5.0D, 16.0D, 5.0D);
+//    protected static final VoxelShape NE_CORNER_AABB = Block.box(11.0D, 0.0D, 0.0D, 16.0D, 16.0D, 5.0D);
+//    protected static final VoxelShape SE_CORNER_AABB = Block.box(11.0D, 0.0D, 11.0D, 16.0D, 16.0D, 16.0D);
+    protected static final Vec2 MAX_SIZE = new Vec2(30, 30);
 
     public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
         Direction direction = state.getValue(FACING);
@@ -52,17 +51,22 @@ public class AirlockDoorBlock extends Block {
             return Shapes.empty();
         }
 
-        boolean hingeOnRight = state.getValue(HINGE) == CelestialProperties.AirlockDoorHingeSide.RIGHT;
+//        boolean hingeOnRight = state.getValue(HINGE) == CelestialProperties.AirlockDoorHingeSide.RIGHT;
         return switch (direction) {
-            case EAST -> notOpen ? EAST_AABB : (hingeOnRight ? SW_CORNER_AABB : NW_CORNER_AABB);
-            case SOUTH -> notOpen ? SOUTH_AABB : (hingeOnRight ? NW_CORNER_AABB : NE_CORNER_AABB);
-            case WEST -> notOpen ? WEST_AABB : (hingeOnRight ? NE_CORNER_AABB : SE_CORNER_AABB);
-            case NORTH -> notOpen ? NORTH_AABB : (hingeOnRight ? SE_CORNER_AABB : SW_CORNER_AABB);
-            default -> notOpen ? EAST_AABB : (hingeOnRight ? SW_CORNER_AABB : NW_CORNER_AABB);
+            case EAST -> EAST_AABB;
+            case SOUTH -> SOUTH_AABB;
+            case WEST -> WEST_AABB;
+            case NORTH -> NORTH_AABB;
+            default -> EAST_AABB;
+//            case EAST -> notOpen ? EAST_AABB : (hingeOnRight ? SW_CORNER_AABB : NW_CORNER_AABB);
+//            case SOUTH -> notOpen ? SOUTH_AABB : (hingeOnRight ? NW_CORNER_AABB : NE_CORNER_AABB);
+//            case WEST -> notOpen ? WEST_AABB : (hingeOnRight ? NE_CORNER_AABB : SE_CORNER_AABB);
+//            case NORTH -> notOpen ? NORTH_AABB : (hingeOnRight ? SE_CORNER_AABB : SW_CORNER_AABB);
+//            default -> notOpen ? EAST_AABB : (hingeOnRight ? SW_CORNER_AABB : NW_CORNER_AABB);
         };
     }
 
-    public AirlockDoorBlock(Properties p_49795_) {
+    public HangarDoorBlock(Properties p_49795_) {
         super(p_49795_);
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(OPEN, false).setValue(POWERED, false).setValue(HINGE, CelestialProperties.AirlockDoorHingeSide.LEFT));
     }
@@ -71,12 +75,12 @@ public class AirlockDoorBlock extends Block {
         p_52803_.add(FACING, OPEN, HINGE, POWERED);
     }
 
-   public boolean canSurvive(BlockState state, LevelReader levelReader, BlockPos pos) {
-       BlockPos blockBelow = pos.below();
-       BlockPos blockAbove = pos.above();
-       BlockState blockstateBelow = levelReader.getBlockState(blockBelow);
-       BlockState blockstateAbove = levelReader.getBlockState(blockAbove);
-       return blockstateBelow.isFaceSturdy(levelReader, blockBelow, Direction.UP) || blockstateAbove.isFaceSturdy(levelReader, blockAbove, Direction.DOWN) || blockstateBelow.is(this) || blockstateAbove.is(this);
+    public boolean canSurvive(BlockState state, LevelReader levelReader, BlockPos pos) {
+        BlockPos blockBelow = pos.below();
+        BlockPos blockAbove = pos.above();
+        BlockState blockstateBelow = levelReader.getBlockState(blockBelow);
+        BlockState blockstateAbove = levelReader.getBlockState(blockAbove);
+        return blockstateBelow.isFaceSturdy(levelReader, blockBelow, Direction.UP) || blockstateAbove.isFaceSturdy(levelReader, blockAbove, Direction.DOWN) || blockstateBelow.is(this) || blockstateAbove.is(this);
     }
 
     @Nullable
@@ -173,8 +177,8 @@ public class AirlockDoorBlock extends Block {
         BlockState above = blockgetter.getBlockState(context.getClickedPos().above());
         BlockState below = blockgetter.getBlockState(context.getClickedPos().below());
 
-        if (above.getBlock() instanceof AirlockDoorBlock && isHinge(above)) return true;
-        else return below.getBlock() instanceof AirlockDoorBlock && isHinge(below);
+        if (above.getBlock() instanceof HangarDoorBlock && isHinge(above)) return true;
+        else return below.getBlock() instanceof HangarDoorBlock && isHinge(below);
     }
 
     public boolean isOpen(BlockState p_52816_) {
@@ -196,7 +200,7 @@ public class AirlockDoorBlock extends Block {
 
     public void neighborChanged(BlockState self, Level level, BlockPos selfPos, Block block, BlockPos neighborPos, boolean p_52781_) {
         BlockState neighbor = level.getBlockState(neighborPos);
-        if (neighbor.getBlock() instanceof AirlockDoorBlock) {
+        if (neighbor.getBlock() instanceof HangarDoorBlock) {
             boolean isOpen = neighbor.getValue(OPEN);
 
             //TODO future me, please find a better way of doing this

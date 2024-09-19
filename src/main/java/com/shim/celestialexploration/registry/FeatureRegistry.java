@@ -11,10 +11,9 @@ import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.feature.DesertWellFeature;
-import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.*;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.placement.HeightRangePlacement;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
@@ -31,16 +30,12 @@ public class FeatureRegistry {
 
     public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, CelestialExploration.MODID);
 
-    public static final RegistryObject<Feature<NoneFeatureConfiguration>> GEYSER = FEATURES.register("geysery", () -> new GeyserFeature(NoneFeatureConfiguration.CODEC));
-
-//    public static final RegistryObject<Feature<NoneFeatureConfiguration>> GLOWING_SAND = FEATURES.register("glowing_sand", () -> new GlowingSandFeature(NoneFeatureConfiguration.CODEC));
-//    public static final RegistryObject<Feature<NoneFeatureConfiguration>> ASTEROID = FEATURES.register("asteroid", () -> new AsteroidFeature(NoneFeatureConfiguration.CODEC));
+    public static final RegistryObject<Feature<NoneFeatureConfiguration>> GEYSER = FEATURES.register("geyser", () -> new GeyserFeature(NoneFeatureConfiguration.CODEC));
 
 
     private static <C extends FeatureConfiguration, F extends Feature<C>> F register(String p_65808_, F p_65809_) {
         return Registry.register(Registry.FEATURE, p_65808_, p_65809_);
     }
-
 
     public static void register(IEventBus eventbus) {
         FEATURES.register(eventbus);

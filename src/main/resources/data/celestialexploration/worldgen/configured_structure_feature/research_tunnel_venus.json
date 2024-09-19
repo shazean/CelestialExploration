@@ -1,0 +1,9 @@
+{
+  "config": {
+    "probability": 0.004,
+    "type": "venus"
+  },
+  "biomes": "#celestialexploration:has_structure/research_tunnel_venus",
+  "spawn_overrides": {},
+  "type": "celestialexploration:research_tunnel"
+}

@@ -7,6 +7,7 @@ import com.shim.celestialexploration.config.CelestialCommonConfig;
 import com.shim.celestialexploration.inventory.menus.SpaceshipMenu;
 import com.shim.celestialexploration.packets.CelestialPacketHandler;
 import com.shim.celestialexploration.packets.SpaceshipFuelTickPacket;
+import com.shim.celestialexploration.packets.SpaceshipInventoryPacket;
 import com.shim.celestialexploration.registry.*;
 import com.shim.celestialexploration.util.CelestialUtil;
 import com.shim.celestialexploration.util.Keybinds;
@@ -18,6 +19,7 @@ import mod.azure.azurelib.core.animation.AnimationController;
 import mod.azure.azurelib.core.animation.RawAnimation;
 import mod.azure.azurelib.util.AzureLibUtil;
 import net.minecraft.BlockUtil;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -57,7 +59,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -81,6 +82,7 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
     private static final EntityDataAccessor<Integer> DATA_ID_BUBBLE_TIME = SynchedEntityData.defineId(Spaceship.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Byte> DATA_ID_FLAGS = SynchedEntityData.defineId(Spaceship.class, EntityDataSerializers.BYTE);
     private static final EntityDataAccessor<Integer> DATA_ID_TIME_ON_GROUND = SynchedEntityData.defineId(Spaceship.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> DATA_ID_INVENTORY_COOLDOWN = SynchedEntityData.defineId(Spaceship.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> DATA_ID_FUEL_TICKS = SynchedEntityData.defineId(Spaceship.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> DATA_ID_FUEL = SynchedEntityData.defineId(Spaceship.class, EntityDataSerializers.INT);
     private float outOfControlTicks;
@@ -93,7 +95,7 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
     private double lerpXRot;
     private Spaceship.Status status;
     private static final float SPACESHIP_SPEED = (float) (double) CelestialCommonConfig.SPACESHIP_SPEED.get();
-    private static final float SPACESHIP_LOW_FUEL_SPEED = SPACESHIP_SPEED - .15F;
+    public static final float SPACESHIP_LOW_FUEL_SPEED = SPACESHIP_SPEED - .15F;
     private static final float SPACESHIP_NO_FUEL_SPEED = .2F;
     private static final float SPACESHIP_IN_SPACE_SPEED = SPACESHIP_SPEED + .15F;
     protected SimpleContainer inventory;
@@ -102,6 +104,7 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
     public static int maxTimeOnGround = 15;
     private final int LOW_FUEL = 300;
     private final AnimatableInstanceCache cache = AzureLibUtil.createInstanceCache(this);
+    private boolean inventoryOpen = false;
 //    private boolean isFlying;
 
     public Spaceship(EntityType<? extends Spaceship> p_38290_, Level p_38291_) {
@@ -195,6 +198,7 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
         this.entityData.define(DATA_ID_BUBBLE_TIME, 0);
         this.entityData.define(DATA_ID_FLAGS, (byte) 0);
         this.entityData.define(DATA_ID_TIME_ON_GROUND, 1);
+        this.entityData.define(DATA_ID_INVENTORY_COOLDOWN, 0);
         this.entityData.define(DATA_ID_FUEL_TICKS, MAX_FUEL_TICKS);
         this.entityData.define(DATA_ID_FUEL, 0);
     }
@@ -301,6 +305,14 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
         return this.entityData.get(DATA_ID_TIME_ON_GROUND);
     }
 
+    public void setInventoryCooldown(int time) {
+        this.entityData.set(DATA_ID_INVENTORY_COOLDOWN, time);
+    }
+
+    public int getInventoryCooldown() {
+        return this.entityData.get(DATA_ID_INVENTORY_COOLDOWN);
+    }
+
     public void setFuelTicks(int ticks) {
         this.entityData.set(DATA_ID_FUEL_TICKS, ticks);
     }
@@ -366,13 +378,14 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
             this.move(MoverType.SELF, this.getDeltaMovement());
         }
 
-//        if (this.isVehicle() && this.getControllingPassenger() instanceof Player player) {
-//            if (this.level.isClientSide) {
-//                if (Keybinds.OPEN_SHUTTLE_INVENTORY.isDown()) {
-//                    openMenu(player);
-//                }
-//            }
-//        }
+        if (this.isVehicle() && this.getControllingPassenger() instanceof Player) {
+            if (this.level.isClientSide) {
+
+                if (Keybinds.OPEN_SPACESHIP_INVENTORY.isDown()) {
+                    CelestialPacketHandler.INSTANCE.sendToServer(new SpaceshipInventoryPacket(this.getId()));
+                }
+            }
+        }
 
         if (!this.level.isClientSide) {
             if (this.getFuelTicks() <= 0) {
@@ -382,66 +395,52 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
             this.setFuelDataId(this.getFuel());
         }
 
-        ResourceKey<Level> currentDimension = this.level.dimension();
-
-        if (isVehicle() && isTeleportHeight()) {
-            if (!(currentDimension == DimensionRegistry.SPACE)) {
-                //TODO or FIXME does not allow for multiple passengers. Update if we want spaceship to allow multiple passengers in the future
-                if (currentDimension == DimensionRegistry.MERCURY) teleportToSpace(1);
-                else if (currentDimension == DimensionRegistry.VENUS) teleportToSpace(2);
-                else if (currentDimension == Level.OVERWORLD || this.level.dimension() == DimensionRegistry.MOON) teleportToSpace(3);
-                else if (currentDimension == DimensionRegistry.MARS) teleportToSpace(4);
-            } else {
-                resetTelportationCooldown();
-            }
-        }
-
-        if (this.isVehicle() && currentDimension == DimensionRegistry.SPACE) {
-//            CelestialExploration.LOGGER.debug("isVehicle, and in SPACE");
-            ChunkPos spaceshipChunkPos = new ChunkPos(this.blockPosition());
-
-            if (this.getControllingPassenger() instanceof Player player) {
-
-                if (this.position().y < 130 && this.position().y > 35) {
-
-                    BlockHitResult hitResult;
-                    if (this.getMaxSpeed() >= SPACESHIP_LOW_FUEL_SPEED) {
-                        hitResult = (BlockHitResult) player.pick(35.0D, 0.0F, false);
-                    } else {
-                        hitResult = (BlockHitResult) player.pick(18.0D, 0.0F, false);
-                    }
-
-                    BlockState blockState = this.level.getBlockState(hitResult.getBlockPos());
-                    ResourceKey<Level> destination = getTeleportLocation(this, spaceshipChunkPos, blockState);
-
-                    if (destination != null) {
-                        if (this.teleportationCooldown == 0) {
-                            Entity passenger = this.getControllingPassenger();
-
-                            Entity secondPassenger = null;
-                            if (this.getPassengers().size() > 1) secondPassenger = this.getPassengers().get(1);
-
-                            assert passenger != null;
-
-                            Vec3 teleportPosition = new Vec3(this.position().x, this.position().y, this.position().z); //this.level.getMaxBuildHeight() - 10, this.position().z);
-//                            if (!this.level.isClientSide) {
-//                                ServerLevel serverLevel = (ServerLevel) this.getLevel();
-//                                Vec3 teleportPosition = new Vec3(serverLevel.getSharedSpawnPos().getX(), this.position().y, serverLevel.getSharedSpawnPos().getY());
-                                teleportSpaceship(passenger, secondPassenger, this, destination, teleportPosition);
+//        ResourceKey<Level> currentDimension = this.level.dimension();
 //
-//                            }
-
-                        } else {
-                            this.teleportationCooldown--;
-                            this.displayTeleportMessage(this.teleportationCooldown, destination);
-                        }
-                    }
-                    if (destination == null) {
-                        this.resetTelportationCooldown();
-                    }
-                }
-            }
-        }
+//        if (isVehicle() && isTeleportHeight()) {
+//            if (!(currentDimension == DimensionRegistry.SPACE)) {
+//                if (currentDimension == DimensionRegistry.MERCURY) teleportToSpace(1);
+//                else if (currentDimension == DimensionRegistry.VENUS) teleportToSpace(2);
+//                else if (currentDimension == Level.OVERWORLD || this.level.dimension() == DimensionRegistry.MOON) teleportToSpace(3);
+//                else if (currentDimension == DimensionRegistry.MARS) teleportToSpace(4);
+//            } else {
+//                resetTelportationCooldown();
+//            }
+//        }
+//
+//        if (this.isVehicle() && currentDimension == DimensionRegistry.SPACE) {
+//            ChunkPos spaceshipChunkPos = new ChunkPos(this.blockPosition());
+//            if (this.getControllingPassenger() instanceof Player player) {
+//                if (this.position().y < 130 && this.position().y > 35) {
+//                    BlockHitResult hitResult;
+//                    if (this.getMaxSpeed() >= SPACESHIP_LOW_FUEL_SPEED) {
+//                        hitResult = (BlockHitResult) player.pick(35.0D, 0.0F, false);
+//                    } else {
+//                        hitResult = (BlockHitResult) player.pick(18.0D, 0.0F, false);
+//                    }
+//                    BlockState blockState = this.level.getBlockState(hitResult.getBlockPos());
+//                    ResourceKey<Level> destination = getTeleportLocation(this, spaceshipChunkPos, blockState);
+//
+//                    if (destination != null) {
+//                        if (this.teleportationCooldown == 0) {
+//                            Entity passenger = this.getControllingPassenger();
+//                            Entity secondPassenger = null;
+//                            if (this.getPassengers().size() > 1) secondPassenger = this.getPassengers().get(1);
+//                            assert passenger != null;
+//                            Vec3 teleportPosition = new Vec3(this.position().x, this.position().y, this.position().z); //this.level.getMaxBuildHeight() - 10, this.position().z);
+//                                teleportSpaceship(passenger, secondPassenger, this, destination, teleportPosition);
+//                        } else {
+//                            this.teleportationCooldown--;
+//                            this.displayTeleportMessage(this.teleportationCooldown, destination);
+//                        }
+//                    }
+//                    if (destination == null) {
+//                        this.resetTelportationCooldown();
+//                    }
+//                }
+//            }
+//        }
+//
         this.checkInsideBlocks();
 
         List<Entity> list = this.level.getEntities(this, this.getBoundingBox().inflate(0.2F, -0.01F, 0.2F), EntitySelector.pushableBy(this));
@@ -1146,13 +1145,6 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
         } else {
             return InteractionResult.PASS;
         }
-    }
-
-    public InteractionResult openMenu(Player player) {
-        if (player instanceof ServerPlayer) {
-            NetworkHooks.openGui((ServerPlayer) player, this, buf -> buf.writeInt(this.getId()));
-        }
-        return InteractionResult.sidedSuccess(this.level.isClientSide());
     }
 
     protected void checkFallDamage(double p_38307_, boolean p_38308_, BlockState p_38309_, BlockPos p_38310_) {

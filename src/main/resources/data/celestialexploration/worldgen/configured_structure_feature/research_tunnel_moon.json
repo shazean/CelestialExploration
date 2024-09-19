@@ -1,0 +1,9 @@
+{
+  "config": {
+    "probability": 0.004,
+    "type": "moon"
+  },
+  "biomes": "#celestialexploration:has_structure/research_tunnel_moon",
+  "spawn_overrides": {},
+  "type": "celestialexploration:research_tunnel"
+}

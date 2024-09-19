@@ -3,10 +3,22 @@ package com.shim.celestialexploration.registry;
 
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.world.structures.*;
+import net.minecraft.core.Holder;
+import net.minecraft.core.Registry;
+import net.minecraft.tags.BiomeTags;
+import net.minecraft.world.level.levelgen.GenerationStep;
+import net.minecraft.world.level.levelgen.feature.ConfiguredStructureFeature;
+import net.minecraft.world.level.levelgen.feature.MineshaftFeature;
 import net.minecraft.world.level.levelgen.feature.StructureFeature;
+import net.minecraft.world.level.levelgen.feature.configurations.MineshaftConfiguration;
+import net.minecraft.world.level.levelgen.structure.BuiltinStructures;
+import net.minecraft.world.level.levelgen.structure.MineShaftPieces;
+import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+
+import java.util.Locale;
 
 public class StructureRegistry {
 
@@ -46,5 +58,8 @@ public class StructureRegistry {
 
     //VENUS DUNGEONS
     public static final RegistryObject<StructureFeature<?>> VENUS_FLARE_TREE = DEFERRED_REGISTRY_STRUCTURE.register("venus_flare_tree", VenusFlareTreeStructure::new);
+
+    //RESEARCH TUNNELS
+    public static final RegistryObject<StructureFeature<?>> RESEARCH_TUNNEL = DEFERRED_REGISTRY_STRUCTURE.register("research_tunnel", ResearchTunnelStructure::new);
 
 }

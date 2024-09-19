@@ -371,56 +371,137 @@ public class BlockRegistry {
     public static final RegistryObject<Block> MERCURY_SAND_PATH = registerBlock("mercury_sand_path", "Mercurian Regolith Path", () -> new CelestialPathBlock(Block.Properties.of(Material.SAND).strength(0.5F).sound(SoundType.SAND), MERCURY_SAND.get()), CelestialExploration.CELESTIAL_BLOCKS_TAB);
     public static final RegistryObject<Block> MERCURY_LANTERN = registerBlock("mercury_lantern", "Mercurian Lantern", () -> new Block(Block.Properties.of(Material.GLASS, MaterialColor.QUARTZ).strength(0.3F).sound(SoundType.GLASS).lightLevel((light) -> 13)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
 
-    //---- CELESTIAL OBJECTS -------------------------------------------------------------------------------
 
-    //METEOR
-    public static final RegistryObject<Block> METEOR = registerBlockDropsSelf("meteor", "Meteorite", () -> new Block(Block.Properties.of(Material.STONE, MaterialColor.COLOR_BROWN).strength(1.5f, 6.0f).sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
-    public static final RegistryObject<Block> METEOR_BRICKS = registerBlockDropsSelf("meteor_bricks", "Meteorite Bricks", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
-    public static final RegistryObject<Block> CHISELED_METEOR_BRICKS = registerBlockDropsSelf("chiseled_meteor_bricks", "Chiseled Meteorite Bricks", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
-    public static final RegistryObject<Block> METEOR_BRICK_STAIRS = registerBlockDropsSelf("meteor_brick_stairs", "Meteorite Brick Stairs", () -> new StairBlock(METEOR_BRICKS.get().defaultBlockState(), Block.Properties.copy(METEOR_BRICKS.get())), CelestialExploration.CELESTIAL_BLOCKS_TAB);
-    public static final RegistryObject<Block> METEOR_BRICK_SLAB = registerBlockDropsSelf("meteor_brick_slab", "Meteorite Brick Slab", () -> new SlabBlock(Block.Properties.copy(METEOR_BRICKS.get())), CelestialExploration.CELESTIAL_BLOCKS_TAB);
-    public static final RegistryObject<Block> METEOR_BRICK_WALL = registerBlockDropsSelf("meteor_brick_wall", "Meteorite Brick Wall", () -> new WallBlock(Block.Properties.copy(METEOR_BRICKS.get())), CelestialExploration.CELESTIAL_BLOCKS_TAB);
-    //    public static final RegistryObject<Block> METEOR_BRICK_PILLAR = BLOCKS.register("meteor_brick_pillar", () -> new Block(Block.Properties.copy(METEOR_BRICKS.get())));
-
-    //METEOR ORE
-    public static final RegistryObject<Block> METEOR_EMERALD_ORE = registerBlock("meteor_emerald_ore", "Meteorite Emerald Ore", () -> new OreBlock(Block.Properties.of(Material.STONE).strength(3.0f, 3.0f).sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
-    public static final RegistryObject<Block> METEOR_COAL_ORE = registerBlock("meteor_coal_ore", "Meteorite Coal Ore", () -> new OreBlock(Block.Properties.of(Material.STONE).strength(3.0f, 3.0f).requiresCorrectToolForDrops().sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
-    public static final RegistryObject<Block> METEOR_GOLD_ORE = registerBlock("meteor_gold_ore", "Meteorite Gold Ore", () -> new OreBlock(Block.Properties.of(Material.STONE).strength(3.0f, 3.0f).requiresCorrectToolForDrops().sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
-    public static final RegistryObject<Block> METEOR_IRON_ORE = registerBlock("meteor_iron_ore", "Meteorite Iron Ore", () -> new OreBlock(Block.Properties.of(Material.STONE).strength(3.0f, 3.0f).requiresCorrectToolForDrops().sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
-    public static final RegistryObject<Block> METEOR_REDSTONE_ORE = registerBlock("meteor_redstone_ore", "Meteorite Redstone Ore", () -> new RedStoneOreBlock(Block.Properties.of(Material.STONE).strength(3.0f, 3.0f).requiresCorrectToolForDrops().sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
-    public static final RegistryObject<Block> METEOR_DIAMOND_ORE = registerBlock("meteor_diamond_ore", "Meteorite Diamond Ore", () -> new OreBlock(Block.Properties.of(Material.STONE).strength(3.0F, 3.0F).requiresCorrectToolForDrops().sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
-    public static final RegistryObject<Block> METEOR_COPPER_ORE = registerBlock("meteor_copper_ore", "Meteorite Copper Ore", () -> new OreBlock(Block.Properties.of(Material.STONE).strength(3.0F, 3.0F).requiresCorrectToolForDrops().sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
-    public static final RegistryObject<Block> METEOR_LAPIS_ORE = registerBlock("meteor_lapis_ore", "Meteorite Lapis Lazuli Ore", () -> new OreBlock(Block.Properties.of(Material.STONE).strength(3.0F, 3.0F).requiresCorrectToolForDrops().sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
-    public static final RegistryObject<Block> METEOR_SULFUR_ORE = registerBlock("meteor_sulfur_ore", "Meteorite Sulfur Ore", () -> new OreBlock(Block.Properties.of(Material.STONE).strength(3.0F, 3.0F).requiresCorrectToolForDrops().sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
-    public static final RegistryObject<Block> METEOR_BAUXITE_ORE = registerBlock("meteor_bauxite_ore", "Meteorite Bauxite Ore", () -> new OreBlock(Block.Properties.of(Material.STONE).strength(3.0f, 3.0f).requiresCorrectToolForDrops().sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
-
-    //METEOR OTHER
-    public static final RegistryObject<Block> METEOR_BUTTON = registerBlockDropsSelf("meteor_button", "Meteorite Button", () -> new StoneButtonBlock(Block.Properties.copy(METEOR.get())), CelestialExploration.CELESTIAL_MISC_TAB);
-    public static final RegistryObject<Block> METEOR_PRESSURE_PLATE = registerBlockDropsSelf("meteor_pressure_plate", "Meteorite Pressure Plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, Block.Properties.copy(METEOR.get())), CelestialExploration.CELESTIAL_MISC_TAB);
-
-    //SOLAR BLOCKS
-    public static final RegistryObject<Block> SOLAR_PLASMA = registerBlockDropsSelf("solar_plasma", "Solar Plasma", () -> new SolarBlock(Block.Properties.of(Material.STONE, MaterialColor.NETHER).strength(1.0f).lightLevel((light) -> 20).randomTicks().isValidSpawn(BlockRegistry::never)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
-    public static final RegistryObject<Block> SUN_SPOT = registerBlockDropsSelf("sun_spot", "Sun Spot", () -> new SolarBlock(Block.Properties.of(Material.STONE, MaterialColor.NETHER).strength(1.0f).lightLevel((light) -> 13).randomTicks().isValidSpawn(BlockRegistry::never).hasPostProcess(BlockRegistry::always)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
-    public static final RegistryObject<Block> SOLAR_FLARE = registerBlockDropsSelf("solar_flare", "Solar Surface", () -> new SolarFlareBlock(Block.Properties.of(Material.STONE, MaterialColor.NETHER).strength(0.8f).lightLevel((light) -> 15).isValidSpawn(BlockRegistry::never).hasPostProcess(BlockRegistry::always).noOcclusion()), CelestialExploration.CELESTIAL_BLOCKS_TAB);
-
-
-
-    //---- OTHER PLANETS -------------------------------------------------------------------------------
-    //JUPITER
-    public static final RegistryObject<Block> JUPITER_ATMOSPHERE = registerCoreBlock("jupiter_atmosphere", "Jovian Atmosphere", () -> new AtmosphereBlock(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE).noCollission().noOcclusion().isViewBlocking(BlockRegistry::never).isSuffocating(BlockRegistry::never)));
-    public static final RegistryObject<Block> JUPITER_CORE = registerCoreBlock("jupiter_core", "Jovian Core", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F).noDrops().isValidSpawn(BlockRegistry::never)));
+    //---- JUPITER -------------------------------------------------------------------------------
+    //DEEPSLATE
     public static final RegistryObject<Block> JUPITER_DEEPSLATE = registerCoreBlock("jupiter_deepslate", "Jovian Deepslate", () -> new RotatedPillarBlock(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)));
+//    public static final RegistryObject<Block> JUPITER_DEEPSLATE_BRICKS = registerBlockDropsSelf("jupiter_deepslate_bricks", "Jovian Deepslate Bricks", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<Block> CHISELED_JUPITER_DEEPSLATE_BRICKS = registerBlockDropsSelf("chiseled_jupiter_deepslate_bricks", "Chiseled Jovian Deepslate Bricks", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<Block> CRACKED_JUPITER_DEEPSLATE_BRICKS = registerBlockDropsSelf("cracked_jupiter_deepslate_bricks", "Cracked Jovian Deepslate Bricks", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<Block> JUPITER_COBBLED_DEEPSLATE = registerBlockDropsSelf("jupiter_cobbled_deepslate", "Jovian Cobbled Deepslate", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<Block> JUPITER_DEEPSLATE_TILES = registerBlockDropsSelf("jupiter_deepslate_tiles", "Jovian Deepslate Tiles", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<Block> CRACKED_JUPITER_DEEPSLATE_TILES = registerBlockDropsSelf("cracked_jupiter_deepslate_tiles", "Cracked Jovian Deepslate Tiles", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<Block> JUPITER_POLISHED_DEEPSLATE = registerBlockDropsSelf("jupiter_polished_deepslate", "Jovian Polished Deepslate", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<Block> COMPRESSED_JUPITER_COBBLED_DEEPSLATE = registerBlockDropsSelf("compressed_jupiter_cobbled_deepslate", "Compressed Jovian Cobbled Deepslate", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 8.0f).sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<Block> SUPER_COMPRESSED_JUPITER_COBBLED_DEEPSLATE = registerBlockDropsSelf("super_compressed_jupiter_cobbled_deepslate", "Super Compressed Jovian Cobbled Deepslate", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 8.0f).sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
 
-    //JUPITER'S MOONS
-    public static final RegistryObject<Block> IO_CORE = registerCoreBlock("io_core", "Ionian Core", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F).noDrops().isValidSpawn(BlockRegistry::never)));
+    //STAIRS
+//    public static final RegistryObject<StairBlock> JUPITER_DEEPSLATE_BRICK_STAIRS = registerBlockDropsSelf("jupiter_deepslate_brick_stairs", "Jovian Deepslate Brick Stairs", () -> new StairBlock(JUPITER_DEEPSLATE_BRICKS.get().defaultBlockState(), Block.Properties.copy(JUPITER_DEEPSLATE_BRICKS.get())), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<StairBlock> JUPITER_COBBLED_DEEPSLATE_STAIRS = registerBlockDropsSelf("jupiter_cobbled_deepslate_stairs", "Jovian Cobbled Deepslate Stairs", () -> new StairBlock(JUPITER_COBBLED_DEEPSLATE.get().defaultBlockState(), Block.Properties.copy(JUPITER_COBBLED_DEEPSLATE.get())), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<StairBlock> JUPITER_DEEPSLATE_TILE_STAIRS = registerBlockDropsSelf("jupiter_deepslate_tile_stairs", "Jovian Deepslate Tile Stairs", () -> new StairBlock(JUPITER_DEEPSLATE_TILES.get().defaultBlockState(), Block.Properties.copy(JUPITER_DEEPSLATE_TILES.get())), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<StairBlock> JUPITER_POLISHED_DEEPSLATE_STAIRS = registerBlockDropsSelf("jupiter_polished_deepslate_stairs", "Jovian Polished Deepslate Stairs", () -> new StairBlock(JUPITER_POLISHED_DEEPSLATE.get().defaultBlockState(), Block.Properties.copy(JUPITER_POLISHED_DEEPSLATE.get())), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+
+    //SLAB
+//    public static final RegistryObject<SlabBlock> JUPITER_DEEPSLATE_BRICK_SLAB = registerBlock("jupiter_deepslate_brick_slab", "Jovian Deepslate Brick Slab", () -> new SlabBlock(Block.Properties.copy(JUPITER_DEEPSLATE_BRICKS.get())), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<SlabBlock> JUPITER_COBBLED_DEEPSLATE_SLAB = registerBlock("jupiter_cobbled_deepslate_slab", "Jovian Cobbled Deepslate Slab", () -> new SlabBlock(Block.Properties.copy(JUPITER_COBBLED_DEEPSLATE.get())), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<SlabBlock> JUPITER_DEEPSLATE_TILE_SLAB = registerBlock("jupiter_deepslate_tile_slab", "Jovian Deepslate Tile Slab", () -> new SlabBlock(Block.Properties.copy(JUPITER_DEEPSLATE_TILES.get())), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<SlabBlock> JUPITER_POLISHED_DEEPSLATE_SLAB = registerBlock("jupiter_polished_deepslate_slab", "Jovian Polished Deepslate Slab", () -> new SlabBlock(Block.Properties.copy(JUPITER_POLISHED_DEEPSLATE.get())), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+
+    //WALL
+//    public static final RegistryObject<WallBlock> JUPITER_DEEPSLATE_BRICK_WALL = registerBlockDropsSelf("jupiter_deepslate_brick_wall", "Jovian Deepslate Brick Wall", () -> new WallBlock(Block.Properties.of(Material.STONE).strength(6.0f).sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<WallBlock> JUPITER_COBBLED_DEEPSLATE_WALL = registerBlockDropsSelf("jupiter_cobbled_deepslate_wall", "Jovian Cobbled Deepslate Wall", () -> new WallBlock(Block.Properties.copy(JUPITER_COBBLED_DEEPSLATE.get())), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<WallBlock> JUPITER_DEEPSLATE_TILE_WALL = registerBlockDropsSelf("jupiter_deepslate_tile_wall", "Jovian Deepslate Tile Wall", () -> new WallBlock(Block.Properties.copy(JUPITER_DEEPSLATE_TILES.get())), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<WallBlock> JUPITER_POLISHED_DEEPSLATE_WALL = registerBlockDropsSelf("jupiter_polished_deepslate_wall", "Jovian Polished Deepslate Wall", () -> new WallBlock(Block.Properties.copy(JUPITER_POLISHED_DEEPSLATE.get())), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+
+    //BUTTON
+//    public static final RegistryObject<ButtonBlock> JUPITER_DEEPSLATE_BUTTON = registerBlockDropsSelf("jupiter_deepslate_button", "Jovian Deepslate Button", () -> new StoneButtonBlock(Block.Properties.copy(JUPITER_DEEPSLATE.get())), CelestialExploration.CELESTIAL_MISC_TAB);
+
+    //PRESSURE PLATE
+//    public static final RegistryObject<PressurePlateBlock> JUPITER_DEEPSLATE_PRESSURE_PLATE = registerBlockDropsSelf("jupiter_deepslate_pressure_plate", "Jovian Deepslate Pressure Plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, Block.Properties.copy(JUPITER_DEEPSLATE.get()).isValidSpawn(BlockRegistry::never)), CelestialExploration.CELESTIAL_MISC_TAB);
+
+    //OTHER
+    public static final RegistryObject<Block> JUPITER_CORE = registerCoreBlock("jupiter_core", "Jovian Core", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F).noDrops().isValidSpawn(BlockRegistry::never)));
+//    public static final RegistryObject<Block> JUPITER_LANTERN = registerBlock("jupiter_lantern", "Jovian Lantern", () -> new Block(Block.Properties.of(Material.GLASS, MaterialColor.QUARTZ).strength(0.3F).sound(SoundType.GLASS).lightLevel((light) -> 13)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+    public static final RegistryObject<Block> JUPITER_ATMOSPHERE = registerCoreBlock("jupiter_atmosphere", "Jovian Atmosphere", () -> new AtmosphereBlock(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE).noCollission().noOcclusion().isViewBlocking(BlockRegistry::never).isSuffocating(BlockRegistry::never)));
+
+
+    //---- JUPITER'S MOONS -------------------------------------------------------------------------------
+    //IO
+    //STONE
     public static final RegistryObject<Block> IO_STONE = registerCoreBlock("io_stone", "Ionian Stone", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)));
-    public static final RegistryObject<Block> IO_DEEPSLATE = registerCoreBlock("io_deepslate", "Ionian Deepslate", () -> new RotatedPillarBlock(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)));
+//    public static final RegistryObject<Block> IO_SMOOTH_STONE = registerBlockDropsSelf("io_smooth_stone", "Ionian Smooth Stone", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<Block> IO_BRICKS = registerBlockDropsSelf("io_bricks", "Ionian Bricks", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<RotatedPillarBlock> IO_BRICK_PILLAR = registerBlockDropsSelf("io_brick_pillar", "Ionian Brick Pillar", () -> new RotatedPillarBlock(Block.Properties.copy(IO_BRICKS.get())), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<Block> CHISELED_IO_BRICKS = registerBlockDropsSelf("chiseled_io_bricks", "Chiseled Ionian Bricks", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<Block> CRACKED_IO_BRICKS = registerBlockDropsSelf("cracked_io_bricks", "Cracked Ionian Bricks", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<Block> IO_COBBLESTONE = registerBlockDropsSelf("io_cobblestone", "Ionian Cobblestone", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<Block> COMPRESSED_IO_COBBLESTONE = registerBlockDropsSelf("compressed_io_cobblestone", "Compressed Ionian Cobblestone", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 8.0f).sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<Block> SUPER_COMPRESSED_IO_COBBLESTONE = registerBlockDropsSelf("super_compressed_io_cobblestone", "Super Compressed Ionian Cobblestone", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 8.0f).sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
 
+    //DEEPSLATE
+    public static final RegistryObject<RotatedPillarBlock> IO_DEEPSLATE = registerCoreBlock("io_deepslate", "Ionian Deepslate", () -> new RotatedPillarBlock(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)));
+//    public static final RegistryObject<Block> IO_DEEPSLATE_BRICKS = registerBlockDropsSelf("io_deepslate_bricks", "Ionian Deepslate Bricks", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<Block> CHISELED_IO_DEEPSLATE_BRICKS = registerBlockDropsSelf("chiseled_io_deepslate_bricks", "Chiseled Ionian Deepslate Bricks", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<Block> CRACKED_IO_DEEPSLATE_BRICKS = registerBlockDropsSelf("cracked_io_deepslate_bricks", "Cracked Ionian Deepslate Bricks", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<Block> IO_DEEPSLATE_TILES = registerBlockDropsSelf("io_deepslate_tiles", "Ionian Deepslate Tiles", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<Block> CRACKED_IO_DEEPSLATE_TILES = registerBlockDropsSelf("cracked_io_deepslate_tiles", "Cracked Ionian Deepslate Tiles", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<Block> IO_POLISHED_DEEPSLATE = registerBlockDropsSelf("io_polished_deepslate", "Ionian Polished Deepslate", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<Block> IO_COBBLED_DEEPSLATE = registerBlockDropsSelf("io_cobbled_deepslate", "Ionian Cobbled Deepslate", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<Block> COMPRESSED_IO_COBBLED_DEEPSLATE = registerBlockDropsSelf("compressed_io_cobbled_deepslate", "Compressed Ionian Cobbled Deepslate", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 8.0f).sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<Block> SUPER_COMPRESSED_IO_COBBLED_DEEPSLATE = registerBlockDropsSelf("super_compressed_io_cobbled_deepslate", "Super Compressed Ionian Cobbled Deepslate", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 8.0f).sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+
+    //ORES
+//    public static final RegistryObject<Block> IO_SULFUR_ORE = registerBlock("io_sulfur_ore", "Ionian Sulfur Ore", () -> new OreBlock(Block.Properties.of(Material.STONE).strength(3.0f, 3.0f).requiresCorrectToolForDrops().sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<Block> IO_DEEPSLATE_IRON_ORE = registerBlock("io_deepslate_iron_ore", "Ionian Deepslate Iron Ore", () -> new OreBlock(Block.Properties.of(Material.STONE).strength(3.0f, 3.0f).requiresCorrectToolForDrops().sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<Block> IO_DEEPSLATE_REDSTONE_ORE = registerBlock("io_deepslate_redstone_ore", "Ionian Deepslate Redstone Ore", () -> new RedStoneOreBlock(Block.Properties.of(Material.STONE).strength(3.0f, 3.0f).requiresCorrectToolForDrops().sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+
+    //STAIRS
+//    public static final RegistryObject<StairBlock> IO_STONE_STAIRS = registerBlockDropsSelf("io_stone_stairs", "Ionian Stone Stairs", () -> new StairBlock(IO_STONE.get().defaultBlockState(), Block.Properties.copy(IO_STONE.get())), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<StairBlock> IO_BRICK_STAIRS = registerBlockDropsSelf("io_brick_stairs", "Ionian Brick Stairs", () -> new StairBlock(IO_BRICKS.get().defaultBlockState(), Block.Properties.copy(IO_BRICKS.get())), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<StairBlock> IO_COBBLESTONE_STAIRS = registerBlockDropsSelf("io_cobblestone_stairs", "Ionian Cobblestone Stairs", () -> new StairBlock(IO_COBBLESTONE.get().defaultBlockState(), Block.Properties.copy(IO_COBBLESTONE.get())), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<StairBlock> IO_DEEPSLATE_BRICK_STAIRS = registerBlockDropsSelf("io_deepslate_brick_stairs", "Ionian Deepslate Brick Stairs", () -> new StairBlock(IO_DEEPSLATE_BRICKS.get().defaultBlockState(), Block.Properties.copy(IO_DEEPSLATE_BRICKS.get())), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<StairBlock> IO_DEEPSLATE_TILE_STAIRS = registerBlockDropsSelf("io_deepslate_tile_stairs", "Ionian Deepslate Tile Stairs", () -> new StairBlock(IO_DEEPSLATE_TILES.get().defaultBlockState(), Block.Properties.copy(IO_DEEPSLATE_TILES.get())), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<StairBlock> IO_POLISHED_DEEPSLATE_STAIRS = registerBlockDropsSelf("io_polished_deepslate_stairs", "Ionian Polished Deepslate Stairs", () -> new StairBlock(IO_POLISHED_DEEPSLATE.get().defaultBlockState(), Block.Properties.copy(IO_POLISHED_DEEPSLATE.get())), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<StairBlock> IO_COBBLED_DEEPSLATE_STAIRS = registerBlockDropsSelf("io_cobbled_deepslate_stairs", "Ionian Cobbled Deepslate Stairs", () -> new StairBlock(IO_COBBLED_DEEPSLATE.get().defaultBlockState(), Block.Properties.copy(IO_COBBLED_DEEPSLATE.get())), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+
+    //SLAB
+//    public static final RegistryObject<SlabBlock> IO_STONE_SLAB = registerBlock("io_stone_slab", "Ionian Stone Slab", () -> new SlabBlock(Block.Properties.copy(IO_STONE.get())), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<SlabBlock> IO_SMOOTH_STONE_SLAB = registerBlock("io_smooth_stone_slab", "Ionian Smooth Stone Slab", () -> new SlabBlock(Block.Properties.copy(IO_SMOOTH_STONE.get())), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<SlabBlock> IO_BRICK_SLAB = registerBlock("io_brick_slab", "Ionian Brick Slab", () -> new SlabBlock(Block.Properties.copy(IO_BRICKS.get())), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<SlabBlock> IO_COBBLESTONE_SLAB = registerBlock("io_cobblestone_slab", "Ionian Cobblestone Slab", () -> new SlabBlock(Block.Properties.copy(IO_COBBLESTONE.get())), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<SlabBlock> IO_DEEPSLATE_BRICK_SLAB = registerBlock("io_deepslate_brick_slab", "Ionian Deepslate Brick Slab", () -> new SlabBlock(Block.Properties.copy(IO_DEEPSLATE_BRICKS.get())), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<SlabBlock> IO_COBBLED_DEEPSLATE_SLAB = registerBlock("io_cobbled_deepslate_slab", "Ionian Cobbled Deepslate Slab", () -> new SlabBlock(Block.Properties.copy(IO_COBBLED_DEEPSLATE.get())), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<SlabBlock> IO_DEEPSLATE_TILE_SLAB = registerBlock("io_deepslate_tile_slab", "Ionian Deepslate Tile Slab", () -> new SlabBlock(Block.Properties.copy(IO_DEEPSLATE_TILES.get())), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<SlabBlock> IO_POLISHED_DEEPSLATE_SLAB = registerBlock("io_polished_deepslate_slab", "Ionian Polished Deepslate Slab", () -> new SlabBlock(Block.Properties.copy(IO_POLISHED_DEEPSLATE.get())), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+
+    //WALL
+//    public static final RegistryObject<WallBlock> IO_BRICK_WALL = registerBlockDropsSelf("io_brick_wall", "Ionian Brick Wall", () -> new WallBlock(Block.Properties.of(Material.STONE).strength(6.0f).sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<WallBlock> IO_COBBLESTONE_WALL = registerBlockDropsSelf("io_cobblestone_wall", "Ionian Cobblestone Wall", () -> new WallBlock(Block.Properties.copy(IO_COBBLESTONE.get())), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<WallBlock> IO_DEEPSLATE_BRICK_WALL = registerBlockDropsSelf("io_deepslate_brick_wall", "Ionian Deepslate Brick Wall", () -> new WallBlock(Block.Properties.copy(IO_DEEPSLATE_BRICKS.get())), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<WallBlock> IO_COBBLED_DEEPSLATE_WALL = registerBlockDropsSelf("io_cobbled_deepslate_wall", "Ionian Cobbled Deepslate Wall", () -> new WallBlock(Block.Properties.copy(IO_COBBLED_DEEPSLATE.get())), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<WallBlock> IO_DEEPSLATE_TILE_WALL = registerBlockDropsSelf("io_deepslate_tile_wall", "Ionian Deepslate Tile Wall", () -> new WallBlock(Block.Properties.copy(IO_DEEPSLATE_TILES.get())), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<WallBlock> IO_POLISHED_DEEPSLATE_WALL = registerBlockDropsSelf("io_polished_deepslate_wall", "Ionian Polished Deepslate Wall", () -> new WallBlock(Block.Properties.copy(IO_POLISHED_DEEPSLATE.get())), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+
+    //BUTTON
+//    public static final RegistryObject<ButtonBlock> IO_STONE_BUTTON = registerBlockDropsSelf("io_stone_button", "Ionian Stone Button", () -> new StoneButtonBlock(Block.Properties.copy(IO_STONE.get())), CelestialExploration.CELESTIAL_MISC_TAB);
+//    public static final RegistryObject<ButtonBlock> IO_DEEPSLATE_BUTTON = registerBlockDropsSelf("io_deepslate_button", "Ionian Deepslate Button", () -> new StoneButtonBlock(Block.Properties.copy(IO_DEEPSLATE.get())), CelestialExploration.CELESTIAL_MISC_TAB);
+
+    //PRESSURE PLATE
+//    public static final RegistryObject<PressurePlateBlock> IO_STONE_PRESSURE_PLATE = registerBlockDropsSelf("io_stone_pressure_plate", "Ionian Stone Pressure Plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, Block.Properties.copy(IO_STONE.get())), CelestialExploration.CELESTIAL_MISC_TAB);
+//    public static final RegistryObject<PressurePlateBlock> IO_DEEPSLATE_PRESSURE_PLATE = registerBlockDropsSelf("io_deepslate_pressure_plate", "Ionian Deepslate Pressure Plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, Block.Properties.copy(IO_DEEPSLATE.get())), CelestialExploration.CELESTIAL_MISC_TAB);
+
+    //OTHER
+    public static final RegistryObject<Block> IO_CORE = registerCoreBlock("io_core", "Ionian Core", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F).noDrops().isValidSpawn(BlockRegistry::never)));
+//    public static final RegistryObject<Block> IO_LANTERN = registerBlock("io_lantern", "Ionian Lantern", () -> new Block(Block.Properties.of(Material.GLASS, MaterialColor.QUARTZ).strength(0.3F).sound(SoundType.GLASS).lightLevel((light) -> 13)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+
+    //EUROPA
+    //some ocean, topped with ice; no craters, very smooth, no mountains; "Penitente" features near the equator. Deepslate iron.
     public static final RegistryObject<Block> EUROPA_CORE = registerCoreBlock("europa_core", "Europan Core", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F).noDrops().isValidSpawn(BlockRegistry::never)));
     public static final RegistryObject<Block> EUROPA_HYDRATE = registerCoreBlock("europa_hydrate", "Europan Hydrate", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)));
+//    public static final RegistryObject<Block> PENITENTE = registerCoreBlock("penitente", "Europan Hydrate", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)));
+//    public static final RegistryObject<Block> EUROPA_LANTERN = registerBlock("europa_lantern", "Europan Lantern", () -> new Block(Block.Properties.of(Material.GLASS, MaterialColor.QUARTZ).strength(0.3F).sound(SoundType.GLASS).lightLevel((light) -> 13)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
 
+    //GANYMEDE
+    //mostly stone, with spots of surface deepslate. cratered.  underground ocean.  ice.
     public static final RegistryObject<Block> GANYMEDE_CORE = registerCoreBlock("ganymede_core", "Ganymedian Core", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F).noDrops().isValidSpawn(BlockRegistry::never)));
+//    public static final RegistryObject<Block> GANYMEDE_LANTERN = registerBlock("ganymede_lantern", "Ganymedian Lantern", () -> new Block(Block.Properties.of(Material.GLASS, MaterialColor.QUARTZ).strength(0.3F).sound(SoundType.GLASS).lightLevel((light) -> 13)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+
+    //CALLISTO
+    //deepslate all the way, with pockets of stone throughout.  heavily cratered.  ice.  coal ore.
     public static final RegistryObject<Block> CALLISTO_CORE = registerCoreBlock("callisto_core", "Callistoan Core", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F).noDrops().isValidSpawn(BlockRegistry::never)));
+//    public static final RegistryObject<Block> CALLISTO_LANTERN = registerBlock("callisto_lantern", "Callistoan Lantern", () -> new Block(Block.Properties.of(Material.GLASS, MaterialColor.QUARTZ).strength(0.3F).sound(SoundType.GLASS).lightLevel((light) -> 13)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+
+    //---- OTHER PLANETS -------------------------------------------------------------------------------
 
     //SATURN
     public static final RegistryObject<Block> SATURN_ATMOSPHERE = registerCoreBlock("saturn_atmosphere", "Saturnian Atmosphere", () -> new AtmosphereBlock(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE).noCollission().noOcclusion().isViewBlocking(BlockRegistry::never).isSuffocating(BlockRegistry::never)));
@@ -459,6 +540,38 @@ public class BlockRegistry {
 //    public static final RegistryObject<Block> HAUMEA_CORE = registerCoreBlock("haumea_core", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F).noDrops().isValidSpawn(BlockRegistry::never)));
 //    public static final RegistryObject<Block> ERIS_CORE = registerCoreBlock("eris_core", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F).noDrops().isValidSpawn(BlockRegistry::never)));
 
+    //---- CELESTIAL OBJECTS -------------------------------------------------------------------------------
+
+    //METEOR
+    public static final RegistryObject<Block> METEOR = registerBlockDropsSelf("meteor", "Meteorite", () -> new Block(Block.Properties.of(Material.STONE, MaterialColor.COLOR_BROWN).strength(1.5f, 6.0f).sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+    public static final RegistryObject<Block> METEOR_BRICKS = registerBlockDropsSelf("meteor_bricks", "Meteorite Bricks", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+    public static final RegistryObject<Block> CHISELED_METEOR_BRICKS = registerBlockDropsSelf("chiseled_meteor_bricks", "Chiseled Meteorite Bricks", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+    public static final RegistryObject<Block> METEOR_BRICK_STAIRS = registerBlockDropsSelf("meteor_brick_stairs", "Meteorite Brick Stairs", () -> new StairBlock(METEOR_BRICKS.get().defaultBlockState(), Block.Properties.copy(METEOR_BRICKS.get())), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+    public static final RegistryObject<Block> METEOR_BRICK_SLAB = registerBlockDropsSelf("meteor_brick_slab", "Meteorite Brick Slab", () -> new SlabBlock(Block.Properties.copy(METEOR_BRICKS.get())), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+    public static final RegistryObject<Block> METEOR_BRICK_WALL = registerBlockDropsSelf("meteor_brick_wall", "Meteorite Brick Wall", () -> new WallBlock(Block.Properties.copy(METEOR_BRICKS.get())), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+    //    public static final RegistryObject<Block> METEOR_BRICK_PILLAR = BLOCKS.register("meteor_brick_pillar", () -> new Block(Block.Properties.copy(METEOR_BRICKS.get())));
+
+    //METEOR ORE
+    public static final RegistryObject<Block> METEOR_EMERALD_ORE = registerBlock("meteor_emerald_ore", "Meteorite Emerald Ore", () -> new OreBlock(Block.Properties.of(Material.STONE).strength(3.0f, 3.0f).sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+    public static final RegistryObject<Block> METEOR_COAL_ORE = registerBlock("meteor_coal_ore", "Meteorite Coal Ore", () -> new OreBlock(Block.Properties.of(Material.STONE).strength(3.0f, 3.0f).requiresCorrectToolForDrops().sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+    public static final RegistryObject<Block> METEOR_GOLD_ORE = registerBlock("meteor_gold_ore", "Meteorite Gold Ore", () -> new OreBlock(Block.Properties.of(Material.STONE).strength(3.0f, 3.0f).requiresCorrectToolForDrops().sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+    public static final RegistryObject<Block> METEOR_IRON_ORE = registerBlock("meteor_iron_ore", "Meteorite Iron Ore", () -> new OreBlock(Block.Properties.of(Material.STONE).strength(3.0f, 3.0f).requiresCorrectToolForDrops().sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+    public static final RegistryObject<Block> METEOR_REDSTONE_ORE = registerBlock("meteor_redstone_ore", "Meteorite Redstone Ore", () -> new RedStoneOreBlock(Block.Properties.of(Material.STONE).strength(3.0f, 3.0f).requiresCorrectToolForDrops().sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+    public static final RegistryObject<Block> METEOR_DIAMOND_ORE = registerBlock("meteor_diamond_ore", "Meteorite Diamond Ore", () -> new OreBlock(Block.Properties.of(Material.STONE).strength(3.0F, 3.0F).requiresCorrectToolForDrops().sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+    public static final RegistryObject<Block> METEOR_COPPER_ORE = registerBlock("meteor_copper_ore", "Meteorite Copper Ore", () -> new OreBlock(Block.Properties.of(Material.STONE).strength(3.0F, 3.0F).requiresCorrectToolForDrops().sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+    public static final RegistryObject<Block> METEOR_LAPIS_ORE = registerBlock("meteor_lapis_ore", "Meteorite Lapis Lazuli Ore", () -> new OreBlock(Block.Properties.of(Material.STONE).strength(3.0F, 3.0F).requiresCorrectToolForDrops().sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+    public static final RegistryObject<Block> METEOR_SULFUR_ORE = registerBlock("meteor_sulfur_ore", "Meteorite Sulfur Ore", () -> new OreBlock(Block.Properties.of(Material.STONE).strength(3.0F, 3.0F).requiresCorrectToolForDrops().sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+    public static final RegistryObject<Block> METEOR_BAUXITE_ORE = registerBlock("meteor_bauxite_ore", "Meteorite Bauxite Ore", () -> new OreBlock(Block.Properties.of(Material.STONE).strength(3.0f, 3.0f).requiresCorrectToolForDrops().sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+
+    //METEOR OTHER
+    public static final RegistryObject<Block> METEOR_BUTTON = registerBlockDropsSelf("meteor_button", "Meteorite Button", () -> new StoneButtonBlock(Block.Properties.copy(METEOR.get())), CelestialExploration.CELESTIAL_MISC_TAB);
+    public static final RegistryObject<Block> METEOR_PRESSURE_PLATE = registerBlockDropsSelf("meteor_pressure_plate", "Meteorite Pressure Plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, Block.Properties.copy(METEOR.get())), CelestialExploration.CELESTIAL_MISC_TAB);
+
+    //SOLAR BLOCKS
+    public static final RegistryObject<Block> SOLAR_PLASMA = registerBlockDropsSelf("solar_plasma", "Solar Plasma", () -> new SolarBlock(Block.Properties.of(Material.STONE, MaterialColor.NETHER).strength(1.0f).lightLevel((light) -> 20).randomTicks().isValidSpawn(BlockRegistry::never)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+    public static final RegistryObject<Block> SUN_SPOT = registerBlockDropsSelf("sun_spot", "Sun Spot", () -> new SolarBlock(Block.Properties.of(Material.STONE, MaterialColor.NETHER).strength(1.0f).lightLevel((light) -> 13).randomTicks().isValidSpawn(BlockRegistry::never).hasPostProcess(BlockRegistry::always)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+    public static final RegistryObject<Block> SOLAR_FLARE = registerBlockDropsSelf("solar_flare", "Solar Surface", () -> new SolarFlareBlock(Block.Properties.of(Material.STONE, MaterialColor.NETHER).strength(0.8f).lightLevel((light) -> 15).isValidSpawn(BlockRegistry::never).hasPostProcess(BlockRegistry::always).noOcclusion()), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+
     //---- ORE-RELATED -------------------------------------------------------------------------------
     public static final RegistryObject<Block> BAUXITE_ORE = registerBlock("bauxite_ore", "Bauxite Ore", () -> new OreBlock(Block.Properties.of(Material.STONE).strength(3.0f, 3.0f).requiresCorrectToolForDrops().sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
 
@@ -490,7 +603,8 @@ public class BlockRegistry {
     public static final RegistryObject<Block> GLOW_STRIP = registerBlockDropsSelf("glow_strip", "Glow Strip", () -> new GlowStripBlock(BlockBehaviour.Properties.of(Material.DECORATION).noCollission().instabreak().lightLevel((p_152607_) -> 15).sound(SoundType.GLASS), false), CelestialExploration.CELESTIAL_MISC_TAB);
     public static final RegistryObject<Block> HORIZONTAL_GLOW_STRIP = registerBlockDropsSelf("horizontal_glow_strip", "Horizontal Glow Strip", () -> new GlowStripBlock(BlockBehaviour.Properties.of(Material.DECORATION).noCollission().instabreak().lightLevel((p_152607_) -> 15).sound(SoundType.GLASS), true), CelestialExploration.CELESTIAL_MISC_TAB);
 
-    public static final RegistryObject<AirlockDoorBlock> AIRLOCK_PANEL_DOOR = registerBlock("airlock_panel_door", "Airlock Panel Door", () -> new AirlockDoorBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.METAL).requiresCorrectToolForDrops().strength(5.0F).sound(SoundType.METAL).noOcclusion()), CelestialExploration.CELESTIAL_MISC_TAB);
+    public static final RegistryObject<AirlockDoorBlock> AIRLOCK_PANEL_DOOR = registerBlockDropsSelf("airlock_panel_door", "Airlock Panel Door", () -> new AirlockDoorBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.METAL).requiresCorrectToolForDrops().strength(5.0F).sound(SoundType.METAL).noOcclusion()), CelestialExploration.CELESTIAL_MISC_TAB);
+    public static final RegistryObject<HangarDoorBlock> HANGAR_DOOR = registerBlockDropsSelf("hangar_door", "Hangar Door", () -> new HangarDoorBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.METAL).requiresCorrectToolForDrops().strength(5.0F).sound(SoundType.METAL).noOcclusion()), CelestialExploration.CELESTIAL_MISC_TAB);
 
 
     public static final RegistryObject<RotatedPillarBlock> INSULATED_PANEL = registerBlockDropsSelf("insulated_panel", "Insulated Panel", () -> new RotatedPillarBlock(Block.Properties.of(Material.METAL).strength(3.0f, 3.0f).requiresCorrectToolForDrops().sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
@@ -591,7 +705,7 @@ public class BlockRegistry {
     //---- MISC -------------------------------------------------------------------------------
     public static final RegistryObject<Block> DRY_ICE = registerBlockDropsSelf("dry_ice", "Dry Ice", () -> new DryIceBlock(Block.Properties.of(Material.ICE).friction(0.98F).randomTicks().strength(0.5F).sound(SoundType.GLASS).noOcclusion()), CelestialExploration.CELESTIAL_BLOCKS_TAB);
     public static final RegistryObject<Block> PLANET_CHART = registerBlockDropsSelf("planet_chart", "Planet Chart", () -> new PlanetChartBlock(Block.Properties.of(Material.WOOD).strength(0.5F).sound(SoundType.WOOD).noOcclusion()), CelestialExploration.CELESTIAL_BLOCKS_TAB);
-    public static final RegistryObject<Block> GRINDING_WHEEL = registerBlockDropsSelf("grinding_wheel", "Grinding Wheel", () -> new Block(Block.Properties.of(Material.STONE).strength(0.5F).sound(SoundType.STONE).noOcclusion()), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<Block> GRINDING_WHEEL = registerBlockDropsSelf("grinding_wheel", "Grinding Wheel", () -> new Block(Block.Properties.of(Material.STONE).strength(0.5F).sound(SoundType.STONE).noOcclusion()), CelestialExploration.CELESTIAL_BLOCKS_TAB);
 
 
     public static final RegistryObject<Block> LURKER_HEAD = BLOCKS.register("lurker_head", () -> new SkullBlock(CelestialSkullRenderer.Types.LURKER, BlockBehaviour.Properties.of(Material.DECORATION).strength(1.0F)));

@@ -110,4 +110,8 @@ public class SpaceshipMenu extends AbstractContainerMenu {
             this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 142 + 34));
         }
     }
+
+    public void setCooldown() {
+        entity.setInventoryCooldown(10);
+    }
 }

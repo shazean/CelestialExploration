@@ -1,9 +1,11 @@
 package com.shim.celestialexploration.inventory.screens;
 
+import com.mojang.blaze3d.platform.InputConstants;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.inventory.menus.SpaceshipMenu;
+import com.shim.celestialexploration.util.Keybinds;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
@@ -12,7 +14,7 @@ import net.minecraft.world.entity.player.Inventory;
 
 public class SpaceshipScreen extends AbstractContainerScreen<SpaceshipMenu> {
     private static final ResourceLocation TEXTURE =
-            new ResourceLocation(CelestialExploration.MODID, "textures/gui/shuttle.png");
+            new ResourceLocation(CelestialExploration.MODID, "textures/gui/spaceship.png");
 
     public SpaceshipScreen(SpaceshipMenu menu, Inventory playerInventory, Component title) {
         super(menu, playerInventory, title);
@@ -31,6 +33,15 @@ public class SpaceshipScreen extends AbstractContainerScreen<SpaceshipMenu> {
         this.blit(poseStack, x, y, 0, 0, imageWidth, this.imageHeight);
 
     }
+
+//    @Override
+//    public boolean keyPressed(int key, int p_97766_, int p_97767_) {
+//        if (Keybinds.OPEN_SPACESHIP_INVENTORY.isActiveAndMatches(InputConstants.getKey(key, p_97766_))) {
+//            this.minecraft.player.closeContainer();
+//            menu.setCooldown();
+//        }
+//        return super.keyPressed(key, p_97766_, p_97767_);
+//    }
 
     @Override
     public void render(PoseStack poseStack, int mouseX, int mouseY, float delta) {

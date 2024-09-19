@@ -113,6 +113,7 @@
   "block.celestialexploration.grey_ceramic": "Grey Ceramic",
   "block.celestialexploration.grey_ceramic_tile": "Grey Ceramic Tile",
   "block.celestialexploration.grinding_wheel": "Grinding Wheel",
+  "block.celestialexploration.hangar_door": "Hangar Door",
   "block.celestialexploration.horizontal_glow_strip": "Horizontal Glow Strip",
   "block.celestialexploration.hyperion_core": "Hyperionian Core",
   "block.celestialexploration.iapetus_core": "Iapetian Core",
@@ -438,7 +439,7 @@
   "celestialexploration.planet_details.no_moons": "NONE",
   "celestialexploration.planet_details.overworld_moons": "Moon",
   "celestialexploration.planet_details.overworld_name": "Overworld",
-  "celestialexploration.planet_details.overworld_resources": "//ADDME",
+  "celestialexploration.planet_details.overworld_resources": "overworld/vanilla resources",
   "celestialexploration.planet_details.resources": "Notable Resources",
   "celestialexploration.planet_details.saturn_moons": "TBD",
   "celestialexploration.planet_details.saturn_name": "Saturn",
@@ -580,5 +581,7 @@
   "key.celestialexploration.flight_ascent": "Spaceship Ascent",
   "key.celestialexploration.flight_descent": "Spaceship Descent",
   "key.celestialexploration.turn_left": "Spaceship Strafe Left",
-  "key.celestialexploration.turn_right": "Spaceship Strafe Right"
+  "key.celestialexploration.turn_right": "Spaceship Strafe Right",
+  "recipe.celestialexploration.workbench.crafting": "Workbench Crafting",
+  "recipe.celestialexploration.workbench.smelting": "Workbench Smelting"
 }

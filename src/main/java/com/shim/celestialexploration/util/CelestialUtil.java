@@ -1,17 +1,24 @@
 package com.shim.celestialexploration.util;
 
+import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.config.CelestialCommonConfig;
+import com.shim.celestialexploration.registry.DimensionRegistry;
 import com.shim.celestialexploration.registry.FluidRegistry;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
 import net.minecraft.Util;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.fluids.FluidStack;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class CelestialUtil {
 
@@ -26,11 +33,44 @@ public class CelestialUtil {
         return CelestialCommonConfig.RANGE_OF_SPACE.get();
     }
 
+    @Deprecated //to remove after all planet dimensions are added
+    public static final Map<String, Vec3> PLANET_LOCATION = Util.make(new Object2ObjectArrayMap<>(), (dimension) -> {
+        dimension.put("Mercury", new Vec3(1, 0, 1));
+        dimension.put("Venus", new Vec3(0, 0, 2));
+        dimension.put("Overworld", new Vec3(-2, 0, 0));
+        dimension.put("Mars", new Vec3(1, 0, -3));
+        dimension.put("Jupiter", new Vec3(1, 0, -3));
+        dimension.put("Saturn", new Vec3(1, 0, -3));
+        dimension.put("Uranus", new Vec3(1, 0, -3));
+        dimension.put("Neptune", new Vec3(1, 0, -3));
+    });
+
+    public static final Map<ResourceKey<Level>, Vec3> DIMENSION_LOCATION = Util.make(new Object2ObjectArrayMap<>(), (dimension) -> {
+        dimension.put(DimensionRegistry.MERCURY, new Vec3(1, 0, 1));
+        dimension.put(DimensionRegistry.VENUS, new Vec3(0, 0, 2));
+        dimension.put(Level.OVERWORLD, new Vec3(-2, 0, 0));
+        dimension.put(DimensionRegistry.MOON, new Vec3(-2, 0, 0));
+        dimension.put(DimensionRegistry.MARS, new Vec3(1, 0, -3));
+    });
+
+    public static Vec3 getPlanetaryChunkCoordinates(ResourceKey<Level> planet) {
+        Vec3 coord = DIMENSION_LOCATION.get(planet);
+        coord = new Vec3(coord.x * getSpaceRatio(), coord.y, coord.z * getSpaceRatio());
+        return coord;
+    }
+
+    @Deprecated
+    public static Vec3 getPlanetaryChunkCoordinates(String planet) {
+        Vec3 coord = DIMENSION_LOCATION.get(planet);
+        coord = new Vec3(coord.x * getSpaceRatio(), coord.y, coord.z * getSpaceRatio());
+        return coord;
+    }
+
+    @Deprecated
     public static Vec3 getPlanetaryChunkCoordinates(int planetNum) {
         int x;
         int z;
 
-        //FIXME find a better way of doing this?
         switch (planetNum) {
             case 1 -> { //MERCURY
                 x = 1;
@@ -157,10 +197,10 @@ public class CelestialUtil {
     }
 
     public record CelestialBodyDetails(Component name, Component location, Component resources, Component moons) {
-        protected static Component coordinatesString = new TranslatableComponent("celestialexploration.planet_details.location");
-        protected static Component moonsString = new TranslatableComponent("celestialexploration.planet_details.moons");
-        protected static Component noMoons = new TranslatableComponent("celestialexploration.planet_details.no_moons");
-        protected static Component resourcesString = new TranslatableComponent("celestialexploration.planet_details.resources");
+        private static final Component coordinatesString = new TranslatableComponent("celestialexploration.planet_details.location");
+        private static final Component moonsString = new TranslatableComponent("celestialexploration.planet_details.moons");
+        private static final Component noMoons = new TranslatableComponent("celestialexploration.planet_details.no_moons");
+        private static final Component resourcesString = new TranslatableComponent("celestialexploration.planet_details.resources");
 
         CelestialBodyDetails(Component name, Vec2 coordinates, Component resources) {
             this(name, coordinates, resources, noMoons);

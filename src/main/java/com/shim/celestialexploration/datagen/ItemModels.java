@@ -452,6 +452,7 @@ public class ItemModels extends ItemModelProvider {
 		self(BlockRegistry.HORIZONTAL_GLOW_STRIP.get());
 
 		generatedBlockItem(BlockRegistry.AIRLOCK_PANEL_DOOR.get(), "block/airlock_panel_hinge");
+		generatedBlockItem(BlockRegistry.HANGAR_DOOR.get(), "block/hangar_hinge");
 
 		generatedBlockItem(BlockRegistry.AIRLOCK_DOOR.get(), "item/airlock_door");
 		generatedBlockItem(BlockRegistry.STEEL_DOOR.get(), "item/steel_door");
@@ -628,7 +629,7 @@ public class ItemModels extends ItemModelProvider {
 		this.withExistingParent(name(BlockRegistry.LURKER_HEAD.get()), this.mcLoc("item/template_skull"));
 		this.withExistingParent(name(BlockRegistry.VOIDED_HEAD.get()), this.mcLoc("item/template_skull"));
 
-		generatedItem(ItemRegistry.CONTROL_PANEL.get());
+//		generatedItem(ItemRegistry.CONTROL_PANEL.get());
 
 	}
 
