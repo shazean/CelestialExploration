@@ -157,6 +157,23 @@ public class LootTables extends BaseLootTableProvider {
 		lootTables.put(BlockRegistry.MERCURY_LANTERN.get(), createSilkTouchTable(BlockRegistry.MERCURY_LANTERN.get(), BlockRegistry.MERCURY_STONE.get(), 1, 1)); //FIXME
 		lootTables.put(BlockRegistry.MERCURY_SAND_PATH.get(), createSimpleTable(BlockRegistry.MERCURY_SAND.get()));
 
+		//---- JUPITER -------------------------------------------------------------------------------
+		//DEEPSLATE
+		lootTables.put(BlockRegistry.JUPITER_DEEPSLATE.get(), createSilkTouchTable(BlockRegistry.JUPITER_DEEPSLATE.get(), BlockRegistry.JUPITER_COBBLED_DEEPSLATE.get(), 1, 1));
+
+		lootTables.put(BlockRegistry.JUPITER_COBBLED_DEEPSLATE_SLAB.get(), createSlabItemTable(BlockRegistry.JUPITER_COBBLED_DEEPSLATE_SLAB.get()));
+		lootTables.put(BlockRegistry.JUPITER_DEEPSLATE_BRICK_SLAB.get(), createSlabItemTable(BlockRegistry.JUPITER_DEEPSLATE_BRICK_SLAB.get()));
+		lootTables.put(BlockRegistry.JUPITER_POLISHED_DEEPSLATE_SLAB.get(), createSlabItemTable(BlockRegistry.JUPITER_POLISHED_DEEPSLATE_SLAB.get()));
+		lootTables.put(BlockRegistry.JUPITER_DEEPSLATE_TILE_SLAB.get(), createSlabItemTable(BlockRegistry.JUPITER_DEEPSLATE_TILE_SLAB.get()));
+
+		lootTables.put(BlockRegistry.CHISELED_JUPITER_DEEPSLATE_BRICKS.get(), createSimpleTable(BlockRegistry.CHISELED_JUPITER_DEEPSLATE_BRICKS.get()));
+		lootTables.put(BlockRegistry.CRACKED_JUPITER_DEEPSLATE_BRICKS.get(), createSimpleTable(BlockRegistry.CRACKED_JUPITER_DEEPSLATE_BRICKS.get()));
+
+		//OTHER
+		lootTables.put(BlockRegistry.JUPITER_LANTERN.get(), createSilkTouchTable(BlockRegistry.JUPITER_LANTERN.get(), BlockRegistry.JUPITER_DEEPSLATE.get(), 1, 3)); //FIXME?
+		lootTables.put(BlockRegistry.JUPITER_ATMOSPHERE.get(), createSimpleTable(BlockRegistry.JUPITER_ATMOSPHERE.get()));
+
+
 		//---- ORES/ALLOYS -------------------------------------------------------------------------------
 		lootTables.put(BlockRegistry.BAUXITE_ORE.get(), createBauxiteOreTable(BlockRegistry.BAUXITE_ORE.get()));
 

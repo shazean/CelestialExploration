@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "celestialexploration",
+  "pattern": [
+    "XX ",
+    "XXR",
+    "XX "
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:aluminum_ingot"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:airlock_panel_door",
+    "count": 4
+  }
+}

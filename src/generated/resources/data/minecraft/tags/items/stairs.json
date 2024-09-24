@@ -1,6 +1,13 @@
 {
   "replace": false,
   "values": [
+    "celestialexploration:moon_stone_stairs",
+    "celestialexploration:moon_brick_stairs",
+    "celestialexploration:moon_cobblestone_stairs",
+    "celestialexploration:moon_cobbled_deepslate_stairs",
+    "celestialexploration:moon_deepslate_brick_stairs",
+    "celestialexploration:moon_deepslate_tile_stairs",
+    "celestialexploration:moon_polished_deepslate_stairs",
     "celestialexploration:mars_stone_stairs",
     "celestialexploration:mars_brick_stairs",
     "celestialexploration:mars_cobblestone_stairs",
@@ -16,13 +23,16 @@
     "celestialexploration:venus_deepslate_tile_stairs",
     "celestialexploration:venus_polished_deepslate_stairs",
     "celestialexploration:small_venus_brick_stairs",
-    "celestialexploration:meteor_brick_stairs",
     "celestialexploration:mercury_stone_stairs",
     "celestialexploration:mercury_brick_stairs",
     "celestialexploration:mercury_cobblestone_stairs",
     "celestialexploration:mercury_cobbled_deepslate_stairs",
     "celestialexploration:mercury_deepslate_brick_stairs",
     "celestialexploration:mercury_deepslate_tile_stairs",
-    "celestialexploration:mercury_polished_deepslate_stairs"
+    "celestialexploration:mercury_polished_deepslate_stairs",
+    "celestialexploration:jupiter_deepslate_brick_stairs",
+    "celestialexploration:jupiter_deepslate_tile_stairs",
+    "celestialexploration:jupiter_polished_deepslate_stairs",
+    "celestialexploration:meteor_brick_stairs"
   ]
 }

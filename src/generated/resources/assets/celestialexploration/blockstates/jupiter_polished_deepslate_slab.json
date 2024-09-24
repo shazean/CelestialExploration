@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=top": {
+      "model": "celestialexploration:block/jupiter_polished_deepslate_slab_top"
+    },
+    "type=bottom": {
+      "model": "celestialexploration:block/jupiter_polished_deepslate_slab"
+    },
+    "type=double": {
+      "model": "celestialexploration:block/jupiter_polished_deepslate"
+    }
+  }
+}

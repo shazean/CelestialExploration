@@ -208,6 +208,26 @@ public class Recipes extends RecipeProvider {
 		smelting(BlockRegistry.MERCURY_SAND.get(), Items.BROWN_STAINED_GLASS, 0.1F, 200, BlockRegistry.MERCURY_SAND.get(), consumer);
 		ShapedRecipeBuilder.shaped(BlockRegistry.MERCURY_LANTERN.get()).pattern("XCX").pattern("C#C").pattern("XCX").define('X', ItemRegistry.CINNABAR.get()).define('C', Items.IRON_INGOT).define('#', Items.TORCH).group(modGroup()).unlockedBy("has_cinnabar", has(ItemRegistry.CINNABAR.get())).save(consumer);
 
+		//---- JUPITER -------------------------------------------------------------------------------
+
+		//DEEPSLATE
+		stairsSlabWallCraftStonecutting(BlockRegistry.JUPITER_COBBLED_DEEPSLATE.get(), BlockRegistry.JUPITER_COBBLED_DEEPSLATE_STAIRS.get(), BlockRegistry.JUPITER_COBBLED_DEEPSLATE_SLAB.get(), BlockRegistry.JUPITER_COBBLED_DEEPSLATE_WALL.get(), BlockRegistry.JUPITER_COBBLED_DEEPSLATE.get(), consumer);
+		deepslateBricks(BlockRegistry.JUPITER_COBBLED_DEEPSLATE.get(), BlockRegistry.JUPITER_POLISHED_DEEPSLATE.get(), BlockRegistry.JUPITER_DEEPSLATE_BRICKS.get(), BlockRegistry.JUPITER_DEEPSLATE_BRICK_STAIRS.get(), BlockRegistry.JUPITER_DEEPSLATE_BRICK_SLAB.get(), BlockRegistry.JUPITER_DEEPSLATE_BRICK_WALL.get(), BlockRegistry.JUPITER_COBBLED_DEEPSLATE.get(), consumer);
+		deepslateTiles(BlockRegistry.JUPITER_COBBLED_DEEPSLATE.get(), BlockRegistry.JUPITER_POLISHED_DEEPSLATE.get(), BlockRegistry.JUPITER_DEEPSLATE_BRICKS.get(), BlockRegistry.JUPITER_DEEPSLATE_TILES.get(), BlockRegistry.JUPITER_DEEPSLATE_TILE_STAIRS.get(), BlockRegistry.JUPITER_DEEPSLATE_TILE_SLAB.get(), BlockRegistry.JUPITER_DEEPSLATE_TILE_WALL.get(), BlockRegistry.JUPITER_COBBLED_DEEPSLATE.get(), consumer);
+		polishedDeepslate(BlockRegistry.JUPITER_COBBLED_DEEPSLATE.get(), BlockRegistry.JUPITER_POLISHED_DEEPSLATE.get(), BlockRegistry.JUPITER_POLISHED_DEEPSLATE_STAIRS.get(), BlockRegistry.JUPITER_POLISHED_DEEPSLATE_SLAB.get(), BlockRegistry.JUPITER_POLISHED_DEEPSLATE_WALL.get(), BlockRegistry.JUPITER_COBBLED_DEEPSLATE.get(), consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.CHISELED_JUPITER_DEEPSLATE_BRICKS.get()).pattern("X").pattern("X").define('X', BlockRegistry.JUPITER_COBBLED_DEEPSLATE_SLAB.get()).group(modGroup()).unlockedBy("has_jupiter_cobbled_deepslate", has(BlockRegistry.JUPITER_COBBLED_DEEPSLATE.get())).save(consumer);
+		stonecutting(TagRegistry.Items.JUPITER_COBBLED_DEEPSLATE, BlockRegistry.CHISELED_JUPITER_DEEPSLATE_BRICKS.get(), 1, BlockRegistry.JUPITER_COBBLED_DEEPSLATE.get(), consumer);
+		smelting(BlockRegistry.JUPITER_DEEPSLATE_BRICKS.get(), BlockRegistry.CRACKED_JUPITER_DEEPSLATE_BRICKS.get(), 0.1F, 200, BlockRegistry.JUPITER_DEEPSLATE_BRICKS.get(), consumer);
+		smelting(BlockRegistry.JUPITER_DEEPSLATE_TILES.get(), BlockRegistry.CRACKED_JUPITER_DEEPSLATE_TILES.get(), 0.1F, 200, BlockRegistry.JUPITER_DEEPSLATE_TILES.get(), consumer);
+		ingotAndBlock(BlockRegistry.JUPITER_COBBLED_DEEPSLATE.get(), BlockRegistry.COMPRESSED_JUPITER_COBBLED_DEEPSLATE.get(), BlockRegistry.JUPITER_COBBLED_DEEPSLATE.get(), consumer);
+		ingotAndBlock(BlockRegistry.COMPRESSED_JUPITER_COBBLED_DEEPSLATE.get(), BlockRegistry.SUPER_COMPRESSED_JUPITER_COBBLED_DEEPSLATE.get(), BlockRegistry.COMPRESSED_JUPITER_COBBLED_DEEPSLATE.get(), consumer);
+		smelting(BlockRegistry.JUPITER_COBBLED_DEEPSLATE.get(), BlockRegistry.JUPITER_DEEPSLATE.get(), 0.1F, 200, BlockRegistry.JUPITER_COBBLED_DEEPSLATE.get(), consumer);
+		singleItem(BlockRegistry.JUPITER_DEEPSLATE.get(), BlockRegistry.JUPITER_DEEPSLATE_BUTTON.get(), 1, BlockRegistry.JUPITER_DEEPSLATE.get(), consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.JUPITER_DEEPSLATE_PRESSURE_PLATE.get()).pattern("XX").define('X', BlockRegistry.JUPITER_DEEPSLATE.get()).group(modGroup()).unlockedBy("jupiter_deepslate", has(BlockRegistry.JUPITER_DEEPSLATE.get())).save(consumer);
+
+		//OTHER
+		ShapedRecipeBuilder.shaped(BlockRegistry.JUPITER_LANTERN.get()).pattern("XCX").pattern("C#C").pattern("XCX").define('X', BlockRegistry.JUPITER_ATMOSPHERE.get()).define('C', Items.IRON_INGOT).define('#', Items.TORCH).group(modGroup()).unlockedBy("has_jupiter_deepslate", has(BlockRegistry.JUPITER_LANTERN.get())).save(consumer);
+
 		//---- ORES/ALLOYS -------------------------------------------------------------------------------
 		//BAUXITE/ALUMINUM
 		smeltingAndBlasting(ItemRegistry.RAW_BAUXITE.get(), ItemRegistry.BAUXITE_INGOT.get(), 0.7F, 200, 100, ItemRegistry.RAW_BAUXITE.get(), consumer);
@@ -290,8 +310,8 @@ public class Recipes extends RecipeProvider {
 		ShapedRecipeBuilder.shaped(BlockRegistry.AIRLOCK_DOOR.get()).pattern("GX").pattern("DX").define('X', ItemRegistry.ALUMINUM_INGOT.get()).define('G', Tags.Items.GLASS_COLORLESS).define('D', BlockRegistry.STEEL_DOOR.get()).group(modGroup()).unlockedBy("aluminum", has(ItemRegistry.ALUMINUM_INGOT.get())).save(consumer);
 		ShapedRecipeBuilder.shaped(BlockRegistry.AIRLOCK_DOOR.get()).pattern("GX").pattern("DX").define('X', ItemRegistry.ALUMINUM_INGOT.get()).define('G', Tags.Items.GLASS_COLORLESS).define('D', Items.IRON_DOOR).group(modGroup()).unlockedBy("aluminum", has(ItemRegistry.ALUMINUM_INGOT.get())).save(consumer, "airlock_door_from_iron_door");
 
-		ShapedRecipeBuilder.shaped(BlockRegistry.AIRLOCK_PANEL_DOOR.get(), 4).pattern("XX").pattern("XXR").pattern("XX").define('X', ItemRegistry.ALUMINUM_INGOT.get()).define('R', Items.REDSTONE).group(modGroup()).unlockedBy("aluminum", has(ItemRegistry.ALUMINUM_INGOT.get())).save(consumer);
-		ShapedRecipeBuilder.shaped(BlockRegistry.HANGAR_DOOR.get(), 4).pattern("XX").pattern("XXR").pattern("XX").define('X', ItemRegistry.STEEL_INGOT.get()).define('R', Items.REDSTONE).group(modGroup()).unlockedBy("steel", has(ItemRegistry.STEEL_INGOT.get())).save(consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.AIRLOCK_PANEL_DOOR.get(), 4).pattern("XX ").pattern("XXR").pattern("XX ").define('X', ItemRegistry.ALUMINUM_INGOT.get()).define('R', Items.REDSTONE).group(modGroup()).unlockedBy("aluminum", has(ItemRegistry.ALUMINUM_INGOT.get())).save(consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.HANGAR_DOOR.get(), 4).pattern("XX ").pattern("XXR").pattern("XX ").define('X', ItemRegistry.STEEL_INGOT.get()).define('R', Items.REDSTONE).group(modGroup()).unlockedBy("steel", has(ItemRegistry.STEEL_INGOT.get())).save(consumer);
 
 		ShapedRecipeBuilder.shaped(BlockRegistry.AIRLOCK_TRAPDOOR.get(), 2).pattern("XGX").pattern("XXX").define('G', Tags.Items.GLASS_COLORLESS).define('X', ItemRegistry.ALUMINUM_INGOT.get()).group(modGroup()).unlockedBy("steel", has(ItemRegistry.STEEL_INGOT.get())).save(consumer);
 

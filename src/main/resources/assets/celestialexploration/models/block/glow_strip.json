@@ -1,5 +1,6 @@
 {
   "textures": {
+    "particle": "celestialexploration:block/glow_strip",
     "0": "celestialexploration:block/glow_strip"
   },
   "elements": [

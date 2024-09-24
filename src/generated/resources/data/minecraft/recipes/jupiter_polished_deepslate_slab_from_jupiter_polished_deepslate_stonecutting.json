@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:stonecutting",
+  "group": "celestialexploration",
+  "ingredient": {
+    "item": "celestialexploration:jupiter_polished_deepslate"
+  },
+  "result": "celestialexploration:jupiter_polished_deepslate_slab",
+  "count": 2
+}

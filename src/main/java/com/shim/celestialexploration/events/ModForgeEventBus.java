@@ -8,10 +8,7 @@ import com.shim.celestialexploration.item.armor.ThermalSpaceSuitArmorItem;
 import com.shim.celestialexploration.packets.CelestialPacketHandler;
 import com.shim.celestialexploration.packets.SpaceFlightPacket;
 import com.shim.celestialexploration.packets.SpaceshipFuelTickPacket;
-import com.shim.celestialexploration.registry.BlockRegistry;
-import com.shim.celestialexploration.registry.CapabilityRegistry;
-import com.shim.celestialexploration.registry.DimensionRegistry;
-import com.shim.celestialexploration.registry.EffectRegistry;
+import com.shim.celestialexploration.registry.*;
 import com.shim.celestialexploration.util.CelestialUtil;
 import com.shim.celestialexploration.util.DimensionUtil;
 import com.shim.celestialexploration.util.TeleportUtil;
@@ -137,33 +134,19 @@ public class ModForgeEventBus {
             if (event.getItemStack() != null && event.getItemStack().getItem() == Items.FLINT_AND_STEEL) {
                 Level level = event.getWorld();
 
-                if(player.level.dimension() == DimensionRegistry.MARS
-                        || player.level.dimension() == DimensionRegistry.MOON
-                        || player.level.dimension() == DimensionRegistry.VENUS
-                        || player.level.dimension() == DimensionRegistry.MERCURY
-
-                        || player.level.dimension() == Level.OVERWORLD) {
+                if(player.level.getBiome(player.getOnPos()).is(TagRegistry.Biomes.CELESTIAL_BODIES) || player.level.dimension() == Level.OVERWORLD) {
+//                if(player.level.dimension() == DimensionRegistry.MARS
+//                        || player.level.dimension() == DimensionRegistry.MOON
+//                        || player.level.dimension() == DimensionRegistry.VENUS
+//                        || player.level.dimension() == DimensionRegistry.MERCURY
+//                        || player.level.dimension() == Level.OVERWORLD) {
 
                     for(Direction direction : Direction.Plane.VERTICAL) {
                         BlockPos framePos = event.getPos().relative(direction);
 
-                        if(BlockRegistry.MARS_PORTAL.get().trySpawnPortal(level, framePos)) {
-                            level.playSound(player, framePos, SoundEvents.PORTAL_TRIGGER, SoundSource.BLOCKS, 1.0F, 1.0F);
-                            event.setCanceled(true);
-                            event.setCancellationResult(InteractionResult.CONSUME);
-                        }
-                        else if(BlockRegistry.MOON_PORTAL.get().trySpawnPortal(level, framePos)) {
-
-                            level.playSound(player, framePos, SoundEvents.PORTAL_TRIGGER, SoundSource.BLOCKS, 1.0F, 1.0F);
-                            event.setCanceled(true);
-                            event.setCancellationResult(InteractionResult.CONSUME);
-                        }
-                        else if(BlockRegistry.VENUS_PORTAL.get().trySpawnPortal(level, framePos)) {
-                            level.playSound(player, framePos, SoundEvents.PORTAL_TRIGGER, SoundSource.BLOCKS, 1.0F, 1.0F);
-                            event.setCanceled(true);
-                            event.setCancellationResult(InteractionResult.CONSUME);
-                        }
-                        else if(BlockRegistry.MERCURY_PORTAL.get().trySpawnPortal(level, framePos)) {
+                        if(BlockRegistry.MARS_PORTAL.get().trySpawnPortal(level, framePos) || BlockRegistry.MOON_PORTAL.get().trySpawnPortal(level, framePos) ||
+                                BlockRegistry.VENUS_PORTAL.get().trySpawnPortal(level, framePos) || BlockRegistry.MERCURY_PORTAL.get().trySpawnPortal(level, framePos) ||
+                                BlockRegistry.JUPITER_PORTAL.get().trySpawnPortal(level, framePos)) {
                             level.playSound(player, framePos, SoundEvents.PORTAL_TRIGGER, SoundSource.BLOCKS, 1.0F, 1.0F);
                             event.setCanceled(true);
                             event.setCancellationResult(InteractionResult.CONSUME);
@@ -177,10 +160,8 @@ public class ModForgeEventBus {
                 if (block.is(BlockRegistry.MERCURY_SAND.get())) {
                     level.setBlock(event.getHitVec().getBlockPos(), BlockRegistry.MERCURY_SAND_PATH.get().defaultBlockState(), 1);
                 }
-
             }
-
-            }
+        }
     }
 
     @SubscribeEvent
@@ -224,11 +205,11 @@ public class ModForgeEventBus {
         }
 
         if (CelestialCommonConfig.STORMS.get()) {
-            if (event.getWorld().isRaining() && dimension.equals(DimensionRegistry.MARS)) { //FIXME, update way of checking if dimension (and biome?) has sandstorms
+            if (event.getWorld().isRaining() && event.getWorld().getBiome(entity.blockPosition()).is(TagRegistry.Biomes.DUST_STORM_BIOMES)) {
                 if (entity instanceof LivingEntity livingEntity) {
                     livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 12000, 1, false, false, true));
                 }
-            } else if (!event.getWorld().isRaining() && dimension.equals(DimensionRegistry.MARS)) {
+            } else if (!event.getWorld().isRaining() && event.getWorld().getBiome(entity.blockPosition()).is(TagRegistry.Biomes.DUST_STORM_BIOMES)) {
                 if (entity instanceof LivingEntity livingEntity) {
                     livingEntity.removeEffect(MobEffects.MOVEMENT_SLOWDOWN);
                 }

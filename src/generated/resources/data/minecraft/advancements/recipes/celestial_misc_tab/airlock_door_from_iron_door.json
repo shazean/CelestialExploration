@@ -6,13 +6,13 @@
     ]
   },
   "criteria": {
-    "steel": {
+    "aluminum": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "celestialexploration:steel_ingot"
+              "celestialexploration:aluminum_ingot"
             ]
           }
         ]
@@ -27,7 +27,7 @@
   },
   "requirements": [
     [
-      "steel",
+      "aluminum",
       "has_the_recipe"
     ]
   ]

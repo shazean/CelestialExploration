@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "celestialexploration:cracked_jupiter_deepslate_tiles"
+    ]
+  },
+  "criteria": {
+    "has_jupiter_deepslate_tiles": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:jupiter_deepslate_tiles"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "celestialexploration:cracked_jupiter_deepslate_tiles"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_jupiter_deepslate_tiles",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -26,7 +26,6 @@
     "celestialexploration:venus_deepslate_brick_slab",
     "celestialexploration:venus_deepslate_tile_slab",
     "celestialexploration:venus_polished_deepslate_slab",
-    "celestialexploration:meteor_brick_slab",
     "celestialexploration:mercury_stone_slab",
     "celestialexploration:mercury_smooth_stone_slab",
     "celestialexploration:mercury_brick_slab",
@@ -34,6 +33,10 @@
     "celestialexploration:mercury_cobbled_deepslate_slab",
     "celestialexploration:mercury_deepslate_brick_slab",
     "celestialexploration:mercury_deepslate_tile_slab",
-    "celestialexploration:mercury_polished_deepslate_slab"
+    "celestialexploration:mercury_polished_deepslate_slab",
+    "celestialexploration:jupiter_deepslate_brick_slab",
+    "celestialexploration:jupiter_deepslate_tile_slab",
+    "celestialexploration:jupiter_polished_deepslate_slab",
+    "celestialexploration:meteor_brick_slab"
   ]
 }

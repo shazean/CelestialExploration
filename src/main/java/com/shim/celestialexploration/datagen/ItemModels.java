@@ -236,39 +236,7 @@ public class ItemModels extends ItemModelProvider {
 		self(BlockRegistry.SULFURIC_OBSIDIAN.get());
 		self(BlockRegistry.VENUS_LANTERN.get());
 		self(BlockRegistry.GEYSER.get());
-
-
-		//---- CELESTIAL OBJECTS -------------------------------------------------------------------------------
-		//METEOR
-		self(BlockRegistry.METEOR.get());
-		buttonInventory(name(BlockRegistry.METEOR_BUTTON.get()), modLoc("block/meteor"));
-		pressurePlate(name(BlockRegistry.METEOR_PRESSURE_PLATE.get()), modLoc("block/meteor"));
-
-		self(BlockRegistry.METEOR_BRICKS.get());
-		stairsItem(BlockRegistry.METEOR_BRICK_STAIRS.get(), "meteor_bricks");
-		slabItem(BlockRegistry.METEOR_BRICK_SLAB.get(), "meteor_bricks");
-		wallItem(BlockRegistry.METEOR_BRICK_WALL.get(), "meteor_bricks");
-		self(BlockRegistry.CHISELED_METEOR_BRICKS.get());
-
-
-		//METEOR ORE
-		self(BlockRegistry.METEOR_COAL_ORE.get());
-		self(BlockRegistry.METEOR_COPPER_ORE.get());
-		self(BlockRegistry.METEOR_DIAMOND_ORE.get());
-		self(BlockRegistry.METEOR_EMERALD_ORE.get());
-		self(BlockRegistry.METEOR_GOLD_ORE.get());
-		self(BlockRegistry.METEOR_IRON_ORE.get());
-		self(BlockRegistry.METEOR_LAPIS_ORE.get());
-		self(BlockRegistry.METEOR_SULFUR_ORE.get());
-		self(BlockRegistry.METEOR_REDSTONE_ORE.get());
-		self(BlockRegistry.METEOR_BAUXITE_ORE.get());
-
-
-		//SUN
-		self(BlockRegistry.SOLAR_PLASMA.get());
-		self(BlockRegistry.SOLAR_FLARE.get());
-		self(BlockRegistry.SUN_SPOT.get());
-
+		
 		//---- MERCURY -------------------------------------------------------------------------------
 		//STONE
 		self(BlockRegistry.MERCURY_STONE.get());
@@ -341,12 +309,44 @@ public class ItemModels extends ItemModelProvider {
 		self(BlockRegistry.MERCURY_SAND_PATH.get());
 		self(BlockRegistry.MERCURY_LANTERN.get());
 
+		//---- JUPITER -------------------------------------------------------------------------------
+		//DEEPSLATE
+		self(BlockRegistry.JUPITER_DEEPSLATE.get());
+		buttonInventory(name(BlockRegistry.JUPITER_DEEPSLATE_BUTTON.get()), modLoc("block/jupiter_deepslate_side"));
+		pressurePlate(name(BlockRegistry.JUPITER_DEEPSLATE_PRESSURE_PLATE.get()), modLoc("block/jupiter_deepslate_side"));
 
-		//---- OTHER PLANETS -------------------------------------------------------------------------------
-		//JUPITER
+		self(BlockRegistry.JUPITER_COBBLED_DEEPSLATE.get());
+		stairsItem(BlockRegistry.JUPITER_COBBLED_DEEPSLATE_STAIRS.get(), "jupiter_cobbled_deepslate");
+		slabItem(BlockRegistry.JUPITER_COBBLED_DEEPSLATE_SLAB.get(), "jupiter_cobbled_deepslate");
+		wallItem(BlockRegistry.JUPITER_COBBLED_DEEPSLATE_WALL.get(),"jupiter_cobbled_deepslate");
+		self(BlockRegistry.COMPRESSED_JUPITER_COBBLED_DEEPSLATE.get());
+		self(BlockRegistry.SUPER_COMPRESSED_JUPITER_COBBLED_DEEPSLATE.get());
+
+		self(BlockRegistry.JUPITER_POLISHED_DEEPSLATE.get());
+		stairsItem(BlockRegistry.JUPITER_POLISHED_DEEPSLATE_STAIRS.get(), "jupiter_polished_deepslate");
+		slabItem(BlockRegistry.JUPITER_POLISHED_DEEPSLATE_SLAB.get(), "jupiter_polished_deepslate");
+		wallItem(BlockRegistry.JUPITER_POLISHED_DEEPSLATE_WALL.get(), "jupiter_polished_deepslate");
+
+		self(BlockRegistry.JUPITER_DEEPSLATE_BRICKS.get());
+		stairsItem(BlockRegistry.JUPITER_DEEPSLATE_BRICK_STAIRS.get(), "jupiter_deepslate_bricks");
+		slabItem(BlockRegistry.JUPITER_DEEPSLATE_BRICK_SLAB.get(), "jupiter_deepslate_bricks");
+		wallItem(BlockRegistry.JUPITER_DEEPSLATE_BRICK_WALL.get(), "jupiter_deepslate_bricks");
+		self(BlockRegistry.CHISELED_JUPITER_DEEPSLATE_BRICKS.get());
+		self(BlockRegistry.CRACKED_JUPITER_DEEPSLATE_BRICKS.get());
+
+		self(BlockRegistry.JUPITER_DEEPSLATE_TILES.get());
+		stairsItem(BlockRegistry.JUPITER_DEEPSLATE_TILE_STAIRS.get(), "jupiter_deepslate_tiles");
+		slabItem(BlockRegistry.JUPITER_DEEPSLATE_TILE_SLAB.get(),"jupiter_deepslate_tiles");
+		wallItem(BlockRegistry.JUPITER_DEEPSLATE_TILE_WALL.get(), "jupiter_deepslate_tiles");
+		self(BlockRegistry.CRACKED_JUPITER_DEEPSLATE_TILES.get());
+
+		//OTHER
 		self(BlockRegistry.JUPITER_CORE.get());
 		self(BlockRegistry.JUPITER_ATMOSPHERE.get());
-		self(BlockRegistry.JUPITER_DEEPSLATE.get());
+		self(BlockRegistry.JUPITER_LANTERN.get());
+
+
+		//---- JUPITER'S MOONS -------------------------------------------------------------------------------
 
 		self(BlockRegistry.IO_CORE.get());
 		self(BlockRegistry.IO_STONE.get());
@@ -357,6 +357,8 @@ public class ItemModels extends ItemModelProvider {
 
 		self(BlockRegistry.GANYMEDE_CORE.get());
 		self(BlockRegistry.CALLISTO_CORE.get());
+
+		//---- OTHER PLANETS -------------------------------------------------------------------------------
 
 		//SATURN
 		self(BlockRegistry.SATURN_ATMOSPHERE.get());
@@ -391,6 +393,35 @@ public class ItemModels extends ItemModelProvider {
 //		self(BlockRegistry.HAUMEA_CORE.get());
 //		self(BlockRegistry.CERES_CORE.get());
 //		self(BlockRegistry.MAKEMAKE_CORE.get());
+
+		//---- CELESTIAL OBJECTS -------------------------------------------------------------------------------
+		//METEOR
+		self(BlockRegistry.METEOR.get());
+		buttonInventory(name(BlockRegistry.METEOR_BUTTON.get()), modLoc("block/meteor"));
+		pressurePlate(name(BlockRegistry.METEOR_PRESSURE_PLATE.get()), modLoc("block/meteor"));
+
+		self(BlockRegistry.METEOR_BRICKS.get());
+		stairsItem(BlockRegistry.METEOR_BRICK_STAIRS.get(), "meteor_bricks");
+		slabItem(BlockRegistry.METEOR_BRICK_SLAB.get(), "meteor_bricks");
+		wallItem(BlockRegistry.METEOR_BRICK_WALL.get(), "meteor_bricks");
+		self(BlockRegistry.CHISELED_METEOR_BRICKS.get());
+		
+		//METEOR ORE
+		self(BlockRegistry.METEOR_COAL_ORE.get());
+		self(BlockRegistry.METEOR_COPPER_ORE.get());
+		self(BlockRegistry.METEOR_DIAMOND_ORE.get());
+		self(BlockRegistry.METEOR_EMERALD_ORE.get());
+		self(BlockRegistry.METEOR_GOLD_ORE.get());
+		self(BlockRegistry.METEOR_IRON_ORE.get());
+		self(BlockRegistry.METEOR_LAPIS_ORE.get());
+		self(BlockRegistry.METEOR_SULFUR_ORE.get());
+		self(BlockRegistry.METEOR_REDSTONE_ORE.get());
+		self(BlockRegistry.METEOR_BAUXITE_ORE.get());
+		
+		//SUN
+		self(BlockRegistry.SOLAR_PLASMA.get());
+		self(BlockRegistry.SOLAR_FLARE.get());
+		self(BlockRegistry.SUN_SPOT.get());
 
 		//---- ORE-RELATED -------------------------------------------------------------------------------
 		self(BlockRegistry.ALUMINUM_BLOCK.get());
@@ -437,8 +468,7 @@ public class ItemModels extends ItemModelProvider {
 		wallInventory("panel_wall",  modLoc("block/panel"));
 		generatedBlockItem(BlockRegistry.THIN_PANEL.get(), "block/panel");
 		generatedBlockItem(BlockRegistry.STEEL_LADDER.get());
-
-
+		
 		buttonInventory(name(BlockRegistry.RED_BUTTON.get()), modLoc("block/red_ceramic"));
 		buttonInventory(name(BlockRegistry.YELLOW_BUTTON.get()), modLoc("block/yellow_ceramic"));
 		buttonInventory(name(BlockRegistry.BLUE_BUTTON.get()), modLoc("block/blue_ceramic"));
@@ -497,14 +527,13 @@ public class ItemModels extends ItemModelProvider {
 		generatedItem(ItemRegistry.ADVANCED_SPACESUIT_LEGGINGS.get());
 		generatedItem(ItemRegistry.ADVANCED_SPACESUIT_CHESTPLATE.get());
 		generatedItem(ItemRegistry.ADVANCED_SPACESUIT_BOOTS.get());
-
-
+		
 		//---- GLASS/CERAMICS -------------------------------------------------------------------------------
 		//GLASS
 		self(BlockRegistry.LUMINOUS_BLUE_GLASS.get());
 		self(BlockRegistry.LUMINOUS_WHITE_GLASS.get());
 		generatedBlockItem(BlockRegistry.LUMINOUS_BLUE_GLASS_PANE.get(), "block/luminous_blue_glass");
-		generatedBlockItem(BlockRegistry.LUMINOUS_WHITE_GLASS_PANE.get(), "block/luminous_blue_glass");
+		generatedBlockItem(BlockRegistry.LUMINOUS_WHITE_GLASS_PANE.get(), "block/luminous_white_glass");
 
 		withExistingParent(name(BlockRegistry.REINFORCED_GLASS.get()), modLoc("block/reinforced_glass_inventory"));
 		generatedBlockItem(BlockRegistry.REINFORCED_GLASS_PANE.get(), "block/reinforced_glass");
@@ -585,6 +614,7 @@ public class ItemModels extends ItemModelProvider {
 		singleTexture(name(FluidRegistry.MOLTEN_GOLD_BUCKET.get()), new ResourceLocation("item/generated"), "layer0", new ResourceLocation("item/lava_bucket"));
 		singleTexture(name(FluidRegistry.MOLTEN_ALUMINUM_BUCKET.get()), new ResourceLocation("item/generated"), "layer0", new ResourceLocation("item/lava_bucket"));
 		generatedItem(FluidRegistry.SULFUR_BUCKET.get());
+		generatedItem(FluidRegistry.METALLIC_HYDROGEN_BUCKET.get());
 
 		//BLOCKS
 		self(BlockRegistry.DRY_ICE.get());

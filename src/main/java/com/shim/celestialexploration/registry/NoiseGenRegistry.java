@@ -45,6 +45,13 @@ public class NoiseGenRegistry extends NoiseRouterData {
                 CelestialSurfaceRules.space(), -64, false, false, false, false);
     });
 
+    public static final RegistryObject<NoiseGeneratorSettings> JUPITER_NOISE = NOISES.register("jupiter", () -> {
+        NoiseSettings noisesettings = jupiterNoiseSettings();
+        return new NoiseGeneratorSettings(noisesettings, BlockRegistry.JUPITER_DEEPSLATE.get().defaultBlockState(), FluidRegistry.METALLIC_HYDROGEN_BLOCK.get().defaultBlockState(), NoiseRouterData.overworldWithoutCaves(noisesettings),
+                CelestialSurfaceRules.jupiter(), 128, false, true, false, false);
+    });
+
+
     static NoiseSettings moonNoiseSettings() {
         return NoiseSettings.create(-32, 256, new NoiseSamplingSettings(1.0D, 1.0D, 80.0D, 160.0D),
                 new NoiseSlider(-0.078125D, 2, 8), new NoiseSlider(0.1171875D, 3, 0), 1, 2, TerrainProvider.overworld(false));
@@ -71,5 +78,10 @@ public class NoiseGenRegistry extends NoiseRouterData {
                 new NoiseSlider(0.0D, 0, 0), //0.1171875D, 3, 0
                 1, 1, //1, 2
                 new TerrainShaper(CubicSpline.constant(0.0F), CubicSpline.constant(0.0F), CubicSpline.constant(0.0F)));
+    }
+
+    static NoiseSettings jupiterNoiseSettings() {
+        return NoiseSettings.create(-96, 256, new NoiseSamplingSettings(1.0D, 1.0D, 80.0D, 160.0D),
+                new NoiseSlider(-0.078125D, 2, 8), new NoiseSlider(0.1171875D, 3, 0), 1, 2, TerrainProvider.overworld(false));
     }
 }

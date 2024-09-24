@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "celestialexploration:jupiter_dungeon",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 21322480,
+    "spacing": 45,
+    "separation": 18,
+    "type": "minecraft:random_spread"
+  }
+}

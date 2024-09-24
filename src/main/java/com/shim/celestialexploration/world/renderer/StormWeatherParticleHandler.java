@@ -26,7 +26,7 @@ import net.minecraftforge.client.IWeatherParticleRenderHandler;
 
 import java.util.Random;
 
-public class MarsWeatherParticleHandler implements IWeatherParticleRenderHandler {
+public class StormWeatherParticleHandler implements IWeatherParticleRenderHandler {
     private int rainSoundTime;
 
     @Override

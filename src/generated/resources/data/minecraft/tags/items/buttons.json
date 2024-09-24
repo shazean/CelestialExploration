@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
+    "celestialexploration:moon_stone_button",
+    "celestialexploration:moon_deepslate_button",
     "celestialexploration:mars_stone_button",
     "celestialexploration:mars_deepslate_button",
     "celestialexploration:venus_stone_button",
@@ -14,6 +16,7 @@
     "celestialexploration:green_button",
     "celestialexploration:white_button",
     "celestialexploration:black_button",
-    "celestialexploration:steel_button"
+    "celestialexploration:steel_button",
+    "celestialexploration:airlock_button"
   ]
 }

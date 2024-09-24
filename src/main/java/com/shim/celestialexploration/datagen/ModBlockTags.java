@@ -24,52 +24,41 @@ public class ModBlockTags extends BlockTagsProvider {
         //TOOLS
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 //MOON
-                .add(BlockRegistry.MOON_STONE.get()).add(BlockRegistry.MOON_STONE_SLAB.get())
-                .add(BlockRegistry.MOON_COBBLESTONE.get()).add(BlockRegistry.MOON_COBBLESTONE_SLAB.get()).add(BlockRegistry.MOON_COBBLESTONE_STAIRS.get()).add(BlockRegistry.MOON_COBBLESTONE_WALL.get())
-                .add(BlockRegistry.MOON_BRICKS.get()).add(BlockRegistry.MOON_BRICK_SLAB.get()).add(BlockRegistry.MOON_BRICK_STAIRS.get()).add(BlockRegistry.MOON_BRICK_WALL.get()).add(BlockRegistry.CHISELED_MOON_BRICKS.get()).add(BlockRegistry.CRACKED_MOON_BRICKS.get()).add(BlockRegistry.MOON_BRICK_PILLAR.get())
-                .add(BlockRegistry.MOON_SMOOTH_STONE.get()).add(BlockRegistry.MOON_SMOOTH_STONE_SLAB.get())
-                .add(BlockRegistry.COMPRESSED_MOON_COBBLESTONE.get()).add(BlockRegistry.SUPER_COMPRESSED_COBBLESTONE.get())
+                .addTag(TagRegistry.Blocks.MOON_STONE)
+                .addTag(TagRegistry.Blocks.MOON_COBBLESTONE)
+                .addTag(TagRegistry.Blocks.MOON_DEEPSLATE)
+                .addTag(TagRegistry.Blocks.MOON_COBBLED_DEEPSLATE)
                 .add(BlockRegistry.MOON_IRON_ORE.get()).add(BlockRegistry.MOON_REDSTONE_ORE.get()).add(BlockRegistry.MOON_BAUXITE_ORE.get())
-                .add(BlockRegistry.MOON_DEEPSLATE.get())
-                .add(BlockRegistry.MOON_COBBLED_DEEPSLATE.get()).add(BlockRegistry.MOON_COBBLED_DEEPSLATE_SLAB.get()).add(BlockRegistry.MOON_COBBLED_DEEPSLATE_STAIRS.get()).add(BlockRegistry.MOON_COBBLED_DEEPSLATE_WALL.get())
-                .add(BlockRegistry.MOON_DEEPSLATE_BRICKS.get()).add(BlockRegistry.MOON_DEEPSLATE_BRICK_SLAB.get()).add(BlockRegistry.MOON_DEEPSLATE_BRICK_STAIRS.get()).add(BlockRegistry.MOON_DEEPSLATE_BRICK_WALL.get()).add(BlockRegistry.CRACKED_MOON_DEEPSLATE_BRICKS.get()).add(BlockRegistry.CHISELED_MOON_DEEPSLATE_BRICKS.get())
-                .add(BlockRegistry.MOON_DEEPSLATE_TILES.get()).add(BlockRegistry.MOON_DEEPSLATE_TILE_SLAB.get()).add(BlockRegistry.MOON_DEEPSLATE_TILE_STAIRS.get()).add(BlockRegistry.MOON_DEEPSLATE_TILE_WALL.get()).add(BlockRegistry.CRACKED_MOON_DEEPSLATE_TILES.get())
-                .add(BlockRegistry.MOON_POLISHED_DEEPSLATE.get()).add(BlockRegistry.MOON_POLISHED_DEEPSLATE_SLAB.get()).add(BlockRegistry.MOON_POLISHED_DEEPSLATE_STAIRS.get()).add(BlockRegistry.MOON_POLISHED_DEEPSLATE_WALL.get())
                 .add(BlockRegistry.MOON_DEEPSLATE_IRON_ORE.get()).add(BlockRegistry.MOON_DEEPSLATE_REDSTONE_ORE.get())
-                .add(BlockRegistry.COMPRESSED_MOON_COBBLED_DEEPSLATE.get()).add(BlockRegistry.SUPER_COMPRESSED_COBBLED_DEEPSLATE.get())
 
                 //MARS
-                .add(BlockRegistry.MARS_STONE.get()).add(BlockRegistry.MARS_STONE_SLAB.get())
-                .add(BlockRegistry.MARS_COBBLESTONE.get()).add(BlockRegistry.MARS_COBBLESTONE_SLAB.get()).add(BlockRegistry.MARS_COBBLESTONE_STAIRS.get()).add(BlockRegistry.MARS_COBBLESTONE_WALL.get())
-                .add(BlockRegistry.MARS_BRICKS.get()).add(BlockRegistry.MARS_BRICK_SLAB.get()).add(BlockRegistry.MARS_BRICK_STAIRS.get()).add(BlockRegistry.MARS_BRICK_WALL.get()).add(BlockRegistry.CHISELED_MARS_BRICKS.get()).add(BlockRegistry.CRACKED_MARS_BRICKS.get()).add(BlockRegistry.MARS_BRICK_PILLAR.get())
-                .add(BlockRegistry.MARS_SMOOTH_STONE.get()).add(BlockRegistry.MARS_SMOOTH_STONE_SLAB.get())
-                .add(BlockRegistry.COMPRESSED_MOON_COBBLESTONE.get()).add(BlockRegistry.SUPER_COMPRESSED_MOON_COBBLESTONE.get())
-
+                .addTag(TagRegistry.Blocks.MARS_STONE)
+                .addTag(TagRegistry.Blocks.MARS_COBBLESTONE)
+                .addTag(TagRegistry.Blocks.MARS_DEEPSLATE)
+                .addTag(TagRegistry.Blocks.MARS_COBBLED_DEEPSLATE)
                 .add(BlockRegistry.MARS_IRON_ORE.get()).add(BlockRegistry.MARS_REDSTONE_ORE.get()).add(BlockRegistry.MARS_BAUXITE_ORE.get())
-                .add(BlockRegistry.MARS_DEEPSLATE.get())
-                .add(BlockRegistry.MARS_COBBLED_DEEPSLATE.get()).add(BlockRegistry.MARS_COBBLED_DEEPSLATE_SLAB.get()).add(BlockRegistry.MARS_COBBLED_DEEPSLATE_STAIRS.get()).add(BlockRegistry.MARS_COBBLED_DEEPSLATE_WALL.get())
-                .add(BlockRegistry.MARS_DEEPSLATE_BRICKS.get()).add(BlockRegistry.MARS_DEEPSLATE_BRICK_SLAB.get()).add(BlockRegistry.MARS_DEEPSLATE_BRICK_STAIRS.get()).add(BlockRegistry.MARS_DEEPSLATE_BRICK_WALL.get()).add(BlockRegistry.CRACKED_MARS_DEEPSLATE_BRICKS.get()).add(BlockRegistry.CHISELED_MARS_DEEPSLATE_BRICKS.get())
-                .add(BlockRegistry.MARS_DEEPSLATE_TILES.get()).add(BlockRegistry.MARS_DEEPSLATE_TILE_SLAB.get()).add(BlockRegistry.MARS_DEEPSLATE_TILE_STAIRS.get()).add(BlockRegistry.MARS_DEEPSLATE_TILE_WALL.get()).add(BlockRegistry.CRACKED_MARS_DEEPSLATE_TILES.get())
-                .add(BlockRegistry.MARS_POLISHED_DEEPSLATE.get()).add(BlockRegistry.MARS_POLISHED_DEEPSLATE_SLAB.get()).add(BlockRegistry.MARS_POLISHED_DEEPSLATE_STAIRS.get()).add(BlockRegistry.MARS_POLISHED_DEEPSLATE_WALL.get())
                 .add(BlockRegistry.MARS_DEEPSLATE_IRON_ORE.get()).add(BlockRegistry.MARS_DEEPSLATE_REDSTONE_ORE.get())
-                .add(BlockRegistry.COMPRESSED_MOON_COBBLED_DEEPSLATE.get()).add(BlockRegistry.SUPER_COMPRESSED_COBBLED_DEEPSLATE.get())
 
                 //VENUS
-                .add(BlockRegistry.VENUS_STONE.get()).add(BlockRegistry.VENUS_STONE_SLAB.get())
-                .add(BlockRegistry.VENUS_COBBLESTONE.get()).add(BlockRegistry.VENUS_COBBLESTONE_SLAB.get()).add(BlockRegistry.VENUS_COBBLESTONE_STAIRS.get()).add(BlockRegistry.VENUS_COBBLESTONE_WALL.get())
-                .add(BlockRegistry.VENUS_BRICKS.get()).add(BlockRegistry.VENUS_BRICK_SLAB.get()).add(BlockRegistry.VENUS_BRICK_STAIRS.get()).add(BlockRegistry.VENUS_BRICK_WALL.get()).add(BlockRegistry.CHISELED_VENUS_BRICKS.get()).add(BlockRegistry.CRACKED_VENUS_BRICKS.get()).add(BlockRegistry.VENUS_BRICK_PILLAR.get())
-                .add(BlockRegistry.VENUS_SMOOTH_STONE.get()).add(BlockRegistry.VENUS_SMOOTH_STONE_SLAB.get())
-                .add(BlockRegistry.COMPRESSED_MARS_COBBLESTONE.get()).add(BlockRegistry.SUPER_COMPRESSED_MARS_COBBLESTONE.get())
-
-                .add(BlockRegistry.VENUS_IRON_ORE.get()).add(BlockRegistry.VENUS_REDSTONE_ORE.get()).add(BlockRegistry.VENUS_BAUXITE_ORE.get())
-                .add(BlockRegistry.VENUS_DEEPSLATE.get())
-                .add(BlockRegistry.VENUS_COBBLED_DEEPSLATE.get()).add(BlockRegistry.VENUS_COBBLED_DEEPSLATE_SLAB.get()).add(BlockRegistry.VENUS_COBBLED_DEEPSLATE_STAIRS.get()).add(BlockRegistry.VENUS_COBBLED_DEEPSLATE_WALL.get())
-                .add(BlockRegistry.VENUS_DEEPSLATE_BRICKS.get()).add(BlockRegistry.VENUS_DEEPSLATE_BRICK_SLAB.get()).add(BlockRegistry.VENUS_DEEPSLATE_BRICK_STAIRS.get()).add(BlockRegistry.VENUS_DEEPSLATE_BRICK_WALL.get()).add(BlockRegistry.CRACKED_VENUS_DEEPSLATE_BRICKS.get()).add(BlockRegistry.CHISELED_VENUS_DEEPSLATE_BRICKS.get())
-                .add(BlockRegistry.VENUS_DEEPSLATE_TILES.get()).add(BlockRegistry.VENUS_DEEPSLATE_TILE_SLAB.get()).add(BlockRegistry.VENUS_DEEPSLATE_TILE_STAIRS.get()).add(BlockRegistry.VENUS_DEEPSLATE_TILE_WALL.get()).add(BlockRegistry.CRACKED_VENUS_DEEPSLATE_TILES.get())
-                .add(BlockRegistry.VENUS_POLISHED_DEEPSLATE.get()).add(BlockRegistry.VENUS_POLISHED_DEEPSLATE_SLAB.get()).add(BlockRegistry.VENUS_POLISHED_DEEPSLATE_STAIRS.get()).add(BlockRegistry.VENUS_POLISHED_DEEPSLATE_WALL.get())
-                .add(BlockRegistry.VENUS_DEEPSLATE_IRON_ORE.get()).add(BlockRegistry.VENUS_DEEPSLATE_REDSTONE_ORE.get())
+                .addTag(TagRegistry.Blocks.VENUS_STONE)
+                .addTag(TagRegistry.Blocks.VENUS_COBBLESTONE)
+                .addTag(TagRegistry.Blocks.VENUS_DEEPSLATE)
+                .addTag(TagRegistry.Blocks.VENUS_COBBLED_DEEPSLATE)
                 .add(BlockRegistry.SULFURIC_OBSIDIAN.get())
-                .add(BlockRegistry.COMPRESSED_VENUS_COBBLED_DEEPSLATE.get()).add(BlockRegistry.SUPER_COMPRESSED_VENUS_COBBLED_DEEPSLATE.get())
+                .add(BlockRegistry.VENUS_IRON_ORE.get()).add(BlockRegistry.VENUS_REDSTONE_ORE.get()).add(BlockRegistry.VENUS_BAUXITE_ORE.get())
+                .add(BlockRegistry.VENUS_DEEPSLATE_IRON_ORE.get()).add(BlockRegistry.VENUS_DEEPSLATE_REDSTONE_ORE.get())
+
+                //MERCURY
+                .addTag(TagRegistry.Blocks.MERCURY_STONE)
+                .addTag(TagRegistry.Blocks.MERCURY_COBBLESTONE)
+                .addTag(TagRegistry.Blocks.MERCURY_DEEPSLATE)
+                .addTag(TagRegistry.Blocks.MERCURY_COBBLED_DEEPSLATE)
+                .add(BlockRegistry.MERCURY_BAUXITE_ORE.get()).add(BlockRegistry.MERCURY_SULFUR_ORE.get()).add(BlockRegistry.MERCURY_COAL_ORE.get()).add(BlockRegistry.MERCURY_DIAMOND_ORE.get())
+                .add(BlockRegistry.MERCURY_DEEPSLATE_IRON_ORE.get()).add(BlockRegistry.MERCURY_DEEPSLATE_COAL_ORE.get()).add(BlockRegistry.MERCURY_DEEPSLATE_REDSTONE_ORE.get()).add(BlockRegistry.MERCURY_DEEPSLATE_DIAMOND_ORE.get())
+
+                //JUPITER
+                .addTag(TagRegistry.Blocks.JUPITER_DEEPSLATE)
+                .addTag(TagRegistry.Blocks.JUPITER_COBBLED_DEEPSLATE)
 
                 //METEOR
                 .add(BlockRegistry.METEOR.get())
@@ -78,48 +67,13 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(BlockRegistry.METEOR_GOLD_ORE.get()).add(BlockRegistry.METEOR_IRON_ORE.get()).add(BlockRegistry.METEOR_LAPIS_ORE.get()).add(BlockRegistry.METEOR_REDSTONE_ORE.get()).add(BlockRegistry.METEOR_BAUXITE_ORE.get())
 
                 //MERCURY
-                .add(BlockRegistry.MERCURY_STONE.get()).add(BlockRegistry.MERCURY_STONE_SLAB.get())
-                .add(BlockRegistry.MERCURY_COBBLESTONE.get()).add(BlockRegistry.MERCURY_COBBLESTONE_SLAB.get()).add(BlockRegistry.MERCURY_COBBLESTONE_STAIRS.get()).add(BlockRegistry.MERCURY_COBBLESTONE_WALL.get())
-                .add(BlockRegistry.MERCURY_BRICKS.get()).add(BlockRegistry.MERCURY_BRICK_SLAB.get()).add(BlockRegistry.MERCURY_BRICK_STAIRS.get()).add(BlockRegistry.MERCURY_BRICK_WALL.get()).add(BlockRegistry.CHISELED_MERCURY_BRICKS.get()).add(BlockRegistry.CRACKED_MERCURY_BRICKS.get()).add(BlockRegistry.MERCURY_BRICK_PILLAR.get())
-                .add(BlockRegistry.MERCURY_SMOOTH_STONE.get()).add(BlockRegistry.MERCURY_SMOOTH_STONE_SLAB.get())
-                .add(BlockRegistry.COMPRESSED_MOON_COBBLESTONE.get()).add(BlockRegistry.SUPER_COMPRESSED_COBBLESTONE.get())
-
-                .add(BlockRegistry.MERCURY_BAUXITE_ORE.get()).add(BlockRegistry.MERCURY_SULFUR_ORE.get()).add(BlockRegistry.MERCURY_COAL_ORE.get()).add(BlockRegistry.MERCURY_DIAMOND_ORE.get())
-                .add(BlockRegistry.MERCURY_DEEPSLATE.get())
-                .add(BlockRegistry.MERCURY_COBBLED_DEEPSLATE.get()).add(BlockRegistry.MERCURY_COBBLED_DEEPSLATE_SLAB.get()).add(BlockRegistry.MERCURY_COBBLED_DEEPSLATE_STAIRS.get()).add(BlockRegistry.MERCURY_COBBLED_DEEPSLATE_WALL.get())
-                .add(BlockRegistry.MERCURY_DEEPSLATE_BRICKS.get()).add(BlockRegistry.MERCURY_DEEPSLATE_BRICK_SLAB.get()).add(BlockRegistry.MERCURY_DEEPSLATE_BRICK_STAIRS.get()).add(BlockRegistry.MERCURY_DEEPSLATE_BRICK_WALL.get()).add(BlockRegistry.CRACKED_MERCURY_DEEPSLATE_BRICKS.get()).add(BlockRegistry.CHISELED_MERCURY_DEEPSLATE_BRICKS.get())
-                .add(BlockRegistry.MERCURY_DEEPSLATE_TILES.get()).add(BlockRegistry.MERCURY_DEEPSLATE_TILE_SLAB.get()).add(BlockRegistry.MERCURY_DEEPSLATE_TILE_STAIRS.get()).add(BlockRegistry.MERCURY_DEEPSLATE_TILE_WALL.get()).add(BlockRegistry.CRACKED_MERCURY_DEEPSLATE_TILES.get())
-                .add(BlockRegistry.MERCURY_POLISHED_DEEPSLATE.get()).add(BlockRegistry.MERCURY_POLISHED_DEEPSLATE_SLAB.get()).add(BlockRegistry.MERCURY_POLISHED_DEEPSLATE_STAIRS.get()).add(BlockRegistry.MERCURY_POLISHED_DEEPSLATE_WALL.get())
-                .add(BlockRegistry.MERCURY_DEEPSLATE_IRON_ORE.get()).add(BlockRegistry.MERCURY_DEEPSLATE_COAL_ORE.get()).add(BlockRegistry.MERCURY_DEEPSLATE_REDSTONE_ORE.get()).add(BlockRegistry.MERCURY_DEEPSLATE_DIAMOND_ORE.get())
-                .add(BlockRegistry.COMPRESSED_MERCURY_COBBLED_DEEPSLATE.get()).add(BlockRegistry.SUPER_COMPRESSED_MERCURY_COBBLED_DEEPSLATE.get())
 
                 //CERAMIC
                 .add(BlockRegistry.CERAMIC.get()).add(BlockRegistry.CERAMIC_TILE.get())
-                .add(BlockRegistry.WHITE_CERAMIC.get()).add(BlockRegistry.WHITE_CERAMIC_TILE.get())
-                .add(BlockRegistry.LIGHT_GREY_CERAMIC.get()).add(BlockRegistry.LIGHT_GREY_CERAMIC_TILE.get())
-                .add(BlockRegistry.GREY_CERAMIC.get()).add(BlockRegistry.GREY_CERAMIC_TILE.get())
-                .add(BlockRegistry.BLACK_CERAMIC.get()).add(BlockRegistry.BLACK_CERAMIC_TILE.get())
-                .add(BlockRegistry.PURPLE_CERAMIC.get()).add(BlockRegistry.PURPLE_CERAMIC_TILE.get())
-                .add(BlockRegistry.MAGENTA_CERAMIC.get()).add(BlockRegistry.MAGENTA_CERAMIC_TILE.get())
-                .add(BlockRegistry.BLUE_CERAMIC.get()).add(BlockRegistry.BLUE_CERAMIC_TILE.get())
-                .add(BlockRegistry.LIGHT_BLUE_CERAMIC.get()).add(BlockRegistry.LIGHT_BLUE_CERAMIC_TILE.get())
-                .add(BlockRegistry.CYAN_CERAMIC.get()).add(BlockRegistry.CYAN_CERAMIC_TILE.get())
-                .add(BlockRegistry.GREEN_CERAMIC.get()).add(BlockRegistry.GREEN_CERAMIC_TILE.get())
-                .add(BlockRegistry.LIME_CERAMIC.get()).add(BlockRegistry.LIME_CERAMIC_TILE.get())
-                .add(BlockRegistry.YELLOW_CERAMIC.get()).add(BlockRegistry.YELLOW_CERAMIC_TILE.get())
-                .add(BlockRegistry.ORANGE_CERAMIC.get()).add(BlockRegistry.ORANGE_CERAMIC_TILE.get())
-                .add(BlockRegistry.BROWN_CERAMIC.get()).add(BlockRegistry.BROWN_CERAMIC_TILE.get())
-                .add(BlockRegistry.RED_CERAMIC.get()).add(BlockRegistry.RED_CERAMIC_TILE.get())
-                .add(BlockRegistry.PINK_CERAMIC.get()).add(BlockRegistry.PINK_CERAMIC_TILE.get())
-                .add(BlockRegistry.PAINTED_WHITE_CERAMIC.get()).add(BlockRegistry.PAINTED_LIGHT_GREY_CERAMIC.get())
-                .add(BlockRegistry.PAINTED_GREY_CERAMIC.get()).add(BlockRegistry.PAINTED_BLACK_CERAMIC.get())
-                .add(BlockRegistry.PAINTED_PURPLE_CERAMIC.get()).add(BlockRegistry.PAINTED_MAGENTA_CERAMIC.get())
-                .add(BlockRegistry.PAINTED_BLUE_CERAMIC.get()).add(BlockRegistry.PAINTED_LIGHT_BLUE_CERAMIC.get())
-                .add(BlockRegistry.PAINTED_CYAN_CERAMIC.get()).add(BlockRegistry.PAINTED_GREEN_CERAMIC.get())
-                .add(BlockRegistry.PAINTED_LIME_CERAMIC.get()).add(BlockRegistry.PAINTED_YELLOW_CERAMIC.get())
-                .add(BlockRegistry.PAINTED_ORANGE_CERAMIC.get()).add(BlockRegistry.PAINTED_BROWN_CERAMIC.get())
-                .add(BlockRegistry.PAINTED_RED_CERAMIC.get()).add(BlockRegistry.PAINTED_PINK_CERAMIC.get())
-
+                .addTag(TagRegistry.Blocks.DYED_CERAMIC)
+                .addTag(TagRegistry.Blocks.DYED_CERAMIC_TILE)
+                .addTag(TagRegistry.Blocks.PAINTED_CERAMIC)
+                
                 //OTHER
                 .add(BlockRegistry.BAUXITE_ORE.get()).add(BlockRegistry.STEEL_BLOCK.get()).add(BlockRegistry.ALUMINUM_BLOCK.get())
                 .add(BlockRegistry.COMPRESSED_COBBLESTONE.get()).add(BlockRegistry.SUPER_COMPRESSED_COBBLESTONE.get())
@@ -216,11 +170,13 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(BlockRegistry.VENUS_COBBLESTONE_SLAB.get()).add(BlockRegistry.VENUS_COBBLED_DEEPSLATE_SLAB.get())
                 .add(BlockRegistry.VENUS_DEEPSLATE_BRICK_SLAB.get()).add(BlockRegistry.VENUS_DEEPSLATE_TILE_SLAB.get()).add(BlockRegistry.VENUS_POLISHED_DEEPSLATE_SLAB.get())
 
-                .add(BlockRegistry.METEOR_BRICK_SLAB.get())
-
                 .add(BlockRegistry.MERCURY_STONE_SLAB.get()).add(BlockRegistry.MERCURY_SMOOTH_STONE_SLAB.get()).add(BlockRegistry.MERCURY_BRICK_SLAB.get())
                 .add(BlockRegistry.MERCURY_COBBLESTONE_SLAB.get()).add(BlockRegistry.MERCURY_COBBLED_DEEPSLATE_SLAB.get())
-                .add(BlockRegistry.MERCURY_DEEPSLATE_BRICK_SLAB.get()).add(BlockRegistry.MERCURY_DEEPSLATE_TILE_SLAB.get()).add(BlockRegistry.MERCURY_POLISHED_DEEPSLATE_SLAB.get());
+                .add(BlockRegistry.MERCURY_DEEPSLATE_BRICK_SLAB.get()).add(BlockRegistry.MERCURY_DEEPSLATE_TILE_SLAB.get()).add(BlockRegistry.MERCURY_POLISHED_DEEPSLATE_SLAB.get())
+
+                .add(BlockRegistry.JUPITER_DEEPSLATE_BRICK_SLAB.get()).add(BlockRegistry.JUPITER_DEEPSLATE_TILE_SLAB.get()).add(BlockRegistry.JUPITER_POLISHED_DEEPSLATE_SLAB.get())
+                
+                .add(BlockRegistry.METEOR_BRICK_SLAB.get());
 
         tag(BlockTags.STAIRS)
                 .add(BlockRegistry.MOON_STONE_STAIRS.get()).add(BlockRegistry.MOON_BRICK_STAIRS.get())
@@ -236,11 +192,14 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(BlockRegistry.VENUS_DEEPSLATE_BRICK_STAIRS.get()).add(BlockRegistry.VENUS_DEEPSLATE_TILE_STAIRS.get()).add(BlockRegistry.VENUS_POLISHED_DEEPSLATE_STAIRS.get())
                 .add(BlockRegistry.SMALL_VENUS_BRICK_STAIRS.get())
 
-                .add(BlockRegistry.METEOR_BRICK_STAIRS.get())
 
                 .add(BlockRegistry.MERCURY_STONE_STAIRS.get()).add(BlockRegistry.MERCURY_BRICK_STAIRS.get())
                 .add(BlockRegistry.MERCURY_COBBLESTONE_STAIRS.get()).add(BlockRegistry.MERCURY_COBBLED_DEEPSLATE_STAIRS.get())
-                .add(BlockRegistry.MERCURY_DEEPSLATE_BRICK_STAIRS.get()).add(BlockRegistry.MERCURY_DEEPSLATE_TILE_STAIRS.get()).add(BlockRegistry.MERCURY_POLISHED_DEEPSLATE_STAIRS.get());
+                .add(BlockRegistry.MERCURY_DEEPSLATE_BRICK_STAIRS.get()).add(BlockRegistry.MERCURY_DEEPSLATE_TILE_STAIRS.get()).add(BlockRegistry.MERCURY_POLISHED_DEEPSLATE_STAIRS.get())
+
+                .add(BlockRegistry.JUPITER_DEEPSLATE_BRICK_STAIRS.get()).add(BlockRegistry.JUPITER_DEEPSLATE_TILE_STAIRS.get()).add(BlockRegistry.JUPITER_POLISHED_DEEPSLATE_STAIRS.get())
+
+                .add(BlockRegistry.METEOR_BRICK_STAIRS.get());
 
         tag(BlockTags.WALLS)
                 .add(BlockRegistry.MOON_BRICK_WALL.get())
@@ -255,11 +214,13 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(BlockRegistry.VENUS_COBBLESTONE_WALL.get()).add(BlockRegistry.VENUS_COBBLED_DEEPSLATE_WALL.get())
                 .add(BlockRegistry.VENUS_DEEPSLATE_BRICK_WALL.get()).add(BlockRegistry.VENUS_DEEPSLATE_TILE_WALL.get()).add(BlockRegistry.VENUS_POLISHED_DEEPSLATE_WALL.get())
 
-                .add(BlockRegistry.METEOR_BRICK_WALL.get())
-
                 .add(BlockRegistry.MERCURY_BRICK_WALL.get())
                 .add(BlockRegistry.MERCURY_COBBLESTONE_WALL.get()).add(BlockRegistry.MERCURY_COBBLED_DEEPSLATE_WALL.get())
                 .add(BlockRegistry.MERCURY_DEEPSLATE_BRICK_WALL.get()).add(BlockRegistry.MERCURY_DEEPSLATE_TILE_WALL.get()).add(BlockRegistry.MERCURY_POLISHED_DEEPSLATE_WALL.get())
+
+                .add(BlockRegistry.JUPITER_DEEPSLATE_BRICK_WALL.get()).add(BlockRegistry.JUPITER_DEEPSLATE_TILE_WALL.get()).add(BlockRegistry.JUPITER_POLISHED_DEEPSLATE_WALL.get())
+
+                .add(BlockRegistry.METEOR_BRICK_WALL.get())
 
                 .add(BlockRegistry.PANEL_WALL.get());
 
@@ -283,14 +244,16 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(BlockRegistry.RED_BUTTON.get()).add(BlockRegistry.YELLOW_BUTTON.get()).add(BlockRegistry.BLUE_BUTTON.get())
                 .add(BlockRegistry.GREEN_BUTTON.get()).add(BlockRegistry.WHITE_BUTTON.get()).add(BlockRegistry.BLACK_BUTTON.get())
 
-                .add(BlockRegistry.STEEL_BUTTON.get());
+                .add(BlockRegistry.STEEL_BUTTON.get())
+                .add(BlockRegistry.AIRLOCK_BUTTON.get());
 
         tag(BlockTags.PRESSURE_PLATES)
                 .add(BlockRegistry.MOON_STONE_PRESSURE_PLATE.get()).add(BlockRegistry.MOON_DEEPSLATE_PRESSURE_PLATE.get())
                 .add(BlockRegistry.MARS_STONE_PRESSURE_PLATE.get()).add(BlockRegistry.MARS_DEEPSLATE_PRESSURE_PLATE.get())
                 .add(BlockRegistry.VENUS_STONE_PRESSURE_PLATE.get()).add(BlockRegistry.VENUS_DEEPSLATE_PRESSURE_PLATE.get())
-                .add(BlockRegistry.METEOR_PRESSURE_PLATE.get())
-                .add(BlockRegistry.MERCURY_STONE_PRESSURE_PLATE.get()).add(BlockRegistry.MERCURY_DEEPSLATE_PRESSURE_PLATE.get());
+                .add(BlockRegistry.MERCURY_STONE_PRESSURE_PLATE.get()).add(BlockRegistry.MERCURY_DEEPSLATE_PRESSURE_PLATE.get())
+                .add(BlockRegistry.JUPITER_DEEPSLATE_PRESSURE_PLATE.get())
+                .add(BlockRegistry.METEOR_PRESSURE_PLATE.get());
 
         //OTHER
         tag(BlockTags.CLIMBABLE)
@@ -309,7 +272,8 @@ public class ModBlockTags extends BlockTagsProvider {
 
         tag(BlockTags.PORTALS)
                 .add(BlockRegistry.MARS_PORTAL.get()).add(BlockRegistry.MOON_PORTAL.get())
-                .add(BlockRegistry.VENUS_PORTAL.get()).add(BlockRegistry.MERCURY_PORTAL.get());
+                .add(BlockRegistry.VENUS_PORTAL.get()).add(BlockRegistry.MERCURY_PORTAL.get())
+                .add(BlockRegistry.JUPITER_PORTAL.get());
 
         //---- FORGE TAGS.BLOCKS -------------------------------------------------------------------------------
         //TOOLS
@@ -381,6 +345,7 @@ public class ModBlockTags extends BlockTagsProvider {
         tag(TagRegistry.Blocks.MOON_COBBLED_DEEPSLATE)
                 .add(BlockRegistry.MOON_COBBLED_DEEPSLATE.get()).add(BlockRegistry.MOON_COBBLED_DEEPSLATE_SLAB.get())
                 .add(BlockRegistry.MOON_COBBLED_DEEPSLATE_STAIRS.get()).add(BlockRegistry.MOON_COBBLED_DEEPSLATE_WALL.get());
+        
         //---- MARS -------------------------------------------------------------------------------
         tag(TagRegistry.Blocks.MARS_STONE)
                 .add(BlockRegistry.MARS_STONE.get()).add(BlockRegistry.MARS_STONE_SLAB.get())
@@ -422,16 +387,7 @@ public class ModBlockTags extends BlockTagsProvider {
         tag(TagRegistry.Blocks.VENUS_COBBLED_DEEPSLATE)
                 .add(BlockRegistry.VENUS_COBBLED_DEEPSLATE.get()).add(BlockRegistry.VENUS_COBBLED_DEEPSLATE_SLAB.get())
                 .add(BlockRegistry.VENUS_COBBLED_DEEPSLATE_STAIRS.get()).add(BlockRegistry.VENUS_COBBLED_DEEPSLATE_WALL.get());
-
-        //---- METEOR -------------------------------------------------------------------------------
-        tag(TagRegistry.Blocks.METEOR)
-                .add(BlockRegistry.METEOR.get())
-                .add(BlockRegistry.METEOR_BRICKS.get()).add(BlockRegistry.METEOR_BRICK_SLAB.get()).add(BlockRegistry.METEOR_BRICK_STAIRS.get()).add(BlockRegistry.METEOR_BRICK_WALL.get())
-                .add(BlockRegistry.CHISELED_METEOR_BRICKS.get())
-                .add(BlockRegistry.METEOR_IRON_ORE.get()).add(BlockRegistry.METEOR_REDSTONE_ORE.get()).add(BlockRegistry.METEOR_GOLD_ORE.get())
-                .add(BlockRegistry.METEOR_DIAMOND_ORE.get()).add(BlockRegistry.METEOR_LAPIS_ORE.get()).add(BlockRegistry.METEOR_EMERALD_ORE.get())
-                .add(BlockRegistry.METEOR_COPPER_ORE.get()).add(BlockRegistry.METEOR_COAL_ORE.get());
-
+        
         //---- MERCURY -------------------------------------------------------------------------------
         tag(TagRegistry.Blocks.MERCURY_STONE)
                 .add(BlockRegistry.MERCURY_STONE.get()).add(BlockRegistry.MERCURY_STONE_SLAB.get())
@@ -452,7 +408,28 @@ public class ModBlockTags extends BlockTagsProvider {
         tag(TagRegistry.Blocks.MERCURY_COBBLED_DEEPSLATE)
                 .add(BlockRegistry.MERCURY_COBBLED_DEEPSLATE.get()).add(BlockRegistry.MERCURY_COBBLED_DEEPSLATE_SLAB.get())
                 .add(BlockRegistry.MERCURY_COBBLED_DEEPSLATE_STAIRS.get()).add(BlockRegistry.MERCURY_COBBLED_DEEPSLATE_WALL.get());
-        
+
+        //---- JUPITER -------------------------------------------------------------------------------
+        tag(TagRegistry.Blocks.JUPITER_DEEPSLATE)
+                .add(BlockRegistry.JUPITER_DEEPSLATE.get()).add(BlockRegistry.CRACKED_JUPITER_DEEPSLATE_BRICKS.get()).add(BlockRegistry.CRACKED_JUPITER_DEEPSLATE_TILES.get()).add(BlockRegistry.CHISELED_JUPITER_DEEPSLATE_BRICKS.get())
+                .add(BlockRegistry.JUPITER_DEEPSLATE_BRICKS.get()).add(BlockRegistry.JUPITER_DEEPSLATE_BRICK_SLAB.get()).add(BlockRegistry.JUPITER_DEEPSLATE_BRICK_STAIRS.get()).add(BlockRegistry.JUPITER_DEEPSLATE_BRICK_WALL.get())
+                .add(BlockRegistry.JUPITER_DEEPSLATE_TILES.get()).add(BlockRegistry.JUPITER_DEEPSLATE_TILE_SLAB.get()).add(BlockRegistry.JUPITER_DEEPSLATE_TILE_STAIRS.get()).add(BlockRegistry.JUPITER_DEEPSLATE_TILE_WALL.get())
+                .add(BlockRegistry.JUPITER_POLISHED_DEEPSLATE.get()).add(BlockRegistry.JUPITER_POLISHED_DEEPSLATE_SLAB.get()).add(BlockRegistry.JUPITER_POLISHED_DEEPSLATE_STAIRS.get()).add(BlockRegistry.JUPITER_POLISHED_DEEPSLATE_WALL.get());
+
+        tag(TagRegistry.Blocks.JUPITER_COBBLED_DEEPSLATE)
+                .add(BlockRegistry.JUPITER_COBBLED_DEEPSLATE.get()).add(BlockRegistry.JUPITER_COBBLED_DEEPSLATE_SLAB.get())
+                .add(BlockRegistry.JUPITER_COBBLED_DEEPSLATE_STAIRS.get()).add(BlockRegistry.JUPITER_COBBLED_DEEPSLATE_WALL.get());
+
+
+        //---- METEOR -------------------------------------------------------------------------------
+        tag(TagRegistry.Blocks.METEOR)
+                .add(BlockRegistry.METEOR.get())
+                .add(BlockRegistry.METEOR_BRICKS.get()).add(BlockRegistry.METEOR_BRICK_SLAB.get()).add(BlockRegistry.METEOR_BRICK_STAIRS.get()).add(BlockRegistry.METEOR_BRICK_WALL.get())
+                .add(BlockRegistry.CHISELED_METEOR_BRICKS.get())
+                .add(BlockRegistry.METEOR_IRON_ORE.get()).add(BlockRegistry.METEOR_REDSTONE_ORE.get()).add(BlockRegistry.METEOR_GOLD_ORE.get())
+                .add(BlockRegistry.METEOR_DIAMOND_ORE.get()).add(BlockRegistry.METEOR_LAPIS_ORE.get()).add(BlockRegistry.METEOR_EMERALD_ORE.get())
+                .add(BlockRegistry.METEOR_COPPER_ORE.get()).add(BlockRegistry.METEOR_COAL_ORE.get());
+
         //---- GLASS -------------------------------------------------------------------------------
         tag(TagRegistry.Blocks.CONNECTED_GLASS).add(BlockRegistry.REINFORCED_GLASS.get());
 
@@ -465,12 +442,18 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(BlockRegistry.CYAN_CERAMIC.get()).add(BlockRegistry.GREEN_CERAMIC.get()).add(BlockRegistry.LIME_CERAMIC.get()).add(BlockRegistry.YELLOW_CERAMIC.get())
                 .add(BlockRegistry.ORANGE_CERAMIC.get()).add(BlockRegistry.BROWN_CERAMIC.get()).add(BlockRegistry.RED_CERAMIC.get()).add(BlockRegistry.PINK_CERAMIC.get());
 
+        tag(TagRegistry.Blocks.DYED_CERAMIC_TILE)
+                .add(BlockRegistry.WHITE_CERAMIC_TILE.get()).add(BlockRegistry.LIGHT_GREY_CERAMIC_TILE.get()).add(BlockRegistry.GREY_CERAMIC_TILE.get()).add(BlockRegistry.BLACK_CERAMIC_TILE.get())
+                .add(BlockRegistry.PURPLE_CERAMIC_TILE.get()).add(BlockRegistry.MAGENTA_CERAMIC_TILE.get()).add(BlockRegistry.BLUE_CERAMIC_TILE.get()).add(BlockRegistry.LIGHT_BLUE_CERAMIC_TILE.get())
+                .add(BlockRegistry.CYAN_CERAMIC_TILE.get()).add(BlockRegistry.GREEN_CERAMIC_TILE.get()).add(BlockRegistry.LIME_CERAMIC_TILE.get()).add(BlockRegistry.YELLOW_CERAMIC_TILE.get())
+                .add(BlockRegistry.ORANGE_CERAMIC_TILE.get()).add(BlockRegistry.BROWN_CERAMIC_TILE.get()).add(BlockRegistry.RED_CERAMIC_TILE.get()).add(BlockRegistry.PINK_CERAMIC_TILE.get());
+
         tag(TagRegistry.Blocks.PAINTED_CERAMIC)
                 .add(BlockRegistry.PAINTED_WHITE_CERAMIC.get()).add(BlockRegistry.PAINTED_LIGHT_GREY_CERAMIC.get()).add(BlockRegistry.PAINTED_GREY_CERAMIC.get()).add(BlockRegistry.PAINTED_BLACK_CERAMIC.get())
                 .add(BlockRegistry.PAINTED_PURPLE_CERAMIC.get()).add(BlockRegistry.PAINTED_MAGENTA_CERAMIC.get()).add(BlockRegistry.PAINTED_BLUE_CERAMIC.get()).add(BlockRegistry.PAINTED_LIGHT_BLUE_CERAMIC.get())
                 .add(BlockRegistry.PAINTED_CYAN_CERAMIC.get()).add(BlockRegistry.PAINTED_GREEN_CERAMIC.get()).add(BlockRegistry.PAINTED_LIME_CERAMIC.get()).add(BlockRegistry.PAINTED_YELLOW_CERAMIC.get())
                 .add(BlockRegistry.PAINTED_ORANGE_CERAMIC.get()).add(BlockRegistry.PAINTED_BROWN_CERAMIC.get()).add(BlockRegistry.PAINTED_RED_CERAMIC.get()).add(BlockRegistry.PAINTED_PINK_CERAMIC.get());
-
+        
         //---- MISCELLANEOUS -------------------------------------------------------------------------------
         tag(TagRegistry.Blocks.REGOLITH)
                 .add(BlockRegistry.MOON_SAND.get()).add(BlockRegistry.MARS_SAND.get()).add(BlockRegistry.VENUS_SAND.get()).add(BlockRegistry.MERCURY_SAND.get());
@@ -489,6 +472,11 @@ public class ModBlockTags extends BlockTagsProvider {
 
         tag(TagRegistry.Blocks.MERCURY_PORTAL_FRAME_BLOCK)
                 .add(BlockRegistry.MERCURY_BRICKS.get());
+
+        tag(TagRegistry.Blocks.JUPITER_PORTAL_FRAME_BLOCK)
+                .add(BlockRegistry.JUPITER_DEEPSLATE_BRICKS.get());
+
+
     }
 
     @Override

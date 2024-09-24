@@ -53,11 +53,13 @@ public class StructureRegistry {
     //MAG RAILS
     public static final RegistryObject<StructureFeature<?>> MAG_RAIL = DEFERRED_REGISTRY_STRUCTURE.register("mag_rail", MagRailStructure::new);
 
-    //VILLAGES - LUNAR
+    //VILLAGES
     public static final RegistryObject<StructureFeature<?>> LUNAR_COLONY = DEFERRED_REGISTRY_STRUCTURE.register("lunar_colony", LunarColonyStructure::new);
 
-    //VENUS DUNGEONS
+    //DUNGEONS
     public static final RegistryObject<StructureFeature<?>> VENUS_FLARE_TREE = DEFERRED_REGISTRY_STRUCTURE.register("venus_flare_tree", VenusFlareTreeStructure::new);
+    public static final RegistryObject<StructureFeature<?>> JUPITER_DUNGEON = DEFERRED_REGISTRY_STRUCTURE.register("jupiter_dungeon", JupiterDungeonStructure::new);
+
 
     //RESEARCH TUNNELS
     public static final RegistryObject<StructureFeature<?>> RESEARCH_TUNNEL = DEFERRED_REGISTRY_STRUCTURE.register("research_tunnel", ResearchTunnelStructure::new);

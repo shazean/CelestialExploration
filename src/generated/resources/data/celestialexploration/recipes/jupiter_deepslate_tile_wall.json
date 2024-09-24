@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "celestialexploration",
+  "pattern": [
+    "XXX",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:jupiter_deepslate_tiles"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:jupiter_deepslate_tile_wall",
+    "count": 6
+  }
+}

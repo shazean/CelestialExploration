@@ -7,8 +7,9 @@
     "celestialexploration:mars_deepslate_pressure_plate",
     "celestialexploration:venus_stone_pressure_plate",
     "celestialexploration:venus_deepslate_pressure_plate",
-    "celestialexploration:meteor_pressure_plate",
     "celestialexploration:mercury_stone_pressure_plate",
-    "celestialexploration:mercury_deepslate_pressure_plate"
+    "celestialexploration:mercury_deepslate_pressure_plate",
+    "celestialexploration:jupiter_deepslate_pressure_plate",
+    "celestialexploration:meteor_pressure_plate"
   ]
 }

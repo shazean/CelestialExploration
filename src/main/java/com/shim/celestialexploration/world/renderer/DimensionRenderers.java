@@ -3,15 +3,12 @@ package com.shim.celestialexploration.world.renderer;
 import com.shim.celestialexploration.registry.DimensionRegistry;
 import net.minecraft.client.renderer.DimensionSpecialEffects;
 import net.minecraft.core.BlockPos;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.ISkyRenderHandler;
 import net.minecraftforge.client.IWeatherParticleRenderHandler;
 import net.minecraftforge.client.IWeatherRenderHandler;
-import org.jetbrains.annotations.Nullable;
 
 @OnlyIn(Dist.CLIENT)
 public class DimensionRenderers {
@@ -22,13 +19,14 @@ public class DimensionRenderers {
         DimensionSpecialEffects.EFFECTS.put(DimensionRegistry.SPACE.location(), new SpaceEffects());
         DimensionSpecialEffects.EFFECTS.put(DimensionRegistry.VENUS.location(), new VenusEffects());
         DimensionSpecialEffects.EFFECTS.put(DimensionRegistry.MERCURY.location(), new MercuryEffects());
+        DimensionSpecialEffects.EFFECTS.put(DimensionRegistry.JUPITER.location(), new JupiterEffects());
     }
 
     @OnlyIn(Dist.CLIENT)
     public static class MarsEffects extends DimensionSpecialEffects {
         ISkyRenderHandler skyHandler = new MarsSkyHandler();
-        IWeatherRenderHandler weatherHandler = new MarsWeatherHandler();
-        IWeatherParticleRenderHandler particleHandler = new MarsWeatherParticleHandler();
+        IWeatherRenderHandler weatherHandler = new StormWeatherHandler();
+        IWeatherParticleRenderHandler particleHandler = new StormWeatherParticleHandler();
 
         public MarsEffects() {
             super(Float.NaN, true, SkyType.NORMAL, false, false);
@@ -172,4 +170,34 @@ public class DimensionRenderers {
 
         ISkyRenderHandler skyHandler = new MercurySkyHandler();
     }
+
+    @OnlyIn(Dist.CLIENT)
+    public static class JupiterEffects extends DimensionSpecialEffects {
+        ISkyRenderHandler skyHandler = new JupiterSkyHandler();
+        IWeatherRenderHandler weatherHandler = new StormWeatherHandler();
+        IWeatherParticleRenderHandler particleHandler = new StormWeatherParticleHandler();
+
+        public JupiterEffects() {
+            super(416, true, SkyType.NORMAL, false, false);
+            setSkyRenderHandler(skyHandler);
+            setWeatherRenderHandler(weatherHandler);
+            setWeatherParticleRenderHandler(particleHandler);
+        }
+
+        @Override
+        public Vec3 getBrightnessDependentFogColor(Vec3 color, float brightness) {
+            return color.multiply(brightness * 0.94F + 0.06F, brightness * 0.94F + 0.06F, brightness * 0.91F + 0.09F);
+        }
+
+        @Override
+        public boolean isFoggyAt(int x, int z) {
+            return true;
+        }
+
+        @Override
+        public float[] getSunriseColor(float p_230492_1_, float p_230492_2_) {
+            return null;
+        }
+    }
+
 }

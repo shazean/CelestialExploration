@@ -2,6 +2,7 @@ package com.shim.celestialexploration.registry;
 
 import com.shim.celestialexploration.CelestialExploration;
 import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
@@ -14,89 +15,96 @@ public class TagRegistry {
 
     public class Blocks {
 
-        public static final TagKey<Block> MOON = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "moon"));
-        public static final TagKey<Block> MOON_STONE = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "moon_stone"));
-        public static final TagKey<Block> MOON_COBBLESTONE = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "moon_cobblestone"));
-        public static final TagKey<Block> MOON_DEEPSLATE = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "moon_deepslate"));
-        public static final TagKey<Block> MOON_COBBLED_DEEPSLATE = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "moon_deepslate"));
+        public static final TagKey<Block> MOON = BlockTags.create(modLoc("moon"));
+        public static final TagKey<Block> MOON_STONE = BlockTags.create(modLoc("moon_stone"));
+        public static final TagKey<Block> MOON_COBBLESTONE = BlockTags.create(modLoc("moon_cobblestone"));
+        public static final TagKey<Block> MOON_DEEPSLATE = BlockTags.create(modLoc("moon_deepslate"));
+        public static final TagKey<Block> MOON_COBBLED_DEEPSLATE = BlockTags.create(modLoc("moon_deepslate"));
 
-        public static final TagKey<Block> MARS = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "mars"));
-        public static final TagKey<Block> MARS_STONE = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "mars_stone"));
-        public static final TagKey<Block> MARS_COBBLESTONE = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "mars_cobblestone"));
-        public static final TagKey<Block> MARS_DEEPSLATE = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "mars_deepslate"));
-        public static final TagKey<Block> MARS_COBBLED_DEEPSLATE = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "mars_cobbled_deepslate"));
+        public static final TagKey<Block> MARS = BlockTags.create(modLoc("mars"));
+        public static final TagKey<Block> MARS_STONE = BlockTags.create(modLoc("mars_stone"));
+        public static final TagKey<Block> MARS_COBBLESTONE = BlockTags.create(modLoc("mars_cobblestone"));
+        public static final TagKey<Block> MARS_DEEPSLATE = BlockTags.create(modLoc("mars_deepslate"));
+        public static final TagKey<Block> MARS_COBBLED_DEEPSLATE = BlockTags.create(modLoc("mars_cobbled_deepslate"));
 
-        public static final TagKey<Block> VENUS = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "venus"));
-        public static final TagKey<Block> VENUS_STONE = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "venus_stone"));
-        public static final TagKey<Block> VENUS_COBBLESTONE = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "venus_cobblestone"));
-        public static final TagKey<Block> VENUS_DEEPSLATE = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "venus_deepslate"));
-        public static final TagKey<Block> VENUS_COBBLED_DEEPSLATE = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "venus_cobbled_deepslate"));
+        public static final TagKey<Block> VENUS = BlockTags.create(modLoc("venus"));
+        public static final TagKey<Block> VENUS_STONE = BlockTags.create(modLoc("venus_stone"));
+        public static final TagKey<Block> VENUS_COBBLESTONE = BlockTags.create(modLoc("venus_cobblestone"));
+        public static final TagKey<Block> VENUS_DEEPSLATE = BlockTags.create(modLoc("venus_deepslate"));
+        public static final TagKey<Block> VENUS_COBBLED_DEEPSLATE = BlockTags.create(modLoc("venus_cobbled_deepslate"));
 
-        public static final TagKey<Block> MERCURY = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "mercury"));
-        public static final TagKey<Block> MERCURY_STONE = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "mercury_stone"));
-        public static final TagKey<Block> MERCURY_COBBLESTONE = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "mercury_cobblestone"));
-        public static final TagKey<Block> MERCURY_DEEPSLATE = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "mercury_deepslate"));
-        public static final TagKey<Block> MERCURY_COBBLED_DEEPSLATE = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "mercury_deepslate"));
+        public static final TagKey<Block> MERCURY = BlockTags.create(modLoc("mercury"));
+        public static final TagKey<Block> MERCURY_STONE = BlockTags.create(modLoc("mercury_stone"));
+        public static final TagKey<Block> MERCURY_COBBLESTONE = BlockTags.create(modLoc("mercury_cobblestone"));
+        public static final TagKey<Block> MERCURY_DEEPSLATE = BlockTags.create(modLoc("mercury_deepslate"));
+        public static final TagKey<Block> MERCURY_COBBLED_DEEPSLATE = BlockTags.create(modLoc("mercury_deepslate"));
+
+        public static final TagKey<Block> JUPITER = BlockTags.create(modLoc("jupiter"));
+        public static final TagKey<Block> JUPITER_DEEPSLATE = BlockTags.create(modLoc("jupiter_deepslate"));
+        public static final TagKey<Block> JUPITER_COBBLED_DEEPSLATE = BlockTags.create(modLoc("jupiter_deepslate"));
 
 
-        public static final TagKey<Block> REGOLITH = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "regolith"));
+        public static final TagKey<Block> REGOLITH = BlockTags.create(modLoc("regolith"));
 
-        public static final TagKey<Block> METEOR = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "meteor"));
+        public static final TagKey<Block> METEOR = BlockTags.create(modLoc("meteor"));
 
-        public static final TagKey<Block> CONNECTED_GLASS = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "connected_glass"));
-        public static final TagKey<Block> CONNECTED_GLASS_PANE = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "connected_glass_pane"));
+        public static final TagKey<Block> CONNECTED_GLASS = BlockTags.create(modLoc("connected_glass"));
+        public static final TagKey<Block> CONNECTED_GLASS_PANE = BlockTags.create(modLoc("connected_glass_pane"));
 
-        public static final TagKey<Block> DYED_CERAMIC = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "dyed_ceramic"));
-        public static final TagKey<Block> PAINTED_CERAMIC = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "painted_ceramic"));
+        public static final TagKey<Block> DYED_CERAMIC = BlockTags.create(modLoc("dyed_ceramic"));
+        public static final TagKey<Block> DYED_CERAMIC_TILE = BlockTags.create(modLoc("dyed_ceramic_tile"));
+        public static final TagKey<Block> PAINTED_CERAMIC = BlockTags.create(modLoc("painted_ceramic"));
 
-        public static final TagKey<Block> MARS_PORTAL_FRAME_BLOCK = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "mars_portal_frame_block"));
-        public static final TagKey<Block> MOON_PORTAL_FRAME_BLOCK = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "moon_portal_frame_block"));
-        public static final TagKey<Block> VENUS_PORTAL_FRAME_BLOCK = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "venus_portal_frame_block"));
-        public static final TagKey<Block> MERCURY_PORTAL_FRAME_BLOCK = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "mercury_portal_frame_block"));
+        public static final TagKey<Block> MARS_PORTAL_FRAME_BLOCK = BlockTags.create(modLoc("mars_portal_frame_block"));
+        public static final TagKey<Block> MOON_PORTAL_FRAME_BLOCK = BlockTags.create(modLoc("moon_portal_frame_block"));
+        public static final TagKey<Block> VENUS_PORTAL_FRAME_BLOCK = BlockTags.create(modLoc("venus_portal_frame_block"));
+        public static final TagKey<Block> MERCURY_PORTAL_FRAME_BLOCK = BlockTags.create(modLoc("mercury_portal_frame_block"));
+        public static final TagKey<Block> JUPITER_PORTAL_FRAME_BLOCK = BlockTags.create(modLoc("jupiter_portal_frame_block"));
 
-        public static final TagKey<Block> MAG_RAIL = BlockTags.create(new ResourceLocation(CelestialExploration.MODID, "mag_rail"));
-
+        public static final TagKey<Block> MAG_RAIL = BlockTags.create(modLoc("mag_rail"));
     }
 
     public class Items {
-        public static final TagKey<Item> MOON = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "moon"));
-        public static final TagKey<Item> MOON_STONE = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "moon_stone"));
-        public static final TagKey<Item> MOON_COBBLESTONE = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "moon_cobblestone"));
-        public static final TagKey<Item> MOON_DEEPSLATE = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "moon_deepslate"));
-        public static final TagKey<Item> MOON_COBBLED_DEEPSLATE = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "moon_cobbled_deepslate"));
+        public static final TagKey<Item> MOON = ItemTags.create(modLoc("moon"));
+        public static final TagKey<Item> MOON_STONE = ItemTags.create(modLoc("moon_stone"));
+        public static final TagKey<Item> MOON_COBBLESTONE = ItemTags.create(modLoc("moon_cobblestone"));
+        public static final TagKey<Item> MOON_DEEPSLATE = ItemTags.create(modLoc("moon_deepslate"));
+        public static final TagKey<Item> MOON_COBBLED_DEEPSLATE = ItemTags.create(modLoc("moon_cobbled_deepslate"));
 
-        public static final TagKey<Item> MARS = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "mars"));
-        public static final TagKey<Item> MARS_STONE = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "mars_stone"));
-        public static final TagKey<Item> MARS_COBBLESTONE = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "mars_cobblestone"));
-        public static final TagKey<Item> MARS_DEEPSLATE = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "mars_deepslate"));
-        public static final TagKey<Item> MARS_COBBLED_DEEPSLATE = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "mars_cobbled_deepslate"));
+        public static final TagKey<Item> MARS = ItemTags.create(modLoc("mars"));
+        public static final TagKey<Item> MARS_STONE = ItemTags.create(modLoc("mars_stone"));
+        public static final TagKey<Item> MARS_COBBLESTONE = ItemTags.create(modLoc("mars_cobblestone"));
+        public static final TagKey<Item> MARS_DEEPSLATE = ItemTags.create(modLoc("mars_deepslate"));
+        public static final TagKey<Item> MARS_COBBLED_DEEPSLATE = ItemTags.create(modLoc("mars_cobbled_deepslate"));
 
-        public static final TagKey<Item> VENUS = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "venus"));
-        public static final TagKey<Item> VENUS_STONE = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "venus_stone"));
-        public static final TagKey<Item> VENUS_COBBLESTONE = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "venus_cobblestone"));
-        public static final TagKey<Item> VENUS_DEEPSLATE = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "venus_deepslate"));
-        public static final TagKey<Item> VENUS_COBBLED_DEEPSLATE = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "venus_cobbled_deepslate"));
+        public static final TagKey<Item> VENUS = ItemTags.create(modLoc("venus"));
+        public static final TagKey<Item> VENUS_STONE = ItemTags.create(modLoc("venus_stone"));
+        public static final TagKey<Item> VENUS_COBBLESTONE = ItemTags.create(modLoc("venus_cobblestone"));
+        public static final TagKey<Item> VENUS_DEEPSLATE = ItemTags.create(modLoc("venus_deepslate"));
+        public static final TagKey<Item> VENUS_COBBLED_DEEPSLATE = ItemTags.create(modLoc("venus_cobbled_deepslate"));
 
-        public static final TagKey<Item> METEOR = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "meteor"));
+        public static final TagKey<Item> MERCURY = ItemTags.create(modLoc("mercury"));
+        public static final TagKey<Item> MERCURY_STONE = ItemTags.create(modLoc("mercury_stone"));
+        public static final TagKey<Item> MERCURY_COBBLESTONE = ItemTags.create(modLoc("mercury_cobblestone"));
+        public static final TagKey<Item> MERCURY_DEEPSLATE = ItemTags.create(modLoc("mercury_deepslate"));
+        public static final TagKey<Item> MERCURY_COBBLED_DEEPSLATE = ItemTags.create(modLoc("mercury_cobbled_deepslate"));
 
-        public static final TagKey<Item> MERCURY = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "mercury"));
-        public static final TagKey<Item> MERCURY_STONE = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "mercury_stone"));
-        public static final TagKey<Item> MERCURY_COBBLESTONE = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "mercury_cobblestone"));
-        public static final TagKey<Item> MERCURY_DEEPSLATE = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "mercury_deepslate"));
-        public static final TagKey<Item> MERCURY_COBBLED_DEEPSLATE = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "mercury_cobbled_deepslate"));
+        public static final TagKey<Item> JUPITER = ItemTags.create(modLoc("jupiter"));
+        public static final TagKey<Item> JUPITER_DEEPSLATE = ItemTags.create(modLoc("jupiter_deepslate"));
+        public static final TagKey<Item> JUPITER_COBBLED_DEEPSLATE = ItemTags.create(modLoc("jupiter_cobbled_deepslate"));
 
-        public static final TagKey<Item> DYED_CERAMIC = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "ceramic"));
-        public static final TagKey<Item> PAINTED_CERAMIC = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "painted"));
-        public static final TagKey<Item> DYED_CERAMIC_TILE = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "ceramic_tile"));
-        public static final TagKey<Item> PAINTED_CERAMIC_TILE = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "painted_ceramic_tile"));
+        public static final TagKey<Item> METEOR = ItemTags.create(modLoc("meteor"));
 
-        public static final TagKey<Item> MAG_RAIL = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "mag_rail"));
+        public static final TagKey<Item> DYED_CERAMIC = ItemTags.create(modLoc("ceramic"));
+        public static final TagKey<Item> PAINTED_CERAMIC = ItemTags.create(modLoc("painted"));
+        public static final TagKey<Item> DYED_CERAMIC_TILE = ItemTags.create(modLoc("ceramic_tile"));
 
-        public static final TagKey<Item> STONE_PRESSURE_PLATE = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "stone_pressure_plate"));
-        public static final TagKey<Item> REGOLITH = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "regolith"));
+        public static final TagKey<Item> MAG_RAIL = ItemTags.create(modLoc("mag_rail"));
 
-        public static final TagKey<Item>  SPACESHIP = ItemTags.create(new ResourceLocation(CelestialExploration.MODID, "spaceship"));
+        public static final TagKey<Item> STONE_PRESSURE_PLATE = ItemTags.create(modLoc("stone_pressure_plate"));
+        public static final TagKey<Item> REGOLITH = ItemTags.create(modLoc("regolith"));
 
+        public static final TagKey<Item>  SPACESHIP = ItemTags.create(modLoc("spaceship"));
     }
 
     public class Biomes {
@@ -106,18 +114,22 @@ public class TagRegistry {
         public static final TagKey<Biome> SPACE_BIOMES = create("space");
         public static final TagKey<Biome> VENUS_BIOMES = create("venus");
         public static final TagKey<Biome> MERCURY_BIOMES = create("mercury");
+        public static final TagKey<Biome> JUPITER_BIOMES = create("jupiter");
         public static final TagKey<Biome> NO_SNOW_BIOMES = create("no_snow");
+
+        public static final TagKey<Biome> DUST_STORM_BIOMES = create("dust_storms");
 
         public static final TagKey<Biome> PLANETS = create("planets");
         public static final TagKey<Biome> MOONS = create("moons");
         public static final TagKey<Biome> CELESTIAL_BODIES = create("celestial_bodies");
-
-
+        
     }
 
     private static TagKey<Biome> create(String key) {
-        return TagKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(CelestialExploration.MODID, key));
+        return TagKey.create(Registry.BIOME_REGISTRY, modLoc(key));
     }
-
-
+    
+    private static ResourceLocation modLoc(String location) {
+        return new ResourceLocation(CelestialExploration.MODID, location);
+    }
 }

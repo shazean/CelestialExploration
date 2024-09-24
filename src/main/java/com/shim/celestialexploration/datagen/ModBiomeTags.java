@@ -50,6 +50,11 @@ public class ModBiomeTags extends BiomeTagsProvider {
                 .add(CelestialBiomeKeys.MERCURY_PLAINS)
                 .add(CelestialBiomeKeys.MERCURY_RIDGES);
 
+        tag(TagRegistry.Biomes.JUPITER_BIOMES)
+                .add(CelestialBiomeKeys.JUPITER_GREAT_STORM)
+                .add(CelestialBiomeKeys.JUPITER_LESSER_STORM)
+                .add(CelestialBiomeKeys.JUPITER_ETHER);
+
         tag(TagRegistry.Biomes.SPACE_BIOMES)
                 .add(CelestialBiomeKeys.SPACE);
 
@@ -57,12 +62,14 @@ public class ModBiomeTags extends BiomeTagsProvider {
                 .addTag(TagRegistry.Biomes.MARS_BIOMES)
                 .addTag(TagRegistry.Biomes.MOON_BIOMES)
                 .addTag(TagRegistry.Biomes.SPACE_BIOMES)
-                .addTag(TagRegistry.Biomes.MERCURY_BIOMES);
+                .addTag(TagRegistry.Biomes.MERCURY_BIOMES)
+                .addTag(TagRegistry.Biomes.JUPITER_BIOMES);
 
         tag(TagRegistry.Biomes.PLANETS)
                 .addTag(TagRegistry.Biomes.MARS_BIOMES)
                 .addTag(TagRegistry.Biomes.VENUS_BIOMES)
-                .addTag(TagRegistry.Biomes.MERCURY_BIOMES);
+                .addTag(TagRegistry.Biomes.MERCURY_BIOMES)
+                .addTag(TagRegistry.Biomes.JUPITER_BIOMES);
 
         tag(TagRegistry.Biomes.MOONS)
                 .addTag(TagRegistry.Biomes.MOON_BIOMES);
@@ -72,7 +79,12 @@ public class ModBiomeTags extends BiomeTagsProvider {
                 .addTag(TagRegistry.Biomes.MOON_BIOMES)
                 .addTag(TagRegistry.Biomes.SPACE_BIOMES)
                 .addTag(TagRegistry.Biomes.VENUS_BIOMES)
-                .addTag(TagRegistry.Biomes.MERCURY_BIOMES);
+                .addTag(TagRegistry.Biomes.MERCURY_BIOMES)
+                .addTag(TagRegistry.Biomes.JUPITER_BIOMES);
+
+        tag(TagRegistry.Biomes.DUST_STORM_BIOMES)
+                .addTag(TagRegistry.Biomes.MARS_BIOMES)
+                .addTag(TagRegistry.Biomes.JUPITER_BIOMES);
 
     }
 }

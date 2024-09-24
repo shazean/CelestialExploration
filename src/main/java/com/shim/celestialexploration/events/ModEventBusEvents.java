@@ -138,6 +138,7 @@ public class ModEventBusEvents {
         Minecraft.getInstance().particleEngine.register(ParticleRegistry.VENUS_PORTAL_PARTICLES.get(), CelestialPortalParticle.VenusProvider::new);
         Minecraft.getInstance().particleEngine.register(ParticleRegistry.MOON_PORTAL_PARTICLES.get(), CelestialPortalParticle.MoonProvider::new);
         Minecraft.getInstance().particleEngine.register(ParticleRegistry.MERCURY_PORTAL_PARTICLES.get(), CelestialPortalParticle.MercuryProvider::new);
+        Minecraft.getInstance().particleEngine.register(ParticleRegistry.JUPITER_PORTAL_PARTICLES.get(), CelestialPortalParticle.JupiterProvider::new);
 
         Minecraft.getInstance().particleEngine.register(ParticleRegistry.SPACESHIP_PARTICLES.get(), SpaceshipParticles.Provider::new);
 

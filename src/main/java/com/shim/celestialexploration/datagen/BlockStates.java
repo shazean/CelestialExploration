@@ -226,34 +226,7 @@ public class BlockStates extends BlockStateProvider {
 		simpleBlock(BlockRegistry.VENUS_LANTERN.get());
 
 
-		//---- CELESTIAL OBJECTS -------------------------------------------------------------------------------
-		//METEOR
-		simpleBlock(BlockRegistry.METEOR.get());
-		simpleBlock(BlockRegistry.METEOR_BRICKS.get());
-		simpleBlock(BlockRegistry.CHISELED_METEOR_BRICKS.get());
-		stairsBlock((StairBlock) BlockRegistry.METEOR_BRICK_STAIRS.get(), modLoc("block/meteor_bricks"));
-		slabBlock((SlabBlock) BlockRegistry.METEOR_BRICK_SLAB.get(), modLoc("block/meteor_bricks"), modLoc("block/meteor_bricks"));
-		wallBlock((WallBlock) BlockRegistry.METEOR_BRICK_WALL.get(), modLoc("block/meteor_bricks"));
-		buttonBlock((ButtonBlock) BlockRegistry.METEOR_BUTTON.get(), modLoc("block/meteor"));
-		pressurePlateBlock((PressurePlateBlock) BlockRegistry.METEOR_PRESSURE_PLATE.get(), modLoc("block/meteor"));
-
-		//METEOR ORES
-		simpleBlock(BlockRegistry.METEOR_COAL_ORE.get());
-		simpleBlock(BlockRegistry.METEOR_COPPER_ORE.get());
-		simpleBlock(BlockRegistry.METEOR_DIAMOND_ORE.get());
-		simpleBlock(BlockRegistry.METEOR_EMERALD_ORE.get());
-		simpleBlock(BlockRegistry.METEOR_GOLD_ORE.get());
-		simpleBlock(BlockRegistry.METEOR_IRON_ORE.get());
-		simpleBlock(BlockRegistry.METEOR_LAPIS_ORE.get());
-		simpleBlock(BlockRegistry.METEOR_SULFUR_ORE.get());
-		simpleBlock(BlockRegistry.METEOR_BAUXITE_ORE.get());
-		simpleBlock(BlockRegistry.METEOR_REDSTONE_ORE.get());
-
-		//SUN
-		simpleBlock(BlockRegistry.SOLAR_PLASMA.get());
-		simpleBlock(BlockRegistry.SOLAR_FLARE.get());
-		simpleBlock(BlockRegistry.SUN_SPOT.get());
-
+	
 		//---- MERCURY -------------------------------------------------------------------------------
 		//STONE
 		stairsBlock(BlockRegistry.MERCURY_STONE_STAIRS.get(), modLoc("block/mercury_stone"));
@@ -322,13 +295,44 @@ public class BlockStates extends BlockStateProvider {
 		simpleBlock(BlockRegistry.MERCURY_CORE.get());
 		simpleBlock(BlockRegistry.MERCURY_LANTERN.get());
 
+		//---- JUPITER -------------------------------------------------------------------------------
+		//DEEPSLATE
+		axisBlock(BlockRegistry.JUPITER_DEEPSLATE.get());
 
-		//---- OTHER PLANETS -------------------------------------------------------------------------------
-		
-		//JUPITER
-		simpleBlock(BlockRegistry.JUPITER_ATMOSPHERE.get());
+		simpleBlock(BlockRegistry.JUPITER_COBBLED_DEEPSLATE.get());
+		stairsBlock(BlockRegistry.JUPITER_COBBLED_DEEPSLATE_STAIRS.get(), modLoc("block/jupiter_cobbled_deepslate"));
+		slabBlock(BlockRegistry.JUPITER_COBBLED_DEEPSLATE_SLAB.get(), modLoc("block/jupiter_cobbled_deepslate"), modLoc("block/jupiter_cobbled_deepslate"));
+		wallBlock(BlockRegistry.JUPITER_COBBLED_DEEPSLATE_WALL.get(), modLoc("block/jupiter_cobbled_deepslate"));
+		buttonBlock(BlockRegistry.JUPITER_DEEPSLATE_BUTTON.get(), modLoc("block/jupiter_deepslate_side"));
+		pressurePlateBlock(BlockRegistry.JUPITER_DEEPSLATE_PRESSURE_PLATE.get(), modLoc("block/jupiter_deepslate_side"));
+		simpleBlock(BlockRegistry.COMPRESSED_JUPITER_COBBLED_DEEPSLATE.get());
+		simpleBlock(BlockRegistry.SUPER_COMPRESSED_JUPITER_COBBLED_DEEPSLATE.get());
+
+		simpleBlock(BlockRegistry.JUPITER_POLISHED_DEEPSLATE.get());
+		stairsBlock(BlockRegistry.JUPITER_POLISHED_DEEPSLATE_STAIRS.get(), modLoc("block/jupiter_polished_deepslate"));
+		slabBlock(BlockRegistry.JUPITER_POLISHED_DEEPSLATE_SLAB.get(), modLoc("block/jupiter_polished_deepslate"), modLoc("block/jupiter_polished_deepslate"));
+		wallBlock(BlockRegistry.JUPITER_POLISHED_DEEPSLATE_WALL.get(), modLoc("block/jupiter_polished_deepslate"));
+
+		simpleBlock(BlockRegistry.JUPITER_DEEPSLATE_BRICKS.get());
+		stairsBlock(BlockRegistry.JUPITER_DEEPSLATE_BRICK_STAIRS.get(), modLoc("block/jupiter_deepslate_bricks"));
+		slabBlock(BlockRegistry.JUPITER_DEEPSLATE_BRICK_SLAB.get(), modLoc("block/jupiter_deepslate_bricks"), modLoc("block/jupiter_deepslate_bricks"));
+		wallBlock(BlockRegistry.JUPITER_DEEPSLATE_BRICK_WALL.get(), modLoc("block/jupiter_deepslate_bricks"));
+		simpleBlock(BlockRegistry.CHISELED_JUPITER_DEEPSLATE_BRICKS.get());
+		simpleBlock(BlockRegistry.CRACKED_JUPITER_DEEPSLATE_BRICKS.get());
+
+		simpleBlock(BlockRegistry.JUPITER_DEEPSLATE_TILES.get());
+		stairsBlock(BlockRegistry.JUPITER_DEEPSLATE_TILE_STAIRS.get(), modLoc("block/jupiter_deepslate_tiles"));
+		slabBlock(BlockRegistry.JUPITER_DEEPSLATE_TILE_SLAB.get(), modLoc("block/jupiter_deepslate_tiles"), modLoc("block/jupiter_deepslate_tiles"));
+		wallBlock(BlockRegistry.JUPITER_DEEPSLATE_TILE_WALL.get(), modLoc("block/jupiter_deepslate_tiles"));
+		simpleBlock(BlockRegistry.CRACKED_JUPITER_DEEPSLATE_TILES.get());
+
+		//OTHER
 		simpleBlock(BlockRegistry.JUPITER_CORE.get());
-		axisBlock((RotatedPillarBlock) BlockRegistry.JUPITER_DEEPSLATE.get());
+		simpleBlock(BlockRegistry.JUPITER_ATMOSPHERE.get());
+		simpleBlock(BlockRegistry.JUPITER_LANTERN.get());
+
+		//---- JUPITER MOONS -------------------------------------------------------------------------------
+
 
 		simpleBlock(BlockRegistry.IO_STONE.get());
 		simpleBlock(BlockRegistry.IO_CORE.get());
@@ -339,6 +343,9 @@ public class BlockStates extends BlockStateProvider {
 
 		simpleBlock(BlockRegistry.GANYMEDE_CORE.get());
 		simpleBlock(BlockRegistry.CALLISTO_CORE.get());
+
+		//---- OTHER PLANETS -------------------------------------------------------------------------------
+
 
 		//SATURN
 		simpleBlock(BlockRegistry.SATURN_ATMOSPHERE.get());
@@ -373,6 +380,35 @@ public class BlockStates extends BlockStateProvider {
 //		simpleBlock(BlockRegistry.ERIS_CORE.get());
 //		simpleBlock(BlockRegistry.HAUMEA_CORE.get());
 //		simpleBlock(BlockRegistry.MAKEMAKE_CORE.get());
+
+		//---- CELESTIAL OBJECTS -------------------------------------------------------------------------------
+		//METEOR
+		simpleBlock(BlockRegistry.METEOR.get());
+		simpleBlock(BlockRegistry.METEOR_BRICKS.get());
+		simpleBlock(BlockRegistry.CHISELED_METEOR_BRICKS.get());
+		stairsBlock((StairBlock) BlockRegistry.METEOR_BRICK_STAIRS.get(), modLoc("block/meteor_bricks"));
+		slabBlock((SlabBlock) BlockRegistry.METEOR_BRICK_SLAB.get(), modLoc("block/meteor_bricks"), modLoc("block/meteor_bricks"));
+		wallBlock((WallBlock) BlockRegistry.METEOR_BRICK_WALL.get(), modLoc("block/meteor_bricks"));
+		buttonBlock((ButtonBlock) BlockRegistry.METEOR_BUTTON.get(), modLoc("block/meteor"));
+		pressurePlateBlock((PressurePlateBlock) BlockRegistry.METEOR_PRESSURE_PLATE.get(), modLoc("block/meteor"));
+
+		//METEOR ORES
+		simpleBlock(BlockRegistry.METEOR_COAL_ORE.get());
+		simpleBlock(BlockRegistry.METEOR_COPPER_ORE.get());
+		simpleBlock(BlockRegistry.METEOR_DIAMOND_ORE.get());
+		simpleBlock(BlockRegistry.METEOR_EMERALD_ORE.get());
+		simpleBlock(BlockRegistry.METEOR_GOLD_ORE.get());
+		simpleBlock(BlockRegistry.METEOR_IRON_ORE.get());
+		simpleBlock(BlockRegistry.METEOR_LAPIS_ORE.get());
+		simpleBlock(BlockRegistry.METEOR_SULFUR_ORE.get());
+		simpleBlock(BlockRegistry.METEOR_BAUXITE_ORE.get());
+		simpleBlock(BlockRegistry.METEOR_REDSTONE_ORE.get());
+
+		//SUN
+		simpleBlock(BlockRegistry.SOLAR_PLASMA.get());
+		simpleBlock(BlockRegistry.SOLAR_FLARE.get());
+		simpleBlock(BlockRegistry.SUN_SPOT.get());
+
 
 		//---- ORE-RELATED -------------------------------------------------------------------------------
 		simpleBlock(BlockRegistry.STEEL_BLOCK.get());
@@ -491,6 +527,7 @@ public class BlockStates extends BlockStateProvider {
 //		simpleBlock(FluidRegistry.MOLTEN_NETHERITE_BLOCK.get());
 		simpleBlock(FluidRegistry.MOLTEN_ALUMINUM_BLOCK.get());
 		simpleBlock(FluidRegistry.SULFUR_BLOCK.get());
+		simpleBlock(FluidRegistry.METALLIC_HYDROGEN_BLOCK.get());
 
 		//OTHER
 		simpleBlock(BlockRegistry.DRY_ICE.get());

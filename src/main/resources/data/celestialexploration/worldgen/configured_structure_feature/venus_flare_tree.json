@@ -17,7 +17,7 @@
           "maxCount": 2
         },
         {
-          "type": "minecraft:piglin",
+          "type": "celestialexploration:astral_piglin",
           "weight": 25,
           "minCount": 0,
           "maxCount": 1

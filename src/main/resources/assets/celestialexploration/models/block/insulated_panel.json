@@ -1,8 +1,12 @@
 {
-  "parent": "minecraft:block/cube_bottom_top",
+  "parent": "minecraft:block/cube_directional",
   "textures": {
-    "bottom": "celestialexploration:block/panel",
-    "side": "celestialexploration:block/panel",
-    "top": "celestialexploration:block/white_panel"
+    "particle": "celestialexploration:block/panel",
+    "north": "celestialexploration:block/white_panel",
+    "south": "celestialexploration:block/panel",
+    "east": "celestialexploration:block/panel",
+    "west": "celestialexploration:block/panel",
+    "up": "celestialexploration:block/panel",
+    "down": "celestialexploration:block/panel"
   }
 }

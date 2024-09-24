@@ -20,13 +20,16 @@
     "celestialexploration:venus_deepslate_brick_wall",
     "celestialexploration:venus_deepslate_tile_wall",
     "celestialexploration:venus_polished_deepslate_wall",
-    "celestialexploration:meteor_brick_wall",
     "celestialexploration:mercury_brick_wall",
     "celestialexploration:mercury_cobblestone_wall",
     "celestialexploration:mercury_cobbled_deepslate_wall",
     "celestialexploration:mercury_deepslate_brick_wall",
     "celestialexploration:mercury_deepslate_tile_wall",
     "celestialexploration:mercury_polished_deepslate_wall",
+    "celestialexploration:jupiter_deepslate_brick_wall",
+    "celestialexploration:jupiter_deepslate_tile_wall",
+    "celestialexploration:jupiter_polished_deepslate_wall",
+    "celestialexploration:meteor_brick_wall",
     "celestialexploration:panel_wall"
   ]
 }

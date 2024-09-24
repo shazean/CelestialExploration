@@ -69,6 +69,9 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(FluidRegistry.MOLTEN_ALUMINUM_BLOCK.get(), "Molten Aluminum");
 		add("fluid.celestialexploration.molten_aluminum", "Molten Aluminum");
 		add(FluidRegistry.SULFUR_BUCKET.get(), "Sulfur Bucket");
+		add(FluidRegistry.METALLIC_HYDROGEN_BLOCK.get(), "Metallic Hydrogen");
+		add("fluid.celestialexploration.metallic_hydrogen", "Metallic Hydrogen");
+		add(FluidRegistry.METALLIC_HYDROGEN_BUCKET.get(), "Metallic Hydrogen Bucket");
 
 		//---- BIOMES -------------------------------------------------------------------------------
 		add("biome.celestialexploration.moon_craters", "Lunar Craters");

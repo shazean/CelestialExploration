@@ -30,6 +30,7 @@ public class CelestialSurfaceRules {
     private static final SurfaceRules.RuleSource MERCURY_DEEPSLATE = makeStateRule(BlockRegistry.MERCURY_DEEPSLATE.get());
     private static final SurfaceRules.RuleSource MERCURY_SAND = makeStateRule(BlockRegistry.MERCURY_SAND.get());
     private static final SurfaceRules.RuleSource COARSE_MERCURY_SAND = makeStateRule(BlockRegistry.COARSE_MERCURY_SAND.get());
+    private static final SurfaceRules.RuleSource JUPITER_DEEPSLATE = makeStateRule(BlockRegistry.JUPITER_DEEPSLATE.get());
 
 
     private static SurfaceRules.RuleSource makeStateRule(Block block) {
@@ -146,6 +147,17 @@ public class CelestialSurfaceRules {
 
 //        builder.add(SurfaceRules.ifTrue(SurfaceRules.isBiome(CelestialBiomeKeys.SPACE), AIR));
 
+        return SurfaceRules.sequence(builder.build().toArray(SurfaceRules.RuleSource[]::new));
+    }
+
+    public static SurfaceRules.RuleSource jupiter() {
+        ImmutableList.Builder<SurfaceRules.RuleSource> builder = ImmutableList.builder();
+
+//        builder.add(SurfaceRules.ifTrue(SurfaceRules.yBlockCheck(VerticalAnchor.top(), 5), AIR));
+
+        builder.add(SurfaceRules.ifTrue(SurfaceRules.verticalGradient("bedrock_floor", VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(5)), BEDROCK));
+
+//        builder.add(SurfaceRules.ifTrue(SurfaceRules.verticalGradient("deepslate", VerticalAnchor.absolute(0), VerticalAnchor.absolute(8)), JUPITER_DEEPSLATE));
         return SurfaceRules.sequence(builder.build().toArray(SurfaceRules.RuleSource[]::new));
     }
 

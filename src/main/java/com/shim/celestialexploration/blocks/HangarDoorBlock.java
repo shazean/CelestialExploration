@@ -18,6 +18,7 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
@@ -186,16 +187,16 @@ public class HangarDoorBlock extends Block {
     }
 
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
-//        if (this.material == Material.METAL) {
-//            return InteractionResult.PASS;
-//        } else {
+        if (this.material == Material.METAL) {
+            return InteractionResult.PASS;
+        } else {
         state = state.cycle(OPEN);
         level.setBlock(pos, state, 10);
         level.levelEvent(player, state.getValue(OPEN) ? this.getOpenSound() : this.getCloseSound(), pos, 0);
         level.gameEvent(player, this.isOpen(state) ? GameEvent.BLOCK_OPEN : GameEvent.BLOCK_CLOSE, pos);
         level.updateNeighborsAt(pos, this);
         return InteractionResult.sidedSuccess(level.isClientSide);
-//        }
+        }
     }
 
     public void neighborChanged(BlockState self, Level level, BlockPos selfPos, Block block, BlockPos neighborPos, boolean p_52781_) {

@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "celestialexploration:jupiter_great_storm",
+    "celestialexploration:jupiter_lesser_storm",
+    "celestialexploration:jupiter_ether"
+  ]
+}

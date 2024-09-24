@@ -25,6 +25,9 @@ public class PoiRegistry {
     public static final RegistryObject<PoiType> MERCURY_PORTAL = POI.register("mercury_portal", () -> new PoiType("mercury_portal",
             PoiType.getBlockStates(BlockRegistry.MERCURY_PORTAL.get()), 0, 1));
 
+    public static final RegistryObject<PoiType> JUPITER_PORTAL = POI.register("jupiter_portal", () -> new PoiType("jupiter_portal",
+            PoiType.getBlockStates(BlockRegistry.JUPITER_PORTAL.get()), 0, 1));
+
 
     public static void register(IEventBus eventBus) {
         POI.register(eventBus);

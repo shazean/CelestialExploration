@@ -5,10 +5,7 @@ import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.world.biome.*;
-import com.shim.celestialexploration.world.biome.builder.MarsBiomeBuilder;
-import com.shim.celestialexploration.world.biome.builder.MercuryBiomeBuilder;
-import com.shim.celestialexploration.world.biome.builder.MoonBiomeBuilder;
-import com.shim.celestialexploration.world.biome.builder.VenusBiomeBuilder;
+import com.shim.celestialexploration.world.biome.builder.*;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
@@ -28,6 +25,7 @@ public class DimensionRegistry {
     public static final ResourceKey<Level> SPACE = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(CelestialExploration.MODID, "space"));
     public static final ResourceKey<Level> VENUS = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(CelestialExploration.MODID, "venus"));
     public static final ResourceKey<Level> MERCURY = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(CelestialExploration.MODID, "mercury"));
+    public static final ResourceKey<Level> JUPITER = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(CelestialExploration.MODID, "jupiter"));
 
     public static final MultiNoiseBiomeSource.Preset MARS_PRESET = new MultiNoiseBiomeSource.Preset(new ResourceLocation(CelestialExploration.MODID, "mars"), (biome) -> {
         ImmutableList.Builder<Pair<Climate.ParameterPoint, Holder<Biome>>> builder = ImmutableList.builder();
@@ -56,6 +54,14 @@ public class DimensionRegistry {
     public static final MultiNoiseBiomeSource.Preset MERCURY_PRESET = new MultiNoiseBiomeSource.Preset(new ResourceLocation(CelestialExploration.MODID, "mercury"), (biome) -> {
         ImmutableList.Builder<Pair<Climate.ParameterPoint, Holder<Biome>>> builder = ImmutableList.builder();
         new MercuryBiomeBuilder().addBiomes((p_204279_) -> {
+            builder.add(p_204279_.mapSecond(biome::getOrCreateHolder));
+        });
+        return new Climate.ParameterList<>(builder.build());
+    });
+
+    public static final MultiNoiseBiomeSource.Preset JUPITER_PRESET = new MultiNoiseBiomeSource.Preset(new ResourceLocation(CelestialExploration.MODID, "jupiter"), (biome) -> {
+        ImmutableList.Builder<Pair<Climate.ParameterPoint, Holder<Biome>>> builder = ImmutableList.builder();
+        new JupiterBiomeBuilder().addBiomes((p_204279_) -> {
             builder.add(p_204279_.mapSecond(biome::getOrCreateHolder));
         });
         return new Climate.ParameterList<>(builder.build());

@@ -178,20 +178,14 @@ public class MarsPortalBlock extends Block {
 
     @Override
     public BlockState rotate(BlockState state, Rotation rot) {
-        switch(rot) {
-            case COUNTERCLOCKWISE_90:
-            case CLOCKWISE_90:
-                switch(state.getValue(AXIS)) {
-                    case Z:
-                        return state.setValue(AXIS, Direction.Axis.X);
-                    case X:
-                        return state.setValue(AXIS, Direction.Axis.Z);
-                    default:
-                        return state;
-                }
-            default:
-                return state;
-        }
+        return switch (rot) {
+            case COUNTERCLOCKWISE_90, CLOCKWISE_90 -> switch (state.getValue(AXIS)) {
+                case Z -> state.setValue(AXIS, Direction.Axis.X);
+                case X -> state.setValue(AXIS, Direction.Axis.Z);
+                default -> state;
+            };
+            default -> state;
+        };
     }
 
     @Override
@@ -237,7 +231,6 @@ public class MarsPortalBlock extends Block {
             if (this.bottomLeft != null) {
                 this.height = this.calculatePortalHeight();
             }
-
         }
 
         protected int getDistanceUntilEdge(BlockPos pos, Direction directionIn) {
@@ -326,7 +319,6 @@ public class MarsPortalBlock extends Block {
                     this.level.setBlock(blockpos.above(j), BlockRegistry.MARS_PORTAL.get().defaultBlockState().setValue(MarsPortalBlock.AXIS, this.axis), 18);
                 }
             }
-
         }
 
         private boolean isPortalCountValidForSize() {

@@ -32,6 +32,8 @@ public class FeatureRegistry {
 
     public static final RegistryObject<Feature<NoneFeatureConfiguration>> GEYSER = FEATURES.register("geyser", () -> new GeyserFeature(NoneFeatureConfiguration.CODEC));
 
+    public static final RegistryObject<Feature<NoneFeatureConfiguration>> JUPITER_CLOUD = FEATURES.register("jupiter_cloud", () -> new JupiterCloudFeature(NoneFeatureConfiguration.CODEC));
+
 
     private static <C extends FeatureConfiguration, F extends Feature<C>> F register(String p_65808_, F p_65809_) {
         return Registry.register(Registry.FEATURE, p_65808_, p_65809_);

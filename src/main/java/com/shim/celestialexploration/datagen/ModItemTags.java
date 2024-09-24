@@ -65,6 +65,8 @@ public class ModItemTags extends ItemTagsProvider {
 		this.copy(TagRegistry.Blocks.VENUS_COBBLESTONE, TagRegistry.Items.VENUS_COBBLESTONE);
 		this.copy(TagRegistry.Blocks.VENUS_DEEPSLATE, TagRegistry.Items.VENUS_DEEPSLATE);
 		this.copy(TagRegistry.Blocks.VENUS_COBBLED_DEEPSLATE, TagRegistry.Items.VENUS_COBBLED_DEEPSLATE);
+		this.copy(TagRegistry.Blocks.JUPITER_DEEPSLATE, TagRegistry.Items.JUPITER_DEEPSLATE);
+		this.copy(TagRegistry.Blocks.JUPITER_COBBLED_DEEPSLATE, TagRegistry.Items.JUPITER_COBBLED_DEEPSLATE);
 
 		this.copy(TagRegistry.Blocks.METEOR, TagRegistry.Items.METEOR);
 		this.copy(TagRegistry.Blocks.MERCURY_STONE, TagRegistry.Items.MERCURY_STONE);
@@ -72,7 +74,7 @@ public class ModItemTags extends ItemTagsProvider {
 		this.copy(TagRegistry.Blocks.MERCURY_DEEPSLATE, TagRegistry.Items.MERCURY_DEEPSLATE);
 		this.copy(TagRegistry.Blocks.MERCURY_COBBLED_DEEPSLATE, TagRegistry.Items.MERCURY_COBBLED_DEEPSLATE);
 		this.copy(TagRegistry.Blocks.DYED_CERAMIC, TagRegistry.Items.DYED_CERAMIC);
-		this.copy(TagRegistry.Blocks.DYED_CERAMIC, TagRegistry.Items.DYED_CERAMIC);
+		this.copy(TagRegistry.Blocks.DYED_CERAMIC_TILE, TagRegistry.Items.DYED_CERAMIC_TILE);
 
 		this.copy(TagRegistry.Blocks.PAINTED_CERAMIC, TagRegistry.Items.PAINTED_CERAMIC);
 

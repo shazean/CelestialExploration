@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "celestialexploration",
+  "pattern": [
+    "XCX",
+    "C#C",
+    "XCX"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:jupiter_atmosphere"
+    },
+    "C": {
+      "item": "minecraft:iron_ingot"
+    },
+    "#": {
+      "item": "minecraft:torch"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:jupiter_lantern"
+  }
+}

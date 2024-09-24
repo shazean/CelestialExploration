@@ -20,12 +20,12 @@ import java.util.Random;
 
 import static net.minecraft.client.renderer.LevelRenderer.getLightColor;
 
-public class MarsWeatherHandler implements IWeatherRenderHandler {
+public class StormWeatherHandler implements IWeatherRenderHandler {
     ResourceLocation DUST_LOCATION = new ResourceLocation(CelestialExploration.MODID,"textures/environment/dust.png");
     private final float[] rainSizeX = new float[1024];
     private final float[] rainSizeZ = new float[1024];
 
-    MarsWeatherHandler() {
+    StormWeatherHandler() {
         for(int i = 0; i < 32; ++i) {
             for(int j = 0; j < 32; ++j) {
                 float f = (float)(j - 16);

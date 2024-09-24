@@ -1,0 +1,28 @@
+{
+  "type": {
+    "ultrawarm": false,
+    "natural": false,
+    "piglin_safe": true,
+    "respawn_anchor_works": false,
+    "bed_works": true,
+    "has_raids": true,
+    "has_skylight": true,
+    "has_ceiling": false,
+    "coordinate_scale": 0.25,
+    "ambient_light": 0,
+    "logical_height": 512,
+    "effects": "celestialexploration:jupiter",
+    "infiniburn": "#minecraft:infiniburn_overworld",
+    "min_y": -96,
+    "height": 512
+  },
+  "generator": {
+    "type": "minecraft:noise",
+    "seed": -538929672,
+    "settings": "celestialexploration:jupiter",
+    "biome_source": {
+      "type": "minecraft:multi_noise",
+      "preset": "celestialexploration:jupiter"
+    }
+  }
+}

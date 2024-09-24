@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "celestialexploration:jupiter_deepslate_button"
+    ]
+  },
+  "criteria": {
+    "has_jupiter_deepslate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:jupiter_deepslate"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "celestialexploration:jupiter_deepslate_button"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_jupiter_deepslate",
+      "has_the_recipe"
+    ]
+  ]
+}

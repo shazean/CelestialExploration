@@ -141,7 +141,6 @@ public class CelestialExploration {
         SpawnPlacements.register(EntityRegistry.VOIDED_PIGLIN.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, VoidedPiglin::checkVoidedPiglinSpawnRules);
         SpawnPlacements.register(EntityRegistry.GUST.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, Gust::checkGustSpawnRules);
 
-
         CelestialPacketHandler.init();
 
         event.enqueueWork(() -> {
@@ -152,7 +151,6 @@ public class CelestialExploration {
             CelestialStructurePieceType.RESEARCH_TUNNEL_CROSSING = CelestialStructurePieceType.register("RTCrossing", ResearchTunnelPieces.ResearchTunnelCrossing::new);
             CelestialStructurePieceType.RESEARCH_TUNNEL_ROOM = CelestialStructurePieceType.register("RTRoom", ResearchTunnelPieces.ResearchTunnelRoom::new);
             CelestialStructurePieceType.RESEARCH_TUNNEL_STAIRS = CelestialStructurePieceType.register("RTStairs", ResearchTunnelPieces.ResearchTunnelStairs::new);
-
         });
     }
 

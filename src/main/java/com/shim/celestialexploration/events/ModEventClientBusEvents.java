@@ -66,6 +66,7 @@ public class ModEventClientBusEvents {
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.MOON_PORTAL.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.VENUS_PORTAL.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.MERCURY_PORTAL.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BlockRegistry.JUPITER_PORTAL.get(), RenderType.translucent());
 
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.LUMINOUS_BLUE_GLASS.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.LUMINOUS_WHITE_GLASS.get(), RenderType.translucent());
@@ -110,7 +111,6 @@ public class ModEventClientBusEvents {
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.GREEN_BUTTON.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.WHITE_BUTTON.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.BLACK_BUTTON.get(), RenderType.translucent());
-
 
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.LOX_TANK.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.STEEL_FRAME.get(), RenderType.cutout());

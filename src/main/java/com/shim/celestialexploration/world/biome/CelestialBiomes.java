@@ -60,7 +60,8 @@ public class CelestialBiomes {
         MARS(15565857, 14591603, 335425, 3150848),
         MOON(1807, 1549, 335425, 69408),
         VENUS(14200929, 10715456, 4741209, 3160378),
-        MERCURY(1807, 1549, 335425, 69408);
+        MERCURY(1807, 1549, 335425, 69408),
+        JUPITER(12814693, 9985854, 10914167, 8546133);
 
         final int skyColor;
         final int skyFogColor;
@@ -74,5 +75,4 @@ public class CelestialBiomes {
             this.waterFogColor = waterFogColor;
         }
     }
-
 }

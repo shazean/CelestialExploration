@@ -32,6 +32,8 @@ public class FluidRegistry {
     public static final ResourceLocation WATER_OVERLAY_RL = new ResourceLocation("block/water_overlay");
     public static final ResourceLocation SULFUR_STILL_RL = new ResourceLocation(CelestialExploration.MODID, "block/sulfur_still");
     public static final ResourceLocation SULFUR_FLOWING_RL = new ResourceLocation(CelestialExploration.MODID, "block/sulfur_flow");
+    public static final ResourceLocation METALLIC_HYDROGEN_STILL_RL = new ResourceLocation(CelestialExploration.MODID, "block/metallic_hydrogen_still");
+    public static final ResourceLocation METALLIC_HYDROGEN_FLOWING_RL = new ResourceLocation(CelestialExploration.MODID, "block/metallic_hydrogen_flow");
 
 
     public static final DeferredRegister<Fluid> FLUIDS = DeferredRegister.create(ForgeRegistries.FLUIDS, CelestialExploration.MODID);
@@ -55,6 +57,9 @@ public class FluidRegistry {
     public static final RegistryObject<FlowingFluid> SULFUR = FLUIDS.register("sulfur", () -> new SulfurFluid.Source(FluidRegistry.SULFUR_PROPERTIES));
     public static final RegistryObject<FlowingFluid> SULFUR_FLOWING = FLUIDS.register("sulfur_flowing", () -> new SulfurFluid.Flowing(FluidRegistry.SULFUR_PROPERTIES));
 
+    public static final RegistryObject<FlowingFluid> METALLIC_HYDROGEN = FLUIDS.register("metallic_hydrogen", () -> new ForgeFlowingFluid.Source(FluidRegistry.METALLIC_HYDROGEN_PROPERTIES));
+    public static final RegistryObject<FlowingFluid> METALLIC_HYDROGEN_FLOWING = FLUIDS.register("metallic_hydrogen_flowing", () -> new ForgeFlowingFluid.Flowing(FluidRegistry.METALLIC_HYDROGEN_PROPERTIES));
+
 
     public static final RegistryObject<Item> LOX_BUCKET = ItemRegistry.ITEMS.register("lox_bucket", () -> new BucketItem(FluidRegistry.LOX, new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> MOLTEN_IRON_BUCKET = ItemRegistry.ITEMS.register("molten_iron_bucket", () -> new BucketItem(FluidRegistry.MOLTEN_IRON, new Item.Properties().stacksTo(1)));
@@ -65,6 +70,7 @@ public class FluidRegistry {
     public static final RegistryObject<Item> MOLTEN_ALUMINUM_BUCKET = ItemRegistry.ITEMS.register("molten_aluminum_bucket", () -> new BucketItem(FluidRegistry.MOLTEN_ALUMINUM, new Item.Properties().stacksTo(1)));
 
         public static final RegistryObject<Item> SULFUR_BUCKET = ItemRegistry.ITEMS.register("sulfur_bucket", () -> new BucketItem(FluidRegistry.SULFUR, new Item.Properties().stacksTo(1).tab(CreativeModeTab.TAB_MISC)));
+    public static final RegistryObject<Item> METALLIC_HYDROGEN_BUCKET = ItemRegistry.ITEMS.register("metallic_hydrogen_bucket", () -> new BucketItem(FluidRegistry.METALLIC_HYDROGEN, new Item.Properties().stacksTo(1).tab(CreativeModeTab.TAB_MISC)));
 
 
     public static final ForgeFlowingFluid.Properties LOX_PROPERTIES = new ForgeFlowingFluid.Properties(
@@ -104,12 +110,18 @@ public class FluidRegistry {
             .color(0xfaD3D4DF)).slopeFindDistance(2).levelDecreasePerBlock(2)
             .block(() -> FluidRegistry.MOLTEN_ALUMINUM_BLOCK.get()).bucket(() -> FluidRegistry.MOLTEN_ALUMINUM_BUCKET.get());
 
-
     public static final ForgeFlowingFluid.Properties SULFUR_PROPERTIES = new ForgeFlowingFluid.Properties(
         () -> SULFUR.get(), () -> SULFUR_FLOWING.get(), FluidAttributes.builder(SULFUR_STILL_RL, SULFUR_FLOWING_RL)
         .density(15).luminosity(5).viscosity(5).sound(SoundEvents.LAVA_AMBIENT))
         .slopeFindDistance(2).levelDecreasePerBlock(2)
         .block(() -> FluidRegistry.SULFUR_BLOCK.get()).bucket(() -> FluidRegistry.SULFUR_BUCKET.get());
+
+    public static final ForgeFlowingFluid.Properties METALLIC_HYDROGEN_PROPERTIES = new ForgeFlowingFluid.Properties(
+            () -> METALLIC_HYDROGEN.get(), () -> METALLIC_HYDROGEN_FLOWING.get(), FluidAttributes.builder(WATER_STILL, WATER_FLOWING_RL)
+            .density(15).luminosity(5).viscosity(5).sound(SoundEvents.WATER_AMBIENT)
+            .overlay(WATER_OVERLAY_RL).color(0xea099bb4))
+            .slopeFindDistance(2).levelDecreasePerBlock(2)
+            .block(() -> FluidRegistry.METALLIC_HYDROGEN_BLOCK.get()).bucket(() -> FluidRegistry.METALLIC_HYDROGEN_BUCKET.get());
 
 
     public static final RegistryObject<LiquidBlock> LOX_BLOCK = BlockRegistry.BLOCKS.register("lox", () -> new LiquidBlock(FluidRegistry.LOX, BlockBehaviour.Properties.of(Material.WATER, MaterialColor.COLOR_LIGHT_BLUE).noCollission().strength(100f).noDrops()));
@@ -121,6 +133,7 @@ public class FluidRegistry {
     public static final RegistryObject<LiquidBlock> MOLTEN_ALUMINUM_BLOCK = BlockRegistry.BLOCKS.register("molten_aluminum", () -> new LiquidBlock(FluidRegistry.MOLTEN_ALUMINUM, BlockBehaviour.Properties.of(Material.LAVA).noCollission().strength(100f).noDrops()));
 
     public static final RegistryObject<LiquidBlock> SULFUR_BLOCK = BlockRegistry.BLOCKS.register("sulfur", () -> new SulfurLiquidBlock(FluidRegistry.SULFUR, BlockBehaviour.Properties.of(Material.LAVA).lightLevel((light) -> 15).noCollission().strength(100f).noDrops()));
+    public static final RegistryObject<LiquidBlock> METALLIC_HYDROGEN_BLOCK = BlockRegistry.BLOCKS.register("metallic_hydrogen", () -> new LiquidBlock(FluidRegistry.METALLIC_HYDROGEN, BlockBehaviour.Properties.of(Material.WATER).lightLevel((light) -> 15).noCollission().strength(100f).noDrops()));
 
 
     public static void register(IEventBus eventBus) {
