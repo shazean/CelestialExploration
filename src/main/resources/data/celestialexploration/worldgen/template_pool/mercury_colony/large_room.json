@@ -1,0 +1,35 @@
+{
+  "name": "celestialexploration:mercury_colony/large_room",
+
+  "fallback": "minecraft:empty",
+
+  "elements": [
+    {
+      "weight": 5,
+      "element": {
+        "location": "celestialexploration:mercury_colony_garden",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "location": "celestialexploration:mercury_colony_library",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 15,
+      "element": {
+        "location": "celestialexploration:mercury_colony_smithy",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

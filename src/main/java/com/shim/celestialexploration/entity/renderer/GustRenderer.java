@@ -10,8 +10,8 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 
 public class GustRenderer extends MobRenderer<Gust, GhastModel<Gust>> {
-    private static final ResourceLocation GUST_LOCATION = new ResourceLocation(CelestialExploration.MODID, "textures/entity/gust/gust.png");
-    private static final ResourceLocation GUST_SHOOTING_LOCATION = new ResourceLocation(CelestialExploration.MODID, "textures/entity/gust/gust_shooting.png");
+    private static final ResourceLocation GUST_LOCATION = new ResourceLocation(CelestialExploration.MODID, "textures/entity/ghastlike/gust.png");
+    private static final ResourceLocation GUST_SHOOTING_LOCATION = new ResourceLocation(CelestialExploration.MODID, "textures/entity/ghastlike/gust_shooting.png");
 
     public GustRenderer(EntityRendererProvider.Context p_174129_) {
         super(p_174129_, new GhastModel<>(p_174129_.bakeLayer(ModelLayers.GHAST)), 1.5F);

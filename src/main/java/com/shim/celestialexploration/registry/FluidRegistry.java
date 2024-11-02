@@ -1,6 +1,7 @@
 package com.shim.celestialexploration.registry;
 
 import com.shim.celestialexploration.CelestialExploration;
+import com.shim.celestialexploration.blocks.MetallicHydrogenLiquidBlock;
 import com.shim.celestialexploration.blocks.SulfurLiquidBlock;
 import com.shim.celestialexploration.fluids.SulfurFluid;
 import net.minecraft.resources.ResourceLocation;
@@ -133,16 +134,12 @@ public class FluidRegistry {
     public static final RegistryObject<LiquidBlock> MOLTEN_ALUMINUM_BLOCK = BlockRegistry.BLOCKS.register("molten_aluminum", () -> new LiquidBlock(FluidRegistry.MOLTEN_ALUMINUM, BlockBehaviour.Properties.of(Material.LAVA).noCollission().strength(100f).noDrops()));
 
     public static final RegistryObject<LiquidBlock> SULFUR_BLOCK = BlockRegistry.BLOCKS.register("sulfur", () -> new SulfurLiquidBlock(FluidRegistry.SULFUR, BlockBehaviour.Properties.of(Material.LAVA).lightLevel((light) -> 15).noCollission().strength(100f).noDrops()));
-    public static final RegistryObject<LiquidBlock> METALLIC_HYDROGEN_BLOCK = BlockRegistry.BLOCKS.register("metallic_hydrogen", () -> new LiquidBlock(FluidRegistry.METALLIC_HYDROGEN, BlockBehaviour.Properties.of(Material.WATER).lightLevel((light) -> 15).noCollission().strength(100f).noDrops()));
+    public static final RegistryObject<LiquidBlock> METALLIC_HYDROGEN_BLOCK = BlockRegistry.BLOCKS.register("metallic_hydrogen", () -> new MetallicHydrogenLiquidBlock(FluidRegistry.METALLIC_HYDROGEN, BlockBehaviour.Properties.of(Material.WATER).lightLevel((light) -> 15).noCollission().strength(100f).noDrops()));
 
 
     public static void register(IEventBus eventBus) {
         FLUIDS.register(eventBus);
     }
-
-
-    public static final TagKey<Fluid> SULFUR_TAG = FluidTags.create(new ResourceLocation(CelestialExploration.MODID, "sulfur"));
-    public static final TagKey<Fluid> MOLTEN_METAL_TAG = FluidTags.create(new ResourceLocation(CelestialExploration.MODID, "molten_metal"));
 
 
 }

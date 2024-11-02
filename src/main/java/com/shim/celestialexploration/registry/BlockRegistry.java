@@ -140,6 +140,7 @@ public class BlockRegistry {
     public static final RegistryObject<Block> GLOWING_MOON_SAND = registerBlock("glowing_moon_sand", "Glowing Lunar Regolith", () -> new SandBlock(0xE7E2E2, Block.Properties.of(Material.GLASS, MaterialColor.COLOR_BLUE).strength(0.5F).sound(SoundType.SAND).lightLevel((light) -> 2)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
     public static final RegistryObject<Block> COARSE_MOON_SAND = registerBlockDropsSelf("coarse_moon_sand", "Coarse Lunar Regolith", () -> new Block(Block.Properties.of(Material.DIRT).strength(0.5F).sound(SoundType.GRAVEL)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
     public static final RegistryObject<Block> LUNAR_LANTERN = registerBlock("lunar_lantern", "Lunar Lantern", () -> new Block(Block.Properties.of(Material.GLASS, MaterialColor.QUARTZ).strength(0.3F).sound(SoundType.GLASS).lightLevel((light) -> 13)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+    public static final RegistryObject<Block> MOON_SAND_PATH = registerBlock("moon_sand_path", "Lunar Regolith Path", () -> new CelestialPathBlock(Block.Properties.of(Material.SAND).strength(0.5F).sound(SoundType.SAND), MOON_SAND.get()), CelestialExploration.CELESTIAL_BLOCKS_TAB);
 
 
     //---- MARS -------------------------------------------------------------------------------
@@ -214,6 +215,7 @@ public class BlockRegistry {
     public static final RegistryObject<Block> COARSE_MARS_SAND = registerBlockDropsSelf("coarse_mars_sand", "Coarse Martian Regolith", () -> new Block(Block.Properties.of(Material.DIRT).strength(0.5F).sound(SoundType.GRAVEL)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
     //	public static final RegistryObject<Block> MARS_SOIL = BLOCKS.register("mars_soil", () -> new MarsFarmlandBlock(Block.Properties.of(Material.DIRT).strength(0.6f).sound(SoundType.GRAVEL)));
     public static final RegistryObject<Block> MARS_LANTERN = registerBlock("mars_lantern", "Martian Lantern", () -> new Block(Block.Properties.of(Material.GLASS, MaterialColor.QUARTZ).strength(0.3F).sound(SoundType.GLASS).lightLevel((light) -> 13)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+    public static final RegistryObject<Block> MARS_SAND_PATH = registerBlock("mars_sand_path", "Martian Regolith Path", () -> new CelestialPathBlock(Block.Properties.of(Material.SAND).strength(0.5F).sound(SoundType.SAND), MARS_SAND.get()), CelestialExploration.CELESTIAL_BLOCKS_TAB);
 
     //---- VENUS -------------------------------------------------------------------------------
     //STONE
@@ -294,6 +296,7 @@ public class BlockRegistry {
     public static final RegistryObject<Block> VENUS_LANTERN = registerBlock("venus_lantern", "Venusian Lantern", () -> new Block(Block.Properties.of(Material.GLASS, MaterialColor.QUARTZ).strength(0.3F).sound(SoundType.GLASS).lightLevel((light) -> 13)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
     public static final RegistryObject<Block> GEYSER = registerBlockDropsSelf("geyser", "Geyser", () -> new GeyserBlock(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE).isValidSpawn(BlockRegistry::never)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
     public static final RegistryObject<Block> SULFURIC_OBSIDIAN = registerBlockDropsSelf("sulfuric_obsidian", "Sulfuric Obsidian", () -> new Block(Block.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK).strength(50.0f, 1200.0f).sound(SoundType.STONE).requiresCorrectToolForDrops()), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+    public static final RegistryObject<Block> VENUS_SAND_PATH = registerBlock("venus_sand_path", "Venusian Regolith Path", () -> new CelestialPathBlock(Block.Properties.of(Material.SAND).strength(0.5F).sound(SoundType.SAND), VENUS_SAND.get()), CelestialExploration.CELESTIAL_BLOCKS_TAB);
 
     //---- MERCURY -------------------------------------------------------------------------------
     //STONE
@@ -624,6 +627,8 @@ public class BlockRegistry {
     public static final RegistryObject<ButtonBlock> BLACK_BUTTON = registerBlockDropsSelf("black_button", "Black Button", () -> new WoodButtonBlock(Block.Properties.copy(Blocks.GLASS).lightLevel((light) -> 4)), CelestialExploration.CELESTIAL_MISC_TAB);
 
     public static final RegistryObject<Block> PATHWAY_LIGHT = registerBlockDropsSelf("pathway_light", "Pathway Light", () -> new PathwayLightBlock(Block.Properties.of(Material.METAL).strength(0.1F).sound(SoundType.METAL).lightLevel(litBlockEmission(9))), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+
+    public static final RegistryObject<Block> TAXI_STATION = registerCoreBlock("taxi_station", "Taxi Station", () -> new TaxiStationBlock(Block.Properties.of(Material.METAL, MaterialColor.METAL).strength(3.5F).sound(SoundType.METAL)));
 
     //---- MAG LEV -------------------------------------------------------------------------------
     public static final RegistryObject<Block> MAG_RAIL = registerBlockDropsSelf("mag_rail", "Mag Rail", () -> new MagRailBlock(BlockBehaviour.Properties.of(Material.DECORATION).noCollission().strength(0.7F).sound(SoundType.METAL)), CelestialExploration.SPACESHIP_TAB);

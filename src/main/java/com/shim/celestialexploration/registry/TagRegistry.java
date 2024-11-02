@@ -2,14 +2,13 @@ package com.shim.celestialexploration.registry;
 
 import com.shim.celestialexploration.CelestialExploration;
 import net.minecraft.core.Registry;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.TagKey;
+import net.minecraft.tags.*;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.material.Fluid;
 
 public class TagRegistry {
 
@@ -105,6 +104,11 @@ public class TagRegistry {
         public static final TagKey<Item> REGOLITH = ItemTags.create(modLoc("regolith"));
 
         public static final TagKey<Item>  SPACESHIP = ItemTags.create(modLoc("spaceship"));
+
+        public static final TagKey<Item> SLIME_DROPS = ItemTags.create(modLoc("slime_drops"));
+
+
+
     }
 
     public class Biomes {
@@ -122,13 +126,29 @@ public class TagRegistry {
         public static final TagKey<Biome> PLANETS = create("planets");
         public static final TagKey<Biome> MOONS = create("moons");
         public static final TagKey<Biome> CELESTIAL_BODIES = create("celestial_bodies");
-        
+
+        private static TagKey<Biome> create(String key) {
+            return TagKey.create(Registry.BIOME_REGISTRY, modLoc(key));
+        }
+
     }
 
-    private static TagKey<Biome> create(String key) {
-        return TagKey.create(Registry.BIOME_REGISTRY, modLoc(key));
+    public class Entities {
+        public static final TagKey<EntityType<?>> FARM_ANIMALS = create("farm_animals");
+
+        private static TagKey<EntityType<?>> create(String key) {
+            return TagKey.create(Registry.ENTITY_TYPE_REGISTRY, modLoc(key));
+        }
+
     }
-    
+
+    public class Fluids {
+        public static final TagKey<Fluid> SULFUR = FluidTags.create(new ResourceLocation(CelestialExploration.MODID, "sulfur"));
+        public static final TagKey<Fluid> MOLTEN_METAL = FluidTags.create(new ResourceLocation(CelestialExploration.MODID, "molten_metal"));
+
+    }
+
+
     private static ResourceLocation modLoc(String location) {
         return new ResourceLocation(CelestialExploration.MODID, location);
     }

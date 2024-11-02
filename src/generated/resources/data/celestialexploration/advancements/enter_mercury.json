@@ -1,0 +1,31 @@
+{
+  "parent": "celestialexploration:enter_venus",
+  "display": {
+    "icon": {
+      "item": "celestialexploration:mercury_sand"
+    },
+    "title": {
+      "translate": "advancements.celestial.enter_mercury.title"
+    },
+    "description": {
+      "translate": "advancements.celestial.enter_mercury.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "entered_mercury": {
+      "trigger": "minecraft:changed_dimension",
+      "conditions": {
+        "to": "celestialexploration:mercury"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "entered_mercury"
+    ]
+  ]
+}

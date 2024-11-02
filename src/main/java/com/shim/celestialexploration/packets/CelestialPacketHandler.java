@@ -20,7 +20,6 @@ public class CelestialPacketHandler {
             PROTOCOL_VERSION::equals
     );
 
-
     public static void init() {
         int i = 0;
         INSTANCE.registerMessage(i++, SpaceshipFuelTickPacket.class, SpaceshipFuelTickPacket::encoder,
@@ -35,10 +34,32 @@ public class CelestialPacketHandler {
         INSTANCE.registerMessage(i++, SpaceshipInventoryPacket.class, SpaceshipInventoryPacket::encoder,
                 SpaceshipInventoryPacket::decoder, SpaceshipInventoryPacket::handle, Optional.of(NetworkDirection.PLAY_TO_SERVER));
 
+        INSTANCE.registerMessage(i++, LightTravelDataPacket.class, LightTravelDataPacket::encoder,
+                LightTravelDataPacket::decoder, LightTravelDataPacket::handle, Optional.of(NetworkDirection.PLAY_TO_CLIENT));
+
+        INSTANCE.registerMessage(i++, TaxiPassengersPacket.class, TaxiPassengersPacket::encoder,
+                TaxiPassengersPacket::decoder, TaxiPassengersPacket::handle, Optional.of(NetworkDirection.PLAY_TO_SERVER));
+
+        INSTANCE.registerMessage(i++, TaxiDestinationPacket.class, TaxiDestinationPacket::encoder,
+                TaxiDestinationPacket::decoder, TaxiDestinationPacket::handle, Optional.of(NetworkDirection.PLAY_TO_SERVER));
+
+        INSTANCE.registerMessage(i++, TaxiReadyForTakeoffPacket.class, TaxiReadyForTakeoffPacket::encoder,
+                TaxiReadyForTakeoffPacket::decoder, TaxiReadyForTakeoffPacket::handle, Optional.of(NetworkDirection.PLAY_TO_SERVER));
+
+        INSTANCE.registerMessage(i++, TaxiAscensionTicksPacket.class, TaxiAscensionTicksPacket::encoder,
+                TaxiAscensionTicksPacket::decoder, TaxiAscensionTicksPacket::handle, Optional.of(NetworkDirection.PLAY_TO_SERVER));
+
+        INSTANCE.registerMessage(i++, DoLightTravelPacket.class, DoLightTravelPacket::encoder,
+                DoLightTravelPacket::decoder, DoLightTravelPacket::handle, Optional.of(NetworkDirection.PLAY_TO_SERVER));
+
+        INSTANCE.registerMessage(i++, ServerDidLightTravelPacket.class, ServerDidLightTravelPacket::encoder,
+                ServerDidLightTravelPacket::decoder, ServerDidLightTravelPacket::handle, Optional.of(NetworkDirection.PLAY_TO_CLIENT));
+
+        INSTANCE.registerMessage(i++, ServerResetLightTravelPacket.class, ServerResetLightTravelPacket::encoder,
+                ServerResetLightTravelPacket::decoder, ServerResetLightTravelPacket::handle, Optional.of(NetworkDirection.PLAY_TO_SERVER));
+
 
 //        INSTANCE.registerMessage(i++, ControlPanelPacket.class, ControlPanelPacket::write,
 //                ControlPanelPacket::decoder, ControlPanelPacket::handle, Optional.of(NetworkDirection.PLAY_TO_SERVER));
-
-
     }
 }

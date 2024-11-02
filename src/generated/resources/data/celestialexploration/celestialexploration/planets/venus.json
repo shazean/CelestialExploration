@@ -1,0 +1,13 @@
+{
+  "target_dimension": "celestialexploration:venus",
+  "spawn_chunk_coordinates": {
+    "x": 0,
+    "z": 2
+  },
+  "blocks": [
+    "celestialexploration:venus_stone",
+    "celestialexploration:venus_deepslate",
+    "minecraft:yellow_stained_glass",
+    "celestialexploration:venus_core"
+  ]
+}

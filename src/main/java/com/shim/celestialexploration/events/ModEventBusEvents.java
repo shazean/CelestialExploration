@@ -1,21 +1,16 @@
 package com.shim.celestialexploration.events;
 
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.capabilities.ISpaceFlight;
-import com.shim.celestialexploration.capabilities.LoxTankCapability;
-import com.shim.celestialexploration.entity.Spaceship;
+import com.shim.celestialexploration.entity.CelestialCat;
 import com.shim.celestialexploration.entity.mob.*;
 import com.shim.celestialexploration.entity.mob.piglins.AstralPiglin;
 import com.shim.celestialexploration.entity.mob.piglins.VoidedPiglin;
 import com.shim.celestialexploration.entity.mob.slimes.*;
 import com.shim.celestialexploration.entity.model.MagCartModel;
-import com.shim.celestialexploration.entity.model.SpaceshipModel;
-import com.shim.celestialexploration.entity.renderer.SpaceshipRenderer;
 import com.shim.celestialexploration.particles.*;
 import com.shim.celestialexploration.recipes.WorkbenchCraftingRecipe;
 import com.shim.celestialexploration.recipes.WorkbenchSmeltingRecipe;
 import com.shim.celestialexploration.registry.*;
-import com.shim.celestialexploration.util.TeleportUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.*;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
@@ -23,22 +18,13 @@ import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.particle.FlameParticle;
 import net.minecraft.client.particle.WaterDropParticle;
 import net.minecraft.core.Registry;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.ParticleFactoryRegisterEvent;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-
-import java.util.ArrayList;
 
 import static net.minecraft.client.model.geom.LayerDefinitions.INNER_ARMOR_DEFORMATION;
 import static net.minecraft.client.model.geom.LayerDefinitions.OUTER_ARMOR_DEFORMATION;
@@ -59,12 +45,16 @@ public class ModEventBusEvents {
         event.put(EntityRegistry.VOIDED_PIGLIN.get(), VoidedPiglin.setAttributes());
         event.put(EntityRegistry.FLARE.get(), Flare.setAttributes());
         event.put(EntityRegistry.GUST.get(), Gust.setAttributes());
+        event.put(EntityRegistry.GYST.get(), Gyst.setAttributes());
         event.put(EntityRegistry.ASTRAL_PIGLIN.get(), AstralPiglin.setAttributes());
         event.put(EntityRegistry.ASTRAL_HOGLIN.get(), AstralHoglin.setAttributes());
         event.put(EntityRegistry.VOIDED_ZOGLIN.get(), VoidedZoglin.setAttributes());
 
         event.put(EntityRegistry.QUICKSILVER_SLIME.get(), QuicksilverSlime.setAttributes());
         event.put(EntityRegistry.VISCOUS_SLIME.get(), ViscousSlime.setAttributes());
+        event.put(EntityRegistry.METEOR_CRAWLER.get(), MeteorCrawler.createAttributes().build());
+        event.put(EntityRegistry.VOID_CRAWLER.get(), VoidCrawler.createAttributes().build());
+        event.put(EntityRegistry.CELESTIAL_CAT.get(), CelestialCat.createAttributes().build());
 
     }
 
@@ -132,6 +122,7 @@ public class ModEventBusEvents {
         Minecraft.getInstance().particleEngine.register(ParticleRegistry.SULFUR_FIRE_FLAME.get(), FlameParticle.Provider::new);
         Minecraft.getInstance().particleEngine.register(ParticleRegistry.SULFUR_SPLASH_PARTICLE.get(), WaterDropParticle.Provider::new);
         Minecraft.getInstance().particleEngine.register(ParticleRegistry.DUST_PARTICLE.get(), DustStormParticle.Provider::new);
+        Minecraft.getInstance().particleEngine.register(ParticleRegistry.LIGHTNING_PARTICLE.get(), LightningParticles.Provider::new);
 
 
         Minecraft.getInstance().particleEngine.register(ParticleRegistry.MARS_PORTAL_PARTICLES.get(), CelestialPortalParticle.MarsProvider::new);

@@ -25,5 +25,6 @@ public class BlockEntityRegistry {
 
     public static final RegistryObject<BlockEntityType<SolarPanelBlockEntity>> SOLAR_PANEL_BLOCK_ENTITY = BLOCK_ENTITIES.register("solar_panel", () -> BlockEntityType.Builder.of(SolarPanelBlockEntity::new, BlockRegistry.SOLAR_PANEL.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<TaxiStationBlockEntity>> TAXI_STATION_BLOCK_ENTITY = BLOCK_ENTITIES.register("taxi_station", () -> BlockEntityType.Builder.of(TaxiStationBlockEntity::new, BlockRegistry.TAXI_STATION.get()).build(null));
 
 }

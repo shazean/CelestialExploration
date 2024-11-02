@@ -12,8 +12,7 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.HorizontalDirectionalBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.*;
@@ -197,10 +196,11 @@ public class AirlockDoorBlock extends Block {
 
     public void neighborChanged(BlockState self, Level level, BlockPos selfPos, Block block, BlockPos neighborPos, boolean p_52781_) {
         BlockState neighbor = level.getBlockState(neighborPos);
+
         if (neighbor.getBlock() instanceof AirlockDoorBlock) {
             boolean isOpen = neighbor.getValue(OPEN);
 
-            //TODO future me, please find a better way of doing this
+            //TODO future me, please find a better way of doing this?
             if (neighbor.getValue(HINGE) != CelestialProperties.AirlockDoorHingeSide.NON_HINGE && self.getValue(HINGE) !=  CelestialProperties.AirlockDoorHingeSide.NON_HINGE) {
             } else if (neighbor.getValue(HINGE) == CelestialProperties.AirlockDoorHingeSide.NON_HINGE && self.getValue(HINGE) != CelestialProperties.AirlockDoorHingeSide.NON_HINGE) {
                 if (self.getValue(FACING) == Direction.NORTH && selfPos.getX() < neighborPos.getX() && self.getValue(HINGE) == CelestialProperties.AirlockDoorHingeSide.RIGHT) {
@@ -292,4 +292,13 @@ public class AirlockDoorBlock extends Block {
             return CelestialProperties.AirlockDoorHingeSide.RIGHT;
         }
     }
+
+    public BlockState rotate(BlockState p_52790_, Rotation p_52791_) {
+        return p_52790_.setValue(FACING, p_52791_.rotate(p_52790_.getValue(FACING)));
+    }
+
+    public BlockState mirror(BlockState p_52787_, Mirror p_52788_) {
+        return p_52788_ == Mirror.NONE ? p_52787_ : p_52787_.rotate(p_52788_.getRotation(p_52787_.getValue(FACING))).cycle(HINGE);
+    }
+
 }

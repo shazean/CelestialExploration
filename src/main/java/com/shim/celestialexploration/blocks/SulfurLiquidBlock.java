@@ -1,15 +1,16 @@
 package com.shim.celestialexploration.blocks;
 
 import com.shim.celestialexploration.registry.BlockRegistry;
-import com.shim.celestialexploration.registry.FluidRegistry;
+import com.shim.celestialexploration.registry.CelestialDamageSource;
+import com.shim.celestialexploration.registry.TagRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FlowingFluid;
@@ -24,7 +25,11 @@ public class SulfurLiquidBlock extends LiquidBlock {
     @Override
     public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
         if (!entity.fireImmune()) {
-            entity.lavaHurt();
+            entity.setSecondsOnFire(15);
+            if (entity.hurt(CelestialDamageSource.SULFUR, 4.0F)) {
+                entity.playSound(SoundEvents.GENERIC_BURN, 0.4F, 2.0F + level.random.nextFloat() * 0.4F);
+            }
+//            entity.lavaHurt();
         }
         super.entityInside(state, level, pos, entity);
     }
@@ -36,7 +41,7 @@ public class SulfurLiquidBlock extends LiquidBlock {
     }
 
     private boolean shouldSpreadLiquid(Level level, BlockPos pos, BlockState p_54699_) {
-        if (this.getFluid().is(FluidRegistry.SULFUR_TAG)) {
+        if (this.getFluid().is(TagRegistry.Fluids.SULFUR)) {
 //            boolean soulSoilBelow = level.getBlockState(pos.below()).is(Blocks.SOUL_SOIL);
 
             for(Direction direction : POSSIBLE_FLOW_DIRECTIONS) {

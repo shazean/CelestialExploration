@@ -2,10 +2,10 @@ package com.shim.celestialexploration;
 
 import com.shim.celestialexploration.config.CelestialClientConfig;
 import com.shim.celestialexploration.config.CelestialCommonConfig;
-import com.shim.celestialexploration.entity.mob.Gust;
-import com.shim.celestialexploration.entity.mob.Lurker;
-import com.shim.celestialexploration.entity.mob.VoidFellow;
-import com.shim.celestialexploration.entity.mob.Voided;
+import com.shim.celestialexploration.data.CelestialDimensionManager;
+import com.shim.celestialexploration.data.CelestialPlanetManager;
+import com.shim.celestialexploration.entity.CelestialCat;
+import com.shim.celestialexploration.entity.mob.*;
 import com.shim.celestialexploration.entity.mob.piglins.VoidedPiglin;
 import com.shim.celestialexploration.entity.mob.slimes.*;
 import com.shim.celestialexploration.packets.CelestialPacketHandler;
@@ -18,12 +18,14 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.CustomSpawner;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.event.AddReloadListenerEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -90,6 +92,8 @@ public class CelestialExploration {
         MinecraftForge.EVENT_BUS.addGenericListener(BlockEntity.class, CapabilityRegistry::attachBlockCapabilities);
         MinecraftForge.EVENT_BUS.addGenericListener(Entity.class, CapabilityRegistry::attachEntityCapabilities);
 
+        MinecraftForge.EVENT_BUS.addListener(this::reloadResources);
+
 //        bus.addListener(EventPriority.NORMAL, Structures::addDimensionalSpacing);
 //        bus.addListener(EventPriority.NORMAL, Structures::setupStructureSpawns);
 
@@ -140,12 +144,16 @@ public class CelestialExploration {
         SpawnPlacements.register(EntityRegistry.SULFUR_CUBE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, SulfurCube::checkSulfurCubeSpawnRules);
         SpawnPlacements.register(EntityRegistry.VOIDED_PIGLIN.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, VoidedPiglin::checkVoidedPiglinSpawnRules);
         SpawnPlacements.register(EntityRegistry.GUST.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, Gust::checkGustSpawnRules);
+        SpawnPlacements.register(EntityRegistry.GYST.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, Gyst::checkGystSpawnRules);
+        SpawnPlacements.register(EntityRegistry.METEOR_CRAWLER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, MeteorCrawler::checkMeteorCrawlerSpawnRules);
+        SpawnPlacements.register(EntityRegistry.VOID_CRAWLER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, VoidCrawler::checkMonsterSpawnRules);
+        SpawnPlacements.register(EntityRegistry.CELESTIAL_CAT.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, CelestialCat::checkCatSpawnRules);
 
         CelestialPacketHandler.init();
 
         event.enqueueWork(() -> {
 
-            VillagerRegistry.registerPOIs();
+            PoiRegistry.registerPOIs();
 
             CelestialStructurePieceType.RESEARCH_TUNNEL_CORRIDOR = CelestialStructurePieceType.register("RTCorridor", ResearchTunnelPieces.ResearchTunnelCorridor::new);
             CelestialStructurePieceType.RESEARCH_TUNNEL_CROSSING = CelestialStructurePieceType.register("RTCrossing", ResearchTunnelPieces.ResearchTunnelCrossing::new);
@@ -194,5 +202,11 @@ public class CelestialExploration {
     public static <T> T getCapability(Entity entityIn, Capability<T> capability) {
         if (entityIn == null) return null;
         return entityIn.getCapability(capability).isPresent() ? entityIn.getCapability(capability).orElseThrow(() -> new IllegalArgumentException("Lazy optional must not be empty")) : null;
+    }
+
+    private void reloadResources(final AddReloadListenerEvent event) {
+        event.addListener(new CelestialDimensionManager());
+        event.addListener(new CelestialPlanetManager());
+
     }
 }

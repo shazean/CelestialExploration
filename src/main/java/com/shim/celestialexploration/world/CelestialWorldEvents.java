@@ -2,7 +2,7 @@ package com.shim.celestialexploration.world;
 
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.world.gen.CelestialEntityGeneration;
-import com.shim.celestialexploration.world.gen.CelestialOreGeneration;
+import com.shim.celestialexploration.world.gen.CelestialGeneration;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -12,7 +12,7 @@ public class CelestialWorldEvents {
 
     @SubscribeEvent
     public static void biomeLoadingEvent(final BiomeLoadingEvent event) {
-        CelestialOreGeneration.generateOres(event);
+        CelestialGeneration.generateFeatures(event);
 
         CelestialEntityGeneration.onEntitySpawn(event);
     }

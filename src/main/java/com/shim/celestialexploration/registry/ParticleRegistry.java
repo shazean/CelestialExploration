@@ -25,6 +25,7 @@ public class ParticleRegistry {
     public static final RegistryObject<SimpleParticleType> SULFUR_SPLASH_PARTICLE = PARTICLES.register("sulfur_splash_particle", () -> new SimpleParticleType(false));
 
     public static final RegistryObject<SimpleParticleType> DUST_PARTICLE = PARTICLES.register("dust_particle", () -> new SimpleParticleType(false));
+    public static final RegistryObject<SimpleParticleType> LIGHTNING_PARTICLE = PARTICLES.register("lightning_particle", () -> new SimpleParticleType(false));
 
     //PORTAL PARTICLES
     public static final RegistryObject<SimpleParticleType> MARS_PORTAL_PARTICLES = PARTICLES.register("mars_portal_particles", () -> new SimpleParticleType(false));

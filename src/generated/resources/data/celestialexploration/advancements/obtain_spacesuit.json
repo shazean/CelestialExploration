@@ -1,0 +1,83 @@
+{
+  "parent": "celestialexploration:root",
+  "display": {
+    "icon": {
+      "item": "celestialexploration:basic_spacesuit_helmet",
+      "nbt": "{Damage:0}"
+    },
+    "title": {
+      "translate": "advancements.celestial.obtain_spacesuit.title"
+    },
+    "description": {
+      "translate": "advancements.celestial.obtain_spacesuit.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "basic_helmet": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:basic_spacesuit_helmet"
+            ]
+          }
+        ]
+      }
+    },
+    "basic_chestplate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:basic_spacesuit_chestplate"
+            ]
+          }
+        ]
+      }
+    },
+    "basic_leggings": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:basic_spacesuit_leggings"
+            ]
+          }
+        ]
+      }
+    },
+    "basic_boots": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:basic_spacesuit_boots"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "basic_helmet"
+    ],
+    [
+      "basic_chestplate"
+    ],
+    [
+      "basic_leggings"
+    ],
+    [
+      "basic_boots"
+    ]
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "celestialexploration:mars_colony",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 23712738,
+    "spacing": 30,
+    "separation": 12,
+    "type": "minecraft:random_spread"
+  }
+}

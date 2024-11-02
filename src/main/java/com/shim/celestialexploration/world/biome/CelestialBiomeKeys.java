@@ -29,7 +29,7 @@ public class CelestialBiomeKeys {
 
     //---- VENUS -------------------------------------------------------------------------------
     public static final ResourceKey<Biome> VENUS_DESERT = register("venus_desert");
-    public static final ResourceKey<Biome> VENUS_SULFUR_FLATS = register("venus_flats");
+    public static final ResourceKey<Biome> VENUS_SULFUR_FLATS = register("venus_sulfur_flats");
     public static final ResourceKey<Biome> VENUS_LOWER_PLAINS = register("venus_lower_plains");
     public static final ResourceKey<Biome> VENUS_PLAINS = register("venus_plains");
     public static final ResourceKey<Biome> SULFUR_OCEAN = register("sulfur_ocean");

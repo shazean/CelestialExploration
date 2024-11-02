@@ -1,6 +1,6 @@
 package com.shim.celestialexploration.item;
 
-import com.shim.celestialexploration.entity.Spaceship;
+import com.shim.celestialexploration.entity.vehicle.Spaceship;
 import net.minecraft.core.BlockPos;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;

@@ -1,0 +1,83 @@
+{
+  "parent": "celestialexploration:enter_space",
+  "display": {
+    "icon": {
+      "item": "minecraft:iron_sword",
+      "nbt": "{Damage:0}"
+    },
+    "title": {
+      "translate": "advancements.celestial.kill_mob_in_space.title"
+    },
+    "description": {
+      "translate": "advancements.celestial.kill_mob_in_space.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "kill_lurker": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "predicate": {
+              "type": "celestialexploration:lurker",
+              "location": {
+                "dimension": "celestialexploration:space"
+              }
+            },
+            "entity": "this"
+          }
+        ]
+      }
+    },
+    "kill_voided": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "predicate": {
+              "type": "celestialexploration:voided",
+              "location": {
+                "dimension": "celestialexploration:space"
+              }
+            },
+            "entity": "this"
+          }
+        ]
+      }
+    },
+    "kill_voidfellow": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "predicate": {
+              "type": "celestialexploration:voidfellow",
+              "location": {
+                "dimension": "celestialexploration:space"
+              }
+            },
+            "entity": "this"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "kill_lurker"
+    ],
+    [
+      "kill_voided"
+    ],
+    [
+      "kill_voidfellow"
+    ]
+  ]
+}

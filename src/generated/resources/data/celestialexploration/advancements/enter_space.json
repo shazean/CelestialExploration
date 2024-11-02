@@ -1,0 +1,31 @@
+{
+  "parent": "celestialexploration:obtain_spaceship",
+  "display": {
+    "icon": {
+      "item": "celestialexploration:white_spaceship"
+    },
+    "title": {
+      "translate": "advancements.celestial.enter_space.title"
+    },
+    "description": {
+      "translate": "advancements.celestial.enter_space.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "entered_space": {
+      "trigger": "minecraft:changed_dimension",
+      "conditions": {
+        "to": "celestialexploration:space"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "entered_space"
+    ]
+  ]
+}

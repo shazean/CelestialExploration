@@ -1,6 +1,6 @@
 package com.shim.celestialexploration.packets;
 
-import com.shim.celestialexploration.entity.Spaceship;
+import com.shim.celestialexploration.entity.vehicle.Spaceship;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
@@ -34,13 +34,11 @@ public class SpaceshipFuelCapPacket {
             if (player != null) {
                 Entity entity = player.level.getEntity(message.spaceshipId);
                 if (entity instanceof Spaceship spaceship) {
-
-
                     spaceship.decrementFuelTicks();
-//                    spaceship.setFuelTicks(message.fuelTicks);
                 }
             }
         });
+
         context.setPacketHandled(true);
     }
 }

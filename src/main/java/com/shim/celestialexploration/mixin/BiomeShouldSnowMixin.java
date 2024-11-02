@@ -17,19 +17,5 @@ public abstract class BiomeShouldSnowMixin {
 
         if (levelReader.getBiome(pos).is(TagRegistry.Biomes.NO_SNOW_BIOMES))
             cir.setReturnValue(false);
-
-//        Holder<Biome> biomeThing = (Holder<Biome>) this;
-//        biomeThing
-
-//        HolderSet<Biome> biomes = BuiltinRegistries.BIOME.getTag(TagRegistry.Biomes.NO_SNOW_BIOMES).get();
-//
-//       for (Holder<Biome> biome : biomes) {
-//           if (biome.
-//               cir.setReturnValue(false);
-//       }
-
-//        if (BuiltinRegistries.BIOME.getTagOrEmpty(TagRegistry.Biomes.NO_SNOW_BIOMES)
-//            cir.setReturnValue(false);
-//        }
     }
 }

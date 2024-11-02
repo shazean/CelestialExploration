@@ -1,7 +1,7 @@
 package com.shim.celestialexploration.entity.mob.slimes;
 
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.registry.FluidRegistry;
+import com.shim.celestialexploration.registry.TagRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.Difficulty;
@@ -31,12 +31,25 @@ public class SulfurCube extends MagmaCube {
         return p_32982_.getDifficulty() != Difficulty.PEACEFUL;
     }
 
+
+    public boolean isInSulfur() {
+        return !this.firstTick && this.fluidHeight.getDouble(TagRegistry.Fluids.SULFUR) > 0.0D;
+    }
+
+    @Override
+    public void tick() {
+        super.tick();
+        if (this.isInSulfur()) {
+            jumpInLiquid(TagRegistry.Fluids.SULFUR);
+        }
+    }
+
     @Override
     protected void jumpInLiquid(TagKey<Fluid> fluidTagKey) {
 
         CelestialExploration.LOGGER.debug("SulfurCube in: " +  fluidTagKey.toString());
 
-        if (fluidTagKey == FluidRegistry.SULFUR_TAG) {
+        if (fluidTagKey == TagRegistry.Fluids.SULFUR) {
             CelestialExploration.LOGGER.debug("SulfurCube in Sulfur");
             Vec3 vec3 = this.getDeltaMovement();
             this.setDeltaMovement(vec3.x, 0.22F + (float)this.getSize() * 0.05F, vec3.z);

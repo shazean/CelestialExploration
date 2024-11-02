@@ -11,6 +11,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
+import net.minecraft.world.level.block.Mirror;
+import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -296,4 +298,13 @@ public class HangarDoorBlock extends Block {
             return CelestialProperties.AirlockDoorHingeSide.RIGHT;
         }
     }
+
+    public BlockState rotate(BlockState p_52790_, Rotation p_52791_) {
+        return p_52790_.setValue(FACING, p_52791_.rotate(p_52790_.getValue(FACING)));
+    }
+
+    public BlockState mirror(BlockState p_52787_, Mirror p_52788_) {
+        return p_52788_ == Mirror.NONE ? p_52787_ : p_52787_.rotate(p_52788_.getRotation(p_52787_.getValue(FACING))).cycle(HINGE);
+    }
+
 }

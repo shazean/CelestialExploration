@@ -14,7 +14,7 @@ public class VehicleFlightHandler implements ISpaceFlight {
     ArrayList<Entity> teleportingEntities;
 
     @Override
-    public boolean canSpaceTravel() {
+    public boolean canSpaceTravel(Entity entity) {
         return true;
     }
 

@@ -1,0 +1,31 @@
+{
+  "parent": "celestialexploration:enter_mars",
+  "display": {
+    "icon": {
+      "item": "celestialexploration:venus_sand"
+    },
+    "title": {
+      "translate": "advancements.celestial.enter_venus.title"
+    },
+    "description": {
+      "translate": "advancements.celestial.enter_venus.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "entered_venus": {
+      "trigger": "minecraft:changed_dimension",
+      "conditions": {
+        "to": "celestialexploration:venus"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "entered_venus"
+    ]
+  ]
+}

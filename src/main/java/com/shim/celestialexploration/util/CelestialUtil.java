@@ -1,16 +1,17 @@
 package com.shim.celestialexploration.util;
 
-import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.config.CelestialCommonConfig;
 import com.shim.celestialexploration.registry.DimensionRegistry;
 import com.shim.celestialexploration.registry.FluidRegistry;
+import com.shim.celestialexploration.util.teleportation.AbstractCelestialTeleportData;
+import com.shim.celestialexploration.util.teleportation.CelestialCoordinateTeleport;
 import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
 import net.minecraft.Util;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.Vec2;
@@ -18,6 +19,7 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.fluids.FluidStack;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 public class CelestialUtil {
@@ -39,29 +41,74 @@ public class CelestialUtil {
         dimension.put("Venus", new Vec3(0, 0, 2));
         dimension.put("Overworld", new Vec3(-2, 0, 0));
         dimension.put("Mars", new Vec3(1, 0, -3));
-        dimension.put("Jupiter", new Vec3(1, 0, -3));
-        dimension.put("Saturn", new Vec3(1, 0, -3));
-        dimension.put("Uranus", new Vec3(1, 0, -3));
-        dimension.put("Neptune", new Vec3(1, 0, -3));
+        dimension.put("Jupiter", new Vec3(6, 0, 2));
+        dimension.put("Saturn", new Vec3(-2, 0, 10));
+        dimension.put("Uranus", new Vec3(-15, 0, -3));
+        dimension.put("Neptune", new Vec3(6, 0, -24));
     });
 
-    public static final Map<ResourceKey<Level>, Vec3> DIMENSION_LOCATION = Util.make(new Object2ObjectArrayMap<>(), (dimension) -> {
+    public static final Map<ResourceKey<Level>, Vec3> CE_DIMENSION_LOCATION = Util.make(new Object2ObjectArrayMap<>(), (dimension) -> {
         dimension.put(DimensionRegistry.MERCURY, new Vec3(1, 0, 1));
         dimension.put(DimensionRegistry.VENUS, new Vec3(0, 0, 2));
         dimension.put(Level.OVERWORLD, new Vec3(-2, 0, 0));
         dimension.put(DimensionRegistry.MOON, new Vec3(-2, 0, 0));
         dimension.put(DimensionRegistry.MARS, new Vec3(1, 0, -3));
+        dimension.put(Level.END, new Vec3(12, 0, 12));
     });
 
+    protected static final Map<ResourceKey<Level>, AbstractCelestialTeleportData> DIMENSION_LOCATION = new HashMap<>();
+    protected static final AbstractCelestialTeleportData defaultDimensionLocation = new CelestialCoordinateTeleport(-2, 0);
+
+    public static AbstractCelestialTeleportData getDimensionLocation(ResourceKey<Level> dimension) {
+        return DIMENSION_LOCATION.get(dimension);
+    }
+
+    public static void setDimensionLocation(ResourceKey<Level> dimension, AbstractCelestialTeleportData data) {
+        DIMENSION_LOCATION.put(dimension, data);
+    }
+
+    public static void clearDimensionLocations() {
+        DIMENSION_LOCATION.clear();
+    }
+
+    public static Vec3 getDimensionToSpaceCoordinates(ResourceKey<Level> dimension, ChunkPos pos) {
+        Vec3 coord = getDimensionLocation(dimension).getOutputCoordinates(pos.x, pos.z);
+        if (coord == null) coord = defaultDimensionLocation.getOutputCoordinates(pos.x, pos.z);
+        coord = new Vec3(coord.x * 16, 145.0, coord.z * 16); //convert from chunk to block pos
+        return coord;
+    }
+
+
+    protected static final Map<ResourceKey<Level>, Vec3> PLANET_LOCATIONS = new HashMap<>();
+//    protected static final Vec3 defaultPlanetLocation = new Vec3(-2, 0, 0);
+
+    public static Vec3 getPlanetLocation(ResourceKey<Level> dimension) {
+        return PLANET_LOCATIONS.get(dimension);
+    }
+
+    public static Map<ResourceKey<Level>, Vec3> getPlanetLocations() {
+        return PLANET_LOCATIONS;
+    }
+
+    public static void setPlanetLocation(ResourceKey<Level> dimension, Vec3 data) {
+        PLANET_LOCATIONS.put(dimension, data);
+    }
+
+    public static void clearPlanetLocations() {
+        PLANET_LOCATIONS.clear();
+    }
+
+
     public static Vec3 getPlanetaryChunkCoordinates(ResourceKey<Level> planet) {
-        Vec3 coord = DIMENSION_LOCATION.get(planet);
+        Vec3 coord = getPlanetLocation(planet); //CE_DIMENSION_LOCATION.get(planet);
+//        if (coord == null) coord = CE_DIMENSION_LOCATION.get(Level.OVERWORLD);
         coord = new Vec3(coord.x * getSpaceRatio(), coord.y, coord.z * getSpaceRatio());
         return coord;
     }
 
     @Deprecated
     public static Vec3 getPlanetaryChunkCoordinates(String planet) {
-        Vec3 coord = DIMENSION_LOCATION.get(planet);
+        Vec3 coord = PLANET_LOCATION.get(planet);
         coord = new Vec3(coord.x * getSpaceRatio(), coord.y, coord.z * getSpaceRatio());
         return coord;
     }
@@ -180,6 +227,36 @@ public class CelestialUtil {
         };
     }
 
+    public static int getIdFromDimension(ResourceKey<Level> dimension) {
+        if (dimension.equals(DimensionRegistry.MERCURY)) {
+            return 1;
+        } else if (dimension.equals(DimensionRegistry.VENUS)) {
+            return 2;
+        } else if (dimension.equals(Level.OVERWORLD)) {
+            return 3;
+        } else if (dimension.equals(DimensionRegistry.MOON)) {
+            return 4;
+        } else if (dimension.equals(DimensionRegistry.MARS)) {
+            return 5;
+        } else if (dimension.equals(DimensionRegistry.JUPITER)) {
+            return 6;
+        } else {
+            return 0;
+        }
+    }
+
+    public static ResourceKey<Level> getDimensionFromId(int id) {
+        return switch (id) {
+            case 1 -> DimensionRegistry.MERCURY;
+            case 2 -> DimensionRegistry.VENUS;
+            case 3 -> Level.OVERWORLD;
+            case 4 -> DimensionRegistry.MOON;
+            case 5 -> DimensionRegistry.MARS;
+            case 6 -> DimensionRegistry.JUPITER;
+            default -> null;
+        };
+    }
+
     private static final ArrayList<CelestialBodyDetails> PLANET_DETAILS = Util.make(new ArrayList<>(), (list) -> {
         list.add(new CelestialBodyDetails(new TranslatableComponent("celestialexploration.planet_details.sun_name"), new Vec2(0, 0), new TranslatableComponent("celestialexploration.planet_details.sun_resources")));
         list.add(new CelestialBodyDetails(new TranslatableComponent("celestialexploration.planet_details.mercury_name"), new Vec2((float) getPlanetaryChunkCoordinates(1).x * 16, (float) getPlanetaryChunkCoordinates(1).z * 16), new TranslatableComponent("celestialexploration.planet_details.mercury_resources")));
@@ -195,6 +272,7 @@ public class CelestialUtil {
     public static CelestialBodyDetails getPlanetDetail(int index) {
         return PLANET_DETAILS.get(index);
     }
+
 
     public record CelestialBodyDetails(Component name, Component location, Component resources, Component moons) {
         private static final Component coordinatesString = new TranslatableComponent("celestialexploration.planet_details.location");

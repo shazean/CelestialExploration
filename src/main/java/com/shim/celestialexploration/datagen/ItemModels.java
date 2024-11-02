@@ -89,6 +89,8 @@ public class ItemModels extends ItemModelProvider {
 		self(BlockRegistry.COARSE_MOON_SAND.get());
 		self(BlockRegistry.GLOWING_MOON_SAND.get());
 		self(BlockRegistry.LUNAR_LANTERN.get());
+		self(BlockRegistry.MOON_SAND_PATH.get());
+
 
 		//---- MARS -------------------------------------------------------------------------------
 		//STONE
@@ -158,6 +160,8 @@ public class ItemModels extends ItemModelProvider {
 		self(BlockRegistry.MARS_LANTERN.get());
 		self(BlockRegistry.MARS_SAND.get());
 		self(BlockRegistry.COARSE_MARS_SAND.get());
+		self(BlockRegistry.MARS_SAND_PATH.get());
+
 
 		//---- VENUS -------------------------------------------------------------------------------
 		//STONE
@@ -236,7 +240,9 @@ public class ItemModels extends ItemModelProvider {
 		self(BlockRegistry.SULFURIC_OBSIDIAN.get());
 		self(BlockRegistry.VENUS_LANTERN.get());
 		self(BlockRegistry.GEYSER.get());
-		
+		self(BlockRegistry.VENUS_SAND_PATH.get());
+
+
 		//---- MERCURY -------------------------------------------------------------------------------
 		//STONE
 		self(BlockRegistry.MERCURY_STONE.get());
@@ -604,6 +610,8 @@ public class ItemModels extends ItemModelProvider {
 
 		generatedItem(ItemRegistry.LUNAR_CHEESE.get());
 		generatedItem(ItemRegistry.CHEESE.get());
+		generatedItem(ItemRegistry.SUSPICIOUS_JELLO.get());
+
 
 		//---- MISC -------------------------------------------------------------------------------
 		//BUCKETS
@@ -626,6 +634,7 @@ public class ItemModels extends ItemModelProvider {
 		self(BlockRegistry.SUPER_COMPRESSED_NETHERRACK.get());
 
 		self(BlockRegistry.PLANET_CHART.get());
+		self(BlockRegistry.TAXI_STATION.get());
 
 
 		//ITEMS
@@ -653,8 +662,12 @@ public class ItemModels extends ItemModelProvider {
 		spawnEgg(ItemRegistry.ASTRAL_PIGLIN_SPAWN_EGG.get());
 		spawnEgg(ItemRegistry.FLARE_SPAWN_EGG.get());
 		spawnEgg(ItemRegistry.GUST_SPAWN_EGG.get());
+		spawnEgg(ItemRegistry.GYST_SPAWN_EGG.get());
 		spawnEgg(ItemRegistry.VOIDED_ZOGLIN_SPAWN_EGG.get());
 		spawnEgg(ItemRegistry.ASTRAL_HOGLIN_SPAWN_EGG.get());
+		spawnEgg(ItemRegistry.METEOR_CRAWLER_SPAWN_EGG.get());
+		spawnEgg(ItemRegistry.VOID_CRAWLER_SPAWN_EGG.get());
+		spawnEgg(ItemRegistry.CELESTIAL_CAT_SPAWN_EGG.get());
 
 		this.withExistingParent(name(BlockRegistry.LURKER_HEAD.get()), this.mcLoc("item/template_skull"));
 		this.withExistingParent(name(BlockRegistry.VOIDED_HEAD.get()), this.mcLoc("item/template_skull"));

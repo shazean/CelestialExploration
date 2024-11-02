@@ -19,7 +19,8 @@ public class SpaceSkyHandler implements ISkyRenderHandler {
 //    ResourceLocation SUN_LOCATION = new ResourceLocation(CelestialExploration.MODID, "textures/environment/sun.png");
     //    ResourceLocation VANILLA_SUN_LOCATION = new ResourceLocation("textures/environment/sun.png");
 //    ResourceLocation EARTH_LOCATION = new ResourceLocation(CelestialExploration.MODID, "textures/environment/earth_phases.png");
-    ResourceLocation STAR_LOCATION = new ResourceLocation(CelestialExploration.MODID, "textures/environment/stars.png");
+    ResourceLocation STAR_LOCATION = new ResourceLocation(CelestialExploration.MODID, "textures/environment/outer_space_stars.png");
+    ResourceLocation MILKY_WAY_LOCATION = new ResourceLocation(CelestialExploration.MODID, "textures/environment/milky_way.png");
 
     @Override
     public void render(int ticks, float partialTick, PoseStack poseStack, ClientLevel level, Minecraft minecraft) {
@@ -101,6 +102,7 @@ public class SpaceSkyHandler implements ISkyRenderHandler {
         poseStack.popPose();
 
         renderStars(poseStack, level, partialTick);
+        renderMilkyWay(poseStack, level, partialTick);
         RenderSystem.depthMask(true);
     }
 
@@ -110,6 +112,8 @@ public class SpaceSkyHandler implements ISkyRenderHandler {
 //        float f9 = level.getStarBrightness(partialTick) * 2.0F;
 //        RenderSystem.setShaderColor(f9, f9, f9, f9);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+        RenderSystem.enableBlend();
+        RenderSystem.defaultBlendFunc();
 
         RenderSystem.setShaderTexture(0, STAR_LOCATION);
         Tesselator tesselator = Tesselator.getInstance();
@@ -139,12 +143,89 @@ public class SpaceSkyHandler implements ISkyRenderHandler {
 
             Matrix4f matrix4f = p_109781_.last().pose();
             bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR);
-            bufferbuilder.vertex(matrix4f, -100.0F, -100.0F, -100.0F).uv(0.0F, 0.0F).color(100, 100, 100, 255).endVertex();
-            bufferbuilder.vertex(matrix4f, -100.0F, -100.0F, 100.0F).uv(0.0F, 2.0F).color(100, 100, 100, 255).endVertex();
-            bufferbuilder.vertex(matrix4f, 100.0F, -100.0F, 100.0F).uv(2.0F, 2.0F).color(100, 100, 100, 255).endVertex();
-            bufferbuilder.vertex(matrix4f, 100.0F, -100.0F, -100.0F).uv(2.0F, 0.0F).color(100, 100, 100, 255).endVertex();
+            float scale = 200.0F;
+            int color = 150;
+
+            bufferbuilder.vertex(matrix4f, -scale, -scale, -scale).uv(0.0F, 0.0F).color(color, color, color, 255).endVertex();
+            bufferbuilder.vertex(matrix4f, -scale, -scale, scale).uv(0.0F, 2.0F).color(color, color, color, 255).endVertex();
+            bufferbuilder.vertex(matrix4f, scale, -scale, scale).uv(2.0F, 2.0F).color(color, color, color, 255).endVertex();
+            bufferbuilder.vertex(matrix4f, scale, -scale, -scale).uv(2.0F, 0.0F).color(color, color, color, 255).endVertex();
             tesselator.end();
             p_109781_.popPose();
+        }
+
+        RenderSystem.depthMask(true);
+        RenderSystem.enableTexture();
+        RenderSystem.disableBlend();
+    }
+
+    private void renderMilkyWay(PoseStack poseStack, ClientLevel level, float partialTick) {
+        RenderSystem.depthMask(false);
+        RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
+        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+//        RenderSystem.enableBlend();
+//        RenderSystem.defaultBlendFunc();
+
+        RenderSystem.setShaderTexture(0, MILKY_WAY_LOCATION);
+        Tesselator tesselator = Tesselator.getInstance();
+        BufferBuilder bufferbuilder = tesselator.getBuilder();
+
+        for(int i = 0; i < 9; ++i) {
+            poseStack.pushPose();
+
+            poseStack.mulPose(Vector3f.ZP.rotationDegrees(30.0F));
+//            poseStack.mulPose(Vector3f.XP.rotationDegrees(45.0F));
+
+            switch (i) {
+                case 0: poseStack.mulPose(Vector3f.XP.rotationDegrees(45.0F));
+                case 1: poseStack.mulPose(Vector3f.XP.rotationDegrees(45.0F));
+                case 2: poseStack.mulPose(Vector3f.XP.rotationDegrees(45.0F));
+                case 3: poseStack.mulPose(Vector3f.XP.rotationDegrees(45.0F));
+                case 4: poseStack.mulPose(Vector3f.XP.rotationDegrees(45.0F));
+                case 5: poseStack.mulPose(Vector3f.XP.rotationDegrees(45.0F));
+                case 6: poseStack.mulPose(Vector3f.XP.rotationDegrees(45.0F));
+                case 7: poseStack.mulPose(Vector3f.XP.rotationDegrees(45.0F));
+                case 8: poseStack.mulPose(Vector3f.XP.rotationDegrees(45.0F));
+//
+//
+////                case 0: poseStack.mulPose(Vector3f.XP.rotationDegrees(180.0F));
+//////                case 1: poseStack.mulPose(Vector3f.XP.rotationDegrees(135.0F));
+////                case 2: poseStack.mulPose(Vector3f.XP.rotationDegrees(90.0F));
+////                case 3: poseStack.mulPose(Vector3f.XP.rotationDegrees(45.0F));
+//////                case 4: poseStack.mulPose(Vector3f.XP.rotationDegrees(0.0F));
+//////                case 5: poseStack.mulPose(Vector3f.XP.rotationDegrees(-45.0F));
+//////                case 6: poseStack.mulPose(Vector3f.XP.rotationDegrees(-90.0F));
+//////                case 7: poseStack.mulPose(Vector3f.XP.rotationDegrees(-135.0F));
+////                case 8: poseStack.mulPose(Vector3f.XP.rotationDegrees(-180.0F));
+//
+            }
+
+            float scale = 42.0F;
+            int color = 180;
+            int opacity = 50;
+
+            int k = i;
+//            int l = k % 4;
+            int i1 = i % 8; //k / 4 % 2;
+            float f13 = (float) (i);// / 4.0F;
+            float f14 = (float) (i1) / 8.0F;//2.0F;
+            float f15 = (float) (i + 1);// / 4.0F;
+            float f16 = (float) (i1 + 1) / 8.0F;//2.0F;
+//            bufferbuilder.vertex(matrix4f1, -f12, -100.0F, f12).uv(f15, f16).endVertex();
+//            bufferbuilder.vertex(matrix4f1, f12, -100.0F, f12).uv(f13, f16).endVertex();
+//            bufferbuilder.vertex(matrix4f1, f12, -100.0F, -f12).uv(f13, f14).endVertex();
+//            bufferbuilder.vertex(matrix4f1, -f12, -100.0F, -f12).uv(f15, f14).endVertex();
+
+            float f = 1.0F / 9.0F;
+
+            Matrix4f matrix4f = poseStack.last().pose();
+            bufferbuilder.begin(VertexFormat.Mode.TRIANGLE_FAN, DefaultVertexFormat.POSITION_TEX_COLOR); //DefaultVertexFormat.POSITION_TEX_COLOR);
+            bufferbuilder.vertex(matrix4f, -scale, -100.0F, scale).uv(f15, f16).color(color, color, color, opacity).endVertex();
+            bufferbuilder.vertex(matrix4f, scale, -100.0F, scale).uv(f13, f16).color(color, color, color, opacity).endVertex();
+            bufferbuilder.vertex(matrix4f, scale, -100.0F, -scale).uv(f13, f14).color(color, color, color, opacity).endVertex();
+            bufferbuilder.vertex(matrix4f, -scale, -100.0F, -scale).uv(f15, f14).color(color, color, color, opacity).endVertex();
+            tesselator.end();
+            poseStack.popPose();
         }
 
         RenderSystem.depthMask(true);

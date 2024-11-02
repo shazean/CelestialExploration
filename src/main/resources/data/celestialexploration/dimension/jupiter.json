@@ -16,6 +16,7 @@
     "min_y": -96,
     "height": 512
   },
+  "forge:use_server_seed": true,
   "generator": {
     "type": "minecraft:noise",
     "seed": -538929672,

@@ -1,0 +1,43 @@
+{
+  "parent": "celestialexploration:enter_space",
+  "display": {
+    "icon": {
+      "item": "minecraft:potato"
+    },
+    "title": {
+      "translate": "advancements.celestial.plant_potato.title"
+    },
+    "description": {
+      "translate": "advancements.celestial.plant_potato.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "plant_potato": {
+      "trigger": "minecraft:item_used_on_block",
+      "conditions": {
+        "location": {
+          "dimension": "celestialexploration:mars",
+          "block": {
+            "blocks": [
+              "minecraft:dirt"
+            ]
+          }
+        },
+        "item": {
+          "items": [
+            "minecraft:potato"
+          ]
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "plant_potato"
+    ]
+  ]
+}

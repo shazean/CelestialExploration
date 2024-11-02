@@ -321,8 +321,8 @@ public class Recipes extends RecipeProvider {
 
 		ShapedRecipeBuilder.shaped(BlockRegistry.SOLAR_PANEL.get()).pattern("GGG").pattern("QQQ").pattern("SSS").define('G', Items.GLASS).define('Q', Items.QUARTZ_BLOCK).define('S', ItemRegistry.ALUMINUM_INGOT.get()).group(modGroup()).unlockedBy("steel", has(ItemRegistry.STEEL_INGOT.get())).save(consumer);
 
-		ShapelessRecipeBuilder.shapeless(BlockRegistry.GLOW_STRIP.get()).requires(Items.TORCH).requires(Items.IRON_INGOT).group(modGroup()).unlockedBy("torch", has(Items.TORCH)).save(consumer, "glow_strip_from_iron");
-		ShapelessRecipeBuilder.shapeless(BlockRegistry.GLOW_STRIP.get()).requires(Items.TORCH).requires(ItemRegistry.STEEL_INGOT.get()).group(modGroup()).unlockedBy("torch", has(Items.TORCH)).save(consumer, "glow_strip_from_steel");
+		ShapelessRecipeBuilder.shapeless(BlockRegistry.GLOW_STRIP.get()).requires(Items.TORCH).requires(Items.IRON_NUGGET).group(modGroup()).unlockedBy("torch", has(Items.TORCH)).save(consumer, "glow_strip_from_iron");
+		ShapelessRecipeBuilder.shapeless(BlockRegistry.GLOW_STRIP.get()).requires(Items.TORCH).requires(ItemRegistry.STEEL_NUGGET.get()).group(modGroup()).unlockedBy("torch", has(Items.TORCH)).save(consumer, "glow_strip_from_steel");
 		singleItem(BlockRegistry.GLOW_STRIP.get(), BlockRegistry.HORIZONTAL_GLOW_STRIP.get(), 1, Blocks.TORCH, consumer);
 		singleItem(BlockRegistry.HORIZONTAL_GLOW_STRIP.get(), BlockRegistry.GLOW_STRIP.get(), 1, Blocks.TORCH, consumer);
 
@@ -519,6 +519,7 @@ public class Recipes extends RecipeProvider {
 		ShapelessRecipeBuilder.shapeless(ItemRegistry.SMORES.get()).requires(ItemRegistry.ROASTED_MARSHMALLOW.get()).requires(ItemRegistry.CHOCOLATE.get()).requires(ItemRegistry.CRACKER.get()).requires(ItemRegistry.CRACKER.get()).group(modGroup()).unlockedBy("marshmallow_goo", has(ItemRegistry.MARSHMALLOW_GOO.get())).save(consumer);
 		ShapelessRecipeBuilder.shapeless(ItemRegistry.LUNAR_CHEESE.get()).requires(ItemRegistry.LUNAR_GOO.get()).requires(Items.MILK_BUCKET).group(modGroup()).unlockedBy("lunar_goo", has(ItemRegistry.LUNAR_GOO.get())).save(consumer);
 		ShapelessRecipeBuilder.shapeless(ItemRegistry.CHEESE.get()).requires(Items.MILK_BUCKET).requires(Items.MILK_BUCKET).group(modGroup()).unlockedBy("milk", has(Items.MILK_BUCKET)).save(consumer);
+		ShapelessRecipeBuilder.shapeless(ItemRegistry.SUSPICIOUS_JELLO.get()).requires(TagRegistry.Items.SLIME_DROPS).requires(Items.SUGAR).group("celestialquests").unlockedBy("slime_ball", has(Items.SLIME_BALL)).save(consumer);
 
 		//---- MISC -------------------------------------------------------------------------------
 		ingotAndBlock(Items.COBBLESTONE, BlockRegistry.COMPRESSED_COBBLESTONE.get(), Items.COBBLESTONE, consumer);

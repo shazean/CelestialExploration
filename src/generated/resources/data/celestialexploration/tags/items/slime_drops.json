@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:slime_ball",
+    "celestialexploration:marshmallow_goo",
+    "celestialexploration:lunar_goo"
+  ]
+}

@@ -9,7 +9,6 @@ import net.minecraft.world.level.block.*;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.RegistryObject;
 
 public class BlockStates extends BlockStateProvider {
 
@@ -540,6 +539,11 @@ public class BlockStates extends BlockStateProvider {
 		simpleBlock(BlockRegistry.SUPER_COMPRESSED_NETHERRACK.get());
 
 		simpleBlock(BlockRegistry.BAUXITE_ORE.get());
+
+
+		simpleBlock(BlockRegistry.TAXI_STATION.get());
+
+
 	}
 
 	public void buttonBlock(ButtonBlock block, ResourceLocation texture, ResourceLocation texturePressed) {
@@ -551,6 +555,5 @@ public class BlockStates extends BlockStateProvider {
 	private String name(Block block) {
 		return block.getRegistryName().getPath();
 	}
-
 
 }

@@ -1,0 +1,31 @@
+{
+  "parent": "celestialexploration:enter_mercury",
+  "display": {
+    "icon": {
+      "item": "celestialexploration:jupiter_deepslate"
+    },
+    "title": {
+      "translate": "advancements.celestial.enter_jupiter.title"
+    },
+    "description": {
+      "translate": "advancements.celestial.enter_jupiter.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "entered_jupiter": {
+      "trigger": "minecraft:changed_dimension",
+      "conditions": {
+        "to": "celestialexploration:jupiter"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "entered_jupiter"
+    ]
+  ]
+}

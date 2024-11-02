@@ -1,22 +1,16 @@
 package com.shim.celestialexploration.registry;
 
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.entity.Spaceship;
+import com.shim.celestialexploration.entity.vehicle.Spaceship;
 import com.shim.celestialexploration.entity.vehicle.AbstractMagCart;
 import com.shim.celestialexploration.item.*;
 import com.shim.celestialexploration.item.armor.AdvancedSpaceSuitArmorItem;
 import com.shim.celestialexploration.item.armor.HeavyDutySpaceSuitArmorItem;
 import com.shim.celestialexploration.item.armor.ThermalSpaceSuitArmorItem;
 import com.shim.celestialexploration.item.armor.SpaceSuitArmorItem;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -126,8 +120,12 @@ public class ItemRegistry {
 	public static final RegistryObject<Item> ASTRAL_PIGLIN_SPAWN_EGG = registerItem("astral_piglin_spawn_egg", "Astral Piglin Spawn Egg", () -> new ForgeSpawnEggItem(EntityRegistry.ASTRAL_PIGLIN,0, 0x3c2d62, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
 	public static final RegistryObject<Item> FLARE_SPAWN_EGG = registerItem("flare_spawn_egg", "Flare Spawn Egg", () -> new ForgeSpawnEggItem(EntityRegistry.FLARE,0, 0x3c2d62, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
 	public static final RegistryObject<Item> GUST_SPAWN_EGG = registerItem("gust_spawn_egg", "Gust Spawn Egg", () -> new ForgeSpawnEggItem(EntityRegistry.GUST,0, 0x3c2d62, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> GYST_SPAWN_EGG = registerItem("gyst_spawn_egg", "Gyst Spawn Egg", () -> new ForgeSpawnEggItem(EntityRegistry.GYST,0, 0x3c2d62, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
 	public static final RegistryObject<Item> VOIDED_ZOGLIN_SPAWN_EGG = registerItem("voided_zoglin_spawn_egg", "Voided Zoglin Spawn Egg", () -> new ForgeSpawnEggItem(EntityRegistry.VOIDED_ZOGLIN,0, 0x3c2d62, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
 	public static final RegistryObject<Item> ASTRAL_HOGLIN_SPAWN_EGG = registerItem("astral_hoglin_spawn_egg", "Astral Hoglin Spawn Egg", () -> new ForgeSpawnEggItem(EntityRegistry.ASTRAL_HOGLIN,0, 0x3c2d62, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> METEOR_CRAWLER_SPAWN_EGG = registerItem("meteor_crawler_spawn_egg", "Meteor Crawler Spawn Egg", () -> new ForgeSpawnEggItem(EntityRegistry.METEOR_CRAWLER,0, 0x3c2d62, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> VOID_CRAWLER_SPAWN_EGG = registerItem("void_crawler_spawn_egg", "Void Crawler Spawn Egg", () -> new ForgeSpawnEggItem(EntityRegistry.VOID_CRAWLER,0, 0x3c2d62, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> CELESTIAL_CAT_SPAWN_EGG = registerItem("celestial_cat_spawn_egg", "Celestial Cat Spawn Egg", () -> new ForgeSpawnEggItem(EntityRegistry.CELESTIAL_CAT,0, 0x3c2d62, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
 
 	//---- MOB HEADS -------------------------------------------------------------------------------
 
@@ -162,5 +160,6 @@ public class ItemRegistry {
 	public static final RegistryObject<Item> SMORES = registerFood("smores", "S'mores", 1, 0.3F);
 	public static final RegistryObject<Item> LUNAR_CHEESE = registerFood("lunar_cheese", "Lunar Cheese", 5, 0.65F);
 	public static final RegistryObject<Item> CHEESE = registerFood("cheese", "Cheese", 5, 0.65F);
+	public static final RegistryObject<Item> SUSPICIOUS_JELLO = registerItem("suspicious_jello", "Suspicious Jello", () -> new SuspiciousJelloItem(new Item.Properties().tab(CreativeModeTab.TAB_FOOD).food((new FoodProperties.Builder()).fast().nutrition(1).saturationMod(.2F).alwaysEat().build())));
 
 }

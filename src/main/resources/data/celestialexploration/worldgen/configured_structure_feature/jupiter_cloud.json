@@ -1,0 +1,10 @@
+{
+  "type": "celestialexploration:jupiter_cloud",
+  "config": {
+    "start_pool": "celestialexploration:jupiter_cloud",
+    "size": 1
+  },
+  "biomes": "#celestialexploration:has_structure/jupiter_dungeon_biomes",
+  "adapt_noise": false,
+  "spawn_overrides": {}
+}

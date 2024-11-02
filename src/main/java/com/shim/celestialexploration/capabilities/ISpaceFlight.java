@@ -6,7 +6,7 @@ import net.minecraft.world.entity.Entity;
 import java.util.ArrayList;
 
 public interface ISpaceFlight {
-    boolean canSpaceTravel();
+    boolean canSpaceTravel(Entity entity);
     int getTeleportationCooldown();
     void setTeleportationCooldown(int cooldown);
     void decrementTeleportationCooldown();

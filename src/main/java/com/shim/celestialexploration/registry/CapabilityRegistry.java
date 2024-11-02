@@ -1,12 +1,11 @@
 package com.shim.celestialexploration.registry;
 
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.capabilities.ISpaceFlight;
-import com.shim.celestialexploration.capabilities.LoxTankCapability;
-import com.shim.celestialexploration.capabilities.SpaceFlightCapabilityProvider;
-import com.shim.celestialexploration.entity.Spaceship;
+import com.shim.celestialexploration.capabilities.*;
+import com.shim.celestialexploration.entity.vehicle.Spaceship;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -18,15 +17,17 @@ import net.minecraftforge.event.AttachCapabilitiesEvent;
 
 public class CapabilityRegistry {
 
-    public static final Capability<LoxTankCapability.ILoxTank> LOX_TANK_CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {
-    });
-    public static final Capability<ISpaceFlight> SPACE_FLIGHT_CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {
-    });
+    public static final Capability<LoxTankCapability.ILoxTank> LOX_TANK_CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {});
+    public static final Capability<ISpaceFlight> SPACE_FLIGHT_CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {});
+    public static final Capability<TaxiCapability.ITaxi> TAXI_CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {});
+    public static final Capability<TaxiCapability.ITaxi> VILLAGER_TRAVEL_CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {});
+    public static final Capability<LightTravelCapability.ILightTravel> LIGHT_TRAVEL_CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {});
 
     public static void registerCapabilities(RegisterCapabilitiesEvent eventIn) {
         eventIn.register(LoxTankCapability.ILoxTank.class);
         eventIn.register(ISpaceFlight.class);
-
+        eventIn.register(TaxiCapability.ITaxi.class);
+        eventIn.register(VillagerTravelCapability.ITravel.class);
     }
 
     public static void attachItemCapabilities(AttachCapabilitiesEvent<ItemStack> eventIn) {
@@ -47,6 +48,20 @@ public class CapabilityRegistry {
         if (eventIn.getObject() instanceof Spaceship) {
             if (!eventIn.getObject().getCapability(SPACE_FLIGHT_CAPABILITY).isPresent()) {
                 eventIn.addCapability(new ResourceLocation(CelestialExploration.MODID, "spaceship_flight"), new SpaceFlightCapabilityProvider());
+            }
+        }
+        if (eventIn.getObject() instanceof Player) {
+            if (!eventIn.getObject().getCapability(TaxiCapability.TaxiProvider.TAXI).isPresent()) {
+                eventIn.addCapability(new ResourceLocation(CelestialExploration.MODID, "taxi"), new TaxiCapability.TaxiProvider());
+            }
+            if (!eventIn.getObject().getCapability(LightTravelCapability.LightTravelProvider.LIGHT_TRAVEL).isPresent()) {
+                eventIn.addCapability(new ResourceLocation(CelestialExploration.MODID, "light_travel"), new LightTravelCapability.LightTravelProvider());
+            }
+        }
+
+        if (eventIn.getObject() instanceof Villager) {
+            if (!eventIn.getObject().getCapability(VILLAGER_TRAVEL_CAPABILITY).isPresent()) {
+                eventIn.addCapability(new ResourceLocation(CelestialExploration.MODID, "villager_travel"), new VillagerTravelCapability.VillagerTravelCapabilityProvider());
             }
         }
     }

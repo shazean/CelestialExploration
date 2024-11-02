@@ -26,32 +26,9 @@ public class ModLanguageProvider extends LanguageProvider {
 		for (RegistryObject<? extends Item> item : ItemRegistry.ITEM_LANG_EN_US.keySet()) this.add(item.get(), ItemRegistry.ITEM_LANG_EN_US.get(item));
 		for (RegistryObject<? extends EntityType> entity : EntityRegistry.ENTITY_LANG_EN_US.keySet()) this.add(entity.get(), EntityRegistry.ENTITY_LANG_EN_US.get(entity));
 
-//		//---- SPACESHIP -------------------------------------------------------------------------------
-//		add(EntityRegistry.SPACESHIP.get(), "Spaceship");
-//
-//		//---- MAG LEV -------------------------------------------------------------------------------
-//		add(EntityRegistry.MAGCART.get(), "Magcart");
-//		add(EntityRegistry.CHEST_MAGCART.get(), "Chest Magcart");
-//		add(EntityRegistry.COMMAND_BLOCK_MAGCART.get(), "Command Block Magcart");
-//		add(EntityRegistry.FURNACE_MAGCART.get(), "Furnace Magcart");
-//		add(EntityRegistry.HOPPER_MAGCART.get(), "Hopper Magcart");
-//		add(EntityRegistry.SPAWNER_MAGCART.get(), "Spawner Magcart");
-//		add(EntityRegistry.TNT_MAGCART.get(), "TNT Magcart");
-//
-//		//---- MOBS -------------------------------------------------------------------------------
-//		add(EntityRegistry.LUNAR_SLIME.get(), "Lunar Slime");
-//		add(EntityRegistry.MARS_MALLOW.get(), "Mars Mallow");
-//		add(EntityRegistry.RUST_SLIME.get(), "Rust Slime");
-//		add(EntityRegistry.LURKER.get(), "Lurker");
-//		add(EntityRegistry.VOIDFELLOW.get(), "Space Fellow");
-//		add(EntityRegistry.VOIDED.get(), "Voided");
-//		add(EntityRegistry.SULFUR_CUBE.get(), "Sulfur Cube");
-//		add(EntityRegistry.VOIDED_PIGLIN.get(), "Voided Piglin");
-//		add(EntityRegistry.FLARE.get(), "Flare");
-//		add(EntityRegistry.GUST.get(), "Gust");
-//		add(EntityRegistry.ASTRAL_PIGLIN.get(), "Astral Piglin");
-//		add(EntityRegistry.ASTRAL_HOGLIN.get(), "Astral Hoglin");
-//		add(EntityRegistry.VOIDED_ZOGLIN.get(), "Voided Zoglin");
+		add("entity.minecraft.villager.celestialexploration.astronomer", "Astronomer");
+		add("entity.minecraft.villager.celestialexploration.engineer", "Engineer");
+		add("celestialexploration.villager.unemployed", "Unemployed");
 
 		//---- FLUIDS -------------------------------------------------------------------------------
 		add("fluid.celestialexploration.lox", "Liquid Oxygen");
@@ -93,6 +70,15 @@ public class ModLanguageProvider extends LanguageProvider {
 		add("biome.celestialexploration.venus_sulfur_flats", "Venusian Sulfur Flats");
 		add("biome.celestialexploration.space", "Space");
 
+		//---- DIMENSIONS -------------------------------------------------------------------------------
+		add("dimension.celestialexploration.space", "Outer Space");
+		add("dimension.celestialexploration.mercury", "Mercury");
+		add("dimension.celestialexploration.venus", "Venus");
+		add("dimension.celestialexploration.overworld", "Overworld");
+		add("dimension.celestialexploration.moon", "Moon");
+		add("dimension.celestialexploration.mars", "Mars");
+		add("dimension.celestialexploration.jupiter", "Jupiter");
+
 		//---- MENUS -------------------------------------------------------------------------------
 		add("container.celestialexploration.oxygen_compressor", "Oxygen Compressor");
 		add("container.celestialexploration.workbench", "Workbench");
@@ -113,11 +99,14 @@ public class ModLanguageProvider extends LanguageProvider {
 		add("key.celestialexploration.flight_descent", "Spaceship Descent");
 		add("key.celestialexploration.turn_left", "Spaceship Strafe Left");
 		add("key.celestialexploration.turn_right", "Spaceship Strafe Right");
-//		add("key.celestialexploration.open_shuttle_inventory", "Open Spaceship Inventory");
+		add("key.celestialexploration.open_spaceship_inventory", "Open Spaceship Inventory");
+		add("key.categories.spaceship_light_travel", "Spaceship Light Speed Travel");
 
 		//---- DAMAGE SOURCES -------------------------------------------------------------------------------
-		add("death.attack.celestialexploration.touchedSun", "%1$s discovered the sun is hot");
-		add("death.attack.celestialexploration.coldFloor", "%1$s got cold feet");
+		add("death.attack.celestialexploration.touched_sun", "%1$s discovered the sun is hot");
+		add("death.attack.celestialexploration.cold_floor", "%1$s got cold feet");
+		add("death.attack.celestialexploration.sulfur", "%1$s tried to swim in sulfur");
+		add("death.attack.celestialexploration.metallic_hydrogen", "%1$s drowned in death metal");
 
 		//---- ADVANCEMENTS -------------------------------------------------------------------------------
 		add("advancements.celestial.root.title", "Exploration");
@@ -144,6 +133,20 @@ public class ModLanguageProvider extends LanguageProvider {
 		add("advancements.celestial.place_airlock.description", "Place an airlock door");
 		add("advancements.celestial.kill_mob_in_space.title", "Space Invaders");
 		add("advancements.celestial.kill_mob_in_space.description", "Defeat a mob in outer space");
+
+		//---- SPACESHIP RELATED -------------------------------------------------------------------------------
+		add("celestialexploration.spaceship.travel.mercury", "Travel to Mercury");
+		add("celestialexploration.spaceship.travel.venus", "Travel to Venus");
+		add("celestialexploration.spaceship.travel.overworld", "Travel to the Overworld");
+		add("celestialexploration.spaceship.travel.mars", "Travel to Mars");
+		add("celestialexploration.spaceship.travel.jupiter", "Travel to Jupiter");
+		add("celestialexploration.spaceship.travel.message_1", "Press ");
+		add("celestialexploration.spaceship.travel.message_2", " for light speed travel");
+		add("celestialexploration.spaceship.travel.cooldown", "Light speed travel cooldown: ");
+
+		add("celestialexploration.spaceship.tab.inventory", "Inventory");
+		add("celestialexploration.spaceship.tab.light_travel", "Light Speed Travel");
+		add("celestialexploration.spaceship.tab.light_travel_hint", "Access this feature when in space");
 
 		//---- RECIPE-RELATED -------------------------------------------------------------------------------
 		add("recipe.celestialexploration.workbench.smelting", "Workbench Smelting");

@@ -80,6 +80,9 @@ public class ModItemTags extends ItemTagsProvider {
 
 		this.copy(TagRegistry.Blocks.REGOLITH, TagRegistry.Items.REGOLITH);
 		this.copy(TagRegistry.Blocks.MAG_RAIL, TagRegistry.Items.MAG_RAIL);
+
+		tag(TagRegistry.Items.SLIME_DROPS).add(Items.SLIME_BALL).add(ItemRegistry.MARSHMALLOW_GOO.get()).add(ItemRegistry.LUNAR_GOO.get());
+
 	}
 
 	@Override

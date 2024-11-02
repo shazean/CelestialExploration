@@ -10,20 +10,15 @@ import net.minecraft.world.level.levelgen.GenerationStep;
 
 public class JupiterBiomes extends CelestialBiomes {
 
-    public static Biome desert() {
+    public static Biome ether() {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
 
-        generalMonsters(spawnBuilder, 100, 100, 100);
+//        biomeBuilder.addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, CelestialFeaturePlacements.JUPITER_CLOUD);
 
-        return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, -0.75F, 0F, celestialBody.JUPITER.skyColor, celestialBody.JUPITER.skyFogColor, celestialBody.JUPITER.waterColor, celestialBody.JUPITER.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
-    }
 
-    public static Biome craters() {
-        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
-        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
-
-        generalMonsters(spawnBuilder, 100, 100, 100);
+        generalMonsters(spawnBuilder, 0, 100, 100);
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.GYST.get(), 30, 1, 1)).build();
 
         return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, -0.75F, 0F, celestialBody.JUPITER.skyColor, celestialBody.JUPITER.skyFogColor, celestialBody.JUPITER.waterColor, celestialBody.JUPITER.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
     }

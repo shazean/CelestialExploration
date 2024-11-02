@@ -3,6 +3,7 @@ package com.shim.celestialexploration.datagen;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.registry.BlockRegistry;
 import com.shim.celestialexploration.registry.FluidRegistry;
+import com.shim.celestialexploration.registry.TagRegistry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.FluidTagsProvider;
 import net.minecraft.tags.BlockTags;
@@ -18,11 +19,11 @@ public class ModFluidTags extends FluidTagsProvider {
 
     @Override
     protected void addTags() {
-        tag(FluidRegistry.SULFUR_TAG)
+        tag(TagRegistry.Fluids.SULFUR)
                 .add(FluidRegistry.SULFUR.get())
                 .add(FluidRegistry.SULFUR_FLOWING.get());
 
-        tag(FluidRegistry.MOLTEN_METAL_TAG)
+        tag(TagRegistry.Fluids.MOLTEN_METAL)
                 .add(FluidRegistry.MOLTEN_IRON.get())
                 .add(FluidRegistry.MOLTEN_IRON_FLOWING.get())
                 .add(FluidRegistry.MOLTEN_STEEL.get())

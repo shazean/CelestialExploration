@@ -33,7 +33,7 @@ public class BiomeRegistry {
 
     //---- VENUS -------------------------------------------------------------------------------
     public static final RegistryObject<Biome> VENUS_DESERT = BIOMES.register("venus_desert", VenusBiomes::desert);
-    public static final RegistryObject<Biome> VENUS_SULFUR_FLATS = BIOMES.register("venus_flats", VenusBiomes::plains);
+    public static final RegistryObject<Biome> VENUS_SULFUR_FLATS = BIOMES.register("venus_sulfur_flats", VenusBiomes::plains);
     public static final RegistryObject<Biome> VENUS_LOWER_PLAINS = BIOMES.register("venus_lower_plains", VenusBiomes::plains);
     public static final RegistryObject<Biome> VENUS_PLAINS = BIOMES.register("venus_plains", VenusBiomes::plains);
     public static final RegistryObject<Biome> SULFUR_OCEAN = BIOMES.register("sulfur_ocean", VenusBiomes::ocean);
@@ -50,9 +50,9 @@ public class BiomeRegistry {
     public static final RegistryObject<Biome> MERCURY_RIDGES = BIOMES.register("mercury_ridges", MercuryBiomes::ridges);
 
     //---- JUPITER -------------------------------------------------------------------------------
-    public static final RegistryObject<Biome> JUPITER_GREAT_STORM = BIOMES.register("jupiter_great_storm", JupiterBiomes::craters);
-    public static final RegistryObject<Biome> JUPITER_LESSER_STORM = BIOMES.register("jupiter_lesser_storm", JupiterBiomes::craters);
-    public static final RegistryObject<Biome> JUPITER_ETHER = BIOMES.register("jupiter_ether", JupiterBiomes::desert);
+    public static final RegistryObject<Biome> JUPITER_GREAT_STORM = BIOMES.register("jupiter_great_storm", JupiterBiomes::ether);
+    public static final RegistryObject<Biome> JUPITER_LESSER_STORM = BIOMES.register("jupiter_lesser_storm", JupiterBiomes::ether);
+    public static final RegistryObject<Biome> JUPITER_ETHER = BIOMES.register("jupiter_ether", JupiterBiomes::ether);
 
 
 }

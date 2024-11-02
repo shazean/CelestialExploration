@@ -4,7 +4,9 @@ import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
 import com.shim.celestialexploration.entity.vehicle.MagCartChest;
 import com.shim.celestialexploration.registry.BlockRegistry;
+import com.shim.celestialexploration.registry.CELootTables;
 import com.shim.celestialexploration.registry.CelestialStructurePieceType;
+import com.shim.celestialexploration.registry.EntityRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -252,11 +254,11 @@ public class ResearchTunnelPieces {
                     this.maybePlaceCobWeb(p_192030_, p_192034_, p_192033_, 0.05F, 0, 2, k1 + 2);
                     this.maybePlaceCobWeb(p_192030_, p_192034_, p_192033_, 0.05F, 2, 2, k1 + 2);
                     if (p_192033_.nextInt(100) == 0) {
-                        this.createChest(p_192030_, p_192034_, p_192033_, 2, 0, k1 - 1, BuiltInLootTables.ABANDONED_MINESHAFT); //TODO
+                        this.createChest(p_192030_, p_192034_, p_192033_, 2, 0, k1 - 1, CELootTables.RESEARCH_TUNNEL);
                     }
 
                     if (p_192033_.nextInt(100) == 0) {
-                        this.createChest(p_192030_, p_192034_, p_192033_, 0, 0, k1 + 1, BuiltInLootTables.ABANDONED_MINESHAFT);
+                        this.createChest(p_192030_, p_192034_, p_192033_, 0, 0, k1 + 1, CELootTables.RESEARCH_TUNNEL);
                     }
 
                     if (this.spiderCorridor && !this.hasPlacedSpider) {
@@ -268,7 +270,7 @@ public class ResearchTunnelPieces {
                             p_192030_.setBlock(blockpos, Blocks.SPAWNER.defaultBlockState(), 2);
                             BlockEntity blockentity = p_192030_.getBlockEntity(blockpos);
                             if (blockentity instanceof SpawnerBlockEntity) {
-                                ((SpawnerBlockEntity)blockentity).getSpawner().setEntityId(EntityType.CAVE_SPIDER); //TODO
+                                ((SpawnerBlockEntity)blockentity).getSpawner().setEntityId(EntityRegistry.VOID_CRAWLER.get());
                             }
                         }
                     }

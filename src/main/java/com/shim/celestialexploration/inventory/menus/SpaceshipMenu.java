@@ -1,16 +1,30 @@
 package com.shim.celestialexploration.inventory.menus;
 
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.entity.Spaceship;
+import com.shim.celestialexploration.capabilities.ISpaceFlight;
+import com.shim.celestialexploration.capabilities.LightTravelCapability;
+import com.shim.celestialexploration.entity.vehicle.Spaceship;
 import com.shim.celestialexploration.inventory.OxygenTankSlot;
+import com.shim.celestialexploration.packets.CelestialPacketHandler;
+import com.shim.celestialexploration.packets.DoLightTravelPacket;
+import com.shim.celestialexploration.packets.ServerResetLightTravelPacket;
+import com.shim.celestialexploration.packets.TaxiDestinationPacket;
+import com.shim.celestialexploration.registry.CapabilityRegistry;
+import com.shim.celestialexploration.registry.DimensionRegistry;
 import com.shim.celestialexploration.registry.MenuRegistry;
+import com.shim.celestialexploration.util.CelestialUtil;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
@@ -18,6 +32,8 @@ import net.minecraftforge.items.SlotItemHandler;
 public class SpaceshipMenu extends AbstractContainerMenu {
     private final Spaceship entity;
     private final Level level;
+    protected Minecraft minecraft;
+
 
     public SpaceshipMenu(int containerId, Inventory inventory, FriendlyByteBuf friendlyByteBuf) {
         this(containerId, inventory, inventory.player.level.getEntity(friendlyByteBuf.readInt()));
@@ -34,15 +50,15 @@ public class SpaceshipMenu extends AbstractContainerMenu {
 
         this.entity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(handler -> {
             //fuel slots
-            this.addSlot(new OxygenTankSlot(handler, 0, 26, 18));
-            this.addSlot(new OxygenTankSlot(handler, 1, 62, 18));
-            this.addSlot(new OxygenTankSlot(handler, 2, 98, 18));
-            this.addSlot(new OxygenTankSlot(handler, 3, 134, 18));
+            this.addSlot(new OxygenTankSlot(handler, 0, 26, 16));
+            this.addSlot(new OxygenTankSlot(handler, 1, 62, 16));
+            this.addSlot(new OxygenTankSlot(handler, 2, 98, 16));
+            this.addSlot(new OxygenTankSlot(handler, 3, 134, 16));
 
             //spaceship storage
-            for (int i = 0; i < 3; ++i) {
+            for (int i = 0; i < 2; ++i) {
                 for (int l = 0; l < 9; ++l) {
-                    this.addSlot(new SlotItemHandler(handler, l + i * 9 + 4, 8 + l * 18, 50 + i * 18));
+                    this.addSlot(new SlotItemHandler(handler, l + i * 9 + 4, 8 + l * 18, 50 - 8 + 4 + i * 18));
                 }
             }
         });
@@ -100,18 +116,60 @@ public class SpaceshipMenu extends AbstractContainerMenu {
     private void addPlayerInventory(Inventory playerInventory) {
         for (int i = 0; i < 3; ++i) {
             for (int l = 0; l < 9; ++l) {
-                this.addSlot(new Slot(playerInventory, l + i * 9 + 9, 8 + l * 18, 84 + 34 + i * 18)); //8 + l * 18, 86 + l * 18
+                this.addSlot(new Slot(playerInventory, l + i * 9 + 9, 8 + l * 18, 84 + 34 - 16 - 8 + i * 18)); //8 + l * 18, 86 + l * 18
             }
         }
     }
 
     private void addPlayerHotbar(Inventory playerInventory) {
         for (int i = 0; i < 9; ++i) {
-            this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 142 + 34));
+            this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 142 + 34 - 16 - 8));
         }
     }
 
-    public void setCooldown() {
-        entity.setInventoryCooldown(10);
+    public boolean lightTravelAllowed() {
+        return this.entity.getPassengers().size() >= 1 && this.entity.level.dimension().equals(DimensionRegistry.SPACE);
     }
+
+    public void doLightTravel(ResourceKey<Level> dimension, Player player) {
+        if (lightTravelAllowed()) {
+            ChunkPos chunkPos = new ChunkPos((int) CelestialUtil.getPlanetaryChunkCoordinates(dimension).x(), (int) CelestialUtil.getPlanetaryChunkCoordinates(dimension).z());
+            BlockPos pos = chunkPos.getMiddleBlockPosition(0);
+
+            int secondPassenger = (this.entity.getPassengers().size() > 1) ? this.entity.getPassengers().get(1).getId() : -1;
+            CelestialPacketHandler.INSTANCE.sendToServer(new DoLightTravelPacket(this.entity.getId(), this.entity.getPassengers().get(0).getId(), secondPassenger, pos));
+
+            if (this.entity.getFirstPassenger() == player) {
+//                LightTravelCapability.ILightTravel travelCap = CelestialExploration.getCapability(player, CapabilityRegistry.LIGHT_TRAVEL_CAPABILITY);
+
+//                if (travelCap != null) {
+//                    if (dimension.equals(DimensionRegistry.MERCURY))
+//                        travelCap.getMercuryCooldown().resetCooldown();
+//                    if (dimension.equals(DimensionRegistry.VENUS))
+//                        travelCap.getVenusCooldown().resetCooldown();
+//                    if (dimension.equals(Level.OVERWORLD))
+//                        travelCap.getOverworldCooldown().resetCooldown();
+//                    if (dimension.equals(DimensionRegistry.MARS))
+//                        travelCap.getMarsCooldown().resetCooldown();
+//                    if (dimension.equals(DimensionRegistry.JUPITER))
+//                        travelCap.getJupiterCooldown().resetCooldown();
+//                }
+
+                CelestialPacketHandler.INSTANCE.sendToServer(new ServerResetLightTravelPacket(this.entity.getFirstPassenger().getId(), dimension));
+
+            }
+        }
+    }
+
+//    public Player interactingPlayer() {
+//        return this.getMinecraft().player;
+//    }
+//
+//    public LightTravelCapability.ILightTravel getPlayerLightTravel() {
+//        Player player = interactingPlayer();
+//
+//        return CelestialExploration.getCapability(player, CapabilityRegistry.LIGHT_TRAVEL_CAPABILITY);
+//
+//    }
+
 }

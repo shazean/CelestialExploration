@@ -4,14 +4,9 @@ import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.blocks.CelestialSkullRenderer;
 import com.shim.celestialexploration.capabilities.LoxTankCapability;
 import com.shim.celestialexploration.entity.renderer.*;
-import com.shim.celestialexploration.inventory.screens.OxygenCompressorScreen;
-import com.shim.celestialexploration.inventory.screens.PlanetChartScreen;
-import com.shim.celestialexploration.inventory.screens.SpaceshipScreen;
-import com.shim.celestialexploration.inventory.screens.WorkbenchScreen;
-import com.shim.celestialexploration.item.armor.*;
+import com.shim.celestialexploration.inventory.screens.*;
 import com.shim.celestialexploration.registry.*;
 import com.shim.celestialexploration.world.renderer.DimensionRenderers;
-import mod.azure.azurelib.renderer.GeoArmorRenderer;
 import net.minecraft.client.RecipeBookCategories;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.model.SkullModel;
@@ -20,7 +15,6 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.api.distmarker.Dist;
@@ -129,6 +123,7 @@ public class ModEventClientBusEvents {
         EntityRenderers.register(EntityRegistry.MARS_MALLOW.get(), MarsMallowRenderer::new);
         EntityRenderers.register(EntityRegistry.LURKER.get(), LurkerRenderer::new);
         EntityRenderers.register(EntityRegistry.SPACESHIP.get(), SpaceshipRenderer::new);
+        EntityRenderers.register(EntityRegistry.SPACE_TAXI.get(), SpaceTaxiRenderer::new);
         EntityRenderers.register(EntityRegistry.VOIDFELLOW.get(), VoidFellowRenderer::new);
         EntityRenderers.register(EntityRegistry.MAGCART.get(), (context) -> new MagCartRenderer<>(context, CelestialModelLayers.MAGCART));
         EntityRenderers.register(EntityRegistry.CHEST_MAGCART.get(), (context) -> new MagCartRenderer<>(context, CelestialModelLayers.CHEST_MAGCART));
@@ -142,14 +137,20 @@ public class ModEventClientBusEvents {
         EntityRenderers.register(EntityRegistry.VOIDED_PIGLIN.get(), VoidedPiglinRenderer::new);
         EntityRenderers.register(EntityRegistry.FLARE.get(), FlareRenderer::new);
         EntityRenderers.register(EntityRegistry.GUST.get(), GustRenderer::new);
+        EntityRenderers.register(EntityRegistry.GYST.get(), GystRenderer::new);
         EntityRenderers.register(EntityRegistry.ASTRAL_PIGLIN.get(), AstralPiglinRenderer::new);
         EntityRenderers.register(EntityRegistry.ASTRAL_HOGLIN.get(), AstralHoglinRenderer::new);
         EntityRenderers.register(EntityRegistry.VOIDED_ZOGLIN.get(), VoidedZoglinRenderer::new);
+        EntityRenderers.register(EntityRegistry.METEOR_CRAWLER.get(), MeteorCrawlerRenderer::new);
+        EntityRenderers.register(EntityRegistry.VOID_CRAWLER.get(), VoidCrawlerRenderer::new);
+        EntityRenderers.register(EntityRegistry.CELESTIAL_CAT.get(), CelestialCatRenderer::new);
 
         MenuScreens.register(MenuRegistry.OXYGEN_COMPRESSOR_MENU.get(), OxygenCompressorScreen::new);
         MenuScreens.register(MenuRegistry.PLANET_CHART_MENU.get(), PlanetChartScreen::new);
         MenuScreens.register(MenuRegistry.SPACESHIP_MENU.get(), SpaceshipScreen::new);
         MenuScreens.register(MenuRegistry.WORKBENCH_MENU.get(), WorkbenchScreen::new);
+        MenuScreens.register(MenuRegistry.SPACE_TAXI_MENU.get(), SpaceTaxiScreen::new);
+        MenuScreens.register(MenuRegistry.TAXI_STATION_MENU.get(), TaxiStationScreen::new);
 
         OverlayRegistry.registerOverlay(event);
 

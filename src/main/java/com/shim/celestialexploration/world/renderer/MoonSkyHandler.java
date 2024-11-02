@@ -72,6 +72,7 @@ public class MoonSkyHandler implements ISkyRenderHandler {
         RenderSystem.blendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
 
         poseStack.scale(0.5F, 0.5F, 0.5F);
+
         poseStack.pushPose();
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         poseStack.mulPose(Vector3f.YP.rotationDegrees(-90.0F));

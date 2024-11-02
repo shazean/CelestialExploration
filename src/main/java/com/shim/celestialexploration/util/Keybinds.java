@@ -12,6 +12,7 @@ public class Keybinds {
     public static final KeyMapping TURN_LEFT_KEY = keymap("turn_left", GLFW.GLFW_KEY_A, "key.categories.spaceship_controls");
     public static final KeyMapping TURN_RIGHT_KEY = keymap("turn_right", GLFW.GLFW_KEY_D, "key.categories.spaceship_controls");
     public static final KeyMapping OPEN_SPACESHIP_INVENTORY = keymap("open_spaceship_inventory", GLFW.GLFW_KEY_I, "key.categories.spaceship_inventory");
+    public static final KeyMapping SPACESHIP_LIGHT_TRAVEL = keymap("spaceship_light_travel", GLFW.GLFW_KEY_T, "key.categories.spaceship_light_travel");
 
     private static KeyMapping keymap(String name, int defaultMapping, String category)
     {

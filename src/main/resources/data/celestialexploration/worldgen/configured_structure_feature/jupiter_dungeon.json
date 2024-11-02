@@ -1,8 +1,8 @@
 {
   "type": "celestialexploration:jupiter_dungeon",
   "config": {
-    "start_pool": "celestialexploration:jupiter_dungeon_start",
-    "size": 4
+    "start_pool": "celestialexploration:jupiter_dungeon/jupiter_dungeon_start",
+    "size": 15
   },
   "biomes": "#celestialexploration:has_structure/jupiter_dungeon_biomes",
   "adapt_noise": false,
@@ -14,7 +14,7 @@
           "type": "minecraft:skeleton",
           "weight": 50,
           "minCount": 0,
-          "maxCount": 2
+          "maxCount": 5
         }
       ]
     }

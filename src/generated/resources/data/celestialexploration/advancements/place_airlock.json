@@ -1,0 +1,40 @@
+{
+  "parent": "celestialexploration:obtain_spaceship",
+  "display": {
+    "icon": {
+      "item": "celestialexploration:airlock_door"
+    },
+    "title": {
+      "translate": "advancements.celestial.place_airlock.title"
+    },
+    "description": {
+      "translate": "advancements.celestial.place_airlock.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "airlock_door": {
+      "trigger": "minecraft:placed_block",
+      "conditions": {
+        "block": "celestialexploration:airlock_door"
+      }
+    },
+    "airlock_trapdoor": {
+      "trigger": "minecraft:placed_block",
+      "conditions": {
+        "block": "celestialexploration:airlock_trapdoor"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "airlock_door"
+    ],
+    [
+      "airlock_trapdoor"
+    ]
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "type": "celestialexploration:mercury_colony",
+  "config": {
+    "start_pool": "celestialexploration:mercury_colony/start_pool",
+    "size": 5
+  },
+  "biomes": "#celestialexploration:has_structure/mercury_colony_biomes",
+  "adapt_noise": true,
+  "spawn_overrides": {
+  }
+}

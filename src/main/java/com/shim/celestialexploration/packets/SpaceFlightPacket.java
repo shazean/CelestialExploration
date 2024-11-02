@@ -2,7 +2,6 @@ package com.shim.celestialexploration.packets;
 
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.capabilities.ISpaceFlight;
-import com.shim.celestialexploration.entity.Spaceship;
 import com.shim.celestialexploration.registry.CapabilityRegistry;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;

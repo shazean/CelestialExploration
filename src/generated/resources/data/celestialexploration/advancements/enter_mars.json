@@ -1,0 +1,31 @@
+{
+  "parent": "celestialexploration:root",
+  "display": {
+    "icon": {
+      "item": "celestialexploration:mars_sand"
+    },
+    "title": {
+      "translate": "advancements.celestial.enter_mars.title"
+    },
+    "description": {
+      "translate": "advancements.celestial.enter_mars.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "entered_moon": {
+      "trigger": "minecraft:changed_dimension",
+      "conditions": {
+        "to": "celestialexploration:mars"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "entered_moon"
+    ]
+  ]
+}

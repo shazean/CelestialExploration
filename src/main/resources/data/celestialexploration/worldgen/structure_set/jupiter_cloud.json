@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "celestialexploration:jupiter_cloud",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 29312580,
+    "spacing": 18,
+    "separation": 2,
+    "type": "minecraft:random_spread"
+  }
+}

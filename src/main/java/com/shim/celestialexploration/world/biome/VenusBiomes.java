@@ -17,6 +17,8 @@ public class VenusBiomes extends CelestialBiomes {
 
         CelestialBiomes.addCarversAndLakes(biomeBuilder);
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.DISK_VENUS_SAND);
+//        biomeBuilder.addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, GeyserPlacement.GEYSER);
+
         addVenusOres(biomeBuilder);
 
         generalMonsters(spawnBuilder, 0, 20, 0);
@@ -31,8 +33,7 @@ public class VenusBiomes extends CelestialBiomes {
 
         CelestialBiomes.addCarversAndLakes(biomeBuilder);
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.DISK_VENUS_SAND);
-//        biomeBuilder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, CelestialFeaturePlacements.GEYSER);
-//        biomeBuilder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, CelestialFeaturePlacements.GEYSER_TWO);
+//        biomeBuilder.addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, GeyserPlacement.GEYSER);
 
         addVenusOres(biomeBuilder);
 
@@ -52,6 +53,7 @@ public class VenusBiomes extends CelestialBiomes {
         biomeBuilder.addCarver(GenerationStep.Carving.AIR, Carvers.CAVE);
         biomeBuilder.addCarver(GenerationStep.Carving.AIR, Carvers.CAVE_EXTRA_UNDERGROUND);
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.DISK_VENUS_SAND);
+//        biomeBuilder.addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, GeyserPlacement.GEYSER);
         addVenusOres(biomeBuilder);
 
         spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.SULFUR_CUBE.get(), 100, 2, 5))

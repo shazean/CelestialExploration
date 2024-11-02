@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "celestialexploration:mercury_colony",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 23922831,
+    "spacing": 30,
+    "separation": 12,
+    "type": "minecraft:random_spread"
+  }
+}

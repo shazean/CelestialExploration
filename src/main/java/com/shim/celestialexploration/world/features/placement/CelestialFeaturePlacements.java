@@ -4,6 +4,7 @@ import com.shim.celestialexploration.world.features.CelestialFeatures;
 import com.shim.celestialexploration.world.features.CelestialOreFeatures;
 import com.shim.celestialexploration.world.features.placement.CelestialOrePlacement;
 import net.minecraft.core.Holder;
+import net.minecraft.data.worldgen.features.EndFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.placement.*;
@@ -51,6 +52,10 @@ public class CelestialFeaturePlacements {
     public static final Holder<PlacedFeature> MERCURY_SULFUR_ORE = PlacementUtils.register("mercury_sulfur_ore", CelestialOreFeatures.MERCURY_SULFUR_ORE, CelestialOrePlacement.commonOrePlacement(10, HeightRangePlacement.triangle(VerticalAnchor.absolute(-24), VerticalAnchor.absolute(56))));
     public static final Holder<PlacedFeature> MERCURY_DIAMOND_ORE = PlacementUtils.register("mercury_diamond_ore", CelestialOreFeatures.MERCURY_DIAMOND_ORE, CelestialOrePlacement.commonOrePlacement(7, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-16), VerticalAnchor.aboveBottom(16))));
 
-//    public static final Holder<PlacedFeature> GEYSER = PlacementUtils.register("geyser", CelestialFeatures.GEYSER, InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome());
+
+
+//    public static final Holder<PlacedFeature> JUPITER_CLOUD = PlacementUtils.register("jupiter_cloud", CelestialFeatures.JUPITER_CLOUD, RarityFilter.onAverageOnceEvery(14), PlacementUtils.countExtra(1, 0.25F, 1), InSquarePlacement.spread(), HeightRangePlacement.uniform(VerticalAnchor.absolute(55), VerticalAnchor.absolute(70)), BiomeFilter.biome());
+//    public static final Holder<PlacedFeature> END_ISLAND_DECORATED = PlacementUtils.register("end_island_decorated", EndFeatures.END_ISLAND, RarityFilter.onAverageOnceEvery(14), PlacementUtils.countExtra(1, 0.25F, 1), InSquarePlacement.spread(), HeightRangePlacement.uniform(VerticalAnchor.absolute(55), VerticalAnchor.absolute(70)), BiomeFilter.biome());
+
 
 }
