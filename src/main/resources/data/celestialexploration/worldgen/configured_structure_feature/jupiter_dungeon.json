@@ -15,6 +15,18 @@
           "weight": 50,
           "minCount": 0,
           "maxCount": 5
+        },
+        {
+          "type": "celestialexploration:astral_piglin",
+          "weight": 15,
+          "minCount": 0,
+          "maxCount": 1
+        },
+        {
+          "type": "celestialexploration:cyborg_piglin",
+          "weight": 25,
+          "minCount": 0,
+          "maxCount": 1
         }
       ]
     }

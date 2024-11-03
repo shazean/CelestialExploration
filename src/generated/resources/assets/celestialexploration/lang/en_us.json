@@ -512,6 +512,7 @@
   "entity.celestialexploration.celestial_cat": "Celestial Cat",
   "entity.celestialexploration.chest_magcart": "Chest Magcart",
   "entity.celestialexploration.command_block_magcart": "Command Block Magcart",
+  "entity.celestialexploration.cyborg_piglin": "Cyborg Piglin",
   "entity.celestialexploration.flare": "Flare",
   "entity.celestialexploration.furnace_magcart": "Furnace Magcart",
   "entity.celestialexploration.gust": "Gust",
@@ -569,6 +570,7 @@
   "item.celestialexploration.command_block_magcart": "Command Block Magcart",
   "item.celestialexploration.cracker": "Cracker",
   "item.celestialexploration.cyan_spaceship": "Cyan Spaceship",
+  "item.celestialexploration.cyborg_piglin_spawn_egg": "Cyborg Piglin Spawn Egg",
   "item.celestialexploration.flare_rod": "Flare Rod",
   "item.celestialexploration.flare_spawn_egg": "Flare Spawn Egg",
   "item.celestialexploration.furnace_magcart": "Furnace Magcart",
@@ -646,6 +648,5 @@
   "key.celestialexploration.turn_left": "Spaceship Strafe Left",
   "key.celestialexploration.turn_right": "Spaceship Strafe Right",
   "recipe.celestialexploration.workbench.crafting": "Workbench Crafting",
-  "recipe.celestialexploration.workbench.smelting": "Workbench Smelting",
-  "container.celestialexploration.taxi_station": "Taxi Station"
+  "recipe.celestialexploration.workbench.smelting": "Workbench Smelting"
 }

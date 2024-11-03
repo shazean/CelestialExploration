@@ -660,6 +660,7 @@ public class ItemModels extends ItemModelProvider {
 		spawnEgg(ItemRegistry.SULFUR_CUBE_SPAWN_EGG.get());
 		spawnEgg(ItemRegistry.VOIDED_PIGLIN_SPAWN_EGG.get());
 		spawnEgg(ItemRegistry.ASTRAL_PIGLIN_SPAWN_EGG.get());
+		spawnEgg(ItemRegistry.CYBORG_PIGLIN_SPAWN_EGG.get());
 		spawnEgg(ItemRegistry.FLARE_SPAWN_EGG.get());
 		spawnEgg(ItemRegistry.GUST_SPAWN_EGG.get());
 		spawnEgg(ItemRegistry.GYST_SPAWN_EGG.get());

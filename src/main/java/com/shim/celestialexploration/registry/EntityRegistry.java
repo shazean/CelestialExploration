@@ -4,6 +4,7 @@ import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.entity.CelestialCat;
 import com.shim.celestialexploration.entity.mob.*;
 import com.shim.celestialexploration.entity.mob.piglins.AstralPiglin;
+import com.shim.celestialexploration.entity.mob.piglins.CyborgPiglin;
 import com.shim.celestialexploration.entity.mob.piglins.VoidedPiglin;
 import com.shim.celestialexploration.entity.mob.slimes.*;
 import com.shim.celestialexploration.entity.vehicle.*;
@@ -66,6 +67,9 @@ public class EntityRegistry {
 
     public static final RegistryObject<EntityType<AstralPiglin>> ASTRAL_PIGLIN = registerEntityType("astral_piglin", "Astral Piglin", () -> EntityType.Builder.of(AstralPiglin::new, MobCategory.MONSTER)
             .sized(0.6F, 1.95F).clientTrackingRange(8).fireImmune().build(new ResourceLocation(CelestialExploration.MODID, "astral_piglin").toString()));
+
+    public static final RegistryObject<EntityType<CyborgPiglin>> CYBORG_PIGLIN = registerEntityType("cyborg_piglin", "Cyborg Piglin", () -> EntityType.Builder.of(CyborgPiglin::new, MobCategory.MONSTER)
+            .sized(0.6F, 1.95F).clientTrackingRange(8).fireImmune().build(new ResourceLocation(CelestialExploration.MODID, "cyborg_piglin").toString()));
 
     public static final RegistryObject<EntityType<Flare>> FLARE = registerEntityType("flare", "Flare", () -> EntityType.Builder.of(Flare::new, MobCategory.MONSTER)
             .sized(0.6F, 1.8F).clientTrackingRange(8).fireImmune().build(new ResourceLocation(CelestialExploration.MODID, "flare").toString()));

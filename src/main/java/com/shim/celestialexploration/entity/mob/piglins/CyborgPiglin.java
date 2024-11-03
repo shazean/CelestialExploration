@@ -19,8 +19,8 @@ import net.minecraft.world.level.LevelAccessor;
 
 import java.util.Random;
 
-public class AstralPiglin extends Piglin {
-    public AstralPiglin(EntityType<? extends AbstractPiglin> p_34683_, Level p_34684_) {
+public class CyborgPiglin extends Piglin {
+    public CyborgPiglin(EntityType<? extends AbstractPiglin> p_34683_, Level p_34684_) {
         super(p_34683_, p_34684_);
     }
 
@@ -29,15 +29,11 @@ public class AstralPiglin extends Piglin {
     }
 
     @Override
-    protected void finishConversion(ServerLevel p_34663_) {
-        ZombifiedPiglin zombifiedpiglin = this.convertTo(EntityRegistry.VOIDED_PIGLIN.get(), true);
-        if (zombifiedpiglin != null) {
-            zombifiedpiglin.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 200, 0));
-            net.minecraftforge.event.ForgeEventFactory.onLivingConvert(this, zombifiedpiglin);
-        }
+    public boolean isConverting() {
+        return false;
     }
 
-    public static boolean checkAstralPiglinSpawnRules(EntityType<AstralPiglin> entityType, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, Random rand) {
+    public static boolean checkCyborgPiglinSpawnRules(EntityType<CyborgPiglin> entityType, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, Random rand) {
         return level.getDifficulty() != Difficulty.PEACEFUL;
     }
 

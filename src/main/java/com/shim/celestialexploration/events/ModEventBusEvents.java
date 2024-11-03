@@ -4,6 +4,7 @@ import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.entity.CelestialCat;
 import com.shim.celestialexploration.entity.mob.*;
 import com.shim.celestialexploration.entity.mob.piglins.AstralPiglin;
+import com.shim.celestialexploration.entity.mob.piglins.CyborgPiglin;
 import com.shim.celestialexploration.entity.mob.piglins.VoidedPiglin;
 import com.shim.celestialexploration.entity.mob.slimes.*;
 import com.shim.celestialexploration.entity.model.MagCartModel;
@@ -47,6 +48,7 @@ public class ModEventBusEvents {
         event.put(EntityRegistry.GUST.get(), Gust.setAttributes());
         event.put(EntityRegistry.GYST.get(), Gyst.setAttributes());
         event.put(EntityRegistry.ASTRAL_PIGLIN.get(), AstralPiglin.setAttributes());
+        event.put(EntityRegistry.CYBORG_PIGLIN.get(), CyborgPiglin.setAttributes());
         event.put(EntityRegistry.ASTRAL_HOGLIN.get(), AstralHoglin.setAttributes());
         event.put(EntityRegistry.VOIDED_ZOGLIN.get(), VoidedZoglin.setAttributes());
 

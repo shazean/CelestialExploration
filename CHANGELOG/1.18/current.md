@@ -2,3 +2,5 @@
 - `[NEW]` New light speed travel system for the spaceship for traveling through space (configurable)
 - `[FIX]` Fixed geyser features on Venus not spawning
 - `[NEW]` New structures on Mars and Mercury
+- `[NEW]` Custom planets can now be added via datapack (see wiki)
+- `[NEW]` Cyborg piglins

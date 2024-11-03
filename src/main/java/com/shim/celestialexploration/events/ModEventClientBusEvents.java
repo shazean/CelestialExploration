@@ -139,6 +139,7 @@ public class ModEventClientBusEvents {
         EntityRenderers.register(EntityRegistry.GUST.get(), GustRenderer::new);
         EntityRenderers.register(EntityRegistry.GYST.get(), GystRenderer::new);
         EntityRenderers.register(EntityRegistry.ASTRAL_PIGLIN.get(), AstralPiglinRenderer::new);
+        EntityRenderers.register(EntityRegistry.CYBORG_PIGLIN.get(), CyborgPiglinRenderer::new);
         EntityRenderers.register(EntityRegistry.ASTRAL_HOGLIN.get(), AstralHoglinRenderer::new);
         EntityRenderers.register(EntityRegistry.VOIDED_ZOGLIN.get(), VoidedZoglinRenderer::new);
         EntityRenderers.register(EntityRegistry.METEOR_CRAWLER.get(), MeteorCrawlerRenderer::new);
