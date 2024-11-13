@@ -51,6 +51,13 @@ public class NoiseGenRegistry extends NoiseRouterData {
                 CelestialSurfaceRules.jupiter(), 128, false, true, false, false);
     });
 
+    public static final RegistryObject<NoiseGeneratorSettings> EUROPA_NOISE = NOISES.register("europa", () -> {
+        NoiseSettings noisesettings = europaNoiseSettings();
+        return new NoiseGeneratorSettings(noisesettings, BlockRegistry.MOON_STONE.get().defaultBlockState(), Blocks.WATER.defaultBlockState(), NoiseRouterData.overworldWithoutCaves(noisesettings),
+                CelestialSurfaceRules.europa(), 58, false, true , false, false);
+    });
+
+
 
     static NoiseSettings moonNoiseSettings() {
         return NoiseSettings.create(-32, 256, new NoiseSamplingSettings(1.0D, 1.0D, 80.0D, 160.0D),
@@ -81,7 +88,12 @@ public class NoiseGenRegistry extends NoiseRouterData {
     }
 
     static NoiseSettings jupiterNoiseSettings() {
-        return NoiseSettings.create(-96, 256, new NoiseSamplingSettings(1.0D, 1.0D, 80.0D, 160.0D),
+        return NoiseSettings.create(-96, 384, new NoiseSamplingSettings(1.0D, 1.0D, 80.0D, 160.0D),
                 new NoiseSlider(-0.078125D, 2, 8), new NoiseSlider(0.1171875D, 3, 0), 1, 2, TerrainProvider.overworld(false));
+    }
+
+    static NoiseSettings europaNoiseSettings() {
+        return NoiseSettings.create(-96, 256, new NoiseSamplingSettings(1.0D, 1.0D, 80.0D, 160.0D),
+                new NoiseSlider(-0.078125D, 2, 8), new NoiseSlider(0.1171875D, 3, 0), 1, 3, TerrainProvider.overworld(false));
     }
 }

@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "celestialexploration:bauxite_ore",
+    "celestialexploration:moon_bauxite_ore",
+    "celestialexploration:mars_bauxite_ore",
+    "celestialexploration:venus_bauxite_ore",
+    "celestialexploration:mercury_bauxite_ore",
+    "celestialexploration:meteor_bauxite_ore"
+  ]
+}

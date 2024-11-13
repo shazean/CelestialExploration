@@ -51,17 +51,7 @@ public class ExtraLargeCraterStructure extends StructureFeature<JigsawConfigurat
         blockpos = blockpos.above(-13);
 
         Optional<PieceGenerator<JigsawConfiguration>> structurePiecesGenerator =
-                JigsawPlacement.addPieces(
-                        context, // Used for JigsawPlacement to get all the proper behaviors done.
-                        PoolElementStructurePiece::new, // Needed in order to create a list of jigsaw pieces when making the structure's layout.
-                        blockpos, // Position of the structure. Y value is ignored if last parameter is set to true.
-                        false,  // Special boundary adjustments for villages. It's... hard to explain. Keep this false and make your pieces not be partially intersecting.
-                        // Either not intersecting or fully contained will make children pieces spawn just fine. It's easier that way.
-                        true // Adds the terrain height's y value to the passed in blockpos's y value. (This uses WORLD_SURFACE_WG heightmap which stops at top water too)
-                        // Here, blockpos's y value is 60 which means the structure spawn 60 blocks above terrain height.
-                        // Set this to false for structure to be place only at the passed in blockpos's Y value instead.
-                        // Definitely keep this false when placing structures in the nether as otherwise, heightmap placing will put the structure on the Bedrock roof.
-                );
+                JigsawPlacement.addPieces(context, PoolElementStructurePiece::new, blockpos, false, true);
 
         if(structurePiecesGenerator.isPresent()) {
             CelestialExploration.LOGGER.log(Level.DEBUG, "Extra large crater at {}", blockpos);

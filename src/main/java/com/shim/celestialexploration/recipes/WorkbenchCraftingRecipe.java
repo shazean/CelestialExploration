@@ -23,6 +23,7 @@ import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.fluids.FluidAttributes;
 import net.minecraftforge.fluids.FluidStack;
 import org.jetbrains.annotations.NotNull;
 
@@ -78,7 +79,7 @@ public class WorkbenchCraftingRecipe implements Recipe<WorkbenchCraftingContaine
     @Override
     public boolean matches(WorkbenchCraftingContainer container, Level level) {
 //        return ingredient.test(container.getItem(0));
-        if (!container.getTank().getFluid().containsFluid(fluidIngredient)) {
+        if (!container.getTank().getFluid().containsFluid(new FluidStack(fluidIngredient, (int)(buckets * FluidAttributes.BUCKET_VOLUME)))) {
             return false;
         }
 

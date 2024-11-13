@@ -3,6 +3,7 @@ package com.shim.celestialexploration.entity;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.registry.EntityRegistry;
 import com.shim.celestialexploration.registry.StructureRegistry;
+import com.shim.celestialexploration.registry.TagRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
 import net.minecraft.nbt.CompoundTag;
@@ -52,8 +53,10 @@ public class CelestialCatSpawner implements CustomSpawner {
                         return 0;
                     } else {
                         if (NaturalSpawner.isSpawnPositionOk(SpawnPlacements.Type.ON_GROUND, level, blockpos, EntityRegistry.CELESTIAL_CAT.get())) {
-                            if (level.isCloseToVillage(blockpos, 2)) {
-                                return this.spawnInVillage(level, blockpos);
+                            if (level.getBiome(blockpos).is(TagRegistry.Biomes.CELESTIAL_BODIES)) {
+                                if (level.isCloseToVillage(blockpos, 2)) {
+                                    return this.spawnInVillage(level, blockpos);
+                                }
                             }
                         }
                         return 0;

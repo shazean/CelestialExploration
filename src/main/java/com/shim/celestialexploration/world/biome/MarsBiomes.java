@@ -22,7 +22,9 @@ public class MarsBiomes extends CelestialBiomes {
         spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.RUST_SLIME.get(), 100, 4, 4))
                 .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.MARS_MALLOW.get(), 40, 4, 4)).build();
 
-        return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, -0.75F, 0F, celestialBody.MARS.skyColor, celestialBody.MARS.skyFogColor, celestialBody.MARS.waterColor, celestialBody.MARS.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
+        float temp = -0.75F;
+
+        return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, warmEnoughToNotSnowDangit, 0F, celestialBody.MARS.skyColor, celestialBody.MARS.skyFogColor, celestialBody.MARS.waterColor, celestialBody.MARS.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
     }
 
     public static Biome craters() {
@@ -37,9 +39,10 @@ public class MarsBiomes extends CelestialBiomes {
         spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.RUST_SLIME.get(), 100, 4, 4))
                 .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.MARS_MALLOW.get(), 40, 4, 4)).build();
 
+        float temp = -0.75F;
 
 
-        return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, -0.75F, 0F, celestialBody.MARS.skyColor, celestialBody.MARS.skyFogColor, celestialBody.MARS.waterColor, celestialBody.MARS.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
+        return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, warmEnoughToNotSnowDangit, 0F, celestialBody.MARS.skyColor, celestialBody.MARS.skyFogColor, celestialBody.MARS.waterColor, celestialBody.MARS.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
     }
 
     public static Biome flats(boolean dryIcy) {
@@ -72,7 +75,9 @@ public class MarsBiomes extends CelestialBiomes {
         spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.RUST_SLIME.get(), 30, 4, 4))
                 .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.MARS_MALLOW.get(), 10, 4, 4)).build();
 
-        return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, -0.75F, 0F, celestialBody.MARS.skyColor, celestialBody.MARS.skyFogColor, celestialBody.MARS.waterColor, celestialBody.MARS.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
+        float temp = -0.75F;
+
+        return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, warmEnoughToNotSnowDangit, 0F, celestialBody.MARS.skyColor, celestialBody.MARS.skyFogColor, celestialBody.MARS.waterColor, celestialBody.MARS.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
     }
 
     public static void addMarsOres(BiomeGenerationSettings.Builder biomeBuilder) {
@@ -83,5 +88,4 @@ public class MarsBiomes extends CelestialBiomes {
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.MARS_REDSTONE_ORE_LOWER);
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.MARS_BAUXITE_ORE);
     }
-
 }

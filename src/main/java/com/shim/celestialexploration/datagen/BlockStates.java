@@ -339,6 +339,20 @@ public class BlockStates extends BlockStateProvider {
 
 		simpleBlock(BlockRegistry.EUROPA_CORE.get());
 		simpleBlock(BlockRegistry.EUROPA_HYDRATE.get());
+		
+		//EUROPA
+		simpleBlock(BlockRegistry.EUROPA_BRICKS.get());
+		stairsBlock(BlockRegistry.EUROPA_BRICK_STAIRS.get(), modLoc("block/europa_bricks"));
+		slabBlock(BlockRegistry.EUROPA_BRICK_SLAB.get(), modLoc("block/europa_bricks"), modLoc("block/europa_bricks"));
+		wallBlock(BlockRegistry.EUROPA_BRICK_WALL.get(), modLoc("block/europa_bricks"));
+//		simpleBlock(BlockRegistry.CHISELED_EUROPA_BRICKS.get());
+//		axisBlock(BlockRegistry.EUROPA_BRICK_PILLAR.get(), modLoc("block/europa_brick_pillar"));
+//		simpleBlock(BlockRegistry.CRACKED_EUROPA_BRICKS.get());
+		simpleBlock(BlockRegistry.GLOWING_EUROPA_SAND.get());
+		simpleBlock(BlockRegistry.EUROPA_LANTERN.get());
+		
+
+		
 
 		simpleBlock(BlockRegistry.GANYMEDE_CORE.get());
 		simpleBlock(BlockRegistry.CALLISTO_CORE.get());

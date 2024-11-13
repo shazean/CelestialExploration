@@ -9,6 +9,55 @@
       "entity": "minecraft:armor_stand{ArmorItems:[{id:\"celestialexploration:basic_spacesuit_boots\",Count:1},{id:\"celestialexploration:basic_spacesuit_leggings\",Count:1},{id:\"celestialexploration:basic_spacesuit_chestplate\",Count:1},{id:\"celestialexploration:basic_spacesuit_helmet\",Count:1}],NoBasePlate:1}",
       "name": "Basic Spacesuit",
       "offset": 0.1
+    },
+    {
+      "type": "celestialexploration:workbench_recipe",
+      "item_1": "minecraft:leather",
+      "item_2": "minecraft:leather",
+      "item_3": "minecraft:leather",
+      "item_4": "minecraft:white_wool",
+      "item_5": "minecraft:glass,celestialexploration:reinforced_glass,celestialexploration:luminous_white_glass,celestialexploration:luminous_blue_glass",
+      "item_6": "minecraft:white_wool",
+      "result": "celestialexploration:basic_spacesuit_helmet",
+      "fluidName": "Steel",
+      "fluidMB": "333mb (3 ingots)"
+    },
+    {
+      "type": "celestialexploration:workbench_recipe",
+      "item_1": "minecraft:leather",
+      "item_3": "minecraft:leather",
+      "item_4": "minecraft:white_wool",
+      "item_5": "minecraft:white_wool",
+      "item_6": "minecraft:white_wool",
+      "item_7": "minecraft:leather",
+      "item_8": "minecraft:leather",
+      "item_9": "minecraft:leather",
+      "result": "celestialexploration:basic_spacesuit_chestplate",
+      "fluidName": "Steel",
+      "fluidMB": "666mb (6 ingots)"
+    },
+    {
+      "type": "celestialexploration:workbench_recipe",
+      "item_1": "minecraft:leather",
+      "item_2": "minecraft:leather",
+      "item_3": "minecraft:leather",
+      "item_4": "minecraft:white_wool",
+      "item_6": "minecraft:white_wool",
+      "item_7": "minecraft:leather",
+      "item_9": "minecraft:leather",
+      "result": "celestialexploration:basic_spacesuit_leggings",
+      "fluidName": "Steel",
+      "fluidMB": "555mb (5 ingots)"
+    },
+    {
+      "type": "celestialexploration:workbench_recipe",
+      "item_1": "minecraft:white_wool",
+      "item_3": "minecraft:white_wool",
+      "item_4": "minecraft:leather",
+      "item_6": "minecraft:leather",
+      "result": "celestialexploration:basic_spacesuit_boots",
+      "fluidName": "Steel",
+      "fluidMB": "222mb (2 ingots)"
     }
   ]
 }

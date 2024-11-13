@@ -1,0 +1,15 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation": {
+			"loop": true,
+			"bones": {
+				"bone": {
+					"scale": {
+						"vector": ["Math.cos(query.anim_time * 90) * 0.1 + 1", "Math.sin(query.anim_time * 90) * 0.1 + 1", "Math.cos(query.anim_time * 90) * 0.1 + 1"]
+					}
+				}
+			}
+		}
+	}
+}

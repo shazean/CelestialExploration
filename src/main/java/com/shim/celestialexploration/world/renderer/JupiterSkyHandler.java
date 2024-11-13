@@ -15,8 +15,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.client.ISkyRenderHandler;
 
-public class JupiterSkyHandler implements ISkyRenderHandler {
-    ResourceLocation VANILLA_SUN_LOCATION = new ResourceLocation("textures/environment/sun.png");
+public class JupiterSkyHandler extends AbstractSkyHandler {
 //    ResourceLocation FADED_SUN_LOCATION = new ResourceLocation(CelestialExploration.MODID, "textures/environment/faded_sun.png");
     ResourceLocation EUROPA_LOCATION = new ResourceLocation(CelestialExploration.MODID, "textures/environment/europa_phases.png");
     ResourceLocation IO_LOCATION = new ResourceLocation(CelestialExploration.MODID, "textures/environment/io_phases.png");
@@ -230,52 +229,5 @@ public class JupiterSkyHandler implements ISkyRenderHandler {
         BufferUploader.end(bufferbuilder);
 
         poseStack.popPose();
-    }
-
-    private void renderStars(PoseStack p_109781_, ClientLevel level, float partialTick) {
-        RenderSystem.depthMask(false);
-        RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
-        float f9 = level.getStarBrightness(partialTick) * 2.0F;
-        RenderSystem.setShaderColor(f9, f9, f9, f9);
-
-        RenderSystem.setShaderTexture(0, STAR_LOCATION);
-        Tesselator tesselator = Tesselator.getInstance();
-        BufferBuilder bufferbuilder = tesselator.getBuilder();
-
-        for(int i = 0; i < 6; ++i) {
-            p_109781_.pushPose();
-            if (i == 1) {
-                p_109781_.mulPose(Vector3f.XP.rotationDegrees(90.0F));
-            }
-
-            if (i == 2) {
-                p_109781_.mulPose(Vector3f.XP.rotationDegrees(-90.0F));
-            }
-
-            if (i == 3) {
-                p_109781_.mulPose(Vector3f.XP.rotationDegrees(180.0F));
-            }
-
-            if (i == 4) {
-                p_109781_.mulPose(Vector3f.ZP.rotationDegrees(90.0F));
-            }
-
-            if (i == 5) {
-                p_109781_.mulPose(Vector3f.ZP.rotationDegrees(-90.0F));
-            }
-
-            Matrix4f matrix4f = p_109781_.last().pose();
-            bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR);
-            bufferbuilder.vertex(matrix4f, -100.0F, -100.0F, -100.0F).uv(0.0F, 0.0F).color(100, 100, 100, 255).endVertex();
-            bufferbuilder.vertex(matrix4f, -100.0F, -100.0F, 100.0F).uv(0.0F, 2.0F).color(100, 100, 100, 255).endVertex();
-            bufferbuilder.vertex(matrix4f, 100.0F, -100.0F, 100.0F).uv(2.0F, 2.0F).color(100, 100, 100, 255).endVertex();
-            bufferbuilder.vertex(matrix4f, 100.0F, -100.0F, -100.0F).uv(2.0F, 0.0F).color(100, 100, 100, 255).endVertex();
-            tesselator.end();
-            p_109781_.popPose();
-        }
-
-        RenderSystem.depthMask(true);
-        RenderSystem.enableTexture();
-        RenderSystem.disableBlend();
     }
 }

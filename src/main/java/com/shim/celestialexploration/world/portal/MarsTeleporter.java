@@ -34,6 +34,6 @@ import java.util.function.Function;
 public class MarsTeleporter extends AbstractTeleporter {
 
     public MarsTeleporter(ServerLevel worldIn) {
-        super(worldIn, PoiRegistry.MARS_PORTAL.get(), BlockRegistry.MARS_BRICKS.get(), BlockRegistry.MARS_PORTAL.get(), MarsPortalBlock.AXIS, DimensionRegistry.MARS);
+        super(worldIn, PoiRegistry.MARS_PORTAL.get(), BlockRegistry.MARS_BRICKS.get(), BlockRegistry.MARS_PORTAL.get(), DimensionRegistry.MARS);
     }
 }

@@ -40,6 +40,9 @@ public class PlanetTeleports extends PlanetTeleportProvider {
                 .block(BlockRegistry.JUPITER_DEEPSLATE.get()).block(BlockRegistry.JUPITER_ATMOSPHERE.get()).block(Blocks.WHITE_STAINED_GLASS).block(Blocks.GRAY_STAINED_GLASS)
                 .block(Blocks.BROWN_STAINED_GLASS).block(Blocks.RED_STAINED_GLASS).block(Blocks.ORANGE_STAINED_GLASS).block(BlockRegistry.JUPITER_CORE.get()).save(consumer, "jupiter");
 
+        PlanetTeleport.Builder.teleporter().dimension(DimensionRegistry.EUROPA).coordinates(coord(6, 2))
+                .block(BlockRegistry.EUROPA_CORE.get()).block(BlockRegistry.EUROPA_HYDRATE.get()).block(BlockRegistry.MOON_STONE.get()).save(consumer, "europa");
+
 
     }
 }

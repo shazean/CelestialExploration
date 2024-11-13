@@ -17,6 +17,6 @@
     "item": "celestialexploration:thermal_spacesuit_boots"
   },
   "fluid": "celestialexploration:molten_steel",
-  "buckets": 0.33,
+  "buckets": 0.333,
   "experience": 2.1
 }

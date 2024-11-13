@@ -35,6 +35,6 @@ import java.util.function.Function;
 public class MercuryTeleporter extends AbstractTeleporter {
 
     public MercuryTeleporter(ServerLevel worldIn) {
-        super(worldIn, PoiRegistry.MERCURY_PORTAL.get(), BlockRegistry.MERCURY_BRICKS.get(), BlockRegistry.MERCURY_PORTAL.get(), MercuryPortalBlock.AXIS, DimensionRegistry.MERCURY);
+        super(worldIn, PoiRegistry.MERCURY_PORTAL.get(), BlockRegistry.MERCURY_BRICKS.get(), BlockRegistry.MERCURY_PORTAL.get(), DimensionRegistry.MERCURY);
     }
 }

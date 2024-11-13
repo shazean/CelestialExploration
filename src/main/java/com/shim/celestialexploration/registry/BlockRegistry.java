@@ -486,23 +486,52 @@ public class BlockRegistry {
     //OTHER
     public static final RegistryObject<Block> IO_CORE = registerCoreBlock("io_core", "Ionian Core", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F).noDrops().isValidSpawn(BlockRegistry::never)));
 //    public static final RegistryObject<Block> IO_LANTERN = registerBlock("io_lantern", "Ionian Lantern", () -> new Block(Block.Properties.of(Material.GLASS, MaterialColor.QUARTZ).strength(0.3F).sound(SoundType.GLASS).lightLevel((light) -> 13)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<Block> IO_SAND = registerBlockDropsSelf("io_sand", "Ionian Regolith", () -> new SandBlock(0xE7E2E2, Block.Properties.of(Material.SAND).strength(0.5F).sound(SoundType.SAND)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<Block> COARSE_IO_SAND = registerBlockDropsSelf("coarse_io_sand", "Coarse Ionian Regolith", () -> new Block(Block.Properties.of(Material.DIRT).strength(0.5F).sound(SoundType.GRAVEL)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<Block> IO_SAND_PATH = registerBlock("io_sand_path", "Ionian Regolith Path", () -> new CelestialPathBlock(Block.Properties.of(Material.SAND).strength(0.5F).sound(SoundType.SAND), IO_SAND.get()), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<Block> GLOWING_IO_SAND = registerBlock("glowing_io_sand", "Glowing Ionian Regolith", () -> new SandBlock(0xE7E2E2, Block.Properties.of(Material.GLASS, MaterialColor.COLOR_BLUE).strength(0.5F).sound(SoundType.SAND).lightLevel((light) -> 2)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
 
     //EUROPA
     //some ocean, topped with ice; no craters, very smooth, no mountains; "Penitente" features near the equator. Deepslate iron.
     public static final RegistryObject<Block> EUROPA_CORE = registerCoreBlock("europa_core", "Europan Core", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F).noDrops().isValidSpawn(BlockRegistry::never)));
-    public static final RegistryObject<Block> EUROPA_HYDRATE = registerCoreBlock("europa_hydrate", "Europan Hydrate", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)));
-//    public static final RegistryObject<Block> PENITENTE = registerCoreBlock("penitente", "Europan Hydrate", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)));
-//    public static final RegistryObject<Block> EUROPA_LANTERN = registerBlock("europa_lantern", "Europan Lantern", () -> new Block(Block.Properties.of(Material.GLASS, MaterialColor.QUARTZ).strength(0.3F).sound(SoundType.GLASS).lightLevel((light) -> 13)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+    public static final RegistryObject<Block> EUROPA_HYDRATE = registerBlockDropsSelf("europa_hydrate", "Europan Hydrate", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+    public static final RegistryObject<Block> PENITENTE = registerBlockDropsSelf("penitente", "Penitente", () -> new PenitenteBlock(Block.Properties.of(Material.STONE).dynamicShape().strength(1.5f, 6.0f).sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+    public static final RegistryObject<Block> EUROPA_LANTERN = registerBlock("europa_lantern", "Europan Lantern", () -> new Block(Block.Properties.of(Material.GLASS, MaterialColor.QUARTZ).strength(0.3F).sound(SoundType.GLASS).lightLevel((light) -> 13)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+    public static final RegistryObject<Block> EUROPA_BRICKS = registerBlockDropsSelf("europa_bricks", "Europan Bricks", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<RotatedPillarBlock> EUROPA_BRICK_PILLAR = registerBlockDropsSelf("europa_brick_pillar", "Europan Brick Pillar", () -> new RotatedPillarBlock(Block.Properties.copy(EUROPA_BRICKS.get())), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<Block> CHISELED_EUROPA_BRICKS = registerBlockDropsSelf("chiseled_europa_bricks", "Chiseled Europan Bricks", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<Block> CRACKED_EUROPA_BRICKS = registerBlockDropsSelf("cracked_europa_bricks", "Cracked Europan Bricks", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+    public static final RegistryObject<StairBlock> EUROPA_BRICK_STAIRS = registerBlockDropsSelf("europa_brick_stairs", "Europan Brick Stairs", () -> new StairBlock(EUROPA_BRICKS.get().defaultBlockState(), Block.Properties.copy(EUROPA_BRICKS.get())), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+    public static final RegistryObject<SlabBlock> EUROPA_BRICK_SLAB = registerBlock("europa_brick_slab", "Europan Brick Slab", () -> new SlabBlock(Block.Properties.copy(EUROPA_BRICKS.get())), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+    public static final RegistryObject<WallBlock> EUROPA_BRICK_WALL = registerBlockDropsSelf("europa_brick_wall", "Europan Brick Wall", () -> new WallBlock(Block.Properties.of(Material.STONE).strength(6.0f).sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+    public static final RegistryObject<Block> GLOWING_EUROPA_SAND = registerBlock("glowing_europa_sand", "Glowing Europan Regolith", () -> new SandBlock(0xE7E2E2, Block.Properties.of(Material.GLASS, MaterialColor.COLOR_BLUE).strength(0.5F).sound(SoundType.SAND).lightLevel((light) -> 2)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
 
+    
     //GANYMEDE
     //mostly stone, with spots of surface deepslate. cratered.  underground ocean.  ice.
     public static final RegistryObject<Block> GANYMEDE_CORE = registerCoreBlock("ganymede_core", "Ganymedian Core", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F).noDrops().isValidSpawn(BlockRegistry::never)));
 //    public static final RegistryObject<Block> GANYMEDE_LANTERN = registerBlock("ganymede_lantern", "Ganymedian Lantern", () -> new Block(Block.Properties.of(Material.GLASS, MaterialColor.QUARTZ).strength(0.3F).sound(SoundType.GLASS).lightLevel((light) -> 13)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<Block> GANYMEDE_BRICKS = registerBlockDropsSelf("ganymede_bricks", "Ganymedian Bricks", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<RotatedPillarBlock> GANYMEDE_BRICK_PILLAR = registerBlockDropsSelf("ganymede_brick_pillar", "Ganymedian Brick Pillar", () -> new RotatedPillarBlock(Block.Properties.copy(GANYMEDE_BRICKS.get())), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<Block> CHISELED_GANYMEDE_BRICKS = registerBlockDropsSelf("chiseled_ganymede_bricks", "Chiseled Ganymedian Bricks", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<Block> CRACKED_GANYMEDE_BRICKS = registerBlockDropsSelf("cracked_ganymede_bricks", "Cracked Ganymedian Bricks", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<StairBlock> GANYMEDE_BRICK_STAIRS = registerBlockDropsSelf("ganymede_brick_stairs", "Ganymedian Brick Stairs", () -> new StairBlock(GANYMEDE_BRICKS.get().defaultBlockState(), Block.Properties.copy(GANYMEDE_BRICKS.get())), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<SlabBlock> GANYMEDE_BRICK_SLAB = registerBlock("ganymede_brick_slab", "Ganymedian Brick Slab", () -> new SlabBlock(Block.Properties.copy(GANYMEDE_BRICKS.get())), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<WallBlock> GANYMEDE_BRICK_WALL = registerBlockDropsSelf("ganymede_brick_wall", "Ganymedian Brick Wall", () -> new WallBlock(Block.Properties.of(Material.STONE).strength(6.0f).sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<Block> GLOWING_GANYMEDE_SAND = registerBlock("glowing_ganymede_sand", "Glowing Ganymedian Regolith", () -> new SandBlock(0xE7E2E2, Block.Properties.of(Material.GLASS, MaterialColor.COLOR_BLUE).strength(0.5F).sound(SoundType.SAND).lightLevel((light) -> 2)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
 
     //CALLISTO
     //deepslate all the way, with pockets of stone throughout.  heavily cratered.  ice.  coal ore.
     public static final RegistryObject<Block> CALLISTO_CORE = registerCoreBlock("callisto_core", "Callistoan Core", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F).noDrops().isValidSpawn(BlockRegistry::never)));
 //    public static final RegistryObject<Block> CALLISTO_LANTERN = registerBlock("callisto_lantern", "Callistoan Lantern", () -> new Block(Block.Properties.of(Material.GLASS, MaterialColor.QUARTZ).strength(0.3F).sound(SoundType.GLASS).lightLevel((light) -> 13)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<Block> CALLISTO_BRICKS = registerBlockDropsSelf("callisto_bricks", "Callistoan Bricks", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<RotatedPillarBlock> CALLISTO_BRICK_PILLAR = registerBlockDropsSelf("callisto_brick_pillar", "Callistoan Brick Pillar", () -> new RotatedPillarBlock(Block.Properties.copy(CALLISTO_BRICKS.get())), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<Block> CHISELED_CALLISTO_BRICKS = registerBlockDropsSelf("chiseled_callisto_bricks", "Chiseled Callistoan Bricks", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<Block> CRACKED_CALLISTO_BRICKS = registerBlockDropsSelf("cracked_callisto_bricks", "Cracked Callistoan Bricks", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<StairBlock> CALLISTO_BRICK_STAIRS = registerBlockDropsSelf("callisto_brick_stairs", "Callistoan Brick Stairs", () -> new StairBlock(CALLISTO_BRICKS.get().defaultBlockState(), Block.Properties.copy(CALLISTO_BRICKS.get())), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<SlabBlock> CALLISTO_BRICK_SLAB = registerBlock("callisto_brick_slab", "Callistoan Brick Slab", () -> new SlabBlock(Block.Properties.copy(CALLISTO_BRICKS.get())), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<WallBlock> CALLISTO_BRICK_WALL = registerBlockDropsSelf("callisto_brick_wall", "Callistoan Brick Wall", () -> new WallBlock(Block.Properties.of(Material.STONE).strength(6.0f).sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
+//    public static final RegistryObject<Block> GLOWING_CALLISTO_SAND = registerBlock("glowing_callisto_sand", "Glowing Callistoan Regolith", () -> new SandBlock(0xE7E2E2, Block.Properties.of(Material.GLASS, MaterialColor.COLOR_BLUE).strength(0.5F).sound(SoundType.SAND).lightLevel((light) -> 2)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
 
     //---- OTHER PLANETS -------------------------------------------------------------------------------
 
@@ -595,7 +624,7 @@ public class BlockRegistry {
     public static final RegistryObject<Block> STEEL_FRAME = registerBlockDropsSelf("steel_frame", "Steel Frame", () -> new SteelFrameBlock(Block.Properties.of(Material.METAL, MaterialColor.METAL).strength(5.0F, 6.0F).sound(SoundType.METAL).dynamicShape()), CelestialExploration.SPACESHIP_TAB);
 
     //---- SPACE STATION -------------------------------------------------------------------------------
-    public static final RegistryObject<DoorBlock> AIRLOCK_DOOR = registerBlock("airlock_door", "Airlock Door", () -> new DoorBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.METAL).requiresCorrectToolForDrops().strength(5.0F).sound(SoundType.METAL).noOcclusion()), CelestialExploration.CELESTIAL_MISC_TAB);
+    public static final RegistryObject<DoorBlock> AIRLOCK_DOOR = registerBlock("airlock_door", "Airlock Door", () -> new DoorBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.METAL).requiresCorrectToolForDrops().strength(5.0F).sound(SoundType.METAL).noOcclusion()), CelestialExploration.CELESTIAL_MISC_TAB);
     public static final RegistryObject<TrapDoorBlock> AIRLOCK_TRAPDOOR = registerBlockDropsSelf("airlock_trapdoor", "Airlock Trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.METAL).requiresCorrectToolForDrops().strength(5.0F).sound(SoundType.METAL).noOcclusion()), CelestialExploration.CELESTIAL_MISC_TAB);
     public static final RegistryObject<DoorBlock> STEEL_DOOR = registerBlock("steel_door", "Steel Door", () -> new DoorBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.METAL).requiresCorrectToolForDrops().strength(5.0F).sound(SoundType.METAL).noOcclusion()), CelestialExploration.CELESTIAL_MISC_TAB);
     public static final RegistryObject<TrapDoorBlock> STEEL_TRAPDOOR = registerBlockDropsSelf("steel_trapdoor", "Steel Trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.of(Material.METAL).requiresCorrectToolForDrops().strength(5.0F).sound(SoundType.METAL).noOcclusion().isValidSpawn(BlockRegistry::never)), CelestialExploration.CELESTIAL_MISC_TAB);
@@ -702,11 +731,12 @@ public class BlockRegistry {
     public static final RegistryObject<Block> PAINTED_PINK_CERAMIC = registerBlock("painted_pink_ceramic", "Painted Pink Ceramic", () -> new GlazedTerracottaBlock(Block.Properties.of(Material.CLAY, MaterialColor.CLAY).strength(0.3F).sound(SoundType.GLASS)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
 
     //---- PORTALS -------------------------------------------------------------------------------
-    public static final RegistryObject<MarsPortalBlock> MARS_PORTAL = BLOCKS.register("mars_portal", MarsPortalBlock::new);
-    public static final RegistryObject<MoonPortalBlock> MOON_PORTAL = BLOCKS.register("moon_portal", MoonPortalBlock::new);
-    public static final RegistryObject<VenusPortalBlock> VENUS_PORTAL = BLOCKS.register("venus_portal", VenusPortalBlock::new);
-    public static final RegistryObject<MercuryPortalBlock> MERCURY_PORTAL = BLOCKS.register("mercury_portal", MercuryPortalBlock::new);
-    public static final RegistryObject<JupiterPortalBlock> JUPITER_PORTAL = BLOCKS.register("jupiter_portal", JupiterPortalBlock::new);
+    public static final RegistryObject<AbstractPortalBlock> MARS_PORTAL = BLOCKS.register("mars_portal", MarsPortalBlock::new);
+    public static final RegistryObject<AbstractPortalBlock> MOON_PORTAL = BLOCKS.register("moon_portal", MoonPortalBlock::new);
+    public static final RegistryObject<AbstractPortalBlock> VENUS_PORTAL = BLOCKS.register("venus_portal", VenusPortalBlock::new);
+    public static final RegistryObject<AbstractPortalBlock> MERCURY_PORTAL = BLOCKS.register("mercury_portal", MercuryPortalBlock::new);
+    public static final RegistryObject<AbstractPortalBlock> JUPITER_PORTAL = BLOCKS.register("jupiter_portal", JupiterPortalBlock::new);
+    public static final RegistryObject<AbstractPortalBlock> EUROPA_PORTAL = BLOCKS.register("europa_portal", EuropaPortalBlock::new);
 
     //---- MISC -------------------------------------------------------------------------------
     public static final RegistryObject<Block> DRY_ICE = registerBlockDropsSelf("dry_ice", "Dry Ice", () -> new DryIceBlock(Block.Properties.of(Material.ICE).friction(0.98F).randomTicks().strength(0.5F).sound(SoundType.GLASS).noOcclusion()), CelestialExploration.CELESTIAL_BLOCKS_TAB);

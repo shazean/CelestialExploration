@@ -10,6 +10,6 @@ import net.minecraft.server.level.ServerLevel;
 public class JupiterTeleporter extends AbstractTeleporter {
 
     public JupiterTeleporter(ServerLevel worldIn) {
-        super(worldIn, PoiRegistry.JUPITER_PORTAL.get(), BlockRegistry.JUPITER_DEEPSLATE_BRICKS.get(), BlockRegistry.JUPITER_PORTAL.get(), JupiterPortalBlock.AXIS, DimensionRegistry.JUPITER);
+        super(worldIn, PoiRegistry.JUPITER_PORTAL.get(), BlockRegistry.JUPITER_DEEPSLATE_BRICKS.get(), BlockRegistry.JUPITER_PORTAL.get(), DimensionRegistry.JUPITER);
     }
 }

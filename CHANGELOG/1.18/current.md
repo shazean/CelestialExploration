@@ -1,6 +1,11 @@
 - `[NEW]` Jupiter dimension, relevant blocks, structures, etc.
+- `[NEW]` Europa dimension, relevant blocks, structures, etc.
 - `[NEW]` New light speed travel system for the spaceship for traveling through space (configurable)
 - `[FIX]` Fixed geyser features on Venus not spawning
 - `[NEW]` New structures on Mars and Mercury
-- `[NEW]` Custom planets can now be added via datapack (see wiki)
 - `[NEW]` Cyborg piglins
+- `[FIX]` Fixed oxygen compressor overfilling liquid oxygen tanks sometimes
+- `[FIX]` Fixed workbench not requiring the full amount of a metal to craft
+- `[CHG]` Updated workbench texture
+- `[FIX]` Fixed celestial cats spawning on overworld
+- `[FIX]` Fixed swapped first and second passengers on spaceship

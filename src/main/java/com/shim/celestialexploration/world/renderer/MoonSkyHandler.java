@@ -90,7 +90,7 @@ public class MoonSkyHandler implements ISkyRenderHandler {
         bufferbuilder.vertex(matrix4f1, -f12, 100.0F, f12).uv(0.0F, 1.0F).endVertex();
         bufferbuilder.end();
         BufferUploader.end(bufferbuilder);
-        f12 = 40.0F; //20.0F
+        f12 = 35.0F; //20.0F
         RenderSystem.setShaderTexture(0, EARTH_LOCATION);
         int k = level.getMoonPhase();
         int l = k % 4;

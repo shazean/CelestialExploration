@@ -60,6 +60,7 @@ public class StructureRegistry {
 
     //OTHER
     public static final RegistryObject<StructureFeature<?>> JUPITER_CLOUD = DEFERRED_REGISTRY_STRUCTURE.register("jupiter_cloud", JupiterCloudStructure::new);
+    public static final RegistryObject<StructureFeature<?>> LINEAE = DEFERRED_REGISTRY_STRUCTURE.register("lineae", LineaeStructure::new);
 
 
 }

@@ -5,6 +5,7 @@ import com.shim.celestialexploration.registry.BlockRegistry;
 import com.shim.celestialexploration.world.biome.CelestialBiomeKeys;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.Noises;
@@ -31,6 +32,10 @@ public class CelestialSurfaceRules {
     private static final SurfaceRules.RuleSource MERCURY_SAND = makeStateRule(BlockRegistry.MERCURY_SAND.get());
     private static final SurfaceRules.RuleSource COARSE_MERCURY_SAND = makeStateRule(BlockRegistry.COARSE_MERCURY_SAND.get());
     private static final SurfaceRules.RuleSource JUPITER_DEEPSLATE = makeStateRule(BlockRegistry.JUPITER_DEEPSLATE.get());
+    private static final SurfaceRules.RuleSource GLOWING_EUROPA_SAND = makeStateRule(BlockRegistry.GLOWING_EUROPA_SAND.get());
+    private static final SurfaceRules.RuleSource HYDRATE = makeStateRule(BlockRegistry.EUROPA_HYDRATE.get());
+    private static final SurfaceRules.RuleSource PACKED_ICE = makeStateRule(Blocks.PACKED_ICE);
+    private static final SurfaceRules.RuleSource WATER = makeStateRule(Blocks.WATER);
 
 
     private static SurfaceRules.RuleSource makeStateRule(Block block) {
@@ -158,6 +163,61 @@ public class CelestialSurfaceRules {
         builder.add(SurfaceRules.ifTrue(SurfaceRules.verticalGradient("bedrock_floor", VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(5)), BEDROCK));
 
 //        builder.add(SurfaceRules.ifTrue(SurfaceRules.verticalGradient("deepslate", VerticalAnchor.absolute(0), VerticalAnchor.absolute(8)), JUPITER_DEEPSLATE));
+        return SurfaceRules.sequence(builder.build().toArray(SurfaceRules.RuleSource[]::new));
+    }
+
+    public static SurfaceRules.RuleSource europa() {
+        ImmutableList.Builder<SurfaceRules.RuleSource> builder = ImmutableList.builder();
+
+        SurfaceRules.ConditionSource shallowSand = SurfaceRules.isBiome(CelestialBiomeKeys.EUROPA_PLAINS, CelestialBiomeKeys.EUROPA_LOWER_PLAINS, CelestialBiomeKeys.EUROPA_JAGGED_PLAINS, CelestialBiomeKeys.EUROPA_OCEAN, CelestialBiomeKeys.EUROPA_RIVER);
+
+        builder.add(SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(),
+                SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, false, 1, CaveSurface.FLOOR), SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.PATCH, .7F, 1.0F), GLOWING_EUROPA_SAND)))));
+
+        builder.add(SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(),
+                SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, false, 1, CaveSurface.FLOOR), SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.PATCH, -1.0F, -0.8F), GLOWING_EUROPA_SAND)))));
+
+        builder.add(SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, false, 3, CaveSurface.FLOOR), SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SURFACE, -0.9F, -0.69F), COARSE_MOON_SAND))));
+
+        builder.add(SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(), SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, false, 1, CaveSurface.FLOOR), SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SURFACE_SECONDARY, -0.9F, -0.69F), AIR)))));
+
+
+//        builder.add(SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(), SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 3, CaveSurface.FLOOR), SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.NOODLE, -0.9F, -0.88F), HYDRATE)))));
+//        builder.add(SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 3, CaveSurface.FLOOR), SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.RIDGE, -0.6F, -0.2F), HYDRATE))));
+
+
+//        builder.add(SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, false, 3, CaveSurface.FLOOR),
+//                SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.EROSION, -1.0F, -0.375F), AIR))));
+
+        builder.add(SurfaceRules.ifTrue(SurfaceRules.isBiome(CelestialBiomeKeys.EUROPA_DESERT), SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(),
+                SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, false, 15, CaveSurface.FLOOR), MOON_SAND)))));
+
+        builder.add(SurfaceRules.ifTrue(shallowSand, SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(),
+                SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, false, 3, CaveSurface.FLOOR), MOON_SAND)))));
+
+//        SurfaceRules.ConditionSource surfacerules$conditionsource6 = SurfaceRules.waterBlockCheck(-1, 0);
+//        SurfaceRules.ConditionSource surfacerules$conditionsource7 = SurfaceRules.waterBlockCheck(0, 0);
+//        SurfaceRules.ConditionSource surfacerules$conditionsource9 = SurfaceRules.hole();
+//        SurfaceRules.ConditionSource surfacerules$conditionsource10 = SurfaceRules.isBiome(CelestialBiomeKeys.EUROPA_RIVER, CelestialBiomeKeys.EUROPA_OCEAN);
+//
+//
+//        builder.add(SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
+//                SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
+//                        SurfaceRules.ifTrue(surfacerules$conditionsource6,
+//                                SurfaceRules.sequence(SurfaceRules.ifTrue(surfacerules$conditionsource10,
+//                        SurfaceRules.ifTrue(surfacerules$conditionsource9,
+//                                SurfaceRules.sequence(SurfaceRules.ifTrue(surfacerules$conditionsource7, AIR),
+//                                        SurfaceRules.ifTrue(SurfaceRules.temperature(), PACKED_ICE), WATER)))))))));
+
+
+//        builder.add(SurfaceRules.ifTrue(SurfaceRules.waterStartCheck(-4, 0), PACKED_ICE));
+
+//        builder.add(SurfaceRules.ifTrue(SurfaceRules.yStartCheck(new VerticalAnchor.Absolute(73), 0), AIR));
+
+        builder.add(SurfaceRules.ifTrue(SurfaceRules.verticalGradient("bedrock_floor", VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(5)), BEDROCK));
+
+        builder.add(SurfaceRules.ifTrue(SurfaceRules.verticalGradient("deepslate", VerticalAnchor.absolute(-32), VerticalAnchor.absolute(0)), MOON_DEEPSLATE));
+
         return SurfaceRules.sequence(builder.build().toArray(SurfaceRules.RuleSource[]::new));
     }
 

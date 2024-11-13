@@ -1,0 +1,96 @@
+{
+  "components": [
+    {
+      "type": "patchouli:image",
+      "image": "celestialexploration:textures/patchouli/workbench_crafting_recipe.png",
+      "width": 256,
+      "height": 256,
+      "scale": 0.6
+    },
+    {
+      "type": "patchouli:header",
+      "text": "#recipe",
+      "x": -1,
+      "y": -6
+    },
+    {
+      "type": "patchouli:item",
+      "item": "#result",
+      "x": 97,
+      "y": 24
+    },
+    {
+      "type": "patchouli:item",
+      "item": "celestialexploration:workbench",
+      "x": 97,
+      "y": 43
+    },
+    {
+      "type": "patchouli:item",
+      "item": "#item_1",
+      "x": 22,
+      "y": 6
+    },
+    {
+      "type": "patchouli:item",
+      "item": "#item_2",
+      "x": 41,
+      "y": 6
+    },
+    {
+      "type": "patchouli:item",
+      "item": "#item_3",
+      "x": 59,
+      "y": 6
+    },
+    {
+      "type": "patchouli:item",
+      "item": "#item_4",
+      "x": 22,
+      "y": 24
+
+    },
+    {
+      "type": "patchouli:item",
+      "item": "#item_5",
+      "x": 41,
+      "y": 24
+    },
+    {
+      "type": "patchouli:item",
+      "item": "#item_6",
+      "x": 59,
+      "y": 24
+    },
+    {
+      "type": "patchouli:item",
+      "item": "#item_7",
+      "x": 22,
+      "y": 43
+
+    },
+    {
+      "type": "patchouli:item",
+      "item": "#item_8",
+      "x": 41,
+      "y": 43
+    },
+    {
+      "type": "patchouli:item",
+      "item": "#item_9",
+      "x": 59,
+      "y": 43
+    },
+    {
+      "type": "patchouli:tooltip",
+      "tooltip": [
+        "#fluidName",
+        "#fluidMB"
+      ],
+      "width": 16,
+      "height": 59,
+      "x": 3,
+      "y": 3
+    }
+  ]
+}

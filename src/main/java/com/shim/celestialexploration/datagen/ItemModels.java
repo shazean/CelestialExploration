@@ -358,8 +358,20 @@ public class ItemModels extends ItemModelProvider {
 		self(BlockRegistry.IO_STONE.get());
 		self(BlockRegistry.IO_DEEPSLATE.get());
 
+		//EUROPA
 		self(BlockRegistry.EUROPA_CORE.get());
 		self(BlockRegistry.EUROPA_HYDRATE.get());
+
+		self(BlockRegistry.EUROPA_BRICKS.get());
+		stairsItem(BlockRegistry.EUROPA_BRICK_STAIRS.get(),"europa_bricks");
+		slabItem(BlockRegistry.EUROPA_BRICK_SLAB.get(), "europa_bricks");
+		wallItem(BlockRegistry.EUROPA_BRICK_WALL.get(),  "europa_bricks");
+//		self(BlockRegistry.CHISELED_EUROPA_BRICKS.get());
+//		self(BlockRegistry.CRACKED_EUROPA_BRICKS.get());
+//		self(BlockRegistry.EUROPA_BRICK_PILLAR.get());
+
+		self(BlockRegistry.GLOWING_EUROPA_SAND.get());
+		self(BlockRegistry.EUROPA_LANTERN.get());
 
 		self(BlockRegistry.GANYMEDE_CORE.get());
 		self(BlockRegistry.CALLISTO_CORE.get());
@@ -636,9 +648,9 @@ public class ItemModels extends ItemModelProvider {
 		self(BlockRegistry.PLANET_CHART.get());
 		self(BlockRegistry.TAXI_STATION.get());
 
-
 		//ITEMS
 		generatedItem(ItemRegistry.MOON_DUST.get());
+		generatedItem(ItemRegistry.EUROPA_DUST.get());
 		handheldItem(ItemRegistry.STEEL_ROD.get());
 		generatedItem(ItemRegistry.STEEL_WOOL.get());
 		handheldItem(ItemRegistry.FLARE_ROD.get());
@@ -648,7 +660,7 @@ public class ItemModels extends ItemModelProvider {
 		generatedItem(ItemRegistry.LUNAR_GOO.get());
 		generatedItem(ItemRegistry.CINNABAR.get());
 
-//		SPAWN EGGS
+		//SPAWN EGGS
 		spawnEgg(ItemRegistry.RUST_SPAWN_EGG.get());
 		spawnEgg(ItemRegistry.LUNAR_SPAWN_EGG.get());
 		spawnEgg(ItemRegistry.MARS_MALLOW_SPAWN_EGG.get());
@@ -669,6 +681,7 @@ public class ItemModels extends ItemModelProvider {
 		spawnEgg(ItemRegistry.METEOR_CRAWLER_SPAWN_EGG.get());
 		spawnEgg(ItemRegistry.VOID_CRAWLER_SPAWN_EGG.get());
 		spawnEgg(ItemRegistry.CELESTIAL_CAT_SPAWN_EGG.get());
+		spawnEgg(ItemRegistry.EUREKA_SPAWN_EGG.get());
 
 		this.withExistingParent(name(BlockRegistry.LURKER_HEAD.get()), this.mcLoc("item/template_skull"));
 		this.withExistingParent(name(BlockRegistry.VOIDED_HEAD.get()), this.mcLoc("item/template_skull"));

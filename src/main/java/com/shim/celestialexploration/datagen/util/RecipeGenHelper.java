@@ -1,5 +1,8 @@
 package com.shim.celestialexploration.datagen.util;
 
+import com.shim.celestialexploration.registry.BlockRegistry;
+import com.shim.celestialexploration.registry.ItemRegistry;
+import com.shim.celestialexploration.registry.TagRegistry;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.recipes.*;
 import net.minecraft.tags.TagKey;
@@ -48,6 +51,12 @@ public class RecipeGenHelper {
     public static void smeltingAndBlasting(Block itemToSmelt, Item result, float experience, int smeltingTime, int blastingTime, Block unlockedBy, Consumer<FinishedRecipe> consumer) {
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(itemToSmelt), result, experience, smeltingTime).group(modGroup()).unlockedBy("has_" + name(unlockedBy), has(unlockedBy)).save(consumer, name(itemToSmelt) + "_smelting");
         SimpleCookingRecipeBuilder.blasting(Ingredient.of(itemToSmelt), result, experience, blastingTime).group(modGroup()).unlockedBy("has_" + name(unlockedBy), has(unlockedBy)).save(consumer, name(itemToSmelt) + "_blasting");
+    }
+
+
+    public static void smeltingAndBlasting(TagKey<Item> tagItem, Item result, float experience, int smeltingTime, int blastingTime, Block unlockedBy, Consumer<FinishedRecipe> consumer) {
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(tagItem), result, experience, smeltingTime).group(modGroup()).unlockedBy("has_" + name(unlockedBy), has(unlockedBy)).save(consumer, tagItem.registry().getRegistryName().getPath() + "_smelting");
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(tagItem), result, experience, blastingTime).group(modGroup()).unlockedBy("has_" + name(unlockedBy), has(unlockedBy)).save(consumer, tagItem.registry().getRegistryName().getPath() + "_blasting");
     }
 
     public static void smeltingAndBlasting(Item itemToSmelt, Item result, float experience, int smeltingTime, int blastingTime, Item unlockedBy, Consumer<FinishedRecipe> consumer) {

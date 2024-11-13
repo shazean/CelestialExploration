@@ -6,6 +6,7 @@ import com.shim.celestialexploration.registry.CapabilityRegistry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.network.NetworkEvent;
 
@@ -33,7 +34,11 @@ public class LightTravelDataPacket {
     public static void handle(LightTravelDataPacket message, Supplier<NetworkEvent.Context> contextSupplier) {
         NetworkEvent.Context context = contextSupplier.get();
         context.enqueueWork(() -> {
-            Player player = Minecraft.getInstance().player;
+//            ServerPlayer player = context.getSender();
+            Player player;
+
+            player = CelestialExploration.PROXY.getPlayer();
+
             if (player != null) {
                 LightTravelCapability.ILightTravel travelCap = CelestialExploration.getCapability(player, CapabilityRegistry.LIGHT_TRAVEL_CAPABILITY);
 

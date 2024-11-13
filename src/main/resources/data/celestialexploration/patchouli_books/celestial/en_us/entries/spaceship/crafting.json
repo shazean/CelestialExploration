@@ -3,6 +3,67 @@
   "icon": "celestialexploration:steel_ingot",
   "category": "celestialexploration:spaceship",
   "pages": [
-    "TODO$(br2)Recipe is included in JEI"
+    "Using the workbench, the spacehsip is made of three main parts: the frame, the cabin, and the engine.$(br2)$(br2)$(br2)$(br2)(Recipe is also included in JEI.)",
+    {
+      "type": "celestialexploration:workbench_recipe",
+      "recipe": "Steel Frame",
+      "item_1": "minecraft:scaffolding",
+      "result": "celestialexploration:steel_frame",
+      "fluidName": "Steel",
+      "fluidMB": "222mb (2 ingots)"
+    },
+    {
+      "type": "celestialexploration:workbench_recipe",
+      "recipe": "Spaceship Frame",
+      "item_1": "celestialexploration:ceramic_tile",
+      "item_3": "celestialexploration:ceramic_tile",
+      "item_5": "celestialexploration:steel_frame",
+      "item_7": "celestialexploration:ceramic_tile",
+      "item_9": "celestialexploration:ceramic_tile",
+      "result": "celestialexploration:spaceship_frame",
+      "fluidName": "Steel",
+      "fluidMB": "333mb (3 ingots)"
+    },
+    {
+      "type": "celestialexploration:workbench_recipe",
+      "recipe": "Spaceship Cabin",
+      "item_2": "celestialexploration:ceramic_tile",
+      "item_4": "celestialexploration:ceramic_tile",
+      "item_5": "minecraft:glass,celestialexploration:reinforced_glass,celestialexploration:luminous_white_glass,celestialexploration:luminous_blue_glass",
+      "item_6": "celestialexploration:ceramic_tile",
+      "item_7": "minecraft:chest",
+      "item_9": "minecraft:chest",
+      "result": "celestialexploration:spaceship_cabin",
+      "fluidName": "Aluminum",
+      "fluidMB": "444mb (4 ingots)"
+    },
+    {
+      "type": "celestialexploration:workbench_recipe",
+      "recipe": "Spaceship Engine",
+      "item_1": "minecraft:copper_ingot",
+      "item_2": "minecraft:redstone",
+      "item_3": "minecraft:copper_ingot",
+      "item_4": "minecraft:redstone_torch",
+      "item_5": "minecraft:redstone_torch",
+      "item_6": "minecraft:redstone_torch",
+      "result": "celestialexploration:spaceship_engine",
+      "fluidName": "Steel",
+      "fluidMB": "555mb (5 ingots)"
+    },
+    {
+      "type": "celestialexploration:workbench_recipe",
+      "recipe": "White Spaceship",
+      "item_1": "celestialexploration:spaceship_cabin",
+      "item_4": "celestialexploration:spaceship_frame",
+      "item_7": "celestialexploration:spaceship_engine",
+      "result": "celestialexploration:white_spaceship",
+      "fluidName": "Aluminum",
+      "fluidMB": "333mb (3 ingots)"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "celestialexploration:purple_spaceship",
+      "text": "After crafting the white spaceship, it can then be dyed with any color dye."
+    }
   ]
 }

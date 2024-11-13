@@ -2,13 +2,18 @@ package com.shim.celestialexploration.item.armor;
 
 import com.google.common.collect.ImmutableMap;
 import com.shim.celestialexploration.item.ModArmorMaterials;
+import com.shim.celestialexploration.registry.ItemRegistry;
 import mod.azure.azurelib.animatable.GeoItem;
 import mod.azure.azurelib.core.animatable.instance.AnimatableInstanceCache;
 import mod.azure.azurelib.core.animation.AnimatableManager;
 import mod.azure.azurelib.core.animation.AnimationController;
 import mod.azure.azurelib.core.animation.RawAnimation;
 import mod.azure.azurelib.util.AzureLibUtil;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -17,10 +22,12 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.client.IItemRenderProperties;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 
@@ -125,4 +132,23 @@ public class ThermalSpaceSuitArmorItem extends ArmorItem implements GeoItem {
         return helmet.getMaterial() == material && breastplate.getMaterial() == material &&
                 leggings.getMaterial() == material && boots.getMaterial() == material;
     }
+
+    @Override
+    public void appendHoverText(ItemStack itemStack, @javax.annotation.Nullable Level level, List<Component> components, TooltipFlag tooltipFlag) {
+
+        components.add(new TextComponent(""));
+
+        components.add(new TranslatableComponent("item.celestialexploration.armor_details.when_set_complete").withStyle(ChatFormatting.GRAY));
+        components.add(new TranslatableComponent("item.celestialexploration.armor_details.thermal_full_spacesuit").withStyle(ChatFormatting.DARK_PURPLE));
+
+//        if (tooltipFlag.isAdvanced()) {
+        if (itemStack.is(ItemRegistry.THERMAL_SPACESUIT_BOOTS.get())) {
+            components.add(new TranslatableComponent("item.celestialexploration.armor_details.when_worn").withStyle(ChatFormatting.GRAY));
+            components.add(new TranslatableComponent("item.celestialexploration.armor_details.thermal_spacesuit_boots_1").withStyle(ChatFormatting.BLUE));
+            components.add(new TranslatableComponent("item.celestialexploration.armor_details.thermal_spacesuit_boots_2").withStyle(ChatFormatting.BLUE));
+
+        }
+//    }
+    }
+
 }

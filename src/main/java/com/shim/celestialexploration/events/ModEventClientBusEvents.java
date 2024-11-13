@@ -61,6 +61,7 @@ public class ModEventClientBusEvents {
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.VENUS_PORTAL.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.MERCURY_PORTAL.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.JUPITER_PORTAL.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BlockRegistry.EUROPA_PORTAL.get(), RenderType.translucent());
 
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.LUMINOUS_BLUE_GLASS.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.LUMINOUS_WHITE_GLASS.get(), RenderType.translucent());
@@ -115,6 +116,9 @@ public class ModEventClientBusEvents {
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.DETECTOR_MAG_RAIL.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.ACTIVATOR_MAG_RAIL.get(), RenderType.cutout());
 
+        ItemBlockRenderTypes.setRenderLayer(BlockRegistry.PENITENTE.get(), RenderType.cutout());
+
+
         EntityRenderers.register(EntityRegistry.RUST_SLIME.get(), RustSlimeRenderer::new);
         EntityRenderers.register(EntityRegistry.LUNAR_SLIME.get(), LunarSlimeRenderer::new);
         EntityRenderers.register(EntityRegistry.QUICKSILVER_SLIME.get(), QuicksilverSlimeRenderer::new);
@@ -145,6 +149,8 @@ public class ModEventClientBusEvents {
         EntityRenderers.register(EntityRegistry.METEOR_CRAWLER.get(), MeteorCrawlerRenderer::new);
         EntityRenderers.register(EntityRegistry.VOID_CRAWLER.get(), VoidCrawlerRenderer::new);
         EntityRenderers.register(EntityRegistry.CELESTIAL_CAT.get(), CelestialCatRenderer::new);
+        EntityRenderers.register(EntityRegistry.EUREKA.get(), EurekaRenderer::new);
+
 
         MenuScreens.register(MenuRegistry.OXYGEN_COMPRESSOR_MENU.get(), OxygenCompressorScreen::new);
         MenuScreens.register(MenuRegistry.PLANET_CHART_MENU.get(), PlanetChartScreen::new);

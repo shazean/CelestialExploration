@@ -15,6 +15,7 @@ public class CelestialCommonConfig {
     public static final ForgeConfigSpec.ConfigValue<Integer> SPACESHIP_LIGHT_TRAVEL_MAX_COOLDOWN;
     public static final ForgeConfigSpec.ConfigValue<Integer> SPACESHIP_LIGHT_TRAVEL_COOLDOWN_DECREMENT;
     public static final ForgeConfigSpec.ConfigValue<Integer> SPACESHIP_LIGHT_TRAVEL_MIN_COOLDOWN;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> PORTALS;
 
     static {
         BUILDER.push("Configs for Celestial Exploration");
@@ -29,6 +30,9 @@ public class CelestialCommonConfig {
         SPACESHIP_LIGHT_TRAVEL_MAX_COOLDOWN = BUILDER.comment("What the max cooldown is, in ticks, after the first time you use the spaceship light speed travel to a particular location").defineInRange("Spaceship Max Cooldown", 24000, 6000, 96000);
         SPACESHIP_LIGHT_TRAVEL_COOLDOWN_DECREMENT = BUILDER.comment("How much the max cooldown drops, in ticks, after each subsequent time using spaceship light speed travel to that specific place").defineInRange("Spaceship Cooldown Decrement", 300, 0, 1600);
         SPACESHIP_LIGHT_TRAVEL_MIN_COOLDOWN = BUILDER.comment("What the minimum the spaceship light speed travel cooldown can be, in ticks").defineInRange("Spaceship Min Cooldown", 1200, 300, 1600);
+
+        PORTALS = BUILDER.comment("Allow portals to the various planets and moons?").define("Portals", true);
+
 
         BUILDER.pop();
         SPEC = BUILDER.build();

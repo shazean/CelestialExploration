@@ -73,13 +73,20 @@ public class ModItemTags extends ItemTagsProvider {
 		this.copy(TagRegistry.Blocks.MERCURY_COBBLESTONE, TagRegistry.Items.MERCURY_COBBLESTONE);
 		this.copy(TagRegistry.Blocks.MERCURY_DEEPSLATE, TagRegistry.Items.MERCURY_DEEPSLATE);
 		this.copy(TagRegistry.Blocks.MERCURY_COBBLED_DEEPSLATE, TagRegistry.Items.MERCURY_COBBLED_DEEPSLATE);
+
+		this.copy(TagRegistry.Blocks.EUROPA_BRICKS, TagRegistry.Items.EUROPA_BRICKS);
+
 		this.copy(TagRegistry.Blocks.DYED_CERAMIC, TagRegistry.Items.DYED_CERAMIC);
+
 		this.copy(TagRegistry.Blocks.DYED_CERAMIC_TILE, TagRegistry.Items.DYED_CERAMIC_TILE);
 
 		this.copy(TagRegistry.Blocks.PAINTED_CERAMIC, TagRegistry.Items.PAINTED_CERAMIC);
 
 		this.copy(TagRegistry.Blocks.REGOLITH, TagRegistry.Items.REGOLITH);
 		this.copy(TagRegistry.Blocks.MAG_RAIL, TagRegistry.Items.MAG_RAIL);
+
+		this.copy(TagRegistry.Blocks.BAUXITE_ORE, TagRegistry.Items.BAUXITE_ORE);
+
 
 		tag(TagRegistry.Items.SLIME_DROPS).add(Items.SLIME_BALL).add(ItemRegistry.MARSHMALLOW_GOO.get()).add(ItemRegistry.LUNAR_GOO.get());
 

@@ -1,5 +1,6 @@
 package com.shim.celestialexploration.util;
 
+import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.config.CelestialCommonConfig;
 import com.shim.celestialexploration.registry.DimensionRegistry;
 import com.shim.celestialexploration.registry.FluidRegistry;
@@ -53,6 +54,9 @@ public class CelestialUtil {
         dimension.put(Level.OVERWORLD, new Vec3(-2, 0, 0));
         dimension.put(DimensionRegistry.MOON, new Vec3(-2, 0, 0));
         dimension.put(DimensionRegistry.MARS, new Vec3(1, 0, -3));
+        dimension.put(DimensionRegistry.JUPITER, new Vec3(6, 0, 2));
+        dimension.put(DimensionRegistry.EUROPA, new Vec3(6, 0, 2));
+
         dimension.put(Level.END, new Vec3(12, 0, 12));
     });
 
@@ -72,12 +76,11 @@ public class CelestialUtil {
     }
 
     public static Vec3 getDimensionToSpaceCoordinates(ResourceKey<Level> dimension, ChunkPos pos) {
-        Vec3 coord = getDimensionLocation(dimension).getOutputCoordinates(pos.x, pos.z);
+        Vec3 coord = new Vec3(CE_DIMENSION_LOCATION.get(dimension).x() * CelestialUtil.getSpaceRatio(), 0, CE_DIMENSION_LOCATION.get(dimension).z() * CelestialUtil.getSpaceRatio()); //getDimensionLocation(dimension).getOutputCoordinates(pos.x, pos.z); //FIXME
         if (coord == null) coord = defaultDimensionLocation.getOutputCoordinates(pos.x, pos.z);
         coord = new Vec3(coord.x * 16, 145.0, coord.z * 16); //convert from chunk to block pos
         return coord;
     }
-
 
     protected static final Map<ResourceKey<Level>, Vec3> PLANET_LOCATIONS = new HashMap<>();
 //    protected static final Vec3 defaultPlanetLocation = new Vec3(-2, 0, 0);
@@ -92,15 +95,15 @@ public class CelestialUtil {
 
     public static void setPlanetLocation(ResourceKey<Level> dimension, Vec3 data) {
         PLANET_LOCATIONS.put(dimension, data);
+        CelestialExploration.LOGGER.debug("planets: " + PLANET_LOCATIONS.keySet());
     }
 
     public static void clearPlanetLocations() {
         PLANET_LOCATIONS.clear();
     }
 
-
     public static Vec3 getPlanetaryChunkCoordinates(ResourceKey<Level> planet) {
-        Vec3 coord = getPlanetLocation(planet); //CE_DIMENSION_LOCATION.get(planet);
+        Vec3 coord = CE_DIMENSION_LOCATION.get(planet); //getPlanetLocation(planet); //
 //        if (coord == null) coord = CE_DIMENSION_LOCATION.get(Level.OVERWORLD);
         coord = new Vec3(coord.x * getSpaceRatio(), coord.y, coord.z * getSpaceRatio());
         return coord;

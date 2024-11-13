@@ -64,7 +64,7 @@ public class SpaceshipScreen extends AbstractContainerScreen<SpaceshipMenu> {
             int y = (height - (this.imageHeight)) / 2;
             this.blit(poseStack, x, y, 0, 0, imageWidth, this.imageHeight);
 
-            Player player = this.minecraft.player;
+            Player player = CelestialExploration.PROXY.getPlayer();
 
             LightTravelCapability.ILightTravel travelCap = CelestialExploration.getCapability(player, CapabilityRegistry.LIGHT_TRAVEL_CAPABILITY);
 

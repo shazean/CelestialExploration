@@ -2,6 +2,8 @@ package com.shim.celestialexploration.util.teleportation;
 
 import com.google.common.collect.ImmutableList;
 import com.shim.celestialexploration.CelestialExploration;
+import com.shim.celestialexploration.datagen.util.PlanetTeleport;
+import com.shim.celestialexploration.registry.BlockRegistry;
 import com.shim.celestialexploration.registry.DimensionRegistry;
 import com.shim.celestialexploration.util.CelestialUtil;
 import com.shim.celestialexploration.world.portal.CelestialTeleporter;
@@ -19,6 +21,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 
@@ -29,13 +32,17 @@ import java.util.List;
 import java.util.Map;
 
 public class TeleportUtil {
-//    private static final Map<ResourceKey<Level>, List<Block>> DIMENSION_STRUCTURE_BLOCKS = Util.make(new Object2ObjectArrayMap<>(), (dimension) -> {
-//        dimension.put(DimensionRegistry.MERCURY, ImmutableList.<Block>builder().add(BlockRegistry.MERCURY_STONE.get(), BlockRegistry.MERCURY_DEEPSLATE.get(), BlockRegistry.MERCURY_CORE.get()).build());
-//        dimension.put(DimensionRegistry.VENUS, ImmutableList.<Block>builder().add(BlockRegistry.VENUS_STONE.get(), Blocks.YELLOW_STAINED_GLASS, BlockRegistry.VENUS_DEEPSLATE.get(), BlockRegistry.VENUS_CORE.get()).build());
-//        dimension.put(Level.OVERWORLD, ImmutableList.<Block>builder().add(Blocks.STONE, Blocks.SANDSTONE, Blocks.WHITE_STAINED_GLASS, Blocks.GRASS_BLOCK, Blocks.SMOOTH_QUARTZ, Blocks.BLUE_STAINED_GLASS, Blocks.ICE, Blocks.PACKED_ICE, Blocks.DEEPSLATE, Blocks.BEDROCK).build());
-//        dimension.put(DimensionRegistry.MOON, ImmutableList.<Block>builder().add(BlockRegistry.MOON_STONE.get(), BlockRegistry.MOON_DEEPSLATE.get(), BlockRegistry.MOON_CORE.get()).build());
-//        dimension.put(DimensionRegistry.MARS, ImmutableList.<Block>builder().add(BlockRegistry.MARS_STONE.get(), BlockRegistry.MARS_DEEPSLATE.get(), BlockRegistry.MARS_CORE.get(), BlockRegistry.DRY_ICE.get()).build());
-//    });
+    private static final Map<ResourceKey<Level>, List<Block>> CE_DIMENSION_STRUCTURE_BLOCKS = Util.make(new Object2ObjectArrayMap<>(), (dimension) -> {
+        dimension.put(DimensionRegistry.MERCURY, ImmutableList.<Block>builder().add(BlockRegistry.MERCURY_STONE.get(), BlockRegistry.MERCURY_DEEPSLATE.get(), BlockRegistry.MERCURY_CORE.get()).build());
+        dimension.put(DimensionRegistry.VENUS, ImmutableList.<Block>builder().add(BlockRegistry.VENUS_STONE.get(), Blocks.YELLOW_STAINED_GLASS, BlockRegistry.VENUS_DEEPSLATE.get(), BlockRegistry.VENUS_CORE.get()).build());
+        dimension.put(Level.OVERWORLD, ImmutableList.<Block>builder().add(Blocks.STONE, Blocks.SANDSTONE, Blocks.WHITE_STAINED_GLASS, Blocks.GRASS_BLOCK, Blocks.SMOOTH_QUARTZ, Blocks.BLUE_STAINED_GLASS, Blocks.ICE, Blocks.PACKED_ICE, Blocks.DEEPSLATE, Blocks.BEDROCK).build());
+        dimension.put(DimensionRegistry.MOON, ImmutableList.<Block>builder().add(BlockRegistry.MOON_STONE.get(), BlockRegistry.MOON_DEEPSLATE.get(), BlockRegistry.MOON_CORE.get()).build());
+        dimension.put(DimensionRegistry.MARS, ImmutableList.<Block>builder().add(BlockRegistry.MARS_STONE.get(), BlockRegistry.MARS_DEEPSLATE.get(), BlockRegistry.MARS_CORE.get(), BlockRegistry.DRY_ICE.get()).build());
+        dimension.put(DimensionRegistry.JUPITER, ImmutableList.<Block>builder().add(BlockRegistry.JUPITER_DEEPSLATE.get(), BlockRegistry.JUPITER_ATMOSPHERE.get(), Blocks.WHITE_STAINED_GLASS, Blocks.GRAY_STAINED_GLASS, Blocks.BROWN_STAINED_GLASS, Blocks.RED_STAINED_GLASS,
+                Blocks.ORANGE_STAINED_GLASS, BlockRegistry.JUPITER_CORE.get()).build());
+        dimension.put(DimensionRegistry.EUROPA, ImmutableList.<Block>builder().add(BlockRegistry.EUROPA_CORE.get(), BlockRegistry.EUROPA_HYDRATE.get(), BlockRegistry.MOON_STONE.get()).build());
+
+    });
 
 //    public static void addDimensionStructureBlocks(ResourceKey<Level> dimension, List<Block> blocks) {
 //        DIMENSION_STRUCTURE_BLOCKS.put(dimension, blocks);
@@ -66,6 +73,7 @@ public class TeleportUtil {
         dimension.put(DimensionRegistry.VENUS, null);
         dimension.put(Level.OVERWORLD, ImmutableList.<ResourceKey<Level>>builder().add(DimensionRegistry.MOON).build());
         dimension.put(DimensionRegistry.MARS, null);
+        dimension.put(DimensionRegistry.JUPITER, ImmutableList.<ResourceKey<Level>>builder().add(DimensionRegistry.EUROPA).build());
 
     });
 
@@ -79,7 +87,7 @@ public class TeleportUtil {
         ChunkPos planetChunkPos;
 
         //check if we're in the general area of a planet
-        for (ResourceKey<Level> loc : CelestialUtil.getPlanetLocations().keySet()) { //CelestialUtil.CE_DIMENSION_LOCATION.keySet()) {
+        for (ResourceKey<Level> loc : CelestialUtil.CE_DIMENSION_LOCATION.keySet()) { //CelestialUtil.getPlanetLocations().keySet()) {
 
             planetChunkPos = new ChunkPos((int) CelestialUtil.getPlanetaryChunkCoordinates(loc).x, (int) CelestialUtil.getPlanetaryChunkCoordinates(loc).z);
             ChunkPos locationChunk = new ChunkPos(new BlockPos(location.x, location.y, location.z));
@@ -89,9 +97,10 @@ public class TeleportUtil {
             }
         }
         if (planet == null) return null;
+        CelestialExploration.LOGGER.debug("planet nearby: " + planet);
 
         //check if what we're looking at matches said planet…
-        List<Block> blocksToComp = DIMENSION_STRUCTURE_BLOCKS.get(planet); //DIMENSION_STRUCTURE_BLOCKS.get(planet);
+        List<Block> blocksToComp = CE_DIMENSION_STRUCTURE_BLOCKS.get(planet); //DIMENSION_STRUCTURE_BLOCKS.get(planet);
         if (blocksToComp == null) return null;
 
         for (Block block : blocksToComp) {
@@ -99,10 +108,15 @@ public class TeleportUtil {
             if (block.defaultBlockState().is(blockWeSee.getBlock())) return planet;
         }
         //…or one of its moons
+
         moons = PLANET_MOONS.get(planet);
+        CelestialExploration.LOGGER.debug("moons: " + moons);
+
         if (moons != null) {
             for (ResourceKey<Level> moon : moons) {
-                blocksToComp = DIMENSION_STRUCTURE_BLOCKS.get(moon); //DIMENSION_STRUCTURE_BLOCKS.get(moon);
+                blocksToComp = CE_DIMENSION_STRUCTURE_BLOCKS.get(moon); //DIMENSION_STRUCTURE_BLOCKS.get(moon);
+                CelestialExploration.LOGGER.debug("blocksToComp: " + blocksToComp);
+
                 for (Block block : blocksToComp) {
                     //  return moon
                     if (block.defaultBlockState().is(blockWeSee.getBlock())) return moon;
@@ -176,7 +190,7 @@ public class TeleportUtil {
     public static void displayTeleportMessage(Entity entity, int teleportCooldown, ResourceKey<Level> destination) {
         if (entity instanceof Player) {
             if (teleportCooldown % 20 == 0 && teleportCooldown != 0) {
-                ((Player) entity).displayClientMessage(Component.nullToEmpty("Teleporting to " + new TranslatableComponent("dimension.celestialexploration." + destination.location().getPath()).getString() + " in… " + teleportCooldown / 20), true);
+                ((Player) entity).displayClientMessage(Component.nullToEmpty("Teleporting to " + new TranslatableComponent("dimension." + destination.getRegistryName().getPath() + "." + destination.location().getPath()).getString() + " in… " + teleportCooldown / 20), true);
             } else if (teleportCooldown == 0) {
                 ((Player) entity).displayClientMessage(Component.nullToEmpty("Teleporting!"), true);
             }

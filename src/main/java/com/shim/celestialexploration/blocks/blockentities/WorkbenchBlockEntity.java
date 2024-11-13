@@ -199,6 +199,27 @@ public class WorkbenchBlockEntity extends BlockEntity implements MenuProvider {
             blockEntity.fluidLevel = 0;
         }
 
+        //round multiples of 9 ingots up to perfect blocks
+        if (blockEntity.fluidHandler.getFluidAmount() == 999) {
+            blockEntity.fluidHandler.setFluid(new FluidStack(blockEntity.fluidHandler.getFluid(), 1000));
+            blockEntity.fluidLevel = 1000;
+        }
+
+        if (blockEntity.fluidHandler.getFluidAmount() == 1999 || blockEntity.fluidHandler.getFluidAmount() == 1998) {
+            blockEntity.fluidHandler.setFluid(new FluidStack(blockEntity.fluidHandler.getFluid(), 2000));
+            blockEntity.fluidLevel = 2000;
+        }
+
+        if (blockEntity.fluidHandler.getFluidAmount() >= 2997 && blockEntity.fluidHandler.getFluidAmount() < 3000) {
+            blockEntity.fluidHandler.setFluid(new FluidStack(blockEntity.fluidHandler.getFluid(), 3000));
+            blockEntity.fluidLevel = 3000;
+        }
+
+        if (blockEntity.fluidHandler.getFluidAmount() >= 3996 && blockEntity.fluidHandler.getFluidAmount() < 4000) {
+            blockEntity.fluidHandler.setFluid(new FluidStack(blockEntity.fluidHandler.getFluid(), 4000));
+            blockEntity.fluidLevel = 4000;
+        }
+
         for (int i = 0; i < blockEntity.itemHandler.getSlots(); i++) {
             inventory.setItem(i, blockEntity.itemHandler.getStackInSlot(i));
         }
@@ -359,6 +380,10 @@ public class WorkbenchBlockEntity extends BlockEntity implements MenuProvider {
     }
 
     private static boolean canAddFluid(WorkbenchBlockEntity blockEntity, FluidStack result) {
+        if (blockEntity.fluidHandler.isEmpty()) return true;
+        if (!blockEntity.fluidHandler.getFluid().isFluidEqual(result)) {
+            return false;
+        }
         if (!blockEntity.fluidHandler.isFluidValid(result)) {
             return false;
         } else return blockEntity.fluidHandler.getSpace() != 0;

@@ -5,6 +5,7 @@ import com.shim.celestialexploration.config.CelestialCommonConfig;
 import com.shim.celestialexploration.data.CelestialDimensionManager;
 import com.shim.celestialexploration.data.CelestialPlanetManager;
 import com.shim.celestialexploration.entity.CelestialCat;
+import com.shim.celestialexploration.entity.Eureka;
 import com.shim.celestialexploration.entity.mob.*;
 import com.shim.celestialexploration.entity.mob.piglins.AstralPiglin;
 import com.shim.celestialexploration.entity.mob.piglins.CyborgPiglin;
@@ -12,8 +13,11 @@ import com.shim.celestialexploration.entity.mob.piglins.VoidedPiglin;
 import com.shim.celestialexploration.entity.mob.slimes.*;
 import com.shim.celestialexploration.packets.CelestialPacketHandler;
 import com.shim.celestialexploration.registry.*;
+import com.shim.celestialexploration.util.ClientProxy;
+import com.shim.celestialexploration.util.IProxy;
 import com.shim.celestialexploration.util.Keybinds;
 import com.shim.celestialexploration.registry.CelestialStructurePieceType;
+import com.shim.celestialexploration.util.ServerProxy;
 import com.shim.celestialexploration.world.structures.ResearchTunnelPieces;
 import mod.azure.azurelib.AzureLib;
 import net.minecraft.world.entity.Entity;
@@ -31,6 +35,7 @@ import net.minecraftforge.event.AddReloadListenerEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
@@ -129,6 +134,9 @@ public class CelestialExploration {
         }
     };
 
+    public static final IProxy PROXY = DistExecutor.unsafeRunForDist(()-> ClientProxy::new, ()-> ServerProxy::new);
+
+
     private void setup(final FMLCommonSetupEvent event)
     {
         // some preinit code
@@ -152,6 +160,7 @@ public class CelestialExploration {
         SpawnPlacements.register(EntityRegistry.METEOR_CRAWLER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, MeteorCrawler::checkMeteorCrawlerSpawnRules);
         SpawnPlacements.register(EntityRegistry.VOID_CRAWLER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, VoidCrawler::checkMonsterSpawnRules);
         SpawnPlacements.register(EntityRegistry.CELESTIAL_CAT.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, CelestialCat::checkCatSpawnRules);
+        SpawnPlacements.register(EntityRegistry.EUREKA.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.WORLD_SURFACE, Eureka::checkEurekaSpawnRules);
 
         CelestialPacketHandler.init();
 

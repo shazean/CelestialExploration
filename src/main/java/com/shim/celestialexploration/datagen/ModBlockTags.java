@@ -154,7 +154,8 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(BlockRegistry.MOON_SAND.get()).add(BlockRegistry.GLOWING_MOON_SAND.get())
                 .add(BlockRegistry.MARS_SAND.get())
                 .add(BlockRegistry.VENUS_SAND.get()).add(BlockRegistry.FINE_VENUS_SAND.get())
-                .add(BlockRegistry.MERCURY_SAND.get());
+                .add(BlockRegistry.MERCURY_SAND.get())
+                .add(BlockRegistry.GLOWING_EUROPA_SAND.get());
 
         //SLABS, STAIRS, WALLS
         tag(BlockTags.SLABS)
@@ -175,7 +176,9 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(BlockRegistry.MERCURY_DEEPSLATE_BRICK_SLAB.get()).add(BlockRegistry.MERCURY_DEEPSLATE_TILE_SLAB.get()).add(BlockRegistry.MERCURY_POLISHED_DEEPSLATE_SLAB.get())
 
                 .add(BlockRegistry.JUPITER_DEEPSLATE_BRICK_SLAB.get()).add(BlockRegistry.JUPITER_DEEPSLATE_TILE_SLAB.get()).add(BlockRegistry.JUPITER_POLISHED_DEEPSLATE_SLAB.get())
-                
+
+                .add(BlockRegistry.EUROPA_BRICK_SLAB.get())
+
                 .add(BlockRegistry.METEOR_BRICK_SLAB.get());
 
         tag(BlockTags.STAIRS)
@@ -199,6 +202,8 @@ public class ModBlockTags extends BlockTagsProvider {
 
                 .add(BlockRegistry.JUPITER_DEEPSLATE_BRICK_STAIRS.get()).add(BlockRegistry.JUPITER_DEEPSLATE_TILE_STAIRS.get()).add(BlockRegistry.JUPITER_POLISHED_DEEPSLATE_STAIRS.get())
 
+                .add(BlockRegistry.EUROPA_BRICK_STAIRS.get())
+
                 .add(BlockRegistry.METEOR_BRICK_STAIRS.get());
 
         tag(BlockTags.WALLS)
@@ -221,6 +226,8 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(BlockRegistry.JUPITER_DEEPSLATE_BRICK_WALL.get()).add(BlockRegistry.JUPITER_DEEPSLATE_TILE_WALL.get()).add(BlockRegistry.JUPITER_POLISHED_DEEPSLATE_WALL.get())
 
                 .add(BlockRegistry.METEOR_BRICK_WALL.get())
+
+                .add(BlockRegistry.EUROPA_BRICK_WALL.get())
 
                 .add(BlockRegistry.PANEL_WALL.get());
 
@@ -273,7 +280,7 @@ public class ModBlockTags extends BlockTagsProvider {
         tag(BlockTags.PORTALS)
                 .add(BlockRegistry.MARS_PORTAL.get()).add(BlockRegistry.MOON_PORTAL.get())
                 .add(BlockRegistry.VENUS_PORTAL.get()).add(BlockRegistry.MERCURY_PORTAL.get())
-                .add(BlockRegistry.JUPITER_PORTAL.get());
+                .add(BlockRegistry.JUPITER_PORTAL.get()).add(BlockRegistry.EUROPA_PORTAL.get());
 
         //---- FORGE TAGS.BLOCKS -------------------------------------------------------------------------------
         //TOOLS
@@ -316,9 +323,9 @@ public class ModBlockTags extends BlockTagsProvider {
 
         //GLASS
         tag(Tags.Blocks.GLASS)
-                .add(BlockRegistry.REINFORCED_GLASS.get()).add(BlockRegistry.REINFORCED_GLASS_PANE.get())
-                .add(BlockRegistry.LUMINOUS_BLUE_GLASS.get()).add(BlockRegistry.LUMINOUS_BLUE_GLASS_PANE.get())
-                .add(BlockRegistry.LUMINOUS_WHITE_GLASS.get()).add(BlockRegistry.LUMINOUS_WHITE_GLASS_PANE.get());
+                .add(BlockRegistry.REINFORCED_GLASS.get())
+                .add(BlockRegistry.LUMINOUS_BLUE_GLASS.get())
+                .add(BlockRegistry.LUMINOUS_WHITE_GLASS.get());
 
         tag(Tags.Blocks.GLASS_PANES)
                 .add(BlockRegistry.REINFORCED_GLASS_PANE.get())
@@ -420,6 +427,8 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(BlockRegistry.JUPITER_COBBLED_DEEPSLATE.get()).add(BlockRegistry.JUPITER_COBBLED_DEEPSLATE_SLAB.get())
                 .add(BlockRegistry.JUPITER_COBBLED_DEEPSLATE_STAIRS.get()).add(BlockRegistry.JUPITER_COBBLED_DEEPSLATE_WALL.get());
 
+        tag(TagRegistry.Blocks.EUROPA_BRICKS)
+                .add(BlockRegistry.EUROPA_BRICKS.get());
 
         //---- METEOR -------------------------------------------------------------------------------
         tag(TagRegistry.Blocks.METEOR)
@@ -476,6 +485,28 @@ public class ModBlockTags extends BlockTagsProvider {
         tag(TagRegistry.Blocks.JUPITER_PORTAL_FRAME_BLOCK)
                 .add(BlockRegistry.JUPITER_DEEPSLATE_BRICKS.get());
 
+        tag(TagRegistry.Blocks.EUROPA_PORTAL_FRAME_BLOCK)
+                .add(BlockRegistry.EUROPA_BRICKS.get());
+
+
+        tag(TagRegistry.Blocks.BAUXITE_ORE)
+                .add(BlockRegistry.BAUXITE_ORE.get())
+                .add(BlockRegistry.MOON_BAUXITE_ORE.get())
+                .add(BlockRegistry.MARS_BAUXITE_ORE.get())
+                .add(BlockRegistry.VENUS_BAUXITE_ORE.get())
+                .add(BlockRegistry.MERCURY_BAUXITE_ORE.get())
+                .add(BlockRegistry.METEOR_BAUXITE_ORE.get());
+
+        tag(TagRegistry.Blocks.NO_SNOW)
+                .add(BlockRegistry.MARS_SAND.get())
+                .add(BlockRegistry.MARS_STONE.get())
+                .add(BlockRegistry.COARSE_MARS_SAND.get())
+                .add(BlockRegistry.MOON_SAND.get())
+                .add(BlockRegistry.MOON_STONE.get())
+                .add(BlockRegistry.COARSE_MOON_SAND.get())
+                .add(BlockRegistry.MERCURY_SAND.get())
+                .add(BlockRegistry.MERCURY_STONE.get())
+                .add(BlockRegistry.COARSE_MERCURY_SAND.get());
 
     }
 

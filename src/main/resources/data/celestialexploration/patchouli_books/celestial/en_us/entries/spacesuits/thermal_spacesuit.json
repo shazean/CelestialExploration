@@ -11,6 +11,55 @@
       "offset": 0.1
     },
     {
+      "type": "celestialexploration:workbench_recipe",
+      "item_1": "minecraft:diamond",
+      "item_2": "minecraft:diamond",
+      "item_3": "minecraft:diamond",
+      "item_4": "minecraft:white_wool",
+      "item_5": "minecraft:glass,celestialexploration:reinforced_glass,celestialexploration:luminous_white_glass,celestialexploration:luminous_blue_glass",
+      "item_6": "minecraft:white_wool",
+      "result": "celestialexploration:thermal_spacesuit_helmet",
+      "fluidName": "Steel",
+      "fluidMB": "444mb (4 ingots)"
+    },
+    {
+      "type": "celestialexploration:workbench_recipe",
+      "item_1": "minecraft:leather",
+      "item_3": "minecraft:leather",
+      "item_4": "minecraft:diamond",
+      "item_5": "minecraft:diamond",
+      "item_6": "minecraft:diamond",
+      "item_7": "minecraft:white_wool",
+      "item_8": "minecraft:white_wool",
+      "item_9": "minecraft:white_wool",
+      "result": "celestialexploration:thermal_spacesuit_chestplate",
+      "fluidName": "Steel",
+      "fluidMB": "777mb (7 ingots)"
+    },
+    {
+      "type": "celestialexploration:workbench_recipe",
+      "item_1": "minecraft:white_wool",
+      "item_2": "minecraft:white_wool",
+      "item_3": "minecraft:white_wool",
+      "item_4": "minecraft:diamond",
+      "item_6": "minecraft:diamond",
+      "item_7": "minecraft:white_wool",
+      "item_9": "minecraft:white_wool",
+      "result": "celestialexploration:thermal_spacesuit_leggings",
+      "fluidName": "Steel",
+      "fluidMB": "666mb (6 ingots)"
+    },
+    {
+      "type": "celestialexploration:workbench_recipe",
+      "item_1": "minecraft:leather",
+      "item_3": "minecraft:leather",
+      "item_4": "minecraft:diamond",
+      "item_6": "minecraft:diamond",
+      "result": "celestialexploration:thermal_spacesuit_boots",
+      "fluidName": "Steel",
+      "fluidMB": "333mb (3 ingots)"
+    },
+    {
       "type": "patchouli:spotlight",
       "text": "Wearing the thermal spacesuit boots will turn off the low gravity effects on the low mass planets like the moon and Mars.$(br2)The boots also can be used to walk on powdered snow.",
       "item": {

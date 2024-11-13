@@ -3,21 +3,36 @@ package com.shim.celestialexploration.datagen;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.registry.*;
 
+import com.shim.celestialexploration.world.biome.CelestialBiomeKeys;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.LanguageProvider;
 import net.minecraftforge.registries.RegistryObject;
+
+import java.awt.*;
 
 public class ModLanguageProvider extends LanguageProvider {
 
 	public ModLanguageProvider(DataGenerator gen, String locale) {
 		super(gen, CelestialExploration.MODID, locale);
 	}
+
+	public String getBiomeString(ResourceKey<Biome> biome) {
+		return "biome." + CelestialExploration.MODID + "." + biome.location().getPath();
+	}
+
+	public String getDimensionString(ResourceKey<Level> dimension) {
+		return "dimension." + dimension.getRegistryName().getPath() + "." + dimension.location().getPath();
+	}
+
 
 	@Override
 	protected void addTranslations() {
@@ -51,33 +66,51 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(FluidRegistry.METALLIC_HYDROGEN_BUCKET.get(), "Metallic Hydrogen Bucket");
 
 		//---- BIOMES -------------------------------------------------------------------------------
-		add("biome.celestialexploration.moon_craters", "Lunar Craters");
-		add("biome.celestialexploration.moon_desert", "Lunar Desert");
-		add("biome.celestialexploration.moon_lava_flats", "Lunar Lava Flats");
-		add("biome.celestialexploration.moon_lower_plains", "Lunar Lower Plains");
-		add("biome.celestialexploration.moon_plains", "Lunar Plains");
-		add("biome.celestialexploration.mars_craters_", "Martian Craters");
-		add("biome.celestialexploration.mars_deep_craters", "Martian Deep Craters");
-		add("biome.celestialexploration.mars_desert", "Martian Desert");
-		add("biome.celestialexploration.mars_dunes", "Martian Dunes");
-		add("biome.celestialexploration.mars_dry_ice_flats", "Martian Dry Ice Flats");
-		add("biome.celestialexploration.mars_dry_ice_peaks", "Martian Dry Ice Peaks");
-		add("biome.celestialexploration.mars_eroded_flats", "Martian Eroded Flats");
-		add("biome.celestialexploration.mars_volcano_flats", "Martian Volcano Flats");
-		add("biome.celestialexploration.venus_desert", "Venusian Desert");
-		add("biome.celestialexploration.venus_lower_plains", "Venusian Lower Plains");
-		add("biome.celestialexploration.venus_plains", "Venusian Plains");
-		add("biome.celestialexploration.venus_sulfur_flats", "Venusian Sulfur Flats");
-		add("biome.celestialexploration.space", "Space");
+		add(getBiomeString(CelestialBiomeKeys.MOON_CRATERS), "Lunar Craters");
+		add(getBiomeString(CelestialBiomeKeys.MOON_DESERT), "Lunar Desert");
+		add(getBiomeString(CelestialBiomeKeys.MOON_LAVA_FLATS), "Lunar Lava Flats");
+		add(getBiomeString(CelestialBiomeKeys.MOON_LOWER_PLAINS), "Lunar Lower Plains");
+		add(getBiomeString(CelestialBiomeKeys.MOON_PLAINS), "Lunar Plains");
+		add(getBiomeString(CelestialBiomeKeys.MARS_CRATERS), "Martian Craters");
+		add(getBiomeString(CelestialBiomeKeys.MARS_DEEP_CRATERS), "Martian Deep Craters");
+		add(getBiomeString(CelestialBiomeKeys.MARS_DESERT), "Martian Desert");
+		add(getBiomeString(CelestialBiomeKeys.MARS_DUNES), "Martian Dunes");
+		add(getBiomeString(CelestialBiomeKeys.MARS_DRY_ICE_FLATS), "Martian Dry Ice Flats");
+		add(getBiomeString(CelestialBiomeKeys.MARS_DRY_ICE_PEAKS), "Martian Dry Ice Peaks");
+		add(getBiomeString(CelestialBiomeKeys.MARS_ERODED_FLATS), "Martian Eroded Flats");
+		add(getBiomeString(CelestialBiomeKeys.MARS_VOLCANO_FLATS), "Martian Volcano Flats");
+		add(getBiomeString(CelestialBiomeKeys.MARS_FLATS), "Martian Flats");
+		add(getBiomeString(CelestialBiomeKeys.VENUS_DESERT), "Venusian Desert");
+		add(getBiomeString(CelestialBiomeKeys.VENUS_LOWER_PLAINS), "Venusian Lower Plains");
+		add(getBiomeString(CelestialBiomeKeys.VENUS_PLAINS), "Venusian Plains");
+		add(getBiomeString(CelestialBiomeKeys.VENUS_SULFUR_FLATS), "Venusian Sulfur Flats");
+		add(getBiomeString(CelestialBiomeKeys.SULFUR_RIVER), "Sulfuric River");
+		add(getBiomeString(CelestialBiomeKeys.SULFUR_OCEAN), "Sulfuric Ocean");
+		add(getBiomeString(CelestialBiomeKeys.MERCURY_CRATERED_PLAINS), "Mercurian Cratered Plains");
+		add(getBiomeString(CelestialBiomeKeys.MERCURY_DESERT), "Mercurian Desert");
+		add(getBiomeString(CelestialBiomeKeys.MERCURY_DEEP_CRATERED_PLAINS), "Mercurian Deep Cratered Plains");
+		add(getBiomeString(CelestialBiomeKeys.MERCURY_PLAINS), "Mercurian Plains");
+		add(getBiomeString(CelestialBiomeKeys.MERCURY_RIDGES), "Mercurian Ridges");
+		add(getBiomeString(CelestialBiomeKeys.JUPITER_ETHER), "Jovian Ether");
+		add(getBiomeString(CelestialBiomeKeys.JUPITER_LESSER_STORM), "Jovian Lesser Storm");
+		add(getBiomeString(CelestialBiomeKeys.JUPITER_GREAT_STORM), "Jovian Greater Storm");
+		add(getBiomeString(CelestialBiomeKeys.EUROPA_RIVER), "Europan River");
+		add(getBiomeString(CelestialBiomeKeys.EUROPA_DESERT), "Europan Desert");
+		add(getBiomeString(CelestialBiomeKeys.EUROPA_JAGGED_PLAINS), "Europan Jagged Plains");
+		add(getBiomeString(CelestialBiomeKeys.EUROPA_OCEAN), "Europan Ocean");
+		add(getBiomeString(CelestialBiomeKeys.EUROPA_LOWER_PLAINS), "Europan Lower Plains");
+		add(getBiomeString(CelestialBiomeKeys.EUROPA_PLAINS), "Europan Plains");
+		add(getBiomeString(CelestialBiomeKeys.SPACE), "Outer Space");
 
 		//---- DIMENSIONS -------------------------------------------------------------------------------
-		add("dimension.celestialexploration.space", "Outer Space");
-		add("dimension.celestialexploration.mercury", "Mercury");
-		add("dimension.celestialexploration.venus", "Venus");
-		add("dimension.celestialexploration.overworld", "Overworld");
-		add("dimension.celestialexploration.moon", "Moon");
-		add("dimension.celestialexploration.mars", "Mars");
-		add("dimension.celestialexploration.jupiter", "Jupiter");
+		add(getDimensionString(DimensionRegistry.SPACE), "Outer Space");
+		add(getDimensionString(DimensionRegistry.MERCURY), "Mercury");
+		add(getDimensionString(DimensionRegistry.VENUS), "Venus");
+		add(getDimensionString(Level.OVERWORLD), "Overworld");
+		add(getDimensionString(DimensionRegistry.MOON), "Moon");
+		add(getDimensionString(DimensionRegistry.MARS), "Mars");
+		add(getDimensionString(DimensionRegistry.JUPITER), "Jupiter");
+		add(getDimensionString(DimensionRegistry.EUROPA), "Europa");
 
 		//---- MENUS -------------------------------------------------------------------------------
 		add("container.celestialexploration.oxygen_compressor", "Oxygen Compressor");
@@ -100,13 +133,16 @@ public class ModLanguageProvider extends LanguageProvider {
 		add("key.celestialexploration.turn_left", "Spaceship Strafe Left");
 		add("key.celestialexploration.turn_right", "Spaceship Strafe Right");
 		add("key.celestialexploration.open_spaceship_inventory", "Open Spaceship Inventory");
-		add("key.categories.spaceship_light_travel", "Spaceship Light Speed Travel");
+		add("key.celestialexploration.spaceship_light_travel", "Spaceship Light Speed Travel");
+
 
 		//---- DAMAGE SOURCES -------------------------------------------------------------------------------
 		add("death.attack.celestialexploration.touched_sun", "%1$s discovered the sun is hot");
 		add("death.attack.celestialexploration.cold_floor", "%1$s got cold feet");
 		add("death.attack.celestialexploration.sulfur", "%1$s tried to swim in sulfur");
 		add("death.attack.celestialexploration.metallic_hydrogen", "%1$s drowned in death metal");
+		add("death.attack.celestialexploration.dust_storm", "%1$s was sand blasted to death");
+
 
 		//---- ADVANCEMENTS -------------------------------------------------------------------------------
 		add("advancements.celestial.root.title", "Exploration");
@@ -151,15 +187,29 @@ public class ModLanguageProvider extends LanguageProvider {
 		//---- RECIPE-RELATED -------------------------------------------------------------------------------
 		add("recipe.celestialexploration.workbench.smelting", "Workbench Smelting");
 		add("recipe.celestialexploration.workbench.crafting", "Workbench Crafting");
+		add("recipe.celestialexploration.workbench.blocks", "blocks");
+		add("recipe.celestialexploration.workbench.ingots", "ingots");
+
+		//---- ARMOR-RELATED -------------------------------------------------------------------------------
+		add("item.celestialexploration.armor_details.when_worn", "When Worn");
+		add("item.celestialexploration.armor_details.when_set_complete", "When Complete Set Worn");
+		add("item.celestialexploration.armor_details.heavy_duty_full_spacesuit", "Grants jump boost");
+		add("item.celestialexploration.armor_details.heavy_duty_spacesuit_helmet", "Negates liquid metallic hydrogen damage");
+		add("item.celestialexploration.armor_details.heavy_duty_spacesuit_chestplate", "Piglin neutral");
+		add("item.celestialexploration.armor_details.heavy_duty_spacesuit_boots", "Negates high gravity");
+		add("item.celestialexploration.armor_details.thermal_full_spacesuit", "Grants speed boost");
+		add("item.celestialexploration.armor_details.thermal_spacesuit_boots_1", "Negates low gravity");
+		add("item.celestialexploration.armor_details.thermal_spacesuit_boots_2", "Can walk on powdered snow");
+
 
 		//---- OTHER -------------------------------------------------------------------------------
 		add("celestialexploration.planet_details.location", "Coordinates");
 		add("celestialexploration.planet_details.moons", "Notable Moons");
-		add("celestialexploration.planet_details.no_moons", "NONE");
+		add("celestialexploration.planet_details.no_moons", "none");
 		add("celestialexploration.planet_details.resources", "Notable Resources");
 
 		add("celestialexploration.planet_details.sun_name", "The Sun");
-		add("celestialexploration.planet_details.sun_resources", "NONE");
+		add("celestialexploration.planet_details.sun_resources", "none");
 
 		add("celestialexploration.planet_details.mercury_name", "Mercury");
 		add("celestialexploration.planet_details.mercury_resources", "meteors, coal, diamond");
@@ -175,7 +225,7 @@ public class ModLanguageProvider extends LanguageProvider {
 		add("celestialexploration.planet_details.mars_resources", "iron");
 
 		add("celestialexploration.planet_details.jupiter_name", "Jupiter");
-		add("celestialexploration.planet_details.jupiter_resources", "TBD");
+		add("celestialexploration.planet_details.jupiter_resources", "none");
 		add("celestialexploration.planet_details.jupiter_moons", "TBD");
 
 		add("celestialexploration.planet_details.saturn_name", "Saturn");

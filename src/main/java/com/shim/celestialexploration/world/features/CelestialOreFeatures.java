@@ -120,6 +120,6 @@ public class CelestialOreFeatures {
     public static final Holder<ConfiguredFeature<OreConfiguration, ?>> MERCURY_COAL_ORE_LOWER = FeatureUtils.register("mercury_coal_ore_lower", Feature.ORE, new OreConfiguration(MERCURY_COAL_ORES, 17, 0.5F));
     public static final Holder<ConfiguredFeature<OreConfiguration, ?>> MERCURY_DIAMOND_ORE = FeatureUtils.register("mercury_diamond_ore", Feature.ORE, new OreConfiguration(MERCURY_DIAMOND_ORES, 8, 0.5F));
 
-    public static final Holder<ConfiguredFeature<OreConfiguration, ?>> BAUXITE_ORE = FeatureUtils.register("bauxite_ore", Feature.ORE, new OreConfiguration(BAUXITE_ORES, 13));
+    public static final Holder<ConfiguredFeature<OreConfiguration, ?>> BAUXITE_ORE = FeatureUtils.register("bauxite_ore", Feature.ORE, new OreConfiguration(BAUXITE_ORES, 17));
 
 }

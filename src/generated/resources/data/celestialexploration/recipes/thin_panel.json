@@ -2,8 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "group": "celestialexploration",
   "pattern": [
-    "XXX",
-    "XXX"
+    "XX",
+    "XX"
   ],
   "key": {
     "X": {
@@ -11,7 +11,6 @@
     }
   },
   "result": {
-    "item": "celestialexploration:thin_panel",
-    "count": 16
+    "item": "celestialexploration:thin_panel"
   }
 }

@@ -8,9 +8,12 @@ import com.shim.celestialexploration.item.armor.AdvancedSpaceSuitArmorItem;
 import com.shim.celestialexploration.item.armor.HeavyDutySpaceSuitArmorItem;
 import com.shim.celestialexploration.item.armor.ThermalSpaceSuitArmorItem;
 import com.shim.celestialexploration.item.armor.SpaceSuitArmorItem;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -127,6 +130,7 @@ public class ItemRegistry {
 	public static final RegistryObject<Item> METEOR_CRAWLER_SPAWN_EGG = registerItem("meteor_crawler_spawn_egg", "Meteor Crawler Spawn Egg", () -> new ForgeSpawnEggItem(EntityRegistry.METEOR_CRAWLER,0, 0x3c2d62, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
 	public static final RegistryObject<Item> VOID_CRAWLER_SPAWN_EGG = registerItem("void_crawler_spawn_egg", "Void Crawler Spawn Egg", () -> new ForgeSpawnEggItem(EntityRegistry.VOID_CRAWLER,0, 0x3c2d62, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
 	public static final RegistryObject<Item> CELESTIAL_CAT_SPAWN_EGG = registerItem("celestial_cat_spawn_egg", "Celestial Cat Spawn Egg", () -> new ForgeSpawnEggItem(EntityRegistry.CELESTIAL_CAT,0, 0x3c2d62, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> EUREKA_SPAWN_EGG = registerItem("eureka_spawn_egg", "Eureka! Spawn Egg", () -> new ForgeSpawnEggItem(EntityRegistry.EUREKA,0, 0x3c2d62, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
 
 	//---- MOB HEADS -------------------------------------------------------------------------------
 
@@ -142,13 +146,17 @@ public class ItemRegistry {
 	public static final RegistryObject<Item> BAUXITE_INGOT = registerItem("bauxite_ingot", "Bauxite Ingot", () -> new Item((new Item.Properties()).tab(CreativeModeTab.TAB_MATERIALS)));
 	public static final RegistryObject<Item> ALUMINUM_INGOT = registerItem("aluminum_ingot", "Aluminum Ingot", () -> new Item((new Item.Properties()).tab(CreativeModeTab.TAB_MATERIALS)));
 	public static final RegistryObject<Item> MOON_DUST = registerItem("moon_dust", "Moon Dust", () -> new Item((new Item.Properties()).tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> EUROPA_DUST = registerItem("europa_dust", "Europan Dust", () -> new Item((new Item.Properties()).tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+
 	public static final RegistryObject<Item> STEEL_ROD = registerItem("steel_rod", "Steel Rod", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MATERIALS)));
 	public static final RegistryObject<Item> FLARE_ROD = registerItem("flare_rod", "Flare Rod", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MATERIALS)));
 	public static final RegistryObject<Item> BLOCK_MOLD = registerItem("block_mold", "Block Mold", () -> new Item(new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
 	public static final RegistryObject<Item> INGOT_MOLD = registerItem("ingot_mold", "Ingot Mold", () -> new Item(new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
 	public static final RegistryObject<Item> STEEL_WOOL = registerItem("steel_wool", "Steel Wool", () -> new Item((new Item.Properties()).tab(CreativeModeTab.TAB_MATERIALS)));
 	public static final RegistryObject<Item> SULFUR_CRYSTAL = registerItem("sulfur_crystal", "Sulfur Crystal", () -> new Item((new Item.Properties()).tab(CreativeModeTab.TAB_MATERIALS)));
-	public static final RegistryObject<Item> CINNABAR = registerItem("cinnabar", "Cinnarbar", () -> new Item((new Item.Properties()).tab(CreativeModeTab.TAB_MATERIALS)));
+	public static final RegistryObject<Item> CINNABAR = registerItem("cinnabar", "Cinnabar", () -> new Item((new Item.Properties()).tab(CreativeModeTab.TAB_MATERIALS)));
+
+	public static final RegistryObject<Item> EUREKA_BUCKET = registerItem("eureka_bucket", "Eureka! Bucket", () -> new MobBucketItem(EntityRegistry.EUREKA, () -> Fluids.WATER, () -> SoundEvents.BUCKET_EMPTY_FISH, (new Item.Properties()).stacksTo(1).tab(CreativeModeTab.TAB_MISC)));
 
 //	public static final RegistryObject<Item> CONTROL_PANEL = registerItem("control_panel", "Control Panel", () -> new ControlPanelItem(new Item.Properties().tab(CelestialExploration.SPACESHIP_TAB)));
 
@@ -162,5 +170,4 @@ public class ItemRegistry {
 	public static final RegistryObject<Item> LUNAR_CHEESE = registerFood("lunar_cheese", "Lunar Cheese", 5, 0.65F);
 	public static final RegistryObject<Item> CHEESE = registerFood("cheese", "Cheese", 5, 0.65F);
 	public static final RegistryObject<Item> SUSPICIOUS_JELLO = registerItem("suspicious_jello", "Suspicious Jello", () -> new SuspiciousJelloItem(new Item.Properties().tab(CreativeModeTab.TAB_FOOD).food((new FoodProperties.Builder()).fast().nutrition(1).saturationMod(.2F).alwaysEat().build())));
-
 }

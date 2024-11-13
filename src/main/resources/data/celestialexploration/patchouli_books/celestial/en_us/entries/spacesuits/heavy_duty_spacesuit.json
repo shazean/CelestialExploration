@@ -11,12 +11,53 @@
       "offset": 0.1
     },
     {
-      "type": "patchouli:spotlight",
-      "text": "The gold implemented in the chestpiece counts as gold armor to make you neutral with piglins.",
-      "item": {
-        "item": "celestialexploration:heavy_duty_spacesuit_chestplate"
-      },
-      "title": "Heavy Duty Chestplate"
+      "type": "celestialexploration:workbench_recipe",
+      "item_1": "minecraft:diamond",
+      "item_2": "minecraft:diamond",
+      "item_3": "minecraft:diamond",
+      "item_4": "minecraft:leather",
+      "item_5": "minecraft:glass,celestialexploration:reinforced_glass,celestialexploration:luminous_white_glass,celestialexploration:luminous_blue_glass",
+      "item_6": "minecraft:leather",
+      "result": "celestialexploration:heavy_duty_spacesuit_helmet",
+      "fluidName": "Steel",
+      "fluidMB": "444mb (4 ingots)"
+    },
+    {
+      "type": "celestialexploration:workbench_recipe",
+      "item_1": "minecraft:leather",
+      "item_3": "minecraft:leather",
+      "item_4": "minecraft:diamond",
+      "item_5": "minecraft:diamond",
+      "item_6": "minecraft:diamond",
+      "item_7": "minecraft:gold_ingot",
+      "item_8": "minecraft:magma_cream",
+      "item_9": "minecraft:gold_ingot",
+      "result": "celestialexploration:heavy_duty_spacesuit_chestplate",
+      "fluidName": "Steel",
+      "fluidMB": "777mb (7 ingots)"
+    },
+    {
+      "type": "celestialexploration:workbench_recipe",
+      "item_1": "minecraft:leather",
+      "item_2": "minecraft:leather",
+      "item_3": "minecraft:leather",
+      "item_4": "minecraft:diamond",
+      "item_6": "minecraft:diamond",
+      "item_7": "minecraft:leather",
+      "item_9": "minecraft:leather",
+      "result": "celestialexploration:heavy_duty_spacesuit_leggings",
+      "fluidName": "Steel",
+      "fluidMB": "666mb (6 ingots)"
+    },
+    {
+      "type": "celestialexploration:workbench_recipe",
+      "item_1": "minecraft:rabbit_hide",
+      "item_3": "minecraft:rabbit_hide",
+      "item_4": "minecraft:diamond",
+      "item_6": "minecraft:diamond",
+      "result": "celestialexploration:heavy_duty_spacesuit_boots",
+      "fluidName": "Steel",
+      "fluidMB": "333mb (3 ingots)"
     }
   ]
 }

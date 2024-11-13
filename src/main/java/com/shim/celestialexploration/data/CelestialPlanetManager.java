@@ -2,6 +2,10 @@ package com.shim.celestialexploration.data;
 
 import com.google.gson.*;
 import com.shim.celestialexploration.CelestialExploration;
+import com.shim.celestialexploration.packets.CelestialPacketHandler;
+import com.shim.celestialexploration.packets.CelestialPlanetPacket;
+import com.shim.celestialexploration.packets.LightTravelDataPacket;
+import com.shim.celestialexploration.packets.ServerResetLightTravelPacket;
 import com.shim.celestialexploration.util.CelestialUtil;
 import com.shim.celestialexploration.util.teleportation.TeleportUtil;
 import net.minecraft.core.Registry;
@@ -38,7 +42,7 @@ public class CelestialPlanetManager extends SimpleJsonResourceReloadListener {
 
             String dimName = GsonHelper.getAsString(json, "target_dimension");
             ResourceKey<Level> dimension = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(dimName));
-//            CelestialExploration.LOGGER.debug("target_dimension: " + dimension);
+            CelestialExploration.LOGGER.debug("target_dimension: " + dimension);
 
             if (json.has("spawn_chunk_coordinates")) {
                 JsonObject coordinates = GsonHelper.getAsJsonObject(json, "spawn_chunk_coordinates");
@@ -47,8 +51,10 @@ public class CelestialPlanetManager extends SimpleJsonResourceReloadListener {
                     if (coordinates.has("x") && coordinates.has("z")) {
                         int x = GsonHelper.getAsInt(coordinates, "x");
                         int z = GsonHelper.getAsInt(coordinates, "z");
-//                        CelestialExploration.LOGGER.debug("xz: " + x + "/" + z);
+                        CelestialExploration.LOGGER.debug("xz: " + x + "/" + z);
+
                         CelestialUtil.setPlanetLocation(dimension, new Vec3(x, 0, z));
+
                     }
                 }
             }

@@ -3,6 +3,7 @@ package com.shim.celestialexploration.registry;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.world.biome.*;
 import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.biome.Biome;
@@ -49,10 +50,24 @@ public class BiomeRegistry {
     public static final RegistryObject<Biome> MERCURY_PLAINS = BIOMES.register("mercury_plains", MercuryBiomes::plains);
     public static final RegistryObject<Biome> MERCURY_RIDGES = BIOMES.register("mercury_ridges", MercuryBiomes::ridges);
 
-    //---- JUPITER -------------------------------------------------------------------------------
+    //---- JUPITER & MOONS -------------------------------------------------------------------------------
+    //JUPITER
     public static final RegistryObject<Biome> JUPITER_GREAT_STORM = BIOMES.register("jupiter_great_storm", JupiterBiomes::ether);
     public static final RegistryObject<Biome> JUPITER_LESSER_STORM = BIOMES.register("jupiter_lesser_storm", JupiterBiomes::ether);
     public static final RegistryObject<Biome> JUPITER_ETHER = BIOMES.register("jupiter_ether", JupiterBiomes::ether);
 
+    //IO
+//    public static final RegistryObject<Biome> IO_DESERT = BIOMES.register("io_desert", IoBiomes::desert);
+//    public static final RegistryObject<Biome> IO_LAVA_FLATS = BIOMES.register("io_lava_flats", IoBiomes::lavaFlats);
+//    public static final RegistryObject<Biome> IO_LOWER_PLAINS = BIOMES.register("io_lower_plains", IoBiomes::desert);
+//    public static final RegistryObject<Biome> IO_PLAINS = BIOMES.register("io_plains", IoBiomes::plains);
+
+    //EUROPA
+    public static final RegistryObject<Biome> EUROPA_DESERT = BIOMES.register("europa_desert", EuropaBiomes::desert);
+    public static final RegistryObject<Biome> EUROPA_LOWER_PLAINS = BIOMES.register("europa_lower_plains", EuropaBiomes::plains);
+    public static final RegistryObject<Biome> EUROPA_PLAINS = BIOMES.register("europa_plains", EuropaBiomes::plains);
+    public static final RegistryObject<Biome> EUROPA_JAGGED_PLAINS = BIOMES.register("europa_jagged_plains", EuropaBiomes::plains);
+    public static final RegistryObject<Biome> EUROPA_OCEAN = BIOMES.register("europa_ocean", EuropaBiomes::ocean);
+    public static final RegistryObject<Biome> EUROPA_RIVER = BIOMES.register("europa_river", EuropaBiomes::river);
 
 }

@@ -2,10 +2,7 @@
   "replace": false,
   "values": [
     "celestialexploration:reinforced_glass",
-    "celestialexploration:reinforced_glass_pane",
     "celestialexploration:luminous_blue_glass",
-    "celestialexploration:luminous_blue_glass_pane",
-    "celestialexploration:luminous_white_glass",
-    "celestialexploration:luminous_white_glass_pane"
+    "celestialexploration:luminous_white_glass"
   ]
 }

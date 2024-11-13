@@ -166,7 +166,7 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
     @org.jetbrains.annotations.Nullable
     @Override
     public AbstractContainerMenu createMenu(int containerId, Inventory inventory, Player player) {
-        return new SpaceshipMenu(containerId, inventory, this);
+        return new SpaceshipMenu(containerId, inventory, this, CelestialUtil.getPlanetLocations());
     }
 
     @Override
@@ -640,7 +640,7 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
             float f1 = (float) ((this.isRemoved() ? (double) 0.01F : this.getPassengersRidingOffset()) + passenger.getMyRidingOffset());
             if (this.getPassengers().size() > 1) {
                 int i = this.getPassengers().indexOf(passenger);
-                if (i == 0) {
+                if (i == 1) { //0
                     f = -0.5F; //0.2F
                 }
 //                else {

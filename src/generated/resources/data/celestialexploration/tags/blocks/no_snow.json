@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "celestialexploration:mars_sand",
+    "celestialexploration:mars_stone",
+    "celestialexploration:coarse_mars_sand",
+    "celestialexploration:moon_sand",
+    "celestialexploration:moon_stone",
+    "celestialexploration:coarse_moon_sand",
+    "celestialexploration:mercury_sand",
+    "celestialexploration:mercury_stone",
+    "celestialexploration:coarse_mercury_sand"
+  ]
+}

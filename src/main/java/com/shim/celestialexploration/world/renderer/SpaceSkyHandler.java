@@ -15,11 +15,10 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.client.ISkyRenderHandler;
 
-public class SpaceSkyHandler implements ISkyRenderHandler {
+public class SpaceSkyHandler extends AbstractSkyHandler {
 //    ResourceLocation SUN_LOCATION = new ResourceLocation(CelestialExploration.MODID, "textures/environment/sun.png");
     //    ResourceLocation VANILLA_SUN_LOCATION = new ResourceLocation("textures/environment/sun.png");
 //    ResourceLocation EARTH_LOCATION = new ResourceLocation(CelestialExploration.MODID, "textures/environment/earth_phases.png");
-    ResourceLocation STAR_LOCATION = new ResourceLocation(CelestialExploration.MODID, "textures/environment/outer_space_stars.png");
     ResourceLocation MILKY_WAY_LOCATION = new ResourceLocation(CelestialExploration.MODID, "textures/environment/milky_way.png");
 
     @Override
@@ -104,59 +103,6 @@ public class SpaceSkyHandler implements ISkyRenderHandler {
         renderStars(poseStack, level, partialTick);
         renderMilkyWay(poseStack, level, partialTick);
         RenderSystem.depthMask(true);
-    }
-
-    private void renderStars(PoseStack p_109781_, ClientLevel level, float partialTick) {
-        RenderSystem.depthMask(false);
-        RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
-//        float f9 = level.getStarBrightness(partialTick) * 2.0F;
-//        RenderSystem.setShaderColor(f9, f9, f9, f9);
-        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-        RenderSystem.enableBlend();
-        RenderSystem.defaultBlendFunc();
-
-        RenderSystem.setShaderTexture(0, STAR_LOCATION);
-        Tesselator tesselator = Tesselator.getInstance();
-        BufferBuilder bufferbuilder = tesselator.getBuilder();
-
-        for(int i = 0; i < 6; ++i) {
-            p_109781_.pushPose();
-            if (i == 1) {
-                p_109781_.mulPose(Vector3f.XP.rotationDegrees(90.0F));
-            }
-
-            if (i == 2) {
-                p_109781_.mulPose(Vector3f.XP.rotationDegrees(-90.0F));
-            }
-
-            if (i == 3) {
-                p_109781_.mulPose(Vector3f.XP.rotationDegrees(180.0F));
-            }
-
-            if (i == 4) {
-                p_109781_.mulPose(Vector3f.ZP.rotationDegrees(90.0F));
-            }
-
-            if (i == 5) {
-                p_109781_.mulPose(Vector3f.ZP.rotationDegrees(-90.0F));
-            }
-
-            Matrix4f matrix4f = p_109781_.last().pose();
-            bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR);
-            float scale = 200.0F;
-            int color = 150;
-
-            bufferbuilder.vertex(matrix4f, -scale, -scale, -scale).uv(0.0F, 0.0F).color(color, color, color, 255).endVertex();
-            bufferbuilder.vertex(matrix4f, -scale, -scale, scale).uv(0.0F, 2.0F).color(color, color, color, 255).endVertex();
-            bufferbuilder.vertex(matrix4f, scale, -scale, scale).uv(2.0F, 2.0F).color(color, color, color, 255).endVertex();
-            bufferbuilder.vertex(matrix4f, scale, -scale, -scale).uv(2.0F, 0.0F).color(color, color, color, 255).endVertex();
-            tesselator.end();
-            p_109781_.popPose();
-        }
-
-        RenderSystem.depthMask(true);
-        RenderSystem.enableTexture();
-        RenderSystem.disableBlend();
     }
 
     private void renderMilkyWay(PoseStack poseStack, ClientLevel level, float partialTick) {

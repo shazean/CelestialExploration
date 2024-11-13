@@ -64,8 +64,6 @@ public class ModForgeEventBus {
     public static void onServerTick(TickEvent.ServerTickEvent.WorldTickEvent event) {
         if (event.world instanceof ServerLevel serverLevel && event.haveTime())
             new CelestialCatSpawner().tick(serverLevel, true, true);
-
-
     }
 
     @SubscribeEvent
@@ -87,8 +85,7 @@ public class ModForgeEventBus {
                 TeleportUtil.displayTeleportMessage(player, flightCap.getTeleportationCooldown(), DimensionRegistry.SPACE);
 
                 if (flightCap.getTeleportationCooldown() == 0) {
-                    BlockPos pos = new BlockPos(spaceVehicle.position().x, spaceVehicle.position().y, spaceVehicle.position().z);
-                    Vec3 teleportLocation = CelestialUtil.getDimensionToSpaceCoordinates(spaceVehicle.level.dimension(), new ChunkPos(pos));
+                    BlockPos pos = new BlockPos(spaceVehicle.position().x, spaceVehicle.position().y, spaceVehicle.position().z);Vec3 teleportLocation = CelestialUtil.getDimensionToSpaceCoordinates(spaceVehicle.level.dimension(), new ChunkPos(pos));
 //                    Vec3 teleportLocation = new Vec3(CelestialUtil.getPlanetaryChunkCoordinates(spaceVehicle.level.dimension()).x * 16, 135.0, CelestialUtil.getPlanetaryChunkCoordinates(spaceVehicle.level.dimension()).z * 16);
 
                         TeleportUtil.teleport(spaceVehicle, passengers, DimensionRegistry.SPACE, teleportLocation);
@@ -148,6 +145,26 @@ public class ModForgeEventBus {
                 }
             }
 //        }
+
+
+        if (CelestialCommonConfig.STORMS.get()) {
+            if (player.level.isRaining() && player.level.getBiome(player.blockPosition()).is(TagRegistry.Biomes.DUST_STORM_BIOMES)) {
+                ItemStack boots = player.getInventory().getArmor(0);
+                ItemStack leggings = player.getInventory().getArmor(1);
+                ItemStack breastplate = player.getInventory().getArmor(2);
+                ItemStack helmet = player.getInventory().getArmor(3);
+
+                if (helmet.isEmpty() && breastplate.isEmpty() && leggings.isEmpty() && boots.isEmpty()) {
+                    player.hurt(CelestialDamageSource.DUST_STORM, 1.0F);
+                }
+
+                player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 300, 0, false, false, true));
+            }
+            if (!player.level.isRaining() && player.level.getBiome(player.blockPosition()).is(TagRegistry.Biomes.DUST_STORM_BIOMES)) {
+                player.removeEffect(MobEffects.MOVEMENT_SLOWDOWN);
+            }
+        }
+
     }
 
     @SubscribeEvent
@@ -156,18 +173,20 @@ public class ModForgeEventBus {
 
         if (event.getSide() == LogicalSide.SERVER && player != null) {
             if (event.getItemStack() != null && event.getItemStack().getItem() == Items.FLINT_AND_STEEL) {
-                Level level = event.getWorld();
+                if (CelestialCommonConfig.PORTALS.get()) {
+                    Level level = event.getWorld();
 
-                if (player.level.getBiome(player.getOnPos()).is(TagRegistry.Biomes.CELESTIAL_BODIES) || player.level.dimension() == Level.OVERWORLD) {
-                    for (Direction direction : Direction.Plane.VERTICAL) {
-                        BlockPos framePos = event.getPos().relative(direction);
+                    if (player.level.getBiome(player.getOnPos()).is(TagRegistry.Biomes.CELESTIAL_BODIES) || player.level.dimension() == Level.OVERWORLD) {
+                        for (Direction direction : Direction.Plane.VERTICAL) {
+                            BlockPos framePos = event.getPos().relative(direction);
 
-                        if (BlockRegistry.MARS_PORTAL.get().trySpawnPortal(level, framePos) || BlockRegistry.MOON_PORTAL.get().trySpawnPortal(level, framePos) ||
-                                BlockRegistry.VENUS_PORTAL.get().trySpawnPortal(level, framePos) || BlockRegistry.MERCURY_PORTAL.get().trySpawnPortal(level, framePos) ||
-                                BlockRegistry.JUPITER_PORTAL.get().trySpawnPortal(level, framePos)) {
-                            level.playSound(player, framePos, SoundEvents.PORTAL_TRIGGER, SoundSource.BLOCKS, 1.0F, 1.0F);
-                            event.setCanceled(true);
-                            event.setCancellationResult(InteractionResult.CONSUME);
+                            if (BlockRegistry.MARS_PORTAL.get().trySpawnPortal(level, framePos) || BlockRegistry.MOON_PORTAL.get().trySpawnPortal(level, framePos) ||
+                                    BlockRegistry.VENUS_PORTAL.get().trySpawnPortal(level, framePos) || BlockRegistry.MERCURY_PORTAL.get().trySpawnPortal(level, framePos) ||
+                                    BlockRegistry.JUPITER_PORTAL.get().trySpawnPortal(level, framePos) || BlockRegistry.EUROPA_PORTAL.get().trySpawnPortal(level, framePos)) {
+                                level.playSound(player, framePos, SoundEvents.PORTAL_TRIGGER, SoundSource.BLOCKS, 1.0F, 1.0F);
+                                event.setCanceled(true);
+                                event.setCancellationResult(InteractionResult.CONSUME);
+                            }
                         }
                     }
                 }
@@ -239,11 +258,12 @@ public class ModForgeEventBus {
 
         if (CelestialCommonConfig.STORMS.get()) {
             if (event.getWorld().isRaining() && event.getWorld().getBiome(entity.blockPosition()).is(TagRegistry.Biomes.DUST_STORM_BIOMES)) {
-                if (entity instanceof LivingEntity livingEntity) {
-                    livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 12000, 1, false, false, true));
+                if (entity instanceof LivingEntity livingEntity && !(entity instanceof Player)) {
+                    livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 7000, 0, false, false, true));
                 }
-            } else if (!event.getWorld().isRaining() && event.getWorld().getBiome(entity.blockPosition()).is(TagRegistry.Biomes.DUST_STORM_BIOMES)) {
-                if (entity instanceof LivingEntity livingEntity) {
+            }
+            if (!event.getWorld().isRaining() && event.getWorld().getBiome(entity.blockPosition()).is(TagRegistry.Biomes.DUST_STORM_BIOMES)) {
+                if (entity instanceof LivingEntity livingEntity && !(entity instanceof Player)) {
                     livingEntity.removeEffect(MobEffects.MOVEMENT_SLOWDOWN);
                 }
             }

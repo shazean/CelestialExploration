@@ -174,6 +174,12 @@ public class LootTables extends BaseLootTableProvider {
 		lootTables.put(BlockRegistry.JUPITER_ATMOSPHERE.get(), createSimpleTable(BlockRegistry.JUPITER_ATMOSPHERE.get()));
 
 
+		//---- EUROPA -------------------------------------------------------------------------------
+		lootTables.put(BlockRegistry.EUROPA_BRICK_SLAB.get(), createSlabItemTable(BlockRegistry.EUROPA_BRICK_SLAB.get()));
+		lootTables.put(BlockRegistry.GLOWING_EUROPA_SAND.get(), createSilkTouchTable(BlockRegistry.GLOWING_EUROPA_SAND.get(), ItemRegistry.EUROPA_DUST.get(), 2, 5));
+		lootTables.put(BlockRegistry.EUROPA_LANTERN.get(), createSilkTouchTable(BlockRegistry.EUROPA_LANTERN.get(), ItemRegistry.EUROPA_DUST.get(), 1, 3));
+
+
 		//---- ORES/ALLOYS -------------------------------------------------------------------------------
 		lootTables.put(BlockRegistry.BAUXITE_ORE.get(), createBauxiteOreTable(BlockRegistry.BAUXITE_ORE.get()));
 

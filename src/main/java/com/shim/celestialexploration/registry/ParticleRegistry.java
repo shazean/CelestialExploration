@@ -33,6 +33,7 @@ public class ParticleRegistry {
     public static final RegistryObject<SimpleParticleType> VENUS_PORTAL_PARTICLES = PARTICLES.register("venus_portal_particles", () -> new SimpleParticleType(false));
     public static final RegistryObject<SimpleParticleType> MERCURY_PORTAL_PARTICLES = PARTICLES.register("mercury_portal_particles", () -> new SimpleParticleType(false));
     public static final RegistryObject<SimpleParticleType> JUPITER_PORTAL_PARTICLES = PARTICLES.register("jupiter_portal_particles", () -> new SimpleParticleType(false));
+    public static final RegistryObject<SimpleParticleType> EUROPA_PORTAL_PARTICLES = PARTICLES.register("europa_portal_particles", () -> new SimpleParticleType(false));
 
     public static final RegistryObject<SimpleParticleType> SPACESHIP_PARTICLES = PARTICLES.register("spaceship_particles", () -> new SimpleParticleType(false));
 

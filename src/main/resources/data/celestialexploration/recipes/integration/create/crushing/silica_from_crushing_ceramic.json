@@ -18,6 +18,10 @@
     {
       "item": "celestialexploration:silica",
       "chance": 0.25
+    },
+    {
+      "item": "minecraft:gravel",
+      "chance": 0.25
     }
   ],
   "processingTime": 150

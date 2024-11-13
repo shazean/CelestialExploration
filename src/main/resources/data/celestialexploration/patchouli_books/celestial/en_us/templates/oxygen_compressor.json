@@ -1,0 +1,41 @@
+{
+  "components": [
+    {
+      "type": "patchouli:image",
+      "image": "celestialexploration:textures/patchouli/oxygen_compressor.png",
+      "width": 256,
+      "height": 256,
+      "scale": 0.6
+    },
+    {
+      "type": "patchouli:item",
+      "item": "minecraft:coal,minecraft:charcoal",
+      "x": 4,
+      "y": 38
+    },
+    {
+      "type": "patchouli:item",
+      "item": "celestialexploration:lox_tank",
+      "x": 75,
+      "y": 11
+    },
+    {
+      "type": "patchouli:item",
+      "item": "celestialexploration:lox_tank",
+      "x": 75,
+      "y": 33
+    },
+    {
+      "type": "patchouli:item",
+      "item": "celestialexploration:lox_tank",
+      "x": 97,
+      "y": 11
+    },
+    {
+      "type": "patchouli:item",
+      "item": "celestialexploration:lox_tank",
+      "x": 97,
+      "y": 33
+    }
+  ]
+}

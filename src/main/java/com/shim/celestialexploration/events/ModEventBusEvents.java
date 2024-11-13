@@ -2,6 +2,7 @@ package com.shim.celestialexploration.events;
 
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.entity.CelestialCat;
+import com.shim.celestialexploration.entity.Eureka;
 import com.shim.celestialexploration.entity.mob.*;
 import com.shim.celestialexploration.entity.mob.piglins.AstralPiglin;
 import com.shim.celestialexploration.entity.mob.piglins.CyborgPiglin;
@@ -57,6 +58,8 @@ public class ModEventBusEvents {
         event.put(EntityRegistry.METEOR_CRAWLER.get(), MeteorCrawler.createAttributes().build());
         event.put(EntityRegistry.VOID_CRAWLER.get(), VoidCrawler.createAttributes().build());
         event.put(EntityRegistry.CELESTIAL_CAT.get(), CelestialCat.createAttributes().build());
+
+        event.put(EntityRegistry.EUREKA.get(), Eureka.createAttributes().build());
 
     }
 
@@ -126,12 +129,12 @@ public class ModEventBusEvents {
         Minecraft.getInstance().particleEngine.register(ParticleRegistry.DUST_PARTICLE.get(), DustStormParticle.Provider::new);
         Minecraft.getInstance().particleEngine.register(ParticleRegistry.LIGHTNING_PARTICLE.get(), LightningParticles.Provider::new);
 
-
         Minecraft.getInstance().particleEngine.register(ParticleRegistry.MARS_PORTAL_PARTICLES.get(), CelestialPortalParticle.MarsProvider::new);
         Minecraft.getInstance().particleEngine.register(ParticleRegistry.VENUS_PORTAL_PARTICLES.get(), CelestialPortalParticle.VenusProvider::new);
         Minecraft.getInstance().particleEngine.register(ParticleRegistry.MOON_PORTAL_PARTICLES.get(), CelestialPortalParticle.MoonProvider::new);
         Minecraft.getInstance().particleEngine.register(ParticleRegistry.MERCURY_PORTAL_PARTICLES.get(), CelestialPortalParticle.MercuryProvider::new);
         Minecraft.getInstance().particleEngine.register(ParticleRegistry.JUPITER_PORTAL_PARTICLES.get(), CelestialPortalParticle.JupiterProvider::new);
+        Minecraft.getInstance().particleEngine.register(ParticleRegistry.EUROPA_PORTAL_PARTICLES.get(), CelestialPortalParticle.EuropaProvider::new);
 
         Minecraft.getInstance().particleEngine.register(ParticleRegistry.SPACESHIP_PARTICLES.get(), SpaceshipParticles.Provider::new);
 

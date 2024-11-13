@@ -46,8 +46,12 @@ public class LoxTankCapability {
         @Override
         public void incrementAmount() {
             if (loxAmount < DEFAULT_CAPACITY) {
-                loxAmount += 1000;
-                fullness = (int) (((double)loxAmount / (double)DEFAULT_CAPACITY) * 8);
+                if (loxAmount <= DEFAULT_CAPACITY - 1000) {
+                    loxAmount += 1000;
+                    fullness = (int) (((double) loxAmount / (double) DEFAULT_CAPACITY) * 8);
+                } else {
+                    loxAmount += DEFAULT_CAPACITY - loxAmount;
+                }
             }
         }
 

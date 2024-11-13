@@ -34,6 +34,6 @@ import java.util.function.Function;
 public class MoonTeleporter extends AbstractTeleporter {
 
     public MoonTeleporter(ServerLevel worldIn) {
-        super(worldIn, PoiRegistry.MOON_PORTAL.get(), BlockRegistry.MOON_BRICKS.get(), BlockRegistry.MOON_PORTAL.get(), MoonPortalBlock.AXIS, DimensionRegistry.MOON);
+        super(worldIn, PoiRegistry.MOON_PORTAL.get(), BlockRegistry.MOON_BRICKS.get(), BlockRegistry.MOON_PORTAL.get(), DimensionRegistry.MOON);
     }
 }

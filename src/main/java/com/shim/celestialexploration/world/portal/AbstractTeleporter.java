@@ -1,5 +1,6 @@
 package com.shim.celestialexploration.world.portal;
 
+import com.shim.celestialexploration.blocks.AbstractPortalBlock;
 import com.shim.celestialexploration.blocks.IPortal;
 import net.minecraft.BlockUtil;
 import net.minecraft.core.BlockPos;
@@ -39,17 +40,13 @@ public abstract class AbstractTeleporter implements ITeleporter {
     final Block portalFrameBlock;
     final Block portalBlock;
 //    final IPortal portal;
-    EnumProperty<Direction.Axis> portalAxis;
     final ResourceKey<Level> dimension;
 
-    public AbstractTeleporter(ServerLevel worldIn, PoiType poi, Block portalFrameBlock, Block portalBlock, EnumProperty<Direction.Axis> portalAxis, ResourceKey<Level> dimension) {
+    public AbstractTeleporter(ServerLevel worldIn, PoiType poi, Block portalFrameBlock, Block portalBlock, ResourceKey<Level> dimension) {
         this.level = worldIn;
         this.poi = poi;
         this.portalFrameBlock = portalFrameBlock;
         this.portalBlock = portalBlock;
-//        this.portal = portal;
-//        portalAxis
-        this.portalAxis = portalAxis;
         this.dimension = dimension;
     }
 
@@ -147,12 +144,12 @@ public abstract class AbstractTeleporter implements ITeleporter {
             }
         }
 
-        BlockState kaupenPortal = portalBlock.defaultBlockState().setValue(this.portalAxis, axis);
+        BlockState portal = portalBlock.defaultBlockState().setValue(AbstractPortalBlock.AXIS, axis);
 
         for(int j2 = 0; j2 < 2; ++j2) {
             for(int l2 = 0; l2 < 3; ++l2) {
                 mutablePos.setWithOffset(blockpos, j2 * direction.getStepX(), l2, j2 * direction.getStepZ());
-                this.level.setBlock(mutablePos, kaupenPortal, 18);
+                this.level.setBlock(mutablePos, portal, 18);
             }
         }
 
@@ -218,7 +215,7 @@ public abstract class AbstractTeleporter implements ITeleporter {
             return existingPortal;
         }
         else {
-            Direction.Axis portalAxis = this.level.getBlockState(entity.portalEntrancePos).getOptionalValue(this.portalAxis).orElse(Direction.Axis.X);
+            Direction.Axis portalAxis = this.level.getBlockState(entity.portalEntrancePos).getOptionalValue(AbstractPortalBlock.AXIS).orElse(Direction.Axis.X);
             return this.makePortal(pos, portalAxis);
         }
     }

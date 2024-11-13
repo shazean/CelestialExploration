@@ -35,6 +35,6 @@ import java.util.function.Function;
 public class VenusTeleporter extends AbstractTeleporter {
 
     public VenusTeleporter(ServerLevel worldIn) {
-        super(worldIn, PoiRegistry.VENUS_PORTAL.get(), BlockRegistry.VENUS_BRICKS.get(), BlockRegistry.VENUS_PORTAL.get(), VenusPortalBlock.AXIS, DimensionRegistry.VENUS);
+        super(worldIn, PoiRegistry.VENUS_PORTAL.get(), BlockRegistry.VENUS_BRICKS.get(), BlockRegistry.VENUS_PORTAL.get(), DimensionRegistry.VENUS);
     }
 }

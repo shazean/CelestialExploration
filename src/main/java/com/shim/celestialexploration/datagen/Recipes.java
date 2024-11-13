@@ -2,6 +2,7 @@ package com.shim.celestialexploration.datagen;
 
 import java.util.function.Consumer;
 
+import com.shim.celestialexploration.datagen.util.RecipeGenHelper;
 import com.shim.celestialexploration.datagen.util.WorkbenchCraftingRecipeBuilder;
 import com.shim.celestialexploration.registry.BlockRegistry;
 
@@ -11,8 +12,10 @@ import com.shim.celestialexploration.registry.TagRegistry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.*;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.Tags;
@@ -228,18 +231,27 @@ public class Recipes extends RecipeProvider {
 		//OTHER
 		ShapedRecipeBuilder.shaped(BlockRegistry.JUPITER_LANTERN.get()).pattern("XCX").pattern("C#C").pattern("XCX").define('X', BlockRegistry.JUPITER_ATMOSPHERE.get()).define('C', Items.IRON_INGOT).define('#', Items.TORCH).group(modGroup()).unlockedBy("has_jupiter_deepslate", has(BlockRegistry.JUPITER_LANTERN.get())).save(consumer);
 
+		//---- EUROPA -------------------------------------------------------------------------------
+		//STONE
+		ShapedRecipeBuilder.shaped(BlockRegistry.EUROPA_BRICKS.get(), 4).pattern("XY").pattern("YX").define('X', BlockRegistry.MOON_STONE.get()).define('Y', BlockRegistry.EUROPA_HYDRATE.get()).group(modGroup()).unlockedBy(name(BlockRegistry.EUROPA_HYDRATE.get()), has(BlockRegistry.EUROPA_HYDRATE.get())).save(consumer);
+		stairsSlabWallCraftStonecutting(BlockRegistry.EUROPA_BRICKS.get(), TagRegistry.Items.EUROPA_BRICKS, BlockRegistry.EUROPA_BRICK_STAIRS.get(), BlockRegistry.EUROPA_BRICK_SLAB.get(), BlockRegistry.EUROPA_BRICK_WALL.get(), BlockRegistry.EUROPA_HYDRATE.get(), consumer);
+
+		ShapedRecipeBuilder.shaped(BlockRegistry.EUROPA_LANTERN.get()).pattern("XCX").pattern("C#C").pattern("XCX").define('X', BlockRegistry.MOON_STONE.get()).define('#', Items.IRON_INGOT).define('C', ItemRegistry.EUROPA_DUST.get()).group(modGroup()).unlockedBy("has_europa_dust", has(ItemRegistry.EUROPA_DUST.get())).save(consumer);
+
+
 		//---- ORES/ALLOYS -------------------------------------------------------------------------------
 		//BAUXITE/ALUMINUM
 		smeltingAndBlasting(ItemRegistry.RAW_BAUXITE.get(), ItemRegistry.BAUXITE_INGOT.get(), 0.7F, 200, 100, ItemRegistry.RAW_BAUXITE.get(), consumer);
 		ShapelessRecipeBuilder.shapeless(ItemRegistry.ALUMINUM_INGOT.get(), 3).requires(Items.IRON_INGOT).requires(ItemRegistry.BAUXITE_INGOT.get()).requires(ItemRegistry.BAUXITE_INGOT.get()).group(modGroup()).unlockedBy("has_raw_bauxite", has(ItemRegistry.RAW_BAUXITE.get())).save(consumer);
 		ShapelessRecipeBuilder.shapeless(ItemRegistry.ALUMINUM_INGOT.get(), 3).requires(Items.COPPER_INGOT).requires(ItemRegistry.BAUXITE_INGOT.get()).requires(ItemRegistry.BAUXITE_INGOT.get()).group(modGroup()).unlockedBy("has_raw_bauxite", has(ItemRegistry.RAW_BAUXITE.get())).save(consumer, "aluminum_from_copper");
 		ingotAndBlock(ItemRegistry.ALUMINUM_INGOT.get(), BlockRegistry.ALUMINUM_BLOCK.get(), ItemRegistry.ALUMINUM_INGOT.get(), consumer);
-		smeltingAndBlasting(BlockRegistry.MOON_BAUXITE_ORE.get(), ItemRegistry.BAUXITE_INGOT.get(), 0.7F, 200, 100, BlockRegistry.MOON_BAUXITE_ORE.get(), consumer);
-		smeltingAndBlasting(BlockRegistry.MARS_BAUXITE_ORE.get(), ItemRegistry.BAUXITE_INGOT.get(), 0.7F, 200, 100, BlockRegistry.MARS_BAUXITE_ORE.get(), consumer);
-		smeltingAndBlasting(BlockRegistry.VENUS_BAUXITE_ORE.get(), ItemRegistry.BAUXITE_INGOT.get(), 0.7F, 200, 100, BlockRegistry.VENUS_BAUXITE_ORE.get(), consumer);
-		smeltingAndBlasting(BlockRegistry.MERCURY_BAUXITE_ORE.get(), ItemRegistry.BAUXITE_INGOT.get(), 0.7F, 200, 100, BlockRegistry.MERCURY_BAUXITE_ORE.get(), consumer);
-		smeltingAndBlasting(BlockRegistry.BAUXITE_ORE.get(), ItemRegistry.BAUXITE_INGOT.get(), 0.7F, 200, 100, BlockRegistry.BAUXITE_ORE.get(), consumer);
-		smeltingAndBlasting(BlockRegistry.METEOR_BAUXITE_ORE.get(), ItemRegistry.BAUXITE_INGOT.get(), 0.7F, 200, 100, BlockRegistry.BAUXITE_ORE.get(), consumer);
+
+		smeltingAndBlasting(TagRegistry.Items.BAUXITE_ORE, ItemRegistry.BAUXITE_INGOT.get(), 0.7F, 200, 100, BlockRegistry.BAUXITE_ORE.get(), consumer);
+//		smeltingAndBlasting(BlockRegistry.MARS_BAUXITE_ORE.get(), ItemRegistry.BAUXITE_INGOT.get(), 0.7F, 200, 100, BlockRegistry.MARS_BAUXITE_ORE.get(), consumer);
+//		smeltingAndBlasting(BlockRegistry.VENUS_BAUXITE_ORE.get(), ItemRegistry.BAUXITE_INGOT.get(), 0.7F, 200, 100, BlockRegistry.VENUS_BAUXITE_ORE.get(), consumer);
+//		smeltingAndBlasting(BlockRegistry.MERCURY_BAUXITE_ORE.get(), ItemRegistry.BAUXITE_INGOT.get(), 0.7F, 200, 100, BlockRegistry.MERCURY_BAUXITE_ORE.get(), consumer);
+//		smeltingAndBlasting(BlockRegistry.BAUXITE_ORE.get(), ItemRegistry.BAUXITE_INGOT.get(), 0.7F, 200, 100, BlockRegistry.BAUXITE_ORE.get(), consumer);
+//		smeltingAndBlasting(BlockRegistry.METEOR_BAUXITE_ORE.get(), ItemRegistry.BAUXITE_INGOT.get(), 0.7F, 200, 100, BlockRegistry.BAUXITE_ORE.get(), consumer);
 
 		//STEEL
 		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.STEEL_INGOT.get(), 2, FluidRegistry.MOLTEN_IRON.get(), 0.1111F, 0.7F).pattern("X").define('X', Items.COAL).group(modGroup()).unlockedBy("has_iron", has(Items.IRON_INGOT)).save(consumer, "steel_ingot_from_workbench");
@@ -270,16 +282,16 @@ public class Recipes extends RecipeProvider {
 		ShapedRecipeBuilder.shaped(BlockRegistry.WORKBENCH.get()).pattern("XXX").pattern("X X").pattern("CCC").define('X', ItemTags.PLANKS).define('C', Blocks.COBBLESTONE).group(modGroup()).unlockedBy("has_cobblestone", has(Blocks.COBBLESTONE)).save(consumer);
 
 		ShapedRecipeBuilder.shaped(ItemRegistry.LOX_TANK.get()).pattern("SsS").pattern("G G").pattern("SsS").define('S', ItemRegistry.STEEL_INGOT.get()).define('s', ItemRegistry.ALUMINUM_INGOT.get()).define('G', Tags.Items.GLASS).group(modGroup()).unlockedBy("steel", has(ItemRegistry.STEEL_INGOT.get())).save(consumer);
-		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.LOX_TANK.get(), FluidRegistry.MOLTEN_STEEL.get(), 0.44F, 2.8F).pattern("AGA").pattern("G G").pattern("AGA").define('A', ItemRegistry.ALUMINUM_INGOT.get()).define('G', Tags.Items.GLASS).group(modGroup()).unlockedBy("has_iron", has(Items.IRON_INGOT)).save(consumer, "lox_tank_from_workbench");
+		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.LOX_TANK.get(), FluidRegistry.MOLTEN_STEEL.get(), 0.444F, 2.8F).pattern("AGA").pattern("G G").pattern("AGA").define('A', ItemRegistry.ALUMINUM_INGOT.get()).define('G', Tags.Items.GLASS).group(modGroup()).unlockedBy("has_iron", has(Items.IRON_INGOT)).save(consumer, "lox_tank_from_workbench");
 
 		ShapedRecipeBuilder.shaped(BlockRegistry.OXYGEN_COMPRESSOR.get()).pattern("SSS").pattern("CGC").pattern("CRC").define('S', ItemRegistry.STEEL_INGOT.get()).define('C', ItemRegistry.ALUMINUM_INGOT.get()).define('G', Tags.Items.GLASS).define('R', Items.REDSTONE).group(modGroup()).unlockedBy("steel_ingot", has(ItemRegistry.STEEL_INGOT.get())).save(consumer);
-		WorkbenchCraftingRecipeBuilder.shaped(BlockRegistry.OXYGEN_COMPRESSOR.get(), FluidRegistry.MOLTEN_STEEL.get(), 0.22F, 1.4F).pattern("XXX").pattern("XGX").pattern("XRX").define('X', Tags.Items.COBBLESTONE).define('G', Tags.Items.GLASS).define('R', Items.REDSTONE).group(modGroup()).unlockedBy("has_iron", has(Items.IRON_INGOT)).save(consumer, "oxygen_compressor_from_workbench");
+		WorkbenchCraftingRecipeBuilder.shaped(BlockRegistry.OXYGEN_COMPRESSOR.get(), FluidRegistry.MOLTEN_STEEL.get(), 0.222F, 1.4F).pattern("XXX").pattern("XGX").pattern("XRX").define('X', Tags.Items.COBBLESTONE).define('G', Tags.Items.GLASS).define('R', Items.REDSTONE).group(modGroup()).unlockedBy("has_iron", has(Items.IRON_INGOT)).save(consumer, "oxygen_compressor_from_workbench");
 
-		WorkbenchCraftingRecipeBuilder.shaped(BlockRegistry.STEEL_FRAME.get(), 4, FluidRegistry.MOLTEN_STEEL.get(), 0.22F, 1.4F).pattern("X").define('X', Items.SCAFFOLDING).group(modGroup()).unlockedBy("has_steel", has(ItemRegistry.STEEL_INGOT.get())).save(consumer, "steel_frame_from_workbench");
-		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.SPACESHIP_FRAME.get(), FluidRegistry.MOLTEN_STEEL.get(), 0.33F, 2.1F).pattern("C C").pattern(" X ").pattern("C C").define('X', BlockRegistry.STEEL_FRAME.get()).define('C', BlockRegistry.CERAMIC_TILE.get()).group(modGroup()).unlockedBy("has_steel", has(ItemRegistry.STEEL_INGOT.get())).save(consumer, "spaceship_frame_from_workbench");
-		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.SPACESHIP_CABIN.get(), FluidRegistry.MOLTEN_ALUMINUM.get(), 0.44F, 2.8F).pattern(" C ").pattern("CGC").pattern("X X").define('C', BlockRegistry.CERAMIC_TILE.get()).define('G', Tags.Items.GLASS).define('X', Tags.Items.CHESTS).group(modGroup()).unlockedBy("has_steel", has(ItemRegistry.STEEL_INGOT.get())).save(consumer, "spaceship_cabin_from_workbench");
-		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.SPACESHIP_ENGINE.get(), FluidRegistry.MOLTEN_STEEL.get(), 0.495F, 3.1F).pattern("CRC").pattern("TTT").define('R', Items.REDSTONE).define('C', Items.COPPER_INGOT).define('T', Items.REDSTONE_TORCH).group(modGroup()).unlockedBy("has_steel", has(ItemRegistry.STEEL_INGOT.get())).save(consumer, "spaceship_engine_from_workbench");
-		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.WHITE_SPACESHIP.get(), FluidRegistry.MOLTEN_ALUMINUM.get(), 0.275F, 1.7F).pattern("C").pattern("F").pattern("E").define('C', ItemRegistry.SPACESHIP_CABIN.get()).define('F', ItemRegistry.SPACESHIP_FRAME.get()).define('E', ItemRegistry.SPACESHIP_ENGINE.get()).group(modGroup()).unlockedBy("has_steel", has(ItemRegistry.STEEL_INGOT.get())).save(consumer, "spaceship_from_workbench");
+		WorkbenchCraftingRecipeBuilder.shaped(BlockRegistry.STEEL_FRAME.get(), 4, FluidRegistry.MOLTEN_STEEL.get(), 0.222F, 1.4F).pattern("X").define('X', Items.SCAFFOLDING).group(modGroup()).unlockedBy("has_steel", has(ItemRegistry.STEEL_INGOT.get())).save(consumer, "steel_frame_from_workbench");
+		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.SPACESHIP_FRAME.get(), FluidRegistry.MOLTEN_STEEL.get(), 0.333F, 2.1F).pattern("C C").pattern(" X ").pattern("C C").define('X', BlockRegistry.STEEL_FRAME.get()).define('C', BlockRegistry.CERAMIC_TILE.get()).group(modGroup()).unlockedBy("has_steel", has(ItemRegistry.STEEL_INGOT.get())).save(consumer, "spaceship_frame_from_workbench");
+		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.SPACESHIP_CABIN.get(), FluidRegistry.MOLTEN_ALUMINUM.get(), 0.444F, 2.8F).pattern(" C ").pattern("CGC").pattern("X X").define('C', BlockRegistry.CERAMIC_TILE.get()).define('G', Tags.Items.GLASS).define('X', Tags.Items.CHESTS).group(modGroup()).unlockedBy("has_steel", has(ItemRegistry.STEEL_INGOT.get())).save(consumer, "spaceship_cabin_from_workbench");
+		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.SPACESHIP_ENGINE.get(), FluidRegistry.MOLTEN_STEEL.get(), 0.555F, 3.1F).pattern("CRC").pattern("TTT").define('R', Items.REDSTONE).define('C', Items.COPPER_INGOT).define('T', Items.REDSTONE_TORCH).group(modGroup()).unlockedBy("has_steel", has(ItemRegistry.STEEL_INGOT.get())).save(consumer, "spaceship_engine_from_workbench");
+		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.WHITE_SPACESHIP.get(), FluidRegistry.MOLTEN_ALUMINUM.get(), 0.333F, 1.7F).pattern("C").pattern("F").pattern("E").define('C', ItemRegistry.SPACESHIP_CABIN.get()).define('F', ItemRegistry.SPACESHIP_FRAME.get()).define('E', ItemRegistry.SPACESHIP_ENGINE.get()).group(modGroup()).unlockedBy("has_steel", has(ItemRegistry.STEEL_INGOT.get())).save(consumer, "spaceship_from_workbench");
 
 		ShapelessRecipeBuilder.shapeless(ItemRegistry.BLACK_SPACESHIP.get()).requires(ItemRegistry.WHITE_SPACESHIP.get()).requires(Items.BLACK_DYE).group(modGroup()).unlockedBy("spaceship", has(ItemRegistry.WHITE_SPACESHIP.get())).save(consumer);
 		ShapelessRecipeBuilder.shapeless(ItemRegistry.GREY_SPACESHIP.get()).requires(ItemRegistry.WHITE_SPACESHIP.get()).requires(Items.GRAY_DYE).group(modGroup()).unlockedBy("spaceship", has(ItemRegistry.WHITE_SPACESHIP.get())).save(consumer);
@@ -304,14 +316,17 @@ public class Recipes extends RecipeProvider {
 		SingleItemRecipeBuilder.stonecutting(Ingredient.of(BlockRegistry.INSULATED_PANEL_CORNER.get()), BlockRegistry.INSULATED_PANEL.get(), 1).group(modGroup()).unlockedBy("aluminum", has(ItemRegistry.ALUMINUM_INGOT.get())).save(consumer, "insulated_panel_stonecutting");
 		ShapedRecipeBuilder.shaped(BlockRegistry.PANEL.get()).pattern("XX").pattern("XX").define('X', ItemRegistry.ALUMINUM_INGOT.get()).group(modGroup()).unlockedBy("meteor", has(ItemRegistry.ALUMINUM_INGOT.get())).save(consumer);
 		stairsSlabWallCraftStonecutting(BlockRegistry.PANEL.get(), BlockRegistry.PANEL_STAIRS.get(), BlockRegistry.PANEL_SLAB.get(), BlockRegistry.PANEL_WALL.get(), BlockRegistry.PANEL.get(), consumer);
-		pane(BlockRegistry.PANEL.get(), BlockRegistry.THIN_PANEL.get(), BlockRegistry.PANEL.get(), consumer);
+
+		ShapedRecipeBuilder.shaped(BlockRegistry.THIN_PANEL.get()).pattern("XX").pattern("XX").define('X', BlockRegistry.PANEL.get()).group(modGroup()).unlockedBy("aluminum", has(ItemRegistry.ALUMINUM_INGOT.get())).save(consumer);
+
+//		pane(BlockRegistry.PANEL.get(), BlockRegistry.THIN_PANEL.get(), BlockRegistry.PANEL.get(), consumer);
 		ShapedRecipeBuilder.shaped(BlockRegistry.STEEL_LADDER.get()).pattern("X X").pattern("XXX").pattern("X X").define('X', ItemRegistry.STEEL_INGOT.get()).group(modGroup()).unlockedBy("steel", has(ItemRegistry.STEEL_INGOT.get())).save(consumer);
 
 		ShapedRecipeBuilder.shaped(BlockRegistry.AIRLOCK_DOOR.get()).pattern("GX").pattern("DX").define('X', ItemRegistry.ALUMINUM_INGOT.get()).define('G', Tags.Items.GLASS_COLORLESS).define('D', BlockRegistry.STEEL_DOOR.get()).group(modGroup()).unlockedBy("aluminum", has(ItemRegistry.ALUMINUM_INGOT.get())).save(consumer);
 		ShapedRecipeBuilder.shaped(BlockRegistry.AIRLOCK_DOOR.get()).pattern("GX").pattern("DX").define('X', ItemRegistry.ALUMINUM_INGOT.get()).define('G', Tags.Items.GLASS_COLORLESS).define('D', Items.IRON_DOOR).group(modGroup()).unlockedBy("aluminum", has(ItemRegistry.ALUMINUM_INGOT.get())).save(consumer, "airlock_door_from_iron_door");
 
-		ShapedRecipeBuilder.shaped(BlockRegistry.AIRLOCK_PANEL_DOOR.get(), 4).pattern("XX ").pattern("XXR").pattern("XX ").define('X', ItemRegistry.ALUMINUM_INGOT.get()).define('R', Items.REDSTONE).group(modGroup()).unlockedBy("aluminum", has(ItemRegistry.ALUMINUM_INGOT.get())).save(consumer);
-		ShapedRecipeBuilder.shaped(BlockRegistry.HANGAR_DOOR.get(), 4).pattern("XX ").pattern("XXR").pattern("XX ").define('X', ItemRegistry.STEEL_INGOT.get()).define('R', Items.REDSTONE).group(modGroup()).unlockedBy("steel", has(ItemRegistry.STEEL_INGOT.get())).save(consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.AIRLOCK_PANEL_DOOR.get(), 8).pattern("XX ").pattern("XXR").pattern("XX ").define('X', ItemRegistry.ALUMINUM_INGOT.get()).define('R', Items.REDSTONE).group(modGroup()).unlockedBy("aluminum", has(ItemRegistry.ALUMINUM_INGOT.get())).save(consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.HANGAR_DOOR.get(), 8).pattern("XX ").pattern("XXR").pattern("XX ").define('X', ItemRegistry.STEEL_INGOT.get()).define('R', Items.REDSTONE).group(modGroup()).unlockedBy("steel", has(ItemRegistry.STEEL_INGOT.get())).save(consumer);
 
 		ShapedRecipeBuilder.shaped(BlockRegistry.AIRLOCK_TRAPDOOR.get(), 2).pattern("XGX").pattern("XXX").define('G', Tags.Items.GLASS_COLORLESS).define('X', ItemRegistry.ALUMINUM_INGOT.get()).group(modGroup()).unlockedBy("steel", has(ItemRegistry.STEEL_INGOT.get())).save(consumer);
 
@@ -325,7 +340,6 @@ public class Recipes extends RecipeProvider {
 		ShapelessRecipeBuilder.shapeless(BlockRegistry.GLOW_STRIP.get()).requires(Items.TORCH).requires(ItemRegistry.STEEL_NUGGET.get()).group(modGroup()).unlockedBy("torch", has(Items.TORCH)).save(consumer, "glow_strip_from_steel");
 		singleItem(BlockRegistry.GLOW_STRIP.get(), BlockRegistry.HORIZONTAL_GLOW_STRIP.get(), 1, Blocks.TORCH, consumer);
 		singleItem(BlockRegistry.HORIZONTAL_GLOW_STRIP.get(), BlockRegistry.GLOW_STRIP.get(), 1, Blocks.TORCH, consumer);
-
 
 		singleItem(Blocks.RED_STAINED_GLASS, BlockRegistry.RED_BUTTON.get(), 1, Blocks.RED_STAINED_GLASS, consumer);
 		singleItem(Blocks.YELLOW_STAINED_GLASS, BlockRegistry.YELLOW_BUTTON.get(), 1, Blocks.YELLOW_STAINED_GLASS, consumer);
@@ -357,25 +371,25 @@ public class Recipes extends RecipeProvider {
 		ShapedRecipeBuilder.shaped(ItemRegistry.STEEL_BOOTS.get()).pattern("X X").pattern("X X").define('X', ItemRegistry.STEEL_INGOT.get()).group(modGroup()).unlockedBy("steel_ingot", has(ItemRegistry.STEEL_INGOT.get())).save(consumer);
 
 		//SPACE SUITS
-		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.BASIC_SPACESUIT_HELMET.get(), FluidRegistry.MOLTEN_STEEL.get(), 0.33F, 2.1F).pattern("LLL").pattern("WGW").define('L', Items.LEATHER).define('W', Items.WHITE_WOOL).define('G', Tags.Items.GLASS).group(modGroup()).group(modGroup()).unlockedBy("has_leather", has(Items.LEATHER)).save(consumer, "basic_space_suit_helmet");
-		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.BASIC_SPACESUIT_CHESTPLATE.get(), FluidRegistry.MOLTEN_STEEL.get(), 0.66F, 4.2F).pattern("L L").pattern("WWW").pattern("LLL").define('W', Items.WHITE_WOOL).define('L', Items.LEATHER).group(modGroup()).unlockedBy("has_leather", has(Items.LEATHER)).save(consumer, "basic_space_suit_chestplate");
-		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.BASIC_SPACESUIT_LEGGINGS.get(), FluidRegistry.MOLTEN_STEEL.get(), 0.55F, 3.5F).pattern("LLL").pattern("L L").pattern("W W").define('W', Items.WHITE_WOOL).define('L', Items.LEATHER).group(modGroup()).unlockedBy("has_leather", has(Items.LEATHER)).save(consumer, "basic_space_suit_leggings");
-		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.BASIC_SPACESUIT_BOOTS.get(), FluidRegistry.MOLTEN_STEEL.get(), 0.22F, 1.4F).pattern("W W").pattern("L L").define('L', Items.LEATHER).define('W', Items.WHITE_WOOL).group(modGroup()).unlockedBy("has_leather", has(Items.LEATHER)).save(consumer, "basic_space_suit_boots");
+		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.BASIC_SPACESUIT_HELMET.get(), FluidRegistry.MOLTEN_STEEL.get(), 0.333F, 2.1F).pattern("LLL").pattern("WGW").define('L', Items.LEATHER).define('W', Items.WHITE_WOOL).define('G', Tags.Items.GLASS).group(modGroup()).group(modGroup()).unlockedBy("has_leather", has(Items.LEATHER)).save(consumer, "basic_space_suit_helmet");
+		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.BASIC_SPACESUIT_CHESTPLATE.get(), FluidRegistry.MOLTEN_STEEL.get(), 0.666F, 4.2F).pattern("L L").pattern("WWW").pattern("LLL").define('W', Items.WHITE_WOOL).define('L', Items.LEATHER).group(modGroup()).unlockedBy("has_leather", has(Items.LEATHER)).save(consumer, "basic_space_suit_chestplate");
+		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.BASIC_SPACESUIT_LEGGINGS.get(), FluidRegistry.MOLTEN_STEEL.get(), 0.555F, 3.5F).pattern("LLL").pattern("L L").pattern("W W").define('W', Items.WHITE_WOOL).define('L', Items.LEATHER).group(modGroup()).unlockedBy("has_leather", has(Items.LEATHER)).save(consumer, "basic_space_suit_leggings");
+		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.BASIC_SPACESUIT_BOOTS.get(), FluidRegistry.MOLTEN_STEEL.get(), 0.222F, 1.4F).pattern("W W").pattern("L L").define('L', Items.LEATHER).define('W', Items.WHITE_WOOL).group(modGroup()).unlockedBy("has_leather", has(Items.LEATHER)).save(consumer, "basic_space_suit_boots");
 
-		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.HEAVY_DUTY_SPACESUIT_HELMET.get(), FluidRegistry.MOLTEN_STEEL.get(), 0.44F, 2.8F).pattern("DDD").pattern("LGL").define('L', Items.LEATHER).define('G', Tags.Items.GLASS).define('D', Tags.Items.GEMS_DIAMOND).group(modGroup()).group(modGroup()).unlockedBy("has_diamond", has(Items.DIAMOND)).save(consumer, "heavy_duty_space_suit_helmet");
-		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.HEAVY_DUTY_SPACESUIT_CHESTPLATE.get(), FluidRegistry.MOLTEN_STEEL.get(), 0.77F, 4.9F).pattern("L L").pattern("DDD").pattern("GMG").define('L', Items.LEATHER).define('G', Tags.Items.INGOTS_GOLD).define('D', Tags.Items.GEMS_DIAMOND).define('M', Items.MAGMA_CREAM).group(modGroup()).unlockedBy("has_diamond", has(Items.DIAMOND)).save(consumer, "heavy_duty_space_suit_chestplate");
-		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.HEAVY_DUTY_SPACESUIT_LEGGINGS.get(), FluidRegistry.MOLTEN_STEEL.get(), 0.66F, 4.2F).pattern("LLL").pattern("D D").pattern("L L").define('L', Items.LEATHER).define('D', Tags.Items.GEMS_DIAMOND).group(modGroup()).unlockedBy("has_diamond", has(Items.DIAMOND)).save(consumer, "heavy_duty_space_suit_leggings");
-		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.HEAVY_DUTY_SPACESUIT_BOOTS.get(), FluidRegistry.MOLTEN_STEEL.get(), 0.33F, 2.1F).pattern("R R").pattern("D D").define('D', Tags.Items.GEMS_DIAMOND).define('R', Items.RABBIT_HIDE).group(modGroup()).unlockedBy("has_diamond", has(Items.DIAMOND)).save(consumer, "heavy_duty_space_suit_boots");
+		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.HEAVY_DUTY_SPACESUIT_HELMET.get(), FluidRegistry.MOLTEN_STEEL.get(), 0.444F, 2.8F).pattern("DDD").pattern("LGL").define('L', Items.LEATHER).define('G', Tags.Items.GLASS).define('D', Tags.Items.GEMS_DIAMOND).group(modGroup()).group(modGroup()).unlockedBy("has_diamond", has(Items.DIAMOND)).save(consumer, "heavy_duty_space_suit_helmet");
+		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.HEAVY_DUTY_SPACESUIT_CHESTPLATE.get(), FluidRegistry.MOLTEN_STEEL.get(), 0.777F, 4.9F).pattern("L L").pattern("DDD").pattern("GMG").define('L', Items.LEATHER).define('G', Tags.Items.INGOTS_GOLD).define('D', Tags.Items.GEMS_DIAMOND).define('M', Items.MAGMA_CREAM).group(modGroup()).unlockedBy("has_diamond", has(Items.DIAMOND)).save(consumer, "heavy_duty_space_suit_chestplate");
+		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.HEAVY_DUTY_SPACESUIT_LEGGINGS.get(), FluidRegistry.MOLTEN_STEEL.get(), 0.666F, 4.2F).pattern("LLL").pattern("D D").pattern("L L").define('L', Items.LEATHER).define('D', Tags.Items.GEMS_DIAMOND).group(modGroup()).unlockedBy("has_diamond", has(Items.DIAMOND)).save(consumer, "heavy_duty_space_suit_leggings");
+		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.HEAVY_DUTY_SPACESUIT_BOOTS.get(), FluidRegistry.MOLTEN_STEEL.get(), 0.333F, 2.1F).pattern("R R").pattern("D D").define('D', Tags.Items.GEMS_DIAMOND).define('R', Items.RABBIT_HIDE).group(modGroup()).unlockedBy("has_diamond", has(Items.DIAMOND)).save(consumer, "heavy_duty_space_suit_boots");
 
-		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.THERMAL_SPACESUIT_HELMET.get(), FluidRegistry.MOLTEN_STEEL.get(), 0.44F, 2.8F).pattern("DDD").pattern("WGW").define('W', Items.WHITE_WOOL).define('G', Tags.Items.GLASS).define('D', Tags.Items.GEMS_DIAMOND).group(modGroup()).group(modGroup()).unlockedBy("has_diamond", has(Items.DIAMOND)).save(consumer, "thermal_space_suit_helmet");
-		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.THERMAL_SPACESUIT_CHESTPLATE.get(), FluidRegistry.MOLTEN_STEEL.get(), 0.77F, 4.9F).pattern("L L").pattern("DDD").pattern("WWW").define('L', Items.LEATHER).define('D', Tags.Items.GEMS_DIAMOND).define('W', Items.WHITE_WOOL).group(modGroup()).unlockedBy("has_diamond", has(Items.DIAMOND)).save(consumer, "thermal_space_suit_chestplate");
-		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.THERMAL_SPACESUIT_LEGGINGS.get(), FluidRegistry.MOLTEN_STEEL.get(), 0.66F, 4.2F).pattern("WWW").pattern("D D").pattern("W W").define('W', Items.WHITE_WOOL).define('D', Tags.Items.GEMS_DIAMOND).group(modGroup()).unlockedBy("has_diamond", has(Items.DIAMOND)).save(consumer, "thermal_space_suit_leggings");
-		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.THERMAL_SPACESUIT_BOOTS.get(), FluidRegistry.MOLTEN_STEEL.get(), 0.33F, 2.1F).pattern("L L").pattern("D D").define('D', Tags.Items.GEMS_DIAMOND).define('L', Items.LEATHER).group(modGroup()).unlockedBy("has_diamond", has(Items.DIAMOND)).save(consumer, "thermal_space_suit_boots");
+		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.THERMAL_SPACESUIT_HELMET.get(), FluidRegistry.MOLTEN_STEEL.get(), 0.444F, 2.8F).pattern("DDD").pattern("WGW").define('W', Items.WHITE_WOOL).define('G', Tags.Items.GLASS).define('D', Tags.Items.GEMS_DIAMOND).group(modGroup()).group(modGroup()).unlockedBy("has_diamond", has(Items.DIAMOND)).save(consumer, "thermal_space_suit_helmet");
+		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.THERMAL_SPACESUIT_CHESTPLATE.get(), FluidRegistry.MOLTEN_STEEL.get(), 0.777F, 4.9F).pattern("L L").pattern("DDD").pattern("WWW").define('L', Items.LEATHER).define('D', Tags.Items.GEMS_DIAMOND).define('W', Items.WHITE_WOOL).group(modGroup()).unlockedBy("has_diamond", has(Items.DIAMOND)).save(consumer, "thermal_space_suit_chestplate");
+		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.THERMAL_SPACESUIT_LEGGINGS.get(), FluidRegistry.MOLTEN_STEEL.get(), 0.666F, 4.2F).pattern("WWW").pattern("D D").pattern("W W").define('W', Items.WHITE_WOOL).define('D', Tags.Items.GEMS_DIAMOND).group(modGroup()).unlockedBy("has_diamond", has(Items.DIAMOND)).save(consumer, "thermal_space_suit_leggings");
+		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.THERMAL_SPACESUIT_BOOTS.get(), FluidRegistry.MOLTEN_STEEL.get(), 0.333F, 2.1F).pattern("L L").pattern("D D").define('D', Tags.Items.GEMS_DIAMOND).define('L', Items.LEATHER).group(modGroup()).unlockedBy("has_diamond", has(Items.DIAMOND)).save(consumer, "thermal_space_suit_boots");
 
-		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.ADVANCED_SPACESUIT_HELMET.get(), FluidRegistry.MOLTEN_STEEL.get(), 0.44F, 2.8F).pattern("OOO").pattern("DGD").define('O', Items.OBSIDIAN).define('G', Tags.Items.GLASS).define('D', Tags.Items.GEMS_DIAMOND).group(modGroup()).group(modGroup()).unlockedBy("has_obsidian", has(Items.OBSIDIAN)).save(consumer, "advanced_space_suit_helmet");
-		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.ADVANCED_SPACESUIT_CHESTPLATE.get(), FluidRegistry.MOLTEN_STEEL.get(), 0.77F, 4.9F).pattern("L L").pattern("DDD").pattern("OOO").define('L', Items.LEATHER).define('D', Tags.Items.GEMS_DIAMOND).define('O', Items.OBSIDIAN).group(modGroup()).unlockedBy("has_obsidian", has(Items.OBSIDIAN)).save(consumer, "advanced_space_suit_chestplate");
-		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.ADVANCED_SPACESUIT_LEGGINGS.get(), FluidRegistry.MOLTEN_STEEL.get(), 0.66F, 4.2F).pattern("DDD").pattern("O O").pattern("L L").define('O', Items.OBSIDIAN).define('L', Items.LEATHER).define('D', Tags.Items.GEMS_DIAMOND).group(modGroup()).unlockedBy("has_obsidian", has(Items.OBSIDIAN)).save(consumer, "advanced_space_suit_leggings");
-		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.ADVANCED_SPACESUIT_BOOTS.get(), FluidRegistry.MOLTEN_STEEL.get(), 0.33F, 2.1F).pattern("L L").pattern("O O").define('O', Items.OBSIDIAN).define('L', Items.LEATHER).group(modGroup()).unlockedBy("has_obsidian", has(Items.OBSIDIAN)).save(consumer, "advanced_space_suit_boots");
+		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.ADVANCED_SPACESUIT_HELMET.get(), FluidRegistry.MOLTEN_STEEL.get(), 0.444F, 2.8F).pattern("OOO").pattern("DGD").define('O', Items.OBSIDIAN).define('G', Tags.Items.GLASS).define('D', Tags.Items.GEMS_DIAMOND).group(modGroup()).group(modGroup()).unlockedBy("has_obsidian", has(Items.OBSIDIAN)).save(consumer, "advanced_space_suit_helmet");
+		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.ADVANCED_SPACESUIT_CHESTPLATE.get(), FluidRegistry.MOLTEN_STEEL.get(), 0.777F, 4.9F).pattern("L L").pattern("DDD").pattern("OOO").define('L', Items.LEATHER).define('D', Tags.Items.GEMS_DIAMOND).define('O', Items.OBSIDIAN).group(modGroup()).unlockedBy("has_obsidian", has(Items.OBSIDIAN)).save(consumer, "advanced_space_suit_chestplate");
+		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.ADVANCED_SPACESUIT_LEGGINGS.get(), FluidRegistry.MOLTEN_STEEL.get(), 0.666F, 4.2F).pattern("DDD").pattern("O O").pattern("L L").define('O', Items.OBSIDIAN).define('L', Items.LEATHER).define('D', Tags.Items.GEMS_DIAMOND).group(modGroup()).unlockedBy("has_obsidian", has(Items.OBSIDIAN)).save(consumer, "advanced_space_suit_leggings");
+		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.ADVANCED_SPACESUIT_BOOTS.get(), FluidRegistry.MOLTEN_STEEL.get(), 0.333F, 2.1F).pattern("L L").pattern("O O").define('O', Items.OBSIDIAN).define('L', Items.LEATHER).group(modGroup()).unlockedBy("has_obsidian", has(Items.OBSIDIAN)).save(consumer, "advanced_space_suit_boots");
 
 		//---- WORKBENCH SMELTING -------------------------------------------------------------------------------
 		workbenchSmelting(Fluids.WATER, Items.WATER_BUCKET, 0.0F, 1, 1.0F, BlockRegistry.WORKBENCH.get(), consumer);
@@ -438,6 +452,9 @@ public class Recipes extends RecipeProvider {
 		WorkbenchCraftingRecipeBuilder.shaped(Items.COPPER_BLOCK, FluidRegistry.MOLTEN_COPPER.get(), 1.0F, 0.0F).pattern("X").define('X', ItemRegistry.BLOCK_MOLD.get()).group(modGroup()).unlockedBy("has_copper", has(Items.COPPER_INGOT)).save(consumer, "copper_block_from_molten_copper");
 		WorkbenchCraftingRecipeBuilder.shaped(Items.GOLD_INGOT, FluidRegistry.MOLTEN_GOLD.get(), 0.1111F, 0.0F).pattern("X").define('X', ItemRegistry.INGOT_MOLD.get()).group(modGroup()).unlockedBy("has_gold", has(Items.GOLD_INGOT)).save(consumer, "gold_ingot_from_molten_gold");
 		WorkbenchCraftingRecipeBuilder.shaped(Items.GOLD_BLOCK, FluidRegistry.MOLTEN_GOLD.get(), 1.0F, 0.0F).pattern("X").define('X', ItemRegistry.BLOCK_MOLD.get()).group(modGroup()).unlockedBy("has_gold", has(Items.GOLD_INGOT)).save(consumer, "gold_block_from_molten_gold");
+		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.ALUMINUM_INGOT.get(), FluidRegistry.MOLTEN_ALUMINUM.get(), 0.1111F, 0.0F).pattern("X").define('X', ItemRegistry.INGOT_MOLD.get()).group(modGroup()).unlockedBy("has_aluminum", has(ItemRegistry.ALUMINUM_INGOT.get())).save(consumer, "aluminum_ingot_from_molten_aluminum");
+		WorkbenchCraftingRecipeBuilder.shaped(BlockRegistry.ALUMINUM_BLOCK.get(), FluidRegistry.MOLTEN_ALUMINUM.get(), 1.0F, 0.0F).pattern("X").define('X', ItemRegistry.BLOCK_MOLD.get()).group(modGroup()).unlockedBy("has_aluminum", has(BlockRegistry.ALUMINUM_BLOCK.get())).save(consumer, "aluminum_block_from_molten_aluminum");
+
 
 		//---- GLASS/CERAMICS -------------------------------------------------------------------------------
 		//GLASS
@@ -532,6 +549,15 @@ public class Recipes extends RecipeProvider {
 		ShapelessRecipeBuilder.shapeless(BlockRegistry.PLANET_CHART.get()).requires(ItemTags.PLANKS).requires(Items.PAPER).requires(Items.BLACK_DYE).group(modGroup()).unlockedBy("crafting_table", has(Items.CRAFTING_TABLE)).save(consumer);
 
 	}
+
+	private static String name(Item item) {
+		return item.getRegistryName().getPath();
+	}
+
+	private static String name(Block block) {
+		return block.getRegistryName().getPath();
+	}
+
 
 	private static String modGroup() {
 		return "celestialexploration";

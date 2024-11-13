@@ -152,4 +152,20 @@ public class CelestialPortalParticle extends TextureSheetParticle {
             return portalparticle;
         }
     }
+
+    @OnlyIn(Dist.CLIENT)
+    public static class EuropaProvider implements ParticleProvider<SimpleParticleType> {
+        private final SpriteSet sprite;
+
+        public EuropaProvider(SpriteSet p_107570_) {
+            this.sprite = p_107570_;
+        }
+
+        public Particle createParticle(SimpleParticleType p_107581_, ClientLevel p_107582_, double p_107583_, double p_107584_, double p_107585_, double p_107586_, double p_107587_, double p_107588_) {
+            CelestialPortalParticle portalparticle = new CelestialPortalParticle(p_107582_, p_107583_, p_107584_, p_107585_, p_107586_, p_107587_, p_107588_, 0.09F, 0.82F, 0.82F);
+            portalparticle.pickSprite(this.sprite);
+            return portalparticle;
+        }
+    }
+
 }

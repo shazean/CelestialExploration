@@ -1,0 +1,11 @@
+{
+  "type": "celestialexploration:lunar_colony",
+  "config": {
+    "start_pool": "celestialexploration:europa_colony/start_pool",
+    "size": 5
+  },
+  "biomes": "#celestialexploration:has_structure/europa_colony_biomes",
+  "adapt_noise": true,
+  "spawn_overrides": {
+  }
+}

@@ -20,6 +20,7 @@ public class DimensionRenderers {
         DimensionSpecialEffects.EFFECTS.put(DimensionRegistry.VENUS.location(), new VenusEffects());
         DimensionSpecialEffects.EFFECTS.put(DimensionRegistry.MERCURY.location(), new MercuryEffects());
         DimensionSpecialEffects.EFFECTS.put(DimensionRegistry.JUPITER.location(), new JupiterEffects());
+        DimensionSpecialEffects.EFFECTS.put(DimensionRegistry.EUROPA.location(), new EuropaEffects());
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -200,4 +201,28 @@ public class DimensionRenderers {
         }
     }
 
+    @OnlyIn(Dist.CLIENT)
+    public static class EuropaEffects extends DimensionSpecialEffects {
+        public EuropaEffects() {
+            super(Float.NaN, true, SkyType.NORMAL, false, false);
+            setSkyRenderHandler(skyHandler);
+        }
+
+        @Override
+        public Vec3 getBrightnessDependentFogColor(Vec3 color, float brightness) {
+            return color.multiply(brightness * 0.94F + 0.06F, brightness * 0.94F + 0.06F, brightness * 0.91F + 0.09F);
+        }
+
+        @Override
+        public boolean isFoggyAt(int x, int z) {
+            return false;
+        }
+
+        @Override
+        public float[] getSunriseColor(float p_230492_1_, float p_230492_2_) {
+            return null;
+        }
+
+        ISkyRenderHandler skyHandler = new EuropaSkyHandler();
+    }
 }

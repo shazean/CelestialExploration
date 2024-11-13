@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "celestialexploration:europa_colony",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 28321439,
+    "spacing": 30,
+    "separation": 12,
+    "type": "minecraft:random_spread"
+  }
+}

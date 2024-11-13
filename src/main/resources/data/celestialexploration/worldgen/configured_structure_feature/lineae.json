@@ -1,0 +1,11 @@
+{
+  "type": "celestialexploration:lineae",
+  "config": {
+    "start_pool": "celestialexploration:lineae",
+    "size": 1
+  },
+  "biomes": "#celestialexploration:has_structure/lineae_biomes",
+  "adapt_noise": false,
+  "spawn_overrides": {
+  }
+}

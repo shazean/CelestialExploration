@@ -42,10 +42,25 @@ public class CelestialBiomeKeys {
     public static final ResourceKey<Biome> MERCURY_PLAINS = register("mercury_plains");
     public static final ResourceKey<Biome> MERCURY_RIDGES = register("mercury_ridges");
 
-    //---- JUPITER -------------------------------------------------------------------------------
+    //---- JUPITER & MOONS -------------------------------------------------------------------------------
+    //JUPITER
     public static final ResourceKey<Biome> JUPITER_GREAT_STORM = register("jupiter_great_storm");
     public static final ResourceKey<Biome> JUPITER_LESSER_STORM = register("jupiter_lesser_storm");
     public static final ResourceKey<Biome> JUPITER_ETHER = register("jupiter_ether");
+
+    //IO
+
+    //EUROPA
+    public static final ResourceKey<Biome> EUROPA_DESERT = register("europa_desert");
+    public static final ResourceKey<Biome> EUROPA_LOWER_PLAINS = register("europa_lower_plains");
+    public static final ResourceKey<Biome> EUROPA_PLAINS = register("europa_plains");
+    public static final ResourceKey<Biome> EUROPA_JAGGED_PLAINS = register("europa_jagged_plains");
+    public static final ResourceKey<Biome> EUROPA_OCEAN = register("europa_ocean");
+    public static final ResourceKey<Biome> EUROPA_RIVER = register("europa_river");
+
+    //CALLISTO
+
+    //GANYMEDE
 
     //---- SPACE -------------------------------------------------------------------------------
     public static final ResourceKey<Biome> SPACE = register("space");

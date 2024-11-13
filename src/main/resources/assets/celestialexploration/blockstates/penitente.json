@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "thickness=base": {
+      "model": "celestialexploration:block/penitente_up_base"
+    },
+    "thickness=frustum": {
+      "model": "celestialexploration:block/penitente_up_frustum"
+    },
+    "thickness=middle": {
+      "model": "celestialexploration:block/penitente_up_middle"
+    },
+    "thickness=tip": {
+      "model": "celestialexploration:block/penitente_up_tip"
+    }
+  }
+}

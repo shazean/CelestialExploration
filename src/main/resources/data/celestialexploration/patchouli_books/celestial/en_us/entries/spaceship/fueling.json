@@ -3,7 +3,51 @@
   "icon": "celestialexploration:lox_tank",
   "category": "celestialexploration:spaceship",
   "pages": [
-    "TODO: how to use oxygen compressor",
+    "The first step to fueling the spaceship is to create an oxygen compressor.  There are two recipes for this: one uses the crafting table, and one uses the workbench.",
+    {
+      "type": "patchouli:crafting",
+      "recipe": "celestialexploration:oxygen_compressor"
+    },
+    {
+      "type": "celestialexploration:workbench_recipe",
+      "recipe": "Oxygen Compressor",
+      "item_1": "minecraft:cobblestone",
+      "item_2": "minecraft:cobblestone",
+      "item_3": "minecraft:cobblestone",
+      "item_4": "minecraft:cobblestone",
+      "item_5": "minecraft:glass,celestialexploration:reinforced_glass,celestialexploration:luminous_white_glass,celestialexploration:luminous_blue_glass",
+      "item_6": "minecraft:cobblestone",
+      "item_7": "minecraft:cobblestone",
+      "item_8": "minecraft:redstone",
+      "item_9": "minecraft:cobblestone",
+      "result": "celestialexploration:oxygen_compressor",
+      "fluidName": "Steel",
+      "fluidMB": "222mb (2 ingots)"
+    },
+    "Next up, create the liquid oxygen fuel tanks.  Again, this can be crafted via crafting table or workbench.",
+    {
+      "type": "patchouli:crafting",
+      "recipe": "celestialexploration:lox_tank"
+    },
+    {
+      "type": "celestialexploration:workbench_recipe",
+      "recipe": "Liquid Oxygen Tank",
+      "item_1": "celestialexploration:aluminum_ingot",
+      "item_2": "minecraft:glass,celestialexploration:reinforced_glass,celestialexploration:luminous_white_glass,celestialexploration:luminous_blue_glass",
+      "item_3": "celestialexploration:aluminum_ingot",
+      "item_4": "minecraft:glass,celestialexploration:reinforced_glass,celestialexploration:luminous_white_glass,celestialexploration:luminous_blue_glass",
+      "item_6": "minecraft:glass,celestialexploration:reinforced_glass,celestialexploration:luminous_white_glass,celestialexploration:luminous_blue_glass",
+      "item_7": "celestialexploration:aluminum_ingot",
+      "item_8": "minecraft:glass,celestialexploration:reinforced_glass,celestialexploration:luminous_white_glass,celestialexploration:luminous_blue_glass",
+      "item_9": "celestialexploration:aluminum_ingot",
+      "result": "celestialexploration:lox_tank",
+      "fluidName": "Steel",
+      "fluidMB": "444mb (4 ingots)"
+    },
+    "Now you can fill up the fuel tanks! Add a fuel source, and up to 4 tanks to the oxygen compressor.  The tanks will fill up one at a time, starting in the top left corner.",
+    {
+      "type": "celestialexploration:oxygen_compressor"
+    },
     "Once you’ve filled a liquid oxygen tank with fuel, it’s time to add it to the spaceship. Crouch-click on the center of the spaceship to open its GUI.$(br2)You can add up to four fuel tanks. This is also how you can access shuttle inventory for a little extra storage space!"
   ]
 }

@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "axis=z": { "model":  "celestialexploration:block/europa_portal_ew" },
+    "axis=x": { "model":  "celestialexploration:block/europa_portal_ns" }
+  }
+}
