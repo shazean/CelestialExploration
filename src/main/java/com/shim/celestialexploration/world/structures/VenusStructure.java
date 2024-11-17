@@ -3,6 +3,7 @@ package com.shim.celestialexploration.world.structures;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.shim.celestialexploration.CelestialExploration;
+import com.shim.celestialexploration.registry.DimensionRegistry;
 import com.shim.celestialexploration.util.CelestialUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.ChunkPos;
@@ -79,7 +80,7 @@ public class VenusStructure extends StructureFeature<JigsawConfiguration> {
         // Grabs the chunk position we are at
         ChunkPos chunkpos = context.chunkPos();
 
-        Vec3 coordinates = CelestialUtil.getPlanetaryChunkCoordinates(2);
+        Vec3 coordinates = CelestialUtil.getPlanetLocation(DimensionRegistry.VENUS);
 
         return chunkpos.x == coordinates.x && chunkpos.z == coordinates.z;
 

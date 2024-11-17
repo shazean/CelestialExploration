@@ -2,17 +2,17 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "celestialexploration:luminous_white_glass"
+      "celestialexploration:hangar_door_window"
     ]
   },
   "criteria": {
-    "moon_dust": {
+    "steel": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "celestialexploration:moon_dust"
+              "celestialexploration:steel_ingot"
             ]
           }
         ]
@@ -21,13 +21,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "celestialexploration:luminous_white_glass"
+        "recipe": "celestialexploration:hangar_door_window"
       }
     }
   },
   "requirements": [
     [
-      "moon_dust",
+      "steel",
       "has_the_recipe"
     ]
   ]

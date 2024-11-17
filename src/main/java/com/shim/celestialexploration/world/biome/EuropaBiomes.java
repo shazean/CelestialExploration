@@ -33,6 +33,9 @@ public class EuropaBiomes extends CelestialBiomes {
 
         addMoonOres(biomeBuilder);
 
+        spawnBuilder.addSpawn(MobCategory.WATER_AMBIENT, new MobSpawnSettings.SpawnerData(EntityRegistry.EUREKA.get(), 30, 4, 4)).build();
+
+
 //        generalMonsters(spawnBuilder, 100, 100, 100);
 //        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.LUNAR_SLIME.get(), 100, 4, 4)).build();
 //        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.DISK_MOON_SAND);

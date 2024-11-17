@@ -190,6 +190,8 @@ public class LootTables extends BaseLootTableProvider {
 		//GLASS
 		lootTables.put(BlockRegistry.LUMINOUS_BLUE_GLASS.get(), createSilkTouchTable(BlockRegistry.LUMINOUS_BLUE_GLASS.get(), ItemRegistry.MOON_DUST.get(), 1, 1));
 		lootTables.put(BlockRegistry.LUMINOUS_WHITE_GLASS.get(), createSilkTouchTable(BlockRegistry.LUMINOUS_WHITE_GLASS.get(), ItemRegistry.MOON_DUST.get(), 1, 1));
+		lootTables.put(BlockRegistry.LUMINOUS_CYAN_GLASS.get(), createSilkTouchTable(BlockRegistry.LUMINOUS_CYAN_GLASS.get(), ItemRegistry.EUROPA_DUST.get(), 1, 1));
+		lootTables.put(BlockRegistry.LUMINOUS_CYAN_GLASS_PANE.get(), createSilkTouchTable(BlockRegistry.LUMINOUS_CYAN_GLASS_PANE.get(), ItemRegistry.EUROPA_DUST.get(), 1, 1));
 		lootTables.put(BlockRegistry.LUMINOUS_BLUE_GLASS_PANE.get(), createSilkTouchTable(BlockRegistry.LUMINOUS_BLUE_GLASS_PANE.get(), ItemRegistry.MOON_DUST.get(), 1, 1));
 		lootTables.put(BlockRegistry.LUMINOUS_WHITE_GLASS_PANE.get(), createSilkTouchTable(BlockRegistry.LUMINOUS_WHITE_GLASS_PANE.get(), ItemRegistry.MOON_DUST.get(), 1, 1));
 

@@ -24,7 +24,6 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.CustomSpawner;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.levelgen.Heightmap;

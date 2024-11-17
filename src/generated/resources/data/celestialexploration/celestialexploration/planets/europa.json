@@ -1,0 +1,12 @@
+{
+  "target_dimension": "celestialexploration:europa",
+  "spawn_chunk_coordinates": {
+    "x": 6,
+    "z": 2
+  },
+  "blocks": [
+    "celestialexploration:europa_core",
+    "celestialexploration:europa_hydrate",
+    "celestialexploration:moon_stone"
+  ]
+}

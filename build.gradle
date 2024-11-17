@@ -87,10 +87,10 @@ minecraft {
 
             property 'forge.logging.console.level', 'debug'
 
-            arg "-mixin.config=celestialexploration.mixins.json"
+            property 'mixin.env.refMapRemappingFile', "${project.projectDir}/build/createSrgToMcp/output.srg"
+            property 'forge.enabledGameTestNamespaces', 'celestialexploration'
 
-            // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
-            property 'forge.enabledGameTestNamespaces', 'examplemod'
+            arg "-mixin.config=celestialexploration.mixins.json"
 
             mods {
                 examplemod {
@@ -208,6 +208,7 @@ dependencies {
 
 mixin {
     add sourceSets.main, "celestialexploration.mixin-refmap.json"
+    config "celestialexploration.mixins.json"
 }
 
 // Example for how to get properties into the manifest for reading at runtime.

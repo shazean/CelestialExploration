@@ -99,6 +99,12 @@ public class CelestialVillagerTrades {
                     new ItemStack(ItemRegistry.HEAVY_DUTY_SPACESUIT_BOOTS.get()), 7, 3, 15, 0.2F));
 
             trades.get(4).add((trader, rand) -> getItemForEmeralds(
+                    new ItemStack(ItemRegistry.SPACESHIP_CABIN.get()), 20, 5, 12, 0.2F));
+
+            trades.get(4).add((trader, rand) -> getItemForEmeralds(
+                    new ItemStack(ItemRegistry.SPACESHIP_FRAME.get()), 20, 5, 12, 0.2F));
+
+            trades.get(4).add((trader, rand) -> getItemForEmeralds(
                     new ItemStack(ItemRegistry.SPACESHIP_ENGINE.get()), 20, 5, 12, 0.2F));
 
             trades.get(4).add((trader, rand) -> getItemForEmeralds(

@@ -30,7 +30,7 @@ public class ModLanguageProvider extends LanguageProvider {
 	}
 
 	public String getDimensionString(ResourceKey<Level> dimension) {
-		return "dimension." + dimension.getRegistryName().getPath() + "." + dimension.location().getPath();
+		return "dimension.celestialexploration." + dimension.location().getPath();
 	}
 
 
@@ -226,7 +226,7 @@ public class ModLanguageProvider extends LanguageProvider {
 
 		add("celestialexploration.planet_details.jupiter_name", "Jupiter");
 		add("celestialexploration.planet_details.jupiter_resources", "none");
-		add("celestialexploration.planet_details.jupiter_moons", "TBD");
+		add("celestialexploration.planet_details.jupiter_moons", "Europa, IO (soon), Callisto (soon), Ganymede (soon)");
 
 		add("celestialexploration.planet_details.saturn_name", "Saturn");
 		add("celestialexploration.planet_details.saturn_resources", "TBD");
@@ -239,6 +239,13 @@ public class ModLanguageProvider extends LanguageProvider {
 		add("celestialexploration.planet_details.neptune_name", "Neptune");
 		add("celestialexploration.planet_details.neptune_resources", "TBD");
 		add("celestialexploration.planet_details.neptune_moons", "TBD");
+
+		add("item.celestialexploration.door.airlock_panel_door", "One hinge can support up to 7 wide (inclusive). Double hinge can support up to 14 wide (inclusive). No max height.");
+		add("item.celestialexploration.door.hangar_door", "One hinge can support up to 32 wide (inclusive). Double hinge can support up to 64 wide (inclusive). No max height.");
+
+		add("celestialexploration.spaceship.space_min_height", "Danger! Approaching dangerous depths of space!");
+
+
 
 	}
 }

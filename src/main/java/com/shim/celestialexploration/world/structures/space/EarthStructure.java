@@ -6,6 +6,7 @@ import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.util.CelestialUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.ChunkPos;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.feature.StructureFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.JigsawConfiguration;
@@ -16,7 +17,6 @@ import net.minecraft.world.level.levelgen.structure.pieces.PieceGeneratorSupplie
 import net.minecraft.world.level.levelgen.structure.pools.JigsawPlacement;
 import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
 import net.minecraft.world.phys.Vec3;
-import org.apache.logging.log4j.Level;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Optional;
@@ -80,7 +80,7 @@ public class EarthStructure extends StructureFeature<JigsawConfiguration> {
 
 
         ChunkPos chunkpos = context.chunkPos();
-        Vec3 coordinates = CelestialUtil.getPlanetaryChunkCoordinates(3);
+        Vec3 coordinates = CelestialUtil.getPlanetLocation(Level.OVERWORLD);
         return chunkpos.x == coordinates.x && chunkpos.z == coordinates.z;
 //        return false;
 
@@ -124,7 +124,7 @@ public class EarthStructure extends StructureFeature<JigsawConfiguration> {
         if(structurePiecesGenerator.isPresent()) {
             // I use to debug and quickly find out if the structure is spawning or not and where it is.
             // This is returning the coordinates of the center starting piece.
-            CelestialExploration.LOGGER.log(Level.DEBUG, "Earth at {}", blockpos);
+            CelestialExploration.LOGGER.debug("Earth at {}", blockpos);
         }
 
         // Return the pieces generator that is now set up so that the game runs it when it needs to create the layout of structure pieces.

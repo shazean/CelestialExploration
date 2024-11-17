@@ -76,7 +76,7 @@ public class CelestialUtil {
     }
 
     public static Vec3 getDimensionToSpaceCoordinates(ResourceKey<Level> dimension, ChunkPos pos) {
-        Vec3 coord = new Vec3(CE_DIMENSION_LOCATION.get(dimension).x() * CelestialUtil.getSpaceRatio(), 0, CE_DIMENSION_LOCATION.get(dimension).z() * CelestialUtil.getSpaceRatio()); //getDimensionLocation(dimension).getOutputCoordinates(pos.x, pos.z); //FIXME
+        Vec3 coord = getDimensionLocation(dimension).getOutputCoordinates(pos.x, pos.z); //new Vec3(CE_DIMENSION_LOCATION.get(dimension).x() * CelestialUtil.getSpaceRatio(), 0, CE_DIMENSION_LOCATION.get(dimension).z() * CelestialUtil.getSpaceRatio()); //getDimensionLocation(dimension).getOutputCoordinates(pos.x, pos.z); //FIXME
         if (coord == null) coord = defaultDimensionLocation.getOutputCoordinates(pos.x, pos.z);
         coord = new Vec3(coord.x * 16, 145.0, coord.z * 16); //convert from chunk to block pos
         return coord;
@@ -103,18 +103,18 @@ public class CelestialUtil {
     }
 
     public static Vec3 getPlanetaryChunkCoordinates(ResourceKey<Level> planet) {
-        Vec3 coord = CE_DIMENSION_LOCATION.get(planet); //getPlanetLocation(planet); //
+        Vec3 coord = getPlanetLocation(planet); //CE_DIMENSION_LOCATION.get(planet); //getPlanetLocation(planet); //
 //        if (coord == null) coord = CE_DIMENSION_LOCATION.get(Level.OVERWORLD);
         coord = new Vec3(coord.x * getSpaceRatio(), coord.y, coord.z * getSpaceRatio());
         return coord;
     }
 
-    @Deprecated
-    public static Vec3 getPlanetaryChunkCoordinates(String planet) {
-        Vec3 coord = PLANET_LOCATION.get(planet);
-        coord = new Vec3(coord.x * getSpaceRatio(), coord.y, coord.z * getSpaceRatio());
-        return coord;
-    }
+//    @Deprecated
+//    public static Vec3 getPlanetaryChunkCoordinates(String planet) {
+//        Vec3 coord = PLANET_LOCATION.get(planet);
+//        coord = new Vec3(coord.x * getSpaceRatio(), coord.y, coord.z * getSpaceRatio());
+//        return coord;
+//    }
 
     @Deprecated
     public static Vec3 getPlanetaryChunkCoordinates(int planetNum) {

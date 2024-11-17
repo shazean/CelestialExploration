@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "celestialexploration",
+  "ingredients": [
+    {
+      "tag": "forge:glass"
+    },
+    {
+      "item": "celestialexploration:europa_dust"
+    }
+  ],
+  "result": {
+    "item": "celestialexploration:luminous_cyan_glass"
+  }
+}

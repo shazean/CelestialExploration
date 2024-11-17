@@ -6,6 +6,7 @@ import com.shim.celestialexploration.capabilities.LoxTankCapability;
 import com.shim.celestialexploration.entity.renderer.*;
 import com.shim.celestialexploration.inventory.screens.*;
 import com.shim.celestialexploration.registry.*;
+import com.shim.celestialexploration.util.Keybinds;
 import com.shim.celestialexploration.world.renderer.DimensionRenderers;
 import net.minecraft.client.RecipeBookCategories;
 import net.minecraft.client.gui.screens.MenuScreens;
@@ -20,6 +21,7 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.client.event.RenderTooltipEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -43,6 +45,9 @@ public class ModEventClientBusEvents {
 
     @SubscribeEvent
     public static void clientSetup(final FMLClientSetupEvent event) {
+
+        Keybinds.register(event);
+
         event.enqueueWork(DimensionRenderers::setDimensionEffects);
 
         event.enqueueWork(CelestialSkullRenderer::setSkullRenderers);
@@ -74,6 +79,9 @@ public class ModEventClientBusEvents {
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.AIRLOCK_DOOR.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.STEEL_DOOR.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.STEEL_TRAPDOOR.get(), RenderType.cutout());
+
+        ItemBlockRenderTypes.setRenderLayer(BlockRegistry.AIRLOCK_PANEL_DOOR_WINDOW.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BlockRegistry.HANGAR_DOOR_WINDOW.get(), RenderType.cutout());
 
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.JUPITER_ATMOSPHERE.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.SATURN_ATMOSPHERE.get(), RenderType.translucent());

@@ -20,6 +20,7 @@ public class SpaceSkyHandler extends AbstractSkyHandler {
     //    ResourceLocation VANILLA_SUN_LOCATION = new ResourceLocation("textures/environment/sun.png");
 //    ResourceLocation EARTH_LOCATION = new ResourceLocation(CelestialExploration.MODID, "textures/environment/earth_phases.png");
     ResourceLocation MILKY_WAY_LOCATION = new ResourceLocation(CelestialExploration.MODID, "textures/environment/milky_way.png");
+    ResourceLocation ANDROMEDA_LOCATION = new ResourceLocation(CelestialExploration.MODID, "textures/environment/andromeda.png");
 
     @Override
     public void render(int ticks, float partialTick, PoseStack poseStack, ClientLevel level, Minecraft minecraft) {
@@ -102,6 +103,30 @@ public class SpaceSkyHandler extends AbstractSkyHandler {
 
         renderStars(poseStack, level, partialTick);
         renderMilkyWay(poseStack, level, partialTick);
+
+
+        poseStack.pushPose();
+        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+        poseStack.mulPose(Vector3f.ZP.rotationDegrees(70.0F));
+        poseStack.mulPose(Vector3f.YP.rotationDegrees(200.0F));
+//        poseStack.mulPose(Vector3f.XP.rotationDegrees(level.getTimeOfDay(partialTick) * 360.0F));
+
+        Matrix4f matrix4f1 = poseStack.last().pose();
+        float f12 = 15.0F; //30.0F
+        RenderSystem.setShader(GameRenderer::getPositionTexShader);
+//        poseStack.scale(0.8F, 0.8F, 0.8F);
+        RenderSystem.setShaderTexture(0, ANDROMEDA_LOCATION);
+        bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
+        bufferbuilder.vertex(matrix4f1, -f12, 100.0F, -f12).uv(0.0F, 0.0F).endVertex();
+        bufferbuilder.vertex(matrix4f1, f12, 100.0F, -f12).uv(1.0F, 0.0F).endVertex();
+        bufferbuilder.vertex(matrix4f1, f12, 100.0F, f12).uv(1.0F, 1.0F).endVertex();
+        bufferbuilder.vertex(matrix4f1, -f12, 100.0F, f12).uv(0.0F, 1.0F).endVertex();
+        bufferbuilder.end();
+        BufferUploader.end(bufferbuilder);
+
+        poseStack.popPose();
+
+
         RenderSystem.depthMask(true);
     }
 
@@ -120,7 +145,6 @@ public class SpaceSkyHandler extends AbstractSkyHandler {
             poseStack.pushPose();
 
             poseStack.mulPose(Vector3f.ZP.rotationDegrees(30.0F));
-//            poseStack.mulPose(Vector3f.XP.rotationDegrees(45.0F));
 
             switch (i) {
                 case 0: poseStack.mulPose(Vector3f.XP.rotationDegrees(45.0F));
@@ -132,18 +156,6 @@ public class SpaceSkyHandler extends AbstractSkyHandler {
                 case 6: poseStack.mulPose(Vector3f.XP.rotationDegrees(45.0F));
                 case 7: poseStack.mulPose(Vector3f.XP.rotationDegrees(45.0F));
                 case 8: poseStack.mulPose(Vector3f.XP.rotationDegrees(45.0F));
-//
-//
-////                case 0: poseStack.mulPose(Vector3f.XP.rotationDegrees(180.0F));
-//////                case 1: poseStack.mulPose(Vector3f.XP.rotationDegrees(135.0F));
-////                case 2: poseStack.mulPose(Vector3f.XP.rotationDegrees(90.0F));
-////                case 3: poseStack.mulPose(Vector3f.XP.rotationDegrees(45.0F));
-//////                case 4: poseStack.mulPose(Vector3f.XP.rotationDegrees(0.0F));
-//////                case 5: poseStack.mulPose(Vector3f.XP.rotationDegrees(-45.0F));
-//////                case 6: poseStack.mulPose(Vector3f.XP.rotationDegrees(-90.0F));
-//////                case 7: poseStack.mulPose(Vector3f.XP.rotationDegrees(-135.0F));
-////                case 8: poseStack.mulPose(Vector3f.XP.rotationDegrees(-180.0F));
-//
             }
 
             float scale = 42.0F;
@@ -157,10 +169,6 @@ public class SpaceSkyHandler extends AbstractSkyHandler {
             float f14 = (float) (i1) / 8.0F;//2.0F;
             float f15 = (float) (i + 1);// / 4.0F;
             float f16 = (float) (i1 + 1) / 8.0F;//2.0F;
-//            bufferbuilder.vertex(matrix4f1, -f12, -100.0F, f12).uv(f15, f16).endVertex();
-//            bufferbuilder.vertex(matrix4f1, f12, -100.0F, f12).uv(f13, f16).endVertex();
-//            bufferbuilder.vertex(matrix4f1, f12, -100.0F, -f12).uv(f13, f14).endVertex();
-//            bufferbuilder.vertex(matrix4f1, -f12, -100.0F, -f12).uv(f15, f14).endVertex();
 
             float f = 1.0F / 9.0F;
 

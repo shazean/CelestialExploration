@@ -2,18 +2,13 @@ package com.shim.celestialexploration.entity.vehicle;
 
 import com.google.common.collect.Lists;
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.blocks.TaxiStationBlock;
 import com.shim.celestialexploration.blocks.blockentities.TaxiStationBlockEntity;
 import com.shim.celestialexploration.capabilities.TaxiCapability;
 import com.shim.celestialexploration.config.CelestialCommonConfig;
 import com.shim.celestialexploration.inventory.menus.SpaceTaxiMenu;
-import com.shim.celestialexploration.packets.CelestialPacketHandler;
-import com.shim.celestialexploration.packets.SpaceshipFuelTickPacket;
-import com.shim.celestialexploration.registry.BlockRegistry;
 import com.shim.celestialexploration.registry.EntityRegistry;
 import com.shim.celestialexploration.registry.ItemRegistry;
 import com.shim.celestialexploration.util.CelestialUtil;
-import com.shim.celestialexploration.util.Keybinds;
 import mod.azure.azurelib.animatable.GeoEntity;
 import mod.azure.azurelib.core.animatable.instance.AnimatableInstanceCache;
 import mod.azure.azurelib.core.animation.AnimatableManager;

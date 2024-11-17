@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "celestialexploration:luminous_cyan_glass"
+    ]
+  },
+  "criteria": {
+    "europa_dust": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:europa_dust"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "celestialexploration:luminous_cyan_glass"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "europa_dust",
+      "has_the_recipe"
+    ]
+  ]
+}

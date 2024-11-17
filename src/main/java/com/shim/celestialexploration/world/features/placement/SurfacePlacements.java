@@ -25,7 +25,7 @@ public class SurfacePlacements {
     public static final Holder<PlacedFeature> PENITENTE = PlacementUtils.register("penitente", CelestialFeatureUtils.PENITENTE, CountPlacement.of(4), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome());
     public static final Holder<PlacedFeature> SPARSE_PENITENTE = PlacementUtils.register("sparse_penitente", CelestialFeatureUtils.PENITENTE, RarityFilter.onAverageOnceEvery(10), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome());
 
-    public static final Holder<PlacedFeature> FROZEN_OCEAN = PlacementUtils.register("frozen_ocean", CelestialFeatureUtils.FROZEN_OCEAN, CountPlacement.of(8), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome());
+    public static final Holder<PlacedFeature> FROZEN_OCEAN = PlacementUtils.register("frozen_ocean", CelestialFeatureUtils.FROZEN_OCEAN, CountPlacement.of(20), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome());
 
 //    public static final Holder<PlacedFeature> HYDRATE = PlacementUtils.register("hydrate", CelestialFeatureUtils.HYDRATE, RarityFilter.onAverageOnceEvery(20), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome());
 

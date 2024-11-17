@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "celestialexploration:europa_lantern"
+    ]
+  },
+  "criteria": {
+    "has_europa_dust": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:europa_dust"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "celestialexploration:europa_lantern"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_europa_dust",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -71,7 +71,6 @@ public class TagRegistry {
 
         public static final TagKey<Block> NO_SNOW = BlockTags.create(modLoc("no_snow"));
 
-
     }
 
     public class Items {
@@ -116,13 +115,11 @@ public class TagRegistry {
         public static final TagKey<Item> STONE_PRESSURE_PLATE = ItemTags.create(modLoc("stone_pressure_plate"));
         public static final TagKey<Item> REGOLITH = ItemTags.create(modLoc("regolith"));
 
-        public static final TagKey<Item>  SPACESHIP = ItemTags.create(modLoc("spaceship"));
+        public static final TagKey<Item> SPACESHIP = ItemTags.create(modLoc("spaceship"));
 
         public static final TagKey<Item> SLIME_DROPS = ItemTags.create(modLoc("slime_drops"));
 
         public static final TagKey<Item> BAUXITE_ORE = ItemTags.create(modLoc("bauxite_ore"));
-
-
 
     }
 
@@ -134,6 +131,8 @@ public class TagRegistry {
         public static final TagKey<Biome> VENUS_BIOMES = create("venus");
         public static final TagKey<Biome> MERCURY_BIOMES = create("mercury");
         public static final TagKey<Biome> JUPITER_BIOMES = create("jupiter");
+        public static final TagKey<Biome> EUROPA_BIOMES = create("europa");
+
         public static final TagKey<Biome> NO_SNOW_BIOMES = create("no_snow");
 
         public static final TagKey<Biome> DUST_STORM_BIOMES = create("dust_storms");

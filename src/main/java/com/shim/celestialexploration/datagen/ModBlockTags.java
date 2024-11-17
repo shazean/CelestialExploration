@@ -325,11 +325,12 @@ public class ModBlockTags extends BlockTagsProvider {
         tag(Tags.Blocks.GLASS)
                 .add(BlockRegistry.REINFORCED_GLASS.get())
                 .add(BlockRegistry.LUMINOUS_BLUE_GLASS.get())
+                .add(BlockRegistry.LUMINOUS_CYAN_GLASS.get())
                 .add(BlockRegistry.LUMINOUS_WHITE_GLASS.get());
 
         tag(Tags.Blocks.GLASS_PANES)
                 .add(BlockRegistry.REINFORCED_GLASS_PANE.get())
-                .add(BlockRegistry.LUMINOUS_BLUE_GLASS_PANE.get()).add(BlockRegistry.LUMINOUS_WHITE_GLASS_PANE.get());
+                .add(BlockRegistry.LUMINOUS_BLUE_GLASS_PANE.get()).add(BlockRegistry.LUMINOUS_CYAN_GLASS_PANE.get()).add(BlockRegistry.LUMINOUS_WHITE_GLASS_PANE.get());
 
 
         //---- MOON -------------------------------------------------------------------------------
@@ -507,7 +508,6 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(BlockRegistry.MERCURY_SAND.get())
                 .add(BlockRegistry.MERCURY_STONE.get())
                 .add(BlockRegistry.COARSE_MERCURY_SAND.get());
-
     }
 
     @Override

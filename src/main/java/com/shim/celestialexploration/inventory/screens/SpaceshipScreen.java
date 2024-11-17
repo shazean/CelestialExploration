@@ -205,6 +205,7 @@ public class SpaceshipScreen extends AbstractContainerScreen<SpaceshipMenu> {
     @Override
     public boolean keyReleased(int key, int p_94716_, int p_94717_) {
         if (Keybinds.SPACESHIP_LIGHT_TRAVEL.isActiveAndMatches(InputConstants.getKey(key, p_94716_))) {
+            CelestialExploration.LOGGER.debug("keyReleased, hoveredDimension: " + hoveredDimension);
             if (this.hoveredDimension != null) {
                 if (this.minecraft != null && this.minecraft.player != null)
                     this.menu.doLightTravel(hoveredDimension, this.minecraft.player);
@@ -243,88 +244,62 @@ public class SpaceshipScreen extends AbstractContainerScreen<SpaceshipMenu> {
             LightTravelCapability.ILightTravel travelCap = CelestialExploration.getCapability(player, CapabilityRegistry.LIGHT_TRAVEL_CAPABILITY);
 
             if (travelCap != null) {
+                TextComponent travelTooltip = new TextComponent(new TranslatableComponent("celestialexploration.spaceship.travel.message_1").getString() + Keybinds.SPACESHIP_LIGHT_TRAVEL.getKey().getDisplayName().getString().toUpperCase() + new TranslatableComponent("celestialexploration.spaceship.travel.message_2").getString());
 
-                TextComponent travelTooltip = new TextComponent(new TranslatableComponent("celestialexploration.spaceship.travel.message_1").getString() + Keybinds.SPACESHIP_LIGHT_TRAVEL.getKey().getDisplayName().getString().toUpperCase() +
-                        new TranslatableComponent("celestialexploration.spaceship.travel.message_2").getString());
-
-                if (travelCap.hasBeenToMercury()) {
-                    if (isHovering(x - i + 75 + 26 - 1, y - j + 73 + 12 - 1, 5, 5, mouseX, mouseY)) {
-                        tooltip = Lists.newArrayList();
-                        this.tooltip.add(new TranslatableComponent("celestialexploration.spaceship.travel.mercury"));
-                        if (travelCap.getMercuryCooldown().isCooldownEnded()) {
-                            this.tooltip.add(travelTooltip);
-                        } else {
-                            this.tooltip.add(new TextComponent(new TranslatableComponent("celestialexploration.spaceship.travel.cooldown").getString() + travelCap.getMercuryCooldown().getFormattedCooldown()));
-                        }
-
-                        this.renderComponentTooltip(poseStack, this.tooltip, mouseX, mouseY);
-                        this.hoveredDimension = DimensionRegistry.MERCURY;
+                if (travelCap.hasBeenToMercury() && isHovering(x - i + 75 + 26 - 1, y - j + 73 + 12 - 1, 5, 5, mouseX, mouseY)) {
+                    tooltip = Lists.newArrayList();
+                    this.tooltip.add(new TranslatableComponent("celestialexploration.spaceship.travel.mercury"));
+                    if (travelCap.getMercuryCooldown().isCooldownEnded()) {
+                        this.tooltip.add(travelTooltip);
                     } else {
-                        this.hoveredDimension = null;
+                        this.tooltip.add(new TextComponent(new TranslatableComponent("celestialexploration.spaceship.travel.cooldown").getString() + travelCap.getMercuryCooldown().getFormattedCooldown()));
                     }
-                }
-                if (travelCap.hasBeenToVenus()) {
-                    if (isHovering(x - i + 75 + 12 - 1, y - j + 73 + 29 - 1, 6, 6, mouseX, mouseY)) {
-                        tooltip = Lists.newArrayList();
-                        this.tooltip.add(new TranslatableComponent("celestialexploration.spaceship.travel.venus"));
-                        if (travelCap.getVenusCooldown().isCooldownEnded()) {
-                            this.tooltip.add(travelTooltip);
-                        } else {
-                            this.tooltip.add(new TextComponent(new TranslatableComponent("celestialexploration.spaceship.travel.cooldown").getString() + travelCap.getVenusCooldown().getFormattedCooldown()));
-                        }
+                    this.renderComponentTooltip(poseStack, this.tooltip, mouseX, mouseY);
+                    this.hoveredDimension = DimensionRegistry.MERCURY;
+                } else if (travelCap.hasBeenToVenus() && isHovering(x - i + 75 + 12 - 1, y - j + 73 + 29 - 1, 6, 6, mouseX, mouseY)) {
+                    tooltip = Lists.newArrayList();
+                    this.tooltip.add(new TranslatableComponent("celestialexploration.spaceship.travel.venus"));
+                    if (travelCap.getVenusCooldown().isCooldownEnded()) {
+                        this.tooltip.add(travelTooltip);
+                    } else {
+                        this.tooltip.add(new TextComponent(new TranslatableComponent("celestialexploration.spaceship.travel.cooldown").getString() + travelCap.getVenusCooldown().getFormattedCooldown()));
+                    }
+                    this.renderComponentTooltip(poseStack, this.tooltip, mouseX, mouseY);
+                    this.hoveredDimension = DimensionRegistry.VENUS;
 
-                        this.renderComponentTooltip(poseStack, this.tooltip, mouseX, mouseY);
-                        this.hoveredDimension = DimensionRegistry.VENUS;
+                } else if (travelCap.hasBeenToSpace() && isHovering(x - i + 75 - 10 - 1, y - j + 73 + 12 - 1, 6, 6, mouseX, mouseY)) {
+                    tooltip = Lists.newArrayList();
+                    this.tooltip.add(new TranslatableComponent("celestialexploration.spaceship.travel.overworld"));
+                    if (travelCap.getOverworldCooldown().isCooldownEnded()) {
+                        this.tooltip.add(travelTooltip);
                     } else {
-                        this.hoveredDimension = null;
+                        this.tooltip.add(new TextComponent(new TranslatableComponent("celestialexploration.spaceship.travel.cooldown").getString() + travelCap.getOverworldCooldown().getFormattedCooldown()));
                     }
-                }
-                if (travelCap.hasBeenToSpace()) {
-                    if (isHovering(x - i + 75 - 10 - 1, y - j + 73 + 12 - 1, 6, 6, mouseX, mouseY)) {
-                        tooltip = Lists.newArrayList();
-                        this.tooltip.add(new TranslatableComponent("celestialexploration.spaceship.travel.overworld"));
-                        if (travelCap.getOverworldCooldown().isCooldownEnded()) {
-                            this.tooltip.add(travelTooltip);
-                        } else {
-                            this.tooltip.add(new TextComponent(new TranslatableComponent("celestialexploration.spaceship.travel.cooldown").getString() + travelCap.getOverworldCooldown().getFormattedCooldown()));
-                        }
-                        this.renderComponentTooltip(poseStack, this.tooltip, mouseX, mouseY);
-                        this.hoveredDimension = Level.OVERWORLD;
+                    this.renderComponentTooltip(poseStack, this.tooltip, mouseX, mouseY);
+                    this.hoveredDimension = Level.OVERWORLD;
+                } else if (travelCap.hasBeenToMars() && isHovering(x - i + 75 + 12 - 1, y - j + 73 - 19 - 1, 6, 6, mouseX, mouseY)) {
+                    tooltip = Lists.newArrayList();
+                    this.tooltip.add(new TranslatableComponent("celestialexploration.spaceship.travel.mars"));
+                    if (travelCap.getMarsCooldown().isCooldownEnded()) {
+                        this.tooltip.add(travelTooltip);
                     } else {
-                        this.hoveredDimension = null;
+                        this.tooltip.add(new TextComponent(new TranslatableComponent("celestialexploration.spaceship.travel.cooldown").getString() + travelCap.getMarsCooldown().getFormattedCooldown()));
                     }
-                }
-                if (travelCap.hasBeenToMars()) {
-                    if (isHovering(x - i + 75 + 12 - 1, y - j + 73 - 19 - 1, 6, 6, mouseX, mouseY)) {
-                        tooltip = Lists.newArrayList();
-                        this.tooltip.add(new TranslatableComponent("celestialexploration.spaceship.travel.mars"));
-                        if (travelCap.getMarsCooldown().isCooldownEnded()) {
-                            this.tooltip.add(travelTooltip);
-                        } else {
-                            this.tooltip.add(new TextComponent(new TranslatableComponent("celestialexploration.spaceship.travel.cooldown").getString() + travelCap.getMarsCooldown().getFormattedCooldown()));
-                        }
+                    this.renderComponentTooltip(poseStack, this.tooltip, mouseX, mouseY);
+                    this.hoveredDimension = DimensionRegistry.MARS;
+                } else if (travelCap.hasBeenToJupiter() && isHovering(x - i + 75 + 56, y - j + 73 + 11, 9, 9, mouseX, mouseY)) {
+                    tooltip = Lists.newArrayList();
+                    this.tooltip.add(new TranslatableComponent("celestialexploration.spaceship.travel.jupiter"));
+                    if (travelCap.getJupiterCooldown().isCooldownEnded()) {
+                        this.tooltip.add(travelTooltip);
+                    } else {
+                        this.tooltip.add(new TextComponent(new TranslatableComponent("celestialexploration.spaceship.travel.cooldown").getString() + travelCap.getJupiterCooldown().getFormattedCooldown()));
+                    }
 
-                        this.renderComponentTooltip(poseStack, this.tooltip, mouseX, mouseY);
-                        this.hoveredDimension = DimensionRegistry.MARS;
-                    } else {
-                        this.hoveredDimension = null;
-                    }
-                }
-                if (travelCap.hasBeenToJupiter()) {
-                    if (isHovering(x - i + 75 + 56, y - j + 73 + 11, 9, 9, mouseX, mouseY)) {
-                        tooltip = Lists.newArrayList();
-                        this.tooltip.add(new TranslatableComponent("celestialexploration.spaceship.travel.jupiter"));
-                        if (travelCap.getJupiterCooldown().isCooldownEnded()) {
-                            this.tooltip.add(travelTooltip);
-                        } else {
-                            this.tooltip.add(new TextComponent(new TranslatableComponent("celestialexploration.spaceship.travel.cooldown").getString() + travelCap.getJupiterCooldown().getFormattedCooldown()));
-                        }
-
-                        this.renderComponentTooltip(poseStack, this.tooltip, mouseX, mouseY);
-                        this.hoveredDimension = DimensionRegistry.JUPITER;
-                    } else {
-                        this.hoveredDimension = null;
-                    }
+                    this.renderComponentTooltip(poseStack, this.tooltip, mouseX, mouseY);
+                    this.hoveredDimension = DimensionRegistry.JUPITER;
+                } else {
+                    this.hoveredDimension = null;
                 }
             }
         }

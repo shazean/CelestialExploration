@@ -87,7 +87,7 @@ public class TeleportUtil {
         ChunkPos planetChunkPos;
 
         //check if we're in the general area of a planet
-        for (ResourceKey<Level> loc : CelestialUtil.CE_DIMENSION_LOCATION.keySet()) { //CelestialUtil.getPlanetLocations().keySet()) {
+        for (ResourceKey<Level> loc : CelestialUtil.getPlanetLocations().keySet()) {//CelestialUtil.CE_DIMENSION_LOCATION.keySet()) { //CelestialUtil.getPlanetLocations().keySet()) {
 
             planetChunkPos = new ChunkPos((int) CelestialUtil.getPlanetaryChunkCoordinates(loc).x, (int) CelestialUtil.getPlanetaryChunkCoordinates(loc).z);
             ChunkPos locationChunk = new ChunkPos(new BlockPos(location.x, location.y, location.z));
@@ -97,10 +97,9 @@ public class TeleportUtil {
             }
         }
         if (planet == null) return null;
-        CelestialExploration.LOGGER.debug("planet nearby: " + planet);
 
         //check if what we're looking at matches said planet…
-        List<Block> blocksToComp = CE_DIMENSION_STRUCTURE_BLOCKS.get(planet); //DIMENSION_STRUCTURE_BLOCKS.get(planet);
+        List<Block> blocksToComp = getDimensionStructureBlocks(planet); //CE_DIMENSION_STRUCTURE_BLOCKS.get(planet); //DIMENSION_STRUCTURE_BLOCKS.get(planet);
         if (blocksToComp == null) return null;
 
         for (Block block : blocksToComp) {
@@ -110,12 +109,10 @@ public class TeleportUtil {
         //…or one of its moons
 
         moons = PLANET_MOONS.get(planet);
-        CelestialExploration.LOGGER.debug("moons: " + moons);
 
         if (moons != null) {
             for (ResourceKey<Level> moon : moons) {
-                blocksToComp = CE_DIMENSION_STRUCTURE_BLOCKS.get(moon); //DIMENSION_STRUCTURE_BLOCKS.get(moon);
-                CelestialExploration.LOGGER.debug("blocksToComp: " + blocksToComp);
+                blocksToComp = getDimensionStructureBlocks(planet); //CE_DIMENSION_STRUCTURE_BLOCKS.get(moon); //DIMENSION_STRUCTURE_BLOCKS.get(moon);
 
                 for (Block block : blocksToComp) {
                     //  return moon
@@ -187,10 +184,10 @@ public class TeleportUtil {
         }
     }
 
-    public static void displayTeleportMessage(Entity entity, int teleportCooldown, ResourceKey<Level> destination) {
+    public static void displayTeleportMessage(Entity entity, int teleportCooldown, ResourceKey<Level> destination) { //TODO make translatable components
         if (entity instanceof Player) {
             if (teleportCooldown % 20 == 0 && teleportCooldown != 0) {
-                ((Player) entity).displayClientMessage(Component.nullToEmpty("Teleporting to " + new TranslatableComponent("dimension." + destination.getRegistryName().getPath() + "." + destination.location().getPath()).getString() + " in… " + teleportCooldown / 20), true);
+                ((Player) entity).displayClientMessage(Component.nullToEmpty("Teleporting to " + new TranslatableComponent("dimension.celestialexploration." + destination.location().getPath()).getString() + " in… " + teleportCooldown / 20), true);
             } else if (teleportCooldown == 0) {
                 ((Player) entity).displayClientMessage(Component.nullToEmpty("Teleporting!"), true);
             }

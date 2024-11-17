@@ -34,7 +34,7 @@ public class LineaeStructure extends StructureFeature<JigsawConfiguration> {
 
     @Override
     public GenerationStep.Decoration step() {
-        return GenerationStep.Decoration.SURFACE_STRUCTURES;
+        return GenerationStep.Decoration.LOCAL_MODIFICATIONS;
     }
 
     private static boolean isFeatureChunk(PieceGeneratorSupplier.Context<JigsawConfiguration> context) {

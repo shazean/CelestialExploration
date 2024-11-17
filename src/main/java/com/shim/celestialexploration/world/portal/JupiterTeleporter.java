@@ -1,7 +1,5 @@
 package com.shim.celestialexploration.world.portal;
 
-import com.shim.celestialexploration.blocks.IPortal;
-import com.shim.celestialexploration.blocks.JupiterPortalBlock;
 import com.shim.celestialexploration.registry.BlockRegistry;
 import com.shim.celestialexploration.registry.DimensionRegistry;
 import com.shim.celestialexploration.registry.PoiRegistry;

@@ -1,6 +1,7 @@
 package com.shim.celestialexploration.blocks;
 
 import com.shim.celestialexploration.CelestialExploration;
+import com.shim.celestialexploration.registry.TagRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.StringRepresentable;
@@ -76,7 +77,7 @@ public class AirlockDoorBlock extends Block {
        BlockPos blockAbove = pos.above();
        BlockState blockstateBelow = levelReader.getBlockState(blockBelow);
        BlockState blockstateAbove = levelReader.getBlockState(blockAbove);
-       return blockstateBelow.isFaceSturdy(levelReader, blockBelow, Direction.UP) || blockstateAbove.isFaceSturdy(levelReader, blockAbove, Direction.DOWN) || blockstateBelow.is(this) || blockstateAbove.is(this);
+       return blockstateBelow.isFaceSturdy(levelReader, blockBelow, Direction.UP) || blockstateAbove.isFaceSturdy(levelReader, blockAbove, Direction.DOWN) || blockstateBelow.getBlock() instanceof AirlockDoorBlock || blockstateAbove.getBlock() instanceof AirlockDoorBlock;
     }
 
     @Nullable
@@ -90,11 +91,11 @@ public class AirlockDoorBlock extends Block {
         BlockState blockBelow = context.getLevel().getBlockState(clickedPos.below());
         BlockState blockAbove = context.getLevel().getBlockState(clickedPos.above());
 
-        Direction facing = blockBelow.is(this) ? blockBelow.getValue(FACING) : (blockAbove.is(this) ? blockAbove.getValue(FACING) : context.getHorizontalDirection());
+        Direction facing = blockBelow.getBlock() instanceof AirlockDoorBlock ? blockBelow.getValue(FACING) : (blockAbove.getBlock() instanceof AirlockDoorBlock ? blockAbove.getValue(FACING) : context.getHorizontalDirection());
         CelestialProperties.AirlockDoorHingeSide hingeSide;
         if (shouldHaveHinge) {
-            if (blockBelow.is(this)) hingeSide = blockBelow.getValue(HINGE);
-            else if (blockAbove.is(this)) hingeSide = blockAbove.getValue(HINGE);
+            if (blockBelow.getBlock() instanceof AirlockDoorBlock) hingeSide = blockBelow.getValue(HINGE);
+            else if (blockAbove.getBlock() instanceof AirlockDoorBlock) hingeSide = blockAbove.getValue(HINGE);
             else if (oppositeNeighbor == 1) hingeSide = CelestialProperties.AirlockDoorHingeSide.LEFT;
             else if (oppositeNeighbor == 2) hingeSide = CelestialProperties.AirlockDoorHingeSide.RIGHT;
             else hingeSide = this.getHinge(context);
@@ -116,13 +117,13 @@ public class AirlockDoorBlock extends Block {
 
         for (i = 0; i < MAX_SIZE.x; i++) {
             block = blockgetter.getBlockState(context.getClickedPos().relative(counterClockWise, i + 1));
-            if (block.is(this) && block.getValue(HINGE) != CelestialProperties.AirlockDoorHingeSide.NON_HINGE) return false;
+            if (block.getBlock() instanceof AirlockDoorBlock && block.getValue(HINGE) != CelestialProperties.AirlockDoorHingeSide.NON_HINGE) return false;
             distToLeft++;
         }
         if (distToLeft > MAX_SIZE.x) return true;
         for (i = 0; i < MAX_SIZE.x + 1; i++) {
             block = blockgetter.getBlockState(context.getClickedPos().relative(clockWise, i + 1));
-            if (block.is(this) && block.getValue(HINGE) != CelestialProperties.AirlockDoorHingeSide.NON_HINGE) return false;
+            if (block.getBlock() instanceof AirlockDoorBlock && block.getValue(HINGE) != CelestialProperties.AirlockDoorHingeSide.NON_HINGE) return false;
             distToRight++;
         }
         return (distToRight + distToLeft) > MAX_SIZE.x - 1;
@@ -153,10 +154,10 @@ public class AirlockDoorBlock extends Block {
         BlockState toLeft = blockgetter.getBlockState(context.getClickedPos().relative(directionTwo));
         BlockState toRight = blockgetter.getBlockState(context.getClickedPos().relative(directionOne));
 
-        if (toLeft.is(this) && toLeft.getValue(HINGE).toString().equals("right")) {
+        if (toLeft.getBlock() instanceof AirlockDoorBlock && toLeft.getValue(HINGE).toString().equals("right")) {
             return 1;
         }
-        if (toRight.is(this) && toRight.getValue(HINGE).toString().equals("left")) {
+        if (toRight.getBlock() instanceof AirlockDoorBlock && toRight.getValue(HINGE).toString().equals("left")) {
             return 2;
         } else {
             return 0;
@@ -164,7 +165,8 @@ public class AirlockDoorBlock extends Block {
     }
 
     public boolean isSameAndFacing(BlockState compared, Direction direction) {
-        if (!compared.is(this)) return false;
+//        if (!compared.is(this)) return false;
+        if (!(compared.getBlock() instanceof AirlockDoorBlock)) return false;
         return compared.getValue(FACING) == direction;
     }
 

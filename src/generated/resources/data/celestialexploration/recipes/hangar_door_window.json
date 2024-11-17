@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "celestialexploration",
+  "pattern": [
+    "XX ",
+    "XGR",
+    "XX "
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:steel_ingot"
+    },
+    "G": {
+      "tag": "forge:glass"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:hangar_door_window",
+    "count": 8
+  }
+}

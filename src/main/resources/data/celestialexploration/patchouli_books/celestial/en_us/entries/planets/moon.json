@@ -6,7 +6,7 @@
     "Look, look, the moon!$(br2)The moon can be found by heading to space from the overworld.$(br2)Natural resources: iron, redstone, lunar dust.$(br)Mobs: Voided, Skeletons, SpaceFellows, Lunar Slimes",
     {
       "type": "patchouli:spotlight",
-      "text": "Lunar bricks can be used to craft a portal to the moon, and then lit using a flint and steel.$(br2)Note: lunar portals can only be used from the overworld to the moon.$(br2)This does mean you either need to be in creative mode or visit the moon for the first time using the spaceship!",
+      "text": "Lunar bricks can be used to craft a portal to the moon, and then lit using flint & steel.$(br)This does mean you need to visit the moon for the first time using the spaceship, or be in creative mode!$(br2)Note: lunar portals can only be used from the overworld to the moon.",
       "item": "celestialexploration:moon_bricks"
     },
     {

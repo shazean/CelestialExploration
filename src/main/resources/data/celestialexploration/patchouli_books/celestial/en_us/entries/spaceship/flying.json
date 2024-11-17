@@ -7,8 +7,7 @@
     {
       "type": "patchouli:text",
       "title": "Controls",
-      "text": "The spaceship flies a little like creative mode and a little like a boat.  The $(k:forward)$(k:left)$(k:back)$(k:right) keys are used for direction and turning. Space ascends, and Left Shift descends. Dismount with $(k:sneak), but you will $(o)only$() dismount from the spaceship if it's on the ground.$(br2)All of these keybindings can be changed in the player keybinding settings."
-
+      "text": "The spaceship flies a little like creative mode and a little like a boat.  The $(k:forward)$(k:left)$(k:back)$(k:right) keys are used for direction and turning. $(k:jump) ascends, and $(k:sneak) descends. Dismount with $(k:sneak), but you will $(o)only$() dismount from the spaceship if it's on the ground.$(br2)All of these keybindings can be changed in the player keybinding settings."
     },
     {
       "type": "patchouli:spotlight",
@@ -20,6 +19,11 @@
       "type": "patchouli:text",
       "title": "Navigation",
       "text": "To get to space, fly up in the spaceship, about 10 blocks above block build height! You will teleport to space above the planet you came from. After that, find other planets! If you approach a planet/moon with a dimension while in the spaceship, you will teleport to block build height inside said dimension.$(br)Try using a planet chart block to find the exact coordinates of each planet!"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Passengers",
+      "text": "Each spaceship allows two passengers, including a second player!  However, to teleport to a planet, both player passengers must be looking directly at the planet."
     },
     {
       "type": "patchouli:text",

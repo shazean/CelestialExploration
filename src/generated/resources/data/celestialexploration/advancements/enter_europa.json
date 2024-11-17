@@ -1,0 +1,31 @@
+{
+  "parent": "celestialexploration:enter_jupiter",
+  "display": {
+    "icon": {
+      "item": "celestialexploration:europa_bricks"
+    },
+    "title": {
+      "translate": "advancements.celestial.enter_europa.title"
+    },
+    "description": {
+      "translate": "advancements.celestial.enter_europa.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "entered_europa": {
+      "trigger": "minecraft:changed_dimension",
+      "conditions": {
+        "to": "celestialexploration:europa"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "entered_europa"
+    ]
+  ]
+}

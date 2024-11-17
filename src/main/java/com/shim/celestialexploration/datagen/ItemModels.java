@@ -500,7 +500,9 @@ public class ItemModels extends ItemModelProvider {
 		self(BlockRegistry.HORIZONTAL_GLOW_STRIP.get());
 
 		generatedBlockItem(BlockRegistry.AIRLOCK_PANEL_DOOR.get(), "block/airlock_panel_hinge");
+		generatedBlockItem(BlockRegistry.AIRLOCK_PANEL_DOOR_WINDOW.get(), "block/airlock_panel_window");
 		generatedBlockItem(BlockRegistry.HANGAR_DOOR.get(), "block/hangar_hinge");
+		generatedBlockItem(BlockRegistry.HANGAR_DOOR_WINDOW.get(), "block/hangar_window");
 
 		generatedBlockItem(BlockRegistry.AIRLOCK_DOOR.get(), "item/airlock_door");
 		generatedBlockItem(BlockRegistry.STEEL_DOOR.get(), "item/steel_door");
@@ -550,7 +552,9 @@ public class ItemModels extends ItemModelProvider {
 		//GLASS
 		self(BlockRegistry.LUMINOUS_BLUE_GLASS.get());
 		self(BlockRegistry.LUMINOUS_WHITE_GLASS.get());
+		self(BlockRegistry.LUMINOUS_CYAN_GLASS.get());
 		generatedBlockItem(BlockRegistry.LUMINOUS_BLUE_GLASS_PANE.get(), "block/luminous_blue_glass");
+		generatedBlockItem(BlockRegistry.LUMINOUS_CYAN_GLASS_PANE.get(), "block/luminous_cyan_glass");
 		generatedBlockItem(BlockRegistry.LUMINOUS_WHITE_GLASS_PANE.get(), "block/luminous_white_glass");
 
 		withExistingParent(name(BlockRegistry.REINFORCED_GLASS.get()), modLoc("block/reinforced_glass_inventory"));
@@ -635,6 +639,7 @@ public class ItemModels extends ItemModelProvider {
 		singleTexture(name(FluidRegistry.MOLTEN_ALUMINUM_BUCKET.get()), new ResourceLocation("item/generated"), "layer0", new ResourceLocation("item/lava_bucket"));
 		generatedItem(FluidRegistry.SULFUR_BUCKET.get());
 		generatedItem(FluidRegistry.METALLIC_HYDROGEN_BUCKET.get());
+		generatedItem(ItemRegistry.EUREKA_BUCKET.get());
 
 		//BLOCKS
 		self(BlockRegistry.DRY_ICE.get());

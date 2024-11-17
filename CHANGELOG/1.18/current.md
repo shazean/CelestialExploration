@@ -9,3 +9,8 @@
 - `[CHG]` Updated workbench texture
 - `[FIX]` Fixed celestial cats spawning on overworld
 - `[FIX]` Fixed swapped first and second passengers on spaceship
+- `[FIX]` Fixed snow spawning on cold planets on servers for real this time 
+- `[NEW]` New window version for airlock and hangar door blocks
+- `[FIX]` Lowered min Y height for space dimension + added warning so as to not suddenly fall out of the world in spaceship
+- `[FIX]` Fixed broken fluid textures on workbench
+- `[NEW]` Added config for portals

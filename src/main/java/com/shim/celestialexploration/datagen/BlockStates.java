@@ -453,7 +453,9 @@ public class BlockStates extends BlockStateProvider {
 		//GLASS
 		simpleBlock(BlockRegistry.LUMINOUS_BLUE_GLASS.get());
 		simpleBlock(BlockRegistry.LUMINOUS_WHITE_GLASS.get());
+		simpleBlock(BlockRegistry.LUMINOUS_CYAN_GLASS.get());
 		paneBlock((IronBarsBlock) BlockRegistry.LUMINOUS_BLUE_GLASS_PANE.get(), modLoc("block/luminous_blue_glass"), modLoc("block/luminous_blue_glass_pane_top"));
+		paneBlock((IronBarsBlock) BlockRegistry.LUMINOUS_CYAN_GLASS_PANE.get(), modLoc("block/luminous_blue_glass"), modLoc("block/luminous_blue_glass_pane_top"));
 		paneBlock((IronBarsBlock) BlockRegistry.LUMINOUS_WHITE_GLASS_PANE.get(), modLoc("block/luminous_white_glass"), modLoc("block/luminous_white_glass_pane_top"));
 
 		//CERAMIC

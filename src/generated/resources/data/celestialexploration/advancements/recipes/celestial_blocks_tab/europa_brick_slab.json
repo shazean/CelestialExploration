@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "celestialexploration:europa_brick_slab"
+    ]
+  },
+  "criteria": {
+    "has_europa_hydrate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:europa_hydrate"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "celestialexploration:europa_brick_slab"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_europa_hydrate",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,5 +1,6 @@
 package com.shim.celestialexploration.mixin;
 
+import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.registry.TagRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.LevelReader;

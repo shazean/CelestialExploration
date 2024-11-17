@@ -197,13 +197,18 @@ public class SpaceshipMenu extends AbstractContainerMenu {
     public void doLightTravel(ResourceKey<Level> dimension, Player player) {
         if (lightTravelAllowed()) {
 
+            CelestialExploration.LOGGER.debug("doLightTravel");
+
 //            ChunkPos chunkPos = new ChunkPos((int) getPlanetaryChunkCoordinates(dimension).x(), (int) getPlanetaryChunkCoordinates(dimension).z());
 
-            ChunkPos chunkPos = new ChunkPos((int) CelestialUtil.getPlanetaryChunkCoordinates(dimension).x(), (int) CelestialUtil.getPlanetaryChunkCoordinates(dimension).z());
-            BlockPos pos = chunkPos.getMiddleBlockPosition(0);
+//            ChunkPos chunkPos = new ChunkPos((int) CelestialUtil.getPlanetaryChunkCoordinates(dimension).x(), (int) CelestialUtil.getPlanetaryChunkCoordinates(dimension).z());
+//            BlockPos pos = chunkPos.getMiddleBlockPosition(0);
 
             int secondPassenger = (this.entity.getPassengers().size() > 1) ? this.entity.getPassengers().get(1).getId() : -1;
-            CelestialPacketHandler.INSTANCE.sendToServer(new DoLightTravelPacket(this.entity.getId(), this.entity.getPassengers().get(0).getId(), secondPassenger, pos));
+
+            CelestialPacketHandler.INSTANCE.sendToServer(new DoLightTravelPacket(this.entity.getId(), this.entity.getPassengers().get(0).getId(), secondPassenger, dimension));
+
+//            CelestialPacketHandler.INSTANCE.sendToServer(new DoLightTravelPacket(this.entity.getId(), this.entity.getPassengers().get(0).getId(), secondPassenger, pos));
 
             if (this.entity.getFirstPassenger() == player) {
 //                LightTravelCapability.ILightTravel travelCap = CelestialExploration.getCapability(player, CapabilityRegistry.LIGHT_TRAVEL_CAPABILITY);

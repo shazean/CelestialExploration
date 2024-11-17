@@ -1,5 +1,6 @@
 package com.shim.celestialexploration.events;
 
+import com.mojang.datafixers.util.Either;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.capabilities.ISpaceFlight;
 import com.shim.celestialexploration.capabilities.LightTravelCapability;
@@ -16,6 +17,9 @@ import com.shim.celestialexploration.util.DimensionUtil;
 import com.shim.celestialexploration.util.teleportation.TeleportUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -34,6 +38,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.client.event.RenderTooltipEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.EntityMountEvent;
@@ -71,6 +76,13 @@ public class ModForgeEventBus {
         Player player = event.player;
         Entity spaceVehicle = null;
 
+        if (player.level.dimension().equals(DimensionRegistry.SPACE)) {
+            if (player.position().y <= player.level.getMinBuildHeight()) {
+                player.displayClientMessage(new TranslatableComponent("celestialexploration.spaceship.space_min_height"), true);
+
+            }
+        }
+
         ISpaceFlight flightCap = CelestialExploration.getCapability(player, CapabilityRegistry.SPACE_FLIGHT_CAPABILITY);
         if (flightCap != null) spaceVehicle = player;
         else {
@@ -105,28 +117,32 @@ public class ModForgeEventBus {
                 }
 
                 BlockState blockState = spaceVehicle.level.getBlockState(hitResult.getBlockPos());
-                ResourceKey<Level> destination = TeleportUtil.getTeleportLocation(spaceVehicle.position(), blockState);
+
+                if (!spaceVehicle.level.isClientSide()) {
+
+                    ResourceKey<Level> destination = TeleportUtil.getTeleportLocation(spaceVehicle.position(), blockState);
 //                CelestialExploration.LOGGER.debug("seenBlock: " + blockState + "destination: " + destination);
-                ArrayList<Entity> passengers = flightCap.getAdditionalEntitiesToTeleport(spaceVehicle);
-                if (destination != null) {
-                    TeleportUtil.displayTeleportMessage(player, flightCap.getTeleportationCooldown(), destination);
+                    ArrayList<Entity> passengers = flightCap.getAdditionalEntitiesToTeleport(spaceVehicle);
+                    if (destination != null) {
+                        TeleportUtil.displayTeleportMessage(player, flightCap.getTeleportationCooldown(), destination);
 
-                    if (flightCap.getTeleportationCooldown() == 0) {
-                        if (player instanceof ServerPlayer serverPlayer) {
-                            CelestialPacketHandler.INSTANCE.sendTo(new SpaceFlightPacket(flightCap.getTeleportationCooldown()), serverPlayer.connection.getConnection(), NetworkDirection.PLAY_TO_CLIENT);
+                        if (flightCap.getTeleportationCooldown() == 0) {
+                            if (player instanceof ServerPlayer serverPlayer) {
+                                CelestialPacketHandler.INSTANCE.sendTo(new SpaceFlightPacket(flightCap.getTeleportationCooldown()), serverPlayer.connection.getConnection(), NetworkDirection.PLAY_TO_CLIENT);
+                            }
+
+                            TeleportUtil.teleport(spaceVehicle, passengers, destination, spaceVehicle.position());
+                            flightCap.resetTeleportationCooldown();
+
+                        } else {
+                            if (player instanceof ServerPlayer serverPlayer) {
+                                CelestialPacketHandler.INSTANCE.sendTo(new SpaceFlightPacket(flightCap.getTeleportationCooldown()), serverPlayer.connection.getConnection(), NetworkDirection.PLAY_TO_CLIENT);
+                            }
+                            flightCap.decrementTeleportationCooldown();
                         }
-
-                        TeleportUtil.teleport(spaceVehicle, passengers, destination, spaceVehicle.position());
-                        flightCap.resetTeleportationCooldown();
-
                     } else {
-                        if (player instanceof ServerPlayer serverPlayer) {
-                            CelestialPacketHandler.INSTANCE.sendTo(new SpaceFlightPacket(flightCap.getTeleportationCooldown()), serverPlayer.connection.getConnection(), NetworkDirection.PLAY_TO_CLIENT);
-                        }
-                        flightCap.decrementTeleportationCooldown();
+                        flightCap.resetTeleportationCooldown();
                     }
-                } else {
-                    flightCap.resetTeleportationCooldown();
                 }
             }
         }
@@ -155,7 +171,7 @@ public class ModForgeEventBus {
                 ItemStack helmet = player.getInventory().getArmor(3);
 
                 if (helmet.isEmpty() && breastplate.isEmpty() && leggings.isEmpty() && boots.isEmpty()) {
-                    player.hurt(CelestialDamageSource.DUST_STORM, 1.0F);
+                    player.hurt(CelestialDamageSource.DUST_STORM, 0.5F);
                 }
 
                 player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 300, 0, false, false, true));
@@ -357,5 +373,16 @@ public class ModForgeEventBus {
                 event.getOriginal().invalidateCaps();
             }
         }
+    }
+
+    @SubscribeEvent
+    public static void onToolTipRender(RenderTooltipEvent.GatherComponents event) {
+        if (event.getItemStack().is(BlockRegistry.AIRLOCK_PANEL_DOOR.get().asItem())) {
+            event.getTooltipElements().add(Either.left(new TranslatableComponent("item.celestialexploration.door.airlock_panel_door")));
+        }
+        if (event.getItemStack().is(BlockRegistry.HANGAR_DOOR.get().asItem())) {
+            event.getTooltipElements().add(Either.left(new TranslatableComponent("item.celestialexploration.door.hangar_door")));
+        }
+
     }
 }

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "tag": "celestialexploration:europa_bricks"
+  },
+  "result": "celestialexploration:europa_brick_slab",
+  "count": 2
+}

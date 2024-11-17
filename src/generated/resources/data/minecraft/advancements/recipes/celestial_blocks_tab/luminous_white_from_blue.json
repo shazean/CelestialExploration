@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:luminous_white_from_blue"
+    ]
+  },
+  "criteria": {
+    "moon_dust": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:moon_dust"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:luminous_white_from_blue"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "moon_dust",
+      "has_the_recipe"
+    ]
+  ]
+}

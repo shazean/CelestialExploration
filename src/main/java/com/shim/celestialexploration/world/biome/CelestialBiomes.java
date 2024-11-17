@@ -16,7 +16,7 @@ public class CelestialBiomes {
 
     @Nullable
     protected static final Music NORMAL_MUSIC = null;
-    protected static float warmEnoughToNotSnowDangit = 0.16F;
+    protected static float prettyCold = -0.75F;
 
     protected static int calculateSkyColor(float p_194844_) {
         float $$1 = p_194844_ / 3.0F;
@@ -39,7 +39,7 @@ public class CelestialBiomes {
         spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.VOIDFELLOW.get(), 30, 0, 1))
                 .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.LURKER.get(), 5, 0, 1)).build();
 
-        return biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, warmEnoughToNotSnowDangit, 0, celestialBody.SPACE.skyColor, celestialBody.SPACE.skyFogColor, celestialBody.SPACE.waterColor, celestialBody.SPACE.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
+        return biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, prettyCold, 0, celestialBody.SPACE.skyColor, celestialBody.SPACE.skyFogColor, celestialBody.SPACE.waterColor, celestialBody.SPACE.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
     }
 
     protected static void generalMonsters(MobSpawnSettings.Builder spawnBuilder, int voidedCount, int skeletonCount, int lurkerCount) {
