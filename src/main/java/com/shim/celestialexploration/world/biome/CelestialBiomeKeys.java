@@ -65,6 +65,17 @@ public class CelestialBiomeKeys {
     //---- SPACE -------------------------------------------------------------------------------
     public static final ResourceKey<Biome> SPACE = register("space");
 
+
+    //---- FOR DATAPACK/PRESETS -------------------------------------------------------------------------------
+    public static final ResourceKey<Biome> HIGH_DESERT = register("high_desert");
+    public static final ResourceKey<Biome> LOW_DESERT = register("low_desert");
+    public static final ResourceKey<Biome> ICY_DESERT = register("icy_desert");
+    public static final ResourceKey<Biome> MONSOON_DESERT = register("monsoon_desert");
+    public static final ResourceKey<Biome> DUNES = register("dunes");
+    public static final ResourceKey<Biome> SHALLOW_OCEAN = register("shallow_ocean");
+    public static final ResourceKey<Biome> ISLANDS = register("islands");
+
+
     private static ResourceKey<Biome> register(String key) {
         return ResourceKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(CelestialExploration.MODID, key));
     }

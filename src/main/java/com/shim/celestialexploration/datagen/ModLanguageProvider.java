@@ -243,7 +243,7 @@ public class ModLanguageProvider extends LanguageProvider {
 		add("item.celestialexploration.door.airlock_panel_door", "One hinge can support up to 7 wide (inclusive). Double hinge can support up to 14 wide (inclusive). No max height.");
 		add("item.celestialexploration.door.hangar_door", "One hinge can support up to 32 wide (inclusive). Double hinge can support up to 64 wide (inclusive). No max height.");
 
-		add("celestialexploration.spaceship.space_min_height", "Danger! Approaching dangerous depths of space!");
+		add("celestialexploration.spaceship.space_min_height", "Warning! Approaching dangerous depths of space!");
 
 
 

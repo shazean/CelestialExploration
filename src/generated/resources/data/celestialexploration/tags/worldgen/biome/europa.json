@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "celestialexploration:europa_desert",
+    "celestialexploration:europa_jagged_plains",
+    "celestialexploration:europa_lower_plains",
+    "celestialexploration:europa_ocean",
+    "celestialexploration:europa_plains",
+    "celestialexploration:europa_river"
+  ]
+}

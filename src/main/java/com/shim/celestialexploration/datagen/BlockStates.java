@@ -370,7 +370,7 @@ public class BlockStates extends BlockStateProvider {
 		simpleBlock(BlockRegistry.RHEA_CORE.get());
 		simpleBlock(BlockRegistry.IAPETUS_CORE.get());
 		simpleBlock(BlockRegistry.DIONE_CORE.get());
-		simpleBlock(BlockRegistry.HYPERION_CORE.get());
+//		simpleBlock(BlockRegistry.HYPERION_CORE.get());
 
 		//URANUS
 		simpleBlock(BlockRegistry.URANUS_ATMOSPHERE.get());

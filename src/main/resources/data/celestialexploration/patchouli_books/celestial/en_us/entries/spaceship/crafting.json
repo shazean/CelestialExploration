@@ -3,7 +3,11 @@
   "icon": "celestialexploration:steel_ingot",
   "category": "celestialexploration:spaceship",
   "pages": [
-    "Using the workbench, the spacehsip is made of three main parts: the frame, the cabin, and the engine.$(br2)$(br2)$(br2)$(br2)(Recipe is also included in JEI.)",
+    {
+      "type": "patchouli:text",
+      "title": "Crafting",
+      "text": "Using the workbench, the spaceship is made of three main parts: the frame, the cabin, and the engine.$(br2)$(br2)$(br2)$(br2)(Recipe is also included in JEI.)"
+    },
     {
       "type": "celestialexploration:workbench_recipe",
       "recipe": "Steel Frame",

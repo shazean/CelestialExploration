@@ -80,7 +80,7 @@ public class EarthStructure extends StructureFeature<JigsawConfiguration> {
 
 
         ChunkPos chunkpos = context.chunkPos();
-        Vec3 coordinates = CelestialUtil.getPlanetLocation(Level.OVERWORLD);
+        Vec3 coordinates = CelestialUtil.getPlanetaryChunkCoordinates(Level.OVERWORLD);
         return chunkpos.x == coordinates.x && chunkpos.z == coordinates.z;
 //        return false;
 

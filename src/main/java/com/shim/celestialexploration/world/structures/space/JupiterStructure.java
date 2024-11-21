@@ -44,7 +44,7 @@ public class JupiterStructure extends StructureFeature<JigsawConfiguration> {
         // Grabs the chunk position we are at
         ChunkPos chunkpos = context.chunkPos();
 
-        Vec3 coordinates = CelestialUtil.getPlanetLocation(DimensionRegistry.JUPITER);
+        Vec3 coordinates = CelestialUtil.getPlanetaryChunkCoordinates(DimensionRegistry.JUPITER);
 
         return chunkpos.x == coordinates.x && chunkpos.z == coordinates.z;
     }

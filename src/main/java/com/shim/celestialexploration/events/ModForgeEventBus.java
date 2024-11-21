@@ -83,6 +83,7 @@ public class ModForgeEventBus {
             }
         }
 
+        if (!player.level.isClientSide()) {
         ISpaceFlight flightCap = CelestialExploration.getCapability(player, CapabilityRegistry.SPACE_FLIGHT_CAPABILITY);
         if (flightCap != null) spaceVehicle = player;
         else {
@@ -97,7 +98,8 @@ public class ModForgeEventBus {
                 TeleportUtil.displayTeleportMessage(player, flightCap.getTeleportationCooldown(), DimensionRegistry.SPACE);
 
                 if (flightCap.getTeleportationCooldown() == 0) {
-                    BlockPos pos = new BlockPos(spaceVehicle.position().x, spaceVehicle.position().y, spaceVehicle.position().z);Vec3 teleportLocation = CelestialUtil.getDimensionToSpaceCoordinates(spaceVehicle.level.dimension(), new ChunkPos(pos));
+                    BlockPos pos = new BlockPos(spaceVehicle.position().x, spaceVehicle.position().y, spaceVehicle.position().z);
+                    Vec3 teleportLocation = CelestialUtil.getDimensionToSpaceCoordinates(spaceVehicle.level.dimension(), new ChunkPos(pos));
 //                    Vec3 teleportLocation = new Vec3(CelestialUtil.getPlanetaryChunkCoordinates(spaceVehicle.level.dimension()).x * 16, 135.0, CelestialUtil.getPlanetaryChunkCoordinates(spaceVehicle.level.dimension()).z * 16);
 
                         TeleportUtil.teleport(spaceVehicle, passengers, DimensionRegistry.SPACE, teleportLocation);
@@ -144,6 +146,7 @@ public class ModForgeEventBus {
                         flightCap.resetTeleportationCooldown();
                     }
                 }
+            }
             }
         }
 

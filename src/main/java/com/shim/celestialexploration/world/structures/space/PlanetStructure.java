@@ -55,7 +55,7 @@ public class PlanetStructure extends StructureFeature<CelestialConfiguration> {
                 CelestialPlacement.addPieces(context, PoolElementStructurePiece::new, blockpos, false, false);
 
         if(structurePiecesGenerator.isPresent()) {
-            CelestialExploration.LOGGER.log(Level.DEBUG, "Planet at {}", blockpos);
+//            CelestialExploration.LOGGER.log(Level.DEBUG, "Planet at {}", blockpos);
         }
 
         return structurePiecesGenerator;

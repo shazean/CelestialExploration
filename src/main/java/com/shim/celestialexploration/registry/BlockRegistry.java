@@ -545,7 +545,7 @@ public class BlockRegistry {
     public static final RegistryObject<Block> ENCELADUS_CORE = registerCoreBlock("enceladus_core", "Enceladean Core", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F).noDrops().isValidSpawn(BlockRegistry::never)));
     public static final RegistryObject<Block> RHEA_CORE = registerCoreBlock("rhea_core", "Rhean Core", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F).noDrops().isValidSpawn(BlockRegistry::never)));
     public static final RegistryObject<Block> IAPETUS_CORE = registerCoreBlock("iapetus_core", "Iapetian Core", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F).noDrops().isValidSpawn(BlockRegistry::never)));
-    public static final RegistryObject<Block> HYPERION_CORE = registerCoreBlock("hyperion_core", "Hyperionian Core", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F).noDrops().isValidSpawn(BlockRegistry::never)));
+//    public static final RegistryObject<Block> HYPERION_CORE = registerCoreBlock("hyperion_core", "Hyperionian Core", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F).noDrops().isValidSpawn(BlockRegistry::never)));
     public static final RegistryObject<Block> DIONE_CORE = registerCoreBlock("dione_core", "Dionean Core", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F).noDrops().isValidSpawn(BlockRegistry::never)));
 
     //URANUS

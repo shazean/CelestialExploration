@@ -112,7 +112,7 @@ public class TeleportUtil {
 
         if (moons != null) {
             for (ResourceKey<Level> moon : moons) {
-                blocksToComp = getDimensionStructureBlocks(planet); //CE_DIMENSION_STRUCTURE_BLOCKS.get(moon); //DIMENSION_STRUCTURE_BLOCKS.get(moon);
+                blocksToComp = getDimensionStructureBlocks(moon); //CE_DIMENSION_STRUCTURE_BLOCKS.get(moon); //DIMENSION_STRUCTURE_BLOCKS.get(moon);
 
                 for (Block block : blocksToComp) {
                     //  return moon

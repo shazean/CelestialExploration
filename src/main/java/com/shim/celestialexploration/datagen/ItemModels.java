@@ -388,7 +388,7 @@ public class ItemModels extends ItemModelProvider {
 		self(BlockRegistry.IAPETUS_CORE.get());
 		self(BlockRegistry.RHEA_CORE.get());
 		self(BlockRegistry.DIONE_CORE.get());
-		self(BlockRegistry.HYPERION_CORE.get());
+//		self(BlockRegistry.HYPERION_CORE.get());
 
 		//URANUS
 		self(BlockRegistry.URANUS_CORE.get());

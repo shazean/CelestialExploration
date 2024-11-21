@@ -76,7 +76,7 @@ public class MarsStructure extends StructureFeature<JigsawConfiguration> {
      */
     private static boolean isFeatureChunk(PieceGeneratorSupplier.Context<JigsawConfiguration> context) {
         ChunkPos chunkpos = context.chunkPos();
-        Vec3 coordinates = CelestialUtil.getPlanetLocation(DimensionRegistry.MARS);
+        Vec3 coordinates = CelestialUtil.getPlanetaryChunkCoordinates(DimensionRegistry.MARS);
         return chunkpos.x == coordinates.x && chunkpos.z == coordinates.z;
     }
 

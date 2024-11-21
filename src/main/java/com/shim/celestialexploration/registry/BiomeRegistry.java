@@ -70,4 +70,14 @@ public class BiomeRegistry {
     public static final RegistryObject<Biome> EUROPA_OCEAN = BIOMES.register("europa_ocean", EuropaBiomes::ocean);
     public static final RegistryObject<Biome> EUROPA_RIVER = BIOMES.register("europa_river", EuropaBiomes::river);
 
+
+    //---- FOR DATAPACK/PRESETS -------------------------------------------------------------------------------
+    public static final RegistryObject<Biome> HIGH_DESERT = BIOMES.register("high_desert", () -> PresetBiomes.desert(false, false));
+    public static final RegistryObject<Biome> LOW_DESERT = BIOMES.register("low_desert",  () -> PresetBiomes.desert(false, false));
+    public static final RegistryObject<Biome> ICY_DESERT = BIOMES.register("icy_desert", () -> PresetBiomes.desert(false, true));
+    public static final RegistryObject<Biome> MONSOON_DESERT = BIOMES.register("monsoon_desert",  () -> PresetBiomes.desert(true, false));
+    public static final RegistryObject<Biome> DUNES = BIOMES.register("dunes",  () -> PresetBiomes.desert(false, false));
+    public static final RegistryObject<Biome> SHALLOW_OCEAN = BIOMES.register("shallow_ocean", PresetBiomes::ocean);
+    public static final RegistryObject<Biome> ISLANDS = BIOMES.register("islands", PresetBiomes::island);
+
 }

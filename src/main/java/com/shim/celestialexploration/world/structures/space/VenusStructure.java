@@ -1,4 +1,4 @@
-package com.shim.celestialexploration.world.structures;
+package com.shim.celestialexploration.world.structures.space;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -22,7 +22,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Optional;
 
-public class MercuryStructure extends StructureFeature<JigsawConfiguration> {
+public class VenusStructure extends StructureFeature<JigsawConfiguration> {
 
     // A custom codec that changes the size limit for our code_structure_sky_fan.json's config to not be capped at 7.
     // With this, we can have a structure with a size limit up to 30 if we want to have extremely long branches of pieces in the structure.
@@ -33,9 +33,9 @@ public class MercuryStructure extends StructureFeature<JigsawConfiguration> {
         ).apply(codec, JigsawConfiguration::new);
     });
 
-    public MercuryStructure() {
+    public VenusStructure() {
         // Create the pieces layout of the structure and give it to the game
-        super(CODEC, MercuryStructure::createPiecesGenerator, PostPlacementProcessor.NONE);
+        super(CODEC, VenusStructure::createPiecesGenerator, PostPlacementProcessor.NONE);
     }
 
     /**
@@ -80,10 +80,9 @@ public class MercuryStructure extends StructureFeature<JigsawConfiguration> {
         // Grabs the chunk position we are at
         ChunkPos chunkpos = context.chunkPos();
 
-        Vec3 coordinates = CelestialUtil.getPlanetLocation(DimensionRegistry.MERCURY);
+        Vec3 coordinates = CelestialUtil.getPlanetaryChunkCoordinates(DimensionRegistry.VENUS);
 
         return chunkpos.x == coordinates.x && chunkpos.z == coordinates.z;
-//        return false;
 
         // Checks to make sure our structure does not spawn within 10 chunks of an Ocean Monument
         // to demonstrate how this method is good for checking extra conditions for spawning
@@ -94,7 +93,7 @@ public class MercuryStructure extends StructureFeature<JigsawConfiguration> {
 
         // Check if the spot is valid for our structure. This is just as another method for cleanness.
         // Returning an empty optional tells the game to skip this spot as it will not generate the structure.
-        if (!MercuryStructure.isFeatureChunk(context)) {
+        if (!VenusStructure.isFeatureChunk(context)) {
             return Optional.empty();
         }
 
@@ -129,7 +128,7 @@ public class MercuryStructure extends StructureFeature<JigsawConfiguration> {
         if(structurePiecesGenerator.isPresent()) {
             // I use to debug and quickly find out if the structure is spawning or not and where it is.
             // This is returning the coordinates of the center starting piece.
-            CelestialExploration.LOGGER.log(Level.DEBUG, "Mercury at {}", blockpos);
+            CelestialExploration.LOGGER.log(Level.DEBUG, "Venus at {}", blockpos);
         }
 
         // Return the pieces generator that is now set up so that the game runs it when it needs to create the layout of structure pieces.

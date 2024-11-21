@@ -87,6 +87,7 @@ public class ModItemTags extends ItemTagsProvider {
 
 		this.copy(TagRegistry.Blocks.BAUXITE_ORE, TagRegistry.Items.BAUXITE_ORE);
 
+		this.copy(TagRegistry.Blocks.COMPRESSIBLE, TagRegistry.Items.COMPRESSIBLE);
 
 		tag(TagRegistry.Items.SLIME_DROPS).add(Items.SLIME_BALL).add(ItemRegistry.MARSHMALLOW_GOO.get()).add(ItemRegistry.LUNAR_GOO.get());
 

@@ -71,6 +71,9 @@ public class TagRegistry {
 
         public static final TagKey<Block> NO_SNOW = BlockTags.create(modLoc("no_snow"));
 
+        public static final TagKey<Block> COMPRESSIBLE = BlockTags.create(modLoc("compressible"));
+
+
     }
 
     public class Items {
@@ -120,6 +123,9 @@ public class TagRegistry {
         public static final TagKey<Item> SLIME_DROPS = ItemTags.create(modLoc("slime_drops"));
 
         public static final TagKey<Item> BAUXITE_ORE = ItemTags.create(modLoc("bauxite_ore"));
+
+        public static final TagKey<Item> COMPRESSIBLE = ItemTags.create(modLoc("compressible"));
+
 
     }
 

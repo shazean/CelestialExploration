@@ -6,8 +6,10 @@ import com.shim.celestialexploration.registry.ItemRegistry;
 import com.shim.celestialexploration.registry.TagRegistry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.NotNull;
@@ -16,6 +18,7 @@ public class ModBlockTags extends BlockTagsProvider {
 
     public ModBlockTags(DataGenerator generator, ExistingFileHelper helper) {
         super(generator, CelestialExploration.MODID, helper);
+
     }
 
     @Override
@@ -508,6 +511,31 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(BlockRegistry.MERCURY_SAND.get())
                 .add(BlockRegistry.MERCURY_STONE.get())
                 .add(BlockRegistry.COARSE_MERCURY_SAND.get());
+
+        tag(TagRegistry.Blocks.COMPRESSIBLE)
+                .add(Blocks.COBBLESTONE)
+                .add(Blocks.COBBLED_DEEPSLATE)
+                .add(Blocks.NETHERRACK)
+                .add(BlockRegistry.COMPRESSED_COBBLESTONE.get())
+                .add(BlockRegistry.COMPRESSED_COBBLED_DEEPSLATE.get())
+                .add(BlockRegistry.COMPRESSED_NETHERRACK.get())
+                .add(BlockRegistry.MOON_COBBLESTONE.get())
+                .add(BlockRegistry.MOON_COBBLED_DEEPSLATE.get())
+                .add(BlockRegistry.COMPRESSED_MOON_COBBLESTONE.get())
+                .add(BlockRegistry.COMPRESSED_MOON_COBBLED_DEEPSLATE.get())
+                .add(BlockRegistry.MARS_COBBLESTONE.get())
+                .add(BlockRegistry.MARS_COBBLED_DEEPSLATE.get())
+                .add(BlockRegistry.COMPRESSED_MARS_COBBLESTONE.get())
+                .add(BlockRegistry.COMPRESSED_MARS_COBBLED_DEEPSLATE.get())
+                .add(BlockRegistry.VENUS_COBBLESTONE.get())
+                .add(BlockRegistry.VENUS_COBBLED_DEEPSLATE.get())
+                .add(BlockRegistry.COMPRESSED_VENUS_COBBLESTONE.get())
+                .add(BlockRegistry.COMPRESSED_VENUS_COBBLED_DEEPSLATE.get())
+                .add(BlockRegistry.MERCURY_COBBLESTONE.get())
+                .add(BlockRegistry.MERCURY_COBBLED_DEEPSLATE.get())
+                .add(BlockRegistry.COMPRESSED_MERCURY_COBBLESTONE.get())
+                .add(BlockRegistry.COMPRESSED_MERCURY_COBBLED_DEEPSLATE.get());
+
     }
 
     @Override

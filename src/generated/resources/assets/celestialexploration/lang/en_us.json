@@ -507,7 +507,7 @@
   "celestialexploration.planet_details.uranus_resources": "TBD",
   "celestialexploration.planet_details.venus_name": "Venus",
   "celestialexploration.planet_details.venus_resources": "sulfur, lapis lazuli",
-  "celestialexploration.spaceship.space_min_height": "Danger! Approaching dangerous depths of space!",
+  "celestialexploration.spaceship.space_min_height": "Warning! Approaching dangerous depths of space!",
   "celestialexploration.spaceship.tab.inventory": "Inventory",
   "celestialexploration.spaceship.tab.light_travel": "Light Speed Travel",
   "celestialexploration.spaceship.tab.light_travel_hint": "Access this feature when in space",
