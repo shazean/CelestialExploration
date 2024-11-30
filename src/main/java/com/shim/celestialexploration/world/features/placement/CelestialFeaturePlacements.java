@@ -1,17 +1,24 @@
 package com.shim.celestialexploration.world.features.placement;
 
+import com.shim.celestialexploration.world.features.CelestialFeatureUtils;
 import com.shim.celestialexploration.world.features.CelestialFeatures;
 import com.shim.celestialexploration.world.features.CelestialOreFeatures;
+import com.shim.celestialexploration.world.features.LakeFeatureUtils;
 import com.shim.celestialexploration.world.features.placement.CelestialOrePlacement;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.data.worldgen.features.EndFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
+import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
+import net.minecraft.world.level.levelgen.heightproviders.UniformHeight;
 import net.minecraft.world.level.levelgen.placement.*;
 
 public class CelestialFeaturePlacements {
 
-    public static final Holder<PlacedFeature> OBSIDIAN_LAKE = PlacementUtils.register("obsidian_lake", CelestialFeatures.OBSIDIAN_LAKE, RarityFilter.onAverageOnceEvery(80), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome());
+    public static final Holder<PlacedFeature> OBSIDIAN_LAKE = PlacementUtils.register("obsidian_lake", LakeFeatureUtils.OBSIDIAN_LAKE, RarityFilter.onAverageOnceEvery(80), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome());
 
     //---- DISKS -------------------------------------------------------------------------------
     public static final Holder<PlacedFeature> DISK_MARS_SAND = PlacementUtils.register("disk_mars_sand", CelestialFeatures.DISK_MARS_SAND, CountPlacement.of(3), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_TOP_SOLID, BiomeFilter.biome());
@@ -19,6 +26,14 @@ public class CelestialFeaturePlacements {
     public static final Holder<PlacedFeature> DISK_VENUS_SAND = PlacementUtils.register("disk_venus_sand", CelestialFeatures.DISK_VENUS_SAND, CountPlacement.of(3), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_TOP_SOLID, BiomeFilter.biome());
     public static final Holder<PlacedFeature> DISK_MERCURY_SAND = PlacementUtils.register("disk_mercury_sand", CelestialFeatures.DISK_MERCURY_SAND, CountPlacement.of(3), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_TOP_SOLID, BiomeFilter.biome());
 //    public static final Holder<PlacedFeature> DISK_IO_SAND = PlacementUtils.register("disk_io_sand", CelestialFeatures.DISK_IO_SAND, CountPlacement.of(3), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_TOP_SOLID, BiomeFilter.biome());
+
+
+
+    //---- LAKES -------------------------------------------------------------------------------
+    public static final Holder<PlacedFeature> MOON_LAVA_LAKE_UNDERGROUND = PlacementUtils.register("moon_lava_lake_underground", LakeFeatureUtils.MOON_LAVA_LAKE, RarityFilter.onAverageOnceEvery(9), InSquarePlacement.spread(), HeightRangePlacement.of(UniformHeight.of(VerticalAnchor.absolute(0), VerticalAnchor.top())), EnvironmentScanPlacement.scanningFor(Direction.DOWN, BlockPredicate.allOf(BlockPredicate.not(BlockPredicate.ONLY_IN_AIR_PREDICATE), BlockPredicate.insideWorld(new BlockPos(0, -5, 0))), 32), SurfaceRelativeThresholdFilter.of(Heightmap.Types.OCEAN_FLOOR_WG, Integer.MIN_VALUE, -5), BiomeFilter.biome());
+    public static final Holder<PlacedFeature> MARS_LAVA_LAKE_UNDERGROUND = PlacementUtils.register("mars_lava_lake_underground", LakeFeatureUtils.MARS_LAVA_LAKE, RarityFilter.onAverageOnceEvery(9), InSquarePlacement.spread(), HeightRangePlacement.of(UniformHeight.of(VerticalAnchor.absolute(0), VerticalAnchor.top())), EnvironmentScanPlacement.scanningFor(Direction.DOWN, BlockPredicate.allOf(BlockPredicate.not(BlockPredicate.ONLY_IN_AIR_PREDICATE), BlockPredicate.insideWorld(new BlockPos(0, -5, 0))), 32), SurfaceRelativeThresholdFilter.of(Heightmap.Types.OCEAN_FLOOR_WG, Integer.MIN_VALUE, -5), BiomeFilter.biome());
+    public static final Holder<PlacedFeature> VENUS_LAVA_LAKE_UNDERGROUND = PlacementUtils.register("venus_lava_lake_underground", LakeFeatureUtils.VENUS_LAVA_LAKE, RarityFilter.onAverageOnceEvery(9), InSquarePlacement.spread(), HeightRangePlacement.of(UniformHeight.of(VerticalAnchor.absolute(0), VerticalAnchor.top())), EnvironmentScanPlacement.scanningFor(Direction.DOWN, BlockPredicate.allOf(BlockPredicate.not(BlockPredicate.ONLY_IN_AIR_PREDICATE), BlockPredicate.insideWorld(new BlockPos(0, -5, 0))), 32), SurfaceRelativeThresholdFilter.of(Heightmap.Types.OCEAN_FLOOR_WG, Integer.MIN_VALUE, -5), BiomeFilter.biome());
+    public static final Holder<PlacedFeature> MERCURY_LAVA_LAKE_UNDERGROUND = PlacementUtils.register("mercury_lava_lake_underground", LakeFeatureUtils.MERCURY_LAVA_LAKE, RarityFilter.onAverageOnceEvery(9), InSquarePlacement.spread(), HeightRangePlacement.of(UniformHeight.of(VerticalAnchor.absolute(0), VerticalAnchor.top())), EnvironmentScanPlacement.scanningFor(Direction.DOWN, BlockPredicate.allOf(BlockPredicate.not(BlockPredicate.ONLY_IN_AIR_PREDICATE), BlockPredicate.insideWorld(new BlockPos(0, -5, 0))), 32), SurfaceRelativeThresholdFilter.of(Heightmap.Types.OCEAN_FLOOR_WG, Integer.MIN_VALUE, -5), BiomeFilter.biome());
 
 
     //---- ORES -------------------------------------------------------------------------------

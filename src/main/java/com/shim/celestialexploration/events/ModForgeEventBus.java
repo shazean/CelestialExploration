@@ -44,6 +44,7 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.EntityMountEvent;
 import net.minecraftforge.event.entity.EntityTravelToDimensionEvent;
+import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -200,6 +201,16 @@ public class ModForgeEventBus {
         }
     }
 
+    @SubscribeEvent
+    public static void onEntityTakeDamage(LivingDamageEvent event) {
+        LivingEntity entity = event.getEntityLiving();
+
+        if (event.getSource().isFall()) {
+            if (CelestialCommonConfig.USE_GRAVITY_EFFECTS.get() && (entity.hasEffect(EffectRegistry.LOW_GRAVITY.get()) || entity.hasEffect(EffectRegistry.EXTRA_LOW_GRAVITY.get()))) {
+                event.setCanceled(true);
+            }
+        }
+    }
 
     @SubscribeEvent
     public static void clickEvent(PlayerInteractEvent.RightClickBlock event) {

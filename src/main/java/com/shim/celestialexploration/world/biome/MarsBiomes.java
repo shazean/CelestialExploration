@@ -2,6 +2,7 @@ package com.shim.celestialexploration.world.biome;
 
 import com.shim.celestialexploration.registry.EntityRegistry;
 import com.shim.celestialexploration.world.features.placement.CelestialFeaturePlacements;
+import com.shim.celestialexploration.world.features.placement.SurfacePlacements;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
@@ -15,6 +16,8 @@ public class MarsBiomes extends CelestialBiomes {
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
 
         CelestialBiomes.addCarversAndLakes(biomeBuilder);
+        biomeBuilder.addFeature(GenerationStep.Decoration.LAKES, CelestialFeaturePlacements.MARS_LAVA_LAKE_UNDERGROUND);
+
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.DISK_MARS_SAND);
         addMarsOres(biomeBuilder);
 
@@ -32,6 +35,8 @@ public class MarsBiomes extends CelestialBiomes {
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
 
         CelestialBiomes.addCarversAndLakes(biomeBuilder);
+        biomeBuilder.addFeature(GenerationStep.Decoration.LAKES, CelestialFeaturePlacements.MARS_LAVA_LAKE_UNDERGROUND);
+
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.DISK_MARS_SAND);
         addMarsOres(biomeBuilder);
 
@@ -48,6 +53,8 @@ public class MarsBiomes extends CelestialBiomes {
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
 
         CelestialBiomes.addCarversAndLakes(biomeBuilder);
+        biomeBuilder.addFeature(GenerationStep.Decoration.LAKES, CelestialFeaturePlacements.MARS_LAVA_LAKE_UNDERGROUND);
+
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.DISK_MARS_SAND);
         addMarsOres(biomeBuilder);
 

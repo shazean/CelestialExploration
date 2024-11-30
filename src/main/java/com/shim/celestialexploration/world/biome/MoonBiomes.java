@@ -2,6 +2,8 @@ package com.shim.celestialexploration.world.biome;
 
 import com.shim.celestialexploration.registry.EntityRegistry;
 import com.shim.celestialexploration.world.features.placement.CelestialFeaturePlacements;
+import com.shim.celestialexploration.world.features.placement.SurfacePlacements;
+import net.minecraft.data.worldgen.placement.MiscOverworldPlacements;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
@@ -15,6 +17,8 @@ public class MoonBiomes extends CelestialBiomes {
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
 
         CelestialBiomes.addCarversAndLakes(biomeBuilder);
+
+        biomeBuilder.addFeature(GenerationStep.Decoration.LAKES, CelestialFeaturePlacements.MOON_LAVA_LAKE_UNDERGROUND);
 
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.DISK_MOON_SAND);
         addMoonOres(biomeBuilder);
@@ -30,6 +34,7 @@ public class MoonBiomes extends CelestialBiomes {
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
 
         CelestialBiomes.addCarversAndLakes(biomeBuilder);
+        biomeBuilder.addFeature(GenerationStep.Decoration.LAKES, CelestialFeaturePlacements.MOON_LAVA_LAKE_UNDERGROUND);
 
         addMoonOres(biomeBuilder);
 
@@ -47,6 +52,9 @@ public class MoonBiomes extends CelestialBiomes {
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
 
         CelestialBiomes.addCarversAndLakes(biomeBuilder);
+        biomeBuilder.addFeature(GenerationStep.Decoration.LAKES, CelestialFeaturePlacements.MOON_LAVA_LAKE_UNDERGROUND);
+
+        biomeBuilder.addFeature(GenerationStep.Decoration.LAKES, CelestialFeaturePlacements.OBSIDIAN_LAKE);
 
 //        biomeBuilder.addFeature(GenerationStep.Decoration.LAKES, CelestialFeaturePlacements.OBSIDIAN_LAKE);
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.DISK_MOON_SAND);

@@ -2,6 +2,7 @@ package com.shim.celestialexploration.world.biome;
 
 import com.shim.celestialexploration.registry.EntityRegistry;
 import com.shim.celestialexploration.world.features.placement.CelestialFeaturePlacements;
+import com.shim.celestialexploration.world.features.placement.SurfacePlacements;
 import net.minecraft.data.worldgen.Carvers;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.Biome;
@@ -16,6 +17,8 @@ public class VenusBiomes extends CelestialBiomes {
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
 
         CelestialBiomes.addCarversAndLakes(biomeBuilder);
+        biomeBuilder.addFeature(GenerationStep.Decoration.LAKES, CelestialFeaturePlacements.VENUS_LAVA_LAKE_UNDERGROUND);
+
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.DISK_VENUS_SAND);
 //        biomeBuilder.addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, GeyserPlacement.GEYSER);
 
@@ -32,6 +35,8 @@ public class VenusBiomes extends CelestialBiomes {
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
 
         CelestialBiomes.addCarversAndLakes(biomeBuilder);
+        biomeBuilder.addFeature(GenerationStep.Decoration.LAKES, CelestialFeaturePlacements.VENUS_LAVA_LAKE_UNDERGROUND);
+
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.DISK_VENUS_SAND);
 //        biomeBuilder.addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, GeyserPlacement.GEYSER);
 

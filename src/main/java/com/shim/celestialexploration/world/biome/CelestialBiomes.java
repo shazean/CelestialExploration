@@ -59,7 +59,6 @@ public class CelestialBiomes {
         biomeBuilder.addCarver(GenerationStep.Carving.AIR, Carvers.CAVE);
         biomeBuilder.addCarver(GenerationStep.Carving.AIR, Carvers.CAVE_EXTRA_UNDERGROUND);
         biomeBuilder.addCarver(GenerationStep.Carving.AIR, Carvers.CANYON);
-        biomeBuilder.addFeature(GenerationStep.Decoration.LAKES, MiscOverworldPlacements.LAKE_LAVA_UNDERGROUND);
     }
 
     public enum celestialBody {

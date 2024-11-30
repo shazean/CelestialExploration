@@ -31,6 +31,5 @@ public class CelestialFeatures {
     public static final Holder<ConfiguredFeature<DiskConfiguration, ?>> DISK_MERCURY_SAND = FeatureUtils.register("disk_mercury_sand", Feature.DISK, new DiskConfiguration(BlockRegistry.MERCURY_SAND.get().defaultBlockState(), UniformInt.of(2, 6), 2, List.of(BlockRegistry.MERCURY_STONE.get().defaultBlockState())));
 //    public static final Holder<ConfiguredFeature<DiskConfiguration, ?>> DISK_IO_SAND = FeatureUtils.register("disk_io_sand", Feature.DISK, new DiskConfiguration(BlockRegistry.IO_SAND.get().defaultBlockState(), UniformInt.of(2, 6), 2, List.of(BlockRegistry.IO_STONE.get().defaultBlockState())));
 
-    public static final Holder<ConfiguredFeature<LakeFeature.Configuration, ?>> OBSIDIAN_LAKE = FeatureUtils.register("obsidian_lake", Feature.LAKE, new LakeFeature.Configuration(BlockStateProvider.simple(Blocks.OBSIDIAN.defaultBlockState()), BlockStateProvider.simple(BlockRegistry.MOON_STONE.get().defaultBlockState())));
 
 }

@@ -15,7 +15,6 @@ public class LootTables extends BaseLootTableProvider {
         super(dataGeneratorIn);
     }
 
-
     @Override
     protected void addTables() {
 
