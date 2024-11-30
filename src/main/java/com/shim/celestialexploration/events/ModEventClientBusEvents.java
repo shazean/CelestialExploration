@@ -4,6 +4,7 @@ import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.blocks.CelestialSkullRenderer;
 import com.shim.celestialexploration.capabilities.LoxTankCapability;
 import com.shim.celestialexploration.entity.renderer.*;
+import com.shim.celestialexploration.integration.JEIPlugin;
 import com.shim.celestialexploration.inventory.screens.*;
 import com.shim.celestialexploration.registry.*;
 import com.shim.celestialexploration.util.Keybinds;
@@ -22,6 +23,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RenderTooltipEvent;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -67,9 +69,15 @@ public class ModEventClientBusEvents {
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.MERCURY_PORTAL.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.JUPITER_PORTAL.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.EUROPA_PORTAL.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BlockRegistry.CALLISTO_PORTAL.get(), RenderType.translucent());
 
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.LUMINOUS_BLUE_GLASS.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.LUMINOUS_WHITE_GLASS.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BlockRegistry.LUMINOUS_CYAN_GLASS.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BlockRegistry.LUMINOUS_MAGENTA_GLASS.get(), RenderType.translucent());
+
+        ItemBlockRenderTypes.setRenderLayer(BlockRegistry.LUMINOUS_MAGENTA_GLASS_PANE.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BlockRegistry.LUMINOUS_CYAN_GLASS_PANE.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.LUMINOUS_BLUE_GLASS_PANE.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.LUMINOUS_WHITE_GLASS_PANE.get(), RenderType.translucent());
 

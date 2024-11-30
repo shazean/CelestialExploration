@@ -235,9 +235,17 @@ public class Recipes extends RecipeProvider {
 		//---- EUROPA -------------------------------------------------------------------------------
 		//STONE
 		ShapedRecipeBuilder.shaped(BlockRegistry.EUROPA_BRICKS.get(), 4).pattern("XY").pattern("YX").define('X', BlockRegistry.MOON_STONE.get()).define('Y', BlockRegistry.EUROPA_HYDRATE.get()).group(modGroup()).unlockedBy(name(BlockRegistry.EUROPA_HYDRATE.get()), has(BlockRegistry.EUROPA_HYDRATE.get())).save(consumer);
-		stairsSlabWallCraftStonecutting(BlockRegistry.EUROPA_BRICKS.get(), TagRegistry.Items.EUROPA_BRICKS, BlockRegistry.EUROPA_BRICK_STAIRS.get(), BlockRegistry.EUROPA_BRICK_SLAB.get(), BlockRegistry.EUROPA_BRICK_WALL.get(), BlockRegistry.EUROPA_HYDRATE.get(), consumer);
+		stairsSlabWallCraftStonecutting(BlockRegistry.EUROPA_BRICKS.get(), BlockRegistry.EUROPA_BRICK_STAIRS.get(), BlockRegistry.EUROPA_BRICK_SLAB.get(), BlockRegistry.EUROPA_BRICK_WALL.get(), BlockRegistry.EUROPA_HYDRATE.get(), consumer);
 
 		ShapedRecipeBuilder.shaped(BlockRegistry.EUROPA_LANTERN.get()).pattern("XCX").pattern("C#C").pattern("XCX").define('X', BlockRegistry.MOON_STONE.get()).define('#', Items.IRON_INGOT).define('C', ItemRegistry.EUROPA_DUST.get()).group(modGroup()).unlockedBy("has_europa_dust", has(ItemRegistry.EUROPA_DUST.get())).save(consumer);
+
+
+		//---- CALLISTO -------------------------------------------------------------------------------
+		//STONE
+		ShapedRecipeBuilder.shaped(BlockRegistry.CALLISTO_BRICKS.get(), 4).pattern("XXY").pattern("XX ").define('X', BlockRegistry.MOON_DEEPSLATE.get()).define('Y', ItemRegistry.CALLISTO_DUST.get()).group(modGroup()).unlockedBy(name(ItemRegistry.CALLISTO_DUST.get()), has(ItemRegistry.CALLISTO_DUST.get())).save(consumer);
+		stairsSlabWallCraftStonecutting(BlockRegistry.CALLISTO_BRICKS.get(), BlockRegistry.CALLISTO_BRICK_STAIRS.get(), BlockRegistry.CALLISTO_BRICK_SLAB.get(), BlockRegistry.CALLISTO_BRICK_WALL.get(), Block.byItem(ItemRegistry.CALLISTO_DUST.get()), consumer);
+
+		ShapedRecipeBuilder.shaped(BlockRegistry.CALLISTO_LANTERN.get()).pattern("XCX").pattern("C#C").pattern("XCX").define('X', BlockRegistry.MOON_DEEPSLATE.get()).define('#', Items.IRON_INGOT).define('C', ItemRegistry.CALLISTO_DUST.get()).group(modGroup()).unlockedBy("has_callisto_dust", has(ItemRegistry.CALLISTO_DUST.get())).save(consumer);
 
 
 		//---- ORES/ALLOYS -------------------------------------------------------------------------------
@@ -462,14 +470,15 @@ public class Recipes extends RecipeProvider {
 		//---- GLASS/CERAMICS -------------------------------------------------------------------------------
 		//GLASS
 		ShapelessRecipeBuilder.shapeless(BlockRegistry.LUMINOUS_BLUE_GLASS.get()).requires(Tags.Items.GLASS).requires(ItemRegistry.MOON_DUST.get()).group(modGroup()).unlockedBy("moon_dust", has(ItemRegistry.MOON_DUST.get())).save(consumer);
-		ShapelessRecipeBuilder.shapeless(BlockRegistry.LUMINOUS_WHITE_GLASS.get()).requires(BlockRegistry.LUMINOUS_BLUE_GLASS.get()).requires(ItemRegistry.LUNAR_GOO.get()).group(modGroup()).unlockedBy("moon_dust", has(ItemRegistry.MOON_DUST.get())).save(consumer, "luminous_white_from_blue");
+		ShapelessRecipeBuilder.shapeless(BlockRegistry.LUMINOUS_WHITE_GLASS.get()).requires(Tags.Items.GLASS).requires(ItemRegistry.LUNAR_GOO.get()).group(modGroup()).unlockedBy("lunar_goo", has(ItemRegistry.LUNAR_GOO.get())).save(consumer);
 		ShapelessRecipeBuilder.shapeless(BlockRegistry.LUMINOUS_CYAN_GLASS.get()).requires(Tags.Items.GLASS).requires(ItemRegistry.EUROPA_DUST.get()).group(modGroup()).unlockedBy("europa_dust", has(ItemRegistry.EUROPA_DUST.get())).save(consumer);
-		ShapelessRecipeBuilder.shapeless(BlockRegistry.LUMINOUS_WHITE_GLASS.get()).requires(BlockRegistry.LUMINOUS_CYAN_GLASS.get()).requires(ItemRegistry.LUNAR_GOO.get()).group(modGroup()).unlockedBy("europa_dust", has(ItemRegistry.EUROPA_DUST.get())).save(consumer, "luminous_white_from_cyan");
+		ShapelessRecipeBuilder.shapeless(BlockRegistry.LUMINOUS_MAGENTA_GLASS.get()).requires(Tags.Items.GLASS).requires(ItemRegistry.CALLISTO_DUST.get()).group(modGroup()).unlockedBy("callisto_dust", has(ItemRegistry.CALLISTO_DUST.get())).save(consumer);
 
 
 		ShapedRecipeBuilder.shaped(BlockRegistry.LUMINOUS_BLUE_GLASS_PANE.get(), 16).pattern("XXX").pattern("XXX").define('X', BlockRegistry.LUMINOUS_BLUE_GLASS.get()).group(modGroup()).unlockedBy("moon_dust", has(ItemRegistry.MOON_DUST.get())).save(consumer);
 		ShapedRecipeBuilder.shaped(BlockRegistry.LUMINOUS_WHITE_GLASS_PANE.get(), 16).pattern("XXX").pattern("XXX").define('X', BlockRegistry.LUMINOUS_WHITE_GLASS.get()).group(modGroup()).unlockedBy("moon_dust", has(ItemRegistry.MOON_DUST.get())).save(consumer);
 		ShapedRecipeBuilder.shaped(BlockRegistry.LUMINOUS_CYAN_GLASS_PANE.get(), 16).pattern("XXX").pattern("XXX").define('X', BlockRegistry.LUMINOUS_CYAN_GLASS.get()).group(modGroup()).unlockedBy("europa_dust", has(ItemRegistry.EUROPA_DUST.get())).save(consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.LUMINOUS_MAGENTA_GLASS_PANE.get(), 16).pattern("XXX").pattern("XXX").define('X', BlockRegistry.LUMINOUS_MAGENTA_GLASS.get()).group(modGroup()).unlockedBy("callisto_dust", has(ItemRegistry.CALLISTO_DUST.get())).save(consumer);
 
 		ShapedRecipeBuilder.shaped(BlockRegistry.REINFORCED_GLASS.get(), 4).pattern(" X ").pattern("XCX").pattern(" X ").define('X', Blocks.GLASS).define('C', Items.IRON_INGOT).group(modGroup()).unlockedBy("glass", has(Blocks.GLASS)).save(consumer);
 		ShapedRecipeBuilder.shaped(BlockRegistry.REINFORCED_GLASS_PANE.get(), 16).pattern("XXX").pattern("XXX").define('X', BlockRegistry.REINFORCED_GLASS.get()).group(modGroup()).unlockedBy("glass", has(Blocks.GLASS)).save(consumer);

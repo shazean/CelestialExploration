@@ -158,7 +158,8 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(BlockRegistry.MARS_SAND.get())
                 .add(BlockRegistry.VENUS_SAND.get()).add(BlockRegistry.FINE_VENUS_SAND.get())
                 .add(BlockRegistry.MERCURY_SAND.get())
-                .add(BlockRegistry.GLOWING_EUROPA_SAND.get());
+                .add(BlockRegistry.GLOWING_EUROPA_SAND.get())
+                .add(BlockRegistry.GLOWING_CALLISTO_SAND.get());
 
         //SLABS, STAIRS, WALLS
         tag(BlockTags.SLABS)
@@ -181,6 +182,7 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(BlockRegistry.JUPITER_DEEPSLATE_BRICK_SLAB.get()).add(BlockRegistry.JUPITER_DEEPSLATE_TILE_SLAB.get()).add(BlockRegistry.JUPITER_POLISHED_DEEPSLATE_SLAB.get())
 
                 .add(BlockRegistry.EUROPA_BRICK_SLAB.get())
+                .add(BlockRegistry.CALLISTO_BRICK_SLAB.get())
 
                 .add(BlockRegistry.METEOR_BRICK_SLAB.get());
 
@@ -206,6 +208,7 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(BlockRegistry.JUPITER_DEEPSLATE_BRICK_STAIRS.get()).add(BlockRegistry.JUPITER_DEEPSLATE_TILE_STAIRS.get()).add(BlockRegistry.JUPITER_POLISHED_DEEPSLATE_STAIRS.get())
 
                 .add(BlockRegistry.EUROPA_BRICK_STAIRS.get())
+                .add(BlockRegistry.CALLISTO_BRICK_STAIRS.get())
 
                 .add(BlockRegistry.METEOR_BRICK_STAIRS.get());
 
@@ -231,6 +234,7 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(BlockRegistry.METEOR_BRICK_WALL.get())
 
                 .add(BlockRegistry.EUROPA_BRICK_WALL.get())
+                .add(BlockRegistry.CALLISTO_BRICK_WALL.get())
 
                 .add(BlockRegistry.PANEL_WALL.get());
 
@@ -283,7 +287,8 @@ public class ModBlockTags extends BlockTagsProvider {
         tag(BlockTags.PORTALS)
                 .add(BlockRegistry.MARS_PORTAL.get()).add(BlockRegistry.MOON_PORTAL.get())
                 .add(BlockRegistry.VENUS_PORTAL.get()).add(BlockRegistry.MERCURY_PORTAL.get())
-                .add(BlockRegistry.JUPITER_PORTAL.get()).add(BlockRegistry.EUROPA_PORTAL.get());
+                .add(BlockRegistry.JUPITER_PORTAL.get()).add(BlockRegistry.EUROPA_PORTAL.get())
+                .add(BlockRegistry.CALLISTO_PORTAL.get());
 
         //---- FORGE TAGS.BLOCKS -------------------------------------------------------------------------------
         //TOOLS
@@ -329,11 +334,14 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(BlockRegistry.REINFORCED_GLASS.get())
                 .add(BlockRegistry.LUMINOUS_BLUE_GLASS.get())
                 .add(BlockRegistry.LUMINOUS_CYAN_GLASS.get())
+                .add(BlockRegistry.LUMINOUS_MAGENTA_GLASS.get())
                 .add(BlockRegistry.LUMINOUS_WHITE_GLASS.get());
 
         tag(Tags.Blocks.GLASS_PANES)
                 .add(BlockRegistry.REINFORCED_GLASS_PANE.get())
-                .add(BlockRegistry.LUMINOUS_BLUE_GLASS_PANE.get()).add(BlockRegistry.LUMINOUS_CYAN_GLASS_PANE.get()).add(BlockRegistry.LUMINOUS_WHITE_GLASS_PANE.get());
+                .add(BlockRegistry.LUMINOUS_BLUE_GLASS_PANE.get()).add(BlockRegistry.LUMINOUS_CYAN_GLASS_PANE.get())
+                .add(BlockRegistry.LUMINOUS_MAGENTA_GLASS_PANE.get())
+                .add(BlockRegistry.LUMINOUS_WHITE_GLASS_PANE.get());
 
 
         //---- MOON -------------------------------------------------------------------------------
@@ -431,9 +439,6 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(BlockRegistry.JUPITER_COBBLED_DEEPSLATE.get()).add(BlockRegistry.JUPITER_COBBLED_DEEPSLATE_SLAB.get())
                 .add(BlockRegistry.JUPITER_COBBLED_DEEPSLATE_STAIRS.get()).add(BlockRegistry.JUPITER_COBBLED_DEEPSLATE_WALL.get());
 
-        tag(TagRegistry.Blocks.EUROPA_BRICKS)
-                .add(BlockRegistry.EUROPA_BRICKS.get());
-
         //---- METEOR -------------------------------------------------------------------------------
         tag(TagRegistry.Blocks.METEOR)
                 .add(BlockRegistry.METEOR.get())
@@ -491,6 +496,9 @@ public class ModBlockTags extends BlockTagsProvider {
 
         tag(TagRegistry.Blocks.EUROPA_PORTAL_FRAME_BLOCK)
                 .add(BlockRegistry.EUROPA_BRICKS.get());
+
+        tag(TagRegistry.Blocks.CALLISTO_PORTAL_FRAME_BLOCK)
+                .add(BlockRegistry.CALLISTO_BRICKS.get());
 
 
         tag(TagRegistry.Blocks.BAUXITE_ORE)

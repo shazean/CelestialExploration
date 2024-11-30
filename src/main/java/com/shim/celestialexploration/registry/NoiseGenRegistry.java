@@ -60,6 +60,13 @@ public class NoiseGenRegistry extends NoiseRouterData {
                 CelestialSurfaceRules.europa(), 58, false, true , false, false);
     });
 
+    public static final RegistryObject<NoiseGeneratorSettings> CALLISTO_NOISE = NOISES.register("callisto", () -> {
+        NoiseSettings noisesettings = callistoNoiseSettings();
+        return new NoiseGeneratorSettings(noisesettings, BlockRegistry.MOON_DEEPSLATE.get().defaultBlockState(), Blocks.AIR.defaultBlockState(), NoiseRouterData.overworldWithoutCaves(noisesettings),
+                CelestialSurfaceRules.callisto(), 0, false, true , false, false);
+    });
+
+
 
     //---- FOR DATAPACK/PRESETS -------------------------------------------------------------------------------
     public static final RegistryObject<NoiseGeneratorSettings> DESERT_NOISE = NOISES.register("desert", () -> new NoiseGeneratorSettings(datapackPlanetNoiseSettings(), Blocks.SANDSTONE.defaultBlockState(), Blocks.SAND.defaultBlockState(),
@@ -123,4 +130,8 @@ public class NoiseGenRegistry extends NoiseRouterData {
                 new NoiseSlider(-0.078125D, 2, 8), new NoiseSlider(0.1171875D, 3, 0), 1, 2, TerrainProvider.overworld(false));
     }
 
+    static NoiseSettings callistoNoiseSettings() {
+        return NoiseSettings.create(-32, 256, new NoiseSamplingSettings(1.0D, 1.0D, 80.0D, 160.0D),
+                new NoiseSlider(-0.078125D, 2, 8), new NoiseSlider(0.1171875D, 3, 0), 1, 2, TerrainProvider.overworld(false));
+    }
 }

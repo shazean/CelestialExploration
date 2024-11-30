@@ -16,7 +16,6 @@ public class MoonBiomes extends CelestialBiomes {
 
         CelestialBiomes.addCarversAndLakes(biomeBuilder);
 
-
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.DISK_MOON_SAND);
         addMoonOres(biomeBuilder);
 
@@ -36,7 +35,9 @@ public class MoonBiomes extends CelestialBiomes {
 
         generalMonsters(spawnBuilder, 100, 100, 100);
         spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.LUNAR_SLIME.get(), 100, 4, 4)).build();
-//        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.DISK_MOON_SAND);
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.METEOR_CRAWLER.get(), 100, 4, 4)).build();
+
+        //        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.DISK_MOON_SAND);
 
         return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, prettyCold, 0F, celestialBody.MOON.skyColor, celestialBody.MOON.skyFogColor, celestialBody.MOON.waterColor, celestialBody.MOON.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
     }
@@ -44,8 +45,6 @@ public class MoonBiomes extends CelestialBiomes {
     public static Biome lavaFlats() {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
-
-
 
         CelestialBiomes.addCarversAndLakes(biomeBuilder);
 
@@ -55,8 +54,6 @@ public class MoonBiomes extends CelestialBiomes {
 
         generalMonsters(spawnBuilder, 100, 80, 100);
         spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.LUNAR_SLIME.get(), 120, 4, 4)).build();
-
-
 
         return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, prettyCold, 0F, celestialBody.MOON.skyColor, celestialBody.MOON.skyFogColor, celestialBody.MOON.waterColor, celestialBody.MOON.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
     }
@@ -73,6 +70,28 @@ public class MoonBiomes extends CelestialBiomes {
 
         return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, prettyCold, 0F, celestialBody.MOON.skyColor, celestialBody.MOON.skyFogColor, celestialBody.MOON.waterColor, celestialBody.MOON.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
     }
+
+    public static Biome ocean() {
+        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
+        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
+
+        addMoonOres(biomeBuilder);
+
+        spawnBuilder.addSpawn(MobCategory.WATER_AMBIENT, new MobSpawnSettings.SpawnerData(EntityRegistry.EUREKA.get(), 30, 4, 4)).build();
+
+        return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, -0.75F, 0F, celestialBody.MOON.skyColor, celestialBody.MOON.skyFogColor, celestialBody.MOON.waterColor, celestialBody.MOON.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
+    }
+
+    public static Biome river() {
+        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
+        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
+
+        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.DISK_MOON_SAND);
+        addMoonOres(biomeBuilder);
+
+        return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, -0.75F, 0F, celestialBody.MOON.skyColor, celestialBody.MOON.skyFogColor, celestialBody.MOON.waterColor, celestialBody.MOON.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
+    }
+
 
     public static void addMoonOres(BiomeGenerationSettings.Builder biomeBuilder) {
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.MOON_IRON_ORE_UPPER);

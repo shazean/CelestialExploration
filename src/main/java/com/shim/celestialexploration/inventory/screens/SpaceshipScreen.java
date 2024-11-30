@@ -244,7 +244,7 @@ public class SpaceshipScreen extends AbstractContainerScreen<SpaceshipMenu> {
             LightTravelCapability.ILightTravel travelCap = CelestialExploration.getCapability(player, CapabilityRegistry.LIGHT_TRAVEL_CAPABILITY);
 
             if (travelCap != null) {
-                TextComponent travelTooltip = new TextComponent(new TranslatableComponent("celestialexploration.spaceship.travel.message_1").getString() + Keybinds.SPACESHIP_LIGHT_TRAVEL.getKey().getDisplayName().getString().toUpperCase() + new TranslatableComponent("celestialexploration.spaceship.travel.message_2").getString());
+                TextComponent travelTooltip = new TextComponent(new TranslatableComponent("celestialexploration.spaceship.travel.message_1").getString() + Keybinds.SPACESHIP_LIGHT_TRAVEL.getTranslatedKeyMessage().getString() + new TranslatableComponent("celestialexploration.spaceship.travel.message_2").getString());
 
                 if (travelCap.hasBeenToMercury() && isHovering(x - i + 75 + 26 - 1, y - j + 73 + 12 - 1, 5, 5, mouseX, mouseY)) {
                     tooltip = Lists.newArrayList();

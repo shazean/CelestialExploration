@@ -5,7 +5,7 @@
 
   "elements": [
     {
-      "weight": 80,
+      "weight": 150,
       "element": {
         "location": "celestialexploration:large_crater",
         "processors": "minecraft:empty",
@@ -14,25 +14,61 @@
       }
     },
     {
-      "weight": 20,
+      "weight": 75,
       "element": {
         "location": "celestialexploration:large_meteor_crater",
-        "processors": "minecraft:empty",
+        "processors": "celestialexploration:asteroid_coal",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
     },
     {
-      "weight": 8,
+      "weight": 3,
       "element": {
-        "location": "celestialexploration:large_coal_meteor_crater",
-        "processors": "minecraft:empty",
+        "location": "celestialexploration:large_meteor_crater",
+        "processors": "celestialexploration:asteroid_copper",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
     },
     {
       "weight": 5,
+      "element": {
+        "location": "celestialexploration:large_meteor_crater",
+        "processors": "celestialexploration:asteroid_sulfur",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "celestialexploration:large_meteor_crater",
+        "processors": "celestialexploration:asteroid_diamond",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "celestialexploration:large_meteor_crater",
+        "processors": "celestialexploration:asteroid_emerald",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "celestialexploration:large_meteor_crater",
+        "processors": "celestialexploration:asteroid_gold",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 15,
       "element": {
         "location": "celestialexploration:large_meteor_crater",
         "processors": "celestialexploration:asteroid_bauxite",
@@ -41,28 +77,10 @@
       }
     },
     {
-      "weight": 5,
+      "weight": 15,
       "element": {
-        "location": "celestialexploration:large_iron_meteor_crater",
-        "processors": "minecraft:empty",
-        "projection": "rigid",
-        "element_type": "minecraft:single_pool_element"
-      }
-    },
-    {
-      "weight": 2,
-      "element": {
-        "location": "celestialexploration:large_lapis_meteor_crater",
-        "processors": "minecraft:empty",
-        "projection": "rigid",
-        "element_type": "minecraft:single_pool_element"
-      }
-    },
-    {
-      "weight": 2,
-      "element": {
-        "location": "celestialexploration:large_redstone_meteor_crater",
-        "processors": "minecraft:empty",
+        "location": "celestialexploration:large_meteor_crater",
+        "processors": "celestialexploration:asteroid_iron",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
@@ -70,26 +88,17 @@
     {
       "weight": 1,
       "element": {
-        "location": "celestialexploration:large_diamond_meteor_crater",
-        "processors": "minecraft:empty",
+        "location": "celestialexploration:large_meteor_crater",
+        "processors": "celestialexploration:asteroid_lapis",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
     },
     {
-      "weight": 2,
+      "weight": 5,
       "element": {
-        "location": "celestialexploration:large_emerald_meteor_crater",
-        "processors": "minecraft:empty",
-        "projection": "rigid",
-        "element_type": "minecraft:single_pool_element"
-      }
-    },
-    {
-      "weight": 3,
-      "element": {
-        "location": "celestialexploration:large_gold_meteor_crater",
-        "processors": "minecraft:empty",
+        "location": "celestialexploration:large_meteor_crater",
+        "processors": "celestialexploration:asteroid_redstone",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }

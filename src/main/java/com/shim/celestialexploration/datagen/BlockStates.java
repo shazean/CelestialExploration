@@ -352,11 +352,20 @@ public class BlockStates extends BlockStateProvider {
 		simpleBlock(BlockRegistry.EUROPA_LANTERN.get());
 		
 
-		
-
 		simpleBlock(BlockRegistry.GANYMEDE_CORE.get());
-		simpleBlock(BlockRegistry.CALLISTO_CORE.get());
-
+		
+		//CALLISTO
+		 simpleBlock(BlockRegistry.CALLISTO_CORE.get());
+		simpleBlock(BlockRegistry.CALLISTO_BRICKS.get());
+		stairsBlock(BlockRegistry.CALLISTO_BRICK_STAIRS.get(), modLoc("block/callisto_bricks"));
+		slabBlock(BlockRegistry.CALLISTO_BRICK_SLAB.get(), modLoc("block/callisto_bricks"), modLoc("block/callisto_bricks"));
+		wallBlock(BlockRegistry.CALLISTO_BRICK_WALL.get(), modLoc("block/callisto_bricks"));
+//		simpleBlock(BlockRegistry.CHISELED_CALLISTO_BRICKS.get());
+//		axisBlock(BlockRegistry.CALLISTO_BRICK_PILLAR.get(), modLoc("block/callisto_brick_pillar"));
+//		simpleBlock(BlockRegistry.CRACKED_CALLISTO_BRICKS.get());
+		simpleBlock(BlockRegistry.GLOWING_CALLISTO_SAND.get());
+		simpleBlock(BlockRegistry.CALLISTO_LANTERN.get());
+		
 		//---- OTHER PLANETS -------------------------------------------------------------------------------
 
 
@@ -370,7 +379,7 @@ public class BlockStates extends BlockStateProvider {
 		simpleBlock(BlockRegistry.RHEA_CORE.get());
 		simpleBlock(BlockRegistry.IAPETUS_CORE.get());
 		simpleBlock(BlockRegistry.DIONE_CORE.get());
-//		simpleBlock(BlockRegistry.HYPERION_CORE.get());
+		simpleBlock(BlockRegistry.HYPERION_CORE.get());
 
 		//URANUS
 		simpleBlock(BlockRegistry.URANUS_ATMOSPHERE.get());
@@ -454,8 +463,10 @@ public class BlockStates extends BlockStateProvider {
 		simpleBlock(BlockRegistry.LUMINOUS_BLUE_GLASS.get());
 		simpleBlock(BlockRegistry.LUMINOUS_WHITE_GLASS.get());
 		simpleBlock(BlockRegistry.LUMINOUS_CYAN_GLASS.get());
+		simpleBlock(BlockRegistry.LUMINOUS_MAGENTA_GLASS.get());
+		paneBlock((IronBarsBlock) BlockRegistry.LUMINOUS_MAGENTA_GLASS_PANE.get(), modLoc("block/luminous_magenta_glass"), mcLoc("block/magenta_stained_glass_pane_top"));
 		paneBlock((IronBarsBlock) BlockRegistry.LUMINOUS_BLUE_GLASS_PANE.get(), modLoc("block/luminous_blue_glass"), modLoc("block/luminous_blue_glass_pane_top"));
-		paneBlock((IronBarsBlock) BlockRegistry.LUMINOUS_CYAN_GLASS_PANE.get(), modLoc("block/luminous_blue_glass"), modLoc("block/luminous_blue_glass_pane_top"));
+		paneBlock((IronBarsBlock) BlockRegistry.LUMINOUS_CYAN_GLASS_PANE.get(), modLoc("block/luminous_cyan_glass"), modLoc("block/luminous_cyan_glass_pane_top"));
 		paneBlock((IronBarsBlock) BlockRegistry.LUMINOUS_WHITE_GLASS_PANE.get(), modLoc("block/luminous_white_glass"), modLoc("block/luminous_white_glass_pane_top"));
 
 		//CERAMIC

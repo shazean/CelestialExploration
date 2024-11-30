@@ -11,14 +11,14 @@ public class CelestialPortalParticle extends TextureSheetParticle {
     private final double yStart;
     private final double zStart;
 
-    protected CelestialPortalParticle(ClientLevel p_107551_, double p_107552_, double p_107553_, double p_107554_, double p_107555_, double p_107556_, double p_107557_, float rCol, float gCol, float bCol) {
-        super(p_107551_, p_107552_, p_107553_, p_107554_);
-        this.xd = p_107555_;
-        this.yd = p_107556_;
-        this.zd = p_107557_;
-        this.x = p_107552_;
-        this.y = p_107553_;
-        this.z = p_107554_;
+    protected CelestialPortalParticle(ClientLevel level, double x, double y, double z, double xd, double yd, double zd, float rCol, float gCol, float bCol) {
+        super(level, x, y, z);
+        this.xd = xd;
+        this.yd = yd;
+        this.zd = zd;
+        this.x = x;
+        this.y = y;
+        this.z = z;
         this.xStart = this.x;
         this.yStart = this.y;
         this.zStart = this.z;
@@ -79,93 +79,123 @@ public class CelestialPortalParticle extends TextureSheetParticle {
     }
 
     @OnlyIn(Dist.CLIENT)
-    public static class MarsProvider implements ParticleProvider<SimpleParticleType> {
+    public static abstract class BaseProvider implements ParticleProvider<SimpleParticleType> {
         private final SpriteSet sprite;
+        protected float red;
+        protected float green;
+        protected float blue;
 
-        public MarsProvider(SpriteSet p_107570_) {
+        public BaseProvider(SpriteSet p_107570_) {
             this.sprite = p_107570_;
+            setColor();
         }
 
-        public Particle createParticle(SimpleParticleType p_107581_, ClientLevel p_107582_, double p_107583_, double p_107584_, double p_107585_, double p_107586_, double p_107587_, double p_107588_) {
-            CelestialPortalParticle portalparticle = new CelestialPortalParticle(p_107582_, p_107583_, p_107584_, p_107585_, p_107586_, p_107587_, p_107588_, 0.9F, 0.3F, 0.2F);
+        public Particle createParticle(SimpleParticleType particle, ClientLevel level, double x, double y, double z, double xd, double yx, double zd) {
+            CelestialPortalParticle portalparticle = new CelestialPortalParticle(level, x, y, z, xd, yx, zd, red, green, blue);
             portalparticle.pickSprite(this.sprite);
             return portalparticle;
+        }
+
+        public abstract void setColor();
+    }
+
+
+    @OnlyIn(Dist.CLIENT)
+    public static class MarsProvider extends BaseProvider {
+        public MarsProvider(SpriteSet sprite) {
+            super(sprite);
+        }
+
+        @Override
+        public void setColor() {
+            this.red = 0.9F;
+            this.green = 0.3F;
+            this.blue = 0.2F;
         }
     }
 
     @OnlyIn(Dist.CLIENT)
-    public static class MoonProvider implements ParticleProvider<SimpleParticleType> {
-        private final SpriteSet sprite;
-
-        public MoonProvider(SpriteSet p_107570_) {
-            this.sprite = p_107570_;
+    public static class MoonProvider extends BaseProvider {
+        public MoonProvider(SpriteSet sprite) {
+            super(sprite);
         }
 
-        public Particle createParticle(SimpleParticleType p_107581_, ClientLevel p_107582_, double p_107583_, double p_107584_, double p_107585_, double p_107586_, double p_107587_, double p_107588_) {
-            CelestialPortalParticle portalparticle = new CelestialPortalParticle(p_107582_, p_107583_, p_107584_, p_107585_, p_107586_, p_107587_, p_107588_, 0.7F, 0.8F, 1.0F);
-            portalparticle.pickSprite(this.sprite);
-            return portalparticle;
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class VenusProvider implements ParticleProvider<SimpleParticleType> {
-        private final SpriteSet sprite;
-
-        public VenusProvider(SpriteSet p_107570_) {
-            this.sprite = p_107570_;
-        }
-
-        public Particle createParticle(SimpleParticleType p_107581_, ClientLevel p_107582_, double p_107583_, double p_107584_, double p_107585_, double p_107586_, double p_107587_, double p_107588_) {
-            CelestialPortalParticle portalparticle = new CelestialPortalParticle(p_107582_, p_107583_, p_107584_, p_107585_, p_107586_, p_107587_, p_107588_, 0.7F, 0.7F, 0.3F);
-            portalparticle.pickSprite(this.sprite);
-            return portalparticle;
+        @Override
+        public void setColor() {
+            this.red = 0.7F;
+            this.green = 0.8F;
+            this.blue = 1.0F;
         }
     }
 
     @OnlyIn(Dist.CLIENT)
-    public static class MercuryProvider implements ParticleProvider<SimpleParticleType> {
-        private final SpriteSet sprite;
-
-        public MercuryProvider(SpriteSet p_107570_) {
-            this.sprite = p_107570_;
+    public static class VenusProvider extends BaseProvider {
+        public VenusProvider(SpriteSet sprite) {
+            super(sprite);
         }
 
-        public Particle createParticle(SimpleParticleType p_107581_, ClientLevel p_107582_, double p_107583_, double p_107584_, double p_107585_, double p_107586_, double p_107587_, double p_107588_) {
-            CelestialPortalParticle portalparticle = new CelestialPortalParticle(p_107582_, p_107583_, p_107584_, p_107585_, p_107586_, p_107587_, p_107588_, 0.7F, 0.4F, 0.3F);
-            portalparticle.pickSprite(this.sprite);
-            return portalparticle;
+        @Override
+        public void setColor() {
+            this.red = 0.7F;
+            this.green = 0.7F;
+            this.blue = 0.3F;
+        }
+    }
+
+
+    @OnlyIn(Dist.CLIENT)
+    public static class MercuryProvider extends BaseProvider {
+        public MercuryProvider(SpriteSet sprite) {
+            super(sprite);
+        }
+
+        @Override
+        public void setColor() {
+            this.red = 0.7F;
+            this.green = 0.4F;
+            this.blue = 0.3F;
         }
     }
 
     @OnlyIn(Dist.CLIENT)
-    public static class JupiterProvider implements ParticleProvider<SimpleParticleType> {
-        private final SpriteSet sprite;
-
-        public JupiterProvider(SpriteSet p_107570_) {
-            this.sprite = p_107570_;
+    public static class JupiterProvider extends BaseProvider {
+        public JupiterProvider(SpriteSet sprite) {
+            super(sprite);
         }
 
-        public Particle createParticle(SimpleParticleType p_107581_, ClientLevel p_107582_, double p_107583_, double p_107584_, double p_107585_, double p_107586_, double p_107587_, double p_107588_) {
-            CelestialPortalParticle portalparticle = new CelestialPortalParticle(p_107582_, p_107583_, p_107584_, p_107585_, p_107586_, p_107587_, p_107588_, 0.53F, 0.33F, 0.21F);
-            portalparticle.pickSprite(this.sprite);
-            return portalparticle;
+        @Override
+        public void setColor() {
+            this.red = 0.5F;
+            this.green = 0.3F;
+            this.blue = 0.2F;
         }
     }
 
     @OnlyIn(Dist.CLIENT)
-    public static class EuropaProvider implements ParticleProvider<SimpleParticleType> {
-        private final SpriteSet sprite;
-
-        public EuropaProvider(SpriteSet p_107570_) {
-            this.sprite = p_107570_;
+    public static class EuropaProvider extends BaseProvider {
+        public EuropaProvider(SpriteSet sprite) {
+            super(sprite);
         }
 
-        public Particle createParticle(SimpleParticleType p_107581_, ClientLevel p_107582_, double p_107583_, double p_107584_, double p_107585_, double p_107586_, double p_107587_, double p_107588_) {
-            CelestialPortalParticle portalparticle = new CelestialPortalParticle(p_107582_, p_107583_, p_107584_, p_107585_, p_107586_, p_107587_, p_107588_, 0.09F, 0.82F, 0.82F);
-            portalparticle.pickSprite(this.sprite);
-            return portalparticle;
+        @Override
+        public void setColor() {
+            this.red = 0.1F;
+            this.green = 0.8F;
+            this.blue = 0.8F;
         }
     }
 
+    @OnlyIn(Dist.CLIENT)
+    public static class CallistoProvider extends BaseProvider {
+        public CallistoProvider(SpriteSet sprite) {
+            super(sprite);
+        }
+
+        @Override
+        public void setColor() {
+            this.red = 0.9F;
+            this.green = 0.3F;
+            this.blue = 0.7F;
+        }
+    }
 }

@@ -24,6 +24,7 @@ public class CelestialSurfaceRules {
     private static final SurfaceRules.RuleSource MARS_SAND = makeStateRule(BlockRegistry.MARS_SAND.get());
     private static final SurfaceRules.RuleSource COARSE_MARS_SAND = makeStateRule(BlockRegistry.COARSE_MARS_SAND.get());
     private static final SurfaceRules.RuleSource MOON_DEEPSLATE = makeStateRule(BlockRegistry.MOON_DEEPSLATE.get());
+    private static final SurfaceRules.RuleSource MOON_STONE = makeStateRule(BlockRegistry.MOON_STONE.get());
     private static final SurfaceRules.RuleSource MOON_SAND = makeStateRule(BlockRegistry.MOON_SAND.get());
     private static final SurfaceRules.RuleSource COARSE_MOON_SAND = makeStateRule(BlockRegistry.COARSE_MOON_SAND.get());
     private static final SurfaceRules.RuleSource GLOWING_MOON_SAND = makeStateRule(BlockRegistry.GLOWING_MOON_SAND.get());
@@ -58,6 +59,7 @@ public class CelestialSurfaceRules {
     private static final SurfaceRules.RuleSource SNOW_BLOCK = makeStateRule(Blocks.SNOW_BLOCK);
     private static final SurfaceRules.RuleSource POWDER_SNOW = makeStateRule(Blocks.POWDER_SNOW);
     private static final SurfaceRules.RuleSource ICE = makeStateRule(Blocks.ICE);
+    private static final SurfaceRules.RuleSource GLOWING_CALLISTO_SAND = makeStateRule(BlockRegistry.GLOWING_CALLISTO_SAND.get());
 
     private static SurfaceRules.RuleSource makeStateRule(Block block) {
         return SurfaceRules.state(block.defaultBlockState());
@@ -208,6 +210,39 @@ public class CelestialSurfaceRules {
         builder.add(SurfaceRules.ifTrue(SurfaceRules.verticalGradient("bedrock_floor", VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(5)), BEDROCK));
         builder.add(SurfaceRules.ifTrue(SurfaceRules.verticalGradient("deepslate", VerticalAnchor.absolute(-32), VerticalAnchor.absolute(0)), MOON_DEEPSLATE));
 
+        return SurfaceRules.sequence(builder.build().toArray(SurfaceRules.RuleSource[]::new));
+    }
+
+    public static SurfaceRules.RuleSource callisto() {
+        ImmutableList.Builder<SurfaceRules.RuleSource> builder = ImmutableList.builder();
+
+//        SurfaceRules.ConditionSource shallowSand = SurfaceRules.isBiome(CelestialBiomeKeys.MOON_PLAINS, CelestialBiomeKeys.MOON_LOWER_PLAINS, CelestialBiomeKeys.MOON_CRATERS, CelestialBiomeKeys.MOON_LAVA_FLATS);
+
+        builder.add(SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(),
+                SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, false, 1, CaveSurface.FLOOR),
+                        SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.PATCH, .7F, 1.0F), GLOWING_CALLISTO_SAND)))));
+
+        builder.add(SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(),
+                SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, false, 1, CaveSurface.FLOOR),
+                        SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.PATCH, -1.0F, -0.8F), COARSE_MOON_SAND)))));
+
+        builder.add(SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(),
+                SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, false, 1, CaveSurface.FLOOR),
+                        SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.PATCH, -0.8F, -0.6F), MOON_SAND)))));
+
+
+        builder.add(SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, false, 3, CaveSurface.FLOOR), SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SURFACE, -0.9F, -0.3F), MOON_STONE))));
+
+        builder.add(SurfaceRules.ifTrue(SurfaceRules.isBiome(CelestialBiomeKeys.MOON_DESERT), SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(),
+                SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, false, 1, CaveSurface.FLOOR), MOON_SAND)))));
+
+//        builder.add(SurfaceRules.ifTrue(shallowSand, SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(),
+//                SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, false, 1, CaveSurface.FLOOR), MOON_SAND)))));
+
+
+        builder.add(SurfaceRules.ifTrue(SurfaceRules.verticalGradient("bedrock_floor", VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(5)), BEDROCK));
+
+        builder.add(SurfaceRules.ifTrue(SurfaceRules.verticalGradient("deepslate", VerticalAnchor.absolute(0), VerticalAnchor.absolute(8)), MOON_DEEPSLATE));
         return SurfaceRules.sequence(builder.build().toArray(SurfaceRules.RuleSource[]::new));
     }
 

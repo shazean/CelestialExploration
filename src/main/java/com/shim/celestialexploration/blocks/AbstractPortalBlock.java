@@ -1,6 +1,6 @@
 package com.shim.celestialexploration.blocks;
 
-import com.shim.celestialexploration.world.portal.AbstractTeleporter;
+import com.shim.celestialexploration.world.portal.PlanetTeleporter;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.SimpleParticleType;
@@ -50,7 +50,7 @@ public abstract class AbstractPortalBlock extends Block {
     }
 
     public abstract ResourceKey<Level> getLinkedDimension();
-    public abstract AbstractTeleporter getTeleporter(ServerLevel serverLevel);
+    public abstract PlanetTeleporter getTeleporter(ServerLevel serverLevel);
     public abstract Block getPortalBlock();
     public abstract TagKey<Block> getPortalFrameBlock();
     public abstract SimpleParticleType getPortalParticle();
@@ -136,7 +136,7 @@ public abstract class AbstractPortalBlock extends Block {
                         if(destinationWorld != null && minecraftserver.isNetherEnabled() && !entity.isPassenger()) {
                             entity.level.getProfiler().push("portal");
                             entity.setPortalCooldown();
-                            AbstractTeleporter teleporter = getTeleporter(destinationWorld);
+                            PlanetTeleporter teleporter = getTeleporter(destinationWorld);
                             entity.changeDimension(destinationWorld, teleporter);
                             entity.level.getProfiler().pop();
                         }

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/template_glass_pane_noside_alt",
   "textures": {
-    "pane": "celestialexploration:block/luminous_blue_glass"
+    "pane": "celestialexploration:block/luminous_cyan_glass"
   }
 }

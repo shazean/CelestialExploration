@@ -354,6 +354,7 @@ public class ItemModels extends ItemModelProvider {
 
 		//---- JUPITER'S MOONS -------------------------------------------------------------------------------
 
+		//IO
 		self(BlockRegistry.IO_CORE.get());
 		self(BlockRegistry.IO_STONE.get());
 		self(BlockRegistry.IO_DEEPSLATE.get());
@@ -373,8 +374,20 @@ public class ItemModels extends ItemModelProvider {
 		self(BlockRegistry.GLOWING_EUROPA_SAND.get());
 		self(BlockRegistry.EUROPA_LANTERN.get());
 
+		//GANYMEDE
 		self(BlockRegistry.GANYMEDE_CORE.get());
+
+		//CALLISTO
 		self(BlockRegistry.CALLISTO_CORE.get());
+		self(BlockRegistry.CALLISTO_BRICKS.get());
+		stairsItem(BlockRegistry.CALLISTO_BRICK_STAIRS.get(),"callisto_bricks");
+		slabItem(BlockRegistry.CALLISTO_BRICK_SLAB.get(), "callisto_bricks");
+		wallItem(BlockRegistry.CALLISTO_BRICK_WALL.get(),  "callisto_bricks");
+//		self(BlockRegistry.CHISELED_CALLISTO_BRICKS.get());
+//		self(BlockRegistry.CRACKED_CALLISTO_BRICKS.get());
+//		self(BlockRegistry.CALLISTO_BRICK_PILLAR.get());
+		self(BlockRegistry.GLOWING_CALLISTO_SAND.get());
+		self(BlockRegistry.CALLISTO_LANTERN.get());
 
 		//---- OTHER PLANETS -------------------------------------------------------------------------------
 
@@ -388,7 +401,7 @@ public class ItemModels extends ItemModelProvider {
 		self(BlockRegistry.IAPETUS_CORE.get());
 		self(BlockRegistry.RHEA_CORE.get());
 		self(BlockRegistry.DIONE_CORE.get());
-//		self(BlockRegistry.HYPERION_CORE.get());
+		self(BlockRegistry.HYPERION_CORE.get());
 
 		//URANUS
 		self(BlockRegistry.URANUS_CORE.get());
@@ -553,6 +566,8 @@ public class ItemModels extends ItemModelProvider {
 		self(BlockRegistry.LUMINOUS_BLUE_GLASS.get());
 		self(BlockRegistry.LUMINOUS_WHITE_GLASS.get());
 		self(BlockRegistry.LUMINOUS_CYAN_GLASS.get());
+		self(BlockRegistry.LUMINOUS_MAGENTA_GLASS.get());
+		generatedBlockItem(BlockRegistry.LUMINOUS_MAGENTA_GLASS_PANE.get(), "block/luminous_magenta_glass");
 		generatedBlockItem(BlockRegistry.LUMINOUS_BLUE_GLASS_PANE.get(), "block/luminous_blue_glass");
 		generatedBlockItem(BlockRegistry.LUMINOUS_CYAN_GLASS_PANE.get(), "block/luminous_cyan_glass");
 		generatedBlockItem(BlockRegistry.LUMINOUS_WHITE_GLASS_PANE.get(), "block/luminous_white_glass");
@@ -656,6 +671,7 @@ public class ItemModels extends ItemModelProvider {
 		//ITEMS
 		generatedItem(ItemRegistry.MOON_DUST.get());
 		generatedItem(ItemRegistry.EUROPA_DUST.get());
+		generatedItem(ItemRegistry.CALLISTO_DUST.get());
 		handheldItem(ItemRegistry.STEEL_ROD.get());
 		generatedItem(ItemRegistry.STEEL_WOOL.get());
 		handheldItem(ItemRegistry.FLARE_ROD.get());

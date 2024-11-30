@@ -73,7 +73,7 @@ public class TeleportUtil {
         dimension.put(DimensionRegistry.VENUS, null);
         dimension.put(Level.OVERWORLD, ImmutableList.<ResourceKey<Level>>builder().add(DimensionRegistry.MOON).build());
         dimension.put(DimensionRegistry.MARS, null);
-        dimension.put(DimensionRegistry.JUPITER, ImmutableList.<ResourceKey<Level>>builder().add(DimensionRegistry.EUROPA).build());
+        dimension.put(DimensionRegistry.JUPITER, ImmutableList.<ResourceKey<Level>>builder().add(DimensionRegistry.EUROPA).add(DimensionRegistry.CALLISTO).build());
 
     });
 
@@ -107,7 +107,6 @@ public class TeleportUtil {
             if (block.defaultBlockState().is(blockWeSee.getBlock())) return planet;
         }
         //…or one of its moons
-
         moons = PLANET_MOONS.get(planet);
 
         if (moons != null) {
@@ -115,6 +114,7 @@ public class TeleportUtil {
                 blocksToComp = getDimensionStructureBlocks(moon); //CE_DIMENSION_STRUCTURE_BLOCKS.get(moon); //DIMENSION_STRUCTURE_BLOCKS.get(moon);
 
                 for (Block block : blocksToComp) {
+
                     //  return moon
                     if (block.defaultBlockState().is(blockWeSee.getBlock())) return moon;
                 }

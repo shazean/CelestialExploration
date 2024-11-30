@@ -6,6 +6,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraftforge.registries.RegistryObject;
 
 public class CelestialBiomeKeys {
 
@@ -59,12 +60,15 @@ public class CelestialBiomeKeys {
     public static final ResourceKey<Biome> EUROPA_RIVER = register("europa_river");
 
     //CALLISTO
+    public static final ResourceKey<Biome> CALLISTO_CRATERED_PLAINS = register("callisto_cratered_plains");
+    public static final ResourceKey<Biome> CALLISTO_DESERT = register("callisto_desert");
+    public static final ResourceKey<Biome> CALLISTO_LOWER_PLAINS = register("callisto_lower_plains");
+    public static final ResourceKey<Biome> CALLISTO_PLAINS = register("callisto_plains");
 
     //GANYMEDE
 
     //---- SPACE -------------------------------------------------------------------------------
     public static final ResourceKey<Biome> SPACE = register("space");
-
 
     //---- FOR DATAPACK/PRESETS -------------------------------------------------------------------------------
     public static final ResourceKey<Biome> HIGH_DESERT = register("high_desert");

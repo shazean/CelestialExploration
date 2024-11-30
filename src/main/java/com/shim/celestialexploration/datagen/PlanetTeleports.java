@@ -43,6 +43,9 @@ public class PlanetTeleports extends PlanetTeleportProvider {
         PlanetTeleport.Builder.teleporter().dimension(DimensionRegistry.EUROPA).coordinates(coord(6, 2))
                 .block(BlockRegistry.EUROPA_CORE.get()).block(BlockRegistry.EUROPA_HYDRATE.get()).block(BlockRegistry.MOON_STONE.get()).save(consumer, "europa");
 
+        PlanetTeleport.Builder.teleporter().dimension(DimensionRegistry.CALLISTO).coordinates(coord(6, 2))
+                .block(BlockRegistry.CALLISTO_CORE.get()).block(Blocks.ICE).block(BlockRegistry.MOON_COBBLED_DEEPSLATE.get()).block(BlockRegistry.COARSE_MOON_SAND.get()).save(consumer, "callisto");
+
 
     }
 }

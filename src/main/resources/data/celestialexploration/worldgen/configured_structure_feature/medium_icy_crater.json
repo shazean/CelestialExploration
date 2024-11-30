@@ -1,0 +1,11 @@
+{
+  "type": "celestialexploration:medium_crater",
+  "config": {
+    "start_pool": "celestialexploration:medium_icy_crater",
+    "size": 1
+  },
+  "biomes": "#celestialexploration:has_structure/icy_crater_biomes",
+  "adapt_noise": false,
+  "spawn_overrides": {
+  }
+}

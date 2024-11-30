@@ -67,7 +67,6 @@ public class WorkbenchCraftingRecipeCategory implements IRecipeCategory<Workbenc
         return this.icon;
     }
 
-
     @Override
     public void setRecipe(@Nonnull IRecipeLayoutBuilder builder, @Nonnull WorkbenchCraftingRecipe recipe, @Nonnull IFocusGroup focusGroup) {
         FluidStack fluid = new FluidStack(recipe.getFluid(), (int) (recipe.getBuckets() * FluidAttributes.BUCKET_VOLUME));

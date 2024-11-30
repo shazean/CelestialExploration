@@ -40,7 +40,6 @@ public class WorkbenchSmeltingRecipeCategory implements IRecipeCategory<Workbenc
     protected final IDrawableAnimated animatedFlame;
     private final LoadingCache<Integer, IDrawableAnimated> cachedArrows;
 
-
     public WorkbenchSmeltingRecipeCategory(IGuiHelper helper) {
         this.background = helper.createDrawable(TEXTURE, 0, 0, 176, 80);
         this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(BlockRegistry.WORKBENCH.get()));
@@ -138,7 +137,6 @@ public class WorkbenchSmeltingRecipeCategory implements IRecipeCategory<Workbenc
         builder.addSlot(RecipeIngredientRole.INPUT, 13, 17).addIngredients(recipe.getIngredients().get(0));
 
 //        builder.addSlot(RecipeIngredientRole.CATALYST, 13, 53).addIngredients(Ingredient.of(ItemTags.));
-
 //
 //        int height = recipe.getHeight();
 //        int width = recipe.getWidth();
@@ -166,7 +164,5 @@ public class WorkbenchSmeltingRecipeCategory implements IRecipeCategory<Workbenc
 
 //        this.addSlot(new SlotItemHandler(handler, 0, 13, 17)); //smelting slot
 //        this.addSlot(new FuelSlot(handler, 1, 13, 53)); //fuel slot
-
-
     }
 }

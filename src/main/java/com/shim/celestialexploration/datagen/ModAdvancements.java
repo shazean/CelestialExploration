@@ -113,6 +113,11 @@ public class ModAdvancements extends AdvancementProvider {
                         null, FrameType.TASK, true, true, false)
                 .parent(enterJupiter).addCriterion("entered_europa", ChangeDimensionTrigger.TriggerInstance.changedDimensionTo(DimensionRegistry.EUROPA)).save(consumer, modLoc("enter_europa"));
 
+        Advancement enterCallisto = Advancement.Builder.advancement().display(new ItemStack(BlockRegistry.CALLISTO_BRICKS.get()),
+                        new TranslatableComponent("advancements.celestial.enter_callisto.title"), new TranslatableComponent("advancements.celestial.enter_callisto.description"),
+                        null, FrameType.TASK, true, true, false)
+                .parent(enterMercury).addCriterion("entered_callisto", ChangeDimensionTrigger.TriggerInstance.changedDimensionTo(DimensionRegistry.CALLISTO)).save(consumer, modLoc("enter_callisto"));
+
 
 
     }

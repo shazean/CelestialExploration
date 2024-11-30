@@ -8,7 +8,7 @@
   ],
   "key": {
     "W": {
-      "item": "minecraft:white_wool"
+      "tag": "minecraft:wool"
     },
     "D": {
       "tag": "forge:gems/diamond"

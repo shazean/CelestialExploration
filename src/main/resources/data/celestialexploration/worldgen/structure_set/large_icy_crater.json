@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "celestialexploration:large_icy_crater",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 1217138,
+    "spacing": 20,
+    "separation": 8,
+    "type": "minecraft:random_spread"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "celestialexploration:callisto_cratered_plains",
+    "celestialexploration:callisto_desert",
+    "celestialexploration:callisto_lower_plains",
+    "celestialexploration:callisto_plains"
+  ]
+}

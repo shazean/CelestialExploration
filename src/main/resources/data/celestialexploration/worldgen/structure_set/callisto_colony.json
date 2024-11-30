@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "celestialexploration:callisto_colony",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 28328439,
+    "spacing": 30,
+    "separation": 12,
+    "type": "minecraft:random_spread"
+  }
+}

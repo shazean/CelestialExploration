@@ -179,6 +179,11 @@ public class LootTables extends BaseLootTableProvider {
 		lootTables.put(BlockRegistry.GLOWING_EUROPA_SAND.get(), createSilkTouchTable(BlockRegistry.GLOWING_EUROPA_SAND.get(), ItemRegistry.EUROPA_DUST.get(), 2, 5));
 		lootTables.put(BlockRegistry.EUROPA_LANTERN.get(), createSilkTouchTable(BlockRegistry.EUROPA_LANTERN.get(), ItemRegistry.EUROPA_DUST.get(), 1, 3));
 
+		//---- CALLISTO -------------------------------------------------------------------------------
+		lootTables.put(BlockRegistry.CALLISTO_BRICK_SLAB.get(), createSlabItemTable(BlockRegistry.CALLISTO_BRICK_SLAB.get()));
+		lootTables.put(BlockRegistry.GLOWING_CALLISTO_SAND.get(), createSilkTouchTable(BlockRegistry.GLOWING_CALLISTO_SAND.get(), ItemRegistry.CALLISTO_DUST.get(), 2, 5));
+		lootTables.put(BlockRegistry.CALLISTO_LANTERN.get(), createSilkTouchTable(BlockRegistry.CALLISTO_LANTERN.get(), ItemRegistry.CALLISTO_DUST.get(), 1, 3));
+
 
 		//---- ORES/ALLOYS -------------------------------------------------------------------------------
 		lootTables.put(BlockRegistry.BAUXITE_ORE.get(), createBauxiteOreTable(BlockRegistry.BAUXITE_ORE.get()));
@@ -191,6 +196,8 @@ public class LootTables extends BaseLootTableProvider {
 		lootTables.put(BlockRegistry.LUMINOUS_BLUE_GLASS.get(), createSilkTouchTable(BlockRegistry.LUMINOUS_BLUE_GLASS.get(), ItemRegistry.MOON_DUST.get(), 1, 1));
 		lootTables.put(BlockRegistry.LUMINOUS_WHITE_GLASS.get(), createSilkTouchTable(BlockRegistry.LUMINOUS_WHITE_GLASS.get(), ItemRegistry.MOON_DUST.get(), 1, 1));
 		lootTables.put(BlockRegistry.LUMINOUS_CYAN_GLASS.get(), createSilkTouchTable(BlockRegistry.LUMINOUS_CYAN_GLASS.get(), ItemRegistry.EUROPA_DUST.get(), 1, 1));
+		lootTables.put(BlockRegistry.LUMINOUS_MAGENTA_GLASS.get(), createSilkTouchTable(BlockRegistry.LUMINOUS_MAGENTA_GLASS.get(), ItemRegistry.CALLISTO_DUST.get(), 1, 1));
+		lootTables.put(BlockRegistry.LUMINOUS_MAGENTA_GLASS_PANE.get(), createSilkTouchTable(BlockRegistry.LUMINOUS_MAGENTA_GLASS_PANE.get(), ItemRegistry.CALLISTO_DUST.get(), 1, 1));
 		lootTables.put(BlockRegistry.LUMINOUS_CYAN_GLASS_PANE.get(), createSilkTouchTable(BlockRegistry.LUMINOUS_CYAN_GLASS_PANE.get(), ItemRegistry.EUROPA_DUST.get(), 1, 1));
 		lootTables.put(BlockRegistry.LUMINOUS_BLUE_GLASS_PANE.get(), createSilkTouchTable(BlockRegistry.LUMINOUS_BLUE_GLASS_PANE.get(), ItemRegistry.MOON_DUST.get(), 1, 1));
 		lootTables.put(BlockRegistry.LUMINOUS_WHITE_GLASS_PANE.get(), createSilkTouchTable(BlockRegistry.LUMINOUS_WHITE_GLASS_PANE.get(), ItemRegistry.MOON_DUST.get(), 1, 1));

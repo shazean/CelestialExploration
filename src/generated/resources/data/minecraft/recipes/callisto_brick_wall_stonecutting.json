@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "celestialexploration:callisto_bricks"
+  },
+  "result": "celestialexploration:callisto_brick_wall",
+  "count": 1
+}

@@ -1,5 +1,6 @@
 package com.shim.celestialexploration.datagen.util;
 
+import com.mojang.datafixers.util.Either;
 import com.shim.celestialexploration.registry.BlockRegistry;
 import com.shim.celestialexploration.registry.ItemRegistry;
 import com.shim.celestialexploration.registry.TagRegistry;

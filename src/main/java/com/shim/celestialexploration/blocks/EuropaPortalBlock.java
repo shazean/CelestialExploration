@@ -1,12 +1,7 @@
 package com.shim.celestialexploration.blocks;
 
-import com.shim.celestialexploration.registry.BlockRegistry;
-import com.shim.celestialexploration.registry.DimensionRegistry;
-import com.shim.celestialexploration.registry.ParticleRegistry;
-import com.shim.celestialexploration.registry.TagRegistry;
-import com.shim.celestialexploration.world.portal.AbstractTeleporter;
-import com.shim.celestialexploration.world.portal.EuropaTeleporter;
-import com.shim.celestialexploration.world.portal.MarsTeleporter;
+import com.shim.celestialexploration.registry.*;
+import com.shim.celestialexploration.world.portal.PlanetTeleporter;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
@@ -21,8 +16,8 @@ public class EuropaPortalBlock extends AbstractPortalBlock {
     }
 
     @Override
-    public AbstractTeleporter getTeleporter(ServerLevel serverLevel) {
-        return new EuropaTeleporter(serverLevel);
+    public PlanetTeleporter getTeleporter(ServerLevel serverLevel) {
+        return new PlanetTeleporter(serverLevel, PoiRegistry.EUROPA_PORTAL.get(), BlockRegistry.EUROPA_BRICKS.get(), BlockRegistry.EUROPA_PORTAL.get(), DimensionRegistry.EUROPA);
     }
 
     @Override

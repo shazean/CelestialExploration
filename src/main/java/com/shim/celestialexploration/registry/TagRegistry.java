@@ -42,8 +42,6 @@ public class TagRegistry {
         public static final TagKey<Block> JUPITER_DEEPSLATE = BlockTags.create(modLoc("jupiter_deepslate"));
         public static final TagKey<Block> JUPITER_COBBLED_DEEPSLATE = BlockTags.create(modLoc("jupiter_deepslate"));
 
-        public static final TagKey<Block> EUROPA_BRICKS = BlockTags.create(modLoc("europa_bricks"));
-
         public static final TagKey<Block> REGOLITH = BlockTags.create(modLoc("regolith"));
 
         public static final TagKey<Block> METEOR = BlockTags.create(modLoc("meteor"));
@@ -105,8 +103,6 @@ public class TagRegistry {
         public static final TagKey<Item> JUPITER_DEEPSLATE = ItemTags.create(modLoc("jupiter_deepslate"));
         public static final TagKey<Item> JUPITER_COBBLED_DEEPSLATE = ItemTags.create(modLoc("jupiter_cobbled_deepslate"));
 
-        public static final TagKey<Item> EUROPA_BRICKS = ItemTags.create(modLoc("europa_bricks"));
-
         public static final TagKey<Item> METEOR = ItemTags.create(modLoc("meteor"));
 
         public static final TagKey<Item> DYED_CERAMIC = ItemTags.create(modLoc("dyed_ceramic"));
@@ -138,6 +134,7 @@ public class TagRegistry {
         public static final TagKey<Biome> MERCURY_BIOMES = create("mercury");
         public static final TagKey<Biome> JUPITER_BIOMES = create("jupiter");
         public static final TagKey<Biome> EUROPA_BIOMES = create("europa");
+        public static final TagKey<Biome> CALLISTO_BIOMES = create("callisto");
 
         public static final TagKey<Biome> NO_SNOW_BIOMES = create("no_snow");
 

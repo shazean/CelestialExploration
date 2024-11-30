@@ -26,6 +26,7 @@ public class DimensionTeleports extends DimensionTeleportProvider {
         DimensionTeleport.Builder.teleporter().dimension(DimensionRegistry.JUPITER).coordinates(coord(6, 2)).save(consumer, "jupiter");
 
         DimensionTeleport.Builder.teleporter().dimension(DimensionRegistry.EUROPA).coordinates(coord(6, 2)).save(consumer, "europa");
+        DimensionTeleport.Builder.teleporter().dimension(DimensionRegistry.CALLISTO).coordinates(coord(6, 2)).save(consumer, "callisto");
 
 //        DimensionTeleport.Builder.teleporter().dimension(Level.END).coordinates(coord(-4, 2)).save(consumer, "the_end");
         DimensionTeleport.Builder.teleporter().dimension(Level.END).coordinateScale(0.75D).save(consumer, "the_end");

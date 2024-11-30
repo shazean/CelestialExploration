@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "celestialexploration:tiny_icy_crater",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 23312580,
+    "spacing": 15,
+    "separation": 4,
+    "type": "minecraft:random_spread"
+  }
+}

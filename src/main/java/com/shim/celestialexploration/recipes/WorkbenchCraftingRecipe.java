@@ -45,8 +45,6 @@ public class WorkbenchCraftingRecipe implements Recipe<WorkbenchCraftingContaine
     private final float buckets;
     private final float experience;
 
-
-
     public WorkbenchCraftingRecipe(ResourceLocation id, String group, int width, int height, NonNullList<Ingredient> recipeItems, FluidStack fluidIngredient, float buckets, ItemStack result, float experience) {
         this.id = id;
         this.group = group;

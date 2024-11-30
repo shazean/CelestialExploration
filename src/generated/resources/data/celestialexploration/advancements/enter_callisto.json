@@ -1,0 +1,31 @@
+{
+  "parent": "celestialexploration:enter_mercury",
+  "display": {
+    "icon": {
+      "item": "celestialexploration:callisto_bricks"
+    },
+    "title": {
+      "translate": "advancements.celestial.enter_callisto.title"
+    },
+    "description": {
+      "translate": "advancements.celestial.enter_callisto.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "entered_callisto": {
+      "trigger": "minecraft:changed_dimension",
+      "conditions": {
+        "to": "celestialexploration:callisto"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "entered_callisto"
+    ]
+  ]
+}

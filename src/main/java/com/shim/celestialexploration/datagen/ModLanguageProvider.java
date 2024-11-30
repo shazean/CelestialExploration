@@ -100,6 +100,11 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(getBiomeString(CelestialBiomeKeys.EUROPA_OCEAN), "Europan Ocean");
 		add(getBiomeString(CelestialBiomeKeys.EUROPA_LOWER_PLAINS), "Europan Lower Plains");
 		add(getBiomeString(CelestialBiomeKeys.EUROPA_PLAINS), "Europan Plains");
+		add(getBiomeString(CelestialBiomeKeys.CALLISTO_CRATERED_PLAINS), "Callistoan Cratered Desert");
+		add(getBiomeString(CelestialBiomeKeys.CALLISTO_DESERT), "Callistoan Desert");
+		add(getBiomeString(CelestialBiomeKeys.CALLISTO_LOWER_PLAINS), "Callistoan Lower Plains");
+		add(getBiomeString(CelestialBiomeKeys.CALLISTO_PLAINS), "Callistoan Plains");
+
 		add(getBiomeString(CelestialBiomeKeys.SPACE), "Outer Space");
 
 		//---- DIMENSIONS -------------------------------------------------------------------------------
@@ -111,6 +116,7 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(getDimensionString(DimensionRegistry.MARS), "Mars");
 		add(getDimensionString(DimensionRegistry.JUPITER), "Jupiter");
 		add(getDimensionString(DimensionRegistry.EUROPA), "Europa");
+		add(getDimensionString(DimensionRegistry.CALLISTO), "Callisto");
 
 		//---- MENUS -------------------------------------------------------------------------------
 		add("container.celestialexploration.oxygen_compressor", "Oxygen Compressor");

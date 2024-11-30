@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/template_glass_pane_side_alt",
   "textures": {
-    "pane": "celestialexploration:block/luminous_blue_glass",
-    "edge": "celestialexploration:block/luminous_blue_glass_pane_top"
+    "pane": "celestialexploration:block/luminous_cyan_glass",
+    "edge": "celestialexploration:block/luminous_cyan_glass_pane_top"
   }
 }

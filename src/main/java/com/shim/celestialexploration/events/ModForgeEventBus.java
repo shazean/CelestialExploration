@@ -8,6 +8,7 @@ import com.shim.celestialexploration.capabilities.TaxiCapability;
 import com.shim.celestialexploration.config.CelestialCommonConfig;
 import com.shim.celestialexploration.entity.CelestialCatSpawner;
 import com.shim.celestialexploration.entity.vehicle.Spaceship;
+import com.shim.celestialexploration.integration.JEIPlugin;
 import com.shim.celestialexploration.item.armor.ThermalSpaceSuitArmorItem;
 import com.shim.celestialexploration.packets.CelestialPacketHandler;
 import com.shim.celestialexploration.packets.SpaceFlightPacket;
@@ -186,6 +187,20 @@ public class ModForgeEventBus {
 
     }
 
+
+    @SubscribeEvent
+    public static void onClientTick(TickEvent.ClientTickEvent event) {
+
+        if (JEIPlugin.jeiRuntime != null) {
+            JEIPlugin.jeiRuntime.getIngredientListOverlay().getIngredientUnderMouse().ifPresent(ingredient -> {
+                CelestialExploration.LOGGER.debug("type {}", ingredient.getType());
+                CelestialExploration.LOGGER.debug("ingredient {}", ingredient.getIngredient());
+
+            });
+        }
+    }
+
+
     @SubscribeEvent
     public static void clickEvent(PlayerInteractEvent.RightClickBlock event) {
         Player player = event.getPlayer();
@@ -201,7 +216,8 @@ public class ModForgeEventBus {
 
                             if (BlockRegistry.MARS_PORTAL.get().trySpawnPortal(level, framePos) || BlockRegistry.MOON_PORTAL.get().trySpawnPortal(level, framePos) ||
                                     BlockRegistry.VENUS_PORTAL.get().trySpawnPortal(level, framePos) || BlockRegistry.MERCURY_PORTAL.get().trySpawnPortal(level, framePos) ||
-                                    BlockRegistry.JUPITER_PORTAL.get().trySpawnPortal(level, framePos) || BlockRegistry.EUROPA_PORTAL.get().trySpawnPortal(level, framePos)) {
+                                    BlockRegistry.JUPITER_PORTAL.get().trySpawnPortal(level, framePos) || BlockRegistry.EUROPA_PORTAL.get().trySpawnPortal(level, framePos) ||
+                                    BlockRegistry.CALLISTO_PORTAL.get().trySpawnPortal(level, framePos)){
                                 level.playSound(player, framePos, SoundEvents.PORTAL_TRIGGER, SoundSource.BLOCKS, 1.0F, 1.0F);
                                 event.setCanceled(true);
                                 event.setCancellationResult(InteractionResult.CONSUME);

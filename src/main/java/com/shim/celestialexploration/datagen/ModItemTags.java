@@ -74,8 +74,6 @@ public class ModItemTags extends ItemTagsProvider {
 		this.copy(TagRegistry.Blocks.MERCURY_DEEPSLATE, TagRegistry.Items.MERCURY_DEEPSLATE);
 		this.copy(TagRegistry.Blocks.MERCURY_COBBLED_DEEPSLATE, TagRegistry.Items.MERCURY_COBBLED_DEEPSLATE);
 
-		this.copy(TagRegistry.Blocks.EUROPA_BRICKS, TagRegistry.Items.EUROPA_BRICKS);
-
 		this.copy(TagRegistry.Blocks.DYED_CERAMIC, TagRegistry.Items.DYED_CERAMIC);
 
 		this.copy(TagRegistry.Blocks.DYED_CERAMIC_TILE, TagRegistry.Items.DYED_CERAMIC_TILE);

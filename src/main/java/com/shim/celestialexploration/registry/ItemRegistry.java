@@ -147,6 +147,7 @@ public class ItemRegistry {
 	public static final RegistryObject<Item> ALUMINUM_INGOT = registerItem("aluminum_ingot", "Aluminum Ingot", () -> new Item((new Item.Properties()).tab(CreativeModeTab.TAB_MATERIALS)));
 	public static final RegistryObject<Item> MOON_DUST = registerItem("moon_dust", "Moon Dust", () -> new Item((new Item.Properties()).tab(CelestialExploration.CELESTIAL_MISC_TAB)));
 	public static final RegistryObject<Item> EUROPA_DUST = registerItem("europa_dust", "Europan Dust", () -> new Item((new Item.Properties()).tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> CALLISTO_DUST = registerItem("callisto_dust", "Callistoan Dust", () -> new Item((new Item.Properties()).tab(CelestialExploration.CELESTIAL_MISC_TAB)));
 
 	public static final RegistryObject<Item> STEEL_ROD = registerItem("steel_rod", "Steel Rod", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MATERIALS)));
 	public static final RegistryObject<Item> FLARE_ROD = registerItem("flare_rod", "Flare Rod", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MATERIALS)));

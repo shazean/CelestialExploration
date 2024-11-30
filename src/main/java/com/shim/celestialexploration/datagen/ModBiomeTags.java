@@ -64,6 +64,13 @@ public class ModBiomeTags extends BiomeTagsProvider {
                 .add(CelestialBiomeKeys.EUROPA_RIVER);
 
 
+        tag(TagRegistry.Biomes.CALLISTO_BIOMES)
+                .add(CelestialBiomeKeys.CALLISTO_CRATERED_PLAINS)
+                .add(CelestialBiomeKeys.CALLISTO_DESERT)
+                .add(CelestialBiomeKeys.CALLISTO_LOWER_PLAINS)
+                .add(CelestialBiomeKeys.CALLISTO_PLAINS);
+
+
         tag(TagRegistry.Biomes.SPACE_BIOMES)
                 .add(CelestialBiomeKeys.SPACE);
 
@@ -73,7 +80,8 @@ public class ModBiomeTags extends BiomeTagsProvider {
                 .addTag(TagRegistry.Biomes.SPACE_BIOMES)
                 .addTag(TagRegistry.Biomes.MERCURY_BIOMES)
                 .addTag(TagRegistry.Biomes.JUPITER_BIOMES)
-                .addTag(TagRegistry.Biomes.EUROPA_BIOMES);
+                .addTag(TagRegistry.Biomes.EUROPA_BIOMES)
+                .addTag(TagRegistry.Biomes.CALLISTO_BIOMES);
 
         tag(TagRegistry.Biomes.PLANETS)
                 .addTag(TagRegistry.Biomes.MARS_BIOMES)
@@ -83,7 +91,8 @@ public class ModBiomeTags extends BiomeTagsProvider {
 
         tag(TagRegistry.Biomes.MOONS)
                 .addTag(TagRegistry.Biomes.MOON_BIOMES)
-                .addTag(TagRegistry.Biomes.EUROPA_BIOMES);
+                .addTag(TagRegistry.Biomes.EUROPA_BIOMES)
+                .addTag(TagRegistry.Biomes.CALLISTO_BIOMES);
 
         tag(TagRegistry.Biomes.CELESTIAL_BODIES)
                 .addTag(TagRegistry.Biomes.MARS_BIOMES)
@@ -92,7 +101,8 @@ public class ModBiomeTags extends BiomeTagsProvider {
                 .addTag(TagRegistry.Biomes.VENUS_BIOMES)
                 .addTag(TagRegistry.Biomes.MERCURY_BIOMES)
                 .addTag(TagRegistry.Biomes.JUPITER_BIOMES)
-                .addTag(TagRegistry.Biomes.EUROPA_BIOMES);
+                .addTag(TagRegistry.Biomes.EUROPA_BIOMES)
+                .addTag(TagRegistry.Biomes.CALLISTO_BIOMES);
 
         tag(TagRegistry.Biomes.DUST_STORM_BIOMES)
                 .addTag(TagRegistry.Biomes.MARS_BIOMES)

@@ -8,6 +8,7 @@ import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
+import mezz.jei.api.runtime.IJeiRuntime;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.RecipeManager;
@@ -17,6 +18,8 @@ import java.util.Objects;
 
 @JeiPlugin
 public class JEIPlugin implements IModPlugin {
+
+    public static IJeiRuntime jeiRuntime;
 
     @Override
     public ResourceLocation getPluginUid() {
@@ -40,4 +43,19 @@ public class JEIPlugin implements IModPlugin {
         registration.addRecipes(new RecipeType<>(WorkbenchSmeltingRecipeCategory.UID, WorkbenchSmeltingRecipe.class), smeltingRecipes);
 
     }
+
+    @Override
+    public void onRuntimeAvailable(IJeiRuntime jeiRuntime) {
+//        CraftTracker.LOGGER.debug("CTPlugin#onRuntimeAvailable: {}", jeiRuntime);
+
+        JEIPlugin.jeiRuntime = jeiRuntime;
+
+//        // TODO: move this elsewhere to remove hard dependency on JEI
+//        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
+//            Player player = Minecraft.getInstance().player;
+//            CraftingQueueManager.INSTANCE.load(player);
+//            ShoppingListManager.INSTANCE.load(player);
+//        });
+    }
+
 }

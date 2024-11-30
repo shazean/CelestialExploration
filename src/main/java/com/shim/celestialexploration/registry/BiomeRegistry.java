@@ -63,12 +63,17 @@ public class BiomeRegistry {
 //    public static final RegistryObject<Biome> IO_PLAINS = BIOMES.register("io_plains", IoBiomes::plains);
 
     //EUROPA
-    public static final RegistryObject<Biome> EUROPA_DESERT = BIOMES.register("europa_desert", EuropaBiomes::desert);
-    public static final RegistryObject<Biome> EUROPA_LOWER_PLAINS = BIOMES.register("europa_lower_plains", EuropaBiomes::plains);
-    public static final RegistryObject<Biome> EUROPA_PLAINS = BIOMES.register("europa_plains", EuropaBiomes::plains);
-    public static final RegistryObject<Biome> EUROPA_JAGGED_PLAINS = BIOMES.register("europa_jagged_plains", EuropaBiomes::plains);
-    public static final RegistryObject<Biome> EUROPA_OCEAN = BIOMES.register("europa_ocean", EuropaBiomes::ocean);
-    public static final RegistryObject<Biome> EUROPA_RIVER = BIOMES.register("europa_river", EuropaBiomes::river);
+    public static final RegistryObject<Biome> EUROPA_DESERT = BIOMES.register("europa_desert", MoonBiomes::desert);
+    public static final RegistryObject<Biome> EUROPA_LOWER_PLAINS = BIOMES.register("europa_lower_plains", MoonBiomes::plains);
+    public static final RegistryObject<Biome> EUROPA_PLAINS = BIOMES.register("europa_plains", MoonBiomes::plains);
+    public static final RegistryObject<Biome> EUROPA_JAGGED_PLAINS = BIOMES.register("europa_jagged_plains", MoonBiomes::plains);
+    public static final RegistryObject<Biome> EUROPA_OCEAN = BIOMES.register("europa_ocean", MoonBiomes::ocean);
+    public static final RegistryObject<Biome> EUROPA_RIVER = BIOMES.register("europa_river", MoonBiomes::river);
+
+    public static final RegistryObject<Biome> CALLISTO_CRATERED_PLAINS = BIOMES.register("callisto_cratered_plains", MoonBiomes::craters);
+    public static final RegistryObject<Biome> CALLISTO_DESERT = BIOMES.register("callisto_desert", MoonBiomes::desert);
+    public static final RegistryObject<Biome> CALLISTO_LOWER_PLAINS = BIOMES.register("callisto_lower_plains", MoonBiomes::desert);
+    public static final RegistryObject<Biome> CALLISTO_PLAINS = BIOMES.register("callisto_plains", MoonBiomes::plains);
 
 
     //---- FOR DATAPACK/PRESETS -------------------------------------------------------------------------------

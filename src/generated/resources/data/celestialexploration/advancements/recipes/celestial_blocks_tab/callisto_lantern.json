@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "celestialexploration:callisto_lantern"
+    ]
+  },
+  "criteria": {
+    "has_callisto_dust": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:callisto_dust"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "celestialexploration:callisto_lantern"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_callisto_dust",
+      "has_the_recipe"
+    ]
+  ]
+}

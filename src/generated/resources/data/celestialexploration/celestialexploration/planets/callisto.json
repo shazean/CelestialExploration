@@ -1,0 +1,13 @@
+{
+  "target_dimension": "celestialexploration:callisto",
+  "spawn_chunk_coordinates": {
+    "x": 6,
+    "z": 2
+  },
+  "blocks": [
+    "celestialexploration:callisto_core",
+    "minecraft:ice",
+    "celestialexploration:moon_cobbled_deepslate",
+    "celestialexploration:coarse_moon_sand"
+  ]
+}

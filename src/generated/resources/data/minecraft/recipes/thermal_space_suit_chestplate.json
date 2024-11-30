@@ -14,7 +14,7 @@
       "tag": "forge:gems/diamond"
     },
     "W": {
-      "item": "minecraft:white_wool"
+      "tag": "minecraft:wool"
     }
   },
   "result": {

@@ -16,12 +16,10 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.client.ISkyRenderHandler;
 
 public class JupiterSkyHandler extends AbstractSkyHandler {
-//    ResourceLocation FADED_SUN_LOCATION = new ResourceLocation(CelestialExploration.MODID, "textures/environment/faded_sun.png");
     ResourceLocation EUROPA_LOCATION = new ResourceLocation(CelestialExploration.MODID, "textures/environment/europa_phases.png");
     ResourceLocation IO_LOCATION = new ResourceLocation(CelestialExploration.MODID, "textures/environment/io_phases.png");
     ResourceLocation CALLISTO_LOCATION = new ResourceLocation(CelestialExploration.MODID, "textures/environment/callisto_phases.png");
     ResourceLocation GANYMEDE_LOCATION = new ResourceLocation(CelestialExploration.MODID, "textures/environment/ganymede_phases.png");
-    ResourceLocation STAR_LOCATION = new ResourceLocation(CelestialExploration.MODID, "textures/environment/stars.png");
 
     @Override
     public void render(int ticks, float partialTick, PoseStack poseStack, ClientLevel level, Minecraft minecraft) {
@@ -31,8 +29,6 @@ public class JupiterSkyHandler extends AbstractSkyHandler {
         float y = (float) vec3.y;
         float z = (float) vec3.z;
         FogRenderer.levelFogColor();
-
-//        FogRenderer.setupFog(minecraft.gameRenderer.getMainCamera(), FogRenderer.FogMode.FOG_SKY, minecraft.gameRenderer.getRenderDistance() - 3, level.isRaining(), partialTick);
 
         BufferBuilder bufferbuilder = Tesselator.getInstance().getBuilder();
         RenderSystem.depthMask(false);
@@ -72,7 +68,6 @@ public class JupiterSkyHandler extends AbstractSkyHandler {
         RenderSystem.enableTexture();
         RenderSystem.blendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
 
-
         poseStack.pushPose();
         if (level.isRaining()) {
             RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 0.3F);
@@ -93,141 +88,14 @@ public class JupiterSkyHandler extends AbstractSkyHandler {
         bufferbuilder.end();
         BufferUploader.end(bufferbuilder);
 
-
         renderMoon(poseStack, level, partialTick, 0.0F, 0.0F, EUROPA_LOCATION);
         renderMoon(poseStack, level, partialTick, 10.0F, 10.0F, IO_LOCATION);
         renderMoon(poseStack, level, partialTick, -20.0F, 20.0F, CALLISTO_LOCATION);
         renderMoon(poseStack, level, partialTick, 30.0F, -30.0F, GANYMEDE_LOCATION);
 
-//        poseStack.pushPose();
-//        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-//        RenderSystem.setShader(GameRenderer::getPositionTexShader);
-//
-//        poseStack.mulPose(Vector3f.XP.rotationDegrees(level.getTimeOfDay(partialTick) * 360.0F));
-//
-//        f12 = 18.0F;
-//        RenderSystem.setShaderTexture(0, EUROPA_LOCATION);
-//        int k = level.getMoonPhase();
-//        int l = k % 4;
-//        int i1 = k / 4 % 2;
-//        float f13 = (float) (l) / 4.0F;
-//        float f14 = (float) (i1) / 2.0F;
-//        float f15 = (float) (l + 1) / 4.0F;
-//        float f16 = (float) (i1 + 1) / 2.0F;
-//        bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
-//        bufferbuilder.vertex(matrix4f1, -f12, -100.0F, f12).uv(f15, f16).endVertex();
-//        bufferbuilder.vertex(matrix4f1, f12, -100.0F, f12).uv(f13, f16).endVertex();
-//        bufferbuilder.vertex(matrix4f1, f12, -100.0F, -f12).uv(f13, f14).endVertex();
-//        bufferbuilder.vertex(matrix4f1, -f12, -100.0F, -f12).uv(f15, f14).endVertex();
-//        bufferbuilder.end();
-//        BufferUploader.end(bufferbuilder);
-//
-//        poseStack.popPose();
-
-//        poseStack.pushPose();
-//        poseStack.mulPose(Vector3f.XP.rotationDegrees(level.getTimeOfDay(partialTick) * 360.0F - 10.0F));
-//
-//        RenderSystem.setShaderTexture(0, IO_LOCATION);
-//        k = level.getMoonPhase();
-//        l = k % 4;
-//        i1 = k / 4 % 2;
-//        f13 = (float) (l) / 4.0F;
-//        f14 = (float) (i1) / 2.0F;
-//        f15 = (float) (l + 1) / 4.0F;
-//        f16 = (float) (i1 + 1) / 2.0F;
-//        bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
-//        bufferbuilder.vertex(matrix4f1, -f12, -100.0F, f12).uv(f15, f16).endVertex();
-//        bufferbuilder.vertex(matrix4f1, f12, -100.0F, f12).uv(f13, f16).endVertex();
-//        bufferbuilder.vertex(matrix4f1, f12, -100.0F, -f12).uv(f13, f14).endVertex();
-//        bufferbuilder.vertex(matrix4f1, -f12, -100.0F, -f12).uv(f15, f14).endVertex();
-//        bufferbuilder.end();
-//        BufferUploader.end(bufferbuilder);
-//
-//        poseStack.popPose();
-
-//        poseStack.pushPose();
-//        poseStack.mulPose(Vector3f.XP.rotationDegrees(level.getTimeOfDay(partialTick) * 360.0F - 5.0F));
-//
-//
-//        RenderSystem.setShaderTexture(0, CALLISTO_LOCATION);
-//        k = level.getMoonPhase();
-//        l = k % 4;
-//        i1 = k / 4 % 2;
-//        f13 = (float) (l) / 4.0F;
-//        f14 = (float) (i1) / 2.0F;
-//        f15 = (float) (l + 1) / 4.0F;
-//        f16 = (float) (i1 + 1) / 2.0F;
-//        bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
-//        bufferbuilder.vertex(matrix4f1, -f12, -100.0F, f12).uv(f15, f16).endVertex();
-//        bufferbuilder.vertex(matrix4f1, f12, -100.0F, f12).uv(f13, f16).endVertex();
-//        bufferbuilder.vertex(matrix4f1, f12, -100.0F, -f12).uv(f13, f14).endVertex();
-//        bufferbuilder.vertex(matrix4f1, -f12, -100.0F, -f12).uv(f15, f14).endVertex();
-//        bufferbuilder.end();
-//        BufferUploader.end(bufferbuilder);
-//
-//        poseStack.popPose();
-//
-//        poseStack.pushPose();
-//        poseStack.mulPose(Vector3f.XP.rotationDegrees(level.getTimeOfDay(partialTick) * 360.0F - 7.0F));
-//        poseStack.mulPose(Vector3f.ZP.rotationDegrees(-10.0F));
-//
-//        RenderSystem.setShaderTexture(0, GANYMEDE_LOCATION);
-//        k = level.getMoonPhase() + 7;
-//        l = k % 4;
-//        i1 = k / 4 % 2;
-//        f13 = (float) (l) / 4.0F;
-//        f14 = (float) (i1) / 2.0F;
-//        f15 = (float) (l + 1) / 4.0F;
-//        f16 = (float) (i1 + 1) / 2.0F;
-//        bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
-//        bufferbuilder.vertex(matrix4f1, -f12, -100.0F, f12).uv(f15, f16).endVertex();
-//        bufferbuilder.vertex(matrix4f1, f12, -100.0F, f12).uv(f13, f16).endVertex();
-//        bufferbuilder.vertex(matrix4f1, f12, -100.0F, -f12).uv(f13, f14).endVertex();
-//        bufferbuilder.vertex(matrix4f1, -f12, -100.0F, -f12).uv(f15, f14).endVertex();
-//
-//        bufferbuilder.end();
-//        BufferUploader.end(bufferbuilder);
-//
-//        poseStack.popPose();
-
         poseStack.popPose();
 
         renderStars(poseStack, level, partialTick);
         RenderSystem.depthMask(true);
-    }
-
-    private void renderMoon(PoseStack poseStack, ClientLevel level, float partialTick, float xRotation, float zRotation, ResourceLocation moonTexture) {
-        poseStack.pushPose();
-        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-        RenderSystem.setShader(GameRenderer::getPositionTexShader);
-        Tesselator tesselator = Tesselator.getInstance();
-        BufferBuilder bufferbuilder = tesselator.getBuilder();
-        Matrix4f matrix4f = poseStack.last().pose();
-
-        poseStack.mulPose(Vector3f.ZP.rotationDegrees(zRotation));
-
-        float xRot = level.getTimeOfDay(partialTick) * 360.0F / 180.F;
-//        if (xRot > 360.0F) xRot = xRot - 360.0F;
-        poseStack.mulPose(Vector3f.XP.rotationDegrees(xRot));
-        poseStack.mulPose(Vector3f.XP.rotationDegrees(xRotation));
-
-        float size = 18.0F;
-        RenderSystem.setShaderTexture(0, moonTexture);
-        int k = level.getMoonPhase();
-        int l = k % 4;
-        int i1 = k / 4 % 2;
-        float f13 = (float) (l) / 4.0F;
-        float f14 = (float) (i1) / 2.0F;
-        float f15 = (float) (l + 1) / 4.0F;
-        float f16 = (float) (i1 + 1) / 2.0F;
-        bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
-        bufferbuilder.vertex(matrix4f, -size, -100.0F, size).uv(f15, f16).endVertex();
-        bufferbuilder.vertex(matrix4f, size, -100.0F, size).uv(f13, f16).endVertex();
-        bufferbuilder.vertex(matrix4f, size, -100.0F, -size).uv(f13, f14).endVertex();
-        bufferbuilder.vertex(matrix4f, -size, -100.0F, -size).uv(f15, f14).endVertex();
-        bufferbuilder.end();
-        BufferUploader.end(bufferbuilder);
-
-        poseStack.popPose();
     }
 }
