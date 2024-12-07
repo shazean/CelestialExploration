@@ -8,6 +8,47 @@
       "type": "patchouli:spotlight",
       "text": "Venusian bricks can be used to craft a portal to Venus, and then lit using flint and steel.$(br2)Note: Venus portals can only be used from the overworld to Venus.$(br2)This does mean you either need to be in creative mode or visit Venus for the first time using the spaceship!",
       "item": "celestialexploration:venus_bricks"
+    },
+    {
+      "type": "patchouli:link",
+      "url": "https://science.nasa.gov/venus/venus-facts/",
+      "link_text": "NASA",
+      "text": "Keep reading for some fun facts about Venus (credit to Nasa, link below)!"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Morning/Evening Star",
+      "text": "Venus is the third brightest object in the sky as visible from the Earth, after the sun and the moon, respectively.  You may be familiar with its nicknames, the Evening Star and the Morning Star, visible in the sky just after the sun sets or just before the sun rises."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Name",
+      "text": "Venus is named after the Roman goddess of love and beauty.  The ancient Greeks referred to this goddess as Aphrodite.  Venus is the only planet named after a female goddess."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Atmosphere",
+      "text": "Venus has the thickest atmosphere of any planet in our solar system—even thicker than the Earth's. It's mostly composed of carbon dioxide, which creates a very strong greenhouse effect. This means all of the heat on Venus is trapped inside, and the planet does not cool off at night. Venus is even hotter than Mercury, at around 900ºF (475ºC), even though the latter planet is closer to the sun!"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Rotation & Orbit",
+      "text": "Venus rotates the opposite direction of everything else in the solar system. This means the sun rises in the west and sets in the east. Not only that, but it rotates so slowly that a single day on Venus is 243 Earth days long—even longer than a Venus year, which is 225 Earth days! It also has a very slight axial tilt, which means there are no noticeable seasons."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Moons?",
+      "text": "Technically, no! Venus has no moons. However, it does have a small quasi-satellite (also known as a quasi-moon) named Zoozve that was discovered in 2002. A quasi-satellite is an asteroid that orbits the sun (not a planet), but always stays relatively near to a planet, in this case Venus. These have very oblong, unstable orbits and eventually, the quasi-satellite may move away from the planet entirely."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Phases",
+      "text": "Because Venus is closer to the sun than us, it always appears in the sky close to the sun. (This, in addition to its brightness, is why it has earned its nicknames of the Morning Star and Evening Star.) Because of this, our perspective of Venus has phases just like our moon. Interestingly, though, it takes 584 days for Venus to go through a complete cycle."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Surface",
+      "text": "Venus has some of the fewest craters of any celestial body in our solar system, with the exception of Earth. What it has instead is many volcanoes and mountains, some of them even larger than Mount Everest. Between 1961 and 1984, the Soviet Union sent several probes to Venus, and some of them were able to take photos before they were completely fried by Venus's heat. Said photos revealed a rocky landscape and a sulfuric-yellow sky."
     }
   ]
 }

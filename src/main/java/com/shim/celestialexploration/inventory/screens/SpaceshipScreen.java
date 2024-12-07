@@ -10,7 +10,9 @@ import com.shim.celestialexploration.capabilities.LightTravelCapability;
 import com.shim.celestialexploration.inventory.menus.SpaceshipMenu;
 import com.shim.celestialexploration.registry.CapabilityRegistry;
 import com.shim.celestialexploration.registry.DimensionRegistry;
+import com.shim.celestialexploration.util.CelestialUtil;
 import com.shim.celestialexploration.util.Keybinds;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
@@ -175,9 +177,12 @@ public class SpaceshipScreen extends AbstractContainerScreen<SpaceshipMenu> {
             this.renderComponentTooltip(poseStack, this.tooltip, mouseX, mouseY);
         } else if (isHovering(x - i - 32 + 4 + bottomStart, y - j + 29, bottomTabWidth, 28, mouseX, mouseY)) {
             tooltip = Lists.newArrayList();
-            this.tooltip.add(new TranslatableComponent("celestialexploration.spaceship.tab.light_travel"));
-            if (!lightTravelAllowed)
-                this.tooltip.add(new TranslatableComponent("celestialexploration.spaceship.tab.light_travel_hint"));
+            if (!lightTravelAllowed) {
+                this.tooltip.add(new TranslatableComponent("celestialexploration.spaceship.tab.light_travel").withStyle(ChatFormatting.GRAY));
+                this.tooltip.add(new TranslatableComponent("celestialexploration.spaceship.tab.light_travel_hint").withStyle(ChatFormatting.GRAY));
+            } else {
+                this.tooltip.add(new TranslatableComponent("celestialexploration.spaceship.tab.light_travel"));
+            }
             this.renderComponentTooltip(poseStack, this.tooltip, mouseX, mouseY);
         }
     }
@@ -245,6 +250,39 @@ public class SpaceshipScreen extends AbstractContainerScreen<SpaceshipMenu> {
 
             if (travelCap != null) {
                 TextComponent travelTooltip = new TextComponent(new TranslatableComponent("celestialexploration.spaceship.travel.message_1").getString() + Keybinds.SPACESHIP_LIGHT_TRAVEL.getTranslatedKeyMessage().getString() + new TranslatableComponent("celestialexploration.spaceship.travel.message_2").getString());
+                TranslatableComponent travelUnavailable = new TranslatableComponent("celestialexploration.spaceship.travel_unavailable");
+
+                if (!travelCap.hasBeenToMercury() && isHovering(x - i + 75 + 26 - 1, y - j + 73 + 12 - 1, 5, 5, mouseX, mouseY)) {
+                    tooltip = Lists.newArrayList();
+                    this.tooltip.add(CelestialUtil.getPlanetDetail(1).name());
+                    this.tooltip.add(travelUnavailable);
+                    this.tooltip.add(CelestialUtil.getPlanetDetail(1).location());
+                    this.renderComponentTooltip(poseStack, this.tooltip, mouseX, mouseY);
+                } else if (!travelCap.hasBeenToVenus() && isHovering(x - i + 75 + 12 - 1, y - j + 73 + 29 - 1, 6, 6, mouseX, mouseY)) {
+                    tooltip = Lists.newArrayList();
+                    this.tooltip.add(CelestialUtil.getPlanetDetail(2).name());
+                    this.tooltip.add(travelUnavailable);
+                    this.tooltip.add(CelestialUtil.getPlanetDetail(2).location());
+                    this.renderComponentTooltip(poseStack, this.tooltip, mouseX, mouseY);
+                } else if (!travelCap.hasBeenToSpace() && isHovering(x - i + 75 - 10 - 1, y - j + 73 + 12 - 1, 6, 6, mouseX, mouseY)) {
+                    tooltip = Lists.newArrayList();
+                    this.tooltip.add(CelestialUtil.getPlanetDetail(3).name());
+                    this.tooltip.add(travelUnavailable);
+                    this.tooltip.add(CelestialUtil.getPlanetDetail(3).location());
+                    this.renderComponentTooltip(poseStack, this.tooltip, mouseX, mouseY);
+                } else if (!travelCap.hasBeenToMars() && isHovering(x - i + 75 + 12 - 1, y - j + 73 - 19 - 1, 6, 6, mouseX, mouseY)) {
+                    tooltip = Lists.newArrayList();
+                    this.tooltip.add(CelestialUtil.getPlanetDetail(4).name());
+                    this.tooltip.add(travelUnavailable);
+                    this.tooltip.add(CelestialUtil.getPlanetDetail(4).location());
+                    this.renderComponentTooltip(poseStack, this.tooltip, mouseX, mouseY);
+                } else if (!travelCap.hasBeenToJupiter() && isHovering(x - i + 75 + 56, y - j + 73 + 11, 9, 9, mouseX, mouseY)) {
+                    tooltip = Lists.newArrayList();
+                    this.tooltip.add(CelestialUtil.getPlanetDetail(5).name());
+                    this.tooltip.add(travelUnavailable);
+                    this.tooltip.add(CelestialUtil.getPlanetDetail(5).location());
+                    this.renderComponentTooltip(poseStack, this.tooltip, mouseX, mouseY);
+                }
 
                 if (travelCap.hasBeenToMercury() && isHovering(x - i + 75 + 26 - 1, y - j + 73 + 12 - 1, 5, 5, mouseX, mouseY)) {
                     tooltip = Lists.newArrayList();

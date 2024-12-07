@@ -2,6 +2,7 @@ package com.shim.celestialexploration.entity.layers;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.shim.celestialexploration.CelestialExploration;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.SlimeModel;
@@ -26,7 +27,7 @@ public class RustSlimeOuterLayer<T extends LivingEntity> extends RenderLayer<T, 
     }
 
     public void render(PoseStack p_117470_, MultiBufferSource p_117471_, int p_117472_, T p_117473_, float p_117474_, float p_117475_, float p_117476_, float p_117477_, float p_117478_, float p_117479_) {
-        Minecraft minecraft = Minecraft.getInstance();
+        Minecraft minecraft = CelestialExploration.PROXY.getMinecraft();
         boolean flag = minecraft.shouldEntityAppearGlowing(p_117473_) && p_117473_.isInvisible();
         if (!p_117473_.isInvisible() || flag) {
             VertexConsumer vertexconsumer;

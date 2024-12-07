@@ -8,6 +8,32 @@
       "type": "patchouli:spotlight",
       "text": "Mercurian bricks can be used to craft a portal to Mercury, and then lit using flint and steel.$(br2)Note: Mercurian portals can only be used from the overworld to Mercury.$(br2)This does mean you either need to be in creative mode or visit Mercury for the first time using the spaceship!",
       "item": "celestialexploration:mercury_bricks"
+    },
+    {
+      "type": "patchouli:link",
+      "url": "https://science.nasa.gov/mercury/facts/",
+      "link_text": "NASA",
+      "text": "Keep reading for some fun facts about Mercury (credit to Nasa, link below)!"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Name",
+      "text": "Mercury was named after the fastest Roman god (the Greeks' called the god Hermes), which is pretty aptly named, considering it takes the planet only 88 days to orbit the sun. That means it moves at nearly 29 miles (47 kilometers) per second! (For reference, the Earth moves at almost 19 miles per second.)"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Temperature",
+      "text": "Mercury has no atmosphere, which means it has no way to regulate its temperature. Being so close to the sun, it can get up to 800ºF (430ºC) during the day—but there's nothing to trap that heat in, so at night, the temperature drops -290ºF (-180ºC)!"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Rotation & Orbit",
+      "text": "Mercury's orbit and rotation are pretty strange. Its orbit is eccentric—meaning its shaped like an egg, instead of a circle. It rotates slowly, and completes a rotation in 59 Earth days. However, when it's closest to the sun in its orbit, instead of having a regular sunrise, some parts of the planet instead see the sun repeatedly bob up and down in the sky above and below the horizon before rising for real. Other parts of the surface will see the reverse happen for sunset! This means a complete solar day for Mercury is 176 Earth days."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Surface",
+      "text": "The surface of Mercury is very similar to that of the moon—rocky and covered in craters, but it would appear grey-ish-brown in color. One impact basin, called Caloris, is 960 miles (1500 kilometers) in diameter."
     }
   ]
 }

@@ -8,6 +8,47 @@
       "type": "patchouli:spotlight",
       "text": "Martian bricks can be used to craft a portal to Mars, and then lit using flint and steel.$(br2)Note: Martian portals can only be used from the overworld to Mars.$(br2)This does mean you either need to be in creative mode or visit Mars for the first time using the spaceship!",
       "item": "celestialexploration:mars_bricks"
+    },
+    {
+      "type": "patchouli:link",
+      "url": "https://science.nasa.gov/mars/facts/",
+      "link_text": "NASA",
+      "text": "Keep reading for some fun facts about Mars (credit to Nasa, link below)!"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Name",
+      "text": "Mars was named after the Roman god of war (this was Ares to the ancient Greeks), because of its red color in the sky. In fact, other civilizations also named it due to this attribute, with the ancient Egyptians dubbing it Her Desher, which means the red one."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Atmosphere",
+      "text": "Mars has a thin atmosphere, although it doesn't offer much protection from incoming asteroids and meteors. It also doesn't do much to keep heat in. The sky appears hazy and red because of suspended dust."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Rotation & Orbit",
+      "text": "Mars rotates at a similar speed to Earth, and completes a day in about 24.6 hours. One Martian day is called a sol (short for solar day). A year is 669.6 sols, or about 687 Earth days. Mars also has a similar axial tilt as Earth, which means it has distinct seasons—but they last much longer than Earth's, and are also not consist in length because of Mars' egg-shaped orbit."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Moons",
+      "text": "Mars has two moons, Phobos and Deimos, which are named after the horses that pull the chariot of the Greek god of war, Ares. Both of these moons are likely captured asteroids, and resemble potatoes in shape because they are have too little mass to form a neat sphere."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Origin",
+      "text": "Scientists believe that unlike other moons of other planets that might originate as stolen asteroids, our moon is actually a piece of the Earth, knocked off the then-still-molten planet and into orbit by a large meteorite hitting the Earth."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Surface",
+      "text": "The Red Planet appears red because of oxidization (or rusting) of iron in the rocks, regolith, and dust. This dust gets kicked up into the air, and makes the entire planet seem mostly red, although the surface can contain other shades of brown, gold, and tan."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Surface Features",
+      "text": "Mars is home to two massive features—Olympus Mons, the largest volcano in the solar system, and Valles Marineris, a massive canyon. Olympus Mons is three times as tall as Mount Everest, but it appears very flat, because its base is the size of the US state of New Mexico! Valles Marineris is 3,000 miles (4,800 kilometers) long, 200 miles (320 kilometers) wide at its widest point, and 4.3 (7 kilometers) deep at its deepest. This puts it about 10 times larger than the Grand Canyon."
     }
   ]
 }

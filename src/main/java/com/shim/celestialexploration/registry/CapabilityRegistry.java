@@ -14,6 +14,7 @@ import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.common.capabilities.CapabilityToken;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
+import net.minecraftforge.fluids.capability.templates.FluidHandlerItemStack;
 
 public class CapabilityRegistry {
 
@@ -33,6 +34,9 @@ public class CapabilityRegistry {
     public static void attachItemCapabilities(AttachCapabilitiesEvent<ItemStack> eventIn) {
         if (eventIn.getObject().getItem() == ItemRegistry.LOX_TANK.get()) {
             eventIn.addCapability(new ResourceLocation(CelestialExploration.MODID, "lox_tank_item"), new LoxTankCapability.LoxTankCapabilityProvider());
+        }
+        if (eventIn.getObject().getItem() == ItemRegistry.FLUID_BASIN.get()) {
+            eventIn.addCapability(new ResourceLocation(CelestialExploration.MODID, "basin"), new FluidHandlerItemStack(ItemRegistry.FLUID_BASIN.get().getDefaultInstance(), 4000));
         }
     }
 

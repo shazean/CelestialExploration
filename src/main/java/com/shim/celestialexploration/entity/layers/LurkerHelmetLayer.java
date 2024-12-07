@@ -2,6 +2,7 @@ package com.shim.celestialexploration.entity.layers;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
+import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.entity.mob.Lurker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.CreeperModel;
@@ -26,7 +27,7 @@ public class LurkerHelmetLayer extends RenderLayer<Lurker, CreeperModel<Lurker>>
         poseStack.scale(-0.72F, -0.72F, 0.72F);
 
         poseStack.mulPose(Vector3f.XP.rotationDegrees(90.0F));
-        Minecraft.getInstance().getBlockRenderer().renderSingleBlock(blockState, poseStack, bufferSource, p_117009_, OverlayTexture.NO_OVERLAY);
+        CelestialExploration.PROXY.getMinecraft().getBlockRenderer().renderSingleBlock(blockState, poseStack, bufferSource, p_117009_, OverlayTexture.NO_OVERLAY);
         poseStack.popPose();
     }
 }

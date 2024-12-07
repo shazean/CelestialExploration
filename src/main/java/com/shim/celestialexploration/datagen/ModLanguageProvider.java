@@ -61,9 +61,9 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(FluidRegistry.MOLTEN_ALUMINUM_BLOCK.get(), "Molten Aluminum");
 		add("fluid.celestialexploration.molten_aluminum", "Molten Aluminum");
 		add(FluidRegistry.SULFUR_BUCKET.get(), "Sulfur Bucket");
-		add(FluidRegistry.METALLIC_HYDROGEN_BLOCK.get(), "Metallic Hydrogen");
-		add("fluid.celestialexploration.metallic_hydrogen", "Metallic Hydrogen");
-		add(FluidRegistry.METALLIC_HYDROGEN_BUCKET.get(), "Metallic Hydrogen Bucket");
+		add(FluidRegistry.METALLIC_HYDROGEN_BLOCK.get(), "Liquid Metallic Hydrogen");
+		add("fluid.celestialexploration.metallic_hydrogen", "Liquid Metallic Hydrogen");
+		add(FluidRegistry.METALLIC_HYDROGEN_BUCKET.get(), "Liquid Metallic Hydrogen Bucket");
 
 		//---- BIOMES -------------------------------------------------------------------------------
 		add(getBiomeString(CelestialBiomeKeys.MOON_CRATERS), "Lunar Craters");
@@ -141,14 +141,12 @@ public class ModLanguageProvider extends LanguageProvider {
 		add("key.celestialexploration.open_spaceship_inventory", "Open Spaceship Inventory");
 		add("key.celestialexploration.spaceship_light_travel", "Spaceship Light Speed Travel");
 
-
 		//---- DAMAGE SOURCES -------------------------------------------------------------------------------
 		add("death.attack.celestialexploration.touched_sun", "%1$s discovered the sun is hot");
 		add("death.attack.celestialexploration.cold_floor", "%1$s got cold feet");
 		add("death.attack.celestialexploration.sulfur", "%1$s tried to swim in sulfur");
 		add("death.attack.celestialexploration.metallic_hydrogen", "%1$s drowned in death metal");
 		add("death.attack.celestialexploration.dust_storm", "%1$s was sand blasted to death");
-
 
 		//---- ADVANCEMENTS -------------------------------------------------------------------------------
 		add("advancements.celestial.root.title", "Exploration");
@@ -186,9 +184,14 @@ public class ModLanguageProvider extends LanguageProvider {
 		add("celestialexploration.spaceship.travel.message_2", " for light speed travel");
 		add("celestialexploration.spaceship.travel.cooldown", "Light speed travel cooldown: ");
 
+		add("celestialexploration.spaceship.travel_unavailable", "Light speed travel unavailable at this location");
+
+
 		add("celestialexploration.spaceship.tab.inventory", "Inventory");
 		add("celestialexploration.spaceship.tab.light_travel", "Light Speed Travel");
 		add("celestialexploration.spaceship.tab.light_travel_hint", "Access this feature when in space");
+
+
 
 		//---- RECIPE-RELATED -------------------------------------------------------------------------------
 		add("recipe.celestialexploration.workbench.smelting", "Workbench Smelting");
@@ -250,6 +253,10 @@ public class ModLanguageProvider extends LanguageProvider {
 		add("item.celestialexploration.door.hangar_door", "One hinge can support up to 32 wide (inclusive). Double hinge can support up to 64 wide (inclusive). No max height.");
 
 		add("celestialexploration.spaceship.space_min_height", "Warning! Approaching dangerous depths of space!");
+
+		add("celestialexploration.display_board.edit", "Edit Display Board Message");
+
+
 
 
 

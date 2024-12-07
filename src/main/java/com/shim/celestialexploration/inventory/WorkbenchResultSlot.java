@@ -19,7 +19,10 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 
 import java.util.List;
 import java.util.Optional;
@@ -43,9 +46,6 @@ public class WorkbenchResultSlot extends Slot {
         if (this.hasItem()) {
             this.removeCount += Math.min(p_40173_, this.getItem().getCount());
         }
-
-        CelestialExploration.LOGGER.debug("workbenchResultSlot: remove");
-
         return super.remove(p_40173_);
     }
 
@@ -59,22 +59,15 @@ public class WorkbenchResultSlot extends Slot {
     }
 
     protected void checkTakeAchievements(ItemStack itemStack) {
-        CelestialExploration.LOGGER.debug("checkTakeAchievements");
-
-        CelestialExploration.LOGGER.debug("checkTakeAchievements, player is:" + this.player + ", container is: " + this.container);
-
-
 //        if (this.player instanceof ServerPlayer && this.container instanceof RecipeHolder) {
 //            CelestialExploration.LOGGER.debug("checkTakeAchievements, serverPlayer, is workbenchBlockEntity");
 //            ((WorkbenchBlockEntity)this.container).awardUsedRecipesAndPopExperience((ServerPlayer)this.player);
 //        }
 
-
         if (this.removeCount > 0) {
             itemStack.onCraftedBy(this.player.level, this.player, this.removeCount);
             net.minecraftforge.event.ForgeEventFactory.firePlayerCraftingEvent(this.player, itemStack, this.craftSlots);
         }
-
 
         //TODO grant experience
 
@@ -118,24 +111,17 @@ public class WorkbenchResultSlot extends Slot {
 //    }
 
     private static void createExperience(ServerLevel level, Vec3 position, int p_155001_, float p_155002_) {
-        CelestialExploration.LOGGER.debug("createExperience, int: " + p_155001_ + "float: " + p_155002_);
-
         int i = Mth.floor((float)p_155001_ * p_155002_);
         float f = Mth.frac((float)p_155001_ * p_155002_);
         if (f != 0.0F && Math.random() < (double)f) {
             ++i;
         }
 
-        CelestialExploration.LOGGER.debug("createExperience, i:" + i);
-
-
         ExperienceOrb.award(level, position, i);
-
     }
 
-    public void onTake(Player player, ItemStack p_150639_) {
-        this.checkTakeAchievements(p_150639_);
-
+    public void onTake(Player player, ItemStack stack) {
+        this.checkTakeAchievements(stack);
 
         net.minecraftforge.common.ForgeHooks.setCraftingPlayer(player);
         NonNullList<ItemStack> nonnulllist = player.level.getRecipeManager().getRemainingItemsFor(WorkbenchCraftingRecipe.Type.INSTANCE, this.craftSlots, player.level);
@@ -143,6 +129,39 @@ public class WorkbenchResultSlot extends Slot {
 
         Optional<WorkbenchCraftingRecipe> recipe = player.level.getRecipeManager().getRecipeFor(WorkbenchCraftingRecipe.Type.INSTANCE, this.craftSlots, player.level);
 
+        IFluidHandlerItem cap = CelestialExploration.getCapability(stack, CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY);
+
+        if (cap != null) {
+
+            CelestialExploration.LOGGER.debug("fluidJustAdded: " + this.craftSlots.getFluidToLeaveBehind());
+            FluidStack fluidToLeaveBehind = new FluidStack(this.craftSlots.getTank().getFluid(), this.craftSlots.getFluidToLeaveBehind());
+            this.craftSlots.getTank().drain(this.craftSlots.getTank().getTankCapacity(0), IFluidHandler.FluidAction.EXECUTE);
+            this.craftSlots.getTank().fill(fluidToLeaveBehind, IFluidHandler.FluidAction.EXECUTE);
+
+            this.craftSlots.setFluidAmount(this.craftSlots.getTank().getFluidAmount());
+
+            this.craftSlots.resetFluidToLeaveBehind();
+
+            for (int i = 0; i < nonnulllist.size(); ++i) {
+                ItemStack itemstack = this.craftSlots.getItem(i);
+                ItemStack itemstack1 = nonnulllist.get(i);
+                if (!itemstack.isEmpty()) {
+                    this.craftSlots.removeItem(i, 1);
+                    itemstack = this.craftSlots.getItem(i);
+                }
+
+                if (!itemstack1.isEmpty()) {
+                    if (itemstack.isEmpty()) {
+                        this.craftSlots.setItem(i, itemstack1);
+                    } else if (ItemStack.isSame(itemstack, itemstack1) && ItemStack.tagMatches(itemstack, itemstack1)) {
+                        itemstack1.grow(itemstack.getCount());
+                        this.craftSlots.setItem(i, itemstack1);
+                    } else if (!this.player.getInventory().add(itemstack1)) {
+                        this.player.drop(itemstack1, false);
+                    }
+                }
+            }
+        }
 
 
         if (recipe.isPresent()) {

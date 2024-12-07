@@ -27,6 +27,11 @@
     },
     {
       "type": "patchouli:text",
+      "title": "Light Speed Travel",
+      "text": "Once you've visited a planet before, while using a spaceship in space, you will be able to use light speed travel to quickly get to that area of space again. There is a cooldown, but the more you use it, the shorter it gets.$(br2)Check it out from the spaceship inventory!"
+    },
+    {
+      "type": "patchouli:text",
       "title": "Portals?",
       "text": "Yes! You can use the stone bricks from each dimension to craft a portal.  All portals can be lit with flint and steel."
     }

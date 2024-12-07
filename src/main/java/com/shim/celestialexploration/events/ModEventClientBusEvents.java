@@ -75,7 +75,6 @@ public class ModEventClientBusEvents {
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.LUMINOUS_WHITE_GLASS.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.LUMINOUS_CYAN_GLASS.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.LUMINOUS_MAGENTA_GLASS.get(), RenderType.translucent());
-
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.LUMINOUS_MAGENTA_GLASS_PANE.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.LUMINOUS_CYAN_GLASS_PANE.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.LUMINOUS_BLUE_GLASS_PANE.get(), RenderType.translucent());
@@ -134,7 +133,6 @@ public class ModEventClientBusEvents {
 
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.PENITENTE.get(), RenderType.cutout());
 
-
         EntityRenderers.register(EntityRegistry.RUST_SLIME.get(), RustSlimeRenderer::new);
         EntityRenderers.register(EntityRegistry.LUNAR_SLIME.get(), LunarSlimeRenderer::new);
         EntityRenderers.register(EntityRegistry.QUICKSILVER_SLIME.get(), QuicksilverSlimeRenderer::new);
@@ -166,7 +164,7 @@ public class ModEventClientBusEvents {
         EntityRenderers.register(EntityRegistry.VOID_CRAWLER.get(), VoidCrawlerRenderer::new);
         EntityRenderers.register(EntityRegistry.CELESTIAL_CAT.get(), CelestialCatRenderer::new);
         EntityRenderers.register(EntityRegistry.EUREKA.get(), EurekaRenderer::new);
-
+        EntityRenderers.register(EntityRegistry.METEOR.get(), MeteorRenderer::new);
 
         MenuScreens.register(MenuRegistry.OXYGEN_COMPRESSOR_MENU.get(), OxygenCompressorScreen::new);
         MenuScreens.register(MenuRegistry.PLANET_CHART_MENU.get(), PlanetChartScreen::new);
@@ -179,7 +177,10 @@ public class ModEventClientBusEvents {
 
         RecipeBookCategories.create("celestialexploration:workbench_crafting",  new ItemStack[] { new ItemStack((ItemLike)BlockRegistry.WORKBENCH.get()) });
         RecipeBookCategories.create("celestialexploration:workbench_smelting", new ItemStack(BlockRegistry.WORKBENCH.get()));
-
     }
 
+    @SubscribeEvent
+    public static void onRegisterRenderers(EntityRenderersEvent.RegisterRenderers event) {
+//        event.registerBlockEntityRenderer(BlockEntityRegistry.DISPLAY_BOARD_BLOCK_ENTITY.get(), DisplayBoardRenderer::new);
+    }
 }

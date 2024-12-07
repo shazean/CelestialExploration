@@ -25,6 +25,9 @@ public class BlockEntityRegistry {
 
     public static final RegistryObject<BlockEntityType<SolarPanelBlockEntity>> SOLAR_PANEL_BLOCK_ENTITY = BLOCK_ENTITIES.register("solar_panel", () -> BlockEntityType.Builder.of(SolarPanelBlockEntity::new, BlockRegistry.SOLAR_PANEL.get()).build(null));
 
+//    public static final RegistryObject<BlockEntityType<DisplayBoardBlockEntity>> DISPLAY_BOARD_BLOCK_ENTITY = BLOCK_ENTITIES.register("display_board", () -> BlockEntityType.Builder.of(DisplayBoardBlockEntity::new, BlockRegistry.RED_DISPLAY_BOARD.get(), BlockRegistry.BLACK_DISPLAY_BOARD.get(), BlockRegistry.BLUE_DISPLAY_BOARD.get(), BlockRegistry.WHITE_DISPLAY_BOARD.get(), BlockRegistry.RED_WALL_DISPLAY_BOARD.get(), BlockRegistry.BLACK_WALL_DISPLAY_BOARD.get(), BlockRegistry.BLUE_WALL_DISPLAY_BOARD.get(), BlockRegistry.WHITE_WALL_DISPLAY_BOARD.get()).build(null));
+
+
     public static final RegistryObject<BlockEntityType<TaxiStationBlockEntity>> TAXI_STATION_BLOCK_ENTITY = BLOCK_ENTITIES.register("taxi_station", () -> BlockEntityType.Builder.of(TaxiStationBlockEntity::new, BlockRegistry.TAXI_STATION.get()).build(null));
 
 }

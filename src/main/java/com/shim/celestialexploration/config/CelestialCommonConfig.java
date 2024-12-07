@@ -12,6 +12,7 @@ public class CelestialCommonConfig {
     public static final ForgeConfigSpec.ConfigValue<Double> SPACESHIP_SPEED;
     public static final ForgeConfigSpec.ConfigValue<Boolean> SPACESHIP_FASTER_IN_SPACE;
     public static final ForgeConfigSpec.ConfigValue<Boolean> STORMS;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> METEORS_EXPLODE;
     public static final ForgeConfigSpec.ConfigValue<Integer> SPACESHIP_LIGHT_TRAVEL_MAX_COOLDOWN;
     public static final ForgeConfigSpec.ConfigValue<Integer> SPACESHIP_LIGHT_TRAVEL_COOLDOWN_DECREMENT;
     public static final ForgeConfigSpec.ConfigValue<Integer> SPACESHIP_LIGHT_TRAVEL_MIN_COOLDOWN;
@@ -26,6 +27,7 @@ public class CelestialCommonConfig {
         SPACESHIP_SPEED = BUILDER.comment("Speed of the spaceship").defineInRange("Spaceship Speed", 1.0D, 0.40D, 1.80D);
         SPACESHIP_FASTER_IN_SPACE = BUILDER.comment("Should the spaceship move faster through the space dimension?").define("Spaceship Faster in Space", true);
         STORMS = BUILDER.comment("Should there be storms on appropriate planets, i.e. dust storms on Mars? If true, storms will occur when it's raining on the overworld").define("Storms", true);
+        METEORS_EXPLODE = BUILDER.comment("Should meteors cause an explosion when they hit the ground? (Like creeper explosions)").define("Meteor Explosions", true);
 
         SPACESHIP_LIGHT_TRAVEL_MAX_COOLDOWN = BUILDER.comment("What the max cooldown is, in ticks, after the first time you use the spaceship light speed travel to a particular location").defineInRange("Spaceship Max Cooldown", 24000, 6000, 96000);
         SPACESHIP_LIGHT_TRAVEL_COOLDOWN_DECREMENT = BUILDER.comment("How much the max cooldown drops, in ticks, after each subsequent time using spaceship light speed travel to that specific place").defineInRange("Spaceship Cooldown Decrement", 300, 0, 1600);

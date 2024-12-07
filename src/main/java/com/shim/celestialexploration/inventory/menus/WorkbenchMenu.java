@@ -1,12 +1,15 @@
 package com.shim.celestialexploration.inventory.menus;
 
+import com.google.common.collect.ImmutableSet;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.blocks.blockentities.WorkbenchBlockEntity;
 import com.shim.celestialexploration.inventory.FuelSlot;
 import com.shim.celestialexploration.inventory.WorkbenchResultSlot;
 import com.shim.celestialexploration.inventory.containers.WorkbenchCraftingContainer;
+import com.shim.celestialexploration.item.BasinItem;
 import com.shim.celestialexploration.recipes.WorkbenchCraftingRecipe;
 import com.shim.celestialexploration.registry.BlockRegistry;
+import com.shim.celestialexploration.registry.ItemRegistry;
 import com.shim.celestialexploration.registry.MenuRegistry;
 import com.shim.celestialexploration.util.CelestialUtil;
 import net.minecraft.network.FriendlyByteBuf;
@@ -23,6 +26,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 
@@ -190,11 +195,32 @@ public class WorkbenchMenu extends RecipeBookMenu<WorkbenchCraftingContainer> {
         if (!level.isClientSide) {
             ServerPlayer serverplayer = (ServerPlayer)player;
             ItemStack itemstack = ItemStack.EMPTY;
-//            Optional<CraftingRecipe> optional = level.getServer().getRecipeManager().getRecipeFor(RecipeType.CRAFTING, craftingContainer, level);
             Optional<WorkbenchCraftingRecipe> recipe = level.getRecipeManager().getRecipeFor(WorkbenchCraftingRecipe.Type.INSTANCE, craftingContainer, level);
 
+            if (craftingContainer.hasAnyOf(ImmutableSet.of(ItemRegistry.FLUID_BASIN.get()))) {
+                int index = getIndexOfItem(craftingContainer, ItemRegistry.FLUID_BASIN.get().getDefaultInstance());
+
+                if (index != -1 && canAddFluid(craftingContainer.getItem(index), craftingContainer.getMenu().getFluid())) {
+                    ItemStack existingBasin = craftingContainer.getItem(index);
+                    itemstack = new ItemStack(ItemRegistry.FLUID_BASIN.get());
+
+                    IFluidHandlerItem craftingCap = CelestialExploration.getCapability(existingBasin, CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY);
+                    IFluidHandlerItem resultCap = CelestialExploration.getCapability(itemstack, CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY);
+
+                    if (craftingCap != null && resultCap != null) {
+
+                        int amount = Math.min(resultCap.getTankCapacity(0) - resultCap.getFluidInTank(0).getAmount(), craftingContainer.getMenu().getFluid().getAmount() + craftingCap.getFluidInTank(0).getAmount());
+                        FluidStack fluid = new FluidStack(craftingContainer.getMenu().getFluid().getFluid(), amount);
+
+                        resultCap.fill(fluid, IFluidHandler.FluidAction.EXECUTE);
+                        if (resultCap.getTankCapacity(0) - resultCap.getFluidInTank(0).getAmount() == 0) {
+                            craftingContainer.setFluidToLeaveBehind(craftingCap.getFluidInTank(0).getAmount());
+                        }
+                    }
+                }
+            }
+
             if (recipe.isPresent()) {
-//                CraftingRecipe craftingrecipe = optional.get();
                 WorkbenchCraftingRecipe craftingRecipe = recipe.get();
 
                 if (resultContainer.setRecipeUsed(level, serverplayer, craftingRecipe)) {
@@ -206,6 +232,28 @@ public class WorkbenchMenu extends RecipeBookMenu<WorkbenchCraftingContainer> {
             menu.setRemoteSlot(9, itemstack);
             serverplayer.connection.send(new ClientboundContainerSetSlotPacket(menu.containerId, menu.incrementStateId(), 9, itemstack));
         }
+    }
+
+    protected static boolean canAddFluid(ItemStack basin, FluidStack fluidToAdd) {
+        IFluidHandlerItem cap = CelestialExploration.getCapability(basin, CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY);
+
+        if (cap != null) {
+            if (cap.getFluidInTank(0).isEmpty()) return true;
+            if (!cap.getFluidInTank(0).isFluidEqual(fluidToAdd)) return false;
+//        if (!basin.getFluidHandler().isFluidValid(fluidToAdd)) return false;
+            return (cap.getTankCapacity(0) - cap.getFluidInTank(0).getAmount()) != 0;
+        }
+        return false;
+    }
+
+    public static int getIndexOfItem(WorkbenchCraftingContainer craftingContainer, ItemStack item) {
+        for(int i = 0; i < craftingContainer.getContainerSize(); ++i) {
+            ItemStack itemstack = craftingContainer.getItem(i);
+            if (item.is(itemstack.getItem()) && itemstack.getCount() > 0) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     @Override

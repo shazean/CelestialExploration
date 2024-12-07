@@ -7,6 +7,7 @@ import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -50,6 +51,8 @@ public class CelestialModelLayers {
     public static final ModelLayerLocation LURKER_HEAD = register("lurker_head");
     public static final ModelLayerLocation VOIDED_HEAD = register("voided_head");
 
+
+
     private static ModelLayerLocation registerInnerArmor(String p_171299_) {
         return register(p_171299_, "inner_armor");
     }
@@ -70,6 +73,12 @@ public class CelestialModelLayers {
             return modellayerlocation;
         }
     }
+
+//    public static ModelLayerLocation createDisplayBoardModelName(DisplayBoardBlock.DisplayBoardColors color) {
+//        ResourceLocation location = new ResourceLocation(color.name());
+//        return new ModelLayerLocation(new ResourceLocation(location.getNamespace(), "display_board/" + location.getPath()), "main");
+//    }
+
 
     private static ModelLayerLocation createLocation(String p_171301_, String p_171302_) {
         return new ModelLayerLocation(new ResourceLocation(CelestialExploration.MODID, p_171301_), p_171302_);

@@ -11,13 +11,18 @@
       ]
     },
     "To get water or lava in the fuel slot, simply add the appropriate bucket.$(br2)A fuel source (coal, etc.) is not needed for transferring via buckets.",
-    "The tank holds 8 buckets (8,000mb) worth of fluid. 1 block of iron = 1 bucket of molten iron.$(br2)JEI contains all of the recipes.",
-    "Next, you can craft whatever the desired item is by putting the remaining elements in the crafting grid, like you would a crafting table. After this, it works similar to a crafting table, but will also use up the appropriate amount of fluid in the tank.",
+    "The tank holds 4 buckets (4,000mb) worth of fluid. 1 block of iron = 1 bucket of molten iron.$(br2)JEI contains all of the recipes.",
+    "Next, you can craft whatever the desired item is by putting the remaining elements in the crafting grid, like you would a crafting table. After this, it works similar to a crafting table, but will also use up the appropriate amount of fluid in the tank.$(br2)Note: fluids must be added to the workbench before adding the crafting items.",
     {
       "type": "patchouli:image",
       "images": [
         "celestialexploration:textures/patchouli/workbench_crafting.png"
       ]
+    },
+    "To remove fluid from the workbench, add a fluid basin to a crafting slot.  This fluid basin can be added back to the smelting slots to add the fluid to the workbench. This makes swapping between molten metals easy.",
+    {
+      "type": "patchouli:crafting",
+      "recipe": "celestialexploration:fluid_basin"
     }
   ]
 }

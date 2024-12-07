@@ -2,7 +2,6 @@ package com.shim.celestialexploration.util.teleportation;
 
 import com.google.common.collect.ImmutableList;
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.datagen.util.PlanetTeleport;
 import com.shim.celestialexploration.registry.BlockRegistry;
 import com.shim.celestialexploration.registry.DimensionRegistry;
 import com.shim.celestialexploration.util.CelestialUtil;
@@ -68,18 +67,24 @@ public class TeleportUtil {
     }
 
 
-    private static final Map<ResourceKey<Level>, List<ResourceKey<Level>>> PLANET_MOONS = Util.make(new Object2ObjectArrayMap<>(), (dimension) -> {
+    private static final Map<ResourceKey<Level>, List<ResourceKey<Level>>> PLANET_MOONS_WITH_PLANET = Util.make(new Object2ObjectArrayMap<>(), (dimension) -> {
         dimension.put(DimensionRegistry.MERCURY, null);
         dimension.put(DimensionRegistry.VENUS, null);
         dimension.put(Level.OVERWORLD, ImmutableList.<ResourceKey<Level>>builder().add(DimensionRegistry.MOON).build());
         dimension.put(DimensionRegistry.MARS, null);
         dimension.put(DimensionRegistry.JUPITER, ImmutableList.<ResourceKey<Level>>builder().add(DimensionRegistry.EUROPA).add(DimensionRegistry.CALLISTO).build());
+    });
 
+    private static final List<ResourceKey<Level>> PLANET_MOONS = Util.make(new ArrayList<>(), (dimension) -> {
+        dimension.add(DimensionRegistry.MOON);
+        dimension.add(DimensionRegistry.EUROPA);
+        dimension.add(DimensionRegistry.CALLISTO);
     });
 
     public static void addPlanetMoon(ResourceKey<Level> dimension, List<ResourceKey<Level>> moons) {
-        PLANET_MOONS.put(dimension, moons);
+        PLANET_MOONS_WITH_PLANET.put(dimension, moons);
     }
+
 
     public static ResourceKey<Level> getTeleportLocation(Vec3 location, BlockState blockWeSee) {
         ResourceKey<Level> planet = null;
@@ -87,19 +92,22 @@ public class TeleportUtil {
         ChunkPos planetChunkPos;
 
         //check if we're in the general area of a planet
-        for (ResourceKey<Level> loc : CelestialUtil.getPlanetLocations().keySet()) {//CelestialUtil.CE_DIMENSION_LOCATION.keySet()) { //CelestialUtil.getPlanetLocations().keySet()) {
-
-            planetChunkPos = new ChunkPos((int) CelestialUtil.getPlanetaryChunkCoordinates(loc).x, (int) CelestialUtil.getPlanetaryChunkCoordinates(loc).z);
-            ChunkPos locationChunk = new ChunkPos(new BlockPos(location.x, location.y, location.z));
-            if (CelestialUtil.isInRectangle(planetChunkPos.x, planetChunkPos.z, 6, locationChunk.x, locationChunk.z)) {
-                planet = loc;
-                break;
+        for (ResourceKey<Level> loc : CelestialUtil.getPlanetLocations().keySet()) {
+            //limit to only planets and not any of the moons
+            if (!PLANET_MOONS.contains(loc)) {
+                planetChunkPos = new ChunkPos((int) CelestialUtil.getPlanetaryChunkCoordinates(loc).x, (int) CelestialUtil.getPlanetaryChunkCoordinates(loc).z);
+                ChunkPos locationChunk = new ChunkPos(new BlockPos(location.x, location.y, location.z));
+                if (CelestialUtil.isInRectangle(planetChunkPos.x, planetChunkPos.z, 6, locationChunk.x, locationChunk.z)) {
+                    planet = loc;
+                    break;
+                }
             }
         }
+
         if (planet == null) return null;
 
         //check if what we're looking at matches said planet…
-        List<Block> blocksToComp = getDimensionStructureBlocks(planet); //CE_DIMENSION_STRUCTURE_BLOCKS.get(planet); //DIMENSION_STRUCTURE_BLOCKS.get(planet);
+        List<Block> blocksToComp = getDimensionStructureBlocks(planet);
         if (blocksToComp == null) return null;
 
         for (Block block : blocksToComp) {
@@ -107,19 +115,19 @@ public class TeleportUtil {
             if (block.defaultBlockState().is(blockWeSee.getBlock())) return planet;
         }
         //…or one of its moons
-        moons = PLANET_MOONS.get(planet);
+        moons = PLANET_MOONS_WITH_PLANET.get(planet);
 
         if (moons != null) {
             for (ResourceKey<Level> moon : moons) {
-                blocksToComp = getDimensionStructureBlocks(moon); //CE_DIMENSION_STRUCTURE_BLOCKS.get(moon); //DIMENSION_STRUCTURE_BLOCKS.get(moon);
+                blocksToComp = getDimensionStructureBlocks(moon);
 
                 for (Block block : blocksToComp) {
-
                     //  return moon
                     if (block.defaultBlockState().is(blockWeSee.getBlock())) return moon;
                 }
             }
         }
+        //otherwise, we're not near and/or looking at anything relevant
         return null;
     }
 

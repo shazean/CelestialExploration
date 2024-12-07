@@ -1,0 +1,49 @@
+{
+  "name": "Jupiter",
+  "icon": "celestialexploration:jupiter_deepslate",
+  "category": "celestialexploration:planets",
+  "pages": [
+    "The largest planet!$(br2)Jupiter can be found in space roughly east of the sun, past the asteroid belt.",
+    {
+      "type": "patchouli:spotlight",
+      "text": "Jovian deepslate bricks can be used to craft a portal to Jupiter, and then lit using flint and steel.$(br2)Note: Jovian portals can only be used from the overworld to Jupiter.$(br2)This does mean you either need to be in creative mode or visit Jupiter for the first time using the spaceship!",
+      "item": "celestialexploration:jupiter_deepslate_bricks"
+    },
+    {
+      "type": "patchouli:link",
+      "url": "https://science.nasa.gov/jupiter/jupiter-facts/",
+      "link_text": "NASA",
+      "text": "Keep reading for some fun facts about Jupiter (credit to Nasa, link below)!"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Name",
+      "text": "Jupiter, as the largest planet in our solar system, was named after the king of the Roman gods.  (The Greek counterpart to this god is Zeus.)"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Atmosphere",
+      "text": "One of the most notable things about Jupiter is its amtosphere, which, from space, appears to be made of different colored stripes (called bands). These are composed of massive clouds, storms, and insane winds, up to 335 miles (539 kilometers) an hour! Jupiter's largest storm, The Great Red Spot, has been observed for over 300 years, is twice as wide as Earth's diameter, and over 200 miles tall!"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Rotation & Orbit",
+      "text": "Jupiter has the shortest rotation of any planet, taking only 10 hours to complete a single day; however, Jupiter is far enough from the sun that a year takes 4,333 Earth days!"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Moons",
+      "text": "Jupiter has many, many moons, of varying sizes. The International Astronomical Union recognizes 95 distinct moons currently. The four largest moons, Io, Europa, Ganymede, and Callisto, were discovered by Galileo Galilei and are hence referred to as the Galilean moons."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Rings",
+      "text": "Did you know Jupiter has rings? It does! They were discovered in 1979 by NASA's Voyager 1, and it came as a bit of surprise. They're mostly little, dark particles, and can be hard to see except when backlit by the sun. One theory is that the rings are composed of dust scattered from meteorid impacts on Jupiter's innermost moons."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Surface",
+      "text": "Being a gas giant, Jupiter has no solid surface. However, deep in the atmosphere, the pressure builds, to the point that the hydrogen in the atmosphere is condensed into a liquid—a liquid with some of its electrons squeezed off, making it electrically conductive, like a metal. A spaceship trying to visit would be crushed and vaporized before it made it very far. It is theorized Jupiter may have a solid core, but likely not with a clear transition from the liquid hydrogen."
+    }
+  ]
+}

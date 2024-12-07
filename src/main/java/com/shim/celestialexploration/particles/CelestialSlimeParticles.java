@@ -1,5 +1,6 @@
 package com.shim.celestialexploration.particles;
 
+import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.registry.BlockRegistry;
 import com.shim.celestialexploration.registry.ItemRegistry;
 import com.shim.celestialexploration.registry.TagRegistry;
@@ -33,7 +34,7 @@ public class CelestialSlimeParticles extends TextureSheetParticle {
 
     protected CelestialSlimeParticles(ClientLevel p_105665_, double p_105666_, double p_105667_, double p_105668_, ItemStack p_105669_) {
         super(p_105665_, p_105666_, p_105667_, p_105668_, 0.0D, 0.0D, 0.0D);
-        var model = Minecraft.getInstance().getItemRenderer().getModel(p_105669_, p_105665_, (LivingEntity)null, 0);
+        var model = CelestialExploration.PROXY.getMinecraft().getItemRenderer().getModel(p_105669_, p_105665_, (LivingEntity)null, 0);
         this.setSprite(model.getOverrides().resolve(model, p_105669_, p_105665_, null, 0).getParticleIcon(net.minecraftforge.client.model.data.EmptyModelData.INSTANCE));
         this.gravity = 1.0F;
         this.quadSize /= 2.0F;

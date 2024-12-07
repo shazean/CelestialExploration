@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.blocks.WorkbenchBlock;
 import com.shim.celestialexploration.inventory.menus.WorkbenchMenu;
+import com.shim.celestialexploration.item.BasinItem;
 import com.shim.celestialexploration.recipes.WorkbenchCraftingRecipe;
 import com.shim.celestialexploration.recipes.WorkbenchSmeltingRecipe;
 import com.shim.celestialexploration.registry.BlockEntityRegistry;
@@ -43,6 +44,7 @@ import net.minecraftforge.fluids.FluidAttributes;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 import net.minecraftforge.fluids.capability.templates.FluidTank;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
@@ -203,19 +205,13 @@ public class WorkbenchBlockEntity extends BlockEntity implements MenuProvider {
         if (blockEntity.fluidHandler.getFluidAmount() == 999) {
             blockEntity.fluidHandler.setFluid(new FluidStack(blockEntity.fluidHandler.getFluid(), 1000));
             blockEntity.fluidLevel = 1000;
-        }
-
-        if (blockEntity.fluidHandler.getFluidAmount() == 1999 || blockEntity.fluidHandler.getFluidAmount() == 1998) {
+        } else if (blockEntity.fluidHandler.getFluidAmount() == 1999 || blockEntity.fluidHandler.getFluidAmount() == 1998) {
             blockEntity.fluidHandler.setFluid(new FluidStack(blockEntity.fluidHandler.getFluid(), 2000));
             blockEntity.fluidLevel = 2000;
-        }
-
-        if (blockEntity.fluidHandler.getFluidAmount() >= 2997 && blockEntity.fluidHandler.getFluidAmount() < 3000) {
+        } else if (blockEntity.fluidHandler.getFluidAmount() >= 2997 && blockEntity.fluidHandler.getFluidAmount() < 3000) {
             blockEntity.fluidHandler.setFluid(new FluidStack(blockEntity.fluidHandler.getFluid(), 3000));
             blockEntity.fluidLevel = 3000;
-        }
-
-        if (blockEntity.fluidHandler.getFluidAmount() >= 3996 && blockEntity.fluidHandler.getFluidAmount() < 4000) {
+        } else if (blockEntity.fluidHandler.getFluidAmount() >= 3996 && blockEntity.fluidHandler.getFluidAmount() < 4000) {
             blockEntity.fluidHandler.setFluid(new FluidStack(blockEntity.fluidHandler.getFluid(), 4000));
             blockEntity.fluidLevel = 4000;
         }
@@ -235,6 +231,14 @@ public class WorkbenchBlockEntity extends BlockEntity implements MenuProvider {
             if (canAddFluid(blockEntity, new FluidStack(bucket.getFluid(), FluidAttributes.BUCKET_VOLUME))) {
                 smeltItem(blockEntity);
                 blockEntity.itemHandler.setStackInSlot(0, new ItemStack(Items.BUCKET, 1));
+            }
+        }
+
+        if (smeltItem.getItem() instanceof BasinItem) {
+            IFluidHandlerItem cap = CelestialExploration.getCapability(smeltItem, CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY);
+
+            if (cap != null && canAddFluid(blockEntity, new FluidStack(cap.getFluidInTank(0), 1))) {
+                addFluidViaBasin(blockEntity, smeltItem);
             }
         }
 
@@ -297,6 +301,7 @@ public class WorkbenchBlockEntity extends BlockEntity implements MenuProvider {
         }
     }
 
+
     private boolean isLit() {
         return this.fuelBurnTime > 0;
     }
@@ -324,17 +329,13 @@ public class WorkbenchBlockEntity extends BlockEntity implements MenuProvider {
     }
 
     public void awardUsedRecipesAndPopExperience(ServerPlayer player) {
-        CelestialExploration.LOGGER.debug("awardUsedRecipesAndPopExperience");
         List<Recipe<?>> list = this.getRecipesToAwardAndPopExperience(player.getLevel(), player.position());
         player.awardRecipes(list);
         this.recipesUsed.clear();
-
     }
 
     public List<Recipe<?>> getRecipesToAwardAndPopExperience(ServerLevel level, Vec3 pos) {
         List<Recipe<?>> list = Lists.newArrayList();
-        CelestialExploration.LOGGER.debug("getRecipesToAwardAndPopExperience");
-
 
         for(Object2IntMap.Entry<ResourceLocation> entry : this.recipesUsed.object2IntEntrySet()) {
             level.getRecipeManager().byKey(entry.getKey()).ifPresent((recipe) -> {
@@ -356,7 +357,6 @@ public class WorkbenchBlockEntity extends BlockEntity implements MenuProvider {
         ExperienceOrb.award(level, position, i);
     }
 
-
     private static void smeltItem(WorkbenchBlockEntity entity) {
         Level level = entity.level;
         SimpleContainer inventory = new SimpleContainer(entity.itemHandler.getSlots());
@@ -369,9 +369,7 @@ public class WorkbenchBlockEntity extends BlockEntity implements MenuProvider {
 
         if (recipe.isPresent()) {
             entity.itemHandler.extractItem(0, 1, false);
-
             FluidStack fluid = recipe.get().getResultFluid();
-
             fluid.setAmount((int) ((float) FluidAttributes.BUCKET_VOLUME * recipe.get().getBuckets()));
             entity.fluidHandler.fill(fluid, IFluidHandler.FluidAction.EXECUTE);
             entity.fluidLevel = entity.fluidHandler.getFluidAmount();
@@ -379,14 +377,26 @@ public class WorkbenchBlockEntity extends BlockEntity implements MenuProvider {
         }
     }
 
+    private static void addFluidViaBasin(WorkbenchBlockEntity blockEntity, ItemStack basin) {
+        IFluidHandlerItem cap = CelestialExploration.getCapability(basin, CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY);
+
+        if (cap != null) {
+
+            int amount = Math.min(blockEntity.fluidHandler.getSpace(), cap.getFluidInTank(0).getAmount());
+            FluidStack fluid = new FluidStack(cap.getFluidInTank(0), amount);
+
+            blockEntity.fluidHandler.fill(fluid, IFluidHandler.FluidAction.EXECUTE);
+            blockEntity.fluidLevel = blockEntity.fluidHandler.getFluidAmount();
+            blockEntity.fluidType = CelestialUtil.getIdFromFluid(blockEntity.fluidHandler.getFluid());
+            cap.drain(fluid, IFluidHandler.FluidAction.EXECUTE);
+        }
+    }
+
     private static boolean canAddFluid(WorkbenchBlockEntity blockEntity, FluidStack result) {
         if (blockEntity.fluidHandler.isEmpty()) return true;
-        if (!blockEntity.fluidHandler.getFluid().isFluidEqual(result)) {
-            return false;
-        }
-        if (!blockEntity.fluidHandler.isFluidValid(result)) {
-            return false;
-        } else return blockEntity.fluidHandler.getSpace() != 0;
+        if (!blockEntity.fluidHandler.getFluid().isFluidEqual(result)) return false;
+        if (!blockEntity.fluidHandler.isFluidValid(result)) return false;
+        return blockEntity.fluidHandler.getSpace() != 0;
     }
 
     private static boolean hasRoomForFluid(WorkbenchBlockEntity blockEntity, WorkbenchSmeltingRecipe recipe) {

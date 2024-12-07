@@ -6,6 +6,7 @@ import net.minecraft.world.Container;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.StackedContents;
+import net.minecraft.world.inventory.RecipeBookMenu;
 import net.minecraft.world.inventory.StackedContentsCompatible;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
@@ -18,6 +19,7 @@ public class WorkbenchCraftingContainer implements Container, StackedContentsCom
     private final int height;
     private final WorkbenchMenu menu;
     private final FluidTank tank;
+    private int fluidToLeaveBehind = 0;
 
     public WorkbenchCraftingContainer(WorkbenchMenu menu, int width, int height, FluidTank tank) {
         this.items = NonNullList.withSize(width * height, ItemStack.EMPTY);
@@ -41,6 +43,10 @@ public class WorkbenchCraftingContainer implements Container, StackedContentsCom
         if (!tank.isEmpty()) return false;
 
         return true;
+    }
+
+    public WorkbenchMenu getMenu() {
+        return this.menu;
     }
 
     public ItemStack getItem(int p_39332_) {
@@ -74,6 +80,18 @@ public class WorkbenchCraftingContainer implements Container, StackedContentsCom
 
     public FluidStack removeFluid(int amount) { //??
         return tank.drain(amount, IFluidHandler.FluidAction.EXECUTE);
+    }
+
+    public void setFluidToLeaveBehind(int amount) {
+        this.fluidToLeaveBehind = amount;
+    }
+
+    public int getFluidToLeaveBehind() {
+        return this.fluidToLeaveBehind;
+    }
+
+    public void resetFluidToLeaveBehind() {
+        this.fluidToLeaveBehind = 0;
     }
 
     public void setItem(int p_39337_, ItemStack p_39338_) {

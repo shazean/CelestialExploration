@@ -2,6 +2,7 @@ package com.shim.celestialexploration.entity.layers;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
+import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.entity.CelestialCat;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.CatModel;
@@ -63,7 +64,7 @@ public void render(PoseStack poseStack, MultiBufferSource bufferSource, int p_11
 
 //        ItemStack itemstack = p_117010_.getItemBySlot(EquipmentSlot.MAINHAND);
         //        Minecraft.getInstance().getItemInHandRenderer().renderItem(p_117010_, blockstate, ItemTransforms.TransformType.GROUND, false, p_117007_, p_117008_, p_117009_);
-        Minecraft.getInstance().getBlockRenderer().renderSingleBlock(blockState, poseStack, bufferSource, p_117009_, OverlayTexture.NO_OVERLAY);
+        CelestialExploration.PROXY.getMinecraft().getBlockRenderer().renderSingleBlock(blockState, poseStack, bufferSource, p_117009_, OverlayTexture.NO_OVERLAY);
         poseStack.popPose();
 }
 }

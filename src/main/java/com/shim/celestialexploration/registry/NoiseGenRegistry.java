@@ -21,13 +21,13 @@ public class NoiseGenRegistry extends NoiseRouterData {
         NoiseSettings noisesettings = marsNoiseSettings();
 
         return new NoiseGeneratorSettings(noisesettings, BlockRegistry.MARS_STONE.get().defaultBlockState(), Blocks.AIR.defaultBlockState(), NoiseRouterData.overworld(noisesettings, false),
-                CelestialSurfaceRules.mars(), 63, false, true, false, false);
+                CelestialSurfaceRules.mars(), 0, false, true, false, false);
     });
 
     public static final RegistryObject<NoiseGeneratorSettings> MOON_NOISE = NOISES.register("moon", () -> {
         NoiseSettings noisesettings = moonNoiseSettings();
         return new NoiseGeneratorSettings(noisesettings, BlockRegistry.MOON_STONE.get().defaultBlockState(), Blocks.AIR.defaultBlockState(), NoiseRouterData.overworldWithoutCaves(noisesettings),
-                CelestialSurfaceRules.moon(), 63, false, true , false, false);
+                CelestialSurfaceRules.moon(), 0, false, true , false, false);
     });
 
     public static final RegistryObject<NoiseGeneratorSettings> VENUS_NOISE = NOISES.register("venus", () -> {
@@ -39,7 +39,7 @@ public class NoiseGenRegistry extends NoiseRouterData {
     public static final RegistryObject<NoiseGeneratorSettings> MERCURY_NOISE = NOISES.register("mercury", () -> {
         NoiseSettings noisesettings = mercuryNoiseSettings();
         return new NoiseGeneratorSettings(noisesettings, BlockRegistry.MERCURY_STONE.get().defaultBlockState(), Blocks.AIR.defaultBlockState(), NoiseRouterData.overworldWithoutCaves(noisesettings),
-                CelestialSurfaceRules.mercury(), 63, false, true, false, false);
+                CelestialSurfaceRules.mercury(), 0, false, true, false, false);
     });
 
     public static final RegistryObject<NoiseGeneratorSettings> SPACE_NOISE = NOISES.register("space", () -> {
@@ -51,7 +51,7 @@ public class NoiseGenRegistry extends NoiseRouterData {
     public static final RegistryObject<NoiseGeneratorSettings> JUPITER_NOISE = NOISES.register("jupiter", () -> {
         NoiseSettings noisesettings = jupiterNoiseSettings();
         return new NoiseGeneratorSettings(noisesettings, BlockRegistry.JUPITER_DEEPSLATE.get().defaultBlockState(), FluidRegistry.METALLIC_HYDROGEN_BLOCK.get().defaultBlockState(), NoiseRouterData.overworldWithoutCaves(noisesettings),
-                CelestialSurfaceRules.jupiter(), 128, false, true, false, false);
+                CelestialSurfaceRules.jupiter(), 160, false, true, false, false);
     });
 
     public static final RegistryObject<NoiseGeneratorSettings> EUROPA_NOISE = NOISES.register("europa", () -> {
@@ -83,8 +83,6 @@ public class NoiseGenRegistry extends NoiseRouterData {
 
     public static final RegistryObject<NoiseGeneratorSettings> ICE_NOISE = NOISES.register("icy", () -> new NoiseGeneratorSettings(datapackPlanetNoiseSettings(), Blocks.STONE.defaultBlockState(), Blocks.WATER.defaultBlockState(),
             NoiseRouterData.overworld(datapackPlanetNoiseSettings(), false), CelestialSurfaceRules.datapackPresets(false), 63, false, true , true, false));
-
-
 
 
     static NoiseSettings moonNoiseSettings() {

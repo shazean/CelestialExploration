@@ -7,6 +7,7 @@ import com.shim.celestialexploration.capabilities.LightTravelCapability;
 import com.shim.celestialexploration.capabilities.TaxiCapability;
 import com.shim.celestialexploration.config.CelestialCommonConfig;
 import com.shim.celestialexploration.entity.CelestialCatSpawner;
+import com.shim.celestialexploration.entity.projectile.MeteorProjectile;
 import com.shim.celestialexploration.entity.vehicle.Spaceship;
 import com.shim.celestialexploration.integration.JEIPlugin;
 import com.shim.celestialexploration.item.armor.ThermalSpaceSuitArmorItem;
@@ -16,8 +17,12 @@ import com.shim.celestialexploration.registry.*;
 import com.shim.celestialexploration.util.CelestialUtil;
 import com.shim.celestialexploration.util.DimensionUtil;
 import com.shim.celestialexploration.util.teleportation.TeleportUtil;
+import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.player.AbstractClientPlayer;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
@@ -54,6 +59,8 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.network.NetworkDirection;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 @Mod.EventBusSubscriber(modid = CelestialExploration.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class ModForgeEventBus {
@@ -69,8 +76,26 @@ public class ModForgeEventBus {
 
     @SubscribeEvent
     public static void onServerTick(TickEvent.ServerTickEvent.WorldTickEvent event) {
-        if (event.world instanceof ServerLevel serverLevel && event.haveTime())
+        if (event.world instanceof ServerLevel serverLevel && event.haveTime()) {
             new CelestialCatSpawner().tick(serverLevel, true, true);
+
+            if (serverLevel.isThundering()) {
+                if (serverLevel.dimension().equals(DimensionRegistry.MERCURY) || (serverLevel.dimension().equals(DimensionRegistry.CALLISTO))) {
+                    Random random = new Random();
+                    Player player = serverLevel.getRandomPlayer();
+                    if (player != null) {
+                        if (random.nextInt(3) == 0) {
+                            MeteorProjectile meteor = EntityRegistry.METEOR.get().create(serverLevel);
+                            if (meteor != null) {
+                                double height = Math.min(player.position().y + random.nextInt(128) - 16, serverLevel.getMaxBuildHeight());
+                                meteor.moveTo(player.position().x + random.nextInt(128) - 64, height, player.position().z - random.nextInt(64));
+                                serverLevel.addFreshEntity(meteor);
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
     @SubscribeEvent
@@ -184,20 +209,6 @@ public class ModForgeEventBus {
             if (!player.level.isRaining() && player.level.getBiome(player.blockPosition()).is(TagRegistry.Biomes.DUST_STORM_BIOMES)) {
                 player.removeEffect(MobEffects.MOVEMENT_SLOWDOWN);
             }
-        }
-
-    }
-
-
-    @SubscribeEvent
-    public static void onClientTick(TickEvent.ClientTickEvent event) {
-
-        if (JEIPlugin.jeiRuntime != null) {
-            JEIPlugin.jeiRuntime.getIngredientListOverlay().getIngredientUnderMouse().ifPresent(ingredient -> {
-                CelestialExploration.LOGGER.debug("type {}", ingredient.getType());
-                CelestialExploration.LOGGER.debug("ingredient {}", ingredient.getIngredient());
-
-            });
         }
     }
 

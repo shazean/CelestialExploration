@@ -90,8 +90,8 @@ public class CelestialPortalParticle extends TextureSheetParticle {
             setColor();
         }
 
-        public Particle createParticle(SimpleParticleType particle, ClientLevel level, double x, double y, double z, double xd, double yx, double zd) {
-            CelestialPortalParticle portalparticle = new CelestialPortalParticle(level, x, y, z, xd, yx, zd, red, green, blue);
+        public Particle createParticle(SimpleParticleType particle, ClientLevel level, double x, double y, double z, double xd, double yd, double zd) {
+            CelestialPortalParticle portalparticle = new CelestialPortalParticle(level, x, y, z, xd, yd, zd, red, green, blue);
             portalparticle.pickSprite(this.sprite);
             return portalparticle;
         }

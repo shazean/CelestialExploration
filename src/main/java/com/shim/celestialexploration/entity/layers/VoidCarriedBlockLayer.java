@@ -2,6 +2,7 @@ package com.shim.celestialexploration.entity.layers;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
+import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.entity.mob.VoidFellow;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.EndermanModel;
@@ -30,7 +31,7 @@ public class VoidCarriedBlockLayer extends RenderLayer<VoidFellow, EndermanModel
                 float f = 0.5F;
                 p_116639_.scale(-0.5F, -0.5F, 0.5F);
                 p_116639_.mulPose(Vector3f.YP.rotationDegrees(90.0F));
-                Minecraft.getInstance().getBlockRenderer().renderSingleBlock(blockstate, p_116639_, p_116640_, p_116641_, OverlayTexture.NO_OVERLAY);
+                CelestialExploration.PROXY.getMinecraft().getBlockRenderer().renderSingleBlock(blockstate, p_116639_, p_116640_, p_116641_, OverlayTexture.NO_OVERLAY);
                 p_116639_.popPose();
             }
         }

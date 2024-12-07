@@ -37,7 +37,6 @@ public class ServerDidLightTravelPacket {
     public static void handle(ServerDidLightTravelPacket message, Supplier<NetworkEvent.Context> contextSupplier) {
         NetworkEvent.Context context = contextSupplier.get();
         context.enqueueWork(() -> {
-//            Player player = Minecraft.getInstance().player;
             ServerPlayer serverPlayer = context.getSender();
 
             if (serverPlayer != null) {

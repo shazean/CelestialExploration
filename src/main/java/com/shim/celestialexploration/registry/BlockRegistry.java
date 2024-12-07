@@ -662,6 +662,17 @@ public class BlockRegistry {
 
     public static final RegistryObject<Block> TAXI_STATION = registerCoreBlock("taxi_station", "Taxi Station", () -> new TaxiStationBlock(Block.Properties.of(Material.METAL, MaterialColor.METAL).strength(3.5F).sound(SoundType.METAL)));
 
+//    public static final RegistryObject<Block> RED_DISPLAY_BOARD = BLOCKS.register("red_display_board", () -> new StandingDisplayBoardBlock(Block.Properties.of(Material.METAL).strength(0.1F).sound(SoundType.METAL), DisplayBoardBlock.DisplayBoardColors.RED));
+//    public static final RegistryObject<Block> BLACK_DISPLAY_BOARD = BLOCKS.register("black_display_board", () -> new StandingDisplayBoardBlock(Block.Properties.of(Material.METAL).strength(0.1F).sound(SoundType.METAL), DisplayBoardBlock.DisplayBoardColors.BLACK));
+//    public static final RegistryObject<Block> BLUE_DISPLAY_BOARD = BLOCKS.register("blue_display_board", () -> new StandingDisplayBoardBlock(Block.Properties.of(Material.METAL).strength(0.1F).sound(SoundType.METAL), DisplayBoardBlock.DisplayBoardColors.BLUE));
+//    public static final RegistryObject<Block> WHITE_DISPLAY_BOARD = BLOCKS.register("white_display_board", () -> new StandingDisplayBoardBlock(Block.Properties.of(Material.METAL).strength(0.1F).sound(SoundType.METAL), DisplayBoardBlock.DisplayBoardColors.WHITE));
+//
+//    public static final RegistryObject<Block> RED_WALL_DISPLAY_BOARD = registerBlockNoItem("red_wall_display_board", "Red Display Board", () -> new WallDisplayBoardBlock(Block.Properties.of(Material.METAL).strength(0.1F).sound(SoundType.METAL).lootFrom(RED_DISPLAY_BOARD), DisplayBoardBlock.DisplayBoardColors.RED));
+//    public static final RegistryObject<Block> BLACK_WALL_DISPLAY_BOARD = registerBlockNoItem("black_wall_display_board", "Black Display Board", () -> new WallDisplayBoardBlock(Block.Properties.of(Material.METAL).strength(0.1F).sound(SoundType.METAL).lootFrom(BLACK_DISPLAY_BOARD), DisplayBoardBlock.DisplayBoardColors.BLACK));
+//    public static final RegistryObject<Block> BLUE_WALL_DISPLAY_BOARD = registerBlockNoItem("blue_wall_display_board", "Blue Display Board", () -> new WallDisplayBoardBlock(Block.Properties.of(Material.METAL).strength(0.1F).sound(SoundType.METAL).lootFrom(BLUE_DISPLAY_BOARD), DisplayBoardBlock.DisplayBoardColors.BLUE));
+//    public static final RegistryObject<Block> WHITE_WALL_DISPLAY_BOARD = registerBlockNoItem("white_wall_display_board", "White Display Board", () -> new WallDisplayBoardBlock(Block.Properties.of(Material.METAL).strength(0.1F).sound(SoundType.METAL).lootFrom(WHITE_DISPLAY_BOARD), DisplayBoardBlock.DisplayBoardColors.WHITE));
+
+
     //---- MAG LEV -------------------------------------------------------------------------------
     public static final RegistryObject<Block> MAG_RAIL = registerBlockDropsSelf("mag_rail", "Mag Rail", () -> new MagRailBlock(BlockBehaviour.Properties.of(Material.DECORATION).noCollission().strength(0.7F).sound(SoundType.METAL)), CelestialExploration.SPACESHIP_TAB);
     public static final RegistryObject<Block> POWERED_MAG_RAIL = registerBlockDropsSelf("powered_mag_rail", "Powered Mag Rail", () -> new PoweredMagRailBlock(BlockBehaviour.Properties.of(Material.DECORATION).noCollission().strength(0.7F).sound(SoundType.METAL), true), CelestialExploration.SPACESHIP_TAB);

@@ -656,6 +656,9 @@ public class ItemModels extends ItemModelProvider {
 		generatedItem(FluidRegistry.METALLIC_HYDROGEN_BUCKET.get());
 		generatedItem(ItemRegistry.EUREKA_BUCKET.get());
 
+		generatedItem(ItemRegistry.FLUID_BASIN.get());
+
+
 		//BLOCKS
 		self(BlockRegistry.DRY_ICE.get());
 		self(BlockRegistry.COMPRESSED_COBBLESTONE.get());
@@ -668,6 +671,11 @@ public class ItemModels extends ItemModelProvider {
 		self(BlockRegistry.PLANET_CHART.get());
 		self(BlockRegistry.TAXI_STATION.get());
 
+//		generatedItem(ItemRegistry.RED_DISPLAY_BOARD.get());
+//		generatedItem(ItemRegistry.BLACK_DISPLAY_BOARD.get());
+//		generatedItem(ItemRegistry.BLUE_DISPLAY_BOARD.get());
+//		generatedItem(ItemRegistry.WHITE_DISPLAY_BOARD.get());
+
 		//ITEMS
 		generatedItem(ItemRegistry.MOON_DUST.get());
 		generatedItem(ItemRegistry.EUROPA_DUST.get());
@@ -675,8 +683,8 @@ public class ItemModels extends ItemModelProvider {
 		handheldItem(ItemRegistry.STEEL_ROD.get());
 		generatedItem(ItemRegistry.STEEL_WOOL.get());
 		handheldItem(ItemRegistry.FLARE_ROD.get());
-		generatedItem(ItemRegistry.BLOCK_MOLD.get());
-		generatedItem(ItemRegistry.INGOT_MOLD.get());
+//		generatedItem(ItemRegistry.BLOCK_MOLD.get());
+//		generatedItem(ItemRegistry.INGOT_MOLD.get());
 		generatedItem(ItemRegistry.SULFUR_CRYSTAL.get());
 		generatedItem(ItemRegistry.LUNAR_GOO.get());
 		generatedItem(ItemRegistry.CINNABAR.get());

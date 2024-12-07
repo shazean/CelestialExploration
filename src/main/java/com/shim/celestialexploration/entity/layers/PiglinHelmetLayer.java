@@ -2,6 +2,7 @@ package com.shim.celestialexploration.entity.layers;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
+import com.shim.celestialexploration.CelestialExploration;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.PiglinModel;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -35,7 +36,7 @@ public class PiglinHelmetLayer<T extends Monster> extends RenderLayer<T, PiglinM
 
         poseStack.mulPose(Vector3f.XP.rotationDegrees(90.0F));
 
-        Minecraft.getInstance().getBlockRenderer().renderSingleBlock(blockState, poseStack, bufferSource, p_117009_, OverlayTexture.NO_OVERLAY);
+        CelestialExploration.PROXY.getMinecraft().getBlockRenderer().renderSingleBlock(blockState, poseStack, bufferSource, p_117009_, OverlayTexture.NO_OVERLAY);
         poseStack.popPose();
     }
 }

@@ -151,13 +151,22 @@ public class ItemRegistry {
 
 	public static final RegistryObject<Item> STEEL_ROD = registerItem("steel_rod", "Steel Rod", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MATERIALS)));
 	public static final RegistryObject<Item> FLARE_ROD = registerItem("flare_rod", "Flare Rod", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MATERIALS)));
-	public static final RegistryObject<Item> BLOCK_MOLD = registerItem("block_mold", "Block Mold", () -> new Item(new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
-	public static final RegistryObject<Item> INGOT_MOLD = registerItem("ingot_mold", "Ingot Mold", () -> new Item(new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+//	public static final RegistryObject<Item> BLOCK_MOLD = registerItem("block_mold", "Block Mold", () -> new Item(new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+//	public static final RegistryObject<Item> INGOT_MOLD = registerItem("ingot_mold", "Ingot Mold", () -> new Item(new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
 	public static final RegistryObject<Item> STEEL_WOOL = registerItem("steel_wool", "Steel Wool", () -> new Item((new Item.Properties()).tab(CreativeModeTab.TAB_MATERIALS)));
 	public static final RegistryObject<Item> SULFUR_CRYSTAL = registerItem("sulfur_crystal", "Sulfur Crystal", () -> new Item((new Item.Properties()).tab(CreativeModeTab.TAB_MATERIALS)));
 	public static final RegistryObject<Item> CINNABAR = registerItem("cinnabar", "Cinnabar", () -> new Item((new Item.Properties()).tab(CreativeModeTab.TAB_MATERIALS)));
 
 	public static final RegistryObject<Item> EUREKA_BUCKET = registerItem("eureka_bucket", "Eureka! Bucket", () -> new MobBucketItem(EntityRegistry.EUREKA, () -> Fluids.WATER, () -> SoundEvents.BUCKET_EMPTY_FISH, (new Item.Properties()).stacksTo(1).tab(CreativeModeTab.TAB_MISC)));
+
+	public static final RegistryObject<Item> FLUID_BASIN = registerItem("fluid_basin", "Fluid Basin", () -> new BasinItem((new Item.Properties()).stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
+
+
+//	public static final RegistryObject<Item> RED_DISPLAY_BOARD = ITEMS.register("red_display_board", () -> new DisplayBoardItem((new Item.Properties()).tab(CelestialExploration.CELESTIAL_MISC_TAB), BlockRegistry.RED_DISPLAY_BOARD.get(), BlockRegistry.RED_WALL_DISPLAY_BOARD.get()));
+//	public static final RegistryObject<Item> BLACK_DISPLAY_BOARD = ITEMS.register("black_display_board", () -> new DisplayBoardItem((new Item.Properties()).tab(CelestialExploration.CELESTIAL_MISC_TAB), BlockRegistry.BLACK_DISPLAY_BOARD.get(), BlockRegistry.BLACK_WALL_DISPLAY_BOARD.get()));
+//	public static final RegistryObject<Item> BLUE_DISPLAY_BOARD = ITEMS.register("blue_display_board", () -> new DisplayBoardItem((new Item.Properties()).tab(CelestialExploration.CELESTIAL_MISC_TAB), BlockRegistry.BLUE_DISPLAY_BOARD.get(), BlockRegistry.BLUE_WALL_DISPLAY_BOARD.get()));
+//	public static final RegistryObject<Item> WHITE_DISPLAY_BOARD = ITEMS.register("white_display_board", () -> new DisplayBoardItem((new Item.Properties()).tab(CelestialExploration.CELESTIAL_MISC_TAB), BlockRegistry.WHITE_DISPLAY_BOARD.get(), BlockRegistry.WHITE_WALL_DISPLAY_BOARD.get()));
+
 
 //	public static final RegistryObject<Item> CONTROL_PANEL = registerItem("control_panel", "Control Panel", () -> new ControlPanelItem(new Item.Properties().tab(CelestialExploration.SPACESHIP_TAB)));
 

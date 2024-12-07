@@ -60,12 +60,11 @@ public class ResearchTunnelPieces {
                 return new ResearchTunnelPieces.ResearchTunnelCorridor(p_162487_, p_162482_, boundingbox2, p_162486_, p_162488_);
             }
         }
-
         return null;
     }
 
     static ResearchTunnelPieces.ResearchTunnelPiece generateAndAddPiece(StructurePiece p_162472_, StructurePieceAccessor p_162473_, Random p_162474_, int p_162475_, int p_162476_, int p_162477_, Direction p_162478_, int p_162479_) {
-        if (p_162479_ > 8) {
+        if (p_162479_ > MAX_DEPTH) {
             return null;
         } else if (Math.abs(p_162475_ - p_162472_.getBoundingBox().minX()) <= 80 && Math.abs(p_162477_ - p_162472_.getBoundingBox().minZ()) <= 80) {
             ResearchTunnelStructure.Type tunnelfeature$type = ((ResearchTunnelPieces.ResearchTunnelPiece)p_162472_).type;
@@ -141,7 +140,6 @@ public class ResearchTunnelPieces {
                     return boundingbox;
                 }
             }
-
             return null;
         }
 
@@ -211,7 +209,6 @@ public class ResearchTunnelPieces {
                     }
                 }
             }
-
         }
 
         protected boolean createChest(WorldGenLevel level, BoundingBox p_71408_, Random p_71409_, int p_71410_, int p_71411_, int p_71412_, ResourceLocation p_71413_) {
@@ -300,7 +297,6 @@ public class ResearchTunnelPieces {
                         }
                     }
                 }
-
             }
         }
 
@@ -314,7 +310,6 @@ public class ResearchTunnelPieces {
             if (this.getBlock(p_162513_, p_162515_ + 2, p_162516_, p_162517_, p_162514_).is(blockstate1.getBlock())) {
                 this.fillPillarDownOrChainUp(p_162513_, blockstate, p_162515_ + 2, p_162516_, p_162517_, p_162514_);
             }
-
         }
 
         protected void fillColumnDown(WorldGenLevel p_162500_, BlockState p_162501_, int p_162502_, int p_162503_, int p_162504_, BoundingBox p_162505_) {
@@ -331,7 +326,6 @@ public class ResearchTunnelPieces {
                         blockpos$mutableblockpos.move(Direction.UP);
                         p_162500_.setBlock(blockpos$mutableblockpos, p_162501_, 2);
                     }
-
                 }
             }
         }
@@ -417,9 +411,7 @@ public class ResearchTunnelPieces {
                 blockpos$mutableblockpos.move(direction);
                 if (p_162520_.isInside(blockpos$mutableblockpos) && p_162519_.getBlockState(blockpos$mutableblockpos).isFaceSturdy(p_162519_, blockpos$mutableblockpos, direction.getOpposite())) {
                     ++i;
-                    if (i >= p_162524_) {
-                        return true;
-                    }
+                    if (i >= p_162524_) return true;
                 }
                 blockpos$mutableblockpos.move(direction.getOpposite());
             }
@@ -650,9 +642,7 @@ public class ResearchTunnelPieces {
             int k;
             for(k = 0; k < this.boundingBox.getXSpan(); k += 4) {
                 k += p_162603_.nextInt(this.boundingBox.getXSpan());
-                if (k + 3 > this.boundingBox.getXSpan()) {
-                    break;
-                }
+                if (k + 3 > this.boundingBox.getXSpan()) break;
 
                 ResearchTunnelPieces.ResearchTunnelPiece tunnelpieces$tunnelpiece = ResearchTunnelPieces.generateAndAddPiece(p_162601_, p_162602_, p_162603_, this.boundingBox.minX() + k, this.boundingBox.minY() + p_162603_.nextInt(j) + 1, this.boundingBox.minZ() - 1, Direction.NORTH, i);
                 if (tunnelpieces$tunnelpiece != null) {
@@ -663,9 +653,7 @@ public class ResearchTunnelPieces {
 
             for(k = 0; k < this.boundingBox.getXSpan(); k += 4) {
                 k += p_162603_.nextInt(this.boundingBox.getXSpan());
-                if (k + 3 > this.boundingBox.getXSpan()) {
-                    break;
-                }
+                if (k + 3 > this.boundingBox.getXSpan()) break;
 
                 ResearchTunnelPieces.ResearchTunnelPiece tunnelpieces$tunnelpiece1 = ResearchTunnelPieces.generateAndAddPiece(p_162601_, p_162602_, p_162603_, this.boundingBox.minX() + k, this.boundingBox.minY() + p_162603_.nextInt(j) + 1, this.boundingBox.maxZ() + 1, Direction.SOUTH, i);
                 if (tunnelpieces$tunnelpiece1 != null) {
@@ -676,9 +664,7 @@ public class ResearchTunnelPieces {
 
             for(k = 0; k < this.boundingBox.getZSpan(); k += 4) {
                 k += p_162603_.nextInt(this.boundingBox.getZSpan());
-                if (k + 3 > this.boundingBox.getZSpan()) {
-                    break;
-                }
+                if (k + 3 > this.boundingBox.getZSpan()) break;
 
                 ResearchTunnelPieces.ResearchTunnelPiece tunnelpieces$tunnelpiece2 = ResearchTunnelPieces.generateAndAddPiece(p_162601_, p_162602_, p_162603_, this.boundingBox.minX() - 1, this.boundingBox.minY() + p_162603_.nextInt(j) + 1, this.boundingBox.minZ() + k, Direction.WEST, i);
                 if (tunnelpieces$tunnelpiece2 != null) {
@@ -689,9 +675,7 @@ public class ResearchTunnelPieces {
 
             for(k = 0; k < this.boundingBox.getZSpan(); k += 4) {
                 k += p_162603_.nextInt(this.boundingBox.getZSpan());
-                if (k + 3 > this.boundingBox.getZSpan()) {
-                    break;
-                }
+                if (k + 3 > this.boundingBox.getZSpan()) break;
 
                 StructurePiece structurepiece = ResearchTunnelPieces.generateAndAddPiece(p_162601_, p_162602_, p_162603_, this.boundingBox.maxX() + 1, this.boundingBox.minY() + p_162603_.nextInt(j) + 1, this.boundingBox.minZ() + k, Direction.EAST, i);
                 if (structurepiece != null) {
@@ -699,7 +683,6 @@ public class ResearchTunnelPieces {
                     this.childEntranceBoxes.add(new BoundingBox(this.boundingBox.maxX() - 1, boundingbox3.minY(), boundingbox3.minZ(), this.boundingBox.maxX(), boundingbox3.maxY(), boundingbox3.maxZ()));
                 }
             }
-
         }
 
         public void postProcess(WorldGenLevel p_192059_, StructureFeatureManager p_192060_, ChunkGenerator p_192061_, Random p_192062_, BoundingBox p_192063_, ChunkPos p_192064_, BlockPos p_192065_) {
@@ -793,7 +776,6 @@ public class ResearchTunnelPieces {
                 for(int i = 0; i < 5; ++i) {
                     this.generateBox(p_192072_, p_192076_, 0, 5 - i - (i < 4 ? 1 : 0), 2 + i, 2, 7 - i, 2 + i, CAVE_AIR, CAVE_AIR, false);
                 }
-
             }
         }
     }

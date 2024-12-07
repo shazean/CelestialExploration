@@ -18,7 +18,7 @@ import net.minecraftforge.client.gui.IIngameOverlay;
 @OnlyIn(Dist.CLIENT)
 public class SpaceshipGui extends ForgeIngameGui implements IIngameOverlay {
 
-    public static final Minecraft MINECRAFT = Minecraft.getInstance();
+    public static final Minecraft MINECRAFT = CelestialExploration.PROXY.getMinecraft();
     public static final ResourceLocation GUI_ICONS_LOCATION = new ResourceLocation(CelestialExploration.MODID, "textures/gui/icons.png");
 //    private int animationNum = 0;
 

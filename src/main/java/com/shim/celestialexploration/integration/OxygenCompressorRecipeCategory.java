@@ -110,7 +110,7 @@ public class OxygenCompressorRecipeCategory implements IRecipeCategory<OxygenCom
         float experience = recipe.getExperience();
         if (experience > 0) {
             TranslatableComponent experienceString = new TranslatableComponent("gui.jei.category.smelting.experience", experience);
-            Minecraft minecraft = Minecraft.getInstance();
+            Minecraft minecraft = CelestialExploration.PROXY.getMinecraft();
             Font fontRenderer = minecraft.font;
             int stringWidth = fontRenderer.width(experienceString);
             fontRenderer.draw(poseStack, experienceString, background.getWidth() - stringWidth - 12, y, 0xFF808080);
@@ -122,7 +122,7 @@ public class OxygenCompressorRecipeCategory implements IRecipeCategory<OxygenCom
         if (cookTime > 0) {
             int cookTimeSeconds = cookTime / 20;
             TranslatableComponent timeString = new TranslatableComponent("gui.jei.category.smelting.time.seconds", cookTimeSeconds);
-            Minecraft minecraft = Minecraft.getInstance();
+            Minecraft minecraft = CelestialExploration.PROXY.getMinecraft();
             Font fontRenderer = minecraft.font;
             int stringWidth = fontRenderer.width(timeString);
             fontRenderer.draw(poseStack, timeString, background.getWidth() - stringWidth - 12, y, 0xFF808080);

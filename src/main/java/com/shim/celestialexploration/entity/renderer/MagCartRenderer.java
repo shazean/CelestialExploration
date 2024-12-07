@@ -109,6 +109,6 @@ public class MagCartRenderer<T extends AbstractMagCart> extends EntityRenderer<T
     }
 
     protected void renderMinecartContents(T p_115424_, float p_115425_, BlockState p_115426_, PoseStack p_115427_, MultiBufferSource p_115428_, int p_115429_) {
-        Minecraft.getInstance().getBlockRenderer().renderSingleBlock(p_115426_, p_115427_, p_115428_, p_115429_, OverlayTexture.NO_OVERLAY);
+        CelestialExploration.PROXY.getMinecraft().getBlockRenderer().renderSingleBlock(p_115426_, p_115427_, p_115428_, p_115429_, OverlayTexture.NO_OVERLAY);
     }
 }

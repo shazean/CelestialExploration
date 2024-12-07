@@ -88,6 +88,7 @@ public class CelestialExploration {
         ParticleRegistry.register(modEventBus);
         RecipeRegistry.register(modEventBus);
         VillagerRegistry.register(modEventBus);
+        PaintingRegistry.PAINTING_MOTIVES.register(modEventBus);
 
         BiomeRegistry.BIOMES.register(modEventBus);
         DimensionRegistry.BIOME_SOURCE.register(modEventBus);

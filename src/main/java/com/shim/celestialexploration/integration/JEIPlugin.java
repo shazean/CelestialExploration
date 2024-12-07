@@ -1,16 +1,19 @@
 package com.shim.celestialexploration.integration;
 
 import com.shim.celestialexploration.CelestialExploration;
+import com.shim.celestialexploration.inventory.menus.WorkbenchMenu;
 import com.shim.celestialexploration.recipes.WorkbenchCraftingRecipe;
 import com.shim.celestialexploration.recipes.WorkbenchSmeltingRecipe;
+import com.shim.celestialexploration.registry.BlockRegistry;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.recipe.RecipeType;
+import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
-import mezz.jei.api.runtime.IJeiRuntime;
-import net.minecraft.client.Minecraft;
+import mezz.jei.api.registration.IRecipeTransferRegistration;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeManager;
 
 import java.util.List;
@@ -18,8 +21,8 @@ import java.util.Objects;
 
 @JeiPlugin
 public class JEIPlugin implements IModPlugin {
-
-    public static IJeiRuntime jeiRuntime;
+    RecipeType<WorkbenchCraftingRecipe> workbenchCraftingRecipeType = new RecipeType<>(WorkbenchCraftingRecipeCategory.UID, WorkbenchCraftingRecipe.class);
+    RecipeType<WorkbenchSmeltingRecipe> workbenchSmeltingRecipeType = new RecipeType<>(WorkbenchSmeltingRecipeCategory.UID, WorkbenchSmeltingRecipe.class);
 
     @Override
     public ResourceLocation getPluginUid() {
@@ -30,32 +33,25 @@ public class JEIPlugin implements IModPlugin {
     public void registerCategories(IRecipeCategoryRegistration registration) {
         registration.addRecipeCategories(new WorkbenchCraftingRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
         registration.addRecipeCategories(new WorkbenchSmeltingRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
+    }
 
+    @Override
+    public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
+        IModPlugin.super.registerRecipeCatalysts(registration);
+        registration.addRecipeCatalyst(new ItemStack(BlockRegistry.WORKBENCH.get()), workbenchCraftingRecipeType, workbenchSmeltingRecipeType);
     }
 
     @Override
     public void registerRecipes(IRecipeRegistration registration) {
-        RecipeManager rm = Objects.requireNonNull(Minecraft.getInstance().level).getRecipeManager();
+        RecipeManager rm = Objects.requireNonNull(CelestialExploration.PROXY.getMinecraft().level).getRecipeManager();
         List<WorkbenchCraftingRecipe> craftingRecipes = rm.getAllRecipesFor(WorkbenchCraftingRecipe.Type.INSTANCE);
         List<WorkbenchSmeltingRecipe> smeltingRecipes = rm.getAllRecipesFor(WorkbenchSmeltingRecipe.Type.INSTANCE);
 
-        registration.addRecipes(new RecipeType<>(WorkbenchCraftingRecipeCategory.UID, WorkbenchCraftingRecipe.class), craftingRecipes);
-        registration.addRecipes(new RecipeType<>(WorkbenchSmeltingRecipeCategory.UID, WorkbenchSmeltingRecipe.class), smeltingRecipes);
-
+        registration.addRecipes(workbenchCraftingRecipeType, craftingRecipes);
+        registration.addRecipes(workbenchSmeltingRecipeType, smeltingRecipes);
     }
 
-    @Override
-    public void onRuntimeAvailable(IJeiRuntime jeiRuntime) {
-//        CraftTracker.LOGGER.debug("CTPlugin#onRuntimeAvailable: {}", jeiRuntime);
-
-        JEIPlugin.jeiRuntime = jeiRuntime;
-
-//        // TODO: move this elsewhere to remove hard dependency on JEI
-//        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
-//            Player player = Minecraft.getInstance().player;
-//            CraftingQueueManager.INSTANCE.load(player);
-//            ShoppingListManager.INSTANCE.load(player);
-//        });
-    }
-
+//    public void registerRecipeTransferHandlers(IRecipeTransferRegistration registration) {
+//        registration.addRecipeTransferHandler(WorkbenchMenu.class, workbenchCraftingRecipeType, 2, 9, 11, 36);
+//    }
 }

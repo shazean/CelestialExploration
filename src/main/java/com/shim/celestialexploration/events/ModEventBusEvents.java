@@ -12,7 +12,9 @@ import com.shim.celestialexploration.entity.model.MagCartModel;
 import com.shim.celestialexploration.particles.*;
 import com.shim.celestialexploration.recipes.WorkbenchCraftingRecipe;
 import com.shim.celestialexploration.recipes.WorkbenchSmeltingRecipe;
-import com.shim.celestialexploration.registry.*;
+import com.shim.celestialexploration.registry.CelestialModelLayers;
+import com.shim.celestialexploration.registry.EntityRegistry;
+import com.shim.celestialexploration.registry.ParticleRegistry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.*;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
@@ -33,7 +35,6 @@ import static net.minecraft.client.model.geom.LayerDefinitions.OUTER_ARMOR_DEFOR
 
 @Mod.EventBusSubscriber(modid = CelestialExploration.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModEventBusEvents {
-
 
     @SubscribeEvent
     public static void entityAttributeEvent(EntityAttributeCreationEvent event) {
@@ -60,7 +61,6 @@ public class ModEventBusEvents {
         event.put(EntityRegistry.CELESTIAL_CAT.get(), CelestialCat.createAttributes().build());
 
         event.put(EntityRegistry.EUREKA.get(), Eureka.createAttributes().build());
-
     }
 
         @SubscribeEvent
@@ -112,33 +112,39 @@ public class ModEventBusEvents {
         event.registerLayerDefinition(CelestialModelLayers.LURKER_HEAD, () -> skullLayer);
         event.registerLayerDefinition(CelestialModelLayers.VOIDED_HEAD, () -> humanoidHeadLayer);
 
-    }
+//        LayerDefinition displayBoardDef = DisplayBoardRenderer.createDisplayBoardLayer();
+//        DisplayBoardBlock.DisplayBoardColors.values().forEach((p_171114_) -> {
+//            event.registerLayerDefinition(CelestialModelLayers.createDisplayBoardModelName(p_171114_), () -> displayBoardDef);
+//        });
 
+    }
 
     @SubscribeEvent
     public static void registerParticleFactories(final ParticleFactoryRegisterEvent event) {
-        Minecraft.getInstance().particleEngine.register(ParticleRegistry.RUST_SLIME_PARTICLES.get(), CelestialSlimeParticles.RustProvider::new);
-        Minecraft.getInstance().particleEngine.register(ParticleRegistry.LUNAR_SLIME_PARTICLES.get(), CelestialSlimeParticles.LunarProvider::new);
-        Minecraft.getInstance().particleEngine.register(ParticleRegistry.MARS_MALLOW_SLIME_PARTICLES.get(), CelestialSlimeParticles.MallowProvider::new);
-        Minecraft.getInstance().particleEngine.register(ParticleRegistry.QUICKSILVER_SLIME_PARTICLES.get(), CelestialSlimeParticles.QuickSilverProvider::new);
+        Minecraft minecraft = CelestialExploration.PROXY.getMinecraft();
 
-        Minecraft.getInstance().particleEngine.register(ParticleRegistry.SULFUR_CUBE_PARTICLES.get(), CelestialSlimeParticles.SulfurProvider::new);
-        Minecraft.getInstance().particleEngine.register(ParticleRegistry.SULFUR_PARTICLE.get(), SulfurParticle.Provider::new);
-        Minecraft.getInstance().particleEngine.register(ParticleRegistry.SULFUR_FIRE_FLAME.get(), FlameParticle.Provider::new);
-        Minecraft.getInstance().particleEngine.register(ParticleRegistry.SULFUR_SPLASH_PARTICLE.get(), WaterDropParticle.Provider::new);
-        Minecraft.getInstance().particleEngine.register(ParticleRegistry.DUST_PARTICLE.get(), DustStormParticle.Provider::new);
-        Minecraft.getInstance().particleEngine.register(ParticleRegistry.LIGHTNING_PARTICLE.get(), LightningParticles.Provider::new);
+        minecraft.particleEngine.register(ParticleRegistry.RUST_SLIME_PARTICLES.get(), CelestialSlimeParticles.RustProvider::new);
+        minecraft.particleEngine.register(ParticleRegistry.LUNAR_SLIME_PARTICLES.get(), CelestialSlimeParticles.LunarProvider::new);
+        minecraft.particleEngine.register(ParticleRegistry.MARS_MALLOW_SLIME_PARTICLES.get(), CelestialSlimeParticles.MallowProvider::new);
+        minecraft.particleEngine.register(ParticleRegistry.QUICKSILVER_SLIME_PARTICLES.get(), CelestialSlimeParticles.QuickSilverProvider::new);
 
-        Minecraft.getInstance().particleEngine.register(ParticleRegistry.MARS_PORTAL_PARTICLES.get(), CelestialPortalParticle.MarsProvider::new);
-        Minecraft.getInstance().particleEngine.register(ParticleRegistry.VENUS_PORTAL_PARTICLES.get(), CelestialPortalParticle.VenusProvider::new);
-        Minecraft.getInstance().particleEngine.register(ParticleRegistry.MOON_PORTAL_PARTICLES.get(), CelestialPortalParticle.MoonProvider::new);
-        Minecraft.getInstance().particleEngine.register(ParticleRegistry.MERCURY_PORTAL_PARTICLES.get(), CelestialPortalParticle.MercuryProvider::new);
-        Minecraft.getInstance().particleEngine.register(ParticleRegistry.JUPITER_PORTAL_PARTICLES.get(), CelestialPortalParticle.JupiterProvider::new);
-        Minecraft.getInstance().particleEngine.register(ParticleRegistry.EUROPA_PORTAL_PARTICLES.get(), CelestialPortalParticle.EuropaProvider::new);
-        Minecraft.getInstance().particleEngine.register(ParticleRegistry.CALLISTO_PORTAL_PARTICLES.get(), CelestialPortalParticle.CallistoProvider::new);
+        minecraft.particleEngine.register(ParticleRegistry.SULFUR_CUBE_PARTICLES.get(), CelestialSlimeParticles.SulfurProvider::new);
+        minecraft.particleEngine.register(ParticleRegistry.SULFUR_PARTICLE.get(), SulfurParticle.Provider::new);
+        minecraft.particleEngine.register(ParticleRegistry.SULFUR_FIRE_FLAME.get(), FlameParticle.Provider::new);
+        minecraft.particleEngine.register(ParticleRegistry.SULFUR_SPLASH_PARTICLE.get(), WaterDropParticle.Provider::new);
+        minecraft.particleEngine.register(ParticleRegistry.DUST_PARTICLE.get(), DustStormParticle.Provider::new);
+        minecraft.particleEngine.register(ParticleRegistry.LIGHTNING_PARTICLE.get(), LightningParticles.Provider::new);
+        minecraft.particleEngine.register(ParticleRegistry.SHOOTING_STAR_PARTICLE.get(), MeteorParticles.Provider::new);
 
-        Minecraft.getInstance().particleEngine.register(ParticleRegistry.SPACESHIP_PARTICLES.get(), SpaceshipParticles.Provider::new);
+        minecraft.particleEngine.register(ParticleRegistry.MARS_PORTAL_PARTICLES.get(), CelestialPortalParticle.MarsProvider::new);
+        minecraft.particleEngine.register(ParticleRegistry.VENUS_PORTAL_PARTICLES.get(), CelestialPortalParticle.VenusProvider::new);
+        minecraft.particleEngine.register(ParticleRegistry.MOON_PORTAL_PARTICLES.get(), CelestialPortalParticle.MoonProvider::new);
+        minecraft.particleEngine.register(ParticleRegistry.MERCURY_PORTAL_PARTICLES.get(), CelestialPortalParticle.MercuryProvider::new);
+        minecraft.particleEngine.register(ParticleRegistry.JUPITER_PORTAL_PARTICLES.get(), CelestialPortalParticle.JupiterProvider::new);
+        minecraft.particleEngine.register(ParticleRegistry.EUROPA_PORTAL_PARTICLES.get(), CelestialPortalParticle.EuropaProvider::new);
+        minecraft.particleEngine.register(ParticleRegistry.CALLISTO_PORTAL_PARTICLES.get(), CelestialPortalParticle.CallistoProvider::new);
 
+        minecraft.particleEngine.register(ParticleRegistry.SPACESHIP_PARTICLES.get(), SpaceshipParticles.Provider::new);
     }
 
     @SubscribeEvent

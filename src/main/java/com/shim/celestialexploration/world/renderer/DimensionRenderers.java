@@ -150,9 +150,12 @@ public class DimensionRenderers {
 
     @OnlyIn(Dist.CLIENT)
     public static class MercuryEffects extends DimensionSpecialEffects {
+        IWeatherParticleRenderHandler particleHandler = new MeteorShowerParticleHandler();
+
         public MercuryEffects() {
             super(Float.NaN, true, SkyType.NORMAL, false, false);
             setSkyRenderHandler(skyHandler);
+//            setWeatherParticleRenderHandler(particleHandler);
         }
 
         @Override
