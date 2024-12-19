@@ -2,8 +2,7 @@ package com.shim.celestialexploration.entity.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.entity.mob.Gust;
-import com.shim.celestialexploration.entity.mob.Gyst;
+import com.shim.celestialexploration.entity.entity.mob.Gyst;
 import net.minecraft.client.model.GhastModel;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;

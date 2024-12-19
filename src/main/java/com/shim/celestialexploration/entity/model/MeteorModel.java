@@ -1,8 +1,7 @@
 package com.shim.celestialexploration.entity.model;
 
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.entity.Eureka;
-import com.shim.celestialexploration.entity.projectile.MeteorProjectile;
+import com.shim.celestialexploration.entity.entity.projectile.MeteorProjectile;
 import mod.azure.azurelib.model.GeoModel;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;

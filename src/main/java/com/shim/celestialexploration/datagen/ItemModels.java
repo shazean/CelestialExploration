@@ -703,7 +703,6 @@ public class ItemModels extends ItemModelProvider {
 		spawnEgg(ItemRegistry.ASTRAL_PIGLIN_SPAWN_EGG.get());
 		spawnEgg(ItemRegistry.CYBORG_PIGLIN_SPAWN_EGG.get());
 		spawnEgg(ItemRegistry.FLARE_SPAWN_EGG.get());
-		spawnEgg(ItemRegistry.GUST_SPAWN_EGG.get());
 		spawnEgg(ItemRegistry.GYST_SPAWN_EGG.get());
 		spawnEgg(ItemRegistry.VOIDED_ZOGLIN_SPAWN_EGG.get());
 		spawnEgg(ItemRegistry.ASTRAL_HOGLIN_SPAWN_EGG.get());
@@ -711,6 +710,7 @@ public class ItemModels extends ItemModelProvider {
 		spawnEgg(ItemRegistry.VOID_CRAWLER_SPAWN_EGG.get());
 		spawnEgg(ItemRegistry.CELESTIAL_CAT_SPAWN_EGG.get());
 		spawnEgg(ItemRegistry.EUREKA_SPAWN_EGG.get());
+		spawnEgg(ItemRegistry.GUST_SPAWN_EGG.get());
 
 		this.withExistingParent(name(BlockRegistry.LURKER_HEAD.get()), this.mcLoc("item/template_skull"));
 		this.withExistingParent(name(BlockRegistry.VOIDED_HEAD.get()), this.mcLoc("item/template_skull"));

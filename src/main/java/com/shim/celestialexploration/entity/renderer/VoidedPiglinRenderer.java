@@ -1,7 +1,7 @@
 package com.shim.celestialexploration.entity.renderer;
 
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.entity.mob.piglins.VoidedPiglin;
+import com.shim.celestialexploration.entity.entity.mob.piglins.VoidedPiglin;
 import com.shim.celestialexploration.entity.layers.PiglinHelmetLayer;
 import com.shim.celestialexploration.registry.CelestialModelLayers;
 import net.minecraft.client.model.PiglinModel;

@@ -1,7 +1,7 @@
 package com.shim.celestialexploration.entity.renderer;
 
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.entity.mob.VoidedZoglin;
+import com.shim.celestialexploration.entity.entity.mob.VoidedZoglin;
 import com.shim.celestialexploration.registry.CelestialModelLayers;
 import net.minecraft.client.model.HoglinModel;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;

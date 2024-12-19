@@ -1,6 +1,6 @@
 package com.shim.celestialexploration.entity.renderer;
 
-import com.shim.celestialexploration.entity.Eureka;
+import com.shim.celestialexploration.entity.entity.ambient.Eureka;
 import com.shim.celestialexploration.entity.model.EurekaModel;
 import mod.azure.azurelib.renderer.GeoEntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;

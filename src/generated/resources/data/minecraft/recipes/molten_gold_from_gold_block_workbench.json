@@ -1,6 +1,5 @@
 {
   "type": "celestialexploration:workbench_smelting",
-  "group": "celestialexploration",
   "ingredient": {
     "item": "minecraft:gold_block"
   },

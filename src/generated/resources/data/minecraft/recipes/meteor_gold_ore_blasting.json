@@ -1,6 +1,5 @@
 {
   "type": "minecraft:blasting",
-  "group": "celestialexploration",
   "ingredient": {
     "item": "celestialexploration:meteor_gold_ore"
   },

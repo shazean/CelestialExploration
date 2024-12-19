@@ -3,7 +3,7 @@ package com.shim.celestialexploration.entity.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.entity.mob.VoidFellow;
+import com.shim.celestialexploration.entity.entity.mob.VoidFellow;
 import com.shim.celestialexploration.entity.layers.VoidCarriedBlockLayer;
 import com.shim.celestialexploration.entity.layers.VoidEyesLayer;
 import net.minecraft.client.model.EndermanModel;

@@ -200,7 +200,6 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(BlockRegistry.VENUS_DEEPSLATE_BRICK_STAIRS.get()).add(BlockRegistry.VENUS_DEEPSLATE_TILE_STAIRS.get()).add(BlockRegistry.VENUS_POLISHED_DEEPSLATE_STAIRS.get())
                 .add(BlockRegistry.SMALL_VENUS_BRICK_STAIRS.get())
 
-
                 .add(BlockRegistry.MERCURY_STONE_STAIRS.get()).add(BlockRegistry.MERCURY_BRICK_STAIRS.get())
                 .add(BlockRegistry.MERCURY_COBBLESTONE_STAIRS.get()).add(BlockRegistry.MERCURY_COBBLED_DEEPSLATE_STAIRS.get())
                 .add(BlockRegistry.MERCURY_DEEPSLATE_BRICK_STAIRS.get()).add(BlockRegistry.MERCURY_DEEPSLATE_TILE_STAIRS.get()).add(BlockRegistry.MERCURY_POLISHED_DEEPSLATE_STAIRS.get())
@@ -346,7 +345,7 @@ public class ModBlockTags extends BlockTagsProvider {
 
         //---- MOON -------------------------------------------------------------------------------
         tag(TagRegistry.Blocks.MOON_STONE)
-                .add(BlockRegistry.MOON_STONE.get()).add(BlockRegistry.MOON_STONE_SLAB.get())
+                .add(BlockRegistry.MOON_STONE.get()).add(BlockRegistry.MOON_STONE_SLAB.get()).add(BlockRegistry.MOON_STONE_STAIRS.get())
                 .add(BlockRegistry.MOON_SMOOTH_STONE.get()).add(BlockRegistry.MOON_SMOOTH_STONE_SLAB.get())
                 .add(BlockRegistry.MOON_BRICKS.get()).add(BlockRegistry.MOON_BRICK_SLAB.get()).add(BlockRegistry.MOON_BRICK_STAIRS.get()).add(BlockRegistry.MOON_BRICK_WALL.get())
                 .add(BlockRegistry.CHISELED_MOON_BRICKS.get()).add(BlockRegistry.MOON_BRICK_PILLAR.get()).add(BlockRegistry.CRACKED_MOON_BRICKS.get());
@@ -367,7 +366,7 @@ public class ModBlockTags extends BlockTagsProvider {
         
         //---- MARS -------------------------------------------------------------------------------
         tag(TagRegistry.Blocks.MARS_STONE)
-                .add(BlockRegistry.MARS_STONE.get()).add(BlockRegistry.MARS_STONE_SLAB.get())
+                .add(BlockRegistry.MARS_STONE.get()).add(BlockRegistry.MARS_STONE_SLAB.get()).add(BlockRegistry.MARS_STONE_STAIRS.get())
                 .add(BlockRegistry.MARS_SMOOTH_STONE.get()).add(BlockRegistry.MARS_SMOOTH_STONE_SLAB.get())
                 .add(BlockRegistry.MARS_BRICKS.get()).add(BlockRegistry.MARS_BRICK_SLAB.get()).add(BlockRegistry.MARS_BRICK_STAIRS.get()).add(BlockRegistry.MARS_BRICK_WALL.get())
                 .add(BlockRegistry.CHISELED_MARS_BRICKS.get()).add(BlockRegistry.MARS_BRICK_PILLAR.get()).add(BlockRegistry.CRACKED_MARS_BRICKS.get());
@@ -388,7 +387,7 @@ public class ModBlockTags extends BlockTagsProvider {
         
         //---- VENUS -------------------------------------------------------------------------------
         tag(TagRegistry.Blocks.VENUS_STONE)
-                .add(BlockRegistry.VENUS_STONE.get()).add(BlockRegistry.VENUS_STONE_SLAB.get())
+                .add(BlockRegistry.VENUS_STONE.get()).add(BlockRegistry.VENUS_STONE_SLAB.get()).add(BlockRegistry.VENUS_STONE_STAIRS.get())
                 .add(BlockRegistry.VENUS_SMOOTH_STONE.get()).add(BlockRegistry.VENUS_SMOOTH_STONE_SLAB.get())
                 .add(BlockRegistry.VENUS_BRICKS.get()).add(BlockRegistry.VENUS_BRICK_SLAB.get()).add(BlockRegistry.VENUS_BRICK_STAIRS.get()).add(BlockRegistry.VENUS_BRICK_WALL.get())
                 .add(BlockRegistry.CHISELED_VENUS_BRICKS.get()).add(BlockRegistry.VENUS_BRICK_PILLAR.get()).add(BlockRegistry.CRACKED_VENUS_BRICKS.get());
@@ -409,7 +408,7 @@ public class ModBlockTags extends BlockTagsProvider {
         
         //---- MERCURY -------------------------------------------------------------------------------
         tag(TagRegistry.Blocks.MERCURY_STONE)
-                .add(BlockRegistry.MERCURY_STONE.get()).add(BlockRegistry.MERCURY_STONE_SLAB.get())
+                .add(BlockRegistry.MERCURY_STONE.get()).add(BlockRegistry.MERCURY_STONE_SLAB.get()).add(BlockRegistry.MERCURY_STONE_STAIRS.get())
                 .add(BlockRegistry.MERCURY_SMOOTH_STONE.get()).add(BlockRegistry.MERCURY_SMOOTH_STONE_SLAB.get())
                 .add(BlockRegistry.MERCURY_BRICKS.get()).add(BlockRegistry.MERCURY_BRICK_SLAB.get()).add(BlockRegistry.MERCURY_BRICK_STAIRS.get()).add(BlockRegistry.MERCURY_BRICK_WALL.get())
                 .add(BlockRegistry.CHISELED_MERCURY_BRICKS.get()).add(BlockRegistry.MERCURY_BRICK_PILLAR.get()).add(BlockRegistry.CRACKED_MERCURY_BRICKS.get());

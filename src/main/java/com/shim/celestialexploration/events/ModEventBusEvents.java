@@ -1,13 +1,16 @@
 package com.shim.celestialexploration.events;
 
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.entity.CelestialCat;
-import com.shim.celestialexploration.entity.Eureka;
-import com.shim.celestialexploration.entity.mob.*;
-import com.shim.celestialexploration.entity.mob.piglins.AstralPiglin;
-import com.shim.celestialexploration.entity.mob.piglins.CyborgPiglin;
-import com.shim.celestialexploration.entity.mob.piglins.VoidedPiglin;
-import com.shim.celestialexploration.entity.mob.slimes.*;
+import com.shim.celestialexploration.entity.entity.ambient.Eureka;
+import com.shim.celestialexploration.entity.entity.friendlies.CelestialCat;
+import com.shim.celestialexploration.entity.entity.mob.*;
+import com.shim.celestialexploration.entity.entity.mob.piglins.AstralPiglin;
+import com.shim.celestialexploration.entity.entity.mob.piglins.CyborgPiglin;
+import com.shim.celestialexploration.entity.entity.mob.piglins.VoidedPiglin;
+import com.shim.celestialexploration.entity.entity.mob.slimes.*;
+import com.shim.celestialexploration.entity.entity.robots.Drone;
+import com.shim.celestialexploration.entity.entity.robots.MechaDog;
+import com.shim.celestialexploration.entity.entity.robots.Rover;
 import com.shim.celestialexploration.entity.model.MagCartModel;
 import com.shim.celestialexploration.particles.*;
 import com.shim.celestialexploration.recipes.WorkbenchCraftingRecipe;
@@ -47,7 +50,6 @@ public class ModEventBusEvents {
         event.put(EntityRegistry.SULFUR_CUBE.get(), SulfurCube.setAttributes());
         event.put(EntityRegistry.VOIDED_PIGLIN.get(), VoidedPiglin.setAttributes());
         event.put(EntityRegistry.FLARE.get(), Flare.setAttributes());
-        event.put(EntityRegistry.GUST.get(), Gust.setAttributes());
         event.put(EntityRegistry.GYST.get(), Gyst.setAttributes());
         event.put(EntityRegistry.ASTRAL_PIGLIN.get(), AstralPiglin.setAttributes());
         event.put(EntityRegistry.CYBORG_PIGLIN.get(), CyborgPiglin.setAttributes());
@@ -61,6 +63,12 @@ public class ModEventBusEvents {
         event.put(EntityRegistry.CELESTIAL_CAT.get(), CelestialCat.createAttributes().build());
 
         event.put(EntityRegistry.EUREKA.get(), Eureka.createAttributes().build());
+
+        event.put(EntityRegistry.GUST.get(), Gust.createAttributes().build());
+        event.put(EntityRegistry.DRONE.get(), Drone.createAttributes().build());
+        event.put(EntityRegistry.ROVER.get(), Rover.createAttributes().build());
+        event.put(EntityRegistry.MECHADOG.get(), MechaDog.createAttributes().build());
+
     }
 
         @SubscribeEvent

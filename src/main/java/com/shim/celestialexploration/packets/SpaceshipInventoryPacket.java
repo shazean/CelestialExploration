@@ -1,6 +1,6 @@
 package com.shim.celestialexploration.packets;
 
-import com.shim.celestialexploration.entity.vehicle.Spaceship;
+import com.shim.celestialexploration.entity.entity.vehicle.Spaceship;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;

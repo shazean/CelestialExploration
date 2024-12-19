@@ -1,7 +1,6 @@
 package com.shim.celestialexploration.capabilities;
 
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.entity.CelestialCat;
 import com.shim.celestialexploration.registry.CapabilityRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

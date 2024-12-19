@@ -7,9 +7,8 @@ import com.shim.celestialexploration.capabilities.LightTravelCapability;
 import com.shim.celestialexploration.capabilities.TaxiCapability;
 import com.shim.celestialexploration.config.CelestialCommonConfig;
 import com.shim.celestialexploration.entity.CelestialCatSpawner;
-import com.shim.celestialexploration.entity.projectile.MeteorProjectile;
-import com.shim.celestialexploration.entity.vehicle.Spaceship;
-import com.shim.celestialexploration.integration.JEIPlugin;
+import com.shim.celestialexploration.entity.entity.projectile.MeteorProjectile;
+import com.shim.celestialexploration.entity.entity.vehicle.Spaceship;
 import com.shim.celestialexploration.item.armor.ThermalSpaceSuitArmorItem;
 import com.shim.celestialexploration.packets.CelestialPacketHandler;
 import com.shim.celestialexploration.packets.SpaceFlightPacket;
@@ -17,14 +16,8 @@ import com.shim.celestialexploration.registry.*;
 import com.shim.celestialexploration.util.CelestialUtil;
 import com.shim.celestialexploration.util.DimensionUtil;
 import com.shim.celestialexploration.util.teleportation.TeleportUtil;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.player.AbstractClientPlayer;
-import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
@@ -48,9 +41,8 @@ import net.minecraftforge.client.event.RenderTooltipEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.EntityMountEvent;
-import net.minecraftforge.event.entity.EntityTravelToDimensionEvent;
-import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -59,7 +51,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.network.NetworkDirection;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 @Mod.EventBusSubscriber(modid = CelestialExploration.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
@@ -213,7 +204,7 @@ public class ModForgeEventBus {
     }
 
     @SubscribeEvent
-    public static void onEntityTakeDamage(LivingDamageEvent event) {
+    public static void onEntityTakeDamage(LivingHurtEvent event) {
         LivingEntity entity = event.getEntityLiving();
 
         if (event.getSource().isFall()) {
@@ -221,7 +212,9 @@ public class ModForgeEventBus {
                 event.setCanceled(true);
             }
         }
+
     }
+
 
     @SubscribeEvent
     public static void clickEvent(PlayerInteractEvent.RightClickBlock event) {

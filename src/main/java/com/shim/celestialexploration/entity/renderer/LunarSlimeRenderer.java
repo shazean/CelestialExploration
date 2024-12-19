@@ -2,7 +2,7 @@ package com.shim.celestialexploration.entity.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.entity.mob.slimes.LunarSlime;
+import com.shim.celestialexploration.entity.entity.mob.slimes.LunarSlime;
 import com.shim.celestialexploration.entity.layers.LunarSlimeOuterLayer;
 import net.minecraft.client.model.SlimeModel;
 import net.minecraft.client.model.geom.ModelLayers;

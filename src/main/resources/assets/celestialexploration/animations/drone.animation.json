@@ -1,0 +1,20 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"idle": {
+			"animation_length": 4,
+			"bones": {
+				"disk": {
+					"rotation": {
+						"vector": [0, "Math.abs(query.anim_time) * 360", 0]
+					}
+				},
+				"root": {
+					"position": {
+						"vector": [0, "Math.sin(query.anim_time * 45) * 1", 0]
+					}
+				}
+			}
+		}
+	}
+}

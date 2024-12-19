@@ -1,0 +1,127 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"test": {
+			"loop": true,
+			"bones": {
+				"sidepanell": {
+					"rotation": {
+						"vector": [-7.24677, 10.21235, -35.6484]
+					}
+				},
+				"sidepanelr": {
+					"rotation": {
+						"vector": [-12.5, 0, 90]
+					}
+				},
+				"backpanel": {
+					"rotation": {
+						"vector": [90, 0, 0]
+					}
+				},
+				"legl": {
+					"rotation": {
+						"vector": [-20, 0, 0]
+					}
+				},
+				"frontwheell": {
+					"rotation": {
+						"vector": [20, 0, 0]
+					}
+				},
+				"neck": {
+					"rotation": {
+						"vector": [0, -12.5, 0]
+					}
+				},
+				"head": {
+					"rotation": {
+						"vector": [0, -45, 0]
+					}
+				},
+				"legr": {
+					"rotation": {
+						"vector": [60, 0, 0]
+					}
+				},
+				"frontwheelr": {
+					"rotation": {
+						"vector": [-37.5, 0, 0]
+					}
+				},
+				"middlewheelr": {
+					"rotation": {
+						"vector": [15, 0, 0]
+					}
+				},
+				"backwheelr": {
+					"rotation": {
+						"vector": [-15, 0, 0]
+					}
+				}
+			}
+		},
+		"rolling": {
+			"loop": true,
+			"animation_length": 4,
+			"bones": {
+				"frontwheell": {
+					"rotation": {
+						"vector": ["Math.abs(query.anim_time * 180) * 1", 0, 0]
+					}
+				},
+				"middlewheell": {
+					"rotation": {
+						"vector": ["Math.abs(query.anim_time * 180) * 1", 0, 0]
+					}
+				},
+				"backwheell": {
+					"rotation": {
+						"vector": ["Math.abs(query.anim_time * 180) * 1", 0, 0]
+					}
+				},
+				"frontwheelr": {
+					"rotation": {
+						"vector": ["Math.abs(query.anim_time * 180) * 1", 0, 0]
+					}
+				},
+				"middlewheelr": {
+					"rotation": {
+						"vector": ["Math.abs(query.anim_time * 180) * 1", 0, 0]
+					}
+				},
+				"backwheelr": {
+					"rotation": {
+						"vector": ["Math.abs(query.anim_time * 180) * 1", 0, 0]
+					}
+				},
+				"sidepanell": {
+					"rotation": {
+						"vector": [0, 7.5, 0]
+					}
+				},
+				"sidepanelr": {
+					"rotation": {
+						"vector": [0, -7.5, 0]
+					}
+				}
+			}
+		},
+		"idle": {
+			"loop": true,
+			"bones": {
+				"sidepanell": {
+					"rotation": {
+						"vector": [0, 7.5, 0]
+					}
+				},
+				"sidepanelr": {
+					"rotation": {
+						"vector": [0, -7.5, 0]
+					}
+				}
+			}
+		}
+	},
+	"azurelib_format_version": 2
+}

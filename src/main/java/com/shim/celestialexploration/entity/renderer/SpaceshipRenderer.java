@@ -4,7 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.datafixers.util.Pair;
-import com.shim.celestialexploration.entity.vehicle.Spaceship;
+import com.shim.celestialexploration.entity.entity.vehicle.Spaceship;
 import com.shim.celestialexploration.entity.model.SpaceshipModel;
 import mod.azure.azurelib.cache.object.BakedGeoModel;
 import mod.azure.azurelib.constant.DataTickets;

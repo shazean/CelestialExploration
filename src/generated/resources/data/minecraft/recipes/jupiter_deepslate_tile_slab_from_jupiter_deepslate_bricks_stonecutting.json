@@ -1,6 +1,5 @@
 {
   "type": "minecraft:stonecutting",
-  "group": "celestialexploration",
   "ingredient": {
     "item": "celestialexploration:jupiter_deepslate_bricks"
   },

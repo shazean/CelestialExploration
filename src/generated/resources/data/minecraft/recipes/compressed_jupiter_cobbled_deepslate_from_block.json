@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shapeless",
-  "group": "celestialexploration",
   "ingredients": [
     {
       "item": "celestialexploration:super_compressed_jupiter_cobbled_deepslate"

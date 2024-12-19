@@ -2,7 +2,7 @@ package com.shim.celestialexploration.entity.renderer;
 
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.entity.layers.MeteorCrawlerEyesLayer;
-import com.shim.celestialexploration.entity.mob.MeteorCrawler;
+import com.shim.celestialexploration.entity.entity.mob.MeteorCrawler;
 import net.minecraft.client.model.SpiderModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelLayers;

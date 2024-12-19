@@ -1,6 +1,5 @@
 {
   "type": "minecraft:stonecutting",
-  "group": "celestialexploration",
   "ingredient": {
     "tag": "celestialexploration:venus_cobbled_deepslate"
   },

@@ -1,11 +1,8 @@
 package com.shim.celestialexploration.blocks;
 
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.blocks.blockentities.OxygenCompressorBlockEntity;
 import com.shim.celestialexploration.blocks.blockentities.TaxiStationBlockEntity;
-import com.shim.celestialexploration.capabilities.ISpaceFlight;
 import com.shim.celestialexploration.capabilities.TaxiCapability;
-import com.shim.celestialexploration.entity.vehicle.SpaceTaxi;
 import com.shim.celestialexploration.registry.BlockEntityRegistry;
 import com.shim.celestialexploration.registry.CapabilityRegistry;
 import net.minecraft.core.BlockPos;
@@ -13,7 +10,6 @@ import net.minecraft.network.chat.TextComponent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
@@ -26,7 +22,6 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.network.NetworkHooks;
 
 import javax.annotation.Nullable;
-import java.util.List;
 
 public class TaxiStationBlock extends BaseEntityBlock {
 

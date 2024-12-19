@@ -4,19 +4,18 @@ import com.shim.celestialexploration.config.CelestialClientConfig;
 import com.shim.celestialexploration.config.CelestialCommonConfig;
 import com.shim.celestialexploration.data.CelestialDimensionManager;
 import com.shim.celestialexploration.data.CelestialPlanetManager;
-import com.shim.celestialexploration.entity.CelestialCat;
-import com.shim.celestialexploration.entity.Eureka;
-import com.shim.celestialexploration.entity.mob.*;
-import com.shim.celestialexploration.entity.mob.piglins.AstralPiglin;
-import com.shim.celestialexploration.entity.mob.piglins.CyborgPiglin;
-import com.shim.celestialexploration.entity.mob.piglins.VoidedPiglin;
-import com.shim.celestialexploration.entity.mob.slimes.*;
+import com.shim.celestialexploration.entity.entity.ambient.Eureka;
+import com.shim.celestialexploration.entity.entity.friendlies.CelestialCat;
+import com.shim.celestialexploration.entity.entity.mob.*;
+import com.shim.celestialexploration.entity.entity.mob.piglins.AstralPiglin;
+import com.shim.celestialexploration.entity.entity.mob.piglins.CyborgPiglin;
+import com.shim.celestialexploration.entity.entity.mob.piglins.VoidedPiglin;
+import com.shim.celestialexploration.entity.entity.mob.slimes.*;
 import com.shim.celestialexploration.packets.CelestialPacketHandler;
 import com.shim.celestialexploration.registry.*;
 import com.shim.celestialexploration.util.ClientProxy;
 import com.shim.celestialexploration.util.IProxy;
 import com.shim.celestialexploration.util.Keybinds;
-import com.shim.celestialexploration.registry.CelestialStructurePieceType;
 import com.shim.celestialexploration.util.ServerProxy;
 import com.shim.celestialexploration.world.structures.ResearchTunnelPieces;
 import mod.azure.azurelib.AzureLib;
@@ -140,8 +139,8 @@ public class CelestialExploration {
     private void setup(final FMLCommonSetupEvent event)
     {
         // some preinit code
-        LOGGER.info("HELLO FROM PREINIT");
-        LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
+//        LOGGER.info("HELLO FROM PREINIT");
+//        LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
 
         SpawnPlacements.register(EntityRegistry.MARS_MALLOW.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, MarsMallow::checkMarsMallowSpawnRules);
         SpawnPlacements.register(EntityRegistry.RUST_SLIME.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, RustSlime::checkRustSlimeSpawnRules);
@@ -155,7 +154,6 @@ public class CelestialExploration {
         SpawnPlacements.register(EntityRegistry.VOIDED_PIGLIN.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, VoidedPiglin::checkVoidedPiglinSpawnRules);
         SpawnPlacements.register(EntityRegistry.CYBORG_PIGLIN.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, CyborgPiglin::checkCyborgPiglinSpawnRules);
         SpawnPlacements.register(EntityRegistry.ASTRAL_PIGLIN.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, AstralPiglin::checkAstralPiglinSpawnRules);
-        SpawnPlacements.register(EntityRegistry.GUST.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, Gust::checkGustSpawnRules);
         SpawnPlacements.register(EntityRegistry.GYST.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, Gyst::checkGystSpawnRules);
         SpawnPlacements.register(EntityRegistry.METEOR_CRAWLER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, MeteorCrawler::checkMeteorCrawlerSpawnRules);
         SpawnPlacements.register(EntityRegistry.VOID_CRAWLER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, VoidCrawler::checkMonsterSpawnRules);

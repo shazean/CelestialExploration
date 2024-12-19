@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XGX",
+    "X X",
+    " X "
+  ],
+  "key": {
+    "G": {
+      "tag": "forge:glass"
+    },
+    "X": {
+      "item": "celestialexploration:steel_ingot"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:fluid_basin"
+  }
+}

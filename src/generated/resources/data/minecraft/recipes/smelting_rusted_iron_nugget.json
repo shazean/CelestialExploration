@@ -1,6 +1,5 @@
 {
   "type": "minecraft:smelting",
-  "group": "celestialexploration",
   "ingredient": {
     "item": "celestialexploration:rusted_iron_nugget"
   },

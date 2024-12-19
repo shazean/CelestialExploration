@@ -1,6 +1,5 @@
 {
   "type": "celestialexploration:workbench_crafting",
-  "group": "celestialexploration",
   "pattern": [
     "AGA",
     "G G",
@@ -15,7 +14,8 @@
     }
   },
   "result": {
-    "item": "celestialexploration:lox_tank"
+    "item": "celestialexploration:lox_tank",
+    "count": 2
   },
   "fluid": "celestialexploration:molten_steel",
   "buckets": 0.444,

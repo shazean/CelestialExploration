@@ -2,7 +2,7 @@ package com.shim.celestialexploration.inventory.menus;
 
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.capabilities.TaxiCapability;
-import com.shim.celestialexploration.entity.vehicle.SpaceTaxi;
+import com.shim.celestialexploration.entity.entity.vehicle.SpaceTaxi;
 import com.shim.celestialexploration.packets.*;
 import com.shim.celestialexploration.registry.CapabilityRegistry;
 import com.shim.celestialexploration.registry.MenuRegistry;
@@ -18,7 +18,6 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 
-import javax.annotation.Nullable;
 import java.util.List;
 
 public class SpaceTaxiMenu extends AbstractContainerMenu {

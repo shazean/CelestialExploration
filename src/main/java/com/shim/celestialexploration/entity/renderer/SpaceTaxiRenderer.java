@@ -3,7 +3,7 @@ package com.shim.celestialexploration.entity.renderer;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.shim.celestialexploration.entity.model.SpaceTaxiModel;
-import com.shim.celestialexploration.entity.vehicle.SpaceTaxi;
+import com.shim.celestialexploration.entity.entity.vehicle.SpaceTaxi;
 import mod.azure.azurelib.cache.object.BakedGeoModel;
 import mod.azure.azurelib.constant.DataTickets;
 import mod.azure.azurelib.core.animatable.GeoAnimatable;

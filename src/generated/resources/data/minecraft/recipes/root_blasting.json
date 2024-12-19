@@ -1,6 +1,5 @@
 {
   "type": "minecraft:blasting",
-  "group": "celestialexploration",
   "ingredient": {
     "tag": "celestialexploration:bauxite_ore"
   },

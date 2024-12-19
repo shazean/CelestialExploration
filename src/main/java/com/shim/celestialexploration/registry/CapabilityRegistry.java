@@ -2,7 +2,7 @@ package com.shim.celestialexploration.registry;
 
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.capabilities.*;
-import com.shim.celestialexploration.entity.vehicle.Spaceship;
+import com.shim.celestialexploration.entity.entity.vehicle.Spaceship;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.npc.Villager;

@@ -1,0 +1,163 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.rover",
+				"texture_width": 128,
+				"texture_height": 128,
+				"visible_bounds_width": 4,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [0, 1.25, 0]
+			},
+			"bones": [
+				{
+					"name": "root",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "body",
+					"parent": "root",
+					"pivot": [0, 8, 0],
+					"cubes": [
+						{"origin": [-7, 8, -7], "size": [14, 5, 16], "uv": [27, 63]},
+						{"origin": [-10.5, 13, -18], "size": [21, 1, 28], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "sidepanell",
+					"parent": "body",
+					"pivot": [6.5, 14, -17],
+					"cubes": [
+						{"origin": [6.5, 14, -17], "size": [11, 1, 33], "uv": [0, 29]}
+					]
+				},
+				{
+					"name": "sidepanelr",
+					"parent": "body",
+					"pivot": [-6.5, 14, -17],
+					"cubes": [
+						{"origin": [-17.5, 14, -17], "size": [11, 1, 33], "uv": [0, 29], "mirror": true}
+					]
+				},
+				{
+					"name": "backpanel",
+					"parent": "body",
+					"pivot": [0, 14, 9],
+					"cubes": [
+						{"origin": [-9, 14, 9], "size": [18, 1, 9], "uv": [70, 0]}
+					]
+				},
+				{
+					"name": "legl",
+					"parent": "body",
+					"pivot": [7, 11, 5],
+					"cubes": [
+						{"origin": [6, -3.25, -15], "size": [2, 10, 23], "pivot": [8, 4.75, -8], "rotation": [22.5, 0, 0], "uv": [0, 63]},
+						{"origin": [5, 2, -16], "size": [4, 2, 27], "uv": [55, 29]}
+					]
+				},
+				{
+					"name": "wheelsl",
+					"parent": "legl",
+					"pivot": [1, 15, -13]
+				},
+				{
+					"name": "frontwheell",
+					"parent": "wheelsl",
+					"pivot": [8, 2.5, -14.5],
+					"cubes": [
+						{"origin": [8, 0, -17], "size": [3, 5, 5], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "middlewheell",
+					"parent": "wheelsl",
+					"pivot": [8, 2.5, -1.5],
+					"cubes": [
+						{"origin": [8, 0, -4], "size": [3, 5, 5], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "backwheell",
+					"parent": "wheelsl",
+					"pivot": [8, 2.5, 10.5],
+					"cubes": [
+						{"origin": [8, 0, 8], "size": [3, 5, 5], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "legr",
+					"parent": "body",
+					"pivot": [-7, 11, 5],
+					"cubes": [
+						{"origin": [-8, -3.25, -15], "size": [2, 10, 23], "pivot": [-8, 4.75, -8], "rotation": [22.5, 0, 0], "uv": [0, 63], "mirror": true},
+						{"origin": [-9, 2, -16], "size": [4, 2, 27], "uv": [55, 29], "mirror": true}
+					]
+				},
+				{
+					"name": "wheelsr",
+					"parent": "legr",
+					"pivot": [-1, 15, -13]
+				},
+				{
+					"name": "frontwheelr",
+					"parent": "wheelsr",
+					"pivot": [-8, 2.5, -14.5],
+					"cubes": [
+						{"origin": [-11, 0, -17], "size": [3, 5, 5], "uv": [0, 0], "mirror": true}
+					]
+				},
+				{
+					"name": "middlewheelr",
+					"parent": "wheelsr",
+					"pivot": [-8, 2.5, -1.5],
+					"cubes": [
+						{"origin": [-11, 0, -4], "size": [3, 5, 5], "uv": [0, 0], "mirror": true}
+					]
+				},
+				{
+					"name": "backwheelr",
+					"parent": "wheelsr",
+					"pivot": [-8, 2.5, 10.5],
+					"cubes": [
+						{"origin": [-11, 0, 8], "size": [3, 5, 5], "uv": [0, 0], "mirror": true}
+					]
+				},
+				{
+					"name": "neck",
+					"parent": "body",
+					"pivot": [0, 14, -11.5],
+					"cubes": [
+						{"origin": [-1.5, 14, -13], "size": [3, 9, 3], "uv": [0, 10]}
+					]
+				},
+				{
+					"name": "head",
+					"parent": "neck",
+					"pivot": [0, 23, -11.5],
+					"cubes": [
+						{"origin": [-6, 23, -14], "size": [12, 6, 5], "uv": [70, 10]}
+					]
+				},
+				{
+					"name": "antenna",
+					"parent": "body",
+					"pivot": [4, 0, 7],
+					"cubes": [
+						{"origin": [4, 14, 6], "size": [1, 10, 1], "uv": [12, 10]}
+					]
+				},
+				{
+					"name": "arm",
+					"parent": "body",
+					"pivot": [5, 9, -7],
+					"cubes": [
+						{"origin": [-11, 9, -9], "size": [16, 2, 2], "uv": [55, 58]},
+						{"origin": [-11, 9, -10], "size": [3, 2, 1], "uv": [11, 0]}
+					]
+				}
+			]
+		}
+	]
+}

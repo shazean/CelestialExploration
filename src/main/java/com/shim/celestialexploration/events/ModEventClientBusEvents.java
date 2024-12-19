@@ -22,6 +22,7 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.client.event.EntityViewRenderEvent;
 import net.minecraftforge.client.event.RenderTooltipEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -154,7 +155,6 @@ public class ModEventClientBusEvents {
         EntityRenderers.register(EntityRegistry.SULFUR_CUBE.get(), SulfurCubeRenderer::new);
         EntityRenderers.register(EntityRegistry.VOIDED_PIGLIN.get(), VoidedPiglinRenderer::new);
         EntityRenderers.register(EntityRegistry.FLARE.get(), FlareRenderer::new);
-        EntityRenderers.register(EntityRegistry.GUST.get(), GustRenderer::new);
         EntityRenderers.register(EntityRegistry.GYST.get(), GystRenderer::new);
         EntityRenderers.register(EntityRegistry.ASTRAL_PIGLIN.get(), AstralPiglinRenderer::new);
         EntityRenderers.register(EntityRegistry.CYBORG_PIGLIN.get(), CyborgPiglinRenderer::new);
@@ -165,6 +165,10 @@ public class ModEventClientBusEvents {
         EntityRenderers.register(EntityRegistry.CELESTIAL_CAT.get(), CelestialCatRenderer::new);
         EntityRenderers.register(EntityRegistry.EUREKA.get(), EurekaRenderer::new);
         EntityRenderers.register(EntityRegistry.METEOR.get(), MeteorRenderer::new);
+        EntityRenderers.register(EntityRegistry.GUST.get(), GustRenderer::new);
+        EntityRenderers.register(EntityRegistry.DRONE.get(), DroneRenderer::new);
+        EntityRenderers.register(EntityRegistry.ROVER.get(), RoverRenderer::new);
+        EntityRenderers.register(EntityRegistry.MECHADOG.get(), MechaDogRenderer::new);
 
         MenuScreens.register(MenuRegistry.OXYGEN_COMPRESSOR_MENU.get(), OxygenCompressorScreen::new);
         MenuScreens.register(MenuRegistry.PLANET_CHART_MENU.get(), PlanetChartScreen::new);

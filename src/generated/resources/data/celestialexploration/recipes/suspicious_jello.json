@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shapeless",
-  "group": "celestialquests",
   "ingredients": [
     {
       "tag": "celestialexploration:slime_drops"

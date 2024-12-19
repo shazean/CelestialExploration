@@ -3,7 +3,7 @@ package com.shim.celestialexploration.entity.renderer;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.entity.layers.LunarSlimeOuterLayer;
-import com.shim.celestialexploration.entity.mob.slimes.QuicksilverSlime;
+import com.shim.celestialexploration.entity.entity.mob.slimes.QuicksilverSlime;
 import net.minecraft.client.model.SlimeModel;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.MultiBufferSource;

@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shapeless",
-  "group": "celestialexploration",
   "ingredients": [
     {
       "item": "minecraft:iron_ingot"

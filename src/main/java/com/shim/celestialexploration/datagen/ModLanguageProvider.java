@@ -33,7 +33,6 @@ public class ModLanguageProvider extends LanguageProvider {
 		return "dimension.celestialexploration." + dimension.location().getPath();
 	}
 
-
 	@Override
 	protected void addTranslations() {
 
@@ -255,9 +254,6 @@ public class ModLanguageProvider extends LanguageProvider {
 		add("celestialexploration.spaceship.space_min_height", "Warning! Approaching dangerous depths of space!");
 
 		add("celestialexploration.display_board.edit", "Edit Display Board Message");
-
-
-
 
 
 	}

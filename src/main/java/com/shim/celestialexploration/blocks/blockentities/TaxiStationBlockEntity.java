@@ -1,8 +1,7 @@
 package com.shim.celestialexploration.blocks.blockentities;
 
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.entity.vehicle.SpaceTaxi;
-import com.shim.celestialexploration.inventory.menus.SpaceTaxiMenu;
+import com.shim.celestialexploration.entity.entity.vehicle.SpaceTaxi;
 import com.shim.celestialexploration.inventory.menus.TaxiStationMenu;
 import com.shim.celestialexploration.registry.BlockEntityRegistry;
 import net.minecraft.core.BlockPos;
@@ -22,7 +21,6 @@ import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.CapabilityItemHandler;

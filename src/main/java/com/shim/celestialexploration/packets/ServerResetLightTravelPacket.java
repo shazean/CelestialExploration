@@ -2,10 +2,8 @@ package com.shim.celestialexploration.packets;
 
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.capabilities.LightTravelCapability;
-import com.shim.celestialexploration.entity.vehicle.Spaceship;
 import com.shim.celestialexploration.registry.CapabilityRegistry;
 import com.shim.celestialexploration.registry.DimensionRegistry;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceKey;

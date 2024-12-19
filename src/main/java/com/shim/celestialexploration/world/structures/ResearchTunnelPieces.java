@@ -2,7 +2,7 @@ package com.shim.celestialexploration.world.structures;
 
 import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
-import com.shim.celestialexploration.entity.vehicle.MagCartChest;
+import com.shim.celestialexploration.entity.entity.vehicle.MagCartChest;
 import com.shim.celestialexploration.registry.BlockRegistry;
 import com.shim.celestialexploration.registry.CELootTables;
 import com.shim.celestialexploration.registry.CelestialStructurePieceType;
@@ -12,7 +12,6 @@ import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -25,7 +24,6 @@ import net.minecraft.world.level.levelgen.structure.StructurePiece;
 import net.minecraft.world.level.levelgen.structure.StructurePieceAccessor;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceSerializationContext;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import org.slf4j.Logger;
 
 import javax.annotation.Nullable;

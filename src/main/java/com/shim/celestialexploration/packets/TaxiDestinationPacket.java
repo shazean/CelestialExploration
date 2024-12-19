@@ -1,6 +1,6 @@
 package com.shim.celestialexploration.packets;
 
-import com.shim.celestialexploration.entity.vehicle.SpaceTaxi;
+import com.shim.celestialexploration.entity.entity.vehicle.SpaceTaxi;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
 import net.minecraft.network.FriendlyByteBuf;

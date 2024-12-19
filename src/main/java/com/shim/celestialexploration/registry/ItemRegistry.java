@@ -1,15 +1,14 @@
 package com.shim.celestialexploration.registry;
 
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.entity.vehicle.Spaceship;
-import com.shim.celestialexploration.entity.vehicle.AbstractMagCart;
+import com.shim.celestialexploration.entity.entity.vehicle.Spaceship;
+import com.shim.celestialexploration.entity.entity.vehicle.AbstractMagCart;
 import com.shim.celestialexploration.item.*;
 import com.shim.celestialexploration.item.armor.AdvancedSpaceSuitArmorItem;
 import com.shim.celestialexploration.item.armor.HeavyDutySpaceSuitArmorItem;
 import com.shim.celestialexploration.item.armor.ThermalSpaceSuitArmorItem;
 import com.shim.celestialexploration.item.armor.SpaceSuitArmorItem;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
@@ -123,7 +122,6 @@ public class ItemRegistry {
 	public static final RegistryObject<Item> ASTRAL_PIGLIN_SPAWN_EGG = registerItem("astral_piglin_spawn_egg", "Astral Piglin Spawn Egg", () -> new ForgeSpawnEggItem(EntityRegistry.ASTRAL_PIGLIN,0xd09392, 0xb06661, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
 	public static final RegistryObject<Item> CYBORG_PIGLIN_SPAWN_EGG = registerItem("cyborg_piglin_spawn_egg", "Cyborg Piglin Spawn Egg", () -> new ForgeSpawnEggItem(EntityRegistry.CYBORG_PIGLIN,0xda927c, 0xb4b4c1, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
 	public static final RegistryObject<Item> FLARE_SPAWN_EGG = registerItem("flare_spawn_egg", "Flare Spawn Egg", () -> new ForgeSpawnEggItem(EntityRegistry.FLARE,0x24335b, 0xf1c350, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
-	public static final RegistryObject<Item> GUST_SPAWN_EGG = registerItem("gust_spawn_egg", "Gust Spawn Egg", () -> new ForgeSpawnEggItem(EntityRegistry.GUST,0x1b1b1b, 0x3d4242, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
 	public static final RegistryObject<Item> GYST_SPAWN_EGG = registerItem("gyst_spawn_egg", "Gyst Spawn Egg", () -> new ForgeSpawnEggItem(EntityRegistry.GYST,0, 0x3c2d62, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
 	public static final RegistryObject<Item> VOIDED_ZOGLIN_SPAWN_EGG = registerItem("voided_zoglin_spawn_egg", "Voided Zoglin Spawn Egg", () -> new ForgeSpawnEggItem(EntityRegistry.VOIDED_ZOGLIN,0x583b5e, 0xe9a3bb, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
 	public static final RegistryObject<Item> ASTRAL_HOGLIN_SPAWN_EGG = registerItem("astral_hoglin_spawn_egg", "Astral Hoglin Spawn Egg", () -> new ForgeSpawnEggItem(EntityRegistry.ASTRAL_HOGLIN,0xb06661, 0xd09392, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
@@ -131,6 +129,11 @@ public class ItemRegistry {
 	public static final RegistryObject<Item> VOID_CRAWLER_SPAWN_EGG = registerItem("void_crawler_spawn_egg", "Void Crawler Spawn Egg", () -> new ForgeSpawnEggItem(EntityRegistry.VOID_CRAWLER,0x17405f, 0x0e2746, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
 	public static final RegistryObject<Item> CELESTIAL_CAT_SPAWN_EGG = registerItem("celestial_cat_spawn_egg", "Celestial Cat Spawn Egg", () -> new ForgeSpawnEggItem(EntityRegistry.CELESTIAL_CAT,0x6C543E, 0xC3A676, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
 	public static final RegistryObject<Item> EUREKA_SPAWN_EGG = registerItem("eureka_spawn_egg", "Eureka! Spawn Egg", () -> new ForgeSpawnEggItem(EntityRegistry.EUREKA,0x0b6f3f, 0x1d8c56, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> GUST_SPAWN_EGG = registerItem("gust_spawn_egg", "Gust Spawn Egg", () -> new ForgeSpawnEggItem(EntityRegistry.GUST,0x0b6f3f, 0x1d8c56, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> DRONE_SPAWN_EGG = registerItem("drone_spawn_egg", "Drone Spawn Egg", () -> new ForgeSpawnEggItem(EntityRegistry.DRONE,0x0b6f3f, 0x1d8c56, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> ROVER_SPAWN_EGG = registerItem("rover_spawn_egg", "Rover Spawn Egg", () -> new ForgeSpawnEggItem(EntityRegistry.ROVER,0x0b6f3f, 0x1d8c56, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> MECHADOG_SPAWN_ITEM = registerItem("mechadog_spawn_item", "MechaDog", () -> new AutoTameSpawnItem(EntityRegistry.MECHADOG, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> WILD_MECHADOG_SPAWN_EGG = registerItem("wild_mechadog_spawn_egg", "Wild MechaDog Spawn Egg", () -> new ForgeSpawnEggItem(EntityRegistry.MECHADOG, 0x0b6f3f, 0x1d8c56, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
 
 	//---- MOB HEADS -------------------------------------------------------------------------------
 
