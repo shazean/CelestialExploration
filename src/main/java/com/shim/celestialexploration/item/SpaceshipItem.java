@@ -1,5 +1,6 @@
 package com.shim.celestialexploration.item;
 
+import com.shim.celestialexploration.entity.DyeType;
 import com.shim.celestialexploration.entity.entity.vehicle.Spaceship;
 import net.minecraft.core.BlockPos;
 import net.minecraft.stats.Stats;
@@ -22,10 +23,10 @@ import java.util.function.Predicate;
 
 public class SpaceshipItem extends Item {
     private static final Predicate<Entity> ENTITY_PREDICATE = EntitySelector.NO_SPECTATORS.and(Entity::isPickable);
-    private final Spaceship.Type type;
+    private final DyeType type;
 //    private CompoundTag spaceshipData;
 
-    public SpaceshipItem(Spaceship.Type p_40619_, Item.Properties p_40620_) {
+    public SpaceshipItem(DyeType p_40619_, Item.Properties p_40620_) {
         super(p_40620_);
         this.type = p_40619_;
     }
@@ -54,7 +55,7 @@ public class SpaceshipItem extends Item {
             if (hitresult.getType() == HitResult.Type.BLOCK) {
 //                CelestialExploration.LOGGER.debug("SpaceshipItem HitResult BLOCK should be placing spaceship");
                 Spaceship spaceship = new Spaceship(level, hitresult.getLocation().x, hitresult.getLocation().y, hitresult.getLocation().z);
-                spaceship.setType(this.type);
+                spaceship.setDyeType(this.type);
                 spaceship.setYRot(player.getYRot());
                 if (!level.noCollision(spaceship, spaceship.getBoundingBox())) {
                     return InteractionResultHolder.fail(itemstack);

@@ -1,5 +1,7 @@
 package com.shim.celestialexploration.entity.entity.robots;
 
+import com.shim.celestialexploration.entity.DyeType;
+import com.shim.celestialexploration.entity.IDyeable;
 import com.shim.celestialexploration.entity.entity.friendlies.TamableCreature;
 import com.shim.celestialexploration.entity.entity.goals.*;
 import com.shim.celestialexploration.entity.entity.mob.Gust;
@@ -48,11 +50,13 @@ import javax.annotation.Nullable;
 import java.util.EnumSet;
 import java.util.function.Predicate;
 
-public class MechaDog extends TamableCreature implements GeoEntity {
+public class MechaDog extends TamableCreature implements GeoEntity, IDyeable {
     private final AnimatableInstanceCache cache = AzureLibUtil.createInstanceCache(this);
     private static final EntityDataAccessor<Boolean> DATA_INTERESTED_ID = SynchedEntityData.defineId(MechaDog.class, EntityDataSerializers.BOOLEAN);
-    private static final EntityDataAccessor<Integer> DATA_COLLAR_COLOR = SynchedEntityData.defineId(MechaDog.class, EntityDataSerializers.INT);
-//    private static final EntityDataAccessor<Integer> DATA_REMAINING_ANGER_TIME = SynchedEntityData.defineId(MechaDog.class, EntityDataSerializers.INT);
+//    private static final EntityDataAccessor<Integer> DATA_COLLAR_COLOR = SynchedEntityData.defineId(MechaDog.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> DATA_ID_TYPE = SynchedEntityData.defineId(MechaDog.class, EntityDataSerializers.INT);
+
+    //    private static final EntityDataAccessor<Integer> DATA_REMAINING_ANGER_TIME = SynchedEntityData.defineId(MechaDog.class, EntityDataSerializers.INT);
     public static final Predicate<LivingEntity> PREY_SELECTOR = (p_30437_) -> {
         EntityType<?> entitytype = p_30437_.getType();
         return entitytype == EntityType.SHEEP || entitytype == EntityType.RABBIT || entitytype == EntityType.FOX;
@@ -92,10 +96,10 @@ public class MechaDog extends TamableCreature implements GeoEntity {
         this.targetSelector.addGoal(1, new CreatureOwnerHurtByTargetGoal(this));
         this.targetSelector.addGoal(2, new CreatureOwnerHurtTargetGoal(this));
         this.targetSelector.addGoal(3, (new HurtByTargetGoal(this)).setAlertOthers());
-        this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, Player.class, true, false));
+        this.targetSelector.addGoal(4, new NearestAttackableTargetPeacefulGoal<>(this, Player.class, true, false));
         this.targetSelector.addGoal(5, new NonTameCreatureRandomTargetGoal<>(this, Animal.class, false, PREY_SELECTOR));
         this.targetSelector.addGoal(6, new NonTameCreatureRandomTargetGoal<>(this, Turtle.class, false, Turtle.BABY_ON_LAND_SELECTOR));
-        this.targetSelector.addGoal(7, new NearestAttackableTargetGoal<>(this, AbstractSkeleton.class, false));
+        this.targetSelector.addGoal(7, new TameCreatureRandomTargetGoal<>(this, AbstractSkeleton.class, false, null));
 //        this.targetSelector.addGoal(8, new ResetUniversalAngerTargetGoal<>(this, true));
     }
 
@@ -126,7 +130,6 @@ public class MechaDog extends TamableCreature implements GeoEntity {
                 return event.setAndContinue(wild_walk);
             } else
                 return event.setAndContinue(wild_idle);
-
         })
 //            if (event.isMoving()) {
 //                    return event.setAndContinue(flyingAnimation);
@@ -155,13 +158,15 @@ public class MechaDog extends TamableCreature implements GeoEntity {
     }
 
     public static AttributeSupplier.Builder createAttributes() {
-        return Mob.createMobAttributes().add(Attributes.MOVEMENT_SPEED, (double)0.3F).add(Attributes.MAX_HEALTH, 8.0D).add(Attributes.ATTACK_DAMAGE, 2.0D);
+        return Mob.createMobAttributes().add(Attributes.MOVEMENT_SPEED, (double)0.3F).add(Attributes.MAX_HEALTH, 10.0D).add(Attributes.ATTACK_DAMAGE, 2.0D);
     }
 
     protected void defineSynchedData() {
         super.defineSynchedData();
         this.entityData.define(DATA_INTERESTED_ID, false);
-        this.entityData.define(DATA_COLLAR_COLOR, DyeColor.RED.getId());
+//        this.entityData.define(DATA_COLLAR_COLOR, DyeColor.RED.getId());
+        this.entityData.define(DATA_ID_TYPE, DyeType.RED.ordinal());
+
 //        this.entityData.define(DATA_REMAINING_ANGER_TIME, 0);
     }
 
@@ -169,20 +174,36 @@ public class MechaDog extends TamableCreature implements GeoEntity {
         this.playSound(SoundEvents.WOLF_STEP, 0.15F, 1.0F);
     }
 
-    public void addAdditionalSaveData(CompoundTag p_30418_) {
-        super.addAdditionalSaveData(p_30418_);
-        p_30418_.putByte("CollarColor", (byte)this.getCollarColor().getId());
-//        this.addPersistentAngerSaveData(p_30418_);
+    public void addAdditionalSaveData(CompoundTag tag) {
+        super.addAdditionalSaveData(tag);
+//        tag.putByte("CollarColor", (byte)this.getCollarColor().getId());
+        tag.putString("Type", this.getDyeType().getName());
+
+//        this.addPersistentAngerSaveData(tag);
     }
 
-    public void readAdditionalSaveData(CompoundTag p_30402_) {
-        super.readAdditionalSaveData(p_30402_);
-        if (p_30402_.contains("CollarColor", 99)) {
-            this.setCollarColor(DyeColor.byId(p_30402_.getInt("CollarColor")));
+    public void readAdditionalSaveData(CompoundTag tag) {
+        super.readAdditionalSaveData(tag);
+//        if (tag.contains("CollarColor", 99)) {
+//            this.setCollarColor(DyeColor.byId(tag.getInt("CollarColor")));
+//        }
+
+        if (tag.contains("Type", 8)) {
+            this.setDyeType(DyeType.byName(tag.getString("Type")));
         }
+
 
 //        this.readPersistentAngerSaveData(this.level, p_30402_);
     }
+
+    public void setDyeType(DyeType p_38333_) {
+        this.entityData.set(DATA_ID_TYPE, p_38333_.ordinal());
+    }
+
+    public DyeType getDyeType() {
+        return DyeType.byId(this.entityData.get(DATA_ID_TYPE));
+    }
+
 
     protected SoundEvent getAmbientSound() {
 //        if (this.isAngry()) {
@@ -361,7 +382,8 @@ public class MechaDog extends TamableCreature implements GeoEntity {
         } else {
             if (this.isTame()) {
                 if (this.isFood(itemstack) && this.getHealth() < this.getMaxHealth()) {
-                    this.heal((float)itemstack.getFoodProperties(this).getNutrition());
+//                    this.heal((float)itemstack.getFoodProperties(this).getNutrition());
+                    this.heal(5);
                     if (!p_30412_.getAbilities().instabuild) {
                         itemstack.shrink(1);
                     }
@@ -383,15 +405,15 @@ public class MechaDog extends TamableCreature implements GeoEntity {
                     return interactionresult;
                 }
 
-                DyeColor dyecolor = ((DyeItem)item).getDyeColor();
-                if (dyecolor != this.getCollarColor()) {
-                    this.setCollarColor(dyecolor);
-                    if (!p_30412_.getAbilities().instabuild) {
-                        itemstack.shrink(1);
-                    }
-
-                    return InteractionResult.SUCCESS;
-                }
+//                DyeColor dyecolor = ((DyeItem)item).getDyeColor();
+//                if (dyecolor != this.getCollarColor()) {
+//                    this.setCollarColor(dyecolor);
+//                    if (!p_30412_.getAbilities().instabuild) {
+//                        itemstack.shrink(1);
+//                    }
+//
+//                    return InteractionResult.SUCCESS;
+//                }
             }
 //            else if (itemstack.is(tameItem)) { // && !this.isAngry()) {
 //                if (!p_30412_.getAbilities().instabuild) {
@@ -467,13 +489,13 @@ public class MechaDog extends TamableCreature implements GeoEntity {
 //        this.persistentAngerTarget = p_30400_;
 //    }
 
-    public DyeColor getCollarColor() {
-        return DyeColor.byId(this.entityData.get(DATA_COLLAR_COLOR));
-    }
-
-    public void setCollarColor(DyeColor p_30398_) {
-        this.entityData.set(DATA_COLLAR_COLOR, p_30398_.getId());
-    }
+//    public DyeColor getCollarColor() {
+//        return DyeColor.byId(this.entityData.get(DATA_COLLAR_COLOR));
+//    }
+//
+//    public void setCollarColor(DyeColor p_30398_) {
+//        this.entityData.set(DATA_COLLAR_COLOR, p_30398_.getId());
+//    }
 
 
     public void setIsInterested(boolean p_30445_) {
@@ -616,5 +638,4 @@ public class MechaDog extends TamableCreature implements GeoEntity {
             return false;
         }
     }
-
 }

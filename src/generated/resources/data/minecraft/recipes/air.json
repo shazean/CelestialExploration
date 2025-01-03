@@ -1,0 +1,25 @@
+{
+  "type": "celestialexploration:workbench_crafting",
+  "pattern": [
+    "  C",
+    "FRF",
+    "R R"
+  ],
+  "key": {
+    "C": {
+      "item": "celestialexploration:mechadog_core"
+    },
+    "F": {
+      "item": "celestialexploration:steel_frame"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:white_mechadog"
+  },
+  "fluid": "celestialexploration:molten_steel",
+  "buckets": 0.333,
+  "experience": 1.4
+}

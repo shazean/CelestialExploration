@@ -768,6 +768,8 @@ public class BlockRegistry {
     public static final RegistryObject<Block> LURKER_WALL_HEAD = BLOCKS.register("lurker_wall_head", () -> new WallSkullBlock(CelestialSkullRenderer.Types.LURKER, BlockBehaviour.Properties.of(Material.DECORATION).strength(1.0F).lootFrom(LURKER_HEAD)));
     public static final RegistryObject<Block> VOIDED_HEAD = BLOCKS.register("voided_head", () -> new SkullBlock(CelestialSkullRenderer.Types.VOIDED, BlockBehaviour.Properties.of(Material.DECORATION).strength(1.0F)));
     public static final RegistryObject<Block> VOIDED_WALL_HEAD = BLOCKS.register("voided_wall_head", () -> new WallSkullBlock(CelestialSkullRenderer.Types.VOIDED, BlockBehaviour.Properties.of(Material.DECORATION).strength(1.0F).lootFrom(VOIDED_HEAD)));
+//    public static final RegistryObject<Block> MECHADOG_HEAD = registerBlockDropsSelf("mechadog_head", "MechaDog Head", () -> new MechaDogHeadBlock(BlockBehaviour.Properties.of(Material.DECORATION).strength(1.0F)), CelestialExploration.CELESTIAL_MISC_TAB);
+//    public static final RegistryObject<Block> MECHADOG_WALL_HEAD = BLOCKS.register("mechadog_wall_head", () -> new WallSkullBlock(CelestialSkullRenderer.Types.MECHADOG, BlockBehaviour.Properties.of(Material.DECORATION).strength(1.0F).lootFrom(MECHADOG_HEAD)));
 
 
     	public static final RegistryObject<SolarPanelBlock> SOLAR_PANEL = registerBlockDropsSelf("solar_panel", "Solar Panel", () -> new SolarPanelBlock(Block.Properties.of(Material.GLASS).strength(0.3F).sound(SoundType.GLASS)), CelestialExploration.SPACESHIP_TAB);

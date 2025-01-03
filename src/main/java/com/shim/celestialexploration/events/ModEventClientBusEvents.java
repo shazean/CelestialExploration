@@ -4,7 +4,6 @@ import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.blocks.CelestialSkullRenderer;
 import com.shim.celestialexploration.capabilities.LoxTankCapability;
 import com.shim.celestialexploration.entity.renderer.*;
-import com.shim.celestialexploration.integration.JEIPlugin;
 import com.shim.celestialexploration.inventory.screens.*;
 import com.shim.celestialexploration.registry.*;
 import com.shim.celestialexploration.util.Keybinds;
@@ -22,9 +21,6 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.client.event.EntityViewRenderEvent;
-import net.minecraftforge.client.event.RenderTooltipEvent;
-import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -44,6 +40,8 @@ public class ModEventClientBusEvents {
     public static void registerSkulls(EntityRenderersEvent.CreateSkullModels event) {
         event.registerSkullModel(CelestialSkullRenderer.Types.LURKER, new SkullModel(event.getEntityModelSet().bakeLayer(CelestialModelLayers.LURKER_HEAD)));
         event.registerSkullModel(CelestialSkullRenderer.Types.VOIDED, new SkullModel(event.getEntityModelSet().bakeLayer(CelestialModelLayers.VOIDED_HEAD)));
+        event.registerSkullModel(CelestialSkullRenderer.Types.MECHADOG, new SkullModel(event.getEntityModelSet().bakeLayer(CelestialModelLayers.MECHADOG_HEAD)));
+
     }
 
     @SubscribeEvent
@@ -169,6 +167,10 @@ public class ModEventClientBusEvents {
         EntityRenderers.register(EntityRegistry.DRONE.get(), DroneRenderer::new);
         EntityRenderers.register(EntityRegistry.ROVER.get(), RoverRenderer::new);
         EntityRenderers.register(EntityRegistry.MECHADOG.get(), MechaDogRenderer::new);
+        EntityRenderers.register(EntityRegistry.COBBLESAURUS.get(), CobblesaurusRenderer::new);
+        EntityRenderers.register(EntityRegistry.ORBITER.get(), OrbiterRenderer::new);
+        EntityRenderers.register(EntityRegistry.MECHACERBERUS.get(), MechaCerberusRenderer::new);
+        EntityRenderers.register(EntityRegistry.MECHACERBERUS_BOSS.get(), MechaCerberusRenderer::new);
 
         MenuScreens.register(MenuRegistry.OXYGEN_COMPRESSOR_MENU.get(), OxygenCompressorScreen::new);
         MenuScreens.register(MenuRegistry.PLANET_CHART_MENU.get(), PlanetChartScreen::new);
@@ -176,6 +178,9 @@ public class ModEventClientBusEvents {
         MenuScreens.register(MenuRegistry.WORKBENCH_MENU.get(), WorkbenchScreen::new);
         MenuScreens.register(MenuRegistry.SPACE_TAXI_MENU.get(), SpaceTaxiScreen::new);
         MenuScreens.register(MenuRegistry.TAXI_STATION_MENU.get(), TaxiStationScreen::new);
+
+//        ItemBlockRenderTypes.setRenderLayer(BlockRegistry.MECHADOG_HEAD.get(), RenderType.cutout());
+
 
         OverlayRegistry.registerOverlay(event);
 

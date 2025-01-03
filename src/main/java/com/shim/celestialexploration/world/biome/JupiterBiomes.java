@@ -16,7 +16,9 @@ public class JupiterBiomes extends CelestialBiomes {
 
 
         generalMonsters(spawnBuilder, 0, 100, 100);
-        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.GYST.get(), 30, 1, 1)).build();
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.GYST.get(), 30, 1, 1))
+                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityRegistry.DRONE.get(), 30, 1, 2))
+                .build();
 
         return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, prettyCold, 0F, celestialBody.JUPITER.skyColor, celestialBody.JUPITER.skyFogColor, celestialBody.JUPITER.waterColor, celestialBody.JUPITER.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
     }

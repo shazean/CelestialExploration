@@ -417,6 +417,5 @@ public class ModForgeEventBus {
         if (event.getItemStack().is(BlockRegistry.HANGAR_DOOR.get().asItem())) {
             event.getTooltipElements().add(Either.left(new TranslatableComponent("item.celestialexploration.door.hangar_door")));
         }
-
     }
 }

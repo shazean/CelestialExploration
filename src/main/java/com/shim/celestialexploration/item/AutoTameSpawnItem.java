@@ -1,10 +1,12 @@
 package com.shim.celestialexploration.item;
 
 import com.shim.celestialexploration.CelestialExploration;
+import com.shim.celestialexploration.entity.DyeType;
+import com.shim.celestialexploration.entity.IDyeable;
 import com.shim.celestialexploration.entity.entity.friendlies.TamableCreature;
-import com.shim.celestialexploration.registry.EntityRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
@@ -15,6 +17,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.BaseSpawner;
@@ -28,14 +31,27 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
-import net.minecraftforge.common.ForgeSpawnEggItem;
 
+import javax.annotation.Nullable;
 import java.util.Objects;
 import java.util.function.Supplier;
 
-public class AutoTameSpawnItem extends ForgeSpawnEggItem {
+public class AutoTameSpawnItem extends Item {
+    @Nullable
+    DyeType dyeType;
+//    private final EntityType<?> defaultType;
+    private final Supplier<? extends EntityType<? extends Mob>> typeSupplier;
+
+
     public AutoTameSpawnItem(Supplier<? extends EntityType<? extends Mob>> type, Properties properties) {
-        super(type, 0x000, 0x000, properties);
+        this(type, null, properties);
+    }
+
+    public AutoTameSpawnItem(Supplier<? extends EntityType<? extends Mob>> type, @Nullable DyeType dye, Properties properties) {
+        super(properties);
+        this.typeSupplier = type;
+//        this.defaultType = null;
+        this.dyeType = dye;
     }
 
     public InteractionResult useOn(UseOnContext context) {
@@ -70,8 +86,12 @@ public class AutoTameSpawnItem extends ForgeSpawnEggItem {
             EntityType<?> entitytype = this.getType(itemstack.getTag());
             Entity entity = entitytype.spawn((ServerLevel)level, itemstack, context.getPlayer(), blockpos1, MobSpawnType.SPAWN_EGG, true, !Objects.equals(blockpos, blockpos1) && direction == Direction.UP);
             if (entity != null) {
+
+                if (entity instanceof IDyeable dyeable && dyeType != null) {
+                    dyeable.setDyeType(dyeType);
+                }
+
                 if (entity instanceof TamableCreature creature) {
-                    CelestialExploration.LOGGER.debug("is tamable");
                     creature.tame(context.getPlayer());
                 }
 
@@ -122,4 +142,49 @@ public class AutoTameSpawnItem extends ForgeSpawnEggItem {
             }
         }
     }
+
+    public EntityType<?> getType(@Nullable CompoundTag tag)
+    {
+//        EntityType<?> type = getVanillaType(tag);
+//        return type != null ? type : typeSupplier.get();
+        return typeSupplier.get();
+    }
+
+//    @Nullable
+//    protected DispenseItemBehavior createDispenseBehavior()
+//    {
+//        return DEFAULT_DISPENSE_BEHAVIOR;
+//    }
+//
+//    private static final DispenseItemBehavior DEFAULT_DISPENSE_BEHAVIOR = (source, stack) ->
+//    {
+//        Direction face = source.getBlockState().getValue(DispenserBlock.FACING);
+//        EntityType<?> type = ((SpawnEggItem)stack.getItem()).getType(stack.getTag());
+//
+//        try
+//        {
+//            type.spawn(source.getLevel(), stack, null, source.getPos().relative(face), MobSpawnType.DISPENSER, face != Direction.UP, false);
+//        }
+//        catch (Exception exception)
+//        {
+//            DispenseItemBehavior.LOGGER.error("Error while dispensing spawn egg from dispenser at {}", source.getPos(), exception);
+//            return ItemStack.EMPTY;
+//        }
+//
+//        stack.shrink(1);
+//        source.getLevel().gameEvent(GameEvent.ENTITY_PLACE, source.getPos());
+//        return stack;
+//    };
+
+//    public EntityType<?> getVanillaType(@Nullable CompoundTag p_43229_) {
+//        if (p_43229_ != null && p_43229_.contains("EntityTag", 10)) {
+//            CompoundTag compoundtag = p_43229_.getCompound("EntityTag");
+//            if (compoundtag.contains("id", 8)) {
+//                return EntityType.byString(compoundtag.getString("id")).orElse(this.defaultType);
+//            }
+//        }
+//
+//        return this.defaultType;
+//    }
+
 }

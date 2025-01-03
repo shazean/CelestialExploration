@@ -1,10 +1,10 @@
 package com.shim.celestialexploration.entity.entity.friendlies;
 
 import net.minecraft.Util;
-import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -12,7 +12,6 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.players.OldUsersConverter;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
-import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
@@ -43,7 +42,6 @@ public class TamableCreature extends PathfinderMob implements OwnableEntity {
         if (this.getOwnerUUID() != null) {
             p_21819_.putUUID("Owner", this.getOwnerUUID());
         }
-
         p_21819_.putBoolean("Sitting", this.orderedToSit);
     }
 
@@ -86,7 +84,6 @@ public class TamableCreature extends PathfinderMob implements OwnableEntity {
             double d2 = this.random.nextGaussian() * 0.02D;
             this.level.addParticle(particleoptions, this.getRandomX(1.0D), this.getRandomY() + 0.5D, this.getRandomZ(1.0D), d0, d1, d2);
         }
-
     }
 
     public void handleEntityEvent(byte p_21807_) {
@@ -97,7 +94,6 @@ public class TamableCreature extends PathfinderMob implements OwnableEntity {
         } else {
             super.handleEntityEvent(p_21807_);
         }
-
     }
 
     public boolean isTame() {
@@ -111,12 +107,10 @@ public class TamableCreature extends PathfinderMob implements OwnableEntity {
         } else {
             this.entityData.set(DATA_FLAGS_ID, (byte)(b0 & -5));
         }
-
         this.reassessTameGoals();
     }
 
-    protected void reassessTameGoals() {
-    }
+    protected void reassessTameGoals() {}
 
     public boolean isInSittingPose() {
         return (this.entityData.get(DATA_FLAGS_ID) & 1) != 0;
@@ -129,7 +123,6 @@ public class TamableCreature extends PathfinderMob implements OwnableEntity {
         } else {
             this.entityData.set(DATA_FLAGS_ID, (byte)(b0 & -2));
         }
-
     }
 
     @Nullable
@@ -145,10 +138,10 @@ public class TamableCreature extends PathfinderMob implements OwnableEntity {
         this.setTame(true);
         this.setOwnerUUID(p_21829_.getUUID());
         this.setInSittingPose(true);
+        this.setOrderedToSit(true);
 //        if (p_21829_ instanceof ServerPlayer) {
 //            CriteriaTriggers.TAME_ANIMAL.trigger((ServerPlayer)p_21829_, this);
 //        }
-
     }
 
     @Nullable
@@ -162,7 +155,7 @@ public class TamableCreature extends PathfinderMob implements OwnableEntity {
     }
 
     public boolean canAttack(LivingEntity p_21822_) {
-        return this.isOwnedBy(p_21822_) ? false : super.canAttack(p_21822_);
+        return !this.isOwnedBy(p_21822_) && super.canAttack(p_21822_);
     }
 
     public boolean isOwnedBy(LivingEntity p_21831_) {
@@ -180,7 +173,6 @@ public class TamableCreature extends PathfinderMob implements OwnableEntity {
                 return livingentity.getTeam();
             }
         }
-
         return super.getTeam();
     }
 
@@ -190,25 +182,21 @@ public class TamableCreature extends PathfinderMob implements OwnableEntity {
             if (p_21833_ == livingentity) {
                 return true;
             }
-
             if (livingentity != null) {
                 return livingentity.isAlliedTo(p_21833_);
             }
         }
-
         return super.isAlliedTo(p_21833_);
     }
 
     public void die(DamageSource p_21809_) {
-        // FORGE: Super moved to top so that death message would be cancelled properly
-        net.minecraft.network.chat.Component deathMessage = this.getCombatTracker().getDeathMessage();
+        Component deathMessage = this.getCombatTracker().getDeathMessage();
         super.die(p_21809_);
 
         if (this.dead)
             if (!this.level.isClientSide && this.level.getGameRules().getBoolean(GameRules.RULE_SHOWDEATHMESSAGES) && this.getOwner() instanceof ServerPlayer) {
                 this.getOwner().sendMessage(deathMessage, Util.NIL_UUID);
             }
-
     }
 
     public boolean isOrderedToSit() {

@@ -4,6 +4,8 @@ import com.google.common.collect.Lists;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.capabilities.LoxTankCapability;
 import com.shim.celestialexploration.config.CelestialCommonConfig;
+import com.shim.celestialexploration.entity.DyeType;
+import com.shim.celestialexploration.entity.IDyeable;
 import com.shim.celestialexploration.inventory.menus.SpaceshipMenu;
 import com.shim.celestialexploration.packets.*;
 import com.shim.celestialexploration.registry.*;
@@ -43,7 +45,6 @@ import net.minecraft.world.entity.vehicle.DismountHelper;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.WaterlilyBlock;
@@ -66,7 +67,7 @@ import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Spaceship extends Entity implements ContainerListener, MenuProvider, GeoEntity {
+public class Spaceship extends Entity implements ContainerListener, MenuProvider, GeoEntity, IDyeable {
     private static final EntityDataAccessor<Integer> DATA_ID_HURT = SynchedEntityData.defineId(Spaceship.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> DATA_ID_HURTDIR = SynchedEntityData.defineId(Spaceship.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Float> DATA_ID_DAMAGE = SynchedEntityData.defineId(Spaceship.class, EntityDataSerializers.FLOAT);
@@ -178,7 +179,7 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
         this.entityData.define(DATA_ID_HURT, 0);
         this.entityData.define(DATA_ID_HURTDIR, 1);
         this.entityData.define(DATA_ID_DAMAGE, 0.0F);
-        this.entityData.define(DATA_ID_TYPE, Type.WHITE.ordinal());
+        this.entityData.define(DATA_ID_TYPE, DyeType.WHITE.ordinal());
         this.entityData.define(DATA_ID_PADDLE_LEFT, false);
         this.entityData.define(DATA_ID_PADDLE_RIGHT, false);
         this.entityData.define(DATA_ID_BUBBLE_TIME, 0);
@@ -268,7 +269,7 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
     }
 
     public Item getDropItem() {
-        return switch (this.getSpaceshipType()) {
+        return switch (this.getDyeType()) {
             case BLACK -> ItemRegistry.BLACK_SPACESHIP.get();
             case GREY -> ItemRegistry.GREY_SPACESHIP.get();
             case LIGHT_GREY -> ItemRegistry.LIGHT_GREY_SPACESHIP.get();
@@ -732,7 +733,7 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
     }
 
     protected void addAdditionalSaveData(CompoundTag tag) {
-        tag.putString("Type", this.getSpaceshipType().getName());
+        tag.putString("Type", this.getDyeType().getName());
         ListTag listtag = new ListTag();
 
         for (int i = 0; i < this.inventory.getContainerSize(); ++i) {
@@ -759,7 +760,7 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
 
     protected void readAdditionalSaveData(CompoundTag tag) {
         if (tag.contains("Type", 8)) {
-            this.setType(Spaceship.Type.byName(tag.getString("Type")));
+            this.setDyeType(DyeType.byName(tag.getString("Type")));
         }
         ListTag listtag = tag.getList("Items", 10);
 
@@ -786,7 +787,7 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
     @Override
     public void load(CompoundTag tag) {
         if (tag.contains("Type", 8)) {
-            this.setType(Spaceship.Type.byName(tag.getString("Type")));
+            this.setDyeType(DyeType.byName(tag.getString("Type")));
         }
         ListTag listtag = tag.getList("Items", 10);
 
@@ -907,7 +908,7 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
                         this.kill();
                         if (this.level.getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
                             for (int i = 0; i < 3; ++i) {
-                                this.spawnAtLocation(this.getSpaceshipType().getDye());
+                                this.spawnAtLocation(this.getDyeType().getDye());
                             }
                         }
                     }
@@ -945,12 +946,12 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
         return this.entityData.get(DATA_ID_HURTDIR);
     }
 
-    public void setType(Spaceship.Type p_38333_) {
+    public void setDyeType(DyeType p_38333_) {
         this.entityData.set(DATA_ID_TYPE, p_38333_.ordinal());
     }
 
-    public Spaceship.Type getSpaceshipType() {
-        return Spaceship.Type.byId(this.entityData.get(DATA_ID_TYPE));
+    public DyeType getDyeType() {
+        return DyeType.byId(this.entityData.get(DATA_ID_TYPE));
     }
 
     protected boolean canAddPassenger(Entity p_38390_) {
@@ -1014,61 +1015,61 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
         IN_AIR
     }
 
-    public enum Type {
-        BLACK(Items.BLACK_DYE, "black"),
-        GREY(Items.GRAY_DYE, "grey"),
-        LIGHT_GREY(Items.LIGHT_GRAY_DYE, "light_grey"),
-        WHITE(Items.WHITE_DYE, "white"),
-        PINK(Items.PINK_DYE, "pink"),
-        MAGENTA(Items.MAGENTA_DYE, "magenta"),
-        RED(Items.RED_DYE, "red"),
-        BROWN(Items.BROWN_DYE, "brown"),
-        ORANGE(Items.ORANGE_DYE, "orange"),
-        YELLOW(Items.YELLOW_DYE, "yellow"),
-        LIME(Items.LIME_DYE, "lime"),
-        GREEN(Items.GREEN_DYE, "green"),
-        CYAN(Items.CYAN_DYE, "cyan"),
-        LIGHT_BLUE(Items.LIGHT_BLUE_DYE, "light_blue"),
-        BLUE(Items.RED_DYE, "blue"),
-        PURPLE(Items.RED_DYE, "purple");
-
-        private final String name;
-        private final Item dye;
-
-        Type(Item dye, String name) {
-            this.name = name;
-            this.dye = dye;
-        }
-
-        public String getName() {
-            return this.name;
-        }
-
-        public Item getDye() {
-            return this.dye;
-        }
-
-        public String toString() {
-            return this.name;
-        }
-
-        public static Spaceship.Type byId(int p_38431_) {
-            Spaceship.Type[] spaceship$type = values();
-            if (p_38431_ < 0 || p_38431_ >= spaceship$type.length) {
-                p_38431_ = 0;
-            }
-            return spaceship$type[p_38431_];
-        }
-
-        public static Spaceship.Type byName(String p_38433_) {
-            Spaceship.Type[] spaceship$type = values();
-
-            for (Type type : spaceship$type) {
-                if (type.getName().equals(p_38433_)) {
-                    return type;
-                }
-            }
-            return spaceship$type[0];
-        }
-    }
+//    public enum Type {
+//        BLACK(Items.BLACK_DYE, "black"),
+//        GREY(Items.GRAY_DYE, "grey"),
+//        LIGHT_GREY(Items.LIGHT_GRAY_DYE, "light_grey"),
+//        WHITE(Items.WHITE_DYE, "white"),
+//        PINK(Items.PINK_DYE, "pink"),
+//        MAGENTA(Items.MAGENTA_DYE, "magenta"),
+//        RED(Items.RED_DYE, "red"),
+//        BROWN(Items.BROWN_DYE, "brown"),
+//        ORANGE(Items.ORANGE_DYE, "orange"),
+//        YELLOW(Items.YELLOW_DYE, "yellow"),
+//        LIME(Items.LIME_DYE, "lime"),
+//        GREEN(Items.GREEN_DYE, "green"),
+//        CYAN(Items.CYAN_DYE, "cyan"),
+//        LIGHT_BLUE(Items.LIGHT_BLUE_DYE, "light_blue"),
+//        BLUE(Items.RED_DYE, "blue"),
+//        PURPLE(Items.RED_DYE, "purple");
+//
+//        private final String name;
+//        private final Item dye;
+//
+//        Type(Item dye, String name) {
+//            this.name = name;
+//            this.dye = dye;
+//        }
+//
+//        public String getName() {
+//            return this.name;
+//        }
+//
+//        public Item getDye() {
+//            return this.dye;
+//        }
+//
+//        public String toString() {
+//            return this.name;
+//        }
+//
+//        public static Spaceship.Type byId(int p_38431_) {
+//            Spaceship.Type[] spaceship$type = values();
+//            if (p_38431_ < 0 || p_38431_ >= spaceship$type.length) {
+//                p_38431_ = 0;
+//            }
+//            return spaceship$type[p_38431_];
+//        }
+//
+//        public static Spaceship.Type byName(String p_38433_) {
+//            Spaceship.Type[] spaceship$type = values();
+//
+//            for (Type type : spaceship$type) {
+//                if (type.getName().equals(p_38433_)) {
+//                    return type;
+//                }
+//            }
+//            return spaceship$type[0];
+//        }
+//    }
 }

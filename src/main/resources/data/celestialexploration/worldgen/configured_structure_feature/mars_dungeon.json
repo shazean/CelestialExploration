@@ -1,0 +1,15 @@
+{
+  "type": "celestialexploration:mars_dungeon",
+  "config": {
+    "start_pool": "celestialexploration:mars_dungeon/mars_dungeon_start",
+    "size": 7
+  },
+  "biomes": "#celestialexploration:has_structure/mars_dungeon_biomes",
+  "adapt_noise": false,
+  "spawn_overrides": {
+    "monster": {
+      "bounding_box": "full",
+      "spawns": []
+    }
+  }
+}

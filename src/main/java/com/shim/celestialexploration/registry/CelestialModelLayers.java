@@ -50,8 +50,7 @@ public class CelestialModelLayers {
 
     public static final ModelLayerLocation LURKER_HEAD = register("lurker_head");
     public static final ModelLayerLocation VOIDED_HEAD = register("voided_head");
-
-
+    public static final ModelLayerLocation MECHADOG_HEAD = register("mechadog_head");
 
     private static ModelLayerLocation registerInnerArmor(String p_171299_) {
         return register(p_171299_, "inner_armor");

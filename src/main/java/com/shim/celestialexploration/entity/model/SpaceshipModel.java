@@ -33,7 +33,7 @@ public class SpaceshipModel extends GeoModel<Spaceship> {
 
     @Override
     public ResourceLocation getTextureResource(Spaceship spaceship) {
-        return SPACESHIP_TEXTURE_LOCATIONS[spaceship.getSpaceshipType().ordinal()];
+        return SPACESHIP_TEXTURE_LOCATIONS[spaceship.getDyeType().ordinal()];
     }
 
     @Override

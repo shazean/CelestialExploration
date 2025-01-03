@@ -568,6 +568,28 @@ public class Recipes extends RecipeProvider {
 
 		ShapelessRecipeBuilder.shapeless(BlockRegistry.PLANET_CHART.get()).requires(ItemTags.PLANKS).requires(Items.PAPER).requires(Items.BLACK_DYE).unlockedBy("crafting_table", has(Items.CRAFTING_TABLE)).save(consumer);
 
+//		WorkbenchCraftingRecipeBuilder.shaped(ItemRegistry.WHITE_MECHADOG.get(), FluidRegistry.MOLTEN_STEEL.get(), 0.333F, 1.4F)
+//				.pattern("  C")
+//				.pattern("FRF")
+//				.pattern("R R").define('C', ItemRegistry.MECHADOG_CORE.get()).define('F', BlockRegistry.STEEL_FRAME.get()).define('R', Items.REDSTONE).unlockedBy("has_core", has(ItemRegistry.MECHADOG_CORE.get())).save(consumer);
+//
+//		ShapelessRecipeBuilder.shapeless(ItemRegistry.BLACK_MECHADOG.get()).requires(ItemRegistry.WHITE_MECHADOG.get()).requires(Items.BLACK_DYE).unlockedBy("mechadog", has(ItemRegistry.WHITE_MECHADOG.get())).save(consumer);
+//		ShapelessRecipeBuilder.shapeless(ItemRegistry.GREY_MECHADOG.get()).requires(ItemRegistry.WHITE_MECHADOG.get()).requires(Items.GRAY_DYE).unlockedBy("mechadog", has(ItemRegistry.WHITE_MECHADOG.get())).save(consumer);
+//		ShapelessRecipeBuilder.shapeless(ItemRegistry.LIGHT_GREY_MECHADOG.get()).requires(ItemRegistry.WHITE_MECHADOG.get()).requires(Items.LIGHT_GRAY_DYE).unlockedBy("mechadog", has(ItemRegistry.WHITE_MECHADOG.get())).save(consumer);
+//		ShapelessRecipeBuilder.shapeless(ItemRegistry.PINK_MECHADOG.get()).requires(ItemRegistry.WHITE_MECHADOG.get()).requires(Items.PINK_DYE).unlockedBy("mechadog", has(ItemRegistry.WHITE_MECHADOG.get())).save(consumer);
+//		ShapelessRecipeBuilder.shapeless(ItemRegistry.RED_MECHADOG.get()).requires(ItemRegistry.WHITE_MECHADOG.get()).requires(Items.RED_DYE).unlockedBy("mechadog", has(ItemRegistry.WHITE_MECHADOG.get())).save(consumer);
+//		ShapelessRecipeBuilder.shapeless(ItemRegistry.ORANGE_MECHADOG.get()).requires(ItemRegistry.WHITE_MECHADOG.get()).requires(Items.ORANGE_DYE).unlockedBy("mechadog", has(ItemRegistry.WHITE_MECHADOG.get())).save(consumer);
+//		ShapelessRecipeBuilder.shapeless(ItemRegistry.YELLOW_MECHADOG.get()).requires(ItemRegistry.WHITE_MECHADOG.get()).requires(Items.YELLOW_DYE).unlockedBy("mechadog", has(ItemRegistry.WHITE_MECHADOG.get())).save(consumer);
+//		ShapelessRecipeBuilder.shapeless(ItemRegistry.LIME_MECHADOG.get()).requires(ItemRegistry.WHITE_MECHADOG.get()).requires(Items.LIME_DYE).unlockedBy("mechadog", has(ItemRegistry.WHITE_MECHADOG.get())).save(consumer);
+//		ShapelessRecipeBuilder.shapeless(ItemRegistry.GREEN_MECHADOG.get()).requires(ItemRegistry.WHITE_MECHADOG.get()).requires(Items.GREEN_DYE).unlockedBy("mechadog", has(ItemRegistry.WHITE_MECHADOG.get())).save(consumer);
+//		ShapelessRecipeBuilder.shapeless(ItemRegistry.CYAN_MECHADOG.get()).requires(ItemRegistry.WHITE_MECHADOG.get()).requires(Items.CYAN_DYE).unlockedBy("mechadog", has(ItemRegistry.WHITE_MECHADOG.get())).save(consumer);
+//		ShapelessRecipeBuilder.shapeless(ItemRegistry.BLUE_MECHADOG.get()).requires(ItemRegistry.WHITE_MECHADOG.get()).requires(Items.BLUE_DYE).unlockedBy("mechadog", has(ItemRegistry.WHITE_MECHADOG.get())).save(consumer);
+//		ShapelessRecipeBuilder.shapeless(ItemRegistry.LIGHT_BLUE_MECHADOG.get()).requires(ItemRegistry.WHITE_MECHADOG.get()).requires(Items.LIGHT_BLUE_DYE).unlockedBy("mechadog", has(ItemRegistry.WHITE_MECHADOG.get())).save(consumer);
+//		ShapelessRecipeBuilder.shapeless(ItemRegistry.PURPLE_MECHADOG.get()).requires(ItemRegistry.WHITE_MECHADOG.get()).requires(Items.PURPLE_DYE).unlockedBy("mechadog", has(ItemRegistry.WHITE_MECHADOG.get())).save(consumer);
+//		ShapelessRecipeBuilder.shapeless(ItemRegistry.MAGENTA_MECHADOG.get()).requires(ItemRegistry.WHITE_MECHADOG.get()).requires(Items.MAGENTA_DYE).unlockedBy("mechadog", has(ItemRegistry.WHITE_MECHADOG.get())).save(consumer);
+//		ShapelessRecipeBuilder.shapeless(ItemRegistry.BROWN_MECHADOG.get()).requires(ItemRegistry.WHITE_MECHADOG.get()).requires(Items.BROWN_DYE).unlockedBy("mechadog", has(ItemRegistry.WHITE_MECHADOG.get())).save(consumer);
+
+
 	}
 
 	private static String name(Item item) {

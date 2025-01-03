@@ -23,7 +23,9 @@ public class MarsBiomes extends CelestialBiomes {
 
         generalMonsters(spawnBuilder, 100, 100, 100);
         spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.RUST_SLIME.get(), 100, 4, 4))
-                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.MARS_MALLOW.get(), 40, 4, 4)).build();
+                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.MARS_MALLOW.get(), 40, 4, 4))
+                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.GUST.get(), 100, 4, 4))
+                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityRegistry.ROVER.get(), 10, 1, 1)).build();
 
         float temp = -0.75F;
 
@@ -42,7 +44,11 @@ public class MarsBiomes extends CelestialBiomes {
 
         generalMonsters(spawnBuilder, 100, 100, 100);
         spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.RUST_SLIME.get(), 100, 4, 4))
-                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.MARS_MALLOW.get(), 40, 4, 4)).build();
+                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.MARS_MALLOW.get(), 40, 4, 4))
+                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.GUST.get(), 100, 4, 4))
+                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityRegistry.ROVER.get(), 40, 1, 1))
+                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityRegistry.DRONE.get(), 30, 1, 2))
+                .build();
 
 
         return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, prettyCold, 0F, celestialBody.MARS.skyColor, celestialBody.MARS.skyFogColor, celestialBody.MARS.waterColor, celestialBody.MARS.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
@@ -60,7 +66,11 @@ public class MarsBiomes extends CelestialBiomes {
 
         generalMonsters(spawnBuilder, 100, 80, 100);
         spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.RUST_SLIME.get(), 120, 4, 4))
-                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.MARS_MALLOW.get(), 80, 4, 4)).build();
+                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.MARS_MALLOW.get(), 80, 4, 4))
+                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.GUST.get(), 100, 4, 4))
+                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityRegistry.ROVER.get(), 40, 1, 1))
+                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityRegistry.DRONE.get(), 30, 1, 2))
+                .build();
 
 
         float temperature = dryIcy ? -1.0F : -0.75F;
@@ -78,7 +88,11 @@ public class MarsBiomes extends CelestialBiomes {
         generalMonsters(spawnBuilder, 80, 100, 100);
 
         spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.RUST_SLIME.get(), 30, 4, 4))
-                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.MARS_MALLOW.get(), 10, 4, 4)).build();
+                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.MARS_MALLOW.get(), 10, 4, 4))
+                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.GUST.get(), 100, 4, 4))
+                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityRegistry.ROVER.get(), 40, 1, 1))
+                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityRegistry.DRONE.get(), 30, 1, 2))
+                .build();
 
         float temp = -0.75F;
 

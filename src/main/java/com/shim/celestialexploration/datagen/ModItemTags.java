@@ -87,6 +87,9 @@ public class ModItemTags extends ItemTagsProvider {
 
 		this.copy(TagRegistry.Blocks.COMPRESSIBLE, TagRegistry.Items.COMPRESSIBLE);
 
+		this.copy(TagRegistry.Blocks.COBBLESAURUS_FOOD, TagRegistry.Items.COBBLESAURUS_FOOD);
+
+
 		tag(TagRegistry.Items.SLIME_DROPS).add(Items.SLIME_BALL).add(ItemRegistry.MARSHMALLOW_GOO.get()).add(ItemRegistry.LUNAR_GOO.get());
 
 	}

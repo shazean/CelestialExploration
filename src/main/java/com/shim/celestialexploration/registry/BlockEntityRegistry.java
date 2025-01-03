@@ -2,7 +2,9 @@ package com.shim.celestialexploration.registry;
 
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.blocks.blockentities.*;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.entity.SkullBlockEntity;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -26,6 +28,11 @@ public class BlockEntityRegistry {
     public static final RegistryObject<BlockEntityType<SolarPanelBlockEntity>> SOLAR_PANEL_BLOCK_ENTITY = BLOCK_ENTITIES.register("solar_panel", () -> BlockEntityType.Builder.of(SolarPanelBlockEntity::new, BlockRegistry.SOLAR_PANEL.get()).build(null));
 
 //    public static final RegistryObject<BlockEntityType<DisplayBoardBlockEntity>> DISPLAY_BOARD_BLOCK_ENTITY = BLOCK_ENTITIES.register("display_board", () -> BlockEntityType.Builder.of(DisplayBoardBlockEntity::new, BlockRegistry.RED_DISPLAY_BOARD.get(), BlockRegistry.BLACK_DISPLAY_BOARD.get(), BlockRegistry.BLUE_DISPLAY_BOARD.get(), BlockRegistry.WHITE_DISPLAY_BOARD.get(), BlockRegistry.RED_WALL_DISPLAY_BOARD.get(), BlockRegistry.BLACK_WALL_DISPLAY_BOARD.get(), BlockRegistry.BLUE_WALL_DISPLAY_BOARD.get(), BlockRegistry.WHITE_WALL_DISPLAY_BOARD.get()).build(null));
+
+
+    public static final RegistryObject<BlockEntityType<SkullBlockEntity>> CELESTIAL_SKULLS_BLOCK_ENTITY = BLOCK_ENTITIES.register("celestial_skulls", () -> BlockEntityType.Builder.of(SkullBlockEntity::new, BlockRegistry.LURKER_HEAD.get(), BlockRegistry.LURKER_WALL_HEAD.get(), BlockRegistry.VOIDED_HEAD.get(), BlockRegistry.VOIDED_WALL_HEAD.get()
+//            , BlockRegistry.MECHADOG_HEAD.get(), BlockRegistry.MECHADOG_WALL_HEAD.get()
+    ).build(null));
 
 
     public static final RegistryObject<BlockEntityType<TaxiStationBlockEntity>> TAXI_STATION_BLOCK_ENTITY = BLOCK_ENTITIES.register("taxi_station", () -> BlockEntityType.Builder.of(TaxiStationBlockEntity::new, BlockRegistry.TAXI_STATION.get()).build(null));

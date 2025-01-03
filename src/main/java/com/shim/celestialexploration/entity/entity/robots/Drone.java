@@ -17,6 +17,7 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
@@ -30,9 +31,11 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.EnumSet;
+import java.util.Random;
 
 public class Drone extends TamableCreature implements FlyingAnimal, GeoEntity {
     private final AnimatableInstanceCache cache = AzureLibUtil.createInstanceCache(this);
@@ -67,6 +70,10 @@ public class Drone extends TamableCreature implements FlyingAnimal, GeoEntity {
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
         controllers.add(new AnimationController<>(this, "drone", 0, event -> event.setAndContinue(animation)));
+    }
+
+    public static boolean checkDroneSpawnRules(EntityType<Drone> entity, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, Random random) {
+        return random.nextInt(5) == 0 && checkMobSpawnRules(entity, level, spawnType, pos, random);
     }
 
     @Override

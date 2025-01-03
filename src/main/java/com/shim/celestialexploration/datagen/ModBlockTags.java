@@ -543,6 +543,13 @@ public class ModBlockTags extends BlockTagsProvider {
                 .add(BlockRegistry.COMPRESSED_MERCURY_COBBLESTONE.get())
                 .add(BlockRegistry.COMPRESSED_MERCURY_COBBLED_DEEPSLATE.get());
 
+        tag(TagRegistry.Blocks.COBBLESAURUS_FOOD)
+                .add(Blocks.COBBLESTONE)
+                .add(BlockRegistry.MOON_COBBLESTONE.get())
+                .add(BlockRegistry.MARS_COBBLESTONE.get())
+                .add(BlockRegistry.VENUS_COBBLESTONE.get())
+                .add(BlockRegistry.MERCURY_COBBLESTONE.get());
+
     }
 
     @Override

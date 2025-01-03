@@ -45,7 +45,8 @@ public class VenusBiomes extends CelestialBiomes {
         spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.SULFUR_CUBE.get(), 120, 4, 4))
                 .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.VOIDED_PIGLIN.get(), 100, 4, 4))
                 .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.ASTRAL_PIGLIN.get(), 15, 4, 4))
-                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.ASTRAL_HOGLIN.get(), 9, 3, 4)).build();
+                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.ASTRAL_HOGLIN.get(), 9, 3, 4))
+                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityRegistry.ROVER.get(), 40, 1, 1)).build();
 
         return CelestialBiomes.biome(Biome.Precipitation.RAIN, Biome.BiomeCategory.NONE, 2F, 0F, celestialBody.VENUS.skyColor, celestialBody.VENUS.skyFogColor, celestialBody.VENUS.waterColor, celestialBody.VENUS.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
     }

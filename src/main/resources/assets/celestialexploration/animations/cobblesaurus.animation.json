@@ -1,0 +1,56 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"walk": {
+			"loop": true,
+			"bones": {
+				"frontLeft": {
+					"rotation": {
+						"vector": ["Math.cos(query.anim_time * 180) * 20", 0, 0]
+					}
+				},
+				"frontRight": {
+					"rotation": {
+						"vector": ["Math.sin(query.anim_time * 180 - 90 ) * 20", 0, 0]
+					}
+				},
+				"rearLeft": {
+					"rotation": {
+						"vector": ["Math.sin(query.anim_time * 180 - 45) * 20", 0, 0]
+					}
+				},
+				"rearRight": {
+					"rotation": {
+						"vector": ["Math.sin(query.anim_time * 180 + 45) * 20", 0, 0]
+					}
+				},
+				"head": {
+					"rotation": {
+						"vector": ["math.sin(query.anim_time * 180 + 90) * 2", 0, 0]
+					}
+				},
+				"body": {
+					"position": {
+						"vector": [0, "math.sin(query.anim_time * 180) * 0.25", 0]
+					}
+				}
+			}
+		},
+		"idle": {
+			"loop": true,
+			"bones": {
+				"head": {
+					"rotation": {
+						"vector": ["math.sin(query.anim_time * 180 + 90) * 0.5", 0, 0]
+					}
+				},
+				"body": {
+					"position": {
+						"vector": [0, "math.sin(query.anim_time * 180 + 90) * 0.125", 0]
+					}
+				}
+			}
+		}
+	},
+	"azurelib_format_version": 2
+}

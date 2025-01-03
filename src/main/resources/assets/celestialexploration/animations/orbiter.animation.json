@@ -1,0 +1,49 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"idle": {
+			"loop": true,
+			"bones": {
+				"body": {
+					"rotation": {
+						"vector": ["Math.sin(query.anim_time * 60) * 10", "Math.sin(query.anim_time * 60) * 10", "Math.cos(query.anim_time * 60) * 10"]
+					},
+					"position": {
+						"vector": [0, "Math.sin(query.anim_time * 60) * 3", 0]
+					}
+				},
+				"bottomclockwise": {
+					"rotation": {
+						"vector": [0, "Math.abs(query.anim_time * 10) * 15", "Math.cos(query.anim_time * 160) * 3"]
+					}
+				},
+				"topclockwise": {
+					"rotation": {
+						"vector": [0, "Math.abs(query.anim_time * 12) * 15", "Math.cos(query.anim_time * 200) * 6"]
+					}
+				},
+				"bottomcounter": {
+					"rotation": {
+						"vector": [0, "-Math.abs(query.anim_time * 6) * 15", "Math.cos(query.anim_time * 180) * 8"]
+					}
+				},
+				"topcounter": {
+					"rotation": {
+						"vector": [0, "-Math.abs(query.anim_time * 8) * 15", "Math.cos(query.anim_time * 90) * 8"]
+					}
+				},
+				"outer": {
+					"rotation": {
+						"vector": [0, "-Math.abs(query.anim_time * 5) * 15", 0]
+					}
+				},
+				"bone": {
+					"position": {
+						"vector": [0, "Math.cos(query.anim_time * 15) * 2", 0]
+					}
+				}
+			}
+		}
+	},
+	"azurelib_format_version": 2
+}

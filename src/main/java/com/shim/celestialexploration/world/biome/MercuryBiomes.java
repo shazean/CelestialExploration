@@ -23,7 +23,10 @@ public class MercuryBiomes extends CelestialBiomes {
 
         generalMonsters(spawnBuilder, 100, 100, 100);
         spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.QUICKSILVER_SLIME.get(), 30, 4, 4))
-                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.VISCOUS_SLIME.get(), 30, 4, 4)).build();
+                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.VISCOUS_SLIME.get(), 30, 4, 4))
+                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityRegistry.ROVER.get(), 40, 1, 1))
+                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityRegistry.DRONE.get(), 30, 1, 2))
+                .build();
 
         return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, prettyCold, 0F, celestialBody.MERCURY.skyColor, celestialBody.MERCURY.skyFogColor, celestialBody.MERCURY.waterColor, celestialBody.MERCURY.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
     }
@@ -40,7 +43,10 @@ public class MercuryBiomes extends CelestialBiomes {
 
         generalMonsters(spawnBuilder, 100, 100, 100);
         spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.QUICKSILVER_SLIME.get(), 30, 4, 4))
-                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.VISCOUS_SLIME.get(), 30, 4, 4)).build();
+                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.VISCOUS_SLIME.get(), 30, 4, 4))
+                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityRegistry.ROVER.get(), 40, 1, 1))
+                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityRegistry.DRONE.get(), 30, 1, 2))
+                .build();
 
         return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, prettyCold, 0F, celestialBody.MERCURY.skyColor, celestialBody.MERCURY.skyFogColor, celestialBody.MERCURY.waterColor, celestialBody.MERCURY.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
     }
@@ -57,7 +63,10 @@ public class MercuryBiomes extends CelestialBiomes {
 
         generalMonsters(spawnBuilder, 100, 80, 100);
         spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.QUICKSILVER_SLIME.get(), 30, 4, 4))
-                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.VISCOUS_SLIME.get(), 30, 4, 4)).build();
+                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.VISCOUS_SLIME.get(), 30, 4, 4))
+                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityRegistry.ROVER.get(), 40, 1, 1))
+                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityRegistry.DRONE.get(), 30, 1, 2))
+                .build();
 
         return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, prettyCold, 0F, celestialBody.MERCURY.skyColor, celestialBody.MERCURY.skyFogColor, celestialBody.MERCURY.waterColor, celestialBody.MERCURY.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
     }

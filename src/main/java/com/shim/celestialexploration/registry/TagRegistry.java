@@ -71,6 +71,9 @@ public class TagRegistry {
 
         public static final TagKey<Block> COMPRESSIBLE = BlockTags.create(modLoc("compressible"));
 
+        public static final TagKey<Block> COBBLESAURUS_FOOD = BlockTags.create(modLoc("cobblesaurus_food"));
+
+
 
     }
 
@@ -121,6 +124,8 @@ public class TagRegistry {
         public static final TagKey<Item> BAUXITE_ORE = ItemTags.create(modLoc("bauxite_ore"));
 
         public static final TagKey<Item> COMPRESSIBLE = ItemTags.create(modLoc("compressible"));
+
+        public static final TagKey<Item> COBBLESAURUS_FOOD = ItemTags.create(modLoc("cobblesaurus_food"));
 
 
     }

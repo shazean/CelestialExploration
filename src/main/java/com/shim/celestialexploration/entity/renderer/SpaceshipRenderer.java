@@ -4,7 +4,9 @@ import com.google.common.collect.ImmutableMap;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.datafixers.util.Pair;
+import com.shim.celestialexploration.entity.DyeType;
 import com.shim.celestialexploration.entity.entity.vehicle.Spaceship;
+import com.shim.celestialexploration.entity.layers.SpaceshipGlowLayer;
 import com.shim.celestialexploration.entity.model.SpaceshipModel;
 import mod.azure.azurelib.cache.object.BakedGeoModel;
 import mod.azure.azurelib.constant.DataTickets;
@@ -27,13 +29,14 @@ import java.util.stream.Stream;
 
 @OnlyIn(Dist.CLIENT)
 public class SpaceshipRenderer extends GeoEntityRenderer<Spaceship> {
-    private final Map<Spaceship.Type, Pair<ResourceLocation, SpaceshipModel>> spaceshipResources;
+    private final Map<DyeType, Pair<ResourceLocation, SpaceshipModel>> spaceshipResources;
 
     public SpaceshipRenderer(EntityRendererProvider.Context context) {
         super(context, new SpaceshipModel());
-        this.spaceshipResources = Stream.of(Spaceship.Type.values()).collect(ImmutableMap.toImmutableMap((type) ->
+        this.spaceshipResources = Stream.of(DyeType.values()).collect(ImmutableMap.toImmutableMap((type) ->
                 type, (p_173941_) ->
                 Pair.of(new ResourceLocation("textures/entity/spaceship/" + p_173941_.getName() + ".png"), new SpaceshipModel())));
+        this.addRenderLayer(new SpaceshipGlowLayer(this));
     }
 
     @Override
@@ -51,13 +54,20 @@ public class SpaceshipRenderer extends GeoEntityRenderer<Spaceship> {
             Objects.requireNonNull(animationState);
             var32.addAdditionalStateData(animatable, instanceId, animationState::setData);
             this.model.handleAnimations(animatable, instanceId, animationState);
+
+
+            float lerpBodyRot = Mth.rotLerp(partialTick, animatable.yRotO, animatable.getYRot());
+            float nativeScale = 1.7F;
+            poseStack.scale(nativeScale, nativeScale, nativeScale);
+            float ageInTicks = animatable.tickCount + partialTick;
+            applyRotations(animatable, poseStack, ageInTicks, lerpBodyRot, partialTick, nativeScale);
         }
 
-        float lerpBodyRot = Mth.rotLerp(partialTick, animatable.yRotO, animatable.getYRot());
-        float nativeScale = 1.7F;
-        poseStack.scale(nativeScale, nativeScale, nativeScale);
-        float ageInTicks = animatable.tickCount + partialTick;
-        applyRotations(animatable, poseStack, ageInTicks, lerpBodyRot, partialTick, nativeScale);
+//        float lerpBodyRot = Mth.rotLerp(partialTick, animatable.yRotO, animatable.getYRot());
+//        float nativeScale = 1.7F;
+//        poseStack.scale(nativeScale, nativeScale, nativeScale);
+//        float ageInTicks = animatable.tickCount + partialTick;
+//        applyRotations(animatable, poseStack, ageInTicks, lerpBodyRot, partialTick, nativeScale);
 
         super.actuallyRender(poseStack, animatable, model, renderType, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
     }

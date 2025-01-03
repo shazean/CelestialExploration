@@ -1,0 +1,17 @@
+{
+  "name": "celestialexploration:mars_dungeon/mars_dungeon_start",
+
+  "fallback": "minecraft:empty",
+
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "celestialexploration:mars_dungeon",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

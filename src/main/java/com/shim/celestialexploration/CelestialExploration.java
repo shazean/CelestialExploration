@@ -2,6 +2,7 @@ package com.shim.celestialexploration;
 
 import com.shim.celestialexploration.config.CelestialClientConfig;
 import com.shim.celestialexploration.config.CelestialCommonConfig;
+import com.shim.celestialexploration.config.CelestialServerConfig;
 import com.shim.celestialexploration.data.CelestialDimensionManager;
 import com.shim.celestialexploration.data.CelestialPlanetManager;
 import com.shim.celestialexploration.entity.entity.ambient.Eureka;
@@ -11,6 +12,9 @@ import com.shim.celestialexploration.entity.entity.mob.piglins.AstralPiglin;
 import com.shim.celestialexploration.entity.entity.mob.piglins.CyborgPiglin;
 import com.shim.celestialexploration.entity.entity.mob.piglins.VoidedPiglin;
 import com.shim.celestialexploration.entity.entity.mob.slimes.*;
+import com.shim.celestialexploration.entity.entity.robots.Drone;
+import com.shim.celestialexploration.entity.entity.robots.MechaDog;
+import com.shim.celestialexploration.entity.entity.robots.Rover;
 import com.shim.celestialexploration.packets.CelestialPacketHandler;
 import com.shim.celestialexploration.registry.*;
 import com.shim.celestialexploration.util.ClientProxy;
@@ -105,6 +109,7 @@ public class CelestialExploration {
 
         ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, CelestialClientConfig.SPEC, "celestialexploration-client.toml");
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, CelestialCommonConfig.SPEC, "celestialexploration-common.toml");
+        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, CelestialServerConfig.SPEC, "celestialexploration-server.toml");
 
         AzureLib.initialize();
 //        GeckoLib.initialize();
@@ -159,6 +164,10 @@ public class CelestialExploration {
         SpawnPlacements.register(EntityRegistry.VOID_CRAWLER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, VoidCrawler::checkMonsterSpawnRules);
         SpawnPlacements.register(EntityRegistry.CELESTIAL_CAT.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, CelestialCat::checkCatSpawnRules);
         SpawnPlacements.register(EntityRegistry.EUREKA.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.WORLD_SURFACE, Eureka::checkEurekaSpawnRules);
+        SpawnPlacements.register(EntityRegistry.GUST.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, Gust::checkGustSpawnRules);
+        SpawnPlacements.register(EntityRegistry.DRONE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, Drone::checkDroneSpawnRules);
+        SpawnPlacements.register(EntityRegistry.ROVER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, Rover::checkRoverSpawnRules);
+//        SpawnPlacements.register(EntityRegistry.MECHADOG.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, MechaDog::checkMobSpawnRules);
 
         CelestialPacketHandler.init();
 

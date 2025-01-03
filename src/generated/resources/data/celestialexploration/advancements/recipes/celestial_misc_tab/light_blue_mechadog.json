@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "celestialexploration:light_blue_mechadog"
+    ]
+  },
+  "criteria": {
+    "mechadog": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:white_mechadog"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "celestialexploration:light_blue_mechadog"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "mechadog",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -3,15 +3,14 @@ package com.shim.celestialexploration.registry;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.entity.entity.ambient.Eureka;
 import com.shim.celestialexploration.entity.entity.friendlies.CelestialCat;
+import com.shim.celestialexploration.entity.entity.friendlies.Cobblesaurus;
 import com.shim.celestialexploration.entity.entity.mob.*;
 import com.shim.celestialexploration.entity.entity.mob.piglins.AstralPiglin;
 import com.shim.celestialexploration.entity.entity.mob.piglins.CyborgPiglin;
 import com.shim.celestialexploration.entity.entity.mob.piglins.VoidedPiglin;
 import com.shim.celestialexploration.entity.entity.mob.slimes.*;
 import com.shim.celestialexploration.entity.entity.projectile.MeteorProjectile;
-import com.shim.celestialexploration.entity.entity.robots.Drone;
-import com.shim.celestialexploration.entity.entity.robots.MechaDog;
-import com.shim.celestialexploration.entity.entity.robots.Rover;
+import com.shim.celestialexploration.entity.entity.robots.*;
 import com.shim.celestialexploration.entity.entity.vehicle.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
@@ -87,13 +86,14 @@ public class EntityRegistry {
     public static final RegistryObject<EntityType<AstralHoglin>> ASTRAL_HOGLIN = registerEntityType("astral_hoglin", "Astral Hoglin", () -> EntityType.Builder.of(AstralHoglin::new, MobCategory.MONSTER)
             .sized(0.6F, 1.95F).clientTrackingRange(8).fireImmune().build(new ResourceLocation(CelestialExploration.MODID, "astral_hoglin").toString()));
 
-
     public static final RegistryObject<EntityType<MeteorCrawler>> METEOR_CRAWLER = registerEntityType("meteor_crawler", "Meteorite Crawler", () -> EntityType.Builder.of(MeteorCrawler::new, MobCategory.MONSTER)
             .sized(0.7F, 0.5F).clientTrackingRange(8).build(new ResourceLocation(CelestialExploration.MODID, "meteor_crawler").toString()));
 
     public static final RegistryObject<EntityType<VoidCrawler>> VOID_CRAWLER = registerEntityType("void_crawler", "Void Crawler", () -> EntityType.Builder.of(VoidCrawler::new, MobCategory.MONSTER)
             .sized(0.7F, 0.5F).clientTrackingRange(8).build(new ResourceLocation(CelestialExploration.MODID, "void_crawler").toString()));
 
+    public static final RegistryObject<EntityType<Gust>> GUST = registerEntityType("gust", "Gust", () -> EntityType.Builder.of(Gust::new, MobCategory.MONSTER)
+            .sized(0.7F, 2.3F).clientTrackingRange(8).build(new ResourceLocation(CelestialExploration.MODID, "gust").toString()));
 
     //---- VEHICLES -------------------------------------------------------------------------------
     public static final RegistryObject<EntityType<Spaceship>> SPACESHIP = registerEntityType("spaceship", "Spaceship", () -> EntityType.Builder.<Spaceship>of(Spaceship::new, MobCategory.MISC)
@@ -130,8 +130,11 @@ public class EntityRegistry {
     public static final RegistryObject<EntityType<CelestialCat>> CELESTIAL_CAT = registerEntityType("celestial_cat", "Celestial Cat", () -> EntityType.Builder.of(CelestialCat::new, MobCategory.CREATURE)
             .sized(0.6F, 0.7F).clientTrackingRange(8).build(new ResourceLocation(CelestialExploration.MODID, "celestial_cat").toString()));
 
-//    public static final RegistryObject<EntityType<ControlPanel>> CONTROL_PANEL = registerEntityType("control_panel_1", "Control Panel", () -> EntityType.Builder.<ControlPanel>of(ControlPanel::new, MobCategory.MISC)
-//            .sized(0.5F, 0.5F).clientTrackingRange(10).updateInterval(Integer.MAX_VALUE).build(new ResourceLocation(CelestialExploration.MODID, "control_panel").toString()));
+    public static final RegistryObject<EntityType<Drone>> DRONE = registerEntityType("drone", "Camera Drone", () -> EntityType.Builder.of(Drone::new, MobCategory.CREATURE)
+            .sized(0.9F, 0.9F).clientTrackingRange(8).build(new ResourceLocation(CelestialExploration.MODID, "drone").toString()));
+
+    public static final RegistryObject<EntityType<MechaDog>> MECHADOG = registerEntityType("mechadog", "MechaDog", () -> EntityType.Builder.of(MechaDog::new, MobCategory.CREATURE)
+            .sized(1.0F, 1.2F).clientTrackingRange(8).build(new ResourceLocation(CelestialExploration.MODID, "mechadog").toString()));
 
     //---- PROJECTILES -------------------------------------------------------------------------------
     public static final RegistryObject<EntityType<MeteorProjectile>> METEOR = registerEntityType("meteor", "Shooting Star", () -> EntityType.Builder.of(MeteorProjectile::new, MobCategory.MISC)
@@ -142,17 +145,24 @@ public class EntityRegistry {
     public static final RegistryObject<EntityType<Eureka>> EUREKA = registerEntityType("eureka", "Eureka!", () -> EntityType.Builder.of(Eureka::new, MobCategory.WATER_AMBIENT)
             .sized(0.5F, 0.4F).clientTrackingRange(4).build(new ResourceLocation(CelestialExploration.MODID, "eureka").toString()));
 
-    public static final RegistryObject<EntityType<Gust>> GUST = registerEntityType("gust", "Gust", () -> EntityType.Builder.of(Gust::new, MobCategory.MONSTER)
-            .sized(0.7F, 2.3F).clientTrackingRange(8).build(new ResourceLocation(CelestialExploration.MODID, "gust").toString()));
-
-    public static final RegistryObject<EntityType<Drone>> DRONE = registerEntityType("drone", "Camera Drone", () -> EntityType.Builder.of(Drone::new, MobCategory.CREATURE)
-            .sized(0.9F, 0.9F).clientTrackingRange(8).build(new ResourceLocation(CelestialExploration.MODID, "drone").toString()));
-
     public static final RegistryObject<EntityType<Rover>> ROVER = registerEntityType("rover", "Rover", () -> EntityType.Builder.of(Rover::new, MobCategory.CREATURE)
             .sized(2.0F, 1.8F).clientTrackingRange(8).build(new ResourceLocation(CelestialExploration.MODID, "rover").toString()));
 
-    public static final RegistryObject<EntityType<MechaDog>> MECHADOG = registerEntityType("mechadog", "MechaDog", () -> EntityType.Builder.of(MechaDog::new, MobCategory.CREATURE)
-            .sized(1.0F, 1.0F).clientTrackingRange(8).build(new ResourceLocation(CelestialExploration.MODID, "mechadog").toString()));
+    public static final RegistryObject<EntityType<Cobblesaurus>> COBBLESAURUS = registerEntityType("cobblesaurus", "Cobblesaurus", () -> EntityType.Builder.of(Cobblesaurus::new, MobCategory.CREATURE)
+            .sized(2.0F, 1.8F).clientTrackingRange(8).build(new ResourceLocation(CelestialExploration.MODID, "cobblesaurus").toString()));
+
+
+    //    public static final RegistryObject<EntityType<ControlPanel>> CONTROL_PANEL = registerEntityType("control_panel_1", "Control Panel", () -> EntityType.Builder.<ControlPanel>of(ControlPanel::new, MobCategory.MISC)
+//            .sized(0.5F, 0.5F).clientTrackingRange(10).updateInterval(Integer.MAX_VALUE).build(new ResourceLocation(CelestialExploration.MODID, "control_panel").toString()));
+
+    public static final RegistryObject<EntityType<Orbiter>> ORBITER = registerEntityType("orbiter", "Orbiter", () -> EntityType.Builder.of(Orbiter::new, MobCategory.MONSTER)
+            .sized(4.0F, 4.0F).clientTrackingRange(10).fireImmune().build(new ResourceLocation(CelestialExploration.MODID, "orbiter").toString()));
+
+    public static final RegistryObject<EntityType<MechaCerberus>> MECHACERBERUS = registerEntityType("mechacerberus", "Mechacerberus", () -> EntityType.Builder.of(MechaCerberus::new, MobCategory.CREATURE)
+            .sized(2.3F, 2.0F).clientTrackingRange(8).build(new ResourceLocation(CelestialExploration.MODID, "mechacerberus").toString()));
+
+    public static final RegistryObject<EntityType<MechaCerberusBoss>> MECHACERBERUS_BOSS = registerEntityType("mechacerberus_boss", "Mechacerberus", () -> EntityType.Builder.of(MechaCerberusBoss::new, MobCategory.MONSTER)
+            .sized(2.3F, 2.0F).clientTrackingRange(8).build(new ResourceLocation(CelestialExploration.MODID, "mechacerberus_boss").toString()));
 
 
     public static void register(IEventBus eventbus) {

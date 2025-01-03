@@ -1,5 +1,7 @@
 package com.shim.celestialexploration.entity.entity.mob;
 
+import com.shim.celestialexploration.config.CelestialServerConfig;
+import com.shim.celestialexploration.entity.entity.robots.Drone;
 import mod.azure.azurelib.animatable.GeoEntity;
 import mod.azure.azurelib.core.animatable.instance.AnimatableInstanceCache;
 import mod.azure.azurelib.core.animation.AnimatableManager;
@@ -32,16 +34,16 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Explosion;
-import net.minecraft.world.level.ExplosionDamageCalculator;
-import net.minecraft.world.level.Level;
+import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.event.ForgeEventFactory;
 
 import javax.annotation.Nullable;
 import java.util.Collection;
 import java.util.EnumSet;
+import java.util.Random;
 
 public class Gust extends Monster implements PowerableMob, GeoEntity {
     private final AnimatableInstanceCache cache = AzureLibUtil.createInstanceCache(this);
@@ -88,6 +90,14 @@ public class Gust extends Monster implements PowerableMob, GeoEntity {
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
         controllers.add(new AnimationController<>(this, "gust", 0, event -> event.setAndContinue(animation)));
+    }
+
+    public static boolean checkGustSpawnRules(EntityType<Gust> entity, LevelAccessor levelAccessor, MobSpawnType spawnType, BlockPos pos, Random random) {
+        if (((ServerLevel) levelAccessor).getLevel().isRaining()) {
+            return checkMobSpawnRules(entity, levelAccessor, spawnType, pos, random);
+        } else {
+            return random.nextInt(20) == 0 && isDarkEnoughToSpawn((ServerLevelAccessor) levelAccessor, pos, random) && checkMobSpawnRules(entity, levelAccessor, spawnType, pos, random);
+        }
     }
 
     public int getMaxFallDistance() {
@@ -300,8 +310,13 @@ public class Gust extends Monster implements PowerableMob, GeoEntity {
 
     private void explodeGust() {
         if (!this.level.isClientSide) {
-            //TODO gust griefing config as well as mob griefing?
-            Explosion.BlockInteraction explosion$blockinteraction = net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(this.level, this) ? Explosion.BlockInteraction.DESTROY : Explosion.BlockInteraction.NONE;
+            Explosion.BlockInteraction explosion$blockinteraction = Explosion.BlockInteraction.DESTROY;
+            if (!ForgeEventFactory.getMobGriefingEvent(this.level, this))
+                explosion$blockinteraction = Explosion.BlockInteraction.NONE;
+            if (!CelestialServerConfig.GUST_GRIEFING.get())
+                explosion$blockinteraction = Explosion.BlockInteraction.NONE;
+
+//            Explosion.BlockInteraction explosion$blockinteraction = net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(this.level, this) ? Explosion.BlockInteraction.DESTROY : Explosion.BlockInteraction.NONE;
             float f = this.isPowered() ? 2.0F : 1.0F;
             this.dead = true;
             this.level.explode(this, this.getX(), this.getY(), this.getZ(), (float)this.explosionRadius * f, explosion$blockinteraction);

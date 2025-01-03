@@ -14,15 +14,19 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
+import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
+import net.minecraft.world.entity.monster.Ghast;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
@@ -45,14 +49,13 @@ public class Rover extends PathfinderMob implements GeoEntity {
 
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
-//        this.goalSelector.addGoal(2, new WaterAvoidingRandomStrollGoal(this, 1.0D));
+        this.goalSelector.addGoal(2, new WaterAvoidingRandomStrollGoal(this, 1.0D));
 //        this.goalSelector.addGoal(1, new PanicGoal(this, 1.2D));
         this.goalSelector.addGoal(3, new LookAtPlayerGoal(this, Player.class, 8.0F));
-//        this.goalSelector.addGoal(3, new RandomLookAroundGoal(this));
-//        this.goalSelector.addGoal(5, new FollowMobGoal(this, 1.0D, 3.0F, 7.0F));
-        this.goalSelector.addGoal(10, new RoverLeaveBlockGoal(this));
-        this.goalSelector.addGoal(1, new RoverTakeBlockGoal(this));
-
+        this.goalSelector.addGoal(3, new RandomLookAroundGoal(this));
+        this.goalSelector.addGoal(5, new FollowMobGoal(this, 1.0D, 3.0F, 7.0F));
+        this.goalSelector.addGoal(9, new RoverLeaveBlockGoal(this));
+        this.goalSelector.addGoal(7, new RoverTakeBlockGoal(this));
     }
 
     @Override
@@ -62,6 +65,10 @@ public class Rover extends PathfinderMob implements GeoEntity {
 
     private static final RawAnimation idle = RawAnimation.begin().thenLoop("idle");
     private static final RawAnimation rolling = RawAnimation.begin().thenLoop("rolling");
+
+    public static boolean checkRoverSpawnRules(EntityType<Rover> rover, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, Random random) {
+        return random.nextInt(10) == 0 && checkMobSpawnRules(rover, level, spawnType, pos, random);
+    }
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {

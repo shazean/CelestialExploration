@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "celestialexploration:block/mechadog_head",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "celestialexploration:block/mechadog_head"
+    },
+    "facing=south": {
+      "model": "celestialexploration:block/mechadog_head",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "celestialexploration:block/mechadog_head",
+      "y": 270
+    }
+  }
+}

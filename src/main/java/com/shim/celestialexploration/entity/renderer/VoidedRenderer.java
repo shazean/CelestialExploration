@@ -23,10 +23,6 @@ public class VoidedRenderer extends AbstractZombieRenderer<Voided, ZombieModel<V
         this(context, ModelLayers.ZOMBIE, CelestialModelLayers.VOIDED_INNER_ARMOR, CelestialModelLayers.VOIDED_OUTER_ARMOR);
     }
 
-//    public ZombieRenderer(EntityRendererProvider.Context p_174456_) {
-//        this(p_174456_, ModelLayers.ZOMBIE, ModelLayers.ZOMBIE_INNER_ARMOR, ModelLayers.ZOMBIE_OUTER_ARMOR);
-//    }
-
     public VoidedRenderer(EntityRendererProvider.Context context, ModelLayerLocation p_174459_, ModelLayerLocation p_174460_, ModelLayerLocation p_174461_) {
         super(context, new ZombieModel<>(context.bakeLayer(p_174459_)),
                 new ZombieModel<>(context.bakeLayer(p_174460_)),
@@ -34,11 +30,11 @@ public class VoidedRenderer extends AbstractZombieRenderer<Voided, ZombieModel<V
     }
 
 
-    protected void scale(Voided p_114907_, PoseStack p_114908_, float p_114909_) {
-        float f = 1.0625F;
-        p_114908_.scale(1.0625F, 1.0625F, 1.0625F);
-        super.scale(p_114907_, p_114908_, p_114909_);
-    }
+//    protected void scale(Voided p_114907_, PoseStack p_114908_, float p_114909_) {
+//        float f = 1.0625F;
+//        p_114908_.scale(1.0625F, 1.0625F, 1.0625F);
+//        super.scale(p_114907_, p_114908_, p_114909_);
+//    }
 
     public ResourceLocation getTextureLocation(Voided p_114905_) {
         return VOIDED_LOCATION;

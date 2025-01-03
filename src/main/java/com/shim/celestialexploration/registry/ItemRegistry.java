@@ -1,6 +1,7 @@
 package com.shim.celestialexploration.registry;
 
 import com.shim.celestialexploration.CelestialExploration;
+import com.shim.celestialexploration.entity.DyeType;
 import com.shim.celestialexploration.entity.entity.vehicle.Spaceship;
 import com.shim.celestialexploration.entity.entity.vehicle.AbstractMagCart;
 import com.shim.celestialexploration.item.*;
@@ -57,22 +58,22 @@ public class ItemRegistry {
 	public static final RegistryObject<Item> SPACESHIP_FRAME = registerItem("spaceship_frame", "Spaceship Frame", () -> new Item((new Item.Properties()).stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
 	public static final RegistryObject<Item> SPACESHIP_ENGINE = registerItem("spaceship_engine", "Spaceship Engine", () -> new Item((new Item.Properties()).stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
 
-	public static final RegistryObject<Item> BLACK_SPACESHIP = registerItem("black_spaceship", "Black Spaceship", () -> new SpaceshipItem(Spaceship.Type.BLACK, new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
-	public static final RegistryObject<Item> GREY_SPACESHIP = registerItem("grey_spaceship", "Grey Spaceship", () -> new SpaceshipItem(Spaceship.Type.GREY, new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
-	public static final RegistryObject<Item> LIGHT_GREY_SPACESHIP = registerItem("light_grey_spaceship", "Light Grey Spaceship", () -> new SpaceshipItem(Spaceship.Type.LIGHT_GREY, new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
-	public static final RegistryObject<Item> WHITE_SPACESHIP = registerItem("white_spaceship", "White Spaceship", () -> new SpaceshipItem(Spaceship.Type.WHITE, new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
-	public static final RegistryObject<Item> PINK_SPACESHIP = registerItem("pink_spaceship", "Pink Spaceship", () -> new SpaceshipItem(Spaceship.Type.PINK, new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
-	public static final RegistryObject<Item> MAGENTA_SPACESHIP = registerItem("magenta_spaceship", "Magenta Spaceship", () -> new SpaceshipItem(Spaceship.Type.MAGENTA, new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
-	public static final RegistryObject<Item> RED_SPACESHIP = registerItem("red_spaceship", "Red Spaceship", () -> new SpaceshipItem(Spaceship.Type.RED, new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
-	public static final RegistryObject<Item> BROWN_SPACESHIP = registerItem("brown_spaceship", "Brown Spaceship", () -> new SpaceshipItem(Spaceship.Type.BROWN, new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
-	public static final RegistryObject<Item> ORANGE_SPACESHIP = registerItem("orange_spaceship", "Orange Spaceship", () -> new SpaceshipItem(Spaceship.Type.ORANGE, new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
-	public static final RegistryObject<Item> YELLOW_SPACESHIP = registerItem("yellow_spaceship", "Yellow Spaceship", () -> new SpaceshipItem(Spaceship.Type.YELLOW, new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
-	public static final RegistryObject<Item> LIME_SPACESHIP = registerItem("lime_spaceship", "Lime Spaceship", () -> new SpaceshipItem(Spaceship.Type.LIME, new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
-	public static final RegistryObject<Item> GREEN_SPACESHIP = registerItem("green_spaceship", "Green Spaceship", () -> new SpaceshipItem(Spaceship.Type.GREEN, new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
-	public static final RegistryObject<Item> CYAN_SPACESHIP = registerItem("cyan_spaceship", "Cyan Spaceship", () -> new SpaceshipItem(Spaceship.Type.CYAN, new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
-	public static final RegistryObject<Item> LIGHT_BLUE_SPACESHIP = registerItem("light_blue_spaceship", "Light Blue Spaceship", () -> new SpaceshipItem(Spaceship.Type.LIGHT_BLUE, new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
-	public static final RegistryObject<Item> BLUE_SPACESHIP = registerItem("blue_spaceship", "Blue Spaceship", () -> new SpaceshipItem(Spaceship.Type.BLUE, new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
-	public static final RegistryObject<Item> PURPLE_SPACESHIP = registerItem("purple_spaceship", "Purple Spaceship", () -> new SpaceshipItem(Spaceship.Type.PURPLE, new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
+	public static final RegistryObject<Item> BLACK_SPACESHIP = registerItem("black_spaceship", "Black Spaceship", () -> new SpaceshipItem(DyeType.BLACK, new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
+	public static final RegistryObject<Item> GREY_SPACESHIP = registerItem("grey_spaceship", "Grey Spaceship", () -> new SpaceshipItem(DyeType.GREY, new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
+	public static final RegistryObject<Item> LIGHT_GREY_SPACESHIP = registerItem("light_grey_spaceship", "Light Grey Spaceship", () -> new SpaceshipItem(DyeType.LIGHT_GREY, new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
+	public static final RegistryObject<Item> WHITE_SPACESHIP = registerItem("white_spaceship", "White Spaceship", () -> new SpaceshipItem(DyeType.WHITE, new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
+	public static final RegistryObject<Item> PINK_SPACESHIP = registerItem("pink_spaceship", "Pink Spaceship", () -> new SpaceshipItem(DyeType.PINK, new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
+	public static final RegistryObject<Item> MAGENTA_SPACESHIP = registerItem("magenta_spaceship", "Magenta Spaceship", () -> new SpaceshipItem(DyeType.MAGENTA, new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
+	public static final RegistryObject<Item> RED_SPACESHIP = registerItem("red_spaceship", "Red Spaceship", () -> new SpaceshipItem(DyeType.RED, new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
+	public static final RegistryObject<Item> BROWN_SPACESHIP = registerItem("brown_spaceship", "Brown Spaceship", () -> new SpaceshipItem(DyeType.BROWN, new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
+	public static final RegistryObject<Item> ORANGE_SPACESHIP = registerItem("orange_spaceship", "Orange Spaceship", () -> new SpaceshipItem(DyeType.ORANGE, new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
+	public static final RegistryObject<Item> YELLOW_SPACESHIP = registerItem("yellow_spaceship", "Yellow Spaceship", () -> new SpaceshipItem(DyeType.YELLOW, new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
+	public static final RegistryObject<Item> LIME_SPACESHIP = registerItem("lime_spaceship", "Lime Spaceship", () -> new SpaceshipItem(DyeType.LIME, new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
+	public static final RegistryObject<Item> GREEN_SPACESHIP = registerItem("green_spaceship", "Green Spaceship", () -> new SpaceshipItem(DyeType.GREEN, new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
+	public static final RegistryObject<Item> CYAN_SPACESHIP = registerItem("cyan_spaceship", "Cyan Spaceship", () -> new SpaceshipItem(DyeType.CYAN, new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
+	public static final RegistryObject<Item> LIGHT_BLUE_SPACESHIP = registerItem("light_blue_spaceship", "Light Blue Spaceship", () -> new SpaceshipItem(DyeType.LIGHT_BLUE, new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
+	public static final RegistryObject<Item> BLUE_SPACESHIP = registerItem("blue_spaceship", "Blue Spaceship", () -> new SpaceshipItem(DyeType.BLUE, new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
+	public static final RegistryObject<Item> PURPLE_SPACESHIP = registerItem("purple_spaceship", "Purple Spaceship", () -> new SpaceshipItem(DyeType.PURPLE, new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB)));
 
 	//ITEMS
 	public static final RegistryObject<Item> MAGCART = registerItem("magcart", "Magcart", () -> new MagCartItem(AbstractMagCart.Type.RIDEABLE, (new Item.Properties().stacksTo(1).tab(CelestialExploration.SPACESHIP_TAB))));
@@ -132,13 +133,51 @@ public class ItemRegistry {
 	public static final RegistryObject<Item> GUST_SPAWN_EGG = registerItem("gust_spawn_egg", "Gust Spawn Egg", () -> new ForgeSpawnEggItem(EntityRegistry.GUST,0x0b6f3f, 0x1d8c56, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
 	public static final RegistryObject<Item> DRONE_SPAWN_EGG = registerItem("drone_spawn_egg", "Drone Spawn Egg", () -> new ForgeSpawnEggItem(EntityRegistry.DRONE,0x0b6f3f, 0x1d8c56, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
 	public static final RegistryObject<Item> ROVER_SPAWN_EGG = registerItem("rover_spawn_egg", "Rover Spawn Egg", () -> new ForgeSpawnEggItem(EntityRegistry.ROVER,0x0b6f3f, 0x1d8c56, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
-	public static final RegistryObject<Item> MECHADOG_SPAWN_ITEM = registerItem("mechadog_spawn_item", "MechaDog", () -> new AutoTameSpawnItem(EntityRegistry.MECHADOG, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
-	public static final RegistryObject<Item> WILD_MECHADOG_SPAWN_EGG = registerItem("wild_mechadog_spawn_egg", "Wild MechaDog Spawn Egg", () -> new ForgeSpawnEggItem(EntityRegistry.MECHADOG, 0x0b6f3f, 0x1d8c56, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+//	public static final RegistryObject<Item> WILD_MECHADOG_SPAWN_EGG = registerItem("wild_mechadog_spawn_egg", "Wild MechaDog Spawn Egg", () -> new ForgeSpawnEggItem(EntityRegistry.MECHADOG, 0x0b6f3f, 0x1d8c56, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> COBBLESAURUS_SPAWN_EGG = registerItem("cobblesaurus_spawn_egg", "Cobblesaurus Spawn Egg", () -> new ForgeSpawnEggItem(EntityRegistry.COBBLESAURUS, 0x0b6f3f, 0x1d8c56, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> ORBITER_SPAWN_EGG = registerItem("orbiter_spawn_egg", "Orbiter Spawn Egg", () -> new ForgeSpawnEggItem(EntityRegistry.ORBITER, 0x0b6f3f, 0x1d8c56, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+//	public static final RegistryObject<Item> WILD_MECHACERBERUS_SPAWN_EGG = registerItem("wild_mechacerberus_spawn_egg", "Wild MechaCerberus Spawn Egg", () -> new ForgeSpawnEggItem(EntityRegistry.MECHACERBERUS_BOSS, 0x0b6f3f, 0x1d8c56, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+
+// 	public static final RegistryObject<Item> WHITE_MECHADOG = registerItem("white_mechadog", "White MechaDog", () -> new AutoTameSpawnItem(EntityRegistry.MECHADOG, DyeType.WHITE, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+//	public static final RegistryObject<Item> GREY_MECHADOG = registerItem("grey_mechadog", "Grey MechaDog", () -> new AutoTameSpawnItem(EntityRegistry.MECHADOG, DyeType.GREY, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+//	public static final RegistryObject<Item> LIGHT_GREY_MECHADOG = registerItem("light_grey_mechadog", "Light Grey MechaDog", () -> new AutoTameSpawnItem(EntityRegistry.MECHADOG, DyeType.LIGHT_GREY, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+//	public static final RegistryObject<Item> BLACK_MECHADOG = registerItem("black_mechadog", "Black MechaDog", () -> new AutoTameSpawnItem(EntityRegistry.MECHADOG, DyeType.BLACK, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+//	public static final RegistryObject<Item> PURPLE_MECHADOG = registerItem("purple_mechadog", "Purple MechaDog", () -> new AutoTameSpawnItem(EntityRegistry.MECHADOG, DyeType.PURPLE, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+//	public static final RegistryObject<Item> BLUE_MECHADOG = registerItem("blue_mechadog", "Blue MechaDog", () -> new AutoTameSpawnItem(EntityRegistry.MECHADOG, DyeType.BLUE, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+//	public static final RegistryObject<Item> LIGHT_BLUE_MECHADOG = registerItem("light_blue_mechadog", "Light Blue MechaDog", () -> new AutoTameSpawnItem(EntityRegistry.MECHADOG, DyeType.LIGHT_BLUE, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+//	public static final RegistryObject<Item> CYAN_MECHADOG = registerItem("cyan_mechadog", "Cyan MechaDog", () -> new AutoTameSpawnItem(EntityRegistry.MECHADOG, DyeType.CYAN, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+//	public static final RegistryObject<Item> GREEN_MECHADOG = registerItem("green_mechadog", "Green MechaDog", () -> new AutoTameSpawnItem(EntityRegistry.MECHADOG, DyeType.GREEN, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+//	public static final RegistryObject<Item> LIME_MECHADOG = registerItem("lime_mechadog", "Lime MechaDog", () -> new AutoTameSpawnItem(EntityRegistry.MECHADOG, DyeType.LIME, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+//	public static final RegistryObject<Item> YELLOW_MECHADOG = registerItem("yellow_mechadog", "Yellow MechaDog", () -> new AutoTameSpawnItem(EntityRegistry.MECHADOG, DyeType.YELLOW, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+//	public static final RegistryObject<Item> ORANGE_MECHADOG = registerItem("orange_mechadog", "Orange MechaDog", () -> new AutoTameSpawnItem(EntityRegistry.MECHADOG, DyeType.ORANGE, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+//	public static final RegistryObject<Item> RED_MECHADOG = registerItem("red_mechadog", "Red MechaDog", () -> new AutoTameSpawnItem(EntityRegistry.MECHADOG, DyeType.RED, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+//	public static final RegistryObject<Item> BROWN_MECHADOG = registerItem("brown_mechadog", "Brown MechaDog", () -> new AutoTameSpawnItem(EntityRegistry.MECHADOG, DyeType.BROWN, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+//	public static final RegistryObject<Item> MAGENTA_MECHADOG = registerItem("magenta_mechadog", "Magenta MechaDog", () -> new AutoTameSpawnItem(EntityRegistry.MECHADOG, DyeType.MAGENTA, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+//	public static final RegistryObject<Item> PINK_MECHADOG = registerItem("pink_mechadog", "Pink MechaDog", () -> new AutoTameSpawnItem(EntityRegistry.MECHADOG, DyeType.PINK, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+//
+//	public static final RegistryObject<Item> WHITE_MECHACERBERUS = registerItem("white_mechacerberus", "White MechaCerberus", () -> new AutoTameSpawnItem(EntityRegistry.MECHACERBERUS, DyeType.WHITE, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+//	public static final RegistryObject<Item> GREY_MECHACERBERUS = registerItem("grey_mechacerberus", "Grey MechaCerberus", () -> new AutoTameSpawnItem(EntityRegistry.MECHACERBERUS, DyeType.GREY, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+//	public static final RegistryObject<Item> LIGHT_GREY_MECHACERBERUS = registerItem("light_grey_mechacerberus", "Light Grey MechaCerberus", () -> new AutoTameSpawnItem(EntityRegistry.MECHACERBERUS, DyeType.LIGHT_GREY, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+//	public static final RegistryObject<Item> BLACK_MECHACERBERUS = registerItem("black_mechacerberus", "Black MechaCerberus", () -> new AutoTameSpawnItem(EntityRegistry.MECHACERBERUS, DyeType.BLACK, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+//	public static final RegistryObject<Item> PURPLE_MECHACERBERUS = registerItem("purple_mechacerberus", "Purple MechaCerberus", () -> new AutoTameSpawnItem(EntityRegistry.MECHACERBERUS, DyeType.PURPLE, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+//	public static final RegistryObject<Item> BLUE_MECHACERBERUS = registerItem("blue_mechacerberus", "Blue MechaCerberus", () -> new AutoTameSpawnItem(EntityRegistry.MECHACERBERUS, DyeType.BLUE, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+//	public static final RegistryObject<Item> LIGHT_BLUE_MECHACERBERUS = registerItem("light_blue_mechacerberus", "Light Blue MechaCerberus", () -> new AutoTameSpawnItem(EntityRegistry.MECHACERBERUS, DyeType.LIGHT_BLUE, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+//	public static final RegistryObject<Item> CYAN_MECHACERBERUS = registerItem("cyan_mechacerberus", "Cyan MechaCerberus", () -> new AutoTameSpawnItem(EntityRegistry.MECHACERBERUS, DyeType.CYAN, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+//	public static final RegistryObject<Item> GREEN_MECHACERBERUS = registerItem("green_mechacerberus", "Green MechaCerberus", () -> new AutoTameSpawnItem(EntityRegistry.MECHACERBERUS, DyeType.GREEN, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+//	public static final RegistryObject<Item> LIME_MECHACERBERUS = registerItem("lime_mechacerberus", "Lime MechaCerberus", () -> new AutoTameSpawnItem(EntityRegistry.MECHACERBERUS, DyeType.LIME, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+//	public static final RegistryObject<Item> YELLOW_MECHACERBERUS = registerItem("yellow_mechacerberus", "Yellow MechaCerberus", () -> new AutoTameSpawnItem(EntityRegistry.MECHACERBERUS, DyeType.YELLOW, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+//	public static final RegistryObject<Item> ORANGE_MECHACERBERUS = registerItem("orange_mechacerberus", "Orange MechaCerberus", () -> new AutoTameSpawnItem(EntityRegistry.MECHACERBERUS, DyeType.ORANGE, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+//	public static final RegistryObject<Item> RED_MECHACERBERUS = registerItem("red_mechacerberus", "Red MechaCerberus", () -> new AutoTameSpawnItem(EntityRegistry.MECHACERBERUS, DyeType.RED, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+//	public static final RegistryObject<Item> BROWN_MECHACERBERUS = registerItem("brown_mechacerberus", "Brown MechaCerberus", () -> new AutoTameSpawnItem(EntityRegistry.MECHACERBERUS, DyeType.BROWN, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+//	public static final RegistryObject<Item> MAGENTA_MECHACERBERUS = registerItem("magenta_mechacerberus", "Magenta MechaCerberus", () -> new AutoTameSpawnItem(EntityRegistry.MECHACERBERUS, DyeType.MAGENTA, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+//	public static final RegistryObject<Item> PINK_MECHACERBERUS = registerItem("pink_mechacerberus", "Pink MechaCerberus", () -> new AutoTameSpawnItem(EntityRegistry.MECHACERBERUS, DyeType.PINK, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+//
 
 	//---- MOB HEADS -------------------------------------------------------------------------------
 
 	public static final RegistryObject<Item> LURKER_HEAD = ITEMS.register("lurker_head", () -> new StandingAndWallBlockItem(BlockRegistry.LURKER_HEAD.get(), BlockRegistry.LURKER_WALL_HEAD.get(), (new Item.Properties()).tab(CreativeModeTab.TAB_DECORATIONS).rarity(Rarity.UNCOMMON)));
 	public static final RegistryObject<Item> VOIDED_HEAD = ITEMS.register("voided_head", () -> new StandingAndWallBlockItem(BlockRegistry.VOIDED_HEAD.get(), BlockRegistry.VOIDED_WALL_HEAD.get(), (new Item.Properties()).tab(CreativeModeTab.TAB_DECORATIONS).rarity(Rarity.UNCOMMON)));
+//	public static final RegistryObject<Item> MECHADOG_HEAD = ITEMS.register("mechadog_head", () -> new StandingAndWallBlockItem(BlockRegistry.MECHADOG_HEAD.get(), BlockRegistry.MECHADOG_WALL_HEAD.get(), (new Item.Properties()).tab(CreativeModeTab.TAB_DECORATIONS).rarity(Rarity.UNCOMMON)));
 
 	//---- MISC ITEMS -------------------------------------------------------------------------------
 	public static final RegistryObject<Item> RUSTED_IRON_NUGGET = registerItem("rusted_iron_nugget", "Rusted Iron Nugget", () -> new Item((new Item.Properties()).tab(CelestialExploration.CELESTIAL_MISC_TAB)));
@@ -159,6 +198,9 @@ public class ItemRegistry {
 	public static final RegistryObject<Item> STEEL_WOOL = registerItem("steel_wool", "Steel Wool", () -> new Item((new Item.Properties()).tab(CreativeModeTab.TAB_MATERIALS)));
 	public static final RegistryObject<Item> SULFUR_CRYSTAL = registerItem("sulfur_crystal", "Sulfur Crystal", () -> new Item((new Item.Properties()).tab(CreativeModeTab.TAB_MATERIALS)));
 	public static final RegistryObject<Item> CINNABAR = registerItem("cinnabar", "Cinnabar", () -> new Item((new Item.Properties()).tab(CreativeModeTab.TAB_MATERIALS)));
+
+//	public static final RegistryObject<Item> MECHADOG_CORE = registerItem("mechadog_core", "MechaDog Core", () -> new Item((new Item.Properties()).tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+
 
 	public static final RegistryObject<Item> EUREKA_BUCKET = registerItem("eureka_bucket", "Eureka! Bucket", () -> new MobBucketItem(EntityRegistry.EUREKA, () -> Fluids.WATER, () -> SoundEvents.BUCKET_EMPTY_FISH, (new Item.Properties()).stacksTo(1).tab(CreativeModeTab.TAB_MISC)));
 

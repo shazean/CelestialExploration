@@ -3,14 +3,13 @@ package com.shim.celestialexploration.events;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.entity.entity.ambient.Eureka;
 import com.shim.celestialexploration.entity.entity.friendlies.CelestialCat;
+import com.shim.celestialexploration.entity.entity.friendlies.Cobblesaurus;
 import com.shim.celestialexploration.entity.entity.mob.*;
 import com.shim.celestialexploration.entity.entity.mob.piglins.AstralPiglin;
 import com.shim.celestialexploration.entity.entity.mob.piglins.CyborgPiglin;
 import com.shim.celestialexploration.entity.entity.mob.piglins.VoidedPiglin;
 import com.shim.celestialexploration.entity.entity.mob.slimes.*;
-import com.shim.celestialexploration.entity.entity.robots.Drone;
-import com.shim.celestialexploration.entity.entity.robots.MechaDog;
-import com.shim.celestialexploration.entity.entity.robots.Rover;
+import com.shim.celestialexploration.entity.entity.robots.*;
 import com.shim.celestialexploration.entity.model.MagCartModel;
 import com.shim.celestialexploration.particles.*;
 import com.shim.celestialexploration.recipes.WorkbenchCraftingRecipe;
@@ -68,6 +67,11 @@ public class ModEventBusEvents {
         event.put(EntityRegistry.DRONE.get(), Drone.createAttributes().build());
         event.put(EntityRegistry.ROVER.get(), Rover.createAttributes().build());
         event.put(EntityRegistry.MECHADOG.get(), MechaDog.createAttributes().build());
+        event.put(EntityRegistry.COBBLESAURUS.get(), Cobblesaurus.createAttributes().build());
+        event.put(EntityRegistry.ORBITER.get(), Orbiter.createAttributes().build());
+        event.put(EntityRegistry.MECHACERBERUS.get(), MechaCerberus.createAttributes().build());
+        event.put(EntityRegistry.MECHACERBERUS_BOSS.get(), MechaCerberusBoss.createAttributes().build());
+
 
     }
 
@@ -119,12 +123,12 @@ public class ModEventBusEvents {
 
         event.registerLayerDefinition(CelestialModelLayers.LURKER_HEAD, () -> skullLayer);
         event.registerLayerDefinition(CelestialModelLayers.VOIDED_HEAD, () -> humanoidHeadLayer);
+            event.registerLayerDefinition(CelestialModelLayers.MECHADOG_HEAD, () -> skullLayer);
 
 //        LayerDefinition displayBoardDef = DisplayBoardRenderer.createDisplayBoardLayer();
 //        DisplayBoardBlock.DisplayBoardColors.values().forEach((p_171114_) -> {
 //            event.registerLayerDefinition(CelestialModelLayers.createDisplayBoardModelName(p_171114_), () -> displayBoardDef);
 //        });
-
     }
 
     @SubscribeEvent
