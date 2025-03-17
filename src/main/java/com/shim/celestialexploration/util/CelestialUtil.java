@@ -12,6 +12,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.util.random.WeightedRandomList;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.Fluids;
@@ -97,6 +98,8 @@ public class CelestialUtil {
         PLANET_LOCATIONS.put(dimension, data);
         CelestialExploration.LOGGER.debug("planets: " + PLANET_LOCATIONS.keySet());
     }
+
+    WeightedRandomList list;
 
     public static void clearPlanetLocations() {
         PLANET_LOCATIONS.clear();

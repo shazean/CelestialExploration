@@ -2,7 +2,7 @@ package com.shim.celestialexploration.entity.entity.robots;
 
 import com.shim.celestialexploration.entity.DyeType;
 import com.shim.celestialexploration.entity.IDyeable;
-import com.shim.celestialexploration.entity.entity.friendlies.TamableCreature;
+import com.shim.celestialexploration.entity.model.CerberusPart;
 import mod.azure.azurelib.animatable.GeoEntity;
 import mod.azure.azurelib.core.animatable.instance.AnimatableInstanceCache;
 import mod.azure.azurelib.core.animation.AnimatableManager;
@@ -12,9 +12,12 @@ import mod.azure.azurelib.util.AzureLibUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientboundAddMobPacket;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
@@ -26,6 +29,7 @@ import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.goal.PanicGoal;
 import net.minecraft.world.entity.ai.targeting.TargetingConditions;
+import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.horse.AbstractHorse;
 import net.minecraft.world.entity.animal.horse.Llama;
 import net.minecraft.world.entity.monster.Creeper;
@@ -40,12 +44,14 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.entity.PartEntity;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 import java.util.EnumSet;
 import java.util.function.Predicate;
 
-public abstract class AbstractCerberus extends TamableCreature implements GeoEntity, IDyeable {
+public abstract class AbstractCerberus extends TamableAnimal implements GeoEntity, IDyeable {
     private final AnimatableInstanceCache cache = AzureLibUtil.createInstanceCache(this);
     private static final EntityDataAccessor<Boolean> DATA_INTERESTED_ID = SynchedEntityData.defineId(AbstractCerberus.class, EntityDataSerializers.BOOLEAN);
     //    private static final EntityDataAccessor<Integer> DATA_COLLAR_COLOR = SynchedEntityData.defineId(MechaDog.class, EntityDataSerializers.INT);
@@ -55,7 +61,7 @@ public abstract class AbstractCerberus extends TamableCreature implements GeoEnt
         EntityType<?> entitytype = p_30437_.getType();
         return entitytype == EntityType.SHEEP || entitytype == EntityType.RABBIT || entitytype == EntityType.FOX;
     };
-//    private static final float START_HEALTH = 8.0F;
+    //    private static final float START_HEALTH = 8.0F;
 //    private static final float TAME_HEALTH = 20.0F;
     private float interestedAngle;
     private float interestedAngleO;
@@ -67,15 +73,56 @@ public abstract class AbstractCerberus extends TamableCreature implements GeoEnt
 //    @Nullable
 //    private UUID persistentAngerTarget;
     private final Item foodItem = Items.REDSTONE;
+    private final CerberusPart[] cerberusParts;
+    private final CerberusPart headCenter;
+    private final CerberusPart headLeft;
+    private final CerberusPart headRight;
 
     public AbstractCerberus(EntityType<? extends AbstractCerberus> p_30369_, Level p_30370_) {
         super(p_30369_, p_30370_);
         this.setTame(false);
         this.setPathfindingMalus(BlockPathTypes.POWDER_SNOW, -1.0F);
         this.setPathfindingMalus(BlockPathTypes.DANGER_POWDER_SNOW, -1.0F);
+        this.headCenter = new CerberusPart(this, "headCenter", 2.5F, 1.5F, 2.5F, 2.0F, 0.0F, true);
+        this.headLeft = new CerberusPart(this, "headLeft", 1.6F, 1.5F, 2.6F, 2.0F, 1.5F, true);
+        this.headRight = new CerberusPart(this, "headRight", 1.6F, 1.5F, 2.6F, 2.0F, -1.5F, true);
+        this.cerberusParts = new CerberusPart[]{this.headCenter
+                , this.headLeft, this.headRight
+        };
     }
 
-//    private static final RawAnimation wild_idle = RawAnimation.begin().thenLoop("idle_wild");
+    @Override
+    public boolean isMultipartEntity() {
+        return true;
+    }
+
+    @Override
+    public @org.jetbrains.annotations.Nullable PartEntity<?>[] getParts() {
+
+        return this.cerberusParts;
+    }
+
+    @Override
+    public boolean canBreed() {
+        return false;
+    }
+
+    @Override
+    public boolean canMate(Animal p_27569_) {
+        return false;
+    }
+
+    @Override
+    public @org.jetbrains.annotations.Nullable AgeableMob getBreedOffspring(ServerLevel p_146743_, AgeableMob p_146744_) {
+        return null;
+    }
+
+    @Override
+    public boolean canFallInLove() {
+        return false;
+    }
+
+    //    private static final RawAnimation wild_idle = RawAnimation.begin().thenLoop("idle_wild");
 //    private static final RawAnimation wild_walk = RawAnimation.begin().thenLoop("walk_wild");
     private static final RawAnimation tamed_idle = RawAnimation.begin().thenLoop("idle");
     private static final RawAnimation tamed_walk = RawAnimation.begin().thenLoop("walk");
@@ -88,17 +135,15 @@ public abstract class AbstractCerberus extends TamableCreature implements GeoEnt
                     boolean tamed = event.getAnimatable().isTame();
                     if (event.getAnimatable().isInSittingPose()) {
                         return event.setAndContinue(sit);
-                    }
-                    else if (tamed && event.isMoving()) {
+                    } else if (tamed && event.isMoving()) {
                         return event.setAndContinue(tamed_walk);
                     } else if (tamed && !event.isMoving()) {
 //                    } else {
                         return event.setAndContinue(tamed_idle);
-                    }
-                    else if (!tamed && event.isMoving()) {
+                    } else if (!tamed && event.isMoving()) {
                         return event.setAndContinue(tamed_walk);
 //                        return event.setAndContinue(wild_walk);
-                    }  else {
+                    } else {
                         return event.setAndContinue(tamed_idle);
 //                        return event.setAndContinue(wild_idle);
                     }
@@ -128,7 +173,6 @@ public abstract class AbstractCerberus extends TamableCreature implements GeoEnt
 //                })
         );
     }
-
 
 
     @Override
@@ -208,12 +252,35 @@ public abstract class AbstractCerberus extends TamableCreature implements GeoEnt
             this.isShaking = true;
             this.shakeAnim = 0.0F;
             this.shakeAnimO = 0.0F;
-            this.level.broadcastEntityEvent(this, (byte)8);
+            this.level.broadcastEntityEvent(this, (byte) 8);
         }
+
+        for (CerberusPart cerberusPart : cerberusParts) {
+            cerberusPart.updatePosition(cerberusPart.getDefaultXOffset(), cerberusPart.getDefaultYOffset(), cerberusPart.getDefaultZOffset());
+        }
+
 //        if (!this.level.isClientSide) {
 //            this.updatePersistentAnger((ServerLevel)this.level, true);
 //        }
     }
+
+
+    /**
+     * Mob packet handling.  This is necessary to set up hitboxes and multiparts.
+     * In most cases you shouldn't have to call these for subclasses, they should be handled automatically here as long as you are extending ADragonBase
+     */
+    @Override
+    public void recreateFromPacket(@NotNull ClientboundAddMobPacket mobPacketIn) {
+        super.recreateFromPacket(mobPacketIn);
+        PartEntity<?>[] part = this.getParts();
+        for (int i = 0; i < part.length; ++i) part[i].setId(i + mobPacketIn.getId() + 1);
+    }
+
+    @Override
+    public @NotNull Packet<?> getAddEntityPacket() {
+        return new ClientboundAddMobPacket(this);
+    }
+
 
     public void tick() {
         super.tick();
@@ -228,7 +295,7 @@ public abstract class AbstractCerberus extends TamableCreature implements GeoEnt
             if (this.isInWaterRainOrBubble()) {
                 this.isWet = true;
                 if (this.isShaking && !this.level.isClientSide) {
-                    this.level.broadcastEntityEvent(this, (byte)56);
+                    this.level.broadcastEntityEvent(this, (byte) 56);
                     this.cancelShake();
                 }
             } else if ((this.isWet || this.isShaking) && this.isShaking) {
@@ -247,14 +314,14 @@ public abstract class AbstractCerberus extends TamableCreature implements GeoEnt
                 }
 
                 if (this.shakeAnim > 0.4F) {
-                    float f = (float)this.getY();
-                    int i = (int)(Mth.sin((this.shakeAnim - 0.4F) * (float)Math.PI) * 7.0F);
+                    float f = (float) this.getY();
+                    int i = (int) (Mth.sin((this.shakeAnim - 0.4F) * (float) Math.PI) * 7.0F);
                     Vec3 vec3 = this.getDeltaMovement();
 
-                    for(int j = 0; j < i; ++j) {
+                    for (int j = 0; j < i; ++j) {
                         float f1 = (this.random.nextFloat() * 2.0F - 1.0F) * this.getBbWidth() * 0.5F;
                         float f2 = (this.random.nextFloat() * 2.0F - 1.0F) * this.getBbWidth() * 0.5F;
-                        this.level.addParticle(ParticleTypes.SPLASH, this.getX() + (double)f1, (double)(f + 0.8F), this.getZ() + (double)f2, vec3.x, vec3.y, vec3.z);
+                        this.level.addParticle(ParticleTypes.SPLASH, this.getX() + (double) f1, (double) (f + 0.8F), this.getZ() + (double) f2, vec3.x, vec3.y, vec3.z);
                     }
                 }
             }
@@ -292,11 +359,11 @@ public abstract class AbstractCerberus extends TamableCreature implements GeoEnt
             f = 1.0F;
         }
 
-        return Mth.sin(f * (float)Math.PI) * Mth.sin(f * (float)Math.PI * 11.0F) * 0.15F * (float)Math.PI;
+        return Mth.sin(f * (float) Math.PI) * Mth.sin(f * (float) Math.PI * 11.0F) * 0.15F * (float) Math.PI;
     }
 
     public float getHeadRollAngle(float p_30449_) {
-        return Mth.lerp(p_30449_, this.interestedAngleO, this.interestedAngle) * 0.15F * (float)Math.PI;
+        return Mth.lerp(p_30449_, this.interestedAngleO, this.interestedAngle) * 0.15F * (float) Math.PI;
     }
 
     protected float getStandingEyeHeight(Pose p_30409_, EntityDimensions p_30410_) {
@@ -324,14 +391,14 @@ public abstract class AbstractCerberus extends TamableCreature implements GeoEnt
         }
     }
 
-    public boolean doHurtTarget(Entity p_30372_) {
-        boolean flag = p_30372_.hurt(DamageSource.mobAttack(this), (float)((int)this.getAttributeValue(Attributes.ATTACK_DAMAGE)));
-        if (flag) {
-            this.doEnchantDamageEffects(this, p_30372_);
-        }
-
-        return flag;
-    }
+//    public boolean doHurtTarget(Entity p_30372_) {
+//        boolean flag = p_30372_.hurt(DamageSource.mobAttack(this), (float) ((int) this.getAttributeValue(Attributes.ATTACK_DAMAGE)));
+//        if (flag) {
+//            this.doEnchantDamageEffects(this, p_30372_);
+//        }
+//
+//        return flag;
+//    }
 
     public void setTame(boolean p_30443_) {
         super.setTame(p_30443_);
@@ -360,7 +427,7 @@ public abstract class AbstractCerberus extends TamableCreature implements GeoEnt
 //        if (this.isAngry()) {
 //            return 1.5393804F;
 //        } else {
-        return this.isTame() ? (0.55F - (this.getMaxHealth() - this.getHealth()) * 0.02F) * (float)Math.PI : ((float)Math.PI / 5F);
+        return this.isTame() ? (0.55F - (this.getMaxHealth() - this.getHealth()) * 0.02F) * (float) Math.PI : ((float) Math.PI / 5F);
 //        }
     }
 
@@ -413,15 +480,14 @@ public abstract class AbstractCerberus extends TamableCreature implements GeoEnt
 
     public boolean wantsToAttack(LivingEntity p_30389_, LivingEntity p_30390_) {
         if (!(p_30389_ instanceof Creeper) && !(p_30389_ instanceof Ghast)) {
-            if (p_30389_ instanceof MechaDog) {
-                MechaDog mechadog = (MechaDog)p_30389_;
+            if (p_30389_ instanceof MechaDog mechadog) {
                 return !mechadog.isTame() || mechadog.getOwner() != p_30390_;
-            } else if (p_30389_ instanceof Player && p_30390_ instanceof Player && !((Player)p_30390_).canHarmPlayer((Player)p_30389_)) {
+            } else if (p_30389_ instanceof Player && p_30390_ instanceof Player && !((Player) p_30390_).canHarmPlayer((Player) p_30389_)) {
                 return false;
-            } else if (p_30389_ instanceof AbstractHorse && ((AbstractHorse)p_30389_).isTamed()) {
+            } else if (p_30389_ instanceof AbstractHorse && ((AbstractHorse) p_30389_).isTamed()) {
                 return false;
             } else {
-                return !(p_30389_ instanceof TamableAnimal) || !((TamableAnimal)p_30389_).isTame();
+                return !(p_30389_ instanceof TamableAnimal) || !((TamableAnimal) p_30389_).isTame();
             }
         } else {
             return false;
@@ -433,7 +499,7 @@ public abstract class AbstractCerberus extends TamableCreature implements GeoEnt
 //    }
 
     public Vec3 getLeashOffset() {
-        return new Vec3(0.0D, (double)(0.6F * this.getEyeHeight()), (double)(this.getBbWidth() * 0.4F));
+        return new Vec3(0.0D, (double) (0.6F * this.getEyeHeight()), (double) (this.getBbWidth() * 0.4F));
     }
 
 //    public static boolean checkMechaDogSpawnRules(EntityType<MechaDog> p_186244_, LevelAccessor p_186245_, MobSpawnType p_186246_, BlockPos p_186247_, Random p_186248_) {
@@ -450,7 +516,7 @@ public abstract class AbstractCerberus extends TamableCreature implements GeoEnt
 
         public boolean canUse() {
             if (super.canUse() && this.toAvoid instanceof Llama) {
-                return !this.mechadog.isTame() && this.avoidLlama((Llama)this.toAvoid);
+                return !this.mechadog.isTame() && this.avoidLlama((Llama) this.toAvoid);
             } else {
                 return false;
             }
@@ -461,12 +527,12 @@ public abstract class AbstractCerberus extends TamableCreature implements GeoEnt
         }
 
         public void start() {
-            AbstractCerberus.this.setTarget((LivingEntity)null);
+            AbstractCerberus.this.setTarget((LivingEntity) null);
             super.start();
         }
 
         public void tick() {
-            AbstractCerberus.this.setTarget((LivingEntity)null);
+            AbstractCerberus.this.setTarget((LivingEntity) null);
             super.tick();
         }
     }
@@ -494,7 +560,7 @@ public abstract class AbstractCerberus extends TamableCreature implements GeoEnt
             this.mechadog = p_25063_;
             this.level = p_25063_.level;
             this.lookDistance = p_25064_;
-            this.begTargeting = TargetingConditions.forNonCombat().range((double)p_25064_);
+            this.begTargeting = TargetingConditions.forNonCombat().range((double) p_25064_);
             this.setFlags(EnumSet.of(Goal.Flag.LOOK));
         }
 
@@ -506,7 +572,7 @@ public abstract class AbstractCerberus extends TamableCreature implements GeoEnt
         public boolean canContinueToUse() {
             if (!this.player.isAlive()) {
                 return false;
-            } else if (this.mechadog.distanceToSqr(this.player) > (double)(this.lookDistance * this.lookDistance)) {
+            } else if (this.mechadog.distanceToSqr(this.player) > (double) (this.lookDistance * this.lookDistance)) {
                 return false;
             } else {
                 return this.lookTime > 0 && this.playerHoldingInteresting(this.player);
@@ -524,12 +590,12 @@ public abstract class AbstractCerberus extends TamableCreature implements GeoEnt
         }
 
         public void tick() {
-            this.mechadog.getLookControl().setLookAt(this.player.getX(), this.player.getEyeY(), this.player.getZ(), 10.0F, (float)this.mechadog.getMaxHeadXRot());
+            this.mechadog.getLookControl().setLookAt(this.player.getX(), this.player.getEyeY(), this.player.getZ(), 10.0F, (float) this.mechadog.getMaxHeadXRot());
             --this.lookTime;
         }
 
         private boolean playerHoldingInteresting(Player p_25067_) {
-            for(InteractionHand interactionhand : InteractionHand.values()) {
+            for (InteractionHand interactionhand : InteractionHand.values()) {
                 ItemStack itemstack = p_25067_.getItemInHand(interactionhand);
                 if (this.mechadog.isTame() && itemstack.is(this.mechadog.foodItem)) {
                     return true;

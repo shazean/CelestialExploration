@@ -8,6 +8,8 @@ import com.shim.celestialexploration.capabilities.TaxiCapability;
 import com.shim.celestialexploration.config.CelestialCommonConfig;
 import com.shim.celestialexploration.entity.CelestialCatSpawner;
 import com.shim.celestialexploration.entity.entity.projectile.MeteorProjectile;
+import com.shim.celestialexploration.entity.entity.robots.MechaCerberusBoss;
+import com.shim.celestialexploration.entity.entity.robots.MechaDog;
 import com.shim.celestialexploration.entity.entity.vehicle.Spaceship;
 import com.shim.celestialexploration.item.armor.ThermalSpaceSuitArmorItem;
 import com.shim.celestialexploration.packets.CelestialPacketHandler;
@@ -45,12 +47,14 @@ import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.event.world.ExplosionEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.LogicalSide;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.network.NetworkDirection;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 @Mod.EventBusSubscriber(modid = CelestialExploration.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
@@ -62,6 +66,14 @@ public class ModForgeEventBus {
             if (!spaceship.isRemoved() && !event.getWorldObj().isClientSide) {
                 event.setCanceled(spaceship.getTimeOnGround() < Spaceship.maxTimeOnGround);
             }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onExplosion(ExplosionEvent.Detonate event) {
+        if (event.getExplosion().getSourceMob() instanceof MechaCerberusBoss) {
+            List<Entity> entityList = event.getAffectedEntities();
+            entityList.removeIf(entity -> entity instanceof MechaDog dog && !dog.isTame());
         }
     }
 

@@ -718,44 +718,44 @@ public class ItemModels extends ItemModelProvider {
 		spawnEgg(ItemRegistry.COBBLESAURUS_SPAWN_EGG.get());
 		spawnEgg(ItemRegistry.ORBITER_SPAWN_EGG.get());
 
-//		generatedItem(ItemRegistry.BLACK_MECHADOG.get());
-//		generatedItem(ItemRegistry.GREY_MECHADOG.get());
-//		generatedItem(ItemRegistry.LIGHT_GREY_MECHADOG.get());
-//		generatedItem(ItemRegistry.WHITE_MECHADOG.get());
-//		generatedItem(ItemRegistry.PINK_MECHADOG.get());
-//		generatedItem(ItemRegistry.MAGENTA_MECHADOG.get());
-//		generatedItem(ItemRegistry.RED_MECHADOG.get());
-//		generatedItem(ItemRegistry.BROWN_MECHADOG.get());
-//		generatedItem(ItemRegistry.ORANGE_MECHADOG.get());
-//		generatedItem(ItemRegistry.YELLOW_MECHADOG.get());
-//		generatedItem(ItemRegistry.LIME_MECHADOG.get());
-//		generatedItem(ItemRegistry.GREEN_MECHADOG.get());
-//		generatedItem(ItemRegistry.CYAN_MECHADOG.get());
-//		generatedItem(ItemRegistry.LIGHT_BLUE_MECHADOG.get());
-//		generatedItem(ItemRegistry.BLUE_MECHADOG.get());
-//		generatedItem(ItemRegistry.PURPLE_MECHADOG.get());
-//
-//		generatedItem(ItemRegistry.BLACK_MECHACERBERUS.get());
-//		generatedItem(ItemRegistry.GREY_MECHACERBERUS.get());
-//		generatedItem(ItemRegistry.LIGHT_GREY_MECHACERBERUS.get());
-//		generatedItem(ItemRegistry.WHITE_MECHACERBERUS.get());
-//		generatedItem(ItemRegistry.PINK_MECHACERBERUS.get());
-//		generatedItem(ItemRegistry.MAGENTA_MECHACERBERUS.get());
-//		generatedItem(ItemRegistry.RED_MECHACERBERUS.get());
-//		generatedItem(ItemRegistry.BROWN_MECHACERBERUS.get());
-//		generatedItem(ItemRegistry.ORANGE_MECHACERBERUS.get());
-//		generatedItem(ItemRegistry.YELLOW_MECHACERBERUS.get());
-//		generatedItem(ItemRegistry.LIME_MECHACERBERUS.get());
-//		generatedItem(ItemRegistry.GREEN_MECHACERBERUS.get());
-//		generatedItem(ItemRegistry.CYAN_MECHACERBERUS.get());
-//		generatedItem(ItemRegistry.LIGHT_BLUE_MECHACERBERUS.get());
-//		generatedItem(ItemRegistry.BLUE_MECHACERBERUS.get());
-//		generatedItem(ItemRegistry.PURPLE_MECHACERBERUS.get());
+		generatedItem(ItemRegistry.BLACK_MECHADOG.get());
+		generatedItem(ItemRegistry.GREY_MECHADOG.get());
+		generatedItem(ItemRegistry.LIGHT_GREY_MECHADOG.get());
+		generatedItem(ItemRegistry.WHITE_MECHADOG.get());
+		generatedItem(ItemRegistry.PINK_MECHADOG.get());
+		generatedItem(ItemRegistry.MAGENTA_MECHADOG.get());
+		generatedItem(ItemRegistry.RED_MECHADOG.get());
+		generatedItem(ItemRegistry.BROWN_MECHADOG.get());
+		generatedItem(ItemRegistry.ORANGE_MECHADOG.get());
+		generatedItem(ItemRegistry.YELLOW_MECHADOG.get());
+		generatedItem(ItemRegistry.LIME_MECHADOG.get());
+		generatedItem(ItemRegistry.GREEN_MECHADOG.get());
+		generatedItem(ItemRegistry.CYAN_MECHADOG.get());
+		generatedItem(ItemRegistry.LIGHT_BLUE_MECHADOG.get());
+		generatedItem(ItemRegistry.BLUE_MECHADOG.get());
+		generatedItem(ItemRegistry.PURPLE_MECHADOG.get());
+
+		generatedItem(ItemRegistry.BLACK_MECHACERBERUS.get());
+		generatedItem(ItemRegistry.GREY_MECHACERBERUS.get());
+		generatedItem(ItemRegistry.LIGHT_GREY_MECHACERBERUS.get());
+		generatedItem(ItemRegistry.WHITE_MECHACERBERUS.get());
+		generatedItem(ItemRegistry.PINK_MECHACERBERUS.get());
+		generatedItem(ItemRegistry.MAGENTA_MECHACERBERUS.get());
+		generatedItem(ItemRegistry.RED_MECHACERBERUS.get());
+		generatedItem(ItemRegistry.BROWN_MECHACERBERUS.get());
+		generatedItem(ItemRegistry.ORANGE_MECHACERBERUS.get());
+		generatedItem(ItemRegistry.YELLOW_MECHACERBERUS.get());
+		generatedItem(ItemRegistry.LIME_MECHACERBERUS.get());
+		generatedItem(ItemRegistry.GREEN_MECHACERBERUS.get());
+		generatedItem(ItemRegistry.CYAN_MECHACERBERUS.get());
+		generatedItem(ItemRegistry.LIGHT_BLUE_MECHACERBERUS.get());
+		generatedItem(ItemRegistry.BLUE_MECHACERBERUS.get());
+		generatedItem(ItemRegistry.PURPLE_MECHACERBERUS.get());
 
 
 		this.withExistingParent(name(BlockRegistry.LURKER_HEAD.get()), this.mcLoc("item/template_skull"));
 		this.withExistingParent(name(BlockRegistry.VOIDED_HEAD.get()), this.mcLoc("item/template_skull"));
-//		generatedBlockItem(BlockRegistry.MECHADOG_HEAD.get(), "item/mechadog_head");
+		generatedBlockItem(BlockRegistry.MECHADOG_HEAD.get(), "item/mechadog_head");
 
 //		generatedItem(ItemRegistry.CONTROL_PANEL.get());
 

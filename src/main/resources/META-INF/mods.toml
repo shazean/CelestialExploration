@@ -5,13 +5,13 @@ issueTrackerURL="https://github.com/shazean/CelestialExploration/issues"
 
 [[mods]]
 modId="celestialexploration"
-version="0.13.1"
+version="0.14.6"
 displayName="Celestial Exploration"
 # A URL to query for updates for this mod. See the JSON update specification https://mcforge.readthedocs.io/en/latest/gettingstarted/autoupdate/
 #updateJSONURL="https://change.me.example.invalid/updates.json" #optional
 displayURL="https://github.com/shazean/CelestialExploration/wiki"
 logoFile="CE_logo.png"
-credits="shim, primal_zerg_ (legacy spaceship model)"
+credits="shim, primal_zerg_ (legacy spaceship model, some textures), JayZX535 (ideas, bug fixes, beta testing)"
 authors="shim"
 description='''
 Exploring beyond our own planet and into the outer reaches of space!

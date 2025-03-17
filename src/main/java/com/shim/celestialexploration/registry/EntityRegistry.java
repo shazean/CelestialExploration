@@ -159,11 +159,10 @@ public class EntityRegistry {
             .sized(4.0F, 4.0F).clientTrackingRange(10).fireImmune().build(new ResourceLocation(CelestialExploration.MODID, "orbiter").toString()));
 
     public static final RegistryObject<EntityType<MechaCerberus>> MECHACERBERUS = registerEntityType("mechacerberus", "Mechacerberus", () -> EntityType.Builder.of(MechaCerberus::new, MobCategory.CREATURE)
-            .sized(2.3F, 2.0F).clientTrackingRange(8).build(new ResourceLocation(CelestialExploration.MODID, "mechacerberus").toString()));
+            .sized(3.1F, 3.0F).clientTrackingRange(8).build(new ResourceLocation(CelestialExploration.MODID, "mechacerberus").toString()));
 
     public static final RegistryObject<EntityType<MechaCerberusBoss>> MECHACERBERUS_BOSS = registerEntityType("mechacerberus_boss", "Mechacerberus", () -> EntityType.Builder.of(MechaCerberusBoss::new, MobCategory.MONSTER)
-            .sized(2.3F, 2.0F).clientTrackingRange(8).build(new ResourceLocation(CelestialExploration.MODID, "mechacerberus_boss").toString()));
-
+            .sized(3.1F, 3.0F).clientTrackingRange(8).build(new ResourceLocation(CelestialExploration.MODID, "mechacerberus_boss").toString()));
 
     public static void register(IEventBus eventbus) {
         ENTITY_TYPES.register(eventbus);

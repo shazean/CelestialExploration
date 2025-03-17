@@ -3,7 +3,6 @@ package com.shim.celestialexploration.item;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.entity.DyeType;
 import com.shim.celestialexploration.entity.IDyeable;
-import com.shim.celestialexploration.entity.entity.friendlies.TamableCreature;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -12,10 +11,7 @@ import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -91,7 +87,7 @@ public class AutoTameSpawnItem extends Item {
                     dyeable.setDyeType(dyeType);
                 }
 
-                if (entity instanceof TamableCreature creature) {
+                if (entity instanceof TamableAnimal creature) {
                     creature.tame(context.getPlayer());
                 }
 
@@ -128,7 +124,7 @@ public class AutoTameSpawnItem extends Item {
 
                     CelestialExploration.LOGGER.debug("entity: " + entity);
 
-                    if (entity instanceof TamableCreature creature) {
+                    if (entity instanceof TamableAnimal creature) {
                         CelestialExploration.LOGGER.debug("is tamable");
                         creature.tame(player);
                     }

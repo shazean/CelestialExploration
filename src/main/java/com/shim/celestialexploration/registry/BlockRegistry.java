@@ -573,7 +573,6 @@ public class BlockRegistry {
 //    public static final RegistryObject<Block> ERIS_CORE = registerCoreBlock("eris_core", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F).noDrops().isValidSpawn(BlockRegistry::never)));
 
     //---- CELESTIAL OBJECTS -------------------------------------------------------------------------------
-
     //METEOR
     public static final RegistryObject<Block> METEOR = registerBlockDropsSelf("meteor", "Meteorite", () -> new Block(Block.Properties.of(Material.STONE, MaterialColor.COLOR_BROWN).strength(1.5f, 6.0f).sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
     public static final RegistryObject<Block> METEOR_BRICKS = registerBlockDropsSelf("meteor_bricks", "Meteorite Bricks", () -> new Block(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
@@ -640,7 +639,6 @@ public class BlockRegistry {
 
     public static final RegistryObject<HangarDoorBlock> HANGAR_DOOR = registerBlockDropsSelf("hangar_door", "Hangar Door", () -> new HangarDoorBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.METAL).requiresCorrectToolForDrops().strength(5.0F).sound(SoundType.METAL).noOcclusion()), CelestialExploration.CELESTIAL_MISC_TAB);
     public static final RegistryObject<HangarDoorBlock> HANGAR_DOOR_WINDOW = registerBlockDropsSelf("hangar_door_window", "Hangar Door Window", () -> new HangarDoorBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.METAL).requiresCorrectToolForDrops().strength(5.0F).sound(SoundType.METAL).noOcclusion()), CelestialExploration.CELESTIAL_MISC_TAB);
-
 
     public static final RegistryObject<RotatedDirectionalBlock> INSULATED_PANEL = registerBlockDropsSelf("insulated_panel", "Insulated Panel", () -> new RotatedDirectionalBlock(Block.Properties.of(Material.METAL).strength(3.0f, 3.0f).requiresCorrectToolForDrops().sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
     public static final RegistryObject<RotatedDirectionalBlock> INSULATED_PANEL_CORNER = registerBlockDropsSelf("insulated_panel_corner", "Insulated Panel Corner", () -> new RotatedDirectionalBlock(Block.Properties.of(Material.METAL).strength(3.0f, 3.0f).requiresCorrectToolForDrops().sound(SoundType.STONE)), CelestialExploration.CELESTIAL_BLOCKS_TAB);
@@ -768,7 +766,7 @@ public class BlockRegistry {
     public static final RegistryObject<Block> LURKER_WALL_HEAD = BLOCKS.register("lurker_wall_head", () -> new WallSkullBlock(CelestialSkullRenderer.Types.LURKER, BlockBehaviour.Properties.of(Material.DECORATION).strength(1.0F).lootFrom(LURKER_HEAD)));
     public static final RegistryObject<Block> VOIDED_HEAD = BLOCKS.register("voided_head", () -> new SkullBlock(CelestialSkullRenderer.Types.VOIDED, BlockBehaviour.Properties.of(Material.DECORATION).strength(1.0F)));
     public static final RegistryObject<Block> VOIDED_WALL_HEAD = BLOCKS.register("voided_wall_head", () -> new WallSkullBlock(CelestialSkullRenderer.Types.VOIDED, BlockBehaviour.Properties.of(Material.DECORATION).strength(1.0F).lootFrom(VOIDED_HEAD)));
-//    public static final RegistryObject<Block> MECHADOG_HEAD = registerBlockDropsSelf("mechadog_head", "MechaDog Head", () -> new MechaDogHeadBlock(BlockBehaviour.Properties.of(Material.DECORATION).strength(1.0F)), CelestialExploration.CELESTIAL_MISC_TAB);
+    public static final RegistryObject<Block> MECHADOG_HEAD = registerBlockDropsSelf("mechadog_head", "MechaDog Head", () -> new MechaDogHeadBlock(BlockBehaviour.Properties.of(Material.DECORATION).strength(1.0F)), CelestialExploration.CELESTIAL_MISC_TAB);
 //    public static final RegistryObject<Block> MECHADOG_WALL_HEAD = BLOCKS.register("mechadog_wall_head", () -> new WallSkullBlock(CelestialSkullRenderer.Types.MECHADOG, BlockBehaviour.Properties.of(Material.DECORATION).strength(1.0F).lootFrom(MECHADOG_HEAD)));
 
 

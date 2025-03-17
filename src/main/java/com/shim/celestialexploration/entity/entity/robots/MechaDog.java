@@ -2,7 +2,6 @@ package com.shim.celestialexploration.entity.entity.robots;
 
 import com.shim.celestialexploration.entity.DyeType;
 import com.shim.celestialexploration.entity.IDyeable;
-import com.shim.celestialexploration.entity.entity.friendlies.TamableCreature;
 import com.shim.celestialexploration.entity.entity.goals.*;
 import com.shim.celestialexploration.entity.entity.mob.Gust;
 import mod.azure.azurelib.animatable.GeoEntity;
@@ -17,6 +16,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
@@ -28,7 +28,9 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
-import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.ai.goal.target.NonTameRandomTargetGoal;
+import net.minecraft.world.entity.ai.goal.target.OwnerHurtByTargetGoal;
+import net.minecraft.world.entity.ai.goal.target.OwnerHurtTargetGoal;
 import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.Turtle;
@@ -50,7 +52,7 @@ import javax.annotation.Nullable;
 import java.util.EnumSet;
 import java.util.function.Predicate;
 
-public class MechaDog extends TamableCreature implements GeoEntity, IDyeable {
+public class MechaDog extends TamableAnimal implements GeoEntity, IDyeable {
     private final AnimatableInstanceCache cache = AzureLibUtil.createInstanceCache(this);
     private static final EntityDataAccessor<Boolean> DATA_INTERESTED_ID = SynchedEntityData.defineId(MechaDog.class, EntityDataSerializers.BOOLEAN);
 //    private static final EntityDataAccessor<Integer> DATA_COLLAR_COLOR = SynchedEntityData.defineId(MechaDog.class, EntityDataSerializers.INT);
@@ -81,25 +83,45 @@ public class MechaDog extends TamableCreature implements GeoEntity, IDyeable {
         this.setPathfindingMalus(BlockPathTypes.DANGER_POWDER_SNOW, -1.0F);
     }
 
+    @Override
+    public boolean canBreed() {
+        return false;
+    }
+
+    @Override
+    public boolean canMate(Animal p_27569_) {
+        return false;
+    }
+
+    @Override
+    public @org.jetbrains.annotations.Nullable AgeableMob getBreedOffspring(ServerLevel p_146743_, AgeableMob p_146744_) {
+        return null;
+    }
+
+    @Override
+    public boolean canFallInLove() {
+        return false;
+    }
+
     protected void registerGoals() {
         this.goalSelector.addGoal(1, new FloatGoal(this));
         this.goalSelector.addGoal(1, new MechaDog.MechaDogPanicGoal(1.5D));
-        this.goalSelector.addGoal(2, new CreatureSitWhenOrderedToGoal(this));
+        this.goalSelector.addGoal(2, new SitWhenOrderedToGoal(this));
         this.goalSelector.addGoal(3, new MechaDog.MechaDogAvoidEntityGoal<>(this, Gust.class, 24.0F, 1.5D, 1.5D));
         this.goalSelector.addGoal(4, new LeapAtTargetGoal(this, 0.4F));
         this.goalSelector.addGoal(5, new MeleeAttackGoal(this, 1.0D, true));
-        this.goalSelector.addGoal(6, new CreatureFollowOwnerGoal(this, 1.0D, 10.0F, 2.0F, false));
+        this.goalSelector.addGoal(6, new FollowOwnerGoal(this, 1.0D, 10.0F, 2.0F, false));
         this.goalSelector.addGoal(8, new WaterAvoidingRandomStrollGoal(this, 1.0D));
         this.goalSelector.addGoal(9, new BegGoal(this, 8.0F));
         this.goalSelector.addGoal(10, new LookAtPlayerGoal(this, Player.class, 8.0F));
         this.goalSelector.addGoal(10, new RandomLookAroundGoal(this));
-        this.targetSelector.addGoal(1, new CreatureOwnerHurtByTargetGoal(this));
-        this.targetSelector.addGoal(2, new CreatureOwnerHurtTargetGoal(this));
+        this.targetSelector.addGoal(1, new OwnerHurtByTargetGoal(this));
+        this.targetSelector.addGoal(2, new OwnerHurtTargetGoal(this));
         this.targetSelector.addGoal(3, (new HurtByTargetGoal(this)).setAlertOthers());
         this.targetSelector.addGoal(4, new NearestAttackableTargetPeacefulGoal<>(this, Player.class, true, false));
-        this.targetSelector.addGoal(5, new NonTameCreatureRandomTargetGoal<>(this, Animal.class, false, PREY_SELECTOR));
-        this.targetSelector.addGoal(6, new NonTameCreatureRandomTargetGoal<>(this, Turtle.class, false, Turtle.BABY_ON_LAND_SELECTOR));
-        this.targetSelector.addGoal(7, new TameCreatureRandomTargetGoal<>(this, AbstractSkeleton.class, false, null));
+        this.targetSelector.addGoal(5, new NonTameRandomTargetGoal<>(this, Animal.class, false, PREY_SELECTOR));
+        this.targetSelector.addGoal(6, new NonTameRandomTargetGoal<>(this, Turtle.class, false, Turtle.BABY_ON_LAND_SELECTOR));
+//        this.targetSelector.addGoal(7, new TameCreatureRandomTargetGoal<>(this, AbstractSkeleton.class, false, null));
 //        this.targetSelector.addGoal(8, new ResetUniversalAngerTargetGoal<>(this, true));
     }
 

@@ -1,7 +1,5 @@
 package com.shim.celestialexploration.entity.entity.robots;
 
-import com.shim.celestialexploration.entity.entity.friendlies.TamableCreature;
-import com.shim.celestialexploration.entity.entity.goals.CreatureFollowOwnerGoal;
 import com.shim.celestialexploration.entity.entity.goals.HoverGoal;
 import com.shim.celestialexploration.registry.EffectRegistry;
 import mod.azure.azurelib.animatable.GeoEntity;
@@ -11,13 +9,12 @@ import mod.azure.azurelib.core.animation.AnimationController;
 import mod.azure.azurelib.core.animation.RawAnimation;
 import mod.azure.azurelib.util.AzureLibUtil;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
@@ -25,6 +22,7 @@ import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.ai.util.AirAndWaterRandomPos;
 import net.minecraft.world.entity.ai.util.HoverRandomPos;
+import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.FlyingAnimal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
@@ -37,11 +35,11 @@ import net.minecraft.world.phys.Vec3;
 import java.util.EnumSet;
 import java.util.Random;
 
-public class Drone extends TamableCreature implements FlyingAnimal, GeoEntity {
+public class Drone extends TamableAnimal implements FlyingAnimal, GeoEntity {
     private final AnimatableInstanceCache cache = AzureLibUtil.createInstanceCache(this);
-    static double movementSpeed = 0.23;
+    static double movementSpeed = 0.21;
 
-    public Drone(EntityType<? extends TamableCreature> p_21803_, Level p_21804_) {
+    public Drone(EntityType<? extends TamableAnimal> p_21803_, Level p_21804_) {
         super(p_21803_, p_21804_);
         this.addEffect(new MobEffectInstance(EffectRegistry.LOW_GRAVITY.get(), 120000, 0, false, false, true));
     }
@@ -56,8 +54,28 @@ public class Drone extends TamableCreature implements FlyingAnimal, GeoEntity {
         this.goalSelector.addGoal(2, new DroneWanderGoal(this));
         this.goalSelector.addGoal(3, new LookAtPlayerGoal(this, Player.class, 8.0F));
         this.goalSelector.addGoal(3, new RandomLookAroundGoal(this));
-        this.goalSelector.addGoal(1, new CreatureFollowOwnerGoal(this, 1.0D, 5.0F, 1.0F, true));
+        this.goalSelector.addGoal(1, new FollowOwnerGoal(this, 1.0D, 5.0F, 1.0F, true));
         this.goalSelector.addGoal(5, new FollowMobGoal(this, 1.0D, 3.0F, 7.0F));
+    }
+
+    @Override
+    public boolean canBreed() {
+        return false;
+    }
+
+    @Override
+    public boolean canMate(Animal p_27569_) {
+        return false;
+    }
+
+    @Override
+    public @org.jetbrains.annotations.Nullable AgeableMob getBreedOffspring(ServerLevel p_146743_, AgeableMob p_146744_) {
+        return null;
+    }
+
+    @Override
+    public boolean canFallInLove() {
+        return false;
     }
 
     @Override

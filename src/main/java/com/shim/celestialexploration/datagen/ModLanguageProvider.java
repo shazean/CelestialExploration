@@ -125,6 +125,7 @@ public class ModLanguageProvider extends LanguageProvider {
 		add(EffectRegistry.LOW_GRAVITY.get(), "Low Gravity");
 		add(EffectRegistry.EXTRA_LOW_GRAVITY.get(), "Extra Low Gravity");
 		add(EffectRegistry.HIGH_GRAVITY.get(), "High Gravity");
+		add(EffectRegistry.STATIC_EFFECT.get(), "Static Build Up");
 
 		//---- TABS -------------------------------------------------------------------------------
 		add("itemGroup.celestial_blocks_tab", "Celestial Blocks");
@@ -190,6 +191,7 @@ public class ModLanguageProvider extends LanguageProvider {
 		add("celestialexploration.spaceship.tab.light_travel", "Light Speed Travel");
 		add("celestialexploration.spaceship.tab.light_travel_hint", "Access this feature when in space");
 
+		add("celestialexploration.spaceship.space_min_height", "Warning! Approaching dangerous depths of space!");
 
 
 		//---- RECIPE-RELATED -------------------------------------------------------------------------------
@@ -234,7 +236,7 @@ public class ModLanguageProvider extends LanguageProvider {
 
 		add("celestialexploration.planet_details.jupiter_name", "Jupiter");
 		add("celestialexploration.planet_details.jupiter_resources", "none");
-		add("celestialexploration.planet_details.jupiter_moons", "Europa, IO (soon), Callisto (soon), Ganymede (soon)");
+		add("celestialexploration.planet_details.jupiter_moons", "Europa, IO (soon), Callisto, Ganymede (soon)");
 
 		add("celestialexploration.planet_details.saturn_name", "Saturn");
 		add("celestialexploration.planet_details.saturn_resources", "TBD");
@@ -251,7 +253,6 @@ public class ModLanguageProvider extends LanguageProvider {
 		add("item.celestialexploration.door.airlock_panel_door", "One hinge can support up to 7 wide (inclusive). Double hinge can support up to 14 wide (inclusive). No max height.");
 		add("item.celestialexploration.door.hangar_door", "One hinge can support up to 32 wide (inclusive). Double hinge can support up to 64 wide (inclusive). No max height.");
 
-		add("celestialexploration.spaceship.space_min_height", "Warning! Approaching dangerous depths of space!");
 
 		add("celestialexploration.display_board.edit", "Edit Display Board Message");
 

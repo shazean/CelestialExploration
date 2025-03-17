@@ -41,12 +41,8 @@ public class VehicleFlightHandler implements ISpaceFlight {
     public ArrayList<Entity> getAdditionalEntitiesToTeleport(Entity vehicle) {
         teleportingEntities = new ArrayList<>();
 
-        if (vehicle.isVehicle()) {
-            teleportingEntities.addAll(vehicle.getPassengers());
-            return teleportingEntities;
-        } else {
-            return null;
-        }
+        if (vehicle.isVehicle()) teleportingEntities.addAll(vehicle.getPassengers());
+        return teleportingEntities;
     }
 
     @Override
