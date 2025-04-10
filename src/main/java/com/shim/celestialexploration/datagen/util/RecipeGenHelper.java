@@ -1,9 +1,5 @@
 package com.shim.celestialexploration.datagen.util;
 
-import com.mojang.datafixers.util.Either;
-import com.shim.celestialexploration.registry.BlockRegistry;
-import com.shim.celestialexploration.registry.ItemRegistry;
-import com.shim.celestialexploration.registry.TagRegistry;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.recipes.*;
 import net.minecraft.tags.TagKey;
@@ -21,104 +17,73 @@ public class RecipeGenHelper {
         return InventoryChangeTrigger.TriggerInstance.hasItems(item);
     }
 
-    private static String name(Item item) {
-        return item.getRegistryName().getPath();
-    }
-
-    private static String name(Block block) {
-        return block.getRegistryName().getPath();
+    private static String name(ItemLike item) {
+        return item.asItem().getRegistryName().getPath();
     }
 
     private static String name(FlowingFluid fluid) {
         return fluid.getRegistryName().getPath();
     }
 
-    public static void smelting(Item itemToSmelt, Item result, float experience, int cookingTime, Item unlockedBy, Consumer<FinishedRecipe> consumer) {
+    public static void smelting(ItemLike itemToSmelt, ItemLike result, float experience, int cookingTime, ItemLike unlockedBy, Consumer<FinishedRecipe> consumer) {
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(itemToSmelt), result, experience, cookingTime).unlockedBy("has_" + name(unlockedBy), has(unlockedBy)).save(consumer);
     }
 
-    public static void smelting(Block itemToSmelt, Item result, float experience, int cookingTime, Block unlockedBy, Consumer<FinishedRecipe> consumer) {
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(itemToSmelt), result, experience, cookingTime).unlockedBy("has_" + name(unlockedBy), has(unlockedBy)).save(consumer);
-    }
-
-    public static void smelting(Block itemToSmelt, Block result, float experience, int cookingTime, Block unlockedBy, Consumer<FinishedRecipe> consumer) {
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(itemToSmelt), result, experience, cookingTime).unlockedBy("has_" + name(unlockedBy), has(unlockedBy)).save(consumer);
-    }
-
-    public static void smeltingAndBlasting(Block itemToSmelt, Item result, float experience, int smeltingTime, int blastingTime, Block unlockedBy, Consumer<FinishedRecipe> consumer) {
+    public static void smeltingAndBlasting(ItemLike itemToSmelt, ItemLike result, float experience, int smeltingTime, int blastingTime, ItemLike unlockedBy, Consumer<FinishedRecipe> consumer) {
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(itemToSmelt), result, experience, smeltingTime).unlockedBy("has_" + name(unlockedBy), has(unlockedBy)).save(consumer, name(itemToSmelt) + "_smelting");
         SimpleCookingRecipeBuilder.blasting(Ingredient.of(itemToSmelt), result, experience, blastingTime).unlockedBy("has_" + name(unlockedBy), has(unlockedBy)).save(consumer, name(itemToSmelt) + "_blasting");
     }
-
 
     public static void smeltingAndBlasting(TagKey<Item> tagItem, Item result, float experience, int smeltingTime, int blastingTime, Block unlockedBy, Consumer<FinishedRecipe> consumer) {
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(tagItem), result, experience, smeltingTime).unlockedBy("has_" + name(unlockedBy), has(unlockedBy)).save(consumer, tagItem.registry().getRegistryName().getPath() + "_smelting");
         SimpleCookingRecipeBuilder.blasting(Ingredient.of(tagItem), result, experience, blastingTime).unlockedBy("has_" + name(unlockedBy), has(unlockedBy)).save(consumer, tagItem.registry().getRegistryName().getPath() + "_blasting");
     }
 
-    public static void smeltingAndBlasting(Item itemToSmelt, Item result, float experience, int smeltingTime, int blastingTime, Item unlockedBy, Consumer<FinishedRecipe> consumer) {
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(itemToSmelt), result, experience, smeltingTime).unlockedBy("has_" + name(unlockedBy), has(unlockedBy)).save(consumer, name(itemToSmelt) + "_smelting");
-        SimpleCookingRecipeBuilder.blasting(Ingredient.of(itemToSmelt), result, experience, blastingTime).unlockedBy("has_" + name(unlockedBy), has(unlockedBy)).save(consumer, name(itemToSmelt) + "_blasting");
-    }
-
-
-    public static void workbenchSmelting(FlowingFluid fluidResult, Item itemToSmelt, float experience, int cookingTime, float buckets, Item unlockedBy, Consumer<FinishedRecipe> consumer) {
+    public static void workbenchSmelting(FlowingFluid fluidResult, ItemLike itemToSmelt, float experience, int cookingTime, float buckets, ItemLike unlockedBy, Consumer<FinishedRecipe> consumer) {
         WorkbenchSmeltingRecipeBuilder.smelting(fluidResult, Ingredient.of(itemToSmelt), experience, cookingTime, buckets).unlockedBy("has_" + name(unlockedBy), has(unlockedBy)).save(consumer, name(fluidResult) + "_from_" + name(itemToSmelt) + "_workbench");
     }
 
-    public static void workbenchSmelting(FlowingFluid fluidResult, Item itemToSmelt, float experience, int cookingTime, float buckets, Block unlockedBy, Consumer<FinishedRecipe> consumer) {
-        WorkbenchSmeltingRecipeBuilder.smelting(fluidResult, Ingredient.of(itemToSmelt), experience, cookingTime, buckets).unlockedBy("has_" + name(unlockedBy), has(unlockedBy)).save(consumer, name(fluidResult) + "_from_" + name(itemToSmelt) + "_workbench");
-    }
-
-    public static void workbenchSmelting(FlowingFluid fluidResult, Block itemToSmelt, float experience, int cookingTime, float buckets, Block unlockedBy, Consumer<FinishedRecipe> consumer) {
-        WorkbenchSmeltingRecipeBuilder.smelting(fluidResult, Ingredient.of(itemToSmelt), experience, cookingTime, buckets).unlockedBy("has_" + name(unlockedBy), has(unlockedBy)).save(consumer, name(fluidResult) + "_from_" + name(itemToSmelt) + "_workbench");
-    }
-
-    public static void workbenchSmelting(FlowingFluid fluidResult, Block itemToSmelt, float experience, int cookingTime, float buckets, Item unlockedBy, Consumer<FinishedRecipe> consumer) {
-        WorkbenchSmeltingRecipeBuilder.smelting(fluidResult, Ingredient.of(itemToSmelt), experience, cookingTime, buckets).unlockedBy("has_" + name(unlockedBy), has(unlockedBy)).save(consumer, name(fluidResult) + "_from_" + name(itemToSmelt) + "_workbench");
-    }
-
-    public static void stairsCraftAndStonecutting(Block item, Block stairsItem, Block unlockedBy, Consumer<FinishedRecipe> consumer) {
+    public static void stairsCraftAndStonecutting(ItemLike item, ItemLike stairsItem, ItemLike unlockedBy, Consumer<FinishedRecipe> consumer) {
         ShapedRecipeBuilder.shaped(stairsItem, 4).pattern("X  ").pattern("XX ").pattern("XXX").define('X', item).unlockedBy("has_" + name(unlockedBy), has(unlockedBy)).save(consumer);
         SingleItemRecipeBuilder.stonecutting(Ingredient.of(item), stairsItem, 1).unlockedBy("has_" + name(unlockedBy), has(unlockedBy)).save(consumer, name(stairsItem) + "_stonecutting");
     }
 
-    public static void stairsCraftAndStonecutting(Block craftItem, TagKey<Item> stonecuttingTag, Block stairsItem, Block unlockedBy, Consumer<FinishedRecipe> consumer) {
+    public static void stairsCraftAndStonecutting(ItemLike craftItem, TagKey<Item> stonecuttingTag, ItemLike stairsItem, ItemLike unlockedBy, Consumer<FinishedRecipe> consumer) {
         ShapedRecipeBuilder.shaped(stairsItem, 4).pattern("X  ").pattern("XX ").pattern("XXX").define('X', craftItem).unlockedBy("has_" + name(unlockedBy), has(unlockedBy)).save(consumer);
         SingleItemRecipeBuilder.stonecutting(Ingredient.of(stonecuttingTag), stairsItem, 1).unlockedBy("has_" + name(unlockedBy), has(unlockedBy)).save(consumer, name(stairsItem) + "_stonecutting");
     }
 
-    public static void slabCraftAndStonecutting(Block item, Block slabItem, Block unlockedBy, Consumer<FinishedRecipe> consumer) {
+    public static void slabCraftAndStonecutting(ItemLike item, ItemLike slabItem, ItemLike unlockedBy, Consumer<FinishedRecipe> consumer) {
         ShapedRecipeBuilder.shaped(slabItem, 6).pattern("XXX").define('X', item).unlockedBy("has_" + name(unlockedBy), has(unlockedBy)).save(consumer);
         SingleItemRecipeBuilder.stonecutting(Ingredient.of(item), slabItem, 2).unlockedBy("has_" + name(unlockedBy), has(unlockedBy)).save(consumer, name(slabItem) + "_stonecutting");
     }
 
-    public static void slabCraftAndStonecutting(Block craftItem, TagKey<Item> stonecuttingTag, Block slabItem, Block unlockedBy, Consumer<FinishedRecipe> consumer) {
+    public static void slabCraftAndStonecutting(ItemLike craftItem, TagKey<Item> stonecuttingTag, ItemLike slabItem, ItemLike unlockedBy, Consumer<FinishedRecipe> consumer) {
         ShapedRecipeBuilder.shaped(slabItem, 6).pattern("XXX").define('X', craftItem).unlockedBy("has_" + name(unlockedBy), has(unlockedBy)).save(consumer);
         SingleItemRecipeBuilder.stonecutting(Ingredient.of(stonecuttingTag), slabItem, 2).unlockedBy("has_" + name(unlockedBy), has(unlockedBy)).save(consumer, name(slabItem) + "_stonecutting");
     }
 
-    public static void wallCraftAndStonecutting(Block craftItem, TagKey<Item> stonecuttingTag, Block result, Block unlockedBy, Consumer<FinishedRecipe> consumer) {
+    public static void wallCraftAndStonecutting(ItemLike craftItem, TagKey<Item> stonecuttingTag, ItemLike result, ItemLike unlockedBy, Consumer<FinishedRecipe> consumer) {
         ShapedRecipeBuilder.shaped(result, 6).pattern("XXX").pattern("XXX").define('X', craftItem).unlockedBy("has_" + name(unlockedBy), has(unlockedBy)).save(consumer);
         SingleItemRecipeBuilder.stonecutting(Ingredient.of(stonecuttingTag), result).unlockedBy("has_" + name(unlockedBy), has(unlockedBy)).save(consumer, name(result) + "_stonecutting");
     }
 
-    public static void wallCraftAndStonecutting(Block craftItem, Block result, Block unlockedBy, Consumer<FinishedRecipe> consumer) {
+    public static void wallCraftAndStonecutting(ItemLike craftItem, ItemLike result, ItemLike unlockedBy, Consumer<FinishedRecipe> consumer) {
         ShapedRecipeBuilder.shaped(result, 6).pattern("XXX").pattern("XXX").define('X', craftItem).unlockedBy("has_" + name(unlockedBy), has(unlockedBy)).save(consumer);
         SingleItemRecipeBuilder.stonecutting(Ingredient.of(craftItem), result).unlockedBy("has_" + name(unlockedBy), has(unlockedBy)).save(consumer, name(result) + "_stonecutting");
     }
 
-    public static void pane(Block item, Block pane, Block unlockedBy, Consumer<FinishedRecipe> consumer) {
+    public static void pane(ItemLike item, ItemLike pane, ItemLike unlockedBy, Consumer<FinishedRecipe> consumer) {
         ShapedRecipeBuilder.shaped(pane, 16).pattern("XXX").pattern("XXX").define('X', item).unlockedBy("has_" + name(unlockedBy), has(unlockedBy)).save(consumer);
     }
 
-    public static void stairsSlabWallCraftStonecutting(Block craftItem, TagKey<Item> stonecuttingItem, Block stairResult, Block slabResult, Block wallResult, Block unlockedBy, Consumer<FinishedRecipe> consumer) {
+    public static void stairsSlabWallCraftStonecutting(ItemLike craftItem, TagKey<Item> stonecuttingItem, ItemLike stairResult, ItemLike slabResult, ItemLike wallResult, ItemLike unlockedBy, Consumer<FinishedRecipe> consumer) {
         stairsCraftAndStonecutting(craftItem, stonecuttingItem, stairResult, unlockedBy, consumer);
         slabCraftAndStonecutting(craftItem, stonecuttingItem, slabResult, unlockedBy, consumer);
         wallCraftAndStonecutting(craftItem, stonecuttingItem, wallResult, unlockedBy, consumer);
     }
 
-    public static void stairsSlabWallCraftStonecutting(Block craftItem, Block stairResult, Block slabResult, Block wallResult, Block unlockedBy, Consumer<FinishedRecipe> consumer) {
+    public static void stairsSlabWallCraftStonecutting(ItemLike craftItem, ItemLike stairResult, ItemLike slabResult, ItemLike wallResult, ItemLike unlockedBy, Consumer<FinishedRecipe> consumer) {
         stairsCraftAndStonecutting(craftItem, stairResult, unlockedBy, consumer);
         slabCraftAndStonecutting(craftItem, slabResult, unlockedBy, consumer);
         wallCraftAndStonecutting(craftItem, wallResult, unlockedBy, consumer);
@@ -128,19 +93,19 @@ public class RecipeGenHelper {
         ShapelessRecipeBuilder.shapeless(result, quantity).requires(item).unlockedBy("has_" + name(unlockedBy), has(unlockedBy)).save(consumer);
     }
 
-    public static void singleItem(Block item, Block result, int quantity, Block unlockedBy, Consumer<FinishedRecipe> consumer) {
+    public static void singleItem(ItemLike item, ItemLike result, int quantity, ItemLike unlockedBy, Consumer<FinishedRecipe> consumer) {
         ShapelessRecipeBuilder.shapeless(result, quantity).requires(item).unlockedBy("has_" + name(unlockedBy), has(unlockedBy)).save(consumer);
     }
 
-    public static void stonecutting(Block item, Block result, int quantity, Block unlockedBy, Consumer<FinishedRecipe> consumer) {
+    public static void stonecutting(ItemLike item, ItemLike result, int quantity, ItemLike unlockedBy, Consumer<FinishedRecipe> consumer) {
         SingleItemRecipeBuilder.stonecutting(Ingredient.of(item), result, quantity).unlockedBy("has_" + name(unlockedBy), has(unlockedBy)).save(consumer, name(result) + "_stonecutting");
     }
 
-    public static void stonecutting(TagKey<Item> item, Block result, int quantity, Block unlockedBy, Consumer<FinishedRecipe> consumer) {
+    public static void stonecutting(TagKey<Item> item, ItemLike result, int quantity, ItemLike unlockedBy, Consumer<FinishedRecipe> consumer) {
         SingleItemRecipeBuilder.stonecutting(Ingredient.of(item), result, quantity).unlockedBy("has_" + name(unlockedBy), has(unlockedBy)).save(consumer, name(result) + "_stonecutting");
     }
 
-    public static void bricksCraftAndStonecutting(Block item, Block result, Block unlockedBy, Consumer<FinishedRecipe> consumer) {
+    public static void bricksCraftAndStonecutting(ItemLike item, ItemLike result, ItemLike unlockedBy, Consumer<FinishedRecipe> consumer) {
         ShapedRecipeBuilder.shaped(result, 4).pattern("XX").pattern("XX").define('X', item).unlockedBy("has_" + name(unlockedBy), has(unlockedBy)).save(consumer);
         stonecutting(item, result, 1, unlockedBy, consumer);
     }
@@ -216,5 +181,4 @@ public class RecipeGenHelper {
         SingleItemRecipeBuilder.stonecutting(Ingredient.of(bricks), tileWall, 1).unlockedBy("has_" + name(unlockedBy), has(unlockedBy)).save(consumer, name(tileWall) + "_from_" + name(bricks) + "_stonecutting");
         SingleItemRecipeBuilder.stonecutting(Ingredient.of(tiles), tileWall, 1).unlockedBy("has_" + name(unlockedBy), has(unlockedBy)).save(consumer, name(tileWall) + "_from_" + name(tiles) + "_stonecutting");
     }
-
 }

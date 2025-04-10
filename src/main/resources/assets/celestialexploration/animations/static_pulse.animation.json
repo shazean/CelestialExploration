@@ -1,0 +1,21 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"ambient": {
+			"loop": true,
+			"animation_length": 2,
+			"bones": {
+				"inner": {
+					"rotation": {
+						"vector": [0, "Math.abs(query.anim_time * 90) * 2", 0]
+					}
+				},
+				"outer": {
+					"rotation": {
+						"vector": [0, "Math.abs(query.anim_time * 90) * 5", 0]
+					}
+				}
+			}
+		}
+	}
+}

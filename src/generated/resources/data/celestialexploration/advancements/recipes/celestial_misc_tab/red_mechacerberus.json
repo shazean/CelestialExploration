@@ -2,17 +2,17 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "minecraft:air"
+      "celestialexploration:red_mechacerberus"
     ]
   },
   "criteria": {
-    "has_core": {
+    "mechacerberus": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "celestialexploration:mechadog_core"
+              "celestialexploration:white_mechacerberus"
             ]
           }
         ]
@@ -21,13 +21,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "minecraft:air"
+        "recipe": "celestialexploration:red_mechacerberus"
       }
     }
   },
   "requirements": [
     [
-      "has_core",
+      "mechacerberus",
       "has_the_recipe"
     ]
   ]

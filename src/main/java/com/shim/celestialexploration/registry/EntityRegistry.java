@@ -9,6 +9,7 @@ import com.shim.celestialexploration.entity.entity.mob.piglins.AstralPiglin;
 import com.shim.celestialexploration.entity.entity.mob.piglins.CyborgPiglin;
 import com.shim.celestialexploration.entity.entity.mob.piglins.VoidedPiglin;
 import com.shim.celestialexploration.entity.entity.mob.slimes.*;
+import com.shim.celestialexploration.entity.entity.projectile.StaticPulseProjectile;
 import com.shim.celestialexploration.entity.entity.projectile.MeteorProjectile;
 import com.shim.celestialexploration.entity.entity.robots.*;
 import com.shim.celestialexploration.entity.entity.vehicle.*;
@@ -139,6 +140,9 @@ public class EntityRegistry {
     //---- PROJECTILES -------------------------------------------------------------------------------
     public static final RegistryObject<EntityType<MeteorProjectile>> METEOR = registerEntityType("meteor", "Shooting Star", () -> EntityType.Builder.of(MeteorProjectile::new, MobCategory.MISC)
             .sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(20).build(new ResourceLocation(CelestialExploration.MODID, "meteor").toString()));
+
+    public static final RegistryObject<EntityType<StaticPulseProjectile>> STATIC_PULSE = registerEntityType("static_pulse", "Static Pulse", () -> EntityType.Builder.of(StaticPulseProjectile::new, MobCategory.MISC)
+            .sized(0.2F, 0.2F).clientTrackingRange(4).updateInterval(20).build(new ResourceLocation(CelestialExploration.MODID, "static_pulse").toString()));
 
 
     //---- OTHER -------------------------------------------------------------------------------

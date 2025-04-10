@@ -2,7 +2,9 @@ package com.shim.celestialexploration.entity.entity.robots;
 
 import com.shim.celestialexploration.entity.DyeType;
 import com.shim.celestialexploration.entity.IDyeable;
+import com.shim.celestialexploration.entity.entity.DebugNav;
 import com.shim.celestialexploration.entity.model.CerberusPart;
+import mod.azure.azurelib.ai.pathing.AzureNavigation;
 import mod.azure.azurelib.animatable.GeoEntity;
 import mod.azure.azurelib.core.animatable.instance.AnimatableInstanceCache;
 import mod.azure.azurelib.core.animation.AnimatableManager;
@@ -28,6 +30,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.goal.PanicGoal;
+import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.horse.AbstractHorse;
@@ -98,8 +101,12 @@ public abstract class AbstractCerberus extends TamableAnimal implements GeoEntit
 
     @Override
     public @org.jetbrains.annotations.Nullable PartEntity<?>[] getParts() {
-
         return this.cerberusParts;
+    }
+
+    @Override
+    protected PathNavigation createNavigation(Level world) {
+        return new AzureNavigation(this, world);
     }
 
     @Override
@@ -122,11 +129,11 @@ public abstract class AbstractCerberus extends TamableAnimal implements GeoEntit
         return false;
     }
 
-    //    private static final RawAnimation wild_idle = RawAnimation.begin().thenLoop("idle_wild");
-//    private static final RawAnimation wild_walk = RawAnimation.begin().thenLoop("walk_wild");
-    private static final RawAnimation tamed_idle = RawAnimation.begin().thenLoop("idle");
-    private static final RawAnimation tamed_walk = RawAnimation.begin().thenLoop("walk");
-    private static final RawAnimation sit = RawAnimation.begin().thenLoop("sit");
+    //    protected static final RawAnimation wild_idle = RawAnimation.begin().thenLoop("idle_wild");
+//    protected static final RawAnimation wild_walk = RawAnimation.begin().thenLoop("walk_wild");
+    protected static final RawAnimation tamed_idle = RawAnimation.begin().thenLoop("idle");
+    protected static final RawAnimation tamed_walk = RawAnimation.begin().thenLoop("walk");
+    protected static final RawAnimation sit = RawAnimation.begin().thenLoop("sit");
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
@@ -173,7 +180,6 @@ public abstract class AbstractCerberus extends TamableAnimal implements GeoEntit
 //                })
         );
     }
-
 
     @Override
     public AnimatableInstanceCache getAnimatableInstanceCache() {

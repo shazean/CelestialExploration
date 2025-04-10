@@ -84,9 +84,9 @@ public class ModForgeEventBus {
 
             if (serverLevel.isThundering()) {
                 if (serverLevel.dimension().equals(DimensionRegistry.MERCURY) || (serverLevel.dimension().equals(DimensionRegistry.CALLISTO))) {
-                    Random random = new Random();
                     Player player = serverLevel.getRandomPlayer();
                     if (player != null) {
+                        Random random = new Random();
                         if (random.nextInt(3) == 0) {
                             MeteorProjectile meteor = EntityRegistry.METEOR.get().create(serverLevel);
                             if (meteor != null) {
@@ -304,13 +304,13 @@ public class ModForgeEventBus {
                     player.removeEffect(EffectRegistry.HIGH_GRAVITY.get());
                 }
             } else if (entity instanceof LivingEntity livingEntity) {
-                if (DimensionUtil.isLowGravityDimension(dimension)) {
+                if (DimensionUtil.isLowGravityDimension(dimension) && !livingEntity.getType().is(TagRegistry.Entities.LOW_GRAVITY_EXEMPT)) {
                     livingEntity.addEffect(new MobEffectInstance(EffectRegistry.LOW_GRAVITY.get(), 120000, 0, false, false, true));
                 } else  {
                     livingEntity.removeEffect(EffectRegistry.LOW_GRAVITY.get());
                 }
 
-                if (DimensionUtil.isHighGravityDimension(dimension)) {
+                if (DimensionUtil.isHighGravityDimension(dimension) && !livingEntity.getType().is(TagRegistry.Entities.HIGH_GRAVITY_EXEMPT)) {
                     livingEntity.addEffect(new MobEffectInstance(EffectRegistry.HIGH_GRAVITY.get(), 120000, 0, false, false, true));
                 } else  {
                     livingEntity.removeEffect(EffectRegistry.HIGH_GRAVITY.get());

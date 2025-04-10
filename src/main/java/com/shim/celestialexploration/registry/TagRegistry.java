@@ -74,7 +74,6 @@ public class TagRegistry {
         public static final TagKey<Block> COBBLESAURUS_FOOD = BlockTags.create(modLoc("cobblesaurus_food"));
 
 
-
     }
 
     public class Items {
@@ -157,6 +156,9 @@ public class TagRegistry {
 
     public class Entities {
         public static final TagKey<EntityType<?>> FARM_ANIMALS = create("farm_animals");
+
+        public static final TagKey<EntityType<?>> LOW_GRAVITY_EXEMPT = create("low_gravity_exempt");
+        public static final TagKey<EntityType<?>> HIGH_GRAVITY_EXEMPT = create("high_gravity_exempt");
 
         private static TagKey<EntityType<?>> create(String key) {
             return TagKey.create(Registry.ENTITY_TYPE_REGISTRY, modLoc(key));

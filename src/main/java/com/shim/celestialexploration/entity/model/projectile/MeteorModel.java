@@ -1,4 +1,4 @@
-package com.shim.celestialexploration.entity.model;
+package com.shim.celestialexploration.entity.model.projectile;
 
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.entity.entity.projectile.MeteorProjectile;
@@ -17,17 +17,17 @@ public class MeteorModel extends GeoModel<MeteorProjectile> {
     private static final ResourceLocation animation = new ResourceLocation(CelestialExploration.MODID, "animations/meteor.animation.json");
 
     @Override
-    public ResourceLocation getModelResource(MeteorProjectile spaceship) {
+    public ResourceLocation getModelResource(MeteorProjectile projectile) {
         return model;
     }
 
     @Override
-    public ResourceLocation getTextureResource(MeteorProjectile spaceship) {
+    public ResourceLocation getTextureResource(MeteorProjectile projectile) {
         return texture;
     }
 
     @Override
-    public ResourceLocation getAnimationResource(MeteorProjectile spaceship) {
+    public ResourceLocation getAnimationResource(MeteorProjectile projectile) {
         return animation;
     }
 }

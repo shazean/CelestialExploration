@@ -1,0 +1,28 @@
+{
+  "type": "celestialexploration:workbench_crafting",
+  "pattern": [
+    "HHH",
+    "FCF",
+    "R R"
+  ],
+  "key": {
+    "C": {
+      "item": "celestialexploration:mechadog_core"
+    },
+    "H": {
+      "item": "celestialexploration:mechadog_head"
+    },
+    "F": {
+      "item": "celestialexploration:steel_frame"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:white_mechacerberus"
+  },
+  "fluid": "celestialexploration:molten_steel",
+  "buckets": 0.666,
+  "experience": 2.0
+}

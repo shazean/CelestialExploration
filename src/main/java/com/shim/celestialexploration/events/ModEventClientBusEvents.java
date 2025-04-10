@@ -4,18 +4,23 @@ import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.blocks.CelestialSkullRenderer;
 import com.shim.celestialexploration.capabilities.LoxTankCapability;
 import com.shim.celestialexploration.entity.renderer.*;
+import com.shim.celestialexploration.entity.renderer.projectile.*;
 import com.shim.celestialexploration.inventory.screens.*;
 import com.shim.celestialexploration.registry.*;
 import com.shim.celestialexploration.util.Keybinds;
 import com.shim.celestialexploration.world.renderer.DimensionRenderers;
 import net.minecraft.client.RecipeBookCategories;
 import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.SkullModel;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.api.distmarker.Dist;
@@ -28,8 +33,12 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 @OnlyIn(Dist.CLIENT)
 @Mod.EventBusSubscriber(modid = CelestialExploration.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ModEventClientBusEvents {
+
     @SubscribeEvent
-    public static void registerArmorRenderers(final EntityRenderersEvent.AddLayers event) {
+    public static void registerRenderers(final EntityRenderersEvent.AddLayers event) {
+
+//        LivingEntityRenderer<Villager, ? extends EntityModel<Villager>> renderer = event.getRenderer(EntityType.VILLAGER);
+
 //        GeoArmorRenderer.registerArmorRenderer(SpaceSuitArmorItem.class, new SpaceSuitRenderer());
 //        GeoArmorRenderer.registerArmorRenderer(HeavyDutySpaceSuitArmorItem.class, new HeavyDutySpaceSuitRenderer());
 //        GeoArmorRenderer.registerArmorRenderer(ThermalSpaceSuitArmorItem.class, new ThermalSpaceSuitRenderer());
@@ -163,6 +172,8 @@ public class ModEventClientBusEvents {
         EntityRenderers.register(EntityRegistry.CELESTIAL_CAT.get(), CelestialCatRenderer::new);
         EntityRenderers.register(EntityRegistry.EUREKA.get(), EurekaRenderer::new);
         EntityRenderers.register(EntityRegistry.METEOR.get(), MeteorRenderer::new);
+        EntityRenderers.register(EntityRegistry.STATIC_PULSE.get(), StaticPulseRenderer::new);
+
         EntityRenderers.register(EntityRegistry.GUST.get(), GustRenderer::new);
         EntityRenderers.register(EntityRegistry.DRONE.get(), DroneRenderer::new);
         EntityRenderers.register(EntityRegistry.ROVER.get(), RoverRenderer::new);

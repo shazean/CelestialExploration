@@ -688,7 +688,7 @@ public class ItemModels extends ItemModelProvider {
 		generatedItem(ItemRegistry.SULFUR_CRYSTAL.get());
 		generatedItem(ItemRegistry.LUNAR_GOO.get());
 		generatedItem(ItemRegistry.CINNABAR.get());
-//		generatedItem(ItemRegistry.MECHADOG_CORE.get());
+		generatedItem(ItemRegistry.MECHADOG_CORE.get());
 
 		//SPAWN EGGS
 		spawnEgg(ItemRegistry.RUST_SPAWN_EGG.get());
@@ -714,7 +714,7 @@ public class ItemModels extends ItemModelProvider {
 		spawnEgg(ItemRegistry.GUST_SPAWN_EGG.get());
 		spawnEgg(ItemRegistry.ROVER_SPAWN_EGG.get());
 		spawnEgg(ItemRegistry.DRONE_SPAWN_EGG.get());
-		//		spawnEgg(ItemRegistry.WILD_MECHADOG_SPAWN_EGG.get());
+		spawnEgg(ItemRegistry.WILD_MECHADOG_SPAWN_EGG.get());
 		spawnEgg(ItemRegistry.COBBLESAURUS_SPAWN_EGG.get());
 		spawnEgg(ItemRegistry.ORBITER_SPAWN_EGG.get());
 

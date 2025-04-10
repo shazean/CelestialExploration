@@ -21,5 +21,6 @@ public class PaintingRegistry {
     public static final RegistryObject<Motive> CONTROL_PANEL_2 = PAINTING_MOTIVES.register("control_panel_2", () -> new Motive(32, 16));
     public static final RegistryObject<Motive> SPACESHIP = PAINTING_MOTIVES.register("spaceship", () -> new Motive(64, 32));
     public static final RegistryObject<Motive> SPACESHIP_BLUEPRINT = PAINTING_MOTIVES.register("spaceship_blueprint", () -> new Motive(16, 16));
+    public static final RegistryObject<Motive> UFO = PAINTING_MOTIVES.register("ufo", () -> new Motive(64, 64));
 
 }

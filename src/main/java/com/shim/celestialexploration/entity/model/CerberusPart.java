@@ -49,7 +49,8 @@ public class CerberusPart extends PartEntity<AbstractCerberus> {
         Vec3 lastPos = new Vec3(this.getX(), this.getY(), this.getZ());
 
         AbstractCerberus parent = this.getParent();
-        Vec3 newPos = translateWithXRotation(parent.position(), parent.getYRot(), offsetXIn, offsetYIn, offsetZIn);
+//        Vec3 newPos = translateWithXRotation(parent.position(), parent.getYRot(), offsetXIn, offsetYIn, offsetZIn);
+        Vec3 newPos = translateWithXRotation(parent.position(), parent.yBodyRotO, offsetXIn, offsetYIn, offsetZIn);
 
         //Sets the position with rotation applied
         this.setPos(newPos.x, newPos.y, newPos.z);
@@ -78,7 +79,7 @@ public class CerberusPart extends PartEntity<AbstractCerberus> {
      * We could do something with variable damage here...
      */
     public boolean hurt(DamageSource damageSourceIn, float damageIn) {
-        return this.hasCollider ? this.getParent().hurt(damageSourceIn, damageIn) : false;
+        return this.hasCollider && this.getParent().hurt(damageSourceIn, damageIn);
     }
 
     /**

@@ -1,5 +1,6 @@
 package com.shim.celestialexploration.datagen;
 
+import com.shim.celestialexploration.registry.EntityRegistry;
 import com.shim.celestialexploration.registry.TagRegistry;
 import com.shim.celestialexploration.world.biome.CelestialBiomeKeys;
 import net.minecraft.data.DataGenerator;
@@ -25,5 +26,11 @@ public class ModEntityTags extends EntityTypeTagsProvider {
                 .add(EntityType.GOAT)
                 .add(EntityType.DONKEY)
                 .add(EntityType.LLAMA);
+
+        tag(TagRegistry.Entities.LOW_GRAVITY_EXEMPT)
+                .add(EntityRegistry.MECHADOG.get())
+                .add(EntityRegistry.MECHACERBERUS.get())
+                .add(EntityRegistry.MECHACERBERUS_BOSS.get());
+
     }
 }

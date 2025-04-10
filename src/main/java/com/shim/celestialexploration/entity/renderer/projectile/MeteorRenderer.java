@@ -1,9 +1,9 @@
-package com.shim.celestialexploration.entity.renderer;
+package com.shim.celestialexploration.entity.renderer.projectile;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Vector3f;
-import com.shim.celestialexploration.entity.model.MeteorModel;
+import com.shim.celestialexploration.entity.model.projectile.MeteorModel;
 import com.shim.celestialexploration.entity.entity.projectile.MeteorProjectile;
 import mod.azure.azurelib.cache.object.BakedGeoModel;
 import mod.azure.azurelib.renderer.GeoEntityRenderer;

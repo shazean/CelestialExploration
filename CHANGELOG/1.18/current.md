@@ -1,1 +1,3 @@
 - `[NEW]` New creatures & mobs on Mars
+- `[FIX]` Added missing textures for zombie villagers with astronomer or engineer professions
+- `[NEW]` New UFO painting

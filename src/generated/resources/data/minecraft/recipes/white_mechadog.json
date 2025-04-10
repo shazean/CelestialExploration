@@ -1,13 +1,13 @@
 {
   "type": "celestialexploration:workbench_crafting",
   "pattern": [
-    "  C",
+    "  E",
     "FRF",
     "R R"
   ],
   "key": {
-    "C": {
-      "item": "celestialexploration:mechadog_core"
+    "E": {
+      "item": "celestialexploration:mechadog_head"
     },
     "F": {
       "item": "celestialexploration:steel_frame"
