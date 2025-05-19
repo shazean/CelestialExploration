@@ -1,9 +1,6 @@
 {
   "replace": false,
   "values": [
-    "celestialexploration:mars_sand",
-    "celestialexploration:venus_sand",
-    "celestialexploration:fine_venus_sand",
-    "celestialexploration:mercury_sand"
+    "#minecraft:sand"
   ]
 }

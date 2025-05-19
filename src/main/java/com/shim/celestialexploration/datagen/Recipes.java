@@ -234,10 +234,53 @@ public class Recipes extends RecipeProvider {
 		//OTHER
 		ShapedRecipeBuilder.shaped(BlockRegistry.JUPITER_LANTERN.get()).pattern("XCX").pattern("C#C").pattern("XCX").define('X', BlockRegistry.JUPITER_ATMOSPHERE.get()).define('C', Items.IRON_INGOT).define('#', Items.TORCH).unlockedBy("has_jupiter_deepslate", has(BlockRegistry.JUPITER_LANTERN.get())).save(consumer);
 
+
+		//---- IO -------------------------------------------------------------------------------
+		//STONE
+		bricksCraftAndStonecutting(BlockRegistry.IO_STONE.get(), BlockRegistry.IO_BRICKS.get(), BlockRegistry.IO_STONE.get(), consumer);
+		stairsSlabWallCraftStonecutting(BlockRegistry.IO_BRICKS.get(), TagRegistry.Items.IO_STONE, BlockRegistry.IO_BRICK_STAIRS.get(), BlockRegistry.IO_BRICK_SLAB.get(), BlockRegistry.IO_BRICK_WALL.get(), BlockRegistry.IO_STONE.get(), consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.CHISELED_IO_BRICKS.get()).pattern("X").pattern("X").define('X', BlockRegistry.IO_BRICK_SLAB.get()).unlockedBy("io_stone", has(BlockRegistry.IO_STONE.get())).save(consumer);
+		smelting(BlockRegistry.IO_BRICKS.get(), BlockRegistry.CRACKED_IO_BRICKS.get(), 0.1F, 200, BlockRegistry.IO_BRICKS.get(), consumer);
+
+		stonecutting(BlockRegistry.IO_STONE.get(), BlockRegistry.CHISELED_IO_BRICKS.get(), 1, BlockRegistry.IO_BRICKS.get(), consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.IO_BRICK_PILLAR.get(), 4).pattern("X").pattern("X").define('X', BlockRegistry.IO_BRICKS.get()).unlockedBy("io_stone", has(BlockRegistry.IO_STONE.get())).save(consumer);
+		stonecutting(BlockRegistry.IO_STONE.get(), BlockRegistry.IO_BRICK_PILLAR.get(), 1, BlockRegistry.IO_STONE.get(), consumer);
+		smelting(BlockRegistry.IO_COBBLESTONE.get(), BlockRegistry.IO_STONE.get(), 0.1F, 200, BlockRegistry.IO_COBBLESTONE.get(), consumer);
+		smelting(BlockRegistry.IO_COBBLED_DEEPSLATE.get(), BlockRegistry.IO_DEEPSLATE.get(), 0.1F, 200, BlockRegistry.IO_COBBLED_DEEPSLATE.get(), consumer);
+		stairsCraftAndStonecutting(BlockRegistry.IO_STONE.get(), BlockRegistry.IO_STONE_STAIRS.get(), BlockRegistry.IO_STONE.get(), consumer);
+		slabCraftAndStonecutting(BlockRegistry.IO_STONE.get(), BlockRegistry.IO_STONE_SLAB.get(), BlockRegistry.IO_STONE.get(), consumer);
+		stairsSlabWallCraftStonecutting(BlockRegistry.IO_COBBLESTONE.get(), TagRegistry.Items.IO_COBBLESTONE, BlockRegistry.IO_COBBLESTONE_STAIRS.get(), BlockRegistry.IO_COBBLESTONE_SLAB.get(), BlockRegistry.IO_COBBLESTONE_WALL.get(), BlockRegistry.IO_COBBLESTONE.get(), consumer);
+		smelting(BlockRegistry.IO_STONE.get(), BlockRegistry.IO_SMOOTH_STONE.get(), 0.1F, 200, BlockRegistry.IO_STONE.get(), consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.IO_SMOOTH_STONE_SLAB.get(), 6).pattern("XXX").define('X', BlockRegistry.IO_SMOOTH_STONE.get()).unlockedBy("has_io_smooth_stone", has(BlockRegistry.IO_STONE.get())).save(consumer);
+		stonecutting(BlockRegistry.IO_SMOOTH_STONE.get(), BlockRegistry.IO_SMOOTH_STONE_SLAB.get(), 2, BlockRegistry.IO_SMOOTH_STONE.get(), consumer);
+		singleItem(BlockRegistry.IO_STONE.get(), BlockRegistry.IO_STONE_BUTTON.get(), 1, BlockRegistry.IO_STONE.get(), consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.IO_STONE_PRESSURE_PLATE.get()).pattern("XX").define('X', BlockRegistry.IO_STONE.get()).unlockedBy("io_stone", has(BlockRegistry.IO_STONE.get())).save(consumer);
+		singleItem(BlockRegistry.IO_DEEPSLATE.get(), BlockRegistry.IO_DEEPSLATE_BUTTON.get(), 1, BlockRegistry.IO_STONE.get(), consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.IO_DEEPSLATE_PRESSURE_PLATE.get()).pattern("XX").define('X', BlockRegistry.IO_DEEPSLATE.get()).unlockedBy("io_deepslate", has(BlockRegistry.IO_DEEPSLATE.get())).save(consumer);
+		ingotAndBlock(BlockRegistry.IO_COBBLESTONE.get(), BlockRegistry.COMPRESSED_IO_COBBLESTONE.get(), BlockRegistry.IO_COBBLESTONE.get(), consumer);
+		ingotAndBlock(BlockRegistry.COMPRESSED_IO_COBBLESTONE.get(), BlockRegistry.SUPER_COMPRESSED_IO_COBBLESTONE.get(), BlockRegistry.COMPRESSED_IO_COBBLESTONE.get(), consumer);
+
+		//DEEPSLATE
+		stairsSlabWallCraftStonecutting(BlockRegistry.IO_COBBLED_DEEPSLATE.get(), BlockRegistry.IO_COBBLED_DEEPSLATE_STAIRS.get(), BlockRegistry.IO_COBBLED_DEEPSLATE_SLAB.get(), BlockRegistry.IO_COBBLED_DEEPSLATE_WALL.get(), BlockRegistry.IO_COBBLED_DEEPSLATE.get(), consumer);
+		deepslateBricks(BlockRegistry.IO_COBBLED_DEEPSLATE.get(), BlockRegistry.IO_POLISHED_DEEPSLATE.get(), BlockRegistry.IO_DEEPSLATE_BRICKS.get(), BlockRegistry.IO_DEEPSLATE_BRICK_STAIRS.get(), BlockRegistry.IO_DEEPSLATE_BRICK_SLAB.get(), BlockRegistry.IO_DEEPSLATE_BRICK_WALL.get(), BlockRegistry.IO_COBBLED_DEEPSLATE.get(), consumer);
+		deepslateTiles(BlockRegistry.IO_COBBLED_DEEPSLATE.get(), BlockRegistry.IO_POLISHED_DEEPSLATE.get(), BlockRegistry.IO_DEEPSLATE_BRICKS.get(), BlockRegistry.IO_DEEPSLATE_TILES.get(), BlockRegistry.IO_DEEPSLATE_TILE_STAIRS.get(), BlockRegistry.IO_DEEPSLATE_TILE_SLAB.get(), BlockRegistry.IO_DEEPSLATE_TILE_WALL.get(), BlockRegistry.IO_COBBLED_DEEPSLATE.get(), consumer);
+		polishedDeepslate(BlockRegistry.IO_COBBLED_DEEPSLATE.get(), BlockRegistry.IO_POLISHED_DEEPSLATE.get(), BlockRegistry.IO_POLISHED_DEEPSLATE_STAIRS.get(), BlockRegistry.IO_POLISHED_DEEPSLATE_SLAB.get(), BlockRegistry.IO_POLISHED_DEEPSLATE_WALL.get(), BlockRegistry.IO_COBBLED_DEEPSLATE.get(), consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.CHISELED_IO_DEEPSLATE_BRICKS.get()).pattern("X").pattern("X").define('X', BlockRegistry.IO_COBBLED_DEEPSLATE_SLAB.get()).unlockedBy("has_io_cobbled_deepslate", has(BlockRegistry.IO_COBBLED_DEEPSLATE.get())).save(consumer);
+		stonecutting(TagRegistry.Items.IO_COBBLED_DEEPSLATE, BlockRegistry.CHISELED_IO_DEEPSLATE_BRICKS.get(), 1, BlockRegistry.IO_COBBLED_DEEPSLATE.get(), consumer);
+		smelting(BlockRegistry.IO_DEEPSLATE_BRICKS.get(), BlockRegistry.CRACKED_IO_DEEPSLATE_BRICKS.get(), 0.1F, 200, BlockRegistry.IO_DEEPSLATE_BRICKS.get(), consumer);
+		smelting(BlockRegistry.IO_DEEPSLATE_TILES.get(), BlockRegistry.CRACKED_IO_DEEPSLATE_TILES.get(), 0.1F, 200, BlockRegistry.IO_DEEPSLATE_TILES.get(), consumer);
+		ingotAndBlock(BlockRegistry.IO_COBBLED_DEEPSLATE.get(), BlockRegistry.COMPRESSED_IO_COBBLED_DEEPSLATE.get(), BlockRegistry.IO_COBBLED_DEEPSLATE.get(), consumer);
+		ingotAndBlock(BlockRegistry.COMPRESSED_IO_COBBLED_DEEPSLATE.get(), BlockRegistry.SUPER_COMPRESSED_IO_COBBLED_DEEPSLATE.get(), BlockRegistry.COMPRESSED_IO_COBBLED_DEEPSLATE.get(), consumer);
+
+		//OTHER
+		smelting(BlockRegistry.IO_SAND.get(), Items.YELLOW_STAINED_GLASS, 0.1F, 200, BlockRegistry.IO_SAND.get(), consumer, "yellow_glass_from_io_sand");
+		ShapedRecipeBuilder.shaped(BlockRegistry.IO_LANTERN.get()).pattern("XCX").pattern("C#C").pattern("XCX").define('X', BlockRegistry.IO_STONE.get()).define('#', Items.IRON_INGOT).define('C', ItemRegistry.IO_DUST.get()).unlockedBy("has_io_dust", has(ItemRegistry.IO_DUST.get())).save(consumer);
+
 		//---- EUROPA -------------------------------------------------------------------------------
 		//STONE
 		ShapedRecipeBuilder.shaped(BlockRegistry.EUROPA_BRICKS.get(), 4).pattern("XY").pattern("YX").define('X', BlockRegistry.MOON_STONE.get()).define('Y', BlockRegistry.EUROPA_HYDRATE.get()).unlockedBy(name(BlockRegistry.EUROPA_HYDRATE.get()), has(BlockRegistry.EUROPA_HYDRATE.get())).save(consumer);
 		stairsSlabWallCraftStonecutting(BlockRegistry.EUROPA_BRICKS.get(), BlockRegistry.EUROPA_BRICK_STAIRS.get(), BlockRegistry.EUROPA_BRICK_SLAB.get(), BlockRegistry.EUROPA_BRICK_WALL.get(), BlockRegistry.EUROPA_HYDRATE.get(), consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.CHISELED_EUROPA_BRICKS.get()).pattern("X").pattern("X").define('X', BlockRegistry.EUROPA_BRICK_SLAB.get()).unlockedBy("europa_stone", has(BlockRegistry.EUROPA_BRICKS.get())).save(consumer);
 
 		ShapedRecipeBuilder.shaped(BlockRegistry.EUROPA_LANTERN.get()).pattern("XCX").pattern("C#C").pattern("XCX").define('X', BlockRegistry.MOON_STONE.get()).define('#', Items.IRON_INGOT).define('C', ItemRegistry.EUROPA_DUST.get()).unlockedBy("has_europa_dust", has(ItemRegistry.EUROPA_DUST.get())).save(consumer);
 
@@ -246,8 +289,17 @@ public class Recipes extends RecipeProvider {
 		//STONE
 		ShapedRecipeBuilder.shaped(BlockRegistry.CALLISTO_BRICKS.get(), 4).pattern("XXY").pattern("XX ").define('X', BlockRegistry.MOON_DEEPSLATE.get()).define('Y', ItemRegistry.CALLISTO_DUST.get()).unlockedBy(name(ItemRegistry.CALLISTO_DUST.get()), has(ItemRegistry.CALLISTO_DUST.get())).save(consumer);
 		stairsSlabWallCraftStonecutting(BlockRegistry.CALLISTO_BRICKS.get(), BlockRegistry.CALLISTO_BRICK_STAIRS.get(), BlockRegistry.CALLISTO_BRICK_SLAB.get(), BlockRegistry.CALLISTO_BRICK_WALL.get(), Block.byItem(ItemRegistry.CALLISTO_DUST.get()), consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.CHISELED_CALLISTO_BRICKS.get()).pattern("X").pattern("X").define('X', BlockRegistry.CALLISTO_BRICK_SLAB.get()).unlockedBy("callisto_stone", has(BlockRegistry.CALLISTO_BRICKS.get())).save(consumer);
 
 		ShapedRecipeBuilder.shaped(BlockRegistry.CALLISTO_LANTERN.get()).pattern("XCX").pattern("C#C").pattern("XCX").define('X', BlockRegistry.MOON_DEEPSLATE.get()).define('#', Items.IRON_INGOT).define('C', ItemRegistry.CALLISTO_DUST.get()).unlockedBy("has_callisto_dust", has(ItemRegistry.CALLISTO_DUST.get())).save(consumer);
+
+		//---- GANYMEDE -------------------------------------------------------------------------------
+		//STONE
+		ShapedRecipeBuilder.shaped(BlockRegistry.GANYMEDE_BRICKS.get(), 4).pattern("XXY").pattern("XX ").define('X', BlockRegistry.MOON_DEEPSLATE.get()).define('Y', ItemRegistry.GANYMEDE_DUST.get()).unlockedBy(name(ItemRegistry.GANYMEDE_DUST.get()), has(ItemRegistry.GANYMEDE_DUST.get())).save(consumer);
+		stairsSlabWallCraftStonecutting(BlockRegistry.GANYMEDE_BRICKS.get(), BlockRegistry.GANYMEDE_BRICK_STAIRS.get(), BlockRegistry.GANYMEDE_BRICK_SLAB.get(), BlockRegistry.GANYMEDE_BRICK_WALL.get(), Block.byItem(ItemRegistry.GANYMEDE_DUST.get()), consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.CHISELED_GANYMEDE_BRICKS.get()).pattern("X").pattern("X").define('X', BlockRegistry.GANYMEDE_BRICK_SLAB.get()).unlockedBy("ganymede_stone", has(BlockRegistry.GANYMEDE_BRICKS.get())).save(consumer);
+
+		ShapedRecipeBuilder.shaped(BlockRegistry.GANYMEDE_LANTERN.get()).pattern("XCX").pattern("C#C").pattern("XCX").define('X', BlockRegistry.MOON_DEEPSLATE.get()).define('#', Items.IRON_INGOT).define('C', ItemRegistry.GANYMEDE_DUST.get()).unlockedBy("has_ganymede_dust", has(ItemRegistry.GANYMEDE_DUST.get())).save(consumer);
 
 
 		//---- ORES/ALLOYS -------------------------------------------------------------------------------
@@ -477,12 +529,16 @@ public class Recipes extends RecipeProvider {
 		ShapelessRecipeBuilder.shapeless(BlockRegistry.LUMINOUS_WHITE_GLASS.get()).requires(Tags.Items.GLASS).requires(ItemRegistry.LUNAR_GOO.get()).unlockedBy("lunar_goo", has(ItemRegistry.LUNAR_GOO.get())).save(consumer);
 		ShapelessRecipeBuilder.shapeless(BlockRegistry.LUMINOUS_CYAN_GLASS.get()).requires(Tags.Items.GLASS).requires(ItemRegistry.EUROPA_DUST.get()).unlockedBy("europa_dust", has(ItemRegistry.EUROPA_DUST.get())).save(consumer);
 		ShapelessRecipeBuilder.shapeless(BlockRegistry.LUMINOUS_MAGENTA_GLASS.get()).requires(Tags.Items.GLASS).requires(ItemRegistry.CALLISTO_DUST.get()).unlockedBy("callisto_dust", has(ItemRegistry.CALLISTO_DUST.get())).save(consumer);
+		ShapelessRecipeBuilder.shapeless(BlockRegistry.LUMINOUS_YELLOW_GLASS.get()).requires(Tags.Items.GLASS).requires(ItemRegistry.IO_DUST.get()).unlockedBy("io_dust", has(ItemRegistry.IO_DUST.get())).save(consumer);
+		ShapelessRecipeBuilder.shapeless(BlockRegistry.LUMINOUS_RED_GLASS.get()).requires(Tags.Items.GLASS).requires(ItemRegistry.GANYMEDE_DUST.get()).unlockedBy("ganymede_dust", has(ItemRegistry.GANYMEDE_DUST.get())).save(consumer);
 
 
 		ShapedRecipeBuilder.shaped(BlockRegistry.LUMINOUS_BLUE_GLASS_PANE.get(), 16).pattern("XXX").pattern("XXX").define('X', BlockRegistry.LUMINOUS_BLUE_GLASS.get()).unlockedBy("moon_dust", has(ItemRegistry.MOON_DUST.get())).save(consumer);
 		ShapedRecipeBuilder.shaped(BlockRegistry.LUMINOUS_WHITE_GLASS_PANE.get(), 16).pattern("XXX").pattern("XXX").define('X', BlockRegistry.LUMINOUS_WHITE_GLASS.get()).unlockedBy("moon_dust", has(ItemRegistry.MOON_DUST.get())).save(consumer);
 		ShapedRecipeBuilder.shaped(BlockRegistry.LUMINOUS_CYAN_GLASS_PANE.get(), 16).pattern("XXX").pattern("XXX").define('X', BlockRegistry.LUMINOUS_CYAN_GLASS.get()).unlockedBy("europa_dust", has(ItemRegistry.EUROPA_DUST.get())).save(consumer);
 		ShapedRecipeBuilder.shaped(BlockRegistry.LUMINOUS_MAGENTA_GLASS_PANE.get(), 16).pattern("XXX").pattern("XXX").define('X', BlockRegistry.LUMINOUS_MAGENTA_GLASS.get()).unlockedBy("callisto_dust", has(ItemRegistry.CALLISTO_DUST.get())).save(consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.LUMINOUS_YELLOW_GLASS_PANE.get(), 16).pattern("XXX").pattern("XXX").define('X', BlockRegistry.LUMINOUS_YELLOW_GLASS.get()).unlockedBy("io_dust", has(ItemRegistry.IO_DUST.get())).save(consumer);
+		ShapedRecipeBuilder.shaped(BlockRegistry.LUMINOUS_RED_GLASS_PANE.get(), 16).pattern("XXX").pattern("XXX").define('X', BlockRegistry.LUMINOUS_RED_GLASS.get()).unlockedBy("ganymede_dust", has(ItemRegistry.GANYMEDE_DUST.get())).save(consumer);
 
 		ShapedRecipeBuilder.shaped(BlockRegistry.REINFORCED_GLASS.get(), 4).pattern(" X ").pattern("XCX").pattern(" X ").define('X', Blocks.GLASS).define('C', Items.IRON_INGOT).unlockedBy("glass", has(Blocks.GLASS)).save(consumer);
 		ShapedRecipeBuilder.shaped(BlockRegistry.REINFORCED_GLASS_PANE.get(), 16).pattern("XXX").pattern("XXX").define('X', BlockRegistry.REINFORCED_GLASS.get()).unlockedBy("glass", has(Blocks.GLASS)).save(consumer);

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "side": "celestialexploration:block/ganymede_bricks",
+    "bottom": "celestialexploration:block/ganymede_bricks",
+    "top": "celestialexploration:block/ganymede_bricks"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "XXX",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:compressed_io_cobbled_deepslate"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:super_compressed_io_cobbled_deepslate"
+  }
+}

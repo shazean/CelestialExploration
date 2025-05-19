@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "celestialexploration:block/mars_portal_ns"
+    },
+    "axis=z": {
+      "model": "celestialexploration:block/mars_portal_ew"
+    }
+  }
+}

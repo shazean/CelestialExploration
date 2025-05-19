@@ -1,3 +1,5 @@
 - `[NEW]` New creatures & mobs on Mars
+- `[NEW]` New dungeon on Mars
 - `[FIX]` Added missing textures for zombie villagers with astronomer or engineer professions
 - `[NEW]` New UFO painting
+- `[NEW]` Io dimension and associated blocks, bricks, portal, etc.

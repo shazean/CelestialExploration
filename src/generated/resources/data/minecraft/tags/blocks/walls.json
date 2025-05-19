@@ -30,8 +30,15 @@
     "celestialexploration:jupiter_deepslate_tile_wall",
     "celestialexploration:jupiter_polished_deepslate_wall",
     "celestialexploration:meteor_brick_wall",
+    "celestialexploration:io_brick_wall",
+    "celestialexploration:io_cobblestone_wall",
+    "celestialexploration:io_cobbled_deepslate_wall",
+    "celestialexploration:io_deepslate_brick_wall",
+    "celestialexploration:io_deepslate_tile_wall",
+    "celestialexploration:io_polished_deepslate_wall",
     "celestialexploration:europa_brick_wall",
     "celestialexploration:callisto_brick_wall",
+    "celestialexploration:ganymede_brick_wall",
     "celestialexploration:panel_wall"
   ]
 }

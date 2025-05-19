@@ -2,13 +2,11 @@ package com.shim.celestialexploration.registry;
 
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.entity.DyeType;
-import com.shim.celestialexploration.entity.entity.vehicle.Spaceship;
 import com.shim.celestialexploration.entity.entity.vehicle.AbstractMagCart;
 import com.shim.celestialexploration.item.*;
-import com.shim.celestialexploration.item.armor.AdvancedSpaceSuitArmorItem;
-import com.shim.celestialexploration.item.armor.HeavyDutySpaceSuitArmorItem;
-import com.shim.celestialexploration.item.armor.ThermalSpaceSuitArmorItem;
-import com.shim.celestialexploration.item.armor.SpaceSuitArmorItem;
+import com.shim.celestialexploration.item.armor.HeavyDutySpacesuitArmorItem;
+import com.shim.celestialexploration.item.armor.ThermalSpacesuitArmorItem;
+import com.shim.celestialexploration.item.armor.SpacesuitArmorItem;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.food.FoodProperties;
@@ -92,22 +90,22 @@ public class ItemRegistry {
 	public static final RegistryObject<Item> STEEL_LEGGINGS = registerItem("steel_leggings", "Steel Leggings", () -> new ArmorItem(ModArmorMaterials.STEEL, EquipmentSlot.LEGS, (new Item.Properties()).tab(CreativeModeTab.TAB_COMBAT)));
 
 	//SPACE SUIT
-	public static final RegistryObject<ArmorItem> BASIC_SPACESUIT_HELMET = registerItem("basic_spacesuit_helmet", "Basic Spacesuit Helmet", () -> new SpaceSuitArmorItem(ModArmorMaterials.BASIC_SPACESUIT, EquipmentSlot.HEAD, (new Item.Properties()).tab(CreativeModeTab.TAB_COMBAT)));
-	public static final RegistryObject<ArmorItem> BASIC_SPACESUIT_BOOTS = registerItem("basic_spacesuit_boots", "Basic Spacesuit Boots", () -> new SpaceSuitArmorItem(ModArmorMaterials.BASIC_SPACESUIT, EquipmentSlot.FEET, (new Item.Properties()).tab(CreativeModeTab.TAB_COMBAT)));
-	public static final RegistryObject<ArmorItem> BASIC_SPACESUIT_CHESTPLATE = registerItem("basic_spacesuit_chestplate", "Basic Spacesuit Chestplate", () -> new SpaceSuitArmorItem(ModArmorMaterials.BASIC_SPACESUIT, EquipmentSlot.CHEST, (new Item.Properties()).tab(CreativeModeTab.TAB_COMBAT)));
-	public static final RegistryObject<ArmorItem> BASIC_SPACESUIT_LEGGINGS = registerItem("basic_spacesuit_leggings", "Basic Spacesuit Leggings", () -> new SpaceSuitArmorItem(ModArmorMaterials.BASIC_SPACESUIT, EquipmentSlot.LEGS, (new Item.Properties()).tab(CreativeModeTab.TAB_COMBAT)));
-	public static final RegistryObject<ArmorItem> HEAVY_DUTY_SPACESUIT_HELMET = registerItem("heavy_duty_spacesuit_helmet", "Heavy Duty Spacesuit Helmet", () -> new HeavyDutySpaceSuitArmorItem(ModArmorMaterials.HEAVY_DUTY_SPACESUIT, EquipmentSlot.HEAD, (new Item.Properties()).tab(CreativeModeTab.TAB_COMBAT).fireResistant()));
-	public static final RegistryObject<ArmorItem> HEAVY_DUTY_SPACESUIT_BOOTS = registerItem("heavy_duty_spacesuit_boots", "Heavy Duty Spacesuit Boots", () -> new HeavyDutySpaceSuitArmorItem(ModArmorMaterials.HEAVY_DUTY_SPACESUIT, EquipmentSlot.FEET, (new Item.Properties()).tab(CreativeModeTab.TAB_COMBAT).fireResistant()));
-	public static final RegistryObject<ArmorItem> HEAVY_DUTY_SPACESUIT_CHESTPLATE = registerItem("heavy_duty_spacesuit_chestplate", "Heavy Duty Spacesuit Chestplate", () -> new HeavyDutySpaceSuitArmorItem(ModArmorMaterials.HEAVY_DUTY_SPACESUIT, EquipmentSlot.CHEST, (new Item.Properties()).tab(CreativeModeTab.TAB_COMBAT).fireResistant()));
-	public static final RegistryObject<ArmorItem> HEAVY_DUTY_SPACESUIT_LEGGINGS = registerItem("heavy_duty_spacesuit_leggings", "Heavy Duty Spacesuit Leggings", () -> new HeavyDutySpaceSuitArmorItem(ModArmorMaterials.HEAVY_DUTY_SPACESUIT, EquipmentSlot.LEGS, (new Item.Properties()).tab(CreativeModeTab.TAB_COMBAT).fireResistant()));
-	public static final RegistryObject<ArmorItem> THERMAL_SPACESUIT_HELMET = registerItem("thermal_spacesuit_helmet", "Thermal Spacesuit Helmet", () -> new ThermalSpaceSuitArmorItem(ModArmorMaterials.THERMAL_SPACESUIT, EquipmentSlot.HEAD, (new Item.Properties()).tab(CreativeModeTab.TAB_COMBAT)));
-	public static final RegistryObject<ArmorItem> THERMAL_SPACESUIT_BOOTS = registerItem("thermal_spacesuit_boots", "Thermal Spacesuit Boots", () -> new ThermalSpaceSuitArmorItem(ModArmorMaterials.THERMAL_SPACESUIT, EquipmentSlot.FEET, (new Item.Properties()).tab(CreativeModeTab.TAB_COMBAT)));
-	public static final RegistryObject<ArmorItem> THERMAL_SPACESUIT_CHESTPLATE = registerItem("thermal_spacesuit_chestplate", "Thermal Spacesuit Chestplate", () -> new ThermalSpaceSuitArmorItem(ModArmorMaterials.THERMAL_SPACESUIT, EquipmentSlot.CHEST, (new Item.Properties()).tab(CreativeModeTab.TAB_COMBAT)));
-	public static final RegistryObject<ArmorItem> THERMAL_SPACESUIT_LEGGINGS = registerItem("thermal_spacesuit_leggings", "Thermal Spacesuit Leggings", () -> new ThermalSpaceSuitArmorItem(ModArmorMaterials.THERMAL_SPACESUIT, EquipmentSlot.LEGS, (new Item.Properties()).tab(CreativeModeTab.TAB_COMBAT)));
-	public static final RegistryObject<ArmorItem> ADVANCED_SPACESUIT_HELMET = registerItem("advanced_spacesuit_helmet", "Advanced Spacesuit Helmet", () -> new AdvancedSpaceSuitArmorItem(ModArmorMaterials.ADVANCED_SPACESUIT, EquipmentSlot.HEAD, (new Item.Properties()).tab(CreativeModeTab.TAB_COMBAT).fireResistant()));
-	public static final RegistryObject<ArmorItem> ADVANCED_SPACESUIT_BOOTS = registerItem("advanced_spacesuit_boots", "Advanced Spacesuit Boots", () -> new AdvancedSpaceSuitArmorItem(ModArmorMaterials.ADVANCED_SPACESUIT, EquipmentSlot.FEET, (new Item.Properties()).tab(CreativeModeTab.TAB_COMBAT).fireResistant()));
-	public static final RegistryObject<ArmorItem> ADVANCED_SPACESUIT_CHESTPLATE = registerItem("advanced_spacesuit_chestplate", "Advanced Spacesuit Chestplate", () -> new AdvancedSpaceSuitArmorItem(ModArmorMaterials.ADVANCED_SPACESUIT, EquipmentSlot.CHEST, (new Item.Properties()).tab(CreativeModeTab.TAB_COMBAT).fireResistant()));
-	public static final RegistryObject<ArmorItem> ADVANCED_SPACESUIT_LEGGINGS = registerItem("advanced_spacesuit_leggings", "Advanced Spacesuit Leggings", () -> new AdvancedSpaceSuitArmorItem(ModArmorMaterials.ADVANCED_SPACESUIT, EquipmentSlot.LEGS, (new Item.Properties()).tab(CreativeModeTab.TAB_COMBAT).fireResistant()));
+	public static final RegistryObject<ArmorItem> BASIC_SPACESUIT_HELMET = registerItem("basic_spacesuit_helmet", "Basic Spacesuit Helmet", () -> new SpacesuitArmorItem(ModArmorMaterials.BASIC_SPACESUIT, EquipmentSlot.HEAD, (new Item.Properties()).tab(CreativeModeTab.TAB_COMBAT)));
+	public static final RegistryObject<ArmorItem> BASIC_SPACESUIT_BOOTS = registerItem("basic_spacesuit_boots", "Basic Spacesuit Boots", () -> new SpacesuitArmorItem(ModArmorMaterials.BASIC_SPACESUIT, EquipmentSlot.FEET, (new Item.Properties()).tab(CreativeModeTab.TAB_COMBAT)));
+	public static final RegistryObject<ArmorItem> BASIC_SPACESUIT_CHESTPLATE = registerItem("basic_spacesuit_chestplate", "Basic Spacesuit Chestplate", () -> new SpacesuitArmorItem(ModArmorMaterials.BASIC_SPACESUIT, EquipmentSlot.CHEST, (new Item.Properties()).tab(CreativeModeTab.TAB_COMBAT)));
+	public static final RegistryObject<ArmorItem> BASIC_SPACESUIT_LEGGINGS = registerItem("basic_spacesuit_leggings", "Basic Spacesuit Leggings", () -> new SpacesuitArmorItem(ModArmorMaterials.BASIC_SPACESUIT, EquipmentSlot.LEGS, (new Item.Properties()).tab(CreativeModeTab.TAB_COMBAT)));
+	public static final RegistryObject<ArmorItem> HEAVY_DUTY_SPACESUIT_HELMET = registerItem("heavy_duty_spacesuit_helmet", "Heavy Duty Spacesuit Helmet", () -> new HeavyDutySpacesuitArmorItem(EquipmentSlot.HEAD, (new Item.Properties()).tab(CreativeModeTab.TAB_COMBAT).fireResistant()));
+	public static final RegistryObject<ArmorItem> HEAVY_DUTY_SPACESUIT_BOOTS = registerItem("heavy_duty_spacesuit_boots", "Heavy Duty Spacesuit Boots", () -> new HeavyDutySpacesuitArmorItem(EquipmentSlot.FEET, (new Item.Properties()).tab(CreativeModeTab.TAB_COMBAT).fireResistant()));
+	public static final RegistryObject<ArmorItem> HEAVY_DUTY_SPACESUIT_CHESTPLATE = registerItem("heavy_duty_spacesuit_chestplate", "Heavy Duty Spacesuit Chestplate", () -> new HeavyDutySpacesuitArmorItem(EquipmentSlot.CHEST, (new Item.Properties()).tab(CreativeModeTab.TAB_COMBAT).fireResistant()));
+	public static final RegistryObject<ArmorItem> HEAVY_DUTY_SPACESUIT_LEGGINGS = registerItem("heavy_duty_spacesuit_leggings", "Heavy Duty Spacesuit Leggings", () -> new HeavyDutySpacesuitArmorItem(EquipmentSlot.LEGS, (new Item.Properties()).tab(CreativeModeTab.TAB_COMBAT).fireResistant()));
+	public static final RegistryObject<ArmorItem> THERMAL_SPACESUIT_HELMET = registerItem("thermal_spacesuit_helmet", "Thermal Spacesuit Helmet", () -> new ThermalSpacesuitArmorItem(EquipmentSlot.HEAD, (new Item.Properties()).tab(CreativeModeTab.TAB_COMBAT)));
+	public static final RegistryObject<ArmorItem> THERMAL_SPACESUIT_BOOTS = registerItem("thermal_spacesuit_boots", "Thermal Spacesuit Boots", () -> new ThermalSpacesuitArmorItem(EquipmentSlot.FEET, (new Item.Properties()).tab(CreativeModeTab.TAB_COMBAT)));
+	public static final RegistryObject<ArmorItem> THERMAL_SPACESUIT_CHESTPLATE = registerItem("thermal_spacesuit_chestplate", "Thermal Spacesuit Chestplate", () -> new ThermalSpacesuitArmorItem(EquipmentSlot.CHEST, (new Item.Properties()).tab(CreativeModeTab.TAB_COMBAT)));
+	public static final RegistryObject<ArmorItem> THERMAL_SPACESUIT_LEGGINGS = registerItem("thermal_spacesuit_leggings", "Thermal Spacesuit Leggings", () -> new ThermalSpacesuitArmorItem(EquipmentSlot.LEGS, (new Item.Properties()).tab(CreativeModeTab.TAB_COMBAT)));
+	public static final RegistryObject<ArmorItem> ADVANCED_SPACESUIT_HELMET = registerItem("advanced_spacesuit_helmet", "Advanced Spacesuit Helmet", () -> new SpacesuitArmorItem(ModArmorMaterials.ADVANCED_SPACESUIT, EquipmentSlot.HEAD, (new Item.Properties()).tab(CreativeModeTab.TAB_COMBAT).fireResistant()));
+	public static final RegistryObject<ArmorItem> ADVANCED_SPACESUIT_BOOTS = registerItem("advanced_spacesuit_boots", "Advanced Spacesuit Boots", () -> new SpacesuitArmorItem(ModArmorMaterials.ADVANCED_SPACESUIT, EquipmentSlot.FEET, (new Item.Properties()).tab(CreativeModeTab.TAB_COMBAT).fireResistant()));
+	public static final RegistryObject<ArmorItem> ADVANCED_SPACESUIT_CHESTPLATE = registerItem("advanced_spacesuit_chestplate", "Advanced Spacesuit Chestplate", () -> new SpacesuitArmorItem(ModArmorMaterials.ADVANCED_SPACESUIT, EquipmentSlot.CHEST, (new Item.Properties()).tab(CreativeModeTab.TAB_COMBAT).fireResistant()));
+	public static final RegistryObject<ArmorItem> ADVANCED_SPACESUIT_LEGGINGS = registerItem("advanced_spacesuit_leggings", "Advanced Spacesuit Leggings", () -> new SpacesuitArmorItem(ModArmorMaterials.ADVANCED_SPACESUIT, EquipmentSlot.LEGS, (new Item.Properties()).tab(CreativeModeTab.TAB_COMBAT).fireResistant()));
 
 	//---- SPAWN EGGS -------------------------------------------------------------------------------
 	public static final RegistryObject<Item> RUST_SPAWN_EGG = registerItem("rust_spawn_egg", "Rust Slime Spawn egg", () -> new ForgeSpawnEggItem(EntityRegistry.RUST_SLIME,0x7f3414, 0x984521, new Item.Properties().tab(CelestialExploration.CELESTIAL_MISC_TAB)));
@@ -186,9 +184,12 @@ public class ItemRegistry {
 	public static final RegistryObject<Item> RAW_BAUXITE = registerItem("raw_bauxite", "Raw Bauxite", () -> new Item((new Item.Properties()).tab(CreativeModeTab.TAB_MATERIALS)));
 	public static final RegistryObject<Item> BAUXITE_INGOT = registerItem("bauxite_ingot", "Bauxite Ingot", () -> new Item((new Item.Properties()).tab(CreativeModeTab.TAB_MATERIALS)));
 	public static final RegistryObject<Item> ALUMINUM_INGOT = registerItem("aluminum_ingot", "Aluminum Ingot", () -> new Item((new Item.Properties()).tab(CreativeModeTab.TAB_MATERIALS)));
+
 	public static final RegistryObject<Item> MOON_DUST = registerItem("moon_dust", "Moon Dust", () -> new Item((new Item.Properties()).tab(CelestialExploration.CELESTIAL_MISC_TAB)));
 	public static final RegistryObject<Item> EUROPA_DUST = registerItem("europa_dust", "Europan Dust", () -> new Item((new Item.Properties()).tab(CelestialExploration.CELESTIAL_MISC_TAB)));
 	public static final RegistryObject<Item> CALLISTO_DUST = registerItem("callisto_dust", "Callistoan Dust", () -> new Item((new Item.Properties()).tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> IO_DUST = registerItem("io_dust", "Ionian Dust", () -> new Item((new Item.Properties()).tab(CelestialExploration.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> GANYMEDE_DUST = registerItem("ganymede_dust", "Ganymedian Dust", () -> new Item((new Item.Properties()).tab(CelestialExploration.CELESTIAL_MISC_TAB)));
 
 	public static final RegistryObject<Item> STEEL_ROD = registerItem("steel_rod", "Steel Rod", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MATERIALS)));
 	public static final RegistryObject<Item> FLARE_ROD = registerItem("flare_rod", "Flare Rod", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MATERIALS)));

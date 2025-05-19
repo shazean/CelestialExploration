@@ -46,6 +46,12 @@ public class PlanetTeleports extends PlanetTeleportProvider {
         PlanetTeleport.Builder.teleporter().dimension(DimensionRegistry.CALLISTO).coordinates(coord(6, 2))
                 .block(BlockRegistry.CALLISTO_CORE.get()).block(Blocks.ICE).block(BlockRegistry.MOON_COBBLED_DEEPSLATE.get()).block(BlockRegistry.COARSE_MOON_SAND.get()).save(consumer, "callisto");
 
+        PlanetTeleport.Builder.teleporter().dimension(DimensionRegistry.IO).coordinates(coord(6, 2))
+                .block(BlockRegistry.IO_CORE.get()).block(BlockRegistry.IO_STONE.get()).block(BlockRegistry.IO_DEEPSLATE.get()).save(consumer, "io");
+
+//        PlanetTeleport.Builder.teleporter().dimension(DimensionRegistry.GANYMEDE).coordinates(coord(6, 2))
+//                .block(BlockRegistry.GANYMEDE_CORE.get()).block(BlockRegistry.MOON_COBBLESTONE.get()).block(BlockRegistry.MOON_DEEPSLATE.get()).save(consumer, "ganymede");
+
 
     }
 }

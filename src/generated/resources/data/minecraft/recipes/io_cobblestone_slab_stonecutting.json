@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "tag": "celestialexploration:io_cobblestone"
+  },
+  "result": "celestialexploration:io_cobblestone_slab",
+  "count": 2
+}

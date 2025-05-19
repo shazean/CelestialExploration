@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "celestialexploration:io_stone"
+  },
+  "result": "celestialexploration:io_brick_pillar",
+  "count": 1
+}

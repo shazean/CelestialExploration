@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    "celestialexploration:io_deepslate",
+    "celestialexploration:cracked_io_deepslate_bricks",
+    "celestialexploration:cracked_io_deepslate_tiles",
+    "celestialexploration:chiseled_io_deepslate_bricks",
+    "celestialexploration:io_deepslate_bricks",
+    "celestialexploration:io_deepslate_brick_slab",
+    "celestialexploration:io_deepslate_brick_stairs",
+    "celestialexploration:io_deepslate_brick_wall",
+    "celestialexploration:io_deepslate_tiles",
+    "celestialexploration:io_deepslate_tile_slab",
+    "celestialexploration:io_deepslate_tile_stairs",
+    "celestialexploration:io_deepslate_tile_wall",
+    "celestialexploration:io_polished_deepslate",
+    "celestialexploration:io_polished_deepslate_slab",
+    "celestialexploration:io_polished_deepslate_stairs",
+    "celestialexploration:io_polished_deepslate_wall"
+  ]
+}

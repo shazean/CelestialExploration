@@ -88,10 +88,10 @@ public class EntityRegistry {
             .sized(0.6F, 1.95F).clientTrackingRange(8).fireImmune().build(new ResourceLocation(CelestialExploration.MODID, "astral_hoglin").toString()));
 
     public static final RegistryObject<EntityType<MeteorCrawler>> METEOR_CRAWLER = registerEntityType("meteor_crawler", "Meteorite Crawler", () -> EntityType.Builder.of(MeteorCrawler::new, MobCategory.MONSTER)
-            .sized(0.7F, 0.5F).clientTrackingRange(8).build(new ResourceLocation(CelestialExploration.MODID, "meteor_crawler").toString()));
+            .sized(1.4F, 0.9F).clientTrackingRange(8).build(new ResourceLocation(CelestialExploration.MODID, "meteor_crawler").toString()));
 
     public static final RegistryObject<EntityType<VoidCrawler>> VOID_CRAWLER = registerEntityType("void_crawler", "Void Crawler", () -> EntityType.Builder.of(VoidCrawler::new, MobCategory.MONSTER)
-            .sized(0.7F, 0.5F).clientTrackingRange(8).build(new ResourceLocation(CelestialExploration.MODID, "void_crawler").toString()));
+            .sized(1.0F, 0.7F).clientTrackingRange(8).build(new ResourceLocation(CelestialExploration.MODID, "void_crawler").toString()));
 
     public static final RegistryObject<EntityType<Gust>> GUST = registerEntityType("gust", "Gust", () -> EntityType.Builder.of(Gust::new, MobCategory.MONSTER)
             .sized(0.7F, 2.3F).clientTrackingRange(8).build(new ResourceLocation(CelestialExploration.MODID, "gust").toString()));

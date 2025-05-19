@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "celestialexploration:io_cobblestone",
+    "celestialexploration:io_cobblestone_slab",
+    "celestialexploration:io_cobblestone_stairs",
+    "celestialexploration:io_cobblestone_wall"
+  ]
+}

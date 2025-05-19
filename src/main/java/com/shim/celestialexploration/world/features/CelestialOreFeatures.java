@@ -18,15 +18,17 @@ import java.util.List;
 
 public class CelestialOreFeatures {
 
-    public static final RuleTest MOON_ORE_REPLACEABLES = new TagMatchTest(TagRegistry.Blocks.MOON_STONE);
-    public static final RuleTest MOON_DEEPSLATE_ORE_REPLACEABLES = new TagMatchTest(TagRegistry.Blocks.MOON_DEEPSLATE);
-    public static final RuleTest MARS_ORE_REPLACEABLES = new TagMatchTest(TagRegistry.Blocks.MARS_STONE);
-    public static final RuleTest MARS_DEEPSLATE_ORE_REPLACEABLES = new TagMatchTest(TagRegistry.Blocks.MARS_DEEPSLATE);
+    public static final RuleTest MOON_ORE_REPLACEABLES = new BlockMatchTest(BlockRegistry.MOON_STONE.get());
+    public static final RuleTest MOON_DEEPSLATE_ORE_REPLACEABLES = new BlockMatchTest(BlockRegistry.MOON_DEEPSLATE.get());
+    public static final RuleTest MARS_ORE_REPLACEABLES = new BlockMatchTest(BlockRegistry.MARS_STONE.get());
+    public static final RuleTest MARS_DEEPSLATE_ORE_REPLACEABLES = new BlockMatchTest(BlockRegistry.MARS_DEEPSLATE.get());
     public static final RuleTest METEOR_REPLACEABLES = new BlockMatchTest(BlockRegistry.METEOR.get());
-    public static final RuleTest VENUS_ORE_REPLACEABLES = new TagMatchTest(TagRegistry.Blocks.VENUS_STONE);
-    public static final RuleTest VENUS_DEEPSLATE_ORE_REPLACEABLES = new TagMatchTest(TagRegistry.Blocks.VENUS_DEEPSLATE);
-    public static final RuleTest MERCURY_ORE_REPLACEABLES = new TagMatchTest(TagRegistry.Blocks.MERCURY_STONE);
-    public static final RuleTest MERCURY_DEEPSLATE_ORE_REPLACEABLES = new TagMatchTest(TagRegistry.Blocks.MERCURY_DEEPSLATE);
+    public static final RuleTest VENUS_ORE_REPLACEABLES = new BlockMatchTest(BlockRegistry.VENUS_STONE.get());
+    public static final RuleTest VENUS_DEEPSLATE_ORE_REPLACEABLES = new BlockMatchTest(BlockRegistry.VENUS_DEEPSLATE.get());
+    public static final RuleTest MERCURY_ORE_REPLACEABLES = new BlockMatchTest(BlockRegistry.MERCURY_STONE.get());
+    public static final RuleTest MERCURY_DEEPSLATE_ORE_REPLACEABLES = new BlockMatchTest(BlockRegistry.MERCURY_DEEPSLATE.get());
+    public static final RuleTest IO_ORE_REPLACEABLES = new BlockMatchTest(BlockRegistry.IO_STONE.get());
+    public static final RuleTest IO_DEEPSLATE_ORE_REPLACEABLES = new BlockMatchTest(BlockRegistry.IO_DEEPSLATE.get());
 
 
     public static final List<OreConfiguration.TargetBlockState> MOON_IRON_ORES = List.of(
@@ -92,6 +94,17 @@ public class CelestialOreFeatures {
             OreConfiguration.target(MERCURY_DEEPSLATE_ORE_REPLACEABLES, BlockRegistry.MERCURY_DEEPSLATE_DIAMOND_ORE.get().defaultBlockState()));
 
 
+    public static final List<OreConfiguration.TargetBlockState> IO_IRON_ORES = List.of(
+            OreConfiguration.target(IO_DEEPSLATE_ORE_REPLACEABLES, BlockRegistry.IO_DEEPSLATE_IRON_ORE.get().defaultBlockState()));
+
+    public static final List<OreConfiguration.TargetBlockState> IO_LAPIS_ORES = List.of(
+            OreConfiguration.target(IO_ORE_REPLACEABLES, BlockRegistry.IO_LAPIS_ORE.get().defaultBlockState()),
+            OreConfiguration.target(IO_ORE_REPLACEABLES, BlockRegistry.IO_DEEPSLATE_LAPIS_ORE.get().defaultBlockState()));
+
+    public static final List<OreConfiguration.TargetBlockState> IO_SULFUR_ORES = List.of(
+            OreConfiguration.target(IO_ORE_REPLACEABLES, BlockRegistry.IO_SULFUR_ORE.get().defaultBlockState()));
+
+
 
     public static final Holder<ConfiguredFeature<OreConfiguration, ?>> MOON_IRON_ORE = FeatureUtils.register("moon_iron_ore", Feature.ORE, new OreConfiguration(MOON_IRON_ORES, 7));
     public static final Holder<ConfiguredFeature<OreConfiguration, ?>> MOON_IRON_ORE_SMALL = FeatureUtils.register("moon_iron_ore_small", Feature.ORE, new OreConfiguration(MOON_IRON_ORES, 4));
@@ -121,5 +134,13 @@ public class CelestialOreFeatures {
     public static final Holder<ConfiguredFeature<OreConfiguration, ?>> MERCURY_DIAMOND_ORE = FeatureUtils.register("mercury_diamond_ore", Feature.ORE, new OreConfiguration(MERCURY_DIAMOND_ORES, 8, 0.5F));
 
     public static final Holder<ConfiguredFeature<OreConfiguration, ?>> BAUXITE_ORE = FeatureUtils.register("bauxite_ore", Feature.ORE, new OreConfiguration(BAUXITE_ORES, 17));
+
+    public static final Holder<ConfiguredFeature<OreConfiguration, ?>> IO_IRON_ORE = FeatureUtils.register("io_iron_ore", Feature.ORE, new OreConfiguration(IO_IRON_ORES, 7));
+    public static final Holder<ConfiguredFeature<OreConfiguration, ?>> IO_IRON_ORE_SMALL = FeatureUtils.register("io_iron_ore_small", Feature.ORE, new OreConfiguration(IO_IRON_ORES, 4));
+    public static final Holder<ConfiguredFeature<OreConfiguration, ?>> IO_LAPIS_ORE = FeatureUtils.register("io_lapis_ore", Feature.ORE, new OreConfiguration(IO_LAPIS_ORES, 7));
+    public static final Holder<ConfiguredFeature<OreConfiguration, ?>> IO_LAPIS_ORE_BURIED = FeatureUtils.register("io_lapis_ore_buried", Feature.ORE, new OreConfiguration(IO_LAPIS_ORES, 7, 1.0F));
+    public static final Holder<ConfiguredFeature<OreConfiguration, ?>> IO_SULFUR_ORE = FeatureUtils.register("io_sulfur_ore", Feature.ORE, new OreConfiguration(IO_SULFUR_ORES, 4));
+
+
 
 }

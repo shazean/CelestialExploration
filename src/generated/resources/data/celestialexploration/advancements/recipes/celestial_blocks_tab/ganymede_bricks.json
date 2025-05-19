@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "celestialexploration:ganymede_bricks"
+    ]
+  },
+  "criteria": {
+    "ganymede_dust": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:ganymede_dust"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "celestialexploration:ganymede_bricks"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "ganymede_dust",
+      "has_the_recipe"
+    ]
+  ]
+}

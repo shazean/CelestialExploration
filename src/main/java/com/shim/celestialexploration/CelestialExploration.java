@@ -13,8 +13,10 @@ import com.shim.celestialexploration.entity.entity.mob.piglins.CyborgPiglin;
 import com.shim.celestialexploration.entity.entity.mob.piglins.VoidedPiglin;
 import com.shim.celestialexploration.entity.entity.mob.slimes.*;
 import com.shim.celestialexploration.entity.entity.robots.Drone;
-import com.shim.celestialexploration.entity.entity.robots.MechaDog;
 import com.shim.celestialexploration.entity.entity.robots.Rover;
+import com.shim.celestialexploration.item.armor.BasicSpacesuitRenderer;
+import com.shim.celestialexploration.item.armor.HeavyDutySpacesuitRenderer;
+import com.shim.celestialexploration.item.armor.ThermalSpacesuitRenderer;
 import com.shim.celestialexploration.packets.CelestialPacketHandler;
 import com.shim.celestialexploration.registry.*;
 import com.shim.celestialexploration.util.ClientProxy;
@@ -23,11 +25,12 @@ import com.shim.celestialexploration.util.Keybinds;
 import com.shim.celestialexploration.util.ServerProxy;
 import com.shim.celestialexploration.world.structures.ResearchTunnelPieces;
 import mod.azure.azurelib.AzureLib;
+import mod.azure.azurelib.rewrite.animation.cache.AzIdentityRegistry;
+import mod.azure.azurelib.rewrite.render.armor.AzArmorRendererRegistry;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.client.event.InputEvent;
@@ -170,6 +173,12 @@ public class CelestialExploration {
 //        SpawnPlacements.register(EntityRegistry.MECHADOG.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, MechaDog::checkMobSpawnRules);
 
         CelestialPacketHandler.init();
+
+        AzIdentityRegistry.register(ItemRegistry.ADVANCED_SPACESUIT_HELMET.get(), ItemRegistry.ADVANCED_SPACESUIT_CHESTPLATE.get(), ItemRegistry.ADVANCED_SPACESUIT_LEGGINGS.get(), ItemRegistry.ADVANCED_SPACESUIT_BOOTS.get());
+        AzIdentityRegistry.register(ItemRegistry.HEAVY_DUTY_SPACESUIT_HELMET.get(), ItemRegistry.HEAVY_DUTY_SPACESUIT_CHESTPLATE.get(), ItemRegistry.HEAVY_DUTY_SPACESUIT_LEGGINGS.get(), ItemRegistry.HEAVY_DUTY_SPACESUIT_BOOTS.get());
+        AzIdentityRegistry.register(ItemRegistry.THERMAL_SPACESUIT_HELMET.get(), ItemRegistry.THERMAL_SPACESUIT_CHESTPLATE.get(), ItemRegistry.THERMAL_SPACESUIT_LEGGINGS.get(), ItemRegistry.THERMAL_SPACESUIT_BOOTS.get());
+        AzIdentityRegistry.register(ItemRegistry.BASIC_SPACESUIT_HELMET.get(), ItemRegistry.BASIC_SPACESUIT_CHESTPLATE.get(), ItemRegistry.BASIC_SPACESUIT_LEGGINGS.get(), ItemRegistry.BASIC_SPACESUIT_BOOTS.get());
+
 
         event.enqueueWork(() -> {
 

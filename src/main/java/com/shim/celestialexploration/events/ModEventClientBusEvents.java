@@ -6,21 +6,22 @@ import com.shim.celestialexploration.capabilities.LoxTankCapability;
 import com.shim.celestialexploration.entity.renderer.*;
 import com.shim.celestialexploration.entity.renderer.projectile.*;
 import com.shim.celestialexploration.inventory.screens.*;
+import com.shim.celestialexploration.item.armor.AdvancedSpacesuitRenderer;
+import com.shim.celestialexploration.item.armor.HeavyDutySpacesuitRenderer;
+import com.shim.celestialexploration.item.armor.ThermalSpacesuitRenderer;
+import com.shim.celestialexploration.item.armor.BasicSpacesuitRenderer;
 import com.shim.celestialexploration.registry.*;
 import com.shim.celestialexploration.util.Keybinds;
 import com.shim.celestialexploration.world.renderer.DimensionRenderers;
+import mod.azure.azurelib.rewrite.render.armor.AzArmorRendererRegistry;
 import net.minecraft.client.RecipeBookCategories;
 import net.minecraft.client.gui.screens.MenuScreens;
-import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.SkullModel;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderers;
-import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.api.distmarker.Dist;
@@ -36,13 +37,7 @@ public class ModEventClientBusEvents {
 
     @SubscribeEvent
     public static void registerRenderers(final EntityRenderersEvent.AddLayers event) {
-
 //        LivingEntityRenderer<Villager, ? extends EntityModel<Villager>> renderer = event.getRenderer(EntityType.VILLAGER);
-
-//        GeoArmorRenderer.registerArmorRenderer(SpaceSuitArmorItem.class, new SpaceSuitRenderer());
-//        GeoArmorRenderer.registerArmorRenderer(HeavyDutySpaceSuitArmorItem.class, new HeavyDutySpaceSuitRenderer());
-//        GeoArmorRenderer.registerArmorRenderer(ThermalSpaceSuitArmorItem.class, new ThermalSpaceSuitRenderer());
-//        GeoArmorRenderer.registerArmorRenderer(AdvancedSpaceSuitArmorItem.class, new AdvancedSpaceSuitRenderer());
     }
 
     @SubscribeEvent
@@ -78,15 +73,21 @@ public class ModEventClientBusEvents {
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.JUPITER_PORTAL.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.EUROPA_PORTAL.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.CALLISTO_PORTAL.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BlockRegistry.IO_PORTAL.get(), RenderType.translucent());
 
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.LUMINOUS_BLUE_GLASS.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.LUMINOUS_WHITE_GLASS.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.LUMINOUS_CYAN_GLASS.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.LUMINOUS_MAGENTA_GLASS.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BlockRegistry.LUMINOUS_YELLOW_GLASS.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BlockRegistry.LUMINOUS_RED_GLASS.get(), RenderType.translucent());
+
+        ItemBlockRenderTypes.setRenderLayer(BlockRegistry.LUMINOUS_YELLOW_GLASS_PANE.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.LUMINOUS_MAGENTA_GLASS_PANE.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.LUMINOUS_CYAN_GLASS_PANE.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.LUMINOUS_BLUE_GLASS_PANE.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.LUMINOUS_WHITE_GLASS_PANE.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BlockRegistry.LUMINOUS_RED_GLASS_PANE.get(), RenderType.translucent());
 
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.REINFORCED_GLASS.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BlockRegistry.REINFORCED_GLASS_PANE.get(), RenderType.translucent());
@@ -192,8 +193,12 @@ public class ModEventClientBusEvents {
 
 //        ItemBlockRenderTypes.setRenderLayer(BlockRegistry.MECHADOG_HEAD.get(), RenderType.cutout());
 
-
         OverlayRegistry.registerOverlay(event);
+
+        AzArmorRendererRegistry.register(AdvancedSpacesuitRenderer::new, ItemRegistry.ADVANCED_SPACESUIT_HELMET.get(), ItemRegistry.ADVANCED_SPACESUIT_CHESTPLATE.get(), ItemRegistry.ADVANCED_SPACESUIT_LEGGINGS.get(), ItemRegistry.ADVANCED_SPACESUIT_BOOTS.get());
+        AzArmorRendererRegistry.register(HeavyDutySpacesuitRenderer::new, ItemRegistry.HEAVY_DUTY_SPACESUIT_HELMET.get(), ItemRegistry.HEAVY_DUTY_SPACESUIT_CHESTPLATE.get(), ItemRegistry.HEAVY_DUTY_SPACESUIT_LEGGINGS.get(), ItemRegistry.HEAVY_DUTY_SPACESUIT_BOOTS.get());
+        AzArmorRendererRegistry.register(ThermalSpacesuitRenderer::new, ItemRegistry.THERMAL_SPACESUIT_HELMET.get(), ItemRegistry.THERMAL_SPACESUIT_CHESTPLATE.get(), ItemRegistry.THERMAL_SPACESUIT_LEGGINGS.get(), ItemRegistry.THERMAL_SPACESUIT_BOOTS.get());
+        AzArmorRendererRegistry.register(BasicSpacesuitRenderer::new, ItemRegistry.BASIC_SPACESUIT_HELMET.get(), ItemRegistry.BASIC_SPACESUIT_CHESTPLATE.get(), ItemRegistry.BASIC_SPACESUIT_LEGGINGS.get(), ItemRegistry.BASIC_SPACESUIT_BOOTS.get());
 
         RecipeBookCategories.create("celestialexploration:workbench_crafting",  new ItemStack[] { new ItemStack((ItemLike)BlockRegistry.WORKBENCH.get()) });
         RecipeBookCategories.create("celestialexploration:workbench_smelting", new ItemStack(BlockRegistry.WORKBENCH.get()));

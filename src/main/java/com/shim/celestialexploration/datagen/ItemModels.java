@@ -353,11 +353,76 @@ public class ItemModels extends ItemModelProvider {
 
 
 		//---- JUPITER'S MOONS -------------------------------------------------------------------------------
-
-		//IO
-		self(BlockRegistry.IO_CORE.get());
+		//---- IO -------------------------------------------------------------------------------
+		//STONE
 		self(BlockRegistry.IO_STONE.get());
+		stairsItem(BlockRegistry.IO_STONE_STAIRS.get(), "io_stone");
+		slabItem(BlockRegistry.IO_STONE_SLAB.get(), "io_stone");
+		buttonInventory(name(BlockRegistry.IO_STONE_BUTTON.get()), modLoc("block/io_stone"));
+		pressurePlate(name(BlockRegistry.IO_STONE_PRESSURE_PLATE.get()), modLoc("block/io_stone"));
+
+		self(BlockRegistry.IO_COBBLESTONE.get());
+		stairsItem(BlockRegistry.IO_COBBLESTONE_STAIRS.get(), "io_cobblestone");
+		slabItem(BlockRegistry.IO_COBBLESTONE_SLAB.get(), "io_cobblestone");
+		wallItem(BlockRegistry.IO_COBBLESTONE_WALL.get(), "io_cobblestone");
+		self(BlockRegistry.COMPRESSED_IO_COBBLESTONE.get());
+		self(BlockRegistry.SUPER_COMPRESSED_IO_COBBLESTONE.get());
+
+		self(BlockRegistry.IO_BRICKS.get());
+		stairsItem(BlockRegistry.IO_BRICK_STAIRS.get(),"io_bricks");
+		slabItem(BlockRegistry.IO_BRICK_SLAB.get(), "io_bricks");
+		wallItem(BlockRegistry.IO_BRICK_WALL.get(),  "io_bricks");
+		self(BlockRegistry.CHISELED_IO_BRICKS.get());
+		self(BlockRegistry.CRACKED_IO_BRICKS.get());
+		self(BlockRegistry.IO_BRICK_PILLAR.get());
+
+		self(BlockRegistry.IO_SMOOTH_STONE.get());
+		slabItem(BlockRegistry.IO_SMOOTH_STONE_SLAB.get(), "io_smooth_stone");
+		//DEEPSLATE
 		self(BlockRegistry.IO_DEEPSLATE.get());
+		buttonInventory(name(BlockRegistry.IO_DEEPSLATE_BUTTON.get()), modLoc("block/io_deepslate_side"));
+		pressurePlate(name(BlockRegistry.IO_DEEPSLATE_PRESSURE_PLATE.get()), modLoc("block/io_deepslate_side"));
+
+		self(BlockRegistry.IO_COBBLED_DEEPSLATE.get());
+		stairsItem(BlockRegistry.IO_COBBLED_DEEPSLATE_STAIRS.get(), "io_cobbled_deepslate");
+		slabItem(BlockRegistry.IO_COBBLED_DEEPSLATE_SLAB.get(), "io_cobbled_deepslate");
+		wallItem(BlockRegistry.IO_COBBLED_DEEPSLATE_WALL.get(),"io_cobbled_deepslate");
+		self(BlockRegistry.COMPRESSED_IO_COBBLED_DEEPSLATE.get());
+		self(BlockRegistry.SUPER_COMPRESSED_IO_COBBLED_DEEPSLATE.get());
+
+		self(BlockRegistry.IO_POLISHED_DEEPSLATE.get());
+		stairsItem(BlockRegistry.IO_POLISHED_DEEPSLATE_STAIRS.get(), "io_polished_deepslate");
+		slabItem(BlockRegistry.IO_POLISHED_DEEPSLATE_SLAB.get(), "io_polished_deepslate");
+		wallItem(BlockRegistry.IO_POLISHED_DEEPSLATE_WALL.get(), "io_polished_deepslate");
+
+		self(BlockRegistry.IO_DEEPSLATE_BRICKS.get());
+		stairsItem(BlockRegistry.IO_DEEPSLATE_BRICK_STAIRS.get(), "io_deepslate_bricks");
+		slabItem(BlockRegistry.IO_DEEPSLATE_BRICK_SLAB.get(), "io_deepslate_bricks");
+		wallItem(BlockRegistry.IO_DEEPSLATE_BRICK_WALL.get(), "io_deepslate_bricks");
+		self(BlockRegistry.CHISELED_IO_DEEPSLATE_BRICKS.get());
+		self(BlockRegistry.CRACKED_IO_DEEPSLATE_BRICKS.get());
+
+		self(BlockRegistry.IO_DEEPSLATE_TILES.get());
+		stairsItem(BlockRegistry.IO_DEEPSLATE_TILE_STAIRS.get(), "io_deepslate_tiles");
+		slabItem(BlockRegistry.IO_DEEPSLATE_TILE_SLAB.get(),"io_deepslate_tiles");
+		wallItem(BlockRegistry.IO_DEEPSLATE_TILE_WALL.get(), "io_deepslate_tiles");
+		self(BlockRegistry.CRACKED_IO_DEEPSLATE_TILES.get());
+
+		//ORES
+		self(BlockRegistry.IO_SULFUR_ORE.get());
+		self(BlockRegistry.IO_LAPIS_ORE.get());
+		self(BlockRegistry.IO_DEEPSLATE_LAPIS_ORE.get());
+		self(BlockRegistry.IO_DEEPSLATE_IRON_ORE.get());
+
+		//OTHER
+		self(BlockRegistry.IO_CORE.get());
+		self(BlockRegistry.IO_SAND.get());
+		self(BlockRegistry.COARSE_IO_SAND.get());
+		self(BlockRegistry.GLOWING_IO_SAND.get());
+		self(BlockRegistry.IO_SAND_PATH.get());
+		self(BlockRegistry.IO_LANTERN.get());
+		self(BlockRegistry.IO_GEYSER.get());
+
 
 		//EUROPA
 		self(BlockRegistry.EUROPA_CORE.get());
@@ -367,7 +432,7 @@ public class ItemModels extends ItemModelProvider {
 		stairsItem(BlockRegistry.EUROPA_BRICK_STAIRS.get(),"europa_bricks");
 		slabItem(BlockRegistry.EUROPA_BRICK_SLAB.get(), "europa_bricks");
 		wallItem(BlockRegistry.EUROPA_BRICK_WALL.get(),  "europa_bricks");
-//		self(BlockRegistry.CHISELED_EUROPA_BRICKS.get());
+		self(BlockRegistry.CHISELED_EUROPA_BRICKS.get());
 //		self(BlockRegistry.CRACKED_EUROPA_BRICKS.get());
 //		self(BlockRegistry.EUROPA_BRICK_PILLAR.get());
 
@@ -376,6 +441,15 @@ public class ItemModels extends ItemModelProvider {
 
 		//GANYMEDE
 		self(BlockRegistry.GANYMEDE_CORE.get());
+		self(BlockRegistry.GANYMEDE_BRICKS.get());
+		stairsItem(BlockRegistry.GANYMEDE_BRICK_STAIRS.get(),"ganymede_bricks");
+		slabItem(BlockRegistry.GANYMEDE_BRICK_SLAB.get(), "ganymede_bricks");
+		wallItem(BlockRegistry.GANYMEDE_BRICK_WALL.get(),  "ganymede_bricks");
+		self(BlockRegistry.CHISELED_GANYMEDE_BRICKS.get());
+//		self(BlockRegistry.CRACKED_GANYMEDE_BRICKS.get());
+//		self(BlockRegistry.GANYMEDE_BRICK_PILLAR.get());
+		self(BlockRegistry.GLOWING_GANYMEDE_SAND.get());
+		self(BlockRegistry.GANYMEDE_LANTERN.get());
 
 		//CALLISTO
 		self(BlockRegistry.CALLISTO_CORE.get());
@@ -383,7 +457,7 @@ public class ItemModels extends ItemModelProvider {
 		stairsItem(BlockRegistry.CALLISTO_BRICK_STAIRS.get(),"callisto_bricks");
 		slabItem(BlockRegistry.CALLISTO_BRICK_SLAB.get(), "callisto_bricks");
 		wallItem(BlockRegistry.CALLISTO_BRICK_WALL.get(),  "callisto_bricks");
-//		self(BlockRegistry.CHISELED_CALLISTO_BRICKS.get());
+		self(BlockRegistry.CHISELED_CALLISTO_BRICKS.get());
 //		self(BlockRegistry.CRACKED_CALLISTO_BRICKS.get());
 //		self(BlockRegistry.CALLISTO_BRICK_PILLAR.get());
 		self(BlockRegistry.GLOWING_CALLISTO_SAND.get());
@@ -567,6 +641,10 @@ public class ItemModels extends ItemModelProvider {
 		self(BlockRegistry.LUMINOUS_WHITE_GLASS.get());
 		self(BlockRegistry.LUMINOUS_CYAN_GLASS.get());
 		self(BlockRegistry.LUMINOUS_MAGENTA_GLASS.get());
+		self(BlockRegistry.LUMINOUS_YELLOW_GLASS.get());
+		self(BlockRegistry.LUMINOUS_RED_GLASS.get());
+		generatedBlockItem(BlockRegistry.LUMINOUS_RED_GLASS_PANE.get(), "block/luminous_red_glass");
+		generatedBlockItem(BlockRegistry.LUMINOUS_YELLOW_GLASS_PANE.get(), "block/luminous_yellow_glass");
 		generatedBlockItem(BlockRegistry.LUMINOUS_MAGENTA_GLASS_PANE.get(), "block/luminous_magenta_glass");
 		generatedBlockItem(BlockRegistry.LUMINOUS_BLUE_GLASS_PANE.get(), "block/luminous_blue_glass");
 		generatedBlockItem(BlockRegistry.LUMINOUS_CYAN_GLASS_PANE.get(), "block/luminous_cyan_glass");
@@ -680,6 +758,9 @@ public class ItemModels extends ItemModelProvider {
 		generatedItem(ItemRegistry.MOON_DUST.get());
 		generatedItem(ItemRegistry.EUROPA_DUST.get());
 		generatedItem(ItemRegistry.CALLISTO_DUST.get());
+		generatedItem(ItemRegistry.IO_DUST.get());
+
+
 		handheldItem(ItemRegistry.STEEL_ROD.get());
 		generatedItem(ItemRegistry.STEEL_WOOL.get());
 		handheldItem(ItemRegistry.FLARE_ROD.get());

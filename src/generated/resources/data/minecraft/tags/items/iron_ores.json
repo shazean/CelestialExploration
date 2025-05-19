@@ -1,11 +1,15 @@
 {
   "replace": false,
   "values": [
+    "celestialexploration:moon_iron_ore",
+    "celestialexploration:moon_deepslate_iron_ore",
     "celestialexploration:mars_iron_ore",
     "celestialexploration:mars_deepslate_iron_ore",
     "celestialexploration:venus_iron_ore",
     "celestialexploration:venus_deepslate_iron_ore",
     "celestialexploration:meteor_iron_ore",
-    "celestialexploration:mercury_deepslate_iron_ore"
+    "celestialexploration:io_deepslate_iron_ore",
+    "celestialexploration:mercury_deepslate_iron_ore",
+    "celestialexploration:io_deepslate_iron_ore"
   ]
 }

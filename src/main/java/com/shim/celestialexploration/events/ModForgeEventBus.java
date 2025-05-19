@@ -11,7 +11,7 @@ import com.shim.celestialexploration.entity.entity.projectile.MeteorProjectile;
 import com.shim.celestialexploration.entity.entity.robots.MechaCerberusBoss;
 import com.shim.celestialexploration.entity.entity.robots.MechaDog;
 import com.shim.celestialexploration.entity.entity.vehicle.Spaceship;
-import com.shim.celestialexploration.item.armor.ThermalSpaceSuitArmorItem;
+import com.shim.celestialexploration.item.armor.ThermalSpacesuitArmorItem;
 import com.shim.celestialexploration.packets.CelestialPacketHandler;
 import com.shim.celestialexploration.packets.SpaceFlightPacket;
 import com.shim.celestialexploration.registry.*;
@@ -114,87 +114,85 @@ public class ModForgeEventBus {
         }
 
         if (!player.level.isClientSide()) {
-        ISpaceFlight flightCap = CelestialExploration.getCapability(player, CapabilityRegistry.SPACE_FLIGHT_CAPABILITY);
-        if (flightCap != null) spaceVehicle = player;
-        else {
-            if (player.getVehicle() != null) {
-                flightCap = CelestialExploration.getCapability(player.getVehicle(), CapabilityRegistry.SPACE_FLIGHT_CAPABILITY);
-                if (flightCap != null)  spaceVehicle = player.getVehicle();
+            ISpaceFlight flightCap = CelestialExploration.getCapability(player, CapabilityRegistry.SPACE_FLIGHT_CAPABILITY);
+            if (flightCap != null) spaceVehicle = player;
+            else {
+                if (player.getVehicle() != null) {
+                    flightCap = CelestialExploration.getCapability(player.getVehicle(), CapabilityRegistry.SPACE_FLIGHT_CAPABILITY);
+                    if (flightCap != null) spaceVehicle = player.getVehicle();
+                }
             }
-        }
-        if (spaceVehicle != null) {
-            if (flightCap.canSpaceTravel(spaceVehicle) && flightCap.isTeleportHeight(spaceVehicle) && !spaceVehicle.level.dimension().equals(DimensionRegistry.SPACE)) {
-                ArrayList<Entity> passengers = flightCap.getAdditionalEntitiesToTeleport(spaceVehicle);
-                TeleportUtil.displayTeleportMessage(player, flightCap.getTeleportationCooldown(), DimensionRegistry.SPACE);
+            if (spaceVehicle != null) {
+                if (flightCap.canSpaceTravel(spaceVehicle) && flightCap.isTeleportHeight(spaceVehicle) && !spaceVehicle.level.dimension().equals(DimensionRegistry.SPACE)) {
+                    ArrayList<Entity> passengers = flightCap.getAdditionalEntitiesToTeleport(spaceVehicle);
+                    TeleportUtil.displayTeleportMessage(player, flightCap.getTeleportationCooldown(), DimensionRegistry.SPACE);
 
-                if (flightCap.getTeleportationCooldown() == 0) {
-                    BlockPos pos = new BlockPos(spaceVehicle.position().x, spaceVehicle.position().y, spaceVehicle.position().z);
-                    Vec3 teleportLocation = CelestialUtil.getDimensionToSpaceCoordinates(spaceVehicle.level.dimension(), new ChunkPos(pos));
+                    if (flightCap.getTeleportationCooldown() == 0) {
+                        BlockPos pos = new BlockPos(spaceVehicle.position().x, spaceVehicle.position().y, spaceVehicle.position().z);
+                        Vec3 teleportLocation = CelestialUtil.getDimensionToSpaceCoordinates(spaceVehicle.level.dimension(), new ChunkPos(pos));
 //                    Vec3 teleportLocation = new Vec3(CelestialUtil.getPlanetaryChunkCoordinates(spaceVehicle.level.dimension()).x * 16, 135.0, CelestialUtil.getPlanetaryChunkCoordinates(spaceVehicle.level.dimension()).z * 16);
 
                         TeleportUtil.teleport(spaceVehicle, passengers, DimensionRegistry.SPACE, teleportLocation);
-                    flightCap.resetTeleportationCooldown();
-                } else {
-                    if (event.phase.equals(TickEvent.Phase.END)) {
-                        flightCap.decrementTeleportationCooldown();
-                    }
-                }
-            } else if (flightCap.canSpaceTravel(spaceVehicle) && spaceVehicle.level.dimension().equals(DimensionRegistry.SPACE)) {
-                BlockHitResult hitResult;
-                if (spaceVehicle instanceof Spaceship spaceship && spaceship.getMaxSpeed() >= Spaceship.SPACESHIP_LOW_FUEL_SPEED) {
-                    //to account for the spaceship having the option for fast movement speeds in space
-                    hitResult = (BlockHitResult) player.pick(35.0D, 0.0F, false);
-                } else {
-                    hitResult = (BlockHitResult) player.pick(18.0D, 0.0F, false);
-                }
-
-                BlockState blockState = spaceVehicle.level.getBlockState(hitResult.getBlockPos());
-
-                if (!spaceVehicle.level.isClientSide()) {
-
-                    ResourceKey<Level> destination = TeleportUtil.getTeleportLocation(spaceVehicle.position(), blockState);
-//                CelestialExploration.LOGGER.debug("seenBlock: " + blockState + "destination: " + destination);
-                    ArrayList<Entity> passengers = flightCap.getAdditionalEntitiesToTeleport(spaceVehicle);
-                    if (destination != null) {
-                        TeleportUtil.displayTeleportMessage(player, flightCap.getTeleportationCooldown(), destination);
-
-                        if (flightCap.getTeleportationCooldown() == 0) {
-                            if (player instanceof ServerPlayer serverPlayer) {
-                                CelestialPacketHandler.INSTANCE.sendTo(new SpaceFlightPacket(flightCap.getTeleportationCooldown()), serverPlayer.connection.getConnection(), NetworkDirection.PLAY_TO_CLIENT);
-                            }
-
-                            TeleportUtil.teleport(spaceVehicle, passengers, destination, spaceVehicle.position());
-                            flightCap.resetTeleportationCooldown();
-
-                        } else {
-                            if (player instanceof ServerPlayer serverPlayer) {
-                                CelestialPacketHandler.INSTANCE.sendTo(new SpaceFlightPacket(flightCap.getTeleportationCooldown()), serverPlayer.connection.getConnection(), NetworkDirection.PLAY_TO_CLIENT);
-                            }
+                        flightCap.resetTeleportationCooldown();
+                    } else {
+                        if (event.phase.equals(TickEvent.Phase.END)) {
                             flightCap.decrementTeleportationCooldown();
                         }
+                    }
+                } else if (flightCap.canSpaceTravel(spaceVehicle) && spaceVehicle.level.dimension().equals(DimensionRegistry.SPACE)) {
+                    BlockHitResult hitResult;
+                    if (spaceVehicle instanceof Spaceship spaceship && spaceship.getMaxSpeed() >= Spaceship.SPACESHIP_LOW_FUEL_SPEED) {
+                        //to account for the spaceship having the option for fast movement speeds in space
+                        hitResult = (BlockHitResult) player.pick(35.0D, 0.0F, false);
                     } else {
-                        flightCap.resetTeleportationCooldown();
+                        hitResult = (BlockHitResult) player.pick(18.0D, 0.0F, false);
+                    }
+
+                    BlockState blockState = spaceVehicle.level.getBlockState(hitResult.getBlockPos());
+
+                    if (!spaceVehicle.level.isClientSide()) {
+
+                        ResourceKey<Level> destination = TeleportUtil.getTeleportLocation(spaceVehicle.position(), blockState);
+//                CelestialExploration.LOGGER.debug("seenBlock: " + blockState + "destination: " + destination);
+                        ArrayList<Entity> passengers = flightCap.getAdditionalEntitiesToTeleport(spaceVehicle);
+                        if (destination != null) {
+                            TeleportUtil.displayTeleportMessage(player, flightCap.getTeleportationCooldown(), destination);
+
+                            if (flightCap.getTeleportationCooldown() == 0) {
+                                if (player instanceof ServerPlayer serverPlayer) {
+                                    CelestialPacketHandler.INSTANCE.sendTo(new SpaceFlightPacket(flightCap.getTeleportationCooldown()), serverPlayer.connection.getConnection(), NetworkDirection.PLAY_TO_CLIENT);
+                                }
+
+                                TeleportUtil.teleport(spaceVehicle, passengers, destination, spaceVehicle.position());
+                                flightCap.resetTeleportationCooldown();
+
+                            } else {
+                                if (player instanceof ServerPlayer serverPlayer) {
+                                    CelestialPacketHandler.INSTANCE.sendTo(new SpaceFlightPacket(flightCap.getTeleportationCooldown()), serverPlayer.connection.getConnection(), NetworkDirection.PLAY_TO_CLIENT);
+                                }
+                                flightCap.decrementTeleportationCooldown();
+                            }
+                        } else {
+                            flightCap.resetTeleportationCooldown();
+                        }
                     }
                 }
-            }
             }
         }
 
         LightTravelCapability.ILightTravel travelCap = CelestialExploration.getCapability(player, CapabilityRegistry.LIGHT_TRAVEL_CAPABILITY);
 
 //        if (!player.level.isClientSide()) {
-
-            if (travelCap != null) {
-                if (event.phase.equals(TickEvent.Phase.END)) {
-                    travelCap.getMercuryCooldown().decrementCooldown();
-                    travelCap.getVenusCooldown().decrementCooldown();
-                    travelCap.getOverworldCooldown().decrementCooldown();
-                    travelCap.getMarsCooldown().decrementCooldown();
-                    travelCap.getJupiterCooldown().decrementCooldown();
-                }
+        if (travelCap != null) {
+            if (event.phase.equals(TickEvent.Phase.END)) {
+                travelCap.getMercuryCooldown().decrementCooldown();
+                travelCap.getVenusCooldown().decrementCooldown();
+                travelCap.getOverworldCooldown().decrementCooldown();
+                travelCap.getMarsCooldown().decrementCooldown();
+                travelCap.getJupiterCooldown().decrementCooldown();
             }
+        }
 //        }
-
 
         if (CelestialCommonConfig.STORMS.get()) {
             if (player.level.isRaining() && player.level.getBiome(player.blockPosition()).is(TagRegistry.Biomes.DUST_STORM_BIOMES)) {
@@ -224,9 +222,7 @@ public class ModForgeEventBus {
                 event.setCanceled(true);
             }
         }
-
     }
-
 
     @SubscribeEvent
     public static void clickEvent(PlayerInteractEvent.RightClickBlock event) {
@@ -244,7 +240,7 @@ public class ModForgeEventBus {
                             if (BlockRegistry.MARS_PORTAL.get().trySpawnPortal(level, framePos) || BlockRegistry.MOON_PORTAL.get().trySpawnPortal(level, framePos) ||
                                     BlockRegistry.VENUS_PORTAL.get().trySpawnPortal(level, framePos) || BlockRegistry.MERCURY_PORTAL.get().trySpawnPortal(level, framePos) ||
                                     BlockRegistry.JUPITER_PORTAL.get().trySpawnPortal(level, framePos) || BlockRegistry.EUROPA_PORTAL.get().trySpawnPortal(level, framePos) ||
-                                    BlockRegistry.CALLISTO_PORTAL.get().trySpawnPortal(level, framePos)){
+                                    BlockRegistry.CALLISTO_PORTAL.get().trySpawnPortal(level, framePos) || BlockRegistry.IO_PORTAL.get().trySpawnPortal(level, framePos)) {
                                 level.playSound(player, framePos, SoundEvents.PORTAL_TRIGGER, SoundSource.BLOCKS, 1.0F, 1.0F);
                                 event.setCanceled(true);
                                 event.setCancellationResult(InteractionResult.CONSUME);
@@ -265,6 +261,8 @@ public class ModForgeEventBus {
                     level.setBlock(pos, BlockRegistry.VENUS_SAND_PATH.get().defaultBlockState(), 1);
                 } else if (block.is(BlockRegistry.MERCURY_SAND.get())) {
                     level.setBlock(pos, BlockRegistry.MERCURY_SAND_PATH.get().defaultBlockState(), 1);
+                } else if (block.is(BlockRegistry.IO_SAND.get())) {
+                    level.setBlock(pos, BlockRegistry.IO_SAND_PATH.get().defaultBlockState(), 1);
                 }
             }
         }
@@ -288,7 +286,7 @@ public class ModForgeEventBus {
             if (entity instanceof ServerPlayer player) {
                 ItemStack itemStack = player.getItemBySlot(EquipmentSlot.FEET);
 
-                if (itemStack.getItem() instanceof ThermalSpaceSuitArmorItem && ((ThermalSpaceSuitArmorItem) itemStack.getItem()).isGravityBoots(itemStack)) {
+                if (itemStack.getItem() instanceof ThermalSpacesuitArmorItem && ((ThermalSpacesuitArmorItem) itemStack.getItem()).isGravityBoots(itemStack)) {
                     player.removeEffect(EffectRegistry.LOW_GRAVITY.get());
                 } else {
                     if (DimensionUtil.isLowGravityDimension(dimension)) {
@@ -306,13 +304,13 @@ public class ModForgeEventBus {
             } else if (entity instanceof LivingEntity livingEntity) {
                 if (DimensionUtil.isLowGravityDimension(dimension) && !livingEntity.getType().is(TagRegistry.Entities.LOW_GRAVITY_EXEMPT)) {
                     livingEntity.addEffect(new MobEffectInstance(EffectRegistry.LOW_GRAVITY.get(), 120000, 0, false, false, true));
-                } else  {
+                } else {
                     livingEntity.removeEffect(EffectRegistry.LOW_GRAVITY.get());
                 }
 
                 if (DimensionUtil.isHighGravityDimension(dimension) && !livingEntity.getType().is(TagRegistry.Entities.HIGH_GRAVITY_EXEMPT)) {
                     livingEntity.addEffect(new MobEffectInstance(EffectRegistry.HIGH_GRAVITY.get(), 120000, 0, false, false, true));
-                } else  {
+                } else {
                     livingEntity.removeEffect(EffectRegistry.HIGH_GRAVITY.get());
                 }
             }
@@ -344,7 +342,7 @@ public class ModForgeEventBus {
 
             if (!(slot == EquipmentSlot.FEET)) return;
 
-            if (itemStack.getItem() instanceof ThermalSpaceSuitArmorItem && ((ThermalSpaceSuitArmorItem) itemStack.getItem()).isGravityBoots(itemStack)) {
+            if (itemStack.getItem() instanceof ThermalSpacesuitArmorItem && ((ThermalSpacesuitArmorItem) itemStack.getItem()).isGravityBoots(itemStack)) {
                 player.removeEffect(EffectRegistry.LOW_GRAVITY.get());
                 player.removeEffect(EffectRegistry.EXTRA_LOW_GRAVITY.get());
 

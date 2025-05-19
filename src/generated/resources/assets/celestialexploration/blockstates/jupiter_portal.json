@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "celestialexploration:block/jupiter_portal_ns"
+    },
+    "axis=z": {
+      "model": "celestialexploration:block/jupiter_portal_ew"
+    }
+  }
+}

@@ -22,6 +22,10 @@
     "celestialexploration:mercury_cobblestone",
     "celestialexploration:mercury_cobbled_deepslate",
     "celestialexploration:compressed_mercury_cobblestone",
-    "celestialexploration:compressed_mercury_cobbled_deepslate"
+    "celestialexploration:compressed_mercury_cobbled_deepslate",
+    "celestialexploration:io_cobblestone",
+    "celestialexploration:io_cobbled_deepslate",
+    "celestialexploration:compressed_io_cobblestone",
+    "celestialexploration:compressed_io_cobbled_deepslate"
   ]
 }

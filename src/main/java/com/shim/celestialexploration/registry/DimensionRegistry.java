@@ -36,6 +36,7 @@ public class DimensionRegistry {
 //    public static final ResourceKey<Level> CALLISTO = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(CelestialExploration.MODID, "callisto"));
     public static final ResourceKey<Level> EUROPA = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(CelestialExploration.MODID, "europa"));
     public static final ResourceKey<Level> CALLISTO = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(CelestialExploration.MODID, "callisto"));
+    public static final ResourceKey<Level> IO = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(CelestialExploration.MODID, "io"));
 
     public static final MultiNoiseBiomeSource.Preset MARS_PRESET = new MultiNoiseBiomeSource.Preset(new ResourceLocation(CelestialExploration.MODID, "mars"), (biome) -> {
         ImmutableList.Builder<Pair<Climate.ParameterPoint, Holder<Biome>>> builder = ImmutableList.builder();
@@ -71,25 +72,9 @@ public class DimensionRegistry {
         return new Climate.ParameterList<>(builder.build());
     });
 
-//    public static final MultiNoiseBiomeSource.Preset IO_PRESET = new MultiNoiseBiomeSource.Preset(new ResourceLocation(CelestialExploration.MODID, "io"), (biome) -> {
-//        ImmutableList.Builder<Pair<Climate.ParameterPoint, Holder<Biome>>> builder = ImmutableList.builder();
-//        new IoBiomeBuilder().addBiomes((p_204279_) -> {
-//            builder.add(p_204279_.mapSecond(biome::getOrCreateHolder));
-//        });
-//        return new Climate.ParameterList<>(builder.build());
-//    });
-
 //    public static final MultiNoiseBiomeSource.Preset GANYMEDE_PRESET = new MultiNoiseBiomeSource.Preset(new ResourceLocation(CelestialExploration.MODID, "ganymede"), (biome) -> {
 //        ImmutableList.Builder<Pair<Climate.ParameterPoint, Holder<Biome>>> builder = ImmutableList.builder();
 //        new GanymedeBiomeBuilder().addBiomes((p_204279_) -> {
-//            builder.add(p_204279_.mapSecond(biome::getOrCreateHolder));
-//        });
-//        return new Climate.ParameterList<>(builder.build());
-//    });
-
-//    public static final MultiNoiseBiomeSource.Preset CALLISTO_PRESET = new MultiNoiseBiomeSource.Preset(new ResourceLocation(CelestialExploration.MODID, "callisto"), (biome) -> {
-//        ImmutableList.Builder<Pair<Climate.ParameterPoint, Holder<Biome>>> builder = ImmutableList.builder();
-//        new CallistoBiomeBuilder().addBiomes((p_204279_) -> {
 //            builder.add(p_204279_.mapSecond(biome::getOrCreateHolder));
 //        });
 //        return new Climate.ParameterList<>(builder.build());
@@ -101,18 +86,18 @@ public class DimensionRegistry {
         return new Climate.ParameterList<>(builder.build());
     });
 
-
     public static final MultiNoiseBiomeSource.Preset CALLISTO_PRESET = new MultiNoiseBiomeSource.Preset(new ResourceLocation(CelestialExploration.MODID, "callisto"), (biome) -> {
         ImmutableList.Builder<Pair<Climate.ParameterPoint, Holder<Biome>>> builder = ImmutableList.builder();
         new CallistoBiomeBuilder().addBiomes((p_204279_) -> builder.add(p_204279_.mapSecond(biome::getOrCreateHolder)));
         return new Climate.ParameterList<>(builder.build());
     });
 
-//    public static final MultiNoiseBiomeSource.Preset CALLISTO_PRESET = new MultiNoiseBiomeSource.Preset(new ResourceLocation(CelestialExploration.MODID, "callisto"), (biome) -> {
-//        ImmutableList.Builder<Pair<Climate.ParameterPoint, Holder<Biome>>> builder = ImmutableList.builder();
-//        new CallistoBiomeBuilder().addBiomes((p_204279_) -> builder.add(p_204279_.mapSecond(biome::getOrCreateHolder)));
-//        return new Climate.ParameterList<>(builder.build());
-//    });
+    public static final MultiNoiseBiomeSource.Preset IO_PRESET = new MultiNoiseBiomeSource.Preset(new ResourceLocation(CelestialExploration.MODID, "io"), (biome) -> {
+        ImmutableList.Builder<Pair<Climate.ParameterPoint, Holder<Biome>>> builder = ImmutableList.builder();
+        new IoBiomeBuilder().addBiomes((p_204279_) -> builder.add(p_204279_.mapSecond(biome::getOrCreateHolder)));
+        return new Climate.ParameterList<>(builder.build());
+    });
+
 
 
     //---- FOR DATAPACK/PRESETS -------------------------------------------------------------------------------

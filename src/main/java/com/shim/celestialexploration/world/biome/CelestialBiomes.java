@@ -1,6 +1,9 @@
 package com.shim.celestialexploration.world.biome;
 
 import com.shim.celestialexploration.registry.EntityRegistry;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleType;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.data.worldgen.Carvers;
 import net.minecraft.data.worldgen.placement.MiscOverworldPlacements;
 import net.minecraft.sounds.Music;
@@ -38,6 +41,14 @@ public class CelestialBiomes {
                         .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(music).build()).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
+    protected static Biome biome(Biome.Precipitation precipitation, Biome.BiomeCategory category, float temperature, float downfall,
+                                 int skyColor, int fogColor, int waterColor, int waterFogColor,
+                                 MobSpawnSettings.Builder spawnBuilder, BiomeGenerationSettings.Builder biomeBuilder, @Nullable Music music, AmbientParticleSettings particle) {
+        return (new Biome.BiomeBuilder()).precipitation(precipitation).biomeCategory(category).temperature(temperature).downfall(downfall)
+                .specialEffects((new BiomeSpecialEffects.Builder()).waterColor(waterColor).waterFogColor(waterFogColor).fogColor(fogColor).skyColor(skyColor).ambientParticle(particle)
+                        .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(music).build()).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
+    }
+
     public static Biome space() {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
@@ -67,7 +78,8 @@ public class CelestialBiomes {
         MOON(1807, 1549, 335425, 69408),
         VENUS(14200929, 10715456, 4741209, 3160378),
         MERCURY(1807, 1549, 335425, 69408),
-        JUPITER(12814693, 9985854, 10914167, 8546133);
+        JUPITER(12814693, 9985854, 10914167, 8546133),
+        IO(1807, 4144438, 1776152, 1052687);
 
         final int skyColor;
         final int skyFogColor;

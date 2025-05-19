@@ -25,6 +25,7 @@ import net.minecraft.world.level.levelgen.placement.*;
 public class SurfacePlacements {
 
     public static final Holder<PlacedFeature> GEYSER = PlacementUtils.register("geyser", CelestialFeatureUtils.GEYSER, InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome());
+    public static final Holder<PlacedFeature> IO_GEYSER = PlacementUtils.register("io_geyser", CelestialFeatureUtils.IO_GEYSER, InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome());
 
 //    public static final Holder<PlacedFeature> JUPITER_CLOUD = PlacementUtils.register("jupiter_cloud", CelestialFeatureUtils.JUPITER_CLOUD, RarityFilter.onAverageOnceEvery(20), InSquarePlacement.spread(), HeightRangePlacement.of(BiasedToBottomHeight.of(VerticalAnchor.absolute(64), VerticalAnchor.absolute(512), 8)), BiomeFilter.biome());
 

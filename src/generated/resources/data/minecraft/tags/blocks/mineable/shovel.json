@@ -4,11 +4,22 @@
     "celestialexploration:moon_sand",
     "celestialexploration:glowing_moon_sand",
     "celestialexploration:coarse_moon_sand",
+    "celestialexploration:moon_sand_path",
+    "celestialexploration:mars_sand_path",
     "celestialexploration:mars_sand",
     "celestialexploration:coarse_mars_sand",
     "celestialexploration:venus_sand",
     "celestialexploration:fine_venus_sand",
+    "celestialexploration:venus_sand_path",
+    "celestialexploration:mercury_sand_path",
     "celestialexploration:mercury_sand",
-    "celestialexploration:coarse_mercury_sand"
+    "celestialexploration:coarse_mercury_sand",
+    "celestialexploration:glowing_callisto_sand",
+    "celestialexploration:glowing_europa_sand",
+    "celestialexploration:glowing_ganymede_sand",
+    "celestialexploration:io_sand",
+    "celestialexploration:coarse_io_sand",
+    "celestialexploration:glowing_io_sand",
+    "celestialexploration:io_sand_path"
   ]
 }

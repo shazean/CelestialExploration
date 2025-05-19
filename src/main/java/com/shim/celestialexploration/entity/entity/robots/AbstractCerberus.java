@@ -77,9 +77,9 @@ public abstract class AbstractCerberus extends TamableAnimal implements GeoEntit
 //    private UUID persistentAngerTarget;
     private final Item foodItem = Items.REDSTONE;
     private final CerberusPart[] cerberusParts;
-    private final CerberusPart headCenter;
-    private final CerberusPart headLeft;
-    private final CerberusPart headRight;
+    protected final CerberusPart headCenter;
+    protected final CerberusPart headLeft;
+    protected final CerberusPart headRight;
 
     public AbstractCerberus(EntityType<? extends AbstractCerberus> p_30369_, Level p_30370_) {
         super(p_30369_, p_30370_);
@@ -244,6 +244,14 @@ public abstract class AbstractCerberus extends TamableAnimal implements GeoEntit
         return SoundEvents.WOLF_HURT;
     }
 
+    protected SoundEvent getHowlSound() {
+        return SoundEvents.WOLF_HOWL;
+    }
+
+    protected SoundEvent getChargeAttackSound() {
+        return SoundEvents.WOLF_GROWL;
+    }
+
     protected SoundEvent getDeathSound() {
         return SoundEvents.WOLF_DEATH;
     }
@@ -273,7 +281,7 @@ public abstract class AbstractCerberus extends TamableAnimal implements GeoEntit
 
     /**
      * Mob packet handling.  This is necessary to set up hitboxes and multiparts.
-     * In most cases you shouldn't have to call these for subclasses, they should be handled automatically here as long as you are extending ADragonBase
+     * In most cases you shouldn't have to call these for subclasses, they should be handled automatically here
      */
     @Override
     public void recreateFromPacket(@NotNull ClientboundAddMobPacket mobPacketIn) {
@@ -444,7 +452,7 @@ public abstract class AbstractCerberus extends TamableAnimal implements GeoEntit
     }
 
     public int getMaxSpawnClusterSize() {
-        return 8;
+        return 3;
     }
 
 //    public int getRemainingPersistentAngerTime() {
@@ -513,16 +521,16 @@ public abstract class AbstractCerberus extends TamableAnimal implements GeoEntit
 //    }
 
     class CerberusAvoidEntityGoal<T extends LivingEntity> extends AvoidEntityGoal<T> {
-        private final AbstractCerberus mechadog;
+        private final AbstractCerberus cerberus;
 
         public CerberusAvoidEntityGoal(AbstractCerberus p_30454_, Class<T> p_30455_, float p_30456_, double p_30457_, double p_30458_) {
             super(p_30454_, p_30455_, p_30456_, p_30457_, p_30458_);
-            this.mechadog = p_30454_;
+            this.cerberus = p_30454_;
         }
 
         public boolean canUse() {
             if (super.canUse() && this.toAvoid instanceof Llama) {
-                return !this.mechadog.isTame() && this.avoidLlama((Llama) this.toAvoid);
+                return !this.cerberus.isTame() && this.avoidLlama((Llama) this.toAvoid);
             } else {
                 return false;
             }
@@ -554,7 +562,7 @@ public abstract class AbstractCerberus extends TamableAnimal implements GeoEntit
     }
 
     class BegGoal extends Goal {
-        private final AbstractCerberus mechadog;
+        private final AbstractCerberus cerberus;
         @Nullable
         private Player player;
         private final Level level;
@@ -563,7 +571,7 @@ public abstract class AbstractCerberus extends TamableAnimal implements GeoEntit
         private final TargetingConditions begTargeting;
 
         public BegGoal(AbstractCerberus p_25063_, float p_25064_) {
-            this.mechadog = p_25063_;
+            this.cerberus = p_25063_;
             this.level = p_25063_.level;
             this.lookDistance = p_25064_;
             this.begTargeting = TargetingConditions.forNonCombat().range((double) p_25064_);
@@ -571,14 +579,14 @@ public abstract class AbstractCerberus extends TamableAnimal implements GeoEntit
         }
 
         public boolean canUse() {
-            this.player = this.level.getNearestPlayer(this.begTargeting, this.mechadog);
+            this.player = this.level.getNearestPlayer(this.begTargeting, this.cerberus);
             return this.player != null && this.playerHoldingInteresting(this.player);
         }
 
         public boolean canContinueToUse() {
             if (!this.player.isAlive()) {
                 return false;
-            } else if (this.mechadog.distanceToSqr(this.player) > (double) (this.lookDistance * this.lookDistance)) {
+            } else if (this.cerberus.distanceToSqr(this.player) > (double) (this.lookDistance * this.lookDistance)) {
                 return false;
             } else {
                 return this.lookTime > 0 && this.playerHoldingInteresting(this.player);
@@ -586,28 +594,28 @@ public abstract class AbstractCerberus extends TamableAnimal implements GeoEntit
         }
 
         public void start() {
-            this.mechadog.setIsInterested(true);
-            this.lookTime = this.adjustedTickDelay(40 + this.mechadog.getRandom().nextInt(40));
+            this.cerberus.setIsInterested(true);
+            this.lookTime = this.adjustedTickDelay(40 + this.cerberus.getRandom().nextInt(40));
         }
 
         public void stop() {
-            this.mechadog.setIsInterested(false);
+            this.cerberus.setIsInterested(false);
             this.player = null;
         }
 
         public void tick() {
-            this.mechadog.getLookControl().setLookAt(this.player.getX(), this.player.getEyeY(), this.player.getZ(), 10.0F, (float) this.mechadog.getMaxHeadXRot());
+            this.cerberus.getLookControl().setLookAt(this.player.getX(), this.player.getEyeY(), this.player.getZ(), 10.0F, (float) this.cerberus.getMaxHeadXRot());
             --this.lookTime;
         }
 
         private boolean playerHoldingInteresting(Player p_25067_) {
             for (InteractionHand interactionhand : InteractionHand.values()) {
                 ItemStack itemstack = p_25067_.getItemInHand(interactionhand);
-                if (this.mechadog.isTame() && itemstack.is(this.mechadog.foodItem)) {
+                if (this.cerberus.isTame() && itemstack.is(this.cerberus.foodItem)) {
                     return true;
                 }
 
-                if (this.mechadog.isFood(itemstack)) {
+                if (this.cerberus.isFood(itemstack)) {
                     return true;
                 }
             }

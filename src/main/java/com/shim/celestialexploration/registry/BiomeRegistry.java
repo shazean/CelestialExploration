@@ -75,6 +75,11 @@ public class BiomeRegistry {
     public static final RegistryObject<Biome> CALLISTO_LOWER_PLAINS = BIOMES.register("callisto_lower_plains", MoonBiomes::desert);
     public static final RegistryObject<Biome> CALLISTO_PLAINS = BIOMES.register("callisto_plains", MoonBiomes::plains);
 
+    //---- IO -------------------------------------------------------------------------------
+    public static final RegistryObject<Biome> IO_DESERT = BIOMES.register("io_desert", IoBiomes::desert);
+    public static final RegistryObject<Biome> IO_SULFUR_FLATS = BIOMES.register("io_sulfur_flats", IoBiomes::plains);
+    public static final RegistryObject<Biome> IO_LOWER_PLAINS = BIOMES.register("io_lower_plains", IoBiomes::plains);
+    public static final RegistryObject<Biome> IO_PLAINS = BIOMES.register("io_plains", IoBiomes::plains);
 
     //---- FOR DATAPACK/PRESETS -------------------------------------------------------------------------------
     public static final RegistryObject<Biome> HIGH_DESERT = BIOMES.register("high_desert", () -> PresetBiomes.desert(false, false));

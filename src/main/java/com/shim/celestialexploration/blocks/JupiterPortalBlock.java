@@ -17,7 +17,7 @@ public class JupiterPortalBlock extends AbstractPortalBlock {
 
     @Override
     public PlanetTeleporter getTeleporter(ServerLevel serverLevel) {
-        return new PlanetTeleporter(serverLevel, PoiRegistry.EUROPA_PORTAL.get(), BlockRegistry.EUROPA_BRICKS.get(), BlockRegistry.EUROPA_PORTAL.get(), DimensionRegistry.EUROPA);
+        return new PlanetTeleporter(serverLevel, PoiRegistry.JUPITER_PORTAL.get(), BlockRegistry.JUPITER_DEEPSLATE_BRICKS.get(), BlockRegistry.JUPITER_PORTAL.get(), DimensionRegistry.JUPITER);
     }
 
     @Override

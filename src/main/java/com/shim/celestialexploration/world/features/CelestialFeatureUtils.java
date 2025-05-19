@@ -18,6 +18,7 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvi
 public class CelestialFeatureUtils {
 
     public static final Holder<ConfiguredFeature<NoneFeatureConfiguration, ?>> GEYSER = FeatureUtils.register("geyser", FeatureRegistry.GEYSER.get(), new NoneFeatureConfiguration());
+    public static final Holder<ConfiguredFeature<NoneFeatureConfiguration, ?>> IO_GEYSER = FeatureUtils.register("io_geyser", FeatureRegistry.IO_GEYSER.get(), new NoneFeatureConfiguration());
 
     public static final Holder<ConfiguredFeature<NoneFeatureConfiguration, ?>> JUPITER_CLOUD = FeatureUtils.register("jupiter_cloud", FeatureRegistry.JUPITER_CLOUD_FEATURE.get(), new NoneFeatureConfiguration());
 

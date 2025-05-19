@@ -13,6 +13,10 @@ import net.minecraftforge.entity.PartEntity;
 
 import javax.annotation.Nonnull;
 
+/**
+ * Credit to JayZX535 for this code
+ * Thank you, Jay!
+ */
 public class CerberusPart extends PartEntity<AbstractCerberus> {
     public final String name;
     private final EntityDimensions size;
@@ -42,7 +46,7 @@ public class CerberusPart extends PartEntity<AbstractCerberus> {
     public float getDefaultZOffset() { return this.zOffset; }
 
     /**
-     * Updates the position of the hitbox relative to the dragon's rotation.  Rotation info is pulled directly from the parent entity.
+     * Updates the position of the hitbox relative to the entity's rotation.  Rotation info is pulled directly from the parent entity.
      * Any adjustments to offset (i.e. shifting for animations) should be done before passing in the variables
      */
     public void updatePosition(double offsetXIn, double offsetYIn, double offsetZIn) {
@@ -76,14 +80,13 @@ public class CerberusPart extends PartEntity<AbstractCerberus> {
 
     /**
      * Applies damage when this part is struck.  Used to transfer that damage to the parent entity.
-     * We could do something with variable damage here...
      */
     public boolean hurt(DamageSource damageSourceIn, float damageIn) {
         return this.hasCollider && this.getParent().hurt(damageSourceIn, damageIn);
     }
 
     /**
-     * Passes interaction to the parent entity.  Makes it so that when you interact with a subpart, it forwards the interaction to the main dragon
+     * Passes interaction to the parent entity.  Makes it so that when you interact with a subpart, it forwards the interaction to the main entity
      */
     public InteractionResult interact(Player playerIn, InteractionHand handIn) {
         return this.hasCollider ? this.getParent().interact(playerIn, handIn) : InteractionResult.PASS;

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "celestialexploration:super_compressed_io_cobbled_deepslate"
+    }
+  ],
+  "result": {
+    "item": "celestialexploration:compressed_io_cobbled_deepslate",
+    "count": 9
+  }
+}

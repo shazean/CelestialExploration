@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "celestialexploration:io_desert",
+    "celestialexploration:io_lower_plains",
+    "celestialexploration:io_plains",
+    "celestialexploration:io_sulfur_flats"
+  ]
+}

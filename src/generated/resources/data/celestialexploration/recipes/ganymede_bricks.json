@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXY",
+    "XX "
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:moon_deepslate"
+    },
+    "Y": {
+      "item": "celestialexploration:ganymede_dust"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:ganymede_bricks",
+    "count": 4
+  }
+}

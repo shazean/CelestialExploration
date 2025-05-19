@@ -66,6 +66,11 @@ public class NoiseGenRegistry extends NoiseRouterData {
                 CelestialSurfaceRules.callisto(), 0, false, true , false, false);
     });
 
+    public static final RegistryObject<NoiseGeneratorSettings> IO_NOISE = NOISES.register("io", () -> {
+        NoiseSettings noisesettings = ioNoiseSettings();
+        return new NoiseGeneratorSettings(noisesettings, BlockRegistry.IO_STONE.get().defaultBlockState(), Blocks.AIR.defaultBlockState(), NoiseRouterData.overworldWithoutCaves(noisesettings),
+                CelestialSurfaceRules.io(), 0, false, true , false, false);
+    });
 
 
     //---- FOR DATAPACK/PRESETS -------------------------------------------------------------------------------
@@ -123,13 +128,18 @@ public class NoiseGenRegistry extends NoiseRouterData {
                 new NoiseSlider(-0.078125D, 2, 8), new NoiseSlider(0.1171875D, 3, 0), 1, 3, TerrainProvider.overworld(false));
     }
 
-    static NoiseSettings datapackPlanetNoiseSettings() {
-        return NoiseSettings.create(-64, 384, new NoiseSamplingSettings(1.0D, 1.0D, 80.0D, 160.0D),
+    static NoiseSettings callistoNoiseSettings() {
+        return NoiseSettings.create(-32, 256, new NoiseSamplingSettings(1.0D, 1.0D, 80.0D, 160.0D),
                 new NoiseSlider(-0.078125D, 2, 8), new NoiseSlider(0.1171875D, 3, 0), 1, 2, TerrainProvider.overworld(false));
     }
 
-    static NoiseSettings callistoNoiseSettings() {
+    static NoiseSettings ioNoiseSettings() {
         return NoiseSettings.create(-32, 256, new NoiseSamplingSettings(1.0D, 1.0D, 80.0D, 160.0D),
+                new NoiseSlider(-0.078125D, 2, 8), new NoiseSlider(0.1171875D, 3, 0), 1, 2, TerrainProvider.overworld(false));
+    }
+
+    static NoiseSettings datapackPlanetNoiseSettings() {
+        return NoiseSettings.create(-64, 384, new NoiseSamplingSettings(1.0D, 1.0D, 80.0D, 160.0D),
                 new NoiseSlider(-0.078125D, 2, 8), new NoiseSlider(0.1171875D, 3, 0), 1, 2, TerrainProvider.overworld(false));
     }
 }

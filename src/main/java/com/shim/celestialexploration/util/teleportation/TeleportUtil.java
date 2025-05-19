@@ -31,6 +31,8 @@ import java.util.List;
 import java.util.Map;
 
 public class TeleportUtil {
+
+    @Deprecated
     private static final Map<ResourceKey<Level>, List<Block>> CE_DIMENSION_STRUCTURE_BLOCKS = Util.make(new Object2ObjectArrayMap<>(), (dimension) -> {
         dimension.put(DimensionRegistry.MERCURY, ImmutableList.<Block>builder().add(BlockRegistry.MERCURY_STONE.get(), BlockRegistry.MERCURY_DEEPSLATE.get(), BlockRegistry.MERCURY_CORE.get()).build());
         dimension.put(DimensionRegistry.VENUS, ImmutableList.<Block>builder().add(BlockRegistry.VENUS_STONE.get(), Blocks.YELLOW_STAINED_GLASS, BlockRegistry.VENUS_DEEPSLATE.get(), BlockRegistry.VENUS_CORE.get()).build());
@@ -142,7 +144,6 @@ public class TeleportUtil {
 
                     if (!(destinationDim == DimensionRegistry.SPACE)) {
                         locationInPlace = new Vec3(locationInPlace.x, destinationWorld.getMaxBuildHeight() - 10, locationInPlace.z);
-                        CelestialExploration.LOGGER.debug("maxBuildHeight of dimension " + destinationDim + " is " + destinationWorld.getMaxBuildHeight() + ", and we're going to y level " + locationInPlace.y);
                     }
 
                     if (!entityWorld.isClientSide) {
@@ -192,7 +193,7 @@ public class TeleportUtil {
         }
     }
 
-    public static void displayTeleportMessage(Entity entity, int teleportCooldown, ResourceKey<Level> destination) { //TODO make translatable components
+    public static void displayTeleportMessage(Entity entity, int teleportCooldown, ResourceKey<Level> destination) {
         if (entity instanceof Player) {
             if (teleportCooldown % 20 == 0 && teleportCooldown != 0) {
                 ((Player) entity).displayClientMessage(Component.nullToEmpty("Teleporting to " + new TranslatableComponent("dimension.celestialexploration." + destination.location().getPath()).getString() + " in… " + teleportCooldown / 20), true);

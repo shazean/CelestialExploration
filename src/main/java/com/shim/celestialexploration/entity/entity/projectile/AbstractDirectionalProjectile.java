@@ -16,6 +16,10 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.entity.IEntityAdditionalSpawnData;
 import net.minecraftforge.network.NetworkHooks;
 
+/**
+ * Credit to JayZX535 for this code
+ * Thank you, Jay, for figuring this one out
+ */
 public abstract class AbstractDirectionalProjectile extends Projectile implements GeoEntity, IEntityAdditionalSpawnData {
 
     protected AnimatableInstanceCache animatableInstance = AzureLibUtil.createInstanceCache(this);

@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "celestialexploration:io_stone"
+    }
+  ],
+  "result": {
+    "item": "celestialexploration:io_stone_button"
+  }
+}

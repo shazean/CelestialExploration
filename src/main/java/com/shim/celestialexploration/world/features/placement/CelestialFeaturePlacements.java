@@ -25,7 +25,7 @@ public class CelestialFeaturePlacements {
     public static final Holder<PlacedFeature> DISK_MOON_SAND = PlacementUtils.register("disk_moon_sand", CelestialFeatures.DISK_MOON_SAND, CountPlacement.of(3), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_TOP_SOLID, BiomeFilter.biome());
     public static final Holder<PlacedFeature> DISK_VENUS_SAND = PlacementUtils.register("disk_venus_sand", CelestialFeatures.DISK_VENUS_SAND, CountPlacement.of(3), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_TOP_SOLID, BiomeFilter.biome());
     public static final Holder<PlacedFeature> DISK_MERCURY_SAND = PlacementUtils.register("disk_mercury_sand", CelestialFeatures.DISK_MERCURY_SAND, CountPlacement.of(3), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_TOP_SOLID, BiomeFilter.biome());
-//    public static final Holder<PlacedFeature> DISK_IO_SAND = PlacementUtils.register("disk_io_sand", CelestialFeatures.DISK_IO_SAND, CountPlacement.of(3), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_TOP_SOLID, BiomeFilter.biome());
+    public static final Holder<PlacedFeature> DISK_IO_SAND = PlacementUtils.register("disk_io_sand", CelestialFeatures.DISK_IO_SAND, CountPlacement.of(3), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_TOP_SOLID, BiomeFilter.biome());
 
 
 
@@ -73,6 +73,12 @@ public class CelestialFeaturePlacements {
     public static final Holder<PlacedFeature> MERCURY_SULFUR_ORE = PlacementUtils.register("mercury_sulfur_ore", CelestialOreFeatures.MERCURY_SULFUR_ORE, CelestialOrePlacement.commonOrePlacement(10, HeightRangePlacement.triangle(VerticalAnchor.absolute(-24), VerticalAnchor.absolute(56))));
     public static final Holder<PlacedFeature> MERCURY_DIAMOND_ORE = PlacementUtils.register("mercury_diamond_ore", CelestialOreFeatures.MERCURY_DIAMOND_ORE, CelestialOrePlacement.commonOrePlacement(7, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-16), VerticalAnchor.aboveBottom(16))));
 
+    public static final Holder<PlacedFeature> IO_IRON_ORE_UPPER = PlacementUtils.register("io_iron_ore_upper", CelestialOreFeatures.IO_IRON_ORE, CelestialOrePlacement.commonOrePlacement(90, HeightRangePlacement.triangle(VerticalAnchor.absolute(80), VerticalAnchor.absolute(384))));
+    public static final Holder<PlacedFeature> IO_IRON_ORE_MIDDLE = PlacementUtils.register("io_iron_ore_middle", CelestialOreFeatures.IO_IRON_ORE, CelestialOrePlacement.commonOrePlacement(10, HeightRangePlacement.triangle(VerticalAnchor.absolute(-24), VerticalAnchor.absolute(56))));
+    public static final Holder<PlacedFeature> IO_IRON_ORE_SMALL = PlacementUtils.register("io_iron_ore_small", CelestialOreFeatures.IO_IRON_ORE_SMALL, CelestialOrePlacement.commonOrePlacement(10, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(72))));
+    public static final Holder<PlacedFeature> IO_LAPIS_ORE = PlacementUtils.register("io_lapis_ore", CelestialOreFeatures.IO_LAPIS_ORE, CelestialOrePlacement.commonOrePlacement(4, HeightRangePlacement.triangle(VerticalAnchor.absolute(-32), VerticalAnchor.absolute(32))));
+    public static final Holder<PlacedFeature> IO_LAPIS_ORE_BURIED = PlacementUtils.register("io_lapis_ore_buried", CelestialOreFeatures.IO_LAPIS_ORE_BURIED, CelestialOrePlacement.commonOrePlacement(4, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(64))));
+    public static final Holder<PlacedFeature> IO_SULFUR_ORE = PlacementUtils.register("io_sulfur_ore", CelestialOreFeatures.IO_SULFUR_ORE, CelestialOrePlacement.commonOrePlacement(10, HeightRangePlacement.triangle(VerticalAnchor.absolute(-24), VerticalAnchor.absolute(56))));
 
 
 //    public static final Holder<PlacedFeature> JUPITER_CLOUD = PlacementUtils.register("jupiter_cloud", CelestialFeatures.JUPITER_CLOUD, RarityFilter.onAverageOnceEvery(14), PlacementUtils.countExtra(1, 0.25F, 1), InSquarePlacement.spread(), HeightRangePlacement.uniform(VerticalAnchor.absolute(55), VerticalAnchor.absolute(70)), BiomeFilter.biome());

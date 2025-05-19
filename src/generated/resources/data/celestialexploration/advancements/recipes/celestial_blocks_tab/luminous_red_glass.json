@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "celestialexploration:luminous_red_glass"
+    ]
+  },
+  "criteria": {
+    "ganymede_dust": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:ganymede_dust"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "celestialexploration:luminous_red_glass"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "ganymede_dust",
+      "has_the_recipe"
+    ]
+  ]
+}

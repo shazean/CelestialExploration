@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XCX",
+    "C#C",
+    "XCX"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:io_stone"
+    },
+    "#": {
+      "item": "minecraft:iron_ingot"
+    },
+    "C": {
+      "item": "celestialexploration:io_dust"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:io_lantern"
+  }
+}

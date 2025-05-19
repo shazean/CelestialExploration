@@ -33,6 +33,7 @@ public class CelestialGeneration {
         List<Holder<PlacedFeature>> topLayer = event.getGeneration().getFeatures(GenerationStep.Decoration.TOP_LAYER_MODIFICATION);
 
         topLayer.add(SurfacePlacements.GEYSER);
+        topLayer.add(SurfacePlacements.IO_GEYSER);
 
         ResourceLocation eventName = event.getName();
         if (eventName != null) {

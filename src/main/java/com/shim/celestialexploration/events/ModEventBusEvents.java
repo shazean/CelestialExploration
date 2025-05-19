@@ -147,6 +147,7 @@ public class ModEventBusEvents {
         minecraft.particleEngine.register(ParticleRegistry.DUST_PARTICLE.get(), DustStormParticle.Provider::new);
         minecraft.particleEngine.register(ParticleRegistry.LIGHTNING_PARTICLE.get(), LightningParticles.Provider::new);
         minecraft.particleEngine.register(ParticleRegistry.SHOOTING_STAR_PARTICLE.get(), MeteorParticles.Provider::new);
+        minecraft.particleEngine.register(ParticleRegistry.STUN_PARTICLE.get(), StunParticle.Provider::new);
 
         minecraft.particleEngine.register(ParticleRegistry.MARS_PORTAL_PARTICLES.get(), CelestialPortalParticle.MarsProvider::new);
         minecraft.particleEngine.register(ParticleRegistry.VENUS_PORTAL_PARTICLES.get(), CelestialPortalParticle.VenusProvider::new);
@@ -155,6 +156,7 @@ public class ModEventBusEvents {
         minecraft.particleEngine.register(ParticleRegistry.JUPITER_PORTAL_PARTICLES.get(), CelestialPortalParticle.JupiterProvider::new);
         minecraft.particleEngine.register(ParticleRegistry.EUROPA_PORTAL_PARTICLES.get(), CelestialPortalParticle.EuropaProvider::new);
         minecraft.particleEngine.register(ParticleRegistry.CALLISTO_PORTAL_PARTICLES.get(), CelestialPortalParticle.CallistoProvider::new);
+        minecraft.particleEngine.register(ParticleRegistry.IO_PORTAL_PARTICLES.get(), CelestialPortalParticle.IoProvider::new);
 
         minecraft.particleEngine.register(ParticleRegistry.SPACESHIP_PARTICLES.get(), SpaceshipParticles.Provider::new);
     }

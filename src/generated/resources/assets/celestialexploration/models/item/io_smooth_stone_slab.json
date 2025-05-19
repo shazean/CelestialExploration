@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "side": "celestialexploration:block/io_smooth_stone",
+    "bottom": "celestialexploration:block/io_smooth_stone",
+    "top": "celestialexploration:block/io_smooth_stone"
+  }
+}

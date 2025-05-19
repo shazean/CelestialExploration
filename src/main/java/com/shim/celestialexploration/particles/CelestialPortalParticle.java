@@ -85,9 +85,11 @@ public class CelestialPortalParticle extends TextureSheetParticle {
         protected float green;
         protected float blue;
 
-        public BaseProvider(SpriteSet p_107570_) {
+        public BaseProvider(SpriteSet p_107570_, float red, float green, float blue) {
             this.sprite = p_107570_;
-            setColor();
+            this.red = red;
+            this.green = green;
+            this.blue = blue;
         }
 
         public Particle createParticle(SimpleParticleType particle, ClientLevel level, double x, double y, double z, double xd, double yd, double zd) {
@@ -95,107 +97,61 @@ public class CelestialPortalParticle extends TextureSheetParticle {
             portalparticle.pickSprite(this.sprite);
             return portalparticle;
         }
-
-        public abstract void setColor();
     }
-
 
     @OnlyIn(Dist.CLIENT)
     public static class MarsProvider extends BaseProvider {
         public MarsProvider(SpriteSet sprite) {
-            super(sprite);
-        }
-
-        @Override
-        public void setColor() {
-            this.red = 0.9F;
-            this.green = 0.3F;
-            this.blue = 0.2F;
+            super(sprite, 0.9F, 0.3F, 0.2F);
         }
     }
 
     @OnlyIn(Dist.CLIENT)
     public static class MoonProvider extends BaseProvider {
         public MoonProvider(SpriteSet sprite) {
-            super(sprite);
-        }
-
-        @Override
-        public void setColor() {
-            this.red = 0.7F;
-            this.green = 0.8F;
-            this.blue = 1.0F;
+            super(sprite, 0.7F, 0.8F, 1.0F);
         }
     }
 
     @OnlyIn(Dist.CLIENT)
     public static class VenusProvider extends BaseProvider {
         public VenusProvider(SpriteSet sprite) {
-            super(sprite);
-        }
-
-        @Override
-        public void setColor() {
-            this.red = 0.7F;
-            this.green = 0.7F;
-            this.blue = 0.3F;
+            super(sprite, 0.7F, 0.7F, 0.3F);
         }
     }
-
 
     @OnlyIn(Dist.CLIENT)
     public static class MercuryProvider extends BaseProvider {
         public MercuryProvider(SpriteSet sprite) {
-            super(sprite);
-        }
-
-        @Override
-        public void setColor() {
-            this.red = 0.7F;
-            this.green = 0.4F;
-            this.blue = 0.3F;
+            super(sprite, 0.7F, 0.4F, 0.3F);
         }
     }
 
     @OnlyIn(Dist.CLIENT)
     public static class JupiterProvider extends BaseProvider {
         public JupiterProvider(SpriteSet sprite) {
-            super(sprite);
-        }
-
-        @Override
-        public void setColor() {
-            this.red = 0.5F;
-            this.green = 0.3F;
-            this.blue = 0.2F;
+            super(sprite, 0.5F, 0.3F, 0.2F);
         }
     }
 
     @OnlyIn(Dist.CLIENT)
     public static class EuropaProvider extends BaseProvider {
         public EuropaProvider(SpriteSet sprite) {
-            super(sprite);
-        }
-
-        @Override
-        public void setColor() {
-            this.red = 0.1F;
-            this.green = 0.8F;
-            this.blue = 0.8F;
+            super(sprite, 0.1F, 0.8F, 0.8F);
         }
     }
 
     @OnlyIn(Dist.CLIENT)
     public static class CallistoProvider extends BaseProvider {
         public CallistoProvider(SpriteSet sprite) {
-            super(sprite);
+            super(sprite, 0.9F, 0.3F, 0.7F);
         }
+    }
 
-        @Override
-        public void setColor() {
-            this.red = 0.9F;
-            this.green = 0.3F;
-            this.blue = 0.7F;
+    @OnlyIn(Dist.CLIENT)
+    public static class IoProvider extends BaseProvider {
+        public IoProvider(SpriteSet sprite) {
+            super(sprite,  0.5F,0.7F,0.3F);
         }
     }
 }

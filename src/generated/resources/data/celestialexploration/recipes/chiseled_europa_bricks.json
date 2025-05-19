@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X",
+    "X"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:europa_brick_slab"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:chiseled_europa_bricks"
+  }
+}

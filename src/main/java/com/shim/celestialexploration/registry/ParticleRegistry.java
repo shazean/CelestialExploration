@@ -27,6 +27,7 @@ public class ParticleRegistry {
     public static final RegistryObject<SimpleParticleType> DUST_PARTICLE = PARTICLES.register("dust_particle", () -> new SimpleParticleType(false));
     public static final RegistryObject<SimpleParticleType> LIGHTNING_PARTICLE = PARTICLES.register("lightning_particle", () -> new SimpleParticleType(false));
     public static final RegistryObject<SimpleParticleType> SHOOTING_STAR_PARTICLE = PARTICLES.register("shooting_star_particle", () -> new SimpleParticleType(false));
+    public static final RegistryObject<SimpleParticleType> STUN_PARTICLE = PARTICLES.register("stun_particle", () -> new SimpleParticleType(false));
 
     //PORTAL PARTICLES
     public static final RegistryObject<SimpleParticleType> MARS_PORTAL_PARTICLES = PARTICLES.register("mars_portal_particles", () -> new SimpleParticleType(false));
@@ -36,6 +37,7 @@ public class ParticleRegistry {
     public static final RegistryObject<SimpleParticleType> JUPITER_PORTAL_PARTICLES = PARTICLES.register("jupiter_portal_particles", () -> new SimpleParticleType(false));
     public static final RegistryObject<SimpleParticleType> EUROPA_PORTAL_PARTICLES = PARTICLES.register("europa_portal_particles", () -> new SimpleParticleType(false));
     public static final RegistryObject<SimpleParticleType> CALLISTO_PORTAL_PARTICLES = PARTICLES.register("callisto_portal_particles", () -> new SimpleParticleType(false));
+    public static final RegistryObject<SimpleParticleType> IO_PORTAL_PARTICLES = PARTICLES.register("io_portal_particles", () -> new SimpleParticleType(false));
 
     public static final RegistryObject<SimpleParticleType> SPACESHIP_PARTICLES = PARTICLES.register("spaceship_particles", () -> new SimpleParticleType(false));
 

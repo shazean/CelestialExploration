@@ -10,6 +10,8 @@ import net.minecraftforge.client.ISkyRenderHandler;
 import net.minecraftforge.client.IWeatherParticleRenderHandler;
 import net.minecraftforge.client.IWeatherRenderHandler;
 
+import javax.annotation.Nullable;
+
 @OnlyIn(Dist.CLIENT)
 public class DimensionRenderers {
 
@@ -22,28 +24,51 @@ public class DimensionRenderers {
         DimensionSpecialEffects.EFFECTS.put(DimensionRegistry.JUPITER.location(), new JupiterEffects());
         DimensionSpecialEffects.EFFECTS.put(DimensionRegistry.EUROPA.location(), new EuropaEffects());
         DimensionSpecialEffects.EFFECTS.put(DimensionRegistry.CALLISTO.location(), new CallistoEffects());
+        DimensionSpecialEffects.EFFECTS.put(DimensionRegistry.IO.location(), new IoEffects());
+
     }
 
     @OnlyIn(Dist.CLIENT)
-    public static class MarsEffects extends DimensionSpecialEffects {
-        ISkyRenderHandler skyHandler = new MarsSkyHandler();
-        IWeatherRenderHandler weatherHandler = new StormWeatherHandler();
-        IWeatherParticleRenderHandler particleHandler = new StormWeatherParticleHandler();
+    public abstract static class PlanetEffects extends DimensionSpecialEffects {
 
-        public MarsEffects() {
-            super(Float.NaN, true, SkyType.NORMAL, false, false);
-            setSkyRenderHandler(skyHandler);
-            setWeatherRenderHandler(weatherHandler);
-            setWeatherParticleRenderHandler(particleHandler);
+        public PlanetEffects(@Nullable ISkyRenderHandler skyHandler, @Nullable IWeatherRenderHandler weatherHandler, @Nullable IWeatherParticleRenderHandler particleHandler) {
+            this(Float.NaN, true, SkyType.NORMAL, false, false, skyHandler, weatherHandler, particleHandler);
         }
 
-        private final float[] sunriseCol = new float[4];
+        public PlanetEffects(float cloudLevel, boolean hasGround, SkyType sky, boolean forceBrightLightmap, boolean constantAmbientLight, @Nullable ISkyRenderHandler skyHandler, @Nullable IWeatherRenderHandler weatherHandler, @Nullable IWeatherParticleRenderHandler particleHandler) {
+            super(cloudLevel, hasGround, sky, forceBrightLightmap, constantAmbientLight);
+
+            if (skyHandler != null)
+                setSkyRenderHandler(skyHandler);
+            if (weatherHandler != null)
+                setWeatherRenderHandler(weatherHandler);
+            if (particleHandler != null)
+                setWeatherParticleRenderHandler(particleHandler);
+        }
+
+        @Override
+        public Vec3 getBrightnessDependentFogColor(Vec3 color, float brightness) {
+            return color.multiply(brightness * 0.94F + 0.06F, brightness * 0.94F + 0.06F, brightness * 0.91F + 0.09F);
+        }
 
         @Override
         public boolean isFoggyAt(int x, int z) {
-//            return true;
             return false;
         }
+
+        @Override
+        public float[] getSunriseColor(float p_230492_1_, float p_230492_2_) {
+            return null;
+        }
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    public static class MarsEffects extends PlanetEffects {
+        public MarsEffects() {
+            super(new MarsSkyHandler(), new StormWeatherHandler(), new StormWeatherParticleHandler());
+        }
+
+        private final float[] sunriseCol = new float[4];
 
         @Override
         public float[] getSunriseColor(float p_230492_1_, float p_230492_2_) {
@@ -63,58 +88,21 @@ public class DimensionRenderers {
                 return null;
             }
         }
-
-        @Override
-        public Vec3 getBrightnessDependentFogColor(Vec3 color, float brightness) {
-            return color.multiply(brightness * 0.94F + 0.06F, brightness * 0.94F + 0.06F, brightness * 0.91F + 0.09F);
-        }
     }
 
     @OnlyIn(Dist.CLIENT)
-    public static class MoonEffects extends DimensionSpecialEffects {
+    public static class MoonEffects extends PlanetEffects {
         public MoonEffects() {
-            super(Float.NaN, true, SkyType.NORMAL, false, false);
-            setSkyRenderHandler(skyHandler);
+            super(new MoonSkyHandler(), null, null);
         }
-
-        @Override
-        public Vec3 getBrightnessDependentFogColor(Vec3 color, float brightness) {
-            return color.multiply(brightness * 0.94F + 0.06F, brightness * 0.94F + 0.06F, brightness * 0.91F + 0.09F);
-        }
-
-        @Override
-        public boolean isFoggyAt(int x, int z) {
-            BlockPos pos = new BlockPos(x, 0, z);
-
-
-            return false;
-        }
-
-        @Override
-        public float[] getSunriseColor(float p_230492_1_, float p_230492_2_) {
-            return null;
-        }
-
-        ISkyRenderHandler skyHandler = new MoonSkyHandler();
     }
 
     @OnlyIn(Dist.CLIENT)
-    public static class SpaceEffects extends DimensionSpecialEffects {
+    public static class SpaceEffects extends PlanetEffects {
         public SpaceEffects() {
-            super(Float.NaN, false, SkyType.NONE, true, false);
-            setSkyRenderHandler(skyHandler);
+            super(Float.NaN, false, SkyType.NONE, true, false, new SpaceSkyHandler(), null, null);
         }
         ISkyRenderHandler skyHandler = new SpaceSkyHandler();
-
-        @Override
-        public boolean isFoggyAt(int x, int z) {
-            return false;
-        }
-
-        @Override
-        public float[] getSunriseColor(float p_230492_1_, float p_230492_2_) {
-            return null;
-        }
 
         @Override
         public Vec3 getBrightnessDependentFogColor(Vec3 color, float brightness) {
@@ -123,21 +111,12 @@ public class DimensionRenderers {
     }
 
     @OnlyIn(Dist.CLIENT)
-    public static class VenusEffects extends DimensionSpecialEffects {
-        VenusWeatherHandler weatherHandler = new VenusWeatherHandler();
-        VenusWeatherParticleHandler particleHandler = new VenusWeatherParticleHandler();
-
+    public static class VenusEffects extends PlanetEffects {
         public VenusEffects() {
-            super(Float.NaN, true, SkyType.NORMAL, false, true);
-            setWeatherRenderHandler(weatherHandler);
-            setWeatherParticleRenderHandler(particleHandler);
+            super(Float.NaN, true, SkyType.NORMAL, false, true, new VenusSkyHandler(), new VenusWeatherHandler(), new VenusWeatherParticleHandler());
         }
 
-//        @Override
-//        public Vec3 getBrightnessDependentFogColor(Vec3 color, float brightness) {
-//            return color.multiply(brightness * 0.94F + 0.06F, brightness * 0.94F + 0.06F, brightness * 0.91F + 0.09F);
-//        }
-
+        @Override
         public Vec3 getBrightnessDependentFogColor(Vec3 p_108901_, float p_108902_) {
             return p_108901_;
         }
@@ -149,110 +128,42 @@ public class DimensionRenderers {
     }
 
     @OnlyIn(Dist.CLIENT)
-    public static class MercuryEffects extends DimensionSpecialEffects {
-        IWeatherParticleRenderHandler particleHandler = new MeteorShowerParticleHandler();
-
+    public static class MercuryEffects extends PlanetEffects {
         public MercuryEffects() {
-            super(Float.NaN, true, SkyType.NORMAL, false, false);
-            setSkyRenderHandler(skyHandler);
-//            setWeatherParticleRenderHandler(particleHandler);
+            super(new MercurySkyHandler(), null, new MeteorShowerParticleHandler());
         }
-
-        @Override
-        public Vec3 getBrightnessDependentFogColor(Vec3 color, float brightness) {
-            return color.multiply(brightness * 0.94F + 0.06F, brightness * 0.94F + 0.06F, brightness * 0.91F + 0.09F);
-        }
-
-        @Override
-        public boolean isFoggyAt(int x, int z) {
-            return false;
-        }
-
-        @Override
-        public float[] getSunriseColor(float p_230492_1_, float p_230492_2_) {
-            return null;
-        }
-
-        ISkyRenderHandler skyHandler = new MercurySkyHandler();
     }
 
     @OnlyIn(Dist.CLIENT)
-    public static class JupiterEffects extends DimensionSpecialEffects {
-        ISkyRenderHandler skyHandler = new JupiterSkyHandler();
-        IWeatherRenderHandler weatherHandler = new StormWeatherHandler();
-        IWeatherParticleRenderHandler particleHandler = new StormWeatherParticleHandler();
-
+    public static class JupiterEffects extends PlanetEffects {
         public JupiterEffects() {
-            super(416, true, SkyType.NORMAL, false, false);
-            setSkyRenderHandler(skyHandler);
-            setWeatherRenderHandler(weatherHandler);
-            setWeatherParticleRenderHandler(particleHandler);
-        }
-
-        @Override
-        public Vec3 getBrightnessDependentFogColor(Vec3 color, float brightness) {
-            return color.multiply(brightness * 0.94F + 0.06F, brightness * 0.94F + 0.06F, brightness * 0.91F + 0.09F);
+            super(416, true, SkyType.NORMAL, false, false, new JupiterSkyHandler(), new StormWeatherHandler(), new StormWeatherParticleHandler());
         }
 
         @Override
         public boolean isFoggyAt(int x, int z) {
             return true;
         }
-
-        @Override
-        public float[] getSunriseColor(float p_230492_1_, float p_230492_2_) {
-            return null;
-        }
     }
 
     @OnlyIn(Dist.CLIENT)
-    public static class EuropaEffects extends DimensionSpecialEffects {
+    public static class EuropaEffects extends PlanetEffects {
         public EuropaEffects() {
-            super(Float.NaN, true, SkyType.NORMAL, false, false);
-            setSkyRenderHandler(skyHandler);
+            super(new EuropaSkyHandler(), null, null);
         }
-
-        @Override
-        public Vec3 getBrightnessDependentFogColor(Vec3 color, float brightness) {
-            return color.multiply(brightness * 0.94F + 0.06F, brightness * 0.94F + 0.06F, brightness * 0.91F + 0.09F);
-        }
-
-        @Override
-        public boolean isFoggyAt(int x, int z) {
-            return false;
-        }
-
-        @Override
-        public float[] getSunriseColor(float p_230492_1_, float p_230492_2_) {
-            return null;
-        }
-
-        ISkyRenderHandler skyHandler = new EuropaSkyHandler();
     }
 
     @OnlyIn(Dist.CLIENT)
-    public static class CallistoEffects extends DimensionSpecialEffects {
+    public static class CallistoEffects extends PlanetEffects {
         public CallistoEffects() {
-            super(Float.NaN, true, SkyType.NORMAL, false, false);
-            setSkyRenderHandler(skyHandler);
+            super(new CallistoSkyHandler(), null, null);
         }
-
-        @Override
-        public Vec3 getBrightnessDependentFogColor(Vec3 color, float brightness) {
-            return color.multiply(brightness * 0.94F + 0.06F, brightness * 0.94F + 0.06F, brightness * 0.91F + 0.09F);
-        }
-
-        @Override
-        public boolean isFoggyAt(int x, int z) {
-            return false;
-        }
-
-        @Override
-        public float[] getSunriseColor(float p_230492_1_, float p_230492_2_) {
-            return null;
-        }
-
-        ISkyRenderHandler skyHandler = new CallistoSkyHandler();
     }
 
+    @OnlyIn(Dist.CLIENT)
+    public static class IoEffects extends PlanetEffects {
+        public IoEffects() {
+            super(new IoSkyHandler(), null, null);
+        }
+    }
 }

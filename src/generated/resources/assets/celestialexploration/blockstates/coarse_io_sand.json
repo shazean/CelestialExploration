@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "celestialexploration:block/coarse_io_sand"
+      },
+      {
+        "model": "celestialexploration:block/coarse_io_sand",
+        "y": 90
+      },
+      {
+        "model": "celestialexploration:block/coarse_io_sand",
+        "y": 180
+      },
+      {
+        "model": "celestialexploration:block/coarse_io_sand",
+        "y": 270
+      }
+    ]
+  }
+}

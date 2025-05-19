@@ -10,62 +10,69 @@ import net.minecraft.world.level.levelgen.GenerationStep;
 
 public class IoBiomes extends CelestialBiomes {
 
-//    public static Biome desert() {
-//        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
-//        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
-//
-//        CelestialBiomes.addCarversAndLakes(biomeBuilder);
-//
-//
-//        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.DISK_IO_SAND);
-//        addIoOres(biomeBuilder);
-//
-//        generalMonsters(spawnBuilder, 100, 100, 100);
-//        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.LUNAR_SLIME.get(), 100, 4, 4)).build();
-//
-//        return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, -0.75F, 0F, celestialBody.IO.skyColor, celestialBody.IO.skyFogColor, celestialBody.IO.waterColor, celestialBody.IO.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
-//    }
-//
-//
-//    public static Biome lavaFlats() {
-//        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
-//        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
-//
-//
-//
-//        CelestialBiomes.addCarversAndLakes(biomeBuilder);
-//
-////        biomeBuilder.addFeature(GenerationStep.Decoration.LAKES, CelestialFeaturePlacements.OBSIDIAN_LAKE);
-//        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.DISK_IO_SAND);
-//        addIoOres(biomeBuilder);
-//
-//        generalMonsters(spawnBuilder, 100, 80, 100);
-//        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.LUNAR_SLIME.get(), 120, 4, 4)).build();
-//
-//
-//
-//        return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, -0.75F, 0F, celestialBody.IO.skyColor, celestialBody.IO.skyFogColor, celestialBody.IO.waterColor, celestialBody.IO.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
-//    }
-//
-//    public static Biome plains() {
-//        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
-//        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
-//
-//        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.DISK_IO_SAND);
-//        addIoOres(biomeBuilder);
-//
-//        generalMonsters(spawnBuilder, 80, 100, 100);
-//        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.LUNAR_SLIME.get(), 30, 4, 4)).build();
-//
-//        return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, -0.75F, 0F, celestialBody.IO.skyColor, celestialBody.IO.skyFogColor, celestialBody.IO.waterColor, celestialBody.IO.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
-//    }
-//
-//    public static void addIoOres(BiomeGenerationSettings.Builder biomeBuilder) {
-//        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.IO_IRON_ORE_UPPER);
-//        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.IO_IRON_ORE_MIDDLE);
-//        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.IO_IRON_ORE_SMALL);
-//        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.IO_REDSTONE_ORE);
-//        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.IO_REDSTONE_ORE_LOWER);
-//        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.IO_BAUXITE_ORE);
-//    }
+    public static Biome desert() {
+        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
+        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
+
+        CelestialBiomes.addCarversAndLakes(biomeBuilder);
+
+
+        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.DISK_IO_SAND);
+        addIoOres(biomeBuilder);
+
+        generalMonsters(spawnBuilder, 100, 100, 100);
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.LUNAR_SLIME.get(), 100, 4, 4)).build();
+
+        return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, -0.75F, 0F, celestialBody.IO.skyColor, celestialBody.IO.skyFogColor, celestialBody.IO.waterColor, celestialBody.IO.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
+    }
+
+
+    public static Biome lavaFlats() {
+        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
+        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
+
+
+
+        CelestialBiomes.addCarversAndLakes(biomeBuilder);
+
+//        biomeBuilder.addFeature(GenerationStep.Decoration.LAKES, CelestialFeaturePlacements.OBSIDIAN_LAKE);
+        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.DISK_IO_SAND);
+        addIoOres(biomeBuilder);
+
+        generalMonsters(spawnBuilder, 100, 80, 100);
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.LUNAR_SLIME.get(), 120, 4, 4)).build();
+
+
+
+        return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, -0.75F, 0F, celestialBody.IO.skyColor, celestialBody.IO.skyFogColor, celestialBody.IO.waterColor, celestialBody.IO.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
+    }
+
+    public static Biome plains() {
+        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
+        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
+
+        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.DISK_IO_SAND);
+        addIoOres(biomeBuilder);
+
+        generalMonsters(spawnBuilder, 80, 100, 100);
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.LUNAR_SLIME.get(), 30, 4, 4)).build();
+
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.SULFUR_CUBE.get(), 120, 4, 4))
+                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.VOIDED_PIGLIN.get(), 100, 4, 4))
+                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.CYBORG_PIGLIN.get(), 50, 4, 4))
+                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.ASTRAL_PIGLIN.get(), 15, 4, 4))
+                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.ASTRAL_HOGLIN.get(), 9, 3, 4)).build();
+
+
+        return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, -0.75F, 0F, celestialBody.IO.skyColor, celestialBody.IO.skyFogColor, celestialBody.IO.waterColor, celestialBody.IO.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
+    }
+
+    public static void addIoOres(BiomeGenerationSettings.Builder biomeBuilder) {
+        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.IO_IRON_ORE_UPPER);
+        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.IO_IRON_ORE_MIDDLE);
+        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.IO_IRON_ORE_SMALL);
+        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.IO_LAPIS_ORE);
+        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.IO_LAPIS_ORE_BURIED);
+        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.IO_SULFUR_ORE);
+    }
 }

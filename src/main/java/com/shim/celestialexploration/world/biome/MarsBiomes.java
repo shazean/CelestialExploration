@@ -21,7 +21,7 @@ public class MarsBiomes extends CelestialBiomes {
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.DISK_MARS_SAND);
         addMarsOres(biomeBuilder);
 
-        generalMonsters(spawnBuilder, 100, 100, 100);
+        generalMonsters(spawnBuilder, 100, 100, 0);
         spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.RUST_SLIME.get(), 100, 4, 4))
                 .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.MARS_MALLOW.get(), 40, 4, 4))
                 .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.GUST.get(), 100, 4, 4))
@@ -42,7 +42,7 @@ public class MarsBiomes extends CelestialBiomes {
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.DISK_MARS_SAND);
         addMarsOres(biomeBuilder);
 
-        generalMonsters(spawnBuilder, 100, 100, 100);
+        generalMonsters(spawnBuilder, 100, 100, 0);
         spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.RUST_SLIME.get(), 100, 4, 4))
                 .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.MARS_MALLOW.get(), 40, 4, 4))
                 .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.GUST.get(), 100, 4, 4))
@@ -64,7 +64,7 @@ public class MarsBiomes extends CelestialBiomes {
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.DISK_MARS_SAND);
         addMarsOres(biomeBuilder);
 
-        generalMonsters(spawnBuilder, 100, 80, 100);
+        generalMonsters(spawnBuilder, 100, 80, 0);
         spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.RUST_SLIME.get(), 120, 4, 4))
                 .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.MARS_MALLOW.get(), 80, 4, 4))
                 .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.GUST.get(), 100, 4, 4))
@@ -85,7 +85,7 @@ public class MarsBiomes extends CelestialBiomes {
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.DISK_MARS_SAND);
         addMarsOres(biomeBuilder);
 
-        generalMonsters(spawnBuilder, 80, 100, 100);
+        generalMonsters(spawnBuilder, 80, 100, 0);
 
         spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.RUST_SLIME.get(), 30, 4, 4))
                 .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.MARS_MALLOW.get(), 10, 4, 4))

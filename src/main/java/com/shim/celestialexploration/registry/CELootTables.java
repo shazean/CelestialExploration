@@ -11,6 +11,7 @@ public class CELootTables {
     private static final Set<ResourceLocation> LOCATIONS = Sets.newHashSet();
     private static final Set<ResourceLocation> IMMUTABLE_LOCATIONS = Collections.unmodifiableSet(LOCATIONS);
     public static final ResourceLocation EMPTY = new ResourceLocation("empty");
+
     public static final ResourceLocation RESEARCH_TUNNEL = register("chests/research_tunnel");
 
     private static ResourceLocation register(String p_78768_) {

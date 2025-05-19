@@ -1,12 +1,17 @@
 package com.shim.celestialexploration.datagen;
 
 import com.shim.celestialexploration.CelestialExploration;
+import com.shim.celestialexploration.blocks.AbstractPortalBlock;
 import com.shim.celestialexploration.registry.BlockRegistry;
 import com.shim.celestialexploration.registry.FluidRegistry;
+import net.minecraft.core.Direction;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.properties.SlabType;
+import net.minecraftforge.client.model.generators.BlockModelBuilder;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
+import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
@@ -21,6 +26,7 @@ public class BlockStates extends BlockStateProvider {
 
 		//---- MOON -------------------------------------------------------------------------------
 		//STONE
+		varietyBlock(BlockRegistry.MOON_STONE.get());
 		stairsBlock(BlockRegistry.MOON_STONE_STAIRS.get(), modLoc("block/moon_stone"));
 		slabBlock(BlockRegistry.MOON_STONE_SLAB.get(), modLoc("block/moon_stone"), modLoc("block/moon_stone"));
 		buttonBlock(BlockRegistry.MOON_STONE_BUTTON.get(), modLoc("block/moon_stone"));
@@ -42,6 +48,8 @@ public class BlockStates extends BlockStateProvider {
 		simpleBlock(BlockRegistry.CRACKED_MOON_BRICKS.get());
 
 		simpleBlock(BlockRegistry.MOON_SMOOTH_STONE.get());
+		smoothStoneSlabBlock(BlockRegistry.MOON_SMOOTH_STONE_SLAB.get(), "moon");
+
 
 		//DEEPSLATE
 		axisBlock(BlockRegistry.MOON_DEEPSLATE.get());
@@ -82,11 +90,16 @@ public class BlockStates extends BlockStateProvider {
 
 		//OTHER
 		simpleBlock(BlockRegistry.MOON_CORE.get());
+		sandBlock(BlockRegistry.MOON_SAND.get());
+		sandPathBlock(BlockRegistry.MOON_SAND_PATH.get(), "moon_sand");
+		sandBlock(BlockRegistry.COARSE_MOON_SAND.get());
 		simpleBlock(BlockRegistry.GLOWING_MOON_SAND.get());
 		simpleBlock(BlockRegistry.LUNAR_LANTERN.get());
+		portalBlock(BlockRegistry.MOON_PORTAL.get());
 
 		//---- MARS -------------------------------------------------------------------------------
 		//STONE
+		varietyBlock(BlockRegistry.MARS_STONE.get());
 		stairsBlock(BlockRegistry.MARS_STONE_STAIRS.get(), modLoc("block/mars_stone"));
 		slabBlock(BlockRegistry.MARS_STONE_SLAB.get(), modLoc("block/mars_stone"), modLoc("block/mars_stone"));
 		buttonBlock(BlockRegistry.MARS_STONE_BUTTON.get(), modLoc("block/mars_stone"));
@@ -108,6 +121,7 @@ public class BlockStates extends BlockStateProvider {
 		simpleBlock(BlockRegistry.CRACKED_MARS_BRICKS.get());
 
 		simpleBlock(BlockRegistry.MARS_SMOOTH_STONE.get());
+		smoothStoneSlabBlock(BlockRegistry.MARS_SMOOTH_STONE_SLAB.get(), "mars");
 
 		//DEEPSLATE
 		axisBlock((RotatedPillarBlock) BlockRegistry.MARS_DEEPSLATE.get());
@@ -149,9 +163,15 @@ public class BlockStates extends BlockStateProvider {
 		//OTHER
 		simpleBlock(BlockRegistry.MARS_CORE.get());
 		simpleBlock(BlockRegistry.MARS_LANTERN.get());
+		sandBlock(BlockRegistry.MARS_SAND.get());
+		sandPathBlock(BlockRegistry.MARS_SAND_PATH.get(), "mars_sand");
+		sandBlock(BlockRegistry.COARSE_MARS_SAND.get());
+		portalBlock(BlockRegistry.MARS_PORTAL.get());
+
 
 		//---- VENUS -------------------------------------------------------------------------------
 		//STONE
+		varietyBlock(BlockRegistry.VENUS_STONE.get());
 		stairsBlock(BlockRegistry.VENUS_STONE_STAIRS.get(), modLoc("block/venus_stone"));
 		slabBlock(BlockRegistry.VENUS_STONE_SLAB.get(), modLoc("block/venus_stone"), modLoc("block/venus_stone"));
 		buttonBlock((ButtonBlock) BlockRegistry.VENUS_STONE_BUTTON.get(), modLoc("block/venus_stone"));
@@ -178,6 +198,7 @@ public class BlockStates extends BlockStateProvider {
 		wallBlock(BlockRegistry.SMALL_VENUS_BRICK_WALL.get(), modLoc("block/small_venus_bricks"));
 
 		simpleBlock(BlockRegistry.VENUS_SMOOTH_STONE.get());
+		smoothStoneSlabBlock(BlockRegistry.VENUS_SMOOTH_STONE_SLAB.get(), "venus");
 
 		//DEEPSLATE
 		axisBlock((RotatedPillarBlock) BlockRegistry.VENUS_DEEPSLATE.get());
@@ -224,10 +245,14 @@ public class BlockStates extends BlockStateProvider {
 		simpleBlock(BlockRegistry.SULFURIC_OBSIDIAN.get());
 		simpleBlock(BlockRegistry.VENUS_LANTERN.get());
 
+		sandBlock(BlockRegistry.VENUS_SAND.get());
+		sandPathBlock(BlockRegistry.VENUS_SAND_PATH.get(), "venus_sand");
+		portalBlock(BlockRegistry.VENUS_PORTAL.get());
 
-	
+
 		//---- MERCURY -------------------------------------------------------------------------------
 		//STONE
+		varietyBlock(BlockRegistry.MERCURY_STONE.get());
 		stairsBlock(BlockRegistry.MERCURY_STONE_STAIRS.get(), modLoc("block/mercury_stone"));
 		slabBlock(BlockRegistry.MERCURY_STONE_SLAB.get(), modLoc("block/mercury_stone"), modLoc("block/mercury_stone"));
 		buttonBlock(BlockRegistry.MERCURY_STONE_BUTTON.get(), modLoc("block/mercury_stone"));
@@ -249,6 +274,7 @@ public class BlockStates extends BlockStateProvider {
 		simpleBlock(BlockRegistry.CRACKED_MERCURY_BRICKS.get());
 
 		simpleBlock(BlockRegistry.MERCURY_SMOOTH_STONE.get());
+		smoothStoneSlabBlock(BlockRegistry.MERCURY_SMOOTH_STONE_SLAB.get(), "mercury");
 
 		//DEEPSLATE
 		axisBlock(BlockRegistry.MERCURY_DEEPSLATE.get());
@@ -294,6 +320,12 @@ public class BlockStates extends BlockStateProvider {
 		simpleBlock(BlockRegistry.MERCURY_CORE.get());
 		simpleBlock(BlockRegistry.MERCURY_LANTERN.get());
 
+		sandBlock(BlockRegistry.MERCURY_SAND.get());
+		sandPathBlock(BlockRegistry.MERCURY_SAND_PATH.get(), "mercury_sand");
+		sandBlock(BlockRegistry.COARSE_MERCURY_SAND.get());
+		portalBlock(BlockRegistry.MERCURY_PORTAL.get());
+
+
 		//---- JUPITER -------------------------------------------------------------------------------
 		//DEEPSLATE
 		axisBlock(BlockRegistry.JUPITER_DEEPSLATE.get());
@@ -329,45 +361,127 @@ public class BlockStates extends BlockStateProvider {
 		simpleBlock(BlockRegistry.JUPITER_CORE.get());
 		simpleBlock(BlockRegistry.JUPITER_ATMOSPHERE.get());
 		simpleBlock(BlockRegistry.JUPITER_LANTERN.get());
+		portalBlock(BlockRegistry.JUPITER_PORTAL.get());
 
 		//---- JUPITER MOONS -------------------------------------------------------------------------------
+		//---- IO -------------------------------------------------------------------------------
+		//STONE
+		varietyBlock(BlockRegistry.IO_STONE.get());
+		stairsBlock(BlockRegistry.IO_STONE_STAIRS.get(), modLoc("block/io_stone"));
+		slabBlock(BlockRegistry.IO_STONE_SLAB.get(), modLoc("block/io_stone"), modLoc("block/io_stone"));
+		buttonBlock(BlockRegistry.IO_STONE_BUTTON.get(), modLoc("block/io_stone"));
+		pressurePlateBlock(BlockRegistry.IO_STONE_PRESSURE_PLATE.get(), modLoc("block/io_stone"));
 
+		simpleBlock(BlockRegistry.IO_COBBLESTONE.get());
+		stairsBlock(BlockRegistry.IO_COBBLESTONE_STAIRS.get(), modLoc("block/io_cobblestone"));
+		slabBlock(BlockRegistry.IO_COBBLESTONE_SLAB.get(), modLoc("block/io_cobblestone"), modLoc("block/io_cobblestone"));
+		wallBlock(BlockRegistry.IO_COBBLESTONE_WALL.get(), modLoc("block/io_cobblestone"));
+		simpleBlock(BlockRegistry.COMPRESSED_IO_COBBLESTONE.get());
+		simpleBlock(BlockRegistry.SUPER_COMPRESSED_IO_COBBLESTONE.get());
 
-		simpleBlock(BlockRegistry.IO_STONE.get());
+		simpleBlock(BlockRegistry.IO_BRICKS.get());
+		stairsBlock(BlockRegistry.IO_BRICK_STAIRS.get(), modLoc("block/io_bricks"));
+		slabBlock(BlockRegistry.IO_BRICK_SLAB.get(), modLoc("block/io_bricks"), modLoc("block/io_bricks"));
+		wallBlock(BlockRegistry.IO_BRICK_WALL.get(), modLoc("block/io_bricks"));
+		simpleBlock(BlockRegistry.CHISELED_IO_BRICKS.get());
+		axisBlock(BlockRegistry.IO_BRICK_PILLAR.get(), modLoc("block/io_brick_pillar"));
+		simpleBlock(BlockRegistry.CRACKED_IO_BRICKS.get());
+
+		simpleBlock(BlockRegistry.IO_SMOOTH_STONE.get());
+		smoothStoneSlabBlock(BlockRegistry.IO_SMOOTH_STONE_SLAB.get(), "io");
+
+		//DEEPSLATE
+		axisBlock(BlockRegistry.IO_DEEPSLATE.get());
+
+		simpleBlock(BlockRegistry.IO_COBBLED_DEEPSLATE.get());
+		stairsBlock(BlockRegistry.IO_COBBLED_DEEPSLATE_STAIRS.get(), modLoc("block/io_cobbled_deepslate"));
+		slabBlock(BlockRegistry.IO_COBBLED_DEEPSLATE_SLAB.get(), modLoc("block/io_cobbled_deepslate"), modLoc("block/io_cobbled_deepslate"));
+		wallBlock(BlockRegistry.IO_COBBLED_DEEPSLATE_WALL.get(), modLoc("block/io_cobbled_deepslate"));
+		buttonBlock(BlockRegistry.IO_DEEPSLATE_BUTTON.get(), modLoc("block/io_deepslate_side"));
+		pressurePlateBlock(BlockRegistry.IO_DEEPSLATE_PRESSURE_PLATE.get(), modLoc("block/io_deepslate_side"));
+		simpleBlock(BlockRegistry.COMPRESSED_IO_COBBLED_DEEPSLATE.get());
+		simpleBlock(BlockRegistry.SUPER_COMPRESSED_IO_COBBLED_DEEPSLATE.get());
+
+		simpleBlock(BlockRegistry.IO_POLISHED_DEEPSLATE.get());
+		stairsBlock(BlockRegistry.IO_POLISHED_DEEPSLATE_STAIRS.get(), modLoc("block/io_polished_deepslate"));
+		slabBlock(BlockRegistry.IO_POLISHED_DEEPSLATE_SLAB.get(), modLoc("block/io_polished_deepslate"), modLoc("block/io_polished_deepslate"));
+		wallBlock(BlockRegistry.IO_POLISHED_DEEPSLATE_WALL.get(), modLoc("block/io_polished_deepslate"));
+
+		simpleBlock(BlockRegistry.IO_DEEPSLATE_BRICKS.get());
+		stairsBlock(BlockRegistry.IO_DEEPSLATE_BRICK_STAIRS.get(), modLoc("block/io_deepslate_bricks"));
+		slabBlock(BlockRegistry.IO_DEEPSLATE_BRICK_SLAB.get(), modLoc("block/io_deepslate_bricks"), modLoc("block/io_deepslate_bricks"));
+		wallBlock(BlockRegistry.IO_DEEPSLATE_BRICK_WALL.get(), modLoc("block/io_deepslate_bricks"));
+		simpleBlock(BlockRegistry.CHISELED_IO_DEEPSLATE_BRICKS.get());
+		simpleBlock(BlockRegistry.CRACKED_IO_DEEPSLATE_BRICKS.get());
+
+		simpleBlock(BlockRegistry.IO_DEEPSLATE_TILES.get());
+		stairsBlock(BlockRegistry.IO_DEEPSLATE_TILE_STAIRS.get(), modLoc("block/io_deepslate_tiles"));
+		slabBlock(BlockRegistry.IO_DEEPSLATE_TILE_SLAB.get(), modLoc("block/io_deepslate_tiles"), modLoc("block/io_deepslate_tiles"));
+		wallBlock(BlockRegistry.IO_DEEPSLATE_TILE_WALL.get(), modLoc("block/io_deepslate_tiles"));
+		simpleBlock(BlockRegistry.CRACKED_IO_DEEPSLATE_TILES.get());
+
+		//ORES
+		simpleBlock(BlockRegistry.IO_SULFUR_ORE.get());
+		simpleBlock(BlockRegistry.IO_LAPIS_ORE.get());
+		simpleBlock(BlockRegistry.IO_DEEPSLATE_LAPIS_ORE.get());
+		simpleBlock(BlockRegistry.IO_DEEPSLATE_IRON_ORE.get());
+
+		//OTHER
 		simpleBlock(BlockRegistry.IO_CORE.get());
-		axisBlock((RotatedPillarBlock) BlockRegistry.IO_DEEPSLATE.get());
+		simpleBlock(BlockRegistry.IO_LANTERN.get());
+		simpleBlock(BlockRegistry.GLOWING_IO_SAND.get());
+		sandBlock(BlockRegistry.IO_SAND.get());
+		sandBlock(BlockRegistry.COARSE_IO_SAND.get());
+		sandPathBlock(BlockRegistry.IO_SAND_PATH.get(), "io_sand");
+		portalBlock(BlockRegistry.IO_PORTAL.get());
 
+
+		//---- EUROPA -------------------------------------------------------------------------------
 		simpleBlock(BlockRegistry.EUROPA_CORE.get());
 		simpleBlock(BlockRegistry.EUROPA_HYDRATE.get());
-		
+
 		//EUROPA
 		simpleBlock(BlockRegistry.EUROPA_BRICKS.get());
 		stairsBlock(BlockRegistry.EUROPA_BRICK_STAIRS.get(), modLoc("block/europa_bricks"));
 		slabBlock(BlockRegistry.EUROPA_BRICK_SLAB.get(), modLoc("block/europa_bricks"), modLoc("block/europa_bricks"));
 		wallBlock(BlockRegistry.EUROPA_BRICK_WALL.get(), modLoc("block/europa_bricks"));
-//		simpleBlock(BlockRegistry.CHISELED_EUROPA_BRICKS.get());
+		simpleBlock(BlockRegistry.CHISELED_EUROPA_BRICKS.get());
 //		axisBlock(BlockRegistry.EUROPA_BRICK_PILLAR.get(), modLoc("block/europa_brick_pillar"));
 //		simpleBlock(BlockRegistry.CRACKED_EUROPA_BRICKS.get());
 		simpleBlock(BlockRegistry.GLOWING_EUROPA_SAND.get());
 		simpleBlock(BlockRegistry.EUROPA_LANTERN.get());
-		
+		portalBlock(BlockRegistry.EUROPA_PORTAL.get());
 
+
+		//---- GANYMEDE -------------------------------------------------------------------------------
 		simpleBlock(BlockRegistry.GANYMEDE_CORE.get());
-		
+		simpleBlock(BlockRegistry.GANYMEDE_BRICKS.get());
+		stairsBlock(BlockRegistry.GANYMEDE_BRICK_STAIRS.get(), modLoc("block/ganymede_bricks"));
+		slabBlock(BlockRegistry.GANYMEDE_BRICK_SLAB.get(), modLoc("block/ganymede_bricks"), modLoc("block/ganymede_bricks"));
+		wallBlock(BlockRegistry.GANYMEDE_BRICK_WALL.get(), modLoc("block/ganymede_bricks"));
+		simpleBlock(BlockRegistry.CHISELED_GANYMEDE_BRICKS.get());
+//		axisBlock(BlockRegistry.GANYMEDE_BRICK_PILLAR.get(), modLoc("block/ganymede_brick_pillar"));
+//		simpleBlock(BlockRegistry.CRACKED_GANYMEDE_BRICKS.get());
+		simpleBlock(BlockRegistry.GLOWING_GANYMEDE_SAND.get());
+		simpleBlock(BlockRegistry.GANYMEDE_LANTERN.get());
+//		portalBlock(BlockRegistry.GANYMEDE_PORTAL.get());
+
+		//---- CALLISTO -------------------------------------------------------------------------------
+
 		//CALLISTO
-		 simpleBlock(BlockRegistry.CALLISTO_CORE.get());
+		simpleBlock(BlockRegistry.CALLISTO_CORE.get());
 		simpleBlock(BlockRegistry.CALLISTO_BRICKS.get());
 		stairsBlock(BlockRegistry.CALLISTO_BRICK_STAIRS.get(), modLoc("block/callisto_bricks"));
 		slabBlock(BlockRegistry.CALLISTO_BRICK_SLAB.get(), modLoc("block/callisto_bricks"), modLoc("block/callisto_bricks"));
 		wallBlock(BlockRegistry.CALLISTO_BRICK_WALL.get(), modLoc("block/callisto_bricks"));
-//		simpleBlock(BlockRegistry.CHISELED_CALLISTO_BRICKS.get());
+		simpleBlock(BlockRegistry.CHISELED_CALLISTO_BRICKS.get());
 //		axisBlock(BlockRegistry.CALLISTO_BRICK_PILLAR.get(), modLoc("block/callisto_brick_pillar"));
 //		simpleBlock(BlockRegistry.CRACKED_CALLISTO_BRICKS.get());
 		simpleBlock(BlockRegistry.GLOWING_CALLISTO_SAND.get());
 		simpleBlock(BlockRegistry.CALLISTO_LANTERN.get());
-		
-		//---- OTHER PLANETS -------------------------------------------------------------------------------
+		portalBlock(BlockRegistry.CALLISTO_PORTAL.get());
 
+		//---- OTHER PLANETS -------------------------------------------------------------------------------
 
 		//SATURN
 		simpleBlock(BlockRegistry.SATURN_ATMOSPHERE.get());
@@ -464,10 +578,15 @@ public class BlockStates extends BlockStateProvider {
 		simpleBlock(BlockRegistry.LUMINOUS_WHITE_GLASS.get());
 		simpleBlock(BlockRegistry.LUMINOUS_CYAN_GLASS.get());
 		simpleBlock(BlockRegistry.LUMINOUS_MAGENTA_GLASS.get());
-		paneBlock((IronBarsBlock) BlockRegistry.LUMINOUS_MAGENTA_GLASS_PANE.get(), modLoc("block/luminous_magenta_glass"), mcLoc("block/magenta_stained_glass_pane_top"));
-		paneBlock((IronBarsBlock) BlockRegistry.LUMINOUS_BLUE_GLASS_PANE.get(), modLoc("block/luminous_blue_glass"), modLoc("block/luminous_blue_glass_pane_top"));
-		paneBlock((IronBarsBlock) BlockRegistry.LUMINOUS_CYAN_GLASS_PANE.get(), modLoc("block/luminous_cyan_glass"), modLoc("block/luminous_cyan_glass_pane_top"));
-		paneBlock((IronBarsBlock) BlockRegistry.LUMINOUS_WHITE_GLASS_PANE.get(), modLoc("block/luminous_white_glass"), modLoc("block/luminous_white_glass_pane_top"));
+		simpleBlock(BlockRegistry.LUMINOUS_YELLOW_GLASS.get());
+		simpleBlock(BlockRegistry.LUMINOUS_RED_GLASS.get());
+
+		paneBlock(BlockRegistry.LUMINOUS_MAGENTA_GLASS_PANE.get(), modLoc("block/luminous_magenta_glass"), mcLoc("block/magenta_stained_glass_pane_top"));
+		paneBlock(BlockRegistry.LUMINOUS_BLUE_GLASS_PANE.get(), modLoc("block/luminous_blue_glass"), modLoc("block/luminous_blue_glass_pane_top"));
+		paneBlock(BlockRegistry.LUMINOUS_CYAN_GLASS_PANE.get(), modLoc("block/luminous_cyan_glass"), modLoc("block/luminous_cyan_glass_pane_top"));
+		paneBlock(BlockRegistry.LUMINOUS_WHITE_GLASS_PANE.get(), modLoc("block/luminous_white_glass"), modLoc("block/luminous_white_glass_pane_top"));
+		paneBlock(BlockRegistry.LUMINOUS_YELLOW_GLASS_PANE.get(), modLoc("block/luminous_yellow_glass"), modLoc("block/luminous_yellow_glass_pane_top"));
+		paneBlock(BlockRegistry.LUMINOUS_RED_GLASS_PANE.get(), modLoc("block/luminous_red_glass"), modLoc("block/luminous_red_glass_pane_top"));
 
 		//CERAMIC
 		simpleBlock(BlockRegistry.SILICA.get());
@@ -567,10 +686,7 @@ public class BlockStates extends BlockStateProvider {
 
 		simpleBlock(BlockRegistry.BAUXITE_ORE.get());
 
-
 		simpleBlock(BlockRegistry.TAXI_STATION.get());
-
-
 	}
 
 	public void buttonBlock(ButtonBlock block, ResourceLocation texture, ResourceLocation texturePressed) {
@@ -583,4 +699,64 @@ public class BlockStates extends BlockStateProvider {
 		return block.getRegistryName().getPath();
 	}
 
+	public void varietyBlock(Block block) {
+		ModelFile var = models().cubeAll(name(block), blockTexture(block));
+		ModelFile mirror = cubeMirroredAll(name(block), blockTexture(block));
+
+		getVariantBuilder(block)
+				.partialState().addModels(new ConfiguredModel(var), new ConfiguredModel(var, 0, 180, false),
+						new ConfiguredModel(mirror), new ConfiguredModel(mirror, 0, 180, false));
+	}
+
+	public void sandPathBlock(Block block, String texture) {
+		ModelFile model = models().cubeAll(name(block), modLoc("block/" + texture));
+
+		getVariantBuilder(block)
+				.partialState().addModels(new ConfiguredModel(model), new ConfiguredModel(model, 0, 90, false),
+						new ConfiguredModel(model, 0, 180, false), new ConfiguredModel(model, 0, 270, false));
+	}
+
+	public void sandBlock(Block block) {
+		ModelFile model = models().cubeAll(name(block), blockTexture(block));
+
+		getVariantBuilder(block)
+				.partialState().addModels(new ConfiguredModel(model), new ConfiguredModel(model, 0, 90, false),
+						new ConfiguredModel(model, 0, 180, false), new ConfiguredModel(model, 0, 270, false));
+	}
+
+	public void portalBlock(Block block) {
+		ModelFile ew_model = models().withExistingParent(block.getRegistryName().getPath() + "_ew", modLoc("template_portal_ew"))
+				.texture("portal", blockTexture(block)).texture("particle", blockTexture(block));
+		ModelFile ns_model = models().withExistingParent(block.getRegistryName().getPath() + "_ns", modLoc("template_portal_ns"))
+				.texture("portal", blockTexture(block)).texture("particle", blockTexture(block));
+
+		getVariantBuilder(block)
+				.partialState().with(AbstractPortalBlock.AXIS, Direction.Axis.Z).modelForState().modelFile(ew_model).addModel()
+				.partialState().with(AbstractPortalBlock.AXIS, Direction.Axis.X).modelForState().modelFile(ns_model).addModel();
+	}
+
+	public void smoothStoneSlabBlock(Block block, String prefix) {
+		ModelFile bottomSlab = models().withExistingParent(block.getRegistryName().getPath(), mcLoc("slab"))
+				.texture("bottom", modLoc("block/" + prefix + "_smooth_stone"))
+				.texture("top", modLoc("block/" + prefix + "_smooth_stone"))
+				.texture("side", modLoc("block/" + prefix + "_smooth_stone_slab_side"));
+
+		ModelFile doubleSlab = models().withExistingParent(block.getRegistryName().getPath() + "_double", mcLoc("cube_column"))
+				.texture("end", modLoc("block/" + prefix + "_smooth_stone"))
+				.texture("side", modLoc("block/" + prefix + "_smooth_stone_slab_side"));
+
+		ModelFile topSlab = models().withExistingParent(block.getRegistryName().getPath() + "_top", mcLoc("slab_top"))
+				.texture("bottom", modLoc("block/" + prefix + "_smooth_stone"))
+				.texture("top", modLoc("block/" + prefix + "_smooth_stone"))
+				.texture("side", modLoc("block/" + prefix + "_smooth_stone_slab_side"));
+
+		getVariantBuilder(block)
+				.partialState().with(SlabBlock.TYPE, SlabType.BOTTOM).modelForState().modelFile(bottomSlab).addModel()
+				.partialState().with(SlabBlock.TYPE, SlabType.DOUBLE).modelForState().modelFile(doubleSlab).addModel()
+				.partialState().with(SlabBlock.TYPE, SlabType.TOP).modelForState().modelFile(topSlab).addModel();
+	}
+
+	public BlockModelBuilder cubeMirroredAll(String name, ResourceLocation texture) {
+        return models().withExistingParent(name + "_mirrored", mcLoc("block" + "/cube_mirrored_all")).texture("all", texture);
+	}
 }

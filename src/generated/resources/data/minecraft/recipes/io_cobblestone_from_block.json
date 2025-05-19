@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "celestialexploration:compressed_io_cobblestone"
+    }
+  ],
+  "result": {
+    "item": "celestialexploration:io_cobblestone",
+    "count": 9
+  }
+}

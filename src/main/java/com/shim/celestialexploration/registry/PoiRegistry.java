@@ -36,6 +36,9 @@ public class PoiRegistry {
     public static final RegistryObject<PoiType> CALLISTO_PORTAL = POI.register("callisto_portal", () -> new PoiType("callisto_portal",
             PoiType.getBlockStates(BlockRegistry.CALLISTO_PORTAL.get()), 0, 1));
 
+    public static final RegistryObject<PoiType> IO_PORTAL = POI.register("io_portal", () -> new PoiType("io_portal",
+            PoiType.getBlockStates(BlockRegistry.IO_PORTAL.get()), 0, 1));
+
 
     //---- VILLAGERS -------------------------------------------------------------------------------
     public static final RegistryObject<PoiType> ASTRONOMY_POI = POI.register("astronomy_poi",

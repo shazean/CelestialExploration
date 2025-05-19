@@ -154,8 +154,8 @@ public class LootTables extends BaseLootTableProvider {
 		entity(EntityRegistry.MECHADOG.get(), LootTable.lootTable()
 				.withPool(LootPool.lootPool()
 					.setRolls(ConstantValue.exactly(1.0F))
-					.add(LootItem.lootTableItem(Items.REDSTONE))
-					.when(LootItemRandomChanceWithLootingCondition.randomChanceAndLootingBoost(0.8F, 0.01F)))
+					.add(LootItem.lootTableItem(Items.REDSTONE)))
+//					.when(LootItemRandomChanceWithLootingCondition.randomChanceAndLootingBoost(0.8F, 0.01F)))
 				.withPool(LootPool.lootPool()
 						.setRolls(ConstantValue.exactly(1.0F))
 						.add(LootItem.lootTableItem(BlockRegistry.MECHADOG_HEAD.get()))
@@ -172,8 +172,8 @@ public class LootTables extends BaseLootTableProvider {
 						.withPool(LootPool.lootPool()
 								.setRolls(ConstantValue.exactly(1.0F))
 								.add(LootItem.lootTableItem(ItemRegistry.MECHADOG_CORE.get()))
-								.when(LootItemKilledByPlayerCondition.killedByPlayer()))
-		);
+//								.when(LootItemKilledByPlayerCondition.killedByPlayer())
+						));
 
 		//---- BLOCKS -------------------------------------------------------------------------------
 		//---- MOON -------------------------------------------------------------------------------
@@ -328,6 +328,33 @@ public class LootTables extends BaseLootTableProvider {
 		block(BlockRegistry.JUPITER_LANTERN.get(), createSilkTouchTable(BlockRegistry.JUPITER_LANTERN.get(), BlockRegistry.JUPITER_DEEPSLATE.get(), 1, 3)); //FIXME?
 		block(BlockRegistry.JUPITER_ATMOSPHERE.get(), createSimpleTable(BlockRegistry.JUPITER_ATMOSPHERE.get()));
 
+		//---- IO -------------------------------------------------------------------------------
+		//STONE
+		block(BlockRegistry.IO_STONE.get(), createSilkTouchTable(BlockRegistry.IO_STONE.get(), BlockRegistry.IO_COBBLESTONE.get(), 1, 1));
+
+		block(BlockRegistry.IO_STONE_SLAB.get(), createSlabItemTable(BlockRegistry.IO_STONE_SLAB.get()));
+		block(BlockRegistry.IO_COBBLESTONE_SLAB.get(), createSlabItemTable(BlockRegistry.IO_COBBLESTONE_SLAB.get()));
+		block(BlockRegistry.IO_BRICK_SLAB.get(), createSlabItemTable(BlockRegistry.IO_BRICK_SLAB.get()));
+		block(BlockRegistry.IO_SMOOTH_STONE_SLAB.get(), createSlabItemTable(BlockRegistry.IO_SMOOTH_STONE_SLAB.get()));
+
+		//DEEPSLATE
+		block(BlockRegistry.IO_DEEPSLATE.get(), createSilkTouchTable(BlockRegistry.IO_DEEPSLATE.get(), BlockRegistry.IO_COBBLED_DEEPSLATE.get(), 1, 1));
+
+		block(BlockRegistry.IO_COBBLED_DEEPSLATE_SLAB.get(), createSlabItemTable(BlockRegistry.IO_COBBLED_DEEPSLATE_SLAB.get()));
+		block(BlockRegistry.IO_DEEPSLATE_BRICK_SLAB.get(), createSlabItemTable(BlockRegistry.IO_DEEPSLATE_BRICK_SLAB.get()));
+		block(BlockRegistry.IO_POLISHED_DEEPSLATE_SLAB.get(), createSlabItemTable(BlockRegistry.IO_POLISHED_DEEPSLATE_SLAB.get()));
+		block(BlockRegistry.IO_DEEPSLATE_TILE_SLAB.get(), createSlabItemTable(BlockRegistry.IO_DEEPSLATE_TILE_SLAB.get()));
+
+		//ORES
+		block(BlockRegistry.IO_SULFUR_ORE.get(), createSulfurOreTable(BlockRegistry.IO_SULFUR_ORE.get()));
+		block(BlockRegistry.IO_DEEPSLATE_IRON_ORE.get(), createIronOreTable(BlockRegistry.IO_DEEPSLATE_IRON_ORE.get()));
+
+		block(BlockRegistry.CHISELED_IO_DEEPSLATE_BRICKS.get(), createSimpleTable(BlockRegistry.CHISELED_IO_DEEPSLATE_BRICKS.get()));
+		block(BlockRegistry.CRACKED_IO_DEEPSLATE_BRICKS.get(), createSimpleTable(BlockRegistry.CRACKED_IO_DEEPSLATE_BRICKS.get()));
+
+		//OTHER
+		block(BlockRegistry.GLOWING_IO_SAND.get(), createSilkTouchTable(BlockRegistry.GLOWING_IO_SAND.get(), ItemRegistry.IO_DUST.get(), 2, 5));
+		block(BlockRegistry.IO_LANTERN.get(), createSilkTouchTable(BlockRegistry.LUNAR_LANTERN.get(), ItemRegistry.IO_DUST.get(), 1, 3));
 
 		//---- EUROPA -------------------------------------------------------------------------------
 		block(BlockRegistry.EUROPA_BRICK_SLAB.get(), createSlabItemTable(BlockRegistry.EUROPA_BRICK_SLAB.get()));
@@ -338,6 +365,11 @@ public class LootTables extends BaseLootTableProvider {
 		block(BlockRegistry.CALLISTO_BRICK_SLAB.get(), createSlabItemTable(BlockRegistry.CALLISTO_BRICK_SLAB.get()));
 		block(BlockRegistry.GLOWING_CALLISTO_SAND.get(), createSilkTouchTable(BlockRegistry.GLOWING_CALLISTO_SAND.get(), ItemRegistry.CALLISTO_DUST.get(), 2, 5));
 		block(BlockRegistry.CALLISTO_LANTERN.get(), createSilkTouchTable(BlockRegistry.CALLISTO_LANTERN.get(), ItemRegistry.CALLISTO_DUST.get(), 1, 3));
+
+		//---- GANYMEDE -------------------------------------------------------------------------------
+		block(BlockRegistry.GANYMEDE_BRICK_SLAB.get(), createSlabItemTable(BlockRegistry.GANYMEDE_BRICK_SLAB.get()));
+		block(BlockRegistry.GLOWING_GANYMEDE_SAND.get(), createSilkTouchTable(BlockRegistry.GLOWING_GANYMEDE_SAND.get(), ItemRegistry.GANYMEDE_DUST.get(), 2, 5));
+		block(BlockRegistry.GANYMEDE_LANTERN.get(), createSilkTouchTable(BlockRegistry.GANYMEDE_LANTERN.get(), ItemRegistry.GANYMEDE_DUST.get(), 1, 3));
 
 
 		//---- ORES/ALLOYS -------------------------------------------------------------------------------
@@ -352,6 +384,11 @@ public class LootTables extends BaseLootTableProvider {
 		block(BlockRegistry.LUMINOUS_WHITE_GLASS.get(), createSilkTouchTable(BlockRegistry.LUMINOUS_WHITE_GLASS.get(), ItemRegistry.MOON_DUST.get(), 1, 1));
 		block(BlockRegistry.LUMINOUS_CYAN_GLASS.get(), createSilkTouchTable(BlockRegistry.LUMINOUS_CYAN_GLASS.get(), ItemRegistry.EUROPA_DUST.get(), 1, 1));
 		block(BlockRegistry.LUMINOUS_MAGENTA_GLASS.get(), createSilkTouchTable(BlockRegistry.LUMINOUS_MAGENTA_GLASS.get(), ItemRegistry.CALLISTO_DUST.get(), 1, 1));
+		block(BlockRegistry.LUMINOUS_YELLOW_GLASS.get(), createSilkTouchTable(BlockRegistry.LUMINOUS_YELLOW_GLASS.get(), ItemRegistry.IO_DUST.get(), 1, 1));
+		block(BlockRegistry.LUMINOUS_RED_GLASS.get(), createSilkTouchTable(BlockRegistry.LUMINOUS_RED_GLASS.get(), ItemRegistry.GANYMEDE_DUST.get(), 1, 1));
+
+		block(BlockRegistry.LUMINOUS_YELLOW_GLASS_PANE.get(), createSilkTouchTable(BlockRegistry.LUMINOUS_YELLOW_GLASS_PANE.get(), ItemRegistry.IO_DUST.get(), 1, 1));
+		block(BlockRegistry.LUMINOUS_RED_GLASS_PANE.get(), createSilkTouchTable(BlockRegistry.LUMINOUS_RED_GLASS_PANE.get(), ItemRegistry.GANYMEDE_DUST.get(), 1, 1));
 		block(BlockRegistry.LUMINOUS_MAGENTA_GLASS_PANE.get(), createSilkTouchTable(BlockRegistry.LUMINOUS_MAGENTA_GLASS_PANE.get(), ItemRegistry.CALLISTO_DUST.get(), 1, 1));
 		block(BlockRegistry.LUMINOUS_CYAN_GLASS_PANE.get(), createSilkTouchTable(BlockRegistry.LUMINOUS_CYAN_GLASS_PANE.get(), ItemRegistry.EUROPA_DUST.get(), 1, 1));
 		block(BlockRegistry.LUMINOUS_BLUE_GLASS_PANE.get(), createSilkTouchTable(BlockRegistry.LUMINOUS_BLUE_GLASS_PANE.get(), ItemRegistry.MOON_DUST.get(), 1, 1));

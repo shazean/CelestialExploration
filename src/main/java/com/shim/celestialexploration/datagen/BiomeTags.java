@@ -1,0 +1,114 @@
+package com.shim.celestialexploration.datagen;
+
+import com.shim.celestialexploration.registry.TagRegistry;
+import com.shim.celestialexploration.world.biome.CelestialBiomeKeys;
+import net.minecraft.data.DataGenerator;
+import net.minecraft.data.tags.BiomeTagsProvider;
+
+public class BiomeTags extends BiomeTagsProvider {
+
+    public BiomeTags(DataGenerator generator, String modid, @org.jetbrains.annotations.Nullable net.minecraftforge.common.data.ExistingFileHelper existingFileHelper) {
+        super(generator, modid, existingFileHelper);
+    }
+
+    @Override
+    protected void addTags() {
+        tag(TagRegistry.Biomes.MARS_BIOMES)
+                .add(CelestialBiomeKeys.MARS_CRATERS)
+                .add(CelestialBiomeKeys.MARS_DEEP_CRATERS)
+                .add(CelestialBiomeKeys.MARS_DESERT)
+                .add(CelestialBiomeKeys.MARS_DUNES)
+                .add(CelestialBiomeKeys.MARS_DRY_ICE_FLATS)
+                .add(CelestialBiomeKeys.MARS_DRY_ICE_PEAKS)
+                .add(CelestialBiomeKeys.MARS_ERODED_FLATS)
+                .add(CelestialBiomeKeys.MARS_FLATS)
+                .add(CelestialBiomeKeys.MARS_VOLCANO_FLATS);
+
+        tag(TagRegistry.Biomes.MOON_BIOMES)
+                .add(CelestialBiomeKeys.MOON_CRATERS)
+                .add(CelestialBiomeKeys.MOON_DESERT)
+                .add(CelestialBiomeKeys.MOON_LAVA_FLATS)
+                .add(CelestialBiomeKeys.MOON_PLAINS)
+                .add(CelestialBiomeKeys.MOON_LOWER_PLAINS);
+
+        tag(TagRegistry.Biomes.VENUS_BIOMES)
+                .add(CelestialBiomeKeys.VENUS_DESERT)
+                .add(CelestialBiomeKeys.VENUS_LOWER_PLAINS)
+                .add(CelestialBiomeKeys.VENUS_PLAINS)
+                .add(CelestialBiomeKeys.VENUS_SULFUR_FLATS)
+                .add(CelestialBiomeKeys.SULFUR_RIVER)
+                .add(CelestialBiomeKeys.SULFUR_OCEAN);
+
+        tag(TagRegistry.Biomes.MERCURY_BIOMES)
+                .add(CelestialBiomeKeys.MERCURY_CRATERED_PLAINS)
+                .add(CelestialBiomeKeys.MERCURY_DESERT)
+                .add(CelestialBiomeKeys.MERCURY_DEEP_CRATERED_PLAINS)
+                .add(CelestialBiomeKeys.MERCURY_PLAINS)
+                .add(CelestialBiomeKeys.MERCURY_RIDGES);
+
+        tag(TagRegistry.Biomes.JUPITER_BIOMES)
+                .add(CelestialBiomeKeys.JUPITER_GREAT_STORM)
+                .add(CelestialBiomeKeys.JUPITER_LESSER_STORM)
+                .add(CelestialBiomeKeys.JUPITER_ETHER);
+
+        tag(TagRegistry.Biomes.EUROPA_BIOMES)
+                .add(CelestialBiomeKeys.EUROPA_DESERT)
+                .add(CelestialBiomeKeys.EUROPA_JAGGED_PLAINS)
+                .add(CelestialBiomeKeys.EUROPA_LOWER_PLAINS)
+                .add(CelestialBiomeKeys.EUROPA_OCEAN)
+                .add(CelestialBiomeKeys.EUROPA_PLAINS)
+                .add(CelestialBiomeKeys.EUROPA_RIVER);
+
+        tag(TagRegistry.Biomes.CALLISTO_BIOMES)
+                .add(CelestialBiomeKeys.CALLISTO_CRATERED_PLAINS)
+                .add(CelestialBiomeKeys.CALLISTO_DESERT)
+                .add(CelestialBiomeKeys.CALLISTO_LOWER_PLAINS)
+                .add(CelestialBiomeKeys.CALLISTO_PLAINS);
+
+        tag(TagRegistry.Biomes.IO_BIOMES)
+                .add(CelestialBiomeKeys.IO_DESERT)
+                .add(CelestialBiomeKeys.IO_LOWER_PLAINS)
+                .add(CelestialBiomeKeys.IO_PLAINS)
+                .add(CelestialBiomeKeys.IO_SULFUR_FLATS);
+
+        tag(TagRegistry.Biomes.SPACE_BIOMES)
+                .add(CelestialBiomeKeys.SPACE);
+
+        tag(TagRegistry.Biomes.NO_SNOW_BIOMES)
+                .addTag(TagRegistry.Biomes.MARS_BIOMES)
+                .addTag(TagRegistry.Biomes.MOON_BIOMES)
+                .addTag(TagRegistry.Biomes.SPACE_BIOMES)
+                .addTag(TagRegistry.Biomes.MERCURY_BIOMES)
+                .addTag(TagRegistry.Biomes.JUPITER_BIOMES)
+                .addTag(TagRegistry.Biomes.EUROPA_BIOMES)
+                .addTag(TagRegistry.Biomes.CALLISTO_BIOMES)
+                .addTag(TagRegistry.Biomes.IO_BIOMES);
+
+        tag(TagRegistry.Biomes.PLANETS)
+                .addTag(TagRegistry.Biomes.MARS_BIOMES)
+                .addTag(TagRegistry.Biomes.VENUS_BIOMES)
+                .addTag(TagRegistry.Biomes.MERCURY_BIOMES)
+                .addTag(TagRegistry.Biomes.JUPITER_BIOMES);
+
+        tag(TagRegistry.Biomes.MOONS)
+                .addTag(TagRegistry.Biomes.MOON_BIOMES)
+                .addTag(TagRegistry.Biomes.EUROPA_BIOMES)
+                .addTag(TagRegistry.Biomes.CALLISTO_BIOMES)
+                .addTag(TagRegistry.Biomes.IO_BIOMES);
+
+        tag(TagRegistry.Biomes.CELESTIAL_BODIES)
+                .addTag(TagRegistry.Biomes.MARS_BIOMES)
+                .addTag(TagRegistry.Biomes.MOON_BIOMES)
+                .addTag(TagRegistry.Biomes.SPACE_BIOMES)
+                .addTag(TagRegistry.Biomes.VENUS_BIOMES)
+                .addTag(TagRegistry.Biomes.MERCURY_BIOMES)
+                .addTag(TagRegistry.Biomes.JUPITER_BIOMES)
+                .addTag(TagRegistry.Biomes.EUROPA_BIOMES)
+                .addTag(TagRegistry.Biomes.CALLISTO_BIOMES)
+                .addTag(TagRegistry.Biomes.IO_BIOMES);
+
+        tag(TagRegistry.Biomes.DUST_STORM_BIOMES)
+                .addTag(TagRegistry.Biomes.MARS_BIOMES)
+                .addTag(TagRegistry.Biomes.JUPITER_BIOMES);
+    }
+}

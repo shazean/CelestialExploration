@@ -5,24 +5,28 @@ import com.shim.celestialexploration.entity.entity.mob.Gust;
 import com.shim.celestialexploration.entity.entity.projectile.StaticPulseProjectile;
 import com.shim.celestialexploration.registry.EffectRegistry;
 import com.shim.celestialexploration.registry.EntityRegistry;
+import com.shim.celestialexploration.registry.ParticleRegistry;
 import mod.azure.azurelib.ai.pathing.AzureNavigation;
 import mod.azure.azurelib.core.animation.AnimatableManager;
 import mod.azure.azurelib.core.animation.AnimationController;
 import mod.azure.azurelib.core.animation.RawAnimation;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraft.world.BossEvent;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
@@ -50,11 +54,11 @@ public class MechaCerberusBoss extends AbstractCerberus implements Enemy {
     private final ServerBossEvent bossEvent = (ServerBossEvent) (new ServerBossEvent(this.getDisplayName(), BossEvent.BossBarColor.RED, BossEvent.BossBarOverlay.PROGRESS)).setDarkenScreen(true);
     private static final int INVULNERABLE_TICKS = 100;
     private static final EntityDataAccessor<Integer> DATA_ID_INV = SynchedEntityData.defineId(MechaCerberusBoss.class, EntityDataSerializers.INT);
-    int lightningAttackCooldown;
+    int lightningAttackCooldown = LIGHTNING_MAX_COOLDOWN;
     int lightningTick;
-    final static int LIGHTNING_MIN_COOLDOWN = 200; //200
-    final static int LIGHTNING_MAX_COOLDOWN = 1000;
-    final static int MAX_MINION_COOLDOWN = 700;
+    final static int LIGHTNING_MIN_COOLDOWN = 140; //200
+    final static int LIGHTNING_MAX_COOLDOWN = 800;
+    final static int MAX_MINION_COOLDOWN = 500;
     final static int STATIC_CAP = 50;
     final static int PLAYER_CAP = 5;
     int summonMinionsTick;
@@ -63,6 +67,7 @@ public class MechaCerberusBoss extends AbstractCerberus implements Enemy {
     final static int MAX_CHARGE_TIME = 280;
     private static final EntityDataAccessor<Boolean> DATA_IS_CHARGED = SynchedEntityData.defineId(MechaCerberusBoss.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> DATA_IS_STUNNED = SynchedEntityData.defineId(MechaCerberusBoss.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> DATA_IS_SUMMONED = SynchedEntityData.defineId(MechaCerberusBoss.class, EntityDataSerializers.BOOLEAN);
     int checkStaticCooldown;
     int modifyStrategyTick;
     public static final Predicate<Entity> IS_PLAYER = (entity) -> entity instanceof Player;
@@ -83,7 +88,7 @@ public class MechaCerberusBoss extends AbstractCerberus implements Enemy {
 //        this.isCharged = false;
 //        this.isStunned = false;
         this.chargingTick = 0;
-        this.summonMinionsTick = 0;
+        this.summonMinionsTick = MAX_MINION_COOLDOWN - 100;
         this.checkStaticCooldown = 0;
         this.lightningTick = 0;
         this.setCharged(false);
@@ -151,10 +156,17 @@ public class MechaCerberusBoss extends AbstractCerberus implements Enemy {
         this.entityData.set(DATA_IS_STUNNED, isStunned);
     }
 
+    public boolean isSummoned() {
+        return this.entityData.get(DATA_IS_SUMMONED);
+    }
+
+    public void setSummoned() {
+        this.entityData.set(DATA_IS_SUMMONED, true);
+    }
+
     protected static final RawAnimation howl = RawAnimation.begin().thenLoop("howl");
     protected static final RawAnimation stun = RawAnimation.begin().thenLoop("stun");
     protected static final RawAnimation charge_up = RawAnimation.begin().thenLoop("charge_up");
-
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
@@ -193,13 +205,29 @@ public class MechaCerberusBoss extends AbstractCerberus implements Enemy {
         );
     }
 
+    @Override
+    protected SoundEvent getHurtSound(DamageSource damageSource) {
+        if (!this.isStunned()) {
+            return SoundEvents.WOLF_WHINE;
+        }
+        else {
+            return SoundEvents.WOLF_HURT;
+        }
+//        return super.getHurtSound(damageSource);
+    }
+
     public boolean hurt(DamageSource source, float damage) {
+
+        if (this.isHowling()) {
+            return false;
+        }
+
         if (!this.isStunned()) {
             damage = damage * .25F;
         }
-        if (this.isStunned()) {
-            damage += .1F;
-        }
+//        if (this.isStunned()) {
+//            damage += .1F;
+//        }
 
         if (this.isCharging() && !this.isCharged()) {
             setStunned(true);
@@ -227,7 +255,7 @@ public class MechaCerberusBoss extends AbstractCerberus implements Enemy {
             }
 
 //                if (livingEntity instanceof Player player) {
-            player.displayClientMessage(new TextComponent("static: " + player.getEffect(EffectRegistry.STATIC_EFFECT.get()).getAmplifier()), false);
+//            player.displayClientMessage(new TextComponent("static: " + player.getEffect(EffectRegistry.STATIC_EFFECT.get()).getAmplifier()), false);
 //                }
 //            }
         }
@@ -259,6 +287,11 @@ public class MechaCerberusBoss extends AbstractCerberus implements Enemy {
 
 //        CelestialExploration.LOGGER.debug("isCharged: " + isCharged() + ", isCharging: " + isCharging() + ", isStunned: " + isStunned() + ", isHowling: " + isHowling());
 
+//        this.level.addParticle(ParticleRegistry.STUN_PARTICLE.get(), this.headLeft.position().x(), this.headLeft.position().y() + 2, this.headLeft.position().z(), 0, 0, 0);
+//        this.level.addParticle(ParticleRegistry.STUN_PARTICLE.get(), this.headCenter.position().x(), this.headCenter.position().y() + 2, this.headCenter.position().z(), 0, 0, 0);
+//        this.level.addParticle(ParticleRegistry.STUN_PARTICLE.get(), this.headRight.position().x(), this.headRight.position().y() + 2, this.headRight.position().z(), 0, 0, 0);
+
+
         if (!this.level.isClientSide()) {
 //            CelestialExploration.LOGGER.debug("facing: " + this.getLookAngle());
 
@@ -266,6 +299,8 @@ public class MechaCerberusBoss extends AbstractCerberus implements Enemy {
                 if (!this.isCharging() || !this.isCharged() || !this.isStunned())
                     this.summonMinionsTick++;
             }
+
+
 
 //            ServerLevel serverLevel = (ServerLevel) this.level;
 //
@@ -303,38 +338,43 @@ public class MechaCerberusBoss extends AbstractCerberus implements Enemy {
             if (checkStaticCooldown == 20) {
                 checkStaticCooldown = 0;
 
-                int totalStatic = 0;
-                int playerCount;
-                int staticWorth;
 
-                List<Entity> nearbyPlayers = level.getEntities(this, this.getBoundingBox().inflate(32.0D),
-                        EntitySelector.NO_SPECTATORS.and(Entity::isPickable).and(EntitySelector.LIVING_ENTITY_STILL_ALIVE).and(IS_PLAYER));
+//                this.level.addParticle(ParticleRegistry.DUST_PARTICLE.get(), this.position().x(), this.position().y() + 4, this.position().z(), 0, 0, 0);
 
-                for (Entity entity : nearbyPlayers) {
-                    Player player = (Player) entity;
-                    if (player.hasEffect(EffectRegistry.STATIC_EFFECT.get())) {
-                        int amplifier = player.getEffect(EffectRegistry.STATIC_EFFECT.get()).getAmplifier() + 1;
-                        totalStatic += amplifier;
-                    }
-                }
-                if (totalStatic > STATIC_CAP) totalStatic = STATIC_CAP;
+//                int totalStatic = 0;
+//                int playerCount;
+//                int staticWorth;
+//
+//                List<Entity> nearbyPlayers = level.getEntities(this, this.getBoundingBox().inflate(32.0D),
+//                        EntitySelector.NO_SPECTATORS.and(Entity::isPickable).and(EntitySelector.LIVING_ENTITY_STILL_ALIVE).and(IS_PLAYER));
+//
+//                for (Entity entity : nearbyPlayers) {
+//                    Player player = (Player) entity;
+//                    if (player.hasEffect(EffectRegistry.STATIC_EFFECT.get())) {
+//                        int amplifier = player.getEffect(EffectRegistry.STATIC_EFFECT.get()).getAmplifier() + 1;
+//                        totalStatic += amplifier;
+//                    }
+//                }
+//                if (totalStatic > STATIC_CAP) totalStatic = STATIC_CAP;
+//
+//                playerCount = Mth.clamp(nearbyPlayers.size(), 1, PLAYER_CAP);
+//
+//                staticWorth = (LIGHTNING_MAX_COOLDOWN - LIGHTNING_MIN_COOLDOWN) / (playerCount * 10);
+//                lightningAttackCooldown = LIGHTNING_MAX_COOLDOWN - (totalStatic * staticWorth);
 
-                playerCount = Mth.clamp(nearbyPlayers.size(), 1, PLAYER_CAP);
-
-                staticWorth = (LIGHTNING_MAX_COOLDOWN - LIGHTNING_MIN_COOLDOWN) / (playerCount * 10);
-                lightningAttackCooldown = LIGHTNING_MAX_COOLDOWN - (totalStatic * staticWorth);
+                this.lightningAttackCooldown = (int) (((LIGHTNING_MAX_COOLDOWN - LIGHTNING_MIN_COOLDOWN) * (this.getHealth() / this.getMaxHealth())) + LIGHTNING_MIN_COOLDOWN);
 
 //                lightningAttackCooldown = LIGHTNING_MAX_COOLDOWN - (staticAffect * totalStatic);
 
-                LivingEntity entity = this.getTarget();
-                if (entity != null) {
-                    if (entity instanceof Player player) {
-                        player.displayClientMessage(new TextComponent("summonMinions: " + summonMinionsTick + "/" + MAX_MINION_COOLDOWN + ", lightning: " + lightningTick + "/" + lightningAttackCooldown), false);
-                    }
-                }
+//                LivingEntity entity = this.getTarget();
+//                if (entity != null) {
+//                    if (entity instanceof Player player) {
+//                        player.displayClientMessage(new TextComponent("summonMinions: " + summonMinionsTick + "/" + MAX_MINION_COOLDOWN + ", lightning: " + lightningTick + "/" + lightningAttackCooldown), false);
+//                    }
+//                }
 
-                if (this.lightningTick >= (this.lightningAttackCooldown - 60)) {
-                    this.summonMinionsTick = MAX_MINION_COOLDOWN;
+                if (this.lightningTick >= (this.lightningAttackCooldown - 80)) {
+                    this.summonMinionsTick = MAX_MINION_COOLDOWN + 1;
                 }
             }
 
@@ -432,6 +472,30 @@ public class MechaCerberusBoss extends AbstractCerberus implements Enemy {
 
     protected void customServerAiStep() {
         this.bossEvent.setProgress(this.getHealth() / this.getMaxHealth());
+
+        if (!this.isSummoned()) {
+
+//        super.customServerAiStep();
+            int i = 1200;
+            if ((this.tickCount + this.getId()) % 800 == 0) {
+                MobEffect mobeffect = MobEffects.DIG_SLOWDOWN;
+                List<ServerPlayer> list = ((ServerLevel) this.level).getPlayers((p_32465_) -> this.distanceToSqr(p_32465_) < 2500.0D && p_32465_.gameMode.isSurvival());
+                int j = 2;
+                int k = 6000;
+                int l = 1200;
+
+                for (ServerPlayer serverplayer : list) {
+                    if (!serverplayer.hasEffect(mobeffect) || serverplayer.getEffect(mobeffect).getAmplifier() < 2 || serverplayer.getEffect(mobeffect).getDuration() < 1200) {
+//                    serverplayer.connection.send(new ClientboundGameEventPacket(ClientboundGameEventPacket.GUARDIAN_ELDER_EFFECT, this.isSilent() ? 0.0F : 1.0F));
+                        serverplayer.addEffect(new MobEffectInstance(mobeffect, 6000, 2), this);
+                    }
+                }
+            }
+
+            if (!this.hasRestriction()) {
+                this.restrictTo(this.blockPosition(), 16);
+            }
+        }
     }
 
     @Override
@@ -463,6 +527,7 @@ public class MechaCerberusBoss extends AbstractCerberus implements Enemy {
         this.entityData.define(DATA_IS_CHARGING, false);
         this.entityData.define(DATA_IS_CHARGED, false);
         this.entityData.define(DATA_IS_STUNNED, false);
+        this.entityData.define(DATA_IS_SUMMONED, false);
     }
 
     public static class ChargeUpForAttackGoal extends Goal {
@@ -491,13 +556,13 @@ public class MechaCerberusBoss extends AbstractCerberus implements Enemy {
 
         @Override
         public void start() {
-            LivingEntity entity = this.boss.getTarget();
-            if (entity != null) {
-                entity.addEffect(new MobEffectInstance(MobEffects.LUCK, 100));
-                if (entity instanceof Player player) {
-                    player.displayClientMessage(new TextComponent("charging up for attack"), false);
-                }
-            }
+//            LivingEntity entity = this.boss.getTarget();
+//            if (entity != null) {
+//                entity.addEffect(new MobEffectInstance(MobEffects.LUCK, 100));
+//                if (entity instanceof Player player) {
+//                    player.displayClientMessage(new TextComponent("charging up for attack"), false);
+//                }
+//            }
 //            this.boss.getNavigation().stop();
             ((AzureNavigation) this.boss.getNavigation()).hardStop();
 
@@ -507,9 +572,9 @@ public class MechaCerberusBoss extends AbstractCerberus implements Enemy {
 
         @Override
         public void stop() {
-            LivingEntity entity = this.boss.getTarget();
-            if (entity != null)
-                entity.removeEffect(MobEffects.LUCK);
+//            LivingEntity entity = this.boss.getTarget();
+//            if (entity != null)
+//                entity.removeEffect(MobEffects.LUCK);
 
             this.boss.setCharged(!this.boss.isStunned());
 //            this.boss.isCharged = !this.boss.isStunned;
@@ -528,7 +593,7 @@ public class MechaCerberusBoss extends AbstractCerberus implements Enemy {
         @Override
         public void tick() {
 
-            CelestialExploration.LOGGER.debug("chargingTick: " + this.boss.chargingTick + ", totalCharge: " + Math.min(MAX_CHARGE_TIME * (this.boss.getHealth() / this.boss.getMaxHealth()), (float) MAX_CHARGE_TIME / 3));
+//            CelestialExploration.LOGGER.debug("chargingTick: " + this.boss.chargingTick + ", totalCharge: " + Math.min(MAX_CHARGE_TIME * (this.boss.getHealth() / this.boss.getMaxHealth()), (float) MAX_CHARGE_TIME / 3));
 
             if (!stunned) {
                 this.boss.chargingTick++;
@@ -550,10 +615,10 @@ public class MechaCerberusBoss extends AbstractCerberus implements Enemy {
         public boolean canUse() {
             if (this.boss.level.getDifficulty() == Difficulty.PEACEFUL) return false;
 
-//            List<Entity> nearbyPlayers = this.boss.level.getEntities(this.boss, this.boss.getBoundingBox().inflate(40.0D),
-//                    EntitySelector.NO_CREATIVE_OR_SPECTATOR.and(Entity::isPickable).and(EntitySelector.LIVING_ENTITY_STILL_ALIVE).and(IS_PLAYER));
-//
-//            if (nearbyPlayers.isEmpty()) return false;
+            List<Entity> nearbyPlayers = this.boss.level.getEntities(this.boss, this.boss.getBoundingBox().inflate(40.0D),
+                    EntitySelector.NO_CREATIVE_OR_SPECTATOR.and(Entity::isPickable).and(EntitySelector.LIVING_ENTITY_STILL_ALIVE).and(IS_PLAYER));
+
+            if (nearbyPlayers.isEmpty()) return false;
 
             return this.boss.isCharged() && !this.boss.isStunned();
         }
@@ -569,7 +634,13 @@ public class MechaCerberusBoss extends AbstractCerberus implements Enemy {
             ((AzureNavigation) this.boss.getNavigation()).hardStop();
 //            this.boss.summonMinionsTick -= 80;
 
-            if (this.boss.getTarget() instanceof Player player) player.displayClientMessage(new TextComponent("lightning attack!"), false);
+//            if (this.boss.getTarget() instanceof Player player) player.displayClientMessage(new TextComponent("lightning attack!"), false);
+
+            SoundEvent soundevent = this.boss.getChargeAttackSound();
+            if (soundevent != null) {
+                this.boss.playSound(soundevent, this.boss.getSoundVolume(), this.boss.getVoicePitch());
+            }
+
 
             if (!this.boss.level.isClientSide()) {
                 ServerLevel serverLevel = (ServerLevel) this.boss.level;
@@ -624,13 +695,14 @@ public class MechaCerberusBoss extends AbstractCerberus implements Enemy {
                 this.doHurtTarget(entity);
             }
 
-            if (!this.boss.level.isClientSide()) {
-                ServerLevel serverLevel = (ServerLevel) this.boss.level;
-                serverLevel.sendParticles(ParticleTypes.SOUL_FIRE_FLAME, this.boss.position().x() + radius, this.boss.position().y() + 3.5, this.boss.position().z(), 0, 0.0F, 0.0F, 0.0F, 0.15F);
-                serverLevel.sendParticles(ParticleTypes.SOUL_FIRE_FLAME, this.boss.position().x() - radius, this.boss.position().y() + 3.5, this.boss.position().z(), 0, 0.0F, 0.0F, 0.0F, 0.15F);
-                serverLevel.sendParticles(ParticleTypes.SOUL_FIRE_FLAME, this.boss.position().x(), this.boss.position().y() + 3.5, this.boss.position().z() + radius, 0, 0.0F, 0.0F, 0.0F, 0.15F);
-                serverLevel.sendParticles(ParticleTypes.SOUL_FIRE_FLAME, this.boss.position().x(), this.boss.position().y() + 3.5, this.boss.position().z() - radius, 0, 0.0F, 0.0F, 0.0F, 0.15F);
-            }
+            //for debug purposes…
+//            if (!this.boss.level.isClientSide()) {
+//                ServerLevel serverLevel = (ServerLevel) this.boss.level;
+//                serverLevel.sendParticles(ParticleTypes.SOUL_FIRE_FLAME, this.boss.position().x() + radius, this.boss.position().y() + 3.5, this.boss.position().z(), 0, 0.0F, 0.0F, 0.0F, 0.15F);
+//                serverLevel.sendParticles(ParticleTypes.SOUL_FIRE_FLAME, this.boss.position().x() - radius, this.boss.position().y() + 3.5, this.boss.position().z(), 0, 0.0F, 0.0F, 0.0F, 0.15F);
+//                serverLevel.sendParticles(ParticleTypes.SOUL_FIRE_FLAME, this.boss.position().x(), this.boss.position().y() + 3.5, this.boss.position().z() + radius, 0, 0.0F, 0.0F, 0.0F, 0.15F);
+//                serverLevel.sendParticles(ParticleTypes.SOUL_FIRE_FLAME, this.boss.position().x(), this.boss.position().y() + 3.5, this.boss.position().z() - radius, 0, 0.0F, 0.0F, 0.0F, 0.15F);
+//            }
         }
 
         public boolean doHurtTarget(Entity entity) {
@@ -709,46 +781,6 @@ public class MechaCerberusBoss extends AbstractCerberus implements Enemy {
             }
         }
 
-        private void spawnProjectiles(ServerLevel serverLevel) {
-            StaticPulseProjectile pulse = EntityRegistry.STATIC_PULSE.get().create(serverLevel);
-            if (pulse != null) {
-                pulse.moveTo(this.boss.position().x, this.boss.position().y + 2, this.boss.position().z);
-                serverLevel.addFreshEntity(pulse);
-            }
-        }
-
-//        private void explode() {
-//            if (!this.boss.level.isClientSide) {
-//                float currentHealth = this.boss.getHealth();
-//
-//
-//
-//                this.boss.level.explode(this.boss, this.boss.getX(), this.boss.getY(), this.boss.getZ(), 4.0F, Explosion.BlockInteraction.NONE);
-//                this.boss.setHealth(currentHealth);
-//                spawnLingeringCloud();
-//            }
-//            this.boss.setCharged(false);
-//            this.boss.isCharged = false;
-//        }
-//
-//        private void spawnLingeringCloud() {
-//            Collection<MobEffectInstance> collection = this.boss.getActiveEffects();
-//            if (!collection.isEmpty()) {
-//                AreaEffectCloud areaeffectcloud = new AreaEffectCloud(this.boss.level, this.boss.getX(), this.boss.getY(), this.boss.getZ());
-//                areaeffectcloud.setRadius(2.5F);
-//                areaeffectcloud.setRadiusOnUse(-0.5F);
-//                areaeffectcloud.setWaitTime(10);
-//                areaeffectcloud.setDuration(areaeffectcloud.getDuration() / 2);
-//                areaeffectcloud.setRadiusPerTick(-areaeffectcloud.getRadius() / (float) areaeffectcloud.getDuration());
-//
-//                for (MobEffectInstance mobeffectinstance : collection) {
-//                    areaeffectcloud.addEffect(new MobEffectInstance(mobeffectinstance));
-//                }
-//
-//                this.boss.level.addFreshEntity(areaeffectcloud);
-//            }
-//
-//        }
         @Override
         public void tick() {
             this.lengthTick++;
@@ -776,12 +808,12 @@ public class MechaCerberusBoss extends AbstractCerberus implements Enemy {
 
     public static class StunByAttackGoal extends Goal {
         MechaCerberusBoss boss;
-        static final int MAX_STUN = 30;
+        static final int MAX_STUN = 60;
         int stunTick;
 
         public StunByAttackGoal(MechaCerberusBoss mechaCerberus) {
             this.boss = mechaCerberus;
-            this.setFlags(EnumSet.of(Goal.Flag.JUMP, Goal.Flag.MOVE));
+            this.setFlags(EnumSet.of(Goal.Flag.JUMP, Goal.Flag.MOVE, Goal.Flag.LOOK));
         }
 
         @Override
@@ -791,13 +823,13 @@ public class MechaCerberusBoss extends AbstractCerberus implements Enemy {
 
         @Override
         public void start() {
-            LivingEntity entity = this.boss.getTarget();
-            if (entity != null)
-                entity.addEffect(new MobEffectInstance(MobEffects.WATER_BREATHING, 100));
-
-            if (entity instanceof Player player) {
-                player.displayClientMessage(new TextComponent("is stunned!"), false);
-            }
+//            LivingEntity entity = this.boss.getTarget();
+//            if (entity != null)
+//                entity.addEffect(new MobEffectInstance(MobEffects.WATER_BREATHING, 100));
+//
+//            if (entity instanceof Player player) {
+//                player.displayClientMessage(new TextComponent("is stunned!"), false);
+//            }
 
 //            this.boss.getNavigation().stop();
             ((AzureNavigation) this.boss.getNavigation()).hardStop();
@@ -806,9 +838,9 @@ public class MechaCerberusBoss extends AbstractCerberus implements Enemy {
 
         @Override
         public void stop() {
-            LivingEntity entity = this.boss.getTarget();
-            if (entity != null)
-                entity.removeEffect(MobEffects.WATER_BREATHING);
+//            LivingEntity entity = this.boss.getTarget();
+//            if (entity != null)
+//                entity.removeEffect(MobEffects.WATER_BREATHING);
 
             List<Entity> nearbyPlayers = this.boss.level.getEntities(this.boss, this.boss.getBoundingBox().inflate(32.0D),
                     EntitySelector.NO_SPECTATORS.and(Entity::isPickable).and(EntitySelector.LIVING_ENTITY_STILL_ALIVE).and(IS_PLAYER));
@@ -824,11 +856,23 @@ public class MechaCerberusBoss extends AbstractCerberus implements Enemy {
         public void tick() {
             super.tick();
             stunTick++;
+
+            CelestialExploration.LOGGER.debug("stunned?");
+
+            if (this.boss.level instanceof ServerLevel serverLevel) {
+            if (stunTick % 2 == 0) {
+                serverLevel.sendParticles(ParticleRegistry.STUN_PARTICLE.get(), this.boss.headLeft.position().x(), this.boss.headLeft.position().y() + 2, this.boss.headLeft.position().z(), 0, 0.0D, 0.0D, 0.0D, 0.0D);
+                serverLevel.sendParticles(ParticleRegistry.STUN_PARTICLE.get(), this.boss.headCenter.position().x(), this.boss.headCenter.position().y() + 2, this.boss.headCenter.position().z(), 0, 0.0D, 0.0D, 0.0D, 0.0D);
+                serverLevel.sendParticles(ParticleRegistry.STUN_PARTICLE.get(), this.boss.headRight.position().x(), this.boss.headRight.position().y() + 2, this.boss.headRight.position().z(), 0, 0.0D, 0.0D, 0.0D, 0.0D);
+            }
+            }
+
             if (stunTick > MAX_STUN) {
                 this.boss.setStunned(false);
 //                this.boss.isStunned = false;
                 stunTick = 0;
             }
+
         }
     }
 
@@ -899,9 +943,12 @@ public class MechaCerberusBoss extends AbstractCerberus implements Enemy {
             List<Entity> nearbyMinions = boss.level.getEntities(boss, boss.getBoundingBox().inflate(32.0D),
                     EntitySelector.NO_SPECTATORS.and(Entity::isPickable).and(EntitySelector.LIVING_ENTITY_STILL_ALIVE).and((entity) -> entity instanceof MechaDog));
 
-            if (nearbyMinions.size() >= 5) return false;
+            List<Entity> nearbyPlayers = boss.level.getEntities(boss, boss.getBoundingBox().inflate(32.0D),
+                    EntitySelector.NO_SPECTATORS.and(Entity::isPickable).and(EntitySelector.LIVING_ENTITY_STILL_ALIVE).and(IS_PLAYER));
+
+            if (nearbyMinions.size() >= (nearbyPlayers.size() * 3)) return false;
 //            int rand = this.boss.random.nextInt(5);
-            CelestialExploration.LOGGER.debug("tick: " + this.boss.summonMinionsTick + ", max: " + MAX_MINION_COOLDOWN + ", !isCharging: " + !this.boss.isCharging() + ", !isCharged: " + !this.boss.isCharged() + ", !isStunned: " +  !this.boss.isStunned());
+//            CelestialExploration.LOGGER.debug("tick: " + this.boss.summonMinionsTick + ", max: " + MAX_MINION_COOLDOWN + ", !isCharging: " + !this.boss.isCharging() + ", !isCharged: " + !this.boss.isCharged() + ", !isStunned: " +  !this.boss.isStunned());
 //            if (nearbyMinions.size() <= rand)
 //                return false; //higher chance of summoning more minions the fewer there are
             return this.boss.summonMinionsTick > MAX_MINION_COOLDOWN && !this.boss.isCharging() && !this.boss.isCharged() && !this.boss.isStunned();
@@ -923,6 +970,10 @@ public class MechaCerberusBoss extends AbstractCerberus implements Enemy {
 //            this.boss.getNavigation().stop();
             ((AzureNavigation) this.boss.getNavigation()).hardStop();
             this.boss.setHowling(true);
+            SoundEvent soundevent = this.boss.getHowlSound();
+            if (soundevent != null) {
+                this.boss.playSound(soundevent, this.boss.getSoundVolume(), this.boss.getVoicePitch());
+            }
         }
 
         @Override
@@ -930,29 +981,42 @@ public class MechaCerberusBoss extends AbstractCerberus implements Enemy {
             this.boss.setHowling(false);
             summonLength = 0;
             int rand = this.boss.random.nextInt(9);
-            int numMinions = switch (rand) {
+            int minionCount = switch (rand) {
                 case 0 -> 3;
                 case 1, 2, 3 -> 2;
                 default -> 1;
             };
 
-            LivingEntity entity = this.boss.getTarget();
+            List<Entity> nearbyPlayers = boss.level.getEntities(boss, boss.getBoundingBox().inflate(32.0D),
+                    EntitySelector.NO_SPECTATORS.and(Entity::isPickable).and(EntitySelector.LIVING_ENTITY_STILL_ALIVE).and(IS_PLAYER));
 
-            if (entity != null) {
-                entity.addEffect(new MobEffectInstance(MobEffects.GLOWING, 20));
-                if (entity instanceof Player player) {
-                    player.displayClientMessage(new TextComponent("summoning " + (numMinions + 1) + " minions"), false);
-                }
-            }
+            minionCount = minionCount * nearbyPlayers.size();
 
-            for (int i = 0; i <= numMinions; i++) {
+//            LivingEntity entity = this.boss.getTarget();
+//
+//            if (entity != null) {
+//                entity.addEffect(new MobEffectInstance(MobEffects.GLOWING, 20));
+//                if (entity instanceof Player player) {
+//                    player.displayClientMessage(new TextComponent("summoning " + (minionCount + 1) + " minions"), false);
+//                }
+//            }
+
+            for (int i = 0; i <= minionCount; i++) {
                 if (!this.boss.level.isClientSide()) {
                     ServerLevel serverLevel = (ServerLevel) this.boss.level;
 
-                    MechaDog dog = EntityRegistry.MECHADOG.get().create(this.boss.level);
-                    dog.moveTo(this.boss.blockPosition().west(i), 0, 0);
 
-                    serverLevel.addFreshEntityWithPassengers(dog);
+                    int xOffset = this.boss.random.nextInt(4) - 2;
+                    int zOffset = this.boss.random.nextInt(4) - 2;
+
+                    BlockPos pos = this.boss.blockPosition().west(xOffset).north(zOffset);
+
+                    if (this.boss.level.noCollision(EntityRegistry.MECHADOG.get().getAABB(pos.getX(), pos.getY(), pos.getZ()))) {
+                        MechaDog dog = EntityRegistry.MECHADOG.get().create(this.boss.level);
+                        dog.moveTo(pos, this.boss.getYRot(), this.boss.getXRot());
+                        serverLevel.addFreshEntityWithPassengers(dog);
+
+                    }
                 }
             }
 

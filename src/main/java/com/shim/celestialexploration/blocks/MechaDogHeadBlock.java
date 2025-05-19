@@ -100,6 +100,7 @@ public class MechaDogHeadBlock extends Block {
                     BlockPos blockpos = blockpattern$blockpatternmatch.getBlock(1, 2, 0).getPos();
                     boss.moveTo((double)blockpos.getX() + 0.5D, (double)blockpos.getY() + 0.55D, (double)blockpos.getZ() + 0.5D, blockpattern$blockpatternmatch.getForwards().getAxis() == Direction.Axis.X ? 0.0F : 90.0F, 0.0F);
                     boss.yBodyRot = blockpattern$blockpatternmatch.getForwards().getAxis() == Direction.Axis.X ? 0.0F : 90.0F;
+                    boss.setSummoned();
                     boss.makeInvulnerable();
 
                     for(ServerPlayer serverplayer : level.getEntitiesOfClass(ServerPlayer.class, boss.getBoundingBox().inflate(50.0D))) {

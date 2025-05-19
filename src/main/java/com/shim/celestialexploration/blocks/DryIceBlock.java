@@ -1,15 +1,13 @@
 package com.shim.celestialexploration.blocks;
 
-import com.shim.celestialexploration.item.armor.ThermalSpaceSuitArmorItem;
+import com.shim.celestialexploration.item.armor.ThermalSpacesuitArmorItem;
 import com.shim.celestialexploration.registry.CelestialDamageSource;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
@@ -19,7 +17,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.BubbleColumnBlock;
 import net.minecraft.world.level.block.HalfTransparentBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -33,6 +30,7 @@ import java.util.Random;
 
 public class DryIceBlock extends HalfTransparentBlock {
     private static final int BUBBLE_COLUMN_CHECK_DELAY = 20;
+    int tickCheck = 0;
 
     public DryIceBlock(BlockBehaviour.Properties p_54155_) {
         super(p_54155_);
@@ -42,7 +40,7 @@ public class DryIceBlock extends HalfTransparentBlock {
         if (entity instanceof ServerPlayer player) {
             ItemStack itemStack = player.getItemBySlot(EquipmentSlot.FEET);
 
-            if (!(itemStack.getItem() instanceof ThermalSpaceSuitArmorItem && ((ThermalSpaceSuitArmorItem) itemStack.getItem()).isGravityBoots(itemStack))) {
+            if (!(itemStack.getItem() instanceof ThermalSpacesuitArmorItem && ((ThermalSpacesuitArmorItem) itemStack.getItem()).isGravityBoots(itemStack))) {
                 entity.hurt(CelestialDamageSource.COLD_FLOOR, 1.0F);
             }
 
@@ -69,7 +67,6 @@ public class DryIceBlock extends HalfTransparentBlock {
         if (p_54165_.getBrightness(LightLayer.BLOCK, p_54166_) > 11 - p_54164_.getLightBlock(p_54165_, p_54166_)) {
             this.melt(p_54164_, p_54165_, p_54166_);
         }
-
     }
 
     protected void melt(BlockState p_54169_, Level p_54170_, BlockPos p_54171_) {

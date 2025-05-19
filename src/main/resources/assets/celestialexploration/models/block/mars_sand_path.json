@@ -1,9 +1,0 @@
-{
-   "parent": "celestialexploration:block/sand_path",
-    "textures": {
-        "particle": "celestialexploration:block/mars_sand",
-        "top": "celestialexploration:block/mars_sand_path_top",
-        "side": "celestialexploration:block/mars_sand_path_side",
-        "bottom": "celestialexploration:block/mars_sand"
-    }
-}

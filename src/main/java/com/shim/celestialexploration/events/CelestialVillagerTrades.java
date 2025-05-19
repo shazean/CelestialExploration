@@ -1,33 +1,34 @@
 package com.shim.celestialexploration.events;
 
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.registry.BlockRegistry;
 import com.shim.celestialexploration.registry.ItemRegistry;
+import com.shim.celestialexploration.registry.TagRegistry;
 import com.shim.celestialexploration.registry.VillagerRegistry;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import net.minecraft.Util;
-import net.minecraft.tags.ConfiguredStructureTags;
-import net.minecraft.world.effect.MobEffects;
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.entity.npc.VillagerTrades;
-import net.minecraft.world.entity.npc.VillagerType;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.MapItem;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.trading.MerchantOffer;
-import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.levelgen.feature.ConfiguredStructureFeature;
 import net.minecraft.world.level.saveddata.maps.MapDecoration;
+import net.minecraft.world.level.saveddata.maps.MapItemSavedData;
 import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-import java.util.Collection;
+import javax.annotation.Nullable;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 
 @Mod.EventBusSubscriber(modid = CelestialExploration.MODID)
@@ -36,8 +37,21 @@ public class CelestialVillagerTrades {
     @SubscribeEvent
     public static void addCustomTrades(VillagerTradesEvent event) {
 
+        Int2ObjectMap<List<VillagerTrades.ItemListing>> trades;
+//
+//        if (event.getType() == VillagerProfession.CARTOGRAPHER) {
+//            trades = event.getTrades();
+//
+//
+//            trades.get(1)
+//                    .add((trader, rand) -> getTreasureMapForEmeralds(trader,13, TagRegistry.Structures.MARS_LABYRINTH, "filled_map.mars_labyrinth", MapDecoration.Type.RED_X, 12, 5));
+//
+//
+//        }
+
+
         if (event.getType() == VillagerRegistry.ASTRONOMER.get()) {
-            Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
+            trades = event.getTrades();
 
 //            int villagerLevel = 1;
 
@@ -72,7 +86,7 @@ public class CelestialVillagerTrades {
         }
 
         if (event.getType() == VillagerRegistry.ENGINEER.get()) {
-            Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
+            trades = event.getTrades();
 
             trades.get(1).add((trader, rand) -> getEmeraldsForItem(
                     new ItemStack(Items.COAL, 15), 1, 16, 2, 0.05F));
@@ -183,5 +197,24 @@ public class CelestialVillagerTrades {
 
     public static MerchantOffer getEmeraldsForItem(ItemStack item, int numEmeralds, int maxUses, int xp, float priceMultiplier) {
         return offer(item, new ItemStack(Items.EMERALD, numEmeralds), maxUses, xp, priceMultiplier);
+    }
+
+    @Nullable
+    public static MerchantOffer getTreasureMapForEmeralds(Entity trader, int emeraldCost, TagKey<ConfiguredStructureFeature<?, ?>> destination, String displayName, MapDecoration.Type destinationType, int maxUses, int villagerXp) {
+        if (!(trader.level instanceof ServerLevel)) {
+            return null;
+        } else {
+            ServerLevel serverlevel = (ServerLevel)trader.level;
+            BlockPos blockpos = serverlevel.findNearestMapFeature(destination, trader.blockPosition(), 100, true);
+            if (blockpos != null) {
+                ItemStack itemstack = MapItem.create(serverlevel, blockpos.getX(), blockpos.getZ(), (byte)2, true, true);
+                MapItem.renderBiomePreviewMap(serverlevel, itemstack);
+                MapItemSavedData.addTargetDecoration(itemstack, blockpos, "+", destinationType);
+                itemstack.setHoverName(new TranslatableComponent(displayName));
+                return new MerchantOffer(new ItemStack(Items.EMERALD, emeraldCost), new ItemStack(Items.COMPASS), itemstack, maxUses, villagerXp, 0.2F);
+            } else {
+                return null;
+            }
+        }
     }
 }

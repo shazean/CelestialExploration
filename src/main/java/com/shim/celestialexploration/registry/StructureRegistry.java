@@ -53,7 +53,7 @@ public class StructureRegistry {
     //DUNGEONS
     public static final RegistryObject<StructureFeature<?>> VENUS_FLARE_TREE = DEFERRED_REGISTRY_STRUCTURE.register("venus_flare_tree", VenusFlareTreeStructure::new);
     public static final RegistryObject<StructureFeature<?>> JUPITER_DUNGEON = DEFERRED_REGISTRY_STRUCTURE.register("jupiter_dungeon", JupiterDungeonStructure::new);
-    public static final RegistryObject<StructureFeature<?>> MARS_DUNGEON = DEFERRED_REGISTRY_STRUCTURE.register("mars_dungeon", MarsDungeonStructure::new);
+    public static final RegistryObject<StructureFeature<?>> MARS_LABYRINTH = DEFERRED_REGISTRY_STRUCTURE.register("mars_labyrinth", MarsLabyrinthStructure::new);
 
 
     //RESEARCH TUNNELS

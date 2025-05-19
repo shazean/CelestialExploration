@@ -8,6 +8,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.levelgen.feature.ConfiguredStructureFeature;
 import net.minecraft.world.level.material.Fluid;
 
 public class TagRegistry {
@@ -41,6 +42,13 @@ public class TagRegistry {
         public static final TagKey<Block> JUPITER = BlockTags.create(modLoc("jupiter"));
         public static final TagKey<Block> JUPITER_DEEPSLATE = BlockTags.create(modLoc("jupiter_deepslate"));
         public static final TagKey<Block> JUPITER_COBBLED_DEEPSLATE = BlockTags.create(modLoc("jupiter_deepslate"));
+
+        public static final TagKey<Block> IO = BlockTags.create(modLoc("io"));
+        public static final TagKey<Block> IO_STONE = BlockTags.create(modLoc("io_stone"));
+        public static final TagKey<Block> IO_COBBLESTONE = BlockTags.create(modLoc("io_cobblestone"));
+        public static final TagKey<Block> IO_DEEPSLATE = BlockTags.create(modLoc("io_deepslate"));
+        public static final TagKey<Block> IO_COBBLED_DEEPSLATE = BlockTags.create(modLoc("io_cobbled_deepslate"));
+
 
         public static final TagKey<Block> REGOLITH = BlockTags.create(modLoc("regolith"));
 
@@ -105,6 +113,12 @@ public class TagRegistry {
         public static final TagKey<Item> JUPITER_DEEPSLATE = ItemTags.create(modLoc("jupiter_deepslate"));
         public static final TagKey<Item> JUPITER_COBBLED_DEEPSLATE = ItemTags.create(modLoc("jupiter_cobbled_deepslate"));
 
+        public static final TagKey<Item> IO = ItemTags.create(modLoc("io"));
+        public static final TagKey<Item> IO_STONE = ItemTags.create(modLoc("io_stone"));
+        public static final TagKey<Item> IO_COBBLESTONE = ItemTags.create(modLoc("io_cobblestone"));
+        public static final TagKey<Item> IO_DEEPSLATE = ItemTags.create(modLoc("io_deepslate"));
+        public static final TagKey<Item> IO_COBBLED_DEEPSLATE = ItemTags.create(modLoc("io_cobbled_deepslate"));
+
         public static final TagKey<Item> METEOR = ItemTags.create(modLoc("meteor"));
 
         public static final TagKey<Item> DYED_CERAMIC = ItemTags.create(modLoc("dyed_ceramic"));
@@ -126,7 +140,6 @@ public class TagRegistry {
 
         public static final TagKey<Item> COBBLESAURUS_FOOD = ItemTags.create(modLoc("cobblesaurus_food"));
 
-
     }
 
     public class Biomes {
@@ -139,6 +152,7 @@ public class TagRegistry {
         public static final TagKey<Biome> JUPITER_BIOMES = create("jupiter");
         public static final TagKey<Biome> EUROPA_BIOMES = create("europa");
         public static final TagKey<Biome> CALLISTO_BIOMES = create("callisto");
+        public static final TagKey<Biome> IO_BIOMES = create("io");
 
         public static final TagKey<Biome> NO_SNOW_BIOMES = create("no_snow");
 
@@ -163,15 +177,21 @@ public class TagRegistry {
         private static TagKey<EntityType<?>> create(String key) {
             return TagKey.create(Registry.ENTITY_TYPE_REGISTRY, modLoc(key));
         }
-
     }
 
     public class Fluids {
-        public static final TagKey<Fluid> SULFUR = FluidTags.create(new ResourceLocation(CelestialExploration.MODID, "sulfur"));
-        public static final TagKey<Fluid> MOLTEN_METAL = FluidTags.create(new ResourceLocation(CelestialExploration.MODID, "molten_metal"));
+        public static final TagKey<Fluid> SULFUR = FluidTags.create(modLoc("sulfur"));
+        public static final TagKey<Fluid> MOLTEN_METAL = FluidTags.create(modLoc("molten_metal"));
 
     }
 
+    public class Structures {
+        public static final TagKey<ConfiguredStructureFeature<?, ?>> MARS_LABYRINTH = create("mars_labyrinth");
+
+        private static TagKey<ConfiguredStructureFeature<?, ?>> create(String key) {
+            return TagKey.create(Registry.CONFIGURED_STRUCTURE_FEATURE_REGISTRY, modLoc(key));
+        }
+    }
 
     private static ResourceLocation modLoc(String location) {
         return new ResourceLocation(CelestialExploration.MODID, location);

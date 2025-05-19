@@ -50,6 +50,10 @@ public class CelestialBiomeKeys {
     public static final ResourceKey<Biome> JUPITER_ETHER = register("jupiter_ether");
 
     //IO
+    public static final ResourceKey<Biome> IO_DESERT = register("io_desert");
+    public static final ResourceKey<Biome> IO_SULFUR_FLATS = register("io_sulfur_flats");
+    public static final ResourceKey<Biome> IO_LOWER_PLAINS = register("io_lower_plains");
+    public static final ResourceKey<Biome> IO_PLAINS = register("io_plains");
 
     //EUROPA
     public static final ResourceKey<Biome> EUROPA_DESERT = register("europa_desert");
