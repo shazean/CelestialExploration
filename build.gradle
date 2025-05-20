@@ -204,7 +204,7 @@ publishMods {
     modLoaders.add("forge")
 
     curseforge {
-        projectId = "${curseforge_project_id}"
+        projectId = "$curseforge_project_id"
         // Matches the url slug: https://www.curseforge.com/minecraft/mc-mods/celestial-exploration
         projectSlug = "celestial-exploration"
         // TODO: Uncomment so you can publish
