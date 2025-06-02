@@ -78,17 +78,7 @@ public class CelestialEventBus {
     }
 
     @SubscribeEvent
-    public static void addLayers(EntityRenderersEvent.AddLayers event) {
-        VillagerRenderer renderer = event.getRenderer(EntityType.VILLAGER);
-        if (renderer != null)
-            renderer.addLayer(new VillagerSpaceSuitLayer<>(renderer));
-
-    }
-
-        @SubscribeEvent
     public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
-//        for (Spaceship.Type spaceship$type : Spaceship.Type.values())
-//            event.registerLayerDefinition(SpaceshipRenderer.createSpaceshipModelName(spaceship$type), SpaceshipModel::createBodyLayer);
 
         event.registerLayerDefinition(CelestialModelLayers.MAGCART, MagCartModel::createBodyLayer);
         event.registerLayerDefinition(CelestialModelLayers.CHEST_MAGCART, MagCartModel::createBodyLayer);

@@ -3,6 +3,7 @@ package com.shim.celestialexploration.events;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.blocks.CelestialSkullRenderer;
 import com.shim.celestialexploration.capabilities.LoxTankCapability;
+import com.shim.celestialexploration.entity.client.layers.VillagerSpaceSuitLayer;
 import com.shim.celestialexploration.entity.client.renderer.*;
 import com.shim.celestialexploration.entity.client.renderer.projectile.MeteorRenderer;
 import com.shim.celestialexploration.inventory.screens.*;
@@ -19,8 +20,10 @@ import net.minecraft.client.model.SkullModel;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.client.renderer.entity.VillagerRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.api.distmarker.Dist;
@@ -37,6 +40,14 @@ public class CelestialClientEventBus {
     @SubscribeEvent
     public static void registerRenderers(final EntityRenderersEvent.AddLayers event) {
 //        LivingEntityRenderer<Villager, ? extends EntityModel<Villager>> renderer = event.getRenderer(EntityType.VILLAGER);
+    }
+
+    @SubscribeEvent
+    public static void addLayers(EntityRenderersEvent.AddLayers event) {
+        VillagerRenderer renderer = event.getRenderer(EntityType.VILLAGER);
+        if (renderer != null)
+            renderer.addLayer(new VillagerSpaceSuitLayer<>(renderer));
+
     }
 
     @SubscribeEvent
