@@ -1,7 +1,7 @@
 package com.shim.celestialexploration.blocks;
 
 import com.shim.celestialexploration.blocks.blockentities.PathwayLightBlockEntity;
-import com.shim.celestialexploration.registry.BlockEntityRegistry;
+import com.shim.celestialexploration.registry.CelestialBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.entity.Entity;
@@ -71,7 +71,7 @@ public class PathwayLightBlock extends BaseEntityBlock {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
-        return createTickerHelper(blockEntityType, BlockEntityRegistry.PATHWAY_LIGHT_BLOCK_ENTITY.get(), PathwayLightBlockEntity::tick);
+        return createTickerHelper(blockEntityType, CelestialBlockEntities.PATHWAY_LIGHT_BLOCK_ENTITY.get(), PathwayLightBlockEntity::tick);
     }
 
     @Override

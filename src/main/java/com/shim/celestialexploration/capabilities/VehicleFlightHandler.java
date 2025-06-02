@@ -1,11 +1,7 @@
 package com.shim.celestialexploration.capabilities;
 
-import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.inventory.screens.SpaceshipScreen;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.Tag;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
 
 import java.util.ArrayList;
 

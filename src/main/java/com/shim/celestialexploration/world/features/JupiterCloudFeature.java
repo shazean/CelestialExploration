@@ -1,26 +1,12 @@
 package com.shim.celestialexploration.world.features;
 
 import com.mojang.serialization.Codec;
-import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.registry.BiomeRegistry;
-import com.shim.celestialexploration.registry.BlockRegistry;
-import com.shim.celestialexploration.registry.TagRegistry;
+import com.shim.celestialexploration.registry.CelestialBlocks;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.QuartPos;
-import net.minecraft.util.Mth;
 import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.LegacyRandomSource;
-import net.minecraft.world.level.levelgen.WorldgenRandom;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
-import net.minecraft.world.level.levelgen.feature.configurations.MineshaftConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.SimpleRandomFeatureConfiguration;
-import net.minecraft.world.level.levelgen.structure.pieces.PieceGeneratorSupplier;
 
 import java.util.Random;
 
@@ -84,7 +70,7 @@ public class JupiterCloudFeature extends Feature<NoneFeatureConfiguration> {
 
                 for (int k = -depthRadius; k <= depthRadius; k++) {
                     if (Math.abs(j * k) < ((float) (widthRadius) * (depthRadius) / 5.0 * 3.0))
-                        this.setBlock(worldgenlevel, blockpos.offset(j + zOffset, i, k + xOffset + zigzag), BlockRegistry.JUPITER_ATMOSPHERE.get().defaultBlockState());
+                        this.setBlock(worldgenlevel, blockpos.offset(j + zOffset, i, k + xOffset + zigzag), CelestialBlocks.JUPITER_ATMOSPHERE.get().defaultBlockState());
 
                 }
             }

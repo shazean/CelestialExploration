@@ -1,7 +1,5 @@
 package com.shim.celestialexploration.inventory;
 
-import com.shim.celestialexploration.item.LoxTankItem;
-import com.shim.celestialexploration.registry.ItemRegistry;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.RecipeType;

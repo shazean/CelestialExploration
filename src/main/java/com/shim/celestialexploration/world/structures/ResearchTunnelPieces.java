@@ -2,11 +2,11 @@ package com.shim.celestialexploration.world.structures;
 
 import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
-import com.shim.celestialexploration.entity.entity.vehicle.MagCartChest;
-import com.shim.celestialexploration.registry.BlockRegistry;
-import com.shim.celestialexploration.registry.CELootTables;
+import com.shim.celestialexploration.entity.vehicle.MagCartChest;
+import com.shim.celestialexploration.registry.CelestialBlocks;
+import com.shim.celestialexploration.registry.CelestialEntities;
+import com.shim.celestialexploration.registry.CelestialLootTables;
 import com.shim.celestialexploration.registry.CelestialStructurePieceType;
-import com.shim.celestialexploration.registry.EntityRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -212,7 +212,7 @@ public class ResearchTunnelPieces {
         protected boolean createChest(WorldGenLevel level, BoundingBox p_71408_, Random p_71409_, int p_71410_, int p_71411_, int p_71412_, ResourceLocation p_71413_) {
             BlockPos blockpos = this.getWorldPos(p_71410_, p_71411_, p_71412_);
             if (p_71408_.isInside(blockpos) && level.getBlockState(blockpos).isAir() && !level.getBlockState(blockpos.below()).isAir()) {
-                BlockState blockstate = BlockRegistry.MAG_RAIL.get().defaultBlockState().setValue(RailBlock.SHAPE, p_71409_.nextBoolean() ? RailShape.NORTH_SOUTH : RailShape.EAST_WEST);
+                BlockState blockstate = CelestialBlocks.MAG_RAIL.get().defaultBlockState().setValue(RailBlock.SHAPE, p_71409_.nextBoolean() ? RailShape.NORTH_SOUTH : RailShape.EAST_WEST);
                 this.placeBlock(level, blockstate, p_71410_, p_71411_, p_71412_, p_71408_);
                 MagCartChest magcartchest = new MagCartChest(level.getLevel(), (double)blockpos.getX() + 0.5D, (double)blockpos.getY() + 0.5D, (double)blockpos.getZ() + 0.5D);
                 magcartchest.setLootTable(p_71413_, p_71409_.nextLong());
@@ -249,11 +249,11 @@ public class ResearchTunnelPieces {
                     this.maybePlaceCobWeb(p_192030_, p_192034_, p_192033_, 0.05F, 0, 2, k1 + 2);
                     this.maybePlaceCobWeb(p_192030_, p_192034_, p_192033_, 0.05F, 2, 2, k1 + 2);
                     if (p_192033_.nextInt(100) == 0) {
-                        this.createChest(p_192030_, p_192034_, p_192033_, 2, 0, k1 - 1, CELootTables.RESEARCH_TUNNEL);
+                        this.createChest(p_192030_, p_192034_, p_192033_, 2, 0, k1 - 1, CelestialLootTables.RESEARCH_TUNNEL);
                     }
 
                     if (p_192033_.nextInt(100) == 0) {
-                        this.createChest(p_192030_, p_192034_, p_192033_, 0, 0, k1 + 1, CELootTables.RESEARCH_TUNNEL);
+                        this.createChest(p_192030_, p_192034_, p_192033_, 0, 0, k1 + 1, CelestialLootTables.RESEARCH_TUNNEL);
                     }
 
                     if (this.spiderCorridor && !this.hasPlacedSpider) {
@@ -265,7 +265,7 @@ public class ResearchTunnelPieces {
                             p_192030_.setBlock(blockpos, Blocks.SPAWNER.defaultBlockState(), 2);
                             BlockEntity blockentity = p_192030_.getBlockEntity(blockpos);
                             if (blockentity instanceof SpawnerBlockEntity) {
-                                ((SpawnerBlockEntity)blockentity).getSpawner().setEntityId(EntityRegistry.VOID_CRAWLER.get());
+                                ((SpawnerBlockEntity)blockentity).getSpawner().setEntityId(CelestialEntities.VOID_CRAWLER.get());
                             }
                         }
                     }
@@ -285,7 +285,7 @@ public class ResearchTunnelPieces {
                 }
 
                 if (this.hasRails) {
-                    BlockState blockstate1 = BlockRegistry.MAG_RAIL.get().defaultBlockState().setValue(RailBlock.SHAPE, RailShape.NORTH_SOUTH);
+                    BlockState blockstate1 = CelestialBlocks.MAG_RAIL.get().defaultBlockState().setValue(RailBlock.SHAPE, RailShape.NORTH_SOUTH);
 
                     for(int j3 = 0; j3 <= i1; ++j3) {
                         BlockState blockstate2 = this.getBlock(p_192030_, 1, -1, j3, p_192034_);
@@ -389,8 +389,8 @@ public class ResearchTunnelPieces {
                     this.generateBox(p_71390_, p_71391_, p_71396_, p_71395_, p_71394_, p_71396_, p_71395_, p_71394_, blockstate, CAVE_AIR, false);
                 } else {
                     this.generateBox(p_71390_, p_71391_, p_71392_, p_71395_, p_71394_, p_71396_, p_71395_, p_71394_, blockstate, CAVE_AIR, false);
-                    this.maybeGenerateBlock(p_71390_, p_71391_, p_71397_, 0.05F, p_71392_ + 1, p_71395_, p_71394_ - 1, BlockRegistry.GLOW_STRIP.get().defaultBlockState().setValue(WallTorchBlock.FACING, Direction.SOUTH));
-                    this.maybeGenerateBlock(p_71390_, p_71391_, p_71397_, 0.05F, p_71392_ + 1, p_71395_, p_71394_ + 1, BlockRegistry.GLOW_STRIP.get().defaultBlockState().setValue(WallTorchBlock.FACING, Direction.NORTH));
+                    this.maybeGenerateBlock(p_71390_, p_71391_, p_71397_, 0.05F, p_71392_ + 1, p_71395_, p_71394_ - 1, CelestialBlocks.GLOW_STRIP.get().defaultBlockState().setValue(WallTorchBlock.FACING, Direction.SOUTH));
+                    this.maybeGenerateBlock(p_71390_, p_71391_, p_71397_, 0.05F, p_71392_ + 1, p_71395_, p_71394_ + 1, CelestialBlocks.GLOW_STRIP.get().defaultBlockState().setValue(WallTorchBlock.FACING, Direction.NORTH));
                 }
             }
         }

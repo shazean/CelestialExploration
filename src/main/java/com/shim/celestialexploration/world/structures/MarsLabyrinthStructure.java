@@ -43,6 +43,7 @@ public class MarsLabyrinthStructure extends StructureFeature<JigsawConfiguration
         BlockPos pos = chunkPos.getMiddleBlockPosition(0);
 
         return pos.getY() <= 84;
+
     }
 
     public static Optional<PieceGenerator<JigsawConfiguration>> createPiecesGenerator(PieceGeneratorSupplier.Context<JigsawConfiguration> context) {

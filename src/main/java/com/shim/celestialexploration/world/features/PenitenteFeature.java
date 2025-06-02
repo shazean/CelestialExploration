@@ -2,20 +2,15 @@ package com.shim.celestialexploration.world.features;
 
 import com.mojang.serialization.Codec;
 import com.shim.celestialexploration.blocks.PenitenteBlock;
-import com.shim.celestialexploration.registry.BlockRegistry;
+import com.shim.celestialexploration.registry.CelestialBlocks;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.KelpBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.DripstoneThickness;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
-import net.minecraft.world.level.levelgen.feature.RandomPatchFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConfiguration;
 
 import java.util.Random;
 
@@ -35,7 +30,7 @@ public class PenitenteFeature extends Feature<NoneFeatureConfiguration> {
 
         int k = random.nextInt(4) + 2;
 
-        BlockState penitente = BlockRegistry.PENITENTE.get().defaultBlockState();
+        BlockState penitente = CelestialBlocks.PENITENTE.get().defaultBlockState();
         groundPos.below();
 
         for(int l = 0; l <= k; ++l) {
@@ -48,9 +43,9 @@ public class PenitenteFeature extends Feature<NoneFeatureConfiguration> {
 
             for (int m = 0; m <= rand; m++) {
                 if (m == 0) {
-                    if (worldgenlevel.getBlockState(groundPos.below()).is(BlockRegistry.PENITENTE.get()))
+                    if (worldgenlevel.getBlockState(groundPos.below()).is(CelestialBlocks.PENITENTE.get()))
                         break;
-                    else if (!(worldgenlevel.getBlockState(groundPos.below()).is(BlockRegistry.MOON_SAND.get()) || (worldgenlevel.getBlockState(groundPos.below()).is(BlockRegistry.EUROPA_HYDRATE.get()))))
+                    else if (!(worldgenlevel.getBlockState(groundPos.below()).is(CelestialBlocks.MOON_SAND.get()) || (worldgenlevel.getBlockState(groundPos.below()).is(CelestialBlocks.EUROPA_HYDRATE.get()))))
                         break;
                     worldgenlevel.setBlock(groundPos.above(m), penitente.setValue(PenitenteBlock.THICKNESS, DripstoneThickness.BASE), 1);
                 } else if (m == rand) {

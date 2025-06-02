@@ -3,26 +3,16 @@ package com.shim.celestialexploration.blocks;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.blocks.blockentities.LoxTankBlockEntity;
 import com.shim.celestialexploration.capabilities.LoxTankCapability;
-import com.shim.celestialexploration.item.LoxTankItem;
-import com.shim.celestialexploration.registry.BlockEntityRegistry;
-import com.shim.celestialexploration.registry.CapabilityRegistry;
-import com.shim.celestialexploration.registry.ItemRegistry;
+import com.shim.celestialexploration.registry.CelestialBlockEntities;
+import com.shim.celestialexploration.registry.CelestialCapabilities;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RenderShape;
@@ -33,11 +23,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
 
 import javax.annotation.Nullable;
 
@@ -79,14 +65,14 @@ public class LoxTankBlock extends BaseEntityBlock {
         BlockEntity blockEntity = level.getBlockEntity(pos);
 
         if (blockEntity instanceof LoxTankBlockEntity) {
-            LoxTankCapability.ILoxTank loxTankEntity = CelestialExploration.getCapability(blockEntity, CapabilityRegistry.LOX_TANK_CAPABILITY);
+            LoxTankCapability.ILoxTank loxTankEntity = CelestialExploration.getCapability(blockEntity, CelestialCapabilities.LOX_TANK_CAPABILITY);
 
             if (loxTankEntity != null) {
                 int amount = loxTankEntity.getAmount();
 
                 ItemStack itemStack = new ItemStack(this);
 
-                LoxTankCapability.ILoxTank loxTank = CelestialExploration.getCapability(itemStack, CapabilityRegistry.LOX_TANK_CAPABILITY);
+                LoxTankCapability.ILoxTank loxTank = CelestialExploration.getCapability(itemStack, CelestialCapabilities.LOX_TANK_CAPABILITY);
                 if (loxTank != null) {
                     loxTank.setAmount(amount);
                 }
@@ -115,7 +101,7 @@ public class LoxTankBlock extends BaseEntityBlock {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level pLevel, BlockState pState, BlockEntityType<T> pBlockEntityType) {
-        return createTickerHelper(pBlockEntityType, BlockEntityRegistry.LOX_TANK_BLOCK_ENTITY.get(),
+        return createTickerHelper(pBlockEntityType, CelestialBlockEntities.LOX_TANK_BLOCK_ENTITY.get(),
                 LoxTankBlockEntity::tick);
     }
 }

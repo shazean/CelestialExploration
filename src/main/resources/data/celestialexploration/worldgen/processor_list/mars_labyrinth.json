@@ -5,15 +5,15 @@
       "rules": [
         {
           "input_predicate": {
-            "block": "celestialexploration:meteor",
-            "probability": 0.006,
+            "block": "celestialexploration:mars_bricks",
+            "probability": 0.01,
             "predicate_type": "minecraft:random_block_match"
           },
           "location_predicate": {
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "celestialexploration:meteor_bauxite_ore"
+            "Name": "celestialexploration:cracked_mars_bricks"
           }
         }
       ]

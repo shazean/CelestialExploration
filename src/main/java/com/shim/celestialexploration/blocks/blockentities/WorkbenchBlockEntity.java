@@ -7,7 +7,7 @@ import com.shim.celestialexploration.inventory.menus.WorkbenchMenu;
 import com.shim.celestialexploration.item.BasinItem;
 import com.shim.celestialexploration.recipes.WorkbenchCraftingRecipe;
 import com.shim.celestialexploration.recipes.WorkbenchSmeltingRecipe;
-import com.shim.celestialexploration.registry.BlockEntityRegistry;
+import com.shim.celestialexploration.registry.CelestialBlockEntities;
 import com.shim.celestialexploration.util.CelestialUtil;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
@@ -84,7 +84,7 @@ public class WorkbenchBlockEntity extends BlockEntity implements MenuProvider {
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
 
     public WorkbenchBlockEntity(BlockPos worldPosition, BlockState blockState) {
-        super(BlockEntityRegistry.WORKBENCH_BLOCK_ENTITY.get(), worldPosition, blockState);
+        super(CelestialBlockEntities.WORKBENCH_BLOCK_ENTITY.get(), worldPosition, blockState);
         this.data = new ContainerData() {
             public int get(int index) {
                 return switch (index) {

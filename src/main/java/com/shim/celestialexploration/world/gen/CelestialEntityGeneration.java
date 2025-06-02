@@ -1,7 +1,7 @@
 package com.shim.celestialexploration.world.gen;
 
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.registry.EntityRegistry;
+import com.shim.celestialexploration.registry.CelestialEntities;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.biome.Biome;
@@ -14,12 +14,12 @@ import java.util.List;
 public class CelestialEntityGeneration {
 
     public static void onEntitySpawn(final BiomeLoadingEvent event) {
-        addEntityToMoonBiomes(event, EntityRegistry.LURKER.get(), 100, 1, 1);
-        addEntityToMoonBiomes(event, EntityRegistry.LUNAR_SLIME.get(), 80, 0, 2);
-        addEntityToMarsBiomes(event, EntityRegistry.MARS_MALLOW.get(), 30, 0, 2);
-        addEntityToMarsBiomes(event, EntityRegistry.RUST_SLIME.get(), 80, 0, 2);
-        addEntityToMarsBiomes(event, EntityRegistry.LURKER.get(), 100, 1, 1);
-        addEntityToSpaceBiomes(event, EntityRegistry.LURKER.get(), 100, 1, 1);
+        addEntityToMoonBiomes(event, CelestialEntities.LURKER.get(), 100, 1, 1);
+        addEntityToMoonBiomes(event, CelestialEntities.LUNAR_SLIME.get(), 80, 0, 2);
+        addEntityToMarsBiomes(event, CelestialEntities.MARS_MALLOW.get(), 30, 0, 2);
+        addEntityToMarsBiomes(event, CelestialEntities.RUST_SLIME.get(), 80, 0, 2);
+        addEntityToMarsBiomes(event, CelestialEntities.LURKER.get(), 100, 1, 1);
+        addEntityToSpaceBiomes(event, CelestialEntities.LURKER.get(), 100, 1, 1);
     }
 
 

@@ -1,6 +1,5 @@
 package com.shim.celestialexploration.entity;
 
-import com.shim.celestialexploration.registry.ItemRegistry;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 

@@ -2,8 +2,8 @@ package com.shim.celestialexploration.util;
 
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.config.CelestialCommonConfig;
-import com.shim.celestialexploration.registry.DimensionRegistry;
-import com.shim.celestialexploration.registry.FluidRegistry;
+import com.shim.celestialexploration.registry.CelestialDimensions;
+import com.shim.celestialexploration.registry.CelestialFluids;
 import com.shim.celestialexploration.util.teleportation.AbstractCelestialTeleportData;
 import com.shim.celestialexploration.util.teleportation.CelestialCoordinateTeleport;
 import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
@@ -12,6 +12,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.random.WeightedRandomList;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
@@ -33,6 +34,10 @@ public class CelestialUtil {
         return (int) ((Math.pow(phi, n) - Math.pow(-phi, -n)) / squareRootOf5);
     }
 
+    public static ResourceLocation getModLoc(String texture) {
+        return new ResourceLocation(CelestialExploration.MODID, texture);
+    }
+
     public static int getSpaceRatio() {
         return CelestialCommonConfig.RANGE_OF_SPACE.get();
     }
@@ -50,13 +55,13 @@ public class CelestialUtil {
     });
 
     public static final Map<ResourceKey<Level>, Vec3> CE_DIMENSION_LOCATION = Util.make(new Object2ObjectArrayMap<>(), (dimension) -> {
-        dimension.put(DimensionRegistry.MERCURY, new Vec3(1, 0, 1));
-        dimension.put(DimensionRegistry.VENUS, new Vec3(0, 0, 2));
+        dimension.put(CelestialDimensions.MERCURY, new Vec3(1, 0, 1));
+        dimension.put(CelestialDimensions.VENUS, new Vec3(0, 0, 2));
         dimension.put(Level.OVERWORLD, new Vec3(-2, 0, 0));
-        dimension.put(DimensionRegistry.MOON, new Vec3(-2, 0, 0));
-        dimension.put(DimensionRegistry.MARS, new Vec3(1, 0, -3));
-        dimension.put(DimensionRegistry.JUPITER, new Vec3(6, 0, 2));
-        dimension.put(DimensionRegistry.EUROPA, new Vec3(6, 0, 2));
+        dimension.put(CelestialDimensions.MOON, new Vec3(-2, 0, 0));
+        dimension.put(CelestialDimensions.MARS, new Vec3(1, 0, -3));
+        dimension.put(CelestialDimensions.JUPITER, new Vec3(6, 0, 2));
+        dimension.put(CelestialDimensions.EUROPA, new Vec3(6, 0, 2));
 
         dimension.put(Level.END, new Vec3(12, 0, 12));
     });
@@ -202,17 +207,17 @@ public class CelestialUtil {
             return 1;
         } else if (fluidStack.getFluid().isSame(Fluids.LAVA)) {
             return 2;
-        } else if (fluidStack.getFluid().isSame(FluidRegistry.MOLTEN_IRON.get())) {
+        } else if (fluidStack.getFluid().isSame(CelestialFluids.MOLTEN_IRON.get())) {
             return 3;
-        } else if (fluidStack.getFluid().isSame(FluidRegistry.MOLTEN_STEEL.get())) {
+        } else if (fluidStack.getFluid().isSame(CelestialFluids.MOLTEN_STEEL.get())) {
             return 4;
-        } else if (fluidStack.getFluid().isSame(FluidRegistry.MOLTEN_COPPER.get())) {
+        } else if (fluidStack.getFluid().isSame(CelestialFluids.MOLTEN_COPPER.get())) {
             return 5;
-        } else if (fluidStack.getFluid().isSame(FluidRegistry.MOLTEN_GOLD.get())) {
+        } else if (fluidStack.getFluid().isSame(CelestialFluids.MOLTEN_GOLD.get())) {
             return 6;
 //        } else if (blockEntity.fluidHandler.getFluid().getFluid().isSame(FluidRegistry.MOLTEN_NETHERITE.get())) {
 //            blockEntity.fluidType = 7;
-        } else if (fluidStack.getFluid().isSame(FluidRegistry.MOLTEN_ALUMINUM.get())) {
+        } else if (fluidStack.getFluid().isSame(CelestialFluids.MOLTEN_ALUMINUM.get())) {
             return 8;
         } else {
             return 0;
@@ -223,28 +228,28 @@ public class CelestialUtil {
         return switch (id) {
             case 1 -> new FluidStack(Fluids.WATER, amount);
             case 2 -> new FluidStack(Fluids.LAVA, amount);
-            case 3 -> new FluidStack(FluidRegistry.MOLTEN_IRON.get(), amount);
-            case 4 -> new FluidStack(FluidRegistry.MOLTEN_STEEL.get(), amount);
-            case 5 -> new FluidStack(FluidRegistry.MOLTEN_COPPER.get(), amount);
-            case 6 -> new FluidStack(FluidRegistry.MOLTEN_GOLD.get(), amount);
+            case 3 -> new FluidStack(CelestialFluids.MOLTEN_IRON.get(), amount);
+            case 4 -> new FluidStack(CelestialFluids.MOLTEN_STEEL.get(), amount);
+            case 5 -> new FluidStack(CelestialFluids.MOLTEN_COPPER.get(), amount);
+            case 6 -> new FluidStack(CelestialFluids.MOLTEN_GOLD.get(), amount);
 //            case 7 -> new FluidStack(FluidRegistry.MOLTEN_NETHERITE.get(), amount);
-            case 8 -> new FluidStack(FluidRegistry.MOLTEN_ALUMINUM.get(), amount);
+            case 8 -> new FluidStack(CelestialFluids.MOLTEN_ALUMINUM.get(), amount);
             default -> FluidStack.EMPTY;
         };
     }
 
     public static int getIdFromDimension(ResourceKey<Level> dimension) {
-        if (dimension.equals(DimensionRegistry.MERCURY)) {
+        if (dimension.equals(CelestialDimensions.MERCURY)) {
             return 1;
-        } else if (dimension.equals(DimensionRegistry.VENUS)) {
+        } else if (dimension.equals(CelestialDimensions.VENUS)) {
             return 2;
         } else if (dimension.equals(Level.OVERWORLD)) {
             return 3;
-        } else if (dimension.equals(DimensionRegistry.MOON)) {
+        } else if (dimension.equals(CelestialDimensions.MOON)) {
             return 4;
-        } else if (dimension.equals(DimensionRegistry.MARS)) {
+        } else if (dimension.equals(CelestialDimensions.MARS)) {
             return 5;
-        } else if (dimension.equals(DimensionRegistry.JUPITER)) {
+        } else if (dimension.equals(CelestialDimensions.JUPITER)) {
             return 6;
         } else {
             return 0;
@@ -253,12 +258,12 @@ public class CelestialUtil {
 
     public static ResourceKey<Level> getDimensionFromId(int id) {
         return switch (id) {
-            case 1 -> DimensionRegistry.MERCURY;
-            case 2 -> DimensionRegistry.VENUS;
+            case 1 -> CelestialDimensions.MERCURY;
+            case 2 -> CelestialDimensions.VENUS;
             case 3 -> Level.OVERWORLD;
-            case 4 -> DimensionRegistry.MOON;
-            case 5 -> DimensionRegistry.MARS;
-            case 6 -> DimensionRegistry.JUPITER;
+            case 4 -> CelestialDimensions.MOON;
+            case 5 -> CelestialDimensions.MARS;
+            case 6 -> CelestialDimensions.JUPITER;
             default -> null;
         };
     }

@@ -1,7 +1,7 @@
 package com.shim.celestialexploration.blocks;
 
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.registry.BlockRegistry;
+import com.shim.celestialexploration.registry.CelestialBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -12,8 +12,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.ScaffoldingBlock;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -138,7 +136,7 @@ public class SteelFrameBlock extends Block implements SimpleWaterloggedBlock {
         BlockPos.MutableBlockPos blockpos$mutableblockpos = p_56026_.mutable().move(Direction.DOWN);
         BlockState blockstate = p_56025_.getBlockState(blockpos$mutableblockpos);
         int i = 7;
-        if (blockstate.is(BlockRegistry.STEEL_FRAME.get())) {
+        if (blockstate.is(CelestialBlocks.STEEL_FRAME.get())) {
             i = blockstate.getValue(DISTANCE);
         } else if (blockstate.isFaceSturdy(p_56025_, blockpos$mutableblockpos, Direction.UP)) {
             return 0;
@@ -146,7 +144,7 @@ public class SteelFrameBlock extends Block implements SimpleWaterloggedBlock {
 
         for(Direction direction : Direction.Plane.HORIZONTAL) {
             BlockState blockstate1 = p_56025_.getBlockState(blockpos$mutableblockpos.setWithOffset(p_56026_, direction));
-            if (blockstate1.is(BlockRegistry.STEEL_FRAME.get())) {
+            if (blockstate1.is(CelestialBlocks.STEEL_FRAME.get())) {
                 i = Math.min(i, blockstate1.getValue(DISTANCE) + 1);
                 if (i == 1) {
                     break;

@@ -12,26 +12,26 @@ import net.minecraft.world.level.block.Block;
 public class MarsPortalBlock extends AbstractPortalBlock {
     @Override
     public ResourceKey<Level> getLinkedDimension() {
-        return DimensionRegistry.MARS;
+        return CelestialDimensions.MARS;
     }
 
     @Override
     public PlanetTeleporter getTeleporter(ServerLevel serverLevel) {
-        return new PlanetTeleporter(serverLevel, PoiRegistry.MARS_PORTAL.get(), BlockRegistry.MARS_BRICKS.get(), BlockRegistry.MARS_PORTAL.get(), DimensionRegistry.MARS);
+        return new PlanetTeleporter(serverLevel, CelestialPOIs.MARS_PORTAL.get(), CelestialBlocks.MARS_BRICKS.get(), CelestialBlocks.MARS_PORTAL.get(), CelestialDimensions.MARS);
     }
 
     @Override
     public Block getPortalBlock() {
-        return BlockRegistry.MARS_PORTAL.get();
+        return CelestialBlocks.MARS_PORTAL.get();
     }
 
     @Override
     public TagKey<Block> getPortalFrameBlock() {
-        return TagRegistry.Blocks.MARS_PORTAL_FRAME_BLOCK;
+        return CelestialTags.Blocks.MARS_PORTAL_FRAME_BLOCK;
     }
 
     @Override
     public SimpleParticleType getPortalParticle() {
-        return ParticleRegistry.MARS_PORTAL_PARTICLES.get();
+        return CelestialParticles.MARS_PORTAL_PARTICLES.get();
     }
 }

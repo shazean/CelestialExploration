@@ -31,6 +31,6 @@ Exploring beyond our own planet and into the outer reaches of space!
 [[dependencies.celestialexploration]]
     modId="azurelib"
     mandatory=true
-    versionRange="[1.0.37,)"
+    versionRange="[3.0.0,)"
     ordering="NONE"
     side="BOTH"

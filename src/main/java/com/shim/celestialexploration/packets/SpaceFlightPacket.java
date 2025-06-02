@@ -2,7 +2,7 @@ package com.shim.celestialexploration.packets;
 
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.capabilities.ISpaceFlight;
-import com.shim.celestialexploration.registry.CapabilityRegistry;
+import com.shim.celestialexploration.registry.CelestialCapabilities;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
@@ -33,11 +33,11 @@ public class SpaceFlightPacket {
 
                 Entity spaceVehicle = null;
 
-                ISpaceFlight flightCap = CelestialExploration.getCapability(player, CapabilityRegistry.SPACE_FLIGHT_CAPABILITY);
+                ISpaceFlight flightCap = CelestialExploration.getCapability(player, CelestialCapabilities.SPACE_FLIGHT_CAPABILITY);
                 if (flightCap != null) spaceVehicle = player;
                 else {
                     if (player.getVehicle() != null) {
-                        flightCap = CelestialExploration.getCapability(player.getVehicle(), CapabilityRegistry.SPACE_FLIGHT_CAPABILITY);
+                        flightCap = CelestialExploration.getCapability(player.getVehicle(), CelestialCapabilities.SPACE_FLIGHT_CAPABILITY);
                         if (flightCap != null) spaceVehicle = player.getVehicle();
                     }
                 }

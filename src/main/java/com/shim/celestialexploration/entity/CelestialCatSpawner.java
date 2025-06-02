@@ -1,8 +1,8 @@
 package com.shim.celestialexploration.entity;
 
-import com.shim.celestialexploration.entity.entity.friendlies.CelestialCat;
-import com.shim.celestialexploration.registry.EntityRegistry;
-import com.shim.celestialexploration.registry.TagRegistry;
+import com.shim.celestialexploration.entity.friendlies.CelestialCat;
+import com.shim.celestialexploration.registry.CelestialEntities;
+import com.shim.celestialexploration.registry.CelestialTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
@@ -44,8 +44,8 @@ public class CelestialCatSpawner implements CustomSpawner {
                     if (!level.hasChunksAt(blockpos.getX() - 10, blockpos.getZ() - 10, blockpos.getX() + 10, blockpos.getZ() + 10)) {
                         return 0;
                     } else {
-                        if (NaturalSpawner.isSpawnPositionOk(SpawnPlacements.Type.ON_GROUND, level, blockpos, EntityRegistry.CELESTIAL_CAT.get())) {
-                            if (level.getBiome(blockpos).is(TagRegistry.Biomes.CELESTIAL_BODIES)) {
+                        if (NaturalSpawner.isSpawnPositionOk(SpawnPlacements.Type.ON_GROUND, level, blockpos, CelestialEntities.CELESTIAL_CAT.get())) {
+                            if (level.getBiome(blockpos).is(CelestialTags.Biomes.CELESTIAL_BODIES)) {
                                 if (level.isCloseToVillage(blockpos, 2)) {
                                     return this.spawnInVillage(level, blockpos);
                                 }
@@ -73,7 +73,7 @@ public class CelestialCatSpawner implements CustomSpawner {
     }
 
     private int spawnCat(BlockPos pos, ServerLevel level) {
-        CelestialCat cat = EntityRegistry.CELESTIAL_CAT.get().create(level);
+        CelestialCat cat = CelestialEntities.CELESTIAL_CAT.get().create(level);
         if (cat == null) {
             return 0;
         } else {

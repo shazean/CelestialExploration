@@ -1,30 +1,19 @@
 package com.shim.celestialexploration.item;
 
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.capabilities.LoxTankCapability;
-import com.shim.celestialexploration.registry.CapabilityRegistry;
-import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
-import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
-import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
-import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 import net.minecraftforge.fluids.capability.templates.FluidHandlerItemStack;
-import net.minecraftforge.fluids.capability.templates.FluidTank;
-import net.minecraftforge.items.CapabilityItemHandler;
 import org.jetbrains.annotations.Nullable;
 
-import javax.annotation.Nonnull;
 import java.util.List;
 
 public class BasinItem extends Item {

@@ -1,6 +1,9 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "celestialexploration:block/template_sand_path",
   "textures": {
-    "all": "celestialexploration:block/moon_sand"
+    "side": "celestialexploration:block/moon_sand_path_side",
+    "top": "celestialexploration:block/moon_sand_path_top",
+    "bottom": "celestialexploration:block/moon_sand",
+    "particle": "celestialexploration:block/moon_sand"
   }
 }

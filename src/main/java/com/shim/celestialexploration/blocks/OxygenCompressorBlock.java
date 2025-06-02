@@ -1,7 +1,7 @@
 package com.shim.celestialexploration.blocks;
 
 import com.shim.celestialexploration.blocks.blockentities.OxygenCompressorBlockEntity;
-import com.shim.celestialexploration.registry.BlockEntityRegistry;
+import com.shim.celestialexploration.registry.CelestialBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
@@ -84,7 +84,7 @@ public class OxygenCompressorBlock extends BaseEntityBlock {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
-        return createTickerHelper(blockEntityType, BlockEntityRegistry.OXYGEN_COMPRESSOR_BLOCK_ENTITY.get(),
+        return createTickerHelper(blockEntityType, CelestialBlockEntities.OXYGEN_COMPRESSOR_BLOCK_ENTITY.get(),
                 OxygenCompressorBlockEntity::tick);
     }
 }

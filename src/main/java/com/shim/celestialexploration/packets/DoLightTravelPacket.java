@@ -1,6 +1,6 @@
 package com.shim.celestialexploration.packets;
 
-import com.shim.celestialexploration.entity.entity.vehicle.Spaceship;
+import com.shim.celestialexploration.entity.vehicle.Spaceship;
 import com.shim.celestialexploration.util.CelestialUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;

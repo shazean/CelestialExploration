@@ -12,26 +12,26 @@ import net.minecraft.world.level.block.Block;
 public class CallistoPortalBlock extends AbstractPortalBlock {
     @Override
     public ResourceKey<Level> getLinkedDimension() {
-        return DimensionRegistry.CALLISTO;
+        return CelestialDimensions.CALLISTO;
     }
 
     @Override
     public PlanetTeleporter getTeleporter(ServerLevel serverLevel) {
-        return new PlanetTeleporter(serverLevel, PoiRegistry.CALLISTO_PORTAL.get(), BlockRegistry.CALLISTO_BRICKS.get(), BlockRegistry.CALLISTO_PORTAL.get(), DimensionRegistry.CALLISTO);
+        return new PlanetTeleporter(serverLevel, CelestialPOIs.CALLISTO_PORTAL.get(), CelestialBlocks.CALLISTO_BRICKS.get(), CelestialBlocks.CALLISTO_PORTAL.get(), CelestialDimensions.CALLISTO);
     }
 
     @Override
     public Block getPortalBlock() {
-        return BlockRegistry.CALLISTO_PORTAL.get();
+        return CelestialBlocks.CALLISTO_PORTAL.get();
     }
 
     @Override
     public TagKey<Block> getPortalFrameBlock() {
-        return TagRegistry.Blocks.CALLISTO_PORTAL_FRAME_BLOCK;
+        return CelestialTags.Blocks.CALLISTO_PORTAL_FRAME_BLOCK;
     }
 
     @Override
     public SimpleParticleType getPortalParticle() {
-        return ParticleRegistry.CALLISTO_PORTAL_PARTICLES.get();
+        return CelestialParticles.CALLISTO_PORTAL_PARTICLES.get();
     }
 }

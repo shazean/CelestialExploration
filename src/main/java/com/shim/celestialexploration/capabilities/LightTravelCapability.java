@@ -4,7 +4,7 @@ import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.config.CelestialCommonConfig;
 import com.shim.celestialexploration.packets.CelestialPacketHandler;
 import com.shim.celestialexploration.packets.LightTravelDataPacket;
-import com.shim.celestialexploration.registry.CapabilityRegistry;
+import com.shim.celestialexploration.registry.CelestialCapabilities;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
@@ -199,7 +199,7 @@ public class LightTravelCapability {
         @Override
         public void sync(Player player) {
             if (player instanceof ServerPlayer serverPlayer) {
-                LightTravelCapability.ILightTravel travelCap = CelestialExploration.getCapability(serverPlayer, CapabilityRegistry.LIGHT_TRAVEL_CAPABILITY);
+                LightTravelCapability.ILightTravel travelCap = CelestialExploration.getCapability(serverPlayer, CelestialCapabilities.LIGHT_TRAVEL_CAPABILITY);
 
                 if (travelCap != null) {
                     PacketDistributor.PacketTarget targetPlayer = PacketDistributor.PLAYER.with(() -> serverPlayer);
@@ -261,7 +261,7 @@ public class LightTravelCapability {
         @NotNull
         @Override
         public <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-            return CapabilityRegistry.LIGHT_TRAVEL_CAPABILITY.orEmpty(cap, lazyLightTravel.cast());
+            return CelestialCapabilities.LIGHT_TRAVEL_CAPABILITY.orEmpty(cap, lazyLightTravel.cast());
         }
 
         @Override

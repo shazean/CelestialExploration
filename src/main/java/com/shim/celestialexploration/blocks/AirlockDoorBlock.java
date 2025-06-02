@@ -1,11 +1,7 @@
 package com.shim.celestialexploration.blocks;
 
-import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.registry.TagRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.util.datafix.fixes.ChunkPalettedStorageFix;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -25,7 +21,6 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import org.lwjgl.system.CallbackI;
 
 import javax.annotation.Nullable;
 

@@ -1,9 +1,9 @@
 package com.shim.celestialexploration.blocks.blockentities;
 
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.entity.entity.vehicle.SpaceTaxi;
+import com.shim.celestialexploration.entity.vehicle.SpaceTaxi;
 import com.shim.celestialexploration.inventory.menus.TaxiStationMenu;
-import com.shim.celestialexploration.registry.BlockEntityRegistry;
+import com.shim.celestialexploration.registry.CelestialBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -40,7 +40,7 @@ public class TaxiStationBlockEntity extends BlockEntity implements MenuProvider 
     public record TaxiAndPassengers(SpaceTaxi taxi, List<Entity> passengers) {}
 
     public TaxiStationBlockEntity(BlockPos pos, BlockState state) {
-        super(BlockEntityRegistry.TAXI_STATION_BLOCK_ENTITY.get(), pos, state);
+        super(CelestialBlockEntities.TAXI_STATION_BLOCK_ENTITY.get(), pos, state);
         this.data = new ContainerData() {
             public int get(int index) {
                 return switch (index) {

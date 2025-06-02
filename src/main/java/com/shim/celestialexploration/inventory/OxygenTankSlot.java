@@ -1,6 +1,6 @@
 package com.shim.celestialexploration.inventory;
 
-import com.shim.celestialexploration.registry.ItemRegistry;
+import com.shim.celestialexploration.registry.CelestialItems;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
@@ -12,6 +12,6 @@ public class OxygenTankSlot extends SlotItemHandler {
 
     @Override
     public boolean mayPlace(ItemStack stack) {
-        return stack.getItem() == ItemRegistry.LOX_TANK.get();
+        return stack.getItem() == CelestialItems.LOX_TANK.get();
     }
 }

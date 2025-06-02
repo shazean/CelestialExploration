@@ -2,8 +2,8 @@ package com.shim.celestialexploration.packets;
 
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.capabilities.LightTravelCapability;
-import com.shim.celestialexploration.registry.CapabilityRegistry;
-import com.shim.celestialexploration.registry.DimensionRegistry;
+import com.shim.celestialexploration.registry.CelestialCapabilities;
+import com.shim.celestialexploration.registry.CelestialDimensions;
 import net.minecraft.core.Registry;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceKey;
@@ -48,18 +48,18 @@ public class ServerResetLightTravelPacket {
 
                 Entity player = serverPlayer.level.getEntity(message.playerId);
 
-                LightTravelCapability.ILightTravel travelCap = CelestialExploration.getCapability(player, CapabilityRegistry.LIGHT_TRAVEL_CAPABILITY);
+                LightTravelCapability.ILightTravel travelCap = CelestialExploration.getCapability(player, CelestialCapabilities.LIGHT_TRAVEL_CAPABILITY);
 
                 if (travelCap != null) {
-                    if (message.dimension.equals(DimensionRegistry.MERCURY))
+                    if (message.dimension.equals(CelestialDimensions.MERCURY))
                         travelCap.getMercuryCooldown().resetCooldown();
-                    if (message.dimension.equals(DimensionRegistry.VENUS))
+                    if (message.dimension.equals(CelestialDimensions.VENUS))
                         travelCap.getVenusCooldown().resetCooldown();
                     if (message.dimension.equals(Level.OVERWORLD))
                         travelCap.getOverworldCooldown().resetCooldown();
-                    if (message.dimension.equals(DimensionRegistry.MARS))
+                    if (message.dimension.equals(CelestialDimensions.MARS))
                         travelCap.getMarsCooldown().resetCooldown();
-                    if (message.dimension.equals(DimensionRegistry.JUPITER))
+                    if (message.dimension.equals(CelestialDimensions.JUPITER))
                         travelCap.getJupiterCooldown().resetCooldown();
 
                     travelCap.sync((Player) player);

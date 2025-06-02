@@ -1,8 +1,8 @@
 package com.shim.celestialexploration.inventory.menus;
 
 import com.shim.celestialexploration.blocks.blockentities.TaxiStationBlockEntity;
-import com.shim.celestialexploration.registry.BlockRegistry;
-import com.shim.celestialexploration.registry.MenuRegistry;
+import com.shim.celestialexploration.registry.CelestialBlocks;
+import com.shim.celestialexploration.registry.CelestialMenus;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -23,7 +23,7 @@ public class TaxiStationMenu extends AbstractContainerMenu {
     }
 
     public TaxiStationMenu(int containerId, Inventory inv, BlockEntity entity, ContainerData data) {
-        super(MenuRegistry.TAXI_STATION_MENU.get(), containerId);
+        super(CelestialMenus.TAXI_STATION_MENU.get(), containerId);
 
         checkContainerSize(inv, 6);
         blockEntity = ((TaxiStationBlockEntity) entity);
@@ -94,7 +94,7 @@ public class TaxiStationMenu extends AbstractContainerMenu {
     @Override
     public boolean stillValid(Player pPlayer) {
         return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()),
-                pPlayer, BlockRegistry.TAXI_STATION.get());
+                pPlayer, CelestialBlocks.TAXI_STATION.get());
     }
 
     private void addPlayerInventory(Inventory playerInventory) {

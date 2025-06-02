@@ -1,9 +1,8 @@
 package com.shim.celestialexploration.blocks;
 
-import com.shim.celestialexploration.entity.entity.robots.AbstractCerberus;
-import com.shim.celestialexploration.entity.entity.robots.MechaCerberusBoss;
-import com.shim.celestialexploration.registry.BlockRegistry;
-import com.shim.celestialexploration.registry.EntityRegistry;
+import com.shim.celestialexploration.entity.robots.MechaCerberusBoss;
+import com.shim.celestialexploration.registry.CelestialBlocks;
+import com.shim.celestialexploration.registry.CelestialEntities;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -83,7 +82,7 @@ public class MechaDogHeadBlock extends Block {
 
     public static void checkSpawn(Level level, BlockPos pos, BlockState blockState) {
         if (!level.isClientSide) {
-            boolean flag = blockState.is(BlockRegistry.MECHADOG_HEAD.get()); // || blockState.is(Blocks.WITHER_SKELETON_WALL_SKULL);
+            boolean flag = blockState.is(CelestialBlocks.MECHADOG_HEAD.get()); // || blockState.is(Blocks.WITHER_SKELETON_WALL_SKULL);
             if (flag && pos.getY() >= level.getMinBuildHeight() && level.getDifficulty() != Difficulty.PEACEFUL) {
                 BlockPattern blockpattern = getOrCreateFull();
                 BlockPattern.BlockPatternMatch blockpattern$blockpatternmatch = blockpattern.find(level, pos);
@@ -96,7 +95,7 @@ public class MechaDogHeadBlock extends Block {
                         }
                     }
 
-                    MechaCerberusBoss boss = EntityRegistry.MECHACERBERUS_BOSS.get().create(level);
+                    MechaCerberusBoss boss = CelestialEntities.MECHACERBERUS_BOSS.get().create(level);
                     BlockPos blockpos = blockpattern$blockpatternmatch.getBlock(1, 2, 0).getPos();
                     boss.moveTo((double)blockpos.getX() + 0.5D, (double)blockpos.getY() + 0.55D, (double)blockpos.getZ() + 0.5D, blockpattern$blockpatternmatch.getForwards().getAxis() == Direction.Axis.X ? 0.0F : 90.0F, 0.0F);
                     boss.yBodyRot = blockpattern$blockpatternmatch.getForwards().getAxis() == Direction.Axis.X ? 0.0F : 90.0F;
@@ -130,8 +129,8 @@ public class MechaDogHeadBlock extends Block {
 
     private static BlockPattern getOrCreateFull() {
 //        if (patternFull == null) {
-            patternFull = BlockPatternBuilder.start().aisle("^^^", "###", "~#~").where('#', (p_58272_) -> p_58272_.getState().is(BlockRegistry.STEEL_BLOCK.get()))
-                    .where('^', BlockInWorld.hasState(BlockStatePredicate.forBlock(BlockRegistry.MECHADOG_HEAD.get())
+            patternFull = BlockPatternBuilder.start().aisle("^^^", "###", "~#~").where('#', (p_58272_) -> p_58272_.getState().is(CelestialBlocks.STEEL_BLOCK.get()))
+                    .where('^', BlockInWorld.hasState(BlockStatePredicate.forBlock(CelestialBlocks.MECHADOG_HEAD.get())
 //                    .or(BlockStatePredicate.forBlock(Blocks.WITHER_SKELETON_WALL_SKULL))
                     )).where('~', BlockInWorld.hasState(BlockMaterialPredicate.forMaterial(Material.AIR))).build();
 //        }

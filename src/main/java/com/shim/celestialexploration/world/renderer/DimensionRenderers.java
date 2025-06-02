@@ -1,8 +1,7 @@
 package com.shim.celestialexploration.world.renderer;
 
-import com.shim.celestialexploration.registry.DimensionRegistry;
+import com.shim.celestialexploration.registry.CelestialDimensions;
 import net.minecraft.client.renderer.DimensionSpecialEffects;
-import net.minecraft.core.BlockPos;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -16,15 +15,16 @@ import javax.annotation.Nullable;
 public class DimensionRenderers {
 
     public static void setDimensionEffects() {
-        DimensionSpecialEffects.EFFECTS.put(DimensionRegistry.MARS.location(), new MarsEffects());
-        DimensionSpecialEffects.EFFECTS.put(DimensionRegistry.MOON.location(), new MoonEffects());
-        DimensionSpecialEffects.EFFECTS.put(DimensionRegistry.SPACE.location(), new SpaceEffects());
-        DimensionSpecialEffects.EFFECTS.put(DimensionRegistry.VENUS.location(), new VenusEffects());
-        DimensionSpecialEffects.EFFECTS.put(DimensionRegistry.MERCURY.location(), new MercuryEffects());
-        DimensionSpecialEffects.EFFECTS.put(DimensionRegistry.JUPITER.location(), new JupiterEffects());
-        DimensionSpecialEffects.EFFECTS.put(DimensionRegistry.EUROPA.location(), new EuropaEffects());
-        DimensionSpecialEffects.EFFECTS.put(DimensionRegistry.CALLISTO.location(), new CallistoEffects());
-        DimensionSpecialEffects.EFFECTS.put(DimensionRegistry.IO.location(), new IoEffects());
+        DimensionSpecialEffects.EFFECTS.put(CelestialDimensions.MARS.location(), new MarsEffects());
+        DimensionSpecialEffects.EFFECTS.put(CelestialDimensions.MOON.location(), new MoonEffects());
+        DimensionSpecialEffects.EFFECTS.put(CelestialDimensions.SPACE.location(), new SpaceEffects());
+        DimensionSpecialEffects.EFFECTS.put(CelestialDimensions.VENUS.location(), new VenusEffects());
+        DimensionSpecialEffects.EFFECTS.put(CelestialDimensions.MERCURY.location(), new MercuryEffects());
+        DimensionSpecialEffects.EFFECTS.put(CelestialDimensions.JUPITER.location(), new JupiterEffects());
+        DimensionSpecialEffects.EFFECTS.put(CelestialDimensions.EUROPA.location(), new EuropaEffects());
+        DimensionSpecialEffects.EFFECTS.put(CelestialDimensions.CALLISTO.location(), new CallistoEffects());
+        DimensionSpecialEffects.EFFECTS.put(CelestialDimensions.IO.location(), new IoEffects());
+        DimensionSpecialEffects.EFFECTS.put(CelestialDimensions.GANYMEDE.location(), new GanymedeEffects());
 
     }
 
@@ -130,7 +130,7 @@ public class DimensionRenderers {
     @OnlyIn(Dist.CLIENT)
     public static class MercuryEffects extends PlanetEffects {
         public MercuryEffects() {
-            super(new MercurySkyHandler(), null, new MeteorShowerParticleHandler());
+            super(new MercurySkyHandler(), null, null); //new MeteorShowerParticleHandler());
         }
     }
 
@@ -164,6 +164,13 @@ public class DimensionRenderers {
     public static class IoEffects extends PlanetEffects {
         public IoEffects() {
             super(new IoSkyHandler(), null, null);
+        }
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    public static class GanymedeEffects extends PlanetEffects {
+        public GanymedeEffects() {
+            super(new GanymedeSkyHandler(), null, null);
         }
     }
 }

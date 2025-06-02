@@ -3,8 +3,8 @@ package com.shim.celestialexploration.blocks;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.blocks.blockentities.TaxiStationBlockEntity;
 import com.shim.celestialexploration.capabilities.TaxiCapability;
-import com.shim.celestialexploration.registry.BlockEntityRegistry;
-import com.shim.celestialexploration.registry.CapabilityRegistry;
+import com.shim.celestialexploration.registry.CelestialBlockEntities;
+import com.shim.celestialexploration.registry.CelestialCapabilities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.server.level.ServerPlayer;
@@ -44,13 +44,13 @@ public class TaxiStationBlock extends BaseEntityBlock {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
-        return createTickerHelper(blockEntityType, BlockEntityRegistry.TAXI_STATION_BLOCK_ENTITY.get(), TaxiStationBlockEntity::tick);
+        return createTickerHelper(blockEntityType, CelestialBlockEntities.TAXI_STATION_BLOCK_ENTITY.get(), TaxiStationBlockEntity::tick);
     }
 
     @Override
     public void playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
 
-        TaxiCapability.ITaxi taxiCap = CelestialExploration.getCapability(player, CapabilityRegistry.TAXI_CAPABILITY);
+        TaxiCapability.ITaxi taxiCap = CelestialExploration.getCapability(player, CelestialCapabilities.TAXI_CAPABILITY);
         if (taxiCap != null) {
             taxiCap.removeTaxiStations(pos);
         }
@@ -59,7 +59,7 @@ public class TaxiStationBlock extends BaseEntityBlock {
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
 
-        TaxiCapability.ITaxi taxiCap = CelestialExploration.getCapability(player, CapabilityRegistry.TAXI_CAPABILITY);
+        TaxiCapability.ITaxi taxiCap = CelestialExploration.getCapability(player, CelestialCapabilities.TAXI_CAPABILITY);
         if (taxiCap != null) {
             if (!taxiCap.existsAtThisPos(pos)) {
                 taxiCap.addTaxiStations(new TaxiCapability.TaxiStationData(pos, level.dimension(), new TextComponent(state.getBlock().getName().getString() + " " + (taxiCap.getTaxiStations().size() + 1))));

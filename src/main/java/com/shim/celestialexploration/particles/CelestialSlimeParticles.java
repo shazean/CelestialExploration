@@ -1,10 +1,8 @@
 package com.shim.celestialexploration.particles;
 
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.registry.BlockRegistry;
-import com.shim.celestialexploration.registry.ItemRegistry;
-import com.shim.celestialexploration.registry.TagRegistry;
-import net.minecraft.client.Minecraft;
+import com.shim.celestialexploration.registry.CelestialBlocks;
+import com.shim.celestialexploration.registry.CelestialItems;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
 import net.minecraft.core.particles.SimpleParticleType;
@@ -64,7 +62,7 @@ public class CelestialSlimeParticles extends TextureSheetParticle {
         public RustProvider(SpriteSet spriteSet) {}
 
         public Particle createParticle(SimpleParticleType p_105705_, ClientLevel p_105706_, double p_105707_, double p_105708_, double p_105709_, double p_105710_, double p_105711_, double p_105712_) {
-            return new CelestialSlimeParticles(p_105706_, p_105707_, p_105708_, p_105709_, new ItemStack(ItemRegistry.RUSTED_IRON_NUGGET.get()));
+            return new CelestialSlimeParticles(p_105706_, p_105707_, p_105708_, p_105709_, new ItemStack(CelestialItems.RUSTED_IRON_NUGGET.get()));
         }
 
     }
@@ -75,7 +73,7 @@ public class CelestialSlimeParticles extends TextureSheetParticle {
         public LunarProvider(SpriteSet spriteSet) {}
 
         public Particle createParticle(SimpleParticleType p_105705_, ClientLevel p_105706_, double p_105707_, double p_105708_, double p_105709_, double p_105710_, double p_105711_, double p_105712_) {
-            return new CelestialSlimeParticles(p_105706_, p_105707_, p_105708_, p_105709_, new ItemStack(ItemRegistry.LUNAR_GOO.get()));
+            return new CelestialSlimeParticles(p_105706_, p_105707_, p_105708_, p_105709_, new ItemStack(CelestialItems.LUNAR_GOO.get()));
         }
 
     }
@@ -86,7 +84,7 @@ public class CelestialSlimeParticles extends TextureSheetParticle {
         public MallowProvider(SpriteSet spriteSet) {}
 
         public Particle createParticle(SimpleParticleType p_105705_, ClientLevel p_105706_, double p_105707_, double p_105708_, double p_105709_, double p_105710_, double p_105711_, double p_105712_) {
-            return new CelestialSlimeParticles(p_105706_, p_105707_, p_105708_, p_105709_, new ItemStack(ItemRegistry.MARSHMALLOW_GOO.get()));
+            return new CelestialSlimeParticles(p_105706_, p_105707_, p_105708_, p_105709_, new ItemStack(CelestialItems.MARSHMALLOW_GOO.get()));
         }
     }
 
@@ -96,7 +94,7 @@ public class CelestialSlimeParticles extends TextureSheetParticle {
         public SulfurProvider(SpriteSet spriteSet) {}
 
         public Particle createParticle(SimpleParticleType p_105705_, ClientLevel p_105706_, double p_105707_, double p_105708_, double p_105709_, double p_105710_, double p_105711_, double p_105712_) {
-            return new CelestialSlimeParticles(p_105706_, p_105707_, p_105708_, p_105709_, new ItemStack(BlockRegistry.VENUS_DEEPSLATE.get())); //TODO?
+            return new CelestialSlimeParticles(p_105706_, p_105707_, p_105708_, p_105709_, new ItemStack(CelestialBlocks.VENUS_DEEPSLATE.get())); //TODO?
         }
     }
 

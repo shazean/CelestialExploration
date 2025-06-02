@@ -12,26 +12,26 @@ import net.minecraft.world.level.block.Block;
 public class IoPortalBlock extends AbstractPortalBlock {
     @Override
     public ResourceKey<Level> getLinkedDimension() {
-        return DimensionRegistry.IO;
+        return CelestialDimensions.IO;
     }
 
     @Override
     public PlanetTeleporter getTeleporter(ServerLevel serverLevel) {
-        return new PlanetTeleporter(serverLevel, PoiRegistry.IO_PORTAL.get(), BlockRegistry.IO_BRICKS.get(), BlockRegistry.IO_PORTAL.get(), DimensionRegistry.IO);
+        return new PlanetTeleporter(serverLevel, CelestialPOIs.IO_PORTAL.get(), CelestialBlocks.IO_BRICKS.get(), CelestialBlocks.IO_PORTAL.get(), CelestialDimensions.IO);
     }
 
     @Override
     public Block getPortalBlock() {
-        return BlockRegistry.IO_PORTAL.get();
+        return CelestialBlocks.IO_PORTAL.get();
     }
 
     @Override
     public TagKey<Block> getPortalFrameBlock() {
-        return TagRegistry.Blocks.IO_PORTAL_FRAME_BLOCK;
+        return CelestialTags.Blocks.IO_PORTAL_FRAME_BLOCK;
     }
 
     @Override
     public SimpleParticleType getPortalParticle() {
-        return ParticleRegistry.IO_PORTAL_PARTICLES.get();
+        return CelestialParticles.IO_PORTAL_PARTICLES.get();
     }
 }

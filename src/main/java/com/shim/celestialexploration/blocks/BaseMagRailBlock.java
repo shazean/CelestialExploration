@@ -1,8 +1,8 @@
 package com.shim.celestialexploration.blocks;
 
-import com.shim.celestialexploration.entity.entity.vehicle.AbstractMagCart;
-import com.shim.celestialexploration.entity.entity.vehicle.IBaseMagRailBlock;
-import com.shim.celestialexploration.registry.TagRegistry;
+import com.shim.celestialexploration.entity.vehicle.AbstractMagCart;
+import com.shim.celestialexploration.entity.vehicle.IBaseMagRailBlock;
+import com.shim.celestialexploration.registry.CelestialTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -36,7 +36,7 @@ public abstract class BaseMagRailBlock extends Block implements SimpleWaterlogge
     }
 
     public static boolean isRail(BlockState state) {
-        return state.is(TagRegistry.Blocks.MAG_RAIL) && state.getBlock() instanceof BaseMagRailBlock;
+        return state.is(CelestialTags.Blocks.MAG_RAIL) && state.getBlock() instanceof BaseMagRailBlock;
     }
 
     protected BaseMagRailBlock(boolean isStraight, BlockBehaviour.Properties properties) {

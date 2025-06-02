@@ -6,13 +6,13 @@
     ]
   },
   "criteria": {
-    "lunar_goo": {
+    "white_moon_dust": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "celestialexploration:lunar_goo"
+              "celestialexploration:white_moon_dust"
             ]
           }
         ]
@@ -27,7 +27,7 @@
   },
   "requirements": [
     [
-      "lunar_goo",
+      "white_moon_dust",
       "has_the_recipe"
     ]
   ]

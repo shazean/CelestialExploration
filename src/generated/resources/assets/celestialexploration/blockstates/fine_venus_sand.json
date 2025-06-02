@@ -1,24 +1,7 @@
 {
   "variants": {
-    "": [
-      {
-        "model": "celestialexploration:block/fine_venus_sand"
-      },
-      {
-        "model": "celestialexploration:block/fine_venus_sand"
-      },
-      {
-        "model": "celestialexploration:block/fine_venus_sand",
-        "y": 90
-      },
-      {
-        "model": "celestialexploration:block/fine_venus_sand",
-        "y": 180
-      },
-      {
-        "model": "celestialexploration:block/fine_venus_sand",
-        "y": 270
-      }
-    ]
+    "": {
+      "model": "celestialexploration:block/fine_venus_sand"
+    }
   }
 }

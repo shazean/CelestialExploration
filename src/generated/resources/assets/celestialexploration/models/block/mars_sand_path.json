@@ -1,6 +1,9 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "celestialexploration:block/template_sand_path",
   "textures": {
-    "all": "celestialexploration:block/mars_sand"
+    "side": "celestialexploration:block/mars_sand_path_side",
+    "top": "celestialexploration:block/mars_sand_path_top",
+    "bottom": "celestialexploration:block/mars_sand",
+    "particle": "celestialexploration:block/mars_sand"
   }
 }

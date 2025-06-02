@@ -70,6 +70,11 @@ public class CelestialBiomeKeys {
     public static final ResourceKey<Biome> CALLISTO_PLAINS = register("callisto_plains");
 
     //GANYMEDE
+    public static final ResourceKey<Biome> GANYMEDE_DESERT = register("ganymede_desert");
+    public static final ResourceKey<Biome> GANYMEDE_LOWER_PLAINS = register("ganymede_lower_plains");
+    public static final ResourceKey<Biome> GANYMEDE_PLAINS = register("ganymede_plains");
+    public static final ResourceKey<Biome> GANYMEDE_CRATERED_PLAINS = register("ganymede_cratered_plains");
+
 
     //---- SPACE -------------------------------------------------------------------------------
     public static final ResourceKey<Biome> SPACE = register("space");

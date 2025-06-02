@@ -1,108 +1,104 @@
 package com.shim.celestialexploration.world.features;
 
-import com.shim.celestialexploration.registry.BlockRegistry;
-import com.shim.celestialexploration.registry.TagRegistry;
+import com.shim.celestialexploration.registry.CelestialBlocks;
 import net.minecraft.core.Holder;
 import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.features.OreFeatures;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.OreFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
-import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 
 import java.util.List;
 
 public class CelestialOreFeatures {
 
-    public static final RuleTest MOON_ORE_REPLACEABLES = new BlockMatchTest(BlockRegistry.MOON_STONE.get());
-    public static final RuleTest MOON_DEEPSLATE_ORE_REPLACEABLES = new BlockMatchTest(BlockRegistry.MOON_DEEPSLATE.get());
-    public static final RuleTest MARS_ORE_REPLACEABLES = new BlockMatchTest(BlockRegistry.MARS_STONE.get());
-    public static final RuleTest MARS_DEEPSLATE_ORE_REPLACEABLES = new BlockMatchTest(BlockRegistry.MARS_DEEPSLATE.get());
-    public static final RuleTest METEOR_REPLACEABLES = new BlockMatchTest(BlockRegistry.METEOR.get());
-    public static final RuleTest VENUS_ORE_REPLACEABLES = new BlockMatchTest(BlockRegistry.VENUS_STONE.get());
-    public static final RuleTest VENUS_DEEPSLATE_ORE_REPLACEABLES = new BlockMatchTest(BlockRegistry.VENUS_DEEPSLATE.get());
-    public static final RuleTest MERCURY_ORE_REPLACEABLES = new BlockMatchTest(BlockRegistry.MERCURY_STONE.get());
-    public static final RuleTest MERCURY_DEEPSLATE_ORE_REPLACEABLES = new BlockMatchTest(BlockRegistry.MERCURY_DEEPSLATE.get());
-    public static final RuleTest IO_ORE_REPLACEABLES = new BlockMatchTest(BlockRegistry.IO_STONE.get());
-    public static final RuleTest IO_DEEPSLATE_ORE_REPLACEABLES = new BlockMatchTest(BlockRegistry.IO_DEEPSLATE.get());
+    public static final RuleTest MOON_ORE_REPLACEABLES = new BlockMatchTest(CelestialBlocks.MOON_STONE.get());
+    public static final RuleTest MOON_DEEPSLATE_ORE_REPLACEABLES = new BlockMatchTest(CelestialBlocks.MOON_DEEPSLATE.get());
+    public static final RuleTest MARS_ORE_REPLACEABLES = new BlockMatchTest(CelestialBlocks.MARS_STONE.get());
+    public static final RuleTest MARS_DEEPSLATE_ORE_REPLACEABLES = new BlockMatchTest(CelestialBlocks.MARS_DEEPSLATE.get());
+    public static final RuleTest METEOR_REPLACEABLES = new BlockMatchTest(CelestialBlocks.METEOR.get());
+    public static final RuleTest VENUS_ORE_REPLACEABLES = new BlockMatchTest(CelestialBlocks.VENUS_STONE.get());
+    public static final RuleTest VENUS_DEEPSLATE_ORE_REPLACEABLES = new BlockMatchTest(CelestialBlocks.VENUS_DEEPSLATE.get());
+    public static final RuleTest MERCURY_ORE_REPLACEABLES = new BlockMatchTest(CelestialBlocks.MERCURY_STONE.get());
+    public static final RuleTest MERCURY_DEEPSLATE_ORE_REPLACEABLES = new BlockMatchTest(CelestialBlocks.MERCURY_DEEPSLATE.get());
+    public static final RuleTest IO_ORE_REPLACEABLES = new BlockMatchTest(CelestialBlocks.IO_STONE.get());
+    public static final RuleTest IO_DEEPSLATE_ORE_REPLACEABLES = new BlockMatchTest(CelestialBlocks.IO_DEEPSLATE.get());
 
 
     public static final List<OreConfiguration.TargetBlockState> MOON_IRON_ORES = List.of(
-            OreConfiguration.target(MOON_ORE_REPLACEABLES, BlockRegistry.MOON_IRON_ORE.get().defaultBlockState()),
-            OreConfiguration.target(MOON_DEEPSLATE_ORE_REPLACEABLES, BlockRegistry.MOON_DEEPSLATE_IRON_ORE.get().defaultBlockState()));
+            OreConfiguration.target(MOON_ORE_REPLACEABLES, CelestialBlocks.MOON_IRON_ORE.get().defaultBlockState()),
+            OreConfiguration.target(MOON_DEEPSLATE_ORE_REPLACEABLES, CelestialBlocks.MOON_DEEPSLATE_IRON_ORE.get().defaultBlockState()));
 
     public static final List<OreConfiguration.TargetBlockState> MOON_REDSTONE_ORES = List.of(
-            OreConfiguration.target(MOON_ORE_REPLACEABLES, BlockRegistry.MOON_REDSTONE_ORE.get().defaultBlockState()),
-            OreConfiguration.target(MOON_ORE_REPLACEABLES, BlockRegistry.MOON_DEEPSLATE_REDSTONE_ORE.get().defaultBlockState()));
+            OreConfiguration.target(MOON_ORE_REPLACEABLES, CelestialBlocks.MOON_REDSTONE_ORE.get().defaultBlockState()),
+            OreConfiguration.target(MOON_ORE_REPLACEABLES, CelestialBlocks.MOON_DEEPSLATE_REDSTONE_ORE.get().defaultBlockState()));
 
     public static final List<OreConfiguration.TargetBlockState> MOON_BAUXITE_ORES = List.of(
-            OreConfiguration.target(MOON_ORE_REPLACEABLES, BlockRegistry.MOON_BAUXITE_ORE.get().defaultBlockState()));
+            OreConfiguration.target(MOON_ORE_REPLACEABLES, CelestialBlocks.MOON_BAUXITE_ORE.get().defaultBlockState()));
 
 
     public static final List<OreConfiguration.TargetBlockState> MARS_IRON_ORES = List.of(
-            OreConfiguration.target(MARS_ORE_REPLACEABLES, BlockRegistry.MARS_IRON_ORE.get().defaultBlockState()),
-            OreConfiguration.target(MARS_DEEPSLATE_ORE_REPLACEABLES, BlockRegistry.MARS_DEEPSLATE_IRON_ORE.get().defaultBlockState()));
+            OreConfiguration.target(MARS_ORE_REPLACEABLES, CelestialBlocks.MARS_IRON_ORE.get().defaultBlockState()),
+            OreConfiguration.target(MARS_DEEPSLATE_ORE_REPLACEABLES, CelestialBlocks.MARS_DEEPSLATE_IRON_ORE.get().defaultBlockState()));
 
     public static final List<OreConfiguration.TargetBlockState> MARS_REDSTONE_ORES = List.of(
-            OreConfiguration.target(MARS_ORE_REPLACEABLES, BlockRegistry.MARS_REDSTONE_ORE.get().defaultBlockState()),
-            OreConfiguration.target(MARS_ORE_REPLACEABLES, BlockRegistry.MARS_DEEPSLATE_REDSTONE_ORE.get().defaultBlockState()));
+            OreConfiguration.target(MARS_ORE_REPLACEABLES, CelestialBlocks.MARS_REDSTONE_ORE.get().defaultBlockState()),
+            OreConfiguration.target(MARS_ORE_REPLACEABLES, CelestialBlocks.MARS_DEEPSLATE_REDSTONE_ORE.get().defaultBlockState()));
 
     public static final List<OreConfiguration.TargetBlockState> VENUS_IRON_ORES = List.of(
-            OreConfiguration.target(VENUS_ORE_REPLACEABLES, BlockRegistry.VENUS_IRON_ORE.get().defaultBlockState()),
-            OreConfiguration.target(VENUS_DEEPSLATE_ORE_REPLACEABLES, BlockRegistry.VENUS_DEEPSLATE_IRON_ORE.get().defaultBlockState()));
+            OreConfiguration.target(VENUS_ORE_REPLACEABLES, CelestialBlocks.VENUS_IRON_ORE.get().defaultBlockState()),
+            OreConfiguration.target(VENUS_DEEPSLATE_ORE_REPLACEABLES, CelestialBlocks.VENUS_DEEPSLATE_IRON_ORE.get().defaultBlockState()));
 
     public static final List<OreConfiguration.TargetBlockState> VENUS_REDSTONE_ORES = List.of(
-            OreConfiguration.target(VENUS_ORE_REPLACEABLES, BlockRegistry.VENUS_REDSTONE_ORE.get().defaultBlockState()),
-            OreConfiguration.target(VENUS_ORE_REPLACEABLES, BlockRegistry.VENUS_DEEPSLATE_REDSTONE_ORE.get().defaultBlockState()));
+            OreConfiguration.target(VENUS_ORE_REPLACEABLES, CelestialBlocks.VENUS_REDSTONE_ORE.get().defaultBlockState()),
+            OreConfiguration.target(VENUS_ORE_REPLACEABLES, CelestialBlocks.VENUS_DEEPSLATE_REDSTONE_ORE.get().defaultBlockState()));
 
     public static final List<OreConfiguration.TargetBlockState> VENUS_LAPIS_ORES = List.of(
-            OreConfiguration.target(VENUS_ORE_REPLACEABLES, BlockRegistry.VENUS_LAPIS_ORE.get().defaultBlockState()),
-            OreConfiguration.target(VENUS_DEEPSLATE_ORE_REPLACEABLES, BlockRegistry.VENUS_DEEPSLATE_LAPIS_ORE.get().defaultBlockState()));
+            OreConfiguration.target(VENUS_ORE_REPLACEABLES, CelestialBlocks.VENUS_LAPIS_ORE.get().defaultBlockState()),
+            OreConfiguration.target(VENUS_DEEPSLATE_ORE_REPLACEABLES, CelestialBlocks.VENUS_DEEPSLATE_LAPIS_ORE.get().defaultBlockState()));
 
 
     public static final List<OreConfiguration.TargetBlockState> MARS_BAUXITE_ORES = List.of(
-            OreConfiguration.target(MARS_ORE_REPLACEABLES, BlockRegistry.MARS_BAUXITE_ORE.get().defaultBlockState()));
+            OreConfiguration.target(MARS_ORE_REPLACEABLES, CelestialBlocks.MARS_BAUXITE_ORE.get().defaultBlockState()));
 
     public static final List<OreConfiguration.TargetBlockState> VENUS_BAUXITE_ORES = List.of(
-            OreConfiguration.target(VENUS_ORE_REPLACEABLES, BlockRegistry.VENUS_BAUXITE_ORE.get().defaultBlockState()));
+            OreConfiguration.target(VENUS_ORE_REPLACEABLES, CelestialBlocks.VENUS_BAUXITE_ORE.get().defaultBlockState()));
 
     public static final List<OreConfiguration.TargetBlockState> BAUXITE_ORES = List.of(
-            OreConfiguration.target(OreFeatures.STONE_ORE_REPLACEABLES, BlockRegistry.BAUXITE_ORE.get().defaultBlockState()));
+            OreConfiguration.target(OreFeatures.STONE_ORE_REPLACEABLES, CelestialBlocks.BAUXITE_ORE.get().defaultBlockState()));
 
     public static final List<OreConfiguration.TargetBlockState> MERCURY_IRON_ORES = List.of(
-            OreConfiguration.target(MERCURY_DEEPSLATE_ORE_REPLACEABLES, BlockRegistry.MERCURY_DEEPSLATE_IRON_ORE.get().defaultBlockState()));
+            OreConfiguration.target(MERCURY_DEEPSLATE_ORE_REPLACEABLES, CelestialBlocks.MERCURY_DEEPSLATE_IRON_ORE.get().defaultBlockState()));
 
     public static final List<OreConfiguration.TargetBlockState> MERCURY_REDSTONE_ORES = List.of(
-            OreConfiguration.target(MERCURY_ORE_REPLACEABLES, BlockRegistry.MERCURY_DEEPSLATE_REDSTONE_ORE.get().defaultBlockState()));
+            OreConfiguration.target(MERCURY_ORE_REPLACEABLES, CelestialBlocks.MERCURY_DEEPSLATE_REDSTONE_ORE.get().defaultBlockState()));
 
     public static final List<OreConfiguration.TargetBlockState> MERCURY_BAUXITE_ORES = List.of(
-            OreConfiguration.target(MERCURY_ORE_REPLACEABLES, BlockRegistry.MERCURY_BAUXITE_ORE.get().defaultBlockState()));
+            OreConfiguration.target(MERCURY_ORE_REPLACEABLES, CelestialBlocks.MERCURY_BAUXITE_ORE.get().defaultBlockState()));
 
     public static final List<OreConfiguration.TargetBlockState> MERCURY_COAL_ORES = List.of(
-            OreConfiguration.target(MERCURY_ORE_REPLACEABLES, BlockRegistry.MERCURY_COAL_ORE.get().defaultBlockState()),
-            OreConfiguration.target(MERCURY_DEEPSLATE_ORE_REPLACEABLES, BlockRegistry.MERCURY_DEEPSLATE_COAL_ORE.get().defaultBlockState()));
+            OreConfiguration.target(MERCURY_ORE_REPLACEABLES, CelestialBlocks.MERCURY_COAL_ORE.get().defaultBlockState()),
+            OreConfiguration.target(MERCURY_DEEPSLATE_ORE_REPLACEABLES, CelestialBlocks.MERCURY_DEEPSLATE_COAL_ORE.get().defaultBlockState()));
 
     public static final List<OreConfiguration.TargetBlockState> MERCURY_SULFUR_ORES = List.of(
-            OreConfiguration.target(MERCURY_ORE_REPLACEABLES, BlockRegistry.MERCURY_SULFUR_ORE.get().defaultBlockState()));
+            OreConfiguration.target(MERCURY_ORE_REPLACEABLES, CelestialBlocks.MERCURY_SULFUR_ORE.get().defaultBlockState()));
 
     public static final List<OreConfiguration.TargetBlockState> MERCURY_DIAMOND_ORES = List.of(
-            OreConfiguration.target(MERCURY_ORE_REPLACEABLES, BlockRegistry.MERCURY_DIAMOND_ORE.get().defaultBlockState()),
-            OreConfiguration.target(MERCURY_DEEPSLATE_ORE_REPLACEABLES, BlockRegistry.MERCURY_DEEPSLATE_DIAMOND_ORE.get().defaultBlockState()));
+            OreConfiguration.target(MERCURY_ORE_REPLACEABLES, CelestialBlocks.MERCURY_DIAMOND_ORE.get().defaultBlockState()),
+            OreConfiguration.target(MERCURY_DEEPSLATE_ORE_REPLACEABLES, CelestialBlocks.MERCURY_DEEPSLATE_DIAMOND_ORE.get().defaultBlockState()));
 
 
     public static final List<OreConfiguration.TargetBlockState> IO_IRON_ORES = List.of(
-            OreConfiguration.target(IO_DEEPSLATE_ORE_REPLACEABLES, BlockRegistry.IO_DEEPSLATE_IRON_ORE.get().defaultBlockState()));
+            OreConfiguration.target(IO_DEEPSLATE_ORE_REPLACEABLES, CelestialBlocks.IO_DEEPSLATE_IRON_ORE.get().defaultBlockState()));
 
     public static final List<OreConfiguration.TargetBlockState> IO_LAPIS_ORES = List.of(
-            OreConfiguration.target(IO_ORE_REPLACEABLES, BlockRegistry.IO_LAPIS_ORE.get().defaultBlockState()),
-            OreConfiguration.target(IO_ORE_REPLACEABLES, BlockRegistry.IO_DEEPSLATE_LAPIS_ORE.get().defaultBlockState()));
+            OreConfiguration.target(IO_ORE_REPLACEABLES, CelestialBlocks.IO_LAPIS_ORE.get().defaultBlockState()),
+            OreConfiguration.target(IO_ORE_REPLACEABLES, CelestialBlocks.IO_DEEPSLATE_LAPIS_ORE.get().defaultBlockState()));
 
     public static final List<OreConfiguration.TargetBlockState> IO_SULFUR_ORES = List.of(
-            OreConfiguration.target(IO_ORE_REPLACEABLES, BlockRegistry.IO_SULFUR_ORE.get().defaultBlockState()));
+            OreConfiguration.target(IO_ORE_REPLACEABLES, CelestialBlocks.IO_SULFUR_ORE.get().defaultBlockState()));
 
 
 

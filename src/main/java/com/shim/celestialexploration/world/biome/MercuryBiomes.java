@@ -1,8 +1,7 @@
 package com.shim.celestialexploration.world.biome;
 
-import com.shim.celestialexploration.registry.EntityRegistry;
+import com.shim.celestialexploration.registry.CelestialEntities;
 import com.shim.celestialexploration.world.features.placement.CelestialFeaturePlacements;
-import com.shim.celestialexploration.world.features.placement.SurfacePlacements;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
@@ -22,10 +21,10 @@ public class MercuryBiomes extends CelestialBiomes {
         addMercuryOres(biomeBuilder);
 
         generalMonsters(spawnBuilder, 100, 100, 100);
-        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.QUICKSILVER_SLIME.get(), 30, 4, 4))
-                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.VISCOUS_SLIME.get(), 30, 4, 4))
-                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityRegistry.ROVER.get(), 40, 1, 1))
-                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityRegistry.DRONE.get(), 30, 1, 2))
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.QUICKSILVER_SLIME.get(), 30, 4, 4))
+                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.VISCOUS_SLIME.get(), 30, 4, 4))
+                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(CelestialEntities.ROVER.get(), 40, 1, 1))
+                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(CelestialEntities.DRONE.get(), 30, 1, 2))
                 .build();
 
         return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, prettyCold, 0F, celestialBody.MERCURY.skyColor, celestialBody.MERCURY.skyFogColor, celestialBody.MERCURY.waterColor, celestialBody.MERCURY.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
@@ -42,10 +41,10 @@ public class MercuryBiomes extends CelestialBiomes {
         addMercuryOres(biomeBuilder);
 
         generalMonsters(spawnBuilder, 100, 100, 100);
-        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.QUICKSILVER_SLIME.get(), 30, 4, 4))
-                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.VISCOUS_SLIME.get(), 30, 4, 4))
-                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityRegistry.ROVER.get(), 40, 1, 1))
-                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityRegistry.DRONE.get(), 30, 1, 2))
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.QUICKSILVER_SLIME.get(), 30, 4, 4))
+                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.VISCOUS_SLIME.get(), 30, 4, 4))
+                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(CelestialEntities.ROVER.get(), 40, 1, 1))
+                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(CelestialEntities.DRONE.get(), 30, 1, 2))
                 .build();
 
         return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, prettyCold, 0F, celestialBody.MERCURY.skyColor, celestialBody.MERCURY.skyFogColor, celestialBody.MERCURY.waterColor, celestialBody.MERCURY.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
@@ -62,10 +61,10 @@ public class MercuryBiomes extends CelestialBiomes {
         addMercuryOres(biomeBuilder);
 
         generalMonsters(spawnBuilder, 100, 80, 100);
-        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.QUICKSILVER_SLIME.get(), 30, 4, 4))
-                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.VISCOUS_SLIME.get(), 30, 4, 4))
-                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityRegistry.ROVER.get(), 40, 1, 1))
-                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityRegistry.DRONE.get(), 30, 1, 2))
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.QUICKSILVER_SLIME.get(), 30, 4, 4))
+                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.VISCOUS_SLIME.get(), 30, 4, 4))
+                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(CelestialEntities.ROVER.get(), 40, 1, 1))
+                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(CelestialEntities.DRONE.get(), 30, 1, 2))
                 .build();
 
         return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, prettyCold, 0F, celestialBody.MERCURY.skyColor, celestialBody.MERCURY.skyFogColor, celestialBody.MERCURY.waterColor, celestialBody.MERCURY.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);

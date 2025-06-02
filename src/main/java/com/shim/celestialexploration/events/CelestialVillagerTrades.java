@@ -2,10 +2,9 @@ package com.shim.celestialexploration.events;
 
 import com.google.common.collect.ImmutableMap;
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.registry.BlockRegistry;
-import com.shim.celestialexploration.registry.ItemRegistry;
-import com.shim.celestialexploration.registry.TagRegistry;
-import com.shim.celestialexploration.registry.VillagerRegistry;
+import com.shim.celestialexploration.registry.CelestialBlocks;
+import com.shim.celestialexploration.registry.CelestialItems;
+import com.shim.celestialexploration.registry.CelestialVillagers;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.minecraft.core.BlockPos;
@@ -13,7 +12,6 @@ import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -50,103 +48,101 @@ public class CelestialVillagerTrades {
 //        }
 
 
-        if (event.getType() == VillagerRegistry.ASTRONOMER.get()) {
+        if (event.getType() == CelestialVillagers.ASTRONOMER.get()) {
             trades = event.getTrades();
 
 //            int villagerLevel = 1;
 
             trades.get(1).add((trader, rand) -> getEmeraldsForItem(
-                    new ItemStack(ItemRegistry.MOON_DUST.get(), 4), 1, 12, 1, 0.05F));
+                    new ItemStack(CelestialItems.MOON_DUST.get(), 4), 1, 12, 1, 0.05F));
 
             trades.get(1).add((trader, rand) -> getEmeraldsForItem(
-                    new ItemStack(ItemRegistry.RUSTED_IRON_NUGGET.get(), 4), 1, 12, 1, 0.05F));
+                    new ItemStack(CelestialItems.RUSTED_IRON_NUGGET.get(), 4), 1, 12, 1, 0.05F));
 
             trades.get(1).add((trader, rand) -> getItemForEmeralds(
                     new ItemStack(Items.MAP), 7, 12, 1, 0.02F));
 
             trades.get(2).add((trader, rand) -> getEmeraldsForItem(
-                    new ItemStack(ItemRegistry.SULFUR_CRYSTAL.get(), 4), 1, 12, 2, 0.05F));
+                    new ItemStack(CelestialItems.SULFUR_CRYSTAL.get(), 4), 1, 12, 2, 0.05F));
 
             trades.get(2).add((trader, rand) -> getEmeraldsForItem(
-                    new ItemStack(ItemRegistry.CINNABAR.get(), 4), 1, 12, 2, 0.05F));
+                    new ItemStack(CelestialItems.CINNABAR.get(), 4), 1, 12, 2, 0.05F));
 
             trades.get(2).add((trader, rand) -> getItemForEmeralds(
-                    new ItemStack(BlockRegistry.LUNAR_LANTERN.get()), 5, 12, 15, 0.05F));
+                    new ItemStack(CelestialBlocks.LUNAR_LANTERN.get()), 5, 12, 15, 0.05F));
 
             trades.get(2).add((trader, rand) -> getItemForEmeralds(
-                    new ItemStack(BlockRegistry.MARS_LANTERN.get()), 5, 12, 15, 0.05F));
+                    new ItemStack(CelestialBlocks.MARS_LANTERN.get()), 5, 12, 15, 0.05F));
 
             trades.get(2).add((trader, rand) -> getItemForEmeralds(
-                    new ItemStack(BlockRegistry.MERCURY_LANTERN.get()), 5, 12, 15, 0.05F));
+                    new ItemStack(CelestialBlocks.MERCURY_LANTERN.get()), 5, 12, 15, 0.05F));
 
             trades.get(2).add((trader, rand) -> getItemForEmeralds(
-                    new ItemStack(BlockRegistry.VENUS_LANTERN.get()), 5, 12, 15, 0.05F));
-
-
+                    new ItemStack(CelestialBlocks.VENUS_LANTERN.get()), 5, 12, 15, 0.05F));
         }
 
-        if (event.getType() == VillagerRegistry.ENGINEER.get()) {
+        if (event.getType() == CelestialVillagers.ENGINEER.get()) {
             trades = event.getTrades();
 
             trades.get(1).add((trader, rand) -> getEmeraldsForItem(
                     new ItemStack(Items.COAL, 15), 1, 16, 2, 0.05F));
 
             trades.get(1).add((trader, rand) -> getItemForEmeralds(
-                    new ItemStack(ItemRegistry.BASIC_SPACESUIT_HELMET.get()), 5, 12, 2, 0.2F));
+                    new ItemStack(CelestialItems.BASIC_SPACESUIT_HELMET.get()), 5, 12, 2, 0.2F));
 
             trades.get(1).add((trader, rand) -> getItemForEmeralds(
-                    new ItemStack(ItemRegistry.BASIC_SPACESUIT_CHESTPLATE.get()), 9, 12, 2, 0.2F));
+                    new ItemStack(CelestialItems.BASIC_SPACESUIT_CHESTPLATE.get()), 9, 12, 2, 0.2F));
 
             trades.get(1).add((trader, rand) -> getItemForEmeralds(
-                    new ItemStack(ItemRegistry.BASIC_SPACESUIT_LEGGINGS.get()), 7, 12, 2, 0.2F));
+                    new ItemStack(CelestialItems.BASIC_SPACESUIT_LEGGINGS.get()), 7, 12, 2, 0.2F));
 
             trades.get(1).add((trader, rand) -> getItemForEmeralds(
-                    new ItemStack(ItemRegistry.BASIC_SPACESUIT_BOOTS.get()), 4, 12, 2, 0.2F));
+                    new ItemStack(CelestialItems.BASIC_SPACESUIT_BOOTS.get()), 4, 12, 2, 0.2F));
 
             trades.get(2).add((trader, rand) -> getEmeraldsForItem(
-                    new ItemStack(ItemRegistry.STEEL_INGOT.get()), 6, 12, 10, 0.05F));
+                    new ItemStack(CelestialItems.STEEL_INGOT.get()), 6, 12, 10, 0.05F));
 
             trades.get(2).add((trader, rand) -> getEmeraldsForItem(
-                    new ItemStack(ItemRegistry.BAUXITE_INGOT.get()), 4, 12, 10, 0.05F));
+                    new ItemStack(CelestialItems.BAUXITE_INGOT.get()), 4, 12, 10, 0.05F));
 
             trades.get(2).add((trader, rand) -> getEmeraldsForItem(
-                    new ItemStack(ItemRegistry.ALUMINUM_INGOT.get()), 6, 12, 10, 0.05F));
+                    new ItemStack(CelestialItems.ALUMINUM_INGOT.get()), 6, 12, 10, 0.05F));
 
             trades.get(3).add((trader, rand) -> getItemForEmeralds(
-                    new ItemStack(ItemRegistry.MAGCART.get()), 5, 12, 4, 0.2F));
+                    new ItemStack(CelestialItems.MAGCART.get()), 5, 12, 4, 0.2F));
 
             trades.get(3).add((trader, rand) -> getItemForEmeralds(
-                    new ItemStack(BlockRegistry.MAG_RAIL.get()), 3, 12, 4, 0.2F));
+                    new ItemStack(CelestialBlocks.MAG_RAIL.get()), 3, 12, 4, 0.2F));
 
             trades.get(3).add((trader, rand) -> getEnchantedItemForEmeralds(
-                    new ItemStack(ItemRegistry.THERMAL_SPACESUIT_BOOTS.get()), 7, 3, 15, 0.2F));
+                    new ItemStack(CelestialItems.THERMAL_SPACESUIT_BOOTS.get()), 7, 3, 15, 0.2F));
 
             trades.get(3).add((trader, rand) -> getEnchantedItemForEmeralds(
-                    new ItemStack(ItemRegistry.HEAVY_DUTY_SPACESUIT_BOOTS.get()), 7, 3, 15, 0.2F));
+                    new ItemStack(CelestialItems.HEAVY_DUTY_SPACESUIT_BOOTS.get()), 7, 3, 15, 0.2F));
 
             trades.get(4).add((trader, rand) -> getItemForEmeralds(
-                    new ItemStack(ItemRegistry.SPACESHIP_CABIN.get()), 20, 5, 12, 0.2F));
+                    new ItemStack(CelestialItems.SPACESHIP_CABIN.get()), 20, 5, 12, 0.2F));
 
             trades.get(4).add((trader, rand) -> getItemForEmeralds(
-                    new ItemStack(ItemRegistry.SPACESHIP_FRAME.get()), 20, 5, 12, 0.2F));
+                    new ItemStack(CelestialItems.SPACESHIP_FRAME.get()), 20, 5, 12, 0.2F));
 
             trades.get(4).add((trader, rand) -> getItemForEmeralds(
-                    new ItemStack(ItemRegistry.SPACESHIP_ENGINE.get()), 20, 5, 12, 0.2F));
+                    new ItemStack(CelestialItems.SPACESHIP_ENGINE.get()), 20, 5, 12, 0.2F));
 
             trades.get(4).add((trader, rand) -> getItemForEmeralds(
-                    new ItemStack(ItemRegistry.LOX_TANK.get()), 10, 5, 4, 0.2F));
+                    new ItemStack(CelestialItems.LOX_TANK.get()), 10, 5, 4, 0.2F));
 
             trades.get(5).add((trader, rand) -> getEnchantedItemForEmeralds(
-                    new ItemStack(ItemRegistry.ADVANCED_SPACESUIT_HELMET.get()), 8, 3, 15, 0.2F));
+                    new ItemStack(CelestialItems.ADVANCED_SPACESUIT_HELMET.get()), 8, 3, 15, 0.2F));
 
             trades.get(5).add((trader, rand) -> getEnchantedItemForEmeralds(
-                    new ItemStack(ItemRegistry.ADVANCED_SPACESUIT_CHESTPLATE.get()), 16, 3, 15, 0.2F));
+                    new ItemStack(CelestialItems.ADVANCED_SPACESUIT_CHESTPLATE.get()), 16, 3, 15, 0.2F));
 
             trades.get(5).add((trader, rand) -> getEnchantedItemForEmeralds(
-                    new ItemStack(ItemRegistry.ADVANCED_SPACESUIT_LEGGINGS.get()), 14, 3, 15, 0.2F));
+                    new ItemStack(CelestialItems.ADVANCED_SPACESUIT_LEGGINGS.get()), 14, 3, 15, 0.2F));
 
             trades.get(5).add((trader, rand) -> getEnchantedItemForEmeralds(
-                    new ItemStack(ItemRegistry.ADVANCED_SPACESUIT_BOOTS.get()), 8, 3, 15, 0.2F));
+                    new ItemStack(CelestialItems.ADVANCED_SPACESUIT_BOOTS.get()), 8, 3, 15, 0.2F));
 
         }
 

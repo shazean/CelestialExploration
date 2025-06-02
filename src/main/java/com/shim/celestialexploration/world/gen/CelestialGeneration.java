@@ -1,25 +1,16 @@
 package com.shim.celestialexploration.world.gen;
 
-import com.shim.celestialexploration.registry.BiomeRegistry;
-import com.shim.celestialexploration.registry.TagRegistry;
+import com.shim.celestialexploration.registry.CelestialBiomes;
 import com.shim.celestialexploration.world.features.placement.CelestialFeaturePlacements;
 import com.shim.celestialexploration.world.features.placement.SurfacePlacements;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import net.minecraft.Util;
 import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.registries.RegistryObject;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CelestialGeneration {
@@ -38,15 +29,15 @@ public class CelestialGeneration {
         ResourceLocation eventName = event.getName();
         if (eventName != null) {
 
-            generateInBiome(BiomeRegistry.EUROPA_JAGGED_PLAINS, eventName, topLayer, SurfacePlacements.PENITENTE);
-            generateInBiome(BiomeRegistry.EUROPA_PLAINS, eventName, topLayer, SurfacePlacements.SPARSE_PENITENTE);
-            generateInBiome(BiomeRegistry.EUROPA_OCEAN, eventName, topLayer, SurfacePlacements.FROZEN_OCEAN);
+            generateInBiome(CelestialBiomes.EUROPA_JAGGED_PLAINS, eventName, topLayer, SurfacePlacements.PENITENTE);
+            generateInBiome(CelestialBiomes.EUROPA_PLAINS, eventName, topLayer, SurfacePlacements.SPARSE_PENITENTE);
 
-            generateInBiome(BiomeRegistry.EUROPA_RIVER, eventName, topLayer, SurfacePlacements.FROZEN_OCEAN);
-            generateInBiome(BiomeRegistry.EUROPA_DESERT, eventName, topLayer, SurfacePlacements.FROZEN_OCEAN);
-            generateInBiome(BiomeRegistry.EUROPA_JAGGED_PLAINS, eventName, topLayer, SurfacePlacements.FROZEN_OCEAN);
-            generateInBiome(BiomeRegistry.EUROPA_PLAINS, eventName, topLayer, SurfacePlacements.FROZEN_OCEAN);
-            generateInBiome(BiomeRegistry.EUROPA_LOWER_PLAINS, eventName, topLayer, SurfacePlacements.FROZEN_OCEAN);
+            generateInBiome(CelestialBiomes.EUROPA_OCEAN, eventName, topLayer, SurfacePlacements.FROZEN_OCEAN);
+            generateInBiome(CelestialBiomes.EUROPA_RIVER, eventName, topLayer, SurfacePlacements.FROZEN_OCEAN);
+            generateInBiome(CelestialBiomes.EUROPA_DESERT, eventName, topLayer, SurfacePlacements.FROZEN_OCEAN);
+            generateInBiome(CelestialBiomes.EUROPA_JAGGED_PLAINS, eventName, topLayer, SurfacePlacements.FROZEN_OCEAN);
+            generateInBiome(CelestialBiomes.EUROPA_PLAINS, eventName, topLayer, SurfacePlacements.FROZEN_OCEAN);
+            generateInBiome(CelestialBiomes.EUROPA_LOWER_PLAINS, eventName, topLayer, SurfacePlacements.FROZEN_OCEAN);
         }
     }
 

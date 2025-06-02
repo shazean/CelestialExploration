@@ -1,11 +1,7 @@
 package com.shim.celestialexploration.world.biome;
 
-import com.shim.celestialexploration.registry.EntityRegistry;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleType;
-import net.minecraft.core.particles.ParticleTypes;
+import com.shim.celestialexploration.registry.CelestialEntities;
 import net.minecraft.data.worldgen.Carvers;
-import net.minecraft.data.worldgen.placement.MiscOverworldPlacements;
 import net.minecraft.sounds.Music;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EntityType;
@@ -53,17 +49,17 @@ public class CelestialBiomes {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
 
-        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.VOIDFELLOW.get(), 30, 0, 1))
-                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.LURKER.get(), 5, 0, 1)).build();
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.VOIDFELLOW.get(), 30, 0, 1))
+                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.LURKER.get(), 5, 0, 1)).build();
 
         return biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, prettyCold, 0, celestialBody.SPACE.skyColor, celestialBody.SPACE.skyFogColor, celestialBody.SPACE.waterColor, celestialBody.SPACE.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
     }
 
     protected static void generalMonsters(MobSpawnSettings.Builder spawnBuilder, int voidedCount, int skeletonCount, int lurkerCount) {
-        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.VOIDED.get(), voidedCount, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.VOIDED.get(), voidedCount, 4, 4));
         spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.SKELETON, skeletonCount, 4, 4));
-        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.LURKER.get(), lurkerCount, 4, 4));
-        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.VOIDFELLOW.get(), 10, 1, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.LURKER.get(), lurkerCount, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.VOIDFELLOW.get(), 10, 1, 4));
     }
 
     public static void addCarversAndLakes(BiomeGenerationSettings.Builder biomeBuilder) {

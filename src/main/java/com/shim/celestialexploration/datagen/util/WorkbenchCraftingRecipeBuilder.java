@@ -5,7 +5,7 @@ import com.google.common.collect.Maps;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.registry.RecipeRegistry;
+import com.shim.celestialexploration.registry.CelestialRecipes;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.CriterionTriggerInstance;
@@ -198,7 +198,7 @@ public class WorkbenchCraftingRecipeBuilder implements RecipeBuilder {
         }
 
         public RecipeSerializer<?> getType() {
-            return RecipeRegistry.WORKBENCH_CRAFTING_SERIALIZER.get();
+            return CelestialRecipes.WORKBENCH_CRAFTING_SERIALIZER.get();
         }
 
         public ResourceLocation getId() {

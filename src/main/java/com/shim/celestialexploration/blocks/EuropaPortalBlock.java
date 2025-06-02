@@ -12,26 +12,26 @@ import net.minecraft.world.level.block.Block;
 public class EuropaPortalBlock extends AbstractPortalBlock {
     @Override
     public ResourceKey<Level> getLinkedDimension() {
-        return DimensionRegistry.EUROPA;
+        return CelestialDimensions.EUROPA;
     }
 
     @Override
     public PlanetTeleporter getTeleporter(ServerLevel serverLevel) {
-        return new PlanetTeleporter(serverLevel, PoiRegistry.EUROPA_PORTAL.get(), BlockRegistry.EUROPA_BRICKS.get(), BlockRegistry.EUROPA_PORTAL.get(), DimensionRegistry.EUROPA);
+        return new PlanetTeleporter(serverLevel, CelestialPOIs.EUROPA_PORTAL.get(), CelestialBlocks.EUROPA_BRICKS.get(), CelestialBlocks.EUROPA_PORTAL.get(), CelestialDimensions.EUROPA);
     }
 
     @Override
     public Block getPortalBlock() {
-        return BlockRegistry.EUROPA_PORTAL.get();
+        return CelestialBlocks.EUROPA_PORTAL.get();
     }
 
     @Override
     public TagKey<Block> getPortalFrameBlock() {
-        return TagRegistry.Blocks.EUROPA_PORTAL_FRAME_BLOCK;
+        return CelestialTags.Blocks.EUROPA_PORTAL_FRAME_BLOCK;
     }
 
     @Override
     public SimpleParticleType getPortalParticle() {
-        return ParticleRegistry.EUROPA_PORTAL_PARTICLES.get();
+        return CelestialParticles.EUROPA_PORTAL_PARTICLES.get();
     }
 }

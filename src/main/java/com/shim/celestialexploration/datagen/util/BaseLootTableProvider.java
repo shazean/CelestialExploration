@@ -7,8 +7,8 @@ import java.util.Map;
 
 import com.google.common.collect.Maps;
 import com.mojang.datafixers.util.Pair;
-import com.shim.celestialexploration.registry.BlockRegistry;
-import com.shim.celestialexploration.registry.ItemRegistry;
+import com.shim.celestialexploration.registry.CelestialBlocks;
+import com.shim.celestialexploration.registry.CelestialItems;
 import net.minecraft.advancements.critereon.*;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Items;
@@ -93,11 +93,11 @@ public abstract class BaseLootTableProvider extends LootTableProvider {
     }
 
     protected LootTable.Builder createBauxiteOreTable(Block block) {
-        return createOreTable(block, ItemRegistry.RAW_BAUXITE.get());
+        return createOreTable(block, CelestialItems.RAW_BAUXITE.get());
     }
 
     protected LootTable.Builder createSulfurOreTable(Block block) {
-        return createOreTable(block, ItemRegistry.SULFUR_CRYSTAL.get());
+        return createOreTable(block, CelestialItems.SULFUR_CRYSTAL.get());
     }
 
     protected LootTable.Builder createCoalOreTable(Block block) {
@@ -177,7 +177,7 @@ public abstract class BaseLootTableProvider extends LootTableProvider {
                                 LootItem.lootTableItem(block)
                                         .when(MatchTool.toolMatches(ItemPredicate.Builder.item()
                                                 .hasEnchantment(new EnchantmentPredicate(Enchantments.SILK_TOUCH, MinMaxBounds.Ints.atLeast(1))))),
-                                LootItem.lootTableItem(BlockRegistry.SILICA.get())
+                                LootItem.lootTableItem(CelestialBlocks.SILICA.get())
                                         .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))
                                         .apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE, 1))
                                         .apply(ApplyExplosionDecay.explosionDecay())

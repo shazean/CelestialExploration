@@ -1,13 +1,13 @@
 package com.shim.celestialexploration.inventory.menus;
 
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.entity.entity.vehicle.Spaceship;
+import com.shim.celestialexploration.entity.vehicle.Spaceship;
 import com.shim.celestialexploration.inventory.OxygenTankSlot;
 import com.shim.celestialexploration.packets.CelestialPacketHandler;
 import com.shim.celestialexploration.packets.DoLightTravelPacket;
 import com.shim.celestialexploration.packets.ServerResetLightTravelPacket;
-import com.shim.celestialexploration.registry.DimensionRegistry;
-import com.shim.celestialexploration.registry.MenuRegistry;
+import com.shim.celestialexploration.registry.CelestialDimensions;
+import com.shim.celestialexploration.registry.CelestialMenus;
 import com.shim.celestialexploration.util.CelestialUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.FriendlyByteBuf;
@@ -38,7 +38,7 @@ public class SpaceshipMenu extends AbstractContainerMenu {
     }
 
     public SpaceshipMenu(int containerId, Inventory inv, Entity spaceship, Map<ResourceKey<Level>, Vec3> planets) {
-        super(MenuRegistry.SPACESHIP_MENU.get(), containerId);
+        super(CelestialMenus.SPACESHIP_MENU.get(), containerId);
         checkContainerSize(inv, 32);
         entity = ((Spaceship) spaceship);
         this.level = inv.player.level;
@@ -172,7 +172,7 @@ public class SpaceshipMenu extends AbstractContainerMenu {
     }
 
     public boolean lightTravelAllowed() {
-        return this.entity.getPassengers().size() >= 1 && this.entity.level.dimension().equals(DimensionRegistry.SPACE);
+        return this.entity.getPassengers().size() >= 1 && this.entity.level.dimension().equals(CelestialDimensions.SPACE);
     }
 
     public Vec3 getPlanetLocation(ResourceKey<Level> dimension) {

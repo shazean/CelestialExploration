@@ -6,7 +6,7 @@
     ]
   },
   "criteria": {
-    "ganymede_stone": {
+    "ganymede_bricks": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
@@ -27,7 +27,7 @@
   },
   "requirements": [
     [
-      "ganymede_stone",
+      "ganymede_bricks",
       "has_the_recipe"
     ]
   ]

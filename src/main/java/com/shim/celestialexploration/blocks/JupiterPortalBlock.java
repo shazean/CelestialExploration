@@ -12,26 +12,26 @@ import net.minecraft.world.level.block.Block;
 public class JupiterPortalBlock extends AbstractPortalBlock {
     @Override
     public ResourceKey<Level> getLinkedDimension() {
-        return DimensionRegistry.JUPITER;
+        return CelestialDimensions.JUPITER;
     }
 
     @Override
     public PlanetTeleporter getTeleporter(ServerLevel serverLevel) {
-        return new PlanetTeleporter(serverLevel, PoiRegistry.JUPITER_PORTAL.get(), BlockRegistry.JUPITER_DEEPSLATE_BRICKS.get(), BlockRegistry.JUPITER_PORTAL.get(), DimensionRegistry.JUPITER);
+        return new PlanetTeleporter(serverLevel, CelestialPOIs.JUPITER_PORTAL.get(), CelestialBlocks.JUPITER_DEEPSLATE_BRICKS.get(), CelestialBlocks.JUPITER_PORTAL.get(), CelestialDimensions.JUPITER);
     }
 
     @Override
     public Block getPortalBlock() {
-        return BlockRegistry.JUPITER_PORTAL.get();
+        return CelestialBlocks.JUPITER_PORTAL.get();
     }
 
     @Override
     public TagKey<Block> getPortalFrameBlock() {
-        return TagRegistry.Blocks.JUPITER_PORTAL_FRAME_BLOCK;
+        return CelestialTags.Blocks.JUPITER_PORTAL_FRAME_BLOCK;
     }
 
     @Override
     public SimpleParticleType getPortalParticle() {
-        return ParticleRegistry.JUPITER_PORTAL_PARTICLES.get();
+        return CelestialParticles.JUPITER_PORTAL_PARTICLES.get();
     }
 }
