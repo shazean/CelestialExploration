@@ -2,6 +2,7 @@ package com.shim.celestialexploration.events;
 
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.entity.ambient.Eureka;
+import com.shim.celestialexploration.entity.client.layers.VillagerSpaceSuitLayer;
 import com.shim.celestialexploration.entity.friendlies.CelestialCat;
 import com.shim.celestialexploration.entity.friendlies.Cobblesaurus;
 import com.shim.celestialexploration.entity.mob.*;
@@ -21,7 +22,12 @@ import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.particle.FlameParticle;
 import net.minecraft.client.particle.WaterDropParticle;
+import net.minecraft.client.renderer.entity.LivingEntityRenderer;
+import net.minecraft.client.renderer.entity.VillagerRenderer;
+import net.minecraft.client.renderer.entity.layers.VillagerProfessionLayer;
 import net.minecraft.core.Registry;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.ParticleFactoryRegisterEvent;
@@ -69,7 +75,13 @@ public class CelestialEventBus {
         event.put(CelestialEntities.ORBITER.get(), Orbiter.createAttributes().build());
         event.put(CelestialEntities.MECHACERBERUS.get(), MechaCerberus.createAttributes().build());
         event.put(CelestialEntities.MECHACERBERUS_BOSS.get(), MechaCerberusBoss.createAttributes().build());
+    }
 
+    @SubscribeEvent
+    public static void addLayers(EntityRenderersEvent.AddLayers event) {
+        VillagerRenderer renderer = event.getRenderer(EntityType.VILLAGER);
+        if (renderer != null)
+            renderer.addLayer(new VillagerSpaceSuitLayer<>(renderer));
 
     }
 

@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "celestialexploration:ganymede_cratered_plains",
+    "celestialexploration:ganymede_desert",
+    "celestialexploration:ganymede_lower_plains",
+    "celestialexploration:ganymede_plains"
+  ]
+}

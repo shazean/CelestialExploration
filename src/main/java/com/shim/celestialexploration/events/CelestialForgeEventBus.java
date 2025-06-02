@@ -155,49 +155,56 @@ public class CelestialForgeEventBus {
 
                     //now we determine what planet (or moon) we should teleport to based off our general location and what block we're looking at
                     //first, find what block we can see
-                    //TODO/FIXME update so only controlling player has to be looking at the right block
                     BlockHitResult hitResult;
-                    if (spaceVehicle instanceof Spaceship spaceship && spaceship.getMaxSpeed() >= Spaceship.SPACESHIP_LOW_FUEL_SPEED) {
-                        //to account for the spaceship having the option for fast movement speeds in space
-                        hitResult = (BlockHitResult) player.pick(35.0D, 0.0F, false);
+                    //TODO/FIXME update so only controlling player has to be looking at the right block
+                    //TODO test if this fix worked?
+                    if (spaceVehicle.getControllingPassenger().is(player)) {
+                        if (spaceVehicle instanceof Spaceship spaceship && spaceship.getMaxSpeed() >= Spaceship.SPACESHIP_LOW_FUEL_SPEED) {
+                            //to account for the spaceship having the option for fast movement speeds in space
+                            hitResult = (BlockHitResult) player.pick(35.0D, 0.0F, false);
+                        } else {
+                            hitResult = (BlockHitResult) player.pick(18.0D, 0.0F, false);
+                        }
                     } else {
-                        hitResult = (BlockHitResult) player.pick(18.0D, 0.0F, false);
+                        hitResult = null;
                     }
+                    if (hitResult != null) {
 
-                    BlockState blockState = spaceVehicle.level.getBlockState(hitResult.getBlockPos());
+                        BlockState blockState = spaceVehicle.level.getBlockState(hitResult.getBlockPos());
 
-                    if (!spaceVehicle.level.isClientSide()) {
-                        //now check to see what planet/moon based off this block
-                        ResourceKey<Level> destination = TeleportUtil.getTeleportLocation(spaceVehicle.position(), blockState);
+                        if (!spaceVehicle.level.isClientSide()) {
+                            //now check to see what planet/moon based off this block
+                            ResourceKey<Level> destination = TeleportUtil.getTeleportLocation(spaceVehicle.position(), blockState);
 
-                        //get our full list of passengers
-                        ArrayList<Entity> passengers = flightCap.getAdditionalEntitiesToTeleport(spaceVehicle);
+                            //get our full list of passengers
+                            ArrayList<Entity> passengers = flightCap.getAdditionalEntitiesToTeleport(spaceVehicle);
 
-                        //if we're looking at a block that corresponds with a destination…
-                        if (destination != null) {
-                            //display message
-                            TeleportUtil.displayTeleportMessage(player, flightCap.getTeleportationCooldown(), destination);
+                            //if we're looking at a block that corresponds with a destination…
+                            if (destination != null) {
+                                //display message
+                                TeleportUtil.displayTeleportMessage(player, flightCap.getTeleportationCooldown(), destination);
 
-                            //check for cooldown to be 0
-                            if (flightCap.getTeleportationCooldown() == 0) {
-                                //send a packet back to the client to update cooldown
-                                if (player instanceof ServerPlayer serverPlayer) {
-                                    CelestialPacketHandler.INSTANCE.sendTo(new SpaceFlightPacket(flightCap.getTeleportationCooldown()), serverPlayer.connection.getConnection(), NetworkDirection.PLAY_TO_CLIENT);
+                                //check for cooldown to be 0
+                                if (flightCap.getTeleportationCooldown() == 0) {
+                                    //send a packet back to the client to update cooldown
+                                    if (player instanceof ServerPlayer serverPlayer) {
+                                        CelestialPacketHandler.INSTANCE.sendTo(new SpaceFlightPacket(flightCap.getTeleportationCooldown()), serverPlayer.connection.getConnection(), NetworkDirection.PLAY_TO_CLIENT);
+                                    }
+
+                                    //teleport and reset cooldown
+                                    TeleportUtil.teleport(spaceVehicle, passengers, destination, spaceVehicle.position());
+                                    flightCap.resetTeleportationCooldown();
+
+                                } else {
+                                    //update cooldown on the client, and decrease cooldown
+                                    if (player instanceof ServerPlayer serverPlayer) {
+                                        CelestialPacketHandler.INSTANCE.sendTo(new SpaceFlightPacket(flightCap.getTeleportationCooldown()), serverPlayer.connection.getConnection(), NetworkDirection.PLAY_TO_CLIENT);
+                                    }
+                                    flightCap.decrementTeleportationCooldown();
                                 }
-
-                                //teleport and reset cooldown
-                                TeleportUtil.teleport(spaceVehicle, passengers, destination, spaceVehicle.position());
+                            } else { //if we haven't found a destination (or looked away before cooldown reached 0), reset cooldown
                                 flightCap.resetTeleportationCooldown();
-
-                            } else {
-                                //update cooldown on the client, and decrease cooldown
-                                if (player instanceof ServerPlayer serverPlayer) {
-                                    CelestialPacketHandler.INSTANCE.sendTo(new SpaceFlightPacket(flightCap.getTeleportationCooldown()), serverPlayer.connection.getConnection(), NetworkDirection.PLAY_TO_CLIENT);
-                                }
-                                flightCap.decrementTeleportationCooldown();
                             }
-                        } else { //if we haven't found a destination (or looked away before cooldown reached 0), reset cooldown
-                            flightCap.resetTeleportationCooldown();
                         }
                     }
                 }
