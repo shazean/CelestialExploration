@@ -19,8 +19,4 @@ public class CelestialEffects {
     public static final RegistryObject<MobEffect> HIGH_GRAVITY = MOB_EFFECTS.register("high_gravity", () -> new GravityEffect(MobEffectCategory.NEUTRAL, 5926017).addAttributeModifier(ForgeMod.ENTITY_GRAVITY.get(), "503FE595-3498-8478-234A-3EC09BF892EF", 0.0286D, AttributeModifier.Operation.ADDITION));
     public static final RegistryObject<MobEffect> EXTRA_LOW_GRAVITY = MOB_EFFECTS.register("extra_low_gravity", () -> new GravityEffect(MobEffectCategory.NEUTRAL, 5926017).addAttributeModifier(ForgeMod.ENTITY_GRAVITY.get(), "503FE595-3498-8478-234A-3EC09BF892EF", -0.065D, AttributeModifier.Operation.ADDITION));
     public static final RegistryObject<MobEffect> STATIC_EFFECT = MOB_EFFECTS.register("static_buildup", () -> new StaticBuildupEffect(MobEffectCategory.HARMFUL, 5926017));
-
-    public static void register(IEventBus eventBus) {
-        MOB_EFFECTS.register(eventBus);
-    }
 }

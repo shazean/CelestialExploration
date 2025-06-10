@@ -2,6 +2,7 @@ package com.shim.celestialexploration.events;
 
 import com.mojang.datafixers.util.Either;
 import com.shim.celestialexploration.CelestialExploration;
+import com.shim.celestialexploration.blocks.AbstractPortalBlock;
 import com.shim.celestialexploration.capabilities.ISpaceFlight;
 import com.shim.celestialexploration.capabilities.LightTravelCapability;
 import com.shim.celestialexploration.capabilities.TaxiCapability;
@@ -36,6 +37,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
@@ -52,6 +54,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.LogicalSide;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.network.NetworkDirection;
+import net.minecraftforge.registries.RegistryObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,14 +71,14 @@ public class CelestialForgeEventBus {
             }
         }
     }
-
-    @SubscribeEvent
-    public static void onExplosion(ExplosionEvent.Detonate event) {
-        if (event.getExplosion().getSourceMob() instanceof MechaCerberusBoss) {
-            List<Entity> entityList = event.getAffectedEntities();
-            entityList.removeIf(entity -> entity instanceof MechaDog dog && !dog.isTame());
-        }
-    }
+//
+//    @SubscribeEvent
+//    public static void onExplosion(ExplosionEvent.Detonate event) {
+//        if (event.getExplosion().getSourceMob() instanceof MechaCerberusBoss) {
+//            List<Entity> entityList = event.getAffectedEntities();
+//            entityList.removeIf(entity -> entity instanceof MechaDog dog && !dog.isTame());
+//        }
+//    }
 
     @SubscribeEvent
     public static void onServerTick(TickEvent.ServerTickEvent.WorldTickEvent event) {
@@ -83,17 +86,16 @@ public class CelestialForgeEventBus {
             new CelestialCatSpawner().tick(serverLevel, true, true);
 
             if (serverLevel.isThundering()) {
-                if (serverLevel.dimension().equals(CelestialDimensions.MERCURY) || (serverLevel.dimension().equals(CelestialDimensions.CALLISTO))) {
-                    Player player = serverLevel.getRandomPlayer();
-                    if (player != null) {
-                        Random random = new Random();
-                        if (random.nextInt(3) == 0) {
-                            MeteorProjectile meteor = CelestialEntities.METEOR.get().create(serverLevel);
-                            if (meteor != null) {
-                                double height = Math.min(player.position().y + random.nextInt(128) - 16, serverLevel.getMaxBuildHeight());
-                                meteor.moveTo(player.position().x + random.nextInt(128) - 64, height, player.position().z - random.nextInt(64));
-                                serverLevel.addFreshEntity(meteor);
-                            }
+                Player player = serverLevel.getRandomPlayer();
+                if (player != null && serverLevel.getBiome(player.blockPosition()).is(CelestialTags.Biomes.METEOR_SHOWER_BIOMES)) {
+//                if (serverLevel.dimension().equals(CelestialDimensions.MERCURY) || (serverLevel.dimension().equals(CelestialDimensions.CALLISTO))) {
+                    Random random = new Random();
+                    if (random.nextInt(3) == 0) {
+                        MeteorProjectile meteor = CelestialEntities.METEOR.get().create(serverLevel);
+                        if (meteor != null) {
+                            double height = Math.min(player.position().y + random.nextInt(128) - 16, serverLevel.getMaxBuildHeight());
+                            meteor.moveTo(player.position().x + random.nextInt(128) - 64, height, player.position().z - random.nextInt(64));
+                            serverLevel.addFreshEntity(meteor);
                         }
                     }
                 }
@@ -269,13 +271,13 @@ public class CelestialForgeEventBus {
                         for (Direction direction : Direction.Plane.VERTICAL) {
                             BlockPos framePos = event.getPos().relative(direction);
 
-                            if (CelestialBlocks.MARS_PORTAL.get().trySpawnPortal(level, framePos) || CelestialBlocks.MOON_PORTAL.get().trySpawnPortal(level, framePos) ||
-                                    CelestialBlocks.VENUS_PORTAL.get().trySpawnPortal(level, framePos) || CelestialBlocks.MERCURY_PORTAL.get().trySpawnPortal(level, framePos) ||
-                                    CelestialBlocks.JUPITER_PORTAL.get().trySpawnPortal(level, framePos) || CelestialBlocks.EUROPA_PORTAL.get().trySpawnPortal(level, framePos) ||
-                                    CelestialBlocks.CALLISTO_PORTAL.get().trySpawnPortal(level, framePos) || CelestialBlocks.IO_PORTAL.get().trySpawnPortal(level, framePos)) {
-                                level.playSound(player, framePos, SoundEvents.PORTAL_TRIGGER, SoundSource.BLOCKS, 1.0F, 1.0F);
-                                event.setCanceled(true);
-                                event.setCancellationResult(InteractionResult.CONSUME);
+                            for (RegistryObject<? extends AbstractPortalBlock> block : CelestialBlocks.PORTAL_BLOCKS) {
+                                if (block.get().trySpawnPortal(level, framePos)) {
+                                    level.playSound(player, framePos, SoundEvents.PORTAL_TRIGGER, SoundSource.BLOCKS, 1.0F, 1.0F);
+                                    event.setCanceled(true);
+                                    event.setCancellationResult(InteractionResult.CONSUME);
+                                    break;
+                                }
                             }
                         }
                     }

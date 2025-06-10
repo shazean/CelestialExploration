@@ -24,8 +24,4 @@ public class CelestialVillagers {
 //    public static final RegistryObject<VillagerProfession> CHEF = VILLAGER_PROFESSIONS.register("chef",
 //            () -> new VillagerProfession("chef", CHEF_POI.get(), ImmutableSet.of(), ImmutableSet.of(), SoundEvents.VILLAGER_WORK_BUTCHER)); //FIXME
 
-
-    public static void register(IEventBus eventBus) {
-        VILLAGER_PROFESSIONS.register(eventBus);
-    }
 }

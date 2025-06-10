@@ -20,6 +20,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
@@ -33,10 +34,7 @@ public class CelestialBlocks {
 
     public static final Map<RegistryObject<? extends Block>, String> BLOCK_LANG_EN_US = new HashMap<>();
     public static final LinkedList<RegistryObject<? extends Block>> BLOCKS_LOOT_TABLE = new LinkedList<>();
-
-    public static void register(IEventBus event) {
-        BLOCKS.register(event);
-    }
+    public static final ArrayList<RegistryObject<? extends AbstractPortalBlock>> PORTAL_BLOCKS = new ArrayList<>();
 
     private static <T extends Block> RegistryObject<T> registerBlock(String nameIn, String localizationIn, Supplier<T> blockIn, CreativeModeTab tabIn) {
         RegistryObject<T> block = BLOCKS.register(nameIn, blockIn);
@@ -63,6 +61,12 @@ public class CelestialBlocks {
     private static <T extends Block> RegistryObject<T> registerBlockNoItem(String nameIn, String localizationIn, Supplier<T> blockIn) {
         RegistryObject<T> block = BLOCKS.register(nameIn, blockIn);
         BLOCK_LANG_EN_US.put(block, localizationIn);
+        return block;
+    }
+
+    private static <T extends AbstractPortalBlock> RegistryObject<T> registerPortalBlock(String nameIn, Supplier<T> blockIn) {
+        RegistryObject<T> block = BLOCKS.register(nameIn, blockIn);
+        PORTAL_BLOCKS.add(block);
         return block;
     }
     
@@ -748,15 +752,15 @@ public class CelestialBlocks {
     public static final RegistryObject<Block> PAINTED_PINK_CERAMIC = registerBlock("painted_pink_ceramic", "Painted Pink Ceramic", () -> new GlazedTerracottaBlock(Block.Properties.of(Material.CLAY, MaterialColor.CLAY).strength(0.3F).sound(SoundType.GLASS)), CelestialTabs.CELESTIAL_BLOCKS_TAB);
 
     //---- PORTALS -------------------------------------------------------------------------------
-    public static final RegistryObject<AbstractPortalBlock> MARS_PORTAL = BLOCKS.register("mars_portal", MarsPortalBlock::new);
-    public static final RegistryObject<AbstractPortalBlock> MOON_PORTAL = BLOCKS.register("moon_portal", MoonPortalBlock::new);
-    public static final RegistryObject<AbstractPortalBlock> VENUS_PORTAL = BLOCKS.register("venus_portal", VenusPortalBlock::new);
-    public static final RegistryObject<AbstractPortalBlock> MERCURY_PORTAL = BLOCKS.register("mercury_portal", MercuryPortalBlock::new);
-    public static final RegistryObject<AbstractPortalBlock> JUPITER_PORTAL = BLOCKS.register("jupiter_portal", JupiterPortalBlock::new);
-    public static final RegistryObject<AbstractPortalBlock> EUROPA_PORTAL = BLOCKS.register("europa_portal", EuropaPortalBlock::new);
-    public static final RegistryObject<AbstractPortalBlock> CALLISTO_PORTAL = BLOCKS.register("callisto_portal", CallistoPortalBlock::new);
-    public static final RegistryObject<AbstractPortalBlock> IO_PORTAL = BLOCKS.register("io_portal", IoPortalBlock::new);
-//    public static final RegistryObject<AbstractPortalBlock> GANYMEDE_PORTAL = BLOCKS.register("ganymede_portal", GanymedePortalBlock::new);
+    public static final RegistryObject<AbstractPortalBlock> MARS_PORTAL = registerPortalBlock("mars_portal", MarsPortalBlock::new);
+    public static final RegistryObject<AbstractPortalBlock> MOON_PORTAL = registerPortalBlock("moon_portal", MoonPortalBlock::new);
+    public static final RegistryObject<AbstractPortalBlock> VENUS_PORTAL = registerPortalBlock("venus_portal", VenusPortalBlock::new);
+    public static final RegistryObject<AbstractPortalBlock> MERCURY_PORTAL = registerPortalBlock("mercury_portal", MercuryPortalBlock::new);
+    public static final RegistryObject<AbstractPortalBlock> JUPITER_PORTAL = registerPortalBlock("jupiter_portal", JupiterPortalBlock::new);
+    public static final RegistryObject<AbstractPortalBlock> EUROPA_PORTAL = registerPortalBlock("europa_portal", EuropaPortalBlock::new);
+    public static final RegistryObject<AbstractPortalBlock> CALLISTO_PORTAL = registerPortalBlock("callisto_portal", CallistoPortalBlock::new);
+    public static final RegistryObject<AbstractPortalBlock> IO_PORTAL = registerPortalBlock("io_portal", IoPortalBlock::new);
+    public static final RegistryObject<AbstractPortalBlock> GANYMEDE_PORTAL = registerPortalBlock("ganymede_portal", GanymedePortalBlock::new);
 
     //---- MISC -------------------------------------------------------------------------------
     public static final RegistryObject<Block> DRY_ICE = registerBlockDropsSelf("dry_ice", "Dry Ice", () -> new DryIceBlock(Block.Properties.of(Material.ICE).friction(0.98F).randomTicks().strength(0.5F).sound(SoundType.GLASS).noOcclusion()), CelestialTabs.CELESTIAL_BLOCKS_TAB);

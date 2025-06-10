@@ -38,11 +38,8 @@ public class CelestialParticles {
     public static final RegistryObject<SimpleParticleType> EUROPA_PORTAL_PARTICLES = PARTICLES.register("europa_portal_particles", () -> new SimpleParticleType(false));
     public static final RegistryObject<SimpleParticleType> CALLISTO_PORTAL_PARTICLES = PARTICLES.register("callisto_portal_particles", () -> new SimpleParticleType(false));
     public static final RegistryObject<SimpleParticleType> IO_PORTAL_PARTICLES = PARTICLES.register("io_portal_particles", () -> new SimpleParticleType(false));
+    public static final RegistryObject<SimpleParticleType> GANYMEDE_PORTAL_PARTICLES = PARTICLES.register("ganymede_portal_particles", () -> new SimpleParticleType(false));
 
     public static final RegistryObject<SimpleParticleType> SPACESHIP_PARTICLES = PARTICLES.register("spaceship_particles", () -> new SimpleParticleType(false));
-
-    public static void register(IEventBus eventBus) {
-        PARTICLES.register(eventBus);
-    }
 }
 

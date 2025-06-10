@@ -14,8 +14,4 @@ public class CelestialRecipes {
 
     public static final RegistryObject<RecipeSerializer<WorkbenchCraftingRecipe>> WORKBENCH_CRAFTING_SERIALIZER = SERIALIZERS.register("workbench_crafting", () -> WorkbenchCraftingRecipe.Serializer.INSTANCE);
     public static final RegistryObject<RecipeSerializer<WorkbenchSmeltingRecipe>> WORKBENCH_SMELTING_SERIALIZER = SERIALIZERS.register("workbench_smelting", () -> WorkbenchSmeltingRecipe.Serializer.INSTANCE);
-
-    public static void register(IEventBus eventBus) {
-        SERIALIZERS.register(eventBus);
-    }
 }

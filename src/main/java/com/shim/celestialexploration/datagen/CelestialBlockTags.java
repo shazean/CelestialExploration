@@ -323,7 +323,7 @@ public class CelestialBlockTags extends BlockTagsProvider {
                 .add(CelestialBlocks.VENUS_PORTAL.get()).add(CelestialBlocks.MERCURY_PORTAL.get())
                 .add(CelestialBlocks.JUPITER_PORTAL.get()).add(CelestialBlocks.EUROPA_PORTAL.get())
                 .add(CelestialBlocks.CALLISTO_PORTAL.get()).add(CelestialBlocks.IO_PORTAL.get())
-        ;
+                .add(CelestialBlocks.GANYMEDE_PORTAL.get());
 
         //---- FORGE TAGS.BLOCKS -------------------------------------------------------------------------------
         //TOOLS

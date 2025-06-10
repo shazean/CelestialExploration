@@ -13,9 +13,10 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.FlowingFluid;
+import net.minecraftforge.common.data.LanguageProvider;
 import net.minecraftforge.registries.RegistryObject;
 
-public class CelestialLangProvider extends net.minecraftforge.common.data.LanguageProvider {
+public class CelestialLangProvider extends LanguageProvider {
 
 	public CelestialLangProvider(DataGenerator gen, String locale) {
 		super(gen, CelestialExploration.MODID, locale);

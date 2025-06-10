@@ -3,6 +3,7 @@ package com.shim.celestialexploration;
 import com.shim.celestialexploration.config.CelestialClientConfig;
 import com.shim.celestialexploration.config.CelestialCommonConfig;
 import com.shim.celestialexploration.config.CelestialServerConfig;
+import com.shim.celestialexploration.data.CelestialDimensionEffectsManager;
 import com.shim.celestialexploration.data.CelestialDimensionManager;
 import com.shim.celestialexploration.data.CelestialPlanetManager;
 import com.shim.celestialexploration.events.CelestialCommonEventSetup;
@@ -53,19 +54,19 @@ public class CelestialExploration {
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
 
-        CelestialItems.register(modEventBus);
-        CelestialBlocks.register(modEventBus);
-        CelestialBlockEntities.register(modEventBus);
-        CelestialMenus.register(modEventBus);
-        CelestialPOIs.register(modEventBus);
-        CelestialEffects.register(modEventBus);
-        CelestialEntities.register(modEventBus);
-        CelestialFeatures.register(modEventBus);
-        CelestialFluids.register(modEventBus);
+        CelestialItems.ITEMS.register(modEventBus);
+        CelestialBlocks.BLOCKS.register(modEventBus);
+        CelestialBlockEntities.BLOCK_ENTITIES.register(modEventBus);
+        CelestialMenus.MENUS.register(modEventBus);
+        CelestialPOIs.POI.register(modEventBus);
+        CelestialEffects.MOB_EFFECTS.register(modEventBus);
+        CelestialEntities.ENTITY_TYPES.register(modEventBus);
+        CelestialFeatures.FEATURES.register(modEventBus);
+        CelestialFluids.FLUIDS.register(modEventBus);
         CelestialStructures.DEFERRED_REGISTRY_STRUCTURE.register(modEventBus);
-        CelestialParticles.register(modEventBus);
-        CelestialRecipes.register(modEventBus);
-        CelestialVillagers.register(modEventBus);
+        CelestialParticles.PARTICLES.register(modEventBus);
+        CelestialRecipes.SERIALIZERS.register(modEventBus);
+        CelestialVillagers.VILLAGER_PROFESSIONS.register(modEventBus);
         CelestialPaintings.PAINTING_MOTIVES.register(modEventBus);
 
         CelestialBiomes.BIOMES.register(modEventBus);
@@ -123,6 +124,7 @@ public class CelestialExploration {
     private void reloadResources(final AddReloadListenerEvent event) {
         event.addListener(new CelestialDimensionManager());
         event.addListener(new CelestialPlanetManager());
+        event.addListener(new CelestialDimensionEffectsManager());
 
     }
 }

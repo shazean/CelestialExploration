@@ -11,11 +11,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class CelestialBlockEntities {
 
-    private static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, CelestialExploration.MODID);
-
-    public static void register(IEventBus event) {
-        BLOCK_ENTITIES.register(event);
-    }
+    public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, CelestialExploration.MODID);
 
     public static final RegistryObject<BlockEntityType<OxygenCompressorBlockEntity>> OXYGEN_COMPRESSOR_BLOCK_ENTITY = BLOCK_ENTITIES.register("oxygen_compressor", () -> BlockEntityType.Builder.of(OxygenCompressorBlockEntity::new, CelestialBlocks.OXYGEN_COMPRESSOR.get()).build(null));
     public static final RegistryObject<BlockEntityType<LoxTankBlockEntity>> LOX_TANK_BLOCK_ENTITY = BLOCK_ENTITIES.register("lox_tank", () -> BlockEntityType.Builder.of(LoxTankBlockEntity::new, CelestialBlocks.LOX_TANK.get()).build(null));

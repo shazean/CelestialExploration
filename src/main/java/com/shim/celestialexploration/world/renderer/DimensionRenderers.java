@@ -2,6 +2,7 @@ package com.shim.celestialexploration.world.renderer;
 
 import com.shim.celestialexploration.registry.CelestialDimensions;
 import net.minecraft.client.renderer.DimensionSpecialEffects;
+import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -25,7 +26,6 @@ public class DimensionRenderers {
         DimensionSpecialEffects.EFFECTS.put(CelestialDimensions.CALLISTO.location(), new CallistoEffects());
         DimensionSpecialEffects.EFFECTS.put(CelestialDimensions.IO.location(), new IoEffects());
         DimensionSpecialEffects.EFFECTS.put(CelestialDimensions.GANYMEDE.location(), new GanymedeEffects());
-
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -171,6 +171,42 @@ public class DimensionRenderers {
     public static class GanymedeEffects extends PlanetEffects {
         public GanymedeEffects() {
             super(new GanymedeSkyHandler(), null, null);
+        }
+    }
+
+    //---- DATAPACK PLANETS -------------------------------------------------------------------------------
+
+    @OnlyIn(Dist.CLIENT)
+    public static class DatapackSkyEffects extends PlanetEffects {
+        boolean hasSunrise;
+        private final float[] sunriseCol = new float[4];
+
+        public DatapackSkyEffects(float cloudLevel, boolean hasGround, SkyType sky, boolean forceBrightLightmap, boolean constantAmbientLight, boolean hasSunrise, @Nullable ISkyRenderHandler skyHandler, @Nullable IWeatherRenderHandler weatherHandler, @Nullable IWeatherParticleRenderHandler particleHandler) {
+            super(cloudLevel, hasGround, sky, forceBrightLightmap, constantAmbientLight, skyHandler, weatherHandler, particleHandler);
+            this.hasSunrise = hasSunrise;
+        }
+
+        @Override
+        public float[] getSunriseColor(float p_230492_1_, float p_230492_2_) {
+            if (this.hasSunrise) {
+                float f = 0.4F;
+                float f1 = Mth.cos(p_230492_1_ * ((float)Math.PI * 2F)) - 0.0F;
+                float f2 = -0.0F;
+                if (f1 >= -0.4F && f1 <= 0.4F) {
+                    float f3 = (f1 - -0.0F) / 0.4F * 0.5F + 0.5F;
+                    float f4 = 1.0F - (1.0F - Mth.sin(f3 * (float)Math.PI)) * 0.99F;
+                    f4 *= f4;
+                    this.sunriseCol[0] = f3 * 0.3F + 0.7F;
+                    this.sunriseCol[1] = f3 * f3 * 0.7F + 0.2F;
+                    this.sunriseCol[2] = f3 * f3 * 0.0F + 0.2F;
+                    this.sunriseCol[3] = f4;
+                    return this.sunriseCol;
+                } else {
+                    return null;
+                }
+            } else {
+                return null;
+            }
         }
     }
 }

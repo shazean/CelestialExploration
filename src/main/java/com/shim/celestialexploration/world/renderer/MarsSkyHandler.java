@@ -115,7 +115,8 @@ public class MarsSkyHandler extends AbstractSkyHandler {
 
         poseStack.popPose();
 
-        renderStars(poseStack, level, partialTick);
+        renderStars(poseStack, level, partialTick, false);
+
         RenderSystem.depthMask(true);
     }
 }

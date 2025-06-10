@@ -25,7 +25,7 @@ public class StormWeatherHandler implements IWeatherRenderHandler {
     private final float[] rainSizeX = new float[1024];
     private final float[] rainSizeZ = new float[1024];
 
-    StormWeatherHandler() {
+    public StormWeatherHandler() {
         for(int i = 0; i < 32; ++i) {
             for(int j = 0; j < 32; ++j) {
                 float f = (float)(j - 16);

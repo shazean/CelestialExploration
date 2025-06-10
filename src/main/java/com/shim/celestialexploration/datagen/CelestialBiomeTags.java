@@ -112,5 +112,10 @@ public class CelestialBiomeTags extends BiomeTagsProvider {
         tag(CelestialTags.Biomes.DUST_STORM_BIOMES)
                 .addTag(CelestialTags.Biomes.MARS_BIOMES)
                 .addTag(CelestialTags.Biomes.JUPITER_BIOMES);
+
+        tag(CelestialTags.Biomes.METEOR_SHOWER_BIOMES)
+                .addTag(CelestialTags.Biomes.MERCURY_BIOMES)
+                .addTag(CelestialTags.Biomes.CALLISTO_BIOMES);
+
     }
 }

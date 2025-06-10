@@ -13,7 +13,7 @@ import net.minecraft.world.level.material.Fluid;
 
 public class CelestialTags {
 
-    public class Blocks {
+    public static class Blocks {
 
         public static final TagKey<Block> MOON = BlockTags.create(modLoc("moon"));
         public static final TagKey<Block> MOON_STONE = BlockTags.create(modLoc("moon_stone"));
@@ -84,7 +84,7 @@ public class CelestialTags {
 
     }
 
-    public class Items {
+    public static class Items {
         public static final TagKey<Item> MOON = ItemTags.create(modLoc("moon"));
         public static final TagKey<Item> MOON_STONE = ItemTags.create(modLoc("moon_stone"));
         public static final TagKey<Item> MOON_COBBLESTONE = ItemTags.create(modLoc("moon_cobblestone"));
@@ -145,7 +145,7 @@ public class CelestialTags {
 
     }
 
-    public class Biomes {
+    public static class Biomes {
 
         public static final TagKey<Biome> MARS_BIOMES = create("mars");
         public static final TagKey<Biome> MOON_BIOMES = create("moon");
@@ -161,6 +161,8 @@ public class CelestialTags {
         public static final TagKey<Biome> NO_SNOW_BIOMES = create("no_snow");
 
         public static final TagKey<Biome> DUST_STORM_BIOMES = create("dust_storms");
+        public static final TagKey<Biome> METEOR_SHOWER_BIOMES = create("meteor_showers");
+
 
         public static final TagKey<Biome> PLANETS = create("planets");
         public static final TagKey<Biome> MOONS = create("moons");
@@ -172,7 +174,7 @@ public class CelestialTags {
 
     }
 
-    public class Entities {
+    public static class Entities {
         public static final TagKey<EntityType<?>> FARM_ANIMALS = create("farm_animals");
 
         public static final TagKey<EntityType<?>> LOW_GRAVITY_EXEMPT = create("low_gravity_exempt");
@@ -183,13 +185,13 @@ public class CelestialTags {
         }
     }
 
-    public class Fluids {
+    public static class Fluids {
         public static final TagKey<Fluid> SULFUR = FluidTags.create(modLoc("sulfur"));
         public static final TagKey<Fluid> MOLTEN_METAL = FluidTags.create(modLoc("molten_metal"));
 
     }
 
-    public class Structures {
+    public static class Structures {
         public static final TagKey<ConfiguredStructureFeature<?, ?>> MARS_LABYRINTH = create("mars_labyrinth");
 
         private static TagKey<ConfiguredStructureFeature<?, ?>> create(String key) {

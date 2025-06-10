@@ -443,8 +443,8 @@ public class CelestialBlockStates extends BlockStateProvider {
 		slabBlock(CelestialBlocks.EUROPA_BRICK_SLAB.get(), modLoc("block/europa_bricks"), modLoc("block/europa_bricks"));
 		wallBlock(CelestialBlocks.EUROPA_BRICK_WALL.get(), modLoc("block/europa_bricks"));
 		simpleBlock(CelestialBlocks.CHISELED_EUROPA_BRICKS.get());
-//		axisBlock(BlockRegistry.EUROPA_BRICK_PILLAR.get(), modLoc("block/europa_brick_pillar"));
-//		simpleBlock(BlockRegistry.CRACKED_EUROPA_BRICKS.get());
+//		axisBlock(CelestialBlocks.EUROPA_BRICK_PILLAR.get(), modLoc("block/europa_brick_pillar"));
+//		simpleBlock(CelestialBlocks.CRACKED_EUROPA_BRICKS.get());
 		simpleBlock(CelestialBlocks.GLOWING_EUROPA_SAND.get());
 		simpleBlock(CelestialBlocks.EUROPA_LANTERN.get());
 		portalBlock(CelestialBlocks.EUROPA_PORTAL.get());
@@ -457,11 +457,11 @@ public class CelestialBlockStates extends BlockStateProvider {
 		slabBlock(CelestialBlocks.GANYMEDE_BRICK_SLAB.get(), modLoc("block/ganymede_bricks"), modLoc("block/ganymede_bricks"));
 		wallBlock(CelestialBlocks.GANYMEDE_BRICK_WALL.get(), modLoc("block/ganymede_bricks"));
 		simpleBlock(CelestialBlocks.CHISELED_GANYMEDE_BRICKS.get());
-//		axisBlock(BlockRegistry.GANYMEDE_BRICK_PILLAR.get(), modLoc("block/ganymede_brick_pillar"));
-//		simpleBlock(BlockRegistry.CRACKED_GANYMEDE_BRICKS.get());
+//		axisBlock(CelestialBlocks.GANYMEDE_BRICK_PILLAR.get(), modLoc("block/ganymede_brick_pillar"));
+//		simpleBlock(CelestialBlocks.CRACKED_GANYMEDE_BRICKS.get());
 		simpleBlock(CelestialBlocks.GLOWING_GANYMEDE_SAND.get());
 		simpleBlock(CelestialBlocks.GANYMEDE_LANTERN.get());
-//		portalBlock(BlockRegistry.GANYMEDE_PORTAL.get());
+		portalBlock(CelestialBlocks.GANYMEDE_PORTAL.get());
 
 		//---- CALLISTO -------------------------------------------------------------------------------
 
@@ -472,8 +472,8 @@ public class CelestialBlockStates extends BlockStateProvider {
 		slabBlock(CelestialBlocks.CALLISTO_BRICK_SLAB.get(), modLoc("block/callisto_bricks"), modLoc("block/callisto_bricks"));
 		wallBlock(CelestialBlocks.CALLISTO_BRICK_WALL.get(), modLoc("block/callisto_bricks"));
 		simpleBlock(CelestialBlocks.CHISELED_CALLISTO_BRICKS.get());
-//		axisBlock(BlockRegistry.CALLISTO_BRICK_PILLAR.get(), modLoc("block/callisto_brick_pillar"));
-//		simpleBlock(BlockRegistry.CRACKED_CALLISTO_BRICKS.get());
+//		axisBlock(CelestialBlocks.CALLISTO_BRICK_PILLAR.get(), modLoc("block/callisto_brick_pillar"));
+//		simpleBlock(CelestialBlocks.CRACKED_CALLISTO_BRICKS.get());
 		simpleBlock(CelestialBlocks.GLOWING_CALLISTO_SAND.get());
 		simpleBlock(CelestialBlocks.CALLISTO_LANTERN.get());
 		portalBlock(CelestialBlocks.CALLISTO_PORTAL.get());
@@ -508,11 +508,11 @@ public class CelestialBlockStates extends BlockStateProvider {
 		simpleBlock(CelestialBlocks.TRITON_CORE.get());
 
 		//DWARF PLANETS/OTHER
-//		simpleBlock(BlockRegistry.PLUTO_CORE.get());
-//		simpleBlock(BlockRegistry.CERES_CORE.get());
-//		simpleBlock(BlockRegistry.ERIS_CORE.get());
-//		simpleBlock(BlockRegistry.HAUMEA_CORE.get());
-//		simpleBlock(BlockRegistry.MAKEMAKE_CORE.get());
+//		simpleBlock(CelestialBlocks.PLUTO_CORE.get());
+//		simpleBlock(CelestialBlocks.CERES_CORE.get());
+//		simpleBlock(CelestialBlocks.ERIS_CORE.get());
+//		simpleBlock(CelestialBlocks.HAUMEA_CORE.get());
+//		simpleBlock(CelestialBlocks.MAKEMAKE_CORE.get());
 
 		//---- CELESTIAL OBJECTS -------------------------------------------------------------------------------
 		//METEOR
@@ -624,40 +624,40 @@ public class CelestialBlockStates extends BlockStateProvider {
 		simpleBlock(CelestialBlocks.PINK_CERAMIC.get());
 		paneBlock(CelestialBlocks.PINK_CERAMIC_TILE.get(), modLoc("block/pink_ceramic"), modLoc("block/pink_ceramic_tile_top"));
 
-//		stairsBlock(BlockRegistry.CERAMIC_STAIRS.get(), modLoc("block/ceramic"));
-//		slabBlock(BlockRegistry.CERAMIC_SLAB.get(), modLoc("block/ceramic"), modLoc("block/ceramic"));
-//		stairsBlock(BlockRegistry.WHITE_CERAMIC_STAIRS.get(), modLoc("block/white_ceramic"));
-//		slabBlock(BlockRegistry.WHITE_CERAMIC_SLAB.get(), modLoc("block/white_ceramic"), modLoc("block/white_ceramic"));
-//		stairsBlock(BlockRegistry.LIGHT_GREY_CERAMIC_STAIRS.get(), modLoc("block/light_grey_ceramic"));
-//		slabBlock(BlockRegistry.LIGHT_GREY_CERAMIC_SLAB.get(), modLoc("block/light_grey_ceramic"), modLoc("block/light_grey_ceramic"));
-//		stairsBlock(BlockRegistry.GREY_CERAMIC_STAIRS.get(), modLoc("block/grey_ceramic"));
-//		slabBlock(BlockRegistry.GREY_CERAMIC_SLAB.get(), modLoc("block/grey_ceramic"), modLoc("block/grey_ceramic"));
-//		stairsBlock(BlockRegistry.BLACK_CERAMIC_STAIRS.get(), modLoc("block/black_ceramic"));
-//		slabBlock(BlockRegistry.BLACK_CERAMIC_SLAB.get(), modLoc("block/black_ceramic"), modLoc("block/black_ceramic"));
-//		stairsBlock(BlockRegistry.PURPLE_CERAMIC_STAIRS.get(), modLoc("block/purple_ceramic"));
-//		slabBlock(BlockRegistry.PURPLE_CERAMIC_SLAB.get(), modLoc("block/purple_ceramic"), modLoc("block/purple_ceramic"));
-//		stairsBlock(BlockRegistry.MAGENTA_CERAMIC_STAIRS.get(), modLoc("block/magenta_ceramic"));
-//		slabBlock(BlockRegistry.MAGENTA_CERAMIC_SLAB.get(), modLoc("block/magenta_ceramic"), modLoc("block/magenta_ceramic"));
-//		stairsBlock(BlockRegistry.BLUE_CERAMIC_STAIRS.get(), modLoc("block/blue_ceramic"));
-//		slabBlock(BlockRegistry.BLUE_CERAMIC_SLAB.get(), modLoc("block/blue_ceramic"), modLoc("block/blue_ceramic"));
-//		stairsBlock(BlockRegistry.LIGHT_BLUE_CERAMIC_STAIRS.get(), modLoc("block/light_blue_ceramic"));
-//		slabBlock(BlockRegistry.LIGHT_BLUE_CERAMIC_SLAB.get(), modLoc("block/light_blue_ceramic"), modLoc("block/light_blue_ceramic"));
-//		stairsBlock(BlockRegistry.CYAN_CERAMIC_STAIRS.get(), modLoc("block/cyan_ceramic"));
-//		slabBlock(BlockRegistry.CYAN_CERAMIC_SLAB.get(), modLoc("block/cyan_ceramic"), modLoc("block/cyan_ceramic"));
-//		stairsBlock(BlockRegistry.GREEN_CERAMIC_STAIRS.get(), modLoc("block/green_ceramic"));
-//		slabBlock(BlockRegistry.GREEN_CERAMIC_SLAB.get(), modLoc("block/green_ceramic"), modLoc("block/green_ceramic"));
-//		stairsBlock(BlockRegistry.LIME_CERAMIC_STAIRS.get(), modLoc("block/lime_ceramic"));
-//		slabBlock(BlockRegistry.LIME_CERAMIC_SLAB.get(), modLoc("block/lime_ceramic"), modLoc("block/lime_ceramic"));
-//		stairsBlock(BlockRegistry.YELLOW_CERAMIC_STAIRS.get(), modLoc("block/yellow_ceramic"));
-//		slabBlock(BlockRegistry.YELLOW_CERAMIC_SLAB.get(), modLoc("block/yellow_ceramic"), modLoc("block/yellow_ceramic"));
-//		stairsBlock(BlockRegistry.ORANGE_CERAMIC_STAIRS.get(), modLoc("block/orange_ceramic"));
-//		slabBlock(BlockRegistry.ORANGE_CERAMIC_SLAB.get(), modLoc("block/orange_ceramic"), modLoc("block/orange_ceramic"));
-//		stairsBlock(BlockRegistry.BROWN_CERAMIC_STAIRS.get(), modLoc("block/brown_ceramic"));
-//		slabBlock(BlockRegistry.BROWN_CERAMIC_SLAB.get(), modLoc("block/brown_ceramic"), modLoc("block/brown_ceramic"));
-//		stairsBlock(BlockRegistry.RED_CERAMIC_STAIRS.get(), modLoc("block/red_ceramic"));
-//		slabBlock(BlockRegistry.RED_CERAMIC_SLAB.get(), modLoc("block/red_ceramic"), modLoc("block/red_ceramic"));
-//		stairsBlock(BlockRegistry.PINK_CERAMIC_STAIRS.get(), modLoc("block/pink_ceramic"));
-//		slabBlock(BlockRegistry.PINK_CERAMIC_SLAB.get(), modLoc("block/pink_ceramic"), modLoc("block/pink_ceramic_tile_top"));
+//		stairsBlock(CelestialBlocks.CERAMIC_STAIRS.get(), modLoc("block/ceramic"));
+//		slabBlock(CelestialBlocks.CERAMIC_SLAB.get(), modLoc("block/ceramic"), modLoc("block/ceramic"));
+//		stairsBlock(CelestialBlocks.WHITE_CERAMIC_STAIRS.get(), modLoc("block/white_ceramic"));
+//		slabBlock(CelestialBlocks.WHITE_CERAMIC_SLAB.get(), modLoc("block/white_ceramic"), modLoc("block/white_ceramic"));
+//		stairsBlock(CelestialBlocks.LIGHT_GREY_CERAMIC_STAIRS.get(), modLoc("block/light_grey_ceramic"));
+//		slabBlock(CelestialBlocks.LIGHT_GREY_CERAMIC_SLAB.get(), modLoc("block/light_grey_ceramic"), modLoc("block/light_grey_ceramic"));
+//		stairsBlock(CelestialBlocks.GREY_CERAMIC_STAIRS.get(), modLoc("block/grey_ceramic"));
+//		slabBlock(CelestialBlocks.GREY_CERAMIC_SLAB.get(), modLoc("block/grey_ceramic"), modLoc("block/grey_ceramic"));
+//		stairsBlock(CelestialBlocks.BLACK_CERAMIC_STAIRS.get(), modLoc("block/black_ceramic"));
+//		slabBlock(CelestialBlocks.BLACK_CERAMIC_SLAB.get(), modLoc("block/black_ceramic"), modLoc("block/black_ceramic"));
+//		stairsBlock(CelestialBlocks.PURPLE_CERAMIC_STAIRS.get(), modLoc("block/purple_ceramic"));
+//		slabBlock(CelestialBlocks.PURPLE_CERAMIC_SLAB.get(), modLoc("block/purple_ceramic"), modLoc("block/purple_ceramic"));
+//		stairsBlock(CelestialBlocks.MAGENTA_CERAMIC_STAIRS.get(), modLoc("block/magenta_ceramic"));
+//		slabBlock(CelestialBlocks.MAGENTA_CERAMIC_SLAB.get(), modLoc("block/magenta_ceramic"), modLoc("block/magenta_ceramic"));
+//		stairsBlock(CelestialBlocks.BLUE_CERAMIC_STAIRS.get(), modLoc("block/blue_ceramic"));
+//		slabBlock(CelestialBlocks.BLUE_CERAMIC_SLAB.get(), modLoc("block/blue_ceramic"), modLoc("block/blue_ceramic"));
+//		stairsBlock(CelestialBlocks.LIGHT_BLUE_CERAMIC_STAIRS.get(), modLoc("block/light_blue_ceramic"));
+//		slabBlock(CelestialBlocks.LIGHT_BLUE_CERAMIC_SLAB.get(), modLoc("block/light_blue_ceramic"), modLoc("block/light_blue_ceramic"));
+//		stairsBlock(CelestialBlocks.CYAN_CERAMIC_STAIRS.get(), modLoc("block/cyan_ceramic"));
+//		slabBlock(CelestialBlocks.CYAN_CERAMIC_SLAB.get(), modLoc("block/cyan_ceramic"), modLoc("block/cyan_ceramic"));
+//		stairsBlock(CelestialBlocks.GREEN_CERAMIC_STAIRS.get(), modLoc("block/green_ceramic"));
+//		slabBlock(CelestialBlocks.GREEN_CERAMIC_SLAB.get(), modLoc("block/green_ceramic"), modLoc("block/green_ceramic"));
+//		stairsBlock(CelestialBlocks.LIME_CERAMIC_STAIRS.get(), modLoc("block/lime_ceramic"));
+//		slabBlock(CelestialBlocks.LIME_CERAMIC_SLAB.get(), modLoc("block/lime_ceramic"), modLoc("block/lime_ceramic"));
+//		stairsBlock(CelestialBlocks.YELLOW_CERAMIC_STAIRS.get(), modLoc("block/yellow_ceramic"));
+//		slabBlock(CelestialBlocks.YELLOW_CERAMIC_SLAB.get(), modLoc("block/yellow_ceramic"), modLoc("block/yellow_ceramic"));
+//		stairsBlock(CelestialBlocks.ORANGE_CERAMIC_STAIRS.get(), modLoc("block/orange_ceramic"));
+//		slabBlock(CelestialBlocks.ORANGE_CERAMIC_SLAB.get(), modLoc("block/orange_ceramic"), modLoc("block/orange_ceramic"));
+//		stairsBlock(CelestialBlocks.BROWN_CERAMIC_STAIRS.get(), modLoc("block/brown_ceramic"));
+//		slabBlock(CelestialBlocks.BROWN_CERAMIC_SLAB.get(), modLoc("block/brown_ceramic"), modLoc("block/brown_ceramic"));
+//		stairsBlock(CelestialBlocks.RED_CERAMIC_STAIRS.get(), modLoc("block/red_ceramic"));
+//		slabBlock(CelestialBlocks.RED_CERAMIC_SLAB.get(), modLoc("block/red_ceramic"), modLoc("block/red_ceramic"));
+//		stairsBlock(CelestialBlocks.PINK_CERAMIC_STAIRS.get(), modLoc("block/pink_ceramic"));
+//		slabBlock(CelestialBlocks.PINK_CERAMIC_SLAB.get(), modLoc("block/pink_ceramic"), modLoc("block/pink_ceramic_tile_top"));
 
 		//---- MISC -------------------------------------------------------------------------------
 		//FLUIDS

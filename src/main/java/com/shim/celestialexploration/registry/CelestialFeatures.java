@@ -14,7 +14,7 @@ import net.minecraftforge.registries.RegistryObject;
 public class CelestialFeatures {
 
     private static final DeferredRegister<ConfiguredFeature<?,?>> CONFIGURED_FEATURES = DeferredRegister.create(Registry.CONFIGURED_FEATURE_REGISTRY, CelestialExploration.MODID);
-    public static final DeferredRegister<PlacedFeature> PLACED_FEATURES = DeferredRegister.create(Registry.PLACED_FEATURE_REGISTRY, CelestialExploration.MODID);
+//    public static final DeferredRegister<PlacedFeature> PLACED_FEATURES = DeferredRegister.create(Registry.PLACED_FEATURE_REGISTRY, CelestialExploration.MODID);
     public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, CelestialExploration.MODID);
 
     public static final RegistryObject<Feature<NoneFeatureConfiguration>> GEYSER = FEATURES.register("geyser", () -> new GeyserFeature(NoneFeatureConfiguration.CODEC, CelestialBlocks.GEYSER.get(), CelestialBlocks.VENUS_STONE.get(), CelestialBlocks.VENUS_SAND.get()));
@@ -65,8 +65,8 @@ public class CelestialFeatures {
         return Registry.register(Registry.FEATURE, p_65808_, p_65809_);
     }
 
-    public static void register(IEventBus eventbus) {
-        FEATURES.register(eventbus);
-        PLACED_FEATURES.register(eventbus);
-    }
+//    public static void register(IEventBus eventbus) {
+//        FEATURES.register(eventbus);
+////        PLACED_FEATURES.register(eventbus);
+//    }
 }

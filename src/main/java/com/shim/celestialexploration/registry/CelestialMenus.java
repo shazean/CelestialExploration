@@ -11,11 +11,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class CelestialMenus {
 
-    private static final DeferredRegister<MenuType<?>> MENUS = DeferredRegister.create(ForgeRegistries.CONTAINERS, CelestialExploration.MODID);
-
-    public static void register(IEventBus event) {
-        MENUS.register(event);
-    }
+    public static final DeferredRegister<MenuType<?>> MENUS = DeferredRegister.create(ForgeRegistries.CONTAINERS, CelestialExploration.MODID);
 
     public static final RegistryObject<MenuType<OxygenCompressorMenu>> OXYGEN_COMPRESSOR_MENU = MENUS.register("oxygen_compressor", () -> IForgeMenuType.create(OxygenCompressorMenu::new));
     public static final RegistryObject<MenuType<SpaceshipMenu>> SPACESHIP_MENU = MENUS.register("spaceship", () -> IForgeMenuType.create(SpaceshipMenu::new));

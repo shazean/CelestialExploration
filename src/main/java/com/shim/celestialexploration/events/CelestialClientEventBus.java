@@ -83,6 +83,7 @@ public class CelestialClientEventBus {
         ItemBlockRenderTypes.setRenderLayer(CelestialBlocks.EUROPA_PORTAL.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(CelestialBlocks.CALLISTO_PORTAL.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(CelestialBlocks.IO_PORTAL.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(CelestialBlocks.GANYMEDE_PORTAL.get(), RenderType.translucent());
 
         ItemBlockRenderTypes.setRenderLayer(CelestialBlocks.LUMINOUS_BLUE_GLASS.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(CelestialBlocks.LUMINOUS_WHITE_GLASS.get(), RenderType.translucent());

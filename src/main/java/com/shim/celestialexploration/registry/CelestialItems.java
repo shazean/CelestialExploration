@@ -28,10 +28,6 @@ public class CelestialItems {
 
 	public static final Map<RegistryObject<? extends Item>, String> ITEM_LANG_EN_US = new HashMap<>();
 
-	public static void register(IEventBus event) {
-		ITEMS.register(event);
-	}
-
 	public static <T extends Item> RegistryObject<T> registerItem(String nameIn, String localizationIn, Supplier<T> itemIn) {
 		RegistryObject<T> item = ITEMS.register(nameIn, itemIn);
 		ITEM_LANG_EN_US.put(item, localizationIn);

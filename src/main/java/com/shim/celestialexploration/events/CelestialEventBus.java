@@ -157,6 +157,7 @@ public class CelestialEventBus {
         minecraft.particleEngine.register(CelestialParticles.EUROPA_PORTAL_PARTICLES.get(), CelestialPortalParticle.EuropaProvider::new);
         minecraft.particleEngine.register(CelestialParticles.CALLISTO_PORTAL_PARTICLES.get(), CelestialPortalParticle.CallistoProvider::new);
         minecraft.particleEngine.register(CelestialParticles.IO_PORTAL_PARTICLES.get(), CelestialPortalParticle.IoProvider::new);
+        minecraft.particleEngine.register(CelestialParticles.GANYMEDE_PORTAL_PARTICLES.get(), CelestialPortalParticle.GanymedeProvider::new);
 
         minecraft.particleEngine.register(CelestialParticles.SPACESHIP_PARTICLES.get(), SpaceshipParticles.Provider::new);
     }

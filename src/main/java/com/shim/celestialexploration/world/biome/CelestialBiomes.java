@@ -69,7 +69,7 @@ public class CelestialBiomes {
     }
 
     public enum celestialBody {
-        SPACE(0, 0, 90, 329011),
+        SPACE(0, 0, 90, 329011), //0, 0
         MARS(15565857, 14591603, 335425, 3150848),
         MOON(1807, 1549, 335425, 69408),
         VENUS(14200929, 10715456, 4741209, 3160378),

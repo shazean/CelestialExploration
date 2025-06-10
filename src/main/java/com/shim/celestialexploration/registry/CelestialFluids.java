@@ -131,11 +131,4 @@ public class CelestialFluids {
 
     public static final RegistryObject<LiquidBlock> SULFUR_BLOCK = CelestialBlocks.BLOCKS.register("sulfur", () -> new SulfurLiquidBlock(CelestialFluids.SULFUR, BlockBehaviour.Properties.of(Material.LAVA).lightLevel((light) -> 15).noCollission().strength(100f).noDrops()));
     public static final RegistryObject<LiquidBlock> METALLIC_HYDROGEN_BLOCK = CelestialBlocks.BLOCKS.register("metallic_hydrogen", () -> new MetallicHydrogenLiquidBlock(CelestialFluids.METALLIC_HYDROGEN, BlockBehaviour.Properties.of(Material.WATER).lightLevel((light) -> 15).noCollission().strength(100f).noDrops()));
-
-
-    public static void register(IEventBus eventBus) {
-        FLUIDS.register(eventBus);
-    }
-
-
 }
