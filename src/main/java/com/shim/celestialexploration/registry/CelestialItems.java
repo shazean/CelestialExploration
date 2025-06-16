@@ -201,8 +201,6 @@ public class CelestialItems {
 
 	public static final RegistryObject<Item> FLUID_BASIN = registerItem("fluid_basin", "Fluid Basin", () -> new BasinItem((new Item.Properties()).stacksTo(1).tab(CelestialTabs.SPACESHIP_TAB)));
 
-	public static final RegistryObject<Item> TEST_ITEM = registerItem("test_item", "Test Item", () -> new TestItem((new Item.Properties())));
-
 
 //	public static final RegistryObject<Item> RED_DISPLAY_BOARD = ITEMS.register("red_display_board", () -> new DisplayBoardItem((new Item.Properties()).tab(CelestialTabs.CELESTIAL_MISC_TAB), BlockRegistry.RED_DISPLAY_BOARD.get(), BlockRegistry.RED_WALL_DISPLAY_BOARD.get()));
 //	public static final RegistryObject<Item> BLACK_DISPLAY_BOARD = ITEMS.register("black_display_board", () -> new DisplayBoardItem((new Item.Properties()).tab(CelestialTabs.CELESTIAL_MISC_TAB), BlockRegistry.BLACK_DISPLAY_BOARD.get(), BlockRegistry.BLACK_WALL_DISPLAY_BOARD.get()));

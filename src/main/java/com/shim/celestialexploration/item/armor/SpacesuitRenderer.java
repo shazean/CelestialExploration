@@ -1,6 +1,5 @@
 package com.shim.celestialexploration.item.armor;
 
-import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.util.CelestialUtil;
 import mod.azure.azurelib.rewrite.model.AzBakedModel;
 import mod.azure.azurelib.rewrite.model.AzBone;
@@ -30,8 +29,7 @@ public class SpacesuitRenderer extends AzArmorRenderer {
     public SpacesuitRenderer(String texture) {
         this(CelestialUtil.getModLoc("textures/models/armor/" + texture + ".png"));
     }
-
-    @Override
+     @Override
     protected AzArmorRendererPipeline createPipeline(AzRendererConfig config) {
         return new AzArmorRendererPipeline(config, this){
             @Override

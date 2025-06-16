@@ -7,7 +7,6 @@ import com.shim.celestialexploration.entity.client.layers.VillagerSpaceSuitLayer
 import com.shim.celestialexploration.entity.client.renderer.*;
 import com.shim.celestialexploration.entity.client.renderer.projectile.MeteorRenderer;
 import com.shim.celestialexploration.inventory.screens.*;
-import com.shim.celestialexploration.item.TestItemRenderer;
 import com.shim.celestialexploration.item.armor.*;
 import com.shim.celestialexploration.registry.*;
 import com.shim.celestialexploration.util.Keybinds;
@@ -208,8 +207,6 @@ public class CelestialClientEventBus {
         AzArmorRendererRegistry.register(() -> new SpacesuitRenderer("heavy_duty_spacesuit"), CelestialItems.HEAVY_DUTY_SPACESUIT_HELMET.get(), CelestialItems.HEAVY_DUTY_SPACESUIT_CHESTPLATE.get(), CelestialItems.HEAVY_DUTY_SPACESUIT_LEGGINGS.get(), CelestialItems.HEAVY_DUTY_SPACESUIT_BOOTS.get());
         AzArmorRendererRegistry.register(() -> new SpacesuitRenderer("thermal_spacesuit"), CelestialItems.THERMAL_SPACESUIT_HELMET.get(), CelestialItems.THERMAL_SPACESUIT_CHESTPLATE.get(), CelestialItems.THERMAL_SPACESUIT_LEGGINGS.get(), CelestialItems.THERMAL_SPACESUIT_BOOTS.get());
         AzArmorRendererRegistry.register(() -> new SpacesuitRenderer("basic_spacesuit"), CelestialItems.BASIC_SPACESUIT_HELMET.get(), CelestialItems.BASIC_SPACESUIT_CHESTPLATE.get(), CelestialItems.BASIC_SPACESUIT_LEGGINGS.get(), CelestialItems.BASIC_SPACESUIT_BOOTS.get());
-
-        AzItemRendererRegistry.register(TestItemRenderer::new, CelestialItems.TEST_ITEM.get());
 
         RecipeBookCategories.create("celestialexploration:workbench_crafting",  new ItemStack[] { new ItemStack((ItemLike) CelestialBlocks.WORKBENCH.get()) });
         RecipeBookCategories.create("celestialexploration:workbench_smelting", new ItemStack(CelestialBlocks.WORKBENCH.get()));
