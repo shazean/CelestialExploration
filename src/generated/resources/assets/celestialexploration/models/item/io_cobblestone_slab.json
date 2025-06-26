@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "side": "celestialexploration:block/io_cobblestone",
+    "bottom": "celestialexploration:block/io_cobblestone",
+    "top": "celestialexploration:block/io_cobblestone"
+  }
+}

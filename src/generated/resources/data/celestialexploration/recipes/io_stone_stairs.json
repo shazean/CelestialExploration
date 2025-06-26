@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X  ",
+    "XX ",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:io_stone"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:io_stone_stairs",
+    "count": 4
+  }
+}

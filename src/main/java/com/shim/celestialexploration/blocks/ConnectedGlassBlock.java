@@ -1,7 +1,6 @@
 package com.shim.celestialexploration.blocks;
 
-import com.shim.celestialexploration.registry.BlockRegistry;
-import com.shim.celestialexploration.registry.TagRegistry;
+import com.shim.celestialexploration.registry.CelestialTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -108,7 +107,7 @@ public class ConnectedGlassBlock extends Block {
 
 
     private boolean connectsTo(BlockState state) {
-        return state.is(TagRegistry.Blocks.CONNECTED_GLASS);
+        return state.is(CelestialTags.Blocks.CONNECTED_GLASS);
     }
 
     @Override

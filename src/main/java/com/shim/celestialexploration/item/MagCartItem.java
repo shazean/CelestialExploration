@@ -1,8 +1,8 @@
 package com.shim.celestialexploration.item;
 
 import com.shim.celestialexploration.blocks.BaseMagRailBlock;
-import com.shim.celestialexploration.entity.entity.vehicle.AbstractMagCart;
-import com.shim.celestialexploration.registry.TagRegistry;
+import com.shim.celestialexploration.entity.vehicle.AbstractMagCart;
+import com.shim.celestialexploration.registry.CelestialTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.BlockSource;
 import net.minecraft.core.Direction;
@@ -79,7 +79,7 @@ public class MagCartItem extends Item {
         Level level = p_42943_.getLevel();
         BlockPos blockpos = p_42943_.getClickedPos();
         BlockState blockstate = level.getBlockState(blockpos);
-        if (!blockstate.is(TagRegistry.Blocks.MAG_RAIL)) {
+        if (!blockstate.is(CelestialTags.Blocks.MAG_RAIL)) {
             return InteractionResult.FAIL;
         } else {
             ItemStack itemstack = p_42943_.getItemInHand();

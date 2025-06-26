@@ -3,7 +3,7 @@ package com.shim.celestialexploration.datagen.util;
 import com.google.gson.JsonObject;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.recipes.WorkbenchSmeltingRecipe;
-import com.shim.celestialexploration.registry.RecipeRegistry;
+import com.shim.celestialexploration.registry.CelestialRecipes;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.CriterionTriggerInstance;
@@ -44,7 +44,7 @@ public class WorkbenchSmeltingRecipeBuilder implements RecipeBuilder {
     }
 
     public static WorkbenchSmeltingRecipeBuilder smelting(FlowingFluid fluid, Ingredient item, float experience, int smeltingTime, float buckets) {
-        return new WorkbenchSmeltingRecipeBuilder(fluid, item, experience, smeltingTime, buckets, (WorkbenchSmeltingRecipe.Serializer) RecipeRegistry.WORKBENCH_SMELTING_SERIALIZER.get());
+        return new WorkbenchSmeltingRecipeBuilder(fluid, item, experience, smeltingTime, buckets, (WorkbenchSmeltingRecipe.Serializer) CelestialRecipes.WORKBENCH_SMELTING_SERIALIZER.get());
     }
 
     @Override

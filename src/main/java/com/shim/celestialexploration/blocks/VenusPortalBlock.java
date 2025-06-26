@@ -12,26 +12,26 @@ import net.minecraft.world.level.block.Block;
 public class VenusPortalBlock extends AbstractPortalBlock {
     @Override
     public ResourceKey<Level> getLinkedDimension() {
-        return DimensionRegistry.VENUS;
+        return CelestialDimensions.VENUS;
     }
 
     @Override
     public PlanetTeleporter getTeleporter(ServerLevel serverLevel) {
-        return new PlanetTeleporter(serverLevel, PoiRegistry.VENUS_PORTAL.get(), BlockRegistry.VENUS_BRICKS.get(), BlockRegistry.VENUS_PORTAL.get(), DimensionRegistry.VENUS);
+        return new PlanetTeleporter(serverLevel, CelestialPOIs.VENUS_PORTAL.get(), CelestialBlocks.VENUS_BRICKS.get(), CelestialBlocks.VENUS_PORTAL.get(), CelestialDimensions.VENUS);
     }
 
     @Override
     public Block getPortalBlock() {
-        return BlockRegistry.VENUS_PORTAL.get();
+        return CelestialBlocks.VENUS_PORTAL.get();
     }
 
     @Override
     public TagKey<Block> getPortalFrameBlock() {
-        return TagRegistry.Blocks.VENUS_PORTAL_FRAME_BLOCK;
+        return CelestialTags.Blocks.VENUS_PORTAL_FRAME_BLOCK;
     }
 
     @Override
     public SimpleParticleType getPortalParticle() {
-        return ParticleRegistry.VENUS_PORTAL_PARTICLES.get();
+        return CelestialParticles.VENUS_PORTAL_PARTICLES.get();
     }
 }

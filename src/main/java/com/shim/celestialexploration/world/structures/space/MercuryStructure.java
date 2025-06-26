@@ -3,7 +3,7 @@ package com.shim.celestialexploration.world.structures.space;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.registry.DimensionRegistry;
+import com.shim.celestialexploration.registry.CelestialDimensions;
 import com.shim.celestialexploration.util.CelestialUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.ChunkPos;
@@ -80,7 +80,7 @@ public class MercuryStructure extends StructureFeature<JigsawConfiguration> {
         // Grabs the chunk position we are at
         ChunkPos chunkpos = context.chunkPos();
 
-        Vec3 coordinates = CelestialUtil.getPlanetaryChunkCoordinates(DimensionRegistry.MERCURY);
+        Vec3 coordinates = CelestialUtil.getPlanetaryChunkCoordinates(CelestialDimensions.MERCURY);
 
         return chunkpos.x == coordinates.x && chunkpos.z == coordinates.z;
 //        return false;

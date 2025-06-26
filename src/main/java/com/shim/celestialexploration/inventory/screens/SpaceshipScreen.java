@@ -8,8 +8,8 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.capabilities.LightTravelCapability;
 import com.shim.celestialexploration.inventory.menus.SpaceshipMenu;
-import com.shim.celestialexploration.registry.CapabilityRegistry;
-import com.shim.celestialexploration.registry.DimensionRegistry;
+import com.shim.celestialexploration.registry.CelestialCapabilities;
+import com.shim.celestialexploration.registry.CelestialDimensions;
 import com.shim.celestialexploration.util.CelestialUtil;
 import com.shim.celestialexploration.util.Keybinds;
 import net.minecraft.ChatFormatting;
@@ -68,7 +68,7 @@ public class SpaceshipScreen extends AbstractContainerScreen<SpaceshipMenu> {
 
             Player player = CelestialExploration.PROXY.getPlayer();
 
-            LightTravelCapability.ILightTravel travelCap = CelestialExploration.getCapability(player, CapabilityRegistry.LIGHT_TRAVEL_CAPABILITY);
+            LightTravelCapability.ILightTravel travelCap = CelestialExploration.getCapability(player, CelestialCapabilities.LIGHT_TRAVEL_CAPABILITY);
 
             if (travelCap != null) {
                 if (travelCap.hasBeenToMercury())
@@ -230,7 +230,7 @@ public class SpaceshipScreen extends AbstractContainerScreen<SpaceshipMenu> {
         renderTabTooltips(poseStack, mouseX, mouseY);
 
         if (this.minecraft != null && this.minecraft.player != null)
-            lightTravelAllowed = this.minecraft.player.level.dimension().equals(DimensionRegistry.SPACE);
+            lightTravelAllowed = this.minecraft.player.level.dimension().equals(CelestialDimensions.SPACE);
 
         renderLightTravelTooltips(poseStack, mouseX, mouseY);
     }
@@ -246,7 +246,7 @@ public class SpaceshipScreen extends AbstractContainerScreen<SpaceshipMenu> {
 
         if (this.minecraft != null) {
             Player player = this.minecraft.player;
-            LightTravelCapability.ILightTravel travelCap = CelestialExploration.getCapability(player, CapabilityRegistry.LIGHT_TRAVEL_CAPABILITY);
+            LightTravelCapability.ILightTravel travelCap = CelestialExploration.getCapability(player, CelestialCapabilities.LIGHT_TRAVEL_CAPABILITY);
 
             if (travelCap != null) {
                 TextComponent travelTooltip = new TextComponent(new TranslatableComponent("celestialexploration.spaceship.travel.message_1").getString() + Keybinds.SPACESHIP_LIGHT_TRAVEL.getTranslatedKeyMessage().getString() + new TranslatableComponent("celestialexploration.spaceship.travel.message_2").getString());
@@ -293,7 +293,7 @@ public class SpaceshipScreen extends AbstractContainerScreen<SpaceshipMenu> {
                         this.tooltip.add(new TextComponent(new TranslatableComponent("celestialexploration.spaceship.travel.cooldown").getString() + travelCap.getMercuryCooldown().getFormattedCooldown()));
                     }
                     this.renderComponentTooltip(poseStack, this.tooltip, mouseX, mouseY);
-                    this.hoveredDimension = DimensionRegistry.MERCURY;
+                    this.hoveredDimension = CelestialDimensions.MERCURY;
                 } else if (travelCap.hasBeenToVenus() && isHovering(x - i + 75 + 12 - 1, y - j + 73 + 29 - 1, 6, 6, mouseX, mouseY)) {
                     tooltip = Lists.newArrayList();
                     this.tooltip.add(new TranslatableComponent("celestialexploration.spaceship.travel.venus"));
@@ -303,7 +303,7 @@ public class SpaceshipScreen extends AbstractContainerScreen<SpaceshipMenu> {
                         this.tooltip.add(new TextComponent(new TranslatableComponent("celestialexploration.spaceship.travel.cooldown").getString() + travelCap.getVenusCooldown().getFormattedCooldown()));
                     }
                     this.renderComponentTooltip(poseStack, this.tooltip, mouseX, mouseY);
-                    this.hoveredDimension = DimensionRegistry.VENUS;
+                    this.hoveredDimension = CelestialDimensions.VENUS;
 
                 } else if (travelCap.hasBeenToSpace() && isHovering(x - i + 75 - 10 - 1, y - j + 73 + 12 - 1, 6, 6, mouseX, mouseY)) {
                     tooltip = Lists.newArrayList();
@@ -324,7 +324,7 @@ public class SpaceshipScreen extends AbstractContainerScreen<SpaceshipMenu> {
                         this.tooltip.add(new TextComponent(new TranslatableComponent("celestialexploration.spaceship.travel.cooldown").getString() + travelCap.getMarsCooldown().getFormattedCooldown()));
                     }
                     this.renderComponentTooltip(poseStack, this.tooltip, mouseX, mouseY);
-                    this.hoveredDimension = DimensionRegistry.MARS;
+                    this.hoveredDimension = CelestialDimensions.MARS;
                 } else if (travelCap.hasBeenToJupiter() && isHovering(x - i + 75 + 56, y - j + 73 + 11, 9, 9, mouseX, mouseY)) {
                     tooltip = Lists.newArrayList();
                     this.tooltip.add(new TranslatableComponent("celestialexploration.spaceship.travel.jupiter"));
@@ -335,7 +335,7 @@ public class SpaceshipScreen extends AbstractContainerScreen<SpaceshipMenu> {
                     }
 
                     this.renderComponentTooltip(poseStack, this.tooltip, mouseX, mouseY);
-                    this.hoveredDimension = DimensionRegistry.JUPITER;
+                    this.hoveredDimension = CelestialDimensions.JUPITER;
                 } else {
                     this.hoveredDimension = null;
                 }

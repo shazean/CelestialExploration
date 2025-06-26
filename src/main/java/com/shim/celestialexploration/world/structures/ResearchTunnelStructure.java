@@ -1,12 +1,11 @@
 package com.shim.celestialexploration.world.structures;
 
 import com.mojang.serialization.Codec;
-import com.shim.celestialexploration.registry.BlockRegistry;
+import com.shim.celestialexploration.registry.CelestialBlocks;
 import com.shim.celestialexploration.world.features.ResearchTunnelConfiguration;
 import net.minecraft.core.QuartPos;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.LegacyRandomSource;
@@ -48,10 +47,10 @@ public class ResearchTunnelStructure extends StructureFeature<ResearchTunnelConf
     }
 
     public enum Type implements StringRepresentable {
-        MARS("mars", BlockRegistry.MARS_BRICKS.get(), BlockRegistry.MARS_BRICKS.get(), BlockRegistry.MARS_BRICK_WALL.get()),
-        MOON("moon", BlockRegistry.MOON_BRICKS.get(), BlockRegistry.MOON_BRICKS.get(), BlockRegistry.MOON_BRICK_WALL.get()),
-        VENUS("venus", BlockRegistry.VENUS_BRICKS.get(), BlockRegistry.VENUS_BRICKS.get(), BlockRegistry.VENUS_BRICK_WALL.get()),
-        MERCURY("mercury", BlockRegistry.MERCURY_BRICKS.get(), BlockRegistry.MERCURY_BRICKS.get(), BlockRegistry.MERCURY_BRICK_WALL.get());
+        MARS("mars", CelestialBlocks.MARS_BRICKS.get(), CelestialBlocks.MARS_BRICKS.get(), CelestialBlocks.MARS_BRICK_WALL.get()),
+        MOON("moon", CelestialBlocks.MOON_BRICKS.get(), CelestialBlocks.MOON_BRICKS.get(), CelestialBlocks.MOON_BRICK_WALL.get()),
+        VENUS("venus", CelestialBlocks.VENUS_BRICKS.get(), CelestialBlocks.VENUS_BRICKS.get(), CelestialBlocks.VENUS_BRICK_WALL.get()),
+        MERCURY("mercury", CelestialBlocks.MERCURY_BRICKS.get(), CelestialBlocks.MERCURY_BRICKS.get(), CelestialBlocks.MERCURY_BRICK_WALL.get());
 
         public static final Codec<ResearchTunnelStructure.Type> CODEC = StringRepresentable.fromEnum(ResearchTunnelStructure.Type::values, ResearchTunnelStructure.Type::byName);
         private static final Map<String, ResearchTunnelStructure.Type> BY_NAME = Arrays.stream(values()).collect(Collectors.toMap(ResearchTunnelStructure.Type::getName, (p_66333_) -> p_66333_));

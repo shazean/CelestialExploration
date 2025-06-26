@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "celestialexploration:moon_dust",
+    "celestialexploration:callisto_dust",
+    "celestialexploration:io_dust",
+    "celestialexploration:ganymede_dust",
+    "celestialexploration:europa_dust",
+    "celestialexploration:white_moon_dust"
+  ]
+}

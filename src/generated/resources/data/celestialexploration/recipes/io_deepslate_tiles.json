@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XX",
+    "XX"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:io_deepslate_bricks"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:io_deepslate_tiles",
+    "count": 4
+  }
+}

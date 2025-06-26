@@ -1,8 +1,8 @@
 package com.shim.celestialexploration.blocks;
 
-import com.shim.celestialexploration.registry.BlockRegistry;
+import com.shim.celestialexploration.registry.CelestialBlocks;
 import com.shim.celestialexploration.registry.CelestialDamageSource;
-import com.shim.celestialexploration.registry.TagRegistry;
+import com.shim.celestialexploration.registry.CelestialTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
@@ -41,13 +41,13 @@ public class SulfurLiquidBlock extends LiquidBlock {
     }
 
     private boolean shouldSpreadLiquid(Level level, BlockPos pos, BlockState p_54699_) {
-        if (this.getFluid().is(TagRegistry.Fluids.SULFUR)) {
+        if (this.getFluid().is(CelestialTags.Fluids.SULFUR)) {
 //            boolean soulSoilBelow = level.getBlockState(pos.below()).is(Blocks.SOUL_SOIL);
 
             for(Direction direction : POSSIBLE_FLOW_DIRECTIONS) {
                 BlockPos blockpos = pos.relative(direction.getOpposite());
                 if (level.getFluidState(blockpos).is(FluidTags.WATER)) {
-                    Block block = level.getFluidState(pos).isSource() ? BlockRegistry.SULFURIC_OBSIDIAN.get(): BlockRegistry.VENUS_COBBLESTONE.get();
+                    Block block = level.getFluidState(pos).isSource() ? CelestialBlocks.SULFURIC_OBSIDIAN.get(): CelestialBlocks.VENUS_COBBLESTONE.get();
                     level.setBlockAndUpdate(pos, net.minecraftforge.event.ForgeEventFactory.fireFluidPlaceBlockEvent(level, pos, pos, block.defaultBlockState()));
                     this.fizz(level, pos);
                     return false;

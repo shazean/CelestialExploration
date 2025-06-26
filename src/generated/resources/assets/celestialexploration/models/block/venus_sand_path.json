@@ -1,0 +1,9 @@
+{
+  "parent": "celestialexploration:block/template_sand_path",
+  "textures": {
+    "side": "celestialexploration:block/venus_sand_path_side",
+    "top": "celestialexploration:block/venus_sand_path_top",
+    "bottom": "celestialexploration:block/venus_sand",
+    "particle": "celestialexploration:block/venus_sand"
+  }
+}

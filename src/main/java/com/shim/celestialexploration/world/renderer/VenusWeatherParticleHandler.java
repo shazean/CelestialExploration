@@ -1,6 +1,6 @@
 package com.shim.celestialexploration.world.renderer;
 
-import com.shim.celestialexploration.registry.ParticleRegistry;
+import com.shim.celestialexploration.registry.CelestialParticles;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.ParticleStatus;
@@ -57,7 +57,7 @@ public class VenusWeatherParticleHandler implements IWeatherParticleRenderHandle
                     double d2 = voxelshape.max(Direction.Axis.Y, d0, d1);
                     double d3 = (double) fluidstate.getHeight(level, blockpos1);
                     double d4 = Math.max(d2, d3);
-                    ParticleOptions particleoptions = !fluidstate.is(FluidTags.LAVA) && !blockstate.is(Blocks.MAGMA_BLOCK) && !CampfireBlock.isLitCampfire(blockstate) ? ParticleRegistry.SULFUR_SPLASH_PARTICLE.get() : ParticleTypes.SMOKE;
+                    ParticleOptions particleoptions = !fluidstate.is(FluidTags.LAVA) && !blockstate.is(Blocks.MAGMA_BLOCK) && !CampfireBlock.isLitCampfire(blockstate) ? CelestialParticles.SULFUR_SPLASH_PARTICLE.get() : ParticleTypes.SMOKE;
                     level.addParticle(particleoptions, (double) blockpos1.getX() + d0, (double) blockpos1.getY() + d4, (double) blockpos1.getZ() + d1, 0.0D, 0.0D, 0.0D);
                 }
             }

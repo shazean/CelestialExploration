@@ -1,0 +1,17 @@
+{
+  "name": "celestialexploration:mars_labyrinth/mars_labyrinth_start",
+
+  "fallback": "minecraft:empty",
+
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "celestialexploration:mars_labyrinth",
+        "processors": "celestialexploration:mars_labyrinth",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

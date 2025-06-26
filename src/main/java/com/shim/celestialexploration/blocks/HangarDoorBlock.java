@@ -1,6 +1,5 @@
 package com.shim.celestialexploration.blocks;
 
-import com.shim.celestialexploration.registry.TagRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;

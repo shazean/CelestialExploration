@@ -1,8 +1,7 @@
 package com.shim.celestialexploration.world.features;
 
 import com.mojang.serialization.Codec;
-import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.registry.BlockRegistry;
+import com.shim.celestialexploration.registry.CelestialBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.WorldGenLevel;
@@ -10,7 +9,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-import org.apache.logging.log4j.Level;
 
 import java.util.Random;
 
@@ -29,10 +27,10 @@ public class GlowingSandFeature extends Feature<NoneFeatureConfiguration> {
             return false;
         } else {
             BlockState blockstate = worldgenlevel.getBlockState(blockpos.below());
-            if (!blockstate.is(BlockRegistry.MOON_SAND.get())) {
+            if (!blockstate.is(CelestialBlocks.MOON_SAND.get())) {
                 return false;
             } else {
-                worldgenlevel.setBlock(blockpos, BlockRegistry.GLOWING_MOON_SAND.get().defaultBlockState(), 1);
+                worldgenlevel.setBlock(blockpos, CelestialBlocks.GLOWING_MOON_SAND.get().defaultBlockState(), 1);
 
                 for(int i = 0; i < 1500; ++i) {
                     BlockPos blockpos1 = blockpos.offset(random.nextInt(8) - random.nextInt(8), -random.nextInt(12), random.nextInt(8) - random.nextInt(12));
@@ -40,7 +38,7 @@ public class GlowingSandFeature extends Feature<NoneFeatureConfiguration> {
                         int j = 0;
 
                         for(Direction direction : Direction.values()) {
-                            if (worldgenlevel.getBlockState(blockpos1.relative(direction)).is(BlockRegistry.GLOWING_MOON_SAND.get())) {
+                            if (worldgenlevel.getBlockState(blockpos1.relative(direction)).is(CelestialBlocks.GLOWING_MOON_SAND.get())) {
                                 ++j;
                             }
 
@@ -50,7 +48,7 @@ public class GlowingSandFeature extends Feature<NoneFeatureConfiguration> {
                         }
 
                         if (j == 1) {
-                            worldgenlevel.setBlock(blockpos1, BlockRegistry.GLOWING_MOON_SAND.get().defaultBlockState(), 2);
+                            worldgenlevel.setBlock(blockpos1, CelestialBlocks.GLOWING_MOON_SAND.get().defaultBlockState(), 2);
                         }
                     }
                 }

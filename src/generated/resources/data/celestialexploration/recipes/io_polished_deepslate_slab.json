@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:io_polished_deepslate"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:io_polished_deepslate_slab",
+    "count": 6
+  }
+}

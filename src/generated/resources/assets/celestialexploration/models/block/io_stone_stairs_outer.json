@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "side": "celestialexploration:block/io_stone",
+    "bottom": "celestialexploration:block/io_stone",
+    "top": "celestialexploration:block/io_stone"
+  }
+}

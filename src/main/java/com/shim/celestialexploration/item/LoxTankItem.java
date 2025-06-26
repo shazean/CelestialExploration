@@ -1,28 +1,20 @@
 package com.shim.celestialexploration.item;
 
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.blocks.LoxTankBlock;
 import com.shim.celestialexploration.capabilities.LoxTankCapability;
-import com.shim.celestialexploration.registry.CapabilityRegistry;
+import com.shim.celestialexploration.registry.CelestialCapabilities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.ListTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.ShulkerBoxBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -40,7 +32,7 @@ public class LoxTankItem extends BlockItem {
         ItemStack item = blockPlaceContext.getItemInHand();
         Level level = blockPlaceContext.getLevel();
 
-        LoxTankCapability.ILoxTank loxTank = CelestialExploration.getCapability(item, CapabilityRegistry.LOX_TANK_CAPABILITY);
+        LoxTankCapability.ILoxTank loxTank = CelestialExploration.getCapability(item, CelestialCapabilities.LOX_TANK_CAPABILITY);
         if (loxTank != null) {
 
             int amount = loxTank.getAmount();
@@ -49,7 +41,7 @@ public class LoxTankItem extends BlockItem {
 
             BlockEntity entity = level.getBlockEntity(blockPos);
 
-            LoxTankCapability.ILoxTank loxTankEntity = CelestialExploration.getCapability(entity, CapabilityRegistry.LOX_TANK_CAPABILITY);
+            LoxTankCapability.ILoxTank loxTankEntity = CelestialExploration.getCapability(entity, CelestialCapabilities.LOX_TANK_CAPABILITY);
             if (loxTankEntity != null) {
                 loxTankEntity.setAmount(amount);
             }
@@ -60,7 +52,7 @@ public class LoxTankItem extends BlockItem {
     @Override
     public CompoundTag getShareTag(ItemStack stackIn) {
         CompoundTag nbt = stackIn.getOrCreateTag();
-        LoxTankCapability.ILoxTank loxCap = CelestialExploration.getCapability(stackIn, CapabilityRegistry.LOX_TANK_CAPABILITY);
+        LoxTankCapability.ILoxTank loxCap = CelestialExploration.getCapability(stackIn, CelestialCapabilities.LOX_TANK_CAPABILITY);
         if (loxCap != null) {
             nbt.put("LoxData", loxCap.getLoxData());
         }
@@ -71,14 +63,14 @@ public class LoxTankItem extends BlockItem {
     public void readShareTag(ItemStack stackIn, @Nullable CompoundTag nbtIn) {
         super.readShareTag(stackIn, nbtIn);
         if (nbtIn != null) {
-            LoxTankCapability.ILoxTank loxCap = CelestialExploration.getCapability(stackIn, CapabilityRegistry.LOX_TANK_CAPABILITY);
+            LoxTankCapability.ILoxTank loxCap = CelestialExploration.getCapability(stackIn, CelestialCapabilities.LOX_TANK_CAPABILITY);
             if (loxCap != null && nbtIn.contains("LoxData", 10)) loxCap.setLoxData(nbtIn.getCompound("LoxData"));
         }
     }
 
     @Override
     public void appendHoverText(ItemStack itemStack, @Nullable Level level, List<Component> components, TooltipFlag tooltipFlag) {
-        LoxTankCapability.ILoxTank loxCap = CelestialExploration.getCapability(itemStack, CapabilityRegistry.LOX_TANK_CAPABILITY);
+        LoxTankCapability.ILoxTank loxCap = CelestialExploration.getCapability(itemStack, CelestialCapabilities.LOX_TANK_CAPABILITY);
 
         if (loxCap != null) {
             components.add(new TextComponent(loxCap.getAmount() + " / 8000 mb"));

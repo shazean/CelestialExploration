@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XCX",
+    "C#C",
+    "XCX"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:moon_deepslate"
+    },
+    "#": {
+      "item": "minecraft:iron_ingot"
+    },
+    "C": {
+      "item": "celestialexploration:ganymede_dust"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:ganymede_lantern"
+  }
+}

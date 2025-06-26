@@ -29,6 +29,10 @@ public class RecipeGenHelper {
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(itemToSmelt), result, experience, cookingTime).unlockedBy("has_" + name(unlockedBy), has(unlockedBy)).save(consumer);
     }
 
+    public static void smelting(ItemLike itemToSmelt, ItemLike result, float experience, int cookingTime, ItemLike unlockedBy, Consumer<FinishedRecipe> consumer, String name) {
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(itemToSmelt), result, experience, cookingTime).unlockedBy("has_" + name(unlockedBy), has(unlockedBy)).save(consumer, name);
+    }
+
     public static void smeltingAndBlasting(ItemLike itemToSmelt, ItemLike result, float experience, int smeltingTime, int blastingTime, ItemLike unlockedBy, Consumer<FinishedRecipe> consumer) {
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(itemToSmelt), result, experience, smeltingTime).unlockedBy("has_" + name(unlockedBy), has(unlockedBy)).save(consumer, name(itemToSmelt) + "_smelting");
         SimpleCookingRecipeBuilder.blasting(Ingredient.of(itemToSmelt), result, experience, blastingTime).unlockedBy("has_" + name(unlockedBy), has(unlockedBy)).save(consumer, name(itemToSmelt) + "_blasting");

@@ -1,0 +1,10 @@
+{
+  "replace": false,
+
+  "_comment": " This biome tag can specify the biome directly. Or specify another biome tag by starting with # ",
+  "values": [
+    "celestialexploration:ganymede_desert",
+    "celestialexploration:ganymede_plains",
+    "celestialexploration:ganymede_lower_plains"
+  ]
+}

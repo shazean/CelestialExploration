@@ -1,0 +1,16 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"idle": {
+			"loop": true,
+			"bones": {
+				"upper cube": {
+					"rotation": {
+						"vector": ["Math.cos(query.anim_time * 160) * 3", "Math.abs(query.anim_time * 10) * 15", "Math.cos(query.anim_time * 160) * 3"]
+					}
+				}
+			}
+		}
+	},
+	"azurelib_format_version": 2
+}

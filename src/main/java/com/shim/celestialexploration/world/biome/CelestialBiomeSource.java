@@ -5,7 +5,7 @@ import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.registry.BiomeRegistry;
+import com.shim.celestialexploration.registry.CelestialBiomes;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.RegistryOps;
@@ -13,7 +13,6 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeSource;
-import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.biome.Climate;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -35,7 +34,7 @@ public class CelestialBiomeSource extends BiomeSource {
     private static final DecimalFormat DEBUG_DECIMAL_FORMAT = new DecimalFormat("0.000");
 
     private static Set<ResourceKey<Biome>> POSSIBLE_BIOMES = Stream.of(
-            BiomeRegistry.MARS_CRATERS
+            CelestialBiomes.MARS_CRATERS
     ).map(RegistryObject::getKey).collect(Collectors.toSet());
 
     private final long seed;

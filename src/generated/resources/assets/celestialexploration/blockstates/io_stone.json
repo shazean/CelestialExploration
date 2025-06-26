@@ -1,7 +1,20 @@
 {
   "variants": {
-    "": {
-      "model": "celestialexploration:block/io_stone"
-    }
+    "": [
+      {
+        "model": "celestialexploration:block/io_stone"
+      },
+      {
+        "model": "celestialexploration:block/io_stone",
+        "y": 180
+      },
+      {
+        "model": "celestialexploration:block/io_stone_mirrored"
+      },
+      {
+        "model": "celestialexploration:block/io_stone_mirrored",
+        "y": 180
+      }
+    ]
   }
 }

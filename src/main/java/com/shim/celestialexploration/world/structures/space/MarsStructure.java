@@ -2,7 +2,7 @@ package com.shim.celestialexploration.world.structures.space;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.shim.celestialexploration.registry.DimensionRegistry;
+import com.shim.celestialexploration.registry.CelestialDimensions;
 import com.shim.celestialexploration.util.CelestialUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.ChunkPos;
@@ -76,7 +76,7 @@ public class MarsStructure extends StructureFeature<JigsawConfiguration> {
      */
     private static boolean isFeatureChunk(PieceGeneratorSupplier.Context<JigsawConfiguration> context) {
         ChunkPos chunkpos = context.chunkPos();
-        Vec3 coordinates = CelestialUtil.getPlanetaryChunkCoordinates(DimensionRegistry.MARS);
+        Vec3 coordinates = CelestialUtil.getPlanetaryChunkCoordinates(CelestialDimensions.MARS);
         return chunkpos.x == coordinates.x && chunkpos.z == coordinates.z;
     }
 

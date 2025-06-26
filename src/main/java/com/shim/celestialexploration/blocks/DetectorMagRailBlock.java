@@ -1,7 +1,7 @@
 package com.shim.celestialexploration.blocks;
 
-import com.shim.celestialexploration.entity.entity.vehicle.AbstractMagCart;
-import com.shim.celestialexploration.entity.entity.vehicle.MagCartCommandBlock;
+import com.shim.celestialexploration.entity.vehicle.AbstractMagCart;
+import com.shim.celestialexploration.entity.vehicle.MagCartCommandBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;

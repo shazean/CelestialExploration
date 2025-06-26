@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "celestialexploration:ganymede_bricks"
+  },
+  "result": "celestialexploration:ganymede_brick_wall",
+  "count": 1
+}

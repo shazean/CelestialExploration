@@ -1,8 +1,7 @@
 package com.shim.celestialexploration.blocks;
 
-import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.blocks.blockentities.SolarPanelBlockEntity;
-import com.shim.celestialexploration.registry.BlockEntityRegistry;
+import com.shim.celestialexploration.registry.CelestialBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.Mth;
@@ -106,7 +105,7 @@ public class SolarPanelBlock extends BaseEntityBlock {
 
     @Nullable
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState blockState, BlockEntityType<T> blockEntity) {
-        return !level.isClientSide && level.dimensionType().hasSkyLight() ? createTickerHelper(blockEntity, BlockEntityRegistry.SOLAR_PANEL_BLOCK_ENTITY.get(), SolarPanelBlock::tickEntity) : null;
+        return !level.isClientSide && level.dimensionType().hasSkyLight() ? createTickerHelper(blockEntity, CelestialBlockEntities.SOLAR_PANEL_BLOCK_ENTITY.get(), SolarPanelBlock::tickEntity) : null;
     }
 
     private static void tickEntity(Level level, BlockPos pos, BlockState blockState, SolarPanelBlockEntity blockEntity) {

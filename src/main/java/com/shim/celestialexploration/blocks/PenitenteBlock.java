@@ -1,14 +1,9 @@
 package com.shim.celestialexploration.blocks;
 
-import com.google.common.annotations.VisibleForTesting;
-import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.registry.BlockRegistry;
+import com.shim.celestialexploration.registry.CelestialBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.FluidTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntitySelector;
@@ -25,14 +20,12 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.*;
-import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -337,7 +330,7 @@ public class PenitenteBlock extends Block implements Fallable, SimpleWaterlogged
     }
 
     private static void createDripstone(LevelAccessor p_154088_, BlockPos p_154089_, Direction p_154090_, DripstoneThickness p_154091_) {
-        BlockState blockstate = BlockRegistry.PENITENTE.get().defaultBlockState().setValue(TIP_DIRECTION, p_154090_).setValue(THICKNESS, p_154091_).setValue(WATERLOGGED, p_154088_.getFluidState(p_154089_).getType() == Fluids.WATER);
+        BlockState blockstate = CelestialBlocks.PENITENTE.get().defaultBlockState().setValue(TIP_DIRECTION, p_154090_).setValue(THICKNESS, p_154091_).setValue(WATERLOGGED, p_154088_.getFluidState(p_154089_).getType() == Fluids.WATER);
         p_154088_.setBlock(p_154089_, blockstate, 3);
     }
 
@@ -374,7 +367,7 @@ public class PenitenteBlock extends Block implements Fallable, SimpleWaterlogged
             return p_154133_;
         } else {
             Direction direction = Direction.UP;
-            BiPredicate<BlockPos, BlockState> bipredicate = (p_202023_, p_202024_) -> p_202024_.is(BlockRegistry.PENITENTE.get());
+            BiPredicate<BlockPos, BlockState> bipredicate = (p_202023_, p_202024_) -> p_202024_.is(CelestialBlocks.PENITENTE.get());
             return findBlockVertical(p_154132_, p_154133_, direction.getAxisDirection(), bipredicate, (p_154168_) -> isTip(p_154168_, p_154135_), p_154134_).orElse(null);
         }
     }
@@ -432,8 +425,8 @@ public class PenitenteBlock extends Block implements Fallable, SimpleWaterlogged
 
     private static Optional<BlockPos> findRootBlock(Level p_154067_, BlockPos p_154068_, BlockState p_154069_, int p_154070_) {
         Direction direction = Direction.UP;
-        BiPredicate<BlockPos, BlockState> bipredicate = (p_202015_, p_202016_) -> p_202016_.is(BlockRegistry.PENITENTE.get());
-        return findBlockVertical(p_154067_, p_154068_, direction.getOpposite().getAxisDirection(), bipredicate, (p_154245_) -> !p_154245_.is(BlockRegistry.PENITENTE.get()), p_154070_);
+        BiPredicate<BlockPos, BlockState> bipredicate = (p_202015_, p_202016_) -> p_202016_.is(CelestialBlocks.PENITENTE.get());
+        return findBlockVertical(p_154067_, p_154068_, direction.getOpposite().getAxisDirection(), bipredicate, (p_154245_) -> !p_154245_.is(CelestialBlocks.PENITENTE.get()), p_154070_);
     }
 
     private static boolean isValidPointedDripstonePlacement(LevelReader p_154222_, BlockPos p_154223_, Direction p_154224_) {
@@ -443,7 +436,7 @@ public class PenitenteBlock extends Block implements Fallable, SimpleWaterlogged
     }
 
     private static boolean isTip(BlockState p_154154_, boolean p_154155_) {
-        if (!p_154154_.is(BlockRegistry.PENITENTE.get())) {
+        if (!p_154154_.is(CelestialBlocks.PENITENTE.get())) {
             return false;
         } else {
             DripstoneThickness dripstonethickness = p_154154_.getValue(THICKNESS);
@@ -472,7 +465,7 @@ public class PenitenteBlock extends Block implements Fallable, SimpleWaterlogged
     }
 
     private static boolean isPointedDripstoneWithDirection(BlockState p_154208_, Direction p_154209_) {
-        return p_154208_.is(BlockRegistry.PENITENTE.get()) && Direction.UP == p_154209_;
+        return p_154208_.is(CelestialBlocks.PENITENTE.get()) && Direction.UP == p_154209_;
     }
 
 //    @Nullable

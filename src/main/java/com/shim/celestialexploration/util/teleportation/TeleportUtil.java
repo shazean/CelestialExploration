@@ -1,9 +1,8 @@
 package com.shim.celestialexploration.util.teleportation;
 
 import com.google.common.collect.ImmutableList;
-import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.registry.BlockRegistry;
-import com.shim.celestialexploration.registry.DimensionRegistry;
+import com.shim.celestialexploration.registry.CelestialBlocks;
+import com.shim.celestialexploration.registry.CelestialDimensions;
 import com.shim.celestialexploration.util.CelestialUtil;
 import com.shim.celestialexploration.world.portal.CelestialTeleporter;
 import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
@@ -31,15 +30,17 @@ import java.util.List;
 import java.util.Map;
 
 public class TeleportUtil {
+
+    @Deprecated
     private static final Map<ResourceKey<Level>, List<Block>> CE_DIMENSION_STRUCTURE_BLOCKS = Util.make(new Object2ObjectArrayMap<>(), (dimension) -> {
-        dimension.put(DimensionRegistry.MERCURY, ImmutableList.<Block>builder().add(BlockRegistry.MERCURY_STONE.get(), BlockRegistry.MERCURY_DEEPSLATE.get(), BlockRegistry.MERCURY_CORE.get()).build());
-        dimension.put(DimensionRegistry.VENUS, ImmutableList.<Block>builder().add(BlockRegistry.VENUS_STONE.get(), Blocks.YELLOW_STAINED_GLASS, BlockRegistry.VENUS_DEEPSLATE.get(), BlockRegistry.VENUS_CORE.get()).build());
+        dimension.put(CelestialDimensions.MERCURY, ImmutableList.<Block>builder().add(CelestialBlocks.MERCURY_STONE.get(), CelestialBlocks.MERCURY_DEEPSLATE.get(), CelestialBlocks.MERCURY_CORE.get()).build());
+        dimension.put(CelestialDimensions.VENUS, ImmutableList.<Block>builder().add(CelestialBlocks.VENUS_STONE.get(), Blocks.YELLOW_STAINED_GLASS, CelestialBlocks.VENUS_DEEPSLATE.get(), CelestialBlocks.VENUS_CORE.get()).build());
         dimension.put(Level.OVERWORLD, ImmutableList.<Block>builder().add(Blocks.STONE, Blocks.SANDSTONE, Blocks.WHITE_STAINED_GLASS, Blocks.GRASS_BLOCK, Blocks.SMOOTH_QUARTZ, Blocks.BLUE_STAINED_GLASS, Blocks.ICE, Blocks.PACKED_ICE, Blocks.DEEPSLATE, Blocks.BEDROCK).build());
-        dimension.put(DimensionRegistry.MOON, ImmutableList.<Block>builder().add(BlockRegistry.MOON_STONE.get(), BlockRegistry.MOON_DEEPSLATE.get(), BlockRegistry.MOON_CORE.get()).build());
-        dimension.put(DimensionRegistry.MARS, ImmutableList.<Block>builder().add(BlockRegistry.MARS_STONE.get(), BlockRegistry.MARS_DEEPSLATE.get(), BlockRegistry.MARS_CORE.get(), BlockRegistry.DRY_ICE.get()).build());
-        dimension.put(DimensionRegistry.JUPITER, ImmutableList.<Block>builder().add(BlockRegistry.JUPITER_DEEPSLATE.get(), BlockRegistry.JUPITER_ATMOSPHERE.get(), Blocks.WHITE_STAINED_GLASS, Blocks.GRAY_STAINED_GLASS, Blocks.BROWN_STAINED_GLASS, Blocks.RED_STAINED_GLASS,
-                Blocks.ORANGE_STAINED_GLASS, BlockRegistry.JUPITER_CORE.get()).build());
-        dimension.put(DimensionRegistry.EUROPA, ImmutableList.<Block>builder().add(BlockRegistry.EUROPA_CORE.get(), BlockRegistry.EUROPA_HYDRATE.get(), BlockRegistry.MOON_STONE.get()).build());
+        dimension.put(CelestialDimensions.MOON, ImmutableList.<Block>builder().add(CelestialBlocks.MOON_STONE.get(), CelestialBlocks.MOON_DEEPSLATE.get(), CelestialBlocks.MOON_CORE.get()).build());
+        dimension.put(CelestialDimensions.MARS, ImmutableList.<Block>builder().add(CelestialBlocks.MARS_STONE.get(), CelestialBlocks.MARS_DEEPSLATE.get(), CelestialBlocks.MARS_CORE.get(), CelestialBlocks.DRY_ICE.get()).build());
+        dimension.put(CelestialDimensions.JUPITER, ImmutableList.<Block>builder().add(CelestialBlocks.JUPITER_DEEPSLATE.get(), CelestialBlocks.JUPITER_ATMOSPHERE.get(), Blocks.WHITE_STAINED_GLASS, Blocks.GRAY_STAINED_GLASS, Blocks.BROWN_STAINED_GLASS, Blocks.RED_STAINED_GLASS,
+                Blocks.ORANGE_STAINED_GLASS, CelestialBlocks.JUPITER_CORE.get()).build());
+        dimension.put(CelestialDimensions.EUROPA, ImmutableList.<Block>builder().add(CelestialBlocks.EUROPA_CORE.get(), CelestialBlocks.EUROPA_HYDRATE.get(), CelestialBlocks.MOON_STONE.get()).build());
 
     });
 
@@ -68,17 +69,17 @@ public class TeleportUtil {
 
 
     private static final Map<ResourceKey<Level>, List<ResourceKey<Level>>> PLANET_MOONS_WITH_PLANET = Util.make(new Object2ObjectArrayMap<>(), (dimension) -> {
-        dimension.put(DimensionRegistry.MERCURY, null);
-        dimension.put(DimensionRegistry.VENUS, null);
-        dimension.put(Level.OVERWORLD, ImmutableList.<ResourceKey<Level>>builder().add(DimensionRegistry.MOON).build());
-        dimension.put(DimensionRegistry.MARS, null);
-        dimension.put(DimensionRegistry.JUPITER, ImmutableList.<ResourceKey<Level>>builder().add(DimensionRegistry.EUROPA).add(DimensionRegistry.CALLISTO).build());
+        dimension.put(CelestialDimensions.MERCURY, null);
+        dimension.put(CelestialDimensions.VENUS, null);
+        dimension.put(Level.OVERWORLD, ImmutableList.<ResourceKey<Level>>builder().add(CelestialDimensions.MOON).build());
+        dimension.put(CelestialDimensions.MARS, null);
+        dimension.put(CelestialDimensions.JUPITER, ImmutableList.<ResourceKey<Level>>builder().add(CelestialDimensions.EUROPA).add(CelestialDimensions.CALLISTO).build());
     });
 
     private static final List<ResourceKey<Level>> PLANET_MOONS = Util.make(new ArrayList<>(), (dimension) -> {
-        dimension.add(DimensionRegistry.MOON);
-        dimension.add(DimensionRegistry.EUROPA);
-        dimension.add(DimensionRegistry.CALLISTO);
+        dimension.add(CelestialDimensions.MOON);
+        dimension.add(CelestialDimensions.EUROPA);
+        dimension.add(CelestialDimensions.CALLISTO);
     });
 
     public static void addPlanetMoon(ResourceKey<Level> dimension, List<ResourceKey<Level>> moons) {
@@ -134,17 +135,22 @@ public class TeleportUtil {
     public static void teleport(Entity spaceVehicle, @Nullable ArrayList<Entity> passengers, ResourceKey<Level> destinationDim, Vec3 locationInPlace) {
         if (spaceVehicle.canChangeDimensions()) {
 
+            //get server and level
             Level entityWorld = spaceVehicle.level;
             MinecraftServer minecraftserver = entityWorld.getServer();
             if (minecraftserver != null) {
                 ServerLevel destinationWorld = minecraftserver.getLevel(destinationDim);
                 if (destinationWorld != null) {
 
-                    if (!(destinationDim == DimensionRegistry.SPACE)) {
+                    //if we're teleporting FROM space, passengers' Y level should be the max build height minus 10 blocks
+                    if (!(destinationDim == CelestialDimensions.SPACE)) {
                         locationInPlace = new Vec3(locationInPlace.x, destinationWorld.getMaxBuildHeight() - 10, locationInPlace.z);
-                        CelestialExploration.LOGGER.debug("maxBuildHeight of dimension " + destinationDim + " is " + destinationWorld.getMaxBuildHeight() + ", and we're going to y level " + locationInPlace.y);
                     }
 
+                    //move players to the right coordinates BEFORE changing dimensions
+                    //otherwise, there's a good chance of trying to load the admittedly massive sun structure,
+                    //which caused lag if the space dimension hadn't been loaded before
+                    //and sometimes the lag would cause discrepancies between client/server that the game didn't always recover from
                     if (!entityWorld.isClientSide) {
                         ServerLevel level = (ServerLevel) spaceVehicle.getLevel();
                         level.getProfiler().push("placing");
@@ -157,15 +163,28 @@ public class TeleportUtil {
                         level.getProfiler().pop();
                     }
 
-                    Entity newSpaceVehicle = spaceVehicle;
+
+
+                    Entity newSpaceVehicle = null;
                     if (!spaceVehicle.level.dimension().equals(destinationDim)) {
-                        newSpaceVehicle = spaceVehicle.changeDimension(destinationWorld, new CelestialTeleporter(destinationWorld));
+                        //check if spaceVehicle is a player or not
+                        //because for all entities NOT players, changing dimensions returns a new instance of the entity with the same data
+                        //but you do NOT create a new instance of a player
+                        //so this is important to check
+                        if (spaceVehicle instanceof Player) {
+                            spaceVehicle.changeDimension(destinationWorld, new CelestialTeleporter(destinationWorld));
+                        } else {
+                            newSpaceVehicle = spaceVehicle.changeDimension(destinationWorld, new CelestialTeleporter(destinationWorld));
+                        }
                     }
 
-                    if (passengers != null) {
+                    //this assumes that if the player is the spaceVehicle, that there are not additional passengers besides the player
+                    if (newSpaceVehicle != null && passengers != null) {
+                        //for all of our passengers…
                         for (Entity passenger : passengers) {
                             Entity newPassenger = null;
                             if (!passenger.level.dimension().equals(destinationDim)) {
+                                //check if they're players or not to handle changing dimensions appropriately
                                 if (passenger instanceof Player) {
                                     passenger.changeDimension(destinationWorld, new CelestialTeleporter(destinationWorld));
                                 } else {
@@ -173,9 +192,8 @@ public class TeleportUtil {
                                 }
                             }
 
+                            //have passengers, player or otherwise, start riding the vehicle again
                             if (!entityWorld.isClientSide) {
-                                assert newSpaceVehicle != null;
-
                                 if (passenger instanceof ServerPlayer) {
                                     passenger.startRiding(newSpaceVehicle);
                                 } else if (newPassenger != null) {
@@ -184,15 +202,13 @@ public class TeleportUtil {
                                 }
                             }
                         }
-
-
                     }
                 }
             }
         }
     }
 
-    public static void displayTeleportMessage(Entity entity, int teleportCooldown, ResourceKey<Level> destination) { //TODO make translatable components
+    public static void displayTeleportMessage(Entity entity, int teleportCooldown, ResourceKey<Level> destination) {
         if (entity instanceof Player) {
             if (teleportCooldown % 20 == 0 && teleportCooldown != 0) {
                 ((Player) entity).displayClientMessage(Component.nullToEmpty("Teleporting to " + new TranslatableComponent("dimension.celestialexploration." + destination.location().getPath()).getString() + " in… " + teleportCooldown / 20), true);

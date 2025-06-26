@@ -1,6 +1,6 @@
 package com.shim.celestialexploration.capabilities;
 
-import com.shim.celestialexploration.registry.CapabilityRegistry;
+import com.shim.celestialexploration.registry.CelestialCapabilities;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.player.Player;
@@ -78,7 +78,7 @@ public class VillagerTravelCapability {
         @NotNull
         @Override
         public <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-            return CapabilityRegistry.LOX_TANK_CAPABILITY.orEmpty(cap, lazyTravelHandler.cast());
+            return CelestialCapabilities.LOX_TANK_CAPABILITY.orEmpty(cap, lazyTravelHandler.cast());
         }
 
         @Override

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "celestialexploration:lunar_dusts"
+    },
+    {
+      "item": "celestialexploration:lunar_goo"
+    }
+  ],
+  "result": {
+    "item": "celestialexploration:white_moon_dust"
+  }
+}

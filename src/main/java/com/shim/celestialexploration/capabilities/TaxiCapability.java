@@ -1,7 +1,7 @@
 package com.shim.celestialexploration.capabilities;
 
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.registry.CapabilityRegistry;
+import com.shim.celestialexploration.registry.CelestialCapabilities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
@@ -158,7 +158,7 @@ public class TaxiCapability {
         @NotNull
         @Override
         public <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-            return CapabilityRegistry.TAXI_CAPABILITY.orEmpty(cap, lazyTaxi.cast());
+            return CelestialCapabilities.TAXI_CAPABILITY.orEmpty(cap, lazyTaxi.cast());
         }
 
         @Override

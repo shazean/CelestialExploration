@@ -1,9 +1,7 @@
 package com.shim.celestialexploration.blocks;
 
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.blocks.blockentities.LoxTankBlockEntity;
 import com.shim.celestialexploration.blocks.blockentities.WorkbenchBlockEntity;
-import com.shim.celestialexploration.capabilities.LoxTankCapability;
 import com.shim.celestialexploration.registry.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -13,11 +11,9 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
@@ -32,15 +28,12 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fluids.capability.templates.FluidTank;
 import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.NotNull;
-import org.lwjgl.system.CallbackI;
 
 import javax.annotation.Nullable;
 
@@ -164,16 +157,16 @@ public class WorkbenchBlock extends BaseEntityBlock {
 //        } else if (fluid.containsFluid(new FluidStack(Fluids.LAVA, 1))) {
 //            return new ItemStack(Items.LAVA_BUCKET);
 //        } else
-        if (fluid.containsFluid(new FluidStack(FluidRegistry.MOLTEN_IRON.get(), 1))) {
+        if (fluid.containsFluid(new FluidStack(CelestialFluids.MOLTEN_IRON.get(), 1))) {
             return new ItemStack(Items.IRON_BLOCK);
-        } else if (fluid.containsFluid(new FluidStack(FluidRegistry.MOLTEN_STEEL.get(), 1))) {
-           return new ItemStack(BlockRegistry.STEEL_BLOCK.get());
-        } else if (fluid.containsFluid(new FluidStack(FluidRegistry.MOLTEN_COPPER.get(), 1))) {
+        } else if (fluid.containsFluid(new FluidStack(CelestialFluids.MOLTEN_STEEL.get(), 1))) {
+           return new ItemStack(CelestialBlocks.STEEL_BLOCK.get());
+        } else if (fluid.containsFluid(new FluidStack(CelestialFluids.MOLTEN_COPPER.get(), 1))) {
             return new ItemStack(Items.COPPER_BLOCK);
-        } else if (fluid.containsFluid(new FluidStack(FluidRegistry.MOLTEN_GOLD.get(), 1))) {
+        } else if (fluid.containsFluid(new FluidStack(CelestialFluids.MOLTEN_GOLD.get(), 1))) {
            return new ItemStack(Items.GOLD_BLOCK);
-        } else if (fluid.containsFluid(new FluidStack(FluidRegistry.MOLTEN_ALUMINUM.get(), 1))) {
-            return new ItemStack(BlockRegistry.ALUMINUM_BLOCK.get());
+        } else if (fluid.containsFluid(new FluidStack(CelestialFluids.MOLTEN_ALUMINUM.get(), 1))) {
+            return new ItemStack(CelestialBlocks.ALUMINUM_BLOCK.get());
         } else {
             return ItemStack.EMPTY;
         }
@@ -185,16 +178,16 @@ public class WorkbenchBlock extends BaseEntityBlock {
 //        } else if (fluid.containsFluid(new FluidStack(Fluids.LAVA, 1))) {
 //            return new ItemStack(Items.LAVA_BUCKET);
 //        } else
-        if (fluid.containsFluid(new FluidStack(FluidRegistry.MOLTEN_IRON.get(), 1))) {
+        if (fluid.containsFluid(new FluidStack(CelestialFluids.MOLTEN_IRON.get(), 1))) {
             return new ItemStack(Items.IRON_INGOT);
-        } else if (fluid.containsFluid(new FluidStack(FluidRegistry.MOLTEN_STEEL.get(), 1))) {
-            return new ItemStack(ItemRegistry.STEEL_INGOT.get());
-        } else if (fluid.containsFluid(new FluidStack(FluidRegistry.MOLTEN_COPPER.get(), 1))) {
+        } else if (fluid.containsFluid(new FluidStack(CelestialFluids.MOLTEN_STEEL.get(), 1))) {
+            return new ItemStack(CelestialItems.STEEL_INGOT.get());
+        } else if (fluid.containsFluid(new FluidStack(CelestialFluids.MOLTEN_COPPER.get(), 1))) {
             return new ItemStack(Items.COPPER_INGOT);
-        } else if (fluid.containsFluid(new FluidStack(FluidRegistry.MOLTEN_GOLD.get(), 1))) {
+        } else if (fluid.containsFluid(new FluidStack(CelestialFluids.MOLTEN_GOLD.get(), 1))) {
             return new ItemStack(Items.GOLD_INGOT);
-        } else if (fluid.containsFluid(new FluidStack(FluidRegistry.MOLTEN_ALUMINUM.get(), 1))) {
-            return new ItemStack(ItemRegistry.ALUMINUM_INGOT.get());
+        } else if (fluid.containsFluid(new FluidStack(CelestialFluids.MOLTEN_ALUMINUM.get(), 1))) {
+            return new ItemStack(CelestialItems.ALUMINUM_INGOT.get());
         } else {
             return ItemStack.EMPTY;
         }
@@ -209,7 +202,7 @@ public class WorkbenchBlock extends BaseEntityBlock {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
-        return createTickerHelper(blockEntityType, BlockEntityRegistry.WORKBENCH_BLOCK_ENTITY.get(),
+        return createTickerHelper(blockEntityType, CelestialBlockEntities.WORKBENCH_BLOCK_ENTITY.get(),
                 WorkbenchBlockEntity::tick);
     }
 }

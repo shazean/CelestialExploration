@@ -2,8 +2,8 @@ package com.shim.celestialexploration.blocks.blockentities;
 
 import com.shim.celestialexploration.blocks.LoxTankBlock;
 import com.shim.celestialexploration.capabilities.LoxTankCapability;
-import com.shim.celestialexploration.registry.BlockEntityRegistry;
-import com.shim.celestialexploration.registry.CapabilityRegistry;
+import com.shim.celestialexploration.registry.CelestialBlockEntities;
+import com.shim.celestialexploration.registry.CelestialCapabilities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -19,7 +19,7 @@ import javax.annotation.Nonnull;
 public class LoxTankBlockEntity extends BlockEntity {
 
     public LoxTankBlockEntity(BlockPos worldPosition, BlockState blockState) {
-        super(BlockEntityRegistry.LOX_TANK_BLOCK_ENTITY.get(), worldPosition, blockState);
+        super(CelestialBlockEntities.LOX_TANK_BLOCK_ENTITY.get(), worldPosition, blockState);
         setChanged();
     }
 
@@ -29,7 +29,7 @@ public class LoxTankBlockEntity extends BlockEntity {
     @Nonnull
     @Override
     public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap, @javax.annotation.Nullable Direction side) {
-        if (cap == CapabilityRegistry.LOX_TANK_CAPABILITY) {
+        if (cap == CelestialCapabilities.LOX_TANK_CAPABILITY) {
             return lazyLoxHandler.cast();
         }
         return super.getCapability(cap, side);

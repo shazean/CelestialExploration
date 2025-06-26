@@ -2,10 +2,10 @@ package com.shim.celestialexploration.inventory.menus;
 
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.capabilities.TaxiCapability;
-import com.shim.celestialexploration.entity.entity.vehicle.SpaceTaxi;
+import com.shim.celestialexploration.entity.vehicle.SpaceTaxi;
 import com.shim.celestialexploration.packets.*;
-import com.shim.celestialexploration.registry.CapabilityRegistry;
-import com.shim.celestialexploration.registry.MenuRegistry;
+import com.shim.celestialexploration.registry.CelestialCapabilities;
+import com.shim.celestialexploration.registry.CelestialMenus;
 import com.shim.celestialexploration.util.CelestialUtil;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.Entity;
@@ -34,7 +34,7 @@ public class SpaceTaxiMenu extends AbstractContainerMenu {
     }
 
     public SpaceTaxiMenu(int containerId, Inventory inv, Entity entity, ContainerData data) {
-        super(MenuRegistry.SPACE_TAXI_MENU.get(), containerId);
+        super(CelestialMenus.SPACE_TAXI_MENU.get(), containerId);
 
         checkContainerSize(inv, 6);
         checkContainerDataCount(data, 8);
@@ -49,7 +49,7 @@ public class SpaceTaxiMenu extends AbstractContainerMenu {
         //TODO filter by willingness, and canRide
         nearbyEntites = level.getEntities(player, player.getBoundingBox().inflate(32.0D), EntitySelector.NO_SPECTATORS.and(Entity::isPickable).and(EntitySelector.LIVING_ENTITY_STILL_ALIVE));
 
-        TaxiCapability.ITaxi taxiCap = CelestialExploration.getCapability(player, CapabilityRegistry.TAXI_CAPABILITY);
+        TaxiCapability.ITaxi taxiCap = CelestialExploration.getCapability(player, CelestialCapabilities.TAXI_CAPABILITY);
         if (taxiCap != null) {
             this.taxiStations = taxiCap.getTaxiStations();
         } else {

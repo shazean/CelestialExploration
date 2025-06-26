@@ -70,7 +70,7 @@
         {
           "type": "minecraft:item",
           "weight": 2,
-          "name": "celestialexploration:mars_stone"
+          "name": "celestialexploration:moon_stone"
         },
         {
           "type": "minecraft:item",
@@ -101,6 +101,10 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:orange_dye"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "celestialexploration:lunar_goo"
         },
         {
           "type": "minecraft:item",

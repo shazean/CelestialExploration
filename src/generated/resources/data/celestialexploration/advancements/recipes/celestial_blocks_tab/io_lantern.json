@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "celestialexploration:io_lantern"
+    ]
+  },
+  "criteria": {
+    "has_io_dust": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:io_dust"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "celestialexploration:io_lantern"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_io_dust",
+      "has_the_recipe"
+    ]
+  ]
+}

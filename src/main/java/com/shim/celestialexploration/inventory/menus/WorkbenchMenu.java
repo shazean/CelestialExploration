@@ -6,11 +6,10 @@ import com.shim.celestialexploration.blocks.blockentities.WorkbenchBlockEntity;
 import com.shim.celestialexploration.inventory.FuelSlot;
 import com.shim.celestialexploration.inventory.WorkbenchResultSlot;
 import com.shim.celestialexploration.inventory.containers.WorkbenchCraftingContainer;
-import com.shim.celestialexploration.item.BasinItem;
 import com.shim.celestialexploration.recipes.WorkbenchCraftingRecipe;
-import com.shim.celestialexploration.registry.BlockRegistry;
-import com.shim.celestialexploration.registry.ItemRegistry;
-import com.shim.celestialexploration.registry.MenuRegistry;
+import com.shim.celestialexploration.registry.CelestialBlocks;
+import com.shim.celestialexploration.registry.CelestialItems;
+import com.shim.celestialexploration.registry.CelestialMenus;
 import com.shim.celestialexploration.util.CelestialUtil;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.protocol.game.ClientboundContainerSetSlotPacket;
@@ -47,7 +46,7 @@ public class WorkbenchMenu extends RecipeBookMenu<WorkbenchCraftingContainer> {
     }
 
     public WorkbenchMenu(int containerId, Inventory inv, BlockEntity entity, ContainerData data, ContainerLevelAccess access) {
-        super(MenuRegistry.WORKBENCH_MENU.get(), containerId);
+        super(CelestialMenus.WORKBENCH_MENU.get(), containerId);
 
         checkContainerSize(inv, 12);
         blockEntity = ((WorkbenchBlockEntity) entity);
@@ -154,7 +153,7 @@ public class WorkbenchMenu extends RecipeBookMenu<WorkbenchCraftingContainer> {
 
     @Override
     public boolean stillValid(Player player) {
-        return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()), player, BlockRegistry.WORKBENCH.get());
+        return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()), player, CelestialBlocks.WORKBENCH.get());
     }
 
     private void addPlayerInventory(Inventory playerInventory) {
@@ -197,12 +196,12 @@ public class WorkbenchMenu extends RecipeBookMenu<WorkbenchCraftingContainer> {
             ItemStack itemstack = ItemStack.EMPTY;
             Optional<WorkbenchCraftingRecipe> recipe = level.getRecipeManager().getRecipeFor(WorkbenchCraftingRecipe.Type.INSTANCE, craftingContainer, level);
 
-            if (craftingContainer.hasAnyOf(ImmutableSet.of(ItemRegistry.FLUID_BASIN.get()))) {
-                int index = getIndexOfItem(craftingContainer, ItemRegistry.FLUID_BASIN.get().getDefaultInstance());
+            if (craftingContainer.hasAnyOf(ImmutableSet.of(CelestialItems.FLUID_BASIN.get()))) {
+                int index = getIndexOfItem(craftingContainer, CelestialItems.FLUID_BASIN.get().getDefaultInstance());
 
                 if (index != -1 && canAddFluid(craftingContainer.getItem(index), craftingContainer.getMenu().getFluid())) {
                     ItemStack existingBasin = craftingContainer.getItem(index);
-                    itemstack = new ItemStack(ItemRegistry.FLUID_BASIN.get());
+                    itemstack = new ItemStack(CelestialItems.FLUID_BASIN.get());
 
                     IFluidHandlerItem craftingCap = CelestialExploration.getCapability(existingBasin, CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY);
                     IFluidHandlerItem resultCap = CelestialExploration.getCapability(itemstack, CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY);

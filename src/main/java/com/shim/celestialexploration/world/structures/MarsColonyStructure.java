@@ -2,21 +2,17 @@ package com.shim.celestialexploration.world.structures;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.shim.celestialexploration.CelestialExploration;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.feature.StructureFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.JigsawConfiguration;
-import net.minecraft.world.level.levelgen.structure.BuiltinStructureSets;
 import net.minecraft.world.level.levelgen.structure.PoolElementStructurePiece;
 import net.minecraft.world.level.levelgen.structure.PostPlacementProcessor;
 import net.minecraft.world.level.levelgen.structure.pieces.PieceGenerator;
 import net.minecraft.world.level.levelgen.structure.pieces.PieceGeneratorSupplier;
 import net.minecraft.world.level.levelgen.structure.pools.JigsawPlacement;
 import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
-import org.apache.logging.log4j.Level;
 
 import java.util.Optional;
 
@@ -41,11 +37,11 @@ public class MarsColonyStructure extends StructureFeature<JigsawConfiguration> {
 
     private static boolean isFeatureChunk(PieceGeneratorSupplier.Context<JigsawConfiguration> context) {
         ChunkPos chunkPos = context.chunkPos();
-        ChunkGenerator chunkGenerator = context.chunkGenerator();
 
         BlockPos pos = chunkPos.getMiddleBlockPosition(0);
 
         return pos.getY() <= 84;
+//                && !context.chunkGenerator().hasFeatureChunkInRange(StructureSet.entry(StructureRegistry.MARS_LABYRINTH.getHolder().get()), context.seed(), chunkPos.x, chunkPos.z, 10);
     }
 
     public static Optional<PieceGenerator<JigsawConfiguration>> createPiecesGenerator(PieceGeneratorSupplier.Context<JigsawConfiguration> context) {
@@ -61,8 +57,8 @@ public class MarsColonyStructure extends StructureFeature<JigsawConfiguration> {
                 JigsawPlacement.addPieces(context, PoolElementStructurePiece::new, blockpos,false, true);
 
         if (structurePiecesGenerator.isPresent()) {
-            CelestialExploration.LOGGER.log(Level.DEBUG, "Mars colony at {}", blockpos);
-        }
+//            CelestialExploration.LOGGER.log(Level.DEBUG, "Mars colony at {}", blockpos);
+        }es:
 
         return structurePiecesGenerator;
     }

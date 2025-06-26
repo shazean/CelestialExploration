@@ -7,38 +7,77 @@
 			"bones": {
 				"engineSquaresL": {
 					"rotation": {
-						"vector": [0, "Math.sin(query.anim_time * 90) * 5", "Math.abs(query.anim_time * 90) * -1"]
+						"vector": [0, "Math.sin(query.anim_time * 90) * 8", "Math.abs(query.anim_time * 90) * -2"]
 					}
 				},
 				"engineSquaresR": {
 					"rotation": {
-						"vector": [0, "Math.sin(query.anim_time * 90) * 5", "Math.abs(query.anim_time * 90) * -1"]
+						"vector": [0, "Math.sin(query.anim_time * 90) * 8", "Math.abs(query.anim_time * 90) * -2"]
 					}
 				},
 				"boosterSquareL": {
 					"rotation": {
-						"vector": [0, "Math.cos(query.anim_time * 180) * 15", "Math.abs(query.anim_time * 270) * -1"]
+						"vector": [0, "Math.cos(query.anim_time * 180) * 30", "Math.abs(query.anim_time * 180) * -2"]
+					},
+					"scale": {
+						"vector": [1, 1, 1]
 					}
 				},
 				"boosterSquareR": {
 					"rotation": {
-						"vector": [0, "Math.cos(query.anim_time * 180) * 15", "Math.abs(query.anim_time * 270) * -1"]
+						"vector": [0, "Math.cos(query.anim_time * 180) * 30", "Math.abs(query.anim_time * 180) * -2"]
 					}
 				},
 				"smallSquareL": {
 					"rotation": {
-						"vector": [0, "Math.cos(query.anim_time * 180) * 15", "Math.abs(query.anim_time * 270) * -1"]
+						"vector": [0, "Math.cos(query.anim_time * 180) * 16", "Math.abs(query.anim_time * 270) * -2"]
 					}
 				},
 				"smallSquareR": {
 					"rotation": {
-						"vector": [0, "Math.cos(query.anim_time * 180) * 15", "Math.abs(query.anim_time * 270) * -1"]
+						"vector": [0, "Math.cos(query.anim_time * 180) * 16", "Math.abs(query.anim_time * 270) * -2"]
 					}
 				}
 			}
 		},
 		"idle": {
-			"loop": true
+			"loop": true,
+			"animation_length": 4,
+			"bones": {
+				"engineSquaresL": {
+					"rotation": {
+						"vector": [0, "Math.sin(query.anim_time * 90) * 5", "Math.abs(query.anim_time * 45) * -1"]
+					}
+				},
+				"engineSquaresR": {
+					"rotation": {
+						"vector": [0, "Math.sin(query.anim_time * 90) * 5", "Math.abs(query.anim_time * 45) * -1"]
+					}
+				},
+				"boosterSquareL": {
+					"rotation": {
+						"vector": [0, "Math.cos(query.anim_time * 180) * 8", "Math.abs(query.anim_time * 180) * -1"]
+					},
+					"scale": {
+						"vector": [1, 1, 1]
+					}
+				},
+				"boosterSquareR": {
+					"rotation": {
+						"vector": [0, "Math.cos(query.anim_time * 180) * 8", "Math.abs(query.anim_time * 180) * -1"]
+					}
+				},
+				"smallSquareL": {
+					"rotation": {
+						"vector": [0, "Math.cos(query.anim_time * 180) * 8", "Math.abs(query.anim_time * 180) * -1"]
+					}
+				},
+				"smallSquareR": {
+					"rotation": {
+						"vector": [0, "Math.cos(query.anim_time * 180) * 8", "Math.abs(query.anim_time * 90) * -1"]
+					}
+				}
+			}
 		}
 	},
 	"azurelib_format_version": 2

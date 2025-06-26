@@ -1,0 +1,9 @@
+{
+  "parent": "celestialexploration:block/template_sand_path",
+  "textures": {
+    "side": "celestialexploration:block/mercury_sand_path_side",
+    "top": "celestialexploration:block/mercury_sand_path_top",
+    "bottom": "celestialexploration:block/mercury_sand",
+    "particle": "celestialexploration:block/mercury_sand"
+  }
+}

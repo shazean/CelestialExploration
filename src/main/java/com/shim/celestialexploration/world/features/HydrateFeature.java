@@ -1,16 +1,12 @@
 package com.shim.celestialexploration.world.features;
 
 import com.mojang.serialization.Codec;
-import com.shim.celestialexploration.blocks.PenitenteBlock;
-import com.shim.celestialexploration.registry.BlockRegistry;
+import com.shim.celestialexploration.registry.CelestialBlocks;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.state.properties.DripstoneThickness;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
-import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 
 import java.util.Random;
@@ -73,7 +69,7 @@ public class HydrateFeature extends Feature<NoneFeatureConfiguration> {
             pos = new BlockPos(pos.getX() + l, worldgenlevel.getHeight(Heightmap.Types.WORLD_SURFACE, pos.getX(), pos.getZ()), pos.getZ() + h);
 
             //TODO if sturdy face below
-            worldgenlevel.setBlock(pos.below(), BlockRegistry.EUROPA_HYDRATE.get().defaultBlockState(), 1);
+            worldgenlevel.setBlock(pos.below(), CelestialBlocks.EUROPA_HYDRATE.get().defaultBlockState(), 1);
 //                }
         }
 

@@ -1,17 +1,15 @@
 package com.shim.celestialexploration.integration;
 
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.inventory.menus.WorkbenchMenu;
 import com.shim.celestialexploration.recipes.WorkbenchCraftingRecipe;
 import com.shim.celestialexploration.recipes.WorkbenchSmeltingRecipe;
-import com.shim.celestialexploration.registry.BlockRegistry;
+import com.shim.celestialexploration.registry.CelestialBlocks;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
-import mezz.jei.api.registration.IRecipeTransferRegistration;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeManager;
@@ -38,7 +36,7 @@ public class JEIPlugin implements IModPlugin {
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
         IModPlugin.super.registerRecipeCatalysts(registration);
-        registration.addRecipeCatalyst(new ItemStack(BlockRegistry.WORKBENCH.get()), workbenchCraftingRecipeType, workbenchSmeltingRecipeType);
+        registration.addRecipeCatalyst(new ItemStack(CelestialBlocks.WORKBENCH.get()), workbenchCraftingRecipeType, workbenchSmeltingRecipeType);
     }
 
     @Override

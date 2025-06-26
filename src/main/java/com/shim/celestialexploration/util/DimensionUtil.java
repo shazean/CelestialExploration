@@ -1,27 +1,22 @@
 package com.shim.celestialexploration.util;
 
-import com.shim.celestialexploration.registry.DimensionRegistry;
+import com.shim.celestialexploration.registry.CelestialDimensions;
 import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
 import net.minecraft.Util;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.phys.Vec3;
 
-import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 
 public class DimensionUtil {
     private static final Map<ResourceKey<Level>, gravityType> DIMENSION_GRAVITY = Util.make(new Object2ObjectArrayMap<>(), (dimension) -> {
         dimension.defaultReturnValue(gravityType.NORMAL);
-        dimension.put(DimensionRegistry.SPACE, gravityType.LOW);
-        dimension.put(DimensionRegistry.MOON, gravityType.LOW);
-        dimension.put(DimensionRegistry.MARS, gravityType.LOW);
-        dimension.put(DimensionRegistry.VENUS, gravityType.NORMAL);
-        dimension.put(DimensionRegistry.MERCURY, gravityType.LOW);
+        dimension.put(CelestialDimensions.SPACE, gravityType.LOW);
+        dimension.put(CelestialDimensions.MOON, gravityType.LOW);
+        dimension.put(CelestialDimensions.MARS, gravityType.LOW);
+        dimension.put(CelestialDimensions.VENUS, gravityType.NORMAL);
+        dimension.put(CelestialDimensions.MERCURY, gravityType.LOW);
     });
 
     public static void addDimensionGravity(ResourceKey<Level> dimension, gravityType gravityType) {

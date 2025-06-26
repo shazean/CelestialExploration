@@ -3,7 +3,7 @@ package com.shim.celestialexploration.integration;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.blocks.blockentities.WorkbenchBlockEntity;
 import com.shim.celestialexploration.recipes.WorkbenchCraftingRecipe;
-import com.shim.celestialexploration.registry.BlockRegistry;
+import com.shim.celestialexploration.registry.CelestialBlocks;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.forge.ForgeTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
@@ -32,7 +32,7 @@ public class WorkbenchCraftingRecipeCategory implements IRecipeCategory<Workbenc
 
     public WorkbenchCraftingRecipeCategory(IGuiHelper helper) {
         this.background = helper.createDrawable(TEXTURE, 0, 0, 176, 80);
-        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(BlockRegistry.WORKBENCH.get()));
+        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(CelestialBlocks.WORKBENCH.get()));
     }
 
     @Override

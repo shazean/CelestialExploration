@@ -1,6 +1,6 @@
 package com.shim.celestialexploration.particles;
 
-import com.shim.celestialexploration.registry.ParticleRegistry;
+import com.shim.celestialexploration.registry.CelestialParticles;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
 import net.minecraft.core.particles.ParticleTypes;
@@ -45,7 +45,7 @@ public class SulfurParticle extends TextureSheetParticle {
             if (this.random.nextFloat() > f) {
                 this.level.addParticle(ParticleTypes.SMOKE, this.x, this.y, this.z, this.xd, this.yd, this.zd);
                 if (this.random.nextInt(10) < 2) {
-                    this.level.addParticle(ParticleRegistry.SULFUR_FIRE_FLAME.get(), this.x + this.random.nextFloat(1.2F), this.y + this.random.nextFloat(1.5F), this.z - this.random.nextFloat(1.4F), this.xd, this.yd, this.zd);
+                    this.level.addParticle(CelestialParticles.SULFUR_FIRE_FLAME.get(), this.x + this.random.nextFloat(1.2F), this.y + this.random.nextFloat(1.5F), this.z - this.random.nextFloat(1.4F), this.xd, this.yd, this.zd);
                 }
             }
         }

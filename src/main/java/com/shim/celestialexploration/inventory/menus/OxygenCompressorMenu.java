@@ -1,11 +1,10 @@
 package com.shim.celestialexploration.inventory.menus;
 
-import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.blocks.blockentities.OxygenCompressorBlockEntity;
 import com.shim.celestialexploration.inventory.FuelSlot;
 import com.shim.celestialexploration.inventory.OxygenTankSlot;
-import com.shim.celestialexploration.registry.BlockRegistry;
-import com.shim.celestialexploration.registry.MenuRegistry;
+import com.shim.celestialexploration.registry.CelestialBlocks;
+import com.shim.celestialexploration.registry.CelestialMenus;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -14,7 +13,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.items.CapabilityItemHandler;
-import net.minecraftforge.items.SlotItemHandler;
 
 public class OxygenCompressorMenu extends AbstractContainerMenu {
     private final OxygenCompressorBlockEntity blockEntity;
@@ -27,7 +25,7 @@ public class OxygenCompressorMenu extends AbstractContainerMenu {
     }
 
     public OxygenCompressorMenu(int containerId, Inventory inv, BlockEntity entity, ContainerData data) {
-        super(MenuRegistry.OXYGEN_COMPRESSOR_MENU.get(), containerId);
+        super(CelestialMenus.OXYGEN_COMPRESSOR_MENU.get(), containerId);
 
         checkContainerSize(inv, 6);
         blockEntity = ((OxygenCompressorBlockEntity) entity);
@@ -98,7 +96,7 @@ public class OxygenCompressorMenu extends AbstractContainerMenu {
     @Override
     public boolean stillValid(Player pPlayer) {
         return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()),
-                pPlayer, BlockRegistry.OXYGEN_COMPRESSOR.get());
+                pPlayer, CelestialBlocks.OXYGEN_COMPRESSOR.get());
     }
 
     private void addPlayerInventory(Inventory playerInventory) {

@@ -1,15 +1,10 @@
 package com.shim.celestialexploration.fluids;
 
-import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.registry.ParticleRegistry;
+import com.shim.celestialexploration.registry.CelestialParticles;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
@@ -18,7 +13,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.LavaFluid;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
 
 import java.util.Random;
@@ -38,7 +32,6 @@ public class SulfurFluid extends ForgeFlowingFluid {
         return 0;
     }
 
-
     public void animateTick(Level p_76208_, BlockPos p_76209_, FluidState p_76210_, Random p_76211_) {
         BlockPos blockpos = p_76209_.above();
         if (p_76208_.getBlockState(blockpos).isAir() && !p_76208_.getBlockState(blockpos).isSolidRender(p_76208_, blockpos)) {
@@ -46,7 +39,7 @@ public class SulfurFluid extends ForgeFlowingFluid {
                 double d0 = (double)p_76209_.getX() + p_76211_.nextDouble();
                 double d1 = (double)p_76209_.getY() + 1.0D;
                 double d2 = (double)p_76209_.getZ() + p_76211_.nextDouble();
-                p_76208_.addParticle(ParticleRegistry.SULFUR_PARTICLE.get(), d0, d1, d2, 0.0D, 0.0D, 0.0D);
+                p_76208_.addParticle(CelestialParticles.SULFUR_PARTICLE.get(), d0, d1, d2, 0.0D, 0.0D, 0.0D);
                 p_76208_.playLocalSound(d0, d1, d2, SoundEvents.LAVA_POP, SoundSource.BLOCKS, 0.2F + p_76211_.nextFloat() * 0.2F, 0.9F + p_76211_.nextFloat() * 0.15F, false);
             }
 
@@ -54,13 +47,11 @@ public class SulfurFluid extends ForgeFlowingFluid {
                 p_76208_.playLocalSound((double)p_76209_.getX(), (double)p_76209_.getY(), (double)p_76209_.getZ(), SoundEvents.LAVA_AMBIENT, SoundSource.BLOCKS, 0.2F + p_76211_.nextFloat() * 0.2F, 0.9F + p_76211_.nextFloat() * 0.15F, false);
             }
         }
-
     }
 
     protected boolean isRandomlyTicking() {
         return true;
     }
-
 
     public void randomTick(Level p_76239_, BlockPos p_76240_, FluidState p_76241_, Random p_76242_) {
         if (p_76239_.getGameRules().getBoolean(GameRules.RULE_DOFIRETICK)) {
@@ -96,7 +87,6 @@ public class SulfurFluid extends ForgeFlowingFluid {
                     }
                 }
             }
-
         }
     }
 
@@ -106,7 +96,6 @@ public class SulfurFluid extends ForgeFlowingFluid {
                 return true;
             }
         }
-
         return false;
     }
 
@@ -115,10 +104,8 @@ public class SulfurFluid extends ForgeFlowingFluid {
     }
 
 
-    public static class Flowing extends SulfurFluid
-    {
-        public Flowing(Properties properties)
-        {
+    public static class Flowing extends SulfurFluid {
+        public Flowing(Properties properties) {
             super(properties);
             registerDefaultState(getStateDefinition().any().setValue(LEVEL, 7));
         }
@@ -137,10 +124,8 @@ public class SulfurFluid extends ForgeFlowingFluid {
         }
     }
 
-    public static class Source extends SulfurFluid
-    {
-        public Source(Properties properties)
-        {
+    public static class Source extends SulfurFluid {
+        public Source(Properties properties) {
             super(properties);
         }
 

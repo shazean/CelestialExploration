@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XX"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:io_stone"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:io_stone_pressure_plate"
+  }
+}

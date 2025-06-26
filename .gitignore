@@ -12,6 +12,7 @@
 
 # other
 eclipse
+.idea
 #run
 .DS_Store
 

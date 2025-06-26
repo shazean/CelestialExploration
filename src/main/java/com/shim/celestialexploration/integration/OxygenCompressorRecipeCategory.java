@@ -6,7 +6,7 @@ import com.google.common.cache.LoadingCache;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.recipes.OxygenCompressorRecipe;
-import com.shim.celestialexploration.registry.BlockRegistry;
+import com.shim.celestialexploration.registry.CelestialBlocks;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
@@ -40,7 +40,7 @@ public class OxygenCompressorRecipeCategory implements IRecipeCategory<OxygenCom
 
     public OxygenCompressorRecipeCategory(IGuiHelper helper) {
         this.background = helper.createDrawable(TEXTURE, 0, 0, 176, 80);
-        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(BlockRegistry.OXYGEN_COMPRESSOR.get()));
+        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(CelestialBlocks.OXYGEN_COMPRESSOR.get()));
         this.staticFlame = helper.createDrawable(TEXTURE, 176, 0, 14, 14);
         this.animatedFlame = helper.createAnimatedDrawable(staticFlame, 300, IDrawableAnimated.StartDirection.TOP, true);
         this.cachedArrows = CacheBuilder.newBuilder()

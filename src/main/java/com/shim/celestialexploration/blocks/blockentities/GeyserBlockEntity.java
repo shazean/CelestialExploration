@@ -1,8 +1,6 @@
 package com.shim.celestialexploration.blocks.blockentities;
 
-import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.blocks.GeyserBlock;
-import com.shim.celestialexploration.registry.BlockEntityRegistry;
+import com.shim.celestialexploration.registry.CelestialBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -14,7 +12,7 @@ import static com.shim.celestialexploration.blocks.GeyserBlock.ENABLED;
 
 public class GeyserBlockEntity extends BlockEntity {
     public GeyserBlockEntity(BlockPos worldPosition, BlockState blockState) {
-        super(BlockEntityRegistry.GEYSER_BLOCK_ENTITY.get(), worldPosition, blockState);
+        super(CelestialBlockEntities.GEYSER_BLOCK_ENTITY.get(), worldPosition, blockState);
     }
 
     final int MIN_TICKS = 20 * 20;

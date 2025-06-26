@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "celestialexploration:io_stone",
+    "celestialexploration:io_stone_slab",
+    "celestialexploration:io_stone_stairs",
+    "celestialexploration:io_smooth_stone",
+    "celestialexploration:io_smooth_stone_slab",
+    "celestialexploration:io_bricks",
+    "celestialexploration:io_brick_slab",
+    "celestialexploration:io_brick_stairs",
+    "celestialexploration:io_brick_wall",
+    "celestialexploration:chiseled_io_bricks",
+    "celestialexploration:io_brick_pillar",
+    "celestialexploration:cracked_io_bricks"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "parent": "celestialexploration:enter_mercury",
+  "display": {
+    "icon": {
+      "item": "celestialexploration:io_bricks"
+    },
+    "title": {
+      "translate": "advancements.celestial.enter_io.title"
+    },
+    "description": {
+      "translate": "advancements.celestial.enter_io.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "entered_io": {
+      "trigger": "minecraft:changed_dimension",
+      "conditions": {
+        "to": "celestialexploration:io"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "entered_io"
+    ]
+  ]
+}

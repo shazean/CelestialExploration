@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:glass"
+    },
+    {
+      "item": "celestialexploration:ganymede_dust"
+    }
+  ],
+  "result": {
+    "item": "celestialexploration:luminous_red_glass"
+  }
+}

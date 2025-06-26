@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "celestialexploration:io_cobbled_deepslate"
+  },
+  "result": "celestialexploration:io_deepslate_tiles",
+  "count": 1
+}

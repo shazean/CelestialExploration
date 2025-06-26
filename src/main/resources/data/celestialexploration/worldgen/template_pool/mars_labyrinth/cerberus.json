@@ -1,0 +1,17 @@
+{
+  "name": "celestialexploration:mars_labyrinth/cerberus",
+
+  "fallback": "minecraft:empty",
+
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "celestialexploration:mars_labyrinth_cerberus",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

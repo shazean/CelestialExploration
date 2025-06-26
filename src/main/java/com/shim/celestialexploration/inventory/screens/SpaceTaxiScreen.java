@@ -6,8 +6,8 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.capabilities.TaxiCapability;
 import com.shim.celestialexploration.inventory.menus.SpaceTaxiMenu;
-import com.shim.celestialexploration.registry.DimensionRegistry;
-import com.shim.celestialexploration.registry.TagRegistry;
+import com.shim.celestialexploration.registry.CelestialDimensions;
+import com.shim.celestialexploration.registry.CelestialTags;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.core.BlockPos;
@@ -90,7 +90,7 @@ public class SpaceTaxiScreen extends AbstractContainerScreen<SpaceTaxiMenu> {
 
             if (entity instanceof Villager) {
                 blit(poseStack, x + 12 + xPos, y + 22 + yPos, this.getBlitOffset(), this.imageWidth + 1, 28 + 9, 8, 8, 512, 256);
-            } else if (entity.getType().is(TagRegistry.Entities.FARM_ANIMALS)) {
+            } else if (entity.getType().is(CelestialTags.Entities.FARM_ANIMALS)) {
                 blit(poseStack, x + 12 + xPos, y + 22 + yPos, this.getBlitOffset(), this.imageWidth + 10, 28 + 9, 8, 8, 512, 256);
             } else if (entity instanceof Mob) {
                 blit(poseStack, x + 12 + xPos, y + 22 + yPos, this.getBlitOffset(), this.imageWidth + 10 + 18, 28 + 9, 8, 8, 512, 256);
@@ -115,12 +115,12 @@ public class SpaceTaxiScreen extends AbstractContainerScreen<SpaceTaxiMenu> {
             else xPos = 72;
 
             int dimOffset;
-            if (dimension.equals(DimensionRegistry.MERCURY)) dimOffset = 0;
-            else if (dimension.equals(DimensionRegistry.VENUS)) dimOffset = 9;
+            if (dimension.equals(CelestialDimensions.MERCURY)) dimOffset = 0;
+            else if (dimension.equals(CelestialDimensions.VENUS)) dimOffset = 9;
             else if (dimension.equals(Level.OVERWORLD)) dimOffset = 18;
-            else if (dimension.equals(DimensionRegistry.MOON)) dimOffset = 27;
-            else if (dimension.equals(DimensionRegistry.MARS)) dimOffset = 36;
-            else if (dimension.equals(DimensionRegistry.JUPITER)) dimOffset = 45;
+            else if (dimension.equals(CelestialDimensions.MOON)) dimOffset = 27;
+            else if (dimension.equals(CelestialDimensions.MARS)) dimOffset = 36;
+            else if (dimension.equals(CelestialDimensions.JUPITER)) dimOffset = 45;
             else dimOffset = 81;
 
             blit(poseStack, x + 12 + xPos, y + 110 + yPos, this.getBlitOffset(), this.imageWidth + 1 + dimOffset, 27 + 1, 8, 8, 512, 256);

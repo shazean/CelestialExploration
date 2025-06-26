@@ -13,7 +13,6 @@ public class CelestialScaledTeleport extends AbstractCelestialTeleportData {
 
     @Override
     public Vec3 getOutputCoordinates(int x, int z) {
-        CelestialExploration.LOGGER.debug("chunk xz: " + x + "/" + z + ", scale: " + scale + ", x * ratio * scale:" + (x * CelestialUtil.getSpaceRatio() * scale) + ", z: " + (z * CelestialUtil.getSpaceRatio() * scale));
         return new Vec3(x * scale, 0, z * scale);
     }
 }

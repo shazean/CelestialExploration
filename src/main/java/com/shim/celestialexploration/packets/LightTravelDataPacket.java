@@ -2,11 +2,9 @@ package com.shim.celestialexploration.packets;
 
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.capabilities.LightTravelCapability;
-import com.shim.celestialexploration.registry.CapabilityRegistry;
-import net.minecraft.client.Minecraft;
+import com.shim.celestialexploration.registry.CelestialCapabilities;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.network.NetworkEvent;
 
@@ -40,7 +38,7 @@ public class LightTravelDataPacket {
             player = CelestialExploration.PROXY.getPlayer();
 
             if (player != null) {
-                LightTravelCapability.ILightTravel travelCap = CelestialExploration.getCapability(player, CapabilityRegistry.LIGHT_TRAVEL_CAPABILITY);
+                LightTravelCapability.ILightTravel travelCap = CelestialExploration.getCapability(player, CelestialCapabilities.LIGHT_TRAVEL_CAPABILITY);
 
                 if (travelCap != null) {
                     travelCap.setData(message.travelData);

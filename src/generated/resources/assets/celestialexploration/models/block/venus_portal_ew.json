@@ -1,0 +1,7 @@
+{
+  "parent": "celestialexploration:block/template_portal_ew",
+  "textures": {
+    "portal": "celestialexploration:block/venus_portal",
+    "particle": "celestialexploration:block/venus_portal"
+  }
+}

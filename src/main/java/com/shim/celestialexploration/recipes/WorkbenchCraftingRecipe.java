@@ -34,7 +34,6 @@ import java.util.Set;
 public class WorkbenchCraftingRecipe implements Recipe<WorkbenchCraftingContainer> {
     static int MAX_WIDTH = 3;
     static int MAX_HEIGHT = 3;
-
     private final ResourceLocation id;
     private final ItemStack result;
     private final NonNullList<Ingredient> recipeItems;

@@ -1,0 +1,12 @@
+{
+  "target_dimension": "celestialexploration:io",
+  "spawn_chunk_coordinates": {
+    "x": 6,
+    "z": 2
+  },
+  "blocks": [
+    "celestialexploration:io_core",
+    "celestialexploration:io_stone",
+    "celestialexploration:io_deepslate"
+  ]
+}

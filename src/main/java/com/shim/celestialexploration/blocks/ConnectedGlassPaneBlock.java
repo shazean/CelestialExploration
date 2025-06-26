@@ -1,7 +1,6 @@
 package com.shim.celestialexploration.blocks;
 
-import com.shim.celestialexploration.registry.BlockRegistry;
-import com.shim.celestialexploration.registry.TagRegistry;
+import com.shim.celestialexploration.registry.CelestialTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;
@@ -20,7 +19,6 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.common.Tags;
 
 public class ConnectedGlassPaneBlock extends IronBarsBlock {
     public static final BooleanProperty NORTH = BlockStateProperties.NORTH;
@@ -198,7 +196,7 @@ public class ConnectedGlassPaneBlock extends IronBarsBlock {
 //        return true;
 //        return !isExceptionForConnection(state) && p_54219_ || state.getBlock() instanceof ConnectedGlassPaneBlock || state.is(BlockTags.WALLS);
 //        return !(state.getBlock() instanceof AirBlock);
-        return state.is(TagRegistry.Blocks.CONNECTED_GLASS_PANE);
+        return state.is(CelestialTags.Blocks.CONNECTED_GLASS_PANE);
     }
 
 //    @Override

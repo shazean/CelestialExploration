@@ -1,11 +1,10 @@
 package com.shim.celestialexploration.world.features;
 
 import com.mojang.serialization.Codec;
-import com.shim.celestialexploration.registry.BlockRegistry;
+import com.shim.celestialexploration.registry.CelestialBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
@@ -27,7 +26,7 @@ public class AsteroidFeature extends Feature<NoneFeatureConfiguration> {
             for (int j = Mth.floor(-f); j <= Mth.ceil(f); ++j) {
                 for (int k = Mth.floor(-f); k <= Mth.ceil(f); ++k) {
                     if ((float) (j * j + k * k) <= (f + 1.0F) * (f + 1.0F)) {
-                        this.setBlock(worldgenlevel, blockpos.offset(j, i, k), BlockRegistry.METEOR.get().defaultBlockState());
+                        this.setBlock(worldgenlevel, blockpos.offset(j, i, k), CelestialBlocks.METEOR.get().defaultBlockState());
                     }
                 }
             }

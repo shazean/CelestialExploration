@@ -7,7 +7,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.blocks.blockentities.WorkbenchBlockEntity;
 import com.shim.celestialexploration.recipes.WorkbenchSmeltingRecipe;
-import com.shim.celestialexploration.registry.BlockRegistry;
+import com.shim.celestialexploration.registry.CelestialBlocks;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.forge.ForgeTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
@@ -42,7 +42,7 @@ public class WorkbenchSmeltingRecipeCategory implements IRecipeCategory<Workbenc
 
     public WorkbenchSmeltingRecipeCategory(IGuiHelper helper) {
         this.background = helper.createDrawable(TEXTURE, 0, 0, 176, 80);
-        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(BlockRegistry.WORKBENCH.get()));
+        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(CelestialBlocks.WORKBENCH.get()));
         this.staticFlame = helper.createDrawable(TEXTURE, 176, 0, 14, 14);
         this.animatedFlame = helper.createAnimatedDrawable(staticFlame, 300, IDrawableAnimated.StartDirection.TOP, true);
         this.cachedArrows = CacheBuilder.newBuilder()

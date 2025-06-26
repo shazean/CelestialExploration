@@ -1,23 +1,26 @@
 package com.shim.celestialexploration.world.features;
 
 import com.mojang.serialization.Codec;
-import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.registry.BlockRegistry;
 import net.minecraft.core.BlockPos;
-import net.minecraft.util.Mth;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
-import net.minecraft.world.level.levelgen.feature.configurations.BlockStateConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 
 import java.util.Random;
 
 public class GeyserFeature extends Feature<NoneFeatureConfiguration> {
-    public GeyserFeature(Codec<NoneFeatureConfiguration> p_65786_) {
+    final Block geyser;
+    final Block stone;
+    final Block sand;
+
+    public GeyserFeature(Codec<NoneFeatureConfiguration> p_65786_, Block geyser, Block stone, Block sand) {
         super(p_65786_);
+        this.geyser = geyser;
+        this.stone = stone;
+        this.sand = sand;
     }
 
     @Override
@@ -39,14 +42,14 @@ public class GeyserFeature extends Feature<NoneFeatureConfiguration> {
             BlockState state2Above = context.level().getBlockState(newPos.above(2));
             BlockState state2Below = context.level().getBlockState(newPos.below(2));
 
-            if ((state.is(BlockRegistry.VENUS_STONE.get()) || state.is(BlockRegistry.VENUS_SAND.get())) && stateAbove.isAir()) {
-                this.setBlock(worldgenlevel, newPos, BlockRegistry.GEYSER.get().defaultBlockState());
-            } else if ((stateBelow.is(BlockRegistry.VENUS_STONE.get()) || state.is(BlockRegistry.VENUS_SAND.get())) && state.isAir()) {
-                this.setBlock(worldgenlevel, newPos.below(), BlockRegistry.GEYSER.get().defaultBlockState());
-            } else if ((state2Below.is(BlockRegistry.VENUS_STONE.get()) || state.is(BlockRegistry.VENUS_SAND.get())) && stateBelow.isAir()) {
-                this.setBlock(worldgenlevel, newPos.below(2), BlockRegistry.GEYSER.get().defaultBlockState());
-            } else if ((stateAbove.is(BlockRegistry.VENUS_STONE.get()) || state.is(BlockRegistry.VENUS_SAND.get())) && state2Above.isAir()) {
-                this.setBlock(worldgenlevel, newPos.above(), BlockRegistry.GEYSER.get().defaultBlockState());
+            if ((state.is(stone) || state.is(sand)) && stateAbove.isAir()) {
+                this.setBlock(worldgenlevel, newPos, geyser.defaultBlockState());
+            } else if ((stateBelow.is(stone) || state.is(sand)) && state.isAir()) {
+                this.setBlock(worldgenlevel, newPos.below(), geyser.defaultBlockState());
+            } else if ((state2Below.is(stone) || state.is(sand)) && stateBelow.isAir()) {
+                this.setBlock(worldgenlevel, newPos.below(2), geyser.defaultBlockState());
+            } else if ((stateAbove.is(stone) || state.is(sand)) && state2Above.isAir()) {
+                this.setBlock(worldgenlevel, newPos.above(), geyser.defaultBlockState());
             }
         }
         return true;

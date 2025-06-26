@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "celestialexploration:io_bricks"
+  },
+  "result": "celestialexploration:cracked_io_bricks",
+  "experience": 0.1,
+  "cookingtime": 200
+}

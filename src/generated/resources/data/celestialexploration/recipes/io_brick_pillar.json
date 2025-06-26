@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X",
+    "X"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:io_bricks"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:io_brick_pillar",
+    "count": 4
+  }
+}

@@ -37,8 +37,17 @@
     "celestialexploration:jupiter_deepslate_brick_slab",
     "celestialexploration:jupiter_deepslate_tile_slab",
     "celestialexploration:jupiter_polished_deepslate_slab",
+    "celestialexploration:io_stone_slab",
+    "celestialexploration:io_smooth_stone_slab",
+    "celestialexploration:io_brick_slab",
+    "celestialexploration:io_cobblestone_slab",
+    "celestialexploration:io_cobbled_deepslate_slab",
+    "celestialexploration:io_deepslate_brick_slab",
+    "celestialexploration:io_deepslate_tile_slab",
+    "celestialexploration:io_polished_deepslate_slab",
     "celestialexploration:europa_brick_slab",
     "celestialexploration:callisto_brick_slab",
+    "celestialexploration:ganymede_brick_slab",
     "celestialexploration:meteor_brick_slab"
   ]
 }

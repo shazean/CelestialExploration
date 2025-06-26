@@ -1,6 +1,6 @@
 package com.shim.celestialexploration.blocks;
 
-import com.shim.celestialexploration.registry.BlockRegistry;
+import com.shim.celestialexploration.registry.CelestialBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -96,7 +96,7 @@ public class DryIceBubbleColumnBlock extends Block implements BucketPickup {
     private static BlockState getColumnState(BlockState p_152718_) {
         if (p_152718_.is(Blocks.BUBBLE_COLUMN)) {
             return p_152718_;
-        } else if (p_152718_.is(BlockRegistry.DRY_ICE.get())) {
+        } else if (p_152718_.is(CelestialBlocks.DRY_ICE.get())) {
             return Blocks.BUBBLE_COLUMN.defaultBlockState().setValue(DRAG_DOWN, Boolean.FALSE);
         } else {
             return Blocks.WATER.defaultBlockState();
@@ -132,7 +132,7 @@ public class DryIceBubbleColumnBlock extends Block implements BucketPickup {
 
     public boolean canSurvive(BlockState p_50986_, LevelReader p_50987_, BlockPos p_50988_) {
         BlockState blockstate = p_50987_.getBlockState(p_50988_.below());
-        return blockstate.is(Blocks.BUBBLE_COLUMN) || blockstate.is(BlockRegistry.DRY_ICE.get());
+        return blockstate.is(Blocks.BUBBLE_COLUMN) || blockstate.is(CelestialBlocks.DRY_ICE.get());
     }
 
     public VoxelShape getShape(BlockState p_51005_, BlockGetter p_51006_, BlockPos p_51007_, CollisionContext p_51008_) {

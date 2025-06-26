@@ -1,9 +1,8 @@
 package com.shim.celestialexploration.capabilities;
 
-import com.shim.celestialexploration.registry.CapabilityRegistry;
+import com.shim.celestialexploration.registry.CelestialCapabilities;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.Tag;
 import net.minecraftforge.common.capabilities.*;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fluids.FluidAttributes;
@@ -125,7 +124,7 @@ public class LoxTankCapability {
         @NotNull
         @Override
         public <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-            return CapabilityRegistry.LOX_TANK_CAPABILITY.orEmpty(cap, lazyLoxTank.cast());
+            return CelestialCapabilities.LOX_TANK_CAPABILITY.orEmpty(cap, lazyLoxTank.cast());
         }
 
         @Override

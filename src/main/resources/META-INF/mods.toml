@@ -11,7 +11,7 @@ displayName="Celestial Exploration"
 #updateJSONURL="https://change.me.example.invalid/updates.json" #optional
 displayURL="https://github.com/shazean/CelestialExploration/wiki"
 logoFile="CE_logo.png"
-credits="shim, primal_zerg_ (legacy spaceship model, some textures), JayZX535 (ideas, bug fixes, beta testing)"
+credits="shim, primal_zerg_ (legacy spaceship model, some textures), JayZX535 (bug fixes, beta testing)"
 authors="shim"
 description='''
 Exploring beyond our own planet and into the outer reaches of space!
@@ -31,6 +31,6 @@ Exploring beyond our own planet and into the outer reaches of space!
 [[dependencies.celestialexploration]]
     modId="azurelib"
     mandatory=true
-    versionRange="[1.0.37,)"
+    versionRange="[3.0.0,)"
     ordering="NONE"
     side="BOTH"

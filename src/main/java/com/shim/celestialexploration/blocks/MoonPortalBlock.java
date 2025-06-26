@@ -12,26 +12,26 @@ import net.minecraft.world.level.block.Block;
 public class MoonPortalBlock extends AbstractPortalBlock {
     @Override
     public ResourceKey<Level> getLinkedDimension() {
-        return DimensionRegistry.MOON;
+        return CelestialDimensions.MOON;
     }
 
     @Override
     public PlanetTeleporter getTeleporter(ServerLevel serverLevel) {
-        return new PlanetTeleporter(serverLevel, PoiRegistry.MOON_PORTAL.get(), BlockRegistry.MOON_BRICKS.get(), BlockRegistry.MOON_PORTAL.get(), DimensionRegistry.MOON);
+        return new PlanetTeleporter(serverLevel, CelestialPOIs.MOON_PORTAL.get(), CelestialBlocks.MOON_BRICKS.get(), CelestialBlocks.MOON_PORTAL.get(), CelestialDimensions.MOON);
     }
 
     @Override
     public Block getPortalBlock() {
-        return BlockRegistry.MOON_PORTAL.get();
+        return CelestialBlocks.MOON_PORTAL.get();
     }
 
     @Override
     public TagKey<Block> getPortalFrameBlock() {
-        return TagRegistry.Blocks.MOON_PORTAL_FRAME_BLOCK;
+        return CelestialTags.Blocks.MOON_PORTAL_FRAME_BLOCK;
     }
 
     @Override
     public SimpleParticleType getPortalParticle() {
-        return ParticleRegistry.MOON_PORTAL_PARTICLES.get();
+        return CelestialParticles.MOON_PORTAL_PARTICLES.get();
     }
 }

@@ -1,18 +1,12 @@
 package com.shim.celestialexploration.blocks;
 
 import com.shim.celestialexploration.blocks.blockentities.GeyserBlockEntity;
-import com.shim.celestialexploration.blocks.blockentities.OxygenCompressorBlockEntity;
-import com.shim.celestialexploration.registry.BlockEntityRegistry;
-import com.shim.celestialexploration.registry.ParticleRegistry;
+import com.shim.celestialexploration.registry.CelestialBlockEntities;
+import com.shim.celestialexploration.registry.CelestialParticles;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.DustParticleOptions;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
@@ -57,7 +51,7 @@ public class GeyserBlock extends BaseEntityBlock {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
-        return createTickerHelper(blockEntityType, BlockEntityRegistry.GEYSER_BLOCK_ENTITY.get(), GeyserBlockEntity::tick);
+        return createTickerHelper(blockEntityType, CelestialBlockEntities.GEYSER_BLOCK_ENTITY.get(), GeyserBlockEntity::tick);
     }
 
 
@@ -80,7 +74,7 @@ public class GeyserBlock extends BaseEntityBlock {
     private static void spawnParticles(Level level, BlockPos pos, Random random) {
         int height = random.nextInt(20) + 5;
         for (int i = 0; i < height; i++) {
-            level.addParticle(ParticleRegistry.SULFUR_PARTICLE.get(), (double) pos.getX() + 0.5D, (double) pos.getY() + 1.5 + (i / 2.0), (double) pos.getZ() + 0.5D, 0.0D, 0.5D, 0.0D);
+            level.addParticle(CelestialParticles.SULFUR_PARTICLE.get(), (double) pos.getX() + 0.5D, (double) pos.getY() + 1.5 + (i / 2.0), (double) pos.getZ() + 0.5D, 0.0D, 0.5D, 0.0D);
         }
     }
 

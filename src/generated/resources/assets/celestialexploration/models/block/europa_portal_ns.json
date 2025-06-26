@@ -1,0 +1,7 @@
+{
+  "parent": "celestialexploration:block/template_portal_ns",
+  "textures": {
+    "portal": "celestialexploration:block/europa_portal",
+    "particle": "celestialexploration:block/europa_portal"
+  }
+}

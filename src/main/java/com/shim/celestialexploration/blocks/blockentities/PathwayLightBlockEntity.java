@@ -1,19 +1,16 @@
 package com.shim.celestialexploration.blocks.blockentities;
 
-import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.registry.BlockEntityRegistry;
+import com.shim.celestialexploration.registry.CelestialBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
-import java.util.Random;
-
 import static com.shim.celestialexploration.blocks.PathwayLightBlock.LIT;
 
 public class PathwayLightBlockEntity extends BlockEntity {
     public PathwayLightBlockEntity(BlockPos worldPosition, BlockState blockState) {
-        super(BlockEntityRegistry.PATHWAY_LIGHT_BLOCK_ENTITY.get(), worldPosition, blockState);
+        super(CelestialBlockEntities.PATHWAY_LIGHT_BLOCK_ENTITY.get(), worldPosition, blockState);
     }
 
     int litTime = 20;

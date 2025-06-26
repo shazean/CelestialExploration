@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "celestialexploration:chiseled_callisto_bricks"
+    ]
+  },
+  "criteria": {
+    "callisto_stone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:callisto_bricks"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "celestialexploration:chiseled_callisto_bricks"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "callisto_stone",
+      "has_the_recipe"
+    ]
+  ]
+}

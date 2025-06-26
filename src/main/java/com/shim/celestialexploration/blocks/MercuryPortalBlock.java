@@ -12,26 +12,26 @@ import net.minecraft.world.level.block.Block;
 public class MercuryPortalBlock extends AbstractPortalBlock {
     @Override
     public ResourceKey<Level> getLinkedDimension() {
-        return DimensionRegistry.MERCURY;
+        return CelestialDimensions.MERCURY;
     }
 
     @Override
     public PlanetTeleporter getTeleporter(ServerLevel serverLevel) {
-        return new PlanetTeleporter(serverLevel, PoiRegistry.MERCURY_PORTAL.get(), BlockRegistry.MERCURY_BRICKS.get(), BlockRegistry.MERCURY_PORTAL.get(), DimensionRegistry.MERCURY);
+        return new PlanetTeleporter(serverLevel, CelestialPOIs.MERCURY_PORTAL.get(), CelestialBlocks.MERCURY_BRICKS.get(), CelestialBlocks.MERCURY_PORTAL.get(), CelestialDimensions.MERCURY);
     }
 
     @Override
     public Block getPortalBlock() {
-        return BlockRegistry.MERCURY_PORTAL.get();
+        return CelestialBlocks.MERCURY_PORTAL.get();
     }
 
     @Override
     public TagKey<Block> getPortalFrameBlock() {
-        return TagRegistry.Blocks.MERCURY_PORTAL_FRAME_BLOCK;
+        return CelestialTags.Blocks.MERCURY_PORTAL_FRAME_BLOCK;
     }
 
     @Override
     public SimpleParticleType getPortalParticle() {
-        return ParticleRegistry.MERCURY_PORTAL_PARTICLES.get();
+        return CelestialParticles.MERCURY_PORTAL_PARTICLES.get();
     }
 }
