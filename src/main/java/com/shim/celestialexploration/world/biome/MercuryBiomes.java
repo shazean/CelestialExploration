@@ -27,7 +27,7 @@ public class MercuryBiomes extends CelestialBiomes {
                 .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(CelestialEntities.DRONE.get(), 30, 1, 2))
                 .build();
 
-        return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, prettyCold, 0F, celestialBody.MERCURY.skyColor, celestialBody.MERCURY.skyFogColor, celestialBody.MERCURY.waterColor, celestialBody.MERCURY.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
+        return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, prettyCold, 0F, CelestialBody.MERCURY.skyColor, CelestialBody.MERCURY.skyFogColor, CelestialBody.MERCURY.waterColor, CelestialBody.MERCURY.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
     }
 
     public static Biome craters() {
@@ -47,7 +47,7 @@ public class MercuryBiomes extends CelestialBiomes {
                 .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(CelestialEntities.DRONE.get(), 30, 1, 2))
                 .build();
 
-        return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, prettyCold, 0F, celestialBody.MERCURY.skyColor, celestialBody.MERCURY.skyFogColor, celestialBody.MERCURY.waterColor, celestialBody.MERCURY.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
+        return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, prettyCold, 0F, CelestialBody.MERCURY.skyColor, CelestialBody.MERCURY.skyFogColor, CelestialBody.MERCURY.waterColor, CelestialBody.MERCURY.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
     }
 
     public static Biome plains() {
@@ -67,7 +67,7 @@ public class MercuryBiomes extends CelestialBiomes {
                 .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(CelestialEntities.DRONE.get(), 30, 1, 2))
                 .build();
 
-        return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, prettyCold, 0F, celestialBody.MERCURY.skyColor, celestialBody.MERCURY.skyFogColor, celestialBody.MERCURY.waterColor, celestialBody.MERCURY.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
+        return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, prettyCold, 0F, CelestialBody.MERCURY.skyColor, CelestialBody.MERCURY.skyFogColor, CelestialBody.MERCURY.waterColor, CelestialBody.MERCURY.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
     }
 
     public static Biome ridges() {
@@ -79,7 +79,7 @@ public class MercuryBiomes extends CelestialBiomes {
 
         generalMonsters(spawnBuilder, 80, 100, 100);
 
-        return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, prettyCold, 0F, celestialBody.MERCURY.skyColor, celestialBody.MERCURY.skyFogColor, celestialBody.MERCURY.waterColor, celestialBody.MERCURY.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
+        return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, prettyCold, 0F, CelestialBody.MERCURY.skyColor, CelestialBody.MERCURY.skyFogColor, CelestialBody.MERCURY.waterColor, CelestialBody.MERCURY.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
     }
 
     public static void addMercuryOres(BiomeGenerationSettings.Builder biomeBuilder) {

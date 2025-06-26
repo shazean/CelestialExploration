@@ -47,13 +47,6 @@ public class CelestialCommonEventSetup {
 
         CelestialPacketHandler.init();
 
-        AzIdentityRegistry.register(CelestialItems.ADVANCED_SPACESUIT_HELMET.get(), CelestialItems.ADVANCED_SPACESUIT_CHESTPLATE.get(), CelestialItems.ADVANCED_SPACESUIT_LEGGINGS.get(), CelestialItems.ADVANCED_SPACESUIT_BOOTS.get());
-        AzIdentityRegistry.register(CelestialItems.HEAVY_DUTY_SPACESUIT_HELMET.get(), CelestialItems.HEAVY_DUTY_SPACESUIT_CHESTPLATE.get(), CelestialItems.HEAVY_DUTY_SPACESUIT_LEGGINGS.get(), CelestialItems.HEAVY_DUTY_SPACESUIT_BOOTS.get());
-        AzIdentityRegistry.register(CelestialItems.THERMAL_SPACESUIT_HELMET.get(), CelestialItems.THERMAL_SPACESUIT_CHESTPLATE.get(), CelestialItems.THERMAL_SPACESUIT_LEGGINGS.get(), CelestialItems.THERMAL_SPACESUIT_BOOTS.get());
-        AzIdentityRegistry.register(CelestialItems.BASIC_SPACESUIT_HELMET.get(), CelestialItems.BASIC_SPACESUIT_CHESTPLATE.get(), CelestialItems.BASIC_SPACESUIT_LEGGINGS.get(), CelestialItems.BASIC_SPACESUIT_BOOTS.get());
-
-        AzIdentityRegistry.register(CelestialItems.TEST_ITEM.get());
-
         event.enqueueWork(() -> {
 
             CelestialPOIs.registerPOIs();

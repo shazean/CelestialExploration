@@ -112,7 +112,6 @@ repositories {
 
     // AzureLib maven
     maven {
-        // location of the maven that hosts JEI files
         name = "AzureLib maven"
         url = "https://maven.azuredoom.com/mods"
     }

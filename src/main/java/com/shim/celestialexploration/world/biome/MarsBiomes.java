@@ -28,7 +28,7 @@ public class MarsBiomes extends CelestialBiomes {
 
         float temp = -0.75F;
 
-        return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, prettyCold, 0F, celestialBody.MARS.skyColor, celestialBody.MARS.skyFogColor, celestialBody.MARS.waterColor, celestialBody.MARS.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
+        return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, prettyCold, 0F, CelestialBody.MARS.skyColor, CelestialBody.MARS.skyFogColor, CelestialBody.MARS.waterColor, CelestialBody.MARS.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
     }
 
     public static Biome craters() {
@@ -50,7 +50,7 @@ public class MarsBiomes extends CelestialBiomes {
                 .build();
 
 
-        return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, prettyCold, 0F, celestialBody.MARS.skyColor, celestialBody.MARS.skyFogColor, celestialBody.MARS.waterColor, celestialBody.MARS.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
+        return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, prettyCold, 0F, CelestialBody.MARS.skyColor, CelestialBody.MARS.skyFogColor, CelestialBody.MARS.waterColor, CelestialBody.MARS.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
     }
 
     public static Biome flats(boolean dryIcy) {
@@ -74,7 +74,7 @@ public class MarsBiomes extends CelestialBiomes {
 
         float temperature = dryIcy ? -1.0F : -0.75F;
 
-        return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, temperature, 0F, celestialBody.MARS.skyColor, celestialBody.MARS.skyFogColor, celestialBody.MARS.waterColor, celestialBody.MARS.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
+        return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, temperature, 0F, CelestialBody.MARS.skyColor, CelestialBody.MARS.skyFogColor, CelestialBody.MARS.waterColor, CelestialBody.MARS.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
     }
 
     public static Biome dunes() {
@@ -95,7 +95,7 @@ public class MarsBiomes extends CelestialBiomes {
 
         float temp = -0.75F;
 
-        return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, prettyCold, 0F, celestialBody.MARS.skyColor, celestialBody.MARS.skyFogColor, celestialBody.MARS.waterColor, celestialBody.MARS.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
+        return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, prettyCold, 0F, CelestialBody.MARS.skyColor, CelestialBody.MARS.skyFogColor, CelestialBody.MARS.waterColor, CelestialBody.MARS.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
     }
 
     public static void addMarsOres(BiomeGenerationSettings.Builder biomeBuilder) {

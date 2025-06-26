@@ -22,7 +22,7 @@ public class JupiterBiomes extends CelestialBiomes {
                 .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(CelestialEntities.DRONE.get(), 30, 1, 2))
                 .build();
 
-        return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, prettyCold, 0F, celestialBody.JUPITER.skyColor, celestialBody.JUPITER.skyFogColor,
-                celestialBody.JUPITER.waterColor, celestialBody.JUPITER.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC, new AmbientParticleSettings(ParticleTypes.CLOUD, 0.000625F));
+        return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, prettyCold, 0F, CelestialBody.JUPITER.skyColor, CelestialBody.JUPITER.skyFogColor,
+                CelestialBody.JUPITER.waterColor, CelestialBody.JUPITER.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC, new AmbientParticleSettings(ParticleTypes.CLOUD, 0.000625F));
     }
 }

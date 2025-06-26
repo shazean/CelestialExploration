@@ -8,6 +8,7 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -22,23 +23,23 @@ public class CelestialItemTags extends ItemTagsProvider {
 	@Override
 	protected void addTags() {
 
-		this.copy(BlockTags.COAL_ORES, net.minecraft.tags.ItemTags.COAL_ORES);
-		this.copy(BlockTags.COPPER_ORES, net.minecraft.tags.ItemTags.COPPER_ORES);
-		this.copy(BlockTags.DIAMOND_ORES, net.minecraft.tags.ItemTags.DIAMOND_ORES);
-		this.copy(BlockTags.EMERALD_ORES, net.minecraft.tags.ItemTags.EMERALD_ORES);
-		this.copy(BlockTags.GOLD_ORES, net.minecraft.tags.ItemTags.GOLD_ORES);
-		this.copy(BlockTags.LAPIS_ORES, net.minecraft.tags.ItemTags.LAPIS_ORES);
-		this.copy(BlockTags.IRON_ORES, net.minecraft.tags.ItemTags.IRON_ORES);
-		this.copy(BlockTags.REDSTONE_ORES, net.minecraft.tags.ItemTags.REDSTONE_ORES);
+		this.copy(BlockTags.COAL_ORES, ItemTags.COAL_ORES);
+		this.copy(BlockTags.COPPER_ORES, ItemTags.COPPER_ORES);
+		this.copy(BlockTags.DIAMOND_ORES, ItemTags.DIAMOND_ORES);
+		this.copy(BlockTags.EMERALD_ORES, ItemTags.EMERALD_ORES);
+		this.copy(BlockTags.GOLD_ORES, ItemTags.GOLD_ORES);
+		this.copy(BlockTags.LAPIS_ORES, ItemTags.LAPIS_ORES);
+		this.copy(BlockTags.IRON_ORES, ItemTags.IRON_ORES);
+		this.copy(BlockTags.REDSTONE_ORES, ItemTags.REDSTONE_ORES);
 
-		this.copy(BlockTags.SAND, net.minecraft.tags.ItemTags.SAND);
-		this.copy(BlockTags.SLABS, net.minecraft.tags.ItemTags.SLABS);
-		this.copy(BlockTags.STAIRS, net.minecraft.tags.ItemTags.STAIRS);
-		this.copy(BlockTags.WALLS, net.minecraft.tags.ItemTags.WALLS);
-		this.copy(BlockTags.DOORS, net.minecraft.tags.ItemTags.DOORS);
-		this.copy(BlockTags.TRAPDOORS, net.minecraft.tags.ItemTags.TRAPDOORS);
-		this.copy(BlockTags.BUTTONS, net.minecraft.tags.ItemTags.BUTTONS);
-		this.copy(BlockTags.SOUL_FIRE_BASE_BLOCKS, net.minecraft.tags.ItemTags.SOUL_FIRE_BASE_BLOCKS);
+		this.copy(BlockTags.SAND, ItemTags.SAND);
+		this.copy(BlockTags.SLABS, ItemTags.SLABS);
+		this.copy(BlockTags.STAIRS, ItemTags.STAIRS);
+		this.copy(BlockTags.WALLS, ItemTags.WALLS);
+		this.copy(BlockTags.DOORS, ItemTags.DOORS);
+		this.copy(BlockTags.TRAPDOORS, ItemTags.TRAPDOORS);
+		this.copy(BlockTags.BUTTONS, ItemTags.BUTTONS);
+		this.copy(BlockTags.SOUL_FIRE_BASE_BLOCKS, ItemTags.SOUL_FIRE_BASE_BLOCKS);
 
 		this.copy(Tags.Blocks.ORES, Tags.Items.ORES);
 		this.copy(Tags.Blocks.ORE_RATES_DENSE, Tags.Items.ORE_RATES_DENSE);

@@ -52,7 +52,7 @@ public class CelestialBiomes {
         spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.VOIDFELLOW.get(), 30, 0, 1))
                 .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.LURKER.get(), 5, 0, 1)).build();
 
-        return biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, prettyCold, 0, celestialBody.SPACE.skyColor, celestialBody.SPACE.skyFogColor, celestialBody.SPACE.waterColor, celestialBody.SPACE.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
+        return biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, prettyCold, 0, CelestialBody.SPACE.skyColor, CelestialBody.SPACE.skyFogColor, CelestialBody.SPACE.waterColor, CelestialBody.SPACE.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
     }
 
     protected static void generalMonsters(MobSpawnSettings.Builder spawnBuilder, int voidedCount, int skeletonCount, int lurkerCount) {
@@ -68,8 +68,8 @@ public class CelestialBiomes {
         biomeBuilder.addCarver(GenerationStep.Carving.AIR, Carvers.CANYON);
     }
 
-    public enum celestialBody {
-        SPACE(0, 0, 90, 329011), //0, 0
+    public enum CelestialBody {
+        SPACE(0, 0, 90, 329011),
         MARS(15565857, 14591603, 335425, 3150848),
         MOON(1807, 1549, 335425, 69408),
         VENUS(14200929, 10715456, 4741209, 3160378),
@@ -82,7 +82,7 @@ public class CelestialBiomes {
         final int waterColor;
         final int waterFogColor;
 
-        celestialBody(int skyColor, int skyFogColor, int waterColor, int waterFogColor) {
+        CelestialBody(int skyColor, int skyFogColor, int waterColor, int waterFogColor) {
             this.skyColor = skyColor;
             this.skyFogColor = skyFogColor;
             this.waterColor = waterColor;

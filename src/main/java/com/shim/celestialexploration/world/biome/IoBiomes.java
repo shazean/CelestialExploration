@@ -23,7 +23,7 @@ public class IoBiomes extends CelestialBiomes {
         generalMonsters(spawnBuilder, 100, 100, 100);
         spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.LUNAR_SLIME.get(), 100, 4, 4)).build();
 
-        return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, -0.75F, 0F, celestialBody.IO.skyColor, celestialBody.IO.skyFogColor, celestialBody.IO.waterColor, celestialBody.IO.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
+        return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, -0.75F, 0F, CelestialBody.IO.skyColor, CelestialBody.IO.skyFogColor, CelestialBody.IO.waterColor, CelestialBody.IO.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
     }
 
 
@@ -44,7 +44,7 @@ public class IoBiomes extends CelestialBiomes {
 
 
 
-        return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, -0.75F, 0F, celestialBody.IO.skyColor, celestialBody.IO.skyFogColor, celestialBody.IO.waterColor, celestialBody.IO.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
+        return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, -0.75F, 0F, CelestialBody.IO.skyColor, CelestialBody.IO.skyFogColor, CelestialBody.IO.waterColor, CelestialBody.IO.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
     }
 
     public static Biome plains() {
@@ -64,7 +64,7 @@ public class IoBiomes extends CelestialBiomes {
                 .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.ASTRAL_HOGLIN.get(), 9, 3, 4)).build();
 
 
-        return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, -0.75F, 0F, celestialBody.IO.skyColor, celestialBody.IO.skyFogColor, celestialBody.IO.waterColor, celestialBody.IO.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
+        return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, -0.75F, 0F, CelestialBody.IO.skyColor, CelestialBody.IO.skyFogColor, CelestialBody.IO.waterColor, CelestialBody.IO.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
     }
 
     public static void addIoOres(BiomeGenerationSettings.Builder biomeBuilder) {
