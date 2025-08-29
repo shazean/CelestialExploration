@@ -56,7 +56,7 @@ public class CelestialAdvancements extends AdvancementProvider {
         Advancement enterSpace = Advancement.Builder.advancement().display(new ItemStack(CelestialItems.WHITE_SPACESHIP.get()),
                         new TranslatableComponent("advancements.celestialexploration.enter_space.title"), new TranslatableComponent("advancements.celestialexploration.enter_space.description"),
                         null, FrameType.TASK, true, true, false)
-                .parent(obtainSpaceship).addCriterion("entered_space", ChangeDimensionTrigger.TriggerInstance.changedDimensionTo(CelestialDimensions.SPACE)).save(consumer, modLoc("enter_space"));
+                .parent(obtainSpaceship).addCriterion("entered_space", ChangeDimensionTrigger.TriggerInstance.changedDimensionTo(CelestialDimensions.MILKY_WAY)).save(consumer, modLoc("enter_space"));
 
         Advancement flyIntoSun = Advancement.Builder.advancement().display(new ItemStack(CelestialBlocks.SOLAR_FLARE.get()),
                         new TranslatableComponent("advancements.celestialexploration.fly_into_sun.title"), new TranslatableComponent("advancements.celestialexploration.fly_into_sun.description"),
@@ -67,9 +67,9 @@ public class CelestialAdvancements extends AdvancementProvider {
                         new TranslatableComponent("advancements.celestialexploration.kill_mob_in_space.title"), new TranslatableComponent("advancements.celestialexploration.kill_mob_in_space.description"),
                         null, FrameType.TASK, true, true, false)
                 .parent(enterSpace)
-                .addCriterion("kill_lurker", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(CelestialEntities.LURKER.get()).located(LocationPredicate.Builder.location().setDimension(CelestialDimensions.SPACE).build())))
-                .addCriterion("kill_voided", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(CelestialEntities.VOIDED.get()).located(LocationPredicate.Builder.location().setDimension(CelestialDimensions.SPACE).build())))
-                .addCriterion("kill_voidfellow", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(CelestialEntities.VOIDFELLOW.get()).located(LocationPredicate.Builder.location().setDimension(CelestialDimensions.SPACE).build())))
+                .addCriterion("kill_lurker", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(CelestialEntities.LURKER.get()).located(LocationPredicate.Builder.location().setDimension(CelestialDimensions.MILKY_WAY).build())))
+                .addCriterion("kill_voided", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(CelestialEntities.VOIDED.get()).located(LocationPredicate.Builder.location().setDimension(CelestialDimensions.MILKY_WAY).build())))
+                .addCriterion("kill_voidfellow", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(CelestialEntities.VOIDFELLOW.get()).located(LocationPredicate.Builder.location().setDimension(CelestialDimensions.MILKY_WAY).build())))
                 .save(consumer, modLoc("kill_mob_in_space"));
 
         Advancement enterMoon = Advancement.Builder.advancement().display(new ItemStack(CelestialBlocks.MOON_SAND.get()),

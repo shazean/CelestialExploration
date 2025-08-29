@@ -172,7 +172,7 @@ public class SpaceshipMenu extends AbstractContainerMenu {
     }
 
     public boolean lightTravelAllowed() {
-        return this.entity.getPassengers().size() >= 1 && this.entity.level.dimension().equals(CelestialDimensions.SPACE);
+        return this.entity.getPassengers().size() >= 1 && this.entity.level.dimension().equals(CelestialDimensions.MILKY_WAY);
     }
 
     public Vec3 getPlanetLocation(ResourceKey<Level> dimension) {

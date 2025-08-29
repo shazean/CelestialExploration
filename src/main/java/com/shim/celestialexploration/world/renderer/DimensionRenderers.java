@@ -18,7 +18,7 @@ public class DimensionRenderers {
     public static void setDimensionEffects() {
         DimensionSpecialEffects.EFFECTS.put(CelestialDimensions.MARS.location(), new MarsEffects());
         DimensionSpecialEffects.EFFECTS.put(CelestialDimensions.MOON.location(), new MoonEffects());
-        DimensionSpecialEffects.EFFECTS.put(CelestialDimensions.SPACE.location(), new SpaceEffects());
+        DimensionSpecialEffects.EFFECTS.put(CelestialDimensions.MILKY_WAY.location(), new SpaceEffects());
         DimensionSpecialEffects.EFFECTS.put(CelestialDimensions.VENUS.location(), new VenusEffects());
         DimensionSpecialEffects.EFFECTS.put(CelestialDimensions.MERCURY.location(), new MercuryEffects());
         DimensionSpecialEffects.EFFECTS.put(CelestialDimensions.JUPITER.location(), new JupiterEffects());

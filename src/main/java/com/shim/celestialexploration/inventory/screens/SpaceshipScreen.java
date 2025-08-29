@@ -230,7 +230,7 @@ public class SpaceshipScreen extends AbstractContainerScreen<SpaceshipMenu> {
         renderTabTooltips(poseStack, mouseX, mouseY);
 
         if (CelestialExploration.PROXY.getMinecraft() != null && CelestialExploration.PROXY.getPlayer() != null)
-            lightTravelAllowed = CelestialExploration.PROXY.getPlayer().level.dimension().equals(CelestialDimensions.SPACE);
+            lightTravelAllowed = CelestialExploration.PROXY.getPlayer().level.dimension().equals(CelestialDimensions.MILKY_WAY);
 
         renderLightTravelTooltips(poseStack, mouseX, mouseY);
     }

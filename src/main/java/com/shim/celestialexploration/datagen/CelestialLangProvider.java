@@ -6,13 +6,11 @@ import com.shim.celestialexploration.registry.*;
 import com.shim.celestialexploration.world.biome.CelestialBiomeKeys;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraftforge.common.data.LanguageProvider;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -74,7 +72,7 @@ public class CelestialLangProvider extends LanguageProvider {
 		add(CelestialFluids.SULFUR_BUCKET.get(), "Sulfur Bucket");
 
 		//---- BIOMES -------------------------------------------------------------------------------
-		addBiome(CelestialBiomeKeys.SPACE, "Outer Space");
+		addBiome(CelestialBiomeKeys.MILKY_WAY, "Outer Space");
 		addBiome(CelestialBiomeKeys.MOON_CRATERS, "Lunar Craters");
 		addBiome(CelestialBiomeKeys.MOON_DESERT, "Lunar Desert");
 		addBiome(CelestialBiomeKeys.MOON_LAVA_FLATS, "Lunar Lava Flats");
@@ -119,7 +117,7 @@ public class CelestialLangProvider extends LanguageProvider {
 		addBiome(CelestialBiomeKeys.GANYMEDE_PLAINS, "Ganymedian Plains");
 
 		//---- DIMENSIONS -------------------------------------------------------------------------------
-		addDimension(CelestialDimensions.SPACE, "Outer Space");
+		addDimension(CelestialDimensions.MILKY_WAY, "Milky Way Galaxy");
 		addDimension(CelestialDimensions.MERCURY, "Mercury");
 		addDimension(CelestialDimensions.VENUS, "Venus");
 		addDimension(Level.OVERWORLD, "Overworld");

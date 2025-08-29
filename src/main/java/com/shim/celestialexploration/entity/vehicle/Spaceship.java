@@ -509,7 +509,7 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
         Entity passenger = this.getControllingPassenger();
         if (passenger instanceof Player player) {
             if (player.isCreative()) {
-                if (CelestialCommonConfig.SPACESHIP_FASTER_IN_SPACE.get() && this.level.dimension() == CelestialDimensions.SPACE)
+                if (CelestialCommonConfig.SPACESHIP_FASTER_IN_SPACE.get() && this.level.dimension() == CelestialDimensions.MILKY_WAY)
                     return SPACESHIP_IN_SPACE_SPEED;
                 return SPACESHIP_SPEED;
             }
@@ -517,7 +517,7 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
 
         if (this.getFuelDataId() > 0) {
             if (this.getFuelDataId() <= LOW_FUEL) return SPACESHIP_LOW_FUEL_SPEED;
-            if (CelestialCommonConfig.SPACESHIP_FASTER_IN_SPACE.get() && this.level.dimension() == CelestialDimensions.SPACE)
+            if (CelestialCommonConfig.SPACESHIP_FASTER_IN_SPACE.get() && this.level.dimension() == CelestialDimensions.MILKY_WAY)
                 return SPACESHIP_IN_SPACE_SPEED;
             return SPACESHIP_SPEED;
         }
@@ -910,7 +910,7 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
         TeleportUtil.teleport(this, Util.make(new ArrayList<>(), (list) -> {
             list.add(passengerOne);
             if (passengerTwo != null) list.add(passengerTwo);
-        }), CelestialDimensions.SPACE, new Vec3(destinationPos.getX(), destinationPos.getY(), destinationPos.getZ()));
+        }), CelestialDimensions.MILKY_WAY, new Vec3(destinationPos.getX(), destinationPos.getY(), destinationPos.getZ()));
 
         if (player instanceof ServerPlayer serverPlayer) {
             int passengerTwoId = (passengerTwo != null) ? passengerTwo.getId() : -1;

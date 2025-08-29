@@ -145,7 +145,7 @@ public class TeleportUtil {
                 if (destinationWorld != null) {
 
                     //if we're teleporting FROM space, passengers' Y level should be the max build height minus 10 blocks
-                    if (!(destinationDim == CelestialDimensions.SPACE)) {
+                    if (!(destinationDim == CelestialDimensions.MILKY_WAY)) {
                         locationInPlace = new Vec3(locationInPlace.x, destinationWorld.getMaxBuildHeight() - 10, locationInPlace.z);
                     }
 

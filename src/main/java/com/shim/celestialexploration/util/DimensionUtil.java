@@ -12,7 +12,7 @@ import java.util.Map;
 public class DimensionUtil {
     private static final Map<ResourceKey<Level>, gravityType> DIMENSION_GRAVITY = Util.make(new Object2ObjectArrayMap<>(), (dimension) -> {
         dimension.defaultReturnValue(gravityType.NORMAL);
-        dimension.put(CelestialDimensions.SPACE, gravityType.LOW);
+        dimension.put(CelestialDimensions.MILKY_WAY, gravityType.LOW);
         dimension.put(CelestialDimensions.MOON, gravityType.LOW);
         dimension.put(CelestialDimensions.MARS, gravityType.LOW);
         dimension.put(CelestialDimensions.VENUS, gravityType.NORMAL);

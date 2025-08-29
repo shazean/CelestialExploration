@@ -78,7 +78,7 @@ public class CelestialBiomeTags extends BiomeTagsProvider {
                 .add(CelestialBiomeKeys.GANYMEDE_PLAINS);
 
         tag(CelestialTags.Biomes.SPACE_BIOMES)
-                .add(CelestialBiomeKeys.SPACE);
+                .add(CelestialBiomeKeys.MILKY_WAY);
 
         tag(CelestialTags.Biomes.NO_SNOW_BIOMES)
                 .addTag(CelestialTags.Biomes.MARS_BIOMES)
