@@ -73,6 +73,9 @@ public class CelestialExploration {
         CelestialDimensions.BIOME_SOURCE.register(modEventBus);
         CelestialNoises.NOISES.register(modEventBus);
 
+        CelestialGalaxies.GALAXIES.register(modEventBus);
+        CelestialPlanets.PLANETS.register(modEventBus);
+
         modEventBus.addListener(CelestialCapabilities::registerCapabilities);
         MinecraftForge.EVENT_BUS.addGenericListener(ItemStack.class, CelestialCapabilities::attachItemCapabilities);
         MinecraftForge.EVENT_BUS.addGenericListener(BlockEntity.class, CelestialCapabilities::attachBlockCapabilities);

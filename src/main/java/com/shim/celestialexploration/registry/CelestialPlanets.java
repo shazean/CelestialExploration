@@ -1,19 +1,33 @@
 package com.shim.celestialexploration.registry;
 
-import com.shim.celestialexploration.config.CelestialCommonConfig;
 import com.shim.celestiallib.CelestialLib;
-import com.shim.celestiallib.api.world.galaxy.Galaxy;
-import com.shim.celestiallib.world.celestials.galaxy.Galaxies;
+import com.shim.celestiallib.api.effects.GravityEffect;
+import com.shim.celestiallib.api.world.planet.Moon;
+import com.shim.celestiallib.api.world.planet.Planet;
+import com.shim.celestiallib.effects.CelestialLibEffects;
+import com.shim.celestiallib.world.celestials.planet.Planets;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 
 public class CelestialPlanets {
 
-    public static final DeferredRegister<Galaxy> GALAXIES = DeferredRegister.create(Galaxies.GALAXY_REGISTRY.getRegistryName(), CelestialLib.MODID);
 
-    public static final RegistryObject<Galaxy> MILKY_WAY_GALAXY = GALAXIES.register("milky_way_galaxy", () ->
-            new Galaxy(CelestialDimensions.MILKY_WAY).guiScale(2)
-                    .enableCooldowns(CelestialCommonConfig.SPACESHIP_LIGHT_TRAVEL_MAX_COOLDOWN, CelestialCommonConfig.SPACESHIP_LIGHT_TRAVEL_MIN_COOLDOWN, CelestialCommonConfig.SPACESHIP_LIGHT_TRAVEL_COOLDOWN_DECREMENT));
+    public static final DeferredRegister<Planet> PLANETS = DeferredRegister.create(Planets.PLANETS.getRegistryName(), CelestialLib.MODID);
+
+    public static final RegistryObject<Planet> OVERWORLD = PLANETS.register("overworld", () -> new Planet(Level.OVERWORLD, CelestialGalaxies.MILKY_WAY_GALAXY.get()));
+
+    public static final RegistryObject<Planet> MOON = PLANETS.register("moon", () -> new Moon(CelestialDimensions.MOON, OVERWORLD.get()).gravity((GravityEffect) CelestialLibEffects.LOW_GRAVITY.get()));
+
+    public static final RegistryObject<Planet> MARS = PLANETS.register("mars", () -> new Planet(CelestialDimensions.MARS, CelestialGalaxies.MILKY_WAY_GALAXY.get()).gravity((GravityEffect) CelestialLibEffects.LOW_GRAVITY.get()));
+    public static final RegistryObject<Planet> MERCURY = PLANETS.register("mercury", () -> new Planet(CelestialDimensions.MERCURY, CelestialGalaxies.MILKY_WAY_GALAXY.get()).gravity((GravityEffect) CelestialLibEffects.LOW_GRAVITY.get()));
+    public static final RegistryObject<Planet> VENUS = PLANETS.register("venus", () -> new Planet(CelestialDimensions.VENUS, CelestialGalaxies.MILKY_WAY_GALAXY.get()));
+
+    public static final RegistryObject<Planet> JUPITER = PLANETS.register("jupiter", () -> new Planet(CelestialDimensions.JUPITER, CelestialGalaxies.MILKY_WAY_GALAXY.get()));
+    public static final RegistryObject<Planet> EUROPA = PLANETS.register("europa", () -> new Moon(CelestialDimensions.EUROPA, JUPITER.get()).gravity((GravityEffect) CelestialLibEffects.LOW_GRAVITY.get()));
+    public static final RegistryObject<Planet> IO = PLANETS.register("io", () -> new Moon(CelestialDimensions.IO, JUPITER.get()).gravity((GravityEffect) CelestialLibEffects.LOW_GRAVITY.get()));
+    public static final RegistryObject<Planet> CALLISTO = PLANETS.register("callisto", () -> new Moon(CelestialDimensions.CALLISTO, JUPITER.get()).gravity((GravityEffect) CelestialLibEffects.LOW_GRAVITY.get()));
+    public static final RegistryObject<Planet> GANYMEDE = PLANETS.register("ganymede", () -> new Moon(CelestialDimensions.GANYMEDE, JUPITER.get()).gravity((GravityEffect) CelestialLibEffects.LOW_GRAVITY.get()));
 
 
 }
