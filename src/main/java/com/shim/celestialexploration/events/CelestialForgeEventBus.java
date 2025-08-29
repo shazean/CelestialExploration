@@ -2,15 +2,12 @@ package com.shim.celestialexploration.events;
 
 import com.mojang.datafixers.util.Either;
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.blocks.AbstractPortalBlock;
 import com.shim.celestialexploration.capabilities.ISpaceFlight;
 import com.shim.celestialexploration.capabilities.LightTravelCapability;
 import com.shim.celestialexploration.capabilities.TaxiCapability;
 import com.shim.celestialexploration.config.CelestialCommonConfig;
 import com.shim.celestialexploration.entity.CelestialCatSpawner;
 import com.shim.celestialexploration.entity.projectile.MeteorProjectile;
-import com.shim.celestialexploration.entity.robots.MechaCerberusBoss;
-import com.shim.celestialexploration.entity.robots.MechaDog;
 import com.shim.celestialexploration.entity.vehicle.Spaceship;
 import com.shim.celestialexploration.item.armor.ThermalSpacesuitArmorItem;
 import com.shim.celestialexploration.packets.CelestialPacketHandler;
@@ -37,7 +34,6 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
@@ -49,7 +45,6 @@ import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.event.world.ExplosionEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.LogicalSide;
 import net.minecraftforge.fml.common.Mod;
@@ -57,7 +52,6 @@ import net.minecraftforge.network.NetworkDirection;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 @Mod.EventBusSubscriber(modid = CelestialExploration.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)

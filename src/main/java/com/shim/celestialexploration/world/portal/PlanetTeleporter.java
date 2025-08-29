@@ -1,6 +1,5 @@
 package com.shim.celestialexploration.world.portal;
 
-import com.shim.celestialexploration.blocks.AbstractPortalBlock;
 import net.minecraft.BlockUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
