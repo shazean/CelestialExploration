@@ -3,10 +3,13 @@ package com.shim.celestialexploration.item.armor;
 import com.google.common.collect.ImmutableMap;
 import com.shim.celestialexploration.item.ModArmorMaterials;
 import com.shim.celestialexploration.registry.CelestialItems;
+import com.shim.celestiallib.api.armor.ISpacesuit;
+import com.shim.celestiallib.effects.CelestialLibEffects;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -21,7 +24,7 @@ import net.minecraft.world.level.Level;
 import java.util.List;
 import java.util.Map;
 
-public class ThermalSpacesuitArmorItem extends ArmorItem {
+public class ThermalSpacesuitArmorItem extends ArmorItem implements ISpacesuit {
     private static final Map<ArmorMaterial, MobEffectInstance> MATERIAL_TO_EFFECT_MAP = (new ImmutableMap.Builder<ArmorMaterial, MobEffectInstance>()).put(ModArmorMaterials.THERMAL_SPACESUIT, new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 200, 1, false, false)).build();
 
     public ThermalSpacesuitArmorItem(EquipmentSlot slot, Properties properties) {
@@ -100,14 +103,16 @@ public class ThermalSpacesuitArmorItem extends ArmorItem {
         components.add(new TranslatableComponent("item.celestialexploration.armor_details.when_set_complete").withStyle(ChatFormatting.GRAY));
         components.add(new TranslatableComponent("item.celestialexploration.armor_details.thermal_full_spacesuit").withStyle(ChatFormatting.DARK_PURPLE));
 
-//        if (tooltipFlag.isAdvanced()) {
         if (itemStack.is(CelestialItems.THERMAL_SPACESUIT_BOOTS.get())) {
             components.add(new TranslatableComponent("item.celestialexploration.armor_details.when_worn").withStyle(ChatFormatting.GRAY));
             components.add(new TranslatableComponent("item.celestialexploration.armor_details.thermal_spacesuit_boots_1").withStyle(ChatFormatting.BLUE));
             components.add(new TranslatableComponent("item.celestialexploration.armor_details.thermal_spacesuit_boots_2").withStyle(ChatFormatting.BLUE));
 
         }
-//    }
     }
 
+    @Override
+    public boolean shouldNegateGravity(MobEffect mobEffect, ItemStack itemStack) {
+        return itemStack.is(CelestialItems.THERMAL_SPACESUIT_BOOTS.get()) && mobEffect == CelestialLibEffects.LOW_GRAVITY.get();
+    }
 }
