@@ -455,10 +455,10 @@ public class CelestialForgeEventBus {
 
     @SubscribeEvent
     public static void onToolTipRender(RenderTooltipEvent.GatherComponents event) {
-        if (event.getItemStack().is(CelestialBlocks.AIRLOCK_PANEL_DOOR.get().asItem())) {
+        if (event.getItemStack().is(CelestialBlocks.AIRLOCK_PANEL_DOOR.get().asItem()) || event.getItemStack().is(CelestialBlocks.AIRLOCK_PANEL_DOOR_WINDOW.get().asItem())) {
             event.getTooltipElements().add(Either.left(new TranslatableComponent("item.celestialexploration.door.airlock_panel_door")));
         }
-        if (event.getItemStack().is(CelestialBlocks.HANGAR_DOOR.get().asItem())) {
+        if (event.getItemStack().is(CelestialBlocks.HANGAR_DOOR.get().asItem()) || event.getItemStack().is(CelestialBlocks.HANGAR_DOOR_WINDOW.get().asItem())) {
             event.getTooltipElements().add(Either.left(new TranslatableComponent("item.celestialexploration.door.hangar_door")));
         }
     }

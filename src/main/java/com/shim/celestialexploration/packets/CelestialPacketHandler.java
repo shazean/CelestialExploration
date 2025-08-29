@@ -22,6 +22,7 @@ public class CelestialPacketHandler {
 
     public static void init() {
         int i = 0;
+
         INSTANCE.registerMessage(i++, SpaceshipFuelTickPacket.class, SpaceshipFuelTickPacket::encoder,
                 SpaceshipFuelTickPacket::decoder, SpaceshipFuelTickPacket::handle, Optional.of(NetworkDirection.PLAY_TO_SERVER));
 

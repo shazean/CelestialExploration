@@ -16,6 +16,8 @@ import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraftforge.common.data.LanguageProvider;
 import net.minecraftforge.registries.RegistryObject;
 
+import javax.annotation.Nullable;
+
 public class CelestialLangProvider extends LanguageProvider {
 
 	public CelestialLangProvider(DataGenerator gen, String locale) {
@@ -31,13 +33,21 @@ public class CelestialLangProvider extends LanguageProvider {
 	}
 
 	public void addAdvancement(String advancement, String title, String description) {
-		add("advancements.celestial." + advancement + ".title", title);
-		add("advancements.celestial." + advancement + ".description", description);
+		add("advancements." + CelestialExploration.MODID + "." + advancement + ".title", title);
+		add("advancements." + CelestialExploration.MODID + "." + advancement + ".description", description);
 	}
 
 	public void addFluid(Block fluidBlock, String fluid, String localization) {
 		add(fluidBlock, localization);
 		add("fluid.celestialexploration." + fluid, localization);
+	}
+
+	public void addPlanetDetails(String dimensionName, String dimensionResources, @Nullable String dimensionMoons) {
+		add("celestialexploration.planet_details." + dimensionName.toLowerCase() + "_name", dimensionName);
+		add("celestialexploration.planet_details." + dimensionName.toLowerCase() + "_resources", dimensionResources);
+		if (dimensionMoons != null)
+			add("celestialexploration.planet_details." + dimensionName.toLowerCase() + "_moons", dimensionMoons);
+
 	}
 
 	@Override
@@ -216,37 +226,18 @@ public class CelestialLangProvider extends LanguageProvider {
 		add("celestialexploration.planet_details.sun_name", "The Sun");
 		add("celestialexploration.planet_details.sun_resources", "none");
 
-		add("celestialexploration.planet_details.mercury_name", "Mercury");
-		add("celestialexploration.planet_details.mercury_resources", "meteors, coal, diamond");
+		addPlanetDetails("Mercury", "meteors, coal, diamond", null);
+		addPlanetDetails("Venus", "sulfur, lapis lazuli", null);
+		addPlanetDetails("Overworld", "overworld/vanilla resources", "Moon");
+		addPlanetDetails("Mars", "iron", null);
+		addPlanetDetails("Jupiter", "none", "Europa, Io, Calliso, Ganymede");
+		addPlanetDetails("Saturn", "TBD", "TBD");
+		addPlanetDetails("Uranus", "TBD", "TBD");
+		addPlanetDetails("Neptune", "TBD", "TBD");
 
-		add("celestialexploration.planet_details.venus_name", "Venus");
-		add("celestialexploration.planet_details.venus_resources", "sulfur, lapis lazuli");
 
-		add("celestialexploration.planet_details.overworld_name", "Overworld");
-		add("celestialexploration.planet_details.overworld_resources", "overworld/vanilla resources");
-		add("celestialexploration.planet_details.overworld_moons", "Moon");
-
-		add("celestialexploration.planet_details.mars_name", "Mars");
-		add("celestialexploration.planet_details.mars_resources", "iron");
-
-		add("celestialexploration.planet_details.jupiter_name", "Jupiter");
-		add("celestialexploration.planet_details.jupiter_resources", "none");
-		add("celestialexploration.planet_details.jupiter_moons", "Europa, Io, Callisto, Ganymede");
-
-		add("celestialexploration.planet_details.saturn_name", "Saturn");
-		add("celestialexploration.planet_details.saturn_resources", "TBD");
-		add("celestialexploration.planet_details.saturn_moons", "TBD");
-
-		add("celestialexploration.planet_details.uranus_name", "Uranus");
-		add("celestialexploration.planet_details.uranus_resources", "TBD");
-		add("celestialexploration.planet_details.uranus_moons", "TBD");
-
-		add("celestialexploration.planet_details.neptune_name", "Neptune");
-		add("celestialexploration.planet_details.neptune_resources", "TBD");
-		add("celestialexploration.planet_details.neptune_moons", "TBD");
-
-		add("item.celestialexploration.door.airlock_panel_door", "One hinge can support up to 7 wide (inclusive). Double hinge can support up to 14 wide (inclusive). No max height.");
-		add("item.celestialexploration.door.hangar_door", "One hinge can support up to 32 wide (inclusive). Double hinge can support up to 64 wide (inclusive). No max height.");
+		add("item.celestialexploration.door.airlock_panel_door", "One hinge can support up to 7 wide (inclusive).\nDouble hinge can support up to 14 wide (inclusive).\nNo max height.");
+		add("item.celestialexploration.door.hangar_door", "One hinge can support up to 32 wide (inclusive).\nDouble hinge can support up to 64 wide (inclusive).\nNo max height.");
 
 		add("celestialexploration.display_board.edit", "Edit Display Board Message");
 	}

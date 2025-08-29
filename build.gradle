@@ -129,6 +129,9 @@ repositories {
 
     maven { url 'https://maven.blamejared.com' }
 
+    maven {
+        url 'https://cursemaven.com'
+    }
 }
 
 dependencies {
@@ -147,6 +150,12 @@ dependencies {
 
     compileOnly fg.deobf("vazkii.patchouli:Patchouli:${ptch_version}:api")
     runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${ptch_version}")
+
+    implementation fg.deobf("curse.maven:fastload-630620:4706140")
+    implementation fg.deobf("curse.maven:modernfix-790626:5399365")
+    implementation fg.deobf("curse.maven:lightspeedmod-821790:4594803")
+    implementation fg.deobf("curse.maven:lazy-dfu-forge-460819:3544496")
+
 
 }
 

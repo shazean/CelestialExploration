@@ -29,13 +29,13 @@ public class CelestialAdvancements extends AdvancementProvider {
     protected void registerAdvancements(Consumer<Advancement> consumer, ExistingFileHelper fileHelper) {
 
         Advancement root = Advancement.Builder.advancement().display(new ItemStack(CelestialBlocks.MOON_STONE.get()),
-                        new TranslatableComponent("advancements.celestial.root.title"), new TranslatableComponent("advancements.celestial.root.description"),
+                        new TranslatableComponent("advancements.celestialexploration.root.title"), new TranslatableComponent("advancements.celestialexploration.root.description"),
                         new ResourceLocation(CelestialExploration.MODID, "textures/block/moon_stone.png"),
                         FrameType.TASK, false, false, false)
                 .addCriterion("crafting_table", InventoryChangeTrigger.TriggerInstance.hasItems(Items.CRAFTING_TABLE)).save(consumer, modLoc("root"));
 
         Advancement obtainSpacesuit = Advancement.Builder.advancement().display(new ItemStack(CelestialItems.BASIC_SPACESUIT_HELMET.get()),
-                        new TranslatableComponent("advancements.celestial.obtain_spacesuit.title"), new TranslatableComponent("advancements.celestial.obtain_spacesuit.description"),
+                        new TranslatableComponent("advancements.celestial.obtain_spacesuit.title"), new TranslatableComponent("advancements.celestialexploration.obtain_spacesuit.description"),
                         null, FrameType.TASK, true, true, false)
                 .parent(root).addCriterion("basic_helmet", InventoryChangeTrigger.TriggerInstance.hasItems(CelestialItems.BASIC_SPACESUIT_HELMET.get()))
                 .addCriterion("basic_chestplate", InventoryChangeTrigger.TriggerInstance.hasItems(CelestialItems.BASIC_SPACESUIT_CHESTPLATE.get()))
@@ -43,28 +43,28 @@ public class CelestialAdvancements extends AdvancementProvider {
                 .addCriterion("basic_boots", InventoryChangeTrigger.TriggerInstance.hasItems(CelestialItems.BASIC_SPACESUIT_BOOTS.get())).save(consumer, modLoc("obtain_spacesuit"));
 
         Advancement obtainSpaceship = Advancement.Builder.advancement().display(new ItemStack(CelestialItems.WHITE_SPACESHIP.get()),
-                        new TranslatableComponent("advancements.celestial.obtain_spaceship.title"), new TranslatableComponent("advancements.celestial.obtain_spaceship.description"),
+                        new TranslatableComponent("advancements.celestialexploration.obtain_spaceship.title"), new TranslatableComponent("advancements.celestialexploration.obtain_spaceship.description"),
                         null, FrameType.TASK, true, true, false)
                 .parent(obtainSpacesuit).addCriterion("white_spaceship", InventoryChangeTrigger.TriggerInstance.hasItems(CelestialItems.WHITE_SPACESHIP.get())).save(consumer, modLoc("obtain_spaceship"));
 
         Advancement placeAirlock = Advancement.Builder.advancement().display(new ItemStack(CelestialBlocks.AIRLOCK_DOOR.get()),
-                        new TranslatableComponent("advancements.celestial.place_airlock.title"), new TranslatableComponent("advancements.celestial.place_airlock.description"),
+                        new TranslatableComponent("advancements.celestialexploration.place_airlock.title"), new TranslatableComponent("advancements.celestialexploration.place_airlock.description"),
                         null, FrameType.TASK, true, true, false)
                 .parent(obtainSpaceship).addCriterion("airlock_door", PlacedBlockTrigger.TriggerInstance.placedBlock(CelestialBlocks.AIRLOCK_DOOR.get()))
                 .addCriterion("airlock_trapdoor", PlacedBlockTrigger.TriggerInstance.placedBlock(CelestialBlocks.AIRLOCK_TRAPDOOR.get())).save(consumer, modLoc("place_airlock"));
 
         Advancement enterSpace = Advancement.Builder.advancement().display(new ItemStack(CelestialItems.WHITE_SPACESHIP.get()),
-                        new TranslatableComponent("advancements.celestial.enter_space.title"), new TranslatableComponent("advancements.celestial.enter_space.description"),
+                        new TranslatableComponent("advancements.celestialexploration.enter_space.title"), new TranslatableComponent("advancements.celestialexploration.enter_space.description"),
                         null, FrameType.TASK, true, true, false)
                 .parent(obtainSpaceship).addCriterion("entered_space", ChangeDimensionTrigger.TriggerInstance.changedDimensionTo(CelestialDimensions.SPACE)).save(consumer, modLoc("enter_space"));
 
         Advancement flyIntoSun = Advancement.Builder.advancement().display(new ItemStack(CelestialBlocks.SOLAR_FLARE.get()),
-                        new TranslatableComponent("advancements.celestial.fly_into_sun.title"), new TranslatableComponent("advancements.celestial.fly_into_sun.description"),
+                        new TranslatableComponent("advancements.celestialexploration.fly_into_sun.title"), new TranslatableComponent("advancements.celestialexploration.fly_into_sun.description"),
                         null, FrameType.TASK, true, true, false)
                 .parent(enterSpace).addCriterion("step_on_sun", EnterBlockTrigger.TriggerInstance.entersBlock(CelestialBlocks.SOLAR_FLARE.get())).save(consumer, modLoc("fly_into_sun"));
 
         Advancement killMobInSpace = Advancement.Builder.advancement().display(new ItemStack(Items.IRON_SWORD),
-                        new TranslatableComponent("advancements.celestial.kill_mob_in_space.title"), new TranslatableComponent("advancements.celestial.kill_mob_in_space.description"),
+                        new TranslatableComponent("advancements.celestialexploration.kill_mob_in_space.title"), new TranslatableComponent("advancements.celestialexploration.kill_mob_in_space.description"),
                         null, FrameType.TASK, true, true, false)
                 .parent(enterSpace)
                 .addCriterion("kill_lurker", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(CelestialEntities.LURKER.get()).located(LocationPredicate.Builder.location().setDimension(CelestialDimensions.SPACE).build())))
@@ -73,59 +73,59 @@ public class CelestialAdvancements extends AdvancementProvider {
                 .save(consumer, modLoc("kill_mob_in_space"));
 
         Advancement enterMoon = Advancement.Builder.advancement().display(new ItemStack(CelestialBlocks.MOON_SAND.get()),
-                        new TranslatableComponent("advancements.celestial.enter_moon.title"), new TranslatableComponent("advancements.celestial.enter_moon.description"),
+                        new TranslatableComponent("advancements.celestialexploration.enter_moon.title"), new TranslatableComponent("advancements.celestialexploration.enter_moon.description"),
                         null, FrameType.TASK, true, true, false)
                 .parent(enterSpace).addCriterion("entered_moon", ChangeDimensionTrigger.TriggerInstance.changedDimensionTo(CelestialDimensions.MOON)).save(consumer, modLoc("enter_moon"));
 
         Advancement enterMars = Advancement.Builder.advancement().display(new ItemStack(CelestialBlocks.MARS_SAND.get()),
-                    new TranslatableComponent("advancements.celestial.enter_mars.title"),
-                    new TranslatableComponent("advancements.celestial.enter_mars.description"),
+                    new TranslatableComponent("advancements.celestialexploration.enter_mars.title"),
+                    new TranslatableComponent("advancements.celestialexploration.enter_mars.description"),
                         null, FrameType.TASK, true, true, false)
                 .parent(root).addCriterion("entered_moon", ChangeDimensionTrigger.TriggerInstance.changedDimensionTo(CelestialDimensions.MARS)).save(consumer, modLoc("enter_mars"));
 
         Advancement plantPotato = Advancement.Builder.advancement().display(new ItemStack(Items.POTATO),
-                        new TranslatableComponent("advancements.celestial.plant_potato.title"), new TranslatableComponent("advancements.celestial.plant_potato.description"),
+                        new TranslatableComponent("advancements.celestialexploration.plant_potato.title"), new TranslatableComponent("advancements.celestialexploration.plant_potato.description"),
                         null, FrameType.TASK, true, true, false)
                 .parent(enterSpace).addCriterion("plant_potato", ItemUsedOnBlockTrigger.TriggerInstance.itemUsedOnBlock((LocationPredicate.Builder.location().setDimension(CelestialDimensions.MARS).setBlock(BlockPredicate.Builder.block().of(Blocks.DIRT).build())),
                         ItemPredicate.Builder.item().of(Items.POTATO))).save(consumer, modLoc("plant_potato"));
 
         Advancement enterVenus = Advancement.Builder.advancement().display(new ItemStack(CelestialBlocks.VENUS_SAND.get()),
-                        new TranslatableComponent("advancements.celestial.enter_venus.title"), new TranslatableComponent("advancements.celestial.enter_venus.description"),
+                        new TranslatableComponent("advancements.celestialexploration.enter_venus.title"), new TranslatableComponent("advancements.celestialexploration.enter_venus.description"),
                         null, FrameType.TASK, true, true, false)
                 .parent(enterMars).addCriterion("entered_venus", ChangeDimensionTrigger.TriggerInstance.changedDimensionTo(CelestialDimensions.VENUS)).save(consumer, modLoc("enter_venus"));
 
         Advancement enterMercury = Advancement.Builder.advancement().display(new ItemStack(CelestialBlocks.MERCURY_SAND.get()),
-                        new TranslatableComponent("advancements.celestial.enter_mercury.title"), new TranslatableComponent("advancements.celestial.enter_mercury.description"),
+                        new TranslatableComponent("advancements.celestialexploration.enter_mercury.title"), new TranslatableComponent("advancements.celestialexploration.enter_mercury.description"),
                         null, FrameType.TASK, true, true, false)
                 .parent(enterVenus).addCriterion("entered_mercury", ChangeDimensionTrigger.TriggerInstance.changedDimensionTo(CelestialDimensions.MERCURY)).save(consumer, modLoc("enter_mercury"));
 
         Advancement enterJupiter = Advancement.Builder.advancement().display(new ItemStack(CelestialBlocks.JUPITER_DEEPSLATE.get()),
-                        new TranslatableComponent("advancements.celestial.enter_jupiter.title"), new TranslatableComponent("advancements.celestial.enter_jupiter.description"),
+                        new TranslatableComponent("advancements.celestialexploration.enter_jupiter.title"), new TranslatableComponent("advancements.celestialexploration.enter_jupiter.description"),
                         null, FrameType.TASK, true, true, false)
                 .parent(enterMercury).addCriterion("entered_jupiter", ChangeDimensionTrigger.TriggerInstance.changedDimensionTo(CelestialDimensions.JUPITER)).save(consumer, modLoc("enter_jupiter"));
 
         Advancement enterEuropa = Advancement.Builder.advancement().display(new ItemStack(CelestialBlocks.EUROPA_BRICKS.get()),
-                        new TranslatableComponent("advancements.celestial.enter_europa.title"), new TranslatableComponent("advancements.celestial.enter_europa.description"),
+                        new TranslatableComponent("advancements.celestialexploration.enter_europa.title"), new TranslatableComponent("advancements.celestialexploration.enter_europa.description"),
                         null, FrameType.TASK, true, true, false)
                 .parent(enterJupiter).addCriterion("entered_europa", ChangeDimensionTrigger.TriggerInstance.changedDimensionTo(CelestialDimensions.EUROPA)).save(consumer, modLoc("enter_europa"));
 
         Advancement enterCallisto = Advancement.Builder.advancement().display(new ItemStack(CelestialBlocks.CALLISTO_BRICKS.get()),
-                        new TranslatableComponent("advancements.celestial.enter_callisto.title"), new TranslatableComponent("advancements.celestial.enter_callisto.description"),
+                        new TranslatableComponent("advancements.celestialexploration.enter_callisto.title"), new TranslatableComponent("advancements.celestialexploration.enter_callisto.description"),
                         null, FrameType.TASK, true, true, false)
                 .parent(enterMercury).addCriterion("entered_callisto", ChangeDimensionTrigger.TriggerInstance.changedDimensionTo(CelestialDimensions.CALLISTO)).save(consumer, modLoc("enter_callisto"));
 
         Advancement enterIo = Advancement.Builder.advancement().display(new ItemStack(CelestialBlocks.IO_BRICKS.get()),
-                        new TranslatableComponent("advancements.celestial.enter_io.title"), new TranslatableComponent("advancements.celestial.enter_io.description"),
+                        new TranslatableComponent("advancements.celestialexploration.enter_io.title"), new TranslatableComponent("advancements.celestialexploration.enter_io.description"),
                         null, FrameType.TASK, true, true, false)
                 .parent(enterMercury).addCriterion("entered_io", ChangeDimensionTrigger.TriggerInstance.changedDimensionTo(CelestialDimensions.IO)).save(consumer, modLoc("enter_io"));
 
         Advancement enterGanymede = Advancement.Builder.advancement().display(new ItemStack(CelestialBlocks.GANYMEDE_BRICKS.get()),
-                        new TranslatableComponent("advancements.celestial.enter_ganymede.title"), new TranslatableComponent("advancements.celestial.enter_ganymede.description"),
+                        new TranslatableComponent("advancements.celestialexploration.enter_ganymede.title"), new TranslatableComponent("advancements.celestialexploration.enter_ganymede.description"),
                         null, FrameType.TASK, true, true, false)
                 .parent(enterMercury).addCriterion("entered_ganymede", ChangeDimensionTrigger.TriggerInstance.changedDimensionTo(CelestialDimensions.GANYMEDE)).save(consumer, modLoc("enter_ganymede"));
 
         Advancement obtainAllMechaDogs = Advancement.Builder.advancement().display(new ItemStack(CelestialItems.WHITE_MECHADOG.get()),
-                        new TranslatableComponent("advancements.celestial.all_mechadogs.title"), new TranslatableComponent("advancements.celestial.all_mechadogs.description"),
+                        new TranslatableComponent("advancements.celestialexploration.all_mechadogs.title"), new TranslatableComponent("advancements.celestialexploration.all_mechadogs.description"),
                         null, FrameType.TASK, true, true, false)
                 .parent(root).addCriterion("white", InventoryChangeTrigger.TriggerInstance.hasItems(CelestialItems.WHITE_MECHADOG.get()))
                 .addCriterion("light_grey", InventoryChangeTrigger.TriggerInstance.hasItems(CelestialItems.LIGHT_GREY_MECHADOG.get()))

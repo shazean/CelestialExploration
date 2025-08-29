@@ -212,8 +212,8 @@ public class SpaceshipScreen extends AbstractContainerScreen<SpaceshipMenu> {
         if (Keybinds.SPACESHIP_LIGHT_TRAVEL.isActiveAndMatches(InputConstants.getKey(key, p_94716_))) {
             CelestialExploration.LOGGER.debug("keyReleased, hoveredDimension: " + hoveredDimension);
             if (this.hoveredDimension != null) {
-                if (this.minecraft != null && this.minecraft.player != null)
-                    this.menu.doLightTravel(hoveredDimension, this.minecraft.player);
+                if (CelestialExploration.PROXY.getMinecraft() != null && CelestialExploration.PROXY.getPlayer() != null)
+                    this.menu.doLightTravel(hoveredDimension, CelestialExploration.PROXY.getPlayer());
             }
         }
 //        if (Keybinds.OPEN_SPACESHIP_INVENTORY.isActiveAndMatches(InputConstants.getKey(key, p_94716_))) {
@@ -229,8 +229,8 @@ public class SpaceshipScreen extends AbstractContainerScreen<SpaceshipMenu> {
         renderTooltip(poseStack, mouseX, mouseY);
         renderTabTooltips(poseStack, mouseX, mouseY);
 
-        if (this.minecraft != null && this.minecraft.player != null)
-            lightTravelAllowed = this.minecraft.player.level.dimension().equals(CelestialDimensions.SPACE);
+        if (CelestialExploration.PROXY.getMinecraft() != null && CelestialExploration.PROXY.getPlayer() != null)
+            lightTravelAllowed = CelestialExploration.PROXY.getPlayer().level.dimension().equals(CelestialDimensions.SPACE);
 
         renderLightTravelTooltips(poseStack, mouseX, mouseY);
     }

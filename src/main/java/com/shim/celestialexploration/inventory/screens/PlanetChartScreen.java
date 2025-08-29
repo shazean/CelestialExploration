@@ -25,9 +25,6 @@ import java.util.List;
 public class PlanetChartScreen extends AbstractContainerScreen<PlanetChartMenu> {
     private static final ResourceLocation TEXTURE = new ResourceLocation(CelestialExploration.MODID, "textures/gui/planet_chart.png");
 
-
-//    TranslatableComponent("planet_chart");
-
     private List<Component> tooltip = Lists.newArrayList();
 
     public PlanetChartScreen(PlanetChartMenu menu, Inventory playerInventory, Component title) {

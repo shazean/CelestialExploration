@@ -9,8 +9,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class SpaceFlightCapabilityProvider implements ICapabilityProvider, ICapabilitySerializable<CompoundTag> {
-    public static Capability<LoxTankCapability.LoxTankHandler> LOX_TANK = CapabilityManager.get(new CapabilityToken<>(){});
-
     private final LazyOptional<ISpaceFlight> lazySpaceshipFlight = LazyOptional.of(VehicleFlightHandler::new);
 
     @NotNull

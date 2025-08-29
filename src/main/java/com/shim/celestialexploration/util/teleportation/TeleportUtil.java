@@ -98,6 +98,8 @@ public class TeleportUtil {
             if (!PLANET_MOONS.contains(loc)) {
                 planetChunkPos = new ChunkPos((int) CelestialUtil.getPlanetaryChunkCoordinates(loc).x, (int) CelestialUtil.getPlanetaryChunkCoordinates(loc).z);
                 ChunkPos locationChunk = new ChunkPos(new BlockPos(location.x, location.y, location.z));
+
+                //check if we're somewhat nearby
                 if (CelestialUtil.isInRectangle(planetChunkPos.x, planetChunkPos.z, 6, locationChunk.x, locationChunk.z)) {
                     planet = loc;
                     break;

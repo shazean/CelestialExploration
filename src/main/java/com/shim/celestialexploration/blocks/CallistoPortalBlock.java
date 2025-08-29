@@ -17,7 +17,8 @@ public class CallistoPortalBlock extends AbstractPortalBlock {
 
     @Override
     public PlanetTeleporter getTeleporter(ServerLevel serverLevel) {
-        return new PlanetTeleporter(serverLevel, CelestialPOIs.CALLISTO_PORTAL.get(), CelestialBlocks.CALLISTO_BRICKS.get(), CelestialBlocks.CALLISTO_PORTAL.get(), CelestialDimensions.CALLISTO);
+        return new PlanetTeleporter(serverLevel, CelestialPOIs.CALLISTO_PORTAL.get(), CelestialBlocks.CALLISTO_BRICKS.get(),
+                CelestialBlocks.CALLISTO_PORTAL.get(), CelestialDimensions.CALLISTO);
     }
 
     @Override
