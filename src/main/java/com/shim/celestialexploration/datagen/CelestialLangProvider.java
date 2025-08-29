@@ -135,9 +135,6 @@ public class CelestialLangProvider extends LanguageProvider {
 		add("container.celestialexploration.workbench", "Workbench");
 
 		//---- EFFECTS -------------------------------------------------------------------------------
-		add(CelestialEffects.LOW_GRAVITY.get(), "Low Gravity");
-		add(CelestialEffects.EXTRA_LOW_GRAVITY.get(), "Extra Low Gravity");
-		add(CelestialEffects.HIGH_GRAVITY.get(), "High Gravity");
 		add(CelestialEffects.STATIC_EFFECT.get(), "Static Build Up");
 
 		//---- TABS -------------------------------------------------------------------------------

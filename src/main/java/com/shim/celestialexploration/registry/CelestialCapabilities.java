@@ -3,6 +3,8 @@ package com.shim.celestialexploration.registry;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.capabilities.*;
 import com.shim.celestialexploration.entity.vehicle.Spaceship;
+import com.shim.celestiallib.api.capabilities.SpaceVehicleCapabilityProvider;
+import com.shim.celestiallib.capabilities.CLibCapabilities;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.npc.Villager;
@@ -19,14 +21,14 @@ import net.minecraftforge.fluids.capability.templates.FluidHandlerItemStack;
 public class CelestialCapabilities {
 
     public static final Capability<LoxTankCapability.ILoxTank> LOX_TANK_CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {});
-    public static final Capability<ISpaceFlight> SPACE_FLIGHT_CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {});
+//    public static final Capability<ISpaceFlight> SPACE_FLIGHT_CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {});
     public static final Capability<TaxiCapability.ITaxi> TAXI_CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {});
     public static final Capability<TaxiCapability.ITaxi> VILLAGER_TRAVEL_CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {});
     public static final Capability<LightTravelCapability.ILightTravel> LIGHT_TRAVEL_CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {});
 
     public static void registerCapabilities(RegisterCapabilitiesEvent eventIn) {
         eventIn.register(LoxTankCapability.ILoxTank.class);
-        eventIn.register(ISpaceFlight.class);
+//        eventIn.register(ISpaceFlight.class);
         eventIn.register(TaxiCapability.ITaxi.class);
         eventIn.register(VillagerTravelCapability.ITravel.class);
     }
@@ -50,8 +52,8 @@ public class CelestialCapabilities {
 
     public static void attachEntityCapabilities(AttachCapabilitiesEvent<Entity> eventIn) {
         if (eventIn.getObject() instanceof Spaceship) {
-            if (!eventIn.getObject().getCapability(SPACE_FLIGHT_CAPABILITY).isPresent()) {
-                eventIn.addCapability(new ResourceLocation(CelestialExploration.MODID, "spaceship_flight"), new SpaceFlightCapabilityProvider());
+            if (!eventIn.getObject().getCapability(CLibCapabilities.SPACE_FLIGHT_CAPABILITY).isPresent()) {
+                eventIn.addCapability(new ResourceLocation(CelestialExploration.MODID, "spaceship_flight"), new SpaceVehicleCapabilityProvider());
             }
         }
         if (eventIn.getObject() instanceof Player) {
