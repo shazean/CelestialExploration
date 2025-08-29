@@ -1,7 +1,6 @@
 package com.shim.celestialexploration.blocks;
 
 import com.shim.celestialexploration.registry.*;
-import com.shim.celestialexploration.world.portal.PlanetTeleporter;
 import com.shim.celestiallib.api.blocks.AbstractPortalBlock;
 import com.shim.celestiallib.api.world.portal.PlanetPortalTeleporter;
 import net.minecraft.core.particles.SimpleParticleType;

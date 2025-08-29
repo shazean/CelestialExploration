@@ -16,6 +16,7 @@ import com.shim.celestialexploration.registry.*;
 import com.shim.celestialexploration.util.CelestialUtil;
 import com.shim.celestialexploration.util.DimensionUtil;
 import com.shim.celestialexploration.util.teleportation.TeleportUtil;
+import com.shim.celestiallib.api.blocks.AbstractPortalBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.TranslatableComponent;
