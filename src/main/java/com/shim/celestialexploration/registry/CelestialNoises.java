@@ -76,24 +76,6 @@ public class CelestialNoises extends NoiseRouterData {
                 CelestialSurfaceRules.ganymede(), 16, false, true , false, false);
     });
 
-
-    //---- FOR DATAPACK/PRESETS -------------------------------------------------------------------------------
-    public static final RegistryObject<NoiseGeneratorSettings> DESERT_NOISE = NOISES.register("desert", () -> new NoiseGeneratorSettings(datapackPlanetNoiseSettings(), Blocks.SANDSTONE.defaultBlockState(), Blocks.SAND.defaultBlockState(),
-            NoiseRouterData.overworld(datapackPlanetNoiseSettings(), false), CelestialSurfaceRules.datapackPresets(true), 32, false, true , true, false));
-
-
-    public static final RegistryObject<NoiseGeneratorSettings> FOREST_NOISE = NOISES.register("forest", () -> new NoiseGeneratorSettings(datapackPlanetNoiseSettings(), Blocks.STONE.defaultBlockState(), Blocks.WATER.defaultBlockState(),
-            NoiseRouterData.overworld(datapackPlanetNoiseSettings(), false), CelestialSurfaceRules.datapackPresets(false), 63, false, true , true, false));
-
-
-    public static final RegistryObject<NoiseGeneratorSettings> OCEAN_NOISE = NOISES.register("ocean", () -> new NoiseGeneratorSettings(datapackPlanetNoiseSettings(), Blocks.STONE.defaultBlockState(), Blocks.WATER.defaultBlockState(),
-            NoiseRouterData.overworld(datapackPlanetNoiseSettings(), false), CelestialSurfaceRules.datapackPresets(false), 128, false, true , true, false));
-
-
-    public static final RegistryObject<NoiseGeneratorSettings> ICE_NOISE = NOISES.register("icy", () -> new NoiseGeneratorSettings(datapackPlanetNoiseSettings(), Blocks.STONE.defaultBlockState(), Blocks.WATER.defaultBlockState(),
-            NoiseRouterData.overworld(datapackPlanetNoiseSettings(), false), CelestialSurfaceRules.datapackPresets(false), 63, false, true , true, false));
-
-
     static NoiseSettings moonNoiseSettings() {
         return NoiseSettings.create(-32, 256, new NoiseSamplingSettings(1.0D, 1.0D, 80.0D, 160.0D),
                 new NoiseSlider(-0.078125D, 2, 8), new NoiseSlider(0.1171875D, 3, 0), 1, 2, TerrainProvider.overworld(false));
@@ -144,11 +126,6 @@ public class CelestialNoises extends NoiseRouterData {
 
     static NoiseSettings ganymedeNoiseSettings() {
         return NoiseSettings.create(-32, 256, new NoiseSamplingSettings(1.0D, 1.0D, 80.0D, 160.0D),
-                new NoiseSlider(-0.078125D, 2, 8), new NoiseSlider(0.1171875D, 3, 0), 1, 2, TerrainProvider.overworld(false));
-    }
-
-    static NoiseSettings datapackPlanetNoiseSettings() {
-        return NoiseSettings.create(-64, 384, new NoiseSamplingSettings(1.0D, 1.0D, 80.0D, 160.0D),
                 new NoiseSlider(-0.078125D, 2, 8), new NoiseSlider(0.1171875D, 3, 0), 1, 2, TerrainProvider.overworld(false));
     }
 }

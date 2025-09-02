@@ -94,31 +94,6 @@ public class CelestialDimensions {
         return new Climate.ParameterList<>(builder.build());
     });
 
-    //---- FOR DATAPACK/PRESETS -------------------------------------------------------------------------------
-    public static final MultiNoiseBiomeSource.Preset DESERT_PRESET = new MultiNoiseBiomeSource.Preset(new ResourceLocation(CelestialExploration.MODID, "desert_planet"), (biome) -> {
-        ImmutableList.Builder<Pair<Climate.ParameterPoint, Holder<Biome>>> builder = ImmutableList.builder();
-        new DesertPlanetBiomeBuilder().addBiomes((p_204279_) -> builder.add(p_204279_.mapSecond(biome::getOrCreateHolder)));
-        return new Climate.ParameterList<>(builder.build());
-    });
-
-    public static final MultiNoiseBiomeSource.Preset FOREST_PRESET = new MultiNoiseBiomeSource.Preset(new ResourceLocation(CelestialExploration.MODID, "forest_planet"), (biome) -> {
-        ImmutableList.Builder<Pair<Climate.ParameterPoint, Holder<Biome>>> builder = ImmutableList.builder();
-        new ForestPlanetBiomeBuilder().addBiomes((p_204279_) -> builder.add(p_204279_.mapSecond(biome::getOrCreateHolder)));
-        return new Climate.ParameterList<>(builder.build());
-    });
-
-    public static final MultiNoiseBiomeSource.Preset ICE_PRESET = new MultiNoiseBiomeSource.Preset(new ResourceLocation(CelestialExploration.MODID, "icy_planet"), (biome) -> {
-        ImmutableList.Builder<Pair<Climate.ParameterPoint, Holder<Biome>>> builder = ImmutableList.builder();
-        new IcyPlanetBiomeBuilder().addBiomes((p_204279_) -> builder.add(p_204279_.mapSecond(biome::getOrCreateHolder)));
-        return new Climate.ParameterList<>(builder.build());
-    });
-
-    public static final MultiNoiseBiomeSource.Preset OCEAN_PRESET = new MultiNoiseBiomeSource.Preset(new ResourceLocation(CelestialExploration.MODID, "ocean_planet"), (biome) -> {
-        ImmutableList.Builder<Pair<Climate.ParameterPoint, Holder<Biome>>> builder = ImmutableList.builder();
-        new OceanPlanetBiomeBuilder().addBiomes((p_204279_) -> builder.add(p_204279_.mapSecond(biome::getOrCreateHolder)));
-        return new Climate.ParameterList<>(builder.build());
-    });
-
 
     public static final DeferredRegister<Codec<? extends BiomeSource>> BIOME_SOURCE = DeferredRegister.create(Registry.BIOME_SOURCE_REGISTRY, CelestialExploration.MODID);
     public static final RegistryObject<Codec<CelestialBiomeSource>> CELESTIAL_BIOMES = BIOME_SOURCE.register("celestial_exploration", () -> CelestialBiomeSource.CODEC);
