@@ -4,8 +4,6 @@ import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.entity.vehicle.Spaceship;
 import com.shim.celestialexploration.inventory.OxygenTankSlot;
 import com.shim.celestialexploration.packets.CelestialPacketHandler;
-import com.shim.celestialexploration.packets.DoLightTravelPacket;
-import com.shim.celestialexploration.packets.ServerResetLightTravelPacket;
 import com.shim.celestialexploration.registry.CelestialDimensions;
 import com.shim.celestialexploration.registry.CelestialMenus;
 import com.shim.celestialexploration.util.CelestialUtil;
@@ -170,70 +168,4 @@ public class SpaceshipMenu extends AbstractContainerMenu {
             this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 142 + 34 - 16 - 8));
         }
     }
-
-    public boolean lightTravelAllowed() {
-        return this.entity.getPassengers().size() >= 1 && this.entity.level.dimension().equals(CelestialDimensions.MILKY_WAY);
-    }
-
-    public Vec3 getPlanetLocation(ResourceKey<Level> dimension) {
-        return PLANET_LOCATIONS.get(dimension);
-    }
-
-    public Vec3 getPlanetaryChunkCoordinates(ResourceKey<Level> planet) {
-        Vec3 coord = getPlanetLocation(planet); //CE_DIMENSION_LOCATION.get(planet);
-//        if (coord == null) coord = CE_DIMENSION_LOCATION.get(Level.OVERWORLD);
-        coord = new Vec3(coord.x * CelestialUtil.getSpaceRatio(), coord.y, coord.z * CelestialUtil.getSpaceRatio());
-        return coord;
-    }
-
-
-    public void doLightTravel(ResourceKey<Level> dimension, Player player) {
-        if (lightTravelAllowed()) {
-
-            CelestialExploration.LOGGER.debug("doLightTravel");
-
-//            ChunkPos chunkPos = new ChunkPos((int) getPlanetaryChunkCoordinates(dimension).x(), (int) getPlanetaryChunkCoordinates(dimension).z());
-
-//            ChunkPos chunkPos = new ChunkPos((int) CelestialUtil.getPlanetaryChunkCoordinates(dimension).x(), (int) CelestialUtil.getPlanetaryChunkCoordinates(dimension).z());
-//            BlockPos pos = chunkPos.getMiddleBlockPosition(0);
-
-            int secondPassenger = (this.entity.getPassengers().size() > 1) ? this.entity.getPassengers().get(1).getId() : -1;
-
-            CelestialPacketHandler.INSTANCE.sendToServer(new DoLightTravelPacket(this.entity.getId(), this.entity.getPassengers().get(0).getId(), secondPassenger, dimension));
-
-//            CelestialPacketHandler.INSTANCE.sendToServer(new DoLightTravelPacket(this.entity.getId(), this.entity.getPassengers().get(0).getId(), secondPassenger, pos));
-
-            if (this.entity.getFirstPassenger() == player) {
-//                LightTravelCapability.ILightTravel travelCap = CelestialExploration.getCapability(player, CapabilityRegistry.LIGHT_TRAVEL_CAPABILITY);
-
-//                if (travelCap != null) {
-//                    if (dimension.equals(DimensionRegistry.MERCURY))
-//                        travelCap.getMercuryCooldown().resetCooldown();
-//                    if (dimension.equals(DimensionRegistry.VENUS))
-//                        travelCap.getVenusCooldown().resetCooldown();
-//                    if (dimension.equals(Level.OVERWORLD))
-//                        travelCap.getOverworldCooldown().resetCooldown();
-//                    if (dimension.equals(DimensionRegistry.MARS))
-//                        travelCap.getMarsCooldown().resetCooldown();
-//                    if (dimension.equals(DimensionRegistry.JUPITER))
-//                        travelCap.getJupiterCooldown().resetCooldown();
-//                }
-
-                CelestialPacketHandler.INSTANCE.sendToServer(new ServerResetLightTravelPacket(this.entity.getFirstPassenger().getId(), dimension));
-
-            }
-        }
-    }
-
-//    public Player interactingPlayer() {
-//        return this.getMinecraft().player;
-//    }
-//
-//    public LightTravelCapability.ILightTravel getPlayerLightTravel() {
-//        Player player = interactingPlayer();
-//
-//        return CelestialExploration.getCapability(player, CapabilityRegistry.LIGHT_TRAVEL_CAPABILITY);
-//
-//    }
-
 }

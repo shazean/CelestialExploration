@@ -24,7 +24,6 @@ public class CelestialCapabilities {
 //    public static final Capability<ISpaceFlight> SPACE_FLIGHT_CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {});
     public static final Capability<TaxiCapability.ITaxi> TAXI_CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {});
     public static final Capability<TaxiCapability.ITaxi> VILLAGER_TRAVEL_CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {});
-    public static final Capability<LightTravelCapability.ILightTravel> LIGHT_TRAVEL_CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {});
 
     public static void registerCapabilities(RegisterCapabilitiesEvent eventIn) {
         eventIn.register(LoxTankCapability.ILoxTank.class);
@@ -59,9 +58,6 @@ public class CelestialCapabilities {
         if (eventIn.getObject() instanceof Player) {
             if (!eventIn.getObject().getCapability(TaxiCapability.TaxiProvider.TAXI).isPresent()) {
                 eventIn.addCapability(new ResourceLocation(CelestialExploration.MODID, "taxi"), new TaxiCapability.TaxiProvider());
-            }
-            if (!eventIn.getObject().getCapability(LightTravelCapability.LightTravelProvider.LIGHT_TRAVEL).isPresent()) {
-                eventIn.addCapability(new ResourceLocation(CelestialExploration.MODID, "light_travel"), new LightTravelCapability.LightTravelProvider());
             }
         }
 

@@ -12,7 +12,6 @@ import com.shim.celestialexploration.packets.*;
 import com.shim.celestialexploration.registry.*;
 import com.shim.celestialexploration.util.Keybinds;
 import com.shim.celestialexploration.util.CelestialUtil;
-import com.shim.celestialexploration.util.teleportation.TeleportUtil;
 import net.minecraft.BlockUtil;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
@@ -903,33 +902,6 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
         if (this.isControlledByLocalInstance() && this.lerpSteps > 0) {
             this.lerpSteps = 0;
             this.absMoveTo(this.lerpX, this.lerpY, this.lerpZ, (float) this.lerpYRot, (float) this.lerpXRot);
-        }
-    }
-
-    public void doLightTravel(Entity passengerOne, Entity passengerTwo, BlockPos destinationPos, Player player) {
-        TeleportUtil.teleport(this, Util.make(new ArrayList<>(), (list) -> {
-            list.add(passengerOne);
-            if (passengerTwo != null) list.add(passengerTwo);
-        }), CelestialDimensions.MILKY_WAY, new Vec3(destinationPos.getX(), destinationPos.getY(), destinationPos.getZ()));
-
-        if (player instanceof ServerPlayer serverPlayer) {
-            int passengerTwoId = (passengerTwo != null) ? passengerTwo.getId() : -1;
-            CelestialPacketHandler.INSTANCE.sendTo(new ServerDidLightTravelPacket(this.getId(), passengerOne.getId(), passengerTwoId, destinationPos), serverPlayer.connection.getConnection(), NetworkDirection.PLAY_TO_CLIENT);
-        }
-    }
-
-    public static void finishLightTravel(Spaceship spaceship, Entity passengerOne, Entity passengerTwo, BlockPos pos) {
-        if (spaceship.level.isClientSide) {
-            spaceship.moveTo(pos.getX(), pos.getY(), pos.getZ());
-            if (passengerOne != null) {
-                passengerOne.moveTo(pos.getX(), pos.getY(), pos.getZ());
-                passengerOne.startRiding(spaceship);
-            }
-            if (passengerTwo != null) {
-                passengerTwo.moveTo(pos.getX(), pos.getY(), pos.getZ());
-                passengerTwo.startRiding(spaceship);
-
-            }
         }
     }
 

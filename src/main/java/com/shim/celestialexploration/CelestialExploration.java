@@ -3,9 +3,6 @@ package com.shim.celestialexploration;
 import com.shim.celestialexploration.config.CelestialClientConfig;
 import com.shim.celestialexploration.config.CelestialCommonConfig;
 import com.shim.celestialexploration.config.CelestialServerConfig;
-import com.shim.celestialexploration.data.CelestialDimensionEffectsManager;
-import com.shim.celestialexploration.data.CelestialDimensionManager;
-import com.shim.celestialexploration.data.CelestialPlanetManager;
 import com.shim.celestialexploration.events.CelestialCommonEventSetup;
 import com.shim.celestialexploration.registry.*;
 import com.shim.celestialexploration.util.*;
@@ -80,9 +77,7 @@ public class CelestialExploration {
         MinecraftForge.EVENT_BUS.addGenericListener(ItemStack.class, CelestialCapabilities::attachItemCapabilities);
         MinecraftForge.EVENT_BUS.addGenericListener(BlockEntity.class, CelestialCapabilities::attachBlockCapabilities);
         MinecraftForge.EVENT_BUS.addGenericListener(Entity.class, CelestialCapabilities::attachEntityCapabilities);
-
-        MinecraftForge.EVENT_BUS.addListener(this::reloadResources);
-
+        
         ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, CelestialClientConfig.SPEC, "celestialexploration-client.toml");
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, CelestialCommonConfig.SPEC, "celestialexploration-common.toml");
         ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, CelestialServerConfig.SPEC, "celestialexploration-server.toml");
@@ -124,10 +119,4 @@ public class CelestialExploration {
         return entityIn.getCapability(capability).isPresent() ? entityIn.getCapability(capability).orElseThrow(() -> new IllegalArgumentException("Lazy optional must not be empty")) : null;
     }
 
-    private void reloadResources(final AddReloadListenerEvent event) {
-        event.addListener(new CelestialDimensionManager());
-        event.addListener(new CelestialPlanetManager());
-        event.addListener(new CelestialDimensionEffectsManager());
-
-    }
 }

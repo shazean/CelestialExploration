@@ -2,18 +2,12 @@ package com.shim.celestialexploration.events;
 
 import com.mojang.datafixers.util.Either;
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.capabilities.LightTravelCapability;
 import com.shim.celestialexploration.capabilities.TaxiCapability;
 import com.shim.celestialexploration.config.CelestialCommonConfig;
 import com.shim.celestialexploration.entity.CelestialCatSpawner;
 import com.shim.celestialexploration.entity.projectile.MeteorProjectile;
 import com.shim.celestialexploration.entity.vehicle.Spaceship;
-import com.shim.celestialexploration.item.armor.ThermalSpacesuitArmorItem;
-import com.shim.celestialexploration.packets.CelestialPacketHandler;
 import com.shim.celestialexploration.registry.*;
-import com.shim.celestialexploration.util.CelestialUtil;
-import com.shim.celestialexploration.util.DimensionUtil;
-import com.shim.celestialexploration.util.teleportation.TeleportUtil;
 import com.shim.celestiallib.api.blocks.AbstractPortalBlock;
 import com.shim.celestiallib.effects.CelestialLibEffects;
 import net.minecraft.core.BlockPos;
@@ -21,7 +15,6 @@ import net.minecraft.core.Direction;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
@@ -29,29 +22,22 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.ShovelItem;
-import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.client.event.RenderTooltipEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.EntityMountEvent;
-import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.LogicalSide;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.network.NetworkDirection;
 import net.minecraftforge.registries.RegistryObject;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 @Mod.EventBusSubscriber(modid = CelestialExploration.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
@@ -155,15 +141,6 @@ public class CelestialForgeEventBus {
     @SubscribeEvent
     public static void onEntityJoin(EntityJoinWorldEvent event) {
         Entity entity = event.getEntity();
-        ResourceKey<Level> dimension = event.getWorld().dimension();
-
-        if (event.getEntity() instanceof Player player) {
-            LightTravelCapability.ILightTravel travelCap = CelestialExploration.getCapability(player, CelestialCapabilities.LIGHT_TRAVEL_CAPABILITY);
-
-            if (travelCap != null) {
-                travelCap.sync(player);
-            }
-        }
 
         if (CelestialCommonConfig.STORMS.get()) {
             if (event.getWorld().isRaining() && event.getWorld().getBiome(entity.blockPosition()).is(CelestialTags.Biomes.DUST_STORM_BIOMES)) {
@@ -184,10 +161,6 @@ public class CelestialForgeEventBus {
         if (event.isWasDeath()) {
             if (event.getOriginal() != null && event.getPlayer() != null) {
                 event.getOriginal().reviveCaps();
-
-                LightTravelCapability.ILightTravel oldTravelData = event.getOriginal().getCapability(CelestialCapabilities.LIGHT_TRAVEL_CAPABILITY).orElse(null);
-                LightTravelCapability.ILightTravel newTravelData = event.getPlayer().getCapability(CelestialCapabilities.LIGHT_TRAVEL_CAPABILITY).orElse(null);
-                if (oldTravelData != null && newTravelData != null) newTravelData.setData(oldTravelData.getData());
 
                 TaxiCapability.ITaxi oldTaxiData = event.getOriginal().getCapability(CelestialCapabilities.TAXI_CAPABILITY).orElse(null);
                 TaxiCapability.ITaxi newTaxiData = event.getPlayer().getCapability(CelestialCapabilities.TAXI_CAPABILITY).orElse(null);

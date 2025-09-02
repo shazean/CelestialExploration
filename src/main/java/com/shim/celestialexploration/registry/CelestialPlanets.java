@@ -17,17 +17,31 @@ public class CelestialPlanets {
 
     public static final RegistryObject<Planet> OVERWORLD = PLANETS.register("overworld", () -> new Planet(Level.OVERWORLD, CelestialGalaxies.MILKY_WAY_GALAXY.get()));
 
-    public static final RegistryObject<Planet> MOON = PLANETS.register("moon", () -> new Moon(CelestialDimensions.MOON, OVERWORLD.get()).gravity((GravityEffect) CelestialLibEffects.LOW_GRAVITY.get()));
+    public static final RegistryObject<Planet> MOON = PLANETS.register("moon", () -> new Moon(CelestialDimensions.MOON, OVERWORLD.get())
+//            .gravity((GravityEffect) CelestialLibEffects.LOW_GRAVITY.get())
+            .lightSpeedLockedAndMaybeHidden(false));
 
-    public static final RegistryObject<Planet> MARS = PLANETS.register("mars", () -> new Planet(CelestialDimensions.MARS, CelestialGalaxies.MILKY_WAY_GALAXY.get()).gravity((GravityEffect) CelestialLibEffects.LOW_GRAVITY.get()));
-    public static final RegistryObject<Planet> MERCURY = PLANETS.register("mercury", () -> new Planet(CelestialDimensions.MERCURY, CelestialGalaxies.MILKY_WAY_GALAXY.get()).gravity((GravityEffect) CelestialLibEffects.LOW_GRAVITY.get()));
-    public static final RegistryObject<Planet> VENUS = PLANETS.register("venus", () -> new Planet(CelestialDimensions.VENUS, CelestialGalaxies.MILKY_WAY_GALAXY.get()));
+    public static final RegistryObject<Planet> MARS = PLANETS.register("mars", () -> new Planet(CelestialDimensions.MARS, CelestialGalaxies.MILKY_WAY_GALAXY.get())
+//            .gravity((GravityEffect) CelestialLibEffects.LOW_GRAVITY.get())
+            .lightSpeedLockedAndMaybeHidden(false));
+    public static final RegistryObject<Planet> MERCURY = PLANETS.register("mercury", () -> new Planet(CelestialDimensions.MERCURY, CelestialGalaxies.MILKY_WAY_GALAXY.get())
+//            .gravity((GravityEffect) CelestialLibEffects.LOW_GRAVITY.get())
+            .lightSpeedLockedAndMaybeHidden(false));
+    public static final RegistryObject<Planet> VENUS = PLANETS.register("venus", () -> new Planet(CelestialDimensions.VENUS, CelestialGalaxies.MILKY_WAY_GALAXY.get()).lightSpeedLockedAndMaybeHidden(false));
 
-    public static final RegistryObject<Planet> JUPITER = PLANETS.register("jupiter", () -> new Planet(CelestialDimensions.JUPITER, CelestialGalaxies.MILKY_WAY_GALAXY.get()));
-    public static final RegistryObject<Planet> EUROPA = PLANETS.register("europa", () -> new Moon(CelestialDimensions.EUROPA, JUPITER.get()).gravity((GravityEffect) CelestialLibEffects.LOW_GRAVITY.get()));
-    public static final RegistryObject<Planet> IO = PLANETS.register("io", () -> new Moon(CelestialDimensions.IO, JUPITER.get()).gravity((GravityEffect) CelestialLibEffects.LOW_GRAVITY.get()));
-    public static final RegistryObject<Planet> CALLISTO = PLANETS.register("callisto", () -> new Moon(CelestialDimensions.CALLISTO, JUPITER.get()).gravity((GravityEffect) CelestialLibEffects.LOW_GRAVITY.get()));
-    public static final RegistryObject<Planet> GANYMEDE = PLANETS.register("ganymede", () -> new Moon(CelestialDimensions.GANYMEDE, JUPITER.get()).gravity((GravityEffect) CelestialLibEffects.LOW_GRAVITY.get()));
+    public static final RegistryObject<Planet> JUPITER = PLANETS.register("jupiter", () -> new Planet(CelestialDimensions.JUPITER, CelestialGalaxies.MILKY_WAY_GALAXY.get()).lightSpeedLockedAndMaybeHidden(false));
+    public static final RegistryObject<Planet> EUROPA = PLANETS.register("europa", () -> new Moon(CelestialDimensions.EUROPA, JUPITER.get())
+//            .gravity((GravityEffect) CelestialLibEffects.LOW_GRAVITY.get())
+            .lightSpeedLockedAndMaybeHidden(false));
+    public static final RegistryObject<Planet> IO = PLANETS.register("io", () -> new Moon(CelestialDimensions.IO, JUPITER.get())
+//            .gravity((GravityEffect) CelestialLibEffects.LOW_GRAVITY.get())
+            .lightSpeedLockedAndMaybeHidden(false));
+    public static final RegistryObject<Planet> CALLISTO = PLANETS.register("callisto", () -> new Moon(CelestialDimensions.CALLISTO, JUPITER.get())
+//            .gravity((GravityEffect) CelestialLibEffects.LOW_GRAVITY.get())
+            .lightSpeedLockedAndMaybeHidden(false));
+    public static final RegistryObject<Planet> GANYMEDE = PLANETS.register("ganymede", () -> new Moon(CelestialDimensions.GANYMEDE, JUPITER.get())
+//            .gravity((GravityEffect) CelestialLibEffects.LOW_GRAVITY.get())
+            .lightSpeedLockedAndMaybeHidden(false));
 
 
 }
