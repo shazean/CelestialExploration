@@ -1,6 +1,7 @@
 package com.shim.celestialexploration.world.renderer;
 
 import com.shim.celestialexploration.registry.CelestialDimensions;
+import com.shim.celestiallib.api.world.renderer.DimensionRenderers;
 import net.minecraft.client.renderer.DimensionSpecialEffects;
 import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
@@ -13,7 +14,7 @@ import net.minecraftforge.client.IWeatherRenderHandler;
 import javax.annotation.Nullable;
 
 @OnlyIn(Dist.CLIENT)
-public class DimensionRenderers {
+public class CelestialDimensionRenderers extends DimensionRenderers {
 
     public static void setDimensionEffects() {
         DimensionSpecialEffects.EFFECTS.put(CelestialDimensions.MARS.location(), new MarsEffects());
@@ -26,40 +27,6 @@ public class DimensionRenderers {
         DimensionSpecialEffects.EFFECTS.put(CelestialDimensions.CALLISTO.location(), new CallistoEffects());
         DimensionSpecialEffects.EFFECTS.put(CelestialDimensions.IO.location(), new IoEffects());
         DimensionSpecialEffects.EFFECTS.put(CelestialDimensions.GANYMEDE.location(), new GanymedeEffects());
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public abstract static class PlanetEffects extends DimensionSpecialEffects {
-
-        public PlanetEffects(@Nullable ISkyRenderHandler skyHandler, @Nullable IWeatherRenderHandler weatherHandler, @Nullable IWeatherParticleRenderHandler particleHandler) {
-            this(Float.NaN, true, SkyType.NORMAL, false, false, skyHandler, weatherHandler, particleHandler);
-        }
-
-        public PlanetEffects(float cloudLevel, boolean hasGround, SkyType sky, boolean forceBrightLightmap, boolean constantAmbientLight, @Nullable ISkyRenderHandler skyHandler, @Nullable IWeatherRenderHandler weatherHandler, @Nullable IWeatherParticleRenderHandler particleHandler) {
-            super(cloudLevel, hasGround, sky, forceBrightLightmap, constantAmbientLight);
-
-            if (skyHandler != null)
-                setSkyRenderHandler(skyHandler);
-            if (weatherHandler != null)
-                setWeatherRenderHandler(weatherHandler);
-            if (particleHandler != null)
-                setWeatherParticleRenderHandler(particleHandler);
-        }
-
-        @Override
-        public Vec3 getBrightnessDependentFogColor(Vec3 color, float brightness) {
-            return color.multiply(brightness * 0.94F + 0.06F, brightness * 0.94F + 0.06F, brightness * 0.91F + 0.09F);
-        }
-
-        @Override
-        public boolean isFoggyAt(int x, int z) {
-            return false;
-        }
-
-        @Override
-        public float[] getSunriseColor(float p_230492_1_, float p_230492_2_) {
-            return null;
-        }
     }
 
     @OnlyIn(Dist.CLIENT)

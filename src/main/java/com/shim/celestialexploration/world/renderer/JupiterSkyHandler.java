@@ -6,6 +6,7 @@ import com.mojang.blaze3d.vertex.*;
 import com.mojang.math.Matrix4f;
 import com.mojang.math.Vector3f;
 import com.shim.celestialexploration.CelestialExploration;
+import com.shim.celestiallib.api.world.renderer.AbstractSkyHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.FogRenderer;
@@ -74,19 +75,24 @@ public class JupiterSkyHandler extends AbstractSkyHandler {
         } else {
             RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 0.5F);
         }
-        poseStack.mulPose(Vector3f.YP.rotationDegrees(-90.0F));
-        poseStack.mulPose(Vector3f.XP.rotationDegrees(level.getTimeOfDay(partialTick) * 360.0F));
-        Matrix4f matrix4f1 = poseStack.last().pose();
-        float f12 = 30.0F;
-        RenderSystem.setShader(GameRenderer::getPositionTexShader);
-        RenderSystem.setShaderTexture(0, VANILLA_SUN_LOCATION);
-        bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
-        bufferbuilder.vertex(matrix4f1, -f12, 100.0F, -f12).uv(0.0F, 0.0F).endVertex();
-        bufferbuilder.vertex(matrix4f1, f12, 100.0F, -f12).uv(1.0F, 0.0F).endVertex();
-        bufferbuilder.vertex(matrix4f1, f12, 100.0F, f12).uv(1.0F, 1.0F).endVertex();
-        bufferbuilder.vertex(matrix4f1, -f12, 100.0F, f12).uv(0.0F, 1.0F).endVertex();
-        bufferbuilder.end();
-        BufferUploader.end(bufferbuilder);
+
+        //FIXME change to renderVanillaSun
+        renderSun(poseStack, level, partialTick, 0, 0, VANILLA_SUN_LOCATION, 30.0F);
+
+//
+//        poseStack.mulPose(Vector3f.YP.rotationDegrees(-90.0F));
+//        poseStack.mulPose(Vector3f.XP.rotationDegrees(level.getTimeOfDay(partialTick) * 360.0F));
+//        Matrix4f matrix4f1 = poseStack.last().pose();
+//        float f12 = 30.0F;
+//        RenderSystem.setShader(GameRenderer::getPositionTexShader);
+//        RenderSystem.setShaderTexture(0, VANILLA_SUN_LOCATION);
+//        bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
+//        bufferbuilder.vertex(matrix4f1, -f12, 100.0F, -f12).uv(0.0F, 0.0F).endVertex();
+//        bufferbuilder.vertex(matrix4f1, f12, 100.0F, -f12).uv(1.0F, 0.0F).endVertex();
+//        bufferbuilder.vertex(matrix4f1, f12, 100.0F, f12).uv(1.0F, 1.0F).endVertex();
+//        bufferbuilder.vertex(matrix4f1, -f12, 100.0F, f12).uv(0.0F, 1.0F).endVertex();
+//        bufferbuilder.end();
+//        BufferUploader.end(bufferbuilder);
 
         renderMoon(poseStack, level, partialTick, 0.0F, 0.0F, EUROPA_LOCATION);
         renderMoon(poseStack, level, partialTick, 10.0F, 10.0F, IO_LOCATION);

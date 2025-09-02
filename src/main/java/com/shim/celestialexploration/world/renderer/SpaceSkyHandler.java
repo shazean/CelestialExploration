@@ -6,6 +6,7 @@ import com.mojang.blaze3d.vertex.*;
 import com.mojang.math.Matrix4f;
 import com.mojang.math.Vector3f;
 import com.shim.celestialexploration.CelestialExploration;
+import com.shim.celestiallib.api.world.renderer.AbstractSkyHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.FogRenderer;
@@ -102,7 +103,7 @@ public class SpaceSkyHandler extends AbstractSkyHandler {
         poseStack.popPose();
 
         renderStars(poseStack, level, partialTick);
-        renderMilkyWay(poseStack, level, partialTick);
+        renderMilkyWay(poseStack, level, partialTick, true);
 
 
         poseStack.pushPose();
@@ -128,62 +129,5 @@ public class SpaceSkyHandler extends AbstractSkyHandler {
 
 
         RenderSystem.depthMask(true);
-    }
-
-    private void renderMilkyWay(PoseStack poseStack, ClientLevel level, float partialTick) {
-        RenderSystem.depthMask(false);
-        RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
-        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-//        RenderSystem.enableBlend();
-//        RenderSystem.defaultBlendFunc();
-
-        RenderSystem.setShaderTexture(0, MILKY_WAY_LOCATION);
-        Tesselator tesselator = Tesselator.getInstance();
-        BufferBuilder bufferbuilder = tesselator.getBuilder();
-
-        for(int i = 0; i < 9; ++i) {
-            poseStack.pushPose();
-
-            poseStack.mulPose(Vector3f.ZP.rotationDegrees(30.0F));
-
-            switch (i) {
-                case 0: poseStack.mulPose(Vector3f.XP.rotationDegrees(45.0F));
-                case 1: poseStack.mulPose(Vector3f.XP.rotationDegrees(45.0F));
-                case 2: poseStack.mulPose(Vector3f.XP.rotationDegrees(45.0F));
-                case 3: poseStack.mulPose(Vector3f.XP.rotationDegrees(45.0F));
-                case 4: poseStack.mulPose(Vector3f.XP.rotationDegrees(45.0F));
-                case 5: poseStack.mulPose(Vector3f.XP.rotationDegrees(45.0F));
-                case 6: poseStack.mulPose(Vector3f.XP.rotationDegrees(45.0F));
-                case 7: poseStack.mulPose(Vector3f.XP.rotationDegrees(45.0F));
-                case 8: poseStack.mulPose(Vector3f.XP.rotationDegrees(45.0F));
-            }
-
-            float scale = 42.0F;
-            int color = 180;
-            int opacity = 50;
-
-            int k = i;
-//            int l = k % 4;
-            int i1 = i % 8; //k / 4 % 2;
-            float f13 = (float) (i);// / 4.0F;
-            float f14 = (float) (i1) / 8.0F;//2.0F;
-            float f15 = (float) (i + 1);// / 4.0F;
-            float f16 = (float) (i1 + 1) / 8.0F;//2.0F;
-
-            float f = 1.0F / 9.0F;
-
-            Matrix4f matrix4f = poseStack.last().pose();
-            bufferbuilder.begin(VertexFormat.Mode.TRIANGLE_FAN, DefaultVertexFormat.POSITION_TEX_COLOR); //DefaultVertexFormat.POSITION_TEX_COLOR);
-            bufferbuilder.vertex(matrix4f, -scale, -100.0F, scale).uv(f15, f16).color(color, color, color, opacity).endVertex();
-            bufferbuilder.vertex(matrix4f, scale, -100.0F, scale).uv(f13, f16).color(color, color, color, opacity).endVertex();
-            bufferbuilder.vertex(matrix4f, scale, -100.0F, -scale).uv(f13, f14).color(color, color, color, opacity).endVertex();
-            bufferbuilder.vertex(matrix4f, -scale, -100.0F, -scale).uv(f15, f14).color(color, color, color, opacity).endVertex();
-            tesselator.end();
-            poseStack.popPose();
-        }
-
-        RenderSystem.depthMask(true);
-        RenderSystem.enableTexture();
-        RenderSystem.disableBlend();
     }
 }
