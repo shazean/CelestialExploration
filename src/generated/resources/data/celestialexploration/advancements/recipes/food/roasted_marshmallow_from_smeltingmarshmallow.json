@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "celestialexploration:roasted_marshmallow_from_smeltingmarshmallow"
+    ]
+  },
+  "criteria": {
+    "has_marshmallow_goo": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:marshmallow_goo"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "celestialexploration:roasted_marshmallow_from_smeltingmarshmallow"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_marshmallow_goo",
+      "has_the_recipe"
+    ]
+  ]
+}

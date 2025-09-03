@@ -3,7 +3,6 @@ package com.shim.celestialexploration.registry;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.world.biome.*;
 import net.minecraft.core.Registry;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
@@ -39,7 +38,7 @@ public class CelestialBiomes {
     public static final RegistryObject<Biome> SULFUR_RIVER = BIOMES.register("sulfur_river", VenusBiomes::river);
 
     //---- SPACE -------------------------------------------------------------------------------
-    public static final RegistryObject<Biome> SPACE = BIOMES.register("space", com.shim.celestialexploration.world.biome.CelestialBiomes::space);
+    public static final RegistryObject<Biome> MILKY_WAY = BIOMES.register("milky_way", CelestialBiomeFeatures::space);
 
     //---- MERCURY -------------------------------------------------------------------------------
     public static final RegistryObject<Biome> MERCURY_DEEP_CRATERED_PLAINS = BIOMES.register("mercury_deep_cratered_plains", MercuryBiomes::craters);

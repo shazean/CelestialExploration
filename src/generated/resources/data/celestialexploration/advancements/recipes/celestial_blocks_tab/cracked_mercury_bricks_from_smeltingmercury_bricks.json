@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "celestialexploration:cracked_mercury_bricks_from_smeltingmercury_bricks"
+    ]
+  },
+  "criteria": {
+    "has_mercury_bricks": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:mercury_bricks"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "celestialexploration:cracked_mercury_bricks_from_smeltingmercury_bricks"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_mercury_bricks",
+      "has_the_recipe"
+    ]
+  ]
+}

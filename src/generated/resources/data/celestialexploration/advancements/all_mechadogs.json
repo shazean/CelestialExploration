@@ -5,10 +5,10 @@
       "item": "celestialexploration:white_mechadog"
     },
     "title": {
-      "translate": "advancements.celestial.all_mechadogs.title"
+      "translate": "advancements.celestialexploration.all_mechadogs.title"
     },
     "description": {
-      "translate": "advancements.celestial.all_mechadogs.description"
+      "translate": "advancements.celestialexploration.all_mechadogs.description"
     },
     "frame": "task",
     "show_toast": true,

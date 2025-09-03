@@ -1,0 +1,11 @@
+{
+  "spawn_chunk_coordinates": {
+    "x": 6,
+    "z": 2
+  },
+  "blocks": [
+    "celestialexploration:ganymede_core",
+    "celestialexploration:moon_cobblestone",
+    "celestialexploration:moon_deepslate"
+  ]
+}

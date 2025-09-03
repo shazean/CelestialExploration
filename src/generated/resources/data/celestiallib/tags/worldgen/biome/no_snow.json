@@ -1,0 +1,23 @@
+{
+  "replace": false,
+  "values": [
+    "#celestialexploration:mars",
+    "#celestialexploration:moon",
+    "#celestialexploration:milky_way",
+    "#celestialexploration:mercury",
+    "#celestialexploration:jupiter",
+    "#celestialexploration:europa",
+    "#celestialexploration:callisto",
+    "#celestialexploration:io",
+    "#celestialexploration:ganymede",
+    "#celestialexploration:mars",
+    "#celestialexploration:venus",
+    "#celestialexploration:mercury",
+    "#celestialexploration:jupiter",
+    "#celestialexploration:moon",
+    "#celestialexploration:europa",
+    "#celestialexploration:callisto",
+    "#celestialexploration:io",
+    "#celestialexploration:ganymede"
+  ]
+}

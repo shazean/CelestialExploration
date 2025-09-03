@@ -1,0 +1,12 @@
+{
+  "spawn_chunk_coordinates": {
+    "x": 1,
+    "z": -3
+  },
+  "blocks": [
+    "celestialexploration:mars_stone",
+    "celestialexploration:mars_deepslate",
+    "celestialexploration:dry_ice",
+    "celestialexploration:mars_core"
+  ]
+}

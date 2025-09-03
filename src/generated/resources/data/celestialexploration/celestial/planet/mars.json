@@ -1,0 +1,10 @@
+{
+  "gravity": "celestiallib:low_gravity",
+  "light_speed_travel": {
+    "cost_multiplier": 0,
+    "locked": {
+      "hidden": false,
+      "unlock_advancement": "celestialexploration:enter_mars"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "spawn_chunk_coordinates": {
+    "x": -2,
+    "z": 0
+  },
+  "blocks": [
+    "celestialexploration:moon_stone",
+    "celestialexploration:moon_deepslate",
+    "celestialexploration:moon_core"
+  ]
+}

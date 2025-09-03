@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "celestialexploration:jupiter_deepslate_tile_stairs_from_jupiter_polished_deepslatestonecutting"
+    ]
+  },
+  "criteria": {
+    "has_jupiter_cobbled_deepslate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:jupiter_cobbled_deepslate"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "celestialexploration:jupiter_deepslate_tile_stairs_from_jupiter_polished_deepslatestonecutting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_jupiter_cobbled_deepslate",
+      "has_the_recipe"
+    ]
+  ]
+}

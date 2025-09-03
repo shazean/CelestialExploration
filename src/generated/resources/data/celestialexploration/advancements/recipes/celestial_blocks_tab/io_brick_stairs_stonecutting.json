@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "celestialexploration:io_brick_stairs_stonecutting"
+    ]
+  },
+  "criteria": {
+    "has_io_stone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:io_stone"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "celestialexploration:io_brick_stairs_stonecutting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_io_stone",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -9,13 +9,13 @@ import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.levelgen.GenerationStep;
 
-public class VenusBiomes extends CelestialBiomes {
+public class VenusBiomes extends CelestialBiomeFeatures {
 
     public static Biome desert() {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
 
-        CelestialBiomes.addCarversAndLakes(biomeBuilder);
+        CelestialBiomeFeatures.addCarversAndLakes(biomeBuilder);
         biomeBuilder.addFeature(GenerationStep.Decoration.LAKES, CelestialFeaturePlacements.VENUS_LAVA_LAKE_UNDERGROUND);
 
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.DISK_VENUS_SAND);
@@ -25,14 +25,14 @@ public class VenusBiomes extends CelestialBiomes {
 
         generalMonsters(spawnBuilder, 0, 20, 0);
 
-        return CelestialBiomes.biome(Biome.Precipitation.RAIN, Biome.BiomeCategory.NONE, 2F, 0F, CelestialBody.VENUS.skyColor, CelestialBody.VENUS.skyFogColor, CelestialBody.VENUS.waterColor, CelestialBody.VENUS.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
+        return CelestialBiomeFeatures.biome(Biome.Precipitation.RAIN, Biome.BiomeCategory.NONE, 2F, 0F, CelestialBody.VENUS.skyColor, CelestialBody.VENUS.skyFogColor, CelestialBody.VENUS.waterColor, CelestialBody.VENUS.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
     }
 
     public static Biome plains() {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
 
-        CelestialBiomes.addCarversAndLakes(biomeBuilder);
+        CelestialBiomeFeatures.addCarversAndLakes(biomeBuilder);
         biomeBuilder.addFeature(GenerationStep.Decoration.LAKES, CelestialFeaturePlacements.VENUS_LAVA_LAKE_UNDERGROUND);
 
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.DISK_VENUS_SAND);
@@ -48,7 +48,7 @@ public class VenusBiomes extends CelestialBiomes {
                 .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.ASTRAL_HOGLIN.get(), 9, 3, 4))
                 .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(CelestialEntities.ROVER.get(), 40, 1, 1)).build();
 
-        return CelestialBiomes.biome(Biome.Precipitation.RAIN, Biome.BiomeCategory.NONE, 2F, 0F, CelestialBody.VENUS.skyColor, CelestialBody.VENUS.skyFogColor, CelestialBody.VENUS.waterColor, CelestialBody.VENUS.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
+        return CelestialBiomeFeatures.biome(Biome.Precipitation.RAIN, Biome.BiomeCategory.NONE, 2F, 0F, CelestialBody.VENUS.skyColor, CelestialBody.VENUS.skyFogColor, CelestialBody.VENUS.waterColor, CelestialBody.VENUS.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
     }
 
     public static Biome ocean() {
@@ -64,7 +64,7 @@ public class VenusBiomes extends CelestialBiomes {
         spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.SULFUR_CUBE.get(), 100, 2, 5)).build();
 
 
-        return CelestialBiomes.biome(Biome.Precipitation.RAIN, Biome.BiomeCategory.NONE, 2F, 0F, CelestialBody.VENUS.skyColor, CelestialBody.VENUS.skyFogColor, CelestialBody.VENUS.waterColor, CelestialBody.VENUS.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
+        return CelestialBiomeFeatures.biome(Biome.Precipitation.RAIN, Biome.BiomeCategory.NONE, 2F, 0F, CelestialBody.VENUS.skyColor, CelestialBody.VENUS.skyFogColor, CelestialBody.VENUS.waterColor, CelestialBody.VENUS.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
     }
 
     public static Biome river() {
@@ -76,7 +76,7 @@ public class VenusBiomes extends CelestialBiomes {
 
         spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.SULFUR_CUBE.get(), 100, 2, 5)).build();
 
-        return CelestialBiomes.biome(Biome.Precipitation.RAIN, Biome.BiomeCategory.NONE, 2F, 0F, CelestialBody.VENUS.skyColor, CelestialBody.VENUS.skyFogColor, CelestialBody.VENUS.waterColor, CelestialBody.VENUS.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
+        return CelestialBiomeFeatures.biome(Biome.Precipitation.RAIN, Biome.BiomeCategory.NONE, 2F, 0F, CelestialBody.VENUS.skyColor, CelestialBody.VENUS.skyFogColor, CelestialBody.VENUS.waterColor, CelestialBody.VENUS.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
     }
 
     public static void addVenusOres(BiomeGenerationSettings.Builder biomeBuilder) {

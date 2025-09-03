@@ -8,13 +8,13 @@ import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.levelgen.GenerationStep;
 
-public class MarsBiomes extends CelestialBiomes {
+public class MarsBiomes extends CelestialBiomeFeatures {
 
     public static Biome desert() {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
 
-        CelestialBiomes.addCarversAndLakes(biomeBuilder);
+        CelestialBiomeFeatures.addCarversAndLakes(biomeBuilder);
         biomeBuilder.addFeature(GenerationStep.Decoration.LAKES, CelestialFeaturePlacements.MARS_LAVA_LAKE_UNDERGROUND);
 
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.DISK_MARS_SAND);
@@ -28,14 +28,14 @@ public class MarsBiomes extends CelestialBiomes {
 
         float temp = -0.75F;
 
-        return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, prettyCold, 0F, CelestialBody.MARS.skyColor, CelestialBody.MARS.skyFogColor, CelestialBody.MARS.waterColor, CelestialBody.MARS.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
+        return CelestialBiomeFeatures.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, prettyCold, 0F, CelestialBody.MARS.skyColor, CelestialBody.MARS.skyFogColor, CelestialBody.MARS.waterColor, CelestialBody.MARS.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
     }
 
     public static Biome craters() {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
 
-        CelestialBiomes.addCarversAndLakes(biomeBuilder);
+        CelestialBiomeFeatures.addCarversAndLakes(biomeBuilder);
         biomeBuilder.addFeature(GenerationStep.Decoration.LAKES, CelestialFeaturePlacements.MARS_LAVA_LAKE_UNDERGROUND);
 
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.DISK_MARS_SAND);
@@ -50,14 +50,14 @@ public class MarsBiomes extends CelestialBiomes {
                 .build();
 
 
-        return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, prettyCold, 0F, CelestialBody.MARS.skyColor, CelestialBody.MARS.skyFogColor, CelestialBody.MARS.waterColor, CelestialBody.MARS.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
+        return CelestialBiomeFeatures.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, prettyCold, 0F, CelestialBody.MARS.skyColor, CelestialBody.MARS.skyFogColor, CelestialBody.MARS.waterColor, CelestialBody.MARS.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
     }
 
     public static Biome flats(boolean dryIcy) {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
 
-        CelestialBiomes.addCarversAndLakes(biomeBuilder);
+        CelestialBiomeFeatures.addCarversAndLakes(biomeBuilder);
         biomeBuilder.addFeature(GenerationStep.Decoration.LAKES, CelestialFeaturePlacements.MARS_LAVA_LAKE_UNDERGROUND);
 
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.DISK_MARS_SAND);
@@ -74,7 +74,7 @@ public class MarsBiomes extends CelestialBiomes {
 
         float temperature = dryIcy ? -1.0F : -0.75F;
 
-        return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, temperature, 0F, CelestialBody.MARS.skyColor, CelestialBody.MARS.skyFogColor, CelestialBody.MARS.waterColor, CelestialBody.MARS.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
+        return CelestialBiomeFeatures.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, temperature, 0F, CelestialBody.MARS.skyColor, CelestialBody.MARS.skyFogColor, CelestialBody.MARS.waterColor, CelestialBody.MARS.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
     }
 
     public static Biome dunes() {
@@ -95,7 +95,7 @@ public class MarsBiomes extends CelestialBiomes {
 
         float temp = -0.75F;
 
-        return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, prettyCold, 0F, CelestialBody.MARS.skyColor, CelestialBody.MARS.skyFogColor, CelestialBody.MARS.waterColor, CelestialBody.MARS.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
+        return CelestialBiomeFeatures.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, prettyCold, 0F, CelestialBody.MARS.skyColor, CelestialBody.MARS.skyFogColor, CelestialBody.MARS.waterColor, CelestialBody.MARS.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
     }
 
     public static void addMarsOres(BiomeGenerationSettings.Builder biomeBuilder) {

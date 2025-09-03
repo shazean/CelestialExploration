@@ -4,7 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import com.shim.celestialexploration.item.ModArmorMaterials;
 import com.shim.celestialexploration.registry.CelestialItems;
 import com.shim.celestiallib.api.armor.ISpacesuit;
-import com.shim.celestiallib.effects.CelestialLibEffects;
+import com.shim.celestiallib.api.effects.CLibEffects;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
@@ -123,6 +123,6 @@ public class HeavyDutySpacesuitArmorItem extends ArmorItem implements ISpacesuit
 
     @Override
     public boolean shouldNegateGravity(MobEffect mobEffect, ItemStack itemStack) {
-        return itemStack.is(CelestialItems.HEAVY_DUTY_SPACESUIT_BOOTS.get()) && mobEffect == CelestialLibEffects.HIGH_GRAVITY.get();
+        return itemStack.is(CelestialItems.HEAVY_DUTY_SPACESUIT_BOOTS.get()) && mobEffect == CLibEffects.HIGH_GRAVITY.get();
     }
 }

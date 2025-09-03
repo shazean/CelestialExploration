@@ -1,0 +1,13 @@
+{
+  "type": "celestialexploration:mars",
+  "forge:use_server_seed": true,
+  "generator": {
+    "type": "minecraft:noise",
+    "seed": 1,
+    "settings": "celestialexploration:mars",
+    "biome_source": {
+      "type": "minecraft:multi_noise",
+      "preset": "celestialexploration:mars"
+    }
+  }
+}

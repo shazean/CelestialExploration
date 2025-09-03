@@ -4,10 +4,10 @@
       "item": "celestialexploration:moon_stone"
     },
     "title": {
-      "translate": "advancements.celestial.root.title"
+      "translate": "advancements.celestialexploration.root.title"
     },
     "description": {
-      "translate": "advancements.celestial.root.description"
+      "translate": "advancements.celestialexploration.root.description"
     },
     "frame": "task",
     "show_toast": false,

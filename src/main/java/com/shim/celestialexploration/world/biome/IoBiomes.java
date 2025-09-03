@@ -8,13 +8,13 @@ import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.levelgen.GenerationStep;
 
-public class IoBiomes extends CelestialBiomes {
+public class IoBiomes extends CelestialBiomeFeatures {
 
     public static Biome desert() {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
 
-        CelestialBiomes.addCarversAndLakes(biomeBuilder);
+        CelestialBiomeFeatures.addCarversAndLakes(biomeBuilder);
 
 
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.DISK_IO_SAND);
@@ -23,7 +23,7 @@ public class IoBiomes extends CelestialBiomes {
         generalMonsters(spawnBuilder, 100, 100, 100);
         spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.LUNAR_SLIME.get(), 100, 4, 4)).build();
 
-        return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, -0.75F, 0F, CelestialBody.IO.skyColor, CelestialBody.IO.skyFogColor, CelestialBody.IO.waterColor, CelestialBody.IO.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
+        return CelestialBiomeFeatures.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, -0.75F, 0F, CelestialBody.IO.skyColor, CelestialBody.IO.skyFogColor, CelestialBody.IO.waterColor, CelestialBody.IO.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
     }
 
 
@@ -33,7 +33,7 @@ public class IoBiomes extends CelestialBiomes {
 
 
 
-        CelestialBiomes.addCarversAndLakes(biomeBuilder);
+        CelestialBiomeFeatures.addCarversAndLakes(biomeBuilder);
 
 //        biomeBuilder.addFeature(GenerationStep.Decoration.LAKES, CelestialFeaturePlacements.OBSIDIAN_LAKE);
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.DISK_IO_SAND);
@@ -44,7 +44,7 @@ public class IoBiomes extends CelestialBiomes {
 
 
 
-        return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, -0.75F, 0F, CelestialBody.IO.skyColor, CelestialBody.IO.skyFogColor, CelestialBody.IO.waterColor, CelestialBody.IO.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
+        return CelestialBiomeFeatures.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, -0.75F, 0F, CelestialBody.IO.skyColor, CelestialBody.IO.skyFogColor, CelestialBody.IO.waterColor, CelestialBody.IO.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
     }
 
     public static Biome plains() {
@@ -64,7 +64,7 @@ public class IoBiomes extends CelestialBiomes {
                 .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.ASTRAL_HOGLIN.get(), 9, 3, 4)).build();
 
 
-        return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, -0.75F, 0F, CelestialBody.IO.skyColor, CelestialBody.IO.skyFogColor, CelestialBody.IO.waterColor, CelestialBody.IO.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
+        return CelestialBiomeFeatures.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, -0.75F, 0F, CelestialBody.IO.skyColor, CelestialBody.IO.skyFogColor, CelestialBody.IO.waterColor, CelestialBody.IO.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
     }
 
     public static void addIoOres(BiomeGenerationSettings.Builder biomeBuilder) {

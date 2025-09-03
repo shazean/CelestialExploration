@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class CelestialFluidTags extends FluidTagsProvider {
-    public CelestialFluidTags(DataGenerator p_126523_, String modId, @Nullable ExistingFileHelper existingFileHelper) {
+    public CelestialFluidTags(DataGenerator p_126523_, @Nullable ExistingFileHelper existingFileHelper) {
         super(p_126523_, CelestialExploration.MODID, existingFileHelper);
     }
 

@@ -21,18 +21,23 @@ public class DataGenerators {
 			generator.addProvider(new CelestialRecipes(generator));
 			generator.addProvider(new CelestialLootTables(generator));
 			CelestialBlockTags blockTags = new CelestialBlockTags(generator, helper);
-			CelestialFluidTags fluidTags = new CelestialFluidTags(generator, CelestialExploration.MODID, helper);
+			CelestialFluidTags fluidTags = new CelestialFluidTags(generator, helper);
 			CelestialStructureTags structureTags = new CelestialStructureTags(generator, helper);
 
 			generator.addProvider(blockTags);
 			generator.addProvider(fluidTags);
 			generator.addProvider(structureTags);
 			generator.addProvider(new CelestialItemTags(generator, blockTags, helper));
-			generator.addProvider(new CelestialBiomeTags(generator, CelestialExploration.MODID, helper));
-			generator.addProvider(new CelestialEntityTags(generator, CelestialExploration.MODID, helper));
+			generator.addProvider(new CelestialBiomeTags(generator, helper));
+			generator.addProvider(new CelestialEntityTags(generator, helper));
 
-			generator.addProvider(new DimensionTeleports(generator, CelestialExploration.MODID, helper));
-			generator.addProvider(new PlanetTeleports(generator, CelestialExploration.MODID, helper));
+
+			generator.addProvider(new CelestialDimensionGen(generator, helper));
+			generator.addProvider(new CelestialDimensionTypes(generator, helper));
+			generator.addProvider(new CelestialPlanetData(generator, helper));
+			generator.addProvider(new CelestialSpaceTravel(generator, helper));
+			generator.addProvider(new CelestialPlanetStructures(generator, helper));
+
 
 		}
 		if (event.includeClient()) {
@@ -40,6 +45,10 @@ public class DataGenerators {
 			generator.addProvider(new CelestialItemModels(generator, helper));
 			generator.addProvider(new CelestialLangProvider(generator, "en_us"));
 			generator.addProvider(new CelestialAdvancements(generator, helper));
+
+			generator.addProvider(new CelestialGalaxyBackgrounds(generator, helper));
+			generator.addProvider(new CelestialGalaxyIcons(generator, helper));
+			generator.addProvider(new CelestialPlanetIcons(generator, helper));
 
 		}
 	}

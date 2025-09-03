@@ -72,7 +72,7 @@ public class CelestialLangProvider extends LanguageProvider {
 		add(CelestialFluids.SULFUR_BUCKET.get(), "Sulfur Bucket");
 
 		//---- BIOMES -------------------------------------------------------------------------------
-		addBiome(CelestialBiomeKeys.MILKY_WAY, "Outer Space");
+		addBiome(CelestialBiomeKeys.MILKY_WAY, "Milky Way");
 		addBiome(CelestialBiomeKeys.MOON_CRATERS, "Lunar Craters");
 		addBiome(CelestialBiomeKeys.MOON_DESERT, "Lunar Desert");
 		addBiome(CelestialBiomeKeys.MOON_LAVA_FLATS, "Lunar Lava Flats");
@@ -166,7 +166,7 @@ public class CelestialLangProvider extends LanguageProvider {
 		addAdvancement("kill_mob_in_space", "Space Invaders","Defeat a mob in outer space");
 		addAdvancement("all_mechadogs", "Gotta Catch 'Em All","Collect all colors of the MechaDogs");
 
-		addAdvancement("enter_space", "To Infinity… and Beyond!","Enter space");
+		addAdvancement("enter_milky_way", "To Infinity… and Beyond!","Enter Milky Way");
 		addAdvancement("enter_moon", "One Small Step For Man…","Reach the moon");
 		addAdvancement("enter_mars", "The Red Planet","Reach Mars");
 		addAdvancement("enter_venus", "Goddess of Beauty… And Sulfur?","Reach Venus");

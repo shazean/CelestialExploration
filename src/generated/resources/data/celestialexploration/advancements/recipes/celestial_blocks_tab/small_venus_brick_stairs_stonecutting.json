@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "celestialexploration:small_venus_brick_stairs_stonecutting"
+    ]
+  },
+  "criteria": {
+    "has_venus_cobblestone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:venus_cobblestone"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "celestialexploration:small_venus_brick_stairs_stonecutting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_venus_cobblestone",
+      "has_the_recipe"
+    ]
+  ]
+}

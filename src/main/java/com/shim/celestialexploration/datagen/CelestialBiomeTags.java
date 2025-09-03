@@ -1,14 +1,16 @@
 package com.shim.celestialexploration.datagen;
 
+import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.registry.CelestialTags;
 import com.shim.celestialexploration.world.biome.CelestialBiomeKeys;
+import com.shim.celestiallib.api.world.tags.CLibTags;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BiomeTagsProvider;
 
 public class CelestialBiomeTags extends BiomeTagsProvider {
 
-    public CelestialBiomeTags(DataGenerator generator, String modid, @org.jetbrains.annotations.Nullable net.minecraftforge.common.data.ExistingFileHelper existingFileHelper) {
-        super(generator, modid, existingFileHelper);
+    public CelestialBiomeTags(DataGenerator generator, @org.jetbrains.annotations.Nullable net.minecraftforge.common.data.ExistingFileHelper existingFileHelper) {
+        super(generator, CelestialExploration.MODID, existingFileHelper);
     }
 
     @Override
@@ -77,13 +79,13 @@ public class CelestialBiomeTags extends BiomeTagsProvider {
                 .add(CelestialBiomeKeys.GANYMEDE_LOWER_PLAINS)
                 .add(CelestialBiomeKeys.GANYMEDE_PLAINS);
 
-        tag(CelestialTags.Biomes.SPACE_BIOMES)
+        tag(CelestialTags.Biomes.MILKY_WAY_BIOMES)
                 .add(CelestialBiomeKeys.MILKY_WAY);
 
-        tag(CelestialTags.Biomes.NO_SNOW_BIOMES)
+        tag(CLibTags.Biomes.NO_SNOW_BIOMES)
                 .addTag(CelestialTags.Biomes.MARS_BIOMES)
                 .addTag(CelestialTags.Biomes.MOON_BIOMES)
-                .addTag(CelestialTags.Biomes.SPACE_BIOMES)
+                .addTag(CelestialTags.Biomes.MILKY_WAY_BIOMES)
                 .addTag(CelestialTags.Biomes.MERCURY_BIOMES)
                 .addTag(CelestialTags.Biomes.JUPITER_BIOMES)
                 .addTag(CelestialTags.Biomes.EUROPA_BIOMES)
@@ -91,13 +93,14 @@ public class CelestialBiomeTags extends BiomeTagsProvider {
                 .addTag(CelestialTags.Biomes.IO_BIOMES)
                 .addTag(CelestialTags.Biomes.GANYMEDE_BIOMES);
 
-        tag(CelestialTags.Biomes.PLANETS)
+        //FIXME
+        tag(CLibTags.Biomes.PLANETS)
                 .addTag(CelestialTags.Biomes.MARS_BIOMES)
                 .addTag(CelestialTags.Biomes.VENUS_BIOMES)
                 .addTag(CelestialTags.Biomes.MERCURY_BIOMES)
                 .addTag(CelestialTags.Biomes.JUPITER_BIOMES);
 
-        tag(CelestialTags.Biomes.MOONS)
+        tag(CLibTags.Biomes.MOONS)
                 .addTag(CelestialTags.Biomes.MOON_BIOMES)
                 .addTag(CelestialTags.Biomes.EUROPA_BIOMES)
                 .addTag(CelestialTags.Biomes.CALLISTO_BIOMES)
@@ -105,9 +108,9 @@ public class CelestialBiomeTags extends BiomeTagsProvider {
                 .addTag(CelestialTags.Biomes.GANYMEDE_BIOMES);
 
         tag(CelestialTags.Biomes.CELESTIAL_BODIES)
-                .addTag(CelestialTags.Biomes.PLANETS)
-                .addTag(CelestialTags.Biomes.MOONS)
-                .addTag(CelestialTags.Biomes.SPACE_BIOMES);
+                .addTag(CLibTags.Biomes.PLANETS)
+                .addTag(CLibTags.Biomes.MOONS);
+//                .addTag(CelestialTags.Biomes.MILKY_WAY_BIOMES);
 
         tag(CelestialTags.Biomes.DUST_STORM_BIOMES)
                 .addTag(CelestialTags.Biomes.MARS_BIOMES)

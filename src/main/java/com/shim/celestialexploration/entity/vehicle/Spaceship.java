@@ -508,16 +508,16 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
         Entity passenger = this.getControllingPassenger();
         if (passenger instanceof Player player) {
             if (player.isCreative()) {
-                if (CelestialCommonConfig.SPACESHIP_FASTER_IN_SPACE.get() && this.level.dimension() == CelestialDimensions.MILKY_WAY)
-                    return SPACESHIP_IN_SPACE_SPEED;
+//                if (CelestialCommonConfig.SPACESHIP_FASTER_IN_SPACE.get() && this.level.dimension() == CelestialDimensions.MILKY_WAY)
+//                    return SPACESHIP_IN_SPACE_SPEED;
                 return SPACESHIP_SPEED;
             }
         }
 
         if (this.getFuelDataId() > 0) {
             if (this.getFuelDataId() <= LOW_FUEL) return SPACESHIP_LOW_FUEL_SPEED;
-            if (CelestialCommonConfig.SPACESHIP_FASTER_IN_SPACE.get() && this.level.dimension() == CelestialDimensions.MILKY_WAY)
-                return SPACESHIP_IN_SPACE_SPEED;
+//            if (CelestialCommonConfig.SPACESHIP_FASTER_IN_SPACE.get() && this.level.dimension() == CelestialDimensions.MILKY_WAY)
+//                return SPACESHIP_IN_SPACE_SPEED;
             return SPACESHIP_SPEED;
         }
         return SPACESHIP_NO_FUEL_SPEED;

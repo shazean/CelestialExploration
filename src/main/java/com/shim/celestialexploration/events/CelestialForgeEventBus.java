@@ -9,7 +9,7 @@ import com.shim.celestialexploration.entity.projectile.MeteorProjectile;
 import com.shim.celestialexploration.entity.vehicle.Spaceship;
 import com.shim.celestialexploration.registry.*;
 import com.shim.celestiallib.api.blocks.AbstractPortalBlock;
-import com.shim.celestiallib.effects.CelestialLibEffects;
+import com.shim.celestiallib.api.effects.CLibEffects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.TranslatableComponent;
@@ -88,7 +88,7 @@ public class CelestialForgeEventBus {
         LivingEntity entity = event.getEntityLiving();
 
         if (event.getSource().isFall()) {
-            if (CelestialCommonConfig.USE_GRAVITY_EFFECTS.get() && (entity.hasEffect(CelestialLibEffects.LOW_GRAVITY.get()) || entity.hasEffect(CelestialLibEffects.EXTRA_LOW_GRAVITY.get()))) {
+            if (CelestialCommonConfig.USE_GRAVITY_EFFECTS.get() && (entity.hasEffect(CLibEffects.LOW_GRAVITY.get()) || entity.hasEffect(CLibEffects.EXTRA_LOW_GRAVITY.get()))) {
                 event.setCanceled(true);
             }
         }

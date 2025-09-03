@@ -5,10 +5,10 @@
       "item": "celestialexploration:venus_sand"
     },
     "title": {
-      "translate": "advancements.celestial.enter_venus.title"
+      "translate": "advancements.celestialexploration.enter_venus.title"
     },
     "description": {
-      "translate": "advancements.celestial.enter_venus.description"
+      "translate": "advancements.celestialexploration.enter_venus.description"
     },
     "frame": "task",
     "show_toast": true,

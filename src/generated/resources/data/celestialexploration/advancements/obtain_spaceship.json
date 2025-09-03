@@ -5,10 +5,10 @@
       "item": "celestialexploration:white_spaceship"
     },
     "title": {
-      "translate": "advancements.celestial.obtain_spaceship.title"
+      "translate": "advancements.celestialexploration.obtain_spaceship.title"
     },
     "description": {
-      "translate": "advancements.celestial.obtain_spaceship.description"
+      "translate": "advancements.celestialexploration.obtain_spaceship.description"
     },
     "frame": "task",
     "show_toast": true,

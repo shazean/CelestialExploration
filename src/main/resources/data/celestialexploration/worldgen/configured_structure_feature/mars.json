@@ -4,7 +4,8 @@
     "start_pool": "celestialexploration:mars",
     "size": 1,
     "x": 1,
-    "z": -3
+    "z": -3,
+    "galaxy": "celestialexploration:milky_way"
   },
   "biomes": "#celestialexploration:has_structure/space_structures",
   "adapt_noise": false,

@@ -5,10 +5,10 @@
       "item": "celestialexploration:io_bricks"
     },
     "title": {
-      "translate": "advancements.celestial.enter_io.title"
+      "translate": "advancements.celestialexploration.enter_io.title"
     },
     "description": {
-      "translate": "advancements.celestial.enter_io.description"
+      "translate": "advancements.celestialexploration.enter_io.description"
     },
     "frame": "task",
     "show_toast": true,

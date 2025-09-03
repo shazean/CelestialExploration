@@ -8,7 +8,7 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.minecraft.world.level.biome.MobSpawnSettings;
 
-public class JupiterBiomes extends CelestialBiomes {
+public class JupiterBiomes extends CelestialBiomeFeatures {
 
     public static Biome ether() {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
@@ -22,7 +22,7 @@ public class JupiterBiomes extends CelestialBiomes {
                 .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(CelestialEntities.DRONE.get(), 30, 1, 2))
                 .build();
 
-        return CelestialBiomes.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, prettyCold, 0F, CelestialBody.JUPITER.skyColor, CelestialBody.JUPITER.skyFogColor,
+        return CelestialBiomeFeatures.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, prettyCold, 0F, CelestialBody.JUPITER.skyColor, CelestialBody.JUPITER.skyFogColor,
                 CelestialBody.JUPITER.waterColor, CelestialBody.JUPITER.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC, new AmbientParticleSettings(ParticleTypes.CLOUD, 0.000625F));
     }
 }

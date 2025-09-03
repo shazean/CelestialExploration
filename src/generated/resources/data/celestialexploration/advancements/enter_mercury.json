@@ -5,10 +5,10 @@
       "item": "celestialexploration:mercury_sand"
     },
     "title": {
-      "translate": "advancements.celestial.enter_mercury.title"
+      "translate": "advancements.celestialexploration.enter_mercury.title"
     },
     "description": {
-      "translate": "advancements.celestial.enter_mercury.description"
+      "translate": "advancements.celestialexploration.enter_mercury.description"
     },
     "frame": "task",
     "show_toast": true,

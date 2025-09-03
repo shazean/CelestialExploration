@@ -5,10 +5,10 @@
       "item": "celestialexploration:jupiter_deepslate"
     },
     "title": {
-      "translate": "advancements.celestial.enter_jupiter.title"
+      "translate": "advancements.celestialexploration.enter_jupiter.title"
     },
     "description": {
-      "translate": "advancements.celestial.enter_jupiter.description"
+      "translate": "advancements.celestialexploration.enter_jupiter.description"
     },
     "frame": "task",
     "show_toast": true,

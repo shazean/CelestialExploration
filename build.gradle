@@ -153,11 +153,12 @@ dependencies {
 
     implementation fg.deobf("curse.maven:fastload-630620:4706140")
     implementation fg.deobf("curse.maven:modernfix-790626:5399365")
-    implementation fg.deobf("curse.maven:lightspeedmod-821790:4594803")
+//    implementation fg.deobf("curse.maven:lightspeedmod-821790:4594803")
     implementation fg.deobf("curse.maven:lazy-dfu-forge-460819:3544496")
 
-//    implementation fg.deobf("celestiallib:celestiallib-${mc_version}:v${celestiallib_version}")
-    implementation fg.deobf("curse.maven:celestiallib-1297767:6942598")
+    implementation fg.deobf("celestiallib:celestiallib-${mc_version}:v${celestiallib_version}")
+//    implementation fg.deobf("curse.maven:celestiallib-1297767:6959666")
+
 }
 
 mixin {
