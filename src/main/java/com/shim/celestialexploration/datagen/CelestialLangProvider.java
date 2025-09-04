@@ -27,7 +27,7 @@ public class CelestialLangProvider extends LanguageProvider {
 	}
 
 	public void addDimension(ResourceKey<Level> dimension, String localization) {
-		add("dimension." + CelestialExploration.MODID + "." + dimension.location().getPath(), localization);
+		add("dimension." + dimension.location().getNamespace() + "." + dimension.location().getPath(), localization);
 	}
 
 	public void addAdvancement(String advancement, String title, String description) {
@@ -147,7 +147,6 @@ public class CelestialLangProvider extends LanguageProvider {
 		add("key.celestialexploration.turn_left", "Spaceship Strafe Left");
 		add("key.celestialexploration.turn_right", "Spaceship Strafe Right");
 		add("key.celestialexploration.open_spaceship_inventory", "Open Spaceship Inventory");
-		add("key.celestialexploration.spaceship_light_travel", "Spaceship Light Speed Travel");
 
 		//---- DAMAGE SOURCES -------------------------------------------------------------------------------
 		add("death.attack.celestialexploration.touched_sun", "%1$s discovered the sun is hot");

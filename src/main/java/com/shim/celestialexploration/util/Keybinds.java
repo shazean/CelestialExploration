@@ -16,7 +16,6 @@ public class Keybinds {
     public static KeyMapping TURN_LEFT_KEY;
     public static KeyMapping TURN_RIGHT_KEY;
     public static KeyMapping OPEN_SPACESHIP_INVENTORY;
-    public static KeyMapping SPACESHIP_LIGHT_TRAVEL;
 
 
     public static void register(FMLClientSetupEvent event) {
@@ -25,7 +24,6 @@ public class Keybinds {
         TURN_LEFT_KEY = keymap("turn_left", GLFW.GLFW_KEY_A, "key.categories.spaceship_controls");
         TURN_RIGHT_KEY = keymap("turn_right", GLFW.GLFW_KEY_D, "key.categories.spaceship_controls");
         OPEN_SPACESHIP_INVENTORY = keymap("open_spaceship_inventory", GLFW.GLFW_KEY_I, "key.categories.spaceship_controls");
-        SPACESHIP_LIGHT_TRAVEL = keymap("spaceship_light_travel", GLFW.GLFW_KEY_L, "key.categories.spaceship_controls");
     }
 
     private static KeyMapping keymap(String name, int defaultMapping, String category) {
