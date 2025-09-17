@@ -19,7 +19,7 @@ public class CelestialGalaxyBackgrounds extends GalaxyBackgroundProvider {
     @Override
     protected void register(Consumer<GalaxyBackground> consumer, ExistingFileHelper fileHelper) {
 
-        GalaxyBackground.add().size(256)
+        GalaxyBackground.add().size(512)
                 .texture(new ResourceLocation(CelestialExploration.MODID, "gui/light_speed_travel/milky_way")).save(consumer, CelestialDimensions.MILKY_WAY);
 
     }
