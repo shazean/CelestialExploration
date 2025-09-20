@@ -1,2 +1,0 @@
-- `[NEW]` Update to use new Celestial Lib library mod
-- `[CHG]` Space dimension now changed to Milky Way dimension
