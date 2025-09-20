@@ -4,9 +4,7 @@ import com.shim.celestialexploration.CelestialExploration;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraftforge.registries.RegistryObject;
 
 public class CelestialBiomeKeys {
 
@@ -76,18 +74,8 @@ public class CelestialBiomeKeys {
     public static final ResourceKey<Biome> GANYMEDE_CRATERED_PLAINS = register("ganymede_cratered_plains");
 
 
-    //---- SPACE -------------------------------------------------------------------------------
-    public static final ResourceKey<Biome> SPACE = register("space");
-
-    //---- FOR DATAPACK/PRESETS -------------------------------------------------------------------------------
-    public static final ResourceKey<Biome> HIGH_DESERT = register("high_desert");
-    public static final ResourceKey<Biome> LOW_DESERT = register("low_desert");
-    public static final ResourceKey<Biome> ICY_DESERT = register("icy_desert");
-    public static final ResourceKey<Biome> MONSOON_DESERT = register("monsoon_desert");
-    public static final ResourceKey<Biome> DUNES = register("dunes");
-    public static final ResourceKey<Biome> SHALLOW_OCEAN = register("shallow_ocean");
-    public static final ResourceKey<Biome> ISLANDS = register("islands");
-
+    //---- MILKY WAY -------------------------------------------------------------------------------
+    public static final ResourceKey<Biome> MILKY_WAY = register("milky_way");
 
     private static ResourceKey<Biome> register(String key) {
         return ResourceKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(CelestialExploration.MODID, key));

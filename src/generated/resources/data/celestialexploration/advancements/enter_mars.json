@@ -5,10 +5,10 @@
       "item": "celestialexploration:mars_sand"
     },
     "title": {
-      "translate": "advancements.celestial.enter_mars.title"
+      "translate": "advancements.celestialexploration.enter_mars.title"
     },
     "description": {
-      "translate": "advancements.celestial.enter_mars.description"
+      "translate": "advancements.celestialexploration.enter_mars.description"
     },
     "frame": "task",
     "show_toast": true,

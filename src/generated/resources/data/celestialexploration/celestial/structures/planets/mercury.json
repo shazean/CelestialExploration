@@ -1,0 +1,11 @@
+{
+  "spawn_chunk_coordinates": {
+    "x": 1,
+    "z": 1
+  },
+  "blocks": [
+    "celestialexploration:mercury_stone",
+    "celestialexploration:mercury_deepslate",
+    "celestialexploration:mercury_core"
+  ]
+}

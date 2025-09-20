@@ -1,14 +1,14 @@
 {
-  "parent": "celestialexploration:enter_space",
+  "parent": "celestialexploration:enter_milky_way",
   "display": {
     "icon": {
       "item": "celestialexploration:moon_sand"
     },
     "title": {
-      "translate": "advancements.celestial.enter_moon.title"
+      "translate": "advancements.celestialexploration.enter_moon.title"
     },
     "description": {
-      "translate": "advancements.celestial.enter_moon.description"
+      "translate": "advancements.celestialexploration.enter_moon.description"
     },
     "frame": "task",
     "show_toast": true,

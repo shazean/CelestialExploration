@@ -1,0 +1,13 @@
+{
+  "type": "celestialexploration:moon",
+  "forge:use_server_seed": true,
+  "generator": {
+    "type": "minecraft:noise",
+    "seed": 1,
+    "settings": "celestialexploration:moon",
+    "biome_source": {
+      "type": "minecraft:multi_noise",
+      "preset": "celestialexploration:moon"
+    }
+  }
+}

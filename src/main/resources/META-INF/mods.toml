@@ -14,7 +14,7 @@ logoFile="CE_logo.png"
 credits="shim, primal_zerg_ (legacy spaceship model, some textures), JayZX535 (bug fixes, beta testing)"
 authors="shim"
 description='''
-Exploring beyond our own planet and into the outer reaches of space!
+Exploring beyond our own planet and into the outer reaches of space! Inspired by our own solar system.
 '''
 [[dependencies.celestialexploration]]
     modId="forge"
@@ -32,5 +32,11 @@ Exploring beyond our own planet and into the outer reaches of space!
     modId="azurelib"
     mandatory=true
     versionRange="[3.0.0,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.celestialexploration]]
+    modId="celestiallib"
+    mandatory=true
+    versionRange="[0.0.33,)"
     ordering="NONE"
     side="BOTH"

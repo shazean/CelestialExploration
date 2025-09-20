@@ -1,7 +1,8 @@
 package com.shim.celestialexploration.blocks;
 
 import com.shim.celestialexploration.registry.*;
-import com.shim.celestialexploration.world.portal.PlanetTeleporter;
+import com.shim.celestiallib.api.blocks.AbstractPortalBlock;
+import com.shim.celestiallib.api.world.portal.PlanetPortalTeleporter;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
@@ -16,8 +17,8 @@ public class MarsPortalBlock extends AbstractPortalBlock {
     }
 
     @Override
-    public PlanetTeleporter getTeleporter(ServerLevel serverLevel) {
-        return new PlanetTeleporter(serverLevel, CelestialPOIs.MARS_PORTAL.get(), CelestialBlocks.MARS_BRICKS.get(), CelestialBlocks.MARS_PORTAL.get(), CelestialDimensions.MARS);
+    public PlanetPortalTeleporter getTeleporter(ServerLevel serverLevel) {
+        return new PlanetPortalTeleporter(serverLevel, CelestialPOIs.MARS_PORTAL.get(), CelestialBlocks.MARS_BRICKS.get(), CelestialBlocks.MARS_PORTAL.get(), CelestialDimensions.MARS);
     }
 
     @Override

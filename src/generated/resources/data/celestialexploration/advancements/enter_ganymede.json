@@ -5,10 +5,10 @@
       "item": "celestialexploration:ganymede_bricks"
     },
     "title": {
-      "translate": "advancements.celestial.enter_ganymede.title"
+      "translate": "advancements.celestialexploration.enter_ganymede.title"
     },
     "description": {
-      "translate": "advancements.celestial.enter_ganymede.description"
+      "translate": "advancements.celestialexploration.enter_ganymede.description"
     },
     "frame": "task",
     "show_toast": true,

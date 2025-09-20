@@ -6,13 +6,11 @@ import com.shim.celestialexploration.registry.*;
 import com.shim.celestialexploration.world.biome.CelestialBiomeKeys;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraftforge.common.data.LanguageProvider;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -29,7 +27,7 @@ public class CelestialLangProvider extends LanguageProvider {
 	}
 
 	public void addDimension(ResourceKey<Level> dimension, String localization) {
-		add("dimension." + CelestialExploration.MODID + "." + dimension.location().getPath(), localization);
+		add("dimension." + dimension.location().getNamespace() + "." + dimension.location().getPath(), localization);
 	}
 
 	public void addAdvancement(String advancement, String title, String description) {
@@ -74,7 +72,7 @@ public class CelestialLangProvider extends LanguageProvider {
 		add(CelestialFluids.SULFUR_BUCKET.get(), "Sulfur Bucket");
 
 		//---- BIOMES -------------------------------------------------------------------------------
-		addBiome(CelestialBiomeKeys.SPACE, "Outer Space");
+		addBiome(CelestialBiomeKeys.MILKY_WAY, "Milky Way");
 		addBiome(CelestialBiomeKeys.MOON_CRATERS, "Lunar Craters");
 		addBiome(CelestialBiomeKeys.MOON_DESERT, "Lunar Desert");
 		addBiome(CelestialBiomeKeys.MOON_LAVA_FLATS, "Lunar Lava Flats");
@@ -119,7 +117,7 @@ public class CelestialLangProvider extends LanguageProvider {
 		addBiome(CelestialBiomeKeys.GANYMEDE_PLAINS, "Ganymedian Plains");
 
 		//---- DIMENSIONS -------------------------------------------------------------------------------
-		addDimension(CelestialDimensions.SPACE, "Outer Space");
+		addDimension(CelestialDimensions.MILKY_WAY, "Milky Way Galaxy");
 		addDimension(CelestialDimensions.MERCURY, "Mercury");
 		addDimension(CelestialDimensions.VENUS, "Venus");
 		addDimension(Level.OVERWORLD, "Overworld");
@@ -135,9 +133,6 @@ public class CelestialLangProvider extends LanguageProvider {
 		add("container.celestialexploration.workbench", "Workbench");
 
 		//---- EFFECTS -------------------------------------------------------------------------------
-		add(CelestialEffects.LOW_GRAVITY.get(), "Low Gravity");
-		add(CelestialEffects.EXTRA_LOW_GRAVITY.get(), "Extra Low Gravity");
-		add(CelestialEffects.HIGH_GRAVITY.get(), "High Gravity");
 		add(CelestialEffects.STATIC_EFFECT.get(), "Static Build Up");
 
 		//---- TABS -------------------------------------------------------------------------------
@@ -152,7 +147,6 @@ public class CelestialLangProvider extends LanguageProvider {
 		add("key.celestialexploration.turn_left", "Spaceship Strafe Left");
 		add("key.celestialexploration.turn_right", "Spaceship Strafe Right");
 		add("key.celestialexploration.open_spaceship_inventory", "Open Spaceship Inventory");
-		add("key.celestialexploration.spaceship_light_travel", "Spaceship Light Speed Travel");
 
 		//---- DAMAGE SOURCES -------------------------------------------------------------------------------
 		add("death.attack.celestialexploration.touched_sun", "%1$s discovered the sun is hot");
@@ -171,7 +165,7 @@ public class CelestialLangProvider extends LanguageProvider {
 		addAdvancement("kill_mob_in_space", "Space Invaders","Defeat a mob in outer space");
 		addAdvancement("all_mechadogs", "Gotta Catch 'Em All","Collect all colors of the MechaDogs");
 
-		addAdvancement("enter_space", "To Infinity… and Beyond!","Enter space");
+		addAdvancement("enter_milky_way", "To Infinity… and Beyond!","Enter Milky Way");
 		addAdvancement("enter_moon", "One Small Step For Man…","Reach the moon");
 		addAdvancement("enter_mars", "The Red Planet","Reach Mars");
 		addAdvancement("enter_venus", "Goddess of Beauty… And Sulfur?","Reach Venus");

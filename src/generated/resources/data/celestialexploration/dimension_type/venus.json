@@ -1,0 +1,18 @@
+{
+  "ultrawarm": true,
+  "natural": false,
+  "piglin_safe": true,
+  "bed_works": true,
+  "respawn_anchor_works": false,
+  "has_skylight": true,
+  "has_ceiling": false,
+  "has_raids": true,
+  "logical_height": 384,
+  "ambient_light": 0.2,
+  "min_y": -64,
+  "height": 384,
+  "coordinate_scale": 1.5,
+  "fixed_time": 18000,
+  "infiniburn": "#minecraft:infiniburn_overworld",
+  "effects": "celestialexploration:venus"
+}

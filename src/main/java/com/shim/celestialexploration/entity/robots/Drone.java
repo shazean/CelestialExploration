@@ -2,7 +2,7 @@ package com.shim.celestialexploration.entity.robots;
 
 import com.shim.celestialexploration.entity.client.dispatchers.SimpleEntityDispatcher;
 import com.shim.celestialexploration.entity.goals.HoverGoal;
-import com.shim.celestialexploration.registry.CelestialEffects;
+import com.shim.celestiallib.api.effects.CLibEffects;
 import mod.azure.azurelib.rewrite.util.MoveAnalysis;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -38,7 +38,7 @@ public class Drone extends TamableAnimal implements FlyingAnimal {
 
     public Drone(EntityType<? extends TamableAnimal> p_21803_, Level p_21804_) {
         super(p_21803_, p_21804_);
-        this.addEffect(new MobEffectInstance(CelestialEffects.LOW_GRAVITY.get(), 120000, 0, false, false, true));
+        this.addEffect(new MobEffectInstance(CLibEffects.LOW_GRAVITY.get(), 120000, 0, false, false, true));
         this.dispatcher = new SimpleEntityDispatcher(this);
         this.moveAnalysis = new MoveAnalysis(this);
     }

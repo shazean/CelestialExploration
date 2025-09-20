@@ -149,7 +149,7 @@ public class CelestialTags {
 
         public static final TagKey<Biome> MARS_BIOMES = create("mars");
         public static final TagKey<Biome> MOON_BIOMES = create("moon");
-        public static final TagKey<Biome> SPACE_BIOMES = create("space");
+        public static final TagKey<Biome> MILKY_WAY_BIOMES = create("milky_way");
         public static final TagKey<Biome> VENUS_BIOMES = create("venus");
         public static final TagKey<Biome> MERCURY_BIOMES = create("mercury");
         public static final TagKey<Biome> JUPITER_BIOMES = create("jupiter");
@@ -158,14 +158,14 @@ public class CelestialTags {
         public static final TagKey<Biome> IO_BIOMES = create("io");
         public static final TagKey<Biome> GANYMEDE_BIOMES = create("ganymede");
 
-        public static final TagKey<Biome> NO_SNOW_BIOMES = create("no_snow");
+//        public static final TagKey<Biome> NO_SNOW_BIOMES = create("no_snow");
 
         public static final TagKey<Biome> DUST_STORM_BIOMES = create("dust_storms");
         public static final TagKey<Biome> METEOR_SHOWER_BIOMES = create("meteor_showers");
 
 
-        public static final TagKey<Biome> PLANETS = create("planets");
-        public static final TagKey<Biome> MOONS = create("moons");
+//        public static final TagKey<Biome> PLANETS = create("planets");
+//        public static final TagKey<Biome> MOONS = create("moons");
         public static final TagKey<Biome> CELESTIAL_BODIES = create("celestial_bodies");
 
         private static TagKey<Biome> create(String key) {
@@ -177,8 +177,8 @@ public class CelestialTags {
     public static class Entities {
         public static final TagKey<EntityType<?>> FARM_ANIMALS = create("farm_animals");
 
-        public static final TagKey<EntityType<?>> LOW_GRAVITY_EXEMPT = create("low_gravity_exempt");
-        public static final TagKey<EntityType<?>> HIGH_GRAVITY_EXEMPT = create("high_gravity_exempt");
+//        public static final TagKey<EntityType<?>> LOW_GRAVITY_EXEMPT = create("low_gravity_exempt");
+//        public static final TagKey<EntityType<?>> HIGH_GRAVITY_EXEMPT = create("high_gravity_exempt");
 
         private static TagKey<EntityType<?>> create(String key) {
             return TagKey.create(Registry.ENTITY_TYPE_REGISTRY, modLoc(key));

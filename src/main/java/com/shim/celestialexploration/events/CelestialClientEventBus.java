@@ -10,9 +10,8 @@ import com.shim.celestialexploration.inventory.screens.*;
 import com.shim.celestialexploration.item.armor.*;
 import com.shim.celestialexploration.registry.*;
 import com.shim.celestialexploration.util.Keybinds;
-import com.shim.celestialexploration.world.renderer.DimensionRenderers;
+import com.shim.celestialexploration.world.renderer.CelestialDimensionRenderers;
 import mod.azure.azurelib.rewrite.render.armor.AzArmorRendererRegistry;
-import mod.azure.azurelib.rewrite.render.item.AzItemRendererRegistry;
 import net.minecraft.client.RecipeBookCategories;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.model.SkullModel;
@@ -61,7 +60,7 @@ public class CelestialClientEventBus {
 
         Keybinds.register(event);
 
-        event.enqueueWork(DimensionRenderers::setDimensionEffects);
+        event.enqueueWork(CelestialDimensionRenderers::setDimensionEffects);
 
         event.enqueueWork(CelestialSkullRenderer::setSkullRenderers);
 

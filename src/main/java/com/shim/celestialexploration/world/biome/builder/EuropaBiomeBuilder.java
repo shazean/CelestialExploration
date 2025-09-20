@@ -2,6 +2,7 @@ package com.shim.celestialexploration.world.biome.builder;
 
 import com.mojang.datafixers.util.Pair;
 import com.shim.celestialexploration.world.biome.CelestialBiomeKeys;
+import com.shim.celestiallib.api.world.biome.builder.AbstractSimplerBiomeBuilder;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Climate;
@@ -11,7 +12,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.function.Consumer;
 
-public class EuropaBiomeBuilder extends AbstractBiomeBuilder {
+public class EuropaBiomeBuilder extends AbstractSimplerBiomeBuilder {
     private final ResourceKey<Biome>[][] OCEANS = new ResourceKey[][]{
             {CelestialBiomeKeys.EUROPA_OCEAN, CelestialBiomeKeys.EUROPA_OCEAN, CelestialBiomeKeys.EUROPA_OCEAN, CelestialBiomeKeys.EUROPA_OCEAN, CelestialBiomeKeys.EUROPA_OCEAN},
             {CelestialBiomeKeys.EUROPA_OCEAN, CelestialBiomeKeys.EUROPA_OCEAN, CelestialBiomeKeys.EUROPA_OCEAN, CelestialBiomeKeys.EUROPA_OCEAN, CelestialBiomeKeys.EUROPA_OCEAN}};
@@ -46,48 +47,54 @@ public class EuropaBiomeBuilder extends AbstractBiomeBuilder {
             {CelestialBiomeKeys.EUROPA_DESERT, CelestialBiomeKeys.EUROPA_DESERT, CelestialBiomeKeys.EUROPA_DESERT, CelestialBiomeKeys.EUROPA_DESERT, CelestialBiomeKeys.EUROPA_DESERT},
             {null, null, null, null, null}};
 
+
     @Override
-    protected ResourceKey<Biome>[][] getOceans() {
-        return this.OCEANS;
+    public ResourceKey<Biome>[][] getOceans() {
+        return OCEANS;
     }
 
     @Override
-    protected ResourceKey<Biome>[][] getMiddleBiomes() {
-        return this.MIDDLE_BIOMES;
+    public ResourceKey<Biome>[][] getMiddleBiomes() {
+        return MIDDLE_BIOMES;
     }
 
     @Override
-    protected ResourceKey<Biome>[][] getMiddleBiomeVariants() {
-        return this.MIDDLE_BIOMES_VARIANT;
+    public ResourceKey<Biome>[][] getMiddleBiomeVariants() {
+        return MIDDLE_BIOMES_VARIANT;
     }
 
     @Override
-    protected ResourceKey<Biome>[][] getPlateauBiomes() {
-        return this.PLATEAU_BIOMES;
+    public ResourceKey<Biome>[][] getPlateauBiomes() {
+        return PLATEAU_BIOMES;
     }
 
     @Override
-    protected ResourceKey<Biome>[][] getPlateauBiomeVariants() {
-        return this.PLATEAU_BIOMES_VARIANT;
+    public ResourceKey<Biome>[][] getPlateauBiomeVariants() {
+        return PLATEAU_BIOMES_VARIANT;
     }
 
     @Override
-    protected ResourceKey<Biome>[][] getShatteredBiomes() {
-        return this.SHATTERED_BIOMES;
+    public ResourceKey<Biome>[][] getShatteredBiomes() {
+        return SHATTERED_BIOMES;
     }
 
     @Override
-    protected ResourceKey<Biome> getValleyBiome() {
-        return CelestialBiomeKeys.EUROPA_RIVER;
+    public ResourceKey<Biome>[] getBeachBiomes() {
+        return SHATTERED_BIOMES[3];
     }
 
     @Override
-    protected ResourceKey<Biome> pickBeachBiome(int temp, int humidity) {
+    public ResourceKey<Biome> getRiverBiome() {
         return CelestialBiomeKeys.EUROPA_DESERT;
     }
 
     @Override
-    protected ResourceKey<Biome> pickPeakBiome(int temp, int humidity, Climate.Parameter p_187243_) {
+    public ResourceKey<Biome> getFrozenRiverBiome() {
+        return CelestialBiomeKeys.EUROPA_DESERT;
+    }
+
+    @Override
+    public ResourceKey<Biome> pickBadlandsBiome(int humditiy, Climate.Parameter weirdness) {
         return CelestialBiomeKeys.EUROPA_DESERT;
     }
 }

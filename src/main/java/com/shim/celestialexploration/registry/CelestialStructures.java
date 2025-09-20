@@ -4,6 +4,7 @@ package com.shim.celestialexploration.registry;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.world.structures.*;
 import com.shim.celestialexploration.world.structures.space.*;
+import com.shim.celestiallib.api.world.structure.PlanetStructure;
 import net.minecraft.world.level.levelgen.feature.StructureFeature;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -23,11 +24,11 @@ public class CelestialStructures {
     public static final RegistryObject<StructureFeature<?>> SUN = DEFERRED_REGISTRY_STRUCTURE.register("sun", SunStructure::new);
     public static final RegistryObject<StructureFeature<?>> SUN_TOP = DEFERRED_REGISTRY_STRUCTURE.register("sun_top", SunTopStructure::new);
 
-    public static final RegistryObject<StructureFeature<?>> MERCURY = DEFERRED_REGISTRY_STRUCTURE.register("mercury", MercuryStructure::new);
-    public static final RegistryObject<StructureFeature<?>> VENUS = DEFERRED_REGISTRY_STRUCTURE.register("venus", VenusStructure::new);
-    public static final RegistryObject<StructureFeature<?>> EARTH = DEFERRED_REGISTRY_STRUCTURE.register("earth", EarthStructure::new);
-    public static final RegistryObject<StructureFeature<?>> MARS = DEFERRED_REGISTRY_STRUCTURE.register("mars", MarsStructure::new);
-    public static final RegistryObject<StructureFeature<?>> JUPITER = DEFERRED_REGISTRY_STRUCTURE.register("jupiter", JupiterStructure::new);
+//    public static final RegistryObject<StructureFeature<?>> MERCURY = DEFERRED_REGISTRY_STRUCTURE.register("mercury", MercuryStructure::new);
+//    public static final RegistryObject<StructureFeature<?>> VENUS = DEFERRED_REGISTRY_STRUCTURE.register("venus", VenusStructure::new);
+//    public static final RegistryObject<StructureFeature<?>> EARTH = DEFERRED_REGISTRY_STRUCTURE.register("earth", EarthStructure::new);
+//    public static final RegistryObject<StructureFeature<?>> MARS = DEFERRED_REGISTRY_STRUCTURE.register("mars", MarsStructure::new);
+//    public static final RegistryObject<StructureFeature<?>> JUPITER = DEFERRED_REGISTRY_STRUCTURE.register("jupiter", JupiterStructure::new);
     public static final RegistryObject<StructureFeature<?>> SATURN = DEFERRED_REGISTRY_STRUCTURE.register("saturn", SaturnStructure::new);
     public static final RegistryObject<StructureFeature<?>> TITAN = DEFERRED_REGISTRY_STRUCTURE.register("titan", TitanStructure::new);
     public static final RegistryObject<StructureFeature<?>> IAPETUS = DEFERRED_REGISTRY_STRUCTURE.register("iapetus", IapetusStructure::new);

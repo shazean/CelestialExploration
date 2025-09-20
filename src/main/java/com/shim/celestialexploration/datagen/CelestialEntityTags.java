@@ -1,15 +1,17 @@
 package com.shim.celestialexploration.datagen;
 
+import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.registry.CelestialEntities;
 import com.shim.celestialexploration.registry.CelestialTags;
+import com.shim.celestiallib.api.world.tags.CLibTags;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.EntityTypeTagsProvider;
 import net.minecraft.world.entity.EntityType;
 
 public class CelestialEntityTags extends EntityTypeTagsProvider {
 
-    public CelestialEntityTags(DataGenerator generator, String modid, @org.jetbrains.annotations.Nullable net.minecraftforge.common.data.ExistingFileHelper existingFileHelper) {
-        super(generator, modid, existingFileHelper);
+    public CelestialEntityTags(DataGenerator generator, @org.jetbrains.annotations.Nullable net.minecraftforge.common.data.ExistingFileHelper existingFileHelper) {
+        super(generator, CelestialExploration.MODID, existingFileHelper);
     }
 
     @Override
@@ -25,7 +27,7 @@ public class CelestialEntityTags extends EntityTypeTagsProvider {
                 .add(EntityType.DONKEY)
                 .add(EntityType.LLAMA);
 
-        tag(CelestialTags.Entities.LOW_GRAVITY_EXEMPT)
+        tag(CLibTags.EntityTypes.LOW_GRAVITY_EXEMPT)
                 .add(CelestialEntities.MECHADOG.get())
                 .add(CelestialEntities.MECHACERBERUS.get())
                 .add(CelestialEntities.MECHACERBERUS_BOSS.get());

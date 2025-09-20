@@ -3,7 +3,6 @@ package com.shim.celestialexploration.registry;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.world.biome.*;
 import net.minecraft.core.Registry;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
@@ -39,7 +38,7 @@ public class CelestialBiomes {
     public static final RegistryObject<Biome> SULFUR_RIVER = BIOMES.register("sulfur_river", VenusBiomes::river);
 
     //---- SPACE -------------------------------------------------------------------------------
-    public static final RegistryObject<Biome> SPACE = BIOMES.register("space", com.shim.celestialexploration.world.biome.CelestialBiomes::space);
+    public static final RegistryObject<Biome> MILKY_WAY = BIOMES.register("milky_way", CelestialBiomeFeatures::space);
 
     //---- MERCURY -------------------------------------------------------------------------------
     public static final RegistryObject<Biome> MERCURY_DEEP_CRATERED_PLAINS = BIOMES.register("mercury_deep_cratered_plains", MercuryBiomes::craters);
@@ -79,15 +78,5 @@ public class CelestialBiomes {
     public static final RegistryObject<Biome> GANYMEDE_DESERT = BIOMES.register("ganymede_desert", () -> MoonBiomes.desert(true));
     public static final RegistryObject<Biome> GANYMEDE_LOWER_PLAINS = BIOMES.register("ganymede_lower_plains", () -> MoonBiomes.desert(true));
     public static final RegistryObject<Biome> GANYMEDE_PLAINS = BIOMES.register("ganymede_plains", MoonBiomes::plains);
-
-
-    //---- FOR DATAPACK/PRESETS -------------------------------------------------------------------------------
-    public static final RegistryObject<Biome> HIGH_DESERT = BIOMES.register("high_desert", () -> PresetBiomes.desert(false, false));
-    public static final RegistryObject<Biome> LOW_DESERT = BIOMES.register("low_desert",  () -> PresetBiomes.desert(false, false));
-    public static final RegistryObject<Biome> ICY_DESERT = BIOMES.register("icy_desert", () -> PresetBiomes.desert(false, true));
-    public static final RegistryObject<Biome> MONSOON_DESERT = BIOMES.register("monsoon_desert",  () -> PresetBiomes.desert(true, false));
-    public static final RegistryObject<Biome> DUNES = BIOMES.register("dunes",  () -> PresetBiomes.desert(false, false));
-    public static final RegistryObject<Biome> SHALLOW_OCEAN = BIOMES.register("shallow_ocean", PresetBiomes::ocean);
-    public static final RegistryObject<Biome> ISLANDS = BIOMES.register("islands", PresetBiomes::island);
 
 }

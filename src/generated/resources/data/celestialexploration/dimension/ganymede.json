@@ -1,0 +1,13 @@
+{
+  "type": "celestialexploration:ganymede",
+  "forge:use_server_seed": true,
+  "generator": {
+    "type": "minecraft:noise",
+    "seed": 1,
+    "settings": "celestialexploration:ganymede",
+    "biome_source": {
+      "type": "minecraft:multi_noise",
+      "preset": "celestialexploration:ganymede"
+    }
+  }
+}

@@ -54,28 +54,30 @@ public class CelestialAdvancements extends AdvancementProvider {
                 .addCriterion("airlock_trapdoor", PlacedBlockTrigger.TriggerInstance.placedBlock(CelestialBlocks.AIRLOCK_TRAPDOOR.get())).save(consumer, modLoc("place_airlock"));
 
         Advancement enterSpace = Advancement.Builder.advancement().display(new ItemStack(CelestialItems.WHITE_SPACESHIP.get()),
-                        new TranslatableComponent("advancements.celestialexploration.enter_space.title"), new TranslatableComponent("advancements.celestialexploration.enter_space.description"),
+                        new TranslatableComponent("advancements.celestialexploration.enter_milky_way.title"), new TranslatableComponent("advancements.celestialexploration.enter_milky_way.description"),
                         null, FrameType.TASK, true, true, false)
-                .parent(obtainSpaceship).addCriterion("entered_space", ChangeDimensionTrigger.TriggerInstance.changedDimensionTo(CelestialDimensions.SPACE)).save(consumer, modLoc("enter_space"));
+                .parent(obtainSpaceship).addCriterion("entered_milky_way", ChangeDimensionTrigger.TriggerInstance.changedDimensionTo(CelestialDimensions.MILKY_WAY)).save(consumer, modLoc("enter_milky_way"));
 
         Advancement flyIntoSun = Advancement.Builder.advancement().display(new ItemStack(CelestialBlocks.SOLAR_FLARE.get()),
                         new TranslatableComponent("advancements.celestialexploration.fly_into_sun.title"), new TranslatableComponent("advancements.celestialexploration.fly_into_sun.description"),
                         null, FrameType.TASK, true, true, false)
-                .parent(enterSpace).addCriterion("step_on_sun", EnterBlockTrigger.TriggerInstance.entersBlock(CelestialBlocks.SOLAR_FLARE.get())).save(consumer, modLoc("fly_into_sun"));
+                .parent(enterSpace)
+                .addCriterion("step_on_sun", EnterBlockTrigger.TriggerInstance.entersBlock(CelestialBlocks.SOLAR_FLARE.get())).save(consumer, modLoc("fly_into_sun"));
 
         Advancement killMobInSpace = Advancement.Builder.advancement().display(new ItemStack(Items.IRON_SWORD),
                         new TranslatableComponent("advancements.celestialexploration.kill_mob_in_space.title"), new TranslatableComponent("advancements.celestialexploration.kill_mob_in_space.description"),
                         null, FrameType.TASK, true, true, false)
                 .parent(enterSpace)
-                .addCriterion("kill_lurker", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(CelestialEntities.LURKER.get()).located(LocationPredicate.Builder.location().setDimension(CelestialDimensions.SPACE).build())))
-                .addCriterion("kill_voided", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(CelestialEntities.VOIDED.get()).located(LocationPredicate.Builder.location().setDimension(CelestialDimensions.SPACE).build())))
-                .addCriterion("kill_voidfellow", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(CelestialEntities.VOIDFELLOW.get()).located(LocationPredicate.Builder.location().setDimension(CelestialDimensions.SPACE).build())))
+                .addCriterion("kill_lurker", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(CelestialEntities.LURKER.get()).located(LocationPredicate.Builder.location().setDimension(CelestialDimensions.MILKY_WAY).build())))
+                .addCriterion("kill_voided", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(CelestialEntities.VOIDED.get()).located(LocationPredicate.Builder.location().setDimension(CelestialDimensions.MILKY_WAY).build())))
+                .addCriterion("kill_voidfellow", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(CelestialEntities.VOIDFELLOW.get()).located(LocationPredicate.Builder.location().setDimension(CelestialDimensions.MILKY_WAY).build())))
                 .save(consumer, modLoc("kill_mob_in_space"));
 
         Advancement enterMoon = Advancement.Builder.advancement().display(new ItemStack(CelestialBlocks.MOON_SAND.get()),
                         new TranslatableComponent("advancements.celestialexploration.enter_moon.title"), new TranslatableComponent("advancements.celestialexploration.enter_moon.description"),
                         null, FrameType.TASK, true, true, false)
-                .parent(enterSpace).addCriterion("entered_moon", ChangeDimensionTrigger.TriggerInstance.changedDimensionTo(CelestialDimensions.MOON)).save(consumer, modLoc("enter_moon"));
+                .parent(enterSpace)
+                .addCriterion("entered_moon", ChangeDimensionTrigger.TriggerInstance.changedDimensionTo(CelestialDimensions.MOON)).save(consumer, modLoc("enter_moon"));
 
         Advancement enterMars = Advancement.Builder.advancement().display(new ItemStack(CelestialBlocks.MARS_SAND.get()),
                     new TranslatableComponent("advancements.celestialexploration.enter_mars.title"),
@@ -86,7 +88,8 @@ public class CelestialAdvancements extends AdvancementProvider {
         Advancement plantPotato = Advancement.Builder.advancement().display(new ItemStack(Items.POTATO),
                         new TranslatableComponent("advancements.celestialexploration.plant_potato.title"), new TranslatableComponent("advancements.celestialexploration.plant_potato.description"),
                         null, FrameType.TASK, true, true, false)
-                .parent(enterSpace).addCriterion("plant_potato", ItemUsedOnBlockTrigger.TriggerInstance.itemUsedOnBlock((LocationPredicate.Builder.location().setDimension(CelestialDimensions.MARS).setBlock(BlockPredicate.Builder.block().of(Blocks.DIRT).build())),
+                .parent(enterSpace)
+                .addCriterion("plant_potato", ItemUsedOnBlockTrigger.TriggerInstance.itemUsedOnBlock((LocationPredicate.Builder.location().setDimension(CelestialDimensions.MARS).setBlock(BlockPredicate.Builder.block().of(Blocks.DIRT).build())),
                         ItemPredicate.Builder.item().of(Items.POTATO))).save(consumer, modLoc("plant_potato"));
 
         Advancement enterVenus = Advancement.Builder.advancement().display(new ItemStack(CelestialBlocks.VENUS_SAND.get()),

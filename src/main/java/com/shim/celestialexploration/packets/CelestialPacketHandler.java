@@ -29,14 +29,8 @@ public class CelestialPacketHandler {
         INSTANCE.registerMessage(i++, SpaceshipFuelCapPacket.class, SpaceshipFuelCapPacket::encoder,
                 SpaceshipFuelCapPacket::decoder, SpaceshipFuelCapPacket::handle, Optional.of(NetworkDirection.PLAY_TO_CLIENT));
 
-        INSTANCE.registerMessage(i++, SpaceFlightPacket.class, SpaceFlightPacket::encoder,
-                SpaceFlightPacket::decoder, SpaceFlightPacket::handle, Optional.of(NetworkDirection.PLAY_TO_CLIENT));
-
         INSTANCE.registerMessage(i++, SpaceshipInventoryPacket.class, SpaceshipInventoryPacket::encoder,
                 SpaceshipInventoryPacket::decoder, SpaceshipInventoryPacket::handle, Optional.of(NetworkDirection.PLAY_TO_SERVER));
-
-        INSTANCE.registerMessage(i++, LightTravelDataPacket.class, LightTravelDataPacket::encoder,
-                LightTravelDataPacket::decoder, LightTravelDataPacket::handle, Optional.of(NetworkDirection.PLAY_TO_CLIENT));
 
         INSTANCE.registerMessage(i++, TaxiPassengersPacket.class, TaxiPassengersPacket::encoder,
                 TaxiPassengersPacket::decoder, TaxiPassengersPacket::handle, Optional.of(NetworkDirection.PLAY_TO_SERVER));
@@ -49,16 +43,6 @@ public class CelestialPacketHandler {
 
         INSTANCE.registerMessage(i++, TaxiAscensionTicksPacket.class, TaxiAscensionTicksPacket::encoder,
                 TaxiAscensionTicksPacket::decoder, TaxiAscensionTicksPacket::handle, Optional.of(NetworkDirection.PLAY_TO_SERVER));
-
-        INSTANCE.registerMessage(i++, DoLightTravelPacket.class, DoLightTravelPacket::encoder,
-                DoLightTravelPacket::decoder, DoLightTravelPacket::handle, Optional.of(NetworkDirection.PLAY_TO_SERVER));
-
-        INSTANCE.registerMessage(i++, ServerDidLightTravelPacket.class, ServerDidLightTravelPacket::encoder,
-                ServerDidLightTravelPacket::decoder, ServerDidLightTravelPacket::handle, Optional.of(NetworkDirection.PLAY_TO_CLIENT));
-
-        INSTANCE.registerMessage(i++, ServerResetLightTravelPacket.class, ServerResetLightTravelPacket::encoder,
-                ServerResetLightTravelPacket::decoder, ServerResetLightTravelPacket::handle, Optional.of(NetworkDirection.PLAY_TO_SERVER));
-
 
 //        INSTANCE.registerMessage(i++, ControlPanelPacket.class, ControlPanelPacket::write,
 //                ControlPanelPacket::decoder, ControlPanelPacket::handle, Optional.of(NetworkDirection.PLAY_TO_SERVER));

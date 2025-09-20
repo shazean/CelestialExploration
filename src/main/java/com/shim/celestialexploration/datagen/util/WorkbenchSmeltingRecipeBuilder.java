@@ -74,16 +74,16 @@ public class WorkbenchSmeltingRecipeBuilder implements RecipeBuilder {
 
 
     @Override
-    public void save(Consumer<FinishedRecipe> p_176503_, ResourceLocation p_176504_) {
-        this.ensureValid(p_176504_);
-        this.advancement.parent(new ResourceLocation("recipes/root")).addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(p_176504_)).rewards(AdvancementRewards.Builder.recipe(p_176504_)).requirements(RequirementsStrategy.OR);
-        p_176503_.accept(new WorkbenchSmeltingRecipeBuilder.Result(p_176504_,
-                this.group == null ? "" : this.group, this.ingredient, this.result, this.experience, this.smeltingTime, this.buckets, this.advancement, new ResourceLocation(CelestialExploration.MODID, "recipes/" + p_176504_.getPath()), this.serializer));
+    public void save(Consumer<FinishedRecipe> consumer, ResourceLocation loc) {
+        this.ensureValid(loc);
+        this.advancement.parent(new ResourceLocation("recipes/root")).addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(loc)).rewards(AdvancementRewards.Builder.recipe(loc)).requirements(RequirementsStrategy.OR);
+        consumer.accept(new WorkbenchSmeltingRecipeBuilder.Result(loc,
+                this.group == null ? "" : this.group, this.ingredient, this.result, this.experience, this.smeltingTime, this.buckets, this.advancement, new ResourceLocation(CelestialExploration.MODID, "recipes/" + loc.getPath()), this.serializer));
     }
 
-    private void ensureValid(ResourceLocation p_126266_) {
+    private void ensureValid(ResourceLocation loc) {
         if (this.advancement.getCriteria().isEmpty()) {
-            throw new IllegalStateException("No way of obtaining recipe " + p_126266_);
+            throw new IllegalStateException("No way of obtaining recipe " + loc);
         }
     }
 

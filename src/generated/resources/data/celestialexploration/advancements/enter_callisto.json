@@ -5,10 +5,10 @@
       "item": "celestialexploration:callisto_bricks"
     },
     "title": {
-      "translate": "advancements.celestial.enter_callisto.title"
+      "translate": "advancements.celestialexploration.enter_callisto.title"
     },
     "description": {
-      "translate": "advancements.celestial.enter_callisto.description"
+      "translate": "advancements.celestialexploration.enter_callisto.description"
     },
     "frame": "task",
     "show_toast": true,

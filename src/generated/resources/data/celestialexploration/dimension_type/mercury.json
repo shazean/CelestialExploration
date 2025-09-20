@@ -1,0 +1,17 @@
+{
+  "ultrawarm": false,
+  "natural": true,
+  "piglin_safe": false,
+  "bed_works": true,
+  "respawn_anchor_works": false,
+  "has_skylight": true,
+  "has_ceiling": false,
+  "has_raids": true,
+  "logical_height": 256,
+  "ambient_light": 0.0,
+  "min_y": -32,
+  "height": 256,
+  "coordinate_scale": 10.0,
+  "infiniburn": "#minecraft:infiniburn_overworld",
+  "effects": "celestialexploration:mercury"
+}

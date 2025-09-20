@@ -4,6 +4,7 @@ import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.config.CelestialCommonConfig;
 import com.shim.celestialexploration.registry.CelestialDimensions;
 import com.shim.celestialexploration.registry.CelestialFluids;
+import com.shim.celestialexploration.registry.CelestialGalaxies;
 import com.shim.celestialexploration.util.teleportation.AbstractCelestialTeleportData;
 import com.shim.celestialexploration.util.teleportation.CelestialCoordinateTeleport;
 import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
@@ -27,19 +28,12 @@ import java.util.Map;
 
 public class CelestialUtil {
 
-    //Credit to https://www.baeldung.com/java-fibonacci
-    public static int getFibonacciTerm(int n) {
-        double squareRootOf5 = Math.sqrt(5);
-        double phi = (1 + squareRootOf5) / 2;
-        return (int) ((Math.pow(phi, n) - Math.pow(-phi, -n)) / squareRootOf5);
-    }
-
     public static ResourceLocation getModLoc(String texture) {
         return new ResourceLocation(CelestialExploration.MODID, texture);
     }
 
     public static int getSpaceRatio() {
-        return CelestialCommonConfig.RANGE_OF_SPACE.get();
+        return CelestialGalaxies.MILKY_WAY_GALAXY.get().getGalaxyRatio();
     }
 
     @Deprecated //to remove after all planet dimensions are added
@@ -54,40 +48,6 @@ public class CelestialUtil {
         dimension.put("Neptune", new Vec3(6, 0, -24));
     });
 
-    public static final Map<ResourceKey<Level>, Vec3> CE_DIMENSION_LOCATION = Util.make(new Object2ObjectArrayMap<>(), (dimension) -> {
-        dimension.put(CelestialDimensions.MERCURY, new Vec3(1, 0, 1));
-        dimension.put(CelestialDimensions.VENUS, new Vec3(0, 0, 2));
-        dimension.put(Level.OVERWORLD, new Vec3(-2, 0, 0));
-        dimension.put(CelestialDimensions.MOON, new Vec3(-2, 0, 0));
-        dimension.put(CelestialDimensions.MARS, new Vec3(1, 0, -3));
-        dimension.put(CelestialDimensions.JUPITER, new Vec3(6, 0, 2));
-        dimension.put(CelestialDimensions.EUROPA, new Vec3(6, 0, 2));
-
-        dimension.put(Level.END, new Vec3(12, 0, 12));
-    });
-
-    protected static final Map<ResourceKey<Level>, AbstractCelestialTeleportData> DIMENSION_LOCATION = new HashMap<>();
-    protected static final AbstractCelestialTeleportData defaultDimensionLocation = new CelestialCoordinateTeleport(-2, 0);
-
-    public static AbstractCelestialTeleportData getDimensionLocation(ResourceKey<Level> dimension) {
-        return DIMENSION_LOCATION.get(dimension);
-    }
-
-    public static void setDimensionLocation(ResourceKey<Level> dimension, AbstractCelestialTeleportData data) {
-        DIMENSION_LOCATION.put(dimension, data);
-    }
-
-    public static void clearDimensionLocations() {
-        DIMENSION_LOCATION.clear();
-    }
-
-    public static Vec3 getDimensionToSpaceCoordinates(ResourceKey<Level> dimension, ChunkPos pos) {
-        Vec3 coord = getDimensionLocation(dimension).getOutputCoordinates(pos.x, pos.z); //new Vec3(CE_DIMENSION_LOCATION.get(dimension).x() * CelestialUtil.getSpaceRatio(), 0, CE_DIMENSION_LOCATION.get(dimension).z() * CelestialUtil.getSpaceRatio()); //getDimensionLocation(dimension).getOutputCoordinates(pos.x, pos.z); //FIXME
-        if (coord == null) coord = defaultDimensionLocation.getOutputCoordinates(pos.x, pos.z);
-        coord = new Vec3(coord.x * 16, 145.0, coord.z * 16); //convert from chunk to block pos
-        return coord;
-    }
-
     protected static final Map<ResourceKey<Level>, Vec3> PLANET_LOCATIONS = new HashMap<>();
 //    protected static final Vec3 defaultPlanetLocation = new Vec3(-2, 0, 0);
 
@@ -99,17 +59,6 @@ public class CelestialUtil {
         return PLANET_LOCATIONS;
     }
 
-    public static void setPlanetLocation(ResourceKey<Level> dimension, Vec3 data) {
-        PLANET_LOCATIONS.put(dimension, data);
-        CelestialExploration.LOGGER.debug("planets: " + PLANET_LOCATIONS.keySet());
-    }
-
-    WeightedRandomList list;
-
-    public static void clearPlanetLocations() {
-        PLANET_LOCATIONS.clear();
-    }
-
     public static Vec3 getPlanetaryChunkCoordinates(ResourceKey<Level> planet) {
         Vec3 coord = getPlanetLocation(planet); //CE_DIMENSION_LOCATION.get(planet); //getPlanetLocation(planet); //
 //        if (coord == null) coord = CE_DIMENSION_LOCATION.get(Level.OVERWORLD);
@@ -117,14 +66,7 @@ public class CelestialUtil {
         return coord;
     }
 
-//    @Deprecated
-//    public static Vec3 getPlanetaryChunkCoordinates(String planet) {
-//        Vec3 coord = PLANET_LOCATION.get(planet);
-//        coord = new Vec3(coord.x * getSpaceRatio(), coord.y, coord.z * getSpaceRatio());
-//        return coord;
-//    }
-
-    @Deprecated
+    @Deprecated //to remove after all planet dimensions are added
     public static Vec3 getPlanetaryChunkCoordinates(int planetNum) {
         int x;
         int z;
@@ -175,11 +117,6 @@ public class CelestialUtil {
 
     //Credit to: https://stackoverflow.com/questions/481144/equation-for-testing-if-a-point-is-inside-a-circle
     public static boolean isInRectangle(int centerX, int centerY, int radius, int x, int y) {
-        return x >= centerX - radius && x <= centerX + radius &&
-                y >= centerY - radius && y <= centerY + radius;
-    }
-
-    public static boolean isInRectangle(double centerX, double centerY, int radius, double x, double y) {
         return x >= centerX - radius && x <= centerX + radius &&
                 y >= centerY - radius && y <= centerY + radius;
     }

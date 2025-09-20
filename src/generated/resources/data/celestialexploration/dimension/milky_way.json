@@ -1,0 +1,13 @@
+{
+  "type": "celestialexploration:milky_way",
+  "forge:use_server_seed": false,
+  "generator": {
+    "type": "minecraft:noise",
+    "seed": 1,
+    "settings": "celestialexploration:milky_way",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "celestialexploration:milky_way"
+    }
+  }
+}

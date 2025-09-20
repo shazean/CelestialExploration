@@ -9,7 +9,7 @@ plugins {
 
 
 version = System.getenv("CELESTIAL_VERSION") ?: new File(".release-info/1.18/VERSION").text.trim()
-group = 'com.shim.celestialexploration' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+group = 'com.shim.celestialexploration'
 base {
     archivesName = "celestialexploration-${project.target_mc_version}"
 }
@@ -105,10 +105,6 @@ minecraft {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
-    // If you have mod jar dependencies in ./libs, you can declare them as a repository like so:
-    // flatDir {
-    //     dir 'libs'
-    // }
 
     // AzureLib maven
     maven {
@@ -132,6 +128,10 @@ repositories {
     maven {
         url 'https://cursemaven.com'
     }
+
+    flatDir {
+        dir 'libs'
+    }
 }
 
 dependencies {
@@ -153,9 +153,11 @@ dependencies {
 
     implementation fg.deobf("curse.maven:fastload-630620:4706140")
     implementation fg.deobf("curse.maven:modernfix-790626:5399365")
-    implementation fg.deobf("curse.maven:lightspeedmod-821790:4594803")
+//    implementation fg.deobf("curse.maven:lightspeedmod-821790:4594803")
     implementation fg.deobf("curse.maven:lazy-dfu-forge-460819:3544496")
 
+    implementation fg.deobf("celestiallib:celestiallib-${mc_version}:v${celestiallib_version}")
+//    implementation fg.deobf("curse.maven:celestiallib-1297767:6959666")
 
 }
 

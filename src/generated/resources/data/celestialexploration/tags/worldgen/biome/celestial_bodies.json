@@ -1,8 +1,7 @@
 {
   "replace": false,
   "values": [
-    "#celestialexploration:planets",
-    "#celestialexploration:moons",
-    "#celestialexploration:space"
+    "#celestiallib:no_snow",
+    "#celestiallib:no_snow"
   ]
 }

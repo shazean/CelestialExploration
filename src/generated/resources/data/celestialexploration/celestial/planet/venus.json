@@ -1,0 +1,8 @@
+{
+  "light_speed_travel": {
+    "locked": {
+      "hidden": false,
+      "unlock_advancement": "celestialexploration:enter_venus"
+    }
+  }
+}

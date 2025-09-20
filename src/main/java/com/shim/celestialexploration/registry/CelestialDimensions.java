@@ -6,10 +6,6 @@ import com.mojang.serialization.Codec;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.world.biome.*;
 import com.shim.celestialexploration.world.biome.builder.*;
-import com.shim.celestialexploration.world.biome.builder.presets.DesertPlanetBiomeBuilder;
-import com.shim.celestialexploration.world.biome.builder.presets.ForestPlanetBiomeBuilder;
-import com.shim.celestialexploration.world.biome.builder.presets.IcyPlanetBiomeBuilder;
-import com.shim.celestialexploration.world.biome.builder.presets.OceanPlanetBiomeBuilder;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
@@ -25,7 +21,7 @@ public class CelestialDimensions {
 
     public static final ResourceKey<Level> MARS = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(CelestialExploration.MODID, "mars"));
     public static final ResourceKey<Level> MOON = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(CelestialExploration.MODID, "moon"));
-    public static final ResourceKey<Level> SPACE = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(CelestialExploration.MODID, "space"));
+    public static final ResourceKey<Level> MILKY_WAY = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(CelestialExploration.MODID, "milky_way"));
     public static final ResourceKey<Level> VENUS = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(CelestialExploration.MODID, "venus"));
     public static final ResourceKey<Level> MERCURY = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(CelestialExploration.MODID, "mercury"));
     public static final ResourceKey<Level> JUPITER = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(CelestialExploration.MODID, "jupiter"));
@@ -33,6 +29,7 @@ public class CelestialDimensions {
     public static final ResourceKey<Level> CALLISTO = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(CelestialExploration.MODID, "callisto"));
     public static final ResourceKey<Level> IO = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(CelestialExploration.MODID, "io"));
     public static final ResourceKey<Level> GANYMEDE = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(CelestialExploration.MODID, "ganymede"));
+
 
     public static final MultiNoiseBiomeSource.Preset MARS_PRESET = new MultiNoiseBiomeSource.Preset(new ResourceLocation(CelestialExploration.MODID, "mars"), (biome) -> {
         ImmutableList.Builder<Pair<Climate.ParameterPoint, Holder<Biome>>> builder = ImmutableList.builder();
@@ -91,31 +88,6 @@ public class CelestialDimensions {
         new GanymedeBiomeBuilder().addBiomes((p_204279_) -> {
             builder.add(p_204279_.mapSecond(biome::getOrCreateHolder));
         });
-        return new Climate.ParameterList<>(builder.build());
-    });
-
-    //---- FOR DATAPACK/PRESETS -------------------------------------------------------------------------------
-    public static final MultiNoiseBiomeSource.Preset DESERT_PRESET = new MultiNoiseBiomeSource.Preset(new ResourceLocation(CelestialExploration.MODID, "desert_planet"), (biome) -> {
-        ImmutableList.Builder<Pair<Climate.ParameterPoint, Holder<Biome>>> builder = ImmutableList.builder();
-        new DesertPlanetBiomeBuilder().addBiomes((p_204279_) -> builder.add(p_204279_.mapSecond(biome::getOrCreateHolder)));
-        return new Climate.ParameterList<>(builder.build());
-    });
-
-    public static final MultiNoiseBiomeSource.Preset FOREST_PRESET = new MultiNoiseBiomeSource.Preset(new ResourceLocation(CelestialExploration.MODID, "forest_planet"), (biome) -> {
-        ImmutableList.Builder<Pair<Climate.ParameterPoint, Holder<Biome>>> builder = ImmutableList.builder();
-        new ForestPlanetBiomeBuilder().addBiomes((p_204279_) -> builder.add(p_204279_.mapSecond(biome::getOrCreateHolder)));
-        return new Climate.ParameterList<>(builder.build());
-    });
-
-    public static final MultiNoiseBiomeSource.Preset ICE_PRESET = new MultiNoiseBiomeSource.Preset(new ResourceLocation(CelestialExploration.MODID, "icy_planet"), (biome) -> {
-        ImmutableList.Builder<Pair<Climate.ParameterPoint, Holder<Biome>>> builder = ImmutableList.builder();
-        new IcyPlanetBiomeBuilder().addBiomes((p_204279_) -> builder.add(p_204279_.mapSecond(biome::getOrCreateHolder)));
-        return new Climate.ParameterList<>(builder.build());
-    });
-
-    public static final MultiNoiseBiomeSource.Preset OCEAN_PRESET = new MultiNoiseBiomeSource.Preset(new ResourceLocation(CelestialExploration.MODID, "ocean_planet"), (biome) -> {
-        ImmutableList.Builder<Pair<Climate.ParameterPoint, Holder<Biome>>> builder = ImmutableList.builder();
-        new OceanPlanetBiomeBuilder().addBiomes((p_204279_) -> builder.add(p_204279_.mapSecond(biome::getOrCreateHolder)));
         return new Climate.ParameterList<>(builder.build());
     });
 

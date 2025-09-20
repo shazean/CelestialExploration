@@ -1,14 +1,14 @@
 {
-  "parent": "celestialexploration:enter_space",
+  "parent": "celestialexploration:enter_milky_way",
   "display": {
     "icon": {
       "item": "celestialexploration:solar_flare"
     },
     "title": {
-      "translate": "advancements.celestial.fly_into_sun.title"
+      "translate": "advancements.celestialexploration.fly_into_sun.title"
     },
     "description": {
-      "translate": "advancements.celestial.fly_into_sun.description"
+      "translate": "advancements.celestialexploration.fly_into_sun.description"
     },
     "frame": "task",
     "show_toast": true,

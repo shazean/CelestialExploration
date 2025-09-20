@@ -1,7 +1,8 @@
 package com.shim.celestialexploration.blocks;
 
 import com.shim.celestialexploration.registry.*;
-import com.shim.celestialexploration.world.portal.PlanetTeleporter;
+import com.shim.celestiallib.api.blocks.AbstractPortalBlock;
+import com.shim.celestiallib.api.world.portal.PlanetPortalTeleporter;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
@@ -16,8 +17,8 @@ public class CallistoPortalBlock extends AbstractPortalBlock {
     }
 
     @Override
-    public PlanetTeleporter getTeleporter(ServerLevel serverLevel) {
-        return new PlanetTeleporter(serverLevel, CelestialPOIs.CALLISTO_PORTAL.get(), CelestialBlocks.CALLISTO_BRICKS.get(),
+    public PlanetPortalTeleporter getTeleporter(ServerLevel serverLevel) {
+        return new PlanetPortalTeleporter(serverLevel, CelestialPOIs.CALLISTO_PORTAL.get(), CelestialBlocks.CALLISTO_BRICKS.get(),
                 CelestialBlocks.CALLISTO_PORTAL.get(), CelestialDimensions.CALLISTO);
     }
 
