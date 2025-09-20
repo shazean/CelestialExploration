@@ -91,41 +91,6 @@ public class MarsSkyHandler extends AbstractSkyHandler {
         renderSun(poseStack, level, partialTick, 0, 0, sunTexture, 25.0F);
         renderMoon(poseStack, level, partialTick, 0, 0, MOON_LOCATION, 35.0F);
 
-
-//        poseStack.mulPose(Vector3f.YP.rotationDegrees(-90.0F));
-//        poseStack.mulPose(Vector3f.XP.rotationDegrees(level.getTimeOfDay(partialTick) * 360.0F));
-//        Matrix4f matrix4f1 = poseStack.last().pose();
-//        float f12 = 30.0F;
-//        RenderSystem.setShader(GameRenderer::getPositionTexShader);
-//        if (level.isRaining()) {
-//            RenderSystem.setShaderTexture(0, FADED_SUN_LOCATION);
-//        } else {
-//            RenderSystem.setShaderTexture(0, VANILLA_SUN_LOCATION);
-//        }
-//        bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
-//        bufferbuilder.vertex(matrix4f1, -f12, 100.0F, -f12).uv(0.0F, 0.0F).endVertex();
-//        bufferbuilder.vertex(matrix4f1, f12, 100.0F, -f12).uv(1.0F, 0.0F).endVertex();
-//        bufferbuilder.vertex(matrix4f1, f12, 100.0F, f12).uv(1.0F, 1.0F).endVertex();
-//        bufferbuilder.vertex(matrix4f1, -f12, 100.0F, f12).uv(0.0F, 1.0F).endVertex();
-//        bufferbuilder.end();
-//        BufferUploader.end(bufferbuilder);
-//        f12 = 18.0F;
-//        RenderSystem.setShaderTexture(0, MOON_LOCATION);
-//        int k = level.getMoonPhase();
-//        int l = k % 4;
-//        int i1 = k / 4 % 2;
-//        float f13 = (float) (l) / 4.0F;
-//        float f14 = (float) (i1) / 2.0F;
-//        float f15 = (float) (l + 1) / 4.0F;
-//        float f16 = (float) (i1 + 1) / 2.0F;
-//        bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
-//        bufferbuilder.vertex(matrix4f1, -f12, -100.0F, f12).uv(f15, f16).endVertex();
-//        bufferbuilder.vertex(matrix4f1, f12, -100.0F, f12).uv(f13, f16).endVertex();
-//        bufferbuilder.vertex(matrix4f1, f12, -100.0F, -f12).uv(f13, f14).endVertex();
-//        bufferbuilder.vertex(matrix4f1, -f12, -100.0F, -f12).uv(f15, f14).endVertex();
-//        bufferbuilder.end();
-//        BufferUploader.end(bufferbuilder);
-
         poseStack.popPose();
 
         renderStars(poseStack, level, partialTick, false);

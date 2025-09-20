@@ -12,7 +12,6 @@
   "min_y": -96,
   "height": 512,
   "coordinate_scale": 0.25,
-  "fixed_time": 0,
   "infiniburn": "#minecraft:infiniburn_overworld",
   "effects": "celestialexploration:jupiter"
 }

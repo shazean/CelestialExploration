@@ -4,6 +4,7 @@ import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.config.CelestialCommonConfig;
 import com.shim.celestialexploration.registry.CelestialDimensions;
 import com.shim.celestialexploration.registry.CelestialFluids;
+import com.shim.celestialexploration.registry.CelestialGalaxies;
 import com.shim.celestialexploration.util.teleportation.AbstractCelestialTeleportData;
 import com.shim.celestialexploration.util.teleportation.CelestialCoordinateTeleport;
 import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
@@ -32,7 +33,7 @@ public class CelestialUtil {
     }
 
     public static int getSpaceRatio() {
-        return CelestialCommonConfig.RANGE_OF_SPACE.get();
+        return CelestialGalaxies.MILKY_WAY_GALAXY.get().getGalaxyRatio();
     }
 
     @Deprecated //to remove after all planet dimensions are added

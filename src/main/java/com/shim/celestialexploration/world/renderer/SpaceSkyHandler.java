@@ -70,52 +70,20 @@ public class SpaceSkyHandler extends AbstractSkyHandler {
 
         poseStack.pushPose();
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-        poseStack.mulPose(Vector3f.YP.rotationDegrees(-90.0F));
-        poseStack.mulPose(Vector3f.XP.rotationDegrees(level.getTimeOfDay(partialTick) * 360.0F));
-//        Matrix4f matrix4f1 = poseStack.last().pose();
-//        float f12 = 30.0F;
-//        RenderSystem.setShader(GameRenderer::getPositionTexShader);
-////        RenderSystem.setShaderTexture(0, SUN_LOCATION);
-//        bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
-//        bufferbuilder.vertex(matrix4f1, -f12, 100.0F, -f12).uv(0.0F, 0.0F).endVertex();
-//        bufferbuilder.vertex(matrix4f1, f12, 100.0F, -f12).uv(1.0F, 0.0F).endVertex();
-//        bufferbuilder.vertex(matrix4f1, f12, 100.0F, f12).uv(1.0F, 1.0F).endVertex();
-//        bufferbuilder.vertex(matrix4f1, -f12, 100.0F, f12).uv(0.0F, 1.0F).endVertex();
-//        bufferbuilder.end();
-//        BufferUploader.end(bufferbuilder);
-//        f12 = 20.0F;
-//        RenderSystem.setShaderTexture(0, EARTH_LOCATION);
-//        int k = level.getMoonPhase();
-//        int l = k % 4;
-//        int i1 = k / 4 % 2;
-//        float f13 = (float) (l) / 4.0F;
-//        float f14 = (float) (i1) / 2.0F;
-//        float f15 = (float) (l + 1) / 4.0F;
-//        float f16 = (float) (i1 + 1) / 2.0F;
-//        bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
-//        bufferbuilder.vertex(matrix4f1, -f12, -100.0F, f12).uv(f15, f16).endVertex();
-//        bufferbuilder.vertex(matrix4f1, f12, -100.0F, f12).uv(f13, f16).endVertex();
-//        bufferbuilder.vertex(matrix4f1, f12, -100.0F, -f12).uv(f13, f14).endVertex();
-//        bufferbuilder.vertex(matrix4f1, -f12, -100.0F, -f12).uv(f15, f14).endVertex();
-//        bufferbuilder.end();
-//        BufferUploader.end(bufferbuilder);
 
         poseStack.popPose();
 
         renderStars(poseStack, level, partialTick);
         renderMilkyWay(poseStack, level, partialTick, true);
 
-
         poseStack.pushPose();
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         poseStack.mulPose(Vector3f.ZP.rotationDegrees(70.0F));
         poseStack.mulPose(Vector3f.YP.rotationDegrees(200.0F));
-//        poseStack.mulPose(Vector3f.XP.rotationDegrees(level.getTimeOfDay(partialTick) * 360.0F));
 
         Matrix4f matrix4f1 = poseStack.last().pose();
         float f12 = 15.0F; //30.0F
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
-//        poseStack.scale(0.8F, 0.8F, 0.8F);
         RenderSystem.setShaderTexture(0, ANDROMEDA_LOCATION);
         bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
         bufferbuilder.vertex(matrix4f1, -f12, 100.0F, -f12).uv(0.0F, 0.0F).endVertex();

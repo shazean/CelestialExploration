@@ -9,7 +9,7 @@ plugins {
 
 
 version = System.getenv("CELESTIAL_VERSION") ?: new File(".release-info/1.18/VERSION").text.trim()
-group = 'com.shim.celestialexploration' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+group = 'com.shim.celestialexploration'
 base {
     archivesName = "celestialexploration-${project.target_mc_version}"
 }

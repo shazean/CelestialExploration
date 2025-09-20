@@ -30,6 +30,7 @@ public class CelestialDimensions {
     public static final ResourceKey<Level> IO = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(CelestialExploration.MODID, "io"));
     public static final ResourceKey<Level> GANYMEDE = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(CelestialExploration.MODID, "ganymede"));
 
+
     public static final MultiNoiseBiomeSource.Preset MARS_PRESET = new MultiNoiseBiomeSource.Preset(new ResourceLocation(CelestialExploration.MODID, "mars"), (biome) -> {
         ImmutableList.Builder<Pair<Climate.ParameterPoint, Holder<Biome>>> builder = ImmutableList.builder();
         new MarsBiomeBuilder().addBiomes((p_204279_) -> builder.add(p_204279_.mapSecond(biome::getOrCreateHolder)));

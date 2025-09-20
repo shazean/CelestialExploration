@@ -53,6 +53,5 @@ public class CelestialPlanetStructures extends PlanetStructureTravelProvider {
                 .block(CelestialBlocks.GANYMEDE_CORE.get()).block(CelestialBlocks.MOON_COBBLESTONE.get()).block(CelestialBlocks.MOON_DEEPSLATE.get()).save(consumer, CelestialDimensions.GANYMEDE);
 
 
-
     }
 }

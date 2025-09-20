@@ -12,7 +12,6 @@
   "min_y": -128,
   "height": 384,
   "coordinate_scale": 0.25,
-  "fixed_time": 0,
   "infiniburn": "#minecraft:infiniburn_overworld",
   "effects": "celestialexploration:milky_way"
 }

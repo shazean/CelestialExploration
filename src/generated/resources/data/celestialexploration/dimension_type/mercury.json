@@ -12,7 +12,6 @@
   "min_y": -32,
   "height": 256,
   "coordinate_scale": 10.0,
-  "fixed_time": 0,
   "infiniburn": "#minecraft:infiniburn_overworld",
   "effects": "celestialexploration:mercury"
 }

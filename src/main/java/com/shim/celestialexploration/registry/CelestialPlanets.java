@@ -27,5 +27,4 @@ public class CelestialPlanets {
     public static final RegistryObject<Planet> CALLISTO = PLANETS.register("callisto", () -> new Moon(CelestialDimensions.CALLISTO, JUPITER.get()));
     public static final RegistryObject<Planet> GANYMEDE = PLANETS.register("ganymede", () -> new Moon(CelestialDimensions.GANYMEDE, JUPITER.get()));
 
-
 }
