@@ -1,0 +1,21 @@
+{
+  "parent": "celestialexploration:block/panel_door_window",
+  "textures": {
+    "side": "celestialexploration:block/hangar_hinge_window",
+    "top": "celestialexploration:block/hangar_hinge",
+    "particle": "celestialexploration:block/hangar_hinge"
+  },
+  "elements": [
+        {   "from": [ 0, 0, 0 ],
+            "to": [ 7, 16, 16 ],
+            "faces": {
+                "down":  { "uv": [ 16, 9,  0, 16 ], "texture": "#top", "cullface": "down", "rotation": 90 },
+                "north": { "uv": [  7,  0,  0, 16 ], "texture": "#top", "cullface": "north" },
+                "south": { "uv": [  0,  0,  7, 16 ], "texture": "#top", "cullface": "south" },
+                "west":  { "uv": [  0,  0, 16, 16 ], "texture": "#side", "cullface": "west" },
+                "east":  { "uv": [ 16,  0,  0, 16 ], "texture": "#side" },
+                "up":    { "uv": [  0,  7, 16,  0 ], "texture": "#top", "cullface": "up", "rotation": 90 }
+            }
+        }
+    ]
+}

@@ -54,7 +54,7 @@ public interface IBaseMagRailBlock {
      */
     default float getRailMaxSpeed(BlockState state, Level level, BlockPos pos, AbstractMagCart cart)
     {
-        return 0.5f; //0.4f
+        return 0.6f; //0.4f
     }
 
     /**

@@ -143,10 +143,10 @@ public class CelestialClientEventBus {
         ItemBlockRenderTypes.setRenderLayer(CelestialBlocks.STEEL_FRAME.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(CelestialBlocks.STEEL_LADDER.get(), RenderType.cutout());
 
-        ItemBlockRenderTypes.setRenderLayer(CelestialBlocks.MAG_RAIL.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(CelestialBlocks.POWERED_MAG_RAIL.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(CelestialBlocks.DETECTOR_MAG_RAIL.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(CelestialBlocks.ACTIVATOR_MAG_RAIL.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(CelestialBlocks.MAGRAIL.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(CelestialBlocks.POWERED_MAGRAIL.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(CelestialBlocks.DETECTOR_MAGRAIL.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(CelestialBlocks.ACTIVATOR_MAGRAIL.get(), RenderType.cutout());
 
         ItemBlockRenderTypes.setRenderLayer(CelestialBlocks.PENITENTE.get(), RenderType.cutout());
 

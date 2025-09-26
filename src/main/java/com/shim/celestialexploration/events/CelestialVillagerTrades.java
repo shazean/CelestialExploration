@@ -112,7 +112,7 @@ public class CelestialVillagerTrades {
                     new ItemStack(CelestialItems.MAGCART.get()), 5, 12, 4, 0.2F));
 
             trades.get(3).add((trader, rand) -> getItemForEmeralds(
-                    new ItemStack(CelestialBlocks.MAG_RAIL.get()), 3, 12, 4, 0.2F));
+                    new ItemStack(CelestialBlocks.MAGRAIL.get()), 3, 12, 4, 0.2F));
 
             trades.get(3).add((trader, rand) -> getEnchantedItemForEmeralds(
                     new ItemStack(CelestialItems.THERMAL_SPACESUIT_BOOTS.get()), 7, 3, 15, 0.2F));

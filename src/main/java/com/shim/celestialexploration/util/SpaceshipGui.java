@@ -46,6 +46,7 @@ public class SpaceshipGui extends ForgeIngameGui implements IIngameOverlay {
         int maxFuel = 8000 * 4;
         double fuelPercent = (double) fuel / (double) maxFuel;
         int altitude = (int) spaceship.position().y;
+        String xz = (int) spaceship.position().x() + "/" + (int) spaceship.position().z();
         float maxSpeed = spaceship.getMaxSpeed();
         double speed = spaceship.getCurrentSpeed();
         Level level = spaceship.getLevel();
@@ -113,5 +114,6 @@ public class SpaceshipGui extends ForgeIngameGui implements IIngameOverlay {
         }
 
         MINECRAFT.font.draw(poseStack, String.valueOf(altitude), xAdjustment - 34, yAdjustment + 31, 0xffffff); //ALTITUDE READOUT
+
     }
 }

@@ -9,12 +9,6 @@ import com.shim.celestialexploration.inventory.menus.SpaceTaxiMenu;
 import com.shim.celestialexploration.registry.CelestialEntities;
 import com.shim.celestialexploration.registry.CelestialItems;
 import com.shim.celestialexploration.util.CelestialUtil;
-import mod.azure.azurelib.animatable.GeoEntity;
-import mod.azure.azurelib.core.animatable.instance.AnimatableInstanceCache;
-import mod.azure.azurelib.core.animation.AnimatableManager;
-import mod.azure.azurelib.core.animation.AnimationController;
-import mod.azure.azurelib.core.animation.RawAnimation;
-import mod.azure.azurelib.util.AzureLibUtil;
 import net.minecraft.BlockUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -65,7 +59,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class SpaceTaxi extends Entity implements ContainerListener, MenuProvider, GeoEntity {
+public class SpaceTaxi extends Spaceship implements ContainerListener, MenuProvider {
     private static final EntityDataAccessor<Integer> DATA_ID_HURT = SynchedEntityData.defineId(SpaceTaxi.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> DATA_ID_HURTDIR = SynchedEntityData.defineId(SpaceTaxi.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Float> DATA_ID_DAMAGE = SynchedEntityData.defineId(SpaceTaxi.class, EntityDataSerializers.FLOAT);
@@ -95,7 +89,6 @@ public class SpaceTaxi extends Entity implements ContainerListener, MenuProvider
     private int teleportationCooldown = 60;
     public static int maxTimeOnGround = 15;
     private final int LOW_FUEL = 300;
-    private final AnimatableInstanceCache cache = AzureLibUtil.createInstanceCache(this);
 //    private boolean isFlying;
     protected final ContainerData data;
     Entity firstSelectedEntity;
@@ -109,7 +102,6 @@ public class SpaceTaxi extends Entity implements ContainerListener, MenuProvider
     int ticksAscended = 0;
     int ticksDescended = 0;
     TaxiCapability.TaxiStationData taxiStation;
-
 
     public SpaceTaxi(EntityType<? extends SpaceTaxi> p_38290_, Level p_38291_) {
         super(p_38290_, p_38291_);
@@ -154,19 +146,6 @@ public class SpaceTaxi extends Entity implements ContainerListener, MenuProvider
         this.yo = p_38295_;
         this.zo = p_38296_;
         this.setNoGravity(true);
-    }
-
-    @Override
-    public AnimatableInstanceCache getAnimatableInstanceCache() {
-        return cache;
-    }
-
-    private static final RawAnimation flyingAnimation = RawAnimation.begin().thenLoop("flying");
-    private static final RawAnimation idleAnimation = RawAnimation.begin().thenLoop("idle");
-
-    @Override
-    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(new AnimationController<>(this, "spacetaxi", 0, event -> event.setAndContinue(flyingAnimation)));
     }
 
     @Override

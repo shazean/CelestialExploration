@@ -845,7 +845,6 @@ public class MechaCerberusBoss extends AbstractCerberus implements Enemy {
                 if (!this.boss.level.isClientSide()) {
                     ServerLevel serverLevel = (ServerLevel) this.boss.level;
 
-
                     int xOffset = this.boss.random.nextInt(4) - 2;
                     int zOffset = this.boss.random.nextInt(4) - 2;
 
@@ -854,6 +853,7 @@ public class MechaCerberusBoss extends AbstractCerberus implements Enemy {
                     if (this.boss.level.noCollision(CelestialEntities.MECHADOG.get().getAABB(pos.getX(), pos.getY(), pos.getZ()))) {
                         MechaDog dog = CelestialEntities.MECHADOG.get().create(this.boss.level);
                         dog.moveTo(pos, this.boss.getYRot(), this.boss.getXRot());
+                        dog.setTarget(this.boss.getTarget());
                         serverLevel.addFreshEntityWithPassengers(dog);
 
                     }

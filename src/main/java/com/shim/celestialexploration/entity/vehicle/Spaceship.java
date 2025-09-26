@@ -524,7 +524,7 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
     }
 
     public double getCurrentSpeed() {
-        return this.getDeltaMovement().x;
+        return Math.max(this.getDeltaMovement().x, this.getDeltaMovement().y); //this.getDeltaMovement().x;
     }
 
     public static Vec3 translateWithXRotation(@Nonnull Vec3 baseIn, double rotationIn, double xOffsetIn, double yOffsetIn, double zOffsetIn) {

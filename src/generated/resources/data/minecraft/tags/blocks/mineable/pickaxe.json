@@ -77,6 +77,8 @@
     "celestialexploration:compressed_cobbled_deepslate",
     "celestialexploration:super_compressed_cobbled_deepslate",
     "celestialexploration:compressed_netherrack",
-    "celestialexploration:super_compressed_netherrack"
+    "celestialexploration:super_compressed_netherrack",
+    "celestialexploration:workbench",
+    "celestialexploration:oxygen_compressor"
   ]
 }

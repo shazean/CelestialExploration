@@ -36,7 +36,7 @@ public abstract class BaseMagRailBlock extends Block implements SimpleWaterlogge
     }
 
     public static boolean isRail(BlockState state) {
-        return state.is(CelestialTags.Blocks.MAG_RAIL) && state.getBlock() instanceof BaseMagRailBlock;
+        return state.is(CelestialTags.Blocks.MAGRAIL) && state.getBlock() instanceof BaseMagRailBlock;
     }
 
     protected BaseMagRailBlock(boolean isStraight, BlockBehaviour.Properties properties) {

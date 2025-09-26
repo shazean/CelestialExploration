@@ -37,6 +37,6 @@ Exploring beyond our own planet and into the outer reaches of space! Inspired by
 [[dependencies.celestialexploration]]
     modId="celestiallib"
     mandatory=true
-    versionRange="[0.0.33,)"
+    versionRange="[0.1.18,)"
     ordering="NONE"
     side="BOTH"

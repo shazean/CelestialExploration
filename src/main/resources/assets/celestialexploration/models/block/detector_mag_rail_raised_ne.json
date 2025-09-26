@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/template_rail_raised_ne",
-  "textures": {
-    "rail": "celestialexploration:block/detector_mag_rail"
-  }
-}

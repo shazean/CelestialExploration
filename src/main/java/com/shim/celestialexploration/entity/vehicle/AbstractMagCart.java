@@ -232,7 +232,7 @@ public abstract class  AbstractMagCart extends Entity implements IAbstractMagCar
 
     protected float getBlockSpeedFactor() {
         BlockState blockstate = this.level.getBlockState(this.blockPosition());
-        return blockstate.is(CelestialTags.Blocks.MAG_RAIL) ? 1.0F : super.getBlockSpeedFactor();
+        return blockstate.is(CelestialTags.Blocks.MAGRAIL) ? 1.0F : super.getBlockSpeedFactor();
     }
 
     public void destroy(DamageSource source) {
@@ -302,7 +302,7 @@ public abstract class  AbstractMagCart extends Entity implements IAbstractMagCar
             int k = Mth.floor(this.getX());
             int i = Mth.floor(this.getY());
             int j = Mth.floor(this.getZ());
-            if (this.level.getBlockState(new BlockPos(k, i - 1, j)).is(CelestialTags.Blocks.MAG_RAIL)) {
+            if (this.level.getBlockState(new BlockPos(k, i - 1, j)).is(CelestialTags.Blocks.MAGRAIL)) {
                 --i;
             }
 
@@ -578,7 +578,7 @@ public abstract class  AbstractMagCart extends Entity implements IAbstractMagCar
         int i = Mth.floor(x);
         int j = Mth.floor(y);
         int k = Mth.floor(z);
-        if (this.level.getBlockState(new BlockPos(i, j - 1, k)).is(CelestialTags.Blocks.MAG_RAIL)) {
+        if (this.level.getBlockState(new BlockPos(i, j - 1, k)).is(CelestialTags.Blocks.MAGRAIL)) {
             --j;
         }
 
@@ -617,7 +617,7 @@ public abstract class  AbstractMagCart extends Entity implements IAbstractMagCar
         int i = Mth.floor(x);
         int j = Mth.floor(y);
         int k = Mth.floor(z);
-        if (this.level.getBlockState(new BlockPos(i, j - 1, k)).is(CelestialTags.Blocks.MAG_RAIL)) {
+        if (this.level.getBlockState(new BlockPos(i, j - 1, k)).is(CelestialTags.Blocks.MAGRAIL)) {
             --j;
         }
 
@@ -850,7 +850,7 @@ public abstract class  AbstractMagCart extends Entity implements IAbstractMagCar
         if (!canUseRail()) return getMaxSpeed();
         BlockPos pos = this.getCurrentRailPosition();
         BlockState state = this.level.getBlockState(pos);
-        if (!state.is(CelestialTags.Blocks.MAG_RAIL)) return getMaxSpeed();
+        if (!state.is(CelestialTags.Blocks.MAGRAIL)) return getMaxSpeed();
 
         float railMaxSpeed = ((BaseMagRailBlock)state.getBlock()).getRailMaxSpeed(state, this.level, pos, this);
         return Math.min(railMaxSpeed, getCurrentCartSpeedCapOnRail());

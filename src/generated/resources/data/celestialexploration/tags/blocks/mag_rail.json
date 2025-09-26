@@ -1,9 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "celestialexploration:mag_rail",
-    "celestialexploration:powered_mag_rail",
-    "celestialexploration:detector_mag_rail",
-    "celestialexploration:activator_mag_rail"
-  ]
-}

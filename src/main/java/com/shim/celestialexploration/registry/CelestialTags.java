@@ -71,7 +71,7 @@ public class CelestialTags {
         public static final TagKey<Block> CALLISTO_PORTAL_FRAME_BLOCK = BlockTags.create(modLoc("callisto_portal_frame_block"));
         public static final TagKey<Block> GANYMEDE_PORTAL_FRAME_BLOCK = BlockTags.create(modLoc("ganymede_portal_frame_block"));
 
-        public static final TagKey<Block> MAG_RAIL = BlockTags.create(modLoc("mag_rail"));
+        public static final TagKey<Block> MAGRAIL = BlockTags.create(modLoc("magrail"));
 
         public static final TagKey<Block> BAUXITE_ORE = BlockTags.create(modLoc("bauxite_ore"));
 

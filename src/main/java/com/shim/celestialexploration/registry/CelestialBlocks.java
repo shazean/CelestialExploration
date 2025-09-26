@@ -16,7 +16,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
-import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -673,10 +672,10 @@ public class CelestialBlocks {
 
 
     //---- MAG LEV -------------------------------------------------------------------------------
-    public static final RegistryObject<Block> MAG_RAIL = registerBlockDropsSelf("mag_rail", "Mag Rail", () -> new MagRailBlock(BlockBehaviour.Properties.of(Material.DECORATION).noCollission().strength(0.7F).sound(SoundType.METAL)), CelestialTabs.SPACESHIP_TAB);
-    public static final RegistryObject<Block> POWERED_MAG_RAIL = registerBlockDropsSelf("powered_mag_rail", "Powered Mag Rail", () -> new PoweredMagRailBlock(BlockBehaviour.Properties.of(Material.DECORATION).noCollission().strength(0.7F).sound(SoundType.METAL), true), CelestialTabs.SPACESHIP_TAB);
-    public static final RegistryObject<Block> DETECTOR_MAG_RAIL = registerBlockDropsSelf("detector_mag_rail", "Detector Mag Rail", () -> new DetectorMagRailBlock(BlockBehaviour.Properties.of(Material.DECORATION).noCollission().strength(0.7F).sound(SoundType.METAL)), CelestialTabs.SPACESHIP_TAB);
-    public static final RegistryObject<Block> ACTIVATOR_MAG_RAIL = registerBlockDropsSelf("activator_mag_rail", "Activator Mag Rail", () -> new PoweredMagRailBlock(BlockBehaviour.Properties.of(Material.DECORATION).noCollission().strength(0.7F).sound(SoundType.METAL)), CelestialTabs.SPACESHIP_TAB);
+    public static final RegistryObject<Block> MAGRAIL = registerBlockDropsSelf("magrail", "Magrail", () -> new MagRailBlock(BlockBehaviour.Properties.of(Material.DECORATION).noCollission().strength(0.7F).sound(SoundType.METAL)), CelestialTabs.SPACESHIP_TAB);
+    public static final RegistryObject<Block> POWERED_MAGRAIL = registerBlockDropsSelf("powered_magrail", "Powered Magrail", () -> new PoweredMagRailBlock(BlockBehaviour.Properties.of(Material.DECORATION).noCollission().strength(0.7F).sound(SoundType.METAL), true), CelestialTabs.SPACESHIP_TAB);
+    public static final RegistryObject<Block> DETECTOR_MAGRAIL = registerBlockDropsSelf("detector_magrail", "Detector Magrail", () -> new DetectorMagRailBlock(BlockBehaviour.Properties.of(Material.DECORATION).noCollission().strength(0.7F).sound(SoundType.METAL)), CelestialTabs.SPACESHIP_TAB);
+    public static final RegistryObject<Block> ACTIVATOR_MAGRAIL = registerBlockDropsSelf("activator_magrail", "Activator Magrail", () -> new PoweredMagRailBlock(BlockBehaviour.Properties.of(Material.DECORATION).noCollission().strength(0.7F).sound(SoundType.METAL)), CelestialTabs.SPACESHIP_TAB);
 
     //---- GLASS/CERAMICS -------------------------------------------------------------------------------
     //GLASS

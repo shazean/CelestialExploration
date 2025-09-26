@@ -212,7 +212,7 @@ public class ResearchTunnelPieces {
         protected boolean createChest(WorldGenLevel level, BoundingBox p_71408_, Random p_71409_, int p_71410_, int p_71411_, int p_71412_, ResourceLocation p_71413_) {
             BlockPos blockpos = this.getWorldPos(p_71410_, p_71411_, p_71412_);
             if (p_71408_.isInside(blockpos) && level.getBlockState(blockpos).isAir() && !level.getBlockState(blockpos.below()).isAir()) {
-                BlockState blockstate = CelestialBlocks.MAG_RAIL.get().defaultBlockState().setValue(RailBlock.SHAPE, p_71409_.nextBoolean() ? RailShape.NORTH_SOUTH : RailShape.EAST_WEST);
+                BlockState blockstate = CelestialBlocks.MAGRAIL.get().defaultBlockState().setValue(RailBlock.SHAPE, p_71409_.nextBoolean() ? RailShape.NORTH_SOUTH : RailShape.EAST_WEST);
                 this.placeBlock(level, blockstate, p_71410_, p_71411_, p_71412_, p_71408_);
                 MagCartChest magcartchest = new MagCartChest(level.getLevel(), (double)blockpos.getX() + 0.5D, (double)blockpos.getY() + 0.5D, (double)blockpos.getZ() + 0.5D);
                 magcartchest.setLootTable(p_71413_, p_71409_.nextLong());
@@ -285,7 +285,7 @@ public class ResearchTunnelPieces {
                 }
 
                 if (this.hasRails) {
-                    BlockState blockstate1 = CelestialBlocks.MAG_RAIL.get().defaultBlockState().setValue(RailBlock.SHAPE, RailShape.NORTH_SOUTH);
+                    BlockState blockstate1 = CelestialBlocks.MAGRAIL.get().defaultBlockState().setValue(RailBlock.SHAPE, RailShape.NORTH_SOUTH);
 
                     for(int j3 = 0; j3 <= i1; ++j3) {
                         BlockState blockstate2 = this.getBlock(p_192030_, 1, -1, j3, p_192034_);

@@ -600,10 +600,10 @@ public class CelestialItemModels extends ItemModelProvider {
 		buttonInventory(name(CelestialBlocks.AIRLOCK_BUTTON.get()), modLoc("block/airlock_button"));
 
 		//---- MAG LEV -------------------------------------------------------------------------------
-		generatedBlockItem(CelestialBlocks.MAG_RAIL.get());
-		generatedBlockItem(CelestialBlocks.POWERED_MAG_RAIL.get());
-		generatedBlockItem(CelestialBlocks.DETECTOR_MAG_RAIL.get());
-		generatedBlockItem(CelestialBlocks.ACTIVATOR_MAG_RAIL.get());
+		generatedBlockItem(CelestialBlocks.MAGRAIL.get());
+		generatedBlockItem(CelestialBlocks.POWERED_MAGRAIL.get());
+		generatedBlockItem(CelestialBlocks.DETECTOR_MAGRAIL.get());
+		generatedBlockItem(CelestialBlocks.ACTIVATOR_MAGRAIL.get());
 		generatedItem(CelestialItems.MAGCART.get());
 		generatedItem(CelestialItems.CHEST_MAGCART.get());
 		generatedItem(CelestialItems.COMMAND_BLOCK_MAGCART.get());

@@ -6,7 +6,7 @@
       "weight": 1,
       "element": {
         "location": "celestialexploration:ganymede_colony_bell",
-        "processors": "minecraft:empty",
+        "processors": "celestialexploration:lunar_colony",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }

@@ -79,7 +79,7 @@ public class MagCartItem extends Item {
         Level level = p_42943_.getLevel();
         BlockPos blockpos = p_42943_.getClickedPos();
         BlockState blockstate = level.getBlockState(blockpos);
-        if (!blockstate.is(CelestialTags.Blocks.MAG_RAIL)) {
+        if (!blockstate.is(CelestialTags.Blocks.MAGRAIL)) {
             return InteractionResult.FAIL;
         } else {
             ItemStack itemstack = p_42943_.getItemInHand();

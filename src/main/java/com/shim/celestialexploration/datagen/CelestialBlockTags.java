@@ -5,6 +5,7 @@ import com.shim.celestialexploration.registry.CelestialBlocks;
 import com.shim.celestialexploration.registry.CelestialTags;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -82,7 +83,12 @@ public class CelestialBlockTags extends BlockTagsProvider {
                 .add(CelestialBlocks.BAUXITE_ORE.get()).add(CelestialBlocks.STEEL_BLOCK.get()).add(CelestialBlocks.ALUMINUM_BLOCK.get())
                 .add(CelestialBlocks.COMPRESSED_COBBLESTONE.get()).add(CelestialBlocks.SUPER_COMPRESSED_COBBLESTONE.get())
                 .add(CelestialBlocks.COMPRESSED_COBBLED_DEEPSLATE.get()).add(CelestialBlocks.SUPER_COMPRESSED_COBBLED_DEEPSLATE.get())
-                .add(CelestialBlocks.COMPRESSED_NETHERRACK.get()).add(CelestialBlocks.SUPER_COMPRESSED_NETHERRACK.get());
+                .add(CelestialBlocks.COMPRESSED_NETHERRACK.get()).add(CelestialBlocks.SUPER_COMPRESSED_NETHERRACK.get())
+
+                .add(CelestialBlocks.WORKBENCH.get()).add(CelestialBlocks.OXYGEN_COMPRESSOR.get());
+
+        tag(BlockTags.MINEABLE_WITH_AXE)
+                .add(CelestialBlocks.WORKBENCH.get());
 
         tag(net.minecraft.tags.BlockTags.NEEDS_STONE_TOOL)
                 .add(CelestialBlocks.MOON_IRON_ORE.get()).add(CelestialBlocks.MOON_BAUXITE_ORE.get()).add(CelestialBlocks.MOON_DEEPSLATE_IRON_ORE.get())
@@ -531,8 +537,8 @@ public class CelestialBlockTags extends BlockTagsProvider {
                 .add(CelestialBlocks.MOON_SAND.get()).add(CelestialBlocks.MARS_SAND.get()).add(CelestialBlocks.VENUS_SAND.get()).add(CelestialBlocks.MERCURY_SAND.get())
                 .add(CelestialBlocks.IO_SAND.get());
 
-        tag(CelestialTags.Blocks.MAG_RAIL)
-                .add(CelestialBlocks.MAG_RAIL.get()).add(CelestialBlocks.POWERED_MAG_RAIL.get()).add(CelestialBlocks.DETECTOR_MAG_RAIL.get()).add(CelestialBlocks.ACTIVATOR_MAG_RAIL.get());
+        tag(CelestialTags.Blocks.MAGRAIL)
+                .add(CelestialBlocks.MAGRAIL.get()).add(CelestialBlocks.POWERED_MAGRAIL.get()).add(CelestialBlocks.DETECTOR_MAGRAIL.get()).add(CelestialBlocks.ACTIVATOR_MAGRAIL.get());
 
         tag(CelestialTags.Blocks.MOON_PORTAL_FRAME_BLOCK)
                 .add(CelestialBlocks.MOON_BRICKS.get());

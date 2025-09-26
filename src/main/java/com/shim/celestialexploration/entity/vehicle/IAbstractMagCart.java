@@ -5,9 +5,9 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
 
 public interface IAbstractMagCart {
-    public static float DEFAULT_MAX_SPEED_AIR_LATERAL = 0.4f;
-    public static float DEFAULT_MAX_SPEED_AIR_VERTICAL = -1.0f;
-    public static double DEFAULT_AIR_DRAG = 0.95f;
+    float DEFAULT_MAX_SPEED_AIR_LATERAL = 0.4f;
+    float DEFAULT_MAX_SPEED_AIR_VERTICAL = -1.0f;
+    double DEFAULT_AIR_DRAG = 0.95f;
 
     private AbstractMagCart self() {
         return (AbstractMagCart) this;
@@ -21,7 +21,7 @@ public interface IAbstractMagCart {
         int y = Mth.floor(self().getY());
         int z = Mth.floor(self().getZ());
         BlockPos pos = new BlockPos(x, y, z);
-        if (self().level.getBlockState(pos.below()).is(CelestialTags.Blocks.MAG_RAIL)) pos = pos.below();
+        if (self().level.getBlockState(pos.below()).is(CelestialTags.Blocks.MAGRAIL)) pos = pos.below();
         return pos;
     }
 
