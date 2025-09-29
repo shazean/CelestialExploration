@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:compressed_cobbled_deepslate_from_block"
+    ]
+  },
+  "criteria": {
+    "has_compressed_cobbled_deepslate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:compressed_cobbled_deepslate"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:compressed_cobbled_deepslate_from_block"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_compressed_cobbled_deepslate",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -43,7 +43,6 @@ public class IoBiomes extends CelestialBiomeFeatures {
         spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.LUNAR_SLIME.get(), 120, 4, 4)).build();
 
 
-
         return CelestialBiomeFeatures.biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, -0.75F, 0F, CelestialBody.IO.skyColor, CelestialBody.IO.skyFogColor, CelestialBody.IO.waterColor, CelestialBody.IO.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
     }
 

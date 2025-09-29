@@ -1,0 +1,19 @@
+{
+  "name": "Europa",
+  "icon": "celestialexploration:europa_bricks",
+  "category": "celestialexploration:planets",
+  "pages": [
+    "Europa is found near Jupiter. Look for the structure with dark europa hydrate blocks.$(br2)Natural resources: iron, redstone, europan dust (cyan lunar dust).$(br)Mobs: Voided, Skeletons, SpaceFellows, Lunar Slimes",
+    {
+      "type": "patchouli:spotlight",
+      "text": "Europan bricks can be used to craft a portal to Europa, and then lit using flint & steel.$(br)This does mean you need to visit Europa for the first time using the spaceship, or be in creative mode!$(br2)Note: portals can only be used to or from the overworld!",
+      "item": "celestialexploration:europa_bricks"
+    },
+    {
+      "type": "patchouli:link",
+      "url": "https://science.nasa.gov/jupiter/jupiter-moons/europa/facts/",
+      "link_text": "NASA",
+      "text": "Check out some fun facts about Europa, courtesy of NASA!"
+    }
+  ]
+}

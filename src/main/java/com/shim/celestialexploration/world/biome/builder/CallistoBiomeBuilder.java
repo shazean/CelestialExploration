@@ -1,17 +1,10 @@
 package com.shim.celestialexploration.world.biome.builder;
 
-import com.mojang.datafixers.util.Pair;
 import com.shim.celestialexploration.world.biome.CelestialBiomeKeys;
-import com.shim.celestiallib.api.world.biome.builder.AbstractBiomeBuilder;
 import com.shim.celestiallib.api.world.biome.builder.AbstractSimplerBiomeBuilder;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Climate;
-import net.minecraft.world.level.biome.TerrainShaper;
-
-import java.util.List;
-import java.util.Random;
-import java.util.function.Consumer;
 
 public class CallistoBiomeBuilder extends AbstractSimplerBiomeBuilder {
     private final ResourceKey<Biome>[][] OCEANS = new ResourceKey[][]{

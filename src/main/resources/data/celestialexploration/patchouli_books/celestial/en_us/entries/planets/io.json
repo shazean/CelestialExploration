@@ -1,0 +1,19 @@
+{
+  "name": "Io",
+  "icon": "celestialexploration:io_bricks",
+  "category": "celestialexploration:planets",
+  "pages": [
+    "Io is found near Jupiter. Look for the ugly green structure.$(br2)Natural resources: sulfur, lapis lazuli, iron, ionian dust (lime lunar dust).$(br)Mobs: Astral/Voided/Cyborg Piglins, Sulfur Cubes, Voided, Skeletons, SpaceFellows, Lunar Slimes",
+    {
+      "type": "patchouli:spotlight",
+      "text": "Ionian bricks can be used to craft a portal to Io, and then lit using flint & steel.$(br)This does mean you need to visit Io for the first time using the spaceship, or be in creative mode!$(br2)Note: portals can only be used to or from the overworld!",
+      "item": "celestialexploration:io_bricks"
+    },
+    {
+      "type": "patchouli:link",
+      "url": "https://science.nasa.gov/jupiter/jupiter-moons/io/facts/",
+      "link_text": "NASA",
+      "text": "Check out some fun facts about Io, courtesy of NASA!"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:venus_iron_ore_smelting"
+    ]
+  },
+  "criteria": {
+    "has_venus_iron_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:venus_iron_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:venus_iron_ore_smelting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_venus_iron_ore",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -5,6 +5,7 @@ import com.shim.celestialexploration.item.ModArmorMaterials;
 import com.shim.celestialexploration.registry.CelestialItems;
 import com.shim.celestiallib.api.armor.ISpacesuit;
 import com.shim.celestiallib.api.effects.CLibEffects;
+import com.shim.celestiallib.api.effects.GravityEffect;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
@@ -113,6 +114,6 @@ public class ThermalSpacesuitArmorItem extends ArmorItem implements ISpacesuit {
 
     @Override
     public boolean shouldNegateGravity(MobEffect mobEffect, ItemStack itemStack) {
-        return itemStack.is(CelestialItems.THERMAL_SPACESUIT_BOOTS.get()) && mobEffect == CLibEffects.LOW_GRAVITY.get();
+        return itemStack.is(CelestialItems.THERMAL_SPACESUIT_BOOTS.get()) && mobEffect instanceof GravityEffect gravity && gravity.isLowGravity();
     }
 }

@@ -48,17 +48,22 @@ public class CelestialUtil {
         dimension.put("Neptune", new Vec3(6, 0, -24));
     });
 
+
+    @Deprecated //to remove after all planet dimensions are added
     protected static final Map<ResourceKey<Level>, Vec3> PLANET_LOCATIONS = new HashMap<>();
 //    protected static final Vec3 defaultPlanetLocation = new Vec3(-2, 0, 0);
 
+    @Deprecated //to remove after all planet dimensions are added
     public static Vec3 getPlanetLocation(ResourceKey<Level> dimension) {
         return PLANET_LOCATIONS.get(dimension);
     }
 
+    @Deprecated //to remove after all planet dimensions are added
     public static Map<ResourceKey<Level>, Vec3> getPlanetLocations() {
         return PLANET_LOCATIONS;
     }
 
+    @Deprecated //to remove after all planet dimensions are added
     public static Vec3 getPlanetaryChunkCoordinates(ResourceKey<Level> planet) {
         Vec3 coord = getPlanetLocation(planet); //CE_DIMENSION_LOCATION.get(planet); //getPlanetLocation(planet); //
 //        if (coord == null) coord = CE_DIMENSION_LOCATION.get(Level.OVERWORLD);

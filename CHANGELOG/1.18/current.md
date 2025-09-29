@@ -1,0 +1,1 @@
+- `[NEW]` Flame particles added to workbench, just like the vanilla furnace

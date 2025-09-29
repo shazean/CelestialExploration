@@ -63,7 +63,7 @@ public class CelestialLangProvider extends LanguageProvider {
 		addFluid(CelestialFluids.LOX_BLOCK.get(), "lox", "Molten Iron");
 		addFluid(CelestialFluids.MOLTEN_IRON_BLOCK.get(), "molten_iron", "Molten Iron");
 		addFluid(CelestialFluids.MOLTEN_STEEL_BLOCK.get(), "molten_steel", "Molten Steel");
-		addFluid(CelestialFluids.MOLTEN_COPPER_BLOCK.get(), "copper", "Molten Copper");
+		addFluid(CelestialFluids.MOLTEN_COPPER_BLOCK.get(), "molten_copper", "Molten Copper");
 		addFluid(CelestialFluids.MOLTEN_GOLD_BLOCK.get(), "molten_gold","Molten Gold");
 		addFluid(CelestialFluids.SULFUR_BLOCK.get(), "sulfur", "Sulfur");
 		addFluid(CelestialFluids.MOLTEN_ALUMINUM_BLOCK.get(), "molten_aluminum", "Molten Aluminum");

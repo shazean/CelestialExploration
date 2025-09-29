@@ -70,6 +70,8 @@ public class MoonSkyHandler extends AbstractSkyHandler {
         RenderSystem.enableTexture();
         RenderSystem.blendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
 
+//        super.render(ticks, partialTick, poseStack, level, minecraft);
+
         poseStack.pushPose();
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
 

@@ -1,27 +1,31 @@
 package com.shim.celestialexploration.datagen;
 
-import com.shim.celestialexploration.datagen.util.BaseLootTableProvider;
 import com.shim.celestialexploration.registry.CelestialBlocks;
 
 import com.shim.celestialexploration.registry.CelestialEntities;
 import com.shim.celestialexploration.registry.CelestialItems;
+import com.shim.celestiallib.api.datagen.base.BaseLootTableProvider;
+import net.minecraft.advancements.critereon.EnchantmentPredicate;
 import net.minecraft.advancements.critereon.EntityPredicate;
+import net.minecraft.advancements.critereon.ItemPredicate;
+import net.minecraft.advancements.critereon.MinMaxBounds;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.entries.AlternativesEntry;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.entries.TagEntry;
-import net.minecraft.world.level.storage.loot.functions.LootingEnchantFunction;
-import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
-import net.minecraft.world.level.storage.loot.functions.SmeltItemFunction;
+import net.minecraft.world.level.storage.loot.functions.*;
 import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemKilledByPlayerCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceWithLootingCondition;
+import net.minecraft.world.level.storage.loot.predicates.MatchTool;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.minecraftforge.registries.RegistryObject;
@@ -446,5 +450,29 @@ public class CelestialLootTables extends BaseLootTableProvider {
 		block(CelestialBlocks.PAINTED_BROWN_CERAMIC.get(), createCeramicTable(CelestialBlocks.PAINTED_BROWN_CERAMIC.get()));
 		block(CelestialBlocks.PAINTED_RED_CERAMIC.get(), createCeramicTable(CelestialBlocks.PAINTED_RED_CERAMIC.get()));
 		block(CelestialBlocks.PAINTED_PINK_CERAMIC.get(), createCeramicTable(CelestialBlocks.PAINTED_PINK_CERAMIC.get()));
+	}
+
+	protected LootTable.Builder createCeramicTable(Block block) {
+		LootPool.Builder builder = LootPool.lootPool()
+				.setRolls(ConstantValue.exactly(1))
+				.add(AlternativesEntry.alternatives(
+								LootItem.lootTableItem(block)
+										.when(MatchTool.toolMatches(ItemPredicate.Builder.item()
+												.hasEnchantment(new EnchantmentPredicate(Enchantments.SILK_TOUCH, MinMaxBounds.Ints.atLeast(1))))),
+								LootItem.lootTableItem(CelestialBlocks.SILICA.get())
+										.apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))
+										.apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE, 1))
+										.apply(ApplyExplosionDecay.explosionDecay())
+						)
+				);
+		return LootTable.lootTable().withPool(builder);
+	}
+
+	protected LootTable.Builder createBauxiteOreTable(Block block) {
+		return createOreTable(block, CelestialItems.RAW_BAUXITE.get());
+	}
+
+	protected LootTable.Builder createSulfurOreTable(Block block) {
+		return createOreTable(block, CelestialItems.SULFUR_CRYSTAL.get());
 	}
 }

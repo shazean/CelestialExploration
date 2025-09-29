@@ -33,7 +33,7 @@ public class CelestialDimensions {
 
     public static final MultiNoiseBiomeSource.Preset MARS_PRESET = new MultiNoiseBiomeSource.Preset(new ResourceLocation(CelestialExploration.MODID, "mars"), (biome) -> {
         ImmutableList.Builder<Pair<Climate.ParameterPoint, Holder<Biome>>> builder = ImmutableList.builder();
-        new MarsBiomeBuilder().addBiomes((p_204279_) -> builder.add(p_204279_.mapSecond(biome::getOrCreateHolder)));
+        new MarsBiomeBuilder().addBiomes((p) -> builder.add(p.mapSecond(biome::getOrCreateHolder)));
         return new Climate.ParameterList<>(builder.build());
     });
 
@@ -93,5 +93,5 @@ public class CelestialDimensions {
 
 
     public static final DeferredRegister<Codec<? extends BiomeSource>> BIOME_SOURCE = DeferredRegister.create(Registry.BIOME_SOURCE_REGISTRY, CelestialExploration.MODID);
-    public static final RegistryObject<Codec<CelestialBiomeSource>> CELESTIAL_BIOMES = BIOME_SOURCE.register("celestial_exploration", () -> CelestialBiomeSource.CODEC);
+    public static final RegistryObject<Codec<CelestialBiomeSource>> CELESTIAL_BIOMES = BIOME_SOURCE.register(CelestialExploration.MODID, () -> CelestialBiomeSource.CODEC);
 }

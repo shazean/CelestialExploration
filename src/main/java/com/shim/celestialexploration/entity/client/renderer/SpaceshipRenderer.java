@@ -37,18 +37,19 @@ public class SpaceshipRenderer extends AzEntityRenderer<Spaceship> {
     @Override
     public void render(@NotNull Spaceship entity, float entityYaw, float partialTick, @NotNull PoseStack poseStack, @NotNull MultiBufferSource bufferSource, int packedLight) {
 
-        float lerpBodyRot = Mth.rotLerp(partialTick, entity.yRotO, entity.getYRot());
-        poseStack.mulPose(Vector3f.YP.rotationDegrees(180f - lerpBodyRot));
+//        float lerpBodyRot = Mth.rotLerp(partialTick, entity.yRotO, entity.getYRot());
+//        poseStack.mulPose(Vector3f.YP.rotationDegrees(180f - lerpBodyRot));
+        poseStack.mulPose(Vector3f.YP.rotationDegrees(180));
 
-        if (entity.getDeltaMovement().y > 0)
-            poseStack.mulPose((Vector3f.XP.rotationDegrees(5f)));
-        if (entity.getDeltaMovement().y < 0)
-            poseStack.mulPose((Vector3f.XP.rotationDegrees(-5f)));
-
-        if (entity.deltaRotation < 0)
-            poseStack.mulPose((Vector3f.ZP.rotationDegrees(5f)));
-        if (entity.deltaRotation > 0)
-            poseStack.mulPose((Vector3f.ZP.rotationDegrees(-5f)));
+//        if (entity.getDeltaMovement().y > 0)
+//            poseStack.mulPose((Vector3f.XP.rotationDegrees(5f)));
+//        if (entity.getDeltaMovement().y < 0)
+//            poseStack.mulPose((Vector3f.XP.rotationDegrees(-5f)));
+//
+//        if (entity.deltaRotation < 0)
+//            poseStack.mulPose((Vector3f.ZP.rotationDegrees(5f)));
+//        if (entity.deltaRotation > 0)
+//            poseStack.mulPose((Vector3f.ZP.rotationDegrees(-5f)));
 
         super.render(entity, entityYaw, partialTick, poseStack, bufferSource, packedLight);
     }

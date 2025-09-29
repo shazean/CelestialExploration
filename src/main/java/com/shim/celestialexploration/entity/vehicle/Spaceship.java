@@ -12,6 +12,7 @@ import com.shim.celestialexploration.packets.*;
 import com.shim.celestialexploration.registry.*;
 import com.shim.celestialexploration.util.Keybinds;
 import com.shim.celestialexploration.util.CelestialUtil;
+import mod.azure.azurelib.core.utils.MathHelper;
 import net.minecraft.BlockUtil;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
@@ -71,6 +72,7 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
     private static final EntityDataAccessor<Integer> DATA_ID_FUEL_TICKS = SynchedEntityData.defineId(Spaceship.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> DATA_ID_FUEL = SynchedEntityData.defineId(Spaceship.class, EntityDataSerializers.INT);
     private float outOfControlTicks;
+    public float oldDeltaRotation;
     public float deltaRotation;
     private int lerpSteps;
     private double lerpX;
@@ -543,23 +545,42 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
             assert passenger != null;
             float f = passenger.zza * currentSpeed;
 
+//            this.setYRot(Mth.rotateIfNecessary(passenger.getYRot(), this.getYRot(), 10));
+//                this.setYRot(passenger.getYRot());
+//                this.setYBodyRot(passenger.getYRot());
+
+
             if (Keybinds.TURN_LEFT_KEY.isDown()) {
+//                this.setYRot(Mth.rotateIfNecessary(passenger.getYRot(), this.getYRot(), 10));
+//
                 this.setYRot(passenger.getYRot());
                 this.setYBodyRot(passenger.getYRot());
 //                Vec3 particleLocation = translateWithXRotation(this.position(), this.getYRot(), 2, 1, 0);
 //                this.level.addParticle(ParticleTypes.ASH, particleLocation.x, particleLocation.y, particleLocation.z, 0.0D, 0.0D, 0.0D);
 
+//                this.setYBodyRot(Mth.rotateIfNecessary(passenger.getYRot(), this.getYRot(), 10));
+
+                this.oldDeltaRotation = deltaRotation;
                 --this.deltaRotation;
+
+//                this.deltaRotation = Mth.lerp(tickCount, oldDeltaRotation, deltaRotation);
+
             } else if (Keybinds.TURN_RIGHT_KEY.isDown()) {
+//                this.setYRot(Mth.rotateIfNecessary(passenger.getYRot(), this.getYRot(), 10));
+
                 this.setYRot(passenger.getYRot());
+//
                 this.setYBodyRot(passenger.getYRot());
                 this.setYHeadRot(passenger.getYHeadRot());
 
 //                this.rotate(Rotation.getRandom(new Random()));
                 ++this.deltaRotation;
-            } else {
+            }
+            else {
                 this.deltaRotation = 0;
             }
+            this.setYRot(this.getYRot() + this.deltaRotation);
+
             float f1;
 
             if (Keybinds.ASCEND_KEY.isDown()) f1 = currentSpeed;
@@ -602,9 +623,11 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
             Vec3 vec3 = (new Vec3(f, 0.0D, 0.0D)).yRot(-this.getYRot() * ((float) Math.PI / 180F) - ((float) Math.PI / 2F));
             passenger.setPos(this.getX() + vec3.x, this.getY() + (double) f1, this.getZ() + vec3.z);
             passenger.setYRot(passenger.getYRot() + this.deltaRotation);
-            passenger.setYHeadRot(passenger.getYHeadRot() + this.deltaRotation);
-            passenger.setYHeadRot(passenger.getYHeadRot() + this.deltaRotation);
+//            passenger.setYHeadRot(passenger.getYHeadRot() + this.deltaRotation);
+//            passenger.setYHeadRot(passenger.getYHeadRot() + this.deltaRotation);
             this.clampRotation(passenger);
+
+
 //            if (p_38379_ instanceof Animal && this.getPassengers().size() > 1) {
 //                int j = p_38379_.getId() % 2 == 0 ? 90 : 270;
 //                p_38379_.setYBodyRot(((Animal) p_38379_).yBodyRot + (float) j);
@@ -653,8 +676,8 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
         p_38322_.setYHeadRot(p_38322_.getYRot());
     }
 
-    public void onPassengerTurned(Entity p_38383_) {
-        this.clampRotation(p_38383_);
+    public void onPassengerTurned(Entity passenger) {
+        this.clampRotation(passenger);
     }
 
     protected void addAdditionalSaveData(CompoundTag tag) {

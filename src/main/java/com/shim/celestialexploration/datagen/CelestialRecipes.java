@@ -4,6 +4,7 @@ import java.util.function.Consumer;
 
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.datagen.util.WorkbenchCraftingRecipeBuilder;
+import com.shim.celestialexploration.datagen.util.WorkbenchSmeltingRecipeBuilder;
 import com.shim.celestialexploration.registry.CelestialBlocks;
 
 import com.shim.celestialexploration.registry.CelestialFluids;
@@ -17,10 +18,12 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.Tags;
 
-import static com.shim.celestialexploration.datagen.util.RecipeGenHelper.*;
+import static com.shim.celestiallib.api.datagen.base.RecipeGenHelper.*;
+
 
 public class CelestialRecipes extends RecipeProvider {
 
@@ -678,4 +681,11 @@ public class CelestialRecipes extends RecipeProvider {
 		return CelestialExploration.MODID + ":" + item.asItem().getRegistryName().getPath() + "_" + suffix;
 	}
 
+	private static String saveName(FlowingFluid fluid, String suffix) {
+		return CelestialExploration.MODID + ":" + fluid.getRegistryName().getPath() + "_" + suffix;
+	}
+
+	public static void workbenchSmelting(FlowingFluid fluidResult, ItemLike itemToSmelt, float experience, int cookingTime, float buckets, ItemLike unlockedBy, Consumer<FinishedRecipe> consumer) {
+		WorkbenchSmeltingRecipeBuilder.smelting(fluidResult, Ingredient.of(itemToSmelt), experience, cookingTime, buckets).unlockedBy("has_" + name(unlockedBy), has(unlockedBy)).save(consumer, saveName(fluidResult, "from_" + name(itemToSmelt) + "_workbench"));
+	}
 }

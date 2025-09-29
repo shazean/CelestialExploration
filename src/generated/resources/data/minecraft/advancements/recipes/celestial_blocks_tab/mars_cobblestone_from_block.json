@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:mars_cobblestone_from_block"
+    ]
+  },
+  "criteria": {
+    "has_mars_cobblestone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:mars_cobblestone"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:mars_cobblestone_from_block"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_mars_cobblestone",
+      "has_the_recipe"
+    ]
+  ]
+}
