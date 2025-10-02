@@ -1,7 +1,6 @@
 package com.shim.celestialexploration.entity.client.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Vector3f;
 import com.shim.celestialexploration.entity.client.animators.SpaceshipAnimator;
 import com.shim.celestialexploration.entity.client.layers.DyedGlowLayer;
 import com.shim.celestialexploration.entity.vehicle.Spaceship;
@@ -11,7 +10,6 @@ import mod.azure.azurelib.rewrite.render.entity.AzEntityRendererConfig;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.Mth;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
@@ -38,8 +36,25 @@ public class SpaceshipRenderer extends AzEntityRenderer<Spaceship> {
     public void render(@NotNull Spaceship entity, float entityYaw, float partialTick, @NotNull PoseStack poseStack, @NotNull MultiBufferSource bufferSource, int packedLight) {
 
 //        float lerpBodyRot = Mth.rotLerp(partialTick, entity.yRotO, entity.getYRot());
-//        poseStack.mulPose(Vector3f.YP.rotationDegrees(180f - lerpBodyRot));
-        poseStack.mulPose(Vector3f.YP.rotationDegrees(180));
+//        LivingEntity passenger = (LivingEntity) entity.getControllingPassenger();
+//        if (passenger != null) {
+//
+//            CelestialExploration.LOGGER.debug("lerp: " + lerpBodyRot + ", passengerYBodyRot: " + passenger.yBodyRot + ", passngerYRot: " + passenger.getYRot());
+//        }
+//        poseStack.mulPose(Vector3f.YP.rotationDegrees(-lerpBodyRot));
+//            poseStack.mulPose(Vector3f.YP.rotationDegrees(-passenger.getYRot()));
+//        }
+
+        entity.setJankyRotationFix(partialTick);
+
+//
+//        Entity passenger = entity.getControllingPassenger();
+//        if (passenger != null) {
+//            float lerpBodyRot = Mth.rotLerp(partialTick, entity.getControllingPassenger().yRotO, entity.getControllingPassenger().getYRot());
+//            poseStack.mulPose(Vector3f.YP.rotationDegrees(-lerpBodyRot));
+//        }
+
+        //        poseStack.mulPose(Vector3f.YP.rotationDegrees(180));
 
 //        if (entity.getDeltaMovement().y > 0)
 //            poseStack.mulPose((Vector3f.XP.rotationDegrees(5f)));

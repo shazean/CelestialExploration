@@ -180,7 +180,7 @@
               "add": false
             }
           ],
-          "name": "celestialexploration:mag_rail"
+          "name": "celestialexploration:magrail"
         },
         {
           "type": "minecraft:item",
@@ -196,7 +196,7 @@
               "add": false
             }
           ],
-          "name": "celestialexploration:powered_mag_rail"
+          "name": "celestialexploration:powered_magrail"
         },
         {
           "type": "minecraft:item",
@@ -212,7 +212,7 @@
               "add": false
             }
           ],
-          "name": "celestialexploration:detector_mag_rail"
+          "name": "celestialexploration:detector_magrail"
         },
         {
           "type": "minecraft:item",
@@ -228,7 +228,7 @@
               "add": false
             }
           ],
-          "name": "celestialexploration:activator_mag_rail"
+          "name": "celestialexploration:activator_magrail"
         },
         {
           "type": "minecraft:item",

@@ -557,7 +557,7 @@ public class SpaceTaxi extends Spaceship implements ContainerListener, MenuProvi
         return super.getDismountLocationForPassenger(p_38357_);
     }
 
-    protected void clampRotation(Entity p_38322_) {
+    public void clampRotation(Entity p_38322_) {
         p_38322_.setYBodyRot(this.getYRot());
         float f = Mth.wrapDegrees(p_38322_.getYRot() - this.getYRot());
         float f1 = Mth.clamp(f, -105.0F, 105.0F);

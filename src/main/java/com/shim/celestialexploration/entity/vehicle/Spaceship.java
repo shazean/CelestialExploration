@@ -12,9 +12,7 @@ import com.shim.celestialexploration.packets.*;
 import com.shim.celestialexploration.registry.*;
 import com.shim.celestialexploration.util.Keybinds;
 import com.shim.celestialexploration.util.CelestialUtil;
-import mod.azure.azurelib.core.utils.MathHelper;
 import net.minecraft.BlockUtil;
-import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -53,13 +51,11 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.wrapper.InvWrapper;
-import net.minecraftforge.network.NetworkDirection;
 import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Spaceship extends Entity implements ContainerListener, MenuProvider, IDyeable {
@@ -90,6 +86,8 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
     public static int maxTimeOnGround = 15;
     private final int LOW_FUEL = 300;
     public final SpaceshipDispatcher dispatcher;
+    public float jankyFixYRot;
+    public float jankyFixYRotO;
 
     public Spaceship(EntityType<? extends Spaceship> p_38290_, Level p_38291_) {
         super(p_38290_, p_38291_);
@@ -536,60 +534,42 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
         return new Vec3(baseIn.x + offsetXRotated, baseIn.y + yOffsetIn, baseIn.z + offsetZRotated);
     }
 
-    private void controlSpaceship() {
+    public void controlSpaceship() {
         if (this.isVehicle()) {
             float currentSpeed;
             currentSpeed = this.getMaxSpeed();
 
             LivingEntity passenger = (LivingEntity) this.getControllingPassenger();
-            assert passenger != null;
-            float f = passenger.zza * currentSpeed;
+            if (passenger != null) {
+                float f = passenger.zza * currentSpeed;
 
-//            this.setYRot(Mth.rotateIfNecessary(passenger.getYRot(), this.getYRot(), 10));
-//                this.setYRot(passenger.getYRot());
-//                this.setYBodyRot(passenger.getYRot());
+                if (Keybinds.TURN_LEFT_KEY.isDown()) {
+                    this.deltaRotation--;
+                } else if (Keybinds.TURN_RIGHT_KEY.isDown()) {
+                    this.deltaRotation++;
+                } else {
+                    this.deltaRotation = 0;
+                }
 
+                this.jankyFixYRotO = jankyFixYRot;
+                this.jankyFixYRot = this.getYRot() + this.deltaRotation;
 
-            if (Keybinds.TURN_LEFT_KEY.isDown()) {
-//                this.setYRot(Mth.rotateIfNecessary(passenger.getYRot(), this.getYRot(), 10));
-//
-                this.setYRot(passenger.getYRot());
-                this.setYBodyRot(passenger.getYRot());
-//                Vec3 particleLocation = translateWithXRotation(this.position(), this.getYRot(), 2, 1, 0);
-//                this.level.addParticle(ParticleTypes.ASH, particleLocation.x, particleLocation.y, particleLocation.z, 0.0D, 0.0D, 0.0D);
+                this.setYRot(this.getYRot() + this.deltaRotation);
 
-//                this.setYBodyRot(Mth.rotateIfNecessary(passenger.getYRot(), this.getYRot(), 10));
+                float f1;
 
-                this.oldDeltaRotation = deltaRotation;
-                --this.deltaRotation;
+                if (Keybinds.ASCEND_KEY.isDown()) f1 = currentSpeed;
+                else if (Keybinds.DESCEND_KEY.isDown())
+                    f1 = -1 * SPACESHIP_SPEED; //spaceship can always descend at normal speed
+                else f1 = 0;
 
-//                this.deltaRotation = Mth.lerp(tickCount, oldDeltaRotation, deltaRotation);
-
-            } else if (Keybinds.TURN_RIGHT_KEY.isDown()) {
-//                this.setYRot(Mth.rotateIfNecessary(passenger.getYRot(), this.getYRot(), 10));
-
-                this.setYRot(passenger.getYRot());
-//
-                this.setYBodyRot(passenger.getYRot());
-                this.setYHeadRot(passenger.getYHeadRot());
-
-//                this.rotate(Rotation.getRandom(new Random()));
-                ++this.deltaRotation;
+                this.setDeltaMovement((Mth.sin(-this.getYRot() * ((float) Math.PI / 180F)) * f), f1, (Mth.cos(this.getYRot() * ((float) Math.PI / 180F)) * f));
             }
-            else {
-                this.deltaRotation = 0;
-            }
-            this.setYRot(this.getYRot() + this.deltaRotation);
-
-            float f1;
-
-            if (Keybinds.ASCEND_KEY.isDown()) f1 = currentSpeed;
-            else if (Keybinds.DESCEND_KEY.isDown())
-                f1 = -1 * SPACESHIP_SPEED; //spaceship can always descend at normal speed
-            else f1 = 0;
-
-            this.setDeltaMovement((Mth.sin(-this.getYRot() * ((float) Math.PI / 180F)) * f), f1, (Mth.cos(this.getYRot() * ((float) Math.PI / 180F)) * f));
         }
+    }
+
+    public void setJankyRotationFix(float partialTick) {
+        this.setYRot(Mth.rotLerp(partialTick, jankyFixYRotO, jankyFixYRot));
     }
 
     public double getPassengersRidingOffset() {  //FIXME
@@ -623,8 +603,8 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
             Vec3 vec3 = (new Vec3(f, 0.0D, 0.0D)).yRot(-this.getYRot() * ((float) Math.PI / 180F) - ((float) Math.PI / 2F));
             passenger.setPos(this.getX() + vec3.x, this.getY() + (double) f1, this.getZ() + vec3.z);
             passenger.setYRot(passenger.getYRot() + this.deltaRotation);
-//            passenger.setYHeadRot(passenger.getYHeadRot() + this.deltaRotation);
-//            passenger.setYHeadRot(passenger.getYHeadRot() + this.deltaRotation);
+            passenger.setYHeadRot(passenger.getYHeadRot() + this.deltaRotation);
+            passenger.setYHeadRot(passenger.getYHeadRot() + this.deltaRotation);
             this.clampRotation(passenger);
 
 
@@ -667,7 +647,7 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
         return super.getDismountLocationForPassenger(p_38357_);
     }
 
-    protected void clampRotation(Entity p_38322_) {
+    public void clampRotation(Entity p_38322_) {
         p_38322_.setYBodyRot(this.getYRot());
         float f = Mth.wrapDegrees(p_38322_.getYRot() - this.getYRot());
         float f1 = Mth.clamp(f, -105.0F, 105.0F);
