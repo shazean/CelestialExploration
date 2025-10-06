@@ -3,6 +3,11 @@
   "icon": "minecraft:writable_book",
   "category": "celestialexploration:workbench",
   "pages": [
+    {
+      "type": "patchouli:crafting",
+      "recipe": "celestialexploration:workbench",
+      "text": "Craft a workbench using cobblestone and any kind of wood planks."
+    },
     "First step is to add fluid to the workbench.$(br2)For metals, you can add metal ingots or blocks to the upper left slot and smelt them down with a fuel item, like you would in a furnace.",
     {
       "type": "patchouli:image",

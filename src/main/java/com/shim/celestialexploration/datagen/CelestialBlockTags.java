@@ -30,6 +30,8 @@ public class CelestialBlockTags extends BlockTagsProvider {
                 .addTag(CelestialTags.Blocks.MOON_COBBLED_DEEPSLATE)
                 .add(CelestialBlocks.MOON_IRON_ORE.get()).add(CelestialBlocks.MOON_REDSTONE_ORE.get()).add(CelestialBlocks.MOON_BAUXITE_ORE.get())
                 .add(CelestialBlocks.MOON_DEEPSLATE_IRON_ORE.get()).add(CelestialBlocks.MOON_DEEPSLATE_REDSTONE_ORE.get())
+                .add(CelestialBlocks.COMPRESSED_MOON_COBBLESTONE.get()).add(CelestialBlocks.SUPER_COMPRESSED_MOON_COBBLESTONE.get())
+                .add(CelestialBlocks.COMPRESSED_MOON_COBBLED_DEEPSLATE.get()).add(CelestialBlocks.SUPER_COMPRESSED_MOON_COBBLED_DEEPSLATE.get())
 
                 //MARS
                 .addTag(CelestialTags.Blocks.MARS_STONE)
@@ -38,6 +40,8 @@ public class CelestialBlockTags extends BlockTagsProvider {
                 .addTag(CelestialTags.Blocks.MARS_COBBLED_DEEPSLATE)
                 .add(CelestialBlocks.MARS_IRON_ORE.get()).add(CelestialBlocks.MARS_REDSTONE_ORE.get()).add(CelestialBlocks.MARS_BAUXITE_ORE.get())
                 .add(CelestialBlocks.MARS_DEEPSLATE_IRON_ORE.get()).add(CelestialBlocks.MARS_DEEPSLATE_REDSTONE_ORE.get())
+                .add(CelestialBlocks.COMPRESSED_MARS_COBBLESTONE.get()).add(CelestialBlocks.SUPER_COMPRESSED_MARS_COBBLESTONE.get())
+                .add(CelestialBlocks.COMPRESSED_MARS_COBBLED_DEEPSLATE.get()).add(CelestialBlocks.SUPER_COMPRESSED_MARS_COBBLED_DEEPSLATE.get())
 
                 //VENUS
                 .addTag(CelestialTags.Blocks.VENUS_STONE)
@@ -47,6 +51,8 @@ public class CelestialBlockTags extends BlockTagsProvider {
                 .add(CelestialBlocks.SULFURIC_OBSIDIAN.get())
                 .add(CelestialBlocks.VENUS_IRON_ORE.get()).add(CelestialBlocks.VENUS_REDSTONE_ORE.get()).add(CelestialBlocks.VENUS_BAUXITE_ORE.get())
                 .add(CelestialBlocks.VENUS_DEEPSLATE_IRON_ORE.get()).add(CelestialBlocks.VENUS_DEEPSLATE_REDSTONE_ORE.get())
+                .add(CelestialBlocks.COMPRESSED_VENUS_COBBLESTONE.get()).add(CelestialBlocks.SUPER_COMPRESSED_VENUS_COBBLESTONE.get())
+                .add(CelestialBlocks.COMPRESSED_VENUS_COBBLED_DEEPSLATE.get()).add(CelestialBlocks.SUPER_COMPRESSED_VENUS_COBBLED_DEEPSLATE.get())
 
                 //MERCURY
                 .addTag(CelestialTags.Blocks.MERCURY_STONE)
@@ -55,10 +61,14 @@ public class CelestialBlockTags extends BlockTagsProvider {
                 .addTag(CelestialTags.Blocks.MERCURY_COBBLED_DEEPSLATE)
                 .add(CelestialBlocks.MERCURY_BAUXITE_ORE.get()).add(CelestialBlocks.MERCURY_SULFUR_ORE.get()).add(CelestialBlocks.MERCURY_COAL_ORE.get()).add(CelestialBlocks.MERCURY_DIAMOND_ORE.get())
                 .add(CelestialBlocks.MERCURY_DEEPSLATE_IRON_ORE.get()).add(CelestialBlocks.MERCURY_DEEPSLATE_COAL_ORE.get()).add(CelestialBlocks.MERCURY_DEEPSLATE_REDSTONE_ORE.get()).add(CelestialBlocks.MERCURY_DEEPSLATE_DIAMOND_ORE.get())
+                .add(CelestialBlocks.COMPRESSED_MERCURY_COBBLESTONE.get()).add(CelestialBlocks.SUPER_COMPRESSED_MERCURY_COBBLESTONE.get())
+                .add(CelestialBlocks.COMPRESSED_MERCURY_COBBLED_DEEPSLATE.get()).add(CelestialBlocks.SUPER_COMPRESSED_MERCURY_COBBLED_DEEPSLATE.get())
 
                 //JUPITER
                 .addTag(CelestialTags.Blocks.JUPITER_DEEPSLATE)
                 .addTag(CelestialTags.Blocks.JUPITER_COBBLED_DEEPSLATE)
+                .add(CelestialBlocks.COMPRESSED_JUPITER_COBBLED_DEEPSLATE.get()).add(CelestialBlocks.SUPER_COMPRESSED_JUPITER_COBBLED_DEEPSLATE.get())
+
 
                 //METEOR
                 .add(CelestialBlocks.METEOR.get())
@@ -72,6 +82,8 @@ public class CelestialBlockTags extends BlockTagsProvider {
                 .addTag(CelestialTags.Blocks.IO_DEEPSLATE)
                 .addTag(CelestialTags.Blocks.IO_COBBLED_DEEPSLATE)
                 .add(CelestialBlocks.IO_SULFUR_ORE.get()).add(CelestialBlocks.IO_DEEPSLATE_IRON_ORE.get())
+                .add(CelestialBlocks.COMPRESSED_IO_COBBLESTONE.get()).add(CelestialBlocks.SUPER_COMPRESSED_IO_COBBLESTONE.get())
+                .add(CelestialBlocks.COMPRESSED_IO_COBBLED_DEEPSLATE.get()).add(CelestialBlocks.SUPER_COMPRESSED_IO_COBBLED_DEEPSLATE.get())
 
                 //CERAMIC
                 .add(CelestialBlocks.CERAMIC.get()).add(CelestialBlocks.CERAMIC_TILE.get())
@@ -84,6 +96,17 @@ public class CelestialBlockTags extends BlockTagsProvider {
                 .add(CelestialBlocks.COMPRESSED_COBBLESTONE.get()).add(CelestialBlocks.SUPER_COMPRESSED_COBBLESTONE.get())
                 .add(CelestialBlocks.COMPRESSED_COBBLED_DEEPSLATE.get()).add(CelestialBlocks.SUPER_COMPRESSED_COBBLED_DEEPSLATE.get())
                 .add(CelestialBlocks.COMPRESSED_NETHERRACK.get()).add(CelestialBlocks.SUPER_COMPRESSED_NETHERRACK.get())
+
+                .add(CelestialBlocks.STEEL_BLOCK.get()).add(CelestialBlocks.ALUMINUM_BLOCK.get())
+                .add(CelestialBlocks.PANEL_WALL.get()).add(CelestialBlocks.PANEL.get()).add(CelestialBlocks.PANEL_SLAB.get()).add(CelestialBlocks.PANEL_STAIRS.get())
+                .add(CelestialBlocks.INSULATED_PANEL.get()).add(CelestialBlocks.SOLAR_PANEL.get()).add(CelestialBlocks.INSULATED_PANEL_CORNER.get())
+
+                .add(CelestialBlocks.AIRLOCK_PANEL_DOOR.get()).add(CelestialBlocks.AIRLOCK_PANEL_DOOR_WINDOW.get()).add(CelestialBlocks.HANGAR_DOOR.get()).add(CelestialBlocks.HANGAR_DOOR_WINDOW.get())
+
+                .add(CelestialBlocks.MAGRAIL.get()).add(CelestialBlocks.ACTIVATOR_MAGRAIL.get()).add(CelestialBlocks.DETECTOR_MAGRAIL.get()).add(CelestialBlocks.POWERED_MAGRAIL.get())
+
+
+                .add(CelestialBlocks.STEEL_FRAME.get())
 
                 .add(CelestialBlocks.WORKBENCH.get()).add(CelestialBlocks.OXYGEN_COMPRESSOR.get());
 
@@ -126,7 +149,8 @@ public class CelestialBlockTags extends BlockTagsProvider {
                 .add(CelestialBlocks.GLOWING_CALLISTO_SAND.get()).add(CelestialBlocks.GLOWING_EUROPA_SAND.get())
                 .add(CelestialBlocks.GLOWING_GANYMEDE_SAND.get())
                 .add(CelestialBlocks.IO_SAND.get()).add(CelestialBlocks.COARSE_IO_SAND.get())
-                .add(CelestialBlocks.GLOWING_IO_SAND.get()).add(CelestialBlocks.IO_SAND_PATH.get());
+                .add(CelestialBlocks.GLOWING_IO_SAND.get()).add(CelestialBlocks.IO_SAND_PATH.get())
+                .add(CelestialBlocks.SILICA.get());
 
         //ORES
         tag(net.minecraft.tags.BlockTags.COAL_ORES)

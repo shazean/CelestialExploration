@@ -23,11 +23,11 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 public class CelestialCommonEventSetup {
 
     public static void commonSetup(final FMLCommonSetupEvent event) {
-        SpawnPlacements.register(CelestialEntities.MARS_MALLOW.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, MarsMallow::checkMarsMallowSpawnRules);
-        SpawnPlacements.register(CelestialEntities.RUST_SLIME.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, RustSlime::checkRustSlimeSpawnRules);
-        SpawnPlacements.register(CelestialEntities.LUNAR_SLIME.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, LunarSlime::checkLunarSlimeSpawnRules);
-        SpawnPlacements.register(CelestialEntities.QUICKSILVER_SLIME.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, QuicksilverSlime::checkQuicksilverSlimeSpawnRules);
-        SpawnPlacements.register(CelestialEntities.VISCOUS_SLIME.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, ViscousSlime::checkViscousSlimeSpawnRules);
+        SpawnPlacements.register(CelestialEntities.MARS_MALLOW.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, MarsMallow::checkCelestialSlimeSpawnRules);
+        SpawnPlacements.register(CelestialEntities.RUST_SLIME.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, RustSlime::checkCelestialSlimeSpawnRules);
+        SpawnPlacements.register(CelestialEntities.LUNAR_SLIME.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, LunarSlime::checkCelestialSlimeSpawnRules);
+        SpawnPlacements.register(CelestialEntities.QUICKSILVER_SLIME.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, QuicksilverSlime::checkCelestialSlimeSpawnRules);
+        SpawnPlacements.register(CelestialEntities.VISCOUS_SLIME.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, ViscousSlime::checkCelestialSlimeSpawnRules);
         SpawnPlacements.register(CelestialEntities.LURKER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, Lurker::checkMonsterSpawnRules);
         SpawnPlacements.register(CelestialEntities.VOIDED.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, Voided::checkMonsterSpawnRules);
         SpawnPlacements.register(CelestialEntities.VOIDFELLOW.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, VoidFellow::checkMonsterSpawnRules);

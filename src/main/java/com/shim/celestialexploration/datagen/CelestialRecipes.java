@@ -306,6 +306,10 @@ public class CelestialRecipes extends RecipeProvider {
 		ShapelessRecipeBuilder.shapeless(CelestialItems.ALUMINUM_INGOT.get(), 3).requires(Items.COPPER_INGOT).requires(CelestialItems.BAUXITE_INGOT.get()).requires(CelestialItems.BAUXITE_INGOT.get()).unlockedBy("has_raw_bauxite", has(CelestialItems.RAW_BAUXITE.get())).save(consumer,  saveName(CelestialItems.ALUMINUM_INGOT.get(), "from_copper"));
 		ingotAndBlock(CelestialItems.ALUMINUM_INGOT.get(), CelestialBlocks.ALUMINUM_BLOCK.get(), CelestialItems.ALUMINUM_INGOT.get(), consumer);
 
+		WorkbenchCraftingRecipeBuilder.shaped(CelestialItems.ALUMINUM_INGOT.get(), 3, CelestialFluids.MOLTEN_IRON.get(), 0.1111F, 0.7F).pattern("X").define('X', CelestialItems.BAUXITE_INGOT.get()).unlockedBy("has_bauxite", has(CelestialItems.BAUXITE_INGOT.get())).save(consumer, saveName(CelestialItems.ALUMINUM_INGOT.get(), "from_workbench"));
+		WorkbenchCraftingRecipeBuilder.shaped(CelestialItems.ALUMINUM_INGOT.get(), 3, CelestialFluids.MOLTEN_COPPER.get(), 0.1111F, 0.7F).pattern("X").define('X', CelestialItems.BAUXITE_INGOT.get()).unlockedBy("has_bauxite", has(CelestialItems.BAUXITE_INGOT.get())).save(consumer, saveName(CelestialItems.ALUMINUM_INGOT.get(), "from_copper_workbench"));
+
+
 		smeltingAndBlasting(CelestialTags.Items.BAUXITE_ORE, CelestialItems.BAUXITE_INGOT.get(), 0.7F, 200, 100, CelestialBlocks.BAUXITE_ORE.get(), consumer);
 //		smeltingAndBlasting(BlockRegistry.MARS_BAUXITE_ORE.get(), ItemRegistry.BAUXITE_INGOT.get(), 0.7F, 200, 100, BlockRegistry.MARS_BAUXITE_ORE.get(), consumer);
 //		smeltingAndBlasting(BlockRegistry.VENUS_BAUXITE_ORE.get(), ItemRegistry.BAUXITE_INGOT.get(), 0.7F, 200, 100, BlockRegistry.VENUS_BAUXITE_ORE.get(), consumer);

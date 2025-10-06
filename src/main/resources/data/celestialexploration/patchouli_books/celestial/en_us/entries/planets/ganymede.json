@@ -3,7 +3,7 @@
   "icon": "celestialexploration:ganymede_bricks",
   "category": "celestialexploration:planets",
   "pages": [
-    "Ganymede is found near Jupiter. Look for the largest moon made of cobblestone.$(br2)Natural resources: iron, redstone, ganymedian dust (red lunar dust).$(br)Mobs: Voided, Skeletons, SpaceFellows, Lunar Slimes",
+    "Ganymede is found near Jupiter. Look for the largest moon made of cobblestone.$(br2)Natural resources: iron, redstone, ganymedian dust (red lunar dust).$(br)Mobs: Voided, Skeletons, SpaceFellows, Lunar Slimes$(br)Recommended spacesuit: Thermal",
     {
       "type": "patchouli:spotlight",
       "text": "Ganymede bricks can be used to craft a portal to Ganymede, and then lit using flint & steel.$(br)This does mean you need to visit Ganymede for the first time using the spaceship, or be in creative mode!$(br2)Note: portals can only be used to or from the overworld!",

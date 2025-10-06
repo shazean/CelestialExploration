@@ -37,7 +37,7 @@ public class CelestialLangProvider extends LanguageProvider {
 
 	public void addFluid(Block fluidBlock, String fluid, String localization) {
 		add(fluidBlock, localization);
-		add("fluid.celestialexploration." + fluid, localization);
+		add("fluid." + CelestialExploration.MODID + "." + fluid, localization);
 	}
 
 	public void addPlanetDetails(String dimensionName, String dimensionResources, @Nullable String dimensionMoons) {

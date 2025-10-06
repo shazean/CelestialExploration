@@ -64,16 +64,26 @@ public class CelestialFeaturePlacements {
 
     public static final Holder<PlacedFeature> BAUXITE_ORE = PlacementUtils.register("bauxite_ore", CelestialOreFeatures.BAUXITE_ORE, CelestialOrePlacement.commonOrePlacement(10, HeightRangePlacement.triangle(VerticalAnchor.absolute(-24), VerticalAnchor.absolute(56))));
 
-    public static final Holder<PlacedFeature> MERCURY_IRON_ORE_UPPER = PlacementUtils.register("mercury_iron_ore_upper", CelestialOreFeatures.MERCURY_IRON_ORE, CelestialOrePlacement.commonOrePlacement(90, HeightRangePlacement.triangle(VerticalAnchor.absolute(80), VerticalAnchor.absolute(384))));
-    public static final Holder<PlacedFeature> MERCURY_IRON_ORE_MIDDLE = PlacementUtils.register("mercury_iron_ore_middle", CelestialOreFeatures.MERCURY_IRON_ORE, CelestialOrePlacement.commonOrePlacement(10, HeightRangePlacement.triangle(VerticalAnchor.absolute(-24), VerticalAnchor.absolute(56))));
-    public static final Holder<PlacedFeature> MERCURY_IRON_ORE_SMALL = PlacementUtils.register("mercury_iron_ore_small", CelestialOreFeatures.MERCURY_IRON_ORE_SMALL, CelestialOrePlacement.commonOrePlacement(10, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(72))));
-    public static final Holder<PlacedFeature> MERCURY_REDSTONE_ORE = PlacementUtils.register("mercury_redstone_ore", CelestialOreFeatures.MERCURY_REDSTONE_ORE, CelestialOrePlacement.commonOrePlacement(4, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(15))));
-    public static final Holder<PlacedFeature> MERCURY_REDSTONE_ORE_LOWER = PlacementUtils.register("mercury_redstone_ore_lower", CelestialOreFeatures.MERCURY_REDSTONE_ORE, CelestialOrePlacement.commonOrePlacement(8, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-32), VerticalAnchor.aboveBottom(32))));
-    public static final Holder<PlacedFeature> MERCURY_COAL_ORE_UPPER = PlacementUtils.register("mercury_coal_ore_upper", CelestialOreFeatures.MERCURY_COAL_ORE, CelestialOrePlacement.commonOrePlacement(30, HeightRangePlacement.uniform(VerticalAnchor.absolute(136), VerticalAnchor.top())));
-    public static final Holder<PlacedFeature> MERCURY_COAL_ORE_LOWER = PlacementUtils.register("mercury_coal_ore_lower", CelestialOreFeatures.MERCURY_COAL_ORE_LOWER, CelestialOrePlacement.commonOrePlacement(20, HeightRangePlacement.triangle(VerticalAnchor.absolute(0), VerticalAnchor.absolute(192))));
-    public static final Holder<PlacedFeature> MERCURY_BAUXITE_ORE = PlacementUtils.register("mercury_bauxite_ore", CelestialOreFeatures.MERCURY_BAUXITE_ORE, CelestialOrePlacement.commonOrePlacement(10, HeightRangePlacement.triangle(VerticalAnchor.absolute(-24), VerticalAnchor.absolute(56))));
-    public static final Holder<PlacedFeature> MERCURY_SULFUR_ORE = PlacementUtils.register("mercury_sulfur_ore", CelestialOreFeatures.MERCURY_SULFUR_ORE, CelestialOrePlacement.commonOrePlacement(10, HeightRangePlacement.triangle(VerticalAnchor.absolute(-24), VerticalAnchor.absolute(56))));
-    public static final Holder<PlacedFeature> MERCURY_DIAMOND_ORE = PlacementUtils.register("mercury_diamond_ore", CelestialOreFeatures.MERCURY_DIAMOND_ORE, CelestialOrePlacement.commonOrePlacement(7, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-16), VerticalAnchor.aboveBottom(16))));
+    public static final Holder<PlacedFeature> MERCURY_IRON_ORE_UPPER = PlacementUtils.register("mercury_iron_ore_upper", CelestialOreFeatures.MERCURY_IRON_ORE,
+            CelestialOrePlacement.commonOrePlacement(90, HeightRangePlacement.triangle(VerticalAnchor.absolute(80), VerticalAnchor.absolute(384))));
+    public static final Holder<PlacedFeature> MERCURY_IRON_ORE_MIDDLE = PlacementUtils.register("mercury_iron_ore_middle", CelestialOreFeatures.MERCURY_IRON_ORE,
+            CelestialOrePlacement.commonOrePlacement(12, HeightRangePlacement.triangle(VerticalAnchor.absolute(-24), VerticalAnchor.absolute(56))));
+    public static final Holder<PlacedFeature> MERCURY_IRON_ORE_SMALL = PlacementUtils.register("mercury_iron_ore_small", CelestialOreFeatures.MERCURY_IRON_ORE_SMALL,
+            CelestialOrePlacement.commonOrePlacement(12, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(72))));
+    public static final Holder<PlacedFeature> MERCURY_REDSTONE_ORE = PlacementUtils.register("mercury_redstone_ore", CelestialOreFeatures.MERCURY_REDSTONE_ORE,
+            CelestialOrePlacement.commonOrePlacement(6, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(15))));
+    public static final Holder<PlacedFeature> MERCURY_REDSTONE_ORE_LOWER = PlacementUtils.register("mercury_redstone_ore_lower", CelestialOreFeatures.MERCURY_REDSTONE_ORE,
+            CelestialOrePlacement.commonOrePlacement(10, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-32), VerticalAnchor.aboveBottom(32))));
+    public static final Holder<PlacedFeature> MERCURY_COAL_ORE_UPPER = PlacementUtils.register("mercury_coal_ore_upper", CelestialOreFeatures.MERCURY_COAL_ORE,
+            CelestialOrePlacement.commonOrePlacement(35, HeightRangePlacement.uniform(VerticalAnchor.absolute(136), VerticalAnchor.top())));
+    public static final Holder<PlacedFeature> MERCURY_COAL_ORE_LOWER = PlacementUtils.register("mercury_coal_ore_lower", CelestialOreFeatures.MERCURY_COAL_ORE_LOWER,
+            CelestialOrePlacement.commonOrePlacement(25, HeightRangePlacement.triangle(VerticalAnchor.absolute(0), VerticalAnchor.absolute(192))));
+    public static final Holder<PlacedFeature> MERCURY_BAUXITE_ORE = PlacementUtils.register("mercury_bauxite_ore", CelestialOreFeatures.MERCURY_BAUXITE_ORE,
+            CelestialOrePlacement.commonOrePlacement(12, HeightRangePlacement.triangle(VerticalAnchor.absolute(-24), VerticalAnchor.absolute(56))));
+    public static final Holder<PlacedFeature> MERCURY_SULFUR_ORE = PlacementUtils.register("mercury_sulfur_ore", CelestialOreFeatures.MERCURY_SULFUR_ORE,
+            CelestialOrePlacement.commonOrePlacement(12, HeightRangePlacement.triangle(VerticalAnchor.absolute(-24), VerticalAnchor.absolute(56))));
+    public static final Holder<PlacedFeature> MERCURY_DIAMOND_ORE = PlacementUtils.register("mercury_diamond_ore", CelestialOreFeatures.MERCURY_DIAMOND_ORE,
+            CelestialOrePlacement.commonOrePlacement(9, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-16), VerticalAnchor.aboveBottom(16))));
 
     public static final Holder<PlacedFeature> IO_IRON_ORE_UPPER = PlacementUtils.register("io_iron_ore_upper", CelestialOreFeatures.IO_IRON_ORE, CelestialOrePlacement.commonOrePlacement(90, HeightRangePlacement.triangle(VerticalAnchor.absolute(80), VerticalAnchor.absolute(384))));
     public static final Holder<PlacedFeature> IO_IRON_ORE_MIDDLE = PlacementUtils.register("io_iron_ore_middle", CelestialOreFeatures.IO_IRON_ORE, CelestialOrePlacement.commonOrePlacement(10, HeightRangePlacement.triangle(VerticalAnchor.absolute(-24), VerticalAnchor.absolute(56))));

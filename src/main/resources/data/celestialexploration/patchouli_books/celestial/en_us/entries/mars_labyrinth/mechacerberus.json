@@ -1,0 +1,55 @@
+{
+  "name": "Mechacerberus",
+  "icon": "celestialexploration:mechacerberus_core",
+  "category": "celestialexploration:mars_labyrinth",
+  "pages": [
+    "Well, you made it all the way through the levels of the Mars labyrinth, only to find yourself… facing a massive, 3-headed robot dog?!",
+    {
+      "type": "patchouli:entity",
+      "entity": "celestialexploration:mechacerberus_boss",
+      "scale": 0.5,
+      "text": "Behold: the Mechacerberus boss, found naturally only in the final room of the Mars labyrinth"
+    },
+    "Struggling to fight the mechacerberus boss?  Maybe try waiting for the right moment…",
+    {
+      "type": "patchouli:spotlight",
+      "item": "celestialexploration:mechacerberus_core",
+      "text": "Lucky enough to get one of these as a drop? Sweet! If you didn't, don't worry, he can be resummoned… if you dare…"
+    },
+    {
+      "type": "patchouli:multiblock",
+      "multiblock": {
+        "pattern": [
+          [ "HHH" ],
+          [ "SSS" ],
+          [ " S " ],
+          [ " 0 " ]
+        ],
+        "mapping": {
+          "S": "celestialexploration:steel_block",
+          "0": "celestialexploration:steel_block",
+          "H": "celestialexploration:mechadog_head[facing=north]"
+        }
+      },
+      "text": "Don't worry, this won't summon the Wither… I'm pretty sure."
+    },
+    "If you have been lucky enough to acquire a mechacerberus core, and a few mechadog heads, and you're not interested in fighting another boss, you can instead…craft your own Mechacerberus!",
+    {
+      "type": "celestialexploration:workbench_recipe",
+      "recipe": "White Mechacerberus",
+      "item_1": "celestialexploration:mechadog_head",
+      "item_2": "celestialexploration:mechadog_head",
+      "item_3": "celestialexploration:mechadog_head",
+      "item_4": "celestialexploration:steel_frame",
+      "item_5": "celestialexploration:mechacerberus_core",
+      "item_6": "celestialexploration:steel_frame",
+      "item_7": "minecraft:redstone",
+      "item_9": "minecraft:redstone",
+      "result": "celestialexploration:white_mechacerberus",
+      "fluidName": "Steel",
+      "fluidMB": "666mb (6 ingots)"
+    },
+    "Once you've crafted a white one, try putting it back in the crafting table with a dye of your choice!  Collect all 16 colors!",
+    "The crafted Mechacerberus will be tamed to you, immediately, as soon as you place the item in the world!"
+  ]
+}

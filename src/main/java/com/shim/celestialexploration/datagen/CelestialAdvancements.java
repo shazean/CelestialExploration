@@ -35,7 +35,7 @@ public class CelestialAdvancements extends AdvancementProvider {
                 .addCriterion("crafting_table", InventoryChangeTrigger.TriggerInstance.hasItems(Items.CRAFTING_TABLE)).save(consumer, modLoc("root"));
 
         Advancement obtainSpacesuit = Advancement.Builder.advancement().display(new ItemStack(CelestialItems.BASIC_SPACESUIT_HELMET.get()),
-                        new TranslatableComponent("advancements.celestial.obtain_spacesuit.title"), new TranslatableComponent("advancements.celestialexploration.obtain_spacesuit.description"),
+                        new TranslatableComponent("advancements.celestialexploration.obtain_spacesuit.title"), new TranslatableComponent("advancements.celestialexploration.obtain_spacesuit.description"),
                         null, FrameType.TASK, true, true, false)
                 .parent(root).addCriterion("basic_helmet", InventoryChangeTrigger.TriggerInstance.hasItems(CelestialItems.BASIC_SPACESUIT_HELMET.get()))
                 .addCriterion("basic_chestplate", InventoryChangeTrigger.TriggerInstance.hasItems(CelestialItems.BASIC_SPACESUIT_CHESTPLATE.get()))

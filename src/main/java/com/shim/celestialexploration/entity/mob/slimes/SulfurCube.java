@@ -31,7 +31,6 @@ public class SulfurCube extends MagmaCube {
         return p_32982_.getDifficulty() != Difficulty.PEACEFUL;
     }
 
-
     public boolean isInSulfur() {
         return !this.firstTick && this.fluidHeight.getDouble(CelestialTags.Fluids.SULFUR) > 0.0D;
     }

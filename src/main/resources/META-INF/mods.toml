@@ -1,42 +1,40 @@
 modLoader="javafml"
-loaderVersion="[40,)"
-license="MIT"
+loaderVersion="${loader_version_range}"
+license="${mod_license}"
 issueTrackerURL="https://github.com/shazean/CelestialExploration/issues"
 
 [[mods]]
-modId="celestialexploration"
-version="0.17.4"
-displayName="Celestial Exploration"
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
 # A URL to query for updates for this mod. See the JSON update specification https://mcforge.readthedocs.io/en/latest/gettingstarted/autoupdate/
 #updateJSONURL="https://change.me.example.invalid/updates.json" #optional
 displayURL="https://github.com/shazean/CelestialExploration/wiki"
 logoFile="CE_logo.png"
 credits="shim, primal_zerg_ (legacy spaceship model, some textures), JayZX535 (bug fixes, beta testing, mechadog(s) models/texture/animations)"
-authors="shim"
-description='''
-Exploring beyond our own planet and into the outer reaches of space! Inspired by our own solar system.
-'''
-[[dependencies.celestialexploration]]
+authors="${mod_authors}"
+description='''${mod_description}'''
+[[dependencies."${mod_id}"]]
     modId="forge"
     mandatory=true
     versionRange="[40,)"
     ordering="NONE"
     side="BOTH"
-[[dependencies.celestialexploration]]
+[[dependencies."${mod_id}"]]
     modId="minecraft"
     mandatory=true
     versionRange="[1.18,1.19)"
     ordering="NONE"
     side="BOTH"
-[[dependencies.celestialexploration]]
+[[dependencies."${mod_id}"]]
     modId="azurelib"
     mandatory=true
     versionRange="[3.0.0,)"
     ordering="NONE"
     side="BOTH"
-[[dependencies.celestialexploration]]
+[[dependencies."${mod_id}"]]
     modId="celestiallib"
     mandatory=true
-    versionRange="[0.1.18,)"
+    versionRange="[1.0.0,)"
     ordering="NONE"
     side="BOTH"

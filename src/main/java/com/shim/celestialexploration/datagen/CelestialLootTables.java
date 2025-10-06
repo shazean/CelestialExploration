@@ -310,7 +310,7 @@ public class CelestialLootTables extends BaseLootTableProvider {
 		block(CelestialBlocks.MERCURY_DEEPSLATE_REDSTONE_ORE.get(), createRedstoneOreTable(CelestialBlocks.MERCURY_DEEPSLATE_REDSTONE_ORE.get()));
 
 		//OTHER
-		block(CelestialBlocks.MERCURY_LANTERN.get(), createSilkTouchTable(CelestialBlocks.MERCURY_LANTERN.get(), CelestialBlocks.MERCURY_STONE.get(), 1, 1)); //FIXME
+		block(CelestialBlocks.MERCURY_LANTERN.get(), createSilkTouchTable(CelestialBlocks.MERCURY_LANTERN.get(), CelestialItems.CINNABAR.get(), 1, 1));
 		block(CelestialBlocks.MERCURY_SAND_PATH.get(), createSimpleTable(CelestialBlocks.MERCURY_SAND.get()));
 
 		//---- JUPITER -------------------------------------------------------------------------------

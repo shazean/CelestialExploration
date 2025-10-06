@@ -1,0 +1,34 @@
+{
+  "name": "Mechadog",
+  "icon": "celestialexploration:mechadog_head",
+  "category": "celestialexploration:mars_labyrinth",
+  "pages": [
+    "You may have spotted a few robotic dogs in the Martian labyrinth…",
+    {
+      "type": "patchouli:entity",
+      "entity": "celestialexploration:mechadog",
+      "scale": 0.5,
+      "text": "Meet the Mechadog! This lil boi only spawns in the Mars dungeon, but, hey, do you want one of your own?"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "celestialexploration:mechadog_head",
+      "text": "By defeating the hostile mechadogs in the labyrinth, you should start collecting some mechadog heads.  I wonder if they have a purpose…"
+    },
+    {
+      "type": "celestialexploration:workbench_recipe",
+      "recipe": "White Mechadog",
+      "item_3": "celestialexploration:mechadog_head",
+      "item_4": "celestialexploration:steel_frame",
+      "item_5": "minecraft:redstone",
+      "item_6": "celestialexploration:steel_frame",
+      "item_7": "minecraft:redstone",
+      "item_9": "minecraft:redstone",
+      "result": "celestialexploration:white_mechadog",
+      "fluidName": "Steel",
+      "fluidMB": "333mb (3 ingots)"
+    },
+    "Once you've crafted a white one, try putting it back in the crafting table with a dye of your choice!  Collect all 16 colors!",
+    "The crafted Mechadog will be tamed to you, immediately, as soon as you place the item in the world!"
+  ]
+}

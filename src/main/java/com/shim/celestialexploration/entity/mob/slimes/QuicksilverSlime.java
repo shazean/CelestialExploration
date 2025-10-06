@@ -84,15 +84,4 @@ public class QuicksilverSlime extends AbstractQuicksilverSlime {
         this.targetSquish *= 0.93F; //0.6F;
     }
 
-    @Override
-    protected ParticleOptions getParticleType() {
-        return CelestialParticles.QUICKSILVER_SLIME_PARTICLES.get();
-    }
-
-    public static boolean checkQuicksilverSlimeSpawnRules(EntityType<QuicksilverSlime> slime, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, Random random) {
-        if (level.getDifficulty() == Difficulty.PEACEFUL || pos.getY() > 64) {
-            return false;
-        }
-        return !isDarkEnoughToSpawn((ServerLevelAccessor) level, pos, random) && checkMobSpawnRules(slime, level, spawnType, pos, random);
-    }
 }

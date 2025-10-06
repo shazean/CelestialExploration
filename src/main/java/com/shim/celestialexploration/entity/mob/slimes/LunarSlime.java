@@ -18,26 +18,8 @@ import java.util.Random;
 
 import static net.minecraft.world.entity.monster.Monster.isDarkEnoughToSpawn;
 
-public class LunarSlime extends Slime {
-
+public class LunarSlime extends AbstractCelestialSlime {
     public LunarSlime(EntityType<? extends Slime> p_33588_, Level p_33589_) {
-        super(p_33588_, p_33589_);
-    }
-
-    public static AttributeSupplier setAttributes() {
-        return Mob.createMobAttributes()
-                .add(Attributes.ATTACK_DAMAGE, 3.0f).build();
-    }
-
-    @Override
-    protected ParticleOptions getParticleType() {
-        return CelestialParticles.LUNAR_SLIME_PARTICLES.get();
-    }
-
-    public static boolean checkLunarSlimeSpawnRules(EntityType<LunarSlime> slime, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, Random random) {
-        if (level.getDifficulty() == Difficulty.PEACEFUL || pos.getY() > 64) {
-            return false;
-        }
-        return isDarkEnoughToSpawn((ServerLevelAccessor) level, pos, random) && checkMobSpawnRules(slime, level, spawnType, pos, random);
+        super(p_33588_, p_33589_, CelestialParticles.LUNAR_SLIME_PARTICLES.get());
     }
 }

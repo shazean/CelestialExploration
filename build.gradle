@@ -9,9 +9,9 @@ plugins {
 
 
 version = "v" + mod_version
-group = 'com.shim.celestialexploration'
+group = mod_group_id
 base {
-    archivesName = "celestialexploration-${project.target_mc_version}"
+    archivesName = mod_id + "-" + minecraft_version
 }
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
@@ -29,7 +29,7 @@ minecraft {
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
 
-            property 'forge.enabledGameTestNamespaces', 'celestialexploration'
+            property 'forge.enabledGameTestNamespaces', mod_id
 
             arg "-mixin.config=celestialexploration.mixins.json"
             property 'mixin.env.remapRefMap', 'true'
@@ -48,7 +48,7 @@ minecraft {
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
 
-            property 'forge.enabledGameTestNamespaces', 'celestialexploration'
+            property 'forge.enabledGameTestNamespaces', mod_id
 
             arg "-mixin.config=celestialexploration.mixins.json"
             property 'mixin.env.remapRefMap', 'true'
@@ -67,7 +67,7 @@ minecraft {
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
 
-            property 'forge.enabledGameTestNamespaces', 'celestialexploration'
+            property 'forge.enabledGameTestNamespaces', mod_id
 
             arg "-mixin.config=celestialexploration.mixins.json"
             property 'mixin.env.remapRefMap', 'true'
@@ -86,7 +86,7 @@ minecraft {
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
 
-            args '--mod', 'celestialexploration', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            args '--mod', mod_id, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             arg "-mixin.config=celestialexploration.mixins.json"
             property 'mixin.env.remapRefMap', 'true'
@@ -134,18 +134,18 @@ repositories {
 }
 
 dependencies {
-    minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
     //AzureLib
-    implementation fg.deobf("mod.azure.azurelib:azurelib-forge-${mc_version}:${azurelib_version}")
+    implementation fg.deobf("mod.azure.azurelib:azurelib-forge-${minecraft_version}:${azurelib_version}")
 
     // Apply Mixin AP
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 
     // compile against the JEI API but do not include it at runtime
-    compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api")
+    compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}:${jei_version}:api")
     // at runtime, use the full JEI jar
-    runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")
+    runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}:${jei_version}")
 
     compileOnly fg.deobf("vazkii.patchouli:Patchouli:${ptch_version}:api")
     runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${ptch_version}")
@@ -155,9 +155,27 @@ dependencies {
 //    implementation fg.deobf("curse.maven:lightspeedmod-821790:4594803")
     implementation fg.deobf("curse.maven:lazy-dfu-forge-460819:3544496")
 
-//    implementation fg.deobf("celestiallib:celestiallib-${mc_version}:v${celestiallib_version}")
-    implementation fg.deobf("curse.maven:celestiallib-1297767:7056310")
+//    implementation fg.deobf("celestiallib:celestiallib-${minecraft_version}:v${celestiallib_version}")
+    implementation fg.deobf("curse.maven:celestiallib-1297767:7074744")
+}
 
+// This block of code expands all declared replace properties in the specified resource targets.
+// A missing property will result in an error. Properties are expanded using ${} Groovy notation.
+// When "copyIdeResources" is enabled, this will also run before the game launches in IDE environments.
+// See https://docs.gradle.org/current/dsl/org.gradle.language.jvm.tasks.ProcessResources.html
+tasks.named('processResources', ProcessResources).configure {
+    var replaceProperties = [
+            minecraft_version: minecraft_version, minecraft_version_range: minecraft_version_range,
+            forge_version: forge_version, forge_version_range: forge_version_range,
+            loader_version_range: loader_version_range,
+            mod_id: mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
+            mod_authors: mod_authors, mod_description: mod_description,
+    ]
+    inputs.properties replaceProperties
+
+    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
+        expand replaceProperties + [project: project]
+    }
 }
 
 mixin {
@@ -169,12 +187,12 @@ mixin {
 jar {
     manifest {
         attributes([
-                "Specification-Title"     : "celestialexploration",
-                "Specification-Vendor"    : "shim",
+                "Specification-Title"     : mod_id,
+                "Specification-Vendor"    : mod_authors,
                 "Specification-Version"   : project.version, // We are version 0 of ourselves
                 "Implementation-Title"    : project.name,
                 "Implementation-Version"  : project.version,
-                "Implementation-Vendor"   : "shim",
+                "Implementation-Vendor"   : mod_authors,
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
                 "MixinConfigs"            : "celestialexploration.mixins.json"
         ])

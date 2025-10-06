@@ -89,7 +89,11 @@ public class CelestialForgeEventBus {
 
         if (event.getSource().isFall()) {
             if (CelestialCommonConfig.USE_GRAVITY_EFFECTS.get() && (entity.hasEffect(CLibEffects.LOW_GRAVITY.get()) || entity.hasEffect(CLibEffects.EXTRA_LOW_GRAVITY.get()))) {
-                event.setCanceled(true);
+                if (event.getAmount() <= 3.0F) {
+                    event.setCanceled(true);
+                } else {
+                    event.setAmount(event.getAmount() - 3.0F);
+                }
             }
         }
     }

@@ -805,6 +805,8 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
     }
 
     public InteractionResult interact(Player player, InteractionHand hand) {
+        if (this.getPassengers().contains(player)) return InteractionResult.PASS;
+
         if (player.isSecondaryUseActive()) {
             if (player instanceof ServerPlayer) {
                 NetworkHooks.openGui((ServerPlayer) player, this, buf -> buf.writeInt(this.getId()));
@@ -821,34 +823,34 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
         }
     }
 
-    protected void checkFallDamage(double p_38307_, boolean p_38308_, BlockState p_38309_, BlockPos p_38310_) {
-//        double lastYd = this.getDeltaMovement().y;
-        if (!this.isPassenger()) {
-            if (p_38308_) {
-                if (this.fallDistance > 3.0F) {
-                    if (this.status != Spaceship.Status.ON_LAND) {
-                        this.resetFallDistance();
-                        return;
-                    }
-
-                    this.causeFallDamage(this.fallDistance, 1.0F, DamageSource.FALL);
-                    if (!this.level.isClientSide && !this.isRemoved()) {
-                        this.kill();
-                        if (this.level.getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
-                            for (int i = 0; i < 3; ++i) {
-                                this.spawnAtLocation(this.getDyeType().getDye());
-                            }
-                        }
-                    }
-                }
-
-                this.resetFallDistance();
-            } else if (!this.level.getFluidState(this.blockPosition().below()).is(FluidTags.WATER) && p_38307_ < 0.0D) {
-                this.fallDistance -= (float) p_38307_;
-            }
-
-        }
-    }
+//    protected void checkFallDamage(double p_38307_, boolean p_38308_, BlockState p_38309_, BlockPos p_38310_) {
+////        double lastYd = this.getDeltaMovement().y;
+//        if (!this.isPassenger()) {
+//            if (p_38308_) {
+//                if (this.fallDistance > 3.0F) {
+//                    if (this.status != Spaceship.Status.ON_LAND) {
+//                        this.resetFallDistance();
+//                        return;
+//                    }
+//
+//                    this.causeFallDamage(this.fallDistance, 1.0F, DamageSource.FALL);
+//                    if (!this.level.isClientSide && !this.isRemoved()) {
+//                        this.kill();
+//                        if (this.level.getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
+//                            for (int i = 0; i < 3; ++i) {
+//                                this.spawnAtLocation(this.getDyeType().getDye());
+//                            }
+//                        }
+//                    }
+//                }
+//
+//                this.resetFallDistance();
+//            } else if (!this.level.getFluidState(this.blockPosition().below()).is(FluidTags.WATER) && p_38307_ < 0.0D) {
+//                this.fallDistance -= (float) p_38307_;
+//            }
+//
+//        }
+//    }
 
     public void setDamage(float p_38312_) {
         this.entityData.set(DATA_ID_DAMAGE, p_38312_);

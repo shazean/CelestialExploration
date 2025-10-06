@@ -3,7 +3,7 @@
   "icon": "celestialexploration:callisto_bricks",
   "category": "celestialexploration:planets",
   "pages": [
-    "Callisto is found near Jupiter. Look for the cobbled deepslate structure with lots of ice.$(br2)Natural resources: iron, redstone, callistoan dust (pink lunar dust).$(br)Mobs: Voided, Skeletons, SpaceFellows, Lunar Slimes",
+    "Callisto is found near Jupiter. Look for the cobbled deepslate structure with lots of ice.$(br2)Natural resources: iron, redstone, callistoan dust (pink lunar dust).$(br)Mobs: Voided, Skeletons, SpaceFellows, Lunar Slimes$(br)Recommended spacesuit: Thermal",
     {
       "type": "patchouli:spotlight",
       "text": "Callisto bricks can be used to craft a portal to Callisto, and then lit using flint & steel.$(br)This does mean you need to visit Callisto for the first time using the spaceship, or be in creative mode!$(br2)Note: portals can only be used to or from the overworld!",

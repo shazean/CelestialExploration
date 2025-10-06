@@ -3,7 +3,7 @@
   "icon": "celestialexploration:mercury_stone",
   "category": "celestialexploration:planets",
   "pages": [
-    "The tiniest planet (besides Pluto)!$(br2)Mercury can be found in space roughly east south-east of the sun.$(br2)Natural resources: coal, redstone, sulfur, diamonds.$(br)Mobs: Voided, Skeletons, SpaceFellows, Quicksilver Slimes, Viscous Slimes",
+    "The tiniest planet (besides Pluto)!$(br2)Mercury can be found in space roughly east south-east of the sun.$(br2)Natural resources: coal, redstone, sulfur, diamonds.$(br)Mobs: Voided, Skeletons, SpaceFellows, Quicksilver Slimes, Viscous Slimes$(br)Recommended spacesuit: Thermal",
     {
       "type": "patchouli:spotlight",
       "text": "Mercurian bricks can be used to craft a portal to Mercury, and then lit using flint and steel.$(br2)Note: Mercurian portals can only be used from the overworld to Mercury.$(br2)This does mean you either need to be in creative mode or visit Mercury for the first time using the spaceship!",

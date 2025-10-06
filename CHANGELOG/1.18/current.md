@@ -1,4 +1,10 @@
-- `[NEW]` Flame particles added to workbench, just like the vanilla furnace
-- `[FIX]` Fixed overeager spaceship rotation
-- `[FIX]` Fixed some errors in datapack planets
-- `[FIX]` Fixed some loot table errors
+- `[NEW]` More info added to Patchouli guidebook
+- `[FIX]` Fixed Quicksilver Slime hitbox not matching the model size
+- `[CHG]` Make aluminum ingots out of molten iron or molten copper in workbench
+- `[CHG]` Fixed loot table of Mercurian lantern dropping Mercurian stone instead of cinnabar when broken without silktouch
+- `[FIX]` Fixed Panel blocks having a really low durability
+- `[FIX]` Fixed quite a few blocks (including aluminum block) missing from the mineable_with_pickaxe block tag, which meant mining them was atrociously slow
+- `[FIX]` Fixed missing lang file for advancement for getting a spacesuit
+- `[CHG]` Removed the code that resulted in spaceships taking fall damage and basically crash landing…
+- `[FIX]` Fixed interaction code with the spaceship, which means you can now use items (and do things like eat) while a passenger of the spaceship
+- `[CHG]` Adjusted grass and foliage colors on the planets/moons to be… less vibrant green

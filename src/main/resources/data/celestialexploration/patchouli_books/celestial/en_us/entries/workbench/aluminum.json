@@ -1,0 +1,40 @@
+{
+  "name": "Aluminum",
+  "icon": "celestialexploration:aluminum_ingot",
+  "category": "celestialexploration:workbench",
+  "pages": [
+    "Aluminum is crafted from bauxite ingots.",
+    {
+      "type": "patchouli:spotlight",
+      "item": "celestialexploration:bauxite_ore",
+      "text": "Bauxite ore can be found easily across the Overworld between y levels 0 and 56.  It can also be found on other planets. Smelt down raw bauxite to create bauxite ingots."
+    },
+    "Once you've acquired bauxite ingots, aluminum can be crafted two different ways—using bauxite and iron ingots, or using bauxite and copper ingots!  First, it can be done through regular vanilla crafting.",
+    {
+      "type": "patchouli:crafting",
+      "recipe": "celestialexploration:aluminum_ingot",
+      "recipe2": "celestialexploration:aluminum_ingot_from_copper"
+    },
+    "Alternatively, aluminum can be crafted using molten iron or molten copper using the workbench.",
+    {
+      "type": "celestialexploration:workbench_recipe",
+      "recipe": "Aluminum Ingot",
+      "item_1": "celestialexploration:bauxite_ingot",
+      "item_2": "celestialexploration:bauxite_ingot",
+      "result": "celestialexploration:aluminum_ingot",
+      "fluidName": "Molten Iron",
+      "fluidMB": "111mb (1 ingots)"
+    },
+    {
+      "type": "celestialexploration:workbench_recipe",
+      "recipe": "Aluminum Ingot",
+      "item_1": "celestialexploration:bauxite_ingot",
+      "item_2": "celestialexploration:bauxite_ingot",
+      "result": "celestialexploration:aluminum_ingot",
+      "fluidName": "Molten Copper",
+      "fluidMB": "111mb (1 ingots)"
+    },
+    "Additionally, you can smelt aluminum down in the workbench to get molten aluminum, which is needed for crafting the spaceship.",
+    "Other than for the spaceship, aluminum can also be used for crafting aluminum panels and insulated panels!"
+  ]
+}

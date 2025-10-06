@@ -83,6 +83,8 @@ public class MeteorProjectile extends AbstractDirectionalProjectile {
         if (!this.level.isClientSide) {
             Explosion.BlockInteraction explosion$blockinteraction = CelestialCommonConfig.METEORS_EXPLODE.get() ? Explosion.BlockInteraction.DESTROY : Explosion.BlockInteraction.NONE;
 
+            explosion$blockinteraction = this.level.getRandom().nextInt(3) == 0 ? Explosion.BlockInteraction.NONE : explosion$blockinteraction;
+
             float explosion = this.level.getRandom().nextFloat(7.5F) - 4.0F;
             explosion = explosion < 0 ? 0 : explosion;
 

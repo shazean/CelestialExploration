@@ -1,0 +1,19 @@
+{
+  "name": "Mars Labyrinth",
+  "icon": "celestialexploration:mars_bricks",
+  "category": "celestialexploration:mars_labyrinth",
+  "pages": [
+    {
+      "type": "patchouli:image",
+      "images": [
+        "celestialexploration:textures/patchouli/mars_labyrinth.png"
+      ],
+      "border": true,
+      "text": "The Martian labyrinth can be found anywhere on the surface of Mars."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Inside the labyrinth is several layers of maze!  If you look carefully, you may spot a hidden path for how to easily navigate through the first level. But beware—you may miss any hidden treasure!"
+    }
+  ]
+}

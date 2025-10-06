@@ -1,0 +1,33 @@
+{
+  "name": "Steel",
+  "icon": "celestialexploration:steel_ingot",
+  "category": "celestialexploration:workbench",
+  "pages": [
+    "Steel can be crafted several ways, including through the crafting table or the workbench.",
+    {
+      "type": "patchouli:crafting",
+      "recipe": "celestialexploration:steel_ingot_crafted"
+    },
+    {
+      "type": "celestialexploration:workbench_recipe",
+      "recipe": "Steel Ingot",
+      "item_1": "minecraft:coal",
+      "result": "celestialexploration:steel_ingot",
+      "fluidName": "Molten Iron",
+      "fluidMB": "111mb (1 ingots)"
+    },
+    "Additionally, you can smelt steel down in the workbench to get molten steel, which is needed for crafting the spaceship.",
+    "Once you have created steel, it can have a number of different uses. As mentioned, it's needed for crafting the spaceship, but additionally, you can craft steel blocks or steel nuggets or even create steel armor.",
+    {
+      "type": "patchouli:crafting",
+      "recipe": "celestialexploration:steel_helmet",
+      "recipe2": "celestialexploration:steel_chestplate"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "celestialexploration:steel_leggings",
+      "recipe2": "celestialexploration:steel_boots"
+    },
+    "Steel armor is a small step above iron armor."
+  ]
+}

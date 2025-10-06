@@ -47,10 +47,10 @@ public class CelestialEntities {
             .sized(2.04F, 2.04F).clientTrackingRange(10).build(new ResourceLocation(CelestialExploration.MODID, "mars_mallow").toString()));
 
     public static final RegistryObject<EntityType<QuicksilverSlime>> QUICKSILVER_SLIME = registerEntityType("quicksilver_slime", "Quicksilver Slime", () -> EntityType.Builder.of(QuicksilverSlime::new, MobCategory.MONSTER)
-            .sized(2.04F, 2.04F).clientTrackingRange(10).build(new ResourceLocation(CelestialExploration.MODID, "quicksilver_slime").toString()));
+            .sized(3.14F, 3.14F).clientTrackingRange(10).build(new ResourceLocation(CelestialExploration.MODID, "quicksilver_slime").toString()));
 
     public static final RegistryObject<EntityType<ViscousSlime>> VISCOUS_SLIME = registerEntityType("viscous_slime", "Viscous Slime", () -> EntityType.Builder.of(ViscousSlime::new, MobCategory.MONSTER)
-            .sized(2.04F, 2.04F).clientTrackingRange(10).build(new ResourceLocation(CelestialExploration.MODID, "lunar_slime").toString()));
+            .sized(1.8F, 1.8F).clientTrackingRange(10).build(new ResourceLocation(CelestialExploration.MODID, "lunar_slime").toString()));
 
     public static final RegistryObject<EntityType<Lurker>> LURKER = registerEntityType("lurker", "Lurker", () -> EntityType.Builder.of(Lurker::new, MobCategory.MONSTER)
             .sized(0.6F, 1.7F).clientTrackingRange(8).build(new ResourceLocation(CelestialExploration.MODID, "lurker").toString()));

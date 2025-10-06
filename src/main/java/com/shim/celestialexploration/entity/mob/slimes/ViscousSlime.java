@@ -23,19 +23,11 @@ public class ViscousSlime extends AbstractQuicksilverSlime {
     public ViscousSlime(EntityType<? extends Slime> p_33588_, Level p_33589_) {
         super(p_33588_, p_33589_);
         this.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, CONVERSION_TIME, 1));
-
     }
 
     @Override
     protected void decreaseSquish() {
         this.targetSquish *= 0.75F; //0.6F;
-    }
-
-    public static boolean checkViscousSlimeSpawnRules(EntityType<ViscousSlime> slime, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, Random random) {
-        if (level.getDifficulty() == Difficulty.PEACEFUL || pos.getY() > 64) {
-            return false;
-        }
-        return isDarkEnoughToSpawn((ServerLevelAccessor) level, pos, random) && checkMobSpawnRules(slime, level, spawnType, pos, random);
     }
 
     @Override

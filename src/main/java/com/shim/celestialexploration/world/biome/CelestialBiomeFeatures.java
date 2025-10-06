@@ -2,9 +2,12 @@ package com.shim.celestialexploration.world.biome;
 
 import com.shim.celestialexploration.registry.CelestialEntities;
 import com.shim.celestiallib.api.world.biome.CLibBiomeFeatures;
+import net.minecraft.sounds.Music;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.*;
+
+import javax.annotation.Nullable;
 
 public class CelestialBiomeFeatures extends CLibBiomeFeatures {
 
@@ -21,31 +24,41 @@ public class CelestialBiomeFeatures extends CLibBiomeFeatures {
     }
 
     protected static void generalMonsters(MobSpawnSettings.Builder spawnBuilder, int voidedCount, int skeletonCount, int lurkerCount) {
-        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.VOIDED.get(), voidedCount, 4, 4));
-        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.SKELETON, skeletonCount, 4, 4));
-        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.LURKER.get(), lurkerCount, 4, 4));
+        generalMonsters(spawnBuilder, voidedCount, 4, 4, skeletonCount, 4, 4, lurkerCount, 4, 4);
+    }
+
+    protected static void generalNoCaveMonsters(MobSpawnSettings.Builder spawnBuilder, int voidedCount, int skeletonCount, int lurkerCount) {
+        generalMonsters(spawnBuilder, voidedCount, 0, 2, skeletonCount, 0, 2, lurkerCount, 0, 1);
+    }
+
+    protected static void generalMonsters(MobSpawnSettings.Builder spawnBuilder, int voidedCount, int minVoided, int maxVoided, int skeletonCount, int minSkeletons, int maxSkeletons, int lurkerCount, int minLurkers, int maxLurkers) {
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.VOIDED.get(), voidedCount, minVoided, maxVoided));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.SKELETON, skeletonCount, minSkeletons, maxSkeletons));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.LURKER.get(), lurkerCount, minLurkers, maxLurkers));
         spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.VOIDFELLOW.get(), 10, 1, 4));
     }
 
     public enum CelestialBody {
-        SPACE(0, 0, 90, 329011),
-        MARS(15565857, 14591603, 335425, 3150848),
-        MOON(1807, 1549, 335425, 69408),
-        VENUS(14200929, 10715456, 4741209, 3160378),
-        MERCURY(1807, 1549, 335425, 69408),
-        JUPITER(12814693, 9985854, 10914167, 8546133),
-        IO(1807, 4144438, 1776152, 1052687);
+        SPACE(0, 0, 90, 329011, 4738363),
+        MARS(15565857, 14591603, 335425, 3150848, 6571041),
+        MOON(1807, 1549, 335425, 69408, 4738363),
+        VENUS(14200929, 10715456, 4741209, 3160378, 5917209),
+        MERCURY(1807, 1549, 335425, 69408, 5327408),
+        JUPITER(12814693, 9985854, 10914167, 8546133, 6243872),
+        IO(1807, 4144438, 1776152, 1052687, 4740617);
 
         final int skyColor;
         final int skyFogColor;
         final int waterColor;
         final int waterFogColor;
+        final int grassFoliageColor;
 
-        CelestialBody(int skyColor, int skyFogColor, int waterColor, int waterFogColor) {
+        CelestialBody(int skyColor, int skyFogColor, int waterColor, int waterFogColor, int grassFoliageColor) {
             this.skyColor = skyColor;
             this.skyFogColor = skyFogColor;
             this.waterColor = waterColor;
             this.waterFogColor = waterFogColor;
+            this.grassFoliageColor = grassFoliageColor;
         }
     }
 }
