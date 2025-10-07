@@ -6,7 +6,7 @@
       "nbt": "{Damage:0}"
     },
     "title": {
-      "translate": "advancements.celestial.obtain_spacesuit.title"
+      "translate": "advancements.celestialexploration.obtain_spacesuit.title"
     },
     "description": {
       "translate": "advancements.celestialexploration.obtain_spacesuit.description"

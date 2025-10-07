@@ -92,6 +92,7 @@ public class CelestialItemModels extends BaseItemModels {
 		self(CelestialBlocks.GLOWING_MOON_SAND.get());
 		self(CelestialBlocks.LUNAR_LANTERN.get());
 		self(CelestialBlocks.MOON_SAND_PATH.get());
+		chestItem(CelestialBlocks.MOON_CHEST.get(), CelestialBlocks.MOON_STONE.get());
 
 
 		//---- MARS -------------------------------------------------------------------------------
@@ -163,6 +164,7 @@ public class CelestialItemModels extends BaseItemModels {
 		self(CelestialBlocks.MARS_SAND.get());
 		self(CelestialBlocks.COARSE_MARS_SAND.get());
 		self(CelestialBlocks.MARS_SAND_PATH.get());
+		chestItem(CelestialBlocks.MARS_CHEST.get(), CelestialBlocks.MARS_STONE.get());
 
 
 		//---- VENUS -------------------------------------------------------------------------------
@@ -243,6 +245,7 @@ public class CelestialItemModels extends BaseItemModels {
 		self(CelestialBlocks.VENUS_LANTERN.get());
 		self(CelestialBlocks.GEYSER.get());
 		self(CelestialBlocks.VENUS_SAND_PATH.get());
+		chestItem(CelestialBlocks.VENUS_CHEST.get(), CelestialBlocks.VENUS_STONE.get());
 
 
 		//---- MERCURY -------------------------------------------------------------------------------
@@ -316,6 +319,7 @@ public class CelestialItemModels extends BaseItemModels {
 		self(CelestialBlocks.COARSE_MERCURY_SAND.get());
 		self(CelestialBlocks.MERCURY_SAND_PATH.get());
 		self(CelestialBlocks.MERCURY_LANTERN.get());
+		chestItem(CelestialBlocks.MERCURY_CHEST.get(), CelestialBlocks.MERCURY_STONE.get());
 
 		//---- JUPITER -------------------------------------------------------------------------------
 		//DEEPSLATE
@@ -352,6 +356,7 @@ public class CelestialItemModels extends BaseItemModels {
 		self(CelestialBlocks.JUPITER_CORE.get());
 		self(CelestialBlocks.JUPITER_ATMOSPHERE.get());
 		self(CelestialBlocks.JUPITER_LANTERN.get());
+		chestItem(CelestialBlocks.JUPITER_CHEST.get(), "jupiter_deepslate_end");
 
 
 		//---- JUPITER'S MOONS -------------------------------------------------------------------------------
@@ -424,6 +429,7 @@ public class CelestialItemModels extends BaseItemModels {
 		self(CelestialBlocks.IO_SAND_PATH.get());
 		self(CelestialBlocks.IO_LANTERN.get());
 		self(CelestialBlocks.IO_GEYSER.get());
+		chestItem(CelestialBlocks.IO_CHEST.get(), CelestialBlocks.IO_STONE.get());
 
 
 		//EUROPA
@@ -847,6 +853,14 @@ public class CelestialItemModels extends BaseItemModels {
 
 	protected String name(ItemLike block) {
 		return block.asItem().getRegistryName().getPath();
+	}
+
+	public void chestItem(Block item, Block particle) {
+		this.singleTexture(name(item), new ResourceLocation(CelestialExploration.MODID, "item/chest_item"), "particle", modLoc("block/" + name(particle)));
+	}
+
+	public void chestItem(Block item, String particle) {
+		this.singleTexture(name(item), new ResourceLocation(CelestialExploration.MODID, "item/chest_item"), "particle", modLoc("block/" + particle));
 	}
 
 }

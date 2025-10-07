@@ -34,6 +34,11 @@ public class CelestialItems {
 		return item;
 	}
 
+	public static <T extends Item> RegistryObject<T> registerItemNoName(String nameIn, Supplier<T> itemIn) {
+		RegistryObject<T> item = ITEMS.register(nameIn, itemIn);
+		return item;
+	}
+
 	public static RegistryObject<Item> registerFood(String nameIn, String localizationIn, int nutrition, float saturation) {
 		RegistryObject<Item> item = ITEMS.register(nameIn, () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_FOOD).food((new FoodProperties.Builder()).fast().nutrition(nutrition).saturationMod(saturation).build())));
 		ITEM_LANG_EN_US.put(item, localizationIn);
@@ -200,6 +205,14 @@ public class CelestialItems {
 	public static final RegistryObject<Item> EUREKA_BUCKET = registerItem("eureka_bucket", "Eureka! Bucket", () -> new MobBucketItem(CelestialEntities.EUREKA, () -> Fluids.WATER, () -> SoundEvents.BUCKET_EMPTY_FISH, (new Item.Properties()).stacksTo(1).tab(CreativeModeTab.TAB_MISC)));
 
 	public static final RegistryObject<Item> FLUID_BASIN = registerItem("fluid_basin", "Fluid Basin", () -> new BasinItem((new Item.Properties()).stacksTo(1).tab(CelestialTabs.SPACESHIP_TAB)));
+
+
+	public static final RegistryObject<Item> MARS_CHEST = registerItemNoName("mars_chest", () -> new StoneChestItem(CelestialBlocks.MARS_CHEST.get(), (new Item.Properties()).tab(CelestialTabs.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> MOON_CHEST = registerItemNoName("moon_chest", () -> new StoneChestItem(CelestialBlocks.MOON_CHEST.get(), (new Item.Properties()).tab(CelestialTabs.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> VENUS_CHEST = registerItemNoName("venus_chest", () -> new StoneChestItem(CelestialBlocks.VENUS_CHEST.get(), (new Item.Properties()).tab(CelestialTabs.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> MERCURY_CHEST = registerItemNoName("mercury_chest", () -> new StoneChestItem(CelestialBlocks.MERCURY_CHEST.get(), (new Item.Properties()).tab(CelestialTabs.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> JUPITER_CHEST = registerItemNoName("jupiter_chest", () -> new StoneChestItem(CelestialBlocks.JUPITER_CHEST.get(), (new Item.Properties()).tab(CelestialTabs.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> IO_CHEST = registerItemNoName("io_chest", () -> new StoneChestItem(CelestialBlocks.IO_CHEST.get(), (new Item.Properties()).tab(CelestialTabs.CELESTIAL_MISC_TAB)));
 
 
 //	public static final RegistryObject<Item> RED_DISPLAY_BOARD = ITEMS.register("red_display_board", () -> new DisplayBoardItem((new Item.Properties()).tab(CelestialTabs.CELESTIAL_MISC_TAB), BlockRegistry.RED_DISPLAY_BOARD.get(), BlockRegistry.RED_WALL_DISPLAY_BOARD.get()));

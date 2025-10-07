@@ -1,0 +1,6 @@
+{
+  "parent": "celestialexploration:item/chest_item",
+  "textures": {
+    "particle": "celestialexploration:block/mars_stone"
+  }
+}

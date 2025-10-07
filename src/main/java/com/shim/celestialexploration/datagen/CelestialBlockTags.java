@@ -108,6 +108,8 @@ public class CelestialBlockTags extends BlockTagsProvider {
 
                 .add(CelestialBlocks.STEEL_FRAME.get())
 
+                .addTag(CelestialTags.Blocks.CHESTS)
+
                 .add(CelestialBlocks.WORKBENCH.get()).add(CelestialBlocks.OXYGEN_COMPRESSOR.get());
 
         tag(BlockTags.MINEABLE_WITH_AXE)
@@ -645,6 +647,14 @@ public class CelestialBlockTags extends BlockTagsProvider {
                 .add(CelestialBlocks.VENUS_COBBLESTONE.get())
                 .add(CelestialBlocks.MERCURY_COBBLESTONE.get())
                 .add(CelestialBlocks.IO_COBBLESTONE.get());
+
+        tag(CelestialTags.Blocks.CHESTS)
+                .add(CelestialBlocks.MOON_CHEST.get())
+                .add(CelestialBlocks.MARS_CHEST.get())
+                .add(CelestialBlocks.VENUS_CHEST.get())
+                .add(CelestialBlocks.MERCURY_CHEST.get())
+                .add(CelestialBlocks.JUPITER_CHEST.get())
+                .add(CelestialBlocks.IO_CHEST.get());
 
     }
 

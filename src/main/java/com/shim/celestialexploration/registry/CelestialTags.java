@@ -81,6 +81,9 @@ public class CelestialTags {
 
         public static final TagKey<Block> COBBLESAURUS_FOOD = BlockTags.create(modLoc("cobblesaurus_food"));
 
+        public static final TagKey<Block> CHESTS = BlockTags.create(modLoc("chests"));
+
+
 
     }
 
@@ -141,6 +144,8 @@ public class CelestialTags {
         public static final TagKey<Item> COBBLESAURUS_FOOD = ItemTags.create(modLoc("cobblesaurus_food"));
 
         public static final TagKey<Item> LUNAR_DUSTS = ItemTags.create(modLoc("lunar_dusts"));
+
+        public static final TagKey<Item> CHESTS = ItemTags.create(modLoc("chests"));
 
 
     }

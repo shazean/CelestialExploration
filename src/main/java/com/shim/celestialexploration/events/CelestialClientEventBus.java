@@ -1,11 +1,13 @@
 package com.shim.celestialexploration.events;
 
+import com.google.common.collect.ImmutableList;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.blocks.CelestialSkullRenderer;
 import com.shim.celestialexploration.capabilities.LoxTankCapability;
 import com.shim.celestialexploration.entity.client.layers.VillagerSpaceSuitLayer;
 import com.shim.celestialexploration.entity.client.renderer.*;
 import com.shim.celestialexploration.entity.client.renderer.projectile.MeteorRenderer;
+import com.shim.celestialexploration.inventory.StoneChestRenderer;
 import com.shim.celestialexploration.inventory.screens.*;
 import com.shim.celestialexploration.item.armor.*;
 import com.shim.celestialexploration.registry.*;
@@ -17,16 +19,22 @@ import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.model.SkullModel;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.Sheets;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.VillagerRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.client.resources.model.Material;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.item.Items;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.client.RecipeBookRegistry;
 import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -207,12 +215,37 @@ public class CelestialClientEventBus {
         AzArmorRendererRegistry.register(() -> new SpacesuitRenderer("thermal_spacesuit"), CelestialItems.THERMAL_SPACESUIT_HELMET.get(), CelestialItems.THERMAL_SPACESUIT_CHESTPLATE.get(), CelestialItems.THERMAL_SPACESUIT_LEGGINGS.get(), CelestialItems.THERMAL_SPACESUIT_BOOTS.get());
         AzArmorRendererRegistry.register(() -> new SpacesuitRenderer("basic_spacesuit"), CelestialItems.BASIC_SPACESUIT_HELMET.get(), CelestialItems.BASIC_SPACESUIT_CHESTPLATE.get(), CelestialItems.BASIC_SPACESUIT_LEGGINGS.get(), CelestialItems.BASIC_SPACESUIT_BOOTS.get());
 
-        RecipeBookCategories.create("celestialexploration:workbench_crafting",  new ItemStack[] { new ItemStack((ItemLike) CelestialBlocks.WORKBENCH.get()) });
+//        RecipeBookCategories.create("celestialexploration:workbench_crafting",  new ItemStack[] { new ItemStack((ItemLike) CelestialBlocks.WORKBENCH.get()) });
         RecipeBookCategories.create("celestialexploration:workbench_smelting", new ItemStack(CelestialBlocks.WORKBENCH.get()));
+
+        RecipeBookRegistry.addCategoriesToType(RecipeBookType.create("celestialexploration:workbench_crafting"), ImmutableList.of(RecipeBookCategories.create("celestialexploration:workbench_crafting", new ItemStack(Items.COMPASS))));
+
+        BlockEntityRenderers.register(CelestialBlockEntities.STONE_CHEST_BLOCK_ENTITY.get(), StoneChestRenderer::new);
+
+    }
+
+
+    @OnlyIn(Dist.CLIENT)
+    @SubscribeEvent
+    public static void onTextureStitch(TextureStitchEvent.Pre event) {
+        if (event.getAtlas().location().equals(Sheets.CHEST_SHEET)) {
+            CelestialExploration.LOGGER.debug("got chest atlas");
+            for (Material material : StoneChestRenderer.single) {
+                event.addSprite(material.texture());
+            }
+            for (Material material : StoneChestRenderer.left) {
+                event.addSprite(material.texture());
+            }
+            for (Material material : StoneChestRenderer.right) {
+                event.addSprite(material.texture());
+            }
+        }
     }
 
     @SubscribeEvent
     public static void onRegisterRenderers(EntityRenderersEvent.RegisterRenderers event) {
+//        event.registerBlockEntityRenderer(CelestialBlockEntities.STONE_CHEST_BLOCK_ENTITY.get(), StoneChestRenderer::new);
+
 //        event.registerBlockEntityRenderer(BlockEntityRegistry.DISPLAY_BOARD_BLOCK_ENTITY.get(), DisplayBoardRenderer::new);
     }
 }

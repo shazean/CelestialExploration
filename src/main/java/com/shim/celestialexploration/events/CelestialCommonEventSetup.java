@@ -1,5 +1,6 @@
 package com.shim.celestialexploration.events;
 
+import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.entity.ambient.Eureka;
 import com.shim.celestialexploration.entity.friendlies.CelestialCat;
 import com.shim.celestialexploration.entity.mob.*;
@@ -16,7 +17,9 @@ import com.shim.celestialexploration.registry.CelestialPOIs;
 import com.shim.celestialexploration.registry.CelestialStructurePieceType;
 import com.shim.celestialexploration.world.structures.ResearchTunnelPieces;
 import mod.azure.azurelib.rewrite.animation.cache.AzIdentityRegistry;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.SpawnPlacements;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 
@@ -55,6 +58,9 @@ public class CelestialCommonEventSetup {
             CelestialStructurePieceType.RESEARCH_TUNNEL_CROSSING = CelestialStructurePieceType.register("RTCrossing", ResearchTunnelPieces.ResearchTunnelCrossing::new);
             CelestialStructurePieceType.RESEARCH_TUNNEL_ROOM = CelestialStructurePieceType.register("RTRoom", ResearchTunnelPieces.ResearchTunnelRoom::new);
             CelestialStructurePieceType.RESEARCH_TUNNEL_STAIRS = CelestialStructurePieceType.register("RTStairs", ResearchTunnelPieces.ResearchTunnelStairs::new);
+
+            RecipeType.register(new ResourceLocation(CelestialExploration.MODID, "workbench_crafting").toString());
+
         });
     }
 

@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "celestialexploration:mercury_chest"
+    ]
+  },
+  "criteria": {
+    "has_mercury_cobblestone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:mercury_cobblestone"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "celestialexploration:mercury_chest"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_mercury_cobblestone",
+      "has_the_recipe"
+    ]
+  ]
+}

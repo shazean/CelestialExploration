@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "celestialexploration:moon_chest",
+    "celestialexploration:mars_chest",
+    "celestialexploration:venus_chest",
+    "celestialexploration:mercury_chest",
+    "celestialexploration:jupiter_chest",
+    "celestialexploration:io_chest"
+  ]
+}

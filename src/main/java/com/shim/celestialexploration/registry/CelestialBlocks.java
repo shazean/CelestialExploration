@@ -2,6 +2,7 @@ package com.shim.celestialexploration.registry;
 
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.blocks.*;
+import com.shim.celestialexploration.inventory.StoneChestType;
 import com.shim.celestiallib.api.blocks.AbstractPortalBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -144,6 +145,7 @@ public class CelestialBlocks {
     public static final RegistryObject<Block> COARSE_MOON_SAND = registerBlockDropsSelf("coarse_moon_sand", "Coarse Lunar Regolith", () -> new Block(Block.Properties.of(Material.DIRT).strength(0.5F).sound(SoundType.GRAVEL)), CelestialTabs.CELESTIAL_BLOCKS_TAB);
     public static final RegistryObject<Block> LUNAR_LANTERN = registerBlock("lunar_lantern", "Lunar Lantern", () -> new Block(Block.Properties.of(Material.GLASS, MaterialColor.QUARTZ).strength(0.3F).sound(SoundType.GLASS).lightLevel((light) -> 13)), CelestialTabs.CELESTIAL_BLOCKS_TAB);
     public static final RegistryObject<Block> MOON_SAND_PATH = registerBlock("moon_sand_path", "Lunar Regolith Path", () -> new CelestialPathBlock(Block.Properties.of(Material.SAND).strength(0.5F).sound(SoundType.SAND), MOON_SAND.get()), CelestialTabs.CELESTIAL_BLOCKS_TAB);
+    public static final RegistryObject<Block> MOON_CHEST = registerBlockNoItem("moon_chest", "Lunar Stone Chest", () -> new StoneChestBlock(StoneChestType.MOON));
 
     //---- MARS -------------------------------------------------------------------------------
     //STONE
@@ -218,6 +220,7 @@ public class CelestialBlocks {
     //	public static final RegistryObject<Block> MARS_SOIL = BLOCKS.register("mars_soil", () -> new MarsFarmlandBlock(Block.Properties.of(Material.DIRT).strength(0.6f).sound(SoundType.GRAVEL)));
     public static final RegistryObject<Block> MARS_LANTERN = registerBlock("mars_lantern", "Martian Lantern", () -> new Block(Block.Properties.of(Material.GLASS, MaterialColor.QUARTZ).strength(0.3F).sound(SoundType.GLASS).lightLevel((light) -> 13)), CelestialTabs.CELESTIAL_BLOCKS_TAB);
     public static final RegistryObject<Block> MARS_SAND_PATH = registerBlock("mars_sand_path", "Martian Regolith Path", () -> new CelestialPathBlock(Block.Properties.of(Material.SAND).strength(0.5F).sound(SoundType.SAND), MARS_SAND.get()), CelestialTabs.CELESTIAL_BLOCKS_TAB);
+    public static final RegistryObject<Block> MARS_CHEST = registerBlockNoItem("mars_chest", "Martian Stone Chest", () -> new StoneChestBlock(StoneChestType.MARS));
 
     //---- VENUS -------------------------------------------------------------------------------
     //STONE
@@ -299,6 +302,7 @@ public class CelestialBlocks {
     public static final RegistryObject<Block> GEYSER = registerBlockDropsSelf("geyser", "Venusian Geyser", () -> new GeyserBlock(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE).isValidSpawn(CelestialBlocks::never)), CelestialTabs.CELESTIAL_BLOCKS_TAB);
     public static final RegistryObject<Block> SULFURIC_OBSIDIAN = registerBlockDropsSelf("sulfuric_obsidian", "Sulfuric Obsidian", () -> new Block(Block.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK).strength(50.0f, 1200.0f).sound(SoundType.STONE).requiresCorrectToolForDrops()), CelestialTabs.CELESTIAL_BLOCKS_TAB);
     public static final RegistryObject<Block> VENUS_SAND_PATH = registerBlock("venus_sand_path", "Venusian Regolith Path", () -> new CelestialPathBlock(Block.Properties.of(Material.SAND).strength(0.5F).sound(SoundType.SAND), VENUS_SAND.get()), CelestialTabs.CELESTIAL_BLOCKS_TAB);
+    public static final RegistryObject<Block> VENUS_CHEST = registerBlockNoItem("venus_chest", "Venusian Stone Chest", () -> new StoneChestBlock(StoneChestType.VENUS));
 
     //---- MERCURY -------------------------------------------------------------------------------
     //STONE
@@ -375,6 +379,7 @@ public class CelestialBlocks {
     public static final RegistryObject<Block> COARSE_MERCURY_SAND = registerBlockDropsSelf("coarse_mercury_sand", "Coarse Mercurian Regolith", () -> new Block(Block.Properties.of(Material.DIRT).strength(0.5F).sound(SoundType.GRAVEL)), CelestialTabs.CELESTIAL_BLOCKS_TAB);
     public static final RegistryObject<Block> MERCURY_SAND_PATH = registerBlock("mercury_sand_path", "Mercurian Regolith Path", () -> new CelestialPathBlock(Block.Properties.of(Material.SAND).strength(0.5F).sound(SoundType.SAND), MERCURY_SAND.get()), CelestialTabs.CELESTIAL_BLOCKS_TAB);
     public static final RegistryObject<Block> MERCURY_LANTERN = registerBlock("mercury_lantern", "Mercurian Lantern", () -> new Block(Block.Properties.of(Material.GLASS, MaterialColor.QUARTZ).strength(0.3F).sound(SoundType.GLASS).lightLevel((light) -> 13)), CelestialTabs.CELESTIAL_BLOCKS_TAB);
+    public static final RegistryObject<Block> MERCURY_CHEST = registerBlockNoItem("mercury_chest", "Mercurian Stone Chest", () -> new StoneChestBlock(StoneChestType.MERCURY));
 
     //---- JUPITER -------------------------------------------------------------------------------
     //DEEPSLATE
@@ -417,7 +422,7 @@ public class CelestialBlocks {
     public static final RegistryObject<Block> JUPITER_CORE = registerCoreBlock("jupiter_core", "Jovian Core", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F).noDrops().isValidSpawn(CelestialBlocks::never)));
     public static final RegistryObject<Block> JUPITER_LANTERN = registerBlock("jupiter_lantern", "Jovian Lantern", () -> new Block(Block.Properties.of(Material.GLASS, MaterialColor.QUARTZ).strength(0.3F).sound(SoundType.GLASS).lightLevel((light) -> 13)), CelestialTabs.CELESTIAL_BLOCKS_TAB);
     public static final RegistryObject<Block> JUPITER_ATMOSPHERE = registerBlock("jupiter_atmosphere", "Jovian Atmosphere", () -> new AtmosphereBlock(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE).noCollission().noOcclusion().isViewBlocking(CelestialBlocks::never).isSuffocating(CelestialBlocks::never)), CelestialTabs.CELESTIAL_BLOCKS_TAB);
-
+    public static final RegistryObject<Block> JUPITER_CHEST = registerBlockNoItem("jupiter_chest", "Jovian Deepslate Chest", () -> new StoneChestBlock(StoneChestType.JUPITER));
 
     //---- JUPITER'S MOONS -------------------------------------------------------------------------------
     //IO
@@ -493,6 +498,7 @@ public class CelestialBlocks {
     public static final RegistryObject<Block> IO_SAND_PATH = registerBlock("io_sand_path", "Ionian Regolith Path", () -> new CelestialPathBlock(Block.Properties.of(Material.SAND).strength(0.5F).sound(SoundType.SAND), IO_SAND.get()), CelestialTabs.CELESTIAL_BLOCKS_TAB);
     public static final RegistryObject<Block> GLOWING_IO_SAND = registerBlock("glowing_io_sand", "Glowing Ionian Regolith", () -> new SandBlock(0xE7E2E2, Block.Properties.of(Material.GLASS, MaterialColor.COLOR_BLUE).strength(0.5F).sound(SoundType.SAND).lightLevel((light) -> 2)), CelestialTabs.CELESTIAL_BLOCKS_TAB);
     public static final RegistryObject<Block> IO_GEYSER = registerBlockDropsSelf("io_geyser", "Ionian Geyser", () -> new GeyserBlock(Block.Properties.of(Material.STONE).strength(1.5f, 6.0f).sound(SoundType.STONE).isValidSpawn(CelestialBlocks::never)), CelestialTabs.CELESTIAL_BLOCKS_TAB);
+    public static final RegistryObject<Block> IO_CHEST = registerBlockNoItem("io_chest", "Ionian Stone Chest", () -> new StoneChestBlock(StoneChestType.IO));
 
     //EUROPA
     public static final RegistryObject<Block> EUROPA_CORE = registerCoreBlock("europa_core", "Europan Core", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F).noDrops().isValidSpawn(CelestialBlocks::never)));
