@@ -1,0 +1,5 @@
+- `[NEW]` The planet self-sufficiency update! So you don't have to have AS MUCH wood when you go out on adventures in space…
+  - `[NEW]` New stone chests for each planet (deepslate for Jupiter)
+  - `[NEW]` New display boards, aka futuristic signs. Available in 4 colors!
+  - `[NEW]` New Martian, Lunar, and Mercurian farmlands! Crafted using regolith, coal, and bonemeal.  No, you can't farm on Venus. That's like trying to farm in the Nether. Why.
+  - `[CHG]` Added bonemeal to colony loot tables

@@ -636,7 +636,7 @@ public class CelestialRecipeGen extends RecipeProvider {
 		ShapedRecipeBuilder.shaped(CelestialItems.CRACKER.get(), 4).pattern("X").pattern("X").define('X', Items.WHEAT).unlockedBy("wheat", has(Items.WHEAT)).save(consumer);
 		smelting(CelestialItems.MARSHMALLOW.get(), CelestialItems.ROASTED_MARSHMALLOW.get(), 0.1F, 100, CelestialItems.MARSHMALLOW_GOO.get(), consumer);
 		ShapelessRecipeBuilder.shapeless(CelestialItems.SMORES.get()).requires(CelestialItems.ROASTED_MARSHMALLOW.get()).requires(CelestialItems.CHOCOLATE.get()).requires(CelestialItems.CRACKER.get()).requires(CelestialItems.CRACKER.get()).unlockedBy("marshmallow_goo", has(CelestialItems.MARSHMALLOW_GOO.get())).save(consumer);
-		ShapelessRecipeBuilder.shapeless(CelestialItems.LUNAR_CHEESE.get()).requires(CelestialItems.LUNAR_GOO.get()).requires(Items.MILK_BUCKET).unlockedBy("lunar_goo", has(CelestialItems.LUNAR_GOO.get())).save(consumer);
+		ShapelessRecipeBuilder.shapeless(CelestialItems.LUNAR_CHEESE.get()).requires(CelestialItems.MOON_MILK_BUCKET.get()).unlockedBy("moon_milk", has(CelestialItems.MOON_MILK_BUCKET.get())).save(consumer);
 		ShapelessRecipeBuilder.shapeless(CelestialItems.CHEESE.get()).requires(Items.MILK_BUCKET).requires(Items.MILK_BUCKET).unlockedBy("milk", has(Items.MILK_BUCKET)).save(consumer);
 		ShapelessRecipeBuilder.shapeless(CelestialItems.SUSPICIOUS_JELLO.get()).requires(CelestialTags.Items.SLIME_DROPS).requires(Items.SUGAR).unlockedBy("slime_ball", has(Items.SLIME_BALL)).save(consumer);
 

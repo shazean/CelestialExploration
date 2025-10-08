@@ -5,6 +5,7 @@ import com.shim.celestialexploration.entity.ambient.Eureka;
 import com.shim.celestialexploration.entity.client.layers.VillagerSpaceSuitLayer;
 import com.shim.celestialexploration.entity.friendlies.CelestialCat;
 import com.shim.celestialexploration.entity.friendlies.Cobblesaurus;
+import com.shim.celestialexploration.entity.friendlies.MoonCow;
 import com.shim.celestialexploration.entity.mob.*;
 import com.shim.celestialexploration.entity.mob.piglins.AstralPiglin;
 import com.shim.celestialexploration.entity.mob.piglins.CyborgPiglin;
@@ -75,6 +76,8 @@ public class CelestialEventBus {
         event.put(CelestialEntities.ORBITER.get(), Orbiter.createAttributes().build());
         event.put(CelestialEntities.MECHACERBERUS.get(), MechaCerberus.createAttributes().build());
         event.put(CelestialEntities.MECHACERBERUS_BOSS.get(), MechaCerberusBoss.createAttributes().build());
+        event.put(CelestialEntities.MOON_COW.get(), MoonCow.createAttributes().build());
+
     }
 
     @SubscribeEvent

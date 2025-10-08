@@ -4,6 +4,7 @@ import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.entity.ambient.Eureka;
 import com.shim.celestialexploration.entity.friendlies.CelestialCat;
 import com.shim.celestialexploration.entity.friendlies.Cobblesaurus;
+import com.shim.celestialexploration.entity.friendlies.MoonCow;
 import com.shim.celestialexploration.entity.mob.*;
 import com.shim.celestialexploration.entity.mob.piglins.AstralPiglin;
 import com.shim.celestialexploration.entity.mob.piglins.CyborgPiglin;
@@ -15,6 +16,7 @@ import com.shim.celestialexploration.entity.vehicle.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.entity.animal.Cow;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -149,6 +151,10 @@ public class CelestialEntities {
 
     public static final RegistryObject<EntityType<Cobblesaurus>> COBBLESAURUS = registerEntityType("cobblesaurus", "Cobblesaurus", () -> EntityType.Builder.of(Cobblesaurus::new, MobCategory.CREATURE)
             .sized(2.0F, 1.8F).clientTrackingRange(8).build(new ResourceLocation(CelestialExploration.MODID, "cobblesaurus").toString()));
+
+
+    public static final RegistryObject<EntityType<MoonCow>> MOON_COW = registerEntityType("moon_ow", "Moon Cow", () -> EntityType.Builder.of(MoonCow::new, MobCategory.CREATURE)
+            .sized(0.8F, 1.4F).clientTrackingRange(10).build(new ResourceLocation(CelestialExploration.MODID, "moon_cow").toString()));
 
 
     //    public static final RegistryObject<EntityType<ControlPanel>> CONTROL_PANEL = registerEntityType("control_panel_1", "Control Panel", () -> EntityType.Builder.<ControlPanel>of(ControlPanel::new, MobCategory.MISC)

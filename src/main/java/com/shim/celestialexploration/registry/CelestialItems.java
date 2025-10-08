@@ -134,6 +134,7 @@ public class CelestialItems {
 	public static final RegistryObject<Item> WILD_MECHADOG_SPAWN_EGG = registerItem("wild_mechadog_spawn_egg", "Wild MechaDog Spawn Egg", () -> new ForgeSpawnEggItem(CelestialEntities.MECHADOG, 0x0b6f3f, 0x1d8c56, new Item.Properties().tab(CelestialTabs.CELESTIAL_MISC_TAB)));
 	public static final RegistryObject<Item> COBBLESAURUS_SPAWN_EGG = registerItem("cobblesaurus_spawn_egg", "Cobblesaurus Spawn Egg", () -> new ForgeSpawnEggItem(CelestialEntities.COBBLESAURUS, 0x0b6f3f, 0x1d8c56, new Item.Properties().tab(CelestialTabs.CELESTIAL_MISC_TAB)));
 	public static final RegistryObject<Item> ORBITER_SPAWN_EGG = registerItem("orbiter_spawn_egg", "Orbiter Spawn Egg", () -> new ForgeSpawnEggItem(CelestialEntities.ORBITER, 0x0b6f3f, 0x1d8c56, new Item.Properties().tab(CelestialTabs.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> MOON_COW_SPAWN_EGG = registerItem("moon_cow_spawn_egg", "Moon Cow Spawn Egg", () -> new ForgeSpawnEggItem(CelestialEntities.MOON_COW, 0x302050, 0xfcca73, new Item.Properties().tab(CelestialTabs.CELESTIAL_MISC_TAB)));
 
  	public static final RegistryObject<Item> WHITE_MECHADOG = registerItem("white_mechadog", "White MechaDog", () -> new AutoTameSpawnItem(CelestialEntities.MECHADOG, DyeType.WHITE, new Item.Properties().tab(CelestialTabs.CELESTIAL_MISC_TAB)));
 	public static final RegistryObject<Item> GREY_MECHADOG = registerItem("grey_mechadog", "Grey MechaDog", () -> new AutoTameSpawnItem(CelestialEntities.MECHADOG, DyeType.GREY, new Item.Properties().tab(CelestialTabs.CELESTIAL_MISC_TAB)));
@@ -195,17 +196,17 @@ public class CelestialItems {
 
 	public static final RegistryObject<Item> STEEL_ROD = registerItem("steel_rod", "Steel Rod", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MATERIALS)));
 	public static final RegistryObject<Item> FLARE_ROD = registerItem("flare_rod", "Flare Rod", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MATERIALS)));
+	public static final RegistryObject<Item> STONE_ROD = registerItem("stone_rod", "Stone Rod", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MATERIALS)));
+
 	public static final RegistryObject<Item> STEEL_WOOL = registerItem("steel_wool", "Steel Wool", () -> new Item((new Item.Properties()).tab(CreativeModeTab.TAB_MATERIALS)));
 	public static final RegistryObject<Item> SULFUR_CRYSTAL = registerItem("sulfur_crystal", "Sulfur Crystal", () -> new Item((new Item.Properties()).tab(CreativeModeTab.TAB_MATERIALS)));
 	public static final RegistryObject<Item> CINNABAR = registerItem("cinnabar", "Cinnabar", () -> new Item((new Item.Properties()).tab(CreativeModeTab.TAB_MATERIALS)));
 
 	public static final RegistryObject<Item> MECHACERBERUS_CORE = registerItem("mechacerberus_core", "MechaCerberus Core", () -> new Item((new Item.Properties()).tab(CelestialTabs.CELESTIAL_MISC_TAB)));
 
-
 	public static final RegistryObject<Item> EUREKA_BUCKET = registerItem("eureka_bucket", "Eureka! Bucket", () -> new MobBucketItem(CelestialEntities.EUREKA, () -> Fluids.WATER, () -> SoundEvents.BUCKET_EMPTY_FISH, (new Item.Properties()).stacksTo(1).tab(CreativeModeTab.TAB_MISC)));
-
 	public static final RegistryObject<Item> FLUID_BASIN = registerItem("fluid_basin", "Fluid Basin", () -> new BasinItem((new Item.Properties()).stacksTo(1).tab(CelestialTabs.SPACESHIP_TAB)));
-
+	public static final RegistryObject<Item> MOON_MILK_BUCKET = registerItem("moon_milk_bucket", "Moon Milk Bucket", () -> new MilkBucketItem((new Item.Properties()).craftRemainder(Items.BUCKET).stacksTo(1).tab(CreativeModeTab.TAB_MISC)));
 
 	public static final RegistryObject<Item> MARS_CHEST = registerItemNoName("mars_chest", () -> new StoneChestItem(CelestialBlocks.MARS_CHEST.get(), (new Item.Properties()).tab(CelestialTabs.CELESTIAL_MISC_TAB)));
 	public static final RegistryObject<Item> MOON_CHEST = registerItemNoName("moon_chest", () -> new StoneChestItem(CelestialBlocks.MOON_CHEST.get(), (new Item.Properties()).tab(CelestialTabs.CELESTIAL_MISC_TAB)));
@@ -213,7 +214,6 @@ public class CelestialItems {
 	public static final RegistryObject<Item> MERCURY_CHEST = registerItemNoName("mercury_chest", () -> new StoneChestItem(CelestialBlocks.MERCURY_CHEST.get(), (new Item.Properties()).tab(CelestialTabs.CELESTIAL_MISC_TAB)));
 	public static final RegistryObject<Item> JUPITER_CHEST = registerItemNoName("jupiter_chest", () -> new StoneChestItem(CelestialBlocks.JUPITER_CHEST.get(), (new Item.Properties()).tab(CelestialTabs.CELESTIAL_MISC_TAB)));
 	public static final RegistryObject<Item> IO_CHEST = registerItemNoName("io_chest", () -> new StoneChestItem(CelestialBlocks.IO_CHEST.get(), (new Item.Properties()).tab(CelestialTabs.CELESTIAL_MISC_TAB)));
-
 
 	public static final RegistryObject<Item> RED_DISPLAY_BOARD = ITEMS.register("red_display_board", () -> new SignItem((new Item.Properties()).tab(CelestialTabs.CELESTIAL_MISC_TAB), CelestialBlocks.RED_DISPLAY_BOARD.get(), CelestialBlocks.RED_WALL_DISPLAY_BOARD.get()));
 	public static final RegistryObject<Item> BLACK_DISPLAY_BOARD = ITEMS.register("black_display_board", () -> new SignItem((new Item.Properties()).tab(CelestialTabs.CELESTIAL_MISC_TAB), CelestialBlocks.BLACK_DISPLAY_BOARD.get(), CelestialBlocks.BLACK_WALL_DISPLAY_BOARD.get()));

@@ -771,12 +771,13 @@ public class CelestialItemModels extends BaseItemModels {
 		handheldItem(CelestialItems.STEEL_ROD.get());
 		generatedItem(CelestialItems.STEEL_WOOL.get());
 		handheldItem(CelestialItems.FLARE_ROD.get());
-//		generatedItem(ItemRegistry.BLOCK_MOLD.get());
-//		generatedItem(ItemRegistry.INGOT_MOLD.get());
 		generatedItem(CelestialItems.SULFUR_CRYSTAL.get());
 		generatedItem(CelestialItems.LUNAR_GOO.get());
 		generatedItem(CelestialItems.CINNABAR.get());
 		generatedItem(CelestialItems.MECHACERBERUS_CORE.get());
+
+		generatedItem(CelestialItems.MOON_MILK_BUCKET.get());
+
 
 		//SPAWN EGGS
 		spawnEgg(CelestialItems.RUST_SPAWN_EGG.get());
@@ -805,6 +806,7 @@ public class CelestialItemModels extends BaseItemModels {
 		spawnEgg(CelestialItems.WILD_MECHADOG_SPAWN_EGG.get());
 		spawnEgg(CelestialItems.COBBLESAURUS_SPAWN_EGG.get());
 		spawnEgg(CelestialItems.ORBITER_SPAWN_EGG.get());
+		spawnEgg(CelestialItems.MOON_COW_SPAWN_EGG.get());
 
 		generatedItem(CelestialItems.BLACK_MECHADOG.get());
 		generatedItem(CelestialItems.GREY_MECHADOG.get());
