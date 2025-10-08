@@ -127,7 +127,7 @@
               "count": {
                 "type": "minecraft:uniform",
                 "min": 1.0,
-                "max": 3.0
+                "max": 4.0
               },
               "add": false
             }

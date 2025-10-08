@@ -94,6 +94,9 @@ public class CelestialItemTags extends ItemTagsProvider {
 		this.copy(CelestialTags.Blocks.CHESTS, CelestialTags.Items.CHESTS);
 		this.copy(CelestialTags.Blocks.CELESTIAL_COBBLESTONE, CelestialTags.Items.CELESTIAL_COBBLESTONE);
 
+		this.copy(CelestialTags.Blocks.FARMLAND, CelestialTags.Items.FARMLAND);
+
+
 		tag(CelestialTags.Items.LUNAR_DUSTS).add(CelestialItems.MOON_DUST.get()).add(CelestialItems.CALLISTO_DUST.get())
 				.add(CelestialItems.IO_DUST.get()).add(CelestialItems.GANYMEDE_DUST.get()).add(CelestialItems.EUROPA_DUST.get())
 				.add(CelestialItems.WHITE_MOON_DUST.get());

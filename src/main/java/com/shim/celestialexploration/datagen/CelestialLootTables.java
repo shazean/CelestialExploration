@@ -208,6 +208,8 @@ public class CelestialLootTables extends BaseLootTableProvider {
     	block(CelestialBlocks.GLOWING_MOON_SAND.get(), createSilkTouchTable(CelestialBlocks.GLOWING_MOON_SAND.get(), CelestialItems.MOON_DUST.get(), 2, 5));
 		block(CelestialBlocks.LUNAR_LANTERN.get(), createSilkTouchTable(CelestialBlocks.LUNAR_LANTERN.get(), CelestialItems.MOON_DUST.get(), 1, 3));
 
+		block(CelestialBlocks.MOON_CHEST.get(), createSimpleTable(CelestialBlocks.MOON_CHEST.get()));
+
 		//---- MARS -------------------------------------------------------------------------------
 		//STONE
 		block(CelestialBlocks.MARS_STONE_SLAB.get(), createSlabItemTable(CelestialBlocks.MARS_STONE_SLAB.get()));
@@ -232,6 +234,7 @@ public class CelestialLootTables extends BaseLootTableProvider {
 
 		//OTHER
 		block(CelestialBlocks.MARS_LANTERN.get(), createSilkTouchTable(CelestialBlocks.MARS_LANTERN.get(), CelestialItems.RUSTED_IRON_NUGGET.get(), 1, 3));
+		block(CelestialBlocks.MARS_CHEST.get(), createSimpleTable(CelestialBlocks.MARS_CHEST.get()));
 
 		//---- VENUS -------------------------------------------------------------------------------
 		//STONE
@@ -261,6 +264,7 @@ public class CelestialLootTables extends BaseLootTableProvider {
 
 		//OTHER
 		block(CelestialBlocks.VENUS_LANTERN.get(), createSilkTouchTable(CelestialBlocks.VENUS_LANTERN.get(), CelestialItems.SULFUR_CRYSTAL.get(), 1, 3));
+		block(CelestialBlocks.VENUS_CHEST.get(), createSimpleTable(CelestialBlocks.VENUS_CHEST.get()));
 
 		//---- CELESTIAL OBJECTS -------------------------------------------------------------------------------
 		//METEOR
@@ -312,6 +316,7 @@ public class CelestialLootTables extends BaseLootTableProvider {
 		//OTHER
 		block(CelestialBlocks.MERCURY_LANTERN.get(), createSilkTouchTable(CelestialBlocks.MERCURY_LANTERN.get(), CelestialItems.CINNABAR.get(), 1, 1));
 		block(CelestialBlocks.MERCURY_SAND_PATH.get(), createSimpleTable(CelestialBlocks.MERCURY_SAND.get()));
+		block(CelestialBlocks.MERCURY_CHEST.get(), createSimpleTable(CelestialBlocks.MERCURY_CHEST.get()));
 
 		//---- JUPITER -------------------------------------------------------------------------------
 		//DEEPSLATE
@@ -328,6 +333,7 @@ public class CelestialLootTables extends BaseLootTableProvider {
 		//OTHER
 		block(CelestialBlocks.JUPITER_LANTERN.get(), createSilkTouchTable(CelestialBlocks.JUPITER_LANTERN.get(), CelestialBlocks.JUPITER_DEEPSLATE.get(), 1, 3)); //FIXME?
 		block(CelestialBlocks.JUPITER_ATMOSPHERE.get(), createSimpleTable(CelestialBlocks.JUPITER_ATMOSPHERE.get()));
+		block(CelestialBlocks.JUPITER_CHEST.get(), createSimpleTable(CelestialBlocks.JUPITER_CHEST.get()));
 
 		//---- IO -------------------------------------------------------------------------------
 		//STONE
@@ -356,6 +362,7 @@ public class CelestialLootTables extends BaseLootTableProvider {
 		//OTHER
 		block(CelestialBlocks.GLOWING_IO_SAND.get(), createSilkTouchTable(CelestialBlocks.GLOWING_IO_SAND.get(), CelestialItems.IO_DUST.get(), 2, 5));
 		block(CelestialBlocks.IO_LANTERN.get(), createSilkTouchTable(CelestialBlocks.LUNAR_LANTERN.get(), CelestialItems.IO_DUST.get(), 1, 3));
+		block(CelestialBlocks.IO_CHEST.get(), createSimpleTable(CelestialBlocks.IO_CHEST.get()));
 
 		//---- EUROPA -------------------------------------------------------------------------------
 		block(CelestialBlocks.EUROPA_BRICK_SLAB.get(), createSlabItemTable(CelestialBlocks.EUROPA_BRICK_SLAB.get()));
@@ -450,6 +457,22 @@ public class CelestialLootTables extends BaseLootTableProvider {
 		block(CelestialBlocks.PAINTED_BROWN_CERAMIC.get(), createCeramicTable(CelestialBlocks.PAINTED_BROWN_CERAMIC.get()));
 		block(CelestialBlocks.PAINTED_RED_CERAMIC.get(), createCeramicTable(CelestialBlocks.PAINTED_RED_CERAMIC.get()));
 		block(CelestialBlocks.PAINTED_PINK_CERAMIC.get(), createCeramicTable(CelestialBlocks.PAINTED_PINK_CERAMIC.get()));
+
+		block(CelestialBlocks.BLACK_DISPLAY_BOARD.get(), createSimpleTable(CelestialBlocks.BLACK_DISPLAY_BOARD.get()));
+		block(CelestialBlocks.RED_DISPLAY_BOARD.get(), createSimpleTable(CelestialBlocks.RED_DISPLAY_BOARD.get()));
+		block(CelestialBlocks.BLUE_DISPLAY_BOARD.get(), createSimpleTable(CelestialBlocks.BLUE_DISPLAY_BOARD.get()));
+		block(CelestialBlocks.WHITE_DISPLAY_BOARD.get(), createSimpleTable(CelestialBlocks.WHITE_DISPLAY_BOARD.get()));
+
+		block(CelestialBlocks.BLACK_WALL_DISPLAY_BOARD.get(), createSimpleTable(CelestialBlocks.BLACK_DISPLAY_BOARD.get()));
+		block(CelestialBlocks.BLUE_WALL_DISPLAY_BOARD.get(), createSimpleTable(CelestialBlocks.BLUE_DISPLAY_BOARD.get()));
+		block(CelestialBlocks.RED_WALL_DISPLAY_BOARD.get(), createSimpleTable(CelestialBlocks.RED_DISPLAY_BOARD.get()));
+		block(CelestialBlocks.WHITE_WALL_DISPLAY_BOARD.get(), createSimpleTable(CelestialBlocks.WHITE_DISPLAY_BOARD.get()));
+
+		block(CelestialBlocks.MARS_FARMLAND.get(), createSilkTouchTable(CelestialBlocks.MARS_FARMLAND.get(), CelestialBlocks.MARS_SAND.get(), 1, 1));
+		block(CelestialBlocks.MOON_FARMLAND.get(), createSilkTouchTable(CelestialBlocks.MOON_FARMLAND.get(), CelestialBlocks.MOON_SAND.get(), 1, 1));
+		block(CelestialBlocks.MERCURY_FARMLAND.get(), createSilkTouchTable(CelestialBlocks.MERCURY_FARMLAND.get(), CelestialBlocks.MERCURY_SAND.get(), 1, 1));
+
+
 	}
 
 	protected LootTable.Builder createCeramicTable(Block block) {

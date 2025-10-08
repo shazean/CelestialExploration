@@ -49,8 +49,8 @@ public class CelestialTags {
         public static final TagKey<Block> IO_DEEPSLATE = BlockTags.create(modLoc("io_deepslate"));
         public static final TagKey<Block> IO_COBBLED_DEEPSLATE = BlockTags.create(modLoc("io_cobbled_deepslate"));
 
-
         public static final TagKey<Block> REGOLITH = BlockTags.create(modLoc("regolith"));
+        public static final TagKey<Block> FARMLAND = BlockTags.create(modLoc("farmland"));
 
         public static final TagKey<Block> METEOR = BlockTags.create(modLoc("meteor"));
 
@@ -72,18 +72,17 @@ public class CelestialTags {
         public static final TagKey<Block> GANYMEDE_PORTAL_FRAME_BLOCK = BlockTags.create(modLoc("ganymede_portal_frame_block"));
 
         public static final TagKey<Block> MAGRAIL = BlockTags.create(modLoc("magrail"));
+        public static final TagKey<Block> CHESTS = BlockTags.create(modLoc("chests"));
 
         public static final TagKey<Block> BAUXITE_ORE = BlockTags.create(modLoc("bauxite_ore"));
 
         public static final TagKey<Block> NO_SNOW = BlockTags.create(modLoc("no_snow"));
 
         public static final TagKey<Block> COMPRESSIBLE = BlockTags.create(modLoc("compressible"));
-
+        public static final TagKey<Block> CELESTIAL_COBBLESTONE = BlockTags.create(modLoc("celestial_cobblestone"));
         public static final TagKey<Block> COBBLESAURUS_FOOD = BlockTags.create(modLoc("cobblesaurus_food"));
 
-        public static final TagKey<Block> CHESTS = BlockTags.create(modLoc("chests"));
 
-        public static final TagKey<Block> CELESTIAL_COBBLESTONE = BlockTags.create(modLoc("celestial_cobblestone"));
 
 
     }
@@ -130,24 +129,23 @@ public class CelestialTags {
         public static final TagKey<Item> DYED_CERAMIC_TILE = ItemTags.create(modLoc("ceramic_tile"));
 
         public static final TagKey<Item> MAG_RAIL = ItemTags.create(modLoc("mag_rail"));
+        public static final TagKey<Item> CHESTS = ItemTags.create(modLoc("chests"));
 
         public static final TagKey<Item> STONE_PRESSURE_PLATE = ItemTags.create(modLoc("stone_pressure_plate"));
+
         public static final TagKey<Item> REGOLITH = ItemTags.create(modLoc("regolith"));
+        public static final TagKey<Item> FARMLAND = ItemTags.create(modLoc("farmland"));
 
         public static final TagKey<Item> SPACESHIP = ItemTags.create(modLoc("spaceship"));
 
-        public static final TagKey<Item> SLIME_DROPS = ItemTags.create(modLoc("slime_drops"));
-
-        public static final TagKey<Item> BAUXITE_ORE = ItemTags.create(modLoc("bauxite_ore"));
-
         public static final TagKey<Item> COMPRESSIBLE = ItemTags.create(modLoc("compressible"));
-
         public static final TagKey<Item> COBBLESAURUS_FOOD = ItemTags.create(modLoc("cobblesaurus_food"));
+        public static final TagKey<Item> CELESTIAL_COBBLESTONE = ItemTags.create(modLoc("celestial_cobblestone"));
 
         public static final TagKey<Item> LUNAR_DUSTS = ItemTags.create(modLoc("lunar_dusts"));
+        public static final TagKey<Item> SLIME_DROPS = ItemTags.create(modLoc("slime_drops"));
+        public static final TagKey<Item> BAUXITE_ORE = ItemTags.create(modLoc("bauxite_ore"));
 
-        public static final TagKey<Item> CHESTS = ItemTags.create(modLoc("chests"));
-        public static final TagKey<Item> CELESTIAL_COBBLESTONE = ItemTags.create(modLoc("celestial_cobblestone"));
 
 
     }

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XBX",
+    "XCX"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:moon_sand"
+    },
+    "B": {
+      "item": "minecraft:bone_meal"
+    },
+    "C": {
+      "item": "minecraft:coal"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:moon_farmland",
+    "count": 4
+  }
+}

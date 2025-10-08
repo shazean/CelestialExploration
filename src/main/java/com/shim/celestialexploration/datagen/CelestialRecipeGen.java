@@ -77,6 +77,8 @@ public class CelestialRecipeGen extends RecipeProvider {
 
 		ShapedRecipeBuilder.shaped(CelestialBlocks.MOON_CHEST.get()).pattern("XXX").pattern("X X").pattern("XXX").define('X', CelestialBlocks.MOON_STONE.get()).unlockedBy("has_moon_cobblestone", has(CelestialBlocks.MOON_COBBLESTONE.get())).save(consumer);
 
+		ShapedRecipeBuilder.shaped(CelestialBlocks.MOON_FARMLAND.get(), 4).pattern("XBX").pattern("XCX").define('X', CelestialBlocks.MOON_SAND.get()).define('B', Items.BONE_MEAL).define('C', Items.COAL).unlockedBy("has_moon_sand", has(CelestialBlocks.MOON_SAND.get())).save(consumer);
+
 
 		//---- MARS -------------------------------------------------------------------------------
 		//STONE
@@ -117,6 +119,9 @@ public class CelestialRecipeGen extends RecipeProvider {
 		smelting(CelestialBlocks.MARS_SAND.get(), Items.ORANGE_STAINED_GLASS, 0.1F, 200, CelestialBlocks.MARS_SAND.get(), consumer);
 		ShapedRecipeBuilder.shaped(CelestialBlocks.MARS_LANTERN.get()).pattern("XCX").pattern("C#C").pattern("XCX").define('X', CelestialBlocks.MARS_STONE.get()).define('C', Items.IRON_INGOT).define('#', Items.TORCH).unlockedBy("has_iron", has(Items.IRON_INGOT)).save(consumer);
 		ShapedRecipeBuilder.shaped(CelestialBlocks.MARS_CHEST.get()).pattern("XXX").pattern("X X").pattern("XXX").define('X', CelestialBlocks.MARS_STONE.get()).unlockedBy("has_mars_cobblestone", has(CelestialBlocks.MARS_COBBLESTONE.get())).save(consumer);
+
+		ShapedRecipeBuilder.shaped(CelestialBlocks.MARS_FARMLAND.get(), 4).pattern("XBX").pattern("XCX").define('X', CelestialBlocks.MARS_SAND.get()).define('B', Items.BONE_MEAL).define('C', Items.COAL).unlockedBy("has_mars_sand", has(CelestialBlocks.MARS_SAND.get())).save(consumer);
+
 
 		//---- VENUS -------------------------------------------------------------------------------
 		//STONE
@@ -218,6 +223,9 @@ public class CelestialRecipeGen extends RecipeProvider {
 		smelting(CelestialBlocks.MERCURY_SAND.get(), Items.BROWN_STAINED_GLASS, 0.1F, 200, CelestialBlocks.MERCURY_SAND.get(), consumer);
 		ShapedRecipeBuilder.shaped(CelestialBlocks.MERCURY_LANTERN.get()).pattern("XCX").pattern("C#C").pattern("XCX").define('X', CelestialItems.CINNABAR.get()).define('C', Items.IRON_INGOT).define('#', Items.TORCH).unlockedBy("has_cinnabar", has(CelestialItems.CINNABAR.get())).save(consumer);
 		ShapedRecipeBuilder.shaped(CelestialBlocks.MERCURY_CHEST.get()).pattern("XXX").pattern("X X").pattern("XXX").define('X', CelestialBlocks.MERCURY_STONE.get()).unlockedBy("has_mercury_cobblestone", has(CelestialBlocks.MERCURY_COBBLESTONE.get())).save(consumer);
+
+		ShapedRecipeBuilder.shaped(CelestialBlocks.MERCURY_FARMLAND.get(), 4).pattern("XBX").pattern("XCX").define('X', CelestialBlocks.MERCURY_SAND.get()).define('B', Items.BONE_MEAL).define('C', Items.COAL).unlockedBy("has_mercury_sand", has(CelestialBlocks.MERCURY_SAND.get())).save(consumer);
+
 
 		//---- JUPITER -------------------------------------------------------------------------------
 

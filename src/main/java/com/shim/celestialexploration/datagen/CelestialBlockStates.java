@@ -94,6 +94,7 @@ public class CelestialBlockStates extends BaseBlockStates {
 		simpleBlock(CelestialBlocks.GLOWING_MOON_SAND.get());
 		simpleBlock(CelestialBlocks.LUNAR_LANTERN.get());
 		portalBlock(CelestialBlocks.MOON_PORTAL.get());
+		farmlandBlock(CelestialBlocks.MOON_FARMLAND.get(), CelestialBlocks.MOON_SAND.get());
 
 		//---- MARS -------------------------------------------------------------------------------
 		//STONE
@@ -165,6 +166,8 @@ public class CelestialBlockStates extends BaseBlockStates {
 		sandPathBlock(CelestialBlocks.MARS_SAND_PATH.get(), CelestialBlocks.MARS_SAND.get());
 		sandBlock(CelestialBlocks.COARSE_MARS_SAND.get());
 		portalBlock(CelestialBlocks.MARS_PORTAL.get());
+
+		farmlandBlock(CelestialBlocks.MARS_FARMLAND.get(), CelestialBlocks.MARS_SAND.get());
 
 
 		//---- VENUS -------------------------------------------------------------------------------
@@ -322,6 +325,7 @@ public class CelestialBlockStates extends BaseBlockStates {
 		sandPathBlock(CelestialBlocks.MERCURY_SAND_PATH.get(), CelestialBlocks.MERCURY_SAND.get());
 		sandBlock(CelestialBlocks.COARSE_MERCURY_SAND.get());
 		portalBlock(CelestialBlocks.MERCURY_PORTAL.get());
+		farmlandBlock(CelestialBlocks.MERCURY_FARMLAND.get(), CelestialBlocks.MERCURY_SAND.get());
 
 
 		//---- JUPITER -------------------------------------------------------------------------------
@@ -687,4 +691,15 @@ public class CelestialBlockStates extends BaseBlockStates {
 		simpleBlock(CelestialBlocks.TAXI_STATION.get());
 	}
 
+	public void farmlandBlock(Block block, Block dirtBlock) {
+		ModelFile regular = models().withExistingParent(block.getRegistryName().getPath(), mcLoc("template_farmland")).texture("dirt", blockTexture(dirtBlock))
+				.texture("top", blockTexture(block));
+		ModelFile moist = models().withExistingParent(block.getRegistryName().getPath() + "_moist", mcLoc("template_farmland")).texture("dirt", blockTexture(dirtBlock))
+				.texture("top", blockTexture(block) + "_moist");
+
+		getVariantBuilder(block).forAllStates(state -> {
+			int moisture = state.getValue(FarmBlock.MOISTURE);
+			return ConfiguredModel.builder().modelFile(moisture == 7 ? moist : regular).build();
+		});
+	}
 }

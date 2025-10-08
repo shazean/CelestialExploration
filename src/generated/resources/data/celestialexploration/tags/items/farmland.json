@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "celestialexploration:mars_farmland",
+    "celestialexploration:moon_farmland",
+    "celestialexploration:mercury_farmland"
+  ]
+}
