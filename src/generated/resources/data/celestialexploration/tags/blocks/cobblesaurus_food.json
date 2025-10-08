@@ -2,10 +2,6 @@
   "replace": false,
   "values": [
     "minecraft:cobblestone",
-    "celestialexploration:moon_cobblestone",
-    "celestialexploration:mars_cobblestone",
-    "celestialexploration:venus_cobblestone",
-    "celestialexploration:mercury_cobblestone",
-    "celestialexploration:io_cobblestone"
+    "#celestialexploration:celestial_cobblestone"
   ]
 }

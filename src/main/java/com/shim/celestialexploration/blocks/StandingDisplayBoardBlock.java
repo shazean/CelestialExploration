@@ -1,51 +1,49 @@
-//package com.shim.celestialexploration.blocks;
-//
-//import net.minecraft.core.BlockPos;
-//import net.minecraft.core.Direction;
-//import net.minecraft.util.Mth;
-//import net.minecraft.world.item.context.BlockPlaceContext;
-//import net.minecraft.world.level.LevelAccessor;
-//import net.minecraft.world.level.LevelReader;
-//import net.minecraft.world.level.block.*;
-//import net.minecraft.world.level.block.state.BlockBehaviour;
-//import net.minecraft.world.level.block.state.BlockState;
-//import net.minecraft.world.level.block.state.StateDefinition;
-//import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-//import net.minecraft.world.level.block.state.properties.IntegerProperty;
-//import net.minecraft.world.level.block.state.properties.WoodType;
-//import net.minecraft.world.level.material.FluidState;
-//import net.minecraft.world.level.material.Fluids;
-//
-//public class StandingDisplayBoardBlock extends DisplayBoardBlock {
-//    public static final IntegerProperty ROTATION = BlockStateProperties.ROTATION_16;
-//
-//    public StandingDisplayBoardBlock(BlockBehaviour.Properties p_56990_, DisplayBoardColors p_56991_) {
-//        super(p_56990_, p_56991_);
-//        this.registerDefaultState(this.stateDefinition.any().setValue(ROTATION, 0).setValue(WATERLOGGED, Boolean.FALSE));
-//    }
-//
-//    public boolean canSurvive(BlockState p_56995_, LevelReader p_56996_, BlockPos p_56997_) {
-//        return p_56996_.getBlockState(p_56997_.below()).getMaterial().isSolid();
-//    }
-//
-//    public BlockState getStateForPlacement(BlockPlaceContext p_56993_) {
-//        FluidState fluidstate = p_56993_.getLevel().getFluidState(p_56993_.getClickedPos());
-//        return this.defaultBlockState().setValue(ROTATION, Mth.floor((double) ((180.0F + p_56993_.getRotation()) * 16.0F / 360.0F) + 0.5D) & 15).setValue(WATERLOGGED, fluidstate.getType() == Fluids.WATER);
-//    }
-//
-//    public BlockState updateShape(BlockState p_57005_, Direction p_57006_, BlockState p_57007_, LevelAccessor p_57008_, BlockPos p_57009_, BlockPos p_57010_) {
-//        return p_57006_ == Direction.DOWN && !this.canSurvive(p_57005_, p_57008_, p_57009_) ? Blocks.AIR.defaultBlockState() : super.updateShape(p_57005_, p_57006_, p_57007_, p_57008_, p_57009_, p_57010_);
-//    }
-//
-//    public BlockState rotate(BlockState p_57002_, Rotation p_57003_) {
-//        return p_57002_.setValue(ROTATION, p_57003_.rotate(p_57002_.getValue(ROTATION), 16));
-//    }
-//
-//    public BlockState mirror(BlockState p_56999_, Mirror p_57000_) {
-//        return p_56999_.setValue(ROTATION, p_57000_.mirror(p_56999_.getValue(ROTATION), 16));
-//    }
-//
-//    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_57012_) {
-//        p_57012_.add(ROTATION, WATERLOGGED);
-//    }
-//}
+package com.shim.celestialexploration.blocks;
+
+import com.shim.celestialexploration.registry.CelestialBlockEntities;
+import com.shim.celestialexploration.registry.DisplayBoardType;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.SignBlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.WoodType;
+import net.minecraft.world.level.material.Material;
+import org.jetbrains.annotations.Nullable;
+
+public class StandingDisplayBoardBlock extends StandingSignBlock {
+
+    DyeColor textColor;
+    net.minecraft.client.resources.model.Material material;
+
+    public StandingDisplayBoardBlock(net.minecraft.client.resources.model.Material material, WoodType type, DyeColor defaultDyeColor) {
+        super(Block.Properties.of(Material.METAL).strength(0.1F).sound(SoundType.METAL), type);
+        this.textColor = defaultDyeColor;
+        this.material = material;
+    }
+
+    @Override
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        return CelestialBlockEntities.DISPLAY_BOARD_BLOCK_ENTITY.get().create(pos, state);
+    }
+
+    @Override
+    public void setPlacedBy(Level level, BlockPos pos, BlockState state, @Nullable LivingEntity entity, ItemStack stack) {
+        BlockEntity tileEntity = level.getBlockEntity(pos);
+        Block block = state.getBlock();
+        if (tileEntity instanceof SignBlockEntity signBlockEntity && block instanceof StandingDisplayBoardBlock) {
+            signBlockEntity.setColor(this.textColor);
+            if (this.textColor != DyeColor.BLACK)
+                signBlockEntity.setHasGlowingText(true);
+        }
+    }
+
+    public net.minecraft.client.resources.model.Material getMaterial() {
+        return this.material;
+    }
+
+}

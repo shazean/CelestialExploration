@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "celestialexploration:moon_cobblestone",
+    "celestialexploration:mars_cobblestone",
+    "celestialexploration:venus_cobblestone",
+    "celestialexploration:mercury_cobblestone",
+    "celestialexploration:io_cobblestone"
+  ]
+}

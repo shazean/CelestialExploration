@@ -7,10 +7,10 @@
   ],
   "key": {
     "X": {
-      "item": "celestialexploration:mars_stone"
+      "tag": "celestialexploration:celestial_cobblestone"
     }
   },
   "result": {
-    "item": "celestialexploration:mars_chest"
+    "item": "minecraft:furnace"
   }
 }

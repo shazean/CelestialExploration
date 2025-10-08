@@ -9,12 +9,14 @@ import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.registries.DeferredRegister;
@@ -666,15 +668,15 @@ public class CelestialBlocks {
 
     public static final RegistryObject<Block> TAXI_STATION = registerCoreBlock("taxi_station", "Taxi Station", () -> new TaxiStationBlock(Block.Properties.of(Material.METAL, MaterialColor.METAL).strength(3.5F).sound(SoundType.METAL)));
 
-//    public static final RegistryObject<Block> RED_DISPLAY_BOARD = BLOCKS.register("red_display_board", () -> new StandingDisplayBoardBlock(Block.Properties.of(Material.METAL).strength(0.1F).sound(SoundType.METAL), DisplayBoardBlock.DisplayBoardColors.RED));
-//    public static final RegistryObject<Block> BLACK_DISPLAY_BOARD = BLOCKS.register("black_display_board", () -> new StandingDisplayBoardBlock(Block.Properties.of(Material.METAL).strength(0.1F).sound(SoundType.METAL), DisplayBoardBlock.DisplayBoardColors.BLACK));
-//    public static final RegistryObject<Block> BLUE_DISPLAY_BOARD = BLOCKS.register("blue_display_board", () -> new StandingDisplayBoardBlock(Block.Properties.of(Material.METAL).strength(0.1F).sound(SoundType.METAL), DisplayBoardBlock.DisplayBoardColors.BLUE));
-//    public static final RegistryObject<Block> WHITE_DISPLAY_BOARD = BLOCKS.register("white_display_board", () -> new StandingDisplayBoardBlock(Block.Properties.of(Material.METAL).strength(0.1F).sound(SoundType.METAL), DisplayBoardBlock.DisplayBoardColors.WHITE));
-//
-//    public static final RegistryObject<Block> RED_WALL_DISPLAY_BOARD = registerBlockNoItem("red_wall_display_board", "Red Display Board", () -> new WallDisplayBoardBlock(Block.Properties.of(Material.METAL).strength(0.1F).sound(SoundType.METAL).lootFrom(RED_DISPLAY_BOARD), DisplayBoardBlock.DisplayBoardColors.RED));
-//    public static final RegistryObject<Block> BLACK_WALL_DISPLAY_BOARD = registerBlockNoItem("black_wall_display_board", "Black Display Board", () -> new WallDisplayBoardBlock(Block.Properties.of(Material.METAL).strength(0.1F).sound(SoundType.METAL).lootFrom(BLACK_DISPLAY_BOARD), DisplayBoardBlock.DisplayBoardColors.BLACK));
-//    public static final RegistryObject<Block> BLUE_WALL_DISPLAY_BOARD = registerBlockNoItem("blue_wall_display_board", "Blue Display Board", () -> new WallDisplayBoardBlock(Block.Properties.of(Material.METAL).strength(0.1F).sound(SoundType.METAL).lootFrom(BLUE_DISPLAY_BOARD), DisplayBoardBlock.DisplayBoardColors.BLUE));
-//    public static final RegistryObject<Block> WHITE_WALL_DISPLAY_BOARD = registerBlockNoItem("white_wall_display_board", "White Display Board", () -> new WallDisplayBoardBlock(Block.Properties.of(Material.METAL).strength(0.1F).sound(SoundType.METAL).lootFrom(WHITE_DISPLAY_BOARD), DisplayBoardBlock.DisplayBoardColors.WHITE));
+    public static final RegistryObject<Block> RED_DISPLAY_BOARD = registerBlockNoItem("red_display_board", "Red Display Board", () -> new StandingDisplayBoardBlock(DisplayBoardType.RED, DisplayBoardType.RED_TYPE, DyeColor.WHITE));
+    public static final RegistryObject<Block> BLACK_DISPLAY_BOARD = registerBlockNoItem("black_display_board", "Black Display Board", () -> new StandingDisplayBoardBlock(DisplayBoardType.BLACK, DisplayBoardType.BLACK_TYPE, DyeColor.GREEN));
+    public static final RegistryObject<Block> BLUE_DISPLAY_BOARD = registerBlockNoItem("blue_display_board", "Blue Display Board", () -> new StandingDisplayBoardBlock(DisplayBoardType.BLUE, DisplayBoardType.BLUE_TYPE, DyeColor.WHITE));
+    public static final RegistryObject<Block> WHITE_DISPLAY_BOARD = registerBlockNoItem("white_display_board", "White Display Board", () -> new StandingDisplayBoardBlock(DisplayBoardType.WHITE, DisplayBoardType.WHITE_TYPE, DyeColor.BLACK));
+
+    public static final RegistryObject<Block> RED_WALL_DISPLAY_BOARD = BLOCKS.register("red_wall_display_board", () -> new WallDisplayBoardBlock(DisplayBoardType.RED, DisplayBoardType.RED_TYPE, DyeColor.WHITE));
+    public static final RegistryObject<Block> BLACK_WALL_DISPLAY_BOARD = BLOCKS.register("black_wall_display_board", () -> new WallDisplayBoardBlock(DisplayBoardType.BLACK, DisplayBoardType.BLACK_TYPE, DyeColor.GREEN));
+    public static final RegistryObject<Block> BLUE_WALL_DISPLAY_BOARD = BLOCKS.register("blue_wall_display_board", () -> new WallDisplayBoardBlock(DisplayBoardType.BLUE, DisplayBoardType.BLUE_TYPE, DyeColor.WHITE));
+    public static final RegistryObject<Block> WHITE_WALL_DISPLAY_BOARD = BLOCKS.register("white_wall_display_board", () -> new WallDisplayBoardBlock(DisplayBoardType.WHITE, DisplayBoardType.WHITE_TYPE, DyeColor.BLACK));
 
 
     //---- MAG LEV -------------------------------------------------------------------------------

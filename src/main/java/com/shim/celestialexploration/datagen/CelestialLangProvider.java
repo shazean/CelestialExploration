@@ -176,6 +176,9 @@ public class CelestialLangProvider extends LanguageProvider {
 		addAdvancement("enter_callisto", "Jupiter IV","Reach Callisto");
 		addAdvancement("enter_ganymede", "Jupiter III","Reach Ganymede");
 
+		addAdvancement("blue_display_board", "B.S.O.D.","Acquire a blue display board");
+
+
 		//---- SPACESHIP RELATED -------------------------------------------------------------------------------
 		add("celestialexploration.spaceship.travel.mercury", "Travel to Mercury");
 		add("celestialexploration.spaceship.travel.venus", "Travel to Venus");

@@ -1,22 +1,5 @@
 {
   "textures": {
-    "particle": "celestialexploration:block/black_display_board",
-    "texture": "celestialexploration:block/black_display_board"
-  },
-  "elements": [
-    {
-      "from": [0, 1, 9],
-      "to": [16, 13, 11],
-      "rotation": {"angle": 0, "axis": "y", "origin": [12, 15, 10]},
-      "color": 4,
-      "faces": {
-        "north": {"uv": [0, 0, 16, 12], "texture": "#texture"},
-        "east": {"uv": [0, 0, 2, 12], "texture": "#texture"},
-        "south": {"uv": [0, 0, 16, 12], "texture": "#texture"},
-        "west": {"uv": [0, 0, 2, 12], "texture": "#texture"},
-        "up": {"uv": [0, 0, 16, 2], "texture": "#texture"},
-        "down": {"uv": [0, 0, 16, 2], "texture": "#texture"}
-      }
-    }
-  ]
+    "particle": "minecraft:block/black_concrete"
+  }
 }

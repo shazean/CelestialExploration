@@ -1,0 +1,19 @@
+{
+  "type": "celestialexploration:workbench_crafting",
+  "pattern": [
+    "X X",
+    "XXX",
+    "X X"
+  ],
+  "key": {
+    "X": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:steel_frame"
+  },
+  "fluid": "celestialexploration:molten_steel",
+  "buckets": 0.111,
+  "experience": 0.4
+}

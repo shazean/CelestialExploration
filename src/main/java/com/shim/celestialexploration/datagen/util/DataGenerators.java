@@ -18,7 +18,7 @@ public class DataGenerators {
 		ExistingFileHelper helper = event.getExistingFileHelper();
 
 		if (event.includeServer()) {
-			generator.addProvider(new CelestialRecipes(generator));
+			generator.addProvider(new CelestialRecipeGen(generator));
 			generator.addProvider(new CelestialLootTables(generator));
 			CelestialBlockTags blockTags = new CelestialBlockTags(generator, helper);
 			CelestialFluidTags fluidTags = new CelestialFluidTags(generator, helper);

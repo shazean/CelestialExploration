@@ -83,6 +83,7 @@ public class CelestialTags {
 
         public static final TagKey<Block> CHESTS = BlockTags.create(modLoc("chests"));
 
+        public static final TagKey<Block> CELESTIAL_COBBLESTONE = BlockTags.create(modLoc("celestial_cobblestone"));
 
 
     }
@@ -146,6 +147,7 @@ public class CelestialTags {
         public static final TagKey<Item> LUNAR_DUSTS = ItemTags.create(modLoc("lunar_dusts"));
 
         public static final TagKey<Item> CHESTS = ItemTags.create(modLoc("chests"));
+        public static final TagKey<Item> CELESTIAL_COBBLESTONE = ItemTags.create(modLoc("celestial_cobblestone"));
 
 
     }

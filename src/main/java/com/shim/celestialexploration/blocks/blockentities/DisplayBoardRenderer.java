@@ -1,181 +1,147 @@
-//package com.shim.celestialexploration.blocks.blockentities;
-//
-//import com.google.common.collect.ImmutableMap;
-//import com.mojang.blaze3d.platform.NativeImage;
-//import com.mojang.blaze3d.vertex.PoseStack;
-//import com.mojang.blaze3d.vertex.VertexConsumer;
-//import com.mojang.math.Vector3f;
-//import com.shim.celestialexploration.CelestialExploration;
-//import com.shim.celestialexploration.blocks.DisplayBoardBlock;
-//import com.shim.celestialexploration.blocks.StandingDisplayBoardBlock;
-//import com.shim.celestialexploration.blocks.WallDisplayBoardBlock;
-//import com.shim.celestialexploration.registry.CelestialModelLayers;
-//import com.shim.celestialexploration.util.DisplayBoardData;
-//import net.minecraft.client.Minecraft;
-//import net.minecraft.client.gui.Font;
-//import net.minecraft.client.model.Model;
-//import net.minecraft.client.model.geom.EntityModelSet;
-//import net.minecraft.client.model.geom.ModelLayers;
-//import net.minecraft.client.model.geom.ModelPart;
-//import net.minecraft.client.model.geom.PartPose;
-//import net.minecraft.client.model.geom.builders.CubeListBuilder;
-//import net.minecraft.client.model.geom.builders.LayerDefinition;
-//import net.minecraft.client.model.geom.builders.MeshDefinition;
-//import net.minecraft.client.model.geom.builders.PartDefinition;
-//import net.minecraft.client.player.LocalPlayer;
-//import net.minecraft.client.renderer.MultiBufferSource;
-//import net.minecraft.client.renderer.RenderType;
-//import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
-//import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
-//import net.minecraft.client.resources.model.Material;
-//import net.minecraft.util.FormattedCharSequence;
-//import net.minecraft.util.Mth;
-//import net.minecraft.world.entity.Entity;
-//import net.minecraft.world.item.DyeColor;
-//import net.minecraft.world.level.block.Block;
-//import net.minecraft.world.level.block.state.BlockState;
-//import net.minecraft.world.level.block.state.properties.WoodType;
-//import net.minecraft.world.phys.Vec3;
-//import net.minecraftforge.api.distmarker.Dist;
-//import net.minecraftforge.api.distmarker.OnlyIn;
-//
-//import java.util.List;
-//import java.util.Map;
-//
-//@OnlyIn(Dist.CLIENT)
-//public class DisplayBoardRenderer implements BlockEntityRenderer<DisplayBoardBlockEntity> {
-//    public static final int MAX_LINE_WIDTH = 90;
-//    private static final int LINE_HEIGHT = 10;
-//    private static final String STICK = "stick";
-//    private static final int BLACK_TEXT_OUTLINE_COLOR = -988212;
-//    private static final int OUTLINE_RENDER_DISTANCE = Mth.square(16);
-//    private final Map<DisplayBoardBlock.DisplayBoardColors, DisplayBoardRenderer.DisplayBoardModel> displayBoardModels;
-//    private final Font font;
-//
-//    public DisplayBoardRenderer(BlockEntityRendererProvider.Context p_173636_) {
-//        this.displayBoardModels = DisplayBoardBlock.DisplayBoardColors.values().collect(ImmutableMap.toImmutableMap((p_173645_) -> p_173645_, (p_173651_) -> new DisplayBoardModel(p_173636_.bakeLayer(ModelLayers.createSignModelName(WoodType.DARK_OAK)))));
-//        this.font = p_173636_.getFont();
-//    }
-//
-//    public void render(DisplayBoardBlockEntity blockEntity, float partialTick, PoseStack poseStack, MultiBufferSource buffer, int packedLight, int packedOverlay) {
-//        BlockState blockstate = blockEntity.getBlockState();
-//        poseStack.pushPose();
-//        float f = 0.6666667F;
-//        DisplayBoardBlock.DisplayBoardColors boardColors = getBoardColors(blockstate.getBlock());
-//        DisplayBoardRenderer.DisplayBoardModel displayBoardrenderer$displayBoardmodel = this.displayBoardModels.get(boardColors);
-//        if (blockstate.getBlock() instanceof StandingDisplayBoardBlock) {
-//            poseStack.translate(0.5D, 0.5D, 0.5D);
-//            float rotation = -((float)(blockstate.getValue(StandingDisplayBoardBlock.ROTATION) * 360) / 16.0F);
-//            poseStack.mulPose(Vector3f.YP.rotationDegrees(rotation));
-//            displayBoardrenderer$displayBoardmodel.stick.visible = true;
-//        } else {
-//            poseStack.translate(0.5D, 0.5D, 0.5D);
-//            float facing = -blockstate.getValue(WallDisplayBoardBlock.FACING).toYRot();
-//            poseStack.mulPose(Vector3f.YP.rotationDegrees(facing));
-//            poseStack.translate(0.0D, -0.3125D, -0.4375D);
-//            displayBoardrenderer$displayBoardmodel.stick.visible = false;
-//        }
-//
-//        poseStack.pushPose();
-//        poseStack.scale(f, -f, -f);
-//        Material material = DisplayBoardData.getDisplayBoardMaterial(boardColors);
-//        VertexConsumer vertexconsumer = material.buffer(buffer, displayBoardrenderer$displayBoardmodel::renderType);
-//        displayBoardrenderer$displayBoardmodel.root.render(poseStack, vertexconsumer, packedLight, packedOverlay);
-//        poseStack.popPose();
-//        float f2 = 0.010416667F;
-//        poseStack.translate(0.0D, 0.33333334F, 0.046666667F);
-//        poseStack.scale(f2, -f2, f2);
-//        int i = getDarkColor(blockEntity);
-//        FormattedCharSequence[] aformattedcharsequence = blockEntity.getRenderMessages(CelestialExploration.PROXY.getMinecraft().isTextFilteringEnabled(), (p_173653_) -> {
-//            List<FormattedCharSequence> list = this.font.split(p_173653_, 90);
-//            return list.isEmpty() ? FormattedCharSequence.EMPTY : list.get(0);
-//        });
-//        int textColor;
-//        boolean outlined;
-//        int l;
-//        if (blockEntity.hasGlowingText()) {
-//            textColor = blockEntity.getColor().getTextColor();
-//            outlined = isOutlineVisible(blockEntity, textColor);
-//            l = 15728880;
-//        } else {
-//            textColor = i;
-//            outlined = false;
-//            l = packedLight;
-//        }
-//
-//        for(int i1 = 0; i1 < 4; ++i1) {
-//            FormattedCharSequence formattedcharsequence = aformattedcharsequence[i1];
-//            float f3 = (float)(-this.font.width(formattedcharsequence) / 2);
-//            if (outlined) {
-//                this.font.drawInBatch8xOutline(formattedcharsequence, f3, (float)(i1 * 10 - 20), textColor, i, poseStack.last().pose(), buffer, l);
-//            } else {
-//                this.font.drawInBatch(formattedcharsequence, f3, (float)(i1 * 10 - 20), textColor, false, poseStack.last().pose(), buffer, false, 0, l);
-//            }
-//        }
-//
-//        poseStack.popPose();
-//    }
-//
-//    private static boolean isOutlineVisible(DisplayBoardBlockEntity p_173642_, int p_173643_) {
-//        if (p_173643_ == DyeColor.BLACK.getTextColor()) {
-//            return true;
-//        } else {
-//            Minecraft minecraft = CelestialExploration.PROXY.getMinecraft();
-//            LocalPlayer localplayer = minecraft.player;
-//            if (localplayer != null && minecraft.options.getCameraType().isFirstPerson() && localplayer.isScoping()) {
-//                return true;
-//            } else {
-//                Entity entity = minecraft.getCameraEntity();
-//                return entity != null && entity.distanceToSqr(Vec3.atCenterOf(p_173642_.getBlockPos())) < (double)OUTLINE_RENDER_DISTANCE;
-//            }
-//        }
-//    }
-//
-//    private static int getDarkColor(DisplayBoardBlockEntity p_173640_) {
-//        int i = p_173640_.getColor().getTextColor();
-//        double d0 = 0.4D;
-//        int j = (int)((double) NativeImage.getR(i) * 0.4D);
-//        int k = (int)((double)NativeImage.getG(i) * 0.4D);
-//        int l = (int)((double)NativeImage.getB(i) * 0.4D);
-//        return i == DyeColor.BLACK.getTextColor() && p_173640_.hasGlowingText() ? -988212 : NativeImage.combine(0, l, k, j);
-//    }
-//
-//    public static DisplayBoardBlock.DisplayBoardColors getBoardColors(Block block) {
-//        DisplayBoardBlock.DisplayBoardColors boardColors;
-//        if (block instanceof DisplayBoardBlock) {
-//            boardColors = ((DisplayBoardBlock)block).type();
-//        } else {
-//            boardColors = DisplayBoardBlock.DisplayBoardColors.WHITE;
-//        }
-//
-//        return boardColors;
-//    }
-//
-//    public static DisplayBoardRenderer.DisplayBoardModel createDisplayBoardModel(EntityModelSet p_173647_, DisplayBoardBlock.DisplayBoardColors p_173648_) {
-//        return new DisplayBoardRenderer.DisplayBoardModel(p_173647_.bakeLayer(CelestialModelLayers.createDisplayBoardModelName(p_173648_)));
-//    }
-//
-//    public static LayerDefinition createDisplayBoardLayer() {
-//        MeshDefinition meshdefinition = new MeshDefinition();
-//        PartDefinition partdefinition = meshdefinition.getRoot();
-//        partdefinition.addOrReplaceChild("displayBoard", CubeListBuilder.create().texOffs(0, 0).addBox(-12.0F, -14.0F, -1.0F, 24.0F, 12.0F, 2.0F), PartPose.ZERO);
-//        partdefinition.addOrReplaceChild("stick", CubeListBuilder.create().texOffs(0, 14).addBox(-1.0F, -2.0F, -1.0F, 2.0F, 14.0F, 2.0F), PartPose.ZERO);
-//        return LayerDefinition.create(meshdefinition, 64, 32);
-//    }
-//
-//    @OnlyIn(Dist.CLIENT)
-//    public static final class DisplayBoardModel extends Model {
-//        public final ModelPart root;
-//        public final ModelPart stick;
-//
-//        public DisplayBoardModel(ModelPart p_173657_) {
-//            super(RenderType::entitySolid); //entityCutoutNoCull);
-//            this.root = p_173657_;
-//            this.stick = p_173657_.getChild("stick");
-//        }
-//
-//        public void renderToBuffer(PoseStack p_112510_, VertexConsumer p_112511_, int p_112512_, int p_112513_, float p_112514_, float p_112515_, float p_112516_, float p_112517_) {
-//            this.root.render(p_112510_, p_112511_, p_112512_, p_112513_, p_112514_, p_112515_, p_112516_, p_112517_);
-//        }
-//    }
-//}
+package com.shim.celestialexploration.blocks.blockentities;
+
+import com.mojang.blaze3d.platform.NativeImage;
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.mojang.math.Vector3f;
+import com.shim.celestialexploration.blocks.StandingDisplayBoardBlock;
+import com.shim.celestialexploration.blocks.WallDisplayBoardBlock;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Font;
+import net.minecraft.client.model.geom.ModelLayers;
+import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
+import net.minecraft.client.renderer.blockentity.SignRenderer;
+import net.minecraft.client.resources.model.Material;
+import net.minecraft.util.FormattedCharSequence;
+import net.minecraft.util.Mth;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.level.block.StandingSignBlock;
+import net.minecraft.world.level.block.WallSignBlock;
+import net.minecraft.world.level.block.entity.SignBlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.WoodType;
+import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
+
+import javax.annotation.Nullable;
+import java.util.List;
+
+@OnlyIn(Dist.CLIENT)
+public class DisplayBoardRenderer extends SignRenderer {
+    public static final float TEXT_LINE_HEIGHT = 10;
+    public static final float TEXT_VERTICAL_OFFSET = 19;
+    private static final int OUTLINE_RENDER_DISTANCE = Mth.square(16);
+
+    private final SignModel signModel;
+    private final Font font;
+
+    public DisplayBoardRenderer(BlockEntityRendererProvider.Context context) {
+        super(context);
+
+        this.signModel = new SignRenderer.SignModel(context.bakeLayer(ModelLayers.createSignModelName(WoodType.ACACIA)));
+        this.font = context.getFont();
+    }
+
+    @Override
+    public void render(SignBlockEntity blockEntity, float pPartialTick, PoseStack poseStack, MultiBufferSource pBufferSource, int pPackedLight, int pPackedOverlay) {
+        BlockState state = blockEntity.getBlockState();
+        poseStack.pushPose();
+        SignRenderer.SignModel signrenderer$signmodel = signModel;
+        if (state.getBlock() instanceof StandingSignBlock) {
+            poseStack.translate(0.5D, 0.5D, 0.5D);
+            float f1 = -((float) (state.getValue(StandingSignBlock.ROTATION) * 360) / 16.0F);
+            poseStack.mulPose(Vector3f.YP.rotationDegrees(f1));
+            signrenderer$signmodel.stick.visible = true;
+        } else {
+            poseStack.translate(0.5D, 0.5D, 0.5D);
+            float f4 = -state.getValue(WallSignBlock.FACING).toYRot();
+            poseStack.mulPose(Vector3f.YP.rotationDegrees(f4));
+            poseStack.translate(0.0D, -0.3125D, -0.4375D);
+            signrenderer$signmodel.stick.visible = false;
+        }
+
+        poseStack.pushPose();
+        float rootScale = 0.6666667F;
+        poseStack.scale(rootScale, -rootScale, -rootScale);
+        DyeColor dye = null;
+
+        Material material;
+
+        if (state.getBlock() instanceof StandingDisplayBoardBlock standing)
+            material = standing.getMaterial();
+        else if (state.getBlock() instanceof WallDisplayBoardBlock wall)
+            material = wall.getMaterial();
+        else
+            return;
+
+        VertexConsumer vertexconsumer = material.buffer(pBufferSource, signrenderer$signmodel::renderType);
+        signrenderer$signmodel.root.render(poseStack, vertexconsumer, pPackedLight, pPackedOverlay);
+        poseStack.popPose();
+        float textScale = 0.010416667F;
+        poseStack.translate(0.0D, 0.33333334F, 0.046666667F);
+        poseStack.scale(textScale, -textScale, textScale);
+        FormattedCharSequence[] aformattedcharsequence = blockEntity.getRenderMessages(Minecraft.getInstance().isTextFilteringEnabled(), (component) -> {
+            List<FormattedCharSequence> list = this.font.split(component, 90);
+            return list.isEmpty() ? FormattedCharSequence.EMPTY : list.get(0);
+        });
+
+        int darkColor;
+        int baseColor;
+        boolean hasOutline;
+        int light;
+
+
+        if (blockEntity.hasGlowingText()) {
+            darkColor = getDarkColor(blockEntity, true);
+            baseColor = blockEntity.getColor().getTextColor();
+            hasOutline = isOutlineVisible(blockEntity, baseColor);
+            light = 15728880;
+        } else {
+            darkColor = getDarkColor(blockEntity, false);
+            baseColor = darkColor;
+            hasOutline = false;
+            light = pPackedLight;
+        }
+
+        for (int i1 = 0; i1 < 4; ++i1) {
+            FormattedCharSequence formattedcharsequence = aformattedcharsequence[i1];
+            float x = (float) (-this.font.width(formattedcharsequence) / 2);
+            float y = i1 * TEXT_LINE_HEIGHT - TEXT_VERTICAL_OFFSET;
+            if (hasOutline) {
+                this.font.drawInBatch8xOutline(formattedcharsequence, x, y, baseColor, darkColor, poseStack.last().pose(), pBufferSource, light);
+            } else {
+                this.font.drawInBatch(formattedcharsequence, x, y, baseColor, false, poseStack.last().pose(), pBufferSource, false, 0, light);
+            }
+        }
+
+        poseStack.popPose();
+    }
+
+    private static boolean isOutlineVisible(SignBlockEntity blockEntity, int textColor) {
+        if (textColor == DyeColor.BLACK.getTextColor()) {
+            return true;
+        } else {
+            Minecraft minecraft = Minecraft.getInstance();
+            LocalPlayer localPlayer = minecraft.player;
+            if (localPlayer != null && minecraft.options.getCameraType().isFirstPerson() && localPlayer.isScoping()) {
+                return true;
+            } else {
+                Entity entity = minecraft.getCameraEntity();
+                return entity != null && entity.distanceToSqr(Vec3.atCenterOf(blockEntity.getBlockPos())) < (double) OUTLINE_RENDER_DISTANCE;
+            }
+        }
+    }
+
+    private static int getDarkColor(SignBlockEntity blockEntity, boolean isOutlineVisible) {
+        int textColor = blockEntity.getColor().getTextColor();
+        double brightness = isOutlineVisible ? 0.4D : 0.6D;
+        int red = (int) ((double) NativeImage.getR(textColor) * brightness);
+        int green = (int) ((double) NativeImage.getG(textColor) * brightness);
+        int blue = (int) ((double) NativeImage.getB(textColor) * brightness);
+        return textColor == DyeColor.BLACK.getTextColor() && blockEntity.hasGlowingText() ? -988212 : NativeImage.combine(0, blue, green, red);
+    }
+}

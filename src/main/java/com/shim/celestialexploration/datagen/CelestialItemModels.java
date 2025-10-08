@@ -757,11 +757,6 @@ public class CelestialItemModels extends BaseItemModels {
 		self(CelestialBlocks.PLANET_CHART.get());
 		self(CelestialBlocks.TAXI_STATION.get());
 
-//		generatedItem(ItemRegistry.RED_DISPLAY_BOARD.get());
-//		generatedItem(ItemRegistry.BLACK_DISPLAY_BOARD.get());
-//		generatedItem(ItemRegistry.BLUE_DISPLAY_BOARD.get());
-//		generatedItem(ItemRegistry.WHITE_DISPLAY_BOARD.get());
-
 		//ITEMS
 		generatedItem(CelestialItems.MOON_DUST.get());
 		generatedItem(CelestialItems.EUROPA_DUST.get());
@@ -841,6 +836,11 @@ public class CelestialItemModels extends BaseItemModels {
 		generatedItem(CelestialItems.LIGHT_BLUE_MECHACERBERUS.get());
 		generatedItem(CelestialItems.BLUE_MECHACERBERUS.get());
 		generatedItem(CelestialItems.PURPLE_MECHACERBERUS.get());
+
+		generatedItem(CelestialItems.RED_DISPLAY_BOARD.get());
+		generatedItem(CelestialItems.BLACK_DISPLAY_BOARD.get());
+		generatedItem(CelestialItems.BLUE_DISPLAY_BOARD.get());
+		generatedItem(CelestialItems.WHITE_DISPLAY_BOARD.get());
 
 
 		this.withExistingParent(name(CelestialBlocks.LURKER_HEAD.get()), this.mcLoc("item/template_skull"));

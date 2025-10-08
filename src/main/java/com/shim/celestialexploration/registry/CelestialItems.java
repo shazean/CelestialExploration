@@ -215,10 +215,10 @@ public class CelestialItems {
 	public static final RegistryObject<Item> IO_CHEST = registerItemNoName("io_chest", () -> new StoneChestItem(CelestialBlocks.IO_CHEST.get(), (new Item.Properties()).tab(CelestialTabs.CELESTIAL_MISC_TAB)));
 
 
-//	public static final RegistryObject<Item> RED_DISPLAY_BOARD = ITEMS.register("red_display_board", () -> new DisplayBoardItem((new Item.Properties()).tab(CelestialTabs.CELESTIAL_MISC_TAB), BlockRegistry.RED_DISPLAY_BOARD.get(), BlockRegistry.RED_WALL_DISPLAY_BOARD.get()));
-//	public static final RegistryObject<Item> BLACK_DISPLAY_BOARD = ITEMS.register("black_display_board", () -> new DisplayBoardItem((new Item.Properties()).tab(CelestialTabs.CELESTIAL_MISC_TAB), BlockRegistry.BLACK_DISPLAY_BOARD.get(), BlockRegistry.BLACK_WALL_DISPLAY_BOARD.get()));
-//	public static final RegistryObject<Item> BLUE_DISPLAY_BOARD = ITEMS.register("blue_display_board", () -> new DisplayBoardItem((new Item.Properties()).tab(CelestialTabs.CELESTIAL_MISC_TAB), BlockRegistry.BLUE_DISPLAY_BOARD.get(), BlockRegistry.BLUE_WALL_DISPLAY_BOARD.get()));
-//	public static final RegistryObject<Item> WHITE_DISPLAY_BOARD = ITEMS.register("white_display_board", () -> new DisplayBoardItem((new Item.Properties()).tab(CelestialTabs.CELESTIAL_MISC_TAB), BlockRegistry.WHITE_DISPLAY_BOARD.get(), BlockRegistry.WHITE_WALL_DISPLAY_BOARD.get()));
+	public static final RegistryObject<Item> RED_DISPLAY_BOARD = ITEMS.register("red_display_board", () -> new SignItem((new Item.Properties()).tab(CelestialTabs.CELESTIAL_MISC_TAB), CelestialBlocks.RED_DISPLAY_BOARD.get(), CelestialBlocks.RED_WALL_DISPLAY_BOARD.get()));
+	public static final RegistryObject<Item> BLACK_DISPLAY_BOARD = ITEMS.register("black_display_board", () -> new SignItem((new Item.Properties()).tab(CelestialTabs.CELESTIAL_MISC_TAB), CelestialBlocks.BLACK_DISPLAY_BOARD.get(), CelestialBlocks.BLACK_WALL_DISPLAY_BOARD.get()));
+	public static final RegistryObject<Item> BLUE_DISPLAY_BOARD = ITEMS.register("blue_display_board", () -> new SignItem((new Item.Properties()).tab(CelestialTabs.CELESTIAL_MISC_TAB), CelestialBlocks.BLUE_DISPLAY_BOARD.get(), CelestialBlocks.BLUE_WALL_DISPLAY_BOARD.get()));
+	public static final RegistryObject<Item> WHITE_DISPLAY_BOARD = ITEMS.register("white_display_board", () -> new SignItem((new Item.Properties()).tab(CelestialTabs.CELESTIAL_MISC_TAB), CelestialBlocks.WHITE_DISPLAY_BOARD.get(), CelestialBlocks.WHITE_WALL_DISPLAY_BOARD.get()));
 
 
 //	public static final RegistryObject<Item> CONTROL_PANEL = registerItem("control_panel", "Control Panel", () -> new ControlPanelItem(new Item.Properties().tab(CelestialTabs.SPACESHIP_TAB)));

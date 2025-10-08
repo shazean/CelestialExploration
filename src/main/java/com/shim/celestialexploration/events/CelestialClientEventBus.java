@@ -3,6 +3,7 @@ package com.shim.celestialexploration.events;
 import com.google.common.collect.ImmutableList;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.blocks.CelestialSkullRenderer;
+import com.shim.celestialexploration.blocks.blockentities.DisplayBoardRenderer;
 import com.shim.celestialexploration.capabilities.LoxTankCapability;
 import com.shim.celestialexploration.entity.client.layers.VillagerSpaceSuitLayer;
 import com.shim.celestialexploration.entity.client.renderer.*;
@@ -221,6 +222,7 @@ public class CelestialClientEventBus {
         RecipeBookRegistry.addCategoriesToType(RecipeBookType.create("celestialexploration:workbench_crafting"), ImmutableList.of(RecipeBookCategories.create("celestialexploration:workbench_crafting", new ItemStack(Items.COMPASS))));
 
         BlockEntityRenderers.register(CelestialBlockEntities.STONE_CHEST_BLOCK_ENTITY.get(), StoneChestRenderer::new);
+        BlockEntityRenderers.register(CelestialBlockEntities.DISPLAY_BOARD_BLOCK_ENTITY.get(), DisplayBoardRenderer::new);
 
     }
 
@@ -229,7 +231,6 @@ public class CelestialClientEventBus {
     @SubscribeEvent
     public static void onTextureStitch(TextureStitchEvent.Pre event) {
         if (event.getAtlas().location().equals(Sheets.CHEST_SHEET)) {
-            CelestialExploration.LOGGER.debug("got chest atlas");
             for (Material material : StoneChestRenderer.single) {
                 event.addSprite(material.texture());
             }
@@ -239,6 +240,12 @@ public class CelestialClientEventBus {
             for (Material material : StoneChestRenderer.right) {
                 event.addSprite(material.texture());
             }
+        }
+        if (event.getAtlas().location().equals(Sheets.SIGN_SHEET)) {
+            event.addSprite(DisplayBoardType.BLACK.texture());
+            event.addSprite(DisplayBoardType.WHITE.texture());
+            event.addSprite(DisplayBoardType.RED.texture());
+            event.addSprite(DisplayBoardType.BLUE.texture());
         }
     }
 
