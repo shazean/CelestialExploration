@@ -94,7 +94,9 @@ public class CelestialBlockStates extends BaseBlockStates {
 		simpleBlock(CelestialBlocks.GLOWING_MOON_SAND.get());
 		simpleBlock(CelestialBlocks.LUNAR_LANTERN.get());
 		portalBlock(CelestialBlocks.MOON_PORTAL.get());
-		farmlandBlock(CelestialBlocks.MOON_FARMLAND.get(), CelestialBlocks.MOON_SAND.get());
+
+		cubeTop(CelestialBlocks.MOON_FARMLAND.get(), CelestialBlocks.MOON_SAND.get());
+		farmlandBlock(CelestialBlocks.MOON_FARMLAND_TILLED.get(), CelestialBlocks.MOON_SAND.get());
 
 		//---- MARS -------------------------------------------------------------------------------
 		//STONE
@@ -167,7 +169,8 @@ public class CelestialBlockStates extends BaseBlockStates {
 		sandBlock(CelestialBlocks.COARSE_MARS_SAND.get());
 		portalBlock(CelestialBlocks.MARS_PORTAL.get());
 
-		farmlandBlock(CelestialBlocks.MARS_FARMLAND.get(), CelestialBlocks.MARS_SAND.get());
+		cubeTop(CelestialBlocks.MARS_FARMLAND.get(), CelestialBlocks.MARS_SAND.get());
+		farmlandBlock(CelestialBlocks.MARS_FARMLAND_TILLED.get(), CelestialBlocks.MARS_SAND.get());
 
 
 		//---- VENUS -------------------------------------------------------------------------------
@@ -325,7 +328,9 @@ public class CelestialBlockStates extends BaseBlockStates {
 		sandPathBlock(CelestialBlocks.MERCURY_SAND_PATH.get(), CelestialBlocks.MERCURY_SAND.get());
 		sandBlock(CelestialBlocks.COARSE_MERCURY_SAND.get());
 		portalBlock(CelestialBlocks.MERCURY_PORTAL.get());
-		farmlandBlock(CelestialBlocks.MERCURY_FARMLAND.get(), CelestialBlocks.MERCURY_SAND.get());
+
+		cubeTop(CelestialBlocks.MERCURY_FARMLAND.get(), CelestialBlocks.MERCURY_SAND.get());
+		farmlandBlock(CelestialBlocks.MERCURY_FARMLAND_TILLED.get(), CelestialBlocks.MERCURY_SAND.get());
 
 
 		//---- JUPITER -------------------------------------------------------------------------------
@@ -689,6 +694,13 @@ public class CelestialBlockStates extends BaseBlockStates {
 		simpleBlock(CelestialBlocks.BAUXITE_ORE.get());
 
 		simpleBlock(CelestialBlocks.TAXI_STATION.get());
+	}
+
+	public void cubeTop(Block block, Block side) {
+		ModelFile model = models().cubeTop(block.getRegistryName().getPath(), blockTexture(side), blockTexture(block));
+
+		getVariantBuilder(block).forAllStates(state -> ConfiguredModel.builder().modelFile(model).build());
+
 	}
 
 	public void farmlandBlock(Block block, Block dirtBlock) {

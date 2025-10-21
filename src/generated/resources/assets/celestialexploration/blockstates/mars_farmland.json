@@ -1,28 +1,7 @@
 {
   "variants": {
-    "moisture=0": {
+    "": {
       "model": "celestialexploration:block/mars_farmland"
-    },
-    "moisture=1": {
-      "model": "celestialexploration:block/mars_farmland"
-    },
-    "moisture=2": {
-      "model": "celestialexploration:block/mars_farmland"
-    },
-    "moisture=3": {
-      "model": "celestialexploration:block/mars_farmland"
-    },
-    "moisture=4": {
-      "model": "celestialexploration:block/mars_farmland"
-    },
-    "moisture=5": {
-      "model": "celestialexploration:block/mars_farmland"
-    },
-    "moisture=6": {
-      "model": "celestialexploration:block/mars_farmland"
-    },
-    "moisture=7": {
-      "model": "celestialexploration:block/mars_farmland_moist"
     }
   }
 }

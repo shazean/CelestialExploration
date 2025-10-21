@@ -22,6 +22,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.HoeItem;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.level.Level;
@@ -102,8 +103,8 @@ public class CelestialForgeEventBus {
     public static void clickEvent(PlayerInteractEvent.RightClickBlock event) {
         Player player = event.getPlayer();
 
-        if (event.getSide() == LogicalSide.SERVER && player != null) {
-            if (event.getItemStack() != null && event.getItemStack().getItem() == Items.FLINT_AND_STEEL) {
+        if (event.getSide() == LogicalSide.SERVER && player != null && event.getItemStack() != null) {
+            if (event.getItemStack().getItem() == Items.FLINT_AND_STEEL) {
                 if (CelestialCommonConfig.PORTALS.get()) {
                     Level level = event.getWorld();
 
@@ -122,7 +123,7 @@ public class CelestialForgeEventBus {
                         }
                     }
                 }
-            } else if (event.getItemStack() != null && event.getItemStack().getItem() instanceof ShovelItem) {
+            } else if (event.getItemStack().getItem() instanceof ShovelItem) {
                 Level level = event.getWorld();
                 BlockPos pos = event.getHitVec().getBlockPos();
 
@@ -137,6 +138,18 @@ public class CelestialForgeEventBus {
                     level.setBlock(pos, CelestialBlocks.MERCURY_SAND_PATH.get().defaultBlockState(), 1);
                 } else if (block.is(CelestialBlocks.IO_SAND.get())) {
                     level.setBlock(pos, CelestialBlocks.IO_SAND_PATH.get().defaultBlockState(), 1);
+                }
+            }  else if (event.getItemStack().getItem() instanceof HoeItem) {
+                Level level = event.getWorld();
+                BlockPos pos = event.getHitVec().getBlockPos();
+
+                BlockState block = level.getBlockState(pos);
+                if (block.is(CelestialBlocks.MOON_FARMLAND.get())) {
+                    level.setBlock(pos, CelestialBlocks.MOON_FARMLAND_TILLED.get().defaultBlockState(), 1);
+                } else if (block.is(CelestialBlocks.MARS_FARMLAND.get())) {
+                    level.setBlock(pos, CelestialBlocks.MARS_FARMLAND_TILLED.get().defaultBlockState(), 1);
+                } else if (block.is(CelestialBlocks.MERCURY_FARMLAND.get())) {
+                    level.setBlock(pos, CelestialBlocks.MERCURY_FARMLAND_TILLED.get().defaultBlockState(), 1);
                 }
             }
         }

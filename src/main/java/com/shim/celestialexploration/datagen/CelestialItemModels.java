@@ -94,6 +94,7 @@ public class CelestialItemModels extends BaseItemModels {
 		self(CelestialBlocks.MOON_SAND_PATH.get());
 		chestItem(CelestialBlocks.MOON_CHEST.get(), CelestialBlocks.MOON_STONE.get());
 		self(CelestialBlocks.MOON_FARMLAND.get());
+		self(CelestialBlocks.MOON_FARMLAND_TILLED.get());
 
 
 		//---- MARS -------------------------------------------------------------------------------
@@ -167,6 +168,7 @@ public class CelestialItemModels extends BaseItemModels {
 		self(CelestialBlocks.MARS_SAND_PATH.get());
 		chestItem(CelestialBlocks.MARS_CHEST.get(), CelestialBlocks.MARS_STONE.get());
 		self(CelestialBlocks.MARS_FARMLAND.get());
+		self(CelestialBlocks.MARS_FARMLAND_TILLED.get());
 
 
 		//---- VENUS -------------------------------------------------------------------------------
@@ -323,6 +325,7 @@ public class CelestialItemModels extends BaseItemModels {
 		self(CelestialBlocks.MERCURY_LANTERN.get());
 		chestItem(CelestialBlocks.MERCURY_CHEST.get(), CelestialBlocks.MERCURY_STONE.get());
 		self(CelestialBlocks.MERCURY_FARMLAND.get());
+		self(CelestialBlocks.MERCURY_FARMLAND_TILLED.get());
 
 		//---- JUPITER -------------------------------------------------------------------------------
 		//DEEPSLATE

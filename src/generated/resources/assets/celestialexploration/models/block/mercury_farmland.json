@@ -1,7 +1,7 @@
 {
-  "parent": "minecraft:block/template_farmland",
+  "parent": "minecraft:block/cube_top",
   "textures": {
-    "dirt": "celestialexploration:block/mercury_sand",
+    "side": "celestialexploration:block/mercury_sand",
     "top": "celestialexploration:block/mercury_farmland"
   }
 }

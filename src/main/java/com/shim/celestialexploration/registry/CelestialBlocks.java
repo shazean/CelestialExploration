@@ -149,7 +149,8 @@ public class CelestialBlocks {
     public static final RegistryObject<Block> MOON_SAND_PATH = registerBlock("moon_sand_path", "Lunar Regolith Path", () -> new CelestialPathBlock(Block.Properties.of(Material.SAND).strength(0.5F).sound(SoundType.SAND), MOON_SAND.get()), CelestialTabs.CELESTIAL_BLOCKS_TAB);
     public static final RegistryObject<Block> MOON_CHEST = registerBlockNoItem("moon_chest", "Lunar Stone Chest", () -> new StoneChestBlock(StoneChestType.MOON));
 
-    public static final RegistryObject<Block> MOON_FARMLAND = registerBlock("moon_farmland", "Lunar Farmland", () -> new CelestialFarmBlock(BlockBehaviour.Properties.of(Material.DIRT).randomTicks().strength(0.6F).sound(SoundType.GRAVEL).isViewBlocking(CelestialBlocks::always).isSuffocating(CelestialBlocks::always), CelestialBlocks.MOON_SAND.get()), CelestialTabs.CELESTIAL_BLOCKS_TAB);
+    public static final RegistryObject<Block> MOON_FARMLAND = registerBlock("moon_farmland", "Lunar Farmland", () -> new Block(BlockBehaviour.Properties.of(Material.DIRT).randomTicks().strength(0.6F).sound(SoundType.GRAVEL).isViewBlocking(CelestialBlocks::always).isSuffocating(CelestialBlocks::always)), CelestialTabs.CELESTIAL_BLOCKS_TAB);
+    public static final RegistryObject<Block> MOON_FARMLAND_TILLED = registerBlock("moon_farmland_tilled", "Tilled Lunar Farmland", () -> new CelestialFarmBlock(BlockBehaviour.Properties.of(Material.DIRT).randomTicks().strength(0.6F).sound(SoundType.GRAVEL).isViewBlocking(CelestialBlocks::always).isSuffocating(CelestialBlocks::always), CelestialBlocks.MOON_FARMLAND.get()), CelestialTabs.CELESTIAL_BLOCKS_TAB);
 
     //---- MARS -------------------------------------------------------------------------------
     //STONE
@@ -226,7 +227,8 @@ public class CelestialBlocks {
     public static final RegistryObject<Block> MARS_SAND_PATH = registerBlock("mars_sand_path", "Martian Regolith Path", () -> new CelestialPathBlock(Block.Properties.of(Material.SAND).strength(0.5F).sound(SoundType.SAND), MARS_SAND.get()), CelestialTabs.CELESTIAL_BLOCKS_TAB);
     public static final RegistryObject<Block> MARS_CHEST = registerBlockNoItem("mars_chest", "Martian Stone Chest", () -> new StoneChestBlock(StoneChestType.MARS));
 
-    public static final RegistryObject<Block> MARS_FARMLAND = registerBlock("mars_farmland", "Martian Farmland", () -> new CelestialFarmBlock(BlockBehaviour.Properties.of(Material.DIRT).randomTicks().strength(0.6F).sound(SoundType.GRAVEL).isViewBlocking(CelestialBlocks::always).isSuffocating(CelestialBlocks::always), CelestialBlocks.MARS_SAND.get()), CelestialTabs.CELESTIAL_BLOCKS_TAB);
+    public static final RegistryObject<Block> MARS_FARMLAND = registerBlock("mars_farmland", "Martian Farmland", () -> new Block(BlockBehaviour.Properties.of(Material.DIRT).randomTicks().strength(0.6F).sound(SoundType.GRAVEL).isViewBlocking(CelestialBlocks::always).isSuffocating(CelestialBlocks::always)), CelestialTabs.CELESTIAL_BLOCKS_TAB);
+    public static final RegistryObject<Block> MARS_FARMLAND_TILLED = registerBlock("mars_farmland_tilled", "Tilled Martian Farmland", () -> new CelestialFarmBlock(BlockBehaviour.Properties.of(Material.DIRT).randomTicks().strength(0.6F).sound(SoundType.GRAVEL).isViewBlocking(CelestialBlocks::always).isSuffocating(CelestialBlocks::always), CelestialBlocks.MARS_FARMLAND.get()), CelestialTabs.CELESTIAL_BLOCKS_TAB);
 
 
     //---- VENUS -------------------------------------------------------------------------------
@@ -388,7 +390,8 @@ public class CelestialBlocks {
     public static final RegistryObject<Block> MERCURY_LANTERN = registerBlock("mercury_lantern", "Mercurian Lantern", () -> new Block(Block.Properties.of(Material.GLASS, MaterialColor.QUARTZ).strength(0.3F).sound(SoundType.GLASS).lightLevel((light) -> 13)), CelestialTabs.CELESTIAL_BLOCKS_TAB);
     public static final RegistryObject<Block> MERCURY_CHEST = registerBlockNoItem("mercury_chest", "Mercurian Stone Chest", () -> new StoneChestBlock(StoneChestType.MERCURY));
 
-    public static final RegistryObject<Block> MERCURY_FARMLAND = registerBlock("mercury_farmland", "Mercurian Farmland", () -> new CelestialFarmBlock(BlockBehaviour.Properties.of(Material.DIRT).randomTicks().strength(0.6F).sound(SoundType.GRAVEL).isViewBlocking(CelestialBlocks::always).isSuffocating(CelestialBlocks::always), CelestialBlocks.MERCURY_SAND.get()), CelestialTabs.CELESTIAL_BLOCKS_TAB);
+    public static final RegistryObject<Block> MERCURY_FARMLAND = registerBlock("mercury_farmland", "Mercurian Farmland", () -> new Block(BlockBehaviour.Properties.of(Material.DIRT).randomTicks().strength(0.6F).sound(SoundType.GRAVEL).isViewBlocking(CelestialBlocks::always).isSuffocating(CelestialBlocks::always)), CelestialTabs.CELESTIAL_BLOCKS_TAB);
+    public static final RegistryObject<Block> MERCURY_FARMLAND_TILLED = registerBlock("mercury_farmland_tilled", "Tilled Mercurian Farmland", () -> new CelestialFarmBlock(BlockBehaviour.Properties.of(Material.DIRT).randomTicks().strength(0.6F).sound(SoundType.GRAVEL).isViewBlocking(CelestialBlocks::always).isSuffocating(CelestialBlocks::always), CelestialBlocks.MERCURY_FARMLAND.get()), CelestialTabs.CELESTIAL_BLOCKS_TAB);
 
 
     //---- JUPITER -------------------------------------------------------------------------------

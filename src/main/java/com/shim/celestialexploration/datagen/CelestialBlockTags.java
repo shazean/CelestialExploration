@@ -653,9 +653,9 @@ public class CelestialBlockTags extends BlockTagsProvider {
                 .add(CelestialBlocks.IO_CHEST.get());
 
         tag(CelestialTags.Blocks.FARMLAND)
-                .add(CelestialBlocks.MARS_FARMLAND.get())
-                .add(CelestialBlocks.MOON_FARMLAND.get())
-                .add(CelestialBlocks.MERCURY_FARMLAND.get());
+                .add(CelestialBlocks.MARS_FARMLAND_TILLED.get())
+                .add(CelestialBlocks.MOON_FARMLAND_TILLED.get())
+                .add(CelestialBlocks.MERCURY_FARMLAND_TILLED.get());
 
     }
 

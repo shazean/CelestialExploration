@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_farmland",
+  "textures": {
+    "dirt": "celestialexploration:block/moon_sand",
+    "top": "celestialexploration:block/moon_farmland_tilled_moist"
+  }
+}
