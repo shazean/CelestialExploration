@@ -1,19 +1,12 @@
 package com.shim.celestialexploration.entity.client.animators;
 
-import com.mojang.math.Vector3f;
-import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.entity.vehicle.Spaceship;
 import com.shim.celestialexploration.util.CelestialUtil;
-import mod.azure.azurelib.rewrite.animation.cache.AzBoneCache;
-import mod.azure.azurelib.rewrite.animation.controller.AzAnimationController;
-import mod.azure.azurelib.rewrite.animation.controller.AzAnimationControllerContainer;
-import mod.azure.azurelib.rewrite.animation.impl.AzEntityAnimator;
-import mod.azure.azurelib.rewrite.model.AzBone;
+import mod.azure.azurelib.animation.controller.AzAnimationController;
+import mod.azure.azurelib.animation.controller.AzAnimationControllerContainer;
+import mod.azure.azurelib.animation.impl.AzEntityAnimator;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.Mth;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.Optional;
 
 public class SpaceshipAnimator extends AzEntityAnimator<Spaceship> {
     private static final ResourceLocation ANIMATIONS = CelestialUtil.getModLoc("animations/spaceship.animation.json");

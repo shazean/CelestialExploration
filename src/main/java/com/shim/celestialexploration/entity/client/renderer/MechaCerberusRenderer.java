@@ -4,8 +4,8 @@ import com.shim.celestialexploration.entity.client.animators.MechaCerberusAnimat
 import com.shim.celestialexploration.entity.client.layers.DyedGlowLayer;
 import com.shim.celestialexploration.entity.robots.AbstractCerberus;
 import com.shim.celestialexploration.util.CelestialUtil;
-import mod.azure.azurelib.rewrite.render.entity.AzEntityRenderer;
-import mod.azure.azurelib.rewrite.render.entity.AzEntityRendererConfig;
+import mod.azure.azurelib.render.entity.AzEntityRenderer;
+import mod.azure.azurelib.render.entity.AzEntityRendererConfig;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 

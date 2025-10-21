@@ -1,11 +1,10 @@
 package com.shim.celestialexploration.entity.client.renderer;
 
-import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.entity.client.animators.OrbiterAnimator;
 import com.shim.celestialexploration.entity.mob.Orbiter;
 import com.shim.celestialexploration.util.CelestialUtil;
-import mod.azure.azurelib.rewrite.render.entity.AzEntityRenderer;
-import mod.azure.azurelib.rewrite.render.entity.AzEntityRendererConfig;
+import mod.azure.azurelib.render.entity.AzEntityRenderer;
+import mod.azure.azurelib.render.entity.AzEntityRendererConfig;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;

@@ -5,7 +5,7 @@ import com.shim.celestialexploration.entity.DyeType;
 import com.shim.celestialexploration.entity.IDyeable;
 import com.shim.celestialexploration.entity.client.model.CerberusPart;
 import mod.azure.azurelib.ai.pathing.AzureNavigation;
-import mod.azure.azurelib.rewrite.util.MoveAnalysis;
+import mod.azure.azurelib.util.MoveAnalysis;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;

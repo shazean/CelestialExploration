@@ -77,6 +77,7 @@ public class CelestialEventBus {
         event.put(CelestialEntities.MECHACERBERUS.get(), MechaCerberus.createAttributes().build());
         event.put(CelestialEntities.MECHACERBERUS_BOSS.get(), MechaCerberusBoss.createAttributes().build());
         event.put(CelestialEntities.MOON_COW.get(), MoonCow.createAttributes().build());
+        event.put(CelestialEntities.MECHACROW.get(), MechaCrow.createAttributes().build());
 
     }
 

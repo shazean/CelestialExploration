@@ -17,9 +17,23 @@
   },
   "criteria": {
     "step_on_sun": {
-      "trigger": "minecraft:enter_block",
+      "trigger": "minecraft:location",
       "conditions": {
-        "block": "celestialexploration:solar_flare"
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "predicate": {
+              "stepping_on": {
+                "block": {
+                  "blocks": [
+                    "celestialexploration:solar_flare"
+                  ]
+                }
+              }
+            },
+            "entity": "this"
+          }
+        ]
       }
     }
   },

@@ -6,8 +6,8 @@ import com.shim.celestialexploration.entity.client.animators.SpaceTaxiAnimator;
 import com.shim.celestialexploration.entity.client.layers.DyedGlowLayer;
 import com.shim.celestialexploration.entity.vehicle.SpaceTaxi;
 import com.shim.celestialexploration.util.CelestialUtil;
-import mod.azure.azurelib.rewrite.render.entity.AzEntityRenderer;
-import mod.azure.azurelib.rewrite.render.entity.AzEntityRendererConfig;
+import mod.azure.azurelib.render.entity.AzEntityRenderer;
+import mod.azure.azurelib.render.entity.AzEntityRendererConfig;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
@@ -20,7 +20,7 @@ import org.jetbrains.annotations.NotNull;
 public class SpaceTaxiRenderer extends AzEntityRenderer<SpaceTaxi> {
 
     public SpaceTaxiRenderer(EntityRendererProvider.Context context) {
-        super(AzEntityRendererConfig.builder(com.shim.celestialexploration.entity.client.renderer.SpaceshipRenderer::getModel, SpaceTaxiRenderer::getTexture).setAnimatorProvider(SpaceTaxiAnimator::new)
+        super(AzEntityRendererConfig.builder(SpaceshipRenderer::getModel, SpaceTaxiRenderer::getTexture).setAnimatorProvider(SpaceTaxiAnimator::new)
                 .setScale(1.7F)
                 .addRenderLayer(new DyedGlowLayer<>())
                 .build(), context);

@@ -1,8 +1,8 @@
 package com.shim.celestialexploration.entity.client.dispatchers;
 
 import com.shim.celestialexploration.entity.ambient.Eureka;
-import mod.azure.azurelib.rewrite.animation.dispatch.command.AzCommand;
-import mod.azure.azurelib.rewrite.animation.play_behavior.AzPlayBehaviors;
+import mod.azure.azurelib.animation.dispatch.command.AzCommand;
+import mod.azure.azurelib.animation.play_behavior.AzPlayBehaviors;
 
 public class EurekaDispatcher {
     private static final AzCommand IDLE_COMMAND = AzCommand.create(

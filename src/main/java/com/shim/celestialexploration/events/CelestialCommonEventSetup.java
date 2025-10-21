@@ -10,13 +10,15 @@ import com.shim.celestialexploration.entity.mob.piglins.VoidedPiglin;
 import com.shim.celestialexploration.entity.mob.slimes.*;
 import com.shim.celestialexploration.entity.robots.Drone;
 import com.shim.celestialexploration.entity.robots.Rover;
+import com.shim.celestialexploration.item.armor.SpacesuitRenderer;
 import com.shim.celestialexploration.packets.CelestialPacketHandler;
 import com.shim.celestialexploration.registry.CelestialEntities;
 import com.shim.celestialexploration.registry.CelestialItems;
 import com.shim.celestialexploration.registry.CelestialPOIs;
 import com.shim.celestialexploration.registry.CelestialStructurePieceType;
 import com.shim.celestialexploration.world.structures.ResearchTunnelPieces;
-import mod.azure.azurelib.rewrite.animation.cache.AzIdentityRegistry;
+import mod.azure.azurelib.animation.cache.AzIdentityRegistry;
+import mod.azure.azurelib.render.armor.AzArmorRendererRegistry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -62,6 +64,13 @@ public class CelestialCommonEventSetup {
             RecipeType.register(new ResourceLocation(CelestialExploration.MODID, "workbench_crafting").toString());
 
         });
+
+        AzIdentityRegistry.register(CelestialItems.ADVANCED_SPACESUIT_HELMET.get(), CelestialItems.ADVANCED_SPACESUIT_CHESTPLATE.get(), CelestialItems.ADVANCED_SPACESUIT_LEGGINGS.get(), CelestialItems.ADVANCED_SPACESUIT_BOOTS.get());
+        AzIdentityRegistry.register(CelestialItems.BASIC_SPACESUIT_HELMET.get(), CelestialItems.BASIC_SPACESUIT_CHESTPLATE.get(), CelestialItems.BASIC_SPACESUIT_LEGGINGS.get(), CelestialItems.BASIC_SPACESUIT_BOOTS.get());
+        AzIdentityRegistry.register(CelestialItems.THERMAL_SPACESUIT_HELMET.get(), CelestialItems.THERMAL_SPACESUIT_CHESTPLATE.get(), CelestialItems.THERMAL_SPACESUIT_LEGGINGS.get(), CelestialItems.THERMAL_SPACESUIT_BOOTS.get());
+        AzIdentityRegistry.register(CelestialItems.HEAVY_DUTY_SPACESUIT_HELMET.get(), CelestialItems.HEAVY_DUTY_SPACESUIT_CHESTPLATE.get(), CelestialItems.HEAVY_DUTY_SPACESUIT_LEGGINGS.get(), CelestialItems.HEAVY_DUTY_SPACESUIT_BOOTS.get());
+
+
     }
 
 }

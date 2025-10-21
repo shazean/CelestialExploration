@@ -2,10 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "celestialexploration:lunar_goo"
-    },
-    {
-      "item": "minecraft:milk_bucket"
+      "item": "celestialexploration:moon_milk_bucket"
     }
   ],
   "result": {

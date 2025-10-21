@@ -1,7 +1,7 @@
 package com.shim.celestialexploration.entity.mob;
 
 import com.shim.celestialexploration.entity.client.dispatchers.SimpleEntityDispatcher;
-import mod.azure.azurelib.rewrite.util.MoveAnalysis;
+import mod.azure.azurelib.util.MoveAnalysis;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
 import net.minecraft.world.Difficulty;

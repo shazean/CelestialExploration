@@ -6,6 +6,7 @@ import com.shim.celestialexploration.registry.CelestialItems;
 import com.shim.celestialexploration.registry.CelestialDimensions;
 import com.shim.celestialexploration.registry.CelestialEntities;
 import net.minecraft.advancements.Advancement;
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.advancements.FrameType;
 import net.minecraft.advancements.critereon.*;
 import net.minecraft.data.DataGenerator;
@@ -62,7 +63,9 @@ public class CelestialAdvancements extends AdvancementProvider {
                         new TranslatableComponent("advancements.celestialexploration.fly_into_sun.title"), new TranslatableComponent("advancements.celestialexploration.fly_into_sun.description"),
                         null, FrameType.TASK, true, true, false)
                 .parent(enterSpace)
-                .addCriterion("step_on_sun", EnterBlockTrigger.TriggerInstance.entersBlock(CelestialBlocks.SOLAR_FLARE.get())).save(consumer, modLoc("fly_into_sun"));
+//                .addCriterion("step_on_sun", EnterBlockTrigger.TriggerInstance.entersBlock(CelestialBlocks.SOLAR_FLARE.get()))
+                .addCriterion("step_on_sun", LocationTrigger.TriggerInstance.located(EntityPredicate.Builder.entity().steppingOn(LocationPredicate.Builder.location().setBlock(BlockPredicate.Builder.block().of(CelestialBlocks.SOLAR_FLARE.get()).build()).build()).build()))
+                .save(consumer, modLoc("fly_into_sun"));
 
         Advancement killMobInSpace = Advancement.Builder.advancement().display(new ItemStack(Items.IRON_SWORD),
                         new TranslatableComponent("advancements.celestialexploration.kill_mob_in_space.title"), new TranslatableComponent("advancements.celestialexploration.kill_mob_in_space.description"),

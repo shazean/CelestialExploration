@@ -2,11 +2,10 @@ package com.shim.celestialexploration.entity.client.renderer.projectile;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
-import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.entity.projectile.MeteorProjectile;
 import com.shim.celestialexploration.util.CelestialUtil;
-import mod.azure.azurelib.rewrite.render.entity.AzEntityRenderer;
-import mod.azure.azurelib.rewrite.render.entity.AzEntityRendererConfig;
+import mod.azure.azurelib.render.entity.AzEntityRenderer;
+import mod.azure.azurelib.render.entity.AzEntityRendererConfig;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;

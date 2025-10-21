@@ -5,10 +5,9 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.blaze3d.vertex.VertexFormat;
-import com.shim.celestialexploration.util.CelestialUtil;
-import mod.azure.azurelib.rewrite.render.AzRendererPipeline;
-import mod.azure.azurelib.rewrite.render.AzRendererPipelineContext;
-import mod.azure.azurelib.rewrite.render.layer.AzAutoGlowingLayer;
+import mod.azure.azurelib.render.AzRendererPipeline;
+import mod.azure.azurelib.render.AzRendererPipelineContext;
+import mod.azure.azurelib.render.layer.AzAutoGlowingLayer;
 import net.minecraft.Util;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.RenderStateShard;
@@ -18,10 +17,11 @@ import net.minecraft.world.entity.Entity;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
+import java.util.UUID;
 import java.util.function.Function;
 
 @OnlyIn(Dist.CLIENT)
-public abstract class AbstractGlowLayer<T extends Entity> extends AzAutoGlowingLayer<T> {
+public abstract class AbstractGlowLayer<T extends Entity> extends AzAutoGlowingLayer<UUID, T> {
     public AbstractGlowLayer() {
         super();
     }
@@ -50,12 +50,12 @@ public abstract class AbstractGlowLayer<T extends Entity> extends AzAutoGlowingL
     }
 
     @Override
-    public void render(AzRendererPipelineContext<T> context) {
+    public void render(AzRendererPipelineContext<UUID, T> context) {
 
         T animatable = context.animatable();
         RenderType glowingType = this.getRenderType(animatable);
         int prevPackedLight = context.packedLight();
-        AzRendererPipeline<T> renderPipeline = context.rendererPipeline();
+        AzRendererPipeline<UUID, T> renderPipeline = context.rendererPipeline();
         VertexConsumer prevVertexConsumer = context.vertexConsumer();
         if (context.renderType() != null) {
             RenderType prevRenderType = context.renderType();

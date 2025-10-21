@@ -14,7 +14,7 @@ import com.shim.celestialexploration.item.armor.*;
 import com.shim.celestialexploration.registry.*;
 import com.shim.celestialexploration.util.Keybinds;
 import com.shim.celestialexploration.world.renderer.CelestialDimensionRenderers;
-import mod.azure.azurelib.rewrite.render.armor.AzArmorRendererRegistry;
+import mod.azure.azurelib.render.armor.AzArmorRendererRegistry;
 import net.minecraft.client.RecipeBookCategories;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.model.SkullModel;
@@ -201,6 +201,7 @@ public class CelestialClientEventBus {
         EntityRenderers.register(CelestialEntities.ORBITER.get(), OrbiterRenderer::new);
         EntityRenderers.register(CelestialEntities.MECHACERBERUS.get(), (context) -> new MechaCerberusRenderer(context, 1.5F));
         EntityRenderers.register(CelestialEntities.MECHACERBERUS_BOSS.get(), (context) -> new MechaCerberusRenderer(context, 2.5F));
+        EntityRenderers.register(CelestialEntities.MECHACROW.get(), MechaCrowRenderer::new);
 
         MenuScreens.register(CelestialMenus.OXYGEN_COMPRESSOR_MENU.get(), OxygenCompressorScreen::new);
         MenuScreens.register(CelestialMenus.PLANET_CHART_MENU.get(), PlanetChartScreen::new);

@@ -4,22 +4,24 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.entity.robots.Rover;
-import mod.azure.azurelib.rewrite.model.AzBone;
-import mod.azure.azurelib.rewrite.render.AzRendererPipelineContext;
-import mod.azure.azurelib.rewrite.render.layer.AzRenderLayer;
+import mod.azure.azurelib.model.AzBone;
+import mod.azure.azurelib.render.AzRendererPipelineContext;
+import mod.azure.azurelib.render.layer.AzRenderLayer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
+import java.util.UUID;
+
 @OnlyIn(Dist.CLIENT)
-public class RoverCarriedBlockLayer implements AzRenderLayer<Rover> {
+public class RoverCarriedBlockLayer implements AzRenderLayer<UUID, Rover> {
 
     @Override
-    public void preRender(AzRendererPipelineContext<Rover> azRendererPipelineContext) {}
+    public void preRender(AzRendererPipelineContext<UUID, Rover> azRendererPipelineContext) {}
 
     @Override
-    public void render(AzRendererPipelineContext<Rover> azRendererPipelineContext) {
+    public void render(AzRendererPipelineContext<UUID, Rover> azRendererPipelineContext) {
 
         Rover animatable = azRendererPipelineContext.animatable();
         PoseStack poseStack = azRendererPipelineContext.poseStack();
@@ -48,5 +50,7 @@ public class RoverCarriedBlockLayer implements AzRenderLayer<Rover> {
     }
 
     @Override
-    public void renderForBone(AzRendererPipelineContext<Rover> azRendererPipelineContext, AzBone azBone) {}
+    public void renderForBone(AzRendererPipelineContext<UUID, Rover> context, AzBone bone) {
+
+    }
 }

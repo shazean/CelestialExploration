@@ -1,25 +1,27 @@
 package com.shim.celestialexploration.entity.client.dispatchers;
 
-import com.shim.celestialexploration.entity.friendlies.Cobblesaurus;
+import com.shim.celestialexploration.entity.robots.MechaCrow;
 import mod.azure.azurelib.animation.dispatch.command.AzCommand;
 import mod.azure.azurelib.animation.play_behavior.AzPlayBehaviors;
 
-public class CobblesaurusDispatcher {
+public class MechaCrowDispatcher {
     protected static String controller = "base_controller";
 
     private static final AzCommand IDLE = AzCommand.create(controller, "idle", AzPlayBehaviors.LOOP);
-    private static final AzCommand WALK = AzCommand.create(controller, "walk", AzPlayBehaviors.LOOP);
+    private static final AzCommand HOP = AzCommand.create(controller, "hop", AzPlayBehaviors.LOOP);
 
-    private final Cobblesaurus animatable;
+    private final MechaCrow animatable;
 
-    public CobblesaurusDispatcher(Cobblesaurus animatable) {
+    public MechaCrowDispatcher(MechaCrow animatable) {
         this.animatable = animatable;
     }
 
     public void idle() {
         IDLE.sendForEntity(animatable);
     }
-    public void walk() {
-        WALK.sendForEntity(animatable);
+
+    public void hop() {
+        HOP.sendForEntity(animatable);
     }
+
 }

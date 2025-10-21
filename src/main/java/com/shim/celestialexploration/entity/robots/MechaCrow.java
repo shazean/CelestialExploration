@@ -1,7 +1,6 @@
 package com.shim.celestialexploration.entity.robots;
 
-import com.shim.celestialexploration.entity.client.dispatchers.SimpleEntityDispatcher;
-import com.shim.celestialexploration.entity.goals.HoverGoal;
+import com.shim.celestialexploration.entity.client.dispatchers.MechaCrowDispatcher;
 import com.shim.celestiallib.api.effects.CLibEffects;
 import mod.azure.azurelib.util.MoveAnalysis;
 import net.minecraft.core.BlockPos;
@@ -20,7 +19,6 @@ import net.minecraft.world.entity.ai.util.AirAndWaterRandomPos;
 import net.minecraft.world.entity.ai.util.HoverRandomPos;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.FlyingAnimal;
-import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -31,15 +29,15 @@ import net.minecraft.world.phys.Vec3;
 import java.util.EnumSet;
 import java.util.Random;
 
-public class Drone extends TamableAnimal implements FlyingAnimal {
+public class MechaCrow extends TamableAnimal implements FlyingAnimal {
     static double movementSpeed = 0.21;
-    public final SimpleEntityDispatcher dispatcher;
+    public final MechaCrowDispatcher dispatcher;
     private final MoveAnalysis moveAnalysis;
 
-    public Drone(EntityType<? extends TamableAnimal> p_21803_, Level p_21804_) {
+    public MechaCrow(EntityType<? extends TamableAnimal> p_21803_, Level p_21804_) {
         super(p_21803_, p_21804_);
         this.addEffect(new MobEffectInstance(CLibEffects.LOW_GRAVITY.get(), 120000, 0, false, false, true));
-        this.dispatcher = new SimpleEntityDispatcher(this);
+        this.dispatcher = new MechaCrowDispatcher(this);
         this.moveAnalysis = new MoveAnalysis(this);
     }
 
@@ -49,8 +47,8 @@ public class Drone extends TamableAnimal implements FlyingAnimal {
 
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(1, new HoverGoal(this, movementSpeed / 2));
-        this.goalSelector.addGoal(2, new DroneWanderGoal(this));
+//        this.goalSelector.addGoal(1, new HoverGoal(this, movementSpeed / 2));
+        this.goalSelector.addGoal(2, new MechaCrow.MechaCrowWanderGoal(this));
         this.goalSelector.addGoal(3, new LookAtPlayerGoal(this, Player.class, 8.0F));
         this.goalSelector.addGoal(3, new RandomLookAroundGoal(this));
         this.goalSelector.addGoal(1, new FollowOwnerGoal(this, 1.0D, 5.0F, 1.0F, true));
@@ -77,7 +75,7 @@ public class Drone extends TamableAnimal implements FlyingAnimal {
         return false;
     }
 
-    public static boolean checkDroneSpawnRules(EntityType<Drone> entity, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, Random random) {
+    public static boolean checkMechaCrowSpawnRules(EntityType<MechaCrow> entity, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, Random random) {
         return random.nextInt(5) == 0 && checkMobSpawnRules(entity, level, spawnType, pos, random);
     }
 
@@ -117,54 +115,63 @@ public class Drone extends TamableAnimal implements FlyingAnimal {
         return flyingpathnavigation;
     }
 
-    class DroneWanderGoal extends Goal {
+    class MechaCrowWanderGoal extends Goal {
         private static final int WANDER_THRESHOLD = 22;
-        Drone drone;
+        MechaCrow mechaCrow;
 
-        DroneWanderGoal(Drone drone) {
+        MechaCrowWanderGoal(MechaCrow mechaCrow) {
             this.setFlags(EnumSet.of(Goal.Flag.MOVE));
-            this.drone = drone;
+            this.mechaCrow = mechaCrow;
         }
 
         public boolean canUse() {
-            return this.drone.navigation.isDone() && Drone.this.random.nextInt(10) == 0;
+            return this.mechaCrow.navigation.isDone() && MechaCrow.this.random.nextInt(10) == 0;
         }
 
         public boolean canContinueToUse() {
-            return this.drone.navigation.isInProgress();
+            return this.mechaCrow.navigation.isInProgress();
         }
 
         public void start() {
             Vec3 vec3 = this.findPos();
             if (vec3 != null) {
-                this.drone.navigation.moveTo(this.drone.navigation.createPath(new BlockPos(vec3), 1), 1.0D);
+                this.mechaCrow.navigation.moveTo(this.mechaCrow.navigation.createPath(new BlockPos(vec3), 1), 1.0D);
             }
 
         }
 
         @javax.annotation.Nullable
         private Vec3 findPos() {
-            Vec3 vec3 = this.drone.getViewVector(0.0F);
-            Vec3 vec32 = HoverRandomPos.getPos(this.drone, 8, 7, vec3.x, vec3.z, ((float)Math.PI / 2F), 3, 1);
-            return vec32 != null ? vec32 : AirAndWaterRandomPos.getPos(this.drone, 8, 4, -2, vec3.x, vec3.z, (double)((float)Math.PI / 2F));
+            Vec3 vec3 = this.mechaCrow.getViewVector(0.0F);
+            Vec3 vec32 = HoverRandomPos.getPos(this.mechaCrow, 8, 7, vec3.x, vec3.z, ((float) Math.PI / 2F), 3, 1);
+            return vec32 != null ? vec32 : AirAndWaterRandomPos.getPos(this.mechaCrow, 8, 4, -2, vec3.x, vec3.z, (double) ((float) Math.PI / 2F));
         }
     }
 
     public static AttributeSupplier.Builder createAttributes() {
-        return Monster.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, movementSpeed).add(Attributes.FOLLOW_RANGE, 48.0D);
+        return Animal.createLivingAttributes().add(Attributes.MOVEMENT_SPEED, movementSpeed).add(Attributes.FOLLOW_RANGE, 48.0D);
     }
 
     @Override
     public boolean isFlying() {
-        return true;
+        return this.isOnGround();
     }
 
     @Override
     public void tick() {
         super.tick();
 
-        if (this.level.isClientSide()) { // Only execute animation logic on the client
-            dispatcher.idle();
+        if (this.isAlive()) {
+            if (this.level.isClientSide()) { // Only execute animation logic on the client
+                boolean isMovingOnGround = moveAnalysis.isMovingHorizontally() && this.isOnGround();
+
+                if (isMovingOnGround) {
+                    dispatcher.hop();
+                } else {
+                    dispatcher.idle();
+
+                }
+            }
         }
     }
 }

@@ -3,3 +3,5 @@
   - `[NEW]` New display boards, aka futuristic signs. Available in 4 colors!
   - `[NEW]` New Martian, Lunar, and Mercurian farmlands! Crafted using regolith, coal, and bonemeal.  No, you can't farm on Venus. That's like trying to farm in the Nether. Why.
   - `[CHG]` Added bonemeal to colony loot tables
+- `[FIX]` Fixed broken Icarus advancement
+- `[CHG]` Azurelib dependency updated to Azurelib 3.2.x

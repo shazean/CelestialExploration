@@ -6,13 +6,13 @@
     ]
   },
   "criteria": {
-    "lunar_goo": {
+    "moon_milk": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "celestialexploration:lunar_goo"
+              "celestialexploration:moon_milk_bucket"
             ]
           }
         ]
@@ -27,7 +27,7 @@
   },
   "requirements": [
     [
-      "lunar_goo",
+      "moon_milk",
       "has_the_recipe"
     ]
   ]

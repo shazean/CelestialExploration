@@ -3,7 +3,7 @@ package com.shim.celestialexploration.entity.friendlies;
 import com.shim.celestialexploration.entity.client.dispatchers.CobblesaurusDispatcher;
 import com.shim.celestialexploration.registry.CelestialEntities;
 import com.shim.celestialexploration.registry.CelestialTags;
-import mod.azure.azurelib.rewrite.util.MoveAnalysis;
+import mod.azure.azurelib.util.MoveAnalysis;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
