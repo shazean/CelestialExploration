@@ -93,5 +93,5 @@ public class CelestialDimensions {
 
 
     public static final DeferredRegister<Codec<? extends BiomeSource>> BIOME_SOURCE = DeferredRegister.create(Registry.BIOME_SOURCE_REGISTRY, CelestialExploration.MODID);
-    public static final RegistryObject<Codec<CelestialBiomeSource>> CELESTIAL_BIOMES = BIOME_SOURCE.register(CelestialExploration.MODID, () -> CelestialBiomeSource.CODEC);
+    public static final RegistryObject<Codec<MultiNoiseBiomeSource>> CELESTIAL_BIOMES = BIOME_SOURCE.register(CelestialExploration.MODID, () -> MultiNoiseBiomeSource.CODEC); //CelestialBiomeSource.CODEC);
 }

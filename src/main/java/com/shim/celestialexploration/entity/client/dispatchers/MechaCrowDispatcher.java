@@ -9,6 +9,7 @@ public class MechaCrowDispatcher {
 
     private static final AzCommand IDLE = AzCommand.create(controller, "idle", AzPlayBehaviors.LOOP);
     private static final AzCommand HOP = AzCommand.create(controller, "hop", AzPlayBehaviors.LOOP);
+    private static final AzCommand FLY = AzCommand.create(controller, "fly", AzPlayBehaviors.LOOP);
 
     private final MechaCrow animatable;
 
@@ -24,4 +25,7 @@ public class MechaCrowDispatcher {
         HOP.sendForEntity(animatable);
     }
 
+    public void fly() {
+        FLY.sendForEntity(animatable);
+    }
 }

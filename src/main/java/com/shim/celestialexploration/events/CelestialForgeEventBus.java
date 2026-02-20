@@ -48,7 +48,11 @@ public class CelestialForgeEventBus {
     public static void onEntityMount(EntityMountEvent event) {
         if (event.isDismounting() && event.getEntityBeingMounted() instanceof Spaceship spaceship) {
             if (!spaceship.isRemoved() && !event.getWorldObj().isClientSide) {
-                event.setCanceled(spaceship.getTimeOnGround() < Spaceship.maxTimeOnGround);
+
+                //proposed new line
+                if (event.getEntityMounting().isShiftKeyDown()) {
+                    event.setCanceled(spaceship.getTimeOnGround() < Spaceship.maxTimeOnGround);
+                }
             }
         }
     }

@@ -127,6 +127,7 @@ public class CelestialLangProvider extends LanguageProvider {
 		addDimension(CelestialDimensions.EUROPA, "Europa");
 		addDimension(CelestialDimensions.CALLISTO, "Callisto");
 		addDimension(CelestialDimensions.GANYMEDE, "Ganymede");
+		addDimension(CelestialDimensions.IO, "Io");
 
 		//---- MENUS -------------------------------------------------------------------------------
 		add("container.celestialexploration.oxygen_compressor", "Oxygen Compressor");

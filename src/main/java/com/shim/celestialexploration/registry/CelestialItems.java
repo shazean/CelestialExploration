@@ -170,6 +170,23 @@ public class CelestialItems {
 	public static final RegistryObject<Item> MAGENTA_MECHACERBERUS = registerItem("magenta_mechacerberus", "Magenta MechaCerberus", () -> new AutoTameSpawnItem(CelestialEntities.MECHACERBERUS, DyeType.MAGENTA, new Item.Properties().tab(CelestialTabs.CELESTIAL_MISC_TAB)));
 	public static final RegistryObject<Item> PINK_MECHACERBERUS = registerItem("pink_mechacerberus", "Pink MechaCerberus", () -> new AutoTameSpawnItem(CelestialEntities.MECHACERBERUS, DyeType.PINK, new Item.Properties().tab(CelestialTabs.CELESTIAL_MISC_TAB)));
 
+	public static final RegistryObject<Item> WHITE_MECHACROW = registerItem("white_mechacrow", "White MechaCrow", () -> new DyeableCreatureSpawnEgg(CelestialEntities.MECHACROW, DyeType.WHITE, new Item.Properties().tab(CelestialTabs.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> GREY_MECHACROW = registerItem("grey_mechacrow", "Grey MechaCrow", () -> new DyeableCreatureSpawnEgg(CelestialEntities.MECHACROW, DyeType.GREY, new Item.Properties().tab(CelestialTabs.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> LIGHT_GREY_MECHACROW = registerItem("light_grey_mechacrow", "Light Grey MechaCrow", () -> new DyeableCreatureSpawnEgg(CelestialEntities.MECHACROW, DyeType.LIGHT_GREY, new Item.Properties().tab(CelestialTabs.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> BLACK_MECHACROW = registerItem("black_mechacrow", "Black MechaCrow", () -> new DyeableCreatureSpawnEgg(CelestialEntities.MECHACROW, DyeType.BLACK, new Item.Properties().tab(CelestialTabs.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> PURPLE_MECHACROW = registerItem("purple_mechacrow", "Purple MechaCrow", () -> new DyeableCreatureSpawnEgg(CelestialEntities.MECHACROW, DyeType.PURPLE, new Item.Properties().tab(CelestialTabs.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> BLUE_MECHACROW = registerItem("blue_mechacrow", "Blue MechaCrow", () -> new DyeableCreatureSpawnEgg(CelestialEntities.MECHACROW, DyeType.BLUE, new Item.Properties().tab(CelestialTabs.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> LIGHT_BLUE_MECHACROW = registerItem("light_blue_mechacrow", "Light Blue MechaCrow", () -> new DyeableCreatureSpawnEgg(CelestialEntities.MECHACROW, DyeType.LIGHT_BLUE, new Item.Properties().tab(CelestialTabs.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> CYAN_MECHACROW = registerItem("cyan_mechacrow", "Cyan MechaCrow", () -> new DyeableCreatureSpawnEgg(CelestialEntities.MECHACROW, DyeType.CYAN, new Item.Properties().tab(CelestialTabs.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> GREEN_MECHACROW = registerItem("green_mechacrow", "Green MechaCrow", () -> new DyeableCreatureSpawnEgg(CelestialEntities.MECHACROW, DyeType.GREEN, new Item.Properties().tab(CelestialTabs.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> LIME_MECHACROW = registerItem("lime_mechacrow", "Lime MechaCrow", () -> new DyeableCreatureSpawnEgg(CelestialEntities.MECHACROW, DyeType.LIME, new Item.Properties().tab(CelestialTabs.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> YELLOW_MECHACROW = registerItem("yellow_mechacrow", "Yellow MechaCrow", () -> new DyeableCreatureSpawnEgg(CelestialEntities.MECHACROW, DyeType.YELLOW, new Item.Properties().tab(CelestialTabs.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> ORANGE_MECHACROW = registerItem("orange_mechacrow", "Orange MechaCrow", () -> new DyeableCreatureSpawnEgg(CelestialEntities.MECHACROW, DyeType.ORANGE, new Item.Properties().tab(CelestialTabs.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> RED_MECHACROW = registerItem("red_mechacrow", "Red MechaCrow", () -> new DyeableCreatureSpawnEgg(CelestialEntities.MECHACROW, DyeType.RED, new Item.Properties().tab(CelestialTabs.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> BROWN_MECHACROW = registerItem("brown_mechacrow", "Brown MechaCrow", () -> new DyeableCreatureSpawnEgg(CelestialEntities.MECHACROW, DyeType.BROWN, new Item.Properties().tab(CelestialTabs.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> MAGENTA_MECHACROW = registerItem("magenta_mechacrow", "Magenta MechaCrow", () -> new DyeableCreatureSpawnEgg(CelestialEntities.MECHACROW, DyeType.MAGENTA, new Item.Properties().tab(CelestialTabs.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> PINK_MECHACROW = registerItem("pink_mechacrow", "Pink MechaCrow", () -> new DyeableCreatureSpawnEgg(CelestialEntities.MECHACROW, DyeType.PINK, new Item.Properties().tab(CelestialTabs.CELESTIAL_MISC_TAB)));
+
 
 	//---- MOB HEADS -------------------------------------------------------------------------------
 

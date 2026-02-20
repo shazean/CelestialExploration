@@ -88,18 +88,18 @@ public class MechaCerberus extends AbstractCerberus implements PlayerRideable {
 
     }
 
-    public InteractionResult mobInteract(Player p_30412_, InteractionHand p_30413_) {
-        ItemStack itemstack = p_30412_.getItemInHand(p_30413_);
+    public InteractionResult mobInteract(Player player, InteractionHand hand) {
+        ItemStack itemstack = player.getItemInHand(hand);
         Item item = itemstack.getItem();
         if (this.level.isClientSide) {
-            boolean flag = this.isOwnedBy(p_30412_) || this.isTame(); // || itemstack.is(tameItem) && !this.isTame(); // && !this.isAngry();
+            boolean flag = this.isOwnedBy(player) || this.isTame(); // || itemstack.is(tameItem) && !this.isTame(); // && !this.isAngry();
             return flag ? InteractionResult.CONSUME : InteractionResult.PASS;
         } else {
             if (this.isTame()) {
                 if (this.isFood(itemstack) && this.getHealth() < this.getMaxHealth()) {
 //                    this.heal((float)itemstack.getFoodProperties(this).getNutrition());
                     this.heal(5);
-                    if (!p_30412_.getAbilities().instabuild) {
+                    if (!player.getAbilities().instabuild) {
                         itemstack.shrink(1);
                     }
 
@@ -108,8 +108,8 @@ public class MechaCerberus extends AbstractCerberus implements PlayerRideable {
                 }
 
                 if (!(item instanceof DyeItem)) {
-                    InteractionResult interactionresult = super.mobInteract(p_30412_, p_30413_);
-                    if ((!interactionresult.consumesAction() || this.isBaby()) && this.isOwnedBy(p_30412_)) {
+                    InteractionResult interactionresult = super.mobInteract(player, hand);
+                    if ((!interactionresult.consumesAction() || this.isBaby()) && this.isOwnedBy(player)) {
                         this.setOrderedToSit(!this.isOrderedToSit());
                         this.jumping = false;
                         this.navigation.stop();
@@ -122,7 +122,7 @@ public class MechaCerberus extends AbstractCerberus implements PlayerRideable {
 //                DyeColor dyecolor = ((DyeItem)item).getDyeColor();
 //                if (dyecolor != this.getCollarColor()) {
 //                    this.setCollarColor(dyecolor);
-//                    if (!p_30412_.getAbilities().instabuild) {
+//                    if (!player.getAbilities().instabuild) {
 //                        itemstack.shrink(1);
 //                    }
 //
@@ -130,12 +130,12 @@ public class MechaCerberus extends AbstractCerberus implements PlayerRideable {
 //                }
             }
 //            else if (itemstack.is(tameItem)) { // && !this.isAngry()) {
-//                if (!p_30412_.getAbilities().instabuild) {
+//                if (!player.getAbilities().instabuild) {
 //                    itemstack.shrink(1);
 //                }
 //
-//                if (this.random.nextInt(3) == 0) { // && !net.minecraftforge.event.ForgeEventFactory.onAnimalTame(this, p_30412_)) {
-//                    this.tame(p_30412_);
+//                if (this.random.nextInt(3) == 0) { // && !net.minecraftforge.event.ForgeEventFactory.onAnimalTame(this, player)) {
+//                    this.tame(player);
 //                    this.navigation.stop();
 //                    this.setTarget((LivingEntity)null);
 //                    this.setOrderedToSit(true);
@@ -146,7 +146,7 @@ public class MechaCerberus extends AbstractCerberus implements PlayerRideable {
 //
 //                return InteractionResult.SUCCESS;
 //            }
-            return super.mobInteract(p_30412_, p_30413_);
+            return super.mobInteract(player, hand);
         }
     }
 

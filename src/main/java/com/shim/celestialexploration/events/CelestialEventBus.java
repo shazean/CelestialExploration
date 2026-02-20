@@ -14,6 +14,7 @@ import com.shim.celestialexploration.entity.client.model.MagCartModel;
 import com.shim.celestialexploration.entity.mob.slimes.*;
 import com.shim.celestialexploration.entity.robots.*;
 import com.shim.celestialexploration.particles.*;
+import com.shim.celestialexploration.recipes.MechaCrowCraftingRecipe;
 import com.shim.celestialexploration.recipes.WorkbenchCraftingRecipe;
 import com.shim.celestialexploration.recipes.WorkbenchSmeltingRecipe;
 import com.shim.celestialexploration.registry.*;
@@ -170,5 +171,7 @@ public class CelestialEventBus {
     public static void registerRecipeTypes(final RegistryEvent.Register<RecipeSerializer<?>> event) {
         Registry.register(Registry.RECIPE_TYPE, WorkbenchSmeltingRecipe.Type.ID, WorkbenchSmeltingRecipe.Type.INSTANCE);
         Registry.register(Registry.RECIPE_TYPE, WorkbenchCraftingRecipe.Type.ID, WorkbenchCraftingRecipe.Type.INSTANCE);
+        Registry.register(Registry.RECIPE_TYPE, MechaCrowCraftingRecipe.Type.ID, MechaCrowCraftingRecipe.Type.INSTANCE);
+
     }
 }
