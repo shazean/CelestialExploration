@@ -3,12 +3,14 @@ package com.shim.celestialexploration.events;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.entity.ambient.Eureka;
 import com.shim.celestialexploration.entity.friendlies.CelestialCat;
+import com.shim.celestialexploration.entity.friendlies.MoonCow;
 import com.shim.celestialexploration.entity.mob.*;
 import com.shim.celestialexploration.entity.mob.piglins.AstralPiglin;
 import com.shim.celestialexploration.entity.mob.piglins.CyborgPiglin;
 import com.shim.celestialexploration.entity.mob.piglins.VoidedPiglin;
 import com.shim.celestialexploration.entity.mob.slimes.*;
 import com.shim.celestialexploration.entity.robots.Drone;
+import com.shim.celestialexploration.entity.robots.MechaCrow;
 import com.shim.celestialexploration.entity.robots.Rover;
 import com.shim.celestialexploration.item.armor.SpacesuitRenderer;
 import com.shim.celestialexploration.packets.CelestialPacketHandler;
@@ -48,7 +50,10 @@ public class CelestialCommonEventSetup {
         SpawnPlacements.register(CelestialEntities.GUST.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, Gust::checkGustSpawnRules);
         SpawnPlacements.register(CelestialEntities.DRONE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, Drone::checkDroneSpawnRules);
         SpawnPlacements.register(CelestialEntities.ROVER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, Rover::checkRoverSpawnRules);
-//        SpawnPlacements.register(EntityRegistry.MECHADOG.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, MechaDog::checkMobSpawnRules);
+        SpawnPlacements.register(CelestialEntities.MECHACROW.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, MechaCrow::checkMechaCrowSpawnRules);
+        SpawnPlacements.register(CelestialEntities.MOON_COW.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, MoonCow::checkSpawnRules);
+
+        //        SpawnPlacements.register(EntityRegistry.MECHADOG.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, MechaDog::checkMobSpawnRules);
 
         CelestialPacketHandler.init();
 

@@ -778,6 +778,7 @@ public class CelestialItemModels extends BaseItemModels {
 		generatedItem(CelestialItems.LUNAR_GOO.get());
 		generatedItem(CelestialItems.CINNABAR.get());
 		generatedItem(CelestialItems.MECHACERBERUS_CORE.get());
+		handheldItem(CelestialItems.STONE_ROD.get());
 
 		generatedItem(CelestialItems.MOON_MILK_BUCKET.get());
 
@@ -849,6 +850,23 @@ public class CelestialItemModels extends BaseItemModels {
 		generatedItem(CelestialItems.BLACK_DISPLAY_BOARD.get());
 		generatedItem(CelestialItems.BLUE_DISPLAY_BOARD.get());
 		generatedItem(CelestialItems.WHITE_DISPLAY_BOARD.get());
+
+		generatedItem(CelestialItems.BLACK_MECHACROW.get());
+		generatedItem(CelestialItems.GREY_MECHACROW.get());
+		generatedItem(CelestialItems.LIGHT_GREY_MECHACROW.get());
+		generatedItem(CelestialItems.WHITE_MECHACROW.get());
+		generatedItem(CelestialItems.PINK_MECHACROW.get());
+		generatedItem(CelestialItems.MAGENTA_MECHACROW.get());
+		generatedItem(CelestialItems.RED_MECHACROW.get());
+		generatedItem(CelestialItems.BROWN_MECHACROW.get());
+		generatedItem(CelestialItems.ORANGE_MECHACROW.get());
+		generatedItem(CelestialItems.YELLOW_MECHACROW.get());
+		generatedItem(CelestialItems.LIME_MECHACROW.get());
+		generatedItem(CelestialItems.GREEN_MECHACROW.get());
+		generatedItem(CelestialItems.CYAN_MECHACROW.get());
+		generatedItem(CelestialItems.LIGHT_BLUE_MECHACROW.get());
+		generatedItem(CelestialItems.BLUE_MECHACROW.get());
+		generatedItem(CelestialItems.PURPLE_MECHACROW.get());
 
 
 		this.withExistingParent(name(CelestialBlocks.LURKER_HEAD.get()), this.mcLoc("item/template_skull"));

@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "celestialexploration:moon_sand",
+    "celestialexploration:moon_stone",
+    "celestialexploration:moon_cobblestone",
+    "celestialexploration:moon_deepslate",
+    "celestialexploration:moon_cobbled_deepslate",
+    "celestialexploration:moon_sand_path",
+    "celestialexploration:io_sand",
+    "celestialexploration:io_stone",
+    "celestialexploration:io_cobblestone",
+    "celestialexploration:io_deepslate",
+    "celestialexploration:io_cobbled_deepslate",
+    "celestialexploration:io_sand_path"
+  ]
+}

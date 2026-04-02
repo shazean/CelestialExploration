@@ -4,8 +4,9 @@ import com.mojang.datafixers.util.Either;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.capabilities.TaxiCapability;
 import com.shim.celestialexploration.config.CelestialCommonConfig;
-import com.shim.celestialexploration.entity.CelestialCatSpawner;
+import com.shim.celestialexploration.entity.spawner.CelestialCatSpawner;
 import com.shim.celestialexploration.entity.projectile.MeteorProjectile;
+import com.shim.celestialexploration.entity.spawner.MechaCrowSpawner;
 import com.shim.celestialexploration.entity.vehicle.Spaceship;
 import com.shim.celestialexploration.registry.*;
 import com.shim.celestiallib.api.blocks.AbstractPortalBlock;
@@ -13,7 +14,6 @@ import com.shim.celestiallib.api.effects.CLibEffects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.TranslatableComponent;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -69,6 +69,7 @@ public class CelestialForgeEventBus {
     public static void onServerTick(TickEvent.ServerTickEvent.WorldTickEvent event) {
         if (event.world instanceof ServerLevel serverLevel && event.haveTime()) {
             new CelestialCatSpawner().tick(serverLevel, true, true);
+            new MechaCrowSpawner().tick(serverLevel, true, true);
 
             if (serverLevel.isThundering()) {
                 Player player = serverLevel.getRandomPlayer();
@@ -164,14 +165,15 @@ public class CelestialForgeEventBus {
         Entity entity = event.getEntity();
 
         if (CelestialCommonConfig.STORMS.get()) {
-            if (event.getWorld().isRaining() && event.getWorld().getBiome(entity.blockPosition()).is(CelestialTags.Biomes.DUST_STORM_BIOMES)) {
-                if (entity instanceof LivingEntity livingEntity && !(entity instanceof Player)) {
-                    livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 7000, 0, false, false, true));
-                }
-            }
-            if (!event.getWorld().isRaining() && event.getWorld().getBiome(entity.blockPosition()).is(CelestialTags.Biomes.DUST_STORM_BIOMES)) {
-                if (entity instanceof LivingEntity livingEntity && !(entity instanceof Player)) {
-                    livingEntity.removeEffect(MobEffects.MOVEMENT_SLOWDOWN);
+            if (event.getWorld().getBiome(entity.blockPosition()).is(CelestialTags.Biomes.DUST_STORM_BIOMES)) {
+                if (event.getWorld().isRaining()) {
+                    if (entity instanceof LivingEntity livingEntity && !(entity instanceof Player)) {
+                        livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 7000, 0, false, false, true));
+                    }
+                } else {
+                    if (entity instanceof LivingEntity livingEntity && !(entity instanceof Player)) {
+                        livingEntity.removeEffect(MobEffects.MOVEMENT_SLOWDOWN);
+                    }
                 }
             }
         }

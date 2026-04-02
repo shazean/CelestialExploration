@@ -1,0 +1,8 @@
+{
+  "type": "celestialexploration:mechacrow_crafting",
+  "ingredient": {
+    "item": "minecraft:blaze_rod"
+  },
+  "result": "minecraft:blaze_powder",
+  "count": 3
+}

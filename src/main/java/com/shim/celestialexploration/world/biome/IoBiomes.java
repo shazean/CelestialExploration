@@ -17,12 +17,11 @@ public class IoBiomes extends CelestialBiomeFeatures {
 
         CelestialBiomeFeatures.addCarversAndLakes(biomeBuilder);
 
-
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.DISK_IO_SAND);
         addIoOres(biomeBuilder);
 
         generalNoCaveMonsters(spawnBuilder, 50, 50, 50);
-        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.LUNAR_SLIME.get(), 100, 4, 4)).build();
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.LUNAR_SLIME.get(), 100, 0, 1)).build();
 
         return io(Biome.Precipitation.NONE,-0.75F, 0F, spawnBuilder, biomeBuilder);
     }
@@ -32,8 +31,6 @@ public class IoBiomes extends CelestialBiomeFeatures {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
 
-
-
         CelestialBiomeFeatures.addCarversAndLakes(biomeBuilder);
 
 //        biomeBuilder.addFeature(GenerationStep.Decoration.LAKES, CelestialFeaturePlacements.OBSIDIAN_LAKE);
@@ -41,8 +38,7 @@ public class IoBiomes extends CelestialBiomeFeatures {
         addIoOres(biomeBuilder);
 
         generalNoCaveMonsters(spawnBuilder, 50, 50, 50);
-        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.LUNAR_SLIME.get(), 120, 4, 4)).build();
-
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.LUNAR_SLIME.get(), 120, 0, 1)).build();
 
         return io(Biome.Precipitation.NONE, -0.75F, 0F,spawnBuilder, biomeBuilder);
     }
@@ -55,14 +51,8 @@ public class IoBiomes extends CelestialBiomeFeatures {
         addIoOres(biomeBuilder);
 
         generalNoCaveMonsters(spawnBuilder, 50, 50, 50);
-        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.LUNAR_SLIME.get(), 30, 4, 4)).build();
-
-        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.SULFUR_CUBE.get(), 120, 4, 4))
-                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.VOIDED_PIGLIN.get(), 100, 4, 4))
-                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.CYBORG_PIGLIN.get(), 50, 4, 4))
-                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.ASTRAL_PIGLIN.get(), 15, 4, 4))
-                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.ASTRAL_HOGLIN.get(), 9, 3, 4)).build();
-
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.LUNAR_SLIME.get(), 30, 0, 1)).build();
+        addIoMobs(spawnBuilder, 120, 100, 50, 15, 9, 9, 10, 10);
 
         return io(Biome.Precipitation.NONE, -0.75F, 0F, spawnBuilder, biomeBuilder);
     }
@@ -72,6 +62,17 @@ public class IoBiomes extends CelestialBiomeFeatures {
                 .specialEffects((new BiomeSpecialEffects.Builder()).waterColor(CelestialBody.IO.waterColor).waterFogColor(CelestialBody.IO.waterFogColor).fogColor(CelestialBody.IO.skyFogColor)
                         .skyColor(CelestialBody.IO.skyColor).grassColorOverride(CelestialBody.IO.grassFoliageColor).foliageColorOverride(CelestialBody.IO.grassFoliageColor)
                         .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build()).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
+    }
+
+    protected static void addIoMobs(MobSpawnSettings.Builder spawnBuilder, int sulfurCubeWeight, int voidedPiglinWeight, int cyborgPiglinWeight, int astralPiglinWeight, int voidedZoglinWeight, int astralHoglinWeight, int roverWeight, int droneWeight) {
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.SULFUR_CUBE.get(), sulfurCubeWeight, 0, 3))
+                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.VOIDED_PIGLIN.get(), voidedPiglinWeight, 2, 4))
+                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.CYBORG_PIGLIN.get(), cyborgPiglinWeight, 2, 4))
+                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.ASTRAL_PIGLIN.get(), astralPiglinWeight, 2, 4))
+                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.VOIDED_ZOGLIN.get(), voidedZoglinWeight, 1, 4))
+                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.ASTRAL_HOGLIN.get(), astralHoglinWeight, 1, 4))
+                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(CelestialEntities.ROVER.get(), roverWeight, 0, 1))
+                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(CelestialEntities.DRONE.get(), droneWeight, 0, 1));
     }
 
     public static void addIoOres(BiomeGenerationSettings.Builder biomeBuilder) {

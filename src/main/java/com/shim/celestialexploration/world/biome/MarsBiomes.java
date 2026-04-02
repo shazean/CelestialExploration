@@ -22,13 +22,9 @@ public class MarsBiomes extends CelestialBiomeFeatures {
         addMarsOres(biomeBuilder);
 
         generalMonsters(spawnBuilder, 100, 100, 0);
-        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.RUST_SLIME.get(), 100, 4, 4))
-                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.MARS_MALLOW.get(), 40, 4, 4))
-                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.GUST.get(), 100, 4, 4))
-                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(CelestialEntities.ROVER.get(), 10, 1, 1)).build();
+        addMarsMobs(spawnBuilder, 100, 40, 50, 80, 40, 30);
 
         float temp = -0.75F;
-
         return mars(Biome.Precipitation.NONE, prettyCold, 0F, spawnBuilder, biomeBuilder);
     }
 
@@ -43,13 +39,7 @@ public class MarsBiomes extends CelestialBiomeFeatures {
         addMarsOres(biomeBuilder);
 
         generalMonsters(spawnBuilder, 100, 100, 0);
-        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.RUST_SLIME.get(), 100, 4, 4))
-                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.MARS_MALLOW.get(), 40, 4, 4))
-                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.GUST.get(), 100, 4, 4))
-                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(CelestialEntities.ROVER.get(), 40, 1, 1))
-                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(CelestialEntities.DRONE.get(), 30, 1, 2))
-                .build();
-
+        addMarsMobs(spawnBuilder, 100, 40, 60, 80, 40, 30);
 
         return mars(Biome.Precipitation.NONE, prettyCold, 0F, spawnBuilder, biomeBuilder);
     }
@@ -65,12 +55,7 @@ public class MarsBiomes extends CelestialBiomeFeatures {
         addMarsOres(biomeBuilder);
 
         generalMonsters(spawnBuilder, 100, 80, 0);
-        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.RUST_SLIME.get(), 120, 4, 4))
-                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.MARS_MALLOW.get(), 80, 4, 4))
-                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.GUST.get(), 100, 4, 4))
-                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(CelestialEntities.ROVER.get(), 40, 1, 1))
-                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(CelestialEntities.DRONE.get(), 30, 1, 2))
-                .build();
+        addMarsMobs(spawnBuilder, 100, 60, 50, 80, 40, 30);
 
 
         float temperature = dryIcy ? -1.0F : -0.75F;
@@ -86,13 +71,7 @@ public class MarsBiomes extends CelestialBiomeFeatures {
         addMarsOres(biomeBuilder);
 
         generalMonsters(spawnBuilder, 80, 100, 0);
-
-        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.RUST_SLIME.get(), 30, 4, 4))
-                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.MARS_MALLOW.get(), 10, 4, 4))
-                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.GUST.get(), 100, 4, 4))
-                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(CelestialEntities.ROVER.get(), 40, 1, 1))
-                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(CelestialEntities.DRONE.get(), 30, 1, 2))
-                .build();
+        addMarsMobs(spawnBuilder, 100, 10, 0, 80, 40, 30);
 
         float temp = -0.75F;
 
@@ -104,6 +83,15 @@ public class MarsBiomes extends CelestialBiomeFeatures {
                 .specialEffects((new BiomeSpecialEffects.Builder()).waterColor(CelestialBody.MARS.waterColor).waterFogColor(CelestialBody.MARS.waterFogColor).fogColor(CelestialBody.MARS.skyFogColor)
                         .skyColor(CelestialBody.MARS.skyColor).grassColorOverride(CelestialBody.MARS.grassFoliageColor).foliageColorOverride(CelestialBody.MARS.grassFoliageColor)
                         .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build()).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
+    }
+
+    protected static void addMarsMobs(MobSpawnSettings.Builder spawnBuilder, int slimeWeight, int marsMallowWeight, int meteorCrawlerWeight, int gustWeight, int roverWeight, int droneWeight) {
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.RUST_SLIME.get(), slimeWeight, 0, 3))
+                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.MARS_MALLOW.get(), marsMallowWeight, 0, 2))
+                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.METEOR_CRAWLER.get(), meteorCrawlerWeight, 0, 2))
+                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(CelestialEntities.GUST.get(), gustWeight, 2, 3))
+                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(CelestialEntities.ROVER.get(), roverWeight, 0, 1))
+                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(CelestialEntities.DRONE.get(), droneWeight, 0, 2));
     }
 
     public static void addMarsOres(BiomeGenerationSettings.Builder biomeBuilder) {

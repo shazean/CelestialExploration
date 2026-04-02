@@ -653,7 +653,6 @@ public class CelestialRecipeGen extends RecipeProvider {
 
 		ShapedRecipeBuilder.shaped(Blocks.FURNACE).pattern("XXX").pattern("X X").pattern("XXX").define('X', CelestialTags.Items.CELESTIAL_COBBLESTONE).unlockedBy("has_moon_cobblestone", has(CelestialBlocks.MOON_COBBLESTONE.get())).save(consumer, saveName(Items.FURNACE, "from_celestial_cobblestone"));
 
-
 		WorkbenchCraftingRecipeBuilder.shaped(CelestialItems.WHITE_MECHADOG.get(), CelestialFluids.MOLTEN_STEEL.get(), 0.333F, 1.4F)
 				.pattern("  E")
 				.pattern("FRF")
@@ -702,6 +701,34 @@ public class CelestialRecipeGen extends RecipeProvider {
 		ShapelessRecipeBuilder.shapeless(CelestialItems.PURPLE_MECHACERBERUS.get()).requires(CelestialItems.WHITE_MECHACERBERUS.get()).requires(Items.PURPLE_DYE).unlockedBy("mechacerberus", has(CelestialItems.WHITE_MECHACERBERUS.get())).save(consumer);
 		ShapelessRecipeBuilder.shapeless(CelestialItems.MAGENTA_MECHACERBERUS.get()).requires(CelestialItems.WHITE_MECHACERBERUS.get()).requires(Items.MAGENTA_DYE).unlockedBy("mechacerberus", has(CelestialItems.WHITE_MECHACERBERUS.get())).save(consumer);
 		ShapelessRecipeBuilder.shapeless(CelestialItems.BROWN_MECHACERBERUS.get()).requires(CelestialItems.WHITE_MECHACERBERUS.get()).requires(Items.BROWN_DYE).unlockedBy("mechacerberus", has(CelestialItems.WHITE_MECHACERBERUS.get())).save(consumer);
+
+		//TOOLS
+		ShapedRecipeBuilder.shaped(Items.DIAMOND_AXE).define('#', CelestialItems.STONE_ROD.get()).define('X', Items.DIAMOND).pattern("XX").pattern("X#").pattern(" #").unlockedBy("has_diamond", has(Items.DIAMOND)).save(consumer, "diamond_axe_from_stone_rod");
+		ShapedRecipeBuilder.shaped(Items.DIAMOND_HOE).define('#', CelestialItems.STONE_ROD.get()).define('X', Items.DIAMOND).pattern("XX").pattern(" #").pattern(" #").unlockedBy("has_diamond", has(Items.DIAMOND)).save(consumer, "diamond_hoe_from_stone_rod");
+		ShapedRecipeBuilder.shaped(Items.DIAMOND_PICKAXE).define('#', CelestialItems.STONE_ROD.get()).define('X', Items.DIAMOND).pattern("XXX").pattern(" # ").pattern(" # ").unlockedBy("has_diamond", has(Items.DIAMOND)).save(consumer, "diamond_pickaxe_from_stone_rod");
+		ShapedRecipeBuilder.shaped(Items.DIAMOND_SHOVEL).define('#', CelestialItems.STONE_ROD.get()).define('X', Items.DIAMOND).pattern("X").pattern("#").pattern("#").unlockedBy("has_diamond", has(Items.DIAMOND)).save(consumer, "diamond_shovel_from_stone_rod");
+		ShapedRecipeBuilder.shaped(Items.DIAMOND_SWORD).define('#', CelestialItems.STONE_ROD.get()).define('X', Items.DIAMOND).pattern("X").pattern("X").pattern("#").unlockedBy("has_diamond", has(Items.DIAMOND)).save(consumer, "diamond_sword_from_stone_rod");
+
+		ShapedRecipeBuilder.shaped(Items.GOLDEN_AXE).define('#', CelestialItems.STONE_ROD.get()).define('X', Items.GOLD_INGOT).pattern("XX").pattern("X#").pattern(" #").unlockedBy("has_gold_ingot", has(Items.GOLD_INGOT)).save(consumer, "gold_axe_from_stone_rod");
+		ShapedRecipeBuilder.shaped(Items.GOLDEN_HOE).define('#', CelestialItems.STONE_ROD.get()).define('X', Items.GOLD_INGOT).pattern("XX").pattern(" #").pattern(" #").unlockedBy("has_gold_ingot", has(Items.GOLD_INGOT)).save(consumer, "gold_hoe_from_stone_rod");
+		ShapedRecipeBuilder.shaped(Items.GOLDEN_PICKAXE).define('#', CelestialItems.STONE_ROD.get()).define('X', Items.GOLD_INGOT).pattern("XXX").pattern(" # ").pattern(" # ").unlockedBy("has_gold_ingot", has(Items.GOLD_INGOT)).save(consumer, "gold_pickaxe_from_stone_rod");
+		ShapedRecipeBuilder.shaped(Items.GOLDEN_SHOVEL).define('#', CelestialItems.STONE_ROD.get()).define('X', Items.GOLD_INGOT).pattern("X").pattern("#").pattern("#").unlockedBy("has_gold_ingot", has(Items.GOLD_INGOT)).save(consumer, "gold_shovel_from_stone_rod");
+		ShapedRecipeBuilder.shaped(Items.GOLDEN_SWORD).define('#', CelestialItems.STONE_ROD.get()).define('X', Items.GOLD_INGOT).pattern("X").pattern("X").pattern("#").unlockedBy("has_gold_ingot", has(Items.GOLD_INGOT)).save(consumer, "gold_sword_from_stone_rod");
+
+		ShapedRecipeBuilder.shaped(Items.IRON_AXE).define('#', CelestialItems.STONE_ROD.get()).define('X', Items.IRON_INGOT).pattern("XX").pattern("X#").pattern(" #").unlockedBy("has_iron_ingot", has(Items.IRON_INGOT)).save(consumer, "iron_axe_from_stone_rod");
+		ShapedRecipeBuilder.shaped(Items.IRON_HOE).define('#', CelestialItems.STONE_ROD.get()).define('X', Items.IRON_INGOT).pattern("XX").pattern(" #").pattern(" #").unlockedBy("has_iron_ingot", has(Items.IRON_INGOT)).save(consumer, "iron_hoe_from_stone_rod");
+		ShapedRecipeBuilder.shaped(Items.IRON_PICKAXE).define('#', CelestialItems.STONE_ROD.get()).define('X', Items.IRON_INGOT).pattern("XXX").pattern(" # ").pattern(" # ").unlockedBy("has_iron_ingot", has(Items.IRON_INGOT)).save(consumer, "iron_pickaxe_from_stone_rod");
+		ShapedRecipeBuilder.shaped(Items.IRON_SHOVEL).define('#', CelestialItems.STONE_ROD.get()).define('X', Items.IRON_INGOT).pattern("X").pattern("#").pattern("#").unlockedBy("has_iron_ingot", has(Items.IRON_INGOT)).save(consumer, "iron_shovel_from_stone_rod");
+		ShapedRecipeBuilder.shaped(Items.IRON_SWORD).define('#', CelestialItems.STONE_ROD.get()).define('X', Items.IRON_INGOT).pattern("X").pattern("X").pattern("#").unlockedBy("has_iron_ingot", has(Items.IRON_INGOT)).save(consumer, "iron_sword_from_stone_rod");
+
+		ShapedRecipeBuilder.shaped(Items.STONE_AXE).define('#', CelestialItems.STONE_ROD.get()).define('X', ItemTags.STONE_TOOL_MATERIALS).pattern("XX").pattern("X#").pattern(" #").unlockedBy("has_cobblestone", has(ItemTags.STONE_TOOL_MATERIALS)).save(consumer, "stone_axe_from_stone_rod");
+		ShapedRecipeBuilder.shaped(Items.STONE_HOE).define('#', CelestialItems.STONE_ROD.get()).define('X', ItemTags.STONE_TOOL_MATERIALS).pattern("XX").pattern(" #").pattern(" #").unlockedBy("has_cobblestone", has(ItemTags.STONE_TOOL_MATERIALS)).save(consumer, "stone_hoe_from_stone_rod");
+		ShapedRecipeBuilder.shaped(Items.STONE_PICKAXE).define('#', CelestialItems.STONE_ROD.get()).define('X', ItemTags.STONE_TOOL_MATERIALS).pattern("XXX").pattern(" # ").pattern(" # ").unlockedBy("has_cobblestone", has(ItemTags.STONE_TOOL_MATERIALS)).save(consumer, "stone_pickaxe_from_stone_rod");
+		ShapedRecipeBuilder.shaped(Items.STONE_SHOVEL).define('#', CelestialItems.STONE_ROD.get()).define('X', ItemTags.STONE_TOOL_MATERIALS).pattern("X").pattern("#").pattern("#").unlockedBy("has_cobblestone", has(ItemTags.STONE_TOOL_MATERIALS)).save(consumer, "stone_shovel_from_stone_rod");
+		ShapedRecipeBuilder.shaped(Items.STONE_SWORD).define('#', CelestialItems.STONE_ROD.get()).define('X', ItemTags.STONE_TOOL_MATERIALS).pattern("X").pattern("X").pattern("#").unlockedBy("has_cobblestone", has(ItemTags.STONE_TOOL_MATERIALS)).save(consumer, "stone_sword_from_stone_rod");
+
+
+
 	}
 
 	private static String name(ItemLike item) {

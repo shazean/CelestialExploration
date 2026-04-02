@@ -657,6 +657,21 @@ public class CelestialBlockTags extends BlockTagsProvider {
                 .add(CelestialBlocks.MOON_FARMLAND_TILLED.get())
                 .add(CelestialBlocks.MERCURY_FARMLAND_TILLED.get());
 
+
+        tag(CelestialTags.Blocks.MOON_COW_SPAWNABLE)
+                .add(CelestialBlocks.MOON_SAND.get())
+                .add(CelestialBlocks.MOON_STONE.get())
+                .add(CelestialBlocks.MOON_COBBLESTONE.get())
+                .add(CelestialBlocks.MOON_DEEPSLATE.get())
+                .add(CelestialBlocks.MOON_COBBLED_DEEPSLATE.get())
+                .add(CelestialBlocks.MOON_SAND_PATH.get())
+                .add(CelestialBlocks.IO_SAND.get())
+                .add(CelestialBlocks.IO_STONE.get())
+                .add(CelestialBlocks.IO_COBBLESTONE.get())
+                .add(CelestialBlocks.IO_DEEPSLATE.get())
+                .add(CelestialBlocks.IO_COBBLED_DEEPSLATE.get())
+                .add(CelestialBlocks.IO_SAND_PATH.get());
+
     }
 
     @Override

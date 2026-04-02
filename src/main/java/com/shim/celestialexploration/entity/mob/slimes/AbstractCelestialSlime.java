@@ -43,7 +43,7 @@ public abstract class AbstractCelestialSlime extends Slime {
 
     public static boolean checkCelestialSlimeSpawnRules(EntityType<? extends AbstractCelestialSlime> slime, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, Random random) {
         if (level.getDifficulty() == Difficulty.PEACEFUL) return false;
-        if (random.nextInt() > 5) return false;
+        if (random.nextDouble() > 0.1) return false;
 
         if (level.getBrightness(LightLayer.BLOCK, pos) > 0) {
             return false;

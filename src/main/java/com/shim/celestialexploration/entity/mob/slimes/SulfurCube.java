@@ -27,8 +27,9 @@ public class SulfurCube extends MagmaCube {
         return Monster.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, (double)0.2F).build();
     }
 
-    public static boolean checkSulfurCubeSpawnRules(EntityType<SulfurCube> p_32981_, LevelAccessor p_32982_, MobSpawnType p_32983_, BlockPos p_32984_, Random p_32985_) {
-        return p_32982_.getDifficulty() != Difficulty.PEACEFUL;
+    public static boolean checkSulfurCubeSpawnRules(EntityType<SulfurCube> entity, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, Random random) {
+        if (random.nextDouble() > 0.2) return false;
+        return level.getDifficulty() != Difficulty.PEACEFUL;
     }
 
     public boolean isInSulfur() {

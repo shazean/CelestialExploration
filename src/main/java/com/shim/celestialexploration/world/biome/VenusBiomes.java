@@ -22,6 +22,8 @@ public class VenusBiomes extends CelestialBiomeFeatures {
         addVenusOres(biomeBuilder);
 
         generalMonsters(spawnBuilder, 0, 20, 0);
+        addVenusMobs(spawnBuilder, 120, 100, 50, 15, 9, 9, 10, 10);
+
 
         return venus(Biome.Precipitation.RAIN, 2F, 0F, spawnBuilder, biomeBuilder);
     }
@@ -39,12 +41,7 @@ public class VenusBiomes extends CelestialBiomeFeatures {
         addVenusOres(biomeBuilder);
 
         generalMonsters(spawnBuilder, 0, 20, 0);
-        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.SULFUR_CUBE.get(), 120, 4, 4))
-                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.VOIDED_PIGLIN.get(), 100, 4, 4))
-                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.CYBORG_PIGLIN.get(), 50, 4, 4))
-                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.ASTRAL_PIGLIN.get(), 15, 4, 4))
-                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.ASTRAL_HOGLIN.get(), 9, 3, 4))
-                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(CelestialEntities.ROVER.get(), 40, 1, 1)).build();
+        addVenusMobs(spawnBuilder, 120, 100, 50, 15, 9, 9, 10, 10);
 
         return venus(Biome.Precipitation.RAIN,2F, 0F, spawnBuilder, biomeBuilder);
     }
@@ -82,6 +79,17 @@ public class VenusBiomes extends CelestialBiomeFeatures {
                 .specialEffects((new BiomeSpecialEffects.Builder()).waterColor(CelestialBody.VENUS.waterColor).waterFogColor(CelestialBody.VENUS.waterFogColor).fogColor(CelestialBody.VENUS.skyFogColor)
                         .skyColor(CelestialBody.VENUS.skyColor).grassColorOverride(CelestialBody.VENUS.grassFoliageColor).foliageColorOverride(CelestialBody.IO.grassFoliageColor)
                         .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build()).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
+    }
+
+    protected static void addVenusMobs(MobSpawnSettings.Builder spawnBuilder, int sulfurCubeWeight, int voidedPiglinWeight, int cyborgPiglinWeight, int astralPiglinWeight, int voidedZoglinWeight, int astralHoglinWeight, int roverWeight, int droneWeight) {
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.SULFUR_CUBE.get(), sulfurCubeWeight, 0, 3))
+                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.VOIDED_PIGLIN.get(), voidedPiglinWeight, 2, 4))
+                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.CYBORG_PIGLIN.get(), cyborgPiglinWeight, 2, 4))
+                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.ASTRAL_PIGLIN.get(), astralPiglinWeight, 2, 4))
+                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.VOIDED_ZOGLIN.get(), voidedZoglinWeight, 1, 4))
+                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.ASTRAL_HOGLIN.get(), astralHoglinWeight, 1, 4))
+                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(CelestialEntities.ROVER.get(), roverWeight, 0, 1))
+                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(CelestialEntities.DRONE.get(), droneWeight, 0, 1));
     }
     
     public static void addVenusOres(BiomeGenerationSettings.Builder biomeBuilder) {

@@ -170,7 +170,7 @@ public class CelestialEntities {
             .sized(3.1F, 3.0F).clientTrackingRange(8).build(new ResourceLocation(CelestialExploration.MODID, "mechacerberus_boss").toString()));
 
     public static final RegistryObject<EntityType<MechaCrow>> MECHACROW = registerEntityType("mechacrow", "MechaCrow", () -> EntityType.Builder.of(MechaCrow::new, MobCategory.CREATURE)
-            .sized(1.0F, 1.0F).clientTrackingRange(10).build(new ResourceLocation(CelestialExploration.MODID, "mechacrow").toString()));
+            .sized(0.3F, 0.3F).clientTrackingRange(10).build(new ResourceLocation(CelestialExploration.MODID, "mechacrow").toString()));
 
 
 }

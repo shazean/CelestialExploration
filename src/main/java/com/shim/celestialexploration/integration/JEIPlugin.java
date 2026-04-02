@@ -1,9 +1,11 @@
 package com.shim.celestialexploration.integration;
 
 import com.shim.celestialexploration.CelestialExploration;
+import com.shim.celestialexploration.recipes.MechaCrowCraftingRecipe;
 import com.shim.celestialexploration.recipes.WorkbenchCraftingRecipe;
 import com.shim.celestialexploration.recipes.WorkbenchSmeltingRecipe;
 import com.shim.celestialexploration.registry.CelestialBlocks;
+import com.shim.celestialexploration.registry.CelestialItems;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.recipe.RecipeType;
@@ -21,6 +23,7 @@ import java.util.Objects;
 public class JEIPlugin implements IModPlugin {
     RecipeType<WorkbenchCraftingRecipe> workbenchCraftingRecipeType = new RecipeType<>(WorkbenchCraftingRecipeCategory.UID, WorkbenchCraftingRecipe.class);
     RecipeType<WorkbenchSmeltingRecipe> workbenchSmeltingRecipeType = new RecipeType<>(WorkbenchSmeltingRecipeCategory.UID, WorkbenchSmeltingRecipe.class);
+    RecipeType<MechaCrowCraftingRecipe> mechacrowRecipeType = new RecipeType<>(MechaCrowRecipeCategory.UID, MechaCrowCraftingRecipe.class);
 
     @Override
     public ResourceLocation getPluginUid() {
@@ -31,22 +34,24 @@ public class JEIPlugin implements IModPlugin {
     public void registerCategories(IRecipeCategoryRegistration registration) {
         registration.addRecipeCategories(new WorkbenchCraftingRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
         registration.addRecipeCategories(new WorkbenchSmeltingRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
+        registration.addRecipeCategories(new MechaCrowRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
     }
 
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
         IModPlugin.super.registerRecipeCatalysts(registration);
         registration.addRecipeCatalyst(new ItemStack(CelestialBlocks.WORKBENCH.get()), workbenchCraftingRecipeType, workbenchSmeltingRecipeType);
+        registration.addRecipeCatalyst(new ItemStack(CelestialItems.BLACK_MECHACROW.get()), mechacrowRecipeType);
+
     }
 
     @Override
     public void registerRecipes(IRecipeRegistration registration) {
-        RecipeManager rm = Objects.requireNonNull(CelestialExploration.PROXY.getMinecraft().level).getRecipeManager();
-        List<WorkbenchCraftingRecipe> craftingRecipes = rm.getAllRecipesFor(WorkbenchCraftingRecipe.Type.INSTANCE);
-        List<WorkbenchSmeltingRecipe> smeltingRecipes = rm.getAllRecipesFor(WorkbenchSmeltingRecipe.Type.INSTANCE);
+        RecipeManager manager = Objects.requireNonNull(CelestialExploration.PROXY.getMinecraft().level).getRecipeManager();
 
-        registration.addRecipes(workbenchCraftingRecipeType, craftingRecipes);
-        registration.addRecipes(workbenchSmeltingRecipeType, smeltingRecipes);
+        registration.addRecipes(workbenchCraftingRecipeType, manager.getAllRecipesFor(WorkbenchCraftingRecipe.Type.INSTANCE));
+        registration.addRecipes(workbenchSmeltingRecipeType, manager.getAllRecipesFor(WorkbenchSmeltingRecipe.Type.INSTANCE));
+        registration.addRecipes(mechacrowRecipeType, manager.getAllRecipesFor(MechaCrowCraftingRecipe.Type.INSTANCE));
     }
 
 //    public void registerRecipeTransferHandlers(IRecipeTransferRegistration registration) {

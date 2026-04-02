@@ -18,8 +18,8 @@ public enum DyeType {
     GREEN(Items.GREEN_DYE, "green"),
     CYAN(Items.CYAN_DYE, "cyan"),
     LIGHT_BLUE(Items.LIGHT_BLUE_DYE, "light_blue"),
-    BLUE(Items.RED_DYE, "blue"),
-    PURPLE(Items.RED_DYE, "purple"),
+    BLUE(Items.BLUE_DYE, "blue"),
+    PURPLE(Items.PURPLE_DYE, "purple"),
     RUST(Items.RED_DYE, "rust");
 
     private final String name;

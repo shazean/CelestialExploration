@@ -3,6 +3,6 @@
   "ingredient": {
     "item": "minecraft:cobblestone"
   },
-  "result": "minecraft:stick",
-  "count": 1
+  "result": "celestialexploration:stone_rod",
+  "count": 2
 }

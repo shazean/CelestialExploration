@@ -19,11 +19,7 @@ public class MercuryBiomes extends CelestialBiomeFeatures {
         addMercuryOres(biomeBuilder);
 
         generalNoCaveMonsters(spawnBuilder, 50, 50, 50);
-        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.QUICKSILVER_SLIME.get(), 30, 4, 4))
-                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.VISCOUS_SLIME.get(), 30, 4, 4))
-                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(CelestialEntities.ROVER.get(), 40, 1, 1))
-                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(CelestialEntities.DRONE.get(), 30, 1, 2))
-                .build();
+        addMercuryMobs(spawnBuilder, 30, 0, 40, 30);
 
         return mercury(Biome.Precipitation.NONE, prettyCold, 0F, spawnBuilder, biomeBuilder);
     }
@@ -39,11 +35,7 @@ public class MercuryBiomes extends CelestialBiomeFeatures {
         addMercuryOres(biomeBuilder);
 
         generalNoCaveMonsters(spawnBuilder, 50, 50, 50);
-        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.QUICKSILVER_SLIME.get(), 30, 4, 4))
-                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.VISCOUS_SLIME.get(), 30, 4, 4))
-                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(CelestialEntities.ROVER.get(), 40, 1, 1))
-                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(CelestialEntities.DRONE.get(), 30, 1, 2))
-                .build();
+        addMercuryMobs(spawnBuilder, 30, 50, 40, 30);
 
         return mercury(Biome.Precipitation.NONE, prettyCold, 0F, spawnBuilder, biomeBuilder);
     }
@@ -59,11 +51,7 @@ public class MercuryBiomes extends CelestialBiomeFeatures {
         addMercuryOres(biomeBuilder);
 
         generalNoCaveMonsters(spawnBuilder, 50, 50, 50);
-        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.QUICKSILVER_SLIME.get(), 30, 4, 4))
-                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.VISCOUS_SLIME.get(), 30, 4, 4))
-                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(CelestialEntities.ROVER.get(), 40, 1, 1))
-                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(CelestialEntities.DRONE.get(), 30, 1, 2))
-                .build();
+        addMercuryMobs(spawnBuilder, 30, 0, 40, 30);
 
         return mercury(Biome.Precipitation.NONE, prettyCold, 0F, spawnBuilder, biomeBuilder);
     }
@@ -87,6 +75,13 @@ public class MercuryBiomes extends CelestialBiomeFeatures {
                         .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build()).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
+    protected static void addMercuryMobs(MobSpawnSettings.Builder spawnBuilder, int slimeWeight, int meteorCrawlerWeight, int roverWeight, int droneWeight) {
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.QUICKSILVER_SLIME.get(), slimeWeight, 0, 3))
+                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.VISCOUS_SLIME.get(), slimeWeight, 0, 3))
+                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.METEOR_CRAWLER.get(), meteorCrawlerWeight, 0, 2))
+                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(CelestialEntities.ROVER.get(), roverWeight, 0, 1))
+                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(CelestialEntities.DRONE.get(), droneWeight, 0, 2));
+    }
 
     public static void addMercuryOres(BiomeGenerationSettings.Builder biomeBuilder) {
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.MERCURY_IRON_ORE_UPPER);

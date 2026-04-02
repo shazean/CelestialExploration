@@ -1,21 +1,21 @@
 package com.shim.celestialexploration.entity.robots;
 
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.blocks.blockentities.WorkbenchBlockEntity;
 import com.shim.celestialexploration.entity.DyeType;
 import com.shim.celestialexploration.entity.IDyeable;
 import com.shim.celestialexploration.entity.client.dispatchers.MechaCrowDispatcher;
 import com.shim.celestialexploration.recipes.MechaCrowCraftingRecipe;
-import com.shim.celestialexploration.recipes.WorkbenchCraftingRecipe;
-import com.shim.celestialexploration.recipes.WorkbenchSmeltingRecipe;
+import com.shim.celestialexploration.registry.CelestialStructures;
+import com.shim.celestialexploration.entity.MoonColor;
 import mod.azure.azurelib.util.MoveAnalysis;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
+import net.minecraft.core.Registry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.*;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
@@ -30,7 +30,6 @@ import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.ai.util.AirAndWaterRandomPos;
 import net.minecraft.world.entity.ai.util.HoverRandomPos;
 import net.minecraft.world.entity.animal.Animal;
-import net.minecraft.world.entity.animal.horse.AbstractHorse;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -39,8 +38,12 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.chunk.ChunkGenerator;
+import net.minecraft.world.level.levelgen.feature.ConfiguredStructureFeature;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.level.pathfinder.Path;
 import net.minecraft.world.level.pathfinder.WalkNodeEvaluator;
@@ -48,7 +51,6 @@ import net.minecraft.world.phys.Vec3;
 
 import javax.annotation.Nullable;
 import java.util.EnumSet;
-import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 
@@ -64,6 +66,7 @@ public class MechaCrow extends TamableAnimal implements ContainerListener, IDyea
     private final MoveControl flyingMoveControl = new FlyingMoveControl(this, 10, true);
     private final MoveControl groundMoveControl = new MoveControl(this);
     protected SimpleContainer inventory;
+    DyeType colorForSpawning = DyeType.GREY;
 
 
     public MechaCrow(EntityType<? extends TamableAnimal> entity, Level level) {
@@ -82,7 +85,7 @@ public class MechaCrow extends TamableAnimal implements ContainerListener, IDyea
     protected void defineSynchedData() {
         super.defineSynchedData();
         this.entityData.define(DATA_IS_FLYING, false);
-        this.entityData.define(DATA_ID_TYPE, DyeType.BLACK.ordinal());
+        this.entityData.define(DATA_ID_TYPE, DyeType.GREY.ordinal());
     }
 
     public boolean isFlying() {
@@ -109,12 +112,13 @@ public class MechaCrow extends TamableAnimal implements ContainerListener, IDyea
 
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
-//        this.goalSelector.addGoal(2, new MechaCrow.MechaCrowWanderGoal(this, 0.8D));
+        this.goalSelector.addGoal(2, new SitWhenOrderedToGoal(this));
+        this.goalSelector.addGoal(2, new MechaCrow.MechaCrowWanderGoal(this, 0.8D));
 
         this.goalSelector.addGoal(3, new LookAtPlayerGoal(this, Player.class, 8.0F));
         this.goalSelector.addGoal(3, new RandomLookAroundGoal(this));
         this.goalSelector.addGoal(1, new MechaCrowFollowOwnerGoal(this, 1.0D, 5.0F, 1.0F, true));
-//        this.goalSelector.addGoal(5, new FollowMobGoal(this, 1.0D, 3.0F, 7.0F));
+        this.goalSelector.addGoal(5, new FollowMobGoal(this, 1.0D, 3.0F, 7.0F));
     }
 
     @Override
@@ -138,7 +142,49 @@ public class MechaCrow extends TamableAnimal implements ContainerListener, IDyea
     }
 
     public static boolean checkMechaCrowSpawnRules(EntityType<MechaCrow> entity, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, Random random) {
-        return random.nextInt(5) == 0 && checkMobSpawnRules(entity, level, spawnType, pos, random);
+//        if (random.nextDouble() > 0.2) return false;
+        return checkMobSpawnRules(entity, level, spawnType, pos, random);
+    }
+
+    @Nullable
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData spawnData, @Nullable CompoundTag nbt) {
+        spawnData = super.finalizeSpawn(levelAccessor, difficulty, spawnType, spawnData, nbt);
+
+        Level level = levelAccessor.getLevel();
+//        if (level instanceof ServerLevel serverLevel) {
+//            Registry<ConfiguredStructureFeature<?, ?>> registry = serverLevel.registryAccess().registryOrThrow(Registry.CONFIGURED_STRUCTURE_FEATURE_REGISTRY);
+//            if (ChunkGenerator.allConfigurations(registry, CelestialStructures.LUNAR_COLONY.get()).anyMatch((structureFeature) -> {
+////                if (structureFeature.biomes.getRandomElement(this.random).isPresent()) {
+////                    Holder<Biome> biome = structureFeature.biomes.getRandomElement(this.random).get();
+////                    this.colorForSpawning = MoonColor.getColor(biome);
+////                    CelestialExploration.LOGGER.debug("biome: " + biome + ", color: " + this.colorForSpawning);
+////                }
+//                return serverLevel.structureFeatureManager().getStructureWithPieceAt(this.blockPosition(), structureFeature).isValid();
+//            })) {
+//                this.setPersistenceRequired();
+//            }
+//        }
+
+        Holder<Biome> biome = level.getBiome(this.blockPosition());
+        this.colorForSpawning = MoonColor.getColor(biome);
+
+        int rand = this.random.nextInt(6);
+        if (rand == 0)
+            this.colorForSpawning = DyeType.WHITE;
+        else if (rand == 1)
+            this.colorForSpawning = DyeType.GREY;
+        else if (rand == 2)
+            this.colorForSpawning = DyeType.LIGHT_GREY;
+
+
+        if (this.colorForSpawning != null)
+            this.setDyeType(this.colorForSpawning);
+        else
+            this.entityData.set(DATA_ID_TYPE, this.random.nextInt(16));
+
+        CelestialExploration.LOGGER.debug("spawning mechacrow! with color: " +  this.colorForSpawning);
+
+        return spawnData;
     }
 
     @Override
@@ -158,13 +204,24 @@ public class MechaCrow extends TamableAnimal implements ContainerListener, IDyea
                     this.tame(player);
                     this.navigation.stop();
                     this.setTarget((LivingEntity) null);
-//                this.setOrderedToSit(true);
+                this.setOrderedToSit(true);
                     this.level.broadcastEntityEvent(this, (byte) 7);
                 } else {
                     this.level.broadcastEntityEvent(this, (byte) 6);
                 }
                 return InteractionResult.SUCCESS;
+            } else {
+
+                InteractionResult interactionresult = super.mobInteract(player, hand);
+                if ((!interactionresult.consumesAction() || this.isBaby()) && this.isOwnedBy(player)) {
+                    this.setOrderedToSit(!this.isOrderedToSit());
+                    this.jumping = false;
+                    this.navigation.stop();
+                    this.setTarget((LivingEntity) null);
+                    return InteractionResult.SUCCESS;
+                }
             }
+
         }
         return super.mobInteract(player, hand);
     }

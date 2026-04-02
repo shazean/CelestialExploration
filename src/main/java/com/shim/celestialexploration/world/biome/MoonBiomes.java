@@ -23,10 +23,7 @@ public class MoonBiomes extends CelestialBiomeFeatures {
         addMoonOres(biomeBuilder);
 
         generalNoCaveMonsters(spawnBuilder, 50, 50, 50);
-        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.LUNAR_SLIME.get(), 100, 4, 4))
-                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(CelestialEntities.ROVER.get(), 40, 1, 1))
-                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(CelestialEntities.DRONE.get(), 30, 1, 2))
-                .build();
+        addLunarMobs(spawnBuilder, 100, 0,10, 40, 30);
 
         return moon(Biome.Precipitation.NONE, prettyCold, 0F, spawnBuilder, biomeBuilder);
     }
@@ -44,11 +41,7 @@ public class MoonBiomes extends CelestialBiomeFeatures {
         addMoonOres(biomeBuilder);
 
         generalNoCaveMonsters(spawnBuilder, 50, 50, 50);
-        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.LUNAR_SLIME.get(), 100, 4, 4))
-                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.METEOR_CRAWLER.get(), 100, 4, 4))
-                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(CelestialEntities.ROVER.get(), 40, 1, 1))
-                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(CelestialEntities.DRONE.get(), 30, 1, 2))
-                .build();
+        addLunarMobs(spawnBuilder, 80, 100, 10, 40, 30);
 
         //        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.DISK_MOON_SAND);
 
@@ -72,9 +65,8 @@ public class MoonBiomes extends CelestialBiomeFeatures {
         addMoonOres(biomeBuilder);
 
         generalNoCaveMonsters(spawnBuilder, 50, 50, 50);
-        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.LUNAR_SLIME.get(), 120, 4, 4))
-                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(CelestialEntities.ROVER.get(), 40, 1, 1))
-                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(CelestialEntities.DRONE.get(), 30, 1, 2)).build();
+        addLunarMobs(spawnBuilder, 120, 0, 0, 40, 30);
+
 
         return moon(Biome.Precipitation.NONE, prettyCold, 0F, spawnBuilder, biomeBuilder);
     }
@@ -87,9 +79,7 @@ public class MoonBiomes extends CelestialBiomeFeatures {
         addMoonOres(biomeBuilder);
 
         generalNoCaveMonsters(spawnBuilder, 50, 50, 50);
-        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.LUNAR_SLIME.get(), 30, 4, 4))
-                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(CelestialEntities.ROVER.get(), 40, 1, 1))
-                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(CelestialEntities.DRONE.get(), 30, 1, 2)).build();
+        addLunarMobs(spawnBuilder, 80, 0, 30, 40, 30);
 
         return moon(Biome.Precipitation.NONE, prettyCold, 0F, spawnBuilder, biomeBuilder);
     }
@@ -100,8 +90,7 @@ public class MoonBiomes extends CelestialBiomeFeatures {
 
         addMoonOres(biomeBuilder);
 
-        spawnBuilder.addSpawn(MobCategory.WATER_AMBIENT, new MobSpawnSettings.SpawnerData(CelestialEntities.EUREKA.get(), 30, 4, 4))
-                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(CelestialEntities.ROVER.get(), 40, 1, 1)).build();
+        spawnBuilder.addSpawn(MobCategory.WATER_AMBIENT, new MobSpawnSettings.SpawnerData(CelestialEntities.EUREKA.get(), 30, 0, 1)).build();
 
         return moon(Biome.Precipitation.NONE,-0.75F, 0F, spawnBuilder, biomeBuilder);
     }
@@ -123,6 +112,13 @@ public class MoonBiomes extends CelestialBiomeFeatures {
                         .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build()).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 
+    protected static void addLunarMobs(MobSpawnSettings.Builder spawnBuilder, int slimeWeight, int meteorCrawlerWeight, int cowWeight, int roverWeight, int droneWeight) {
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.LUNAR_SLIME.get(), slimeWeight, 0, 3))
+                .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.METEOR_CRAWLER.get(), meteorCrawlerWeight, 0, 2))
+                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(CelestialEntities.MOON_COW.get(), cowWeight, 2, 3))
+                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(CelestialEntities.ROVER.get(), roverWeight, 0, 1))
+                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(CelestialEntities.DRONE.get(), droneWeight, 0, 2));
+    }
 
     public static void addMoonOres(BiomeGenerationSettings.Builder biomeBuilder) {
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.MOON_IRON_ORE_UPPER);

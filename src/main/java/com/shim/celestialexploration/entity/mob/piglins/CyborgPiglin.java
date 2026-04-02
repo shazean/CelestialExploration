@@ -28,7 +28,9 @@ public class CyborgPiglin extends Piglin {
         return false;
     }
 
-    public static boolean checkCyborgPiglinSpawnRules(EntityType<CyborgPiglin> entityType, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, Random rand) {
+    public static boolean checkCyborgPiglinSpawnRules(EntityType<CyborgPiglin> entityType, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, Random random) {
+        if (random.nextDouble() > 0.2) return false;
+
         return level.getDifficulty() != Difficulty.PEACEFUL;
     }
 

@@ -57,7 +57,8 @@ public class Rover extends PathfinderMob {
     }
 
     public static boolean checkRoverSpawnRules(EntityType<Rover> rover, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, Random random) {
-        return random.nextInt(10) == 0 && checkMobSpawnRules(rover, level, spawnType, pos, random);
+        if (random.nextDouble() > 0.2) return false;
+        return checkMobSpawnRules(rover, level, spawnType, pos, random);
     }
 
     public static AttributeSupplier.Builder createAttributes() {

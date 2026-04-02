@@ -1,0 +1,8 @@
+{
+  "type": "celestialexploration:mechacrow_crafting",
+  "ingredient": {
+    "item": "celestialexploration:io_cobblestone"
+  },
+  "result": "celestialexploration:stone_rod",
+  "count": 2
+}

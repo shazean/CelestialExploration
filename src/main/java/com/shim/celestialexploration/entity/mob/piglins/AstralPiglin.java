@@ -37,7 +37,8 @@ public class AstralPiglin extends Piglin {
         }
     }
 
-    public static boolean checkAstralPiglinSpawnRules(EntityType<AstralPiglin> entityType, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, Random rand) {
+    public static boolean checkAstralPiglinSpawnRules(EntityType<AstralPiglin> entityType, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, Random random) {
+        if (random.nextDouble() > 0.2) return false;
         return level.getDifficulty() != Difficulty.PEACEFUL;
     }
 

@@ -23,6 +23,7 @@ public class VoidedPiglin extends ZombifiedPiglin {
     }
 
     public static boolean checkVoidedPiglinSpawnRules(EntityType<VoidedPiglin> entityType, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, Random rand) {
+        if (rand.nextDouble() > 0.2) return false;
         return level.getDifficulty() != Difficulty.PEACEFUL;
     }
 }

@@ -48,13 +48,13 @@ public class LargeCraterStructure extends StructureFeature<JigsawConfiguration> 
         }
 
         BlockPos blockpos = context.chunkPos().getMiddleBlockPosition(0);
-        blockpos = blockpos.above(-10);
+        blockpos = blockpos.below(10);
 
         Optional<PieceGenerator<JigsawConfiguration>> structurePiecesGenerator =
                 JigsawPlacement.addPieces(context, PoolElementStructurePiece::new, blockpos, false, true);
 
         if(structurePiecesGenerator.isPresent()) {
-            CelestialExploration.LOGGER.log(Level.DEBUG, "Large crater at {}", blockpos);
+//            CelestialExploration.LOGGER.log(Level.DEBUG, "Large crater at {}", blockpos);
         }
         return structurePiecesGenerator;
     }

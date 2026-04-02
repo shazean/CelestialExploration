@@ -78,7 +78,8 @@ public class Drone extends TamableAnimal implements FlyingAnimal {
     }
 
     public static boolean checkDroneSpawnRules(EntityType<Drone> entity, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, Random random) {
-        return random.nextInt(5) == 0 && checkMobSpawnRules(entity, level, spawnType, pos, random);
+        if (random.nextDouble() > 0.2) return false;
+        return checkMobSpawnRules(entity, level, spawnType, pos, random);
     }
 
     @Override

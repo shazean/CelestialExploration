@@ -7,5 +7,20 @@
   "biomes": "#celestialexploration:has_structure/lunar_colony_biomes",
   "adapt_noise": true,
   "spawn_overrides": {
+    "creature": {
+      "bounding_box": "full",
+      "spawns": [
+        {
+          "type": "celestialexploration:mechacrow",
+          "weight": 1,
+          "minCount": 0,
+          "maxCount": 1
+        }
+      ]
+    },
+    "monster": {
+      "bounding_box": "full",
+      "spawns": []
+    }
   }
 }

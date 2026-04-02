@@ -203,6 +203,7 @@ public class CelestialLangProvider extends LanguageProvider {
 		add("recipe.celestialexploration.workbench.crafting", "Workbench Crafting");
 		add("recipe.celestialexploration.workbench.blocks", "blocks");
 		add("recipe.celestialexploration.workbench.ingots", "ingots");
+		add("recipe.celestialexploration.mechacrow.crafting", "MechaCrow Crafting");
 
 		//---- ARMOR-RELATED -------------------------------------------------------------------------------
 		add("item.celestialexploration.armor_details.when_worn", "When Worn");

@@ -1,4 +1,4 @@
-package com.shim.celestialexploration.entity;
+package com.shim.celestialexploration.entity.spawner;
 
 import com.shim.celestialexploration.entity.friendlies.CelestialCat;
 import com.shim.celestialexploration.registry.CelestialEntities;

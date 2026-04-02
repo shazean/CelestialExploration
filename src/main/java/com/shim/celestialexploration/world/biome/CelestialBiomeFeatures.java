@@ -23,18 +23,18 @@ public class CelestialBiomeFeatures extends CLibBiomeFeatures {
         return biome(Biome.Precipitation.NONE, Biome.BiomeCategory.NONE, prettyCold, 0, CelestialBody.SPACE.skyColor, CelestialBody.SPACE.skyFogColor, CelestialBody.SPACE.waterColor, CelestialBody.SPACE.waterFogColor, spawnBuilder, biomeBuilder, NORMAL_MUSIC);
     }
 
-    protected static void generalMonsters(MobSpawnSettings.Builder spawnBuilder, int voidedCount, int skeletonCount, int lurkerCount) {
-        generalMonsters(spawnBuilder, voidedCount, 4, 4, skeletonCount, 4, 4, lurkerCount, 4, 4);
+    protected static void generalMonsters(MobSpawnSettings.Builder spawnBuilder, int voidedWeight, int skeletonWeight, int lurkerWeight) {
+        generalMonsters(spawnBuilder, voidedWeight, 4, 4, skeletonWeight, 4, 4, lurkerWeight, 4, 4);
     }
 
-    protected static void generalNoCaveMonsters(MobSpawnSettings.Builder spawnBuilder, int voidedCount, int skeletonCount, int lurkerCount) {
-        generalMonsters(spawnBuilder, voidedCount, 0, 2, skeletonCount, 0, 2, lurkerCount, 0, 1);
+    protected static void generalNoCaveMonsters(MobSpawnSettings.Builder spawnBuilder, int voidedWeight, int skeletonWeight, int lurkerWeight) {
+        generalMonsters(spawnBuilder, voidedWeight, 0, 2, skeletonWeight, 0, 2, lurkerWeight, 0, 1);
     }
 
-    protected static void generalMonsters(MobSpawnSettings.Builder spawnBuilder, int voidedCount, int minVoided, int maxVoided, int skeletonCount, int minSkeletons, int maxSkeletons, int lurkerCount, int minLurkers, int maxLurkers) {
-        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.VOIDED.get(), voidedCount, minVoided, maxVoided));
-        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.SKELETON, skeletonCount, minSkeletons, maxSkeletons));
-        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.LURKER.get(), lurkerCount, minLurkers, maxLurkers));
+    protected static void generalMonsters(MobSpawnSettings.Builder spawnBuilder, int voidedWeight, int minVoided, int maxVoided, int skeletonWeight, int minSkeletons, int maxSkeletons, int lurkerWeight, int minLurkers, int maxLurkers) {
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.VOIDED.get(), voidedWeight, minVoided, maxVoided));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.SKELETON, skeletonWeight, minSkeletons, maxSkeletons));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.LURKER.get(), lurkerWeight, minLurkers, maxLurkers));
         spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.VOIDFELLOW.get(), 10, 1, 4));
     }
 
