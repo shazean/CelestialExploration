@@ -1,4 +1,4 @@
-package com.shim.celestialexploration.entity.friendlies;
+package com.shim.celestialexploration.entity.creatures;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.EntityType;

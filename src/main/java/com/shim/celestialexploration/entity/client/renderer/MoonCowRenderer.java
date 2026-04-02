@@ -1,7 +1,7 @@
 package com.shim.celestialexploration.entity.client.renderer;
 
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.entity.friendlies.MoonCow;
+import com.shim.celestialexploration.entity.creatures.MoonCow;
 import net.minecraft.client.model.CowModel;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;

@@ -79,6 +79,7 @@ public class MechaCrow extends TamableAnimal implements ContainerListener, IDyea
         this.setPathfindingMalus(BlockPathTypes.DANGER_FIRE, -1.0F);
         this.setPathfindingMalus(BlockPathTypes.FENCE, -1.0F);
         this.setFlying(false);
+        this.setNoGravity(false);
         this.createInventory();
     }
 

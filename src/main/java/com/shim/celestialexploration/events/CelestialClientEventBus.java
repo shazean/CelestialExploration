@@ -191,6 +191,9 @@ public class CelestialClientEventBus {
         EntityRenderers.register(CelestialEntities.EUREKA.get(), EurekaRenderer::new);
         EntityRenderers.register(CelestialEntities.METEOR.get(), MeteorRenderer::new);
         EntityRenderers.register(CelestialEntities.MOON_COW.get(), MoonCowRenderer::new);
+        EntityRenderers.register(CelestialEntities.ASTEROID_SQUID.get(), AsteroidSquidRenderer::new);
+        EntityRenderers.register(CelestialEntities.STARDUST_SQUID.get(), StardustSquidRenderer::new);
+        EntityRenderers.register(CelestialEntities.CELESTIAL_AXOLOTL.get(), CelestialAxolotlRenderer::new);
 
 
         EntityRenderers.register(CelestialEntities.GUST.get(), GustRenderer::new);

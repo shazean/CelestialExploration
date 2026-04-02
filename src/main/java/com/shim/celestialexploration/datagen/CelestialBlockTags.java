@@ -658,7 +658,7 @@ public class CelestialBlockTags extends BlockTagsProvider {
                 .add(CelestialBlocks.MERCURY_FARMLAND_TILLED.get());
 
 
-        tag(CelestialTags.Blocks.MOON_COW_SPAWNABLE)
+        tag(CelestialTags.Blocks.MOON_COW_SPAWNABLE_ON)
                 .add(CelestialBlocks.MOON_SAND.get())
                 .add(CelestialBlocks.MOON_STONE.get())
                 .add(CelestialBlocks.MOON_COBBLESTONE.get())

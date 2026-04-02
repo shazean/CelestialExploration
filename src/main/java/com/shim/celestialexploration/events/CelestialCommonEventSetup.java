@@ -2,8 +2,8 @@ package com.shim.celestialexploration.events;
 
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.entity.ambient.Eureka;
-import com.shim.celestialexploration.entity.friendlies.CelestialCat;
-import com.shim.celestialexploration.entity.friendlies.MoonCow;
+import com.shim.celestialexploration.entity.creatures.CelestialCat;
+import com.shim.celestialexploration.entity.creatures.MoonCow;
 import com.shim.celestialexploration.entity.mob.*;
 import com.shim.celestialexploration.entity.mob.piglins.AstralPiglin;
 import com.shim.celestialexploration.entity.mob.piglins.CyborgPiglin;
@@ -12,7 +12,6 @@ import com.shim.celestialexploration.entity.mob.slimes.*;
 import com.shim.celestialexploration.entity.robots.Drone;
 import com.shim.celestialexploration.entity.robots.MechaCrow;
 import com.shim.celestialexploration.entity.robots.Rover;
-import com.shim.celestialexploration.item.armor.SpacesuitRenderer;
 import com.shim.celestialexploration.packets.CelestialPacketHandler;
 import com.shim.celestialexploration.registry.CelestialEntities;
 import com.shim.celestialexploration.registry.CelestialItems;
@@ -20,7 +19,6 @@ import com.shim.celestialexploration.registry.CelestialPOIs;
 import com.shim.celestialexploration.registry.CelestialStructurePieceType;
 import com.shim.celestialexploration.world.structures.ResearchTunnelPieces;
 import mod.azure.azurelib.animation.cache.AzIdentityRegistry;
-import mod.azure.azurelib.render.armor.AzArmorRendererRegistry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -52,6 +50,8 @@ public class CelestialCommonEventSetup {
         SpawnPlacements.register(CelestialEntities.ROVER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, Rover::checkRoverSpawnRules);
         SpawnPlacements.register(CelestialEntities.MECHACROW.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, MechaCrow::checkMechaCrowSpawnRules);
         SpawnPlacements.register(CelestialEntities.MOON_COW.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, MoonCow::checkSpawnRules);
+//        SpawnPlacements.register(CelestialEntities.STARDUST_SQUID.get(), SpawnPlacements.Type.NO_RESTRICTIONS, Heightmap.Types.WORLD_SURFACE, Mob::checkMobSpawnRules);
+
 
         //        SpawnPlacements.register(EntityRegistry.MECHADOG.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, MechaDog::checkMobSpawnRules);
 

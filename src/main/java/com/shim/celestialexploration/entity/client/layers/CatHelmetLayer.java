@@ -2,7 +2,7 @@ package com.shim.celestialexploration.entity.client.layers;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.entity.friendlies.CelestialCat;
+import com.shim.celestialexploration.entity.creatures.CelestialCat;
 import net.minecraft.client.model.CatModel;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.RenderLayerParent;

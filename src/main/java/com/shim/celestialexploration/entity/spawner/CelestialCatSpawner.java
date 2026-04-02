@@ -1,6 +1,6 @@
 package com.shim.celestialexploration.entity.spawner;
 
-import com.shim.celestialexploration.entity.friendlies.CelestialCat;
+import com.shim.celestialexploration.entity.creatures.CelestialCat;
 import com.shim.celestialexploration.registry.CelestialEntities;
 import com.shim.celestialexploration.registry.CelestialTags;
 import net.minecraft.core.BlockPos;

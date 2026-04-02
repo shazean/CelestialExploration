@@ -1,6 +1,6 @@
 package com.shim.celestialexploration.entity.client.renderer;
 
-import com.shim.celestialexploration.entity.friendlies.CelestialCat;
+import com.shim.celestialexploration.entity.creatures.CelestialCat;
 import com.shim.celestialexploration.entity.client.layers.CatHelmetLayer;
 import com.shim.celestialexploration.entity.client.layers.CelestialCatCollarLayer;
 import net.minecraft.client.model.CatModel;

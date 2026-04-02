@@ -811,6 +811,8 @@ public class CelestialItemModels extends BaseItemModels {
 		spawnEgg(CelestialItems.COBBLESAURUS_SPAWN_EGG.get());
 		spawnEgg(CelestialItems.ORBITER_SPAWN_EGG.get());
 		spawnEgg(CelestialItems.MOON_COW_SPAWN_EGG.get());
+		spawnEgg(CelestialItems.ASTEROID_SQUID_SPAWN_EGG.get());
+		spawnEgg(CelestialItems.STARDUST_SQUID_SPAWN_EGG.get());
 
 		generatedItem(CelestialItems.BLACK_MECHADOG.get());
 		generatedItem(CelestialItems.GREY_MECHADOG.get());

@@ -82,7 +82,7 @@ public class CelestialTags {
         public static final TagKey<Block> CELESTIAL_COBBLESTONE = BlockTags.create(modLoc("celestial_cobblestone"));
         public static final TagKey<Block> COBBLESAURUS_FOOD = BlockTags.create(modLoc("cobblesaurus_food"));
 
-        public static final TagKey<Block> MOON_COW_SPAWNABLE = BlockTags.create(modLoc("moon_cow_spawnable"));
+        public static final TagKey<Block> MOON_COW_SPAWNABLE_ON = BlockTags.create(modLoc("moon_cow_spawnable_on"));
 
 
 

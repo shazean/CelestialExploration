@@ -1,6 +1,6 @@
 package com.shim.celestialexploration.entity.client.animators;
 
-import com.shim.celestialexploration.entity.friendlies.Cobblesaurus;
+import com.shim.celestialexploration.entity.creatures.Cobblesaurus;
 import com.shim.celestialexploration.util.CelestialUtil;
 import mod.azure.azurelib.animation.controller.AzAnimationController;
 import mod.azure.azurelib.animation.controller.AzAnimationControllerContainer;

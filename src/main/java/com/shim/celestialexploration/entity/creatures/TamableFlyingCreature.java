@@ -1,4 +1,4 @@
-package com.shim.celestialexploration.entity.friendlies;
+package com.shim.celestialexploration.entity.creatures;
 
 import net.minecraft.Util;
 import net.minecraft.core.particles.ParticleOptions;

@@ -1,11 +1,8 @@
 package com.shim.celestialexploration.events;
 
 import com.shim.celestialexploration.CelestialExploration;
+import com.shim.celestialexploration.entity.creatures.*;
 import com.shim.celestialexploration.entity.ambient.Eureka;
-import com.shim.celestialexploration.entity.client.layers.VillagerSpaceSuitLayer;
-import com.shim.celestialexploration.entity.friendlies.CelestialCat;
-import com.shim.celestialexploration.entity.friendlies.Cobblesaurus;
-import com.shim.celestialexploration.entity.friendlies.MoonCow;
 import com.shim.celestialexploration.entity.mob.*;
 import com.shim.celestialexploration.entity.mob.piglins.AstralPiglin;
 import com.shim.celestialexploration.entity.mob.piglins.CyborgPiglin;
@@ -24,12 +21,7 @@ import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.particle.FlameParticle;
 import net.minecraft.client.particle.WaterDropParticle;
-import net.minecraft.client.renderer.entity.LivingEntityRenderer;
-import net.minecraft.client.renderer.entity.VillagerRenderer;
-import net.minecraft.client.renderer.entity.layers.VillagerProfessionLayer;
 import net.minecraft.core.Registry;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.ParticleFactoryRegisterEvent;
@@ -79,6 +71,10 @@ public class CelestialEventBus {
         event.put(CelestialEntities.MECHACERBERUS_BOSS.get(), MechaCerberusBoss.createAttributes().build());
         event.put(CelestialEntities.MOON_COW.get(), MoonCow.createAttributes().build());
         event.put(CelestialEntities.MECHACROW.get(), MechaCrow.createAttributes().build());
+        event.put(CelestialEntities.ASTEROID_SQUID.get(), CelestialSquid.createAttributes().build());
+        event.put(CelestialEntities.STARDUST_SQUID.get(), StardustSquid.createAttributes().build());
+        event.put(CelestialEntities.CELESTIAL_AXOLOTL.get(), CelestialAxolotl.createAttributes().build());
+
 
     }
 

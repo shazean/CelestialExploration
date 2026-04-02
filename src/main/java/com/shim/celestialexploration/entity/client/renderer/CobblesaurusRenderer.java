@@ -1,7 +1,7 @@
 package com.shim.celestialexploration.entity.client.renderer;
 
 import com.shim.celestialexploration.entity.client.animators.CobblesaurusAnimator;
-import com.shim.celestialexploration.entity.friendlies.Cobblesaurus;
+import com.shim.celestialexploration.entity.creatures.Cobblesaurus;
 import com.shim.celestialexploration.util.CelestialUtil;
 import mod.azure.azurelib.render.entity.AzEntityRenderer;
 import mod.azure.azurelib.render.entity.AzEntityRendererConfig;

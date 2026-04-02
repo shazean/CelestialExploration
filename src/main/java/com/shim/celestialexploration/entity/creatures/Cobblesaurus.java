@@ -1,4 +1,4 @@
-package com.shim.celestialexploration.entity.friendlies;
+package com.shim.celestialexploration.entity.creatures;
 
 import com.shim.celestialexploration.entity.client.dispatchers.CobblesaurusDispatcher;
 import com.shim.celestialexploration.registry.CelestialEntities;
