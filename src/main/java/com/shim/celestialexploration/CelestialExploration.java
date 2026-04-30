@@ -93,7 +93,6 @@ public class CelestialExploration {
 
         AzureLib.initialize();
 
-
         bus.addListener((InputEvent.KeyInputEvent e) -> onKeyPress(e.getKey(), e.getAction(), e.getModifiers()));
     }
 

@@ -4,6 +4,8 @@ import com.mojang.datafixers.util.Either;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.capabilities.TaxiCapability;
 import com.shim.celestialexploration.config.CelestialCommonConfig;
+import com.shim.celestialexploration.entity.creatures.CelestialCat;
+import com.shim.celestialexploration.entity.mob.Vulkan;
 import com.shim.celestialexploration.entity.spawner.CelestialCatSpawner;
 import com.shim.celestialexploration.entity.projectile.MeteorProjectile;
 import com.shim.celestialexploration.entity.spawner.MechaCrowSpawner;
@@ -13,6 +15,7 @@ import com.shim.celestiallib.api.blocks.AbstractPortalBlock;
 import com.shim.celestiallib.api.effects.CLibEffects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -109,16 +112,18 @@ public class CelestialForgeEventBus {
         Player player = event.getPlayer();
 
         if (event.getSide() == LogicalSide.SERVER && player != null && event.getItemStack() != null) {
+            Level level = event.getWorld();
+            BlockPos pos = event.getHitVec().getBlockPos();
+            BlockState block = level.getBlockState(pos);
+
             if (event.getItemStack().getItem() == Items.FLINT_AND_STEEL) {
                 if (CelestialCommonConfig.PORTALS.get()) {
-                    Level level = event.getWorld();
-
                     if (player.level.getBiome(player.getOnPos()).is(CelestialTags.Biomes.CELESTIAL_BODIES) || player.level.dimension() == Level.OVERWORLD) {
                         for (Direction direction : Direction.Plane.VERTICAL) {
                             BlockPos framePos = event.getPos().relative(direction);
 
-                            for (RegistryObject<? extends AbstractPortalBlock> block : CelestialBlocks.PORTAL_BLOCKS) {
-                                if (block.get().trySpawnPortal(level, framePos)) {
+                            for (RegistryObject<? extends AbstractPortalBlock> portalBlock : CelestialBlocks.PORTAL_BLOCKS) {
+                                if (portalBlock.get().trySpawnPortal(level, framePos)) {
                                     level.playSound(player, framePos, SoundEvents.PORTAL_TRIGGER, SoundSource.BLOCKS, 1.0F, 1.0F);
                                     event.setCanceled(true);
                                     event.setCancellationResult(InteractionResult.CONSUME);
@@ -129,10 +134,6 @@ public class CelestialForgeEventBus {
                     }
                 }
             } else if (event.getItemStack().getItem() instanceof ShovelItem) {
-                Level level = event.getWorld();
-                BlockPos pos = event.getHitVec().getBlockPos();
-
-                BlockState block = level.getBlockState(pos);
                 if (block.is(CelestialBlocks.MOON_SAND.get())) {
                     level.setBlock(pos, CelestialBlocks.MOON_SAND_PATH.get().defaultBlockState(), 1);
                 } else if (block.is(CelestialBlocks.MARS_SAND.get())) {
@@ -144,17 +145,29 @@ public class CelestialForgeEventBus {
                 } else if (block.is(CelestialBlocks.IO_SAND.get())) {
                     level.setBlock(pos, CelestialBlocks.IO_SAND_PATH.get().defaultBlockState(), 1);
                 }
-            }  else if (event.getItemStack().getItem() instanceof HoeItem) {
-                Level level = event.getWorld();
-                BlockPos pos = event.getHitVec().getBlockPos();
-
-                BlockState block = level.getBlockState(pos);
+            } else if (event.getItemStack().getItem() instanceof HoeItem) {
                 if (block.is(CelestialBlocks.MOON_FARMLAND.get())) {
                     level.setBlock(pos, CelestialBlocks.MOON_FARMLAND_TILLED.get().defaultBlockState(), 1);
                 } else if (block.is(CelestialBlocks.MARS_FARMLAND.get())) {
                     level.setBlock(pos, CelestialBlocks.MARS_FARMLAND_TILLED.get().defaultBlockState(), 1);
                 } else if (block.is(CelestialBlocks.MERCURY_FARMLAND.get())) {
                     level.setBlock(pos, CelestialBlocks.MERCURY_FARMLAND_TILLED.get().defaultBlockState(), 1);
+                }
+            } else if (event.getItemStack().getItem() == CelestialItems.FLARE_ROD.get()) {
+                if (block.is(CelestialBlocks.SMOKING_MAGMA.get())) {
+
+                    Vulkan vulkan = CelestialEntities.VULKAN.get().create(level);
+                    if (vulkan != null) {
+                        if (level instanceof ServerLevel serverLevel) {
+                            vulkan.moveTo(pos, 0.0F, 0.0F);
+                            vulkan.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(pos), MobSpawnType.NATURAL, (SpawnGroupData) null, (CompoundTag) null);
+                            serverLevel.addFreshEntityWithPassengers(vulkan);
+
+                            if (!event.getPlayer().isCreative())
+                                event.getItemStack().shrink(1);
+
+                        }
+                    }
                 }
             }
         }

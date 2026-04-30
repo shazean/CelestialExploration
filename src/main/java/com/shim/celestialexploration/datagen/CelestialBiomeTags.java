@@ -93,6 +93,12 @@ public class CelestialBiomeTags extends BiomeTagsProvider {
                 .addTag(CelestialTags.Biomes.IO_BIOMES)
                 .addTag(CelestialTags.Biomes.GANYMEDE_BIOMES);
 
+        tag(CelestialTags.Biomes.VENUS_VOLCANO_BIOMES)
+                .add(CelestialBiomeKeys.VENUS_DESERT)
+                .add(CelestialBiomeKeys.VENUS_LOWER_PLAINS)
+                .add(CelestialBiomeKeys.VENUS_PLAINS)
+                .add(CelestialBiomeKeys.VENUS_SULFUR_FLATS);
+
         //FIXME
         tag(CLibTags.Biomes.PLANETS)
                 .addTag(CelestialTags.Biomes.MARS_BIOMES)

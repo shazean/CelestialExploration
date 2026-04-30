@@ -194,8 +194,6 @@ public class CelestialClientEventBus {
         EntityRenderers.register(CelestialEntities.ASTEROID_SQUID.get(), AsteroidSquidRenderer::new);
         EntityRenderers.register(CelestialEntities.STARDUST_SQUID.get(), StardustSquidRenderer::new);
         EntityRenderers.register(CelestialEntities.CELESTIAL_AXOLOTL.get(), CelestialAxolotlRenderer::new);
-
-
         EntityRenderers.register(CelestialEntities.GUST.get(), GustRenderer::new);
         EntityRenderers.register(CelestialEntities.DRONE.get(), DroneRenderer::new);
         EntityRenderers.register(CelestialEntities.ROVER.get(), RoverRenderer::new);
@@ -205,6 +203,8 @@ public class CelestialClientEventBus {
         EntityRenderers.register(CelestialEntities.MECHACERBERUS.get(), (context) -> new MechaCerberusRenderer(context, 1.5F));
         EntityRenderers.register(CelestialEntities.MECHACERBERUS_BOSS.get(), (context) -> new MechaCerberusRenderer(context, 2.5F));
         EntityRenderers.register(CelestialEntities.MECHACROW.get(), MechaCrowRenderer::new);
+        EntityRenderers.register(CelestialEntities.VULKAN.get(), VulkanRenderer::new);
+
 
         MenuScreens.register(CelestialMenus.OXYGEN_COMPRESSOR_MENU.get(), OxygenCompressorScreen::new);
         MenuScreens.register(CelestialMenus.PLANET_CHART_MENU.get(), PlanetChartScreen::new);

@@ -164,13 +164,16 @@ public class CelestialTags {
         public static final TagKey<Biome> IO_BIOMES = create("io");
         public static final TagKey<Biome> GANYMEDE_BIOMES = create("ganymede");
 
+
 //        public static final TagKey<Biome> NO_SNOW_BIOMES = create("no_snow");
 
         public static final TagKey<Biome> DUST_STORM_BIOMES = create("dust_storms");
         public static final TagKey<Biome> METEOR_SHOWER_BIOMES = create("meteor_showers");
 
+        public static final TagKey<Biome> VENUS_VOLCANO_BIOMES = create("venus_volcanoes");
 
-//        public static final TagKey<Biome> PLANETS = create("planets");
+
+        //        public static final TagKey<Biome> PLANETS = create("planets");
 //        public static final TagKey<Biome> MOONS = create("moons");
         public static final TagKey<Biome> CELESTIAL_BODIES = create("celestial_bodies");
 

@@ -74,6 +74,7 @@ public class CelestialEventBus {
         event.put(CelestialEntities.ASTEROID_SQUID.get(), CelestialSquid.createAttributes().build());
         event.put(CelestialEntities.STARDUST_SQUID.get(), StardustSquid.createAttributes().build());
         event.put(CelestialEntities.CELESTIAL_AXOLOTL.get(), CelestialAxolotl.createAttributes().build());
+        event.put(CelestialEntities.VULKAN.get(), Vulkan.createAttributes().build());
 
 
     }
@@ -161,6 +162,9 @@ public class CelestialEventBus {
         minecraft.particleEngine.register(CelestialParticles.GANYMEDE_PORTAL_PARTICLES.get(), CelestialPortalParticle.GanymedeProvider::new);
 
         minecraft.particleEngine.register(CelestialParticles.SPACESHIP_PARTICLES.get(), SpaceshipParticles.Provider::new);
+
+        minecraft.particleEngine.register(CelestialParticles.VOLCANIC_SMOKE_PARTICLES.get(), VolcanicSmokeParticle.Provider::new);
+
     }
 
     @SubscribeEvent

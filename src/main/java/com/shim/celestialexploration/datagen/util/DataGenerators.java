@@ -31,13 +31,13 @@ public class DataGenerators {
 			generator.addProvider(new CelestialBiomeTags(generator, helper));
 			generator.addProvider(new CelestialEntityTags(generator, helper));
 
-
 			generator.addProvider(new CelestialDimensionGen(generator, helper));
 			generator.addProvider(new CelestialDimensionTypes(generator, helper));
+			generator.addProvider(new CelestialStructureGen(generator, helper));
+
 			generator.addProvider(new CelestialPlanetData(generator, helper));
 			generator.addProvider(new CelestialSpaceTravel(generator, helper));
 			generator.addProvider(new CelestialPlanetStructures(generator, helper));
-
 
 		}
 		if (event.includeClient()) {

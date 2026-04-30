@@ -40,6 +40,8 @@ public class CelestialCommonEventSetup {
         SpawnPlacements.register(CelestialEntities.VOIDED_PIGLIN.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, VoidedPiglin::checkVoidedPiglinSpawnRules);
         SpawnPlacements.register(CelestialEntities.CYBORG_PIGLIN.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, CyborgPiglin::checkCyborgPiglinSpawnRules);
         SpawnPlacements.register(CelestialEntities.ASTRAL_PIGLIN.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, AstralPiglin::checkAstralPiglinSpawnRules);
+        SpawnPlacements.register(CelestialEntities.ASTRAL_HOGLIN.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, AstralHoglin::checkMobSpawnRules);
+        SpawnPlacements.register(CelestialEntities.VOIDED_ZOGLIN.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, VoidedZoglin::checkMonsterSpawnRules);
         SpawnPlacements.register(CelestialEntities.GYST.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, Gyst::checkGystSpawnRules);
         SpawnPlacements.register(CelestialEntities.METEOR_CRAWLER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, MeteorCrawler::checkMeteorCrawlerSpawnRules);
         SpawnPlacements.register(CelestialEntities.VOID_CRAWLER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, VoidCrawler::checkMonsterSpawnRules);
@@ -51,6 +53,7 @@ public class CelestialCommonEventSetup {
         SpawnPlacements.register(CelestialEntities.MECHACROW.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, MechaCrow::checkMechaCrowSpawnRules);
         SpawnPlacements.register(CelestialEntities.MOON_COW.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, MoonCow::checkSpawnRules);
 //        SpawnPlacements.register(CelestialEntities.STARDUST_SQUID.get(), SpawnPlacements.Type.NO_RESTRICTIONS, Heightmap.Types.WORLD_SURFACE, Mob::checkMobSpawnRules);
+        SpawnPlacements.register(CelestialEntities.VULKAN.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, Vulkan::checkAnyLightMonsterSpawnRules);
 
 
         //        SpawnPlacements.register(EntityRegistry.MECHADOG.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, MechaDog::checkMobSpawnRules);

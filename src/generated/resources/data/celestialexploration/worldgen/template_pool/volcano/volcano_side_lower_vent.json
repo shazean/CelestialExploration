@@ -1,0 +1,15 @@
+{
+  "name": "celestialexploration:volcano/volcano_side_lower_vent",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "celestialexploration:volcano_lower_vent_1",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

@@ -41,5 +41,8 @@ public class CelestialParticles {
     public static final RegistryObject<SimpleParticleType> GANYMEDE_PORTAL_PARTICLES = PARTICLES.register("ganymede_portal_particles", () -> new SimpleParticleType(false));
 
     public static final RegistryObject<SimpleParticleType> SPACESHIP_PARTICLES = PARTICLES.register("spaceship_particles", () -> new SimpleParticleType(false));
+
+    public static final RegistryObject<SimpleParticleType> VOLCANIC_SMOKE_PARTICLES = PARTICLES.register("volcanic_smoke_particles", () -> new SimpleParticleType(false));
+
 }
 

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "celestialexploration:block/brimstone_side",
+    "end": "celestialexploration:block/brimstone_end"
+  }
+}

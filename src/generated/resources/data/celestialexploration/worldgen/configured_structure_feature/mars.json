@@ -1,0 +1,13 @@
+{
+  "type": "celestialexploration:planet",
+  "config": {
+    "start_pool": "celestialexploration:mars",
+    "size": 1,
+    "x": 1,
+    "z": -3,
+    "galaxy": "celestialexploration:milky_way"
+  },
+  "biomes": "#celestialexploration:milky_way",
+  "adapt_noise": false,
+  "spawn_overrides": {}
+}

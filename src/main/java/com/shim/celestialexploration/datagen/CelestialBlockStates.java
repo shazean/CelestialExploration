@@ -247,6 +247,9 @@ public class CelestialBlockStates extends BaseBlockStates {
 		simpleBlock(CelestialBlocks.VENUS_CORE.get());
 		simpleBlock(CelestialBlocks.FINE_VENUS_SAND.get());
 		simpleBlock(CelestialBlocks.SULFURIC_OBSIDIAN.get());
+		axisBlock(CelestialBlocks.BRIMSTONE.get());
+		axisBlock(CelestialBlocks.POLISHED_BRIMSTONE.get());
+		simpleBlock(CelestialBlocks.SMOOTH_BRIMSTONE.get());
 		simpleBlock(CelestialBlocks.VENUS_LANTERN.get());
 
 		sandBlock(CelestialBlocks.VENUS_SAND.get());
@@ -694,6 +697,10 @@ public class CelestialBlockStates extends BaseBlockStates {
 		simpleBlock(CelestialBlocks.BAUXITE_ORE.get());
 
 		simpleBlock(CelestialBlocks.TAXI_STATION.get());
+
+		simpleBlock(CelestialBlocks.SMOKING_MAGMA.get());
+
+
 	}
 
 	public void cubeTop(Block block, Block side) {

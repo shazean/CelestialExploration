@@ -64,5 +64,7 @@ public class CelestialStructures {
     public static final RegistryObject<StructureFeature<?>> JUPITER_CLOUD = DEFERRED_REGISTRY_STRUCTURE.register("jupiter_cloud", JupiterCloudStructure::new);
     public static final RegistryObject<StructureFeature<?>> LINEAE = DEFERRED_REGISTRY_STRUCTURE.register("lineae", LineaeStructure::new);
 
+    public static final RegistryObject<StructureFeature<?>> VOLCANO = DEFERRED_REGISTRY_STRUCTURE.register("volcano", VolcanoStructure::new);
+
 
 }

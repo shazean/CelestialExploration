@@ -16,6 +16,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.animal.axolotl.Axolotl;
+import net.minecraft.world.entity.monster.Blaze;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -67,6 +68,9 @@ public class CelestialEntities {
     public static final RegistryObject<EntityType<Gust>> GUST = registerEntityType("gust", "Gust", () -> EntityType.Builder.of(Gust::new, MobCategory.MONSTER).sized(0.7F, 2.3F).clientTrackingRange(8).build(modLocString("gust")));
     public static final RegistryObject<EntityType<Orbiter>> ORBITER = registerEntityType("orbiter", "Orbiter", () -> EntityType.Builder.of(Orbiter::new, MobCategory.MONSTER).sized(4.0F, 4.0F).clientTrackingRange(10).fireImmune().build(modLocString("orbiter")));
     public static final RegistryObject<EntityType<MechaCerberusBoss>> MECHACERBERUS_BOSS = registerEntityType("mechacerberus_boss", "Mechacerberus", () -> EntityType.Builder.of(MechaCerberusBoss::new, MobCategory.MONSTER).sized(3.1F, 3.0F).clientTrackingRange(8).build(modLocString("mechacerberus_boss")));
+
+    public static final RegistryObject<EntityType<Vulkan>> VULKAN = registerEntityType("vulkan", "Vulkan", () -> EntityType.Builder.of(Vulkan::new, MobCategory.MONSTER).fireImmune().sized(1.2F, 2.2F).clientTrackingRange(8).build(modLocString("vulkan")));
+
 
     //---- VEHICLES -------------------------------------------------------------------------------
     public static final RegistryObject<EntityType<Spaceship>> SPACESHIP = registerEntityType("spaceship", "Spaceship", () -> EntityType.Builder.<Spaceship>of(Spaceship::new, MobCategory.MISC).sized(2.45f, 2.65f).build(modLocString("spaceship")));

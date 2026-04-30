@@ -1,12 +1,14 @@
 package com.shim.celestialexploration.world.structures;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.Holder;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
 import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
 
-public class CelestialConfiguration implements FeatureConfiguration {
+public class CelestialConfiguration implements FeatureConfiguration, ISerializableConfig {
     public static final Codec<CelestialConfiguration> CODEC = RecordCodecBuilder.create((p_67764_) -> {
         return p_67764_.group(StructureTemplatePool.CODEC.fieldOf("start_pool").forGetter(CelestialConfiguration::startPool),
                         Codec.intRange(0, 7).fieldOf("size").forGetter(CelestialConfiguration::maxDepth),
@@ -40,5 +42,19 @@ public class CelestialConfiguration implements FeatureConfiguration {
 
     public int z() {
         return this.z;
+    }
+
+    @Override
+    public JsonElement serialize() {
+        JsonObject configJson = new JsonObject();
+
+        configJson.addProperty("start_pool", this.startPool.toString());
+        configJson.addProperty("size", this.maxDepth());
+        configJson.addProperty("x", x());
+        configJson.addProperty("z", z());
+
+
+        //TODO
+        return null;
     }
 }

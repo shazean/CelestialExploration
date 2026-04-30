@@ -246,6 +246,10 @@ public class CelestialItemModels extends BaseItemModels {
 		self(CelestialBlocks.VENUS_SAND.get());
 		self(CelestialBlocks.FINE_VENUS_SAND.get());
 		self(CelestialBlocks.SULFURIC_OBSIDIAN.get());
+		self(CelestialBlocks.BRIMSTONE.get());
+		self(CelestialBlocks.POLISHED_BRIMSTONE.get());
+		self(CelestialBlocks.SMOOTH_BRIMSTONE.get());
+
 		self(CelestialBlocks.VENUS_LANTERN.get());
 		self(CelestialBlocks.GEYSER.get());
 		self(CelestialBlocks.VENUS_SAND_PATH.get());
@@ -763,6 +767,9 @@ public class CelestialItemModels extends BaseItemModels {
 		self(CelestialBlocks.PLANET_CHART.get());
 		self(CelestialBlocks.TAXI_STATION.get());
 
+		self(CelestialBlocks.SMOKING_MAGMA.get());
+
+
 		//ITEMS
 		generatedItem(CelestialItems.MOON_DUST.get());
 		generatedItem(CelestialItems.EUROPA_DUST.get());
@@ -813,6 +820,7 @@ public class CelestialItemModels extends BaseItemModels {
 		spawnEgg(CelestialItems.MOON_COW_SPAWN_EGG.get());
 		spawnEgg(CelestialItems.ASTEROID_SQUID_SPAWN_EGG.get());
 		spawnEgg(CelestialItems.STARDUST_SQUID_SPAWN_EGG.get());
+		spawnEgg(CelestialItems.VULKAN_SPAWN_EGG.get());
 
 		generatedItem(CelestialItems.BLACK_MECHADOG.get());
 		generatedItem(CelestialItems.GREY_MECHADOG.get());

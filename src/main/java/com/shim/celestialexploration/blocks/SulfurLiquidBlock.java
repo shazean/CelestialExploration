@@ -11,6 +11,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FlowingFluid;
@@ -48,6 +49,13 @@ public class SulfurLiquidBlock extends LiquidBlock {
                 BlockPos blockpos = pos.relative(direction.getOpposite());
                 if (level.getFluidState(blockpos).is(FluidTags.WATER)) {
                     Block block = level.getFluidState(pos).isSource() ? CelestialBlocks.SULFURIC_OBSIDIAN.get(): CelestialBlocks.VENUS_COBBLESTONE.get();
+                    level.setBlockAndUpdate(pos, net.minecraftforge.event.ForgeEventFactory.fireFluidPlaceBlockEvent(level, pos, pos, block.defaultBlockState()));
+                    this.fizz(level, pos);
+                    return false;
+                }
+
+                if (level.getFluidState(blockpos).is(FluidTags.LAVA)) {
+                    Block block = level.getFluidState(pos).isSource() ? CelestialBlocks.BRIMSTONE.get(): Blocks.BASALT;
                     level.setBlockAndUpdate(pos, net.minecraftforge.event.ForgeEventFactory.fireFluidPlaceBlockEvent(level, pos, pos, block.defaultBlockState()));
                     this.fizz(level, pos);
                     return false;

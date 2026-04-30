@@ -1,0 +1,15 @@
+{
+  "type": "celestialexploration:lunar_colony",
+  "config": {
+    "start_pool": "celestialexploration:lunar_colony/start_pool",
+    "size": 5
+  },
+  "biomes": "#celestialexploration:has_structure/lunar_colony_biomes",
+  "adapt_noise": true,
+  "spawn_overrides": {
+    "monster": {
+      "bounding_box": "full",
+      "spawns": []
+    }
+  }
+}

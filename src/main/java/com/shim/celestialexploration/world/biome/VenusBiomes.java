@@ -89,7 +89,9 @@ public class VenusBiomes extends CelestialBiomeFeatures {
                 .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.VOIDED_ZOGLIN.get(), voidedZoglinWeight, 1, 4))
                 .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(CelestialEntities.ASTRAL_HOGLIN.get(), astralHoglinWeight, 1, 4))
                 .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(CelestialEntities.ROVER.get(), roverWeight, 0, 1))
-                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(CelestialEntities.DRONE.get(), droneWeight, 0, 1));
+                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(CelestialEntities.DRONE.get(), droneWeight, 0, 1))
+                .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(CelestialEntities.VULKAN.get(), 50, 0, 3));
+
     }
     
     public static void addVenusOres(BiomeGenerationSettings.Builder biomeBuilder) {
