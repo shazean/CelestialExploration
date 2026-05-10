@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/template_daylight_detector",
-  "textures": {
-    "top": "celestialexploration:block/solar_panel_top",
-    "side": "celestialexploration:block/solar_panel_side"
-  }
-}

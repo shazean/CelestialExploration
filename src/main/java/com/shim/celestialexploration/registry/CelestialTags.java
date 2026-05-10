@@ -171,6 +171,7 @@ public class CelestialTags {
         public static final TagKey<Biome> METEOR_SHOWER_BIOMES = create("meteor_showers");
 
         public static final TagKey<Biome> VENUS_VOLCANO_BIOMES = create("venus_volcanoes");
+        public static final TagKey<Biome> SOLAR_FIELDS_BIOMES = create("has_structure/solar_fields");
 
 
         //        public static final TagKey<Biome> PLANETS = create("planets");

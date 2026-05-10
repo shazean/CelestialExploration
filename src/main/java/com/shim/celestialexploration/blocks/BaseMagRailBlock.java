@@ -1,7 +1,6 @@
 package com.shim.celestialexploration.blocks;
 
 import com.shim.celestialexploration.entity.vehicle.AbstractMagCart;
-import com.shim.celestialexploration.entity.vehicle.IBaseMagRailBlock;
 import com.shim.celestialexploration.registry.CelestialTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

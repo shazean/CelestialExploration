@@ -2,7 +2,6 @@ package com.shim.celestialexploration.events;
 
 import com.mojang.datafixers.util.Either;
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.capabilities.TaxiCapability;
 import com.shim.celestialexploration.config.CelestialCommonConfig;
 import com.shim.celestialexploration.entity.creatures.CelestialCat;
 import com.shim.celestialexploration.entity.mob.Vulkan;
@@ -37,6 +36,7 @@ import net.minecraftforge.event.entity.EntityMountEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.event.server.ServerAboutToStartEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.LogicalSide;
 import net.minecraftforge.fml.common.Mod;
@@ -73,6 +73,7 @@ public class CelestialForgeEventBus {
         if (event.world instanceof ServerLevel serverLevel && event.haveTime()) {
             new CelestialCatSpawner().tick(serverLevel, true, true);
             new MechaCrowSpawner().tick(serverLevel, true, true);
+//            new CelestialTraderSpawner().tick(serverLevel, true, true);
 
             if (serverLevel.isThundering()) {
                 Player player = serverLevel.getRandomPlayer();
@@ -192,20 +193,20 @@ public class CelestialForgeEventBus {
         }
     }
 
-    @SubscribeEvent
-    public static void onPlayerClone(PlayerEvent.Clone event) {
-        if (event.isWasDeath()) {
-            if (event.getOriginal() != null && event.getPlayer() != null) {
-                event.getOriginal().reviveCaps();
-
-                TaxiCapability.ITaxi oldTaxiData = event.getOriginal().getCapability(CelestialCapabilities.TAXI_CAPABILITY).orElse(null);
-                TaxiCapability.ITaxi newTaxiData = event.getPlayer().getCapability(CelestialCapabilities.TAXI_CAPABILITY).orElse(null);
-                if (oldTaxiData != null && newTaxiData != null) newTaxiData.setData(oldTaxiData.getData());
-
-                event.getOriginal().invalidateCaps();
-            }
-        }
-    }
+//    @SubscribeEvent
+//    public static void onPlayerClone(PlayerEvent.Clone event) {
+//        if (event.isWasDeath()) {
+//            if (event.getOriginal() != null && event.getPlayer() != null) {
+//                event.getOriginal().reviveCaps();
+//
+//                TaxiCapability.ITaxi oldTaxiData = event.getOriginal().getCapability(CelestialCapabilities.TAXI_CAPABILITY).orElse(null);
+//                TaxiCapability.ITaxi newTaxiData = event.getPlayer().getCapability(CelestialCapabilities.TAXI_CAPABILITY).orElse(null);
+//                if (oldTaxiData != null && newTaxiData != null) newTaxiData.setData(oldTaxiData.getData());
+//
+//                event.getOriginal().invalidateCaps();
+//            }
+//        }
+//    }
 
     @SubscribeEvent
     public static void onToolTipRender(RenderTooltipEvent.GatherComponents event) {
@@ -215,5 +216,80 @@ public class CelestialForgeEventBus {
         if (event.getItemStack().is(CelestialBlocks.HANGAR_DOOR.get().asItem()) || event.getItemStack().is(CelestialBlocks.HANGAR_DOOR_WINDOW.get().asItem())) {
             event.getTooltipElements().add(Either.left(new TranslatableComponent("item.celestialexploration.door.hangar_door")));
         }
+    }
+
+    @SubscribeEvent
+    public static void onServerStart(ServerAboutToStartEvent event) {
+//        CelestialVillagerTrades.CELESTIAL_TRADER_TRADES.put(1, new VillagerTrades.ItemListing[]{
+//                new CelestialVillagerTrades.ItemsForEmeralds(CelestialItems.LUNAR_GOO.get(), 4, 1, 5, 1),
+//                new CelestialVillagerTrades.ItemsForEmeralds(Items.GLOWSTONE, 2, 1, 5, 1),
+//                new CelestialVillagerTrades.ItemsForEmeralds(Items.SUGAR_CANE, 1, 1, 8, 1),
+//                new CelestialVillagerTrades.ItemsForEmeralds(Items.PUMPKIN, 1, 1, 4, 1),
+//                new CelestialVillagerTrades.ItemsForEmeralds(Items.QUARTZ, 3, 1, 12, 1),
+//
+//                //keep these or no?
+//                new CelestialVillagerTrades.ItemsForEmeralds(Items.WHEAT_SEEDS, 1, 1, 12, 1),
+//                new CelestialVillagerTrades.ItemsForEmeralds(Items.BEETROOT_SEEDS, 1, 1, 12, 1),
+//                new CelestialVillagerTrades.ItemsForEmeralds(Items.PUMPKIN_SEEDS, 1, 1, 12, 1),
+//                new CelestialVillagerTrades.ItemsForEmeralds(Items.MELON_SEEDS, 1, 1, 12, 1),
+//                new CelestialVillagerTrades.ItemsForEmeralds(Items.ACACIA_SAPLING, 5, 1, 8, 1),
+//                new CelestialVillagerTrades.ItemsForEmeralds(Items.BIRCH_SAPLING, 5, 1, 8, 1),
+//                new CelestialVillagerTrades.ItemsForEmeralds(Items.DARK_OAK_SAPLING, 5, 1, 8, 1),
+//                new CelestialVillagerTrades.ItemsForEmeralds(Items.JUNGLE_SAPLING, 5, 1, 8, 1),
+//                new CelestialVillagerTrades.ItemsForEmeralds(Items.OAK_SAPLING, 5, 1, 8, 1),
+//                new CelestialVillagerTrades.ItemsForEmeralds(Items.SPRUCE_SAPLING, 5, 1, 8, 1),
+//
+//                new CelestialVillagerTrades.ItemsForEmeralds(CelestialItems.LUNAR_CHEESE.get(), 4, 1, 5, 1),
+//                new CelestialVillagerTrades.ItemsForEmeralds(CelestialItems.MARSHMALLOW_GOO.get(), 4, 1, 5, 1),
+//
+//                new CelestialVillagerTrades.ItemsForEmeralds(CelestialItems.CALLISTO_DUST.get(), 1, 3, 12, 1),
+//                new CelestialVillagerTrades.ItemsForEmeralds(CelestialItems.WHITE_MOON_DUST.get(), 1, 3, 12, 1),
+//                new CelestialVillagerTrades.ItemsForEmeralds(CelestialItems.MOON_DUST.get(), 1, 3, 12, 1),
+////                    new CelestialVillagerTrades.ItemsForEmeralds(CelestialItems.TITANIA_DUST.get(), 1, 3, 12, 1),
+////                    new CelestialVillagerTrades.ItemsForEmeralds(CelestialItems.OBERON_DUST.get(), 1, 3, 12, 1),
+////                    new CelestialVillagerTrades.ItemsForEmeralds(CelestialItems.DIONE_DUST.get(), 1, 3, 12, 1),
+////                    new CelestialVillagerTrades.ItemsForEmeralds(CelestialItems.LIGHT_GREY_MOON_DUST.get(), 1, 3, 12, 1),
+//                new CelestialVillagerTrades.ItemsForEmeralds(CelestialItems.CALLISTO_DUST.get(), 1, 3, 12, 1),
+////                    new CelestialVillagerTrades.ItemsForEmeralds(CelestialItems.TITAN_DUST.get(), 1, 3, 12, 1),
+////                    new CelestialVillagerTrades.ItemsForEmeralds(CelestialItems.GREY_MOON_DUST.get(), 1, 3, 12, 1),
+////                    new CelestialVillagerTrades.ItemsForEmeralds(CelestialItems.TRITON_DUST.get(), 1, 3, 12, 1),
+////                    new CelestialVillagerTrades.ItemsForEmeralds(CelestialItems.ENCELADUS_DUST.get(), 1, 3, 12, 1),
+//                new CelestialVillagerTrades.ItemsForEmeralds(CelestialItems.IO_DUST.get(), 1, 3, 12, 1),
+////                    new CelestialVillagerTrades.ItemsForEmeralds(CelestialItems.RHEA_DUST.get(), 1, 3, 12, 1),
+////                    new CelestialVillagerTrades.ItemsForEmeralds(CelestialItems.IAPETUS_DUST.get(), 1, 3, 12, 1),
+//                new CelestialVillagerTrades.ItemsForEmeralds(CelestialItems.EUROPA_DUST.get(), 1, 3, 12, 1),
+//
+//                new CelestialVillagerTrades.ItemsForEmeralds(Items.RED_DYE, 1, 3, 12, 1),
+//                new CelestialVillagerTrades.ItemsForEmeralds(Items.WHITE_DYE, 1, 3, 12, 1),
+//                new CelestialVillagerTrades.ItemsForEmeralds(Items.BLUE_DYE, 1, 3, 12, 1),
+//                new CelestialVillagerTrades.ItemsForEmeralds(Items.PINK_DYE, 1, 3, 12, 1),
+//                new CelestialVillagerTrades.ItemsForEmeralds(Items.BLACK_DYE, 1, 3, 12, 1),
+//                new CelestialVillagerTrades.ItemsForEmeralds(Items.GREEN_DYE, 1, 3, 12, 1),
+//                new CelestialVillagerTrades.ItemsForEmeralds(Items.LIGHT_GRAY_DYE, 1, 3, 12, 1),
+//                new CelestialVillagerTrades.ItemsForEmeralds(Items.MAGENTA_DYE, 1, 3, 12, 1),
+//                new CelestialVillagerTrades.ItemsForEmeralds(Items.YELLOW_DYE, 1, 3, 12, 1),
+//                new CelestialVillagerTrades.ItemsForEmeralds(Items.GRAY_DYE, 1, 3, 12, 1),
+//                new CelestialVillagerTrades.ItemsForEmeralds(Items.PURPLE_DYE, 1, 3, 12, 1),
+//                new CelestialVillagerTrades.ItemsForEmeralds(Items.LIGHT_BLUE_DYE, 1, 3, 12, 1),
+//                new CelestialVillagerTrades.ItemsForEmeralds(Items.LIME_DYE, 1, 3, 12, 1),
+//                new CelestialVillagerTrades.ItemsForEmeralds(Items.ORANGE_DYE, 1, 3, 12, 1),
+//                new CelestialVillagerTrades.ItemsForEmeralds(Items.BROWN_DYE, 1, 3, 12, 1),
+//                new CelestialVillagerTrades.ItemsForEmeralds(Items.CYAN_DYE, 1, 3, 12, 1),
+//
+//                new CelestialVillagerTrades.ItemsForEmeralds(CelestialBlocks.MOON_SAND.get().asItem(), 1, 8, 8, 1),
+//                new CelestialVillagerTrades.ItemsForEmeralds(CelestialBlocks.MARS_SAND.get().asItem(), 1, 8, 8, 1),
+//                new CelestialVillagerTrades.ItemsForEmeralds(CelestialBlocks.MERCURY_SAND.get().asItem(), 1, 8, 8, 1),
+//                new CelestialVillagerTrades.ItemsForEmeralds(CelestialBlocks.VENUS_SAND.get().asItem(), 1, 8, 8, 1),
+//                new CelestialVillagerTrades.ItemsForEmeralds(CelestialBlocks.IO_SAND.get().asItem(), 1, 8, 8, 1)
+//        });
+//
+//        CelestialVillagerTrades.CELESTIAL_TRADER_TRADES.put(2, new VillagerTrades.ItemListing[]{
+//                new CelestialVillagerTrades.ItemsForEmeralds(Items.PACKED_ICE, 3, 1, 6, 1),
+//                new CelestialVillagerTrades.ItemsForEmeralds(Items.BLUE_ICE, 6, 1, 6, 1),
+//                new CelestialVillagerTrades.ItemsForEmeralds(CelestialBlocks.DRY_ICE.get().asItem(), 3, 1, 6, 1),
+//                new CelestialVillagerTrades.ItemsForEmeralds(Items.GUNPOWDER, 1, 1, 8, 1),
+//        });
+
+
     }
 }

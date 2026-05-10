@@ -1,5 +1,7 @@
-- `[FIX]` Reduced the super-flat-levels of slime spawning insanity
+- `[FIX]` Reduced the super-flat-quantities of slime spawning insanity
 - `[NEW]` New venus volcanoes!
   - `[NEW]` New Vulkan mini boss on said volcanoes!
   - `[NEW]` New brimstone (regular, polished, smooth) blocks
   - `[NEW]` New smoking magma block
+- `[NEW]` New solar field structures on various planets
+- `[FIX]` Fixed bug that stopped clients from joining a server

@@ -1,6 +1,7 @@
 package com.shim.celestialexploration.datagen;
 
 import com.shim.celestialexploration.CelestialExploration;
+import com.shim.celestialexploration.blocks.SolarPanelBlock;
 import com.shim.celestialexploration.registry.CelestialBlocks;
 import com.shim.celestialexploration.registry.CelestialFluids;
 import com.shim.celestiallib.api.blocks.AbstractPortalBlock;
@@ -582,6 +583,9 @@ public class CelestialBlockStates extends BaseBlockStates {
 		buttonBlock(CelestialBlocks.WHITE_BUTTON.get(), mcLoc("block/white_stained_glass"), modLoc("block/white_button_pressed"));
 		buttonBlock(CelestialBlocks.BLACK_BUTTON.get(), mcLoc("block/black_stained_glass"), modLoc("block/black_button_pressed"));
 
+		solarPanelBlock(CelestialBlocks.SOLAR_PANEL.get(), modLoc("block/solar_panel_bottom"), modLoc("block/solar_panel_side"), modLoc("block/solar_panel_bottom"), modLoc("block/solar_panel_top"));
+
+
 		//---- GLASS/CERAMICS -------------------------------------------------------------------------------
 		//GLASS
 		simpleBlock(CelestialBlocks.LUMINOUS_BLUE_GLASS.get());
@@ -696,10 +700,18 @@ public class CelestialBlockStates extends BaseBlockStates {
 
 		simpleBlock(CelestialBlocks.BAUXITE_ORE.get());
 
-		simpleBlock(CelestialBlocks.TAXI_STATION.get());
+//		simpleBlock(CelestialBlocks.TAXI_STATION.get());
 
 		simpleBlock(CelestialBlocks.SMOKING_MAGMA.get());
 
+
+	}
+
+	public void solarPanelBlock(SolarPanelBlock block, ResourceLocation doubleslab, ResourceLocation side, ResourceLocation bottom, ResourceLocation top) {
+		getVariantBuilder(block)
+				.partialState().with(SolarPanelBlock.TYPE, SlabType.BOTTOM).addModels(new ConfiguredModel(models().slab(block.getRegistryName().getPath() + "_bottom", side, bottom, top)))
+				.partialState().with(SolarPanelBlock.TYPE, SlabType.TOP).addModels(new ConfiguredModel(models().slabTop(block.getRegistryName().getPath() + "_top", side, bottom, top)))
+				.partialState().with(SolarPanelBlock.TYPE, SlabType.DOUBLE).addModels(new ConfiguredModel(models().cubeBottomTop(block.getRegistryName().getPath() + "_double", side, bottom, top)));
 
 	}
 

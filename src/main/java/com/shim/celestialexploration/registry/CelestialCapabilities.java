@@ -1,7 +1,7 @@
 package com.shim.celestialexploration.registry;
 
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.capabilities.*;
+import com.shim.celestialexploration.capabilities.LoxTankCapability;
 import com.shim.celestialexploration.entity.vehicle.Spaceship;
 import com.shim.celestiallib.api.capabilities.SpaceVehicleCapabilityProvider;
 import com.shim.celestiallib.capabilities.CLibCapabilities;
@@ -22,14 +22,14 @@ public class CelestialCapabilities {
 
     public static final Capability<LoxTankCapability.ILoxTank> LOX_TANK_CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {});
 //    public static final Capability<ISpaceFlight> SPACE_FLIGHT_CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {});
-    public static final Capability<TaxiCapability.ITaxi> TAXI_CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {});
-    public static final Capability<TaxiCapability.ITaxi> VILLAGER_TRAVEL_CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {});
+//    public static final Capability<TaxiCapability.ITaxi> TAXI_CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {});
+//    public static final Capability<TaxiCapability.ITaxi> VILLAGER_TRAVEL_CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {});
 
     public static void registerCapabilities(RegisterCapabilitiesEvent eventIn) {
         eventIn.register(LoxTankCapability.ILoxTank.class);
 //        eventIn.register(ISpaceFlight.class);
-        eventIn.register(TaxiCapability.ITaxi.class);
-        eventIn.register(VillagerTravelCapability.ITravel.class);
+//        eventIn.register(TaxiCapability.ITaxi.class);
+//        eventIn.register(VillagerTravelCapability.ITravel.class);
     }
 
     public static void attachItemCapabilities(AttachCapabilitiesEvent<ItemStack> eventIn) {
@@ -55,16 +55,16 @@ public class CelestialCapabilities {
                 eventIn.addCapability(new ResourceLocation(CelestialExploration.MODID, "spaceship_flight"), new SpaceVehicleCapabilityProvider());
             }
         }
-        if (eventIn.getObject() instanceof Player) {
-            if (!eventIn.getObject().getCapability(TaxiCapability.TaxiProvider.TAXI).isPresent()) {
-                eventIn.addCapability(new ResourceLocation(CelestialExploration.MODID, "taxi"), new TaxiCapability.TaxiProvider());
-            }
-        }
-
-        if (eventIn.getObject() instanceof Villager) {
-            if (!eventIn.getObject().getCapability(VILLAGER_TRAVEL_CAPABILITY).isPresent()) {
-                eventIn.addCapability(new ResourceLocation(CelestialExploration.MODID, "villager_travel"), new VillagerTravelCapability.VillagerTravelCapabilityProvider());
-            }
-        }
+//        if (eventIn.getObject() instanceof Player) {
+//            if (!eventIn.getObject().getCapability(TaxiCapability.TaxiProvider.TAXI).isPresent()) {
+//                eventIn.addCapability(new ResourceLocation(CelestialExploration.MODID, "taxi"), new TaxiCapability.TaxiProvider());
+//            }
+//        }
+//
+//        if (eventIn.getObject() instanceof Villager) {
+//            if (!eventIn.getObject().getCapability(VILLAGER_TRAVEL_CAPABILITY).isPresent()) {
+//                eventIn.addCapability(new ResourceLocation(CelestialExploration.MODID, "villager_travel"), new VillagerTravelCapability.VillagerTravelCapabilityProvider());
+//            }
+//        }
     }
 }

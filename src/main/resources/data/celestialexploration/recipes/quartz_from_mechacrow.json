@@ -1,0 +1,8 @@
+{
+  "type": "celestialexploration:mechacrow_crafting",
+  "ingredient": {
+    "item": "celestialexploration:solar_panel"
+  },
+  "result": "minecraft:quartz",
+  "count": 3
+}

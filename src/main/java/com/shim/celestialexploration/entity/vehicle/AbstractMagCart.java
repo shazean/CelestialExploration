@@ -29,6 +29,7 @@ import net.minecraft.world.entity.vehicle.Boat;
 import net.minecraft.world.entity.vehicle.DismountHelper;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -238,12 +239,13 @@ public abstract class  AbstractMagCart extends Entity implements IAbstractMagCar
     public void destroy(DamageSource source) {
         this.remove(Entity.RemovalReason.KILLED);
         if (this.level.getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
-            ItemStack itemstack = new ItemStack(CelestialItems.MAGCART.get());
-            if (this.hasCustomName()) {
-                itemstack.setHoverName(this.getCustomName());
-            }
-
-            this.spawnAtLocation(itemstack);
+            //FIXME
+//            ItemStack itemstack = new ItemStack(CelestialItems.MAGCART.get());
+//            if (this.hasCustomName()) {
+//                itemstack.setHoverName(this.getCustomName());
+//            }
+//
+//            this.spawnAtLocation(itemstack);
         }
 
     }
@@ -867,15 +869,17 @@ public abstract class  AbstractMagCart extends Entity implements IAbstractMagCar
     // Forge end
 
     public ItemStack getPickResult() {
-        Item item = switch (this.getMagCartType()) {
-            case FURNACE -> CelestialItems.FURNACE_MAGCART.get();
-            case CHEST -> CelestialItems.CHEST_MAGCART.get();
-            case TNT -> CelestialItems.TNT_MAGCART.get();
-            case HOPPER -> CelestialItems.HOPPER_MAGCART.get();
-            case COMMAND_BLOCK -> CelestialItems.COMMAND_BLOCK_MAGCART.get();
-            default -> CelestialItems.MAGCART.get();
-        };
-        return new ItemStack(item);
+        return new ItemStack(Items.COBBLESTONE);
+        //FIXME
+//        Item item = switch (this.getMagCartType()) {
+//            case FURNACE -> CelestialItems.FURNACE_MAGCART.get();
+//            case CHEST -> CelestialItems.CHEST_MAGCART.get();
+//            case TNT -> CelestialItems.TNT_MAGCART.get();
+//            case HOPPER -> CelestialItems.HOPPER_MAGCART.get();
+//            case COMMAND_BLOCK -> CelestialItems.COMMAND_BLOCK_MAGCART.get();
+//            default -> CelestialItems.MAGCART.get();
+//        };
+//        return new ItemStack(item);
     }
 
     public enum Type {

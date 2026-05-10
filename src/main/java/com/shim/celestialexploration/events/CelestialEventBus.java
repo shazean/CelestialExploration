@@ -71,10 +71,14 @@ public class CelestialEventBus {
         event.put(CelestialEntities.MECHACERBERUS_BOSS.get(), MechaCerberusBoss.createAttributes().build());
         event.put(CelestialEntities.MOON_COW.get(), MoonCow.createAttributes().build());
         event.put(CelestialEntities.MECHACROW.get(), MechaCrow.createAttributes().build());
-        event.put(CelestialEntities.ASTEROID_SQUID.get(), CelestialSquid.createAttributes().build());
-        event.put(CelestialEntities.STARDUST_SQUID.get(), StardustSquid.createAttributes().build());
-        event.put(CelestialEntities.CELESTIAL_AXOLOTL.get(), CelestialAxolotl.createAttributes().build());
+//        event.put(CelestialEntities.ASTEROID_SQUID.get(), CelestialSquid.createAttributes().build());
+//        event.put(CelestialEntities.STARDUST_SQUID.get(), StardustSquid.createAttributes().build());
+//        event.put(CelestialEntities.CELESTIAL_AXOLOTL.get(), CelestialAxolotl.createAttributes().build());
         event.put(CelestialEntities.VULKAN.get(), Vulkan.createAttributes().build());
+//
+////        event.put(CelestialEntities.CELESTIAL_TRADER.get(), CelestialTrader.createMobAttributes().build());
+////        event.put(CelestialEntities.SPACE_LLAMA.get(), Llama.createAttributes().build());
+////        event.put(CelestialEntities.ALIEN_LLAMA.get(), Llama.createAttributes().build());
 
 
     }

@@ -22,6 +22,10 @@ public class CelestialStructureGen extends StructureProvider {
     protected void registerStructureSets(Consumer<StructureSetGen> consumer, ExistingFileHelper fileHelper) {
 
         this.registerStructureSet(CelestialStructures.VOLCANO.get(), 439292, 30, 12, new Pair<>(modLoc("venus_volcano"), 1)).save(consumer);
+
+        this.registerStructureSet(CelestialStructures.SOLAR_FIELD.get(), 213972, 30, 12, new Pair<>(modLoc("solar_field"), 1)).save(consumer);
+
+
     }
 
     ResourceLocation EMPTY = new ResourceLocation("empty");
@@ -88,7 +92,12 @@ public class CelestialStructureGen extends StructureProvider {
         new Pair<>(new TemplatePoolGen.Element(EMPTY, EMPTY, StructureTemplatePool.Projection.RIGID), 8)
         ).save(consumer);
 
-
+        this.registerTemplatePool(modLoc("solar_field"),
+                new Pair<>(new TemplatePoolGen.Element(modLoc("solar_field_of_4"), EMPTY, StructureTemplatePool.Projection.TERRAIN_MATCHING), 8),
+                new Pair<>(new TemplatePoolGen.Element(modLoc("solar_field_of_4_broken"), EMPTY, StructureTemplatePool.Projection.TERRAIN_MATCHING), 8),
+                new Pair<>(new TemplatePoolGen.Element(modLoc("solar_field_of_9"), EMPTY, StructureTemplatePool.Projection.TERRAIN_MATCHING), 10),
+                new Pair<>(new TemplatePoolGen.Element(modLoc("solar_field_of_16"), EMPTY, StructureTemplatePool.Projection.TERRAIN_MATCHING), 5)
+        ).save(consumer);
 
 
     }
@@ -131,6 +140,10 @@ public class CelestialStructureGen extends StructureProvider {
 
         this.registerStructureFeature().type(CelestialStructures.VOLCANO.get()).jigsawConfig(modLoc("volcano/start_pool"), 5).doAdaptNoise()
                 .biomes(CelestialTags.Biomes.VENUS_VOLCANO_BIOMES).save(consumer, "venus_volcano");
+
+        this.registerStructureFeature().type(CelestialStructures.LUNAR_COLONY.get()).jigsawConfig(modLoc("solar_field"), 2)
+                .biomes(CelestialTags.Biomes.SOLAR_FIELDS_BIOMES).emptyMonsterSpawns().save(consumer, "solar_field");
+
 
     }
 

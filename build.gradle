@@ -156,7 +156,8 @@ dependencies {
     implementation fg.deobf("curse.maven:lazy-dfu-forge-460819:3544496")
 
 //    implementation fg.deobf("celestiallib:celestiallib-${minecraft_version}:v${celestiallib_version}")
-    implementation fg.deobf("curse.maven:celestiallib-1297767:7074744")
+    implementation fg.deobf("curse.maven:celestiallib-1297767:7075056")
+
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.
@@ -225,7 +226,7 @@ tasks.withType(JavaCompile).configureEach {
 publishMods {
     changelog = rootProject.file("CHANGELOG/${project.base_mc_version}/current.md").text
     file = jar.archiveFile
-    type = BETA
+    type = STABLE
     // TODO: REMOVE THE ABOVE IN FAVOR OF THIS, VALUES ARE ALPHA, BETA, STABLE
     //type = findProperty("curseforge_release_type") ?: BETA
     modLoaders.add("forge")

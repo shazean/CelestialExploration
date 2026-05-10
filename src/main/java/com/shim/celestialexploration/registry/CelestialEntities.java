@@ -1,8 +1,8 @@
 package com.shim.celestialexploration.registry;
 
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.entity.creatures.*;
 import com.shim.celestialexploration.entity.ambient.Eureka;
+import com.shim.celestialexploration.entity.creatures.*;
 import com.shim.celestialexploration.entity.mob.*;
 import com.shim.celestialexploration.entity.mob.piglins.AstralPiglin;
 import com.shim.celestialexploration.entity.mob.piglins.CyborgPiglin;
@@ -16,7 +16,10 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.animal.axolotl.Axolotl;
+import net.minecraft.world.entity.animal.horse.Llama;
+import net.minecraft.world.entity.animal.horse.TraderLlama;
 import net.minecraft.world.entity.monster.Blaze;
+import net.minecraft.world.entity.npc.WanderingTrader;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -74,7 +77,7 @@ public class CelestialEntities {
 
     //---- VEHICLES -------------------------------------------------------------------------------
     public static final RegistryObject<EntityType<Spaceship>> SPACESHIP = registerEntityType("spaceship", "Spaceship", () -> EntityType.Builder.<Spaceship>of(Spaceship::new, MobCategory.MISC).sized(2.45f, 2.65f).build(modLocString("spaceship")));
-    public static final RegistryObject<EntityType<SpaceTaxi>> SPACE_TAXI = registerEntityType("space_taxi", "Space Taxi", () -> EntityType.Builder.<SpaceTaxi>of(SpaceTaxi::new, MobCategory.MISC).sized(2.45f, 2.65f).build(modLocString("space_taxi")));
+//    public static final RegistryObject<EntityType<SpaceTaxi>> SPACE_TAXI = registerEntityType("space_taxi", "Space Taxi", () -> EntityType.Builder.<SpaceTaxi>of(SpaceTaxi::new, MobCategory.MISC).sized(2.45f, 2.65f).build(modLocString("space_taxi")));
 
     //---- MAGCARTS -------------------------------------------------------------------------------
     public static final RegistryObject<EntityType<MagCart>> MAGCART = registerEntityType("magcart", "Magcart", () -> EntityType.Builder.<MagCart>of(MagCart::new, MobCategory.MISC).sized(0.98f, 1.5f).clientTrackingRange(8).build(modLocString("magcart")));
@@ -97,15 +100,23 @@ public class CelestialEntities {
     public static final RegistryObject<EntityType<Rover>> ROVER = registerEntityType("rover", "Rover", () -> EntityType.Builder.of(Rover::new, MobCategory.CREATURE).sized(2.0F, 1.8F).clientTrackingRange(8).build(modLocString("rover")));
     public static final RegistryObject<EntityType<Cobblesaurus>> COBBLESAURUS = registerEntityType("cobblesaurus", "Cobblesaurus", () -> EntityType.Builder.of(Cobblesaurus::new, MobCategory.CREATURE).sized(2.0F, 1.8F).clientTrackingRange(8).build(modLocString("cobblesaurus")));
     public static final RegistryObject<EntityType<MoonCow>> MOON_COW = registerEntityType("moon_ow", "Moon Cow", () -> EntityType.Builder.of(MoonCow::new, MobCategory.CREATURE).sized(0.8F, 1.4F).clientTrackingRange(10).build(modLocString("moon_cow")));
-    public static final RegistryObject<EntityType<CelestialSquid>> ASTEROID_SQUID = registerEntityType("asteroid_squid", "Asteroid Squid", () -> EntityType.Builder.of(CelestialSquid::new, MobCategory.CREATURE).sized(1.0F, 1.0F).clientTrackingRange(10).build(modLocString("asteroid_squid")));
-    public static final RegistryObject<EntityType<StardustSquid>> STARDUST_SQUID = registerEntityType("stardust_squid", "Stardust Squid", () -> EntityType.Builder.of(StardustSquid::new, MobCategory.CREATURE).sized(1.0F, 1.0F).clientTrackingRange(10).build(modLocString("stardust_squid")));
+//    public static final RegistryObject<EntityType<CelestialSquid>> ASTEROID_SQUID = registerEntityType("asteroid_squid", "Asteroid Squid", () -> EntityType.Builder.of(CelestialSquid::new, MobCategory.CREATURE).sized(1.0F, 1.0F).clientTrackingRange(10).build(modLocString("asteroid_squid")));
+//    public static final RegistryObject<EntityType<StardustSquid>> STARDUST_SQUID = registerEntityType("stardust_squid", "Stardust Squid", () -> EntityType.Builder.of(StardustSquid::new, MobCategory.CREATURE).sized(1.0F, 1.0F).clientTrackingRange(10).build(modLocString("stardust_squid")));
 
-    public static final RegistryObject<EntityType<CelestialAxolotl>> CELESTIAL_AXOLOTL = registerEntityType("celestial_axolotl", "Celestial Axolotl", () -> EntityType.Builder.of(CelestialAxolotl::new, MobCategory.AXOLOTLS).sized(0.8F, 0.42F).clientTrackingRange(10).build(modLocString("celestial_axolotl")));
+//    public static final RegistryObject<EntityType<CelestialAxolotl>> CELESTIAL_AXOLOTL = registerEntityType("celestial_axolotl", "Celestial Axolotl", () -> EntityType.Builder.of(CelestialAxolotl::new, MobCategory.AXOLOTLS).sized(0.8F, 0.42F).clientTrackingRange(10).build(modLocString("celestial_axolotl")));
+
+//    public static final RegistryObject<EntityType<SpaceTraderLlama>> SPACE_LLAMA = registerEntityType("space_llama", "Space Llama", () -> EntityType.Builder.of(SpaceTraderLlama::new, MobCategory.CREATURE).sized(0.9F, 1.87F).clientTrackingRange(10).build(modLocString("space_llama")));
+//    public static final RegistryObject<EntityType<AlienTraderLlama>> ALIEN_LLAMA = registerEntityType("alien_llama", "Alien Llama", () -> EntityType.Builder.of(AlienTraderLlama::new, MobCategory.CREATURE).sized(0.9F, 1.87F).clientTrackingRange(10).build(modLocString("alien_llama")));
+
 
     //---- AMBIENT -------------------------------------------------------------------------------
     public static final RegistryObject<EntityType<Eureka>> EUREKA = registerEntityType("eureka", "Eureka!", () -> EntityType.Builder.of(Eureka::new, MobCategory.WATER_AMBIENT).sized(0.5F, 0.4F).clientTrackingRange(4).build(modLocString("eureka")));
 
     //---- PROJECTILES -------------------------------------------------------------------------------
     public static final RegistryObject<EntityType<MeteorProjectile>> METEOR = registerEntityType("meteor", "Shooting Star", () -> EntityType.Builder.of(MeteorProjectile::new, MobCategory.MISC).sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(20).build(modLocString("meteor")));
+
+//    ---- OTHER -------------------------------------------------------------------------------
+
+//    public static final RegistryObject<EntityType<CelestialTrader>> CELESTIAL_TRADER = registerEntityType("celestial_trader", "Celestial Trader", () -> EntityType.Builder.<CelestialTrader>of(CelestialTrader::new, MobCategory.CREATURE).sized(0.6F, 1.95F).clientTrackingRange(10).build(modLocString("celestial_trader")));
 
 }

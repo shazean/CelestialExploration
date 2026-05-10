@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "celestialexploration:solar_field",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 213972,
+    "spacing": 30,
+    "separation": 12,
+    "type": "minecraft:random_spread"
+  }
+}

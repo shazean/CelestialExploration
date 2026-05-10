@@ -31,18 +31,18 @@ public class CelestialPacketHandler {
 
         INSTANCE.registerMessage(i++, SpaceshipInventoryPacket.class, SpaceshipInventoryPacket::encoder,
                 SpaceshipInventoryPacket::decoder, SpaceshipInventoryPacket::handle, Optional.of(NetworkDirection.PLAY_TO_SERVER));
-
-        INSTANCE.registerMessage(i++, TaxiPassengersPacket.class, TaxiPassengersPacket::encoder,
-                TaxiPassengersPacket::decoder, TaxiPassengersPacket::handle, Optional.of(NetworkDirection.PLAY_TO_SERVER));
-
-        INSTANCE.registerMessage(i++, TaxiDestinationPacket.class, TaxiDestinationPacket::encoder,
-                TaxiDestinationPacket::decoder, TaxiDestinationPacket::handle, Optional.of(NetworkDirection.PLAY_TO_SERVER));
-
-        INSTANCE.registerMessage(i++, TaxiReadyForTakeoffPacket.class, TaxiReadyForTakeoffPacket::encoder,
-                TaxiReadyForTakeoffPacket::decoder, TaxiReadyForTakeoffPacket::handle, Optional.of(NetworkDirection.PLAY_TO_SERVER));
-
-        INSTANCE.registerMessage(i++, TaxiAscensionTicksPacket.class, TaxiAscensionTicksPacket::encoder,
-                TaxiAscensionTicksPacket::decoder, TaxiAscensionTicksPacket::handle, Optional.of(NetworkDirection.PLAY_TO_SERVER));
+//
+//        INSTANCE.registerMessage(i++, TaxiPassengersPacket.class, TaxiPassengersPacket::encoder,
+//                TaxiPassengersPacket::decoder, TaxiPassengersPacket::handle, Optional.of(NetworkDirection.PLAY_TO_SERVER));
+//
+//        INSTANCE.registerMessage(i++, TaxiDestinationPacket.class, TaxiDestinationPacket::encoder,
+//                TaxiDestinationPacket::decoder, TaxiDestinationPacket::handle, Optional.of(NetworkDirection.PLAY_TO_SERVER));
+//
+//        INSTANCE.registerMessage(i++, TaxiReadyForTakeoffPacket.class, TaxiReadyForTakeoffPacket::encoder,
+//                TaxiReadyForTakeoffPacket::decoder, TaxiReadyForTakeoffPacket::handle, Optional.of(NetworkDirection.PLAY_TO_SERVER));
+//
+//        INSTANCE.registerMessage(i++, TaxiAscensionTicksPacket.class, TaxiAscensionTicksPacket::encoder,
+//                TaxiAscensionTicksPacket::decoder, TaxiAscensionTicksPacket::handle, Optional.of(NetworkDirection.PLAY_TO_SERVER));
 
 //        INSTANCE.registerMessage(i++, ControlPanelPacket.class, ControlPanelPacket::write,
 //                ControlPanelPacket::decoder, ControlPanelPacket::handle, Optional.of(NetworkDirection.PLAY_TO_SERVER));

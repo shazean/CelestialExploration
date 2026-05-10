@@ -79,7 +79,7 @@ public class Gust extends Monster implements PowerableMob {
     }
 
     public static boolean checkGustSpawnRules(EntityType<Gust> entity, LevelAccessor levelAccessor, MobSpawnType spawnType, BlockPos pos, Random random) {
-        if (((ServerLevel) levelAccessor).getLevel().isRaining()) {
+        if (levelAccessor.getLevelData().isRaining()) {
             return checkMobSpawnRules(entity, levelAccessor, spawnType, pos, random);
         } else {
             return random.nextInt(20) == 0 && isDarkEnoughToSpawn((ServerLevelAccessor) levelAccessor, pos, random) && checkMobSpawnRules(entity, levelAccessor, spawnType, pos, random);

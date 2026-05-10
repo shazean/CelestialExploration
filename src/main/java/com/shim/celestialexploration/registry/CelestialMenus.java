@@ -1,7 +1,10 @@
 package com.shim.celestialexploration.registry;
 
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.inventory.menus.*;
+import com.shim.celestialexploration.inventory.menus.OxygenCompressorMenu;
+import com.shim.celestialexploration.inventory.menus.PlanetChartMenu;
+import com.shim.celestialexploration.inventory.menus.SpaceshipMenu;
+import com.shim.celestialexploration.inventory.menus.WorkbenchMenu;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraftforge.common.extensions.IForgeMenuType;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -17,7 +20,7 @@ public class CelestialMenus {
     public static final RegistryObject<MenuType<SpaceshipMenu>> SPACESHIP_MENU = MENUS.register("spaceship", () -> IForgeMenuType.create(SpaceshipMenu::new));
     public static final RegistryObject<MenuType<WorkbenchMenu>> WORKBENCH_MENU = MENUS.register("workbench", () -> IForgeMenuType.create(WorkbenchMenu::new));
     public static final RegistryObject<MenuType<PlanetChartMenu>> PLANET_CHART_MENU = MENUS.register("planet_chart_menu", () -> IForgeMenuType.create(PlanetChartMenu::new));
-    public static final RegistryObject<MenuType<SpaceTaxiMenu>> SPACE_TAXI_MENU = MENUS.register("space_taxi_menu", () -> IForgeMenuType.create(SpaceTaxiMenu::new));
-    public static final RegistryObject<MenuType<TaxiStationMenu>> TAXI_STATION_MENU = MENUS.register("taxi_station_menu", () -> IForgeMenuType.create(TaxiStationMenu::new));
+//    public static final RegistryObject<MenuType<SpaceTaxiMenu>> SPACE_TAXI_MENU = MENUS.register("space_taxi_menu", () -> IForgeMenuType.create(SpaceTaxiMenu::new));
+//    public static final RegistryObject<MenuType<TaxiStationMenu>> TAXI_STATION_MENU = MENUS.register("taxi_station_menu", () -> IForgeMenuType.create(TaxiStationMenu::new));
 
 }

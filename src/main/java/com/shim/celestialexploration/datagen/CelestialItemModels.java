@@ -600,7 +600,7 @@ public class CelestialItemModels extends BaseItemModels {
 		buttonInventory(name(CelestialBlocks.BLACK_BUTTON.get()), modLoc("block/black_ceramic"));
 
 		self(CelestialBlocks.PATHWAY_LIGHT.get());
-		self(CelestialBlocks.SOLAR_PANEL.get());
+		withExistingParent(name(CelestialBlocks.SOLAR_PANEL.get()), modLoc("block/solar_panel_bottom"));
 		self(CelestialBlocks.GLOW_STRIP.get());
 		self(CelestialBlocks.HORIZONTAL_GLOW_STRIP.get());
 
@@ -765,7 +765,7 @@ public class CelestialItemModels extends BaseItemModels {
 		self(CelestialBlocks.SUPER_COMPRESSED_NETHERRACK.get());
 
 		self(CelestialBlocks.PLANET_CHART.get());
-		self(CelestialBlocks.TAXI_STATION.get());
+//		self(CelestialBlocks.TAXI_STATION.get());
 
 		self(CelestialBlocks.SMOKING_MAGMA.get());
 
@@ -818,8 +818,8 @@ public class CelestialItemModels extends BaseItemModels {
 		spawnEgg(CelestialItems.COBBLESAURUS_SPAWN_EGG.get());
 		spawnEgg(CelestialItems.ORBITER_SPAWN_EGG.get());
 		spawnEgg(CelestialItems.MOON_COW_SPAWN_EGG.get());
-		spawnEgg(CelestialItems.ASTEROID_SQUID_SPAWN_EGG.get());
-		spawnEgg(CelestialItems.STARDUST_SQUID_SPAWN_EGG.get());
+//		spawnEgg(CelestialItems.ASTEROID_SQUID_SPAWN_EGG.get());
+//		spawnEgg(CelestialItems.STARDUST_SQUID_SPAWN_EGG.get());
 		spawnEgg(CelestialItems.VULKAN_SPAWN_EGG.get());
 
 		generatedItem(CelestialItems.BLACK_MECHADOG.get());
@@ -856,10 +856,10 @@ public class CelestialItemModels extends BaseItemModels {
 		generatedItem(CelestialItems.BLUE_MECHACERBERUS.get());
 		generatedItem(CelestialItems.PURPLE_MECHACERBERUS.get());
 
-		generatedItem(CelestialItems.RED_DISPLAY_BOARD.get());
-		generatedItem(CelestialItems.BLACK_DISPLAY_BOARD.get());
-		generatedItem(CelestialItems.BLUE_DISPLAY_BOARD.get());
-		generatedItem(CelestialItems.WHITE_DISPLAY_BOARD.get());
+//		generatedItem(CelestialItems.RED_DISPLAY_BOARD.get());
+//		generatedItem(CelestialItems.BLACK_DISPLAY_BOARD.get());
+//		generatedItem(CelestialItems.BLUE_DISPLAY_BOARD.get());
+//		generatedItem(CelestialItems.WHITE_DISPLAY_BOARD.get());
 
 		generatedItem(CelestialItems.BLACK_MECHACROW.get());
 		generatedItem(CelestialItems.GREY_MECHACROW.get());

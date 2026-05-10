@@ -432,10 +432,10 @@ public class CelestialRecipeGen extends RecipeProvider {
 		singleItem(Blocks.WHITE_STAINED_GLASS, CelestialBlocks.WHITE_BUTTON.get(), 1, Blocks.WHITE_STAINED_GLASS, consumer);
 		singleItem(Blocks.BLACK_STAINED_GLASS, CelestialBlocks.BLACK_BUTTON.get(), 1, Blocks.BLACK_STAINED_GLASS, consumer);
 
-		ShapedRecipeBuilder.shaped(CelestialBlocks.BLACK_DISPLAY_BOARD.get(), 2).pattern("XXR").pattern("XXD").define('X', CelestialItems.STEEL_NUGGET.get()).define('R', Items.REDSTONE).define('D', Items.BLACK_DYE).unlockedBy("steel", has(CelestialItems.STEEL_INGOT.get())).save(consumer);
-		ShapedRecipeBuilder.shaped(CelestialBlocks.RED_DISPLAY_BOARD.get(), 2).pattern("XXR").pattern("XXD").define('X', CelestialItems.STEEL_NUGGET.get()).define('R', Items.REDSTONE).define('D', Items.RED_DYE).unlockedBy("steel", has(CelestialItems.STEEL_INGOT.get())).save(consumer);
-		ShapedRecipeBuilder.shaped(CelestialBlocks.BLUE_DISPLAY_BOARD.get(), 2).pattern("XXR").pattern("XXD").define('X', CelestialItems.STEEL_NUGGET.get()).define('R', Items.REDSTONE).define('D', Items.BLUE_DYE).unlockedBy("steel", has(CelestialItems.STEEL_INGOT.get())).save(consumer);
-		ShapedRecipeBuilder.shaped(CelestialBlocks.WHITE_DISPLAY_BOARD.get(), 2).pattern("XXR").pattern("XXD").define('X', CelestialItems.STEEL_NUGGET.get()).define('R', Items.REDSTONE).define('D', Items.WHITE_DYE).unlockedBy("steel", has(CelestialItems.STEEL_INGOT.get())).save(consumer);
+//		ShapedRecipeBuilder.shaped(CelestialBlocks.BLACK_DISPLAY_BOARD.get(), 2).pattern("XXR").pattern("XXD").define('X', CelestialItems.STEEL_NUGGET.get()).define('R', Items.REDSTONE).define('D', Items.BLACK_DYE).unlockedBy("steel", has(CelestialItems.STEEL_INGOT.get())).save(consumer);
+//		ShapedRecipeBuilder.shaped(CelestialBlocks.RED_DISPLAY_BOARD.get(), 2).pattern("XXR").pattern("XXD").define('X', CelestialItems.STEEL_NUGGET.get()).define('R', Items.REDSTONE).define('D', Items.RED_DYE).unlockedBy("steel", has(CelestialItems.STEEL_INGOT.get())).save(consumer);
+//		ShapedRecipeBuilder.shaped(CelestialBlocks.BLUE_DISPLAY_BOARD.get(), 2).pattern("XXR").pattern("XXD").define('X', CelestialItems.STEEL_NUGGET.get()).define('R', Items.REDSTONE).define('D', Items.BLUE_DYE).unlockedBy("steel", has(CelestialItems.STEEL_INGOT.get())).save(consumer);
+//		ShapedRecipeBuilder.shaped(CelestialBlocks.WHITE_DISPLAY_BOARD.get(), 2).pattern("XXR").pattern("XXD").define('X', CelestialItems.STEEL_NUGGET.get()).define('R', Items.REDSTONE).define('D', Items.WHITE_DYE).unlockedBy("steel", has(CelestialItems.STEEL_INGOT.get())).save(consumer);
 
 
 		//---- MAG LEV -------------------------------------------------------------------------------

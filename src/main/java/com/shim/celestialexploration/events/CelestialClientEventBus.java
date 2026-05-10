@@ -3,13 +3,15 @@ package com.shim.celestialexploration.events;
 import com.google.common.collect.ImmutableList;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.blocks.CelestialSkullRenderer;
-import com.shim.celestialexploration.blocks.blockentities.DisplayBoardRenderer;
 import com.shim.celestialexploration.capabilities.LoxTankCapability;
 import com.shim.celestialexploration.entity.client.layers.VillagerSpaceSuitLayer;
 import com.shim.celestialexploration.entity.client.renderer.*;
 import com.shim.celestialexploration.entity.client.renderer.projectile.MeteorRenderer;
 import com.shim.celestialexploration.inventory.StoneChestRenderer;
-import com.shim.celestialexploration.inventory.screens.*;
+import com.shim.celestialexploration.inventory.screens.OxygenCompressorScreen;
+import com.shim.celestialexploration.inventory.screens.PlanetChartScreen;
+import com.shim.celestialexploration.inventory.screens.SpaceshipScreen;
+import com.shim.celestialexploration.inventory.screens.WorkbenchScreen;
 import com.shim.celestialexploration.item.armor.*;
 import com.shim.celestialexploration.registry.*;
 import com.shim.celestialexploration.util.Keybinds;
@@ -31,6 +33,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.RecipeBookRegistry;
@@ -167,7 +170,7 @@ public class CelestialClientEventBus {
         EntityRenderers.register(CelestialEntities.MARS_MALLOW.get(), MarsMallowRenderer::new);
         EntityRenderers.register(CelestialEntities.LURKER.get(), LurkerRenderer::new);
         EntityRenderers.register(CelestialEntities.SPACESHIP.get(), SpaceshipRenderer::new);
-        EntityRenderers.register(CelestialEntities.SPACE_TAXI.get(), SpaceTaxiRenderer::new);
+//        EntityRenderers.register(CelestialEntities.SPACE_TAXI.get(), SpaceTaxiRenderer::new);
         EntityRenderers.register(CelestialEntities.VOIDFELLOW.get(), VoidFellowRenderer::new);
         EntityRenderers.register(CelestialEntities.MAGCART.get(), (context) -> new MagCartRenderer<>(context, CelestialModelLayers.MAGCART));
         EntityRenderers.register(CelestialEntities.CHEST_MAGCART.get(), (context) -> new MagCartRenderer<>(context, CelestialModelLayers.CHEST_MAGCART));
@@ -191,9 +194,9 @@ public class CelestialClientEventBus {
         EntityRenderers.register(CelestialEntities.EUREKA.get(), EurekaRenderer::new);
         EntityRenderers.register(CelestialEntities.METEOR.get(), MeteorRenderer::new);
         EntityRenderers.register(CelestialEntities.MOON_COW.get(), MoonCowRenderer::new);
-        EntityRenderers.register(CelestialEntities.ASTEROID_SQUID.get(), AsteroidSquidRenderer::new);
-        EntityRenderers.register(CelestialEntities.STARDUST_SQUID.get(), StardustSquidRenderer::new);
-        EntityRenderers.register(CelestialEntities.CELESTIAL_AXOLOTL.get(), CelestialAxolotlRenderer::new);
+//        EntityRenderers.register(CelestialEntities.ASTEROID_SQUID.get(), AsteroidSquidRenderer::new);
+//        EntityRenderers.register(CelestialEntities.STARDUST_SQUID.get(), StardustSquidRenderer::new);
+//        EntityRenderers.register(CelestialEntities.CELESTIAL_AXOLOTL.get(), CelestialAxolotlRenderer::new);
         EntityRenderers.register(CelestialEntities.GUST.get(), GustRenderer::new);
         EntityRenderers.register(CelestialEntities.DRONE.get(), DroneRenderer::new);
         EntityRenderers.register(CelestialEntities.ROVER.get(), RoverRenderer::new);
@@ -204,31 +207,34 @@ public class CelestialClientEventBus {
         EntityRenderers.register(CelestialEntities.MECHACERBERUS_BOSS.get(), (context) -> new MechaCerberusRenderer(context, 2.5F));
         EntityRenderers.register(CelestialEntities.MECHACROW.get(), MechaCrowRenderer::new);
         EntityRenderers.register(CelestialEntities.VULKAN.get(), VulkanRenderer::new);
-
-
+////        EntityRenderers.register(CelestialEntities.CELESTIAL_TRADER.get(), CelestialTraderRenderer::new);
+////        EntityRenderers.register(CelestialEntities.SPACE_LLAMA.get(), SpaceLlamaRenderer::new);
+////        EntityRenderers.register(CelestialEntities.ALIEN_LLAMA.get(), AlienLlamaRenderer::new);
+//
+//
+//
         MenuScreens.register(CelestialMenus.OXYGEN_COMPRESSOR_MENU.get(), OxygenCompressorScreen::new);
         MenuScreens.register(CelestialMenus.PLANET_CHART_MENU.get(), PlanetChartScreen::new);
         MenuScreens.register(CelestialMenus.SPACESHIP_MENU.get(), SpaceshipScreen::new);
         MenuScreens.register(CelestialMenus.WORKBENCH_MENU.get(), WorkbenchScreen::new);
-        MenuScreens.register(CelestialMenus.SPACE_TAXI_MENU.get(), SpaceTaxiScreen::new);
-        MenuScreens.register(CelestialMenus.TAXI_STATION_MENU.get(), TaxiStationScreen::new);
-
-//        ItemBlockRenderTypes.setRenderLayer(BlockRegistry.MECHADOG_HEAD.get(), RenderType.cutout());
-
-        CelestialOverlays.registerOverlay(event);
-
+//        MenuScreens.register(CelestialMenus.SPACE_TAXI_MENU.get(), SpaceTaxiScreen::new);
+//        MenuScreens.register(CelestialMenus.TAXI_STATION_MENU.get(), TaxiStationScreen::new);
+//
+////        ItemBlockRenderTypes.setRenderLayer(BlockRegistry.MECHADOG_HEAD.get(), RenderType.cutout());
+//
+//
         AzArmorRendererRegistry.register(() -> new SpacesuitRenderer("advanced_spacesuit"), CelestialItems.ADVANCED_SPACESUIT_HELMET.get(), CelestialItems.ADVANCED_SPACESUIT_CHESTPLATE.get(), CelestialItems.ADVANCED_SPACESUIT_LEGGINGS.get(), CelestialItems.ADVANCED_SPACESUIT_BOOTS.get());
         AzArmorRendererRegistry.register(() -> new SpacesuitRenderer("heavy_duty_spacesuit"), CelestialItems.HEAVY_DUTY_SPACESUIT_HELMET.get(), CelestialItems.HEAVY_DUTY_SPACESUIT_CHESTPLATE.get(), CelestialItems.HEAVY_DUTY_SPACESUIT_LEGGINGS.get(), CelestialItems.HEAVY_DUTY_SPACESUIT_BOOTS.get());
         AzArmorRendererRegistry.register(() -> new SpacesuitRenderer("thermal_spacesuit"), CelestialItems.THERMAL_SPACESUIT_HELMET.get(), CelestialItems.THERMAL_SPACESUIT_CHESTPLATE.get(), CelestialItems.THERMAL_SPACESUIT_LEGGINGS.get(), CelestialItems.THERMAL_SPACESUIT_BOOTS.get());
         AzArmorRendererRegistry.register(() -> new SpacesuitRenderer("basic_spacesuit"), CelestialItems.BASIC_SPACESUIT_HELMET.get(), CelestialItems.BASIC_SPACESUIT_CHESTPLATE.get(), CelestialItems.BASIC_SPACESUIT_LEGGINGS.get(), CelestialItems.BASIC_SPACESUIT_BOOTS.get());
 
-//        RecipeBookCategories.create("celestialexploration:workbench_crafting",  new ItemStack[] { new ItemStack((ItemLike) CelestialBlocks.WORKBENCH.get()) });
+        CelestialOverlays.registerOverlay(event);
+
+        RecipeBookCategories.create("celestialexploration:workbench_crafting",  new ItemStack[] { new ItemStack((ItemLike) CelestialBlocks.WORKBENCH.get()) });
         RecipeBookCategories.create("celestialexploration:workbench_smelting", new ItemStack(CelestialBlocks.WORKBENCH.get()));
 
-        RecipeBookRegistry.addCategoriesToType(RecipeBookType.create("celestialexploration:workbench_crafting"), ImmutableList.of(RecipeBookCategories.create("celestialexploration:workbench_crafting", new ItemStack(Items.COMPASS))));
-
         BlockEntityRenderers.register(CelestialBlockEntities.STONE_CHEST_BLOCK_ENTITY.get(), StoneChestRenderer::new);
-        BlockEntityRenderers.register(CelestialBlockEntities.DISPLAY_BOARD_BLOCK_ENTITY.get(), DisplayBoardRenderer::new);
+//        BlockEntityRenderers.register(CelestialBlockEntities.DISPLAY_BOARD_BLOCK_ENTITY.get(), DisplayBoardRenderer::new);
 
     }
 
@@ -247,12 +253,12 @@ public class CelestialClientEventBus {
                 event.addSprite(material.texture());
             }
         }
-        if (event.getAtlas().location().equals(Sheets.SIGN_SHEET)) {
-            event.addSprite(DisplayBoardType.BLACK.texture());
-            event.addSprite(DisplayBoardType.WHITE.texture());
-            event.addSprite(DisplayBoardType.RED.texture());
-            event.addSprite(DisplayBoardType.BLUE.texture());
-        }
+//        if (event.getAtlas().location().equals(Sheets.SIGN_SHEET)) {
+//            event.addSprite(DisplayBoardType.BLACK.texture());
+//            event.addSprite(DisplayBoardType.WHITE.texture());
+//            event.addSprite(DisplayBoardType.RED.texture());
+//            event.addSprite(DisplayBoardType.BLUE.texture());
+//        }
     }
 
     @SubscribeEvent

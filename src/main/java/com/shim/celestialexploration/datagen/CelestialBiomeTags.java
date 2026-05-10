@@ -126,5 +126,14 @@ public class CelestialBiomeTags extends BiomeTagsProvider {
                 .addTag(CelestialTags.Biomes.MERCURY_BIOMES)
                 .addTag(CelestialTags.Biomes.CALLISTO_BIOMES);
 
+        tag(CelestialTags.Biomes.SOLAR_FIELDS_BIOMES)
+                .addTag(CelestialTags.Biomes.MOON_BIOMES)
+                .addTag(CelestialTags.Biomes.MARS_BIOMES)
+                .addTag(CelestialTags.Biomes.MERCURY_BIOMES)
+                .addTag(CelestialTags.Biomes.EUROPA_BIOMES)
+                .addTag(CelestialTags.Biomes.CALLISTO_BIOMES)
+                .addTag(CelestialTags.Biomes.GANYMEDE_BIOMES);
+
+
     }
 }

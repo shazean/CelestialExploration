@@ -60,6 +60,9 @@ public class CelestialStructures {
     //RESEARCH TUNNELS
     public static final RegistryObject<StructureFeature<?>> RESEARCH_TUNNEL = DEFERRED_REGISTRY_STRUCTURE.register("research_tunnel", ResearchTunnelStructure::new);
 
+    public static final RegistryObject<StructureFeature<?>> SOLAR_FIELD = DEFERRED_REGISTRY_STRUCTURE.register("solar_field", SolarFieldStructure::new);
+
+
     //OTHER
     public static final RegistryObject<StructureFeature<?>> JUPITER_CLOUD = DEFERRED_REGISTRY_STRUCTURE.register("jupiter_cloud", JupiterCloudStructure::new);
     public static final RegistryObject<StructureFeature<?>> LINEAE = DEFERRED_REGISTRY_STRUCTURE.register("lineae", LineaeStructure::new);

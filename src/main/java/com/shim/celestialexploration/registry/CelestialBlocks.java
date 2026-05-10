@@ -30,7 +30,7 @@ import java.util.Map;
 import java.util.function.Supplier;
 import java.util.function.ToIntFunction;
 
-@SuppressWarnings("deprecated")
+@SuppressWarnings({"deprecated", "unused"})
 public class CelestialBlocks {
 
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, CelestialExploration.MODID);
@@ -222,7 +222,6 @@ public class CelestialBlocks {
     public static final RegistryObject<Block> MARS_CORE = registerCoreBlock("mars_core", "Martian Core", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F).noDrops().isValidSpawn(CelestialBlocks::never)));
     public static final RegistryObject<Block> MARS_SAND = registerBlockDropsSelf("mars_sand", "Martian Regolith", () -> new SandBlock(0xE7E2E2, Block.Properties.of(Material.SAND).strength(0.5F).sound(SoundType.SAND)), CelestialTabs.CELESTIAL_BLOCKS_TAB);
     public static final RegistryObject<Block> COARSE_MARS_SAND = registerBlockDropsSelf("coarse_mars_sand", "Coarse Martian Regolith", () -> new Block(Block.Properties.of(Material.DIRT).strength(0.5F).sound(SoundType.GRAVEL)), CelestialTabs.CELESTIAL_BLOCKS_TAB);
-    //	public static final RegistryObject<Block> MARS_SOIL = BLOCKS.register("mars_soil", () -> new MarsFarmlandBlock(Block.Properties.of(Material.DIRT).strength(0.6f).sound(SoundType.GRAVEL)));
     public static final RegistryObject<Block> MARS_LANTERN = registerBlock("mars_lantern", "Martian Lantern", () -> new Block(Block.Properties.of(Material.GLASS, MaterialColor.QUARTZ).strength(0.3F).sound(SoundType.GLASS).lightLevel((light) -> 13)), CelestialTabs.CELESTIAL_BLOCKS_TAB);
     public static final RegistryObject<Block> MARS_SAND_PATH = registerBlock("mars_sand_path", "Martian Regolith Path", () -> new CelestialPathBlock(Block.Properties.of(Material.SAND).strength(0.5F).sound(SoundType.SAND), MARS_SAND.get()), CelestialTabs.CELESTIAL_BLOCKS_TAB);
     public static final RegistryObject<Block> MARS_CHEST = registerBlockNoItem("mars_chest", "Martian Stone Chest", () -> new StoneChestBlock(StoneChestType.MARS));
@@ -680,18 +679,17 @@ public class CelestialBlocks {
 
     public static final RegistryObject<Block> PATHWAY_LIGHT = registerBlockDropsSelf("pathway_light", "Pathway Light", () -> new PathwayLightBlock(Block.Properties.of(Material.METAL).strength(0.1F).sound(SoundType.METAL).lightLevel(litBlockEmission(9))), CelestialTabs.CELESTIAL_BLOCKS_TAB);
 
-    public static final RegistryObject<Block> TAXI_STATION = registerCoreBlock("taxi_station", "Taxi Station", () -> new TaxiStationBlock(Block.Properties.of(Material.METAL, MaterialColor.METAL).strength(3.5F).sound(SoundType.METAL)));
+//    public static final RegistryObject<Block> TAXI_STATION = registerCoreBlock("taxi_station", "Taxi Station", () -> new TaxiStationBlock(Block.Properties.of(Material.METAL, MaterialColor.METAL).strength(3.5F).sound(SoundType.METAL)));
 
-    public static final RegistryObject<Block> RED_DISPLAY_BOARD = registerBlockNoItem("red_display_board", "Red Display Board", () -> new StandingDisplayBoardBlock(DisplayBoardType.RED, DisplayBoardType.RED_TYPE, DyeColor.WHITE));
-    public static final RegistryObject<Block> BLACK_DISPLAY_BOARD = registerBlockNoItem("black_display_board", "Black Display Board", () -> new StandingDisplayBoardBlock(DisplayBoardType.BLACK, DisplayBoardType.BLACK_TYPE, DyeColor.GREEN));
-    public static final RegistryObject<Block> BLUE_DISPLAY_BOARD = registerBlockNoItem("blue_display_board", "Blue Display Board", () -> new StandingDisplayBoardBlock(DisplayBoardType.BLUE, DisplayBoardType.BLUE_TYPE, DyeColor.WHITE));
-    public static final RegistryObject<Block> WHITE_DISPLAY_BOARD = registerBlockNoItem("white_display_board", "White Display Board", () -> new StandingDisplayBoardBlock(DisplayBoardType.WHITE, DisplayBoardType.WHITE_TYPE, DyeColor.BLACK));
-
-    public static final RegistryObject<Block> RED_WALL_DISPLAY_BOARD = BLOCKS.register("red_wall_display_board", () -> new WallDisplayBoardBlock(DisplayBoardType.RED, DisplayBoardType.RED_TYPE, DyeColor.WHITE));
-    public static final RegistryObject<Block> BLACK_WALL_DISPLAY_BOARD = BLOCKS.register("black_wall_display_board", () -> new WallDisplayBoardBlock(DisplayBoardType.BLACK, DisplayBoardType.BLACK_TYPE, DyeColor.GREEN));
-    public static final RegistryObject<Block> BLUE_WALL_DISPLAY_BOARD = BLOCKS.register("blue_wall_display_board", () -> new WallDisplayBoardBlock(DisplayBoardType.BLUE, DisplayBoardType.BLUE_TYPE, DyeColor.WHITE));
-    public static final RegistryObject<Block> WHITE_WALL_DISPLAY_BOARD = BLOCKS.register("white_wall_display_board", () -> new WallDisplayBoardBlock(DisplayBoardType.WHITE, DisplayBoardType.WHITE_TYPE, DyeColor.BLACK));
-
+//    public static final RegistryObject<Block> RED_DISPLAY_BOARD = registerBlockNoItem("red_display_board", "Red Display Board", () -> new StandingDisplayBoardBlock(DisplayBoardType.RED, DisplayBoardType.RED_TYPE, DyeColor.WHITE));
+//    public static final RegistryObject<Block> BLACK_DISPLAY_BOARD = registerBlockNoItem("black_display_board", "Black Display Board", () -> new StandingDisplayBoardBlock(DisplayBoardType.BLACK, DisplayBoardType.BLACK_TYPE, DyeColor.GREEN));
+//    public static final RegistryObject<Block> BLUE_DISPLAY_BOARD = registerBlockNoItem("blue_display_board", "Blue Display Board", () -> new StandingDisplayBoardBlock(DisplayBoardType.BLUE, DisplayBoardType.BLUE_TYPE, DyeColor.WHITE));
+//    public static final RegistryObject<Block> WHITE_DISPLAY_BOARD = registerBlockNoItem("white_display_board", "White Display Board", () -> new StandingDisplayBoardBlock(DisplayBoardType.WHITE, DisplayBoardType.WHITE_TYPE, DyeColor.BLACK));
+//
+//    public static final RegistryObject<Block> RED_WALL_DISPLAY_BOARD = BLOCKS.register("red_wall_display_board", () -> new WallDisplayBoardBlock(DisplayBoardType.RED, DisplayBoardType.RED_TYPE, DyeColor.WHITE));
+//    public static final RegistryObject<Block> BLACK_WALL_DISPLAY_BOARD = BLOCKS.register("black_wall_display_board", () -> new WallDisplayBoardBlock(DisplayBoardType.BLACK, DisplayBoardType.BLACK_TYPE, DyeColor.GREEN));
+//    public static final RegistryObject<Block> BLUE_WALL_DISPLAY_BOARD = BLOCKS.register("blue_wall_display_board", () -> new WallDisplayBoardBlock(DisplayBoardType.BLUE, DisplayBoardType.BLUE_TYPE, DyeColor.WHITE));
+//    public static final RegistryObject<Block> WHITE_WALL_DISPLAY_BOARD = BLOCKS.register("white_wall_display_board", () -> new WallDisplayBoardBlock(DisplayBoardType.WHITE, DisplayBoardType.WHITE_TYPE, DyeColor.BLACK));
 
     //---- MAG LEV -------------------------------------------------------------------------------
     public static final RegistryObject<Block> MAGRAIL = registerBlockDropsSelf("magrail", "Magrail", () -> new MagRailBlock(BlockBehaviour.Properties.of(Material.DECORATION).noCollission().strength(0.7F).sound(SoundType.METAL)), CelestialTabs.SPACESHIP_TAB);
