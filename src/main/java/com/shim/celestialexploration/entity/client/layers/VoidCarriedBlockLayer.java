@@ -3,7 +3,7 @@ package com.shim.celestialexploration.entity.client.layers;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.entity.mob.VoidFellow;
+import com.shim.celestialexploration.entity.monster.VoidFellow;
 import net.minecraft.client.model.EndermanModel;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.RenderLayerParent;

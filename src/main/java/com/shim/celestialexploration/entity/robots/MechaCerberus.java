@@ -1,6 +1,6 @@
 package com.shim.celestialexploration.entity.robots;
 
-import com.shim.celestialexploration.entity.mob.Gust;
+import com.shim.celestialexploration.entity.monster.Gust;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.*;

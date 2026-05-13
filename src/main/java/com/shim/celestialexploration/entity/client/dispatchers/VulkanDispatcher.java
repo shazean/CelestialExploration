@@ -1,6 +1,6 @@
 package com.shim.celestialexploration.entity.client.dispatchers;
 
-import com.shim.celestialexploration.entity.mob.Vulkan;
+import com.shim.celestialexploration.entity.monster.Vulkan;
 import mod.azure.azurelib.animation.dispatch.command.AzCommand;
 import mod.azure.azurelib.animation.play_behavior.AzPlayBehaviors;
 

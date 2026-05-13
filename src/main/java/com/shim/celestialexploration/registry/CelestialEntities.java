@@ -1,25 +1,20 @@
 package com.shim.celestialexploration.registry;
 
 import com.shim.celestialexploration.CelestialExploration;
+import com.shim.celestialexploration.entity.CelestialTrader;
 import com.shim.celestialexploration.entity.ambient.Eureka;
 import com.shim.celestialexploration.entity.creatures.*;
-import com.shim.celestialexploration.entity.mob.*;
-import com.shim.celestialexploration.entity.mob.piglins.AstralPiglin;
-import com.shim.celestialexploration.entity.mob.piglins.CyborgPiglin;
-import com.shim.celestialexploration.entity.mob.piglins.VoidedPiglin;
-import com.shim.celestialexploration.entity.mob.slimes.*;
+import com.shim.celestialexploration.entity.monster.*;
+import com.shim.celestialexploration.entity.monster.piglins.AstralPiglin;
+import com.shim.celestialexploration.entity.monster.piglins.CyborgPiglin;
+import com.shim.celestialexploration.entity.monster.piglins.VoidedPiglin;
+import com.shim.celestialexploration.entity.monster.slimes.*;
 import com.shim.celestialexploration.entity.projectile.MeteorProjectile;
 import com.shim.celestialexploration.entity.robots.*;
 import com.shim.celestialexploration.entity.vehicle.*;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
-import net.minecraft.world.entity.animal.axolotl.Axolotl;
-import net.minecraft.world.entity.animal.horse.Llama;
-import net.minecraft.world.entity.animal.horse.TraderLlama;
-import net.minecraft.world.entity.monster.Blaze;
-import net.minecraft.world.entity.npc.WanderingTrader;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -105,8 +100,8 @@ public class CelestialEntities {
 
 //    public static final RegistryObject<EntityType<CelestialAxolotl>> CELESTIAL_AXOLOTL = registerEntityType("celestial_axolotl", "Celestial Axolotl", () -> EntityType.Builder.of(CelestialAxolotl::new, MobCategory.AXOLOTLS).sized(0.8F, 0.42F).clientTrackingRange(10).build(modLocString("celestial_axolotl")));
 
-//    public static final RegistryObject<EntityType<SpaceTraderLlama>> SPACE_LLAMA = registerEntityType("space_llama", "Space Llama", () -> EntityType.Builder.of(SpaceTraderLlama::new, MobCategory.CREATURE).sized(0.9F, 1.87F).clientTrackingRange(10).build(modLocString("space_llama")));
-//    public static final RegistryObject<EntityType<AlienTraderLlama>> ALIEN_LLAMA = registerEntityType("alien_llama", "Alien Llama", () -> EntityType.Builder.of(AlienTraderLlama::new, MobCategory.CREATURE).sized(0.9F, 1.87F).clientTrackingRange(10).build(modLocString("alien_llama")));
+    public static final RegistryObject<EntityType<SpaceTraderLlama>> SPACE_LLAMA = registerEntityType("space_llama", "Space Llama", () -> EntityType.Builder.of(SpaceTraderLlama::new, MobCategory.CREATURE).sized(0.9F, 1.87F).clientTrackingRange(10).build(modLocString("space_llama")));
+    public static final RegistryObject<EntityType<AlienTraderLlama>> ALIEN_LLAMA = registerEntityType("alien_llama", "Alien Llama", () -> EntityType.Builder.of(AlienTraderLlama::new, MobCategory.CREATURE).sized(0.9F, 1.87F).clientTrackingRange(10).build(modLocString("alien_llama")));
 
 
     //---- AMBIENT -------------------------------------------------------------------------------
@@ -117,6 +112,6 @@ public class CelestialEntities {
 
 //    ---- OTHER -------------------------------------------------------------------------------
 
-//    public static final RegistryObject<EntityType<CelestialTrader>> CELESTIAL_TRADER = registerEntityType("celestial_trader", "Celestial Trader", () -> EntityType.Builder.<CelestialTrader>of(CelestialTrader::new, MobCategory.CREATURE).sized(0.6F, 1.95F).clientTrackingRange(10).build(modLocString("celestial_trader")));
+    public static final RegistryObject<EntityType<CelestialTrader>> CELESTIAL_TRADER = registerEntityType("celestial_trader", "Celestial Trader", () -> EntityType.Builder.<CelestialTrader>of(CelestialTrader::new, MobCategory.CREATURE).sized(0.6F, 1.95F).clientTrackingRange(10).build(modLocString("celestial_trader")));
 
 }

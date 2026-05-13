@@ -2,6 +2,7 @@
 //
 //import com.shim.celestialexploration.blocks.blockentities.DisplayBoardBlockEntity;
 //import com.shim.celestialexploration.registry.CelestialBlockEntities;
+//import net.minecraft.client.resources.model.Material;
 //import net.minecraft.core.BlockPos;
 //import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.world.item.DyeColor;
@@ -12,16 +13,15 @@
 //import net.minecraft.world.level.block.entity.SignBlockEntity;
 //import net.minecraft.world.level.block.state.BlockState;
 //import net.minecraft.world.level.block.state.properties.WoodType;
-//import net.minecraft.world.level.material.Material;
 //import org.jetbrains.annotations.Nullable;
 //
 //public class WallDisplayBoardBlock extends WallSignBlock {
 //
 //    DyeColor textColor;
-//    net.minecraft.client.resources.model.Material material;
+//    Material material;
 //
-//    public WallDisplayBoardBlock(net.minecraft.client.resources.model.Material material, WoodType type, DyeColor defaultDyeColor) {
-//        super(Block.Properties.of(Material.METAL).strength(0.1F).sound(SoundType.METAL), type);
+//    public WallDisplayBoardBlock(Material material, WoodType type, DyeColor defaultDyeColor) {
+//        super(Block.Properties.of(net.minecraft.world.level.material.Material.METAL).strength(0.1F).sound(SoundType.METAL), type);
 //        this.textColor = defaultDyeColor;
 //        this.material = material;
 //    }
@@ -43,7 +43,7 @@
 //        }
 //    }
 //
-//    public net.minecraft.client.resources.model.Material getMaterial() {
+//    public Material getMaterial() {
 //        return this.material;
 //    }
 //

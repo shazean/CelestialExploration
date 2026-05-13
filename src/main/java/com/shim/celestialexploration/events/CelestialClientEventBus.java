@@ -1,12 +1,14 @@
 package com.shim.celestialexploration.events;
 
-import com.google.common.collect.ImmutableList;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.blocks.CelestialSkullRenderer;
 import com.shim.celestialexploration.capabilities.LoxTankCapability;
 import com.shim.celestialexploration.entity.client.layers.VillagerSpaceSuitLayer;
 import com.shim.celestialexploration.entity.client.renderer.*;
+import com.shim.celestialexploration.entity.client.renderer.creature.*;
+import com.shim.celestialexploration.entity.client.renderer.monster.*;
 import com.shim.celestialexploration.entity.client.renderer.projectile.MeteorRenderer;
+import com.shim.celestialexploration.entity.client.renderer.robot.*;
 import com.shim.celestialexploration.inventory.StoneChestRenderer;
 import com.shim.celestialexploration.inventory.screens.OxygenCompressorScreen;
 import com.shim.celestialexploration.inventory.screens.PlanetChartScreen;
@@ -30,13 +32,10 @@ import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.client.resources.model.Material;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.client.RecipeBookRegistry;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -162,6 +161,8 @@ public class CelestialClientEventBus {
 
         ItemBlockRenderTypes.setRenderLayer(CelestialBlocks.PENITENTE.get(), RenderType.cutout());
 
+
+
         EntityRenderers.register(CelestialEntities.RUST_SLIME.get(), RustSlimeRenderer::new);
         EntityRenderers.register(CelestialEntities.LUNAR_SLIME.get(), LunarSlimeRenderer::new);
         EntityRenderers.register(CelestialEntities.QUICKSILVER_SLIME.get(), QuicksilverSlimeRenderer::new);
@@ -207,10 +208,11 @@ public class CelestialClientEventBus {
         EntityRenderers.register(CelestialEntities.MECHACERBERUS_BOSS.get(), (context) -> new MechaCerberusRenderer(context, 2.5F));
         EntityRenderers.register(CelestialEntities.MECHACROW.get(), MechaCrowRenderer::new);
         EntityRenderers.register(CelestialEntities.VULKAN.get(), VulkanRenderer::new);
-////        EntityRenderers.register(CelestialEntities.CELESTIAL_TRADER.get(), CelestialTraderRenderer::new);
-////        EntityRenderers.register(CelestialEntities.SPACE_LLAMA.get(), SpaceLlamaRenderer::new);
-////        EntityRenderers.register(CelestialEntities.ALIEN_LLAMA.get(), AlienLlamaRenderer::new);
-//
+        EntityRenderers.register(CelestialEntities.CELESTIAL_TRADER.get(), CelestialTraderRenderer::new);
+        EntityRenderers.register(CelestialEntities.SPACE_LLAMA.get(), SpaceLlamaRenderer::new);
+        EntityRenderers.register(CelestialEntities.ALIEN_LLAMA.get(), AlienLlamaRenderer::new);
+
+        //
 //
 //
         MenuScreens.register(CelestialMenus.OXYGEN_COMPRESSOR_MENU.get(), OxygenCompressorScreen::new);

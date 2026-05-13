@@ -4,7 +4,7 @@ import com.shim.celestialexploration.entity.client.dispatchers.MechaDogDispatche
 import com.shim.celestialexploration.entity.DyeType;
 import com.shim.celestialexploration.entity.IDyeable;
 import com.shim.celestialexploration.entity.goals.*;
-import com.shim.celestialexploration.entity.mob.Gust;
+import com.shim.celestialexploration.entity.monster.Gust;
 import mod.azure.azurelib.util.MoveAnalysis;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;

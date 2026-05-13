@@ -2,14 +2,12 @@ package com.shim.celestialexploration.entity.client.layers;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
-import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.entity.mob.Vulkan;
+import com.shim.celestialexploration.entity.monster.Vulkan;
 import mod.azure.azurelib.model.AzBone;
 import mod.azure.azurelib.render.AzRendererPipelineContext;
 import mod.azure.azurelib.render.layer.AzRenderLayer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.block.Blocks;
 
 import java.util.UUID;

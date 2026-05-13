@@ -4,6 +4,7 @@ import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.registry.CelestialBlocks;
 import com.shim.celestialexploration.registry.CelestialFluids;
 import com.shim.celestialexploration.registry.CelestialItems;
+import com.shim.celestialexploration.registry.CelestialTabs;
 import com.shim.celestiallib.api.datagen.base.BaseItemModels;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
@@ -12,6 +13,7 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.registries.RegistryObject;
 
 public class CelestialItemModels extends BaseItemModels {
 
@@ -778,6 +780,18 @@ public class CelestialItemModels extends BaseItemModels {
 		generatedItem(CelestialItems.GANYMEDE_DUST.get());
 		generatedItem(CelestialItems.WHITE_MOON_DUST.get());
 
+		generatedItem(CelestialItems.TITANIA_DUST.get());
+		generatedItem(CelestialItems.OBERON_DUST.get());
+		generatedItem(CelestialItems.DIONE_DUST.get());
+		generatedItem(CelestialItems.TITAN_DUST.get());
+		generatedItem(CelestialItems.TRITON_DUST.get());
+		generatedItem(CelestialItems.ENCELADUS_DUST.get());
+		generatedItem(CelestialItems.RHEA_DUST.get());
+		generatedItem(CelestialItems.IAPETUS_DUST.get());
+		generatedItem(CelestialItems.LIGHT_GREY_MOON_DUST.get());
+		generatedItem(CelestialItems.GREY_MOON_DUST.get());
+
+
 		handheldItem(CelestialItems.STEEL_ROD.get());
 		generatedItem(CelestialItems.STEEL_WOOL.get());
 		handheldItem(CelestialItems.FLARE_ROD.get());
@@ -821,6 +835,8 @@ public class CelestialItemModels extends BaseItemModels {
 //		spawnEgg(CelestialItems.ASTEROID_SQUID_SPAWN_EGG.get());
 //		spawnEgg(CelestialItems.STARDUST_SQUID_SPAWN_EGG.get());
 		spawnEgg(CelestialItems.VULKAN_SPAWN_EGG.get());
+		spawnEgg(CelestialItems.ALIEN_LLAMA_SPAWN_EGG.get());
+		spawnEgg(CelestialItems.SPACE_LLAMA_SPAWN_EGG.get());
 
 		generatedItem(CelestialItems.BLACK_MECHADOG.get());
 		generatedItem(CelestialItems.GREY_MECHADOG.get());

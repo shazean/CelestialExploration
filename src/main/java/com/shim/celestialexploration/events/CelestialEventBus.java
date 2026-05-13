@@ -1,14 +1,17 @@
 package com.shim.celestialexploration.events;
 
 import com.shim.celestialexploration.CelestialExploration;
+import com.shim.celestialexploration.entity.CelestialTrader;
+import com.shim.celestialexploration.entity.client.model.AlienLlamaModel;
+import com.shim.celestialexploration.entity.client.model.SpaceLlamaModel;
 import com.shim.celestialexploration.entity.creatures.*;
 import com.shim.celestialexploration.entity.ambient.Eureka;
-import com.shim.celestialexploration.entity.mob.*;
-import com.shim.celestialexploration.entity.mob.piglins.AstralPiglin;
-import com.shim.celestialexploration.entity.mob.piglins.CyborgPiglin;
-import com.shim.celestialexploration.entity.mob.piglins.VoidedPiglin;
+import com.shim.celestialexploration.entity.monster.*;
+import com.shim.celestialexploration.entity.monster.piglins.AstralPiglin;
+import com.shim.celestialexploration.entity.monster.piglins.CyborgPiglin;
+import com.shim.celestialexploration.entity.monster.piglins.VoidedPiglin;
 import com.shim.celestialexploration.entity.client.model.MagCartModel;
-import com.shim.celestialexploration.entity.mob.slimes.*;
+import com.shim.celestialexploration.entity.monster.slimes.*;
 import com.shim.celestialexploration.entity.robots.*;
 import com.shim.celestialexploration.particles.*;
 import com.shim.celestialexploration.recipes.MechaCrowCraftingRecipe;
@@ -22,6 +25,7 @@ import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.particle.FlameParticle;
 import net.minecraft.client.particle.WaterDropParticle;
 import net.minecraft.core.Registry;
+import net.minecraft.world.entity.animal.horse.Llama;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.ParticleFactoryRegisterEvent;
@@ -76,9 +80,9 @@ public class CelestialEventBus {
 //        event.put(CelestialEntities.CELESTIAL_AXOLOTL.get(), CelestialAxolotl.createAttributes().build());
         event.put(CelestialEntities.VULKAN.get(), Vulkan.createAttributes().build());
 //
-////        event.put(CelestialEntities.CELESTIAL_TRADER.get(), CelestialTrader.createMobAttributes().build());
-////        event.put(CelestialEntities.SPACE_LLAMA.get(), Llama.createAttributes().build());
-////        event.put(CelestialEntities.ALIEN_LLAMA.get(), Llama.createAttributes().build());
+        event.put(CelestialEntities.CELESTIAL_TRADER.get(), CelestialTrader.createMobAttributes().build());
+        event.put(CelestialEntities.SPACE_LLAMA.get(), Llama.createAttributes().build());
+        event.put(CelestialEntities.ALIEN_LLAMA.get(), Llama.createAttributes().build());
 
 
     }
@@ -130,6 +134,14 @@ public class CelestialEventBus {
         event.registerLayerDefinition(CelestialModelLayers.LURKER_HEAD, () -> skullLayer);
         event.registerLayerDefinition(CelestialModelLayers.VOIDED_HEAD, () -> humanoidHeadLayer);
             event.registerLayerDefinition(CelestialModelLayers.MECHADOG_HEAD, () -> skullLayer);
+
+
+        LayerDefinition alienLlamaLayer = AlienLlamaModel.createBodyLayer(CubeDeformation.NONE);
+        LayerDefinition spaceLlamaLayer = SpaceLlamaModel.createBodyLayer(CubeDeformation.NONE);
+
+        event.registerLayerDefinition(CelestialModelLayers.ALIEN_LLAMA, () -> alienLlamaLayer);
+        event.registerLayerDefinition(CelestialModelLayers.SPACE_LLAMA, () -> spaceLlamaLayer);
+
 
 //        LayerDefinition displayBoardDef = DisplayBoardRenderer.createDisplayBoardLayer();
 //        DisplayBoardBlock.DisplayBoardColors.values().forEach((p_171114_) -> {

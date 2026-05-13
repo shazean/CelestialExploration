@@ -1,6 +1,6 @@
 package com.shim.celestialexploration.entity.robots;
 
-import com.shim.celestialexploration.entity.mob.Gust;
+import com.shim.celestialexploration.entity.monster.Gust;
 import com.shim.celestialexploration.registry.CelestialEffects;
 import com.shim.celestialexploration.registry.CelestialEntities;
 import com.shim.celestialexploration.registry.CelestialParticles;

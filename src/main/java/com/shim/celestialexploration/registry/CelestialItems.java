@@ -3,6 +3,7 @@ package com.shim.celestialexploration.registry;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.entity.DyeType;
 import com.shim.celestialexploration.entity.vehicle.AbstractMagCart;
+import com.shim.celestialexploration.events.CelestialVillagerTrades;
 import com.shim.celestialexploration.item.*;
 import com.shim.celestialexploration.item.armor.HeavyDutySpacesuitArmorItem;
 import com.shim.celestialexploration.item.armor.ThermalSpacesuitArmorItem;
@@ -137,6 +138,8 @@ public class CelestialItems {
 //	public static final RegistryObject<Item> ASTEROID_SQUID_SPAWN_EGG = registerItem("asteroid_squid_spawn_egg", "Asteroid Squid Spawn Egg", () -> new ForgeSpawnEggItem(CelestialEntities.ASTEROID_SQUID, 0x433934, 0xfff, new Item.Properties().tab(CelestialTabs.CELESTIAL_MISC_TAB)));
 //	public static final RegistryObject<Item> STARDUST_SQUID_SPAWN_EGG = registerItem("stardust_squid_spawn_egg", "Stardust Squid Spawn Egg", () -> new ForgeSpawnEggItem(CelestialEntities.STARDUST_SQUID, 0x370169, 0x57ebf9, new Item.Properties().tab(CelestialTabs.CELESTIAL_MISC_TAB)));
 	public static final RegistryObject<Item> VULKAN_SPAWN_EGG = registerItem("vulkan_spawn_egg", "Vulkan Spawn Egg", () -> new ForgeSpawnEggItem(CelestialEntities.VULKAN, 0x370169, 0x57ebf9, new Item.Properties().tab(CelestialTabs.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> ALIEN_LLAMA_SPAWN_EGG = registerItem("alien_llama_spawn_egg", "Alien Llama Spawn Egg", () -> new ForgeSpawnEggItem(CelestialEntities.ALIEN_LLAMA, 0x370169, 0x57ebf9, new Item.Properties().tab(CelestialTabs.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> SPACE_LLAMA_SPAWN_EGG = registerItem("space_llama_spawn_egg", "Space Llama Spawn Egg", () -> new ForgeSpawnEggItem(CelestialEntities.SPACE_LLAMA, 0x370169, 0x57ebf9, new Item.Properties().tab(CelestialTabs.CELESTIAL_MISC_TAB)));
 
  	public static final RegistryObject<Item> WHITE_MECHADOG = registerItem("white_mechadog", "White MechaDog", () -> new AutoTameSpawnItem(CelestialEntities.MECHADOG, DyeType.WHITE, new Item.Properties().tab(CelestialTabs.CELESTIAL_MISC_TAB)));
 	public static final RegistryObject<Item> GREY_MECHADOG = registerItem("grey_mechadog", "Grey MechaDog", () -> new AutoTameSpawnItem(CelestialEntities.MECHADOG, DyeType.GREY, new Item.Properties().tab(CelestialTabs.CELESTIAL_MISC_TAB)));
@@ -211,7 +214,18 @@ public class CelestialItems {
 	public static final RegistryObject<Item> IO_DUST = registerItem("io_dust", "Ionian Dust", () -> new Item((new Item.Properties()).tab(CelestialTabs.CELESTIAL_MISC_TAB)));
 	public static final RegistryObject<Item> GANYMEDE_DUST = registerItem("ganymede_dust", "Ganymedian Dust", () -> new Item((new Item.Properties()).tab(CelestialTabs.CELESTIAL_MISC_TAB)));
 
+	public static final RegistryObject<Item> TITANIA_DUST = registerItem("titania_dust", "Titania Dust", () -> new Item((new Item.Properties()).tab(CelestialTabs.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> OBERON_DUST = registerItem("oberon_dust", "Oberon Dust", () -> new Item((new Item.Properties()).tab(CelestialTabs.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> DIONE_DUST = registerItem("dione_dust", "Dione Dust", () -> new Item((new Item.Properties()).tab(CelestialTabs.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> TITAN_DUST = registerItem("titan_dust", "Titan Dust", () -> new Item((new Item.Properties()).tab(CelestialTabs.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> TRITON_DUST = registerItem("triton_dust", "Triton Dust", () -> new Item((new Item.Properties()).tab(CelestialTabs.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> ENCELADUS_DUST = registerItem("enceladus_dust", "Enceladus Dust", () -> new Item((new Item.Properties()).tab(CelestialTabs.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> RHEA_DUST = registerItem("rhea_dust", "Rhea Dust", () -> new Item((new Item.Properties()).tab(CelestialTabs.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> IAPETUS_DUST = registerItem("iapetus_dust", "Iapetus Dust", () -> new Item((new Item.Properties()).tab(CelestialTabs.CELESTIAL_MISC_TAB)));
+
 	public static final RegistryObject<Item> WHITE_MOON_DUST = registerItem("white_moon_dust", "White Lunar Dust", () -> new Item((new Item.Properties()).tab(CelestialTabs.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> LIGHT_GREY_MOON_DUST = registerItem("light_grey_moon_dust", "Light Grey Lunar Dust", () -> new Item((new Item.Properties()).tab(CelestialTabs.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> GREY_MOON_DUST = registerItem("grey_moon_dust", "Grey Lunar Dust", () -> new Item((new Item.Properties()).tab(CelestialTabs.CELESTIAL_MISC_TAB)));
 
 	public static final RegistryObject<Item> STEEL_ROD = registerItem("steel_rod", "Steel Rod", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MATERIALS)));
 	public static final RegistryObject<Item> FLARE_ROD = registerItem("flare_rod", "Flare Rod", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MATERIALS)));
