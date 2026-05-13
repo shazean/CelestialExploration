@@ -6,3 +6,6 @@
 - `[NEW]` New solar field structures on various planets
 - `[FIX]` Fixed bug that stopped clients from joining a server
 - `[FIX]` Fixed bug that was creating a conflict with Geckolib
+- `[FIX]` Removed fall damage when you're actively IN a spaceship, because this was especially causing problems if you tried to land a spaceship while the server was still trying to recover from teleportation
+- `[NEW]` New wandering celestial trader, complete with space llamas! Trade emeralds for some exclusive-to-space items—including some lunar dust types not currently attainable any other way!
+- `[FIX]` Fixed display boards causing a crash on server startup

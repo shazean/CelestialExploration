@@ -458,15 +458,15 @@ public class CelestialLootTables extends BaseLootTableProvider {
 		block(CelestialBlocks.PAINTED_RED_CERAMIC.get(), createCeramicTable(CelestialBlocks.PAINTED_RED_CERAMIC.get()));
 		block(CelestialBlocks.PAINTED_PINK_CERAMIC.get(), createCeramicTable(CelestialBlocks.PAINTED_PINK_CERAMIC.get()));
 
-//		block(CelestialBlocks.BLACK_DISPLAY_BOARD.get(), createSimpleTable(CelestialBlocks.BLACK_DISPLAY_BOARD.get()));
-//		block(CelestialBlocks.RED_DISPLAY_BOARD.get(), createSimpleTable(CelestialBlocks.RED_DISPLAY_BOARD.get()));
-//		block(CelestialBlocks.BLUE_DISPLAY_BOARD.get(), createSimpleTable(CelestialBlocks.BLUE_DISPLAY_BOARD.get()));
-//		block(CelestialBlocks.WHITE_DISPLAY_BOARD.get(), createSimpleTable(CelestialBlocks.WHITE_DISPLAY_BOARD.get()));
-//
-//		block(CelestialBlocks.BLACK_WALL_DISPLAY_BOARD.get(), createSimpleTable(CelestialBlocks.BLACK_DISPLAY_BOARD.get()));
-//		block(CelestialBlocks.BLUE_WALL_DISPLAY_BOARD.get(), createSimpleTable(CelestialBlocks.BLUE_DISPLAY_BOARD.get()));
-//		block(CelestialBlocks.RED_WALL_DISPLAY_BOARD.get(), createSimpleTable(CelestialBlocks.RED_DISPLAY_BOARD.get()));
-//		block(CelestialBlocks.WHITE_WALL_DISPLAY_BOARD.get(), createSimpleTable(CelestialBlocks.WHITE_DISPLAY_BOARD.get()));
+		block(CelestialBlocks.BLACK_DISPLAY_BOARD.get(), createSimpleTable(CelestialBlocks.BLACK_DISPLAY_BOARD.get()));
+		block(CelestialBlocks.RED_DISPLAY_BOARD.get(), createSimpleTable(CelestialBlocks.RED_DISPLAY_BOARD.get()));
+		block(CelestialBlocks.BLUE_DISPLAY_BOARD.get(), createSimpleTable(CelestialBlocks.BLUE_DISPLAY_BOARD.get()));
+		block(CelestialBlocks.WHITE_DISPLAY_BOARD.get(), createSimpleTable(CelestialBlocks.WHITE_DISPLAY_BOARD.get()));
+
+		block(CelestialBlocks.BLACK_WALL_DISPLAY_BOARD.get(), createSimpleTable(CelestialBlocks.BLACK_DISPLAY_BOARD.get()));
+		block(CelestialBlocks.BLUE_WALL_DISPLAY_BOARD.get(), createSimpleTable(CelestialBlocks.BLUE_DISPLAY_BOARD.get()));
+		block(CelestialBlocks.RED_WALL_DISPLAY_BOARD.get(), createSimpleTable(CelestialBlocks.RED_DISPLAY_BOARD.get()));
+		block(CelestialBlocks.WHITE_WALL_DISPLAY_BOARD.get(), createSimpleTable(CelestialBlocks.WHITE_DISPLAY_BOARD.get()));
 
 		block(CelestialBlocks.MARS_FARMLAND.get(), createSilkTouchTable(CelestialBlocks.MARS_FARMLAND.get(), CelestialBlocks.MARS_SAND.get(), 1, 1));
 		block(CelestialBlocks.MOON_FARMLAND.get(), createSilkTouchTable(CelestialBlocks.MOON_FARMLAND.get(), CelestialBlocks.MOON_SAND.get(), 1, 1));

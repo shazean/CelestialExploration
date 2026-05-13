@@ -1,6 +1,7 @@
 package com.shim.celestialexploration.events;
 
 import com.shim.celestialexploration.CelestialExploration;
+import com.shim.celestialexploration.blocks.blockentities.DisplayBoardRenderer;
 import com.shim.celestialexploration.entity.CelestialTrader;
 import com.shim.celestialexploration.entity.client.model.AlienLlamaModel;
 import com.shim.celestialexploration.entity.client.model.SpaceLlamaModel;

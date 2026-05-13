@@ -2,6 +2,7 @@ package com.shim.celestialexploration.events;
 
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.blocks.CelestialSkullRenderer;
+import com.shim.celestialexploration.blocks.blockentities.DisplayBoardRenderer;
 import com.shim.celestialexploration.capabilities.LoxTankCapability;
 import com.shim.celestialexploration.entity.client.layers.VillagerSpaceSuitLayer;
 import com.shim.celestialexploration.entity.client.renderer.*;
@@ -34,6 +35,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -236,7 +238,9 @@ public class CelestialClientEventBus {
         RecipeBookCategories.create("celestialexploration:workbench_smelting", new ItemStack(CelestialBlocks.WORKBENCH.get()));
 
         BlockEntityRenderers.register(CelestialBlockEntities.STONE_CHEST_BLOCK_ENTITY.get(), StoneChestRenderer::new);
-//        BlockEntityRenderers.register(CelestialBlockEntities.DISPLAY_BOARD_BLOCK_ENTITY.get(), DisplayBoardRenderer::new);
+        BlockEntityRenderers.register(CelestialBlockEntities.DISPLAY_BOARD_BLOCK_ENTITY.get(), DisplayBoardRenderer::new);
+
+        event.enqueueWork(() -> WoodType.create("celestialexploration:blue"));
 
     }
 
@@ -255,18 +259,11 @@ public class CelestialClientEventBus {
                 event.addSprite(material.texture());
             }
         }
-//        if (event.getAtlas().location().equals(Sheets.SIGN_SHEET)) {
-//            event.addSprite(DisplayBoardType.BLACK.texture());
-//            event.addSprite(DisplayBoardType.WHITE.texture());
-//            event.addSprite(DisplayBoardType.RED.texture());
-//            event.addSprite(DisplayBoardType.BLUE.texture());
-//        }
-    }
-
-    @SubscribeEvent
-    public static void onRegisterRenderers(EntityRenderersEvent.RegisterRenderers event) {
-//        event.registerBlockEntityRenderer(CelestialBlockEntities.STONE_CHEST_BLOCK_ENTITY.get(), StoneChestRenderer::new);
-
-//        event.registerBlockEntityRenderer(BlockEntityRegistry.DISPLAY_BOARD_BLOCK_ENTITY.get(), DisplayBoardRenderer::new);
+        if (event.getAtlas().location().equals(Sheets.SIGN_SHEET)) {
+            event.addSprite(CelestialMaterials.BLACK.texture());
+            event.addSprite(CelestialMaterials.WHITE.texture());
+            event.addSprite(CelestialMaterials.RED.texture());
+            event.addSprite(CelestialMaterials.BLUE.texture());
+        }
     }
 }

@@ -872,10 +872,10 @@ public class CelestialItemModels extends BaseItemModels {
 		generatedItem(CelestialItems.BLUE_MECHACERBERUS.get());
 		generatedItem(CelestialItems.PURPLE_MECHACERBERUS.get());
 
-//		generatedItem(CelestialItems.RED_DISPLAY_BOARD.get());
-//		generatedItem(CelestialItems.BLACK_DISPLAY_BOARD.get());
-//		generatedItem(CelestialItems.BLUE_DISPLAY_BOARD.get());
-//		generatedItem(CelestialItems.WHITE_DISPLAY_BOARD.get());
+		generatedItem(CelestialItems.RED_DISPLAY_BOARD.get());
+		generatedItem(CelestialItems.BLACK_DISPLAY_BOARD.get());
+		generatedItem(CelestialItems.BLUE_DISPLAY_BOARD.get());
+		generatedItem(CelestialItems.WHITE_DISPLAY_BOARD.get());
 
 		generatedItem(CelestialItems.BLACK_MECHACROW.get());
 		generatedItem(CelestialItems.GREY_MECHACROW.get());

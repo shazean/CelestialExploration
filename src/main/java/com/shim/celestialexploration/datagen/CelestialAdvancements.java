@@ -152,10 +152,10 @@ public class CelestialAdvancements extends AdvancementProvider {
                 .save(consumer, modLoc("all_mechadogs"));
 
 
-//        Advancement blueDisplayBoard = Advancement.Builder.advancement().display(new ItemStack(CelestialItems.BLUE_DISPLAY_BOARD.get()),
-//                        new TranslatableComponent("advancements.celestialexploration.blue_display_board.title"), new TranslatableComponent("advancements.celestialexploration.blue_display_board.description"),
-//                        null, FrameType.TASK, true, true, false)
-//                .parent(root).addCriterion("blue_display_board", InventoryChangeTrigger.TriggerInstance.hasItems(CelestialItems.BLUE_DISPLAY_BOARD.get())).save(consumer, modLoc("blue_display_board"));
+        Advancement blueDisplayBoard = Advancement.Builder.advancement().display(new ItemStack(CelestialItems.BLUE_DISPLAY_BOARD.get()),
+                        new TranslatableComponent("advancements.celestialexploration.blue_display_board.title"), new TranslatableComponent("advancements.celestialexploration.blue_display_board.description"),
+                        null, FrameType.TASK, true, true, false)
+                .parent(root).addCriterion("blue_display_board", InventoryChangeTrigger.TriggerInstance.hasItems(CelestialItems.BLUE_DISPLAY_BOARD.get())).save(consumer, modLoc("blue_display_board"));
 
 
     }

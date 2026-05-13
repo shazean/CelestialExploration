@@ -4,8 +4,10 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "celestialexploration.mixin-refmap.json",
   "mixins": [
+    "WanderingTraderSpawnMixin"
   ],
   "client": [
+    "DisplayBoardSignMaterialMixin"
   ],
   "minVersion": "0.8",
   "injectors": {

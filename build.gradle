@@ -156,7 +156,7 @@ dependencies {
     implementation fg.deobf("curse.maven:lazy-dfu-forge-460819:3544496")
 
 //    implementation fg.deobf("celestiallib:celestiallib-${minecraft_version}:v${celestiallib_version}")
-    implementation fg.deobf("curse.maven:celestiallib-1297767:7075056")
+    implementation fg.deobf("curse.maven:celestiallib-1297767:8066164")
 
 }
 
