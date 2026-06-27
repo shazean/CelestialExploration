@@ -142,12 +142,12 @@ public class CelestialLangProvider extends LanguageProvider {
 		add("itemGroup.celestial_misc_tab", "Celestial Items");
 
 		//---- KEYBINDINGS -------------------------------------------------------------------------------
-		add("key.categories.spaceship_controls", "Spaceship Controls");
-		add("key.celestialexploration.flight_ascent", "Spaceship Ascent");
-		add("key.celestialexploration.flight_descent", "Spaceship Descent");
-		add("key.celestialexploration.turn_left", "Spaceship Strafe Left");
-		add("key.celestialexploration.turn_right", "Spaceship Strafe Right");
-		add("key.celestialexploration.open_spaceship_inventory", "Open Spaceship Inventory");
+		add("key.categories.vehicle_controls", "Vehicle Controls");
+		add("key.celestialexploration.flight_ascent", "Vehicle Ascent");
+		add("key.celestialexploration.flight_descent", "Vehicle Descent");
+		add("key.celestialexploration.turn_left", "Vehicle Strafe Left");
+		add("key.celestialexploration.turn_right", "vehicle Strafe Right");
+		add("key.celestialexploration.open_vehicle_inventory", "Open Vehicle Inventory");
 
 		//---- DAMAGE SOURCES -------------------------------------------------------------------------------
 		add("death.attack.celestialexploration.touched_sun", "%1$s discovered the sun is hot");

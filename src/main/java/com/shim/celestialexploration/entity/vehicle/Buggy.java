@@ -2,16 +2,9 @@ package com.shim.celestialexploration.entity.vehicle;
 
 import com.google.common.collect.Lists;
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.capabilities.LoxTankCapability;
-import com.shim.celestialexploration.config.CelestialCommonConfig;
-import com.shim.celestialexploration.entity.DyeType;
-import com.shim.celestialexploration.entity.IDyeable;
-import com.shim.celestialexploration.entity.client.dispatchers.SpaceshipDispatcher;
-import com.shim.celestialexploration.inventory.menus.SpaceshipMenu;
-import com.shim.celestialexploration.packets.*;
-import com.shim.celestialexploration.registry.*;
+import com.shim.celestialexploration.entity.client.dispatchers.BuggyDispatcher;
+import com.shim.celestialexploration.registry.CelestialEntities;
 import com.shim.celestialexploration.util.Keybinds;
-import com.shim.celestialexploration.util.CelestialUtil;
 import net.minecraft.BlockUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -29,8 +22,12 @@ import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.*;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.animal.FlyingAnimal;
 import net.minecraft.world.entity.animal.WaterAnimal;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -38,6 +35,7 @@ import net.minecraft.world.entity.vehicle.DismountHelper;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.WaterlilyBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -48,9 +46,7 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.wrapper.InvWrapper;
 import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.NotNull;
@@ -59,15 +55,11 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class Spaceship extends Entity implements ContainerListener, MenuProvider, IDyeable {
-    private static final EntityDataAccessor<Integer> DATA_ID_HURT = SynchedEntityData.defineId(Spaceship.class, EntityDataSerializers.INT);
-    private static final EntityDataAccessor<Integer> DATA_ID_HURTDIR = SynchedEntityData.defineId(Spaceship.class, EntityDataSerializers.INT);
-    private static final EntityDataAccessor<Float> DATA_ID_DAMAGE = SynchedEntityData.defineId(Spaceship.class, EntityDataSerializers.FLOAT);
-    private static final EntityDataAccessor<Integer> DATA_ID_TYPE = SynchedEntityData.defineId(Spaceship.class, EntityDataSerializers.INT);
-    private static final EntityDataAccessor<Byte> DATA_ID_FLAGS = SynchedEntityData.defineId(Spaceship.class, EntityDataSerializers.BYTE);
-    private static final EntityDataAccessor<Integer> DATA_ID_TIME_ON_GROUND = SynchedEntityData.defineId(Spaceship.class, EntityDataSerializers.INT);
-    private static final EntityDataAccessor<Integer> DATA_ID_FUEL_TICKS = SynchedEntityData.defineId(Spaceship.class, EntityDataSerializers.INT);
-    private static final EntityDataAccessor<Integer> DATA_ID_FUEL = SynchedEntityData.defineId(Spaceship.class, EntityDataSerializers.INT);
+public class Buggy extends Entity implements ContainerListener, MenuProvider {
+    private static final EntityDataAccessor<Integer> DATA_ID_HURT = SynchedEntityData.defineId(Buggy.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> DATA_ID_HURTDIR = SynchedEntityData.defineId(Buggy.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Float> DATA_ID_DAMAGE = SynchedEntityData.defineId(Buggy.class, EntityDataSerializers.FLOAT);
+    private static final EntityDataAccessor<Byte> DATA_ID_FLAGS = SynchedEntityData.defineId(Buggy.class, EntityDataSerializers.BYTE);
     private float outOfControlTicks;
     public float oldDeltaRotation;
     public float deltaRotation;
@@ -77,59 +69,52 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
     private double lerpZ;
     private double lerpYRot;
     private double lerpXRot;
-    private Status status;
-    private static final float SPACESHIP_SPEED = (float) (double) CelestialCommonConfig.SPACESHIP_SPEED.get();
-    public static final float SPACESHIP_LOW_FUEL_SPEED = SPACESHIP_SPEED - .15F;
-    private static final float SPACESHIP_NO_FUEL_SPEED = .2F;
-    private static final float SPACESHIP_IN_SPACE_SPEED = SPACESHIP_SPEED + .15F;
+    private Buggy.Status status;
+    private static final float BUGGY_SPEED = .2F;
     protected SimpleContainer inventory;
-    private static final int MAX_FUEL_TICKS = CelestialCommonConfig.SPACESHIP_FUEL_RATE.get();
-    public static int maxTimeOnGround = 15;
-    private final int LOW_FUEL = 300;
-    public final SpaceshipDispatcher dispatcher;
+    public final BuggyDispatcher dispatcher;
     public float jankyFixYRot;
     public float jankyFixYRotO;
-    private float accelerationXZ;
-    private float accelerationY;
-    private boolean isBackwards = false;
+    protected int jumpDelay;
 
-    public Spaceship(EntityType<? extends Spaceship> p_38290_, Level p_38291_) {
+    public Buggy(EntityType<? extends Buggy> p_38290_, Level p_38291_) {
         super(p_38290_, p_38291_);
         this.blocksBuilding = true;
         this.createInventory();
-        this.dispatcher = new SpaceshipDispatcher(this);
+        this.dispatcher = new BuggyDispatcher(this);
     }
 
-    public Spaceship(Level p_38293_, double p_38294_, double p_38295_, double p_38296_) {
-        this(CelestialEntities.SPACESHIP.get(), p_38293_);
+    public Buggy(Level p_38293_, double p_38294_, double p_38295_, double p_38296_) {
+        this(CelestialEntities.BUGGY.get(), p_38293_);
         this.setPos(p_38294_, p_38295_, p_38296_);
         this.xo = p_38294_;
         this.yo = p_38295_;
         this.zo = p_38296_;
-        this.setNoGravity(true);
+//        this.setNoGravity(true);
     }
 
     @Override
-    public void containerChanged(Container p_18983_) {
-    }
+    public void containerChanged(Container p_18983_) {}
 
     @org.jetbrains.annotations.Nullable
     @Override
     public AbstractContainerMenu createMenu(int containerId, Inventory inventory, Player player) {
-        return new SpaceshipMenu(containerId, inventory, this, CelestialUtil.getPlanetLocations());
+        //FIXME
+//        return new BuggyMenu(containerId, inventory, this, CelestialUtil.getPlanetLocations());
+        return null;
     }
 
     @Override
     public Component getDisplayName() {
-        return new TranslatableComponent("entity.celestialexploration.spaceship");
+        return new TranslatableComponent("entity.celestialexploration.buggy");
     }
 
     protected float getEyeHeight(Pose p_38327_, EntityDimensions p_38328_) {
         return p_38328_.height;
     }
 
-    protected MovementEmission getMovementEmission() {
-        return MovementEmission.NONE;
+    protected Entity.MovementEmission getMovementEmission() {
+        return Entity.MovementEmission.NONE;
     }
 
     @Override
@@ -137,11 +122,7 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
         this.entityData.define(DATA_ID_HURT, 0);
         this.entityData.define(DATA_ID_HURTDIR, 1);
         this.entityData.define(DATA_ID_DAMAGE, 0.0F);
-        this.entityData.define(DATA_ID_TYPE, DyeType.WHITE.ordinal());
         this.entityData.define(DATA_ID_FLAGS, (byte) 0);
-        this.entityData.define(DATA_ID_TIME_ON_GROUND, 1);
-        this.entityData.define(DATA_ID_FUEL_TICKS, MAX_FUEL_TICKS);
-        this.entityData.define(DATA_ID_FUEL, 0);
     }
 
     @Override
@@ -199,24 +180,9 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
     }
 
     public Item getDropItem() {
-        return switch (this.getDyeType()) {
-            case BLACK -> CelestialItems.BLACK_SPACESHIP.get();
-            case GREY -> CelestialItems.GREY_SPACESHIP.get();
-            case LIGHT_GREY -> CelestialItems.LIGHT_GREY_SPACESHIP.get();
-            case WHITE -> CelestialItems.WHITE_SPACESHIP.get();
-            case PINK -> CelestialItems.PINK_SPACESHIP.get();
-            case MAGENTA -> CelestialItems.MAGENTA_SPACESHIP.get();
-            case RED -> CelestialItems.RED_SPACESHIP.get();
-            case ORANGE -> CelestialItems.ORANGE_SPACESHIP.get();
-            case YELLOW -> CelestialItems.YELLOW_SPACESHIP.get();
-            case LIME -> CelestialItems.LIME_SPACESHIP.get();
-            case GREEN -> CelestialItems.GREEN_SPACESHIP.get();
-            case CYAN -> CelestialItems.CYAN_SPACESHIP.get();
-            case LIGHT_BLUE -> CelestialItems.LIGHT_BLUE_SPACESHIP.get();
-            case BLUE -> CelestialItems.BLUE_SPACESHIP.get();
-            case PURPLE -> CelestialItems.PURPLE_SPACESHIP.get();
-            default -> CelestialItems.WHITE_SPACESHIP.get();
-        };
+        return null;
+        //FIXME
+//       return CelestialItems.BUGGY.get();
     }
 
     public void animateHurt() {
@@ -242,38 +208,6 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
         return this.getDirection().getClockWise();
     }
 
-    public void setTimeOnGround(int time) {
-        this.entityData.set(DATA_ID_TIME_ON_GROUND, time);
-    }
-
-    public int getTimeOnGround() {
-        return this.entityData.get(DATA_ID_TIME_ON_GROUND);
-    }
-
-    public void setFuelTicks(int ticks) {
-        this.entityData.set(DATA_ID_FUEL_TICKS, ticks);
-    }
-
-    public int getFuelTicks() {
-        return this.entityData.get(DATA_ID_FUEL_TICKS);
-    }
-
-    public void setFuelDataId(int mb) {
-        this.entityData.set(DATA_ID_FUEL, mb);
-    }
-
-    public int getFuelDataId() {
-        return this.entityData.get(DATA_ID_FUEL);
-    }
-
-    public boolean isFuelDataIdLowFuel() {
-        return getFuelDataId() <= LOW_FUEL;
-    }
-
-    public void decrementFuelTicks() {
-        this.setFuelTicks(this.getFuelTicks() - 1);
-    }
-
     public void tick() {
 
 //        if (this.level.isClientSide) {
@@ -281,7 +215,7 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
 //        }
 
         this.status = this.getStatus();
-        if (this.status != Status.UNDER_WATER && this.status != Status.UNDER_FLOWING_WATER) {
+        if (this.status != Buggy.Status.UNDER_WATER && this.status != Buggy.Status.UNDER_FLOWING_WATER) {
             this.outOfControlTicks = 0.0F;
         } else {
             ++this.outOfControlTicks;
@@ -299,79 +233,33 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
             this.setDamage(this.getDamage() - 1.0F);
         }
 
-        if (!this.isOnGround()) this.setTimeOnGround(0);
-        else if (this.getTimeOnGround() < maxTimeOnGround) this.setTimeOnGround(this.getTimeOnGround() + 1);
-
         super.tick();
         this.tickLerp();
+
+        if (this.jumpDelay > 0) this.jumpDelay--;
+
         if (this.isControlledByLocalInstance()) {
             if (this.level.isClientSide) {
-
-                if (this.isVehicle()) {
-                    LivingEntity passenger = (LivingEntity) this.getControllingPassenger();
-                    if (passenger.zza != 0) {
-                        this.accelerationXZ += 0.025F;
-                        if (this.accelerationXZ > 1.0F)
-                            this.accelerationXZ = 1.0F;
-                    } else {
-                        if (this.accelerationXZ > 0.0F) {
-                            this.accelerationXZ -= 0.1F;
-                        } else {
-                            this.accelerationXZ = 0.0F;
-                        }
-                    }
-
-                    if (Keybinds.ASCEND_KEY.isDown() || Keybinds.DESCEND_KEY.isDown()) {
-                        this.accelerationY += 0.025F;
-                        if (this.accelerationY > 1.0F)
-                            this.accelerationY = 1.0F;
-                    } else {
-                        if (this.accelerationY > 0.0F) {
-                            this.accelerationY -= 0.1F;
-                        } else {
-                            this.accelerationY = 0.0F;
-                        }
-                    }
-
-                    if (passenger.zza < 0) {
-                        this.isBackwards = true;
-                    } else if (passenger.zza > 0) {
-                        this.isBackwards = false;
-                    }
-                }
-
-                this.controlSpaceship();
-                if (this.isVehicle()) {
-                    if (this.getDeltaMovement().z != 0 || this.getDeltaMovement().x != 0) {
-                        CelestialPacketHandler.INSTANCE.sendToServer(new SpaceshipFuelTickPacket(this.getId(), this.getFuelTicks()));
-                        this.dispatcher.flying();
-                    } else {
-                        this.dispatcher.idle();
-                    }
-                } else {
-                    this.setDeltaMovement(Vec3.ZERO);
-                }
+                this.controlBuggy();
             } else {
                 this.setDeltaMovement(Vec3.ZERO);
             }
+
+            if (!this.isOnGround() && this.jumpDelay == 0) {
+                this.setDeltaMovement(this.getDeltaMovement().x(), -0.2D, this.getDeltaMovement().z());
+            }
+
             this.move(MoverType.SELF, this.getDeltaMovement());
         }
 
         if (this.isVehicle() && this.getControllingPassenger() instanceof Player) {
             if (this.level.isClientSide) {
 
+                //TODO
                 if (Keybinds.OPEN_VEHICLE_INVENTORY.isDown()) {
-                    CelestialPacketHandler.INSTANCE.sendToServer(new SpaceshipInventoryPacket(this.getId()));
+//                    CelestialPacketHandler.INSTANCE.sendToServer(new BuggyInventoryPacket(this.getId()));
                 }
             }
-        }
-
-        if (!this.level.isClientSide) {
-            if (this.getFuelTicks() <= 0) {
-                this.useFuel();
-                this.setFuelTicks(MAX_FUEL_TICKS);
-            }
-            this.setFuelDataId(this.getFuel());
         }
 
         this.checkInsideBlocks();
@@ -390,6 +278,72 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
                 }
             }
         }
+    }
+
+    public void controlBuggy() {
+        if (this.isVehicle()) {
+
+            LivingEntity passenger = (LivingEntity) this.getControllingPassenger();
+            if (passenger != null) {
+                float f = passenger.zza * BUGGY_SPEED;
+
+                boolean left = Keybinds.TURN_LEFT_KEY.isDown();
+                boolean right = Keybinds.TURN_RIGHT_KEY.isDown();
+
+                if (f > 0) {
+                         this.dispatcher.moveForward();
+                } else if (f < 0) {
+                         this.dispatcher.moveBackward();
+                } else {
+                         this.dispatcher.idle();
+                }
+
+                float y;
+                if (this.isOnGround() && Keybinds.ASCEND_KEY.isDown()) {
+                    y = this.getJumpPower() + (float) this.getJumpBoostPower() + 1.0F;
+                    this.jumpDelay = 8;
+                } else {
+                    y = 0.0F;
+                }
+
+                this.setYRot(passenger.getYRot());
+                this.yRotO = this.getYRot();
+                this.setXRot(passenger.getXRot()* 0.5F);
+                this.setRot(this.getYRot(), this.getXRot());
+
+                this.jankyFixYRotO = jankyFixYRot;
+                this.jankyFixYRot = this.getYRot();
+                
+                this.setDeltaMovement((Mth.sin(-this.getYRot() * ((float) Math.PI / 180F)) * f), y, (Mth.cos(this.getYRot() * ((float) Math.PI / 180F)) * f));
+            }
+        }
+    }
+
+    public float getViewYRot(float p_21286_) {
+        return p_21286_ == 1.0F ? this.getYRot() : Mth.lerp(p_21286_, this.yRotO, this.getYRot());
+    }
+
+    public void travel(Vec3 p_21280_) {
+        if (this.isControlledByLocalInstance()) {
+                    this.setDeltaMovement(p_21280_.x, p_21280_.y, p_21280_.z);
+
+        }
+    }
+
+    protected float getJumpPower() {
+        return 0.42F * this.getBlockJumpFactor();
+    }
+
+    public double getJumpBoostPower() {
+        if (this.isVehicle()) {
+            LivingEntity passenger = (LivingEntity) this.getControllingPassenger();
+            return passenger.hasEffect(MobEffects.JUMP) ? (double)(0.1F * (float)(passenger.getEffect(MobEffects.JUMP).getAmplifier() + 1)) : 0.0D;
+        }
+        return 0.0D;
+    }
+
+    public void setJankyRotationFix(float partialTick) {
+        this.setYRot(Mth.rotLerp(partialTick, jankyFixYRotO, jankyFixYRot));
     }
 
     private void tickLerp() {
@@ -411,14 +365,14 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
         }
     }
 
-    private Status getStatus() {
-        Status spaceship$status = this.isUnderwater();
-        if (spaceship$status != null) {
-            return spaceship$status;
+    private Buggy.Status getStatus() {
+        Buggy.Status buggy$status = this.isUnderwater();
+        if (buggy$status != null) {
+            return buggy$status;
         } else {
             float f = this.getGroundFriction();
-            if (f > 0.0F) return Status.ON_LAND;
-            else return Status.IN_AIR;
+            if (f > 0.0F) return Buggy.Status.ON_LAND;
+            else return Buggy.Status.IN_AIR;
         }
     }
 
@@ -458,8 +412,8 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
 //        return 0;
     }
 
-    @Nullable
-    private Status isUnderwater() {
+    @javax.annotation.Nullable
+    private Buggy.Status isUnderwater() {
         AABB aabb = this.getBoundingBox();
         double d0 = aabb.maxY + 0.001D;
         int i = Mth.floor(aabb.minX);
@@ -477,97 +431,13 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
                     blockpos$mutableblockpos.set(k1, l1, i2);
                     FluidState fluidstate = this.level.getFluidState(blockpos$mutableblockpos);
                     if (fluidstate.is(FluidTags.WATER) && d0 < (double) ((float) blockpos$mutableblockpos.getY() + fluidstate.getHeight(this.level, blockpos$mutableblockpos))) {
-                        if (!fluidstate.isSource()) return Status.UNDER_FLOWING_WATER;
+                        if (!fluidstate.isSource()) return Buggy.Status.UNDER_FLOWING_WATER;
                         flag = true;
                     }
                 }
             }
         }
-        return flag ? Status.UNDER_WATER : null;
-    }
-
-    public boolean hasFuel() {
-        LoxTankCapability.ILoxTank firstTankCap = getTankCap(this.inventory.getItem(0));
-        LoxTankCapability.ILoxTank secondTankCap = getTankCap(this.inventory.getItem(1));
-        LoxTankCapability.ILoxTank thirdTankCap = getTankCap(this.inventory.getItem(2));
-        LoxTankCapability.ILoxTank fourthTankCap = getTankCap(this.inventory.getItem(3));
-
-        if (firstTankCap != null && !firstTankCap.isEmpty()) return true;
-        if (secondTankCap != null && !secondTankCap.isEmpty()) return true;
-        if (thirdTankCap != null && !thirdTankCap.isEmpty()) return true;
-        if (fourthTankCap != null) return !fourthTankCap.isEmpty();
-
-        return false;
-    }
-
-    private void useFuel() {
-        LoxTankCapability.ILoxTank firstTankCap = getTankCap(this.inventory.getItem(0));
-        LoxTankCapability.ILoxTank secondTankCap = getTankCap(this.inventory.getItem(1));
-        LoxTankCapability.ILoxTank thirdTankCap = getTankCap(this.inventory.getItem(2));
-        LoxTankCapability.ILoxTank fourthTankCap = getTankCap(this.inventory.getItem(3));
-
-        if (hasLowFuel()) {
-            if (firstTankCap != null && !firstTankCap.isEmpty()) firstTankCap.decrementAmountByFifty();
-            else if (secondTankCap != null && !secondTankCap.isEmpty()) secondTankCap.decrementAmountByFifty();
-            else if (thirdTankCap != null && !thirdTankCap.isEmpty()) thirdTankCap.decrementAmountByFifty();
-            else if (fourthTankCap != null && !fourthTankCap.isEmpty()) fourthTankCap.decrementAmountByFifty();
-        } else {
-            if (firstTankCap != null && !firstTankCap.isEmpty()) firstTankCap.decrementAmount();
-            else if (secondTankCap != null && !secondTankCap.isEmpty()) secondTankCap.decrementAmount();
-            else if (thirdTankCap != null && !thirdTankCap.isEmpty()) thirdTankCap.decrementAmount();
-            else if (fourthTankCap != null && !fourthTankCap.isEmpty()) fourthTankCap.decrementAmount();
-        }
-    }
-
-    public boolean hasLowFuel() {
-        return getFuel() <= LOW_FUEL;
-    }
-
-    private LoxTankCapability.ILoxTank getTankCap(ItemStack tank) {
-        return CelestialExploration.getCapability(tank, CelestialCapabilities.LOX_TANK_CAPABILITY);
-    }
-
-    public int getFuel() {
-        int totalFuel = 0;
-
-        LoxTankCapability.ILoxTank firstTankCap = getTankCap(this.inventory.getItem(0));
-        LoxTankCapability.ILoxTank secondTankCap = getTankCap(this.inventory.getItem(1));
-        LoxTankCapability.ILoxTank thirdTankCap = getTankCap(this.inventory.getItem(2));
-        LoxTankCapability.ILoxTank fourthTankCap = getTankCap(this.inventory.getItem(3));
-
-        if (firstTankCap != null && !firstTankCap.isEmpty()) totalFuel += firstTankCap.getAmount();
-        if (secondTankCap != null && !secondTankCap.isEmpty()) totalFuel += secondTankCap.getAmount();
-        if (thirdTankCap != null && !thirdTankCap.isEmpty()) totalFuel += thirdTankCap.getAmount();
-        if (fourthTankCap != null && !fourthTankCap.isEmpty()) totalFuel += fourthTankCap.getAmount();
-
-        return totalFuel;
-    }
-
-    public float getMaxSpeedAllowed() {
-        Entity passenger = this.getControllingPassenger();
-        if (passenger instanceof Player player && player.isCreative()) {
-//                if (CelestialCommonConfig.SPACESHIP_FASTER_IN_SPACE.get() && this.level.dimension() == CelestialDimensions.MILKY_WAY)
-//                    return SPACESHIP_IN_SPACE_SPEED;
-            return SPACESHIP_SPEED;
-        } else if (this.getFuelDataId() > 0) {
-            if (this.getFuelDataId() <= LOW_FUEL) return SPACESHIP_LOW_FUEL_SPEED;
-//            if (CelestialCommonConfig.SPACESHIP_FASTER_IN_SPACE.get() && this.level.dimension() == CelestialDimensions.MILKY_WAY)
-//                return SPACESHIP_IN_SPACE_SPEED;
-            else return SPACESHIP_SPEED;
-        } else return SPACESHIP_NO_FUEL_SPEED;
-    }
-
-    public double getDisplaySpeed() {
-        if (!this.isVehicle()) return 0.0;
-        else {
-            float currentSpeed = Math.min(this.getMaxSpeedAllowed(), this.accelerationXZ);
-//            CelestialExploration.LOGGER.debug("currentSpeed: " + currentSpeed + ", accelXZ: " + this.accelerationXZ);
-            LivingEntity passenger = (LivingEntity) this.getControllingPassenger();
-            if (passenger.zza == 0) {
-                return Math.max(currentSpeed, Math.abs(this.getDeltaMovement().y()));
-            } else
-                return Math.max(Math.abs(passenger.zza * currentSpeed), Math.abs(this.getDeltaMovement().y()));
-        }
+        return flag ? Buggy.Status.UNDER_WATER : null;
     }
 
     public static Vec3 translateWithXRotation(@Nonnull Vec3 baseIn, double rotationIn, double xOffsetIn, double yOffsetIn, double zOffsetIn) {
@@ -577,93 +447,38 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
         return new Vec3(baseIn.x + offsetXRotated, baseIn.y + yOffsetIn, baseIn.z + offsetZRotated);
     }
 
-    public void controlSpaceship() {
-        if (this.isVehicle()) {
-            float currentSpeed = Math.min(this.getMaxSpeedAllowed(), this.accelerationXZ);
-
-            LivingEntity passenger = (LivingEntity) this.getControllingPassenger();
-            if (passenger != null) {
-                float f;
-                if (passenger.zza == 0.0) {
-                    f = this.isBackwards ? -this.accelerationXZ : this.accelerationXZ;
-                } else {
-                    if (passenger.isSprinting()) {
-                        f = (passenger.zza * currentSpeed) + 0.15F;
-                    } else
-                        f = passenger.zza * currentSpeed;
-                }
-
-//                if (Keybinds.TURN_LEFT_KEY.isDown()) {
-//                    this.deltaRotation--;
-//                } else if (Keybinds.TURN_RIGHT_KEY.isDown()) {
-//                    this.deltaRotation++;
-//                } else {
-//                    this.deltaRotation = 0;
-//                }
-//
-//                this.jankyFixYRotO = jankyFixYRot;
-//                this.jankyFixYRot = this.getYRot() + this.deltaRotation;
-//
-//                this.setYRot(this.getYRot() + this.deltaRotation);
-
-                this.setYRot(passenger.getYRot());
-                this.yRotO = this.getYRot();
-                this.setXRot(passenger.getXRot() * 0.5F);
-                this.setRot(this.getYRot(), this.getXRot());
-
-                this.jankyFixYRotO = jankyFixYRot;
-                this.jankyFixYRot = this.getYRot();
-
-                float f1;
-
-                if (Keybinds.ASCEND_KEY.isDown()) f1 = Math.min(this.getMaxSpeedAllowed(), this.accelerationY); //this.getMaxSpeedAllowed();
-                else if (Keybinds.DESCEND_KEY.isDown())
-                    f1 = -1 * Math.min(SPACESHIP_SPEED, this.accelerationY); //SPACESHIP_SPEED; //spaceship can always descend at normal speed
-                else f1 = 0;
-
-                this.setDeltaMovement((Mth.sin(-this.getYRot() * ((float) Math.PI / 180F)) * f), f1, (Mth.cos(this.getYRot() * ((float) Math.PI / 180F)) * f));
-            }
-        }
-    }
-
-    public float getViewYRot(float p_21286_) {
-        return p_21286_ == 1.0F ? this.getYRot() : Mth.lerp(p_21286_, this.yRotO, this.getYRot());
-    }
-
-    public void setJankyRotationFix(float partialTick) {
-        this.setYRot(Mth.rotLerp(partialTick, jankyFixYRotO, jankyFixYRot));
-    }
-
     public double getPassengersRidingOffset() {  //FIXME
         return 0.45D;
     }
 
     public void positionRider(Entity passenger) {
         if (this.hasPassenger(passenger)) {
-            float f = .9F; //.25F //4.0F
+            float x = -0.45F; //.9F; //.25F //4.0F
+            float z = -0.5F;
 
 //            if (passenger instanceof Animal) {
-//                f += 0.2F;
+//                x += 0.2F;
 //            }
 
             float f1 = (float) ((this.isRemoved() ? (double) 0.01F : this.getPassengersRidingOffset()) + passenger.getMyRidingOffset());
             if (this.getPassengers().size() > 1) {
                 int i = this.getPassengers().indexOf(passenger);
                 if (i == 1) { //0
-                    f = -0.5F; //0.2F
+//                    x = 0.5F; //0.2F
+                    z = -0.5F;
                 }
 //                else {
-//                    f = .25F; //1.1F;
+//                    x = .25F; //1.1F;
 //                }
 
-
             }
+
             if (passenger instanceof Animal) {
-                f += 0.2F;
+                x += 0.2F;
             }
 
-            Vec3 vec3 = (new Vec3(f, 0.0D, 0.0D)).yRot(-this.getYRot() * ((float) Math.PI / 180F) - ((float) Math.PI / 2F));
-            passenger.setPos(this.getX() + vec3.x, this.getY() + (double) f1, this.getZ() + vec3.z);
+            Vec3 vec3 = (new Vec3(x, 0.0D, z)).yRot(-this.getYRot() * ((float) Math.PI / 180F) - ((float) Math.PI / 2F));
+            passenger.setPos(this.getX() + vec3.x, this.getY() + (double) f1 + 0.35F, this.getZ() + vec3.z);
             passenger.setYRot(passenger.getYRot() + this.deltaRotation);
             passenger.setYHeadRot(passenger.getYHeadRot() + this.deltaRotation);
             passenger.setYHeadRot(passenger.getYHeadRot() + this.deltaRotation);
@@ -723,7 +538,6 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
     }
 
     protected void addAdditionalSaveData(CompoundTag tag) {
-        tag.putString("Type", this.getDyeType().getName());
         ListTag listtag = new ListTag();
 
         for (int i = 0; i < this.inventory.getContainerSize(); ++i) {
@@ -738,20 +552,9 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
 
         tag.put("Items", listtag);
 
-        if (!this.inventory.getItem(0).isEmpty())
-            tag.put("Fuel Tank 1", this.getTankCap(this.inventory.getItem(0)).getLoxData());
-        if (!this.inventory.getItem(1).isEmpty())
-            tag.put("Fuel Tank 2", this.getTankCap(this.inventory.getItem(1)).getLoxData());
-        if (!this.inventory.getItem(2).isEmpty())
-            tag.put("Fuel Tank 3", this.getTankCap(this.inventory.getItem(2)).getLoxData());
-        if (!this.inventory.getItem(3).isEmpty())
-            tag.put("Fuel Tank 4", this.getTankCap(this.inventory.getItem(3)).getLoxData());
     }
 
     protected void readAdditionalSaveData(CompoundTag tag) {
-        if (tag.contains("Type", 8)) {
-            this.setDyeType(DyeType.byName(tag.getString("Type")));
-        }
         ListTag listtag = tag.getList("Items", 10);
 
         this.createInventory();
@@ -762,23 +565,11 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
                 this.inventory.setItem(j, ItemStack.of(compoundtag));
             }
         }
-
-        if (tag.contains("Fuel Tank 1"))
-            this.getTankCap(this.inventory.getItem(0)).setLoxData(tag.getCompound("Fuel Tank 1"));
-        if (tag.contains("Fuel Tank 2"))
-            this.getTankCap(this.inventory.getItem(1)).setLoxData(tag.getCompound("Fuel Tank 2"));
-        if (tag.contains("Fuel Tank 3"))
-            this.getTankCap(this.inventory.getItem(2)).setLoxData(tag.getCompound("Fuel Tank 3"));
-        if (tag.contains("Fuel Tank 4"))
-            this.getTankCap(this.inventory.getItem(3)).setLoxData(tag.getCompound("Fuel Tank 4"));
         this.updateContainerEquipment();
     }
 
     @Override
     public void load(CompoundTag tag) {
-        if (tag.contains("Type", 8)) {
-            this.setDyeType(DyeType.byName(tag.getString("Type")));
-        }
         ListTag listtag = tag.getList("Items", 10);
 
         this.createInventory();
@@ -789,15 +580,6 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
                 this.inventory.setItem(j, ItemStack.of(compoundtag));
             }
         }
-
-        if (tag.contains("Fuel Tank 1"))
-            this.getTankCap(this.inventory.getItem(0)).setLoxData(tag.getCompound("Fuel Tank 1"));
-        if (tag.contains("Fuel Tank 2"))
-            this.getTankCap(this.inventory.getItem(1)).setLoxData(tag.getCompound("Fuel Tank 2"));
-        if (tag.contains("Fuel Tank 3"))
-            this.getTankCap(this.inventory.getItem(2)).setLoxData(tag.getCompound("Fuel Tank 3"));
-        if (tag.contains("Fuel Tank 4"))
-            this.getTankCap(this.inventory.getItem(3)).setLoxData(tag.getCompound("Fuel Tank 4"));
         this.updateContainerEquipment();
 
         super.load(tag);
@@ -847,11 +629,11 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
         }
     }
 
-    private LazyOptional<?> itemHandler = null;
+    private net.minecraftforge.common.util.LazyOptional<?> itemHandler = null;
 
     @Override
-    public <T> LazyOptional<T> getCapability(Capability<T> capability, @Nullable Direction facing) {
-        if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && itemHandler != null)
+    public <T> net.minecraftforge.common.util.LazyOptional<T> getCapability(net.minecraftforge.common.capabilities.Capability<T> capability, @Nullable net.minecraft.core.Direction facing) {
+        if (capability == net.minecraftforge.items.CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && itemHandler != null)
             return itemHandler.cast();
         return super.getCapability(capability, facing);
     }
@@ -860,7 +642,7 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
     public void invalidateCaps() {
         super.invalidateCaps();
         if (itemHandler != null) {
-            LazyOptional<?> oldHandler = itemHandler;
+            net.minecraftforge.common.util.LazyOptional<?> oldHandler = itemHandler;
             itemHandler = null;
             oldHandler.invalidate();
         }
@@ -886,12 +668,11 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
     }
 
 //    protected void checkFallDamage(double p_38307_, boolean p_38308_, BlockState p_38309_, BlockPos p_38310_) {
-
-    /// /        double lastYd = this.getDeltaMovement().y;
+    ////        double lastYd = this.getDeltaMovement().y;
 //        if (!this.isPassenger()) {
 //            if (p_38308_) {
 //                if (this.fallDistance > 3.0F) {
-//                    if (this.status != Spaceship.Status.ON_LAND) {
+//                    if (this.status != Buggy.Status.ON_LAND) {
 //                        this.resetFallDistance();
 //                        return;
 //                    }
@@ -914,6 +695,7 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
 //
 //        }
 //    }
+
     public void setDamage(float p_38312_) {
         this.entityData.set(DATA_ID_DAMAGE, p_38312_);
     }
@@ -938,14 +720,6 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
         return this.entityData.get(DATA_ID_HURTDIR);
     }
 
-    public void setDyeType(DyeType p_38333_) {
-        this.entityData.set(DATA_ID_TYPE, p_38333_.ordinal());
-    }
-
-    public DyeType getDyeType() {
-        return DyeType.byId(this.entityData.get(DATA_ID_TYPE));
-    }
-
     protected boolean canAddPassenger(Entity p_38390_) {
         return this.getPassengers().size() < 2 && !this.isEyeInFluid(FluidTags.WATER);
     }
@@ -960,7 +734,7 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
     }
 
     public boolean isUnderWater() {
-        return this.status == Status.UNDER_WATER || this.status == Status.UNDER_FLOWING_WATER;
+        return this.status == Buggy.Status.UNDER_WATER || this.status == Buggy.Status.UNDER_FLOWING_WATER;
     }
 
     @Override

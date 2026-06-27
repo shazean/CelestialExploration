@@ -1,11 +1,2 @@
-- `[FIX]` Reduced the super-flat-quantities of slime spawning insanity
-- `[NEW]` New Venus volcanoes!
-  - `[NEW]` New Vulkan mini boss on said volcanoes!
-  - `[NEW]` New brimstone (regular, polished, smooth) blocks
-  - `[NEW]` New smoking magma block
-- `[NEW]` New solar field structures on various planets
-- `[FIX]` Fixed bug that stopped clients from joining a server
-- `[FIX]` Fixed bug that was creating a conflict with Geckolib
-- `[FIX]` Removed fall damage when you're actively IN a spaceship, because this was especially causing problems if you tried to land a spaceship while the server was still trying to recover from teleportation
-- `[NEW]` New wandering celestial trader, complete with space llamas! Trade emeralds for some exclusive-to-space items—including some lunar dust types not currently attainable any other way!
-- `[FIX]` Fixed display boards causing a crash on server startup
+- `[CHG]` Changed turning style of spaceship to be camera based rather than keybind based
+- `[NEW]` New Lunar buggy vehicle!

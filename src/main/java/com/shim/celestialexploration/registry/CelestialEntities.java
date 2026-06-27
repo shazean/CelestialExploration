@@ -73,6 +73,7 @@ public class CelestialEntities {
     //---- VEHICLES -------------------------------------------------------------------------------
     public static final RegistryObject<EntityType<Spaceship>> SPACESHIP = registerEntityType("spaceship", "Spaceship", () -> EntityType.Builder.<Spaceship>of(Spaceship::new, MobCategory.MISC).sized(2.45f, 2.65f).build(modLocString("spaceship")));
 //    public static final RegistryObject<EntityType<SpaceTaxi>> SPACE_TAXI = registerEntityType("space_taxi", "Space Taxi", () -> EntityType.Builder.<SpaceTaxi>of(SpaceTaxi::new, MobCategory.MISC).sized(2.45f, 2.65f).build(modLocString("space_taxi")));
+public static final RegistryObject<EntityType<Buggy>> BUGGY = registerEntityType("buggy", "Buggy", () -> EntityType.Builder.<Buggy>of(Buggy::new, MobCategory.MISC).sized(2.8f, 2.8f).build(modLocString("buggy")));
 
     //---- MAGCARTS -------------------------------------------------------------------------------
     public static final RegistryObject<EntityType<MagCart>> MAGCART = registerEntityType("magcart", "Magcart", () -> EntityType.Builder.<MagCart>of(MagCart::new, MobCategory.MISC).sized(0.98f, 1.5f).clientTrackingRange(8).build(modLocString("magcart")));
