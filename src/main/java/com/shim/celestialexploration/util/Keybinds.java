@@ -13,16 +13,16 @@ public class Keybinds {
 
     public static KeyMapping DESCEND_KEY;
     public static KeyMapping ASCEND_KEY;
-    public static KeyMapping TURN_LEFT_KEY;
-    public static KeyMapping TURN_RIGHT_KEY;
+//    public static KeyMapping TURN_LEFT_KEY;
+//    public static KeyMapping TURN_RIGHT_KEY;
     public static KeyMapping OPEN_VEHICLE_INVENTORY;
 
 
     public static void register(FMLClientSetupEvent event) {
         DESCEND_KEY = keymap("flight_descent", GLFW.GLFW_KEY_LEFT_SHIFT, "key.categories.vehicle_controls");
         ASCEND_KEY = keymap("flight_ascent", GLFW.GLFW_KEY_SPACE, "key.categories.vehicle_controls");
-        TURN_LEFT_KEY = keymap("turn_left", GLFW.GLFW_KEY_A, "key.categories.vehicle_controls");
-        TURN_RIGHT_KEY = keymap("turn_right", GLFW.GLFW_KEY_D, "key.categories.vehicle_controls");
+//        TURN_LEFT_KEY = keymap("turn_left", GLFW.GLFW_KEY_A, "key.categories.vehicle_controls");
+//        TURN_RIGHT_KEY = keymap("turn_right", GLFW.GLFW_KEY_D, "key.categories.vehicle_controls");
         OPEN_VEHICLE_INVENTORY = keymap("open_vehicle_inventory", GLFW.GLFW_KEY_I, "key.categories.vehicle_controls");
     }
 

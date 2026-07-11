@@ -1,0 +1,27 @@
+{
+  "type": "celestialexploration:workbench_crafting",
+  "pattern": [
+    "cXr",
+    "xxx"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:steel_frame"
+    },
+    "c": {
+      "tag": "forge:chests"
+    },
+    "r": {
+      "item": "minecraft:redstone"
+    },
+    "x": {
+      "item": "celestialexploration:aluminum_block"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:buggy"
+  },
+  "fluid": "celestialexploration:molten_aluminum",
+  "buckets": 0.111,
+  "experience": 0.2
+}

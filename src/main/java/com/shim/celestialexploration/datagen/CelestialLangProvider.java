@@ -60,7 +60,7 @@ public class CelestialLangProvider extends LanguageProvider {
 		add("celestialexploration.villager.unemployed", "Unemployed");
 
 		//---- FLUIDS -------------------------------------------------------------------------------
-		addFluid(CelestialFluids.LOX_BLOCK.get(), "lox", "Molten Iron");
+		addFluid(CelestialFluids.LOX_BLOCK.get(), "lox", "Liquid Oxygen");
 		addFluid(CelestialFluids.MOLTEN_IRON_BLOCK.get(), "molten_iron", "Molten Iron");
 		addFluid(CelestialFluids.MOLTEN_STEEL_BLOCK.get(), "molten_steel", "Molten Steel");
 		addFluid(CelestialFluids.MOLTEN_COPPER_BLOCK.get(), "molten_copper", "Molten Copper");
@@ -147,7 +147,7 @@ public class CelestialLangProvider extends LanguageProvider {
 		add("key.celestialexploration.flight_descent", "Vehicle Descent");
 		add("key.celestialexploration.turn_left", "Vehicle Strafe Left");
 		add("key.celestialexploration.turn_right", "vehicle Strafe Right");
-		add("key.celestialexploration.open_vehicle_inventory", "Open Vehicle Inventory");
+		add("key.celestialexploration.open_vehicle_inventory", "Open Vehicle Inventory (Celestial Exploration)");
 
 		//---- DAMAGE SOURCES -------------------------------------------------------------------------------
 		add("death.attack.celestialexploration.touched_sun", "%1$s discovered the sun is hot");

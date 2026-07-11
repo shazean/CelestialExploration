@@ -49,7 +49,11 @@ public class SpaceshipGui extends ForgeIngameGui implements IIngameOverlay {
         int altitude = (int) spaceship.position().y;
         String xz = (int) spaceship.position().x() + "/" + (int) spaceship.position().z();
         float maxSpeed = spaceship.getMaxSpeedAllowed();
-        double speed = spaceship.getDisplaySpeed();
+        double speed = spaceship.getDisplaySpeed() - 0.015F;
+
+        if (spaceship.shouldBeSprinting()) speed += 0.015F;
+        else speed = Math.min(speed, 0.985F);
+
         Level level = spaceship.getLevel();
 
         int xAdjustment;
@@ -82,7 +86,7 @@ public class SpaceshipGui extends ForgeIngameGui implements IIngameOverlay {
         blit(poseStack, xAdjustment - 45, yAdjustment, 0, 19, 45, 45); //SPEEDOMETER BASE
 
         //SPEED
-        double x = Math.floor((speed + 0.03) * 10.0) / 10 * 130;
+        double x = Math.floor((speed + 0.03) * 10.0) / 10 * 130; //130
 
         CelestialExploration.LOGGER.debug("speed: " + speed + ", x: " + x);
 //        if (speed == 0.0) {

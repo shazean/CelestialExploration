@@ -12,6 +12,7 @@ import com.shim.celestialexploration.registry.CelestialItems;
 import com.shim.celestialexploration.registry.CelestialTags;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.*;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -390,6 +391,8 @@ public class CelestialRecipeGen extends RecipeProvider {
 		ShapelessRecipeBuilder.shapeless(CelestialItems.PURPLE_SPACESHIP.get()).requires(CelestialItems.WHITE_SPACESHIP.get()).requires(Items.PURPLE_DYE).unlockedBy("spaceship", has(CelestialItems.WHITE_SPACESHIP.get())).save(consumer);
 		ShapelessRecipeBuilder.shapeless(CelestialItems.MAGENTA_SPACESHIP.get()).requires(CelestialItems.WHITE_SPACESHIP.get()).requires(Items.MAGENTA_DYE).unlockedBy("spaceship", has(CelestialItems.WHITE_SPACESHIP.get())).save(consumer);
 		ShapelessRecipeBuilder.shapeless(CelestialItems.BROWN_SPACESHIP.get()).requires(CelestialItems.WHITE_SPACESHIP.get()).requires(Items.BROWN_DYE).unlockedBy("spaceship", has(CelestialItems.WHITE_SPACESHIP.get())).save(consumer);
+
+		WorkbenchCraftingRecipeBuilder.shaped(CelestialItems.BUGGY.get(), 1, CelestialFluids.MOLTEN_ALUMINUM.get(), 0.111F, 0.2F).pattern("cXr").pattern("xxx").define('X', CelestialBlocks.STEEL_FRAME.get()).define('c', Tags.Items.CHESTS).define('r', Items.REDSTONE).define('x', CelestialBlocks.ALUMINUM_BLOCK.get()).unlockedBy("has_steel", has(CelestialItems.STEEL_INGOT.get())).save(consumer, "buggy");
 
 		//---- SPACE STATION -------------------------------------------------------------------------------
 		ShapedRecipeBuilder.shaped(CelestialBlocks.INSULATED_PANEL.get(), 4).pattern("XC").pattern("XC").define('X', CelestialItems.ALUMINUM_INGOT.get()).define('C', CelestialBlocks.WHITE_CERAMIC.get()).unlockedBy("aluminum", has(CelestialItems.ALUMINUM_INGOT.get())).save(consumer);

@@ -23,5 +23,4 @@ public class DisplayBoardSignMaterialMixin {
             material = board.getMaterial();
         return material;
     }
-
 }

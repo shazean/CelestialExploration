@@ -3,6 +3,9 @@ package com.shim.celestialexploration.entity.vehicle;
 import com.google.common.collect.Lists;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.entity.client.dispatchers.BuggyDispatcher;
+import com.shim.celestialexploration.inventory.menus.BuggyMenu;
+import com.shim.celestialexploration.packets.BuggyInventoryPacket;
+import com.shim.celestialexploration.packets.CelestialPacketHandler;
 import com.shim.celestialexploration.registry.CelestialEntities;
 import com.shim.celestialexploration.util.Keybinds;
 import net.minecraft.BlockUtil;
@@ -99,9 +102,8 @@ public class Buggy extends Entity implements ContainerListener, MenuProvider {
     @org.jetbrains.annotations.Nullable
     @Override
     public AbstractContainerMenu createMenu(int containerId, Inventory inventory, Player player) {
-        //FIXME
-//        return new BuggyMenu(containerId, inventory, this, CelestialUtil.getPlanetLocations());
-        return null;
+        return new BuggyMenu(containerId, inventory, this);
+//        return null;
     }
 
     @Override
@@ -255,9 +257,8 @@ public class Buggy extends Entity implements ContainerListener, MenuProvider {
         if (this.isVehicle() && this.getControllingPassenger() instanceof Player) {
             if (this.level.isClientSide) {
 
-                //TODO
                 if (Keybinds.OPEN_VEHICLE_INVENTORY.isDown()) {
-//                    CelestialPacketHandler.INSTANCE.sendToServer(new BuggyInventoryPacket(this.getId()));
+                    CelestialPacketHandler.INSTANCE.sendToServer(new BuggyInventoryPacket(this.getId()));
                 }
             }
         }
@@ -286,9 +287,6 @@ public class Buggy extends Entity implements ContainerListener, MenuProvider {
             LivingEntity passenger = (LivingEntity) this.getControllingPassenger();
             if (passenger != null) {
                 float f = passenger.zza * BUGGY_SPEED;
-
-                boolean left = Keybinds.TURN_LEFT_KEY.isDown();
-                boolean right = Keybinds.TURN_RIGHT_KEY.isDown();
 
                 if (f > 0) {
                          this.dispatcher.moveForward();

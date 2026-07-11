@@ -141,7 +141,10 @@ public class CelestialItems {
 	public static final RegistryObject<Item> ALIEN_LLAMA_SPAWN_EGG = registerItem("alien_llama_spawn_egg", "Alien Llama Spawn Egg", () -> new ForgeSpawnEggItem(CelestialEntities.ALIEN_LLAMA, 0x370169, 0x57ebf9, new Item.Properties().tab(CelestialTabs.CELESTIAL_MISC_TAB)));
 	public static final RegistryObject<Item> SPACE_LLAMA_SPAWN_EGG = registerItem("space_llama_spawn_egg", "Space Llama Spawn Egg", () -> new ForgeSpawnEggItem(CelestialEntities.SPACE_LLAMA, 0x370169, 0x57ebf9, new Item.Properties().tab(CelestialTabs.CELESTIAL_MISC_TAB)));
 
- 	public static final RegistryObject<Item> WHITE_MECHADOG = registerItem("white_mechadog", "White MechaDog", () -> new AutoTameSpawnItem(CelestialEntities.MECHADOG, DyeType.WHITE, new Item.Properties().tab(CelestialTabs.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> BUGGY = registerItem("buggy", "Buggy", () -> new BuggyItem(new Item.Properties().tab(CelestialTabs.CELESTIAL_MISC_TAB)));
+
+
+	public static final RegistryObject<Item> WHITE_MECHADOG = registerItem("white_mechadog", "White MechaDog", () -> new AutoTameSpawnItem(CelestialEntities.MECHADOG, DyeType.WHITE, new Item.Properties().tab(CelestialTabs.CELESTIAL_MISC_TAB)));
 	public static final RegistryObject<Item> GREY_MECHADOG = registerItem("grey_mechadog", "Grey MechaDog", () -> new AutoTameSpawnItem(CelestialEntities.MECHADOG, DyeType.GREY, new Item.Properties().tab(CelestialTabs.CELESTIAL_MISC_TAB)));
 	public static final RegistryObject<Item> LIGHT_GREY_MECHADOG = registerItem("light_grey_mechadog", "Light Grey MechaDog", () -> new AutoTameSpawnItem(CelestialEntities.MECHADOG, DyeType.LIGHT_GREY, new Item.Properties().tab(CelestialTabs.CELESTIAL_MISC_TAB)));
 	public static final RegistryObject<Item> BLACK_MECHADOG = registerItem("black_mechadog", "Black MechaDog", () -> new AutoTameSpawnItem(CelestialEntities.MECHADOG, DyeType.BLACK, new Item.Properties().tab(CelestialTabs.CELESTIAL_MISC_TAB)));

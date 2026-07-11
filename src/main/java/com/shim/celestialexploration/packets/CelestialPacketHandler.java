@@ -31,7 +31,11 @@ public class CelestialPacketHandler {
 
         INSTANCE.registerMessage(i++, SpaceshipInventoryPacket.class, SpaceshipInventoryPacket::encoder,
                 SpaceshipInventoryPacket::decoder, SpaceshipInventoryPacket::handle, Optional.of(NetworkDirection.PLAY_TO_SERVER));
-//
+
+        INSTANCE.registerMessage(i++, BuggyInventoryPacket.class, BuggyInventoryPacket::encoder,
+                BuggyInventoryPacket::decoder, BuggyInventoryPacket::handle, Optional.of(NetworkDirection.PLAY_TO_SERVER));
+
+        //
 //        INSTANCE.registerMessage(i++, TaxiPassengersPacket.class, TaxiPassengersPacket::encoder,
 //                TaxiPassengersPacket::decoder, TaxiPassengersPacket::handle, Optional.of(NetworkDirection.PLAY_TO_SERVER));
 //

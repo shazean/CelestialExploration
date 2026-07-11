@@ -894,7 +894,8 @@ public class CelestialItemModels extends BaseItemModels {
 		generatedItem(CelestialItems.BLUE_MECHACROW.get());
 		generatedItem(CelestialItems.PURPLE_MECHACROW.get());
 
-
+		generatedItem(CelestialItems.BUGGY.get());
+		
 		this.withExistingParent(name(CelestialBlocks.LURKER_HEAD.get()), this.mcLoc("item/template_skull"));
 		this.withExistingParent(name(CelestialBlocks.VOIDED_HEAD.get()), this.mcLoc("item/template_skull"));
 		generatedBlockItem(CelestialBlocks.MECHADOG_HEAD.get(), "item/mechadog_head");

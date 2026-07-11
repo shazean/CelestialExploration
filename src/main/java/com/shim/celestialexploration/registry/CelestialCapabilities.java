@@ -1,14 +1,13 @@
 package com.shim.celestialexploration.registry;
 
 import com.shim.celestialexploration.CelestialExploration;
+import com.shim.celestialexploration.capabilities.IFuelTank;
 import com.shim.celestialexploration.capabilities.LoxTankCapability;
 import com.shim.celestialexploration.entity.vehicle.Spaceship;
 import com.shim.celestiallib.api.capabilities.SpaceVehicleCapabilityProvider;
 import com.shim.celestiallib.capabilities.CLibCapabilities;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.npc.Villager;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.common.capabilities.Capability;
@@ -20,13 +19,13 @@ import net.minecraftforge.fluids.capability.templates.FluidHandlerItemStack;
 
 public class CelestialCapabilities {
 
-    public static final Capability<LoxTankCapability.ILoxTank> LOX_TANK_CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {});
+    public static final Capability<IFuelTank> LOX_TANK_CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {});
 //    public static final Capability<ISpaceFlight> SPACE_FLIGHT_CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {});
 //    public static final Capability<TaxiCapability.ITaxi> TAXI_CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {});
 //    public static final Capability<TaxiCapability.ITaxi> VILLAGER_TRAVEL_CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {});
 
     public static void registerCapabilities(RegisterCapabilitiesEvent eventIn) {
-        eventIn.register(LoxTankCapability.ILoxTank.class);
+        eventIn.register(IFuelTank.class);
 //        eventIn.register(ISpaceFlight.class);
 //        eventIn.register(TaxiCapability.ITaxi.class);
 //        eventIn.register(VillagerTravelCapability.ITravel.class);
