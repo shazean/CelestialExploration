@@ -5,13 +5,13 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 
-public class OxygenTankSlot extends SlotItemHandler {
-    public OxygenTankSlot(IItemHandler itemHandler, int index, int x, int y) {
+public class FuelTankSlot extends SlotItemHandler {
+    public FuelTankSlot(IItemHandler itemHandler, int index, int x, int y) {
         super(itemHandler, index, x, y);
     }
 
     @Override
     public boolean mayPlace(ItemStack stack) {
-        return stack.getItem() == CelestialItems.LOX_TANK.get();
+        return stack.getItem() == CelestialItems.LOX_TANK.get() || stack.getItem() == CelestialItems.METALLIC_HYDROGEN_TANK.get();
     }
 }

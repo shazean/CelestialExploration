@@ -2,7 +2,8 @@ package com.shim.celestialexploration.registry;
 
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.capabilities.IFuelTank;
-import com.shim.celestialexploration.capabilities.LoxTankCapability;
+import com.shim.celestialexploration.capabilities.LoxTankCapabilityProvider;
+import com.shim.celestialexploration.capabilities.MetallicHydrogenCapabilityProvider;
 import com.shim.celestialexploration.entity.vehicle.Spaceship;
 import com.shim.celestiallib.api.capabilities.SpaceVehicleCapabilityProvider;
 import com.shim.celestiallib.capabilities.CLibCapabilities;
@@ -19,7 +20,7 @@ import net.minecraftforge.fluids.capability.templates.FluidHandlerItemStack;
 
 public class CelestialCapabilities {
 
-    public static final Capability<IFuelTank> LOX_TANK_CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {});
+    public static final Capability<IFuelTank> FUEL_TANK_CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {});
 //    public static final Capability<ISpaceFlight> SPACE_FLIGHT_CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {});
 //    public static final Capability<TaxiCapability.ITaxi> TAXI_CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {});
 //    public static final Capability<TaxiCapability.ITaxi> VILLAGER_TRAVEL_CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {});
@@ -33,7 +34,10 @@ public class CelestialCapabilities {
 
     public static void attachItemCapabilities(AttachCapabilitiesEvent<ItemStack> eventIn) {
         if (eventIn.getObject().getItem() == CelestialItems.LOX_TANK.get()) {
-            eventIn.addCapability(new ResourceLocation(CelestialExploration.MODID, "lox_tank_item"), new LoxTankCapability.LoxTankCapabilityProvider());
+            eventIn.addCapability(new ResourceLocation(CelestialExploration.MODID, "lox_fuel_tank_item"), new LoxTankCapabilityProvider());
+        }
+        if (eventIn.getObject().getItem() == CelestialItems.METALLIC_HYDROGEN_TANK.get()) {
+            eventIn.addCapability(new ResourceLocation(CelestialExploration.MODID, "metallic_hydrogen_fuel_tank_item"), new MetallicHydrogenCapabilityProvider());
         }
         if (eventIn.getObject().getItem() == CelestialItems.FLUID_BASIN.get()) {
             eventIn.addCapability(new ResourceLocation(CelestialExploration.MODID, "basin"), new FluidHandlerItemStack(CelestialItems.FLUID_BASIN.get().getDefaultInstance(), 4000));
@@ -42,8 +46,12 @@ public class CelestialCapabilities {
 
     public static void attachBlockCapabilities(AttachCapabilitiesEvent<BlockEntity> eventIn) {
         if (eventIn.getObject().getBlockState() == CelestialBlocks.LOX_TANK.get().defaultBlockState()) {
-            if (!eventIn.getObject().getCapability(LoxTankCapability.LoxTankCapabilityProvider.LOX_TANK).isPresent()) {
-                eventIn.addCapability(new ResourceLocation(CelestialExploration.MODID, "lox_tank_block"), new LoxTankCapability.LoxTankCapabilityProvider());
+            if (!eventIn.getObject().getCapability(LoxTankCapabilityProvider.LOX_TANK).isPresent()) {
+                eventIn.addCapability(new ResourceLocation(CelestialExploration.MODID, "lox_fuel_tank_block"), new LoxTankCapabilityProvider());
+            }
+        } else if (eventIn.getObject().getBlockState() == CelestialBlocks.METALLIC_HYDROGEN_TANK.get().defaultBlockState()) {
+            if (!eventIn.getObject().getCapability(MetallicHydrogenCapabilityProvider.METALLIC_HYDROGEN_TANK).isPresent()) {
+                eventIn.addCapability(new ResourceLocation(CelestialExploration.MODID, "metallic_hydrogen_fuel_tank_block"), new MetallicHydrogenCapabilityProvider());
             }
         }
     }

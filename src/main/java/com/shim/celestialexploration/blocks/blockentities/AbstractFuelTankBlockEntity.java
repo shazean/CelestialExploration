@@ -13,6 +13,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
@@ -20,11 +21,15 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
 
-public class LoxTankBlockEntity extends BlockEntity {
+public abstract class AbstractFuelTankBlockEntity extends BlockEntity {
 
-    public LoxTankBlockEntity(BlockPos worldPosition, BlockState blockState) {
-        super(CelestialBlockEntities.LOX_TANK_BLOCK_ENTITY.get(), worldPosition, blockState);
+    public AbstractFuelTankBlockEntity(BlockEntityType blockEntity, BlockPos worldPosition, BlockState blockState) {
+        super(blockEntity, worldPosition, blockState);
         setChanged();
+    }
+
+    protected FuelTankHandler getTankHandler() {
+        return loxTankHandler;
     }
 
     private final FuelTankHandler loxTankHandler = new FuelTankHandler(FuelUtil.LOX_FUEL_SPEED, FuelUtil.LOX_CAPACITY_MODIFIER) {};
@@ -42,7 +47,7 @@ public class LoxTankBlockEntity extends BlockEntity {
     @Override
     public void onLoad() {
         super.onLoad();
-        lazyTankHandler = LazyOptional.of(() -> this.loxTankHandler);
+        lazyTankHandler = LazyOptional.of(this::getTankHandler);
     }
 
     @Override
@@ -53,21 +58,13 @@ public class LoxTankBlockEntity extends BlockEntity {
 
     @Override
     protected void saveAdditional(@NotNull CompoundTag tag) {
-        tag.put("FuelData", this.loxTankHandler.getFuelData());
+        tag.put("FuelData", this.getTankHandler().getFuelData());
         super.saveAdditional(tag);
     }
 
     @Override
     public void load(CompoundTag nbt) {
         super.load(nbt);
-        this.loxTankHandler.setFuelData(nbt.getCompound("FuelData"));
-    }
-
-    public static void tick(Level level, BlockPos pos, BlockState state, LoxTankBlockEntity blockEntity) {
-        if (!level.isClientSide){
-            state = state.setValue(LoxTankBlock.FULLNESS, blockEntity.loxTankHandler.getFullness());
-            level.setBlock(pos, state, 3);
-            setChanged(level, pos, state);
-        }
+        this.getTankHandler().setFuelData(nbt.getCompound("FuelData"));
     }
 }

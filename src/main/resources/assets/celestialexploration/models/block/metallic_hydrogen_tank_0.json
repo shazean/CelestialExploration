@@ -1,0 +1,37 @@
+{   "parent": "block/block",
+    "ambientocclusion": false,
+    "textures": {
+        "particle": "minecraft:block/glass",
+        "side": "celestialexploration:block/metallic_hydrogen_tank_side",
+        "top": "celestialexploration:block/metallic_hydrogen_tank_top",
+        "fluid": "celestialexploration:block/metallic_hydrogen"
+    },
+    "elements": [
+        {   "__comment": "Glass shell",
+            "from": [ 0, 0, 0 ],
+            "to": [ 16, 16, 16 ],
+            "faces": {
+                "north": { "uv": [ 0, 0, 16, 16 ], "texture": "#side", "cullface": "north" },
+                "south": { "uv": [ 0, 0, 16, 16 ], "texture": "#side", "cullface": "south" },
+                "west":  { "uv": [ 0, 0, 16, 16 ], "texture": "#side", "cullface": "west" },
+                "east":  { "uv": [ 0, 0, 16, 16 ], "texture": "#side", "cullface": "east" },
+                "up": {"uv": [0, 0, 16, 16], "texture": "#top", "cullface": "up" },
+                "down": {"uv": [0, 0, 16, 16], "texture": "#top", "cullface": "down" }
+
+            }
+        },
+        {
+           "__comment": "Inner glass shell",
+            "from": [ 15.9, 15.9, 15.9 ],
+            "to": [ 0.1, 0.1, 0.1 ],
+            "faces": {
+                "north": { "uv": [ 0, 0, 16, 16 ], "texture": "#side", "shade": false },
+                "south": { "uv": [ 0, 0, 16, 16 ], "texture": "#side", "shade": false },
+                "west":  { "uv": [ 0, 0, 16, 16 ], "texture": "#side", "shade": false },
+                "east":  { "uv": [ 0, 0, 16, 16 ], "texture": "#side", "shade": false },
+                "up": {"uv": [0, 0, 16, 16], "texture": "#top", "shade": false },
+                "down": {"uv": [0, 0, 16, 16], "texture": "#top", "shade": false }
+            }
+        }
+    ]
+}

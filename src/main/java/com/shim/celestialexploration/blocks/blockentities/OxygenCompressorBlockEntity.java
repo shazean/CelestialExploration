@@ -2,6 +2,7 @@ package com.shim.celestialexploration.blocks.blockentities;
 
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.blocks.OxygenCompressorBlock;
+import com.shim.celestialexploration.capabilities.IFuelTank;
 import com.shim.celestialexploration.capabilities.LoxTankCapability;
 import com.shim.celestialexploration.inventory.menus.OxygenCompressorMenu;
 import com.shim.celestialexploration.registry.CelestialBlockEntities;
@@ -202,10 +203,10 @@ public class OxygenCompressorBlockEntity extends BlockEntity implements MenuProv
                         ItemStack thirdSlot = blockEntity.itemHandler.getStackInSlot(3);
                         ItemStack fourthSlot = blockEntity.itemHandler.getStackInSlot(4);
 
-                        LoxTankCapability.ILoxTank loxTank = CelestialExploration.getCapability(firstSlot, CelestialCapabilities.LOX_TANK_CAPABILITY);
-                        LoxTankCapability.ILoxTank secondloxTank = CelestialExploration.getCapability(secondSlot, CelestialCapabilities.LOX_TANK_CAPABILITY);
-                        LoxTankCapability.ILoxTank thirdloxTank = CelestialExploration.getCapability(thirdSlot, CelestialCapabilities.LOX_TANK_CAPABILITY);
-                        LoxTankCapability.ILoxTank fourthloxTank = CelestialExploration.getCapability(fourthSlot, CelestialCapabilities.LOX_TANK_CAPABILITY);
+                        IFuelTank loxTank = CelestialExploration.getCapability(firstSlot, CelestialCapabilities.FUEL_TANK_CAPABILITY);
+                        IFuelTank secondloxTank = CelestialExploration.getCapability(secondSlot, CelestialCapabilities.FUEL_TANK_CAPABILITY);
+                        IFuelTank thirdloxTank = CelestialExploration.getCapability(thirdSlot, CelestialCapabilities.FUEL_TANK_CAPABILITY);
+                        IFuelTank fourthloxTank = CelestialExploration.getCapability(fourthSlot, CelestialCapabilities.FUEL_TANK_CAPABILITY);
 
                         if (loxTank != null && !loxTank.isFull()) {
                             loxTank.incrementAmount();
@@ -250,10 +251,10 @@ public class OxygenCompressorBlockEntity extends BlockEntity implements MenuProv
         ItemStack thirdSlot = blockEntity.itemHandler.getStackInSlot(3);
         ItemStack fourthSlot = blockEntity.itemHandler.getStackInSlot(4);
 
-        LoxTankCapability.ILoxTank loxTank = CelestialExploration.getCapability(firstSlot, CelestialCapabilities.LOX_TANK_CAPABILITY);
-        LoxTankCapability.ILoxTank secondLoxTank = CelestialExploration.getCapability(secondSlot, CelestialCapabilities.LOX_TANK_CAPABILITY);
-        LoxTankCapability.ILoxTank thirdLoxTank = CelestialExploration.getCapability(thirdSlot, CelestialCapabilities.LOX_TANK_CAPABILITY);
-        LoxTankCapability.ILoxTank fourthLoxTank = CelestialExploration.getCapability(fourthSlot, CelestialCapabilities.LOX_TANK_CAPABILITY);
+        IFuelTank loxTank = CelestialExploration.getCapability(firstSlot, CelestialCapabilities.FUEL_TANK_CAPABILITY);
+        IFuelTank secondLoxTank = CelestialExploration.getCapability(secondSlot, CelestialCapabilities.FUEL_TANK_CAPABILITY);
+        IFuelTank thirdLoxTank = CelestialExploration.getCapability(thirdSlot, CelestialCapabilities.FUEL_TANK_CAPABILITY);
+        IFuelTank fourthLoxTank = CelestialExploration.getCapability(fourthSlot, CelestialCapabilities.FUEL_TANK_CAPABILITY);
 
         if (loxTank != null && !loxTank.isFull()) {
             return true;
@@ -293,10 +294,10 @@ public class OxygenCompressorBlockEntity extends BlockEntity implements MenuProv
 //                        ItemStack thirdSlot = blockEntity.itemHandler.getStackInSlot(3);
 //                        ItemStack fourthSlot = blockEntity.itemHandler.getStackInSlot(4);
 //
-//                        LoxTankCapability.ILoxTank loxTank = CelestialExploration.getCapability(firstSlot, CapabilityRegistry.LOX_TANK_CAPABILITY);
-//                        LoxTankCapability.ILoxTank secondloxTank = CelestialExploration.getCapability(secondSlot, CapabilityRegistry.LOX_TANK_CAPABILITY);
-//                        LoxTankCapability.ILoxTank thirdloxTank = CelestialExploration.getCapability(thirdSlot, CapabilityRegistry.LOX_TANK_CAPABILITY);
-//                        LoxTankCapability.ILoxTank fourthloxTank = CelestialExploration.getCapability(fourthSlot, CapabilityRegistry.LOX_TANK_CAPABILITY);
+//                        ILoxTank loxTank = CelestialExploration.getCapability(firstSlot, CapabilityRegistry.LOX_TANK_CAPABILITY);
+//                        ILoxTank secondloxTank = CelestialExploration.getCapability(secondSlot, CapabilityRegistry.LOX_TANK_CAPABILITY);
+//                        ILoxTank thirdloxTank = CelestialExploration.getCapability(thirdSlot, CapabilityRegistry.LOX_TANK_CAPABILITY);
+//                        ILoxTank fourthloxTank = CelestialExploration.getCapability(fourthSlot, CapabilityRegistry.LOX_TANK_CAPABILITY);
 //
 //                        if (loxTank != null && !loxTank.isFull()) {
 //                            loxTank.incrementAmount();

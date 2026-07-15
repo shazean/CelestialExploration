@@ -1,3 +1,4 @@
 - `[CHG]` Changed turning style of spaceship to be camera based rather than keybind based so that it matches the rest of Minecraft…other than the boat. Why does the boat have to be different?
   - `[NEW]` Added slight acceleration/deceleration of spaceship to add a little personality, and updated the speedometer HUD to match
 - `[NEW]` New Lunar buggy vehicle!
+- `[NEW]` New metallic hydrogen fuel for the spaceship!  Travel faster and for longer before needing a refuel.

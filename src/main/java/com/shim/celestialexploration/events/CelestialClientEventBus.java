@@ -3,6 +3,7 @@ package com.shim.celestialexploration.events;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.blocks.CelestialSkullRenderer;
 import com.shim.celestialexploration.blocks.blockentities.DisplayBoardRenderer;
+import com.shim.celestialexploration.capabilities.IFuelTank;
 import com.shim.celestialexploration.capabilities.LoxTankCapability;
 import com.shim.celestialexploration.entity.client.layers.VillagerSpaceSuitLayer;
 import com.shim.celestialexploration.entity.client.renderer.*;
@@ -11,10 +12,7 @@ import com.shim.celestialexploration.entity.client.renderer.monster.*;
 import com.shim.celestialexploration.entity.client.renderer.projectile.MeteorRenderer;
 import com.shim.celestialexploration.entity.client.renderer.robot.*;
 import com.shim.celestialexploration.inventory.StoneChestRenderer;
-import com.shim.celestialexploration.inventory.screens.OxygenCompressorScreen;
-import com.shim.celestialexploration.inventory.screens.PlanetChartScreen;
-import com.shim.celestialexploration.inventory.screens.SpaceshipScreen;
-import com.shim.celestialexploration.inventory.screens.WorkbenchScreen;
+import com.shim.celestialexploration.inventory.screens.*;
 import com.shim.celestialexploration.item.armor.*;
 import com.shim.celestialexploration.registry.*;
 import com.shim.celestialexploration.util.Keybinds;
@@ -35,7 +33,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -78,13 +75,23 @@ public class CelestialClientEventBus {
         event.enqueueWork(CelestialSkullRenderer::setSkullRenderers);
 
         event.enqueueWork(() -> ItemProperties.register(CelestialItems.LOX_TANK.get(), new ResourceLocation("filled"), (stack, level, living, id) -> {
-            LoxTankCapability.ILoxTank loxTank = CelestialExploration.getCapability(stack, CelestialCapabilities.LOX_TANK_CAPABILITY);
-            if (loxTank != null) {
-                return (float) loxTank.getFullness() / 8.0F;
+            IFuelTank fuelTank = CelestialExploration.getCapability(stack, CelestialCapabilities.FUEL_TANK_CAPABILITY);
+            if (fuelTank != null) {
+                return (float) fuelTank.getFullness() / 8.0F;
             } else {
                 return 0;
             }
         }));
+
+        event.enqueueWork(() -> ItemProperties.register(CelestialItems.METALLIC_HYDROGEN_TANK.get(), new ResourceLocation("filled"), (stack, level, living, id) -> {
+            IFuelTank fuelTank = CelestialExploration.getCapability(stack, CelestialCapabilities.FUEL_TANK_CAPABILITY);
+            if (fuelTank != null) {
+                return (float) fuelTank.getFullness() / 16.0F;
+            } else {
+                return 0;
+            }
+        }));
+
 
         ItemBlockRenderTypes.setRenderLayer(CelestialBlocks.MARS_PORTAL.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(CelestialBlocks.MOON_PORTAL.get(), RenderType.translucent());
@@ -152,7 +159,9 @@ public class CelestialClientEventBus {
         ItemBlockRenderTypes.setRenderLayer(CelestialBlocks.WHITE_BUTTON.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(CelestialBlocks.BLACK_BUTTON.get(), RenderType.translucent());
 
-        ItemBlockRenderTypes.setRenderLayer(CelestialBlocks.LOX_TANK.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(CelestialBlocks.LOX_TANK.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(CelestialBlocks.METALLIC_HYDROGEN_TANK.get(), RenderType.translucent());
+
         ItemBlockRenderTypes.setRenderLayer(CelestialBlocks.STEEL_FRAME.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(CelestialBlocks.STEEL_LADDER.get(), RenderType.cutout());
 
@@ -228,6 +237,7 @@ public class CelestialClientEventBus {
         MenuScreens.register(CelestialMenus.PLANET_CHART_MENU.get(), PlanetChartScreen::new);
         MenuScreens.register(CelestialMenus.SPACESHIP_MENU.get(), SpaceshipScreen::new);
         MenuScreens.register(CelestialMenus.WORKBENCH_MENU.get(), WorkbenchScreen::new);
+        MenuScreens.register(CelestialMenus.BUGGY_MENU.get(), BuggyScreen::new);
 //        MenuScreens.register(CelestialMenus.SPACE_TAXI_MENU.get(), SpaceTaxiScreen::new);
 //        MenuScreens.register(CelestialMenus.TAXI_STATION_MENU.get(), TaxiStationScreen::new);
 

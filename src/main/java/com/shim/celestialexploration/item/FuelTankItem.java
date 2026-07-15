@@ -1,7 +1,7 @@
 package com.shim.celestialexploration.item;
 
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.capabilities.LoxTankCapability;
+import com.shim.celestialexploration.capabilities.IFuelTank;
 import com.shim.celestialexploration.registry.CelestialCapabilities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -19,9 +19,9 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class LoxTankItem extends BlockItem {
+public class FuelTankItem extends BlockItem {
 
-    public LoxTankItem(Block block, Properties properties) {
+    public FuelTankItem(Block block, Properties properties) {
         super(block, properties);
     }
 
@@ -32,18 +32,17 @@ public class LoxTankItem extends BlockItem {
         ItemStack item = blockPlaceContext.getItemInHand();
         Level level = blockPlaceContext.getLevel();
 
-        LoxTankCapability.ILoxTank loxTank = CelestialExploration.getCapability(item, CelestialCapabilities.LOX_TANK_CAPABILITY);
-        if (loxTank != null) {
+        IFuelTank fuelTank = CelestialExploration.getCapability(item, CelestialCapabilities.FUEL_TANK_CAPABILITY);
+        if (fuelTank != null) {
 
-            int amount = loxTank.getAmount();
+            int amount = fuelTank.getAmount();
 
             BlockPos blockPos = blockPlaceContext.getClickedPos();
-
             BlockEntity entity = level.getBlockEntity(blockPos);
 
-            LoxTankCapability.ILoxTank loxTankEntity = CelestialExploration.getCapability(entity, CelestialCapabilities.LOX_TANK_CAPABILITY);
-            if (loxTankEntity != null) {
-                loxTankEntity.setAmount(amount);
+            IFuelTank fuelTankEntity = CelestialExploration.getCapability(entity, CelestialCapabilities.FUEL_TANK_CAPABILITY);
+            if (fuelTankEntity != null) {
+                fuelTankEntity.setAmount(amount);
             }
         }
         return InteractionResult.sidedSuccess(level.isClientSide);
@@ -52,9 +51,9 @@ public class LoxTankItem extends BlockItem {
     @Override
     public CompoundTag getShareTag(ItemStack stackIn) {
         CompoundTag nbt = stackIn.getOrCreateTag();
-        LoxTankCapability.ILoxTank loxCap = CelestialExploration.getCapability(stackIn, CelestialCapabilities.LOX_TANK_CAPABILITY);
-        if (loxCap != null) {
-            nbt.put("LoxData", loxCap.getLoxData());
+        IFuelTank fuelTank = CelestialExploration.getCapability(stackIn, CelestialCapabilities.FUEL_TANK_CAPABILITY);
+        if (fuelTank != null) {
+            nbt.put("FuelData", fuelTank.getFuelData());
         }
         return nbt;
     }
@@ -63,17 +62,17 @@ public class LoxTankItem extends BlockItem {
     public void readShareTag(ItemStack stackIn, @Nullable CompoundTag nbtIn) {
         super.readShareTag(stackIn, nbtIn);
         if (nbtIn != null) {
-            LoxTankCapability.ILoxTank loxCap = CelestialExploration.getCapability(stackIn, CelestialCapabilities.LOX_TANK_CAPABILITY);
-            if (loxCap != null && nbtIn.contains("LoxData", 10)) loxCap.setLoxData(nbtIn.getCompound("LoxData"));
+            IFuelTank fuelTank = CelestialExploration.getCapability(stackIn, CelestialCapabilities.FUEL_TANK_CAPABILITY);
+            if (fuelTank != null && nbtIn.contains("FuelData", 10)) fuelTank.setFuelData(nbtIn.getCompound("FuelData"));
         }
     }
 
     @Override
     public void appendHoverText(ItemStack itemStack, @Nullable Level level, List<Component> components, TooltipFlag tooltipFlag) {
-        LoxTankCapability.ILoxTank loxCap = CelestialExploration.getCapability(itemStack, CelestialCapabilities.LOX_TANK_CAPABILITY);
+        IFuelTank fuelTank = CelestialExploration.getCapability(itemStack, CelestialCapabilities.FUEL_TANK_CAPABILITY);
 
-        if (loxCap != null) {
-            components.add(new TextComponent(loxCap.getAmount() + " / 8000 mb"));
+        if (fuelTank != null) {
+            components.add(new TextComponent(fuelTank.getAmount() + " / " + fuelTank.getTotalCapacity() + " mb"));
         }
     }
 }

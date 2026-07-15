@@ -2,7 +2,7 @@ package com.shim.celestialexploration.inventory.menus;
 
 import com.shim.celestialexploration.blocks.blockentities.OxygenCompressorBlockEntity;
 import com.shim.celestialexploration.inventory.FuelSlot;
-import com.shim.celestialexploration.inventory.OxygenTankSlot;
+import com.shim.celestialexploration.inventory.FuelTankSlot;
 import com.shim.celestialexploration.registry.CelestialBlocks;
 import com.shim.celestialexploration.registry.CelestialMenus;
 import net.minecraft.network.FriendlyByteBuf;
@@ -37,10 +37,10 @@ public class OxygenCompressorMenu extends AbstractContainerMenu {
 
         this.blockEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(handler -> {
             this.addSlot(new FuelSlot(handler, 0, 31, 51));
-            this.addSlot(new OxygenTankSlot(handler, 1, 106, 23));
-            this.addSlot(new OxygenTankSlot(handler, 2, 130, 23));
-            this.addSlot(new OxygenTankSlot(handler, 3, 106, 47));
-            this.addSlot(new OxygenTankSlot(handler, 4, 130, 47));
+            this.addSlot(new FuelTankSlot(handler, 1, 106, 23));
+            this.addSlot(new FuelTankSlot(handler, 2, 130, 23));
+            this.addSlot(new FuelTankSlot(handler, 3, 106, 47));
+            this.addSlot(new FuelTankSlot(handler, 4, 130, 47));
         });
 
         addDataSlots(data);

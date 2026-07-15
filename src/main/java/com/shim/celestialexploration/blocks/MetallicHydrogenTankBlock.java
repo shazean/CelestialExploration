@@ -2,20 +2,17 @@ package com.shim.celestialexploration.blocks;
 
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.blocks.blockentities.LoxTankBlockEntity;
+import com.shim.celestialexploration.blocks.blockentities.MetallicHydrogenTankBlockEntity;
 import com.shim.celestialexploration.capabilities.IFuelTank;
 import com.shim.celestialexploration.registry.CelestialBlockEntities;
 import com.shim.celestialexploration.registry.CelestialCapabilities;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -23,48 +20,33 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.phys.BlockHitResult;
 
 import javax.annotation.Nullable;
 
-public class LoxTankBlock extends AbstractFuelTankBlock {
-    public static final IntegerProperty FULLNESS = IntegerProperty.create("fullness", 0, 8);
-//
-    public LoxTankBlock(BlockBehaviour.Properties properties) {
+public class MetallicHydrogenTankBlock extends AbstractFuelTankBlock {
+    public static final IntegerProperty FULLNESS = IntegerProperty.create("fullness", 0, 16);
+
+    public MetallicHydrogenTankBlock(BlockBehaviour.Properties properties) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(FULLNESS, 0));
     }
 
-//    public boolean skipRendering(BlockState p_53972_, BlockState p_53973_, Direction p_53974_) {
-//        return p_53973_.is(this) ? true : super.skipRendering(p_53972_, p_53973_, p_53974_);
-//    }
-//
-//    public VoxelShape getVisualShape(BlockState p_48735_, BlockGetter p_48736_, BlockPos p_48737_, CollisionContext p_48738_) {
-//        return Shapes.empty();
-//    }
-//
-//    public boolean propagatesSkylightDown(BlockState p_48740_, BlockGetter p_48741_, BlockPos p_48742_) {
-//        return true;
-//    }
-
-//    public BlockState getStateForPlacement(BlockPlaceContext p_48689_) {
-//        return this.defaultBlockState();
-//    }
-
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> state) {
         state.add(FULLNESS);
     }
-//
-//    @Override
-//    public RenderShape getRenderShape(BlockState state) {
-//        return RenderShape.MODEL;
-//    }
-//
+
+
+    @javax.annotation.Nullable
+    @Override
+    public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
+        return new MetallicHydrogenTankBlockEntity(pPos, pState);
+    }
+
 //    @Override
 //    public void playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
 //        BlockEntity blockEntity = level.getBlockEntity(pos);
 //
-//        if (blockEntity instanceof LoxTankBlockEntity) {
+//        if (blockEntity instanceof MetallicHydrogenTankBlockEntity) {
 //            IFuelTank loxTankEntity = CelestialExploration.getCapability(blockEntity, CelestialCapabilities.FUEL_TANK_CAPABILITY);
 //
 //            if (loxTankEntity != null) {
@@ -85,21 +67,10 @@ public class LoxTankBlock extends AbstractFuelTankBlock {
 //        }
 //        super.playerWillDestroy(level, pos, state, player);
 //    }
-//
-//    @Override
-//    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-//        return InteractionResult.sidedSuccess(level.isClientSide());
-//    }
-
-    @javax.annotation.Nullable
-    @Override
-    public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
-        return new LoxTankBlockEntity(pPos, pState);
-    }
 
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
-        return createTickerHelper(blockEntityType, CelestialBlockEntities.LOX_TANK_BLOCK_ENTITY.get(), LoxTankBlockEntity::tick);
+        return createTickerHelper(blockEntityType, CelestialBlockEntities.METALLIC_HYDROGEN_TANK_BLOCK_ENTITY.get(), MetallicHydrogenTankBlockEntity::tick);
     }
 }

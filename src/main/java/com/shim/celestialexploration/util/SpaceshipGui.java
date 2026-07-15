@@ -83,32 +83,14 @@ public class SpaceshipGui extends ForgeIngameGui implements IIngameOverlay {
         }
 
         //placement, X; placement Y, grab starting at, X; grab starting at, Y; width?; height?;
+
+        //SPEEDOMETER
         blit(poseStack, xAdjustment - 45, yAdjustment, 0, 19, 45, 45); //SPEEDOMETER BASE
 
-        //SPEED
         double x = Math.floor((speed + 0.03) * 10.0) / 10 * 130; //130
 
-        CelestialExploration.LOGGER.debug("speed: " + speed + ", x: " + x);
-//        if (speed == 0.0) {
-            blit(poseStack, xAdjustment - 45 + 13, yAdjustment + 21 - 21 + 12, 0, 79 + (int) x, 19, 13);  //NO MOVEMENT width - 12 - 45 + 11, 12 + 21
-//        }
+        blit(poseStack, xAdjustment - 45 + 13, yAdjustment + 21 - 21 + 12, 0, 79 + (int) x, 19, 13);  //SPEEDOMETER NEEDLE
 
-
-
-
-
-
-//        if (speed == 0) {
-//            blit(poseStack, xAdjustment - 45 + 11, yAdjustment + 21, 46, 22, 12, 4);  //NO MOVEMENT width - 12 - 45 + 11, 12 + 21
-//        } else if (spaceship.getControllingPassenger() instanceof Player player && player.isCreative()) {
-//            blit(poseStack, xAdjustment - 45 + 22, yAdjustment + 21, 46, 22 + 16, 12, 4); //HAS FUEL, FULL SPEED
-//        } else if (!(spaceship.getFuelDataId() > 0)) {
-//            blit(poseStack, xAdjustment - 45 + 11, yAdjustment + 21 - 3, 46, 22 + 4, 12, 4); //NO FUEL, LOW SPEED
-//        } else if (spaceship.isFuelDataIdLowFuel()) {
-//            blit(poseStack, xAdjustment - 45 + 22, yAdjustment + 21 - 9, 46 + 2, 22 + 8, 10, 8); //LOW FUEL, MEDIUM SPEED
-//        } else {
-//            blit(poseStack, xAdjustment - 45 + 22, yAdjustment + 21, 46, 22 + 16, 12, 4); //HAS FUEL, FULL SPEED
-//        }
 
         //FUEL LEVEL
         blit(poseStack, xAdjustment - 45, yAdjustment + 45 + 1, 0, 19 + 45, 45, 7);  //EMPTY BAR

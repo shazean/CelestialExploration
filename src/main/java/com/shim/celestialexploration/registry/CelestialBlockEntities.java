@@ -3,9 +3,7 @@ package com.shim.celestialexploration.registry;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.blocks.blockentities.*;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.block.entity.SkullBlockEntity;
-import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -16,6 +14,8 @@ public class CelestialBlockEntities {
 
     public static final RegistryObject<BlockEntityType<OxygenCompressorBlockEntity>> OXYGEN_COMPRESSOR_BLOCK_ENTITY = BLOCK_ENTITIES.register("oxygen_compressor", () -> BlockEntityType.Builder.of(OxygenCompressorBlockEntity::new, CelestialBlocks.OXYGEN_COMPRESSOR.get()).build(null));
     public static final RegistryObject<BlockEntityType<LoxTankBlockEntity>> LOX_TANK_BLOCK_ENTITY = BLOCK_ENTITIES.register("lox_tank", () -> BlockEntityType.Builder.of(LoxTankBlockEntity::new, CelestialBlocks.LOX_TANK.get()).build(null));
+    public static final RegistryObject<BlockEntityType<MetallicHydrogenTankBlockEntity>> METALLIC_HYDROGEN_TANK_BLOCK_ENTITY = BLOCK_ENTITIES.register("metallic_hydrogen_tank", () -> BlockEntityType.Builder.of(MetallicHydrogenTankBlockEntity::new, CelestialBlocks.METALLIC_HYDROGEN_TANK.get()).build(null));
+
     public static final RegistryObject<BlockEntityType<WorkbenchBlockEntity>> WORKBENCH_BLOCK_ENTITY = BLOCK_ENTITIES.register("workbench", () -> BlockEntityType.Builder.of(WorkbenchBlockEntity::new, CelestialBlocks.WORKBENCH.get()).build(null));
     public static final RegistryObject<BlockEntityType<GeyserBlockEntity>> GEYSER_BLOCK_ENTITY = BLOCK_ENTITIES.register("geyser", () -> BlockEntityType.Builder.of(GeyserBlockEntity::new, CelestialBlocks.GEYSER.get(), CelestialBlocks.IO_GEYSER.get()).build(null));
     public static final RegistryObject<BlockEntityType<PathwayLightBlockEntity>> PATHWAY_LIGHT_BLOCK_ENTITY = BLOCK_ENTITIES.register("pathway_light", () -> BlockEntityType.Builder.of(PathwayLightBlockEntity::new, CelestialBlocks.PATHWAY_LIGHT.get()).build(null));

@@ -2,7 +2,7 @@ package com.shim.celestialexploration.entity.vehicle;
 
 import com.google.common.collect.Lists;
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.capabilities.LoxTankCapability;
+import com.shim.celestialexploration.capabilities.IFuelTank;
 import com.shim.celestialexploration.config.CelestialCommonConfig;
 import com.shim.celestialexploration.entity.DyeType;
 import com.shim.celestialexploration.entity.IDyeable;
@@ -91,7 +91,7 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
     public float jankyFixYRotO;
     private float accelerationXZ;
     private float accelerationY;
-    private boolean isBackwards = false;
+    public boolean isBackwards = false;
 
     public Spaceship(EntityType<? extends Spaceship> p_38290_, Level p_38291_) {
         super(p_38290_, p_38291_);
@@ -487,10 +487,10 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
     }
 
     public boolean hasFuel() {
-        LoxTankCapability.ILoxTank firstTankCap = getTankCap(this.inventory.getItem(0));
-        LoxTankCapability.ILoxTank secondTankCap = getTankCap(this.inventory.getItem(1));
-        LoxTankCapability.ILoxTank thirdTankCap = getTankCap(this.inventory.getItem(2));
-        LoxTankCapability.ILoxTank fourthTankCap = getTankCap(this.inventory.getItem(3));
+        IFuelTank firstTankCap = getTankCap(this.inventory.getItem(0));
+        IFuelTank secondTankCap = getTankCap(this.inventory.getItem(1));
+        IFuelTank thirdTankCap = getTankCap(this.inventory.getItem(2));
+        IFuelTank fourthTankCap = getTankCap(this.inventory.getItem(3));
 
         if (firstTankCap != null && !firstTankCap.isEmpty()) return true;
         if (secondTankCap != null && !secondTankCap.isEmpty()) return true;
@@ -501,12 +501,12 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
     }
 
     private void useFuel() {
-        LoxTankCapability.ILoxTank firstTankCap = getTankCap(this.inventory.getItem(0));
-        LoxTankCapability.ILoxTank secondTankCap = getTankCap(this.inventory.getItem(1));
-        LoxTankCapability.ILoxTank thirdTankCap = getTankCap(this.inventory.getItem(2));
-        LoxTankCapability.ILoxTank fourthTankCap = getTankCap(this.inventory.getItem(3));
+        IFuelTank firstTankCap = getTankCap(this.inventory.getItem(0));
+        IFuelTank secondTankCap = getTankCap(this.inventory.getItem(1));
+        IFuelTank thirdTankCap = getTankCap(this.inventory.getItem(2));
+        IFuelTank fourthTankCap = getTankCap(this.inventory.getItem(3));
 
-        if (hasLowFuel()) {
+        if (this.hasLowFuel()) {
             if (firstTankCap != null && !firstTankCap.isEmpty()) firstTankCap.decrementAmountByFifty();
             else if (secondTankCap != null && !secondTankCap.isEmpty()) secondTankCap.decrementAmountByFifty();
             else if (thirdTankCap != null && !thirdTankCap.isEmpty()) thirdTankCap.decrementAmountByFifty();
@@ -520,20 +520,20 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
     }
 
     public boolean hasLowFuel() {
-        return getFuel() <= LOW_FUEL;
+        return this.getFuel() <= LOW_FUEL;
     }
 
-    private LoxTankCapability.ILoxTank getTankCap(ItemStack tank) {
-        return CelestialExploration.getCapability(tank, CelestialCapabilities.LOX_TANK_CAPABILITY);
+    private IFuelTank getTankCap(ItemStack tank) {
+        return CelestialExploration.getCapability(tank, CelestialCapabilities.FUEL_TANK_CAPABILITY);
     }
 
     public int getFuel() {
         int totalFuel = 0;
 
-        LoxTankCapability.ILoxTank firstTankCap = getTankCap(this.inventory.getItem(0));
-        LoxTankCapability.ILoxTank secondTankCap = getTankCap(this.inventory.getItem(1));
-        LoxTankCapability.ILoxTank thirdTankCap = getTankCap(this.inventory.getItem(2));
-        LoxTankCapability.ILoxTank fourthTankCap = getTankCap(this.inventory.getItem(3));
+        IFuelTank firstTankCap = getTankCap(this.inventory.getItem(0));
+        IFuelTank secondTankCap = getTankCap(this.inventory.getItem(1));
+        IFuelTank thirdTankCap = getTankCap(this.inventory.getItem(2));
+        IFuelTank fourthTankCap = getTankCap(this.inventory.getItem(3));
 
         if (firstTankCap != null && !firstTankCap.isEmpty()) totalFuel += firstTankCap.getAmount();
         if (secondTankCap != null && !secondTankCap.isEmpty()) totalFuel += secondTankCap.getAmount();
@@ -543,30 +543,52 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
         return totalFuel;
     }
 
+    public float getSpeedModifier() {
+
+        IFuelTank firstTankCap = getTankCap(this.inventory.getItem(0));
+        IFuelTank secondTankCap = getTankCap(this.inventory.getItem(1));
+        IFuelTank thirdTankCap = getTankCap(this.inventory.getItem(2));
+        IFuelTank fourthTankCap = getTankCap(this.inventory.getItem(3));
+
+        if (firstTankCap != null && !firstTankCap.isEmpty()) return firstTankCap.getSpeedModifier();
+        if (secondTankCap != null && !secondTankCap.isEmpty()) return secondTankCap.getSpeedModifier();
+        if (thirdTankCap != null && !thirdTankCap.isEmpty()) return thirdTankCap.getSpeedModifier();
+        if (fourthTankCap != null && !fourthTankCap.isEmpty()) return fourthTankCap.getSpeedModifier();
+
+        return 1.0F;
+    }
+
     public float getMaxSpeedAllowed() {
         Entity passenger = this.getControllingPassenger();
         if (passenger instanceof Player player && player.isCreative()) {
 //                if (CelestialCommonConfig.SPACESHIP_FASTER_IN_SPACE.get() && this.level.dimension() == CelestialDimensions.MILKY_WAY)
 //                    return SPACESHIP_IN_SPACE_SPEED;
-            return SPACESHIP_SPEED;
+            return SPACESHIP_SPEED * this.getSpeedModifier();
         } else if (this.getFuelDataId() > 0) {
-            if (this.getFuelDataId() <= LOW_FUEL) return SPACESHIP_LOW_FUEL_SPEED;
+            if (this.getFuelDataId() <= LOW_FUEL) return SPACESHIP_LOW_FUEL_SPEED * this.getSpeedModifier();
 //            if (CelestialCommonConfig.SPACESHIP_FASTER_IN_SPACE.get() && this.level.dimension() == CelestialDimensions.MILKY_WAY)
 //                return SPACESHIP_IN_SPACE_SPEED;
-            else return SPACESHIP_SPEED;
-        } else return SPACESHIP_NO_FUEL_SPEED;
+            else return SPACESHIP_SPEED * this.getSpeedModifier();
+        } else return SPACESHIP_NO_FUEL_SPEED * this.getSpeedModifier();
+    }
+
+    public boolean shouldBeSprinting() {
+        if (this.isVehicle()) {
+            return this.getControllingPassenger().isSprinting();
+        } else return false;
     }
 
     public double getDisplaySpeed() {
         if (!this.isVehicle()) return 0.0;
         else {
             float currentSpeed = Math.min(this.getMaxSpeedAllowed(), this.accelerationXZ);
-//            CelestialExploration.LOGGER.debug("currentSpeed: " + currentSpeed + ", accelXZ: " + this.accelerationXZ);
+//            CelestialExploration.LOGGER.debug("currentSpeed: " + currentSpeed + ", accelXZ: " + this.accelerationXZ + ", sprint: " + this.isSprinting());
             LivingEntity passenger = (LivingEntity) this.getControllingPassenger();
             if (passenger.zza == 0) {
                 return Math.max(currentSpeed, Math.abs(this.getDeltaMovement().y()));
-            } else
+            } else {
                 return Math.max(Math.abs(passenger.zza * currentSpeed), Math.abs(this.getDeltaMovement().y()));
+            }
         }
     }
 
@@ -739,13 +761,13 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
         tag.put("Items", listtag);
 
         if (!this.inventory.getItem(0).isEmpty())
-            tag.put("Fuel Tank 1", this.getTankCap(this.inventory.getItem(0)).getLoxData());
+            tag.put("Fuel Tank 1", this.getTankCap(this.inventory.getItem(0)).getFuelData());
         if (!this.inventory.getItem(1).isEmpty())
-            tag.put("Fuel Tank 2", this.getTankCap(this.inventory.getItem(1)).getLoxData());
+            tag.put("Fuel Tank 2", this.getTankCap(this.inventory.getItem(1)).getFuelData());
         if (!this.inventory.getItem(2).isEmpty())
-            tag.put("Fuel Tank 3", this.getTankCap(this.inventory.getItem(2)).getLoxData());
+            tag.put("Fuel Tank 3", this.getTankCap(this.inventory.getItem(2)).getFuelData());
         if (!this.inventory.getItem(3).isEmpty())
-            tag.put("Fuel Tank 4", this.getTankCap(this.inventory.getItem(3)).getLoxData());
+            tag.put("Fuel Tank 4", this.getTankCap(this.inventory.getItem(3)).getFuelData());
     }
 
     protected void readAdditionalSaveData(CompoundTag tag) {
@@ -764,13 +786,13 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
         }
 
         if (tag.contains("Fuel Tank 1"))
-            this.getTankCap(this.inventory.getItem(0)).setLoxData(tag.getCompound("Fuel Tank 1"));
+            this.getTankCap(this.inventory.getItem(0)).setFuelData(tag.getCompound("Fuel Tank 1"));
         if (tag.contains("Fuel Tank 2"))
-            this.getTankCap(this.inventory.getItem(1)).setLoxData(tag.getCompound("Fuel Tank 2"));
+            this.getTankCap(this.inventory.getItem(1)).setFuelData(tag.getCompound("Fuel Tank 2"));
         if (tag.contains("Fuel Tank 3"))
-            this.getTankCap(this.inventory.getItem(2)).setLoxData(tag.getCompound("Fuel Tank 3"));
+            this.getTankCap(this.inventory.getItem(2)).setFuelData(tag.getCompound("Fuel Tank 3"));
         if (tag.contains("Fuel Tank 4"))
-            this.getTankCap(this.inventory.getItem(3)).setLoxData(tag.getCompound("Fuel Tank 4"));
+            this.getTankCap(this.inventory.getItem(3)).setFuelData(tag.getCompound("Fuel Tank 4"));
         this.updateContainerEquipment();
     }
 
@@ -791,13 +813,13 @@ public class Spaceship extends Entity implements ContainerListener, MenuProvider
         }
 
         if (tag.contains("Fuel Tank 1"))
-            this.getTankCap(this.inventory.getItem(0)).setLoxData(tag.getCompound("Fuel Tank 1"));
+            this.getTankCap(this.inventory.getItem(0)).setFuelData(tag.getCompound("Fuel Tank 1"));
         if (tag.contains("Fuel Tank 2"))
-            this.getTankCap(this.inventory.getItem(1)).setLoxData(tag.getCompound("Fuel Tank 2"));
+            this.getTankCap(this.inventory.getItem(1)).setFuelData(tag.getCompound("Fuel Tank 2"));
         if (tag.contains("Fuel Tank 3"))
-            this.getTankCap(this.inventory.getItem(2)).setLoxData(tag.getCompound("Fuel Tank 3"));
+            this.getTankCap(this.inventory.getItem(2)).setFuelData(tag.getCompound("Fuel Tank 3"));
         if (tag.contains("Fuel Tank 4"))
-            this.getTankCap(this.inventory.getItem(3)).setLoxData(tag.getCompound("Fuel Tank 4"));
+            this.getTankCap(this.inventory.getItem(3)).setFuelData(tag.getCompound("Fuel Tank 4"));
         this.updateContainerEquipment();
 
         super.load(tag);

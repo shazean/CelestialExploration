@@ -1,0 +1,55 @@
+{
+  "variants": {
+     "fullness=0": {
+      "model": "celestialexploration:block/metallic_hydrogen_tank_0"
+    },
+    "fullness=1": {
+      "model": "celestialexploration:block/metallic_hydrogen_tank_1"
+    },
+    "fullness=2": {
+      "model": "celestialexploration:block/metallic_hydrogen_tank_2"
+    },
+    "fullness=3": {
+      "model": "celestialexploration:block/metallic_hydrogen_tank_3"
+    },
+    "fullness=4": {
+      "model": "celestialexploration:block/metallic_hydrogen_tank_4"
+    },
+    "fullness=5": {
+      "model": "celestialexploration:block/metallic_hydrogen_tank_5"
+    },
+    "fullness=6": {
+      "model": "celestialexploration:block/metallic_hydrogen_tank_6"
+    },
+    "fullness=7": {
+      "model": "celestialexploration:block/metallic_hydrogen_tank_7"
+    },
+    "fullness=8": {
+      "model": "celestialexploration:block/metallic_hydrogen_tank_8"
+    },
+    "fullness=9": {
+      "model": "celestialexploration:block/metallic_hydrogen_tank_9"
+    },
+    "fullness=10": {
+      "model": "celestialexploration:block/metallic_hydrogen_tank_10"
+    },
+    "fullness=11": {
+      "model": "celestialexploration:block/metallic_hydrogen_tank_11"
+    },
+    "fullness=12": {
+      "model": "celestialexploration:block/metallic_hydrogen_tank_12"
+    },
+    "fullness=13": {
+      "model": "celestialexploration:block/metallic_hydrogen_tank_13"
+    },
+    "fullness=14": {
+      "model": "celestialexploration:block/metallic_hydrogen_tank_14"
+    },
+    "fullness=15": {
+      "model": "celestialexploration:block/metallic_hydrogen_tank_15"
+    },
+    "fullness=16": {
+      "model": "celestialexploration:block/metallic_hydrogen_tank_16"
+    }
+  }
+}

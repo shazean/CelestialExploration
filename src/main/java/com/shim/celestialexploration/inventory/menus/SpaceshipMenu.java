@@ -2,11 +2,8 @@ package com.shim.celestialexploration.inventory.menus;
 
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.entity.vehicle.Spaceship;
-import com.shim.celestialexploration.inventory.OxygenTankSlot;
-import com.shim.celestialexploration.packets.CelestialPacketHandler;
-import com.shim.celestialexploration.registry.CelestialDimensions;
+import com.shim.celestialexploration.inventory.FuelTankSlot;
 import com.shim.celestialexploration.registry.CelestialMenus;
-import com.shim.celestialexploration.util.CelestialUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceKey;
@@ -48,10 +45,10 @@ public class SpaceshipMenu extends AbstractContainerMenu {
 
         this.entity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(handler -> {
             //fuel slots
-            this.addSlot(new OxygenTankSlot(handler, 0, 26, 16));
-            this.addSlot(new OxygenTankSlot(handler, 1, 62, 16));
-            this.addSlot(new OxygenTankSlot(handler, 2, 98, 16));
-            this.addSlot(new OxygenTankSlot(handler, 3, 134, 16));
+            this.addSlot(new FuelTankSlot(handler, 0, 26, 16));
+            this.addSlot(new FuelTankSlot(handler, 1, 62, 16));
+            this.addSlot(new FuelTankSlot(handler, 2, 98, 16));
+            this.addSlot(new FuelTankSlot(handler, 3, 134, 16));
 
             //spaceship storage
             for (int i = 0; i < 2; ++i) {

@@ -3,7 +3,6 @@ package com.shim.celestialexploration.registry;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.entity.DyeType;
 import com.shim.celestialexploration.entity.vehicle.AbstractMagCart;
-import com.shim.celestialexploration.events.CelestialVillagerTrades;
 import com.shim.celestialexploration.item.*;
 import com.shim.celestialexploration.item.armor.HeavyDutySpacesuitArmorItem;
 import com.shim.celestialexploration.item.armor.ThermalSpacesuitArmorItem;
@@ -13,7 +12,6 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.ForgeSpawnEggItem;
-import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -51,7 +49,8 @@ public class CelestialItems {
 	public static final Item.Properties ITEM_PROPERTIES = new Item.Properties().tab(CelestialTabs.CELESTIAL_MISC_TAB);
 
 	//---- SPACESHIP -------------------------------------------------------------------------------
-	public static final RegistryObject<Item> LOX_TANK = ITEMS.register("lox_tank", () -> new LoxTankItem(CelestialBlocks.LOX_TANK.get(), new Item.Properties().tab(CelestialTabs.SPACESHIP_TAB).stacksTo(1)));
+	public static final RegistryObject<Item> LOX_TANK = ITEMS.register("lox_tank", () -> new FuelTankItem(CelestialBlocks.LOX_TANK.get(), new Item.Properties().tab(CelestialTabs.SPACESHIP_TAB).stacksTo(1)));
+	public static final RegistryObject<Item> METALLIC_HYDROGEN_TANK = ITEMS.register("metallic_hydrogen_tank", () -> new MetallicHydrogenTankItem(CelestialBlocks.METALLIC_HYDROGEN_TANK.get(), new Item.Properties().tab(CelestialTabs.SPACESHIP_TAB).stacksTo(1)));
 
 	public static final RegistryObject<Item> SPACESHIP_CABIN = registerItem("spaceship_cabin", "Spaceship Cabin", () -> new Item((new Item.Properties()).stacksTo(1).tab(CelestialTabs.SPACESHIP_TAB)));
 	public static final RegistryObject<Item> SPACESHIP_FRAME = registerItem("spaceship_frame", "Spaceship Frame", () -> new Item((new Item.Properties()).stacksTo(1).tab(CelestialTabs.SPACESHIP_TAB)));

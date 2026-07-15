@@ -1,8 +1,7 @@
 package com.shim.celestialexploration.blocks.blockentities;
 
-import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.blocks.AbstractFuelTankBlock;
 import com.shim.celestialexploration.blocks.LoxTankBlock;
+import com.shim.celestialexploration.blocks.MetallicHydrogenTankBlock;
 import com.shim.celestialexploration.capabilities.FuelTankHandler;
 import com.shim.celestialexploration.capabilities.IFuelTank;
 import com.shim.celestialexploration.registry.CelestialBlockEntities;
@@ -20,14 +19,14 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
 
-public class LoxTankBlockEntity extends BlockEntity {
+public class MetallicHydrogenTankBlockEntity extends BlockEntity {
 
-    public LoxTankBlockEntity(BlockPos worldPosition, BlockState blockState) {
-        super(CelestialBlockEntities.LOX_TANK_BLOCK_ENTITY.get(), worldPosition, blockState);
+    public MetallicHydrogenTankBlockEntity(BlockPos worldPosition, BlockState blockState) {
+        super(CelestialBlockEntities.METALLIC_HYDROGEN_TANK_BLOCK_ENTITY.get(), worldPosition, blockState);
         setChanged();
     }
 
-    private final FuelTankHandler loxTankHandler = new FuelTankHandler(FuelUtil.LOX_FUEL_SPEED, FuelUtil.LOX_CAPACITY_MODIFIER) {};
+    private final FuelTankHandler hydroTankHandler = new FuelTankHandler(FuelUtil.HYDRO_FUEL_SPEED, FuelUtil.HYDRO_CAPACITY_MODIFIER) {};
     private LazyOptional<IFuelTank> lazyTankHandler = LazyOptional.empty();
 
     @Nonnull
@@ -42,7 +41,7 @@ public class LoxTankBlockEntity extends BlockEntity {
     @Override
     public void onLoad() {
         super.onLoad();
-        lazyTankHandler = LazyOptional.of(() -> this.loxTankHandler);
+        lazyTankHandler = LazyOptional.of(() -> this.hydroTankHandler);
     }
 
     @Override
@@ -53,19 +52,19 @@ public class LoxTankBlockEntity extends BlockEntity {
 
     @Override
     protected void saveAdditional(@NotNull CompoundTag tag) {
-        tag.put("FuelData", this.loxTankHandler.getFuelData());
+        tag.put("FuelData", this.hydroTankHandler.getFuelData());
         super.saveAdditional(tag);
     }
 
     @Override
     public void load(CompoundTag nbt) {
         super.load(nbt);
-        this.loxTankHandler.setFuelData(nbt.getCompound("FuelData"));
+        this.hydroTankHandler.setFuelData(nbt.getCompound("FuelData"));
     }
 
-    public static void tick(Level level, BlockPos pos, BlockState state, LoxTankBlockEntity blockEntity) {
+    public static void tick(Level level, BlockPos pos, BlockState state, MetallicHydrogenTankBlockEntity blockEntity) {
         if (!level.isClientSide){
-            state = state.setValue(LoxTankBlock.FULLNESS, blockEntity.loxTankHandler.getFullness());
+            state = state.setValue(MetallicHydrogenTankBlock.FULLNESS, blockEntity.hydroTankHandler.getFullness());
             level.setBlock(pos, state, 3);
             setChanged(level, pos, state);
         }

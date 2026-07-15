@@ -113,7 +113,7 @@ public class WorkbenchBlock extends BaseEntityBlock {
                 Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), itemStack);
 //                tank.drain(1000, IFluidHandler.FluidAction.EXECUTE);
 //                level.addFreshEntity(itemEntity);
-                CelestialExploration.LOGGER.debug("i:" + i + " fluidAmount / 1000: " + (tank.getFluidAmount() / 1000));
+//                CelestialExploration.LOGGER.debug("i:" + i + " fluidAmount / 1000: " + (tank.getFluidAmount() / 1000));
                 j++;
             }
 
@@ -126,7 +126,7 @@ public class WorkbenchBlock extends BaseEntityBlock {
                 Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), itemStack);
 
 //                level.addFreshEntity(itemEntity);
-                CelestialExploration.LOGGER.debug("i:" + i + " fluidAmount / 100: " + (tank.getFluidAmount() / 100));
+//                CelestialExploration.LOGGER.debug("i:" + i + " fluidAmount / 100: " + (tank.getFluidAmount() / 100));
 
             }
 
@@ -150,7 +150,7 @@ public class WorkbenchBlock extends BaseEntityBlock {
 //            level.addFreshEntity(itemEntity);
 
 
-            CelestialExploration.LOGGER.debug("Fluid amount:" + tank.getFluidAmount());
+//            CelestialExploration.LOGGER.debug("Fluid amount:" + tank.getFluidAmount());
         }
         super.playerWillDestroy(level, pos, state, player);
     }
