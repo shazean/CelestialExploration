@@ -1,0 +1,31 @@
+{
+  "type": "celestialexploration:workbench_crafting",
+  "pattern": [
+    "GLG",
+    "DAD",
+    "GSG"
+  ],
+  "key": {
+    "G": {
+      "tag": "forge:glass"
+    },
+    "L": {
+      "tag": "celestialexploration:lunar_dusts"
+    },
+    "D": {
+      "tag": "forge:gems/diamond"
+    },
+    "A": {
+      "item": "celestialexploration:compressed_air"
+    },
+    "S": {
+      "item": "celestialexploration:infused_viscous_slime_block"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:metallic_hydrogen_tank"
+  },
+  "fluid": "celestialexploration:molten_steel",
+  "buckets": 0.444,
+  "experience": 1.0
+}

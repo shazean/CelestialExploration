@@ -7,6 +7,7 @@ import com.shim.celestialexploration.inventory.menus.BuggyMenu;
 import com.shim.celestialexploration.packets.BuggyInventoryPacket;
 import com.shim.celestialexploration.packets.CelestialPacketHandler;
 import com.shim.celestialexploration.registry.CelestialEntities;
+import com.shim.celestialexploration.registry.CelestialItems;
 import com.shim.celestialexploration.util.Keybinds;
 import net.minecraft.BlockUtil;
 import net.minecraft.core.BlockPos;
@@ -182,9 +183,7 @@ public class Buggy extends Entity implements ContainerListener, MenuProvider {
     }
 
     public Item getDropItem() {
-        return null;
-        //FIXME
-//       return CelestialItems.BUGGY.get();
+       return CelestialItems.BUGGY.get();
     }
 
     public void animateHurt() {

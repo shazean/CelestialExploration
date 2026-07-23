@@ -172,6 +172,8 @@ public class CelestialClientEventBus {
 
         ItemBlockRenderTypes.setRenderLayer(CelestialBlocks.PENITENTE.get(), RenderType.cutout());
 
+        ItemBlockRenderTypes.setRenderLayer(CelestialBlocks.MERCURY_SLIME_BLOCK.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(CelestialBlocks.INFUSED_VISCOUS_SLIME_BLOCK.get(), RenderType.translucent());
 
 
 

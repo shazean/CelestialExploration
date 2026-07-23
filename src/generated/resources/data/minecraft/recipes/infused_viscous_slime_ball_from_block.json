@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "celestialexploration:infused_viscous_slime_block"
+    }
+  ],
+  "result": {
+    "item": "celestialexploration:infused_viscous_slime_ball",
+    "count": 4
+  }
+}

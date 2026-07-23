@@ -1,0 +1,44 @@
+{
+  "variants": {
+    "is_viscous=true": [
+      {
+        "model": "celestialexploration:block/viscous_slime_block"
+      },
+      {
+        "model": "celestialexploration:block/viscous_slime_block_1"
+      },
+      {
+        "model": "celestialexploration:block/viscous_slime_block_2"
+      },
+      {
+        "model": "celestialexploration:block/viscous_slime_block_3"
+      },
+      {
+        "model": "celestialexploration:block/viscous_slime_block_4"
+      },
+      {
+        "model": "celestialexploration:block/viscous_slime_block_5"
+      }
+    ],
+    "is_viscous=false": [
+      {
+        "model": "celestialexploration:block/quicksilver_slime_block"
+      },
+      {
+        "model": "celestialexploration:block/quicksilver_slime_block_1"
+      },
+      {
+        "model": "celestialexploration:block/quicksilver_slime_block_2"
+      },
+      {
+        "model": "celestialexploration:block/quicksilver_slime_block_3"
+      },
+      {
+        "model": "celestialexploration:block/quicksilver_slime_block_4"
+      },
+      {
+        "model": "celestialexploration:block/quicksilver_slime_block_5"
+      }
+    ]
+  }
+}

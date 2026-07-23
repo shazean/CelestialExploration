@@ -1,0 +1,6 @@
+{
+  "parent": "celestialexploration:block/template_slime_block_1",
+  "textures": {
+    "texture": "celestialexploration:block/quicksilver_slime_block"
+  }
+}

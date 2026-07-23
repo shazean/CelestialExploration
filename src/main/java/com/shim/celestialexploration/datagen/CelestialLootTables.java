@@ -41,140 +41,156 @@ public class CelestialLootTables extends BaseLootTableProvider {
 
 		for (RegistryObject<? extends Block> block : CelestialBlocks.BLOCKS_LOOT_TABLE) block(block.get(), createSimpleTable(block.get()));
 
-		//---- ENTITIES -------------------------------------------------------------------------------
-		entity(CelestialEntities.FLARE.get(), createEntitySingleDropTable(CelestialItems.FLARE_ROD.get(), 0.0F, 1.0F, true));
-		entity(CelestialEntities.LUNAR_SLIME.get(), createEntitySingleDropTable(CelestialItems.LUNAR_GOO.get(), 0.0F, 2.0F, false));
-		entity(CelestialEntities.MARS_MALLOW.get(), createEntitySingleDropTable(CelestialItems.MARSHMALLOW_GOO.get(), 0.0F, 2.0F, false));
-		entity(CelestialEntities.RUST_SLIME.get(), createEntitySingleDropTable(CelestialItems.RUSTED_IRON_NUGGET.get(), 0.0F, 2.0F, false));
-		entity(CelestialEntities.SULFUR_CUBE.get(), createEntitySingleDropTable(Items.LAPIS_LAZULI, -2.0F, 1.0F, false));
-		entity(CelestialEntities.VISCOUS_SLIME.get(), createEntitySingleDropTable(CelestialItems.CINNABAR.get(), 0.0F, 2.0F, false));
-		entity(CelestialEntities.QUICKSILVER_SLIME.get(), createEntitySingleDropTable(CelestialItems.CINNABAR.get(), 0.0F, 2.0F, false));
-
-		entity(CelestialEntities.VOIDED.get(), createEntitySingleDropTable(Items.ROTTEN_FLESH, 0.0F, 2.0F, false)
-				.withPool(LootPool.lootPool()
-						.setRolls(ConstantValue.exactly(1))
-						.add(LootItem.lootTableItem(Items.IRON_INGOT))
-						.add(LootItem.lootTableItem(Items.CARROT))
-						.add(LootItem.lootTableItem(Items.POTATO)
-								.apply(SmeltItemFunction.smelted()
-										.when(LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.THIS, ENTITY_ON_FIRE))))
-						.when(LootItemKilledByPlayerCondition.killedByPlayer())
-						.when(LootItemRandomChanceWithLootingCondition.randomChanceAndLootingBoost(0.025F, 0.01F))));
-
-		entity(CelestialEntities.LURKER.get(), createEntitySingleDropTable(Items.GUNPOWDER, 0.0F, 2.0F, false)
-				.withPool(LootPool.lootPool()
-						.add(TagEntry.expandTag(ItemTags.CREEPER_DROP_MUSIC_DISCS))
-						.when(LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.KILLER, EntityPredicate.Builder.entity().of(EntityTypeTags.SKELETONS)))));
-
-		entity(CelestialEntities.VOIDED_PIGLIN.get(), createEntitySingleDropTable(Items.ROTTEN_FLESH, 0.0F, 1.0F, false)
-				.withPool(createEntitySingleDropPool(Items.GOLD_NUGGET, 0.0F, 1.0F, false))
-				.withPool(LootPool.lootPool()
-						.setRolls(ConstantValue.exactly(1.0F))
-						.add(LootItem.lootTableItem(Items.GOLD_INGOT))
-						.when(LootItemKilledByPlayerCondition.killedByPlayer())
-						.when(LootItemRandomChanceWithLootingCondition.randomChanceAndLootingBoost(0.025F, 0.01F))));
-
-		entity(CelestialEntities.VOIDED_ZOGLIN.get(), createEntitySingleDropTable(Items.ROTTEN_FLESH, 0.0F, 1.0F, false));
-		entity(CelestialEntities.FLARE.get(), createEntitySingleDropTable(CelestialItems.FLARE_ROD.get(), 0.0F, 1.0F, true));
-
-		entity(CelestialEntities.CELESTIAL_CAT.get(), LootTable.lootTable()
-				.withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
-						.add(LootItem.lootTableItem(Items.STRING)
-								.apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))))
-				.withPool(LootPool.lootPool()
-						.setRolls(ConstantValue.exactly(1.0F))
-						.add(LootItem.lootTableItem(CelestialItems.BASIC_SPACESUIT_HELMET.get()))
-						.when(LootItemKilledByPlayerCondition.killedByPlayer())
-						.when(LootItemRandomChanceWithLootingCondition.randomChanceAndLootingBoost(0.025F, 0.01F))));
-
-		entity(CelestialEntities.VOID_CRAWLER.get(), createEntitySingleDropTable(Items.STRING, 0.0F, 2.0F, false)
-				.withPool(createEntitySingleDropPool(Items.SPIDER_EYE, -1.0F, 1.0F, true)));
-
-		entity(CelestialEntities.ORBITER.get(), createEntitySingleDropTable(Items.GHAST_TEAR, 0.0F, 1.0F, false)
-				.withPool(createEntitySingleDropPool(Items.GUNPOWDER, 0.0F, 2.0F, false)));
-
-
-		entity(CelestialEntities.METEOR_CRAWLER.get(), createEntitySingleDropTable(Items.STRING, 0.0F, 2.0F, false)
-				.withPool(createEntitySingleDropPool(Items.SPIDER_EYE, -1.0F, 1.0F, true))
-				.withPool(createEntitySingleDropPool(Items.IRON_NUGGET, -1.0F, 1.0F, true))
-				.withPool(createEntitySingleDropPool(Items.GOLD_NUGGET, -1.0F, 1.0F, true)));
-
-
-		entity(CelestialEntities.ASTRAL_HOGLIN.get(), createEntitySingleDropTable(Items.LEATHER, 0.0F, 1.0F, false)
-				.withPool(LootPool.lootPool()
-						.setRolls(ConstantValue.exactly(1.0F))
-						.add(LootItem.lootTableItem(Items.PORKCHOP)
-								.apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 4.0F)))
-								.apply(SmeltItemFunction.smelted()
-										.when(LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.THIS, ENTITY_ON_FIRE)))
-								.apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F))))));
-
-		entity(CelestialEntities.ASTRAL_PIGLIN.get(), LootTable.lootTable());
-
-		entity(CelestialEntities.CYBORG_PIGLIN.get(), LootTable.lootTable()
-				.withPool(LootPool.lootPool()
-						.setRolls(ConstantValue.exactly(1.0F))
-						.add(LootItem.lootTableItem(CelestialItems.STEEL_NUGGET.get()))
-						.when(LootItemKilledByPlayerCondition.killedByPlayer())
-						.when(LootItemRandomChanceWithLootingCondition.randomChanceAndLootingBoost(0.025F, 0.01F))));
-
-		entity(CelestialEntities.DRONE.get(), LootTable.lootTable()
-				.withPool(LootPool.lootPool()
-						.setRolls(ConstantValue.exactly(1.0F))
-						.add(LootItem.lootTableItem(Items.REDSTONE))
-						.add(LootItem.lootTableItem(CelestialItems.STEEL_NUGGET.get()))
-						.when(LootItemKilledByPlayerCondition.killedByPlayer())
-						.when(LootItemRandomChanceWithLootingCondition.randomChanceAndLootingBoost(0.025F, 0.01F))));
-
-		entity(CelestialEntities.VOIDFELLOW.get(), LootTable.lootTable()
-				.withPool(LootPool.lootPool()
-						.setRolls(ConstantValue.exactly(1.0F))
-						.add(LootItem.lootTableItem(Items.ENDER_PEARL)
-								.apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
-								.apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F))))));
-
-
-		entity(CelestialEntities.ROVER.get(), LootTable.lootTable()
-				.withPool(LootPool.lootPool()
-						.setRolls(ConstantValue.exactly(1.0F))
-						.add(LootItem.lootTableItem(Items.REDSTONE))
-						.add(LootItem.lootTableItem(CelestialItems.RUSTED_IRON_NUGGET.get()))
-						.add(LootItem.lootTableItem(Items.IRON_NUGGET))
-						.add(LootItem.lootTableItem(CelestialItems.STEEL_NUGGET.get()))
-						.when(LootItemKilledByPlayerCondition.killedByPlayer())
-						.when(LootItemRandomChanceWithLootingCondition.randomChanceAndLootingBoost(0.025F, 0.01F))));
-
-		entity(CelestialEntities.COBBLESAURUS.get(), LootTable.lootTable()
-				.withPool(LootPool.lootPool()
-						.setRolls(ConstantValue.exactly(1.0F))
-						.add(LootItem.lootTableItem(CelestialBlocks.MARS_COBBLESTONE.get()))
-						.when(LootItemRandomChanceWithLootingCondition.randomChanceAndLootingBoost(0.025F, 0.01F))));
-
-		entity(CelestialEntities.GUST.get(), createEntitySingleDropTable(Items.GUNPOWDER, 0.0F, 2.0F, false));
-
-		entity(CelestialEntities.MECHADOG.get(), LootTable.lootTable()
-				.withPool(LootPool.lootPool()
-					.setRolls(ConstantValue.exactly(1.0F))
-					.add(LootItem.lootTableItem(Items.REDSTONE)))
-//					.when(LootItemRandomChanceWithLootingCondition.randomChanceAndLootingBoost(0.8F, 0.01F)))
-				.withPool(LootPool.lootPool()
-						.setRolls(ConstantValue.exactly(1.0F))
-						.add(LootItem.lootTableItem(CelestialBlocks.MECHADOG_HEAD.get()))
-						.when(LootItemKilledByPlayerCondition.killedByPlayer())
-						.when(LootItemRandomChanceWithLootingCondition.randomChanceAndLootingBoost(0.1F, 0.01F)))
+//		entity(CelestialEntities.FLARE.get(), createEntitySingleDropTable(CelestialItems.FLARE_ROD.get(), 0.0F, 1.0F, true));
+//		entity(CelestialEntities.LUNAR_SLIME.get(), createEntitySingleDropTable(CelestialItems.LUNAR_GOO.get(), 0.0F, 2.0F, false));
+//		entity(CelestialEntities.MARS_MALLOW.get(), createEntitySingleDropTable(CelestialItems.MARSHMALLOW_GOO.get(), 0.0F, 2.0F, false));
+//		entity(CelestialEntities.RUST_SLIME.get(), createEntitySingleDropTable(CelestialItems.RUSTED_IRON_NUGGET.get(), 0.0F, 2.0F, false));
+//		entity(CelestialEntities.SULFUR_CUBE.get(), createEntitySingleDropTable(Items.LAPIS_LAZULI, -2.0F, 1.0F, false));
+//		entity(CelestialEntities.VISCOUS_SLIME.get(), createEntitySingleDropTable(CelestialItems.CINNABAR.get(), 0.0F, 2.0F, false));
+//		entity(CelestialEntities.QUICKSILVER_SLIME.get(), createEntitySingleDropTable(CelestialItems.CINNABAR.get(), 0.0F, 2.0F, false));
+//
+//		entity(CelestialEntities.VOIDED.get(), createEntitySingleDropTable(Items.ROTTEN_FLESH, 0.0F, 2.0F, false)
+//				.withPool(LootPool.lootPool()
+//						.setRolls(ConstantValue.exactly(1))
+//						.add(LootItem.lootTableItem(Items.IRON_INGOT))
+//						.add(LootItem.lootTableItem(Items.CARROT))
+//						.add(LootItem.lootTableItem(Items.POTATO)
+//								.apply(SmeltItemFunction.smelted()
+//										.when(LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.THIS, ENTITY_ON_FIRE))))
+//						.when(LootItemKilledByPlayerCondition.killedByPlayer())
+//						.when(LootItemRandomChanceWithLootingCondition.randomChanceAndLootingBoost(0.025F, 0.01F))));
+//
+//		entity(CelestialEntities.LURKER.get(), createEntitySingleDropTable(Items.GUNPOWDER, 0.0F, 2.0F, false)
+//				.withPool(LootPool.lootPool()
+//						.add(TagEntry.expandTag(ItemTags.CREEPER_DROP_MUSIC_DISCS))
+//						.when(LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.KILLER, EntityPredicate.Builder.entity().of(EntityTypeTags.SKELETONS)))));
+//
+//		entity(CelestialEntities.VOIDED_PIGLIN.get(), createEntitySingleDropTable(Items.ROTTEN_FLESH, 0.0F, 1.0F, false)
+//				.withPool(createEntitySingleDropPool(Items.GOLD_NUGGET, 0.0F, 1.0F, false))
 //				.withPool(LootPool.lootPool()
 //						.setRolls(ConstantValue.exactly(1.0F))
-//						.add(LootItem.lootTableItem(ItemRegistry.MECHADOG_CORE.get()))
+//						.add(LootItem.lootTableItem(Items.GOLD_INGOT))
 //						.when(LootItemKilledByPlayerCondition.killedByPlayer())
-//						.when(LootItemRandomChanceWithLootingCondition.randomChanceAndLootingBoost(0.010F, 0.01F)))
-		);
-
-		entity(CelestialEntities.MECHACERBERUS_BOSS.get(), LootTable.lootTable()
-						.withPool(LootPool.lootPool()
-								.setRolls(ConstantValue.exactly(1.0F))
-								.add(LootItem.lootTableItem(CelestialItems.MECHACERBERUS_CORE.get()))
+//						.when(LootItemRandomChanceWithLootingCondition.randomChanceAndLootingBoost(0.025F, 0.01F))));
+//
+//		entity(CelestialEntities.VOIDED_ZOGLIN.get(), createEntitySingleDropTable(Items.ROTTEN_FLESH, 0.0F, 1.0F, false));
+//		entity(CelestialEntities.FLARE.get(), createEntitySingleDropTable(CelestialItems.FLARE_ROD.get(), 0.0F, 1.0F, true));
+//
+//		entity(CelestialEntities.CELESTIAL_CAT.get(), LootTable.lootTable()
+//				.withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
+//						.add(LootItem.lootTableItem(Items.STRING)
+//								.apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))))
+//				.withPool(LootPool.lootPool()
+//						.setRolls(ConstantValue.exactly(1.0F))
+//						.add(LootItem.lootTableItem(CelestialItems.BASIC_SPACESUIT_HELMET.get()))
+//						.when(LootItemKilledByPlayerCondition.killedByPlayer())
+//						.when(LootItemRandomChanceWithLootingCondition.randomChanceAndLootingBoost(0.025F, 0.01F))));
+//
+//		entity(CelestialEntities.VOID_CRAWLER.get(), createEntitySingleDropTable(Items.STRING, 0.0F, 2.0F, false)
+//				.withPool(createEntitySingleDropPool(Items.SPIDER_EYE, -1.0F, 1.0F, true)));
+//
+//		entity(CelestialEntities.ORBITER.get(), createEntitySingleDropTable(Items.GHAST_TEAR, 0.0F, 1.0F, false)
+//				.withPool(createEntitySingleDropPool(Items.GUNPOWDER, 0.0F, 2.0F, false)));
+//
+//
+//		entity(CelestialEntities.METEOR_CRAWLER.get(), createEntitySingleDropTable(Items.STRING, 0.0F, 2.0F, false)
+//				.withPool(createEntitySingleDropPool(Items.SPIDER_EYE, -1.0F, 1.0F, true))
+//				.withPool(createEntitySingleDropPool(Items.IRON_NUGGET, -1.0F, 1.0F, true))
+//				.withPool(createEntitySingleDropPool(Items.GOLD_NUGGET, -1.0F, 1.0F, true)));
+//
+//
+//		entity(CelestialEntities.ASTRAL_HOGLIN.get(), createEntitySingleDropTable(Items.LEATHER, 0.0F, 1.0F, false)
+//				.withPool(LootPool.lootPool()
+//						.setRolls(ConstantValue.exactly(1.0F))
+//						.add(LootItem.lootTableItem(Items.PORKCHOP)
+//								.apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 4.0F)))
+//								.apply(SmeltItemFunction.smelted()
+//										.when(LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.THIS, ENTITY_ON_FIRE)))
+//								.apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F))))));
+//
+//		entity(CelestialEntities.ASTRAL_PIGLIN.get(), LootTable.lootTable());
+//
+//		entity(CelestialEntities.CYBORG_PIGLIN.get(), LootTable.lootTable()
+//				.withPool(LootPool.lootPool()
+//						.setRolls(ConstantValue.exactly(1.0F))
+//						.add(LootItem.lootTableItem(CelestialItems.STEEL_NUGGET.get()))
+//						.when(LootItemKilledByPlayerCondition.killedByPlayer())
+//						.when(LootItemRandomChanceWithLootingCondition.randomChanceAndLootingBoost(0.025F, 0.01F))));
+//
+//		entity(CelestialEntities.DRONE.get(), LootTable.lootTable()
+//				.withPool(LootPool.lootPool()
+//						.setRolls(ConstantValue.exactly(1.0F))
+//						.add(LootItem.lootTableItem(Items.REDSTONE))
+//						.add(LootItem.lootTableItem(CelestialItems.STEEL_NUGGET.get()))
+//						.when(LootItemKilledByPlayerCondition.killedByPlayer())
+//						.when(LootItemRandomChanceWithLootingCondition.randomChanceAndLootingBoost(0.025F, 0.01F))));
+//
+//		entity(CelestialEntities.VOIDFELLOW.get(), LootTable.lootTable()
+//				.withPool(LootPool.lootPool()
+//						.setRolls(ConstantValue.exactly(1.0F))
+//						.add(LootItem.lootTableItem(Items.ENDER_PEARL)
+//								.apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
+//								.apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F))))));
+//
+//
+//		entity(CelestialEntities.ROVER.get(), LootTable.lootTable()
+//				.withPool(LootPool.lootPool()
+//						.setRolls(ConstantValue.exactly(1.0F))
+//						.add(LootItem.lootTableItem(Items.REDSTONE))
+//						.add(LootItem.lootTableItem(CelestialItems.RUSTED_IRON_NUGGET.get()))
+//						.add(LootItem.lootTableItem(Items.IRON_NUGGET))
+//						.add(LootItem.lootTableItem(CelestialItems.STEEL_NUGGET.get()))
+//						.when(LootItemKilledByPlayerCondition.killedByPlayer())
+//						.when(LootItemRandomChanceWithLootingCondition.randomChanceAndLootingBoost(0.025F, 0.01F))));
+//
+//		entity(CelestialEntities.COBBLESAURUS.get(), LootTable.lootTable()
+//				.withPool(LootPool.lootPool()
+//						.setRolls(ConstantValue.exactly(1.0F))
+//						.add(LootItem.lootTableItem(CelestialBlocks.MARS_COBBLESTONE.get()))
+//						.when(LootItemRandomChanceWithLootingCondition.randomChanceAndLootingBoost(0.025F, 0.01F))));
+//
+//		entity(CelestialEntities.GUST.get(), createEntitySingleDropTable(Items.GUNPOWDER, 0.0F, 2.0F, false));
+//
+//		entity(CelestialEntities.MECHADOG.get(), LootTable.lootTable()
+//				.withPool(LootPool.lootPool()
+//					.setRolls(ConstantValue.exactly(1.0F))
+//					.add(LootItem.lootTableItem(Items.REDSTONE)))
+////					.when(LootItemRandomChanceWithLootingCondition.randomChanceAndLootingBoost(0.8F, 0.01F)))
+//				.withPool(LootPool.lootPool()
+//						.setRolls(ConstantValue.exactly(1.0F))
+//						.add(LootItem.lootTableItem(CelestialBlocks.MECHADOG_HEAD.get()))
+//						.when(LootItemKilledByPlayerCondition.killedByPlayer())
+//						.when(LootItemRandomChanceWithLootingCondition.randomChanceAndLootingBoost(0.1F, 0.01F)))
+////				.withPool(LootPool.lootPool()
+////						.setRolls(ConstantValue.exactly(1.0F))
+////						.add(LootItem.lootTableItem(ItemRegistry.MECHADOG_CORE.get()))
+////						.when(LootItemKilledByPlayerCondition.killedByPlayer())
+////						.when(LootItemRandomChanceWithLootingCondition.randomChanceAndLootingBoost(0.010F, 0.01F)))
+//		);
+//
+//		entity(CelestialEntities.VISCOUS_SLIME.get(), LootTable.lootTable()
+//						.withPool(LootPool.lootPool()
+//								.setRolls(ConstantValue.exactly(1.0F))
+//								.add(LootItem.lootTableItem(CelestialItems.VISCOUS_SLIME_BALL.get())))
+////					.when(LootItemRandomChanceWithLootingCondition.randomChanceAndLootingBoost(0.8F, 0.01F)))
+//						.withPool(LootPool.lootPool()
+//								.setRolls(ConstantValue.exactly(1.0F))
+//								.add(LootItem.lootTableItem(CelestialItems.INFUSED_VISCOUS_SLIME_BALL.get()))
 //								.when(LootItemKilledByPlayerCondition.killedByPlayer())
-						));
+//								.when(LootItemRandomChanceWithLootingCondition.randomChanceAndLootingBoost(0.1F, 0.01F)))
+//		);
+//
+//		entity(CelestialEntities.QUICKSILVER_SLIME.get(), LootTable.lootTable()
+//						.withPool(LootPool.lootPool()
+//								.setRolls(ConstantValue.exactly(1.0F))
+//								.add(LootItem.lootTableItem(CelestialItems.QUICKSILVER_SLIME_BALL.get()))));
+//
+//		entity(CelestialEntities.MECHACERBERUS_BOSS.get(), LootTable.lootTable()
+//						.withPool(LootPool.lootPool()
+//								.setRolls(ConstantValue.exactly(1.0F))
+//								.add(LootItem.lootTableItem(CelestialItems.MECHACERBERUS_CORE.get()))
+////								.when(LootItemKilledByPlayerCondition.killedByPlayer())
+//						));
 
 		//---- BLOCKS -------------------------------------------------------------------------------
 		//---- MOON -------------------------------------------------------------------------------

@@ -731,6 +731,22 @@ public class CelestialRecipeGen extends RecipeProvider {
 		ShapedRecipeBuilder.shaped(Items.STONE_SWORD).define('#', CelestialItems.STONE_ROD.get()).define('X', ItemTags.STONE_TOOL_MATERIALS).pattern("X").pattern("X").pattern("#").unlockedBy("has_cobblestone", has(ItemTags.STONE_TOOL_MATERIALS)).save(consumer, "stone_sword_from_stone_rod");
 
 
+		ingotAndBlock(CelestialItems.MERCURY_SLIME_BALL.get(), CelestialBlocks.MERCURY_SLIME_BLOCK.get(), CelestialItems.MERCURY_SLIME_BALL.get(), consumer);
+
+		ShapedRecipeBuilder.shaped(CelestialBlocks.INFUSED_VISCOUS_SLIME_BLOCK.get()).pattern("XX").pattern("XX").define('X', CelestialItems.INFUSED_VISCOUS_SLIME_BALL.get()).unlockedBy("has_" + name(CelestialItems.INFUSED_VISCOUS_SLIME_BALL.get()), has(CelestialItems.INFUSED_VISCOUS_SLIME_BALL.get())).save(consumer);
+		ShapelessRecipeBuilder.shapeless(CelestialItems.INFUSED_VISCOUS_SLIME_BALL.get(), 4).requires(CelestialBlocks.INFUSED_VISCOUS_SLIME_BLOCK.get()).unlockedBy("has_" + name(CelestialItems.INFUSED_VISCOUS_SLIME_BALL.get()), has(CelestialItems.INFUSED_VISCOUS_SLIME_BALL.get())).save(consumer, name(CelestialItems.INFUSED_VISCOUS_SLIME_BALL.get()) + "_from_block");
+
+		WorkbenchCraftingRecipeBuilder.shaped(CelestialItems.METALLIC_HYDROGEN_TANK.get(), CelestialFluids.MOLTEN_STEEL.get(), 0.444F, 1.0F)
+				.pattern("GLG")
+				.pattern("DAD")
+				.pattern("GSG")
+				.define('G', Tags.Items.GLASS)
+				.define('L', CelestialTags.Items.LUNAR_DUSTS)
+				.define('D', Tags.Items.GEMS_DIAMOND)
+				.define('A', CelestialItems.COMPRESSED_AIR.get())
+				.define('S', CelestialBlocks.INFUSED_VISCOUS_SLIME_BLOCK.get())
+				.unlockedBy("has_diamond", has(Items.DIAMOND)).save(consumer, saveName(CelestialBlocks.METALLIC_HYDROGEN_TANK.get(), ""));
+
 
 	}
 

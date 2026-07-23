@@ -1,6 +1,7 @@
 package com.shim.celestialexploration.datagen;
 
 import com.shim.celestialexploration.CelestialExploration;
+import com.shim.celestialexploration.blocks.MercurySlimeBlock;
 import com.shim.celestialexploration.blocks.SolarPanelBlock;
 import com.shim.celestialexploration.registry.CelestialBlocks;
 import com.shim.celestialexploration.registry.CelestialFluids;
@@ -704,7 +705,39 @@ public class CelestialBlockStates extends BaseBlockStates {
 
 		simpleBlock(CelestialBlocks.SMOKING_MAGMA.get());
 
+//		slimeBlockVariant(CelestialBlocks.QUICKSILVER_SLIME_BLOCK.get());
+//		slimeBlockVariant(CelestialBlocks.VISCOUS_SLIME_BLOCK.get());
+		slimeBlock(CelestialBlocks.INFUSED_VISCOUS_SLIME_BLOCK.get());
 
+
+
+	}
+
+	private ResourceLocation extend(ResourceLocation rl, String suffix) {
+		return new ResourceLocation(rl.getNamespace(), rl.getPath() + suffix);
+	}
+
+	public void slimeBlock(SlimeBlock block) {
+		ModelFile model = models().withExistingParent(block.getRegistryName().getPath(), modLoc("template_slime_block")).texture("texture", blockTexture(block));
+
+		getVariantBuilder(block).forAllStates(state -> ConfiguredModel.builder().modelFile(model).build());
+	}
+
+	public void slimeBlockVariant(SlimeBlock block) {
+		ModelFile model = models().withExistingParent(block.getRegistryName().getPath(), modLoc("template_slime_block")).texture("texture", blockTexture(block));
+		ModelFile model_1 = models().withExistingParent(block.getRegistryName().getPath() + "_1", modLoc("template_slime_block_1")).texture("texture", blockTexture(block));
+		ModelFile model_2 = models().withExistingParent(block.getRegistryName().getPath() + "_2", modLoc("template_slime_block_2")).texture("texture", blockTexture(block));
+		ModelFile model_3 = models().withExistingParent(block.getRegistryName().getPath() + "_3", modLoc("template_slime_block")).texture("texture", extend(blockTexture(block), "_alt"));
+		ModelFile model_4 = models().withExistingParent(block.getRegistryName().getPath() + "_4", modLoc("template_slime_block_1")).texture("texture", extend(blockTexture(block), "_alt"));
+		ModelFile model_5 = models().withExistingParent(block.getRegistryName().getPath() + "_5", modLoc("template_slime_block_2")).texture("texture", extend(blockTexture(block), "_alt"));
+
+		getVariantBuilder(block).partialState().addModels(
+				new ConfiguredModel(model),
+				new ConfiguredModel(model_1),
+				new ConfiguredModel(model_2),
+				new ConfiguredModel(model_3),
+				new ConfiguredModel(model_4),
+				new ConfiguredModel(model_5));
 	}
 
 	public void solarPanelBlock(SolarPanelBlock block, ResourceLocation doubleslab, ResourceLocation side, ResourceLocation bottom, ResourceLocation top) {

@@ -29,7 +29,7 @@ public class MetallicHydrogenTankItem extends FuelTankItem {
     @Override
     public InteractionResult useOn(UseOnContext context) {
 
-        if (!context.isSecondaryUseActive()) {
+//        if (!context.isSecondaryUseActive()) {
 
             BlockPos pos = context.getClickedPos();
             pos = pos.relative(context.getClickedFace());
@@ -61,10 +61,11 @@ public class MetallicHydrogenTankItem extends FuelTankItem {
                 }
             }
 
-            return InteractionResult.PASS;
-        }
+            return super.useOn(context);
+//            return InteractionResult.PASS;
+//        }
 
-        return super.useOn(context);
+//        return super.useOn(context);
     }
 
 //    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {

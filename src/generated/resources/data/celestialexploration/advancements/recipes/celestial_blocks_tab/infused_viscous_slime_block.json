@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "celestialexploration:infused_viscous_slime_block"
+    ]
+  },
+  "criteria": {
+    "has_infused_viscous_slime_ball": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:infused_viscous_slime_ball"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "celestialexploration:infused_viscous_slime_block"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_infused_viscous_slime_ball",
+      "has_the_recipe"
+    ]
+  ]
+}

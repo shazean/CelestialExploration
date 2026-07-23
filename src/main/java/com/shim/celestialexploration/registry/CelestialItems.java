@@ -110,8 +110,8 @@ public class CelestialItems {
 	public static final RegistryObject<Item> RUST_SPAWN_EGG = registerItem("rust_spawn_egg", "Rust Slime Spawn egg", () -> new ForgeSpawnEggItem(CelestialEntities.RUST_SLIME,0x7f3414, 0x984521, new Item.Properties().tab(CelestialTabs.CELESTIAL_MISC_TAB)));
 	public static final RegistryObject<Item> LUNAR_SPAWN_EGG = registerItem("lunar_spawn_egg", "Lunar Slime Spawn Egg", () -> new ForgeSpawnEggItem(CelestialEntities.LUNAR_SLIME,0xd5d5d5, 0xfafafa, new Item.Properties().tab(CelestialTabs.CELESTIAL_MISC_TAB)));
 	public static final RegistryObject<Item> MARS_MALLOW_SPAWN_EGG = registerItem("mars_mallow_spawn_egg", "Mars Mallow Spawn Egg", () -> new ForgeSpawnEggItem(CelestialEntities.MARS_MALLOW, 0xfaf5ee, 0xcda568, new Item.Properties().tab(CelestialTabs.CELESTIAL_MISC_TAB)));
-	public static final RegistryObject<Item> QUICKSILVER_SPAWN_EGG = registerItem("quicksilver_spawn_egg", "Quicksilver Spawn Egg", () -> new ForgeSpawnEggItem(CelestialEntities.QUICKSILVER_SLIME,0xb4b4b4, 0xc8abab, new Item.Properties().tab(CelestialTabs.CELESTIAL_MISC_TAB)));
-	public static final RegistryObject<Item> VISCOUS_SPAWN_EGG = registerItem("viscous_spawn_egg", "Viscous Spawn Egg", () -> new ForgeSpawnEggItem(CelestialEntities.VISCOUS_SLIME,0x525964, 0xb4b4b4, new Item.Properties().tab(CelestialTabs.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> QUICKSILVER_SPAWN_EGG = registerItem("quicksilver_slime_spawn_egg", "Quicksilver Slime Spawn Egg", () -> new ForgeSpawnEggItem(CelestialEntities.QUICKSILVER_SLIME,0xb4b4b4, 0xc8abab, new Item.Properties().tab(CelestialTabs.CELESTIAL_MISC_TAB)));
+	public static final RegistryObject<Item> VISCOUS_SPAWN_EGG = registerItem("viscous_slime_spawn_egg", "Viscous Slime Spawn Egg", () -> new ForgeSpawnEggItem(CelestialEntities.VISCOUS_SLIME,0x525964, 0xb4b4b4, new Item.Properties().tab(CelestialTabs.CELESTIAL_MISC_TAB)));
 	public static final RegistryObject<Item> LURKER_SPAWN_EGG = registerItem("lurker_spawn_egg", "Lurker Spawn Egg", () -> new ForgeSpawnEggItem(CelestialEntities.LURKER,0x00a100, 0xffffff, new Item.Properties().tab(CelestialTabs.CELESTIAL_MISC_TAB)));
 	public static final RegistryObject<Item> VOIDFELLOW_SPAWN_EGG = registerItem("voidfellow_spawn_egg", "Space Fellow Spawn Egg", () -> new ForgeSpawnEggItem(CelestialEntities.VOIDFELLOW,0x1d1024, 0x0b4647, new Item.Properties().tab(CelestialTabs.CELESTIAL_MISC_TAB)));
 	public static final RegistryObject<Item> VOIDED_SPAWN_EGG = registerItem("voided_spawn_egg", "Voided Spawn Egg", () -> new ForgeSpawnEggItem(CelestialEntities.VOIDED,0x413245, 0x3c2d42, new Item.Properties().tab(CelestialTabs.CELESTIAL_MISC_TAB)));
@@ -254,6 +254,12 @@ public class CelestialItems {
 	public static final RegistryObject<Item> BLACK_DISPLAY_BOARD = ITEMS.register("black_display_board", () -> new SignItem((new Item.Properties()).tab(CelestialTabs.CELESTIAL_MISC_TAB), CelestialBlocks.BLACK_DISPLAY_BOARD.get(), CelestialBlocks.BLACK_WALL_DISPLAY_BOARD.get()));
 	public static final RegistryObject<Item> BLUE_DISPLAY_BOARD = ITEMS.register("blue_display_board", () -> new SignItem((new Item.Properties()).tab(CelestialTabs.CELESTIAL_MISC_TAB), CelestialBlocks.BLUE_DISPLAY_BOARD.get(), CelestialBlocks.BLUE_WALL_DISPLAY_BOARD.get()));
 	public static final RegistryObject<Item> WHITE_DISPLAY_BOARD = ITEMS.register("white_display_board", () -> new SignItem((new Item.Properties()).tab(CelestialTabs.CELESTIAL_MISC_TAB), CelestialBlocks.WHITE_DISPLAY_BOARD.get(), CelestialBlocks.WHITE_WALL_DISPLAY_BOARD.get()));
+
+//	public static final RegistryObject<Item> VISCOUS_SLIME_BALL = registerItem("viscous_slime_ball", "Viscous Slime Ball", () -> new Item((new Item.Properties()).tab(CreativeModeTab.TAB_MATERIALS)));
+	public static final RegistryObject<Item> INFUSED_VISCOUS_SLIME_BALL = registerItem("infused_viscous_slime_ball", "Infused Viscous Slime Ball", () -> new Item((new Item.Properties()).tab(CreativeModeTab.TAB_MATERIALS)));
+	public static final RegistryObject<Item> MERCURY_SLIME_BALL = registerItem("mercury_slime_ball", "Mercury Slime Ball", () -> new Item((new Item.Properties()).tab(CreativeModeTab.TAB_MATERIALS)));
+
+	public static final RegistryObject<Item> COMPRESSED_AIR = registerItem("compressed_air", "Compressed Air", () -> new Item((new Item.Properties()).tab(CreativeModeTab.TAB_MISC)));
 
 
 //	public static final RegistryObject<Item> CONTROL_PANEL = registerItem("control_panel", "Control Panel", () -> new ControlPanelItem(new Item.Properties().tab(CelestialTabs.SPACESHIP_TAB)));

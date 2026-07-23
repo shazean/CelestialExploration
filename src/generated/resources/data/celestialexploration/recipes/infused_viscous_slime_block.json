@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XX",
+    "XX"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:infused_viscous_slime_ball"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:infused_viscous_slime_block"
+  }
+}
