@@ -2,3 +2,4 @@
   - `[NEW]` Added slight acceleration/deceleration of spaceship to add a little personality, and updated the speedometer HUD to match
 - `[NEW]` New Lunar buggy vehicle!
 - `[NEW]` New metallic hydrogen fuel for the spaceship!  Travel faster and for longer before needing a refuel.
+- `[NEW]` Diamond geodes on Mercury

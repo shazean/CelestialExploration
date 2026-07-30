@@ -1,11 +1,15 @@
 package com.shim.celestialexploration.world.features.placement;
 
 import com.shim.celestialexploration.world.features.CelestialFeatureUtils;
+import com.shim.celestialexploration.world.features.CelestialFeatures;
+import com.shim.celestialexploration.world.features.TestFeatureUtils;
 import net.minecraft.core.Holder;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.world.level.levelgen.placement.*;
 
 public class SurfacePlacements {
+
+
 
     public static final Holder<PlacedFeature> GEYSER = PlacementUtils.register("geyser", CelestialFeatureUtils.GEYSER, InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome());
     public static final Holder<PlacedFeature> IO_GEYSER = PlacementUtils.register("io_geyser", CelestialFeatureUtils.IO_GEYSER, InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome());

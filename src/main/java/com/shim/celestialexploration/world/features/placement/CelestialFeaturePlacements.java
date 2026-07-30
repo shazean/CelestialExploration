@@ -8,6 +8,7 @@ import com.shim.celestialexploration.world.features.placement.CelestialOrePlacem
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
+import net.minecraft.data.worldgen.features.CaveFeatures;
 import net.minecraft.data.worldgen.features.EndFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.world.level.levelgen.Heightmap;
@@ -19,6 +20,9 @@ import net.minecraft.world.level.levelgen.placement.*;
 public class CelestialFeaturePlacements {
 
     public static final Holder<PlacedFeature> OBSIDIAN_LAKE = PlacementUtils.register("obsidian_lake", LakeFeatureUtils.OBSIDIAN_LAKE, RarityFilter.onAverageOnceEvery(80), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome());
+
+    public static final Holder<PlacedFeature> DIAMOND_GEODE = PlacementUtils.register("diamond_geode", CelestialFeatures.DIAMOND_GEODE, RarityFilter.onAverageOnceEvery(384), InSquarePlacement.spread(), HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(6), VerticalAnchor.absolute(30)), BiomeFilter.biome());
+
 
     //---- DISKS -------------------------------------------------------------------------------
     public static final Holder<PlacedFeature> DISK_MARS_SAND = PlacementUtils.register("disk_mars_sand", CelestialFeatures.DISK_MARS_SAND, CountPlacement.of(3), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_TOP_SOLID, BiomeFilter.biome());

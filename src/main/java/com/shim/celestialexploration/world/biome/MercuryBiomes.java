@@ -1,7 +1,12 @@
 package com.shim.celestialexploration.world.biome;
 
+import com.shim.celestialexploration.registry.CelestialCarvers;
 import com.shim.celestialexploration.registry.CelestialEntities;
 import com.shim.celestialexploration.world.features.placement.CelestialFeaturePlacements;
+import com.shim.celestialexploration.world.features.placement.CraterPlacements;
+import com.shim.celestialexploration.world.features.placement.SurfacePlacements;
+import net.minecraft.data.worldgen.Carvers;
+import net.minecraft.data.worldgen.placement.CavePlacements;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.*;
 import net.minecraft.world.level.levelgen.GenerationStep;
@@ -13,9 +18,14 @@ public class MercuryBiomes extends CelestialBiomeFeatures {
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
 
         CelestialBiomeFeatures.addCarversAndLakes(biomeBuilder);
+//        biomeBuilder.addCarver(GenerationStep.Carving.AIR, CelestialCarvers.CRATER.get());
+
         biomeBuilder.addFeature(GenerationStep.Decoration.LAKES, CelestialFeaturePlacements.MERCURY_LAVA_LAKE_UNDERGROUND);
 
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.DISK_MERCURY_SAND);
+        biomeBuilder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, CelestialFeaturePlacements.DIAMOND_GEODE);
+//        biomeBuilder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, CraterPlacements.CRATER);
+
         addMercuryOres(biomeBuilder);
 
         generalNoCaveMonsters(spawnBuilder, 50, 50, 50);
@@ -32,6 +42,8 @@ public class MercuryBiomes extends CelestialBiomeFeatures {
         biomeBuilder.addFeature(GenerationStep.Decoration.LAKES, CelestialFeaturePlacements.MERCURY_LAVA_LAKE_UNDERGROUND);
 
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.DISK_MERCURY_SAND);
+        biomeBuilder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, CelestialFeaturePlacements.DIAMOND_GEODE);
+
         addMercuryOres(biomeBuilder);
 
         generalNoCaveMonsters(spawnBuilder, 50, 50, 50);
@@ -48,6 +60,8 @@ public class MercuryBiomes extends CelestialBiomeFeatures {
         biomeBuilder.addFeature(GenerationStep.Decoration.LAKES, CelestialFeaturePlacements.MERCURY_LAVA_LAKE_UNDERGROUND);
 
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.DISK_MERCURY_SAND);
+        biomeBuilder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, CelestialFeaturePlacements.DIAMOND_GEODE);
+
         addMercuryOres(biomeBuilder);
 
         generalNoCaveMonsters(spawnBuilder, 50, 50, 50);
@@ -61,6 +75,8 @@ public class MercuryBiomes extends CelestialBiomeFeatures {
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
 
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CelestialFeaturePlacements.DISK_MERCURY_SAND);
+        biomeBuilder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, CelestialFeaturePlacements.DIAMOND_GEODE);
+
         addMercuryOres(biomeBuilder);
 
         generalNoCaveMonsters(spawnBuilder, 50, 50, 50);

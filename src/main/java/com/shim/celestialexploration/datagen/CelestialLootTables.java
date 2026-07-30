@@ -14,18 +14,18 @@ import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.AlternativesEntry;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
 import net.minecraft.world.level.storage.loot.entries.TagEntry;
 import net.minecraft.world.level.storage.loot.functions.*;
-import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyCondition;
-import net.minecraft.world.level.storage.loot.predicates.LootItemKilledByPlayerCondition;
-import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceWithLootingCondition;
-import net.minecraft.world.level.storage.loot.predicates.MatchTool;
+import net.minecraft.world.level.storage.loot.predicates.*;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.minecraftforge.registries.RegistryObject;
@@ -488,8 +488,27 @@ public class CelestialLootTables extends BaseLootTableProvider {
 		block(CelestialBlocks.MOON_FARMLAND.get(), createSilkTouchTable(CelestialBlocks.MOON_FARMLAND.get(), CelestialBlocks.MOON_SAND.get(), 1, 1));
 		block(CelestialBlocks.MERCURY_FARMLAND.get(), createSilkTouchTable(CelestialBlocks.MERCURY_FARMLAND.get(), CelestialBlocks.MERCURY_SAND.get(), 1, 1));
 
+		block(CelestialBlocks.DIAMOND_CHUNK.get(), createDiamondChunkTable(CelestialBlocks.DIAMOND_CHUNK.get(),2, 5, new float[]{0.1F, 0.1428715F, 0.25F, 1.0F}));
+		block(CelestialBlocks.SMALL_DIAMOND_CRYSTAL.get(), createSilkTouchTable(CelestialBlocks.SMALL_DIAMOND_CRYSTAL.get(), Blocks.AIR, 0, 0));
+		block(CelestialBlocks.MEDIUM_DIAMOND_CRYSTAL.get(), createDiamondChunkTable(CelestialBlocks.MEDIUM_DIAMOND_CRYSTAL.get(), 0, 1, new float[]{0.001F, 0.01F, 0.1F, 0.1428715F}));
+		block(CelestialBlocks.LARGE_DIAMOND_CRYSTAL.get(), createDiamondChunkTable(CelestialBlocks.LARGE_DIAMOND_CRYSTAL.get(), 1, 2, new float[]{0.01F, 0.1F, 0.1428715F, 0.25F}));
+		block(CelestialBlocks.DIAMOND_CLUSTER.get(), createDiamondChunkTable(CelestialBlocks.DIAMOND_CLUSTER.get(), 1, 3, new float[]{0.01F, 0.1F, 0.1428715F, 0.25F}));
+
 
 	}
+
+	protected LootTable.Builder createDiamondChunkTable(Block block, float shardMin, float shardMax, float[] diamondChances) {
+		LootPool.Builder builder = LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
+				.add(AlternativesEntry.alternatives(LootItem.lootTableItem(block).when(MatchTool.toolMatches(ItemPredicate.Builder.item().hasEnchantment(
+                        new EnchantmentPredicate(Enchantments.SILK_TOUCH, MinMaxBounds.Ints.atLeast(1)))))))
+				.add(AlternativesEntry.alternatives(LootItem.lootTableItem(CelestialItems.DIAMOND_SHARD.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(shardMin, shardMax)))
+								.apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE, 1))
+								.apply(ApplyExplosionDecay.explosionDecay()), LootItem.lootTableItem(Items.DIAMOND)
+								.when(BonusLevelTableCondition.bonusLevelFlatChance(Enchantments.BLOCK_FORTUNE, diamondChances))));
+
+		return LootTable.lootTable().withPool(builder);
+	}
+
 
 	protected LootTable.Builder createCeramicTable(Block block) {
 		LootPool.Builder builder = LootPool.lootPool()

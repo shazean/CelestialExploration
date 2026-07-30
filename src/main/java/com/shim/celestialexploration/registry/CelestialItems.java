@@ -261,6 +261,8 @@ public class CelestialItems {
 
 	public static final RegistryObject<Item> COMPRESSED_AIR = registerItem("compressed_air", "Compressed Air", () -> new Item((new Item.Properties()).tab(CreativeModeTab.TAB_MISC)));
 
+	public static final RegistryObject<Item> DIAMOND_SHARD = registerItem("diamond_shard", "Diamond Shard", () -> new Item((new Item.Properties()).tab(CreativeModeTab.TAB_MISC)));
+
 
 //	public static final RegistryObject<Item> CONTROL_PANEL = registerItem("control_panel", "Control Panel", () -> new ControlPanelItem(new Item.Properties().tab(CelestialTabs.SPACESHIP_TAB)));
 

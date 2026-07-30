@@ -802,6 +802,16 @@ public class CelestialBlocks {
 
     public static final RegistryObject<SolarPanelBlock> SOLAR_PANEL = registerBlockDropsSelf("solar_panel", "Solar Panel", () -> new SolarPanelBlock(Block.Properties.of(Material.GLASS).strength(0.3F).sound(SoundType.GLASS)), CelestialTabs.SPACESHIP_TAB);
 
+
+    public static final RegistryObject<Block> DIAMOND_CHUNK = registerBlock("diamond_chunk", "Diamond Chunk", () -> new Block(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.DIAMOND).requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.METAL)), CelestialTabs.CELESTIAL_BLOCKS_TAB);
+    public static final RegistryObject<Block> DIAMOND_CLUSTER = registerBlock("diamond_cluster", "Diamond Cluster", () -> new AmethystClusterBlock(7, 3, BlockBehaviour.Properties.of(Material.METAL, MaterialColor.DIAMOND).noOcclusion().randomTicks().sound(SoundType.AMETHYST_CLUSTER).strength(1.5F).lightLevel((state) -> 5)), CelestialTabs.CELESTIAL_BLOCKS_TAB);
+    public static final RegistryObject<Block> SMALL_DIAMOND_CRYSTAL = registerBlock("small_diamond_crystal", "Small Diamond Crystal", () -> new AmethystClusterBlock(5, 3, BlockBehaviour.Properties.copy(DIAMOND_CLUSTER.get()).sound(SoundType.MEDIUM_AMETHYST_BUD).lightLevel((p_1state52629_) -> 4)), CelestialTabs.CELESTIAL_BLOCKS_TAB);
+    public static final RegistryObject<Block> MEDIUM_DIAMOND_CRYSTAL = registerBlock("medium_diamond_crystal", "Medium Diamond Crystal", () -> new AmethystClusterBlock(4, 3, BlockBehaviour.Properties.copy(DIAMOND_CLUSTER.get()).sound(SoundType.LARGE_AMETHYST_BUD).lightLevel((state) -> 2)), CelestialTabs.CELESTIAL_BLOCKS_TAB);
+    public static final RegistryObject<Block> LARGE_DIAMOND_CRYSTAL = registerBlock("large_diamond_crystal", "Large Diamond Crystal", () -> new AmethystClusterBlock(3, 4, BlockBehaviour.Properties.copy(DIAMOND_CLUSTER.get()).sound(SoundType.SMALL_AMETHYST_BUD).lightLevel((state) -> 1)), CelestialTabs.CELESTIAL_BLOCKS_TAB);
+
+
+
+
     //	public static final RegistryObject<Block> LAUNCH_PAD = BLOCKS.register("launch_pad", () -> new Block(Block.Properties.of(Material.HEAVY_METAL, MaterialColor.METAL).strength(5.0F, 6.0F).sound(SoundType.METAL)));
     //	public static final RegistryObject<Block> SOLAR_PANEL = BLOCKS.register("solar_panel", () -> new SolarPanelBlock(Block.Properties.of(Material.DECORATION, MaterialColor.METAL).noCollission().sound(SoundType.METAL).lightLevel(litBlockEmission(1))));
     //	public static final RegistryObject<Block> SOLAR_LANTERN = BLOCKS.register("solar_lantern", () -> new Block(Block.Properties.of(Material.GLASS, MaterialColor.FIRE).strength(0.3F).sound(SoundType.GLASS).lightLevel((p_235455_0_) -> 20)));

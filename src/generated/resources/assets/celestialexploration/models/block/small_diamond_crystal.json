@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "celestialexploration:block/small_diamond_crystal"
+  }
+}

@@ -11,6 +11,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.SlabType;
 import net.minecraftforge.client.model.generators.*;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -709,8 +710,38 @@ public class CelestialBlockStates extends BaseBlockStates {
 //		slimeBlockVariant(CelestialBlocks.VISCOUS_SLIME_BLOCK.get());
 		slimeBlock(CelestialBlocks.INFUSED_VISCOUS_SLIME_BLOCK.get());
 
+		simpleBlock(CelestialBlocks.DIAMOND_CHUNK.get());
+
+		amethystClusterBlock(CelestialBlocks.DIAMOND_CLUSTER.get());
+		amethystClusterBlock(CelestialBlocks.SMALL_DIAMOND_CRYSTAL.get());
+		amethystClusterBlock(CelestialBlocks.MEDIUM_DIAMOND_CRYSTAL.get());
+		amethystClusterBlock(CelestialBlocks.LARGE_DIAMOND_CRYSTAL.get());
 
 
+
+	}
+
+	public void amethystClusterBlock(Block block) {
+		ModelFile model = models().withExistingParent(block.getRegistryName().getPath(), mcLoc("cross")).texture("cross", blockTexture(block));
+
+		getVariantBuilder(block).forAllStates(state -> {
+			Direction facing = state.getValue(AmethystClusterBlock.FACING);
+			int x = 0;
+			int y = 0;
+
+			if (facing == Direction.DOWN)
+				x = 180;
+			if (facing == Direction.EAST || facing == Direction.NORTH || facing == Direction.SOUTH || facing == Direction.WEST)
+				x = 90;
+			if (facing == Direction.EAST)
+				y = 90;
+			if (facing == Direction.SOUTH)
+				y = 180;
+			if (facing == Direction.WEST)
+				y = 270;
+
+			return ConfiguredModel.builder().modelFile(model).rotationX(x).rotationY(y).build();
+		});
 	}
 
 	private ResourceLocation extend(ResourceLocation rl, String suffix) {

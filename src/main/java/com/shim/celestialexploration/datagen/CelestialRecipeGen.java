@@ -747,6 +747,8 @@ public class CelestialRecipeGen extends RecipeProvider {
 				.define('S', CelestialBlocks.INFUSED_VISCOUS_SLIME_BLOCK.get())
 				.unlockedBy("has_diamond", has(Items.DIAMOND)).save(consumer, saveName(CelestialBlocks.METALLIC_HYDROGEN_TANK.get(), ""));
 
+		ShapedRecipeBuilder.shaped(Items.DIAMOND).pattern("XX").pattern("XX").define('X', CelestialItems.DIAMOND_SHARD.get()).unlockedBy("has_diamond_shard", has(CelestialItems.DIAMOND_SHARD.get())).save(consumer, "diamond_from_diamond_shard");
+
 
 	}
 

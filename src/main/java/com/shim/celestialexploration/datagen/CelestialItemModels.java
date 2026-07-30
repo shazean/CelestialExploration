@@ -901,6 +901,14 @@ public class CelestialItemModels extends BaseItemModels {
 //		generatedItem(CelestialItems.QUICKSILVER_SLIME_BALL.get());
 
 
+		self(CelestialBlocks.DIAMOND_CHUNK.get());
+		generatedBlockItem(CelestialBlocks.DIAMOND_CLUSTER.get());
+		generatedBlockItem(CelestialBlocks.SMALL_DIAMOND_CRYSTAL.get());
+		generatedBlockItem(CelestialBlocks.MEDIUM_DIAMOND_CRYSTAL.get());
+		generatedBlockItem(CelestialBlocks.LARGE_DIAMOND_CRYSTAL.get());
+		generatedItem(CelestialItems.DIAMOND_SHARD.get());
+
+
 		this.withExistingParent(name(CelestialBlocks.MERCURY_SLIME_BLOCK.get()), this.modLoc("block/mercury_slime_block_inventory"));
 
 		self(CelestialBlocks.INFUSED_VISCOUS_SLIME_BLOCK.get());

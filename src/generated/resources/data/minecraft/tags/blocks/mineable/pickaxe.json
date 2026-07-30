@@ -119,6 +119,11 @@
     "celestialexploration:powered_magrail",
     "celestialexploration:steel_frame",
     "#celestialexploration:chests",
+    "celestialexploration:diamond_chunk",
+    "celestialexploration:diamond_cluster",
+    "celestialexploration:small_diamond_crystal",
+    "celestialexploration:medium_diamond_crystal",
+    "celestialexploration:large_diamond_crystal",
     "celestialexploration:workbench",
     "celestialexploration:oxygen_compressor"
   ]

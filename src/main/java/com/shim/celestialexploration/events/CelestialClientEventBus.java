@@ -175,6 +175,10 @@ public class CelestialClientEventBus {
         ItemBlockRenderTypes.setRenderLayer(CelestialBlocks.MERCURY_SLIME_BLOCK.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(CelestialBlocks.INFUSED_VISCOUS_SLIME_BLOCK.get(), RenderType.translucent());
 
+        ItemBlockRenderTypes.setRenderLayer(CelestialBlocks.DIAMOND_CLUSTER.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(CelestialBlocks.SMALL_DIAMOND_CRYSTAL.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(CelestialBlocks.MEDIUM_DIAMOND_CRYSTAL.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(CelestialBlocks.LARGE_DIAMOND_CRYSTAL.get(), RenderType.cutout());
 
 
         //MOBS
