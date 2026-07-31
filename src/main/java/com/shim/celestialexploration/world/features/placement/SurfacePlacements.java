@@ -1,8 +1,6 @@
 package com.shim.celestialexploration.world.features.placement;
 
 import com.shim.celestialexploration.world.features.CelestialFeatureUtils;
-import com.shim.celestialexploration.world.features.CelestialFeatures;
-import com.shim.celestialexploration.world.features.TestFeatureUtils;
 import net.minecraft.core.Holder;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.world.level.levelgen.placement.*;
@@ -20,6 +18,9 @@ public class SurfacePlacements {
     public static final Holder<PlacedFeature> SPARSE_PENITENTE = PlacementUtils.register("sparse_penitente", CelestialFeatureUtils.PENITENTE, RarityFilter.onAverageOnceEvery(10), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome());
 
     public static final Holder<PlacedFeature> FROZEN_OCEAN = PlacementUtils.register("frozen_ocean", CelestialFeatureUtils.FROZEN_OCEAN, CountPlacement.of(20), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome());
+
+
+    public static final Holder<PlacedFeature> CRATER = PlacementUtils.register("crater_surface", CelestialFeatureUtils.CRATER_TEST, RarityFilter.onAverageOnceEvery(32), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome());
 
 
 //    public static final Holder<PlacedFeature> HYDRATE = PlacementUtils.register("hydrate", CelestialFeatureUtils.HYDRATE, RarityFilter.onAverageOnceEvery(20), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome());

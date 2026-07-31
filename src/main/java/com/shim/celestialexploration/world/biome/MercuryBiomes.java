@@ -1,12 +1,7 @@
 package com.shim.celestialexploration.world.biome;
 
-import com.shim.celestialexploration.registry.CelestialCarvers;
 import com.shim.celestialexploration.registry.CelestialEntities;
 import com.shim.celestialexploration.world.features.placement.CelestialFeaturePlacements;
-import com.shim.celestialexploration.world.features.placement.CraterPlacements;
-import com.shim.celestialexploration.world.features.placement.SurfacePlacements;
-import net.minecraft.data.worldgen.Carvers;
-import net.minecraft.data.worldgen.placement.CavePlacements;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.*;
 import net.minecraft.world.level.levelgen.GenerationStep;

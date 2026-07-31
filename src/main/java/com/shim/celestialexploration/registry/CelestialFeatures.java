@@ -25,7 +25,7 @@ public class CelestialFeatures {
 
     public static final RegistryObject<Feature<NoneFeatureConfiguration>> FROZEN_OCEAN = FEATURES.register("frozen_ocean", () -> new FrozenOceanFeature(NoneFeatureConfiguration.CODEC));
 
-//    public static final RegistryObject<Feature<NoneFeatureConfiguration>> CRATER = FEATURES.register("crater_registry_object", () -> new CraterFeature(NoneFeatureConfiguration.CODEC));
+    public static final RegistryObject<Feature<NoneFeatureConfiguration>> CRATER = FEATURES.register("crater_registry_object", () -> new CraterFeature(NoneFeatureConfiguration.CODEC));
 
 
 }

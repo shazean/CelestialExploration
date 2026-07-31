@@ -26,6 +26,9 @@ public class CelestialGeneration {
         topLayer.add(SurfacePlacements.GEYSER);
         topLayer.add(SurfacePlacements.IO_GEYSER);
 
+        topLayer.add(SurfacePlacements.CRATER);
+
+
         ResourceLocation eventName = event.getName();
         if (eventName != null) {
 

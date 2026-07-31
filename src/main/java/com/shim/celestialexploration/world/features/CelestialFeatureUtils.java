@@ -21,6 +21,9 @@ public class CelestialFeatureUtils {
     public static final Holder<ConfiguredFeature<NoneFeatureConfiguration, ?>> HYDRATE = FeatureUtils.register("hydrate", CelestialFeatures.HYDRATE.get(), new NoneFeatureConfiguration());
     public static final Holder<ConfiguredFeature<NoneFeatureConfiguration, ?>> FROZEN_OCEAN = FeatureUtils.register("frozen_ocean", CelestialFeatures.FROZEN_OCEAN.get(), new NoneFeatureConfiguration());
 
+    public static final Holder<ConfiguredFeature<NoneFeatureConfiguration, ?>> CRATER_TEST = FeatureUtils.register("crater_util",
+            CelestialFeatures.CRATER.get(),
+            new NoneFeatureConfiguration());
 
 
 
