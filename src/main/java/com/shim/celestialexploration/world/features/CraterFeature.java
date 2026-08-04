@@ -3,37 +3,80 @@ package com.shim.celestialexploration.world.features;
 import com.mojang.serialization.Codec;
 import com.shim.celestialexploration.registry.CelestialBlocks;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
+import net.minecraft.util.Mth;
+import net.minecraft.util.random.SimpleWeightedRandomList;
+import net.minecraft.util.random.Weight;
+import net.minecraft.util.random.WeightedEntry;
+import net.minecraft.util.random.WeightedRandomList;
 import net.minecraft.world.level.WorldGenLevel;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.levelgen.*;
+import net.minecraft.world.level.block.CaveVines;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
+import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
+import net.minecraft.world.level.material.Fluids;
+
+import java.util.Random;
 
 public class CraterFeature extends Feature<NoneFeatureConfiguration> {
-    private static final Direction[] DIRECTIONS = Direction.values();
+    final int lowerSize;
+    final int upperSize;
+    final boolean shouldSpawnMeteor;
+    final BlockState alternateMeteorBlock;
+    private static final BlockState METEOR = CelestialBlocks.METEOR.get().defaultBlockState();
+    private static final BlockState AIR = Blocks.AIR.defaultBlockState();
 
-    public CraterFeature(Codec<NoneFeatureConfiguration> codec) {
+
+    public CraterFeature(Codec<NoneFeatureConfiguration> codec, int lowerSize, int upperSize, boolean shouldSpawnMeteor) {
         super(codec);
+        this.lowerSize = lowerSize;
+        this.upperSize = upperSize;
+        this.shouldSpawnMeteor = shouldSpawnMeteor;
+        if (shouldSpawnMeteor)
+            alternateMeteorBlock = this.chooseRandomMeteorOre();
+        else
+            alternateMeteorBlock = CelestialBlocks.METEOR.get().defaultBlockState();
+    }
+
+    private BlockState chooseRandomMeteorOre() {
+
+        SimpleWeightedRandomList<Block> randomMeteor = SimpleWeightedRandomList.<Block>builder()
+                .add(CelestialBlocks.METEOR.get(), 10)
+                .add(CelestialBlocks.METEOR_COAL_ORE.get(), 20)
+                .add(CelestialBlocks.METEOR_IRON_ORE.get(), 15)
+                .add(CelestialBlocks.METEOR_COPPER_ORE.get(), 15)
+                .add(CelestialBlocks.METEOR_REDSTONE_ORE.get(), 15)
+                .add(CelestialBlocks.METEOR_BAUXITE_ORE.get(), 15)
+                .add(CelestialBlocks.METEOR_SULFUR_ORE.get(), 8)
+                .add(CelestialBlocks.METEOR_LAPIS_ORE.get(), 4)
+                .add(CelestialBlocks.METEOR_GOLD_ORE.get(), 3)
+                .add(CelestialBlocks.METEOR_EMERALD_ORE.get(), 2)
+                .add(CelestialBlocks.METEOR_DIAMOND_ORE.get(), 1).build();
+
+        return randomMeteor.getRandomValue(new Random()).orElseGet(CelestialBlocks.METEOR).defaultBlockState();
     }
 
     @Override
     public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> context) {
 
-        int radius = 13 + context.random().nextInt(3); //get from config?
+        int radius = Mth.clamp(context.random().nextInt(this.upperSize - this.lowerSize) + this.lowerSize, 5, 16);
         int x;
         int y;
         int z;
         int point;
         WorldGenLevel level = context.level();
         BlockPos pos = context.origin();
-//        int bottom = radius;
         int radiusSq = radius * radius;
+
+        if (level.getFluidState(pos).is(Fluids.WATER))
+            return false;
 
         for (int row = 0; row < radius * 2 + 1; row++) {
             for (int col = 0; col < radius * 2 + 1; col++) {
-                for (int height = 0; height < radius; height++) {
+                for (int height = 0; height < radius * 2 + 1; height++) {
                     x = radius - row;
                     y = radius - height;
                     z = radius - col;
@@ -41,30 +84,33 @@ public class CraterFeature extends Feature<NoneFeatureConfiguration> {
                     point = x * x + z * z + y * y;
 
                     if (point <= radiusSq + 1) {
-                        level.setBlock(pos.offset(x, -y, z), Blocks.AIR.defaultBlockState(), 2);
+                        level.setBlock(pos.offset(x, -y, z), AIR, 2);
                     }
-
-//                    bottom = Math.min(y, bottom);
                 }
             }
         }
 
-        int meteorRadius = 4; //Math.max(radius / 5, 1);
-        int meteorRadiusSQ = meteorRadius * meteorRadius;
-        BlockPos meteorCorner = pos.offset(radius, radius + 3, radius);
+        if (this.shouldSpawnMeteor) {
+            int meteorRadius = radius / 6;
+            if (((float) radius / 6.0F) < 1.0) {
+                level.setBlock(pos.offset(0, -radius - 1, 0), METEOR, 2);
+            } else {
+                int meteorRadiusSQ = meteorRadius * meteorRadius;
 
-        for (int row = 0; row < meteorRadius * 2 + 1; row++) {
-            for (int col = 0; col < meteorRadius * 2 + 1; col++) {
-                for (int height = 0; height < meteorRadius; height++) {
-                    x = meteorRadius - row;
-                    y = meteorRadius - height;
-                    z = meteorRadius - col;
-                    point = x * x + y * y + z * z;
-                    if (point <= meteorRadiusSQ + 1) {
+                for (int row = 0; row < meteorRadius * 2 + 1; row++) {
+                    for (int col = 0; col < meteorRadius * 2 + 1; col++) {
+                        for (int height = 0; height < meteorRadius; height++) {
+                            x = meteorRadius - row;
+                            y = meteorRadius - height;
+                            z = meteorRadius - col;
+                            point = x * x + y * y + z * z;
+                            if (point <= meteorRadiusSQ + 1) {
 
-                        if (level.getBlockState(meteorCorner.offset(x, y, z)).isAir()) {
-
-                            level.setBlock(pos.offset(x, y, z), CelestialBlocks.METEOR.get().defaultBlockState(), 2);
+                                if (context.random().nextInt(5) == 0)
+                                    level.setBlock(pos.offset(x, y - radius - 1, z), this.alternateMeteorBlock, 2);
+                                else
+                                    level.setBlock(pos.offset(x, y - radius - 1, z), METEOR, 2);
+                            }
                         }
                     }
                 }

@@ -25,7 +25,13 @@ public class CelestialFeatures {
 
     public static final RegistryObject<Feature<NoneFeatureConfiguration>> FROZEN_OCEAN = FEATURES.register("frozen_ocean", () -> new FrozenOceanFeature(NoneFeatureConfiguration.CODEC));
 
-    public static final RegistryObject<Feature<NoneFeatureConfiguration>> CRATER = FEATURES.register("crater_registry_object", () -> new CraterFeature(NoneFeatureConfiguration.CODEC));
+    public static final RegistryObject<Feature<NoneFeatureConfiguration>> SMALL_CRATER = FEATURES.register("small_crater", () -> new CraterFeature(NoneFeatureConfiguration.CODEC, 5, 8, false));
+    public static final RegistryObject<Feature<NoneFeatureConfiguration>> MEDIUM_CRATER = FEATURES.register("medium_crater", () -> new CraterFeature(NoneFeatureConfiguration.CODEC, 9, 12, false));
+    public static final RegistryObject<Feature<NoneFeatureConfiguration>> LARGE_CRATER = FEATURES.register("large_crater", () -> new CraterFeature(NoneFeatureConfiguration.CODEC, 13, 16, false));
+
+    public static final RegistryObject<Feature<NoneFeatureConfiguration>> SMALL_METEOR = FEATURES.register("small_meteor", () -> new CraterFeature(NoneFeatureConfiguration.CODEC, 5, 8, true));
+    public static final RegistryObject<Feature<NoneFeatureConfiguration>> MEDIUM_METEOR = FEATURES.register("medium_meteor", () -> new CraterFeature(NoneFeatureConfiguration.CODEC, 9, 12, true));
+    public static final RegistryObject<Feature<NoneFeatureConfiguration>> LARGE_METEOR = FEATURES.register("large_meteor", () -> new CraterFeature(NoneFeatureConfiguration.CODEC, 13, 16, true));
 
 
 }

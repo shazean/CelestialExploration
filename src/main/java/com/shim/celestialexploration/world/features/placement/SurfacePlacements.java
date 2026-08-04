@@ -20,7 +20,23 @@ public class SurfacePlacements {
     public static final Holder<PlacedFeature> FROZEN_OCEAN = PlacementUtils.register("frozen_ocean", CelestialFeatureUtils.FROZEN_OCEAN, CountPlacement.of(20), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome());
 
 
-    public static final Holder<PlacedFeature> CRATER = PlacementUtils.register("crater_surface", CelestialFeatureUtils.CRATER_TEST, RarityFilter.onAverageOnceEvery(32), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome());
+    public static final Holder<PlacedFeature> UNCOMMON_SMALL_CRATER = PlacementUtils.register("uncommon_small_crater", CelestialFeatureUtils.SMALL_CRATER, RarityFilter.onAverageOnceEvery(128), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome());
+    public static final Holder<PlacedFeature> COMMON_SMALL_CRATER = PlacementUtils.register("common_small_crater", CelestialFeatureUtils.SMALL_CRATER, RarityFilter.onAverageOnceEvery(32), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome());
+
+    public static final Holder<PlacedFeature> UNCOMMON_MEDIUM_CRATER = PlacementUtils.register("uncommon_medium_crater", CelestialFeatureUtils.MEDIUM_CRATER, RarityFilter.onAverageOnceEvery(192), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome());
+    public static final Holder<PlacedFeature> COMMON_MEDIUM_CRATER = PlacementUtils.register("common_medium_crater", CelestialFeatureUtils.MEDIUM_CRATER, RarityFilter.onAverageOnceEvery(64), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome());
+
+    public static final Holder<PlacedFeature> UNCOMMON_LARGE_CRATER = PlacementUtils.register("uncommon_large_crater", CelestialFeatureUtils.LARGE_CRATER, RarityFilter.onAverageOnceEvery(256), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome());
+    public static final Holder<PlacedFeature> COMMON_LARGE_CRATER = PlacementUtils.register("common_large_crater", CelestialFeatureUtils.LARGE_CRATER, RarityFilter.onAverageOnceEvery(96), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome());
+
+    public static final Holder<PlacedFeature> UNCOMMON_SMALL_METEOR = PlacementUtils.register("uncommon_small_meteor", CelestialFeatureUtils.SMALL_METEOR, RarityFilter.onAverageOnceEvery(96), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome());
+    public static final Holder<PlacedFeature> COMMON_SMALL_METEOR = PlacementUtils.register("common_small_meteor", CelestialFeatureUtils.SMALL_METEOR, RarityFilter.onAverageOnceEvery(16), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome());
+
+    public static final Holder<PlacedFeature> UNCOMMON_MEDIUM_METEOR = PlacementUtils.register("uncommon_medium_meteor", CelestialFeatureUtils.MEDIUM_METEOR, RarityFilter.onAverageOnceEvery(128), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome());
+    public static final Holder<PlacedFeature> COMMON_MEDIUM_METEOR = PlacementUtils.register("common_medium_meteor", CelestialFeatureUtils.MEDIUM_METEOR, RarityFilter.onAverageOnceEvery(32), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome());
+
+    public static final Holder<PlacedFeature> UNCOMMON_LARGE_METEOR = PlacementUtils.register("uncommon_large_meteor", CelestialFeatureUtils.LARGE_METEOR, RarityFilter.onAverageOnceEvery(192), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome());
+    public static final Holder<PlacedFeature> COMMON_LARGE_METEOR = PlacementUtils.register("common_large_meteor", CelestialFeatureUtils.LARGE_METEOR, RarityFilter.onAverageOnceEvery(64), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome());
 
 
 //    public static final Holder<PlacedFeature> HYDRATE = PlacementUtils.register("hydrate", CelestialFeatureUtils.HYDRATE, RarityFilter.onAverageOnceEvery(20), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome());
