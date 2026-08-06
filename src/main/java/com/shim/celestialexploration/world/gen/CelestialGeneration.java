@@ -20,19 +20,45 @@ public class CelestialGeneration {
     static final List<Holder<PlacedFeature>> IO_GEYSERS = new ArrayList<>(List.of(SurfacePlacements.IO_GEYSER));
     static final List<Holder<PlacedFeature>> FROZEN_OCEAN = new ArrayList<>(List.of(SurfacePlacements.FROZEN_OCEAN));
     static final List<Holder<PlacedFeature>> RARE_CRATERS = new ArrayList<>(List.of(SurfacePlacements.UNCOMMON_MEDIUM_CRATER, SurfacePlacements.UNCOMMON_MEDIUM_METEOR, SurfacePlacements.UNCOMMON_LARGE_CRATER, SurfacePlacements.UNCOMMON_LARGE_METEOR));
-    static final List<Holder<PlacedFeature>> OCCASIONAL_CRATERS = new ArrayList<>(List.of(SurfacePlacements.UNCOMMON_SMALL_CRATER, SurfacePlacements.COMMON_SMALL_METEOR, SurfacePlacements.UNCOMMON_MEDIUM_CRATER, SurfacePlacements.COMMON_MEDIUM_METEOR, SurfacePlacements.COMMON_LARGE_CRATER, SurfacePlacements.COMMON_LARGE_METEOR));
-    static final List<Holder<PlacedFeature>> FREQUENT_CRATERS = new ArrayList<>(List.of(SurfacePlacements.UNCOMMON_SMALL_CRATER, SurfacePlacements.UNCOMMON_SMALL_METEOR, SurfacePlacements.UNCOMMON_MEDIUM_CRATER, SurfacePlacements.UNCOMMON_MEDIUM_METEOR, SurfacePlacements.UNCOMMON_LARGE_CRATER, SurfacePlacements.UNCOMMON_LARGE_METEOR, SurfacePlacements.COMMON_SMALL_CRATER, SurfacePlacements.COMMON_SMALL_METEOR, SurfacePlacements.COMMON_MEDIUM_CRATER, SurfacePlacements.COMMON_MEDIUM_METEOR, SurfacePlacements.COMMON_LARGE_CRATER, SurfacePlacements.COMMON_LARGE_METEOR));
+    static final List<Holder<PlacedFeature>> OCCASIONAL_CRATERS = new ArrayList<>(List.of(SurfacePlacements.UNCOMMON_SMALL_CRATER, SurfacePlacements.UNCOMMON_MEDIUM_CRATER, SurfacePlacements.COMMON_SMALL_METEOR, SurfacePlacements.COMMON_MEDIUM_METEOR, SurfacePlacements.COMMON_LARGE_CRATER, SurfacePlacements.COMMON_LARGE_METEOR));
+    static final List<Holder<PlacedFeature>> FREQUENT_CRATERS = new ArrayList<>(List.of(SurfacePlacements.UNCOMMON_SMALL_CRATER, SurfacePlacements.UNCOMMON_MEDIUM_CRATER, SurfacePlacements.UNCOMMON_LARGE_CRATER, SurfacePlacements.COMMON_SMALL_CRATER, SurfacePlacements.COMMON_SMALL_METEOR, SurfacePlacements.COMMON_MEDIUM_CRATER, SurfacePlacements.COMMON_MEDIUM_METEOR, SurfacePlacements.COMMON_LARGE_CRATER, SurfacePlacements.COMMON_LARGE_METEOR));
+    static final List<Holder<PlacedFeature>> SLIME_CRATERS = new ArrayList<>(List.of(SurfacePlacements.UNCOMMON_SMALL_SLIME_CRATER, SurfacePlacements.UNCOMMON_MEDIUM_SLIME_CRATER, SurfacePlacements.UNCOMMON_LARGE_SLIME_CRATER));
+    static final List<Holder<PlacedFeature>> ICE_CRATERS = new ArrayList<>(List.of(SurfacePlacements.UNCOMMON_SMALL_ICE_CRATER, SurfacePlacements.UNCOMMON_MEDIUM_ICE_CRATER, SurfacePlacements.UNCOMMON_LARGE_ICE_CRATER));
 
     private static final Map<ResourceLocation, List<Holder<PlacedFeature>>> SURFACE_STRUCTURE_FEATURES = Util.make(new HashMap<>(), (map) -> {
-        map.put(CelestialBiomeKeys.MOON_CRATERS.location(), OCCASIONAL_CRATERS);
-        map.put(CelestialBiomeKeys.MOON_PLAINS.location(), RARE_CRATERS);
-        map.put(CelestialBiomeKeys.MARS_CRATERS.location(), OCCASIONAL_CRATERS);
-        map.put(CelestialBiomeKeys.MARS_FLATS.location(), RARE_CRATERS);
         map.put(CelestialBiomeKeys.MERCURY_CRATERED_PLAINS.location(), FREQUENT_CRATERS);
         map.put(CelestialBiomeKeys.MERCURY_DEEP_CRATERED_PLAINS.location(), FREQUENT_CRATERS);
         map.put(CelestialBiomeKeys.CALLISTO_CRATERED_PLAINS.location(), FREQUENT_CRATERS);
-        map.put(CelestialBiomeKeys.CALLISTO_PLAINS.location(), OCCASIONAL_CRATERS);
+
+        map.put(CelestialBiomeKeys.MOON_CRATERS.location(), OCCASIONAL_CRATERS);
+        map.put(CelestialBiomeKeys.MARS_CRATERS.location(), OCCASIONAL_CRATERS);
+        map.put(CelestialBiomeKeys.MARS_DEEP_CRATERS.location(), OCCASIONAL_CRATERS);
         map.put(CelestialBiomeKeys.CALLISTO_LOWER_PLAINS.location(), OCCASIONAL_CRATERS);
+        map.put(CelestialBiomeKeys.CALLISTO_PLAINS.location(), OCCASIONAL_CRATERS);
+        map.put(CelestialBiomeKeys.MERCURY_PLAINS.location(), OCCASIONAL_CRATERS);
+        map.put(CelestialBiomeKeys.GANYMEDE_CRATERED_PLAINS.location(), OCCASIONAL_CRATERS);
+
+        map.put(CelestialBiomeKeys.MOON_PLAINS.location(), RARE_CRATERS);
+        map.put(CelestialBiomeKeys.MARS_FLATS.location(), RARE_CRATERS);
+        map.put(CelestialBiomeKeys.MERCURY_DESERT.location(), RARE_CRATERS);
+        map.put(CelestialBiomeKeys.CALLISTO_DESERT.location(), RARE_CRATERS);
+        map.put(CelestialBiomeKeys.GANYMEDE_PLAINS.location(), RARE_CRATERS);
+        map.put(CelestialBiomeKeys.GANYMEDE_LOWER_PLAINS.location(), RARE_CRATERS);
+        map.put(CelestialBiomeKeys.IO_PLAINS.location(), RARE_CRATERS);
+        map.put(CelestialBiomeKeys.IO_LOWER_PLAINS.location(), RARE_CRATERS);
+
+        map.put(CelestialBiomeKeys.MERCURY_CRATERED_PLAINS.location(), SLIME_CRATERS);
+        map.put(CelestialBiomeKeys.MERCURY_DEEP_CRATERED_PLAINS.location(), SLIME_CRATERS);
+
+        map.put(CelestialBiomeKeys.MERCURY_PLAINS.location(), SLIME_CRATERS);
+        map.put(CelestialBiomeKeys.MERCURY_DESERT.location(), SLIME_CRATERS);
+
+        map.put(CelestialBiomeKeys.CALLISTO_CRATERED_PLAINS.location(), ICE_CRATERS);
+        map.put(CelestialBiomeKeys.CALLISTO_LOWER_PLAINS.location(), ICE_CRATERS);
+        map.put(CelestialBiomeKeys.CALLISTO_PLAINS.location(), ICE_CRATERS);
+
+        map.put(CelestialBiomeKeys.MILKY_WAY.location(), new ArrayList<>(List.of(SurfacePlacements.ASTEROID)));
+
 
     });
 

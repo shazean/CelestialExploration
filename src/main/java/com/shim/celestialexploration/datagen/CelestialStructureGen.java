@@ -93,10 +93,10 @@ public class CelestialStructureGen extends StructureProvider {
         ).save(consumer);
 
         this.registerTemplatePool(modLoc("solar_field"),
-                new Pair<>(new TemplatePoolGen.Element(modLoc("solar_field_of_4"), EMPTY, StructureTemplatePool.Projection.TERRAIN_MATCHING), 8),
+                new Pair<>(new TemplatePoolGen.Element(modLoc("solar_field_of_4"), EMPTY, StructureTemplatePool.Projection.RIGID), 8),
                 new Pair<>(new TemplatePoolGen.Element(modLoc("solar_field_of_4_broken"), EMPTY, StructureTemplatePool.Projection.TERRAIN_MATCHING), 8),
-                new Pair<>(new TemplatePoolGen.Element(modLoc("solar_field_of_9"), EMPTY, StructureTemplatePool.Projection.TERRAIN_MATCHING), 10),
-                new Pair<>(new TemplatePoolGen.Element(modLoc("solar_field_of_16"), EMPTY, StructureTemplatePool.Projection.TERRAIN_MATCHING), 5)
+                new Pair<>(new TemplatePoolGen.Element(modLoc("solar_field_of_9"), EMPTY, StructureTemplatePool.Projection.RIGID), 10),
+                new Pair<>(new TemplatePoolGen.Element(modLoc("solar_field_of_16"), EMPTY, StructureTemplatePool.Projection.RIGID), 5)
         ).save(consumer);
 
 

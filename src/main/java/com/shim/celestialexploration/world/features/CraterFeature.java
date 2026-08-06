@@ -1,6 +1,7 @@
 package com.shim.celestialexploration.world.features;
 
 import com.mojang.serialization.Codec;
+import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.registry.CelestialBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
@@ -25,20 +26,15 @@ public class CraterFeature extends Feature<NoneFeatureConfiguration> {
     final int lowerSize;
     final int upperSize;
     final boolean shouldSpawnMeteor;
-    final BlockState alternateMeteorBlock;
+    BlockState alternateMeteorBlock;
     private static final BlockState METEOR = CelestialBlocks.METEOR.get().defaultBlockState();
     private static final BlockState AIR = Blocks.AIR.defaultBlockState();
-
 
     public CraterFeature(Codec<NoneFeatureConfiguration> codec, int lowerSize, int upperSize, boolean shouldSpawnMeteor) {
         super(codec);
         this.lowerSize = lowerSize;
         this.upperSize = upperSize;
         this.shouldSpawnMeteor = shouldSpawnMeteor;
-        if (shouldSpawnMeteor)
-            alternateMeteorBlock = this.chooseRandomMeteorOre();
-        else
-            alternateMeteorBlock = CelestialBlocks.METEOR.get().defaultBlockState();
     }
 
     private BlockState chooseRandomMeteorOre() {
@@ -71,6 +67,9 @@ public class CraterFeature extends Feature<NoneFeatureConfiguration> {
         BlockPos pos = context.origin();
         int radiusSq = radius * radius;
 
+        if (this.shouldSpawnMeteor)
+            this.alternateMeteorBlock = this.chooseRandomMeteorOre();
+
         if (level.getFluidState(pos).is(Fluids.WATER))
             return false;
 
@@ -91,7 +90,7 @@ public class CraterFeature extends Feature<NoneFeatureConfiguration> {
         }
 
         if (this.shouldSpawnMeteor) {
-            int meteorRadius = radius / 6;
+            int meteorRadius = (radius / 6) + 1;
             if (((float) radius / 6.0F) < 1.0) {
                 level.setBlock(pos.offset(0, -radius - 1, 0), METEOR, 2);
             } else {
@@ -116,6 +115,8 @@ public class CraterFeature extends Feature<NoneFeatureConfiguration> {
                 }
             }
         }
+
+        CelestialExploration.LOGGER.debug("spawning crater at: " + pos);
 
         return true;
     }

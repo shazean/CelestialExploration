@@ -22,13 +22,22 @@ public class CelestialFeatureUtils {
     public static final Holder<ConfiguredFeature<NoneFeatureConfiguration, ?>> FROZEN_OCEAN = FeatureUtils.register("frozen_ocean", CelestialFeatures.FROZEN_OCEAN.get(), new NoneFeatureConfiguration());
 
     public static final Holder<ConfiguredFeature<NoneFeatureConfiguration, ?>> SMALL_CRATER = FeatureUtils.register("small_crater", CelestialFeatures.SMALL_CRATER.get(), new NoneFeatureConfiguration());
-    public static final Holder<ConfiguredFeature<NoneFeatureConfiguration, ?>> MEDIUM_CRATER = FeatureUtils.register("medium_crater", CelestialFeatures.SMALL_CRATER.get(), new NoneFeatureConfiguration());
-    public static final Holder<ConfiguredFeature<NoneFeatureConfiguration, ?>> LARGE_CRATER = FeatureUtils.register("large_crater", CelestialFeatures.SMALL_CRATER.get(), new NoneFeatureConfiguration());
+    public static final Holder<ConfiguredFeature<NoneFeatureConfiguration, ?>> MEDIUM_CRATER = FeatureUtils.register("medium_crater", CelestialFeatures.MEDIUM_CRATER.get(), new NoneFeatureConfiguration());
+    public static final Holder<ConfiguredFeature<NoneFeatureConfiguration, ?>> LARGE_CRATER = FeatureUtils.register("large_crater", CelestialFeatures.LARGE_CRATER.get(), new NoneFeatureConfiguration());
 
     public static final Holder<ConfiguredFeature<NoneFeatureConfiguration, ?>> SMALL_METEOR = FeatureUtils.register("small_meteor", CelestialFeatures.SMALL_METEOR.get(), new NoneFeatureConfiguration());
-    public static final Holder<ConfiguredFeature<NoneFeatureConfiguration, ?>> MEDIUM_METEOR = FeatureUtils.register("medium_meteor", CelestialFeatures.SMALL_METEOR.get(), new NoneFeatureConfiguration());
-    public static final Holder<ConfiguredFeature<NoneFeatureConfiguration, ?>> LARGE_METEOR = FeatureUtils.register("large_meteor", CelestialFeatures.SMALL_METEOR.get(), new NoneFeatureConfiguration());
+    public static final Holder<ConfiguredFeature<NoneFeatureConfiguration, ?>> MEDIUM_METEOR = FeatureUtils.register("medium_meteor", CelestialFeatures.MEDIUM_METEOR.get(), new NoneFeatureConfiguration());
+    public static final Holder<ConfiguredFeature<NoneFeatureConfiguration, ?>> LARGE_METEOR = FeatureUtils.register("large_meteor", CelestialFeatures.LARGE_METEOR.get(), new NoneFeatureConfiguration());
 
+    public static final Holder<ConfiguredFeature<NoneFeatureConfiguration, ?>> SMALL_SLIME_CRATER = FeatureUtils.register("small_slime_crater", CelestialFeatures.SMALL_SLIME_CRATER.get(), new NoneFeatureConfiguration());
+    public static final Holder<ConfiguredFeature<NoneFeatureConfiguration, ?>> MEDIUM_SLIME_CRATER = FeatureUtils.register("medium_slime_crater", CelestialFeatures.MEDIUM_SLIME_CRATER.get(), new NoneFeatureConfiguration());
+    public static final Holder<ConfiguredFeature<NoneFeatureConfiguration, ?>> LARGE_SLIME_CRATER = FeatureUtils.register("large_slime_crater", CelestialFeatures.LARGE_SLIME_CRATER.get(), new NoneFeatureConfiguration());
+
+    public static final Holder<ConfiguredFeature<NoneFeatureConfiguration, ?>> SMALL_ICE_CRATER = FeatureUtils.register("small_ice_crater", CelestialFeatures.SMALL_ICE_CRATER.get(), new NoneFeatureConfiguration());
+    public static final Holder<ConfiguredFeature<NoneFeatureConfiguration, ?>> MEDIUM_ICE_CRATER = FeatureUtils.register("medium_ice_crater", CelestialFeatures.MEDIUM_ICE_CRATER.get(), new NoneFeatureConfiguration());
+    public static final Holder<ConfiguredFeature<NoneFeatureConfiguration, ?>> LARGE_ICE_CRATER = FeatureUtils.register("large_ice_crater", CelestialFeatures.LARGE_ICE_CRATER.get(), new NoneFeatureConfiguration());
+
+    public static final Holder<ConfiguredFeature<NoneFeatureConfiguration, ?>> ASTEROID = FeatureUtils.register("asteroid", CelestialFeatures.ASTEROID.get(), new NoneFeatureConfiguration());
 
 
 }

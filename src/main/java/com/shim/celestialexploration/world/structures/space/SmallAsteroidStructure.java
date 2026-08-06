@@ -40,36 +40,38 @@ public class SmallAsteroidStructure extends StructureFeature<JigsawConfiguration
 
     private static boolean isFeatureChunk(PieceGeneratorSupplier.Context<JigsawConfiguration> context) {
         // Grabs the chunk position we are at
-        ChunkPos chunkpos = context.chunkPos();
+//        ChunkPos chunkpos = context.chunkPos();
+//
+//        boolean asteroidBelt = true;
+//        boolean kuiperBelt = true;
+//
+//        //ASTEROID BELT
+//        //Not inside of large circle
+//        if (!CelestialUtil.isPointInCircle(0, 0, CelestialUtil.getCalculatedCircleRadius(4.65), chunkpos.x, chunkpos.z)) {
+//            asteroidBelt = false;
+//        }
+//
+//        //only check if we didn't eliminate the asteroid belt in the previous step
+//        //eliminate the inner circle
+//        if (asteroidBelt && CelestialUtil.isPointInCircle(0, 0, CelestialUtil.getCalculatedCircleRadius(4.15), chunkpos.x, chunkpos.z)) {
+//            asteroidBelt = false;
+//        }
+//
+//        //KUIPER BELT
+//        //Not inside of large circle
+//        if (!CelestialUtil.isPointInCircle(0, 0, CelestialUtil.getCalculatedCircleRadius(28.0), chunkpos.x, chunkpos.z)) {
+//            kuiperBelt = false;
+//        }
+//
+//        //only check if we didn't eliminate the asteroid belt in the previous step
+//        //eliminate the inner circle
+//        if (kuiperBelt && CelestialUtil.isPointInCircle(0, 0, CelestialUtil.getCalculatedCircleRadius(26.25), chunkpos.x, chunkpos.z)) {
+//            kuiperBelt = false;
+//        }
+//
+//        return asteroidBelt || kuiperBelt;
 
-        boolean asteroidBelt = true;
-        boolean kuiperBelt = true;
-
-        //ASTEROID BELT
-        //Not inside of large circle
-        if (!CelestialUtil.isPointInCircle(0, 0, CelestialUtil.getCalculatedCircleRadius(4.65), chunkpos.x, chunkpos.z)) {
-            asteroidBelt = false;
-        }
-
-        //only check if we didn't eliminate the asteroid belt in the previous step
-        //eliminate the inner circle
-        if (asteroidBelt && CelestialUtil.isPointInCircle(0, 0, CelestialUtil.getCalculatedCircleRadius(4.15), chunkpos.x, chunkpos.z)) {
-            asteroidBelt = false;
-        }
-
-        //KUIPER BELT
-        //Not inside of large circle
-        if (!CelestialUtil.isPointInCircle(0, 0, CelestialUtil.getCalculatedCircleRadius(28.0), chunkpos.x, chunkpos.z)) {
-            kuiperBelt = false;
-        }
-
-        //only check if we didn't eliminate the asteroid belt in the previous step
-        //eliminate the inner circle
-        if (kuiperBelt && CelestialUtil.isPointInCircle(0, 0, CelestialUtil.getCalculatedCircleRadius(26.25), chunkpos.x, chunkpos.z)) {
-            kuiperBelt = false;
-        }
-
-        return asteroidBelt || kuiperBelt;
+        return false;
     }
 
     public static @NotNull Optional<PieceGenerator<JigsawConfiguration>> createPiecesGenerator(PieceGeneratorSupplier.Context<JigsawConfiguration> context) {

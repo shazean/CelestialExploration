@@ -2,14 +2,14 @@ package com.shim.celestialexploration.registry;
 
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.world.features.*;
-import net.minecraft.core.Registry;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.feature.*;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+
+import java.util.List;
 
 public class CelestialFeatures {
 
@@ -32,6 +32,16 @@ public class CelestialFeatures {
     public static final RegistryObject<Feature<NoneFeatureConfiguration>> SMALL_METEOR = FEATURES.register("small_meteor", () -> new CraterFeature(NoneFeatureConfiguration.CODEC, 5, 8, true));
     public static final RegistryObject<Feature<NoneFeatureConfiguration>> MEDIUM_METEOR = FEATURES.register("medium_meteor", () -> new CraterFeature(NoneFeatureConfiguration.CODEC, 9, 12, true));
     public static final RegistryObject<Feature<NoneFeatureConfiguration>> LARGE_METEOR = FEATURES.register("large_meteor", () -> new CraterFeature(NoneFeatureConfiguration.CODEC, 13, 16, true));
+
+    public static final RegistryObject<Feature<NoneFeatureConfiguration>> SMALL_SLIME_CRATER = FEATURES.register("small_slime_crater", () -> new LinedCraterFeature(NoneFeatureConfiguration.CODEC, 5, 8, CelestialBlocks.MERCURY_SLIME_BLOCK.get()));
+    public static final RegistryObject<Feature<NoneFeatureConfiguration>> MEDIUM_SLIME_CRATER = FEATURES.register("medium_slime_crater", () -> new LinedCraterFeature(NoneFeatureConfiguration.CODEC, 9, 12, CelestialBlocks.MERCURY_SLIME_BLOCK.get()));
+    public static final RegistryObject<Feature<NoneFeatureConfiguration>> LARGE_SLIME_CRATER = FEATURES.register("large_slime_crater", () -> new LinedCraterFeature(NoneFeatureConfiguration.CODEC, 13, 16, CelestialBlocks.MERCURY_SLIME_BLOCK.get()));
+
+    public static final RegistryObject<Feature<NoneFeatureConfiguration>> SMALL_ICE_CRATER = FEATURES.register("small_ice_crater", () -> new LinedCraterFeature(NoneFeatureConfiguration.CODEC, 5, 8, Blocks.ICE));
+    public static final RegistryObject<Feature<NoneFeatureConfiguration>> MEDIUM_ICE_CRATER = FEATURES.register("medium_ice_crater", () -> new LinedCraterFeature(NoneFeatureConfiguration.CODEC, 9, 12, Blocks.ICE));
+    public static final RegistryObject<Feature<NoneFeatureConfiguration>> LARGE_ICE_CRATER = FEATURES.register("large_ice_crater", () -> new LinedCraterFeature(NoneFeatureConfiguration.CODEC, 13, 16, Blocks.ICE));
+
+    public static final RegistryObject<Feature<NoneFeatureConfiguration>> ASTEROID = FEATURES.register("asteroid", () -> new AsteroidFeature(NoneFeatureConfiguration.CODEC));
 
 
 }
