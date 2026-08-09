@@ -7,7 +7,7 @@
       "element": {
         "location": "celestialexploration:solar_field_of_4",
         "processors": "minecraft:empty",
-        "projection": "terrain_matching",
+        "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
     },
@@ -25,7 +25,7 @@
       "element": {
         "location": "celestialexploration:solar_field_of_9",
         "processors": "minecraft:empty",
-        "projection": "terrain_matching",
+        "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
     },
@@ -34,7 +34,7 @@
       "element": {
         "location": "celestialexploration:solar_field_of_16",
         "processors": "minecraft:empty",
-        "projection": "terrain_matching",
+        "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
     }

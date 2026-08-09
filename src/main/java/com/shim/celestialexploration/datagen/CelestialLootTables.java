@@ -171,7 +171,10 @@ public class CelestialLootTables extends BaseLootTableProvider {
 //		entity(CelestialEntities.VISCOUS_SLIME.get(), LootTable.lootTable()
 //						.withPool(LootPool.lootPool()
 //								.setRolls(ConstantValue.exactly(1.0F))
-//								.add(LootItem.lootTableItem(CelestialItems.VISCOUS_SLIME_BALL.get())))
+//								.add(LootItem.lootTableItem(CelestialItems.MERCURY_SLIME_BALL.get())))
+//						.withPool(LootPool.lootPool()
+//								.setRolls(ConstantValue.exactly(1.0F))
+//								.add(LootItem.lootTableItem(CelestialItems.CINNABAR.get())))
 ////					.when(LootItemRandomChanceWithLootingCondition.randomChanceAndLootingBoost(0.8F, 0.01F)))
 //						.withPool(LootPool.lootPool()
 //								.setRolls(ConstantValue.exactly(1.0F))
@@ -183,7 +186,11 @@ public class CelestialLootTables extends BaseLootTableProvider {
 //		entity(CelestialEntities.QUICKSILVER_SLIME.get(), LootTable.lootTable()
 //						.withPool(LootPool.lootPool()
 //								.setRolls(ConstantValue.exactly(1.0F))
-//								.add(LootItem.lootTableItem(CelestialItems.QUICKSILVER_SLIME_BALL.get()))));
+//								.add(LootItem.lootTableItem(CelestialItems.MERCURY_SLIME_BALL.get())))
+//				.withPool(LootPool.lootPool()
+//						.setRolls(ConstantValue.exactly(1.0F))
+//						.add(LootItem.lootTableItem(CelestialItems.CINNABAR.get())))
+//		);
 //
 //		entity(CelestialEntities.MECHACERBERUS_BOSS.get(), LootTable.lootTable()
 //						.withPool(LootPool.lootPool()

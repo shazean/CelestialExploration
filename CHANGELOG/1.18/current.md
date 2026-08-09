@@ -3,6 +3,6 @@
 - `[NEW]` New Lunar buggy vehicle!
 - `[NEW]` New metallic hydrogen fuel for the spaceship!  Travel faster and for longer before needing a refuel.
 - `[NEW]` Diamond geodes on Mercury
-- `[CHG]` Smaller craters & meteorites now added via features instead of structures, which allowed for better size variation and they also generate into the terrain cleaner
+- `[CHG]` Smaller craters & meteorites now added via features instead of structures, which allows for better size variation and they also generate into the terrain cleaner
   - `[CHG]` Asteroids also converted to features, again allowing more size variation
   - `[NEW]` Also a brand new slimed crater on Mercury!
