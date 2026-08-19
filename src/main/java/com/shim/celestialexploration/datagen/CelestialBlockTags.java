@@ -566,6 +566,11 @@ public class CelestialBlockTags extends BlockTagsProvider {
                 .add(CelestialBlocks.MOON_SAND.get()).add(CelestialBlocks.MARS_SAND.get()).add(CelestialBlocks.VENUS_SAND.get()).add(CelestialBlocks.MERCURY_SAND.get())
                 .add(CelestialBlocks.IO_SAND.get());
 
+        tag(CelestialTags.Blocks.COARSE_REGOLITH)
+                .add(CelestialBlocks.COARSE_MOON_SAND.get()).add(CelestialBlocks.COARSE_MARS_SAND.get()).add(CelestialBlocks.COARSE_MERCURY_SAND.get())
+                .add(CelestialBlocks.COARSE_IO_SAND.get());
+
+
         tag(CelestialTags.Blocks.MAGRAIL)
                 .add(CelestialBlocks.MAGRAIL.get()).add(CelestialBlocks.POWERED_MAGRAIL.get()).add(CelestialBlocks.DETECTOR_MAGRAIL.get()).add(CelestialBlocks.ACTIVATOR_MAGRAIL.get());
 

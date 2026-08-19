@@ -50,6 +50,7 @@ public class CelestialTags {
         public static final TagKey<Block> IO_COBBLED_DEEPSLATE = BlockTags.create(modLoc("io_cobbled_deepslate"));
 
         public static final TagKey<Block> REGOLITH = BlockTags.create(modLoc("regolith"));
+        public static final TagKey<Block> COARSE_REGOLITH = BlockTags.create(modLoc("coarse_regolith"));
         public static final TagKey<Block> FARMLAND = BlockTags.create(modLoc("farmland"));
 
         public static final TagKey<Block> METEOR = BlockTags.create(modLoc("meteor"));
@@ -135,6 +136,7 @@ public class CelestialTags {
         public static final TagKey<Item> STONE_PRESSURE_PLATE = ItemTags.create(modLoc("stone_pressure_plate"));
 
         public static final TagKey<Item> REGOLITH = ItemTags.create(modLoc("regolith"));
+        public static final TagKey<Item> COARSE_REGOLITH = ItemTags.create(modLoc("coarse_regolith"));
         public static final TagKey<Item> FARMLAND = ItemTags.create(modLoc("farmland"));
 
         public static final TagKey<Item> SPACESHIP = ItemTags.create(modLoc("spaceship"));

@@ -1,52 +1,26 @@
 package com.shim.celestialexploration.world.features;
 
 import com.mojang.serialization.Codec;
-import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.registry.CelestialBlocks;
 import com.shim.celestialexploration.util.CelestialUtil;
 import net.minecraft.core.BlockPos;
-import net.minecraft.util.Mth;
 import net.minecraft.util.random.SimpleWeightedRandomList;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-import net.minecraft.world.level.material.Fluids;
 
 import java.util.Random;
 
 public class AsteroidFeature extends Feature<NoneFeatureConfiguration> {
-//    final int lowerSize;
-//    final int upperSize;
-    BlockState alternateMeteorBlock;
+    AsteroidOres.AsteroidOre alternateMeteorBlock;
     private static final BlockState METEOR = CelestialBlocks.METEOR.get().defaultBlockState();
 
     public AsteroidFeature(Codec<NoneFeatureConfiguration> codec) {
         super(codec);
-//        this.lowerSize = lowerSize;
-//        this.upperSize = upperSize;
-    }
-
-    private BlockState chooseRandomMeteorOre() {
-
-        SimpleWeightedRandomList<Block> randomMeteor = SimpleWeightedRandomList.<Block>builder()
-                .add(CelestialBlocks.METEOR.get(), 10)
-                .add(CelestialBlocks.METEOR_COAL_ORE.get(), 20)
-                .add(CelestialBlocks.METEOR_IRON_ORE.get(), 15)
-                .add(CelestialBlocks.METEOR_COPPER_ORE.get(), 15)
-                .add(CelestialBlocks.METEOR_REDSTONE_ORE.get(), 15)
-                .add(CelestialBlocks.METEOR_BAUXITE_ORE.get(), 15)
-                .add(CelestialBlocks.METEOR_SULFUR_ORE.get(), 8)
-                .add(CelestialBlocks.METEOR_LAPIS_ORE.get(), 4)
-                .add(CelestialBlocks.METEOR_GOLD_ORE.get(), 3)
-                .add(CelestialBlocks.METEOR_EMERALD_ORE.get(), 2)
-                .add(CelestialBlocks.METEOR_DIAMOND_ORE.get(), 1).build();
-
-        return randomMeteor.getRandomValue(new Random()).orElseGet(CelestialBlocks.METEOR).defaultBlockState();
     }
 
     private int chooseSize(Random random) {
@@ -110,9 +84,8 @@ public class AsteroidFeature extends Feature<NoneFeatureConfiguration> {
             return false;
 
         int radius = chooseSize(context.random());
-        this.alternateMeteorBlock = this.chooseRandomMeteorOre();
+        this.alternateMeteorBlock = AsteroidOres.chooseRandomMeteorOre(context.random());
 
-//        int radius = Mth.clamp(context.random().nextInt(this.upperSize - this.lowerSize) + this.lowerSize, 5, 16);
         int x;
         int y;
         int z;
@@ -129,10 +102,12 @@ public class AsteroidFeature extends Feature<NoneFeatureConfiguration> {
                     point = x * x + z * z + y * y;
 
                     if (point <= radiusSq + 1) {
-                        if (context.random().nextInt(20) == 0)
-                            level.setBlock(pos.offset(x, y - radius - 1, z), this.alternateMeteorBlock, 2);
-                        else {
-                            if (!(context.random().nextInt(25) == 0))
+                        if (context.random().nextDouble() <= 0.25 //asteroid will always be at least 75% meteor block
+                            && AsteroidOres.shouldUseOre(this.alternateMeteorBlock, context.random())) { //spawn ore block only as often as dictated by type of ore
+
+                            level.setBlock(pos.offset(x, y - radius - 1, z), this.alternateMeteorBlock.block().defaultBlockState(), 2);
+                        } else {
+                            if (!(context.random().nextDouble() <= .25)) //chance of spawning nothing, i.e. leaving air
                                 level.setBlock(pos.offset(x, y - radius - 1, z), METEOR, 2);
                         }
                     }

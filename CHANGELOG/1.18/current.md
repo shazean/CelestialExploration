@@ -1,8 +1,3 @@
-- `[CHG]` Changed turning style of spaceship to be camera based rather than keybind based so that it matches the rest of Minecraft…other than the boat. Why does the boat have to be different?
-  - `[NEW]` Added slight acceleration/deceleration of spaceship to add a little personality, and updated the speedometer HUD to match
-- `[NEW]` New Lunar buggy vehicle!
-- `[NEW]` New metallic hydrogen fuel for the spaceship!  Travel faster and for longer before needing a refuel.
-- `[NEW]` Diamond geodes on Mercury
-- `[CHG]` Smaller craters & meteorites now added via features instead of structures, which allows for better size variation and they also generate into the terrain cleaner
-  - `[CHG]` Asteroids also converted to features, again allowing more size variation
-  - `[NEW]` Also a brand new slimed crater on Mercury!
+- `[NEW]` Asteroids (and meteors) now get their ores added via datapack—in other words, its modpack/addon friendly!
+- `[NEW]` Craft concrete powder using regolith/coarse regolith instead of sand/gravel (respectively)
+- `[NEW]` New loading terrain screen when changing dimensions for a fun little client-side flavor.  This is configurable, for personal preference and/or just in case of mixin conflicts.

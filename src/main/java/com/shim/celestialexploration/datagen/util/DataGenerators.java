@@ -39,6 +39,9 @@ public class DataGenerators {
 			generator.addProvider(new CelestialSpaceTravel(generator, helper));
 			generator.addProvider(new CelestialPlanetStructures(generator, helper));
 
+			generator.addProvider(new AsteroidOreGen(generator, helper));
+
+
 		}
 		if (event.includeClient()) {
 			generator.addProvider(new CelestialBlockStates(generator, helper));

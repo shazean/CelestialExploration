@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:red_dye"
+    },
+    {
+      "item": "minecraft:sand"
+    },
+    {
+      "item": "minecraft:sand"
+    },
+    {
+      "item": "minecraft:sand"
+    },
+    {
+      "item": "minecraft:sand"
+    },
+    {
+      "tag": "celestialexploration:coarse_regolith"
+    },
+    {
+      "tag": "celestialexploration:coarse_regolith"
+    },
+    {
+      "tag": "celestialexploration:coarse_regolith"
+    },
+    {
+      "tag": "celestialexploration:coarse_regolith"
+    }
+  ],
+  "result": {
+    "item": "minecraft:red_concrete_powder"
+  }
+}

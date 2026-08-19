@@ -83,6 +83,7 @@ public class CelestialItemTags extends ItemTagsProvider {
 		this.copy(CelestialTags.Blocks.PAINTED_CERAMIC, CelestialTags.Items.PAINTED_CERAMIC);
 
 		this.copy(CelestialTags.Blocks.REGOLITH, CelestialTags.Items.REGOLITH);
+		this.copy(CelestialTags.Blocks.COARSE_REGOLITH, CelestialTags.Items.COARSE_REGOLITH);
 		this.copy(CelestialTags.Blocks.MAGRAIL, CelestialTags.Items.MAG_RAIL);
 
 		this.copy(CelestialTags.Blocks.BAUXITE_ORE, CelestialTags.Items.BAUXITE_ORE);

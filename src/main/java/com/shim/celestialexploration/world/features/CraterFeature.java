@@ -6,18 +6,13 @@ import com.shim.celestialexploration.registry.CelestialBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
 import net.minecraft.util.random.SimpleWeightedRandomList;
-import net.minecraft.util.random.Weight;
-import net.minecraft.util.random.WeightedEntry;
-import net.minecraft.util.random.WeightedRandomList;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.CaveVines;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.material.Fluids;
 
 import java.util.Random;
@@ -25,16 +20,16 @@ import java.util.Random;
 public class CraterFeature extends Feature<NoneFeatureConfiguration> {
     final int lowerSize;
     final int upperSize;
-    final boolean shouldSpawnMeteor;
-    BlockState alternateMeteorBlock;
+    final boolean shouldSpawnMeteorite;
+    AsteroidOres.AsteroidOre alternateMeteorBlock;
     private static final BlockState METEOR = CelestialBlocks.METEOR.get().defaultBlockState();
     private static final BlockState AIR = Blocks.AIR.defaultBlockState();
 
-    public CraterFeature(Codec<NoneFeatureConfiguration> codec, int lowerSize, int upperSize, boolean shouldSpawnMeteor) {
+    public CraterFeature(Codec<NoneFeatureConfiguration> codec, int lowerSize, int upperSize, boolean shouldSpawnMeteorite) {
         super(codec);
         this.lowerSize = lowerSize;
         this.upperSize = upperSize;
-        this.shouldSpawnMeteor = shouldSpawnMeteor;
+        this.shouldSpawnMeteorite = shouldSpawnMeteorite;
     }
 
     private BlockState chooseRandomMeteorOre() {
@@ -67,8 +62,8 @@ public class CraterFeature extends Feature<NoneFeatureConfiguration> {
         BlockPos pos = context.origin();
         int radiusSq = radius * radius;
 
-        if (this.shouldSpawnMeteor)
-            this.alternateMeteorBlock = this.chooseRandomMeteorOre();
+        if (this.shouldSpawnMeteorite)
+            this.alternateMeteorBlock = AsteroidOres.chooseRandomMeteorOre(context.random());
 
         if (level.getFluidState(pos).is(Fluids.WATER))
             return false;
@@ -89,7 +84,7 @@ public class CraterFeature extends Feature<NoneFeatureConfiguration> {
             }
         }
 
-        if (this.shouldSpawnMeteor) {
+        if (this.shouldSpawnMeteorite) {
             int meteorRadius = (radius / 6) + 1;
             if (((float) radius / 6.0F) < 1.0) {
                 level.setBlock(pos.offset(0, -radius - 1, 0), METEOR, 2);
@@ -103,12 +98,16 @@ public class CraterFeature extends Feature<NoneFeatureConfiguration> {
                             y = meteorRadius - height;
                             z = meteorRadius - col;
                             point = x * x + y * y + z * z;
-                            if (point <= meteorRadiusSQ + 1) {
 
-                                if (context.random().nextInt(5) == 0)
-                                    level.setBlock(pos.offset(x, y - radius - 1, z), this.alternateMeteorBlock, 2);
-                                else
-                                    level.setBlock(pos.offset(x, y - radius - 1, z), METEOR, 2);
+                            if (point <= meteorRadiusSQ + 1) {
+                                if (context.random().nextDouble() <= 0.25 //meteor will always be at least 75% meteor block
+                                        && AsteroidOres.shouldUseOre(this.alternateMeteorBlock, context.random())) { //spawn ore block only as often as dictated by type of ore
+
+                                    level.setBlock(pos.offset(x, y - radius - 1, z), this.alternateMeteorBlock.block().defaultBlockState(), 2);
+                                } else {
+                                    if (!(context.random().nextDouble() <= .25)) //chance of spawning nothing, i.e. leaving air
+                                        level.setBlock(pos.offset(x, y - radius - 1, z), METEOR, 2);
+                                }
                             }
                         }
                     }

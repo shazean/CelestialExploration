@@ -7,7 +7,9 @@
     "WanderingTraderSpawnMixin"
   ],
   "client": [
-    "DisplayBoardSignMaterialMixin"
+    "ClientPacketListenerMixin",
+    "DisplayBoardSignMaterialMixin",
+    "ScreenMixin"
   ],
   "minVersion": "0.8",
   "injectors": {

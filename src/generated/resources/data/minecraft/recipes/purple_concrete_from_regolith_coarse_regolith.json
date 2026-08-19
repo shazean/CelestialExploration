@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:purple_dye"
+    },
+    {
+      "tag": "celestialexploration:regolith"
+    },
+    {
+      "tag": "celestialexploration:regolith"
+    },
+    {
+      "tag": "celestialexploration:regolith"
+    },
+    {
+      "tag": "celestialexploration:regolith"
+    },
+    {
+      "tag": "celestialexploration:coarse_regolith"
+    },
+    {
+      "tag": "celestialexploration:coarse_regolith"
+    },
+    {
+      "tag": "celestialexploration:coarse_regolith"
+    },
+    {
+      "tag": "celestialexploration:coarse_regolith"
+    }
+  ],
+  "result": {
+    "item": "minecraft:purple_concrete_powder"
+  }
+}

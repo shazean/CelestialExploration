@@ -3,18 +3,14 @@ package com.shim.celestialexploration;
 import com.shim.celestialexploration.config.CelestialClientConfig;
 import com.shim.celestialexploration.config.CelestialCommonConfig;
 import com.shim.celestialexploration.config.CelestialServerConfig;
+import com.shim.celestialexploration.data.AsteroidOresManager;
 import com.shim.celestialexploration.events.CelestialCommonEventSetup;
 import com.shim.celestialexploration.registry.*;
 import com.shim.celestialexploration.util.*;
 import mod.azure.azurelib.AzureLib;
-import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.client.IItemRenderProperties;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.Capability;
@@ -33,10 +29,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.annotation.Nullable;
-
-import java.util.function.Consumer;
-
-import static com.shim.celestialexploration.registry.CelestialItems.ITEMS;
 
 @Mod("celestialexploration")
 public class CelestialExploration {
@@ -60,7 +52,7 @@ public class CelestialExploration {
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
 
-        ITEMS.register(modEventBus);
+        CelestialItems.ITEMS.register(modEventBus);
         CelestialBlocks.BLOCKS.register(modEventBus);
         CelestialBlockEntities.BLOCK_ENTITIES.register(modEventBus);
         CelestialMenus.MENUS.register(modEventBus);
@@ -92,6 +84,8 @@ public class CelestialExploration {
         ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, CelestialServerConfig.SPEC, "celestialexploration-server.toml");
 
         AzureLib.initialize();
+
+        MinecraftForge.EVENT_BUS.addListener(this::reloadResources);
 
         bus.addListener((InputEvent.KeyInputEvent e) -> onKeyPress(e.getKey(), e.getAction(), e.getModifiers()));
     }
@@ -128,4 +122,8 @@ public class CelestialExploration {
         return entityIn.getCapability(capability).isPresent() ? entityIn.getCapability(capability).orElseThrow(() -> new IllegalArgumentException("Lazy optional must not be empty")) : null;
     }
 
+    private void reloadResources(final AddReloadListenerEvent event) {
+        event.addListener(new AsteroidOresManager());
+
+    }
 }
