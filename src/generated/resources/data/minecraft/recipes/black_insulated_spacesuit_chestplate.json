@@ -1,0 +1,18 @@
+{
+  "type": "celestialexploration:dyed_crafting",
+  "pattern": [
+    "XD"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:insulated_spacesuit_chestplate"
+    },
+    "D": {
+      "item": "celestialexploration:oberon_dust"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:insulated_spacesuit_chestplate"
+  },
+  "color": "black"
+}

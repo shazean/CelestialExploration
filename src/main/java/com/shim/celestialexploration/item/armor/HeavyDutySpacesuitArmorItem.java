@@ -1,7 +1,7 @@
 package com.shim.celestialexploration.item.armor;
 
 import com.google.common.collect.ImmutableMap;
-import com.shim.celestialexploration.item.ModArmorMaterials;
+import com.shim.celestialexploration.item.CelestialArmorMaterials;
 import com.shim.celestialexploration.registry.CelestialItems;
 import com.shim.celestiallib.api.armor.ISpacesuit;
 import com.shim.celestiallib.api.effects.CLibEffects;
@@ -25,10 +25,10 @@ import java.util.List;
 import java.util.Map;
 
 public class HeavyDutySpacesuitArmorItem extends ArmorItem implements ISpacesuit {
-    private static final Map<ArmorMaterial, MobEffectInstance> MATERIAL_TO_EFFECT_MAP = (new ImmutableMap.Builder<ArmorMaterial, MobEffectInstance>()).put(ModArmorMaterials.HEAVY_DUTY_SPACESUIT, new MobEffectInstance(MobEffects.JUMP, 300, 1, false, false, false)).build();
+    private static final Map<ArmorMaterial, MobEffectInstance> MATERIAL_TO_EFFECT_MAP = (new ImmutableMap.Builder<ArmorMaterial, MobEffectInstance>()).put(CelestialArmorMaterials.HEAVY_DUTY_SPACESUIT, new MobEffectInstance(MobEffects.JUMP, 300, 1, false, false, false)).build();
 
     public HeavyDutySpacesuitArmorItem(EquipmentSlot slot, Properties properties) {
-        super(ModArmorMaterials.HEAVY_DUTY_SPACESUIT, slot, properties);
+        super(CelestialArmorMaterials.HEAVY_DUTY_SPACESUIT, slot, properties);
     }
 
     @Override
@@ -106,15 +106,15 @@ public class HeavyDutySpacesuitArmorItem extends ArmorItem implements ISpacesuit
         components.add(new TranslatableComponent("item.celestialexploration.armor_details.heavy_duty_full_spacesuit").withStyle(ChatFormatting.DARK_PURPLE));
 
 //        if (tooltipFlag.isAdvanced()) {
-        if (itemStack.is(CelestialItems.HEAVY_DUTY_SPACESUIT_BOOTS.get())) {
+        if (itemStack.is(CelestialItems.OG_HEAVY_DUTY_SPACESUIT_BOOTS.get())) {
             components.add(new TranslatableComponent("item.celestialexploration.armor_details.when_worn").withStyle(ChatFormatting.GRAY));
             components.add(new TranslatableComponent("item.celestialexploration.armor_details.heavy_duty_spacesuit_boots").withStyle(ChatFormatting.BLUE));
         }
-        if (itemStack.is(CelestialItems.HEAVY_DUTY_SPACESUIT_CHESTPLATE.get())) {
+        if (itemStack.is(CelestialItems.OG_HEAVY_DUTY_SPACESUIT_CHESTPLATE.get())) {
             components.add(new TranslatableComponent("item.celestialexploration.armor_details.when_worn").withStyle(ChatFormatting.GRAY));
             components.add(new TranslatableComponent("item.celestialexploration.armor_details.heavy_duty_spacesuit_chestplate").withStyle(ChatFormatting.BLUE));
         }
-        if (itemStack.is(CelestialItems.HEAVY_DUTY_SPACESUIT_HELMET.get())) {
+        if (itemStack.is(CelestialItems.OG_HEAVY_DUTY_SPACESUIT_HELMET.get())) {
             components.add(new TranslatableComponent("item.celestialexploration.armor_details.when_worn").withStyle(ChatFormatting.GRAY));
             components.add(new TranslatableComponent("item.celestialexploration.armor_details.heavy_duty_spacesuit_helmet").withStyle(ChatFormatting.BLUE));
         }
@@ -123,6 +123,6 @@ public class HeavyDutySpacesuitArmorItem extends ArmorItem implements ISpacesuit
 
     @Override
     public boolean shouldNegateGravity(MobEffect mobEffect, ItemStack itemStack) {
-        return itemStack.is(CelestialItems.HEAVY_DUTY_SPACESUIT_BOOTS.get()) && mobEffect == CLibEffects.HIGH_GRAVITY.get();
+        return itemStack.is(CelestialItems.OG_HEAVY_DUTY_SPACESUIT_BOOTS.get()) && mobEffect == CLibEffects.HIGH_GRAVITY.get();
     }
 }

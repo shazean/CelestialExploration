@@ -18,6 +18,8 @@ public class CelestialCommonConfig {
     public static final ForgeConfigSpec.ConfigValue<Integer> SPACESHIP_LIGHT_TRAVEL_COOLDOWN_DECREMENT;
     public static final ForgeConfigSpec.ConfigValue<Integer> SPACESHIP_LIGHT_TRAVEL_MIN_COOLDOWN;
     public static final ForgeConfigSpec.ConfigValue<Boolean> PORTALS;
+    public static final ForgeConfigSpec.EnumValue<OxygenDamage> OXYGEN_DAMAGE_TYPE;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> OXYGEN_DEBUFF;
 
     static {
         BUILDER.push("Configs for Celestial Exploration");
@@ -37,8 +39,19 @@ public class CelestialCommonConfig {
 
         PORTALS = BUILDER.comment("Allow portals to the various planets and moons?").define("Portals", true);
 
+        OXYGEN_DAMAGE_TYPE = BUILDER.comment("What should happen when a player runs out of oxygen in outer space? Options are take full, fatal damage, take damage until a half a heart remaining, or take no damage at all.")
+                .defineEnum("Oxygen Damage Type", OxygenDamage.FULL, OxygenDamage.FULL, OxygenDamage.HALF_HEART, OxygenDamage.NONE);
+        OXYGEN_DEBUFF = BUILDER.comment("Should running out of oxygen apply a debuff to the player until oxygen is restored? Off by default, but can provide less-harsh consequences than death for poor oxygen management.").define("Suffocation Debuff", false);
+
 
         BUILDER.pop();
         SPEC = BUILDER.build();
+    }
+
+
+    public enum OxygenDamage {
+        FULL,
+        HALF_HEART,
+        NONE
     }
 }

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "celestialexploration:item/spacesuit_chestplate",
+    "layer1": "celestialexploration:item/insulated_chestplate_overlay"
+  }
+}

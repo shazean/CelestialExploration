@@ -1,0 +1,18 @@
+{
+  "type": "celestialexploration:dyed_crafting",
+  "pattern": [
+    "XD"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:buoyant_spacesuit_boots"
+    },
+    "D": {
+      "item": "celestialexploration:dione_dust"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:buoyant_spacesuit_boots"
+  },
+  "color": "green"
+}

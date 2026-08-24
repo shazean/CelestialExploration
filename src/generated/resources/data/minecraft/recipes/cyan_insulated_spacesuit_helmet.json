@@ -1,0 +1,18 @@
+{
+  "type": "celestialexploration:dyed_crafting",
+  "pattern": [
+    "XD"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:insulated_spacesuit_helmet"
+    },
+    "D": {
+      "item": "celestialexploration:europa_dust"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:insulated_spacesuit_helmet"
+  },
+  "color": "cyan"
+}

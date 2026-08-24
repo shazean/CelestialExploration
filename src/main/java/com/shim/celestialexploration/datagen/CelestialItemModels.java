@@ -4,16 +4,13 @@ import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.registry.CelestialBlocks;
 import com.shim.celestialexploration.registry.CelestialFluids;
 import com.shim.celestialexploration.registry.CelestialItems;
-import com.shim.celestialexploration.registry.CelestialTabs;
 import com.shim.celestiallib.api.datagen.base.BaseItemModels;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.RegistryObject;
 
 public class CelestialItemModels extends BaseItemModels {
 
@@ -638,23 +635,41 @@ public class CelestialItemModels extends BaseItemModels {
 		generatedItem(CelestialItems.STEEL_BOOTS.get());
 
 		//SPACESUIT
-		generatedItem(CelestialItems.BASIC_SPACESUIT_HELMET.get());
-		generatedItem(CelestialItems.BASIC_SPACESUIT_LEGGINGS.get());
-		generatedItem(CelestialItems.BASIC_SPACESUIT_CHESTPLATE.get());
-		generatedItem(CelestialItems.BASIC_SPACESUIT_BOOTS.get());
-		generatedItem(CelestialItems.HEAVY_DUTY_SPACESUIT_HELMET.get());
-		generatedItem(CelestialItems.HEAVY_DUTY_SPACESUIT_LEGGINGS.get());
-		generatedItem(CelestialItems.HEAVY_DUTY_SPACESUIT_CHESTPLATE.get());
-		generatedItem(CelestialItems.HEAVY_DUTY_SPACESUIT_BOOTS.get());
-		generatedItem(CelestialItems.THERMAL_SPACESUIT_HELMET.get());
-		generatedItem(CelestialItems.THERMAL_SPACESUIT_LEGGINGS.get());
-		generatedItem(CelestialItems.THERMAL_SPACESUIT_CHESTPLATE.get());
-		generatedItem(CelestialItems.THERMAL_SPACESUIT_BOOTS.get());
-		generatedItem(CelestialItems.ADVANCED_SPACESUIT_HELMET.get());
-		generatedItem(CelestialItems.ADVANCED_SPACESUIT_LEGGINGS.get());
-		generatedItem(CelestialItems.ADVANCED_SPACESUIT_CHESTPLATE.get());
-		generatedItem(CelestialItems.ADVANCED_SPACESUIT_BOOTS.get());
-		
+//		generatedItem(CelestialItems.BASIC_SPACESUIT_HELMET.get());
+//		generatedItem(CelestialItems.BASIC_SPACESUIT_LEGGINGS.get());
+//		generatedItem(CelestialItems.BASIC_SPACESUIT_CHESTPLATE.get());
+//		generatedItem(CelestialItems.BASIC_SPACESUIT_BOOTS.get());
+//		generatedItem(CelestialItems.OG_HEAVY_DUTY_SPACESUIT_HELMET.get());
+//		generatedItem(CelestialItems.OG_HEAVY_DUTY_SPACESUIT_LEGGINGS.get());
+//		generatedItem(CelestialItems.OG_HEAVY_DUTY_SPACESUIT_CHESTPLATE.get());
+//		generatedItem(CelestialItems.OG_HEAVY_DUTY_SPACESUIT_BOOTS.get());
+//		generatedItem(CelestialItems.THERMAL_SPACESUIT_HELMET.get());
+//		generatedItem(CelestialItems.THERMAL_SPACESUIT_LEGGINGS.get());
+//		generatedItem(CelestialItems.THERMAL_SPACESUIT_CHESTPLATE.get());
+//		generatedItem(CelestialItems.THERMAL_SPACESUIT_BOOTS.get());
+//		generatedItem(CelestialItems.ADVANCED_SPACESUIT_HELMET.get());
+//		generatedItem(CelestialItems.ADVANCED_SPACESUIT_LEGGINGS.get());
+//		generatedItem(CelestialItems.ADVANCED_SPACESUIT_CHESTPLATE.get());
+//		generatedItem(CelestialItems.ADVANCED_SPACESUIT_BOOTS.get());
+
+		generatedItem(CelestialItems.SIMPLE_SPACESUIT_HELMET.get(), "spacesuit_helmet");
+		generatedItem(CelestialItems.SIMPLE_SPACESUIT_CHESTPLATE.get(), "spacesuit_chestplate");
+		generatedItem(CelestialItems.SIMPLE_SPACESUIT_LEGGINGS.get(), "spacesuit_leggings");
+		generatedItem(CelestialItems.SIMPLE_SPACESUIT_BOOTS.get(), "spacesuit_boots");
+		spacesuitItem(CelestialItems.LIGHTWEIGHT_SPACESUIT_HELMET.get(), "", "helmet");
+		spacesuitItem(CelestialItems.LIGHTWEIGHT_SPACESUIT_CHESTPLATE.get(), "lightweight", "chestplate");
+		spacesuitItem(CelestialItems.LIGHTWEIGHT_SPACESUIT_LEGGINGS.get(), "lightweight", "leggings");
+		spacesuitItem(CelestialItems.BUOYANT_SPACESUIT_BOOTS.get(), "lightweight", "boots");
+		spacesuitItem(CelestialItems.HEAVY_DUTY_SPACESUIT_HELMET.get(), "", "helmet");
+		spacesuitItem(CelestialItems.HEAVY_DUTY_SPACESUIT_CHESTPLATE.get(), "heavy_duty", "chestplate");
+		spacesuitItem(CelestialItems.HEAVY_DUTY_SPACESUIT_LEGGINGS.get(), "heavy_duty", "leggings");
+		spacesuitItem(CelestialItems.GRAVITY_SPACESUIT_BOOTS.get(), "heavy_duty", "boots");
+		spacesuitItem(CelestialItems.INSULATED_SPACESUIT_HELMET.get(), "", "helmet");
+		spacesuitItem(CelestialItems.INSULATED_SPACESUIT_CHESTPLATE.get(), "insulated", "chestplate");
+		spacesuitItem(CelestialItems.INSULATED_SPACESUIT_LEGGINGS.get(), "insulated", "leggings");
+		spacesuitItem(CelestialItems.INSULATED_SPACESUIT_BOOTS.get(), "insulated", "boots");
+//		spacesuitItem(CelestialItems.LONG_FALL_SPACESUIT_BOOTS.get(), "long_fall", "boots");
+
 		//---- GLASS/CERAMICS -------------------------------------------------------------------------------
 		//GLASS
 		self(CelestialBlocks.LUMINOUS_BLUE_GLASS.get());
@@ -924,9 +939,18 @@ public class CelestialItemModels extends BaseItemModels {
 
 	}
 
+	protected void spacesuitItem(Item spacesuit, String type, String location) {
+		this.withExistingParent(this.name(spacesuit), mcLoc("item/generated")).texture("layer0", modLoc("item/spacesuit_" + location)).texture("layer1", "item/" + type + "_" + location + "_overlay");
+	}
+
 	protected String name(ItemLike block) {
 		return block.asItem().getRegistryName().getPath();
 	}
+
+	public void generatedItem(Item item, String path) {
+		this.singleTexture(name(item), new ResourceLocation("item/generated"), "layer0", modLoc("item/" + path));
+	}
+
 
 	public void chestItem(Block item, Block particle) {
 		this.singleTexture(name(item), new ResourceLocation(CelestialExploration.MODID, "item/chest_item"), "particle", modLoc("block/" + name(particle)));

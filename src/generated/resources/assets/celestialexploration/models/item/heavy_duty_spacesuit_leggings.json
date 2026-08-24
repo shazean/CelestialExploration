@@ -1,6 +1,7 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "celestialexploration:item/heavy_duty_spacesuit_leggings"
+    "layer0": "celestialexploration:item/spacesuit_leggings",
+    "layer1": "celestialexploration:item/heavy_duty_leggings_overlay"
   }
 }

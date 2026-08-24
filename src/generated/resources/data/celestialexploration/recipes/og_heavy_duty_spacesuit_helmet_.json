@@ -1,0 +1,24 @@
+{
+  "type": "celestialexploration:workbench_crafting",
+  "pattern": [
+    "DDD",
+    "LGL"
+  ],
+  "key": {
+    "L": {
+      "item": "minecraft:leather"
+    },
+    "G": {
+      "tag": "forge:glass"
+    },
+    "D": {
+      "tag": "forge:gems/diamond"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:og_heavy_duty_spacesuit_helmet"
+  },
+  "fluid": "celestialexploration:molten_steel",
+  "buckets": 0.444,
+  "experience": 2.8
+}

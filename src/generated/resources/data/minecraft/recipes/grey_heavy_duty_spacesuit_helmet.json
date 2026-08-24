@@ -1,0 +1,18 @@
+{
+  "type": "celestialexploration:dyed_crafting",
+  "pattern": [
+    "XD"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:heavy_duty_spacesuit_helmet"
+    },
+    "D": {
+      "item": "celestialexploration:grey_moon_dust"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:heavy_duty_spacesuit_helmet"
+  },
+  "color": "gray"
+}

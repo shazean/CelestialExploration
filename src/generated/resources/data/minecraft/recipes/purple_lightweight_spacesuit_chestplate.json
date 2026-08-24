@@ -1,0 +1,18 @@
+{
+  "type": "celestialexploration:dyed_crafting",
+  "pattern": [
+    "XD"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:lightweight_spacesuit_chestplate"
+    },
+    "D": {
+      "item": "celestialexploration:triton_dust"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:lightweight_spacesuit_chestplate"
+  },
+  "color": "purple"
+}

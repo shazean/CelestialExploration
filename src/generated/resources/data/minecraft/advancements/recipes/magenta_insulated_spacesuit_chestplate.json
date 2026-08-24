@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:magenta_insulated_spacesuit_chestplate"
+    ]
+  },
+  "criteria": {
+    "has_insulated_spacesuit_chestplate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:insulated_spacesuit_chestplate"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:magenta_insulated_spacesuit_chestplate"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_insulated_spacesuit_chestplate",
+      "has_the_recipe"
+    ]
+  ]
+}

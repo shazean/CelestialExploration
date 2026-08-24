@@ -1,0 +1,18 @@
+{
+  "type": "celestialexploration:dyed_crafting",
+  "pattern": [
+    "XD"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:insulated_spacesuit_boots"
+    },
+    "D": {
+      "item": "celestialexploration:enceladus_dust"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:insulated_spacesuit_boots"
+  },
+  "color": "light_blue"
+}

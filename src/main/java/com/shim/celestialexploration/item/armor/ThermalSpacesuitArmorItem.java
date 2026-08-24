@@ -1,10 +1,9 @@
 package com.shim.celestialexploration.item.armor;
 
 import com.google.common.collect.ImmutableMap;
-import com.shim.celestialexploration.item.ModArmorMaterials;
+import com.shim.celestialexploration.item.CelestialArmorMaterials;
 import com.shim.celestialexploration.registry.CelestialItems;
 import com.shim.celestiallib.api.armor.ISpacesuit;
-import com.shim.celestiallib.api.effects.CLibEffects;
 import com.shim.celestiallib.api.effects.GravityEffect;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -26,10 +25,10 @@ import java.util.List;
 import java.util.Map;
 
 public class ThermalSpacesuitArmorItem extends ArmorItem implements ISpacesuit {
-    private static final Map<ArmorMaterial, MobEffectInstance> MATERIAL_TO_EFFECT_MAP = (new ImmutableMap.Builder<ArmorMaterial, MobEffectInstance>()).put(ModArmorMaterials.THERMAL_SPACESUIT, new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 200, 1, false, false)).build();
+    private static final Map<ArmorMaterial, MobEffectInstance> MATERIAL_TO_EFFECT_MAP = (new ImmutableMap.Builder<ArmorMaterial, MobEffectInstance>()).put(CelestialArmorMaterials.THERMAL_SPACESUIT, new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 200, 1, false, false)).build();
 
     public ThermalSpacesuitArmorItem(EquipmentSlot slot, Properties properties) {
-        super(ModArmorMaterials.THERMAL_SPACESUIT, slot, properties);
+        super(CelestialArmorMaterials.THERMAL_SPACESUIT, slot, properties);
     }
 
     @Override

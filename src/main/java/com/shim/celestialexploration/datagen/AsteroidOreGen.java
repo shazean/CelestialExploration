@@ -18,6 +18,7 @@ public class AsteroidOreGen extends AsteroidOreProvider {
     @Override
     protected void register(Consumer<AsteroidOreBuilder> consumer, ExistingFileHelper fileHelper) {
 
+        AsteroidOreBuilder.builder().ore(CelestialBlocks.METEOR.get()).weight(150).frequency(0.9F).save(consumer, modLoc("meteor"));
         AsteroidOreBuilder.builder().ore(CelestialBlocks.METEOR_COAL_ORE.get()).weight(100).frequency(0.8F).save(consumer, modLoc("coal"));
         AsteroidOreBuilder.builder().ore(CelestialBlocks.METEOR_BAUXITE_ORE.get()).weight(80).frequency(0.5F).save(consumer, modLoc("bauxite"));
         AsteroidOreBuilder.builder().ore(CelestialBlocks.METEOR_COPPER_ORE.get()).weight(60).frequency(0.5F).save(consumer, modLoc("copper"));

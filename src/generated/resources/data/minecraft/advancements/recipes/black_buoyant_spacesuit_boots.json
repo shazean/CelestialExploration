@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:black_buoyant_spacesuit_boots"
+    ]
+  },
+  "criteria": {
+    "has_buoyant_spacesuit_boots": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:buoyant_spacesuit_boots"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:black_buoyant_spacesuit_boots"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_buoyant_spacesuit_boots",
+      "has_the_recipe"
+    ]
+  ]
+}

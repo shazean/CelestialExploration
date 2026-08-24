@@ -216,6 +216,22 @@ public class CelestialLangProvider extends LanguageProvider {
 		add("item.celestialexploration.armor_details.thermal_spacesuit_boots_1", "Negates low gravity");
 		add("item.celestialexploration.armor_details.thermal_spacesuit_boots_2", "Can walk on powdered snow");
 
+
+		add("item.celestialexploration.armor_details.heavy_duty_helmet", "Reduces oxygen consumed by sprinting or attacking");
+		add("item.celestialexploration.armor_details.heavy_duty_chestplate", "High defense, but slow");
+		add("item.celestialexploration.armor_details.heavy_duty_leggings", "High defense, but slow");
+		add("item.celestialexploration.armor_details.gravity_boots", "Normalizes gravity effects");
+		add("item.celestialexploration.armor_details.lightweight_helmet", "Increases max oxygen supply");
+		add("item.celestialexploration.armor_details.lightweight_chestplate", "So light, you feel like you might run faster…");
+		add("item.celestialexploration.armor_details.lightweight_leggings", "Gives jump boost");
+		add("item.celestialexploration.armor_details.buoyant_boots", "Buoyant. Try it. Try the lava.");
+//		add("item.celestialexploration.armor_details.insulated_helmet", "Grants jump boost");
+//		add("item.celestialexploration.armor_details.insulated_chestplate", "Negates liquid metallic hydrogen damage");
+//		add("item.celestialexploration.armor_details.insulated_leggings", "Piglin neutral");
+//		add("item.celestialexploration.armor_details.insulated_boots", "Negates high gravity");
+		add("item.celestialexploration.armor_details.long_fall_boots", "Negates fall damage");
+
+
 		//---- OTHER -------------------------------------------------------------------------------
 		add("celestialexploration.planet_details.location", "Coordinates");
 		add("celestialexploration.planet_details.moons", "Notable Moons");

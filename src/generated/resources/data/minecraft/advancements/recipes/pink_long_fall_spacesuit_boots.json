@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:pink_long_fall_spacesuit_boots"
+    ]
+  },
+  "criteria": {
+    "has_long_fall_spacesuit_boots": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:long_fall_spacesuit_boots"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:pink_long_fall_spacesuit_boots"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_long_fall_spacesuit_boots",
+      "has_the_recipe"
+    ]
+  ]
+}

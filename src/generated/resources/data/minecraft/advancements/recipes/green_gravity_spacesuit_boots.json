@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:green_gravity_spacesuit_boots"
+    ]
+  },
+  "criteria": {
+    "has_gravity_spacesuit_boots": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:gravity_spacesuit_boots"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:green_gravity_spacesuit_boots"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_gravity_spacesuit_boots",
+      "has_the_recipe"
+    ]
+  ]
+}

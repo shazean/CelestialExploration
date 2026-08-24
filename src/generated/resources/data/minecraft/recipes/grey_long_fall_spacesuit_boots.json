@@ -1,0 +1,18 @@
+{
+  "type": "celestialexploration:dyed_crafting",
+  "pattern": [
+    "XD"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:long_fall_spacesuit_boots"
+    },
+    "D": {
+      "item": "celestialexploration:grey_moon_dust"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:long_fall_spacesuit_boots"
+  },
+  "color": "gray"
+}

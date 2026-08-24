@@ -1,0 +1,21 @@
+{
+  "type": "celestialexploration:workbench_crafting",
+  "pattern": [
+    "R R",
+    "D D"
+  ],
+  "key": {
+    "D": {
+      "tag": "forge:gems/diamond"
+    },
+    "R": {
+      "item": "minecraft:rabbit_hide"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:og_heavy_duty_spacesuit_boots"
+  },
+  "fluid": "celestialexploration:molten_steel",
+  "buckets": 0.333,
+  "experience": 2.1
+}
