@@ -73,35 +73,35 @@ public class SpacesuitArmorItem extends ArmorItem implements ISpacesuit {
         }
     }
 
-    private static boolean isLightweight(ArmorItem armor) {
+    public static boolean isLightweight(ArmorItem armor) {
         return armor.getMaterial() == CelestialArmorMaterials.LIGHTWEIGHT;
     }
 
-    private static boolean isHeavyDuty(ArmorItem armor) {
+    public static boolean isHeavyDuty(ArmorItem armor) {
         return armor.getMaterial() == CelestialArmorMaterials.HEAVY_DUTY;
     }
 
-    private static boolean isInsulated(ArmorItem armor) {
+    public static boolean isInsulated(ArmorItem armor) {
         return armor.getMaterial() == CelestialArmorMaterials.INSULATED;
     }
 
-    private static boolean isLongFall(ArmorItem armor) {
+    public static boolean isLongFall(ArmorItem armor) {
         return armor.getMaterial() == CelestialArmorMaterials.LONG_FALL;
     }
 
-    private static boolean isBoots(ArmorItem armor) {
+    public static boolean isBoots(ArmorItem armor) {
         return armor.getSlot() == EquipmentSlot.FEET;
     }
 
-    private static boolean isHelmet(ArmorItem armor) {
+    public static boolean isHelmet(ArmorItem armor) {
         return armor.getSlot() == EquipmentSlot.HEAD;
     }
 
-    private static boolean isChestplate(ArmorItem armor) {
+    public static boolean isChestplate(ArmorItem armor) {
         return armor.getSlot() == EquipmentSlot.CHEST;
     }
 
-    private static boolean isPants(ArmorItem armor) {
+    public static boolean isPants(ArmorItem armor) {
         return armor.getSlot() == EquipmentSlot.LEGS;
     }
 

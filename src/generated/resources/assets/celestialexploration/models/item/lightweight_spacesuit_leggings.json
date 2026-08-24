@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "celestialexploration:item/spacesuit_leggings",
+    "layer1": "celestialexploration:item/lightweight_leggings_overlay"
+  }
+}

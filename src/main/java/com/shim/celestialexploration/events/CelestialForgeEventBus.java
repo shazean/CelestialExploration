@@ -2,6 +2,7 @@ package com.shim.celestialexploration.events;
 
 import com.mojang.datafixers.util.Either;
 import com.shim.celestialexploration.CelestialExploration;
+import com.shim.celestialexploration.capabilities.OxygenHandler;
 import com.shim.celestialexploration.config.CelestialCommonConfig;
 import com.shim.celestialexploration.entity.monster.Vulkan;
 import com.shim.celestialexploration.entity.spawner.CelestialCatSpawner;
@@ -34,7 +35,10 @@ import net.minecraftforge.client.event.RenderTooltipEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.EntityMountEvent;
+import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.player.AttackEntityEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.server.ServerAboutToStartEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -69,6 +73,8 @@ public class CelestialForgeEventBus {
 
     @SubscribeEvent
     public static void onServerTick(TickEvent.ServerTickEvent.WorldTickEvent event) {
+
+
         if (event.world instanceof ServerLevel serverLevel && event.haveTime()) {
             new CelestialCatSpawner().tick(serverLevel, true, true);
             new MechaCrowSpawner().tick(serverLevel, true, true);
@@ -88,6 +94,14 @@ public class CelestialForgeEventBus {
                         }
                     }
                 }
+            }
+
+
+            for (Player player : serverLevel.players()) {
+                OxygenHandler oxygenCap = player.getCapability(CelestialCapabilities.OXYGEN_CAPABILITY).orElse(null);
+                if (oxygenCap != null)
+                    oxygenCap.tick(player);
+
             }
         }
     }
@@ -193,22 +207,54 @@ public class CelestialForgeEventBus {
                 }
             }
         }
+
+        if (entity instanceof Player player) {
+            OxygenHandler oxygenCap = entity.getCapability(CelestialCapabilities.OXYGEN_CAPABILITY).orElse(null);
+            if (oxygenCap != null) {
+                oxygenCap.checkMaxOxygen(player);
+//                oxygenCap.setOxygenToFull();
+            }
+        }
     }
 
-//    @SubscribeEvent
-//    public static void onPlayerClone(PlayerEvent.Clone event) {
-//        if (event.isWasDeath()) {
-//            if (event.getOriginal() != null && event.getPlayer() != null) {
-//                event.getOriginal().reviveCaps();
-//
-//                TaxiCapability.ITaxi oldTaxiData = event.getOriginal().getCapability(CelestialCapabilities.TAXI_CAPABILITY).orElse(null);
-//                TaxiCapability.ITaxi newTaxiData = event.getPlayer().getCapability(CelestialCapabilities.TAXI_CAPABILITY).orElse(null);
-//                if (oldTaxiData != null && newTaxiData != null) newTaxiData.setData(oldTaxiData.getData());
-//
-//                event.getOriginal().invalidateCaps();
-//            }
-//        }
-//    }
+    @SubscribeEvent
+    public static void onPlayerAttack(AttackEntityEvent event) {
+        OxygenHandler oxygenCap = event.getPlayer().getCapability(CelestialCapabilities.OXYGEN_CAPABILITY).orElse(null);
+        if (oxygenCap != null) {
+            oxygenCap.useOxygen(true, event.getPlayer());
+        }
+    }
+
+    @SubscribeEvent
+    public static void onPlayerEquipArmor(LivingEquipmentChangeEvent event) {
+        if (event.getFrom() != event.getTo()) {
+            if (event.getEntity() instanceof Player player) {
+                OxygenHandler oxygenCap = player.getCapability(CelestialCapabilities.OXYGEN_CAPABILITY).orElse(null);
+                if (oxygenCap != null) {
+                    oxygenCap.checkMaxOxygen(player);
+//                    oxygenCap.checkEquipmentAndAddOxygen(event.getTo(), player, event.getSlot());
+                }
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onPlayerClone(PlayerEvent.Clone event) {
+        if (event.isWasDeath()) {
+            if (event.getOriginal() != null && event.getPlayer() != null) {
+                event.getOriginal().reviveCaps();
+
+                OxygenHandler oldOxygenData = event.getOriginal().getCapability(CelestialCapabilities.OXYGEN_CAPABILITY).orElse(null);
+                OxygenHandler newOxygenData = event.getPlayer().getCapability(CelestialCapabilities.OXYGEN_CAPABILITY).orElse(null);
+                if (oldOxygenData != null && newOxygenData != null) newOxygenData.setData(oldOxygenData.getData());
+
+                newOxygenData.checkMaxOxygen(event.getPlayer());
+                newOxygenData.setOxygenToFull();
+
+                event.getOriginal().invalidateCaps();
+            }
+        }
+    }
 
     @SubscribeEvent
     public static void onToolTipRender(RenderTooltipEvent.GatherComponents event) {

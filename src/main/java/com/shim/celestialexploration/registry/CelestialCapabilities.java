@@ -1,14 +1,13 @@
 package com.shim.celestialexploration.registry;
 
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.capabilities.IFuelTank;
-import com.shim.celestialexploration.capabilities.LoxTankCapabilityProvider;
-import com.shim.celestialexploration.capabilities.MetallicHydrogenCapabilityProvider;
+import com.shim.celestialexploration.capabilities.*;
 import com.shim.celestialexploration.entity.vehicle.Spaceship;
 import com.shim.celestiallib.api.capabilities.SpaceVehicleCapabilityProvider;
 import com.shim.celestiallib.capabilities.CLibCapabilities;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.common.capabilities.Capability;
@@ -21,12 +20,14 @@ import net.minecraftforge.fluids.capability.templates.FluidHandlerItemStack;
 public class CelestialCapabilities {
 
     public static final Capability<IFuelTank> FUEL_TANK_CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {});
+    public static final Capability<OxygenHandler> OXYGEN_CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {});
 //    public static final Capability<ISpaceFlight> SPACE_FLIGHT_CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {});
 //    public static final Capability<TaxiCapability.ITaxi> TAXI_CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {});
 //    public static final Capability<TaxiCapability.ITaxi> VILLAGER_TRAVEL_CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {});
 
     public static void registerCapabilities(RegisterCapabilitiesEvent eventIn) {
         eventIn.register(IFuelTank.class);
+        eventIn.register(OxygenHandler.class);
 //        eventIn.register(ISpaceFlight.class);
 //        eventIn.register(TaxiCapability.ITaxi.class);
 //        eventIn.register(VillagerTravelCapability.ITravel.class);
@@ -62,6 +63,12 @@ public class CelestialCapabilities {
                 eventIn.addCapability(new ResourceLocation(CelestialExploration.MODID, "spaceship_flight"), new SpaceVehicleCapabilityProvider());
             }
         }
+        if (eventIn.getObject() instanceof Player) {
+            if (!eventIn.getObject().getCapability(CelestialCapabilities.OXYGEN_CAPABILITY).isPresent()) {
+                eventIn.addCapability(new ResourceLocation(CelestialExploration.MODID, "oxygen"), new OxygenCapabilityProvider());
+            }
+        }
+
 //        if (eventIn.getObject() instanceof Player) {
 //            if (!eventIn.getObject().getCapability(TaxiCapability.TaxiProvider.TAXI).isPresent()) {
 //                eventIn.addCapability(new ResourceLocation(CelestialExploration.MODID, "taxi"), new TaxiCapability.TaxiProvider());
