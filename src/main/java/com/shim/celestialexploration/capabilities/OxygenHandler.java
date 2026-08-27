@@ -1,13 +1,14 @@
 package com.shim.celestialexploration.capabilities;
 
-import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.config.CelestialCommonConfig;
 import com.shim.celestialexploration.item.armor.SpacesuitArmorItem;
 import com.shim.celestialexploration.registry.CelestialDamageSource;
+import com.shim.celestialexploration.registry.CelestialEffects;
 import com.shim.celestialexploration.registry.CelestialTags;
 import com.shim.celestialexploration.util.OxygenUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -20,9 +21,18 @@ public class OxygenHandler {
     int tickDelay = 0;
 
     public void tick(Player player) {
-        if (this.inLocationWithoutOxygen(player) && !player.isCreative()) {
-            this.useOxygen(player.isSprinting(), player);
+        boolean accessToOxygen = player.hasEffect(CelestialEffects.OXYGENATED_EFFECT.get());
+
+        if (!accessToOxygen) {
+            if (
+                this.inLocationWithoutOxygen(player) &&
+                    !player.isCreative()) {
+                this.useOxygen(player.isSprinting(), player);
+            }
         }
+
+        if (accessToOxygen)
+            this.incrementOxygen();
 
         if (currentOxygen > maxOxygen)
             currentOxygen = maxOxygen;
@@ -45,24 +55,25 @@ public class OxygenHandler {
                 }
 
                 if (CelestialCommonConfig.OXYGEN_DEBUFF.get()) {
-                    //TODO apply debuffs
-                    //
+                    player.addEffect(new MobEffectInstance(CelestialEffects.SUFFOCATION_EFFECT.get(), 260, 0, true, true));
                 }
             }
         }
 
 //        this.checkMaxOxygen(player);
 
-        CelestialExploration.LOGGER.debug("currentOxygen: " + currentOxygen + ", max: " + maxOxygen);
+//        CelestialExploration.LOGGER.debug("currentOxygen: " + currentOxygen + ", max: " + maxOxygen);
+    }
+
+    private void incrementOxygen() {
+        this.currentOxygen++;
     }
 
     private boolean inLocationWithoutOxygen(Player player) {
         Level level = player.level;
         BlockPos pos = player.blockPosition();
 
-        //FIXME set to always true for testing
-        return true;
-//        return level.getBiome(pos).is(CelestialTags.Biomes.NO_OXYGEN_BIOMES);
+        return level.getBiome(pos).is(CelestialTags.Biomes.NO_OXYGEN_BIOMES);
     }
 
     public void useOxygen(boolean isSprintingOrAttacking, Player player) {

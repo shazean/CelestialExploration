@@ -28,6 +28,8 @@ public class CelestialBlockEntities {
 
     public static final RegistryObject<BlockEntityType<MercurySlimeBlockEntity>> MERCURY_SLIME_BLOCK_ENTITY = BLOCK_ENTITIES.register("mercury_slime", () -> BlockEntityType.Builder.of(MercurySlimeBlockEntity::new, CelestialBlocks.MERCURY_SLIME_BLOCK.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<OxygenGeneratorBlockEntity>> OXYGEN_GENERATOR_BLOCK_ENTITY = BLOCK_ENTITIES.register("oxygen_generator", () -> BlockEntityType.Builder.of(OxygenGeneratorBlockEntity::new, CelestialBlocks.OXYGEN_GENERATOR.get()).build(null));
+
 
     public static final RegistryObject<BlockEntityType<SkullBlockEntity>> CELESTIAL_SKULLS_BLOCK_ENTITY = BLOCK_ENTITIES.register("celestial_skulls", () -> BlockEntityType.Builder.of(SkullBlockEntity::new, CelestialBlocks.LURKER_HEAD.get(), CelestialBlocks.LURKER_WALL_HEAD.get(), CelestialBlocks.VOIDED_HEAD.get(), CelestialBlocks.VOIDED_WALL_HEAD.get()
 //            , BlockRegistry.MECHADOG_HEAD.get(), BlockRegistry.MECHADOG_WALL_HEAD.get()

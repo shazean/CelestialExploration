@@ -135,6 +135,8 @@ public class CelestialLangProvider extends LanguageProvider {
 
 		//---- EFFECTS -------------------------------------------------------------------------------
 		add(CelestialEffects.STATIC_EFFECT.get(), "Static Build Up");
+		add(CelestialEffects.SUFFOCATION_EFFECT.get(), "Suffocation");
+		add(CelestialEffects.OXYGENATED_EFFECT.get(), "Oxygenated");
 
 		//---- TABS -------------------------------------------------------------------------------
 		add("itemGroup.celestial_blocks_tab", "Celestial Blocks");
@@ -155,6 +157,7 @@ public class CelestialLangProvider extends LanguageProvider {
 		add("death.attack.celestialexploration.sulfur", "%1$s tried to swim in sulfur");
 		add("death.attack.celestialexploration.metallic_hydrogen", "%1$s drowned in death metal");
 		add("death.attack.celestialexploration.dust_storm", "%1$s was sand blasted to death");
+		add("death.attack.celestialexploration.suffocate", "%1$s forgot to breathe");
 
 		//---- ADVANCEMENTS -------------------------------------------------------------------------------
 		addAdvancement("root", "Exploration","Exploration of outer space");

@@ -1,0 +1,52 @@
+{
+	"format_version": "1.9.0",
+	"credit": "Made with Blockbench",
+	"textures": {
+		"fluid": "celestialexploration:block/oxygen_generator_water",
+		"particle": "#inside"
+	},
+	"elements": [
+		{
+			"name": "1",
+			"from": [0.05, 2, 0.05],
+			"to": [15.95, 3.5, 15.95],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7, 2, 7]},
+			"faces": {
+				"north": {"uv": [0, 14, 16, 16], "texture": "#fluid"},
+				"east": {"uv": [0, 14, 16, 16], "texture": "#fluid"},
+				"south": {"uv": [0, 14, 16, 16], "texture": "#fluid"},
+				"west": {"uv": [0, 14, 16, 16], "texture": "#fluid"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#fluid"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#fluid"}
+			}
+		},
+		{
+			"name": "2",
+			"from": [0.05, 3.5, 0.05],
+			"to": [15.95, 5, 15.95],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7, 3, 7]},
+			"faces": {
+				"north": {"uv": [0, 12, 16, 14], "texture": "#fluid"},
+				"east": {"uv": [0, 12, 16, 14], "texture": "#fluid"},
+				"south": {"uv": [0, 12, 16, 14], "texture": "#fluid"},
+				"west": {"uv": [0, 12, 16, 14], "texture": "#fluid"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#fluid"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#fluid"}
+			}
+		},
+		{
+			"name": "3",
+			"from": [0.05, 5, 0.05],
+			"to": [15.95, 6.5, 15.95],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7, 5, 7]},
+			"faces": {
+				"north": {"uv": [0, 10, 16, 12], "texture": "#fluid"},
+				"east": {"uv": [0, 10, 16, 12], "texture": "#fluid"},
+				"south": {"uv": [0, 10, 16, 12], "texture": "#fluid"},
+				"west": {"uv": [0, 10, 16, 12], "texture": "#fluid"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#fluid"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#fluid"}
+			}
+		}
+	]
+}

@@ -198,6 +198,8 @@ public class CelestialClientEventBus {
         ItemBlockRenderTypes.setRenderLayer(CelestialBlocks.MEDIUM_DIAMOND_CRYSTAL.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(CelestialBlocks.LARGE_DIAMOND_CRYSTAL.get(), RenderType.cutout());
 
+        ItemBlockRenderTypes.setRenderLayer(CelestialBlocks.OXYGEN_GENERATOR.get(), RenderType.cutout());
+
 
         //MOBS
         EntityRenderers.register(CelestialEntities.LURKER.get(), LurkerRenderer::new);
