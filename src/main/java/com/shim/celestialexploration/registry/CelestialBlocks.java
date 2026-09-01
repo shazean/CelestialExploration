@@ -804,12 +804,13 @@ public class CelestialBlocks {
 
 
     public static final RegistryObject<Block> DIAMOND_CHUNK = registerBlock("diamond_chunk", "Diamond Chunk", () -> new Block(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.DIAMOND).requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.METAL)), CelestialTabs.CELESTIAL_BLOCKS_TAB);
-    public static final RegistryObject<Block> DIAMOND_CLUSTER = registerBlock("diamond_cluster", "Diamond Cluster", () -> new AmethystClusterBlock(7, 3, BlockBehaviour.Properties.of(Material.METAL, MaterialColor.DIAMOND).noOcclusion().randomTicks().sound(SoundType.AMETHYST_CLUSTER).strength(1.5F).lightLevel((state) -> 5)), CelestialTabs.CELESTIAL_BLOCKS_TAB);
+    public static final RegistryObject<Block> DIAMOND_CLUSTER = registerBlock("diamond_cluster", "Diamond Cluster", () -> new AmethystClusterBlock(7, 3, BlockBehaviour.Properties.of(Material.METAL, MaterialColor.DIAMOND).requiresCorrectToolForDrops().noOcclusion().randomTicks().sound(SoundType.AMETHYST_CLUSTER).strength(1.5F).lightLevel((state) -> 5)), CelestialTabs.CELESTIAL_BLOCKS_TAB);
     public static final RegistryObject<Block> SMALL_DIAMOND_CRYSTAL = registerBlock("small_diamond_crystal", "Small Diamond Crystal", () -> new AmethystClusterBlock(5, 3, BlockBehaviour.Properties.copy(DIAMOND_CLUSTER.get()).sound(SoundType.MEDIUM_AMETHYST_BUD).lightLevel((p_1state52629_) -> 4)), CelestialTabs.CELESTIAL_BLOCKS_TAB);
     public static final RegistryObject<Block> MEDIUM_DIAMOND_CRYSTAL = registerBlock("medium_diamond_crystal", "Medium Diamond Crystal", () -> new AmethystClusterBlock(4, 3, BlockBehaviour.Properties.copy(DIAMOND_CLUSTER.get()).sound(SoundType.LARGE_AMETHYST_BUD).lightLevel((state) -> 2)), CelestialTabs.CELESTIAL_BLOCKS_TAB);
     public static final RegistryObject<Block> LARGE_DIAMOND_CRYSTAL = registerBlock("large_diamond_crystal", "Large Diamond Crystal", () -> new AmethystClusterBlock(3, 4, BlockBehaviour.Properties.copy(DIAMOND_CLUSTER.get()).sound(SoundType.SMALL_AMETHYST_BUD).lightLevel((state) -> 1)), CelestialTabs.CELESTIAL_BLOCKS_TAB);
 
     public static final RegistryObject<Block> OXYGEN_GENERATOR = registerBlockDropsSelf("oxygen_generator", "Oxygen Generator", () -> new OxygenGeneratorBlock(Block.Properties.of(Material.GLASS).strength(0.3F).sound(SoundType.GLASS)), CelestialTabs.SPACESHIP_TAB);
+    public static final RegistryObject<Block> UNSTABLE_OXYGEN_GENERATOR = registerBlockDropsSelf("unstable_oxygen_generator", "Unstable Oxygen Generator", () -> new OxygenGeneratorBlock(Block.Properties.of(Material.GLASS).strength(0.3F).sound(SoundType.GLASS)), CelestialTabs.SPACESHIP_TAB);
 
 
 

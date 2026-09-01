@@ -1,5 +1,6 @@
 package com.shim.celestialexploration.inventory.screens;
 
+import com.google.common.collect.Lists;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.shim.celestialexploration.CelestialExploration;
@@ -7,14 +8,19 @@ import com.shim.celestialexploration.inventory.menus.OxygenCompressorMenu;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
+import java.util.List;
+
 @OnlyIn(Dist.CLIENT)
 public class OxygenCompressorScreen extends AbstractContainerScreen<OxygenCompressorMenu> {
     private static final ResourceLocation TEXTURE = new ResourceLocation(CelestialExploration.MODID, "textures/gui/oxygen_compressor.png");
+    private List<Component> tooltip = Lists.newArrayList();
 
     public OxygenCompressorScreen(OxygenCompressorMenu menu, Inventory playerInventory, Component title) {
         super(menu, playerInventory, title);
@@ -46,6 +52,11 @@ public class OxygenCompressorScreen extends AbstractContainerScreen<OxygenCompre
             blit(poseStack, x + 32, y + 36 + 10 - m, 176, 12 - m, 14, m + 1); //FLAME
         }
 
+        if (menu.hasOxygen()) {
+            this.blit(poseStack, x + 35, y + 48, 177, 62, 9, 9);
+
+        }
+
         if (menu.isBurning()) {
             //compression tube
             int k = this.menu.getScaledProgress(19);
@@ -61,9 +72,34 @@ public class OxygenCompressorScreen extends AbstractContainerScreen<OxygenCompre
     public void render(PoseStack poseStack, int mouseX, int mouseY, float delta) {
         renderBackground(poseStack);
         super.render(poseStack, mouseX, mouseY, delta);
-
-
-
         renderTooltip(poseStack, mouseX, mouseY);
+
+        int x = (width - imageWidth) / 2;
+        int y = (height - imageHeight) / 2;
+        int i = this.leftPos;
+        int j = this.topPos;
+
+        //TODO check location!
+        if (isHovering(x - i + 35, y - j + 48, 9, 9, mouseX, mouseY)) {
+            renderOxygenIndicatorHighlight(poseStack, x + 35, y + 48, 9, 9, 400, slotColor, slotColor);
+                tooltip = Lists.newArrayList();
+                if (menu.hasOxygen()) {
+                    this.tooltip.add(new TranslatableComponent("celestialexploration.menu.oxygen_compressor.has_oxygen"));
+                } else {
+                    this.tooltip.add(new TranslatableComponent("celestialexploration.menu.oxygen_compressor.need_oxygen"));
+                    this.tooltip.add(new TranslatableComponent("celestialexploration.menu.oxygen_compressor.oxygen_hint"));
+                }
+
+                this.renderComponentTooltip(poseStack, this.tooltip, mouseX, mouseY);
+        }
+
+    }
+
+    public static void renderOxygenIndicatorHighlight(PoseStack poseStack, int pX, int pY, int width, int height, int pBlitOffset, int slotColor, int slotColor2) {
+        RenderSystem.disableDepthTest();
+        RenderSystem.colorMask(true, true, true, false);
+        fillGradient(poseStack, pX, pY, pX + width, pY + height, slotColor, slotColor2, pBlitOffset);
+        RenderSystem.colorMask(true, true, true, true);
+        RenderSystem.enableDepthTest();
     }
 }

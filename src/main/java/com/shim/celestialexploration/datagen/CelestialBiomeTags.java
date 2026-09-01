@@ -118,6 +118,17 @@ public class CelestialBiomeTags extends BiomeTagsProvider {
                 .addTag(CLibTags.Biomes.MOONS);
 //                .addTag(CelestialTags.Biomes.MILKY_WAY_BIOMES);
 
+        tag(CelestialTags.Biomes.NO_OXYGEN_BIOMES)
+                .addTag(CelestialTags.Biomes.MARS_BIOMES)
+                .addTag(CelestialTags.Biomes.VENUS_BIOMES)
+                .addTag(CelestialTags.Biomes.MERCURY_BIOMES)
+                .addTag(CelestialTags.Biomes.JUPITER_BIOMES)
+                .addTag(CelestialTags.Biomes.MOON_BIOMES)
+                .addTag(CelestialTags.Biomes.EUROPA_BIOMES)
+                .addTag(CelestialTags.Biomes.CALLISTO_BIOMES)
+                .addTag(CelestialTags.Biomes.IO_BIOMES)
+                .addTag(CelestialTags.Biomes.GANYMEDE_BIOMES);
+
         tag(CelestialTags.Biomes.DUST_STORM_BIOMES)
                 .addTag(CelestialTags.Biomes.MARS_BIOMES)
                 .addTag(CelestialTags.Biomes.JUPITER_BIOMES);

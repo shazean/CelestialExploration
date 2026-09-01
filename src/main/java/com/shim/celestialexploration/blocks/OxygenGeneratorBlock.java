@@ -3,6 +3,7 @@ package com.shim.celestialexploration.blocks;
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.blocks.blockentities.OxygenGeneratorBlockEntity;
 import com.shim.celestialexploration.registry.CelestialBlockEntities;
+import com.shim.celestialexploration.registry.CelestialBlocks;
 import com.shim.celestialexploration.registry.CelestialEffects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -59,22 +60,28 @@ public class OxygenGeneratorBlock extends BaseEntityBlock {
         }
     }
 
-    @Override
-    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
-
-        boolean lit = level.hasNeighborSignal(pos);
-        int water = nearbyWaterBlocks(level, pos);
-        boolean operating = lit && water >= 1;
-        level.setBlock(pos, state.setValue(LIT, lit).setValue(HAS_WATER, water).setValue(OPERATING, operating), 2);
-
-    }
+//    @Override
+//    public void tick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
+//        if (!level.isClientSide) {
+//
+//            boolean lit = level.hasNeighborSignal(pos);
+//            if (!lit) {
+//                if (level.getBlockState(pos.above()).is(CelestialBlocks.OXYGEN_COMPRESSOR.get())) {
+//                    lit = level.getBlockState(pos.above()).getValue(OxygenCompressorBlock.LIT);
+//                }
+//            }
+//            int water = nearbyWaterBlocks(level, pos);
+//            boolean operating = lit && water >= 1;
+//            level.setBlock(pos, state.setValue(LIT, lit).setValue(HAS_WATER, water).setValue(OPERATING, operating), 2);
+//        }
+//    }
 
     @Override
     public RenderShape getRenderShape(BlockState state) {
         return RenderShape.MODEL;
     }
 
-    private static int nearbyWaterBlocks(LevelReader levelReader, BlockPos pos) {
+    public static int nearbyWaterBlocks(LevelReader levelReader, BlockPos pos) {
 
         int nearbyWater = 0;
 

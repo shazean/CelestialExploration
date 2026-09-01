@@ -2,11 +2,14 @@ package com.shim.celestialexploration.blocks.blockentities;
 
 import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.blocks.OxygenCompressorBlock;
+import com.shim.celestialexploration.blocks.OxygenGeneratorBlock;
 import com.shim.celestialexploration.capabilities.IFuelTank;
-import com.shim.celestialexploration.capabilities.LoxTankCapability;
+import com.shim.celestialexploration.config.CelestialCommonConfig;
 import com.shim.celestialexploration.inventory.menus.OxygenCompressorMenu;
 import com.shim.celestialexploration.registry.CelestialBlockEntities;
+import com.shim.celestialexploration.registry.CelestialBlocks;
 import com.shim.celestialexploration.registry.CelestialCapabilities;
+import com.shim.celestialexploration.registry.CelestialTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -21,7 +24,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -45,6 +47,7 @@ public class OxygenCompressorBlockEntity extends BlockEntity implements MenuProv
     private int maxProgress = 150;
     private int fuelBurnTime = 0;
     private int maxFuelBurnTime;
+    private int hasOxygen = 0;
 
     private final ItemStackHandler itemHandler = new ItemStackHandler(7) {
         @Override
@@ -64,6 +67,8 @@ public class OxygenCompressorBlockEntity extends BlockEntity implements MenuProv
                     case 1 -> OxygenCompressorBlockEntity.this.maxProgress;
                     case 2 -> OxygenCompressorBlockEntity.this.fuelBurnTime;
                     case 3 -> OxygenCompressorBlockEntity.this.maxFuelBurnTime;
+                    case 4 -> OxygenCompressorBlockEntity.this.hasOxygen;
+
                     default -> 0;
                 };
             }
@@ -73,10 +78,11 @@ public class OxygenCompressorBlockEntity extends BlockEntity implements MenuProv
                     case 1 -> OxygenCompressorBlockEntity.this.maxProgress = value;
                     case 2 -> OxygenCompressorBlockEntity.this.fuelBurnTime = value;
                     case 3 -> OxygenCompressorBlockEntity.this.maxFuelBurnTime = value;
+                    case 4 -> OxygenCompressorBlockEntity.this.hasOxygen = value;
                 }
             }
             public int getCount() {
-                return 4;
+                return 5;
             }
         };
     }
@@ -122,6 +128,7 @@ public class OxygenCompressorBlockEntity extends BlockEntity implements MenuProv
         tag.putInt("oxygen_compressor.maxProgress", maxProgress);
         tag.putInt("oxygen_compressor.fuelBurnTime", fuelBurnTime);
         tag.putInt("oxygen_compressor.maxFuelBurnTime", maxFuelBurnTime);
+        tag.putInt("oxygen_compressor.hasOxygen", hasOxygen);
 
         super.saveAdditional(tag);
     }
@@ -136,6 +143,7 @@ public class OxygenCompressorBlockEntity extends BlockEntity implements MenuProv
         maxProgress = nbt.getInt("oxygen_compressor.maxProgress");
         fuelBurnTime = nbt.getInt("oxygen_compressor.fuelBurnTime");
         maxFuelBurnTime = nbt.getInt("oxygen_compressor.maxFuelBurnTime");
+        hasOxygen = nbt.getInt("oxygen_compressor.hasOxygen");
     }
 
     public void drops() {
@@ -147,13 +155,34 @@ public class OxygenCompressorBlockEntity extends BlockEntity implements MenuProv
         Containers.dropContents(this.level, this.worldPosition, inventory);
     }
 
-    public boolean isLit() {
-        return this.fuelBurnTime > 0;
+    public boolean isLit(BlockState state) {
+        return state.getValue(OxygenCompressorBlock.LIT);
+//        return this.fuelBurnTime > 0;
+    }
+
+    public static boolean hasOxygen(Level level, BlockPos pos, OxygenCompressorBlockEntity blockEntity) {
+        if (!CelestialCommonConfig.OXYGEN_MECHANIC_ENABLED.get()) {
+            blockEntity.hasOxygen = 1;
+            return true;
+        }
+        if (!level.getBiome(pos).is(CelestialTags.Biomes.NO_OXYGEN_BIOMES)) {
+            blockEntity.hasOxygen = 1;
+            return true;
+        }
+        BlockState state = level.getBlockState(pos.below());
+        if (state.is(CelestialBlocks.OXYGEN_GENERATOR.get())) {
+            if (state.getValue(OxygenGeneratorBlock.OPERATING)) {
+                blockEntity.hasOxygen = 1;
+                return true;
+            }
+        }
+        blockEntity.hasOxygen = 0;
+        return false;
     }
 
     public static void tick(Level level, BlockPos pos, BlockState state, OxygenCompressorBlockEntity blockEntity) {
 
-        boolean lit = blockEntity.isLit();
+        boolean lit = blockEntity.isLit(state);
         boolean changed = false;
         SimpleContainer inventory = new SimpleContainer(blockEntity.itemHandler.getSlots());
 
@@ -163,45 +192,43 @@ public class OxygenCompressorBlockEntity extends BlockEntity implements MenuProv
             blockEntity.fuelBurnTime--;
         }
 
-        ItemStack fuelItem = blockEntity.itemHandler.getStackInSlot(0);
-        ItemStack tankItemOne = blockEntity.itemHandler.getStackInSlot(1);
-        ItemStack tankItemTwo = blockEntity.itemHandler.getStackInSlot(2);
-        ItemStack tankItemThree = blockEntity.itemHandler.getStackInSlot(3);
-        ItemStack tankItemFour = blockEntity.itemHandler.getStackInSlot(4);
+//        ItemStack fuelItem = blockEntity.itemHandler.getStackInSlot(0);
+        ItemStack tankItemOne = blockEntity.itemHandler.getStackInSlot(0); //1
+        ItemStack tankItemTwo = blockEntity.itemHandler.getStackInSlot(1); //2
+        ItemStack tankItemThree = blockEntity.itemHandler.getStackInSlot(2); //3
+        ItemStack tankItemFour = blockEntity.itemHandler.getStackInSlot(3); //4
 
-
-        if (lit || !fuelItem.isEmpty() && (!tankItemOne.isEmpty() || !tankItemTwo.isEmpty() || !tankItemThree.isEmpty() || !tankItemFour.isEmpty())) {
-
+        if (hasOxygen(level, pos, blockEntity) && lit /*|| !fuelItem.isEmpty()*/ && (!tankItemOne.isEmpty() || !tankItemTwo.isEmpty() || !tankItemThree.isEmpty() || !tankItemFour.isEmpty())) {
 //            Optional<WorkbenchSmeltingRecipe> recipe = level.getRecipeManager().getRecipeFor(WorkbenchSmeltingRecipe.Type.INSTANCE, inventory, level);
 
-            if (!blockEntity.isLit() && hasRoomInTank(blockEntity)) {
-                blockEntity.fuelBurnTime = net.minecraftforge.common.ForgeHooks.getBurnTime(fuelItem, RecipeType.SMELTING);
-                blockEntity.maxFuelBurnTime = blockEntity.fuelBurnTime;
-                if (blockEntity.isLit()) {
-                    changed = true;
+//            if (!blockEntity.isLit() && hasRoomInTank(blockEntity)) {
+//                blockEntity.fuelBurnTime = net.minecraftforge.common.ForgeHooks.getBurnTime(fuelItem, RecipeType.SMELTING);
+//                blockEntity.maxFuelBurnTime = blockEntity.fuelBurnTime;
+//                if (blockEntity.isLit()) {
+//                    changed = true;
+//
+//                    if (fuelItem.hasContainerItem())
+//                        blockEntity.itemHandler.setStackInSlot(0, fuelItem.getContainerItem());
+//                    else if (!fuelItem.isEmpty()) {
+//                        fuelItem.shrink(1);
+//                        if (fuelItem.isEmpty()) {
+//                            blockEntity.itemHandler.setStackInSlot(0, fuelItem.getContainerItem());
+//                        }
+//                    }
+//                }
+//            }
 
-                    if (fuelItem.hasContainerItem())
-                        blockEntity.itemHandler.setStackInSlot(0, fuelItem.getContainerItem());
-                    else if (!fuelItem.isEmpty()) {
-                        fuelItem.shrink(1);
-                        if (fuelItem.isEmpty()) {
-                            blockEntity.itemHandler.setStackInSlot(0, fuelItem.getContainerItem());
-                        }
-                    }
-                }
-            }
-
-            if (blockEntity.isLit() && hasRoomInTank(blockEntity)) {
+            if (blockEntity.isLit(state) && hasRoomInTank(blockEntity)) {
                 blockEntity.progress++;
                 if (blockEntity.progress == blockEntity.maxProgress) {
 
                     blockEntity.progress = 0;
                     blockEntity.maxProgress = 150; //recipe.get().getCookingTime();
 
-                        ItemStack firstSlot = blockEntity.itemHandler.getStackInSlot(1);
-                        ItemStack secondSlot = blockEntity.itemHandler.getStackInSlot(2);
-                        ItemStack thirdSlot = blockEntity.itemHandler.getStackInSlot(3);
-                        ItemStack fourthSlot = blockEntity.itemHandler.getStackInSlot(4);
+                        ItemStack firstSlot = blockEntity.itemHandler.getStackInSlot(0);
+                        ItemStack secondSlot = blockEntity.itemHandler.getStackInSlot(1);
+                        ItemStack thirdSlot = blockEntity.itemHandler.getStackInSlot(2);
+                        ItemStack fourthSlot = blockEntity.itemHandler.getStackInSlot(3);
 
                         IFuelTank loxTank = CelestialExploration.getCapability(firstSlot, CelestialCapabilities.FUEL_TANK_CAPABILITY);
                         IFuelTank secondloxTank = CelestialExploration.getCapability(secondSlot, CelestialCapabilities.FUEL_TANK_CAPABILITY);
@@ -230,13 +257,13 @@ public class OxygenCompressorBlockEntity extends BlockEntity implements MenuProv
             } else {
                 blockEntity.progress = 0;
             }
-        } else if (!blockEntity.isLit() && blockEntity.progress > 0) {
+        } else if (!blockEntity.isLit(state) && blockEntity.progress > 0) {
             blockEntity.progress = Mth.clamp(blockEntity.progress - 2, 0, blockEntity.maxProgress);
         }
 
-        if (lit != blockEntity.isLit()) {
+        if (lit != blockEntity.isLit(state)) {
             changed = true;
-            state = state.setValue(OxygenCompressorBlock.LIT, blockEntity.isLit());
+            state = state.setValue(OxygenCompressorBlock.LIT, blockEntity.isLit(state));
             level.setBlock(pos, state, 3);
         }
 
@@ -246,10 +273,10 @@ public class OxygenCompressorBlockEntity extends BlockEntity implements MenuProv
     }
 
     public static boolean hasRoomInTank(OxygenCompressorBlockEntity blockEntity) {
-        ItemStack firstSlot = blockEntity.itemHandler.getStackInSlot(1);
-        ItemStack secondSlot = blockEntity.itemHandler.getStackInSlot(2);
-        ItemStack thirdSlot = blockEntity.itemHandler.getStackInSlot(3);
-        ItemStack fourthSlot = blockEntity.itemHandler.getStackInSlot(4);
+        ItemStack firstSlot = blockEntity.itemHandler.getStackInSlot(0); //1, etc.
+        ItemStack secondSlot = blockEntity.itemHandler.getStackInSlot(1);
+        ItemStack thirdSlot = blockEntity.itemHandler.getStackInSlot(2);
+        ItemStack fourthSlot = blockEntity.itemHandler.getStackInSlot(3);
 
         IFuelTank loxTank = CelestialExploration.getCapability(firstSlot, CelestialCapabilities.FUEL_TANK_CAPABILITY);
         IFuelTank secondLoxTank = CelestialExploration.getCapability(secondSlot, CelestialCapabilities.FUEL_TANK_CAPABILITY);

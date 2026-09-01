@@ -155,17 +155,12 @@ public class CelestialLootTables extends BaseLootTableProvider {
 //				.withPool(LootPool.lootPool()
 //					.setRolls(ConstantValue.exactly(1.0F))
 //					.add(LootItem.lootTableItem(Items.REDSTONE)))
-////					.when(LootItemRandomChanceWithLootingCondition.randomChanceAndLootingBoost(0.8F, 0.01F)))
+//					.when(LootItemRandomChanceWithLootingCondition.randomChanceAndLootingBoost(0.8F, 0.01F)))
 //				.withPool(LootPool.lootPool()
 //						.setRolls(ConstantValue.exactly(1.0F))
 //						.add(LootItem.lootTableItem(CelestialBlocks.MECHADOG_HEAD.get()))
 //						.when(LootItemKilledByPlayerCondition.killedByPlayer())
 //						.when(LootItemRandomChanceWithLootingCondition.randomChanceAndLootingBoost(0.1F, 0.01F)))
-////				.withPool(LootPool.lootPool()
-////						.setRolls(ConstantValue.exactly(1.0F))
-////						.add(LootItem.lootTableItem(ItemRegistry.MECHADOG_CORE.get()))
-////						.when(LootItemKilledByPlayerCondition.killedByPlayer())
-////						.when(LootItemRandomChanceWithLootingCondition.randomChanceAndLootingBoost(0.010F, 0.01F)))
 //		);
 //
 //		entity(CelestialEntities.VISCOUS_SLIME.get(), LootTable.lootTable()
@@ -175,7 +170,7 @@ public class CelestialLootTables extends BaseLootTableProvider {
 //						.withPool(LootPool.lootPool()
 //								.setRolls(ConstantValue.exactly(1.0F))
 //								.add(LootItem.lootTableItem(CelestialItems.CINNABAR.get())))
-////					.when(LootItemRandomChanceWithLootingCondition.randomChanceAndLootingBoost(0.8F, 0.01F)))
+//					.when(LootItemRandomChanceWithLootingCondition.randomChanceAndLootingBoost(0.8F, 0.01F)))
 //						.withPool(LootPool.lootPool()
 //								.setRolls(ConstantValue.exactly(1.0F))
 //								.add(LootItem.lootTableItem(CelestialItems.INFUSED_VISCOUS_SLIME_BALL.get()))
@@ -196,7 +191,7 @@ public class CelestialLootTables extends BaseLootTableProvider {
 //						.withPool(LootPool.lootPool()
 //								.setRolls(ConstantValue.exactly(1.0F))
 //								.add(LootItem.lootTableItem(CelestialItems.MECHACERBERUS_CORE.get()))
-////								.when(LootItemKilledByPlayerCondition.killedByPlayer())
+//								.when(LootItemKilledByPlayerCondition.killedByPlayer())
 //						));
 
 		//---- BLOCKS -------------------------------------------------------------------------------
@@ -495,11 +490,13 @@ public class CelestialLootTables extends BaseLootTableProvider {
 		block(CelestialBlocks.MOON_FARMLAND.get(), createSilkTouchTable(CelestialBlocks.MOON_FARMLAND.get(), CelestialBlocks.MOON_SAND.get(), 1, 1));
 		block(CelestialBlocks.MERCURY_FARMLAND.get(), createSilkTouchTable(CelestialBlocks.MERCURY_FARMLAND.get(), CelestialBlocks.MERCURY_SAND.get(), 1, 1));
 
-		block(CelestialBlocks.DIAMOND_CHUNK.get(), createDiamondChunkTable(CelestialBlocks.DIAMOND_CHUNK.get(),2, 5, new float[]{0.1F, 0.1428715F, 0.25F, 1.0F}));
+		block(CelestialBlocks.DIAMOND_CHUNK.get(), createDiamondChunkTable(CelestialBlocks.DIAMOND_CHUNK.get(),1, 3, new float[]{0.1F, 0.1428715F, 0.25F, 1.0F}));
 		block(CelestialBlocks.SMALL_DIAMOND_CRYSTAL.get(), createSilkTouchTable(CelestialBlocks.SMALL_DIAMOND_CRYSTAL.get(), Blocks.AIR, 0, 0));
 		block(CelestialBlocks.MEDIUM_DIAMOND_CRYSTAL.get(), createDiamondChunkTable(CelestialBlocks.MEDIUM_DIAMOND_CRYSTAL.get(), 0, 1, new float[]{0.001F, 0.01F, 0.1F, 0.1428715F}));
-		block(CelestialBlocks.LARGE_DIAMOND_CRYSTAL.get(), createDiamondChunkTable(CelestialBlocks.LARGE_DIAMOND_CRYSTAL.get(), 1, 2, new float[]{0.01F, 0.1F, 0.1428715F, 0.25F}));
-		block(CelestialBlocks.DIAMOND_CLUSTER.get(), createDiamondChunkTable(CelestialBlocks.DIAMOND_CLUSTER.get(), 1, 3, new float[]{0.01F, 0.1F, 0.1428715F, 0.25F}));
+		block(CelestialBlocks.LARGE_DIAMOND_CRYSTAL.get(), createDiamondChunkTable(CelestialBlocks.LARGE_DIAMOND_CRYSTAL.get(), 0, 2, new float[]{0.01F, 0.1F, 0.1428715F, 0.25F}));
+		block(CelestialBlocks.DIAMOND_CLUSTER.get(), createDiamondChunkTable(CelestialBlocks.DIAMOND_CLUSTER.get(), 1, 2, new float[]{0.01F, 0.1F, 0.1428715F, 0.25F}));
+
+		block(CelestialBlocks.OXYGEN_GENERATOR.get(), createSimpleTable(CelestialBlocks.OXYGEN_GENERATOR.get()));
 
 
 	}

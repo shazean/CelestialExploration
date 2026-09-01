@@ -11,6 +11,7 @@ import com.shim.celestialexploration.entity.spawner.CelestialTraderSpawner;
 import com.shim.celestialexploration.entity.spawner.MechaCrowSpawner;
 import com.shim.celestialexploration.entity.vehicle.Spaceship;
 import com.shim.celestialexploration.registry.*;
+import com.shim.celestialexploration.util.OxygenUtil;
 import com.shim.celestiallib.api.blocks.AbstractPortalBlock;
 import com.shim.celestiallib.api.effects.CLibEffects;
 import net.minecraft.core.BlockPos;
@@ -232,7 +233,6 @@ public class CelestialForgeEventBus {
                 OxygenHandler oxygenCap = player.getCapability(CelestialCapabilities.OXYGEN_CAPABILITY).orElse(null);
                 if (oxygenCap != null) {
                     oxygenCap.checkMaxOxygen(player);
-//                    oxygenCap.checkEquipmentAndAddOxygen(event.getTo(), player, event.getSlot());
                 }
             }
         }

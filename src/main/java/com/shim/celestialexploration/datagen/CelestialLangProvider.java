@@ -133,6 +133,10 @@ public class CelestialLangProvider extends LanguageProvider {
 		add("container.celestialexploration.oxygen_compressor", "Oxygen Compressor");
 		add("container.celestialexploration.workbench", "Workbench");
 
+		add("celestialexploration.menu.oxygen_compressor.need_oxygen","Oxygen Needed");
+		add("celestialexploration.menu.oxygen_compressor.oxygen_hint", "Try using an oxygen generator—or going to a planet with oxygen!");
+		add("celestialexploration.menu.oxygen_compressor.has_oxygen", "Sufficient Oxygen Supply");
+
 		//---- EFFECTS -------------------------------------------------------------------------------
 		add(CelestialEffects.STATIC_EFFECT.get(), "Static Build Up");
 		add(CelestialEffects.SUFFOCATION_EFFECT.get(), "Suffocation");

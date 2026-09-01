@@ -19,7 +19,4 @@ public class CelestialEffects {
             .addAttributeModifier(Attributes.ATTACK_SPEED, "55FCED67-E92A-486E-9800-B47F202C4386", -0.1F, AttributeModifier.Operation.MULTIPLY_TOTAL));
     public static final RegistryObject<MobEffect> OXYGENATED_EFFECT = MOB_EFFECTS.register("oxygenated", () -> new CelestialEffect(MobEffectCategory.BENEFICIAL, 5562592));
 
-
-
-
 }

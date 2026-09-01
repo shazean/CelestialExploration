@@ -932,6 +932,7 @@ public class CelestialItemModels extends BaseItemModels {
 
 
 		this.withExistingParent(name(CelestialBlocks.OXYGEN_GENERATOR.get()), this.modLoc("block/oxygen_generator_full"));
+		this.withExistingParent(name(CelestialBlocks.UNSTABLE_OXYGEN_GENERATOR.get()), this.modLoc("block/unstable_oxygen_generator_full"));
 
 		this.withExistingParent(name(CelestialBlocks.LURKER_HEAD.get()), this.mcLoc("item/template_skull"));
 		this.withExistingParent(name(CelestialBlocks.VOIDED_HEAD.get()), this.mcLoc("item/template_skull"));

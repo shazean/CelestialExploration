@@ -1,8 +1,11 @@
 package com.shim.celestialexploration.blocks.blockentities;
 
 import com.shim.celestialexploration.CelestialExploration;
+import com.shim.celestialexploration.blocks.OxygenCompressorBlock;
 import com.shim.celestialexploration.blocks.OxygenGeneratorBlock;
+import com.shim.celestialexploration.config.CelestialCommonConfig;
 import com.shim.celestialexploration.registry.CelestialBlockEntities;
+import com.shim.celestialexploration.registry.CelestialBlocks;
 import com.shim.celestialexploration.registry.CelestialEffects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -17,6 +20,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 public class OxygenGeneratorBlockEntity extends BlockEntity {
+    int tick = 0;
 
     public OxygenGeneratorBlockEntity(BlockPos worldPosition, BlockState blockState) {
         super(CelestialBlockEntities.OXYGEN_GENERATOR_BLOCK_ENTITY.get(), worldPosition, blockState);
@@ -36,15 +40,33 @@ public class OxygenGeneratorBlockEntity extends BlockEntity {
 
         int nearbyWater = state.getValue(OxygenGeneratorBlock.HAS_WATER);
         int radius;
+        blockEntity.tick++;
 
         if (state.getValue(OxygenGeneratorBlock.LIT) && nearbyWater >= 1)
             radius = calculateRadius(level, pos, nearbyWater);
         else radius = 2;
 
         //produce oxygen
-        if (!level.isClientSide)
-            applyEffects(level, pos, radius);
+        if (!level.isClientSide) {
+            if (CelestialCommonConfig.OXYGEN_MECHANIC_ENABLED.get()) {
+                if (blockEntity.tick % 2 == 0)
+                    applyEffects(level, pos, radius);
+            }
 
+            boolean lit = level.hasNeighborSignal(pos);
+            if (!lit) {
+                if (level.getBlockState(pos.above()).is(CelestialBlocks.OXYGEN_COMPRESSOR.get())) {
+                    lit = level.getBlockState(pos.above()).getValue(OxygenCompressorBlock.LIT);
+                }
+            }
+            int water = OxygenGeneratorBlock.nearbyWaterBlocks(level, pos);
+            boolean operating = lit && water >= 1;
+            if (state.getValue(OxygenGeneratorBlock.LIT) != lit || state.getValue(OxygenGeneratorBlock.HAS_WATER) != water) {
+                level.setBlock(pos, state.setValue(OxygenGeneratorBlock.LIT, lit).setValue(OxygenGeneratorBlock.HAS_WATER, water).setValue(OxygenGeneratorBlock.OPERATING, operating), 2);
+                setChanged(level, pos, state);
+            }
+
+        }
     }
 
 
@@ -57,7 +79,8 @@ public class OxygenGeneratorBlockEntity extends BlockEntity {
         if (!list.isEmpty()) {
             for(Player player : list) {
                 if (pos.closerThan(player.blockPosition(), radius)) {
-                    player.addEffect(new MobEffectInstance(CelestialEffects.OXYGENATED_EFFECT.get(), 260, 0, true, true));
+//                    if (!player.isCreative())
+                        player.addEffect(new MobEffectInstance(CelestialEffects.OXYGENATED_EFFECT.get(), 260, 0, true, true));
                 }
             }
         }
@@ -65,7 +88,10 @@ public class OxygenGeneratorBlockEntity extends BlockEntity {
 
     private static int calculateRadius(Level level, BlockPos pos, int nearbyWater) {
         int signal = level.getBestNeighborSignal(pos);
-        CelestialExploration.LOGGER.debug("radius ({}) = signal ({}) * water ({}) * 3 / 4", signal * nearbyWater * 3 / 4, signal, nearbyWater);
+        BlockState compressor = level.getBlockState(pos.above());
+        if (compressor.is(CelestialBlocks.OXYGEN_COMPRESSOR.get()))
+            if (compressor.getValue(OxygenCompressorBlock.LIT))
+                signal = Math.max(signal, level.getBestNeighborSignal(pos.above()));
         return signal * nearbyWater * 3 / 4;
     }
 }

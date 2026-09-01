@@ -1,3 +1,7 @@
-- `[NEW]` Asteroids (and meteors) now get their ores added via datapack—in other words, its modpack/addon friendly!
-- `[NEW]` Craft concrete powder using regolith/coarse regolith instead of sand/gravel (respectively)
-- `[NEW]` New loading terrain screen when changing dimensions for a fun little client-side flavor.  This is configurable, for personal preference and/or just in case of mixin conflicts.
+- `[CHG]` Changed recipe using diamond shards to craft a diamond to require 9 shards, not just 4. Those Mercurian diamond geodes were a little *too* lucrative… Also upgaded the diamond chunks to require an iron tool to mine. Oops.
+- `[NEW]` The oxygen mechanic has arrived!
+  - `[NEW]` Completely configurable! See the common config and configure when damage is applied, optional debuffs, or turn the mechanic off entirely!
+  - `[NEW]` New oxgygen generator block that, well, generates oxygen. Functioning a little bit like a conduit in how it applies an effect to nearby players, the oxygen generator requires redstone signal and nearby water blocks in order to create oxygen. The more water (up to 8) and the stronger the signal, the larger the radius of the effect.
+  - `[CHG]` Oxygen compressor now must be set on top of an oxygen compressor if you're trying to generate fuel in a dimension that doesn't have oxygen! (Hint: not the overworld.) Also, the oxygen compressor is now redstone-powered instead of requiring coal! Crafting recipe also updated.
+  - `[NEW]` Any helmet gives you *some* oxygen beyond the overworld, but a spacesuit will give you a much better supply—and not all are the same!
+- `[NEW]` On that note, the spacesuits have been completely overhauled—now introducing the simple spacesuit, the heavy duty spacesuit, the lightweight spacesuit, and the insulated spacesuit! But unlike other armors, don't feel you have to commit entirely to one kind of spacesuit—mix and match to suit your needs!

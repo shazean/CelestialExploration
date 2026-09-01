@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "#celestialexploration:mars",
+    "#celestialexploration:venus",
+    "#celestialexploration:mercury",
+    "#celestialexploration:jupiter",
+    "#celestialexploration:moon",
+    "#celestialexploration:europa",
+    "#celestialexploration:callisto",
+    "#celestialexploration:io",
+    "#celestialexploration:ganymede"
+  ]
+}

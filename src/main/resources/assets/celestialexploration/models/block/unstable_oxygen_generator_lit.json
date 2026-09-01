@@ -1,0 +1,7 @@
+{
+	"parent": "celestialexploration:block/oxygen_generator_outer",
+	"textures": {
+		"front": "celestialexploration:block/unstable_oxygen_generator_front_lit",
+		"side": "celestialexploration:block/oxygen_generator_side"
+	}
+}

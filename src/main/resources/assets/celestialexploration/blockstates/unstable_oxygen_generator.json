@@ -1,0 +1,213 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "celestialexploration:block/oxygen_generator_inside"
+      }
+    },
+    {
+      "when": { "AND": [
+        {
+          "operating": true, "facing": "north"
+        }
+      ]
+      },
+      "apply": {
+        "model": "celestialexploration:block/unstable_oxygen_generator_full"
+      }
+    },
+    {
+      "when": { "AND": [
+        {
+          "operating": false, "lit": true, "facing": "north"
+        }
+      ]
+      },
+      "apply": {
+        "model": "celestialexploration:block/unstable_oxygen_generator_lit"
+      }
+    },
+    {
+      "when": { "AND": [
+        {
+          "operating": false, "lit": false, "facing": "north"
+        }
+      ]
+      },
+      "apply": {
+        "model": "celestialexploration:block/unstable_oxygen_generator_minimal"
+      }
+    },
+    {
+      "when": { "AND": [
+        {
+          "operating": true, "facing": "east"
+        }
+      ]
+      },
+      "apply": {
+        "model": "celestialexploration:block/unstable_oxygen_generator_full",
+        "y": 90
+      }
+    },
+    {
+      "when": { "AND": [
+        {
+          "operating": false, "lit": true, "facing": "east"
+        }
+      ]
+      },
+      "apply": {
+        "model": "celestialexploration:block/unstable_oxygen_generator_lit",
+        "y": 90
+      }
+    },
+    {
+      "when": { "AND": [
+        {
+          "operating": false, "lit": false, "facing": "east"
+        }
+      ]
+      },
+      "apply": {
+        "model": "celestialexploration:block/unstable_oxygen_generator_minimal",
+        "y": 90
+      }
+    },
+    {
+      "when": { "AND": [
+        {
+          "operating": true, "facing": "south"
+        }
+      ]
+      },
+      "apply": {
+        "model": "celestialexploration:block/unstable_oxygen_generator_full",
+        "y": 180
+      }
+    },
+    {
+      "when": { "AND": [
+        {
+          "operating": false, "lit": true, "facing": "south"
+        }
+      ]
+      },
+      "apply": {
+        "model": "celestialexploration:block/unstable_oxygen_generator_lit",
+        "y": 180
+      }
+    },{
+      "when": { "AND": [
+        {
+          "operating": false, "lit": false, "facing": "south"
+        }
+      ]
+      },
+      "apply": {
+        "model": "celestialexploration:block/unstable_oxygen_generator_minimal",
+        "y": 180
+      }
+    },
+
+    {
+      "when": { "AND": [
+        {
+          "operating": true, "facing": "west"
+        }
+      ]
+      },
+      "apply": {
+        "model": "celestialexploration:block/unstable_oxygen_generator_full",
+        "y": 270
+      }
+    },
+    {
+      "when": { "AND": [
+        {
+          "operating": false, "lit": true, "facing": "west"
+        }
+      ]
+      },
+      "apply": {
+        "model": "celestialexploration:block/unstable_oxygen_generator_lit",
+        "y": 270
+      }
+    },    {
+      "when": { "AND": [
+        {
+          "operating": false, "lit": false, "facing": "west"
+        }
+      ]
+      },
+      "apply": {
+        "model": "celestialexploration:block/unstable_oxygen_generator_minimal",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "has_water": 1
+      },
+      "apply": {
+        "model": "celestialexploration:block/oxygen_generator_water_1"
+      }
+    },
+    {
+      "when": {
+        "has_water": 2
+      },
+      "apply": {
+        "model": "celestialexploration:block/oxygen_generator_water_2"
+      }
+    },
+    {
+      "when": {
+        "has_water": 3
+      },
+      "apply": {
+        "model": "celestialexploration:block/oxygen_generator_water_3"
+      }
+    },
+    {
+      "when": {
+        "has_water": 4
+      },
+      "apply": {
+        "model": "celestialexploration:block/oxygen_generator_water_4"
+      }
+    },
+    {
+      "when": {
+        "has_water": 5
+      },
+      "apply": {
+        "model": "celestialexploration:block/oxygen_generator_water_5"
+      }
+    },
+    {
+      "when": {
+        "has_water": 6
+      },
+      "apply": {
+        "model": "celestialexploration:block/oxygen_generator_water_6"
+      }
+    },
+    {
+      "when": {
+        "has_water": 7
+      },
+      "apply": {
+        "model": "celestialexploration:block/oxygen_generator_water_7"
+      }
+    },
+    {
+      "when": {
+        "has_water": 8
+      },
+      "apply": {
+        "model": "celestialexploration:block/oxygen_generator_water_8"
+      }
+    }
+  ]
+}

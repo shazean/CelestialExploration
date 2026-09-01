@@ -113,7 +113,7 @@ public class CelestialBlockTags extends BlockTagsProvider {
                 .add(CelestialBlocks.DIAMOND_CHUNK.get()).add(CelestialBlocks.DIAMOND_CLUSTER.get())
                 .add(CelestialBlocks.SMALL_DIAMOND_CRYSTAL.get()).add(CelestialBlocks.MEDIUM_DIAMOND_CRYSTAL.get()).add(CelestialBlocks.LARGE_DIAMOND_CRYSTAL.get())
 
-                .add(CelestialBlocks.WORKBENCH.get()).add(CelestialBlocks.OXYGEN_COMPRESSOR.get());
+                .add(CelestialBlocks.WORKBENCH.get()).add(CelestialBlocks.OXYGEN_COMPRESSOR.get()).add(CelestialBlocks.OXYGEN_GENERATOR.get()).add(CelestialBlocks.UNSTABLE_OXYGEN_GENERATOR.get());
 
         tag(BlockTags.MINEABLE_WITH_AXE)
                 .add(CelestialBlocks.WORKBENCH.get());
@@ -139,7 +139,10 @@ public class CelestialBlockTags extends BlockTagsProvider {
                 .add(CelestialBlocks.MERCURY_DIAMOND_ORE.get()).add(CelestialBlocks.MERCURY_DEEPSLATE_DIAMOND_ORE.get())
                 .add(CelestialBlocks.MERCURY_SULFUR_ORE.get())
                 .add(CelestialBlocks.IO_SULFUR_ORE.get())
-                .add(CelestialBlocks.METEOR_SULFUR_ORE.get());
+                .add(CelestialBlocks.METEOR_SULFUR_ORE.get())
+
+                .add(CelestialBlocks.DIAMOND_CHUNK.get()).add(CelestialBlocks.DIAMOND_CLUSTER.get())
+                .add(CelestialBlocks.SMALL_DIAMOND_CRYSTAL.get()).add(CelestialBlocks.MEDIUM_DIAMOND_CRYSTAL.get()).add(CelestialBlocks.LARGE_DIAMOND_CRYSTAL.get());
 
         tag(net.minecraft.tags.BlockTags.NEEDS_DIAMOND_TOOL)
                 .add(CelestialBlocks.SULFURIC_OBSIDIAN.get());
