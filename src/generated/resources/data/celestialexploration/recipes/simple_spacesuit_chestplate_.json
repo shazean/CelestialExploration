@@ -1,0 +1,19 @@
+{
+  "type": "celestialexploration:workbench_crafting",
+  "pattern": [
+    "W W",
+    "WWW",
+    "WWW"
+  ],
+  "key": {
+    "W": {
+      "tag": "minecraft:wool"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:simple_spacesuit_chestplate"
+  },
+  "fluid": "celestialexploration:molten_iron",
+  "buckets": 0.666,
+  "experience": 4.2
+}

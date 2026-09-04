@@ -1,0 +1,24 @@
+{
+  "type": "celestialexploration:workbench_crafting",
+  "pattern": [
+    "WWW",
+    "AGA"
+  ],
+  "key": {
+    "W": {
+      "tag": "minecraft:wool"
+    },
+    "A": {
+      "item": "celestialexploration:compressed_air"
+    },
+    "G": {
+      "tag": "forge:glass"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:heavy_duty_spacesuit_helmet"
+  },
+  "fluid": "celestialexploration:molten_steel",
+  "buckets": 0.333,
+  "experience": 2.1
+}

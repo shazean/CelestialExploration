@@ -16,7 +16,6 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.registries.DeferredRegister;
@@ -790,6 +789,12 @@ public class CelestialBlocks {
 
     public static final RegistryObject<Block> SMOKING_MAGMA = registerBlockDropsSelf("smoking_magma", "Smoking Magma", () -> new SmokingMagmaBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.NETHER).requiresCorrectToolForDrops().lightLevel((state) -> 3).randomTicks().strength(0.5F).isValidSpawn((state, getter, pos, entity) -> entity.fireImmune()).hasPostProcess(CelestialBlocks::always).emissiveRendering(CelestialBlocks::always)), CelestialTabs.CELESTIAL_BLOCKS_TAB);
 
+    public static final RegistryObject<Block> QUASI_SOLID_OBSIDIAN = registerBlockNoItem("quasi_solid_obsidian", "Quasi-Solid Obsidian", () -> new QuasiSolidBlocks.Obsidian(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.NETHER).lightLevel((state) -> 3).randomTicks().strength(0.5F).isValidSpawn(CelestialBlocks::never)));
+    public static final RegistryObject<Block> QUASI_SOLID_ICE = registerBlockNoItem("quasi_solid_ice", "Quasi-Solid Ice", () -> new QuasiSolidBlocks.Ice(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.NETHER).lightLevel((state) -> 3).randomTicks().strength(0.5F).isValidSpawn(CelestialBlocks::never)));
+    public static final RegistryObject<Block> QUASI_SOLID_SULFUR_OBSIDIAN = registerBlockNoItem("quasi_solid_sulfur_obsidian", "Quasi-Solid Sulfuric Obsidian", () -> new QuasiSolidBlocks.SulfurObsidian(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.NETHER).lightLevel((state) -> 3).randomTicks().strength(0.5F).isValidSpawn(CelestialBlocks::never)));
+    public static final RegistryObject<Block> QUASI_SOLID_METALLIC_HYDROGEN = registerBlockNoItem("quasi_solid_metallic_hydrogen", "Quasi-Solid Metallic Hydrogen", () -> new QuasiSolidBlocks.MetallicHydrogen(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.NETHER).lightLevel((state) -> 3).randomTicks().strength(0.5F).isValidSpawn(CelestialBlocks::never)));
+    public static final RegistryObject<Block> QUASI_SOLID_NEBULOUS_BLOCK = registerBlockNoItem("quasi_solid_nebulous_block", "Quasi-Solid Nebulous Block", () -> new QuasiSolidBlocks.Nebulous(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.NETHER).lightLevel((state) -> 3).randomTicks().strength(0.5F).isValidSpawn(CelestialBlocks::never)));
+
     public static final RegistryObject<Block> LURKER_HEAD = BLOCKS.register("lurker_head", () -> new SkullBlock(CelestialSkullRenderer.Types.LURKER, BlockBehaviour.Properties.of(Material.DECORATION).strength(1.0F)));
     public static final RegistryObject<Block> LURKER_WALL_HEAD = BLOCKS.register("lurker_wall_head", () -> new WallSkullBlock(CelestialSkullRenderer.Types.LURKER, BlockBehaviour.Properties.of(Material.DECORATION).strength(1.0F).lootFrom(LURKER_HEAD)));
     public static final RegistryObject<Block> VOIDED_HEAD = BLOCKS.register("voided_head", () -> new SkullBlock(CelestialSkullRenderer.Types.VOIDED, BlockBehaviour.Properties.of(Material.DECORATION).strength(1.0F)));
@@ -811,6 +816,7 @@ public class CelestialBlocks {
 
     public static final RegistryObject<Block> OXYGEN_GENERATOR = registerBlockDropsSelf("oxygen_generator", "Oxygen Generator", () -> new OxygenGeneratorBlock(Block.Properties.of(Material.GLASS).strength(0.3F).sound(SoundType.GLASS)), CelestialTabs.SPACESHIP_TAB);
     public static final RegistryObject<Block> UNSTABLE_OXYGEN_GENERATOR = registerBlockDropsSelf("unstable_oxygen_generator", "Unstable Oxygen Generator", () -> new OxygenGeneratorBlock(Block.Properties.of(Material.GLASS).strength(0.3F).sound(SoundType.GLASS)), CelestialTabs.SPACESHIP_TAB);
+
 
 
 

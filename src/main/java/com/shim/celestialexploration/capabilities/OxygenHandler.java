@@ -65,7 +65,7 @@ public class OxygenHandler {
 
 //        this.checkMaxOxygen(player);
 
-        CelestialExploration.LOGGER.debug("currentOxygen: " + currentOxygen + ", max: " + maxOxygen);
+//        CelestialExploration.LOGGER.debug("currentOxygen: " + currentOxygen + ", max: " + maxOxygen);
         }
     }
 

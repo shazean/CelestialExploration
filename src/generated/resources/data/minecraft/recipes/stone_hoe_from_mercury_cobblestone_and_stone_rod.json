@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XX ",
+    " S ",
+    " S "
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:mercury_cobblestone"
+    },
+    "S": {
+      "item": "celestialexploration:stone_rod"
+    }
+  },
+  "result": {
+    "item": "minecraft:stone_hoe"
+  }
+}

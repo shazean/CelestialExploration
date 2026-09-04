@@ -128,7 +128,7 @@ public class CelestialFluids {
     public static final RegistryObject<LiquidBlock> MOLTEN_GOLD_BLOCK = CelestialBlocks.BLOCKS.register("molten_gold", () -> new LiquidBlock(CelestialFluids.MOLTEN_GOLD, BlockBehaviour.Properties.of(Material.LAVA).noCollission().strength(100f).noDrops()));
 //    public static final RegistryObject<LiquidBlock> MOLTEN_NETHERITE_BLOCK = BlockRegistry.BLOCKS.register("molten_netherite", () -> new LiquidBlock(FluidRegistry.MOLTEN_NETHERITE, BlockBehaviour.Properties.of(Material.LAVA).noCollission().strength(100f).noDrops()));
     public static final RegistryObject<LiquidBlock> MOLTEN_ALUMINUM_BLOCK = CelestialBlocks.BLOCKS.register("molten_aluminum", () -> new LiquidBlock(CelestialFluids.MOLTEN_ALUMINUM, BlockBehaviour.Properties.of(Material.LAVA).noCollission().strength(100f).noDrops()));
-
     public static final RegistryObject<LiquidBlock> SULFUR_BLOCK = CelestialBlocks.BLOCKS.register("sulfur", () -> new SulfurLiquidBlock(CelestialFluids.SULFUR, BlockBehaviour.Properties.of(Material.LAVA).lightLevel((light) -> 15).noCollission().strength(100f).noDrops()));
     public static final RegistryObject<LiquidBlock> METALLIC_HYDROGEN_BLOCK = CelestialBlocks.BLOCKS.register("metallic_hydrogen", () -> new MetallicHydrogenLiquidBlock(CelestialFluids.METALLIC_HYDROGEN, BlockBehaviour.Properties.of(Material.WATER).lightLevel((light) -> 15).noCollission().strength(100f).noDrops()));
+
 }

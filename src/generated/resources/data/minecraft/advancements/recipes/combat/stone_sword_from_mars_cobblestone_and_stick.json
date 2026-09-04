@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:stone_sword_from_mars_cobblestone_and_stick"
+    ]
+  },
+  "criteria": {
+    "mars_cobblestone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:mars_cobblestone"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:stone_sword_from_mars_cobblestone_and_stick"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "mars_cobblestone",
+      "has_the_recipe"
+    ]
+  ]
+}

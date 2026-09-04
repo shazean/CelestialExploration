@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:stone_pickaxe_from_venus_cobblestone_and_stone_rod"
+    ]
+  },
+  "criteria": {
+    "venus_cobblestone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:venus_cobblestone"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:stone_pickaxe_from_venus_cobblestone_and_stone_rod"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "venus_cobblestone",
+      "has_the_recipe"
+    ]
+  ]
+}

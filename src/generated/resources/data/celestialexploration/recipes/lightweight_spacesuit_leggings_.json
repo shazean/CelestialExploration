@@ -1,0 +1,19 @@
+{
+  "type": "celestialexploration:workbench_crafting",
+  "pattern": [
+    "WWW",
+    "W W",
+    "W W"
+  ],
+  "key": {
+    "W": {
+      "tag": "minecraft:wool"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:lightweight_spacesuit_leggings"
+  },
+  "fluid": "celestialexploration:molten_aluminum",
+  "buckets": 0.555,
+  "experience": 3.5
+}

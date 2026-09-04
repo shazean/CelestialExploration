@@ -125,6 +125,8 @@
     "celestialexploration:medium_diamond_crystal",
     "celestialexploration:large_diamond_crystal",
     "celestialexploration:workbench",
-    "celestialexploration:oxygen_compressor"
+    "celestialexploration:oxygen_compressor",
+    "celestialexploration:oxygen_generator",
+    "celestialexploration:unstable_oxygen_generator"
   ]
 }

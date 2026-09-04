@@ -23,6 +23,8 @@ public class CelestialCommonConfig {
     public static final ForgeConfigSpec.ConfigValue<Boolean> OXYGEN_DEBUFF;
     public static final ForgeConfigSpec.ConfigValue<Boolean> OXYGEN_MECHANIC_ENABLED;
     public static final ForgeConfigSpec.ConfigValue<Boolean> OXYGEN_SCALES_WITH_DIFFICULTY;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> USE_GENERIC_QUASI_SOLID_BLOCK;
+
 
     static {
         BUILDER.push("Configs for Celestial Exploration");
@@ -33,6 +35,8 @@ public class CelestialCommonConfig {
         METEORS_EXPLODE = BUILDER.comment("Should meteors cause an explosion when they hit the ground? (Like creeper explosions)").define("Meteor Explosions", true);
         GUST_GRIEFING = BUILDER.comment("Should the gust explosions break blocks?").define("Gust Griefing", true);
         PORTALS = BUILDER.comment("Allow portals to the various planets and moons?").define("Portals", true);
+        USE_GENERIC_QUASI_SOLID_BLOCK = BUILDER.comment("If buoyant boots are used on a fluid without a specific solidified version, should a \"generic\" block be used or should the buoyant boots have no effect?")
+                .define("\"Generic\" block for buoyant spacesuit boots on unknown fluids?", true);
 
         BUILDER.push("Spaceship");
         SPACESHIP_FUEL_RATE = BUILDER.comment("How quickly the spaceship depletes fuel, in # of ticks (higher is slower)").defineInRange("Spaceship Fuel Rate", 60, 20, 200);

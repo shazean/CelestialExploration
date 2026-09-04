@@ -1,14 +1,10 @@
 {
   "type": "celestialexploration:workbench_crafting",
   "pattern": [
-    "XXX",
-    "XGX",
-    "XRX"
+    "GG",
+    "RG"
   ],
   "key": {
-    "X": {
-      "tag": "forge:cobblestone"
-    },
     "G": {
       "tag": "forge:glass"
     },
@@ -20,6 +16,6 @@
     "item": "celestialexploration:oxygen_compressor"
   },
   "fluid": "celestialexploration:molten_steel",
-  "buckets": 0.222,
+  "buckets": 0.333,
   "experience": 1.4
 }

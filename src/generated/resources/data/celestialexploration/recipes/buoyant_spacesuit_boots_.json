@@ -1,0 +1,21 @@
+{
+  "type": "celestialexploration:workbench_crafting",
+  "pattern": [
+    "W W",
+    "I I"
+  ],
+  "key": {
+    "W": {
+      "tag": "minecraft:wool"
+    },
+    "I": {
+      "item": "celestialexploration:dry_ice"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:buoyant_spacesuit_boots"
+  },
+  "fluid": "celestialexploration:molten_aluminum",
+  "buckets": 0.222,
+  "experience": 1.4
+}

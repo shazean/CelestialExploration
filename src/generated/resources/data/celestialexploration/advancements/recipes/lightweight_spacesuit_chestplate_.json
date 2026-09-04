@@ -2,17 +2,17 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "celestialexploration:oxygen_compressor"
+      "celestialexploration:lightweight_spacesuit_chestplate_"
     ]
   },
   "criteria": {
-    "steel_ingot": {
+    "has_wool": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "celestialexploration:steel_ingot"
+              "minecraft:white_wool"
             ]
           }
         ]
@@ -21,13 +21,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "celestialexploration:oxygen_compressor"
+        "recipe": "celestialexploration:lightweight_spacesuit_chestplate_"
       }
     }
   },
   "requirements": [
     [
-      "steel_ingot",
+      "has_wool",
       "has_the_recipe"
     ]
   ]

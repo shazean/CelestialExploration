@@ -10,8 +10,9 @@ import com.shim.celestialexploration.entity.projectile.MeteorProjectile;
 import com.shim.celestialexploration.entity.spawner.CelestialTraderSpawner;
 import com.shim.celestialexploration.entity.spawner.MechaCrowSpawner;
 import com.shim.celestialexploration.entity.vehicle.Spaceship;
+import com.shim.celestialexploration.item.armor.SpacesuitArmorItem;
 import com.shim.celestialexploration.registry.*;
-import com.shim.celestialexploration.util.OxygenUtil;
+import com.shim.celestialexploration.util.SolidifiedFluids;
 import com.shim.celestiallib.api.blocks.AbstractPortalBlock;
 import com.shim.celestiallib.api.effects.CLibEffects;
 import net.minecraft.core.BlockPos;
@@ -21,6 +22,7 @@ import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -31,8 +33,17 @@ import net.minecraft.world.item.HoeItem;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraftforge.client.event.RenderTooltipEvent;
+import net.minecraftforge.common.util.BlockSnapshot;
+import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.EntityMountEvent;
@@ -103,6 +114,49 @@ public class CelestialForgeEventBus {
                 if (oxygenCap != null)
                     oxygenCap.tick(player);
 
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
+        Player player = event.player;
+        BlockPos pos = player.blockPosition();
+        Level level = player.level;
+        if (player.getInventory().getArmor(0).getItem() instanceof SpacesuitArmorItem armorItem) { //FIXME 3 is helmet?
+            if (SpacesuitArmorItem.isLightweight(armorItem)) {
+
+                if (!player.blockPosition().equals(player.lastPos) && player.isOnGround()) {
+
+                    float radius = 1;
+                    BlockPos.MutableBlockPos mutablePos = new BlockPos.MutableBlockPos();
+
+                    for (BlockPos blockpos : BlockPos.betweenClosed(pos.offset(-radius, -1.0D, -radius), pos.offset(radius, -1.0D, radius))) {
+                        if (blockpos.closerToCenterThan(player.position(), radius)) {
+
+                            mutablePos.set(blockpos.getX(), blockpos.getY() + 1, blockpos.getZ());
+                            BlockState blockstate1 = level.getBlockState(mutablePos);
+                            if (blockstate1.isAir()) {
+                                BlockState blockstate2 = level.getBlockState(blockpos);
+                                FluidState fluidState = level.getFluidState(blockpos);
+                                if (!fluidState.isEmpty()) {
+
+                                    Block solid = SolidifiedFluids.getSolidBlock(fluidState.getType());
+                                    BlockState blockState = solid.defaultBlockState();
+
+                                    boolean isFull = blockstate2.getValue(LiquidBlock.LEVEL) == 0;
+                                    if (isFull && blockState.canSurvive(level, blockpos) && level.isUnobstructed(blockState, blockpos, CollisionContext.empty())
+                                            && !ForgeEventFactory.onBlockPlace(player, BlockSnapshot.create(level.dimension(), level, blockpos), Direction.UP)) {
+
+                                        level.setBlockAndUpdate(blockpos, blockState);
+                                        level.scheduleTick(blockpos, solid, Mth.nextInt(player.getRandom(), 60, 120));
+
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     }
@@ -342,7 +396,5 @@ public class CelestialForgeEventBus {
 
                 new CelestialVillagerTrades.ItemsForEmeralds(Items.GUNPOWDER, 1, 1, 8, 1),
         });
-
-
     }
 }

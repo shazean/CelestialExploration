@@ -1,0 +1,25 @@
+{
+  "type": "celestialexploration:workbench_crafting",
+  "pattern": [
+    " GG",
+    " GG",
+    "RGG"
+  ],
+  "key": {
+    "X": {
+      "tag": "forge:cobblestone"
+    },
+    "G": {
+      "tag": "forge:glass"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:oxygen_generator"
+  },
+  "fluid": "celestialexploration:molten_aluminum",
+  "buckets": 0.333,
+  "experience": 1.4
+}

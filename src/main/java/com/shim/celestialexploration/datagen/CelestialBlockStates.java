@@ -1,17 +1,14 @@
 package com.shim.celestialexploration.datagen;
 
 import com.shim.celestialexploration.CelestialExploration;
-import com.shim.celestialexploration.blocks.MercurySlimeBlock;
 import com.shim.celestialexploration.blocks.SolarPanelBlock;
 import com.shim.celestialexploration.registry.CelestialBlocks;
 import com.shim.celestialexploration.registry.CelestialFluids;
-import com.shim.celestiallib.api.blocks.AbstractPortalBlock;
 import com.shim.celestiallib.api.datagen.base.BaseBlockStates;
 import net.minecraft.core.Direction;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
-import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.SlabType;
 import net.minecraftforge.client.model.generators.*;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -718,6 +715,11 @@ public class CelestialBlockStates extends BaseBlockStates {
 		amethystClusterBlock(CelestialBlocks.LARGE_DIAMOND_CRYSTAL.get());
 
 
+		simpleBlock(CelestialBlocks.QUASI_SOLID_OBSIDIAN.get(), models().cubeAll(CelestialBlocks.QUASI_SOLID_OBSIDIAN.get().getRegistryName().getPath(), blockTexture(Blocks.OBSIDIAN)));
+		simpleBlock(CelestialBlocks.QUASI_SOLID_SULFUR_OBSIDIAN.get(), models().cubeAll(CelestialBlocks.QUASI_SOLID_SULFUR_OBSIDIAN.get().getRegistryName().getPath(), blockTexture(CelestialBlocks.SULFURIC_OBSIDIAN.get())));
+		simpleBlock(CelestialBlocks.QUASI_SOLID_ICE.get(), models().cubeAll(CelestialBlocks.QUASI_SOLID_ICE.get().getRegistryName().getPath(), blockTexture(Blocks.ICE)));
+		simpleBlock(CelestialBlocks.QUASI_SOLID_METALLIC_HYDROGEN.get());
+		simpleBlock(CelestialBlocks.QUASI_SOLID_NEBULOUS_BLOCK.get());
 
 	}
 

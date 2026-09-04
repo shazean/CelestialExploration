@@ -19,6 +19,11 @@
     "celestialexploration:mercury_deepslate_diamond_ore",
     "celestialexploration:mercury_sulfur_ore",
     "celestialexploration:io_sulfur_ore",
-    "celestialexploration:meteor_sulfur_ore"
+    "celestialexploration:meteor_sulfur_ore",
+    "celestialexploration:diamond_chunk",
+    "celestialexploration:diamond_cluster",
+    "celestialexploration:small_diamond_crystal",
+    "celestialexploration:medium_diamond_crystal",
+    "celestialexploration:large_diamond_crystal"
   ]
 }

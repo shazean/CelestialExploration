@@ -1,0 +1,21 @@
+{
+  "type": "celestialexploration:workbench_crafting",
+  "pattern": [
+    "WWW",
+    "WGW"
+  ],
+  "key": {
+    "W": {
+      "tag": "minecraft:wool"
+    },
+    "G": {
+      "tag": "forge:glass"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:lightweight_spacesuit_helmet"
+  },
+  "fluid": "celestialexploration:molten_aluminum",
+  "buckets": 0.333,
+  "experience": 2.1
+}

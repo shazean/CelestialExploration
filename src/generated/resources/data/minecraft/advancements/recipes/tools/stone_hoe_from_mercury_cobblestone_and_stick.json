@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:stone_hoe_from_mercury_cobblestone_and_stick"
+    ]
+  },
+  "criteria": {
+    "mercury_cobblestone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:mercury_cobblestone"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:stone_hoe_from_mercury_cobblestone_and_stick"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "mercury_cobblestone",
+      "has_the_recipe"
+    ]
+  ]
+}

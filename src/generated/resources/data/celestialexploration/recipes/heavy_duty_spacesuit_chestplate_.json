@@ -1,0 +1,19 @@
+{
+  "type": "celestialexploration:workbench_crafting",
+  "pattern": [
+    "D D",
+    "DDD",
+    "DDD"
+  ],
+  "key": {
+    "D": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:heavy_duty_spacesuit_chestplate"
+  },
+  "fluid": "celestialexploration:molten_steel",
+  "buckets": 0.666,
+  "experience": 4.2
+}
