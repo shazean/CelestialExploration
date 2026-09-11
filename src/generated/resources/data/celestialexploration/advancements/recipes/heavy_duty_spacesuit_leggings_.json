@@ -6,13 +6,13 @@
     ]
   },
   "criteria": {
-    "has_wool": {
+    "has_diamond": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:white_wool"
+              "minecraft:diamond"
             ]
           }
         ]
@@ -27,7 +27,7 @@
   },
   "requirements": [
     [
-      "has_wool",
+      "has_diamond",
       "has_the_recipe"
     ]
   ]

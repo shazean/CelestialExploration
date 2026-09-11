@@ -1,6 +1,6 @@
 package com.shim.celestialexploration.blocks;
 
-import com.shim.celestialexploration.item.armor.ThermalSpacesuitArmorItem;
+import com.shim.celestialexploration.item.armor.SpacesuitArmorItem;
 import com.shim.celestialexploration.registry.CelestialDamageSource;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -9,6 +9,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
@@ -40,7 +41,7 @@ public class DryIceBlock extends HalfTransparentBlock {
         if (entity instanceof ServerPlayer player) {
             ItemStack itemStack = player.getItemBySlot(EquipmentSlot.FEET);
 
-            if (!(itemStack.getItem() instanceof ThermalSpacesuitArmorItem && ((ThermalSpacesuitArmorItem) itemStack.getItem()).isGravityBoots(itemStack))) {
+            if (!(itemStack.getItem() instanceof SpacesuitArmorItem && (SpacesuitArmorItem.isInsulated((ArmorItem) itemStack.getItem())))) {
                 entity.hurt(CelestialDamageSource.COLD_FLOOR, 1.0F);
             }
 

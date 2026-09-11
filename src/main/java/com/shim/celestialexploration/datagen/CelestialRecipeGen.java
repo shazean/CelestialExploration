@@ -387,7 +387,6 @@ public class CelestialRecipeGen extends RecipeProvider {
 				.pattern(" GG")
 				.pattern(" GG")
 				.pattern("RGG")
-				.define('X', Tags.Items.COBBLESTONE)
 				.define('G', Tags.Items.GLASS)
 				.define('R', Items.REDSTONE).unlockedBy("has_bauxite", has(CelestialItems.BAUXITE_INGOT.get())).save(consumer, saveName(CelestialBlocks.OXYGEN_GENERATOR.get(), "from_workbench"));
 
@@ -497,28 +496,6 @@ public class CelestialRecipeGen extends RecipeProvider {
 		stoneTools(CelestialBlocks.MERCURY_COBBLESTONE.get(), CelestialItems.STONE_ROD.get(), consumer);
 
 		//SPACE SUITS
-		WorkbenchCraftingRecipeBuilder.shaped(CelestialItems.BASIC_SPACESUIT_HELMET.get(), CelestialFluids.MOLTEN_STEEL.get(), 0.333F, 2.1F).pattern("LLL").pattern("WGW").define('L', Items.LEATHER).define('W', ItemTags.WOOL).define('G', Tags.Items.GLASS).unlockedBy("has_leather", has(Items.LEATHER)).save(consumer, saveName(CelestialItems.BASIC_SPACESUIT_HELMET.get(), ""));
-		WorkbenchCraftingRecipeBuilder.shaped(CelestialItems.BASIC_SPACESUIT_CHESTPLATE.get(), CelestialFluids.MOLTEN_STEEL.get(), 0.666F, 4.2F).pattern("L L").pattern("WWW").pattern("LLL").define('W', ItemTags.WOOL).define('L', Items.LEATHER).unlockedBy("has_leather", has(Items.LEATHER)).save(consumer, saveName(CelestialItems.BASIC_SPACESUIT_CHESTPLATE.get(), ""));
-		WorkbenchCraftingRecipeBuilder.shaped(CelestialItems.BASIC_SPACESUIT_LEGGINGS.get(), CelestialFluids.MOLTEN_STEEL.get(), 0.555F, 3.5F).pattern("LLL").pattern("L L").pattern("W W").define('W', ItemTags.WOOL).define('L', Items.LEATHER).unlockedBy("has_leather", has(Items.LEATHER)).save(consumer, saveName(CelestialItems.BASIC_SPACESUIT_LEGGINGS.get(), ""));
-		WorkbenchCraftingRecipeBuilder.shaped(CelestialItems.BASIC_SPACESUIT_BOOTS.get(), CelestialFluids.MOLTEN_STEEL.get(), 0.222F, 1.4F).pattern("W W").pattern("L L").define('L', Items.LEATHER).define('W', ItemTags.WOOL).unlockedBy("has_leather", has(Items.LEATHER)).save(consumer, saveName(CelestialItems.BASIC_SPACESUIT_BOOTS.get(), ""));
-
-		WorkbenchCraftingRecipeBuilder.shaped(CelestialItems.OG_HEAVY_DUTY_SPACESUIT_HELMET.get(), CelestialFluids.MOLTEN_STEEL.get(), 0.444F, 2.8F).pattern("DDD").pattern("LGL").define('L', Items.LEATHER).define('G', Tags.Items.GLASS).define('D', Tags.Items.GEMS_DIAMOND).unlockedBy("has_diamond", has(Items.DIAMOND)).save(consumer, saveName(CelestialItems.OG_HEAVY_DUTY_SPACESUIT_HELMET.get(), ""));
-		WorkbenchCraftingRecipeBuilder.shaped(CelestialItems.OG_HEAVY_DUTY_SPACESUIT_CHESTPLATE.get(), CelestialFluids.MOLTEN_STEEL.get(), 0.777F, 4.9F).pattern("L L").pattern("DDD").pattern("GMG").define('L', Items.LEATHER).define('G', Tags.Items.INGOTS_GOLD).define('D', Tags.Items.GEMS_DIAMOND).define('M', Items.MAGMA_CREAM).unlockedBy("has_diamond", has(Items.DIAMOND)).save(consumer, saveName(CelestialItems.OG_HEAVY_DUTY_SPACESUIT_CHESTPLATE.get(), ""));
-		WorkbenchCraftingRecipeBuilder.shaped(CelestialItems.OG_HEAVY_DUTY_SPACESUIT_LEGGINGS.get(), CelestialFluids.MOLTEN_STEEL.get(), 0.666F, 4.2F).pattern("LLL").pattern("D D").pattern("L L").define('L', Items.LEATHER).define('D', Tags.Items.GEMS_DIAMOND).unlockedBy("has_diamond", has(Items.DIAMOND)).save(consumer, saveName(CelestialItems.OG_HEAVY_DUTY_SPACESUIT_LEGGINGS.get(), ""));
-		WorkbenchCraftingRecipeBuilder.shaped(CelestialItems.OG_HEAVY_DUTY_SPACESUIT_BOOTS.get(), CelestialFluids.MOLTEN_STEEL.get(), 0.333F, 2.1F).pattern("R R").pattern("D D").define('D', Tags.Items.GEMS_DIAMOND).define('R', Items.RABBIT_HIDE).unlockedBy("has_diamond", has(Items.DIAMOND)).save(consumer, saveName(CelestialItems.OG_HEAVY_DUTY_SPACESUIT_BOOTS.get(), ""));
-
-		WorkbenchCraftingRecipeBuilder.shaped(CelestialItems.THERMAL_SPACESUIT_HELMET.get(), CelestialFluids.MOLTEN_STEEL.get(), 0.444F, 2.8F).pattern("DDD").pattern("WGW").define('W', ItemTags.WOOL).define('G', Tags.Items.GLASS).define('D', Tags.Items.GEMS_DIAMOND).unlockedBy("has_diamond", has(Items.DIAMOND)).save(consumer, saveName(CelestialItems.THERMAL_SPACESUIT_HELMET.get(), ""));
-		WorkbenchCraftingRecipeBuilder.shaped(CelestialItems.THERMAL_SPACESUIT_CHESTPLATE.get(), CelestialFluids.MOLTEN_STEEL.get(), 0.777F, 4.9F).pattern("L L").pattern("DDD").pattern("WWW").define('L', Items.LEATHER).define('D', Tags.Items.GEMS_DIAMOND).define('W', ItemTags.WOOL).unlockedBy("has_diamond", has(Items.DIAMOND)).save(consumer, saveName(CelestialItems.THERMAL_SPACESUIT_CHESTPLATE.get(), ""));
-		WorkbenchCraftingRecipeBuilder.shaped(CelestialItems.THERMAL_SPACESUIT_LEGGINGS.get(), CelestialFluids.MOLTEN_STEEL.get(), 0.666F, 4.2F).pattern("WWW").pattern("D D").pattern("W W").define('W', ItemTags.WOOL).define('D', Tags.Items.GEMS_DIAMOND).unlockedBy("has_diamond", has(Items.DIAMOND)).save(consumer, saveName(CelestialItems.THERMAL_SPACESUIT_LEGGINGS.get(), ""));
-		WorkbenchCraftingRecipeBuilder.shaped(CelestialItems.THERMAL_SPACESUIT_BOOTS.get(), CelestialFluids.MOLTEN_STEEL.get(), 0.333F, 2.1F).pattern("L L").pattern("D D").define('D', Tags.Items.GEMS_DIAMOND).define('L', Items.LEATHER).unlockedBy("has_diamond", has(Items.DIAMOND)).save(consumer, saveName(CelestialItems.THERMAL_SPACESUIT_BOOTS.get(), ""));
-
-		WorkbenchCraftingRecipeBuilder.shaped(CelestialItems.ADVANCED_SPACESUIT_HELMET.get(), CelestialFluids.MOLTEN_STEEL.get(), 0.444F, 2.8F).pattern("OOO").pattern("DGD").define('O', Items.OBSIDIAN).define('G', Tags.Items.GLASS).define('D', Tags.Items.GEMS_DIAMOND).unlockedBy("has_obsidian", has(Items.OBSIDIAN)).save(consumer, saveName(CelestialItems.ADVANCED_SPACESUIT_HELMET.get(), ""));
-		WorkbenchCraftingRecipeBuilder.shaped(CelestialItems.ADVANCED_SPACESUIT_CHESTPLATE.get(), CelestialFluids.MOLTEN_STEEL.get(), 0.777F, 4.9F).pattern("L L").pattern("DDD").pattern("OOO").define('L', Items.LEATHER).define('D', Tags.Items.GEMS_DIAMOND).define('O', Items.OBSIDIAN).unlockedBy("has_obsidian", has(Items.OBSIDIAN)).save(consumer, saveName(CelestialItems.ADVANCED_SPACESUIT_CHESTPLATE.get(), ""));
-		WorkbenchCraftingRecipeBuilder.shaped(CelestialItems.ADVANCED_SPACESUIT_LEGGINGS.get(), CelestialFluids.MOLTEN_STEEL.get(), 0.666F, 4.2F).pattern("DDD").pattern("O O").pattern("L L").define('O', Items.OBSIDIAN).define('L', Items.LEATHER).define('D', Tags.Items.GEMS_DIAMOND).unlockedBy("has_obsidian", has(Items.OBSIDIAN)).save(consumer, saveName(CelestialItems.ADVANCED_SPACESUIT_LEGGINGS.get(), ""));
-		WorkbenchCraftingRecipeBuilder.shaped(CelestialItems.ADVANCED_SPACESUIT_BOOTS.get(), CelestialFluids.MOLTEN_STEEL.get(), 0.333F, 2.1F).pattern("L L").pattern("O O").define('O', Items.OBSIDIAN).define('L', Items.LEATHER).unlockedBy("has_obsidian", has(Items.OBSIDIAN)).save(consumer, saveName(CelestialItems.ADVANCED_SPACESUIT_BOOTS.get(), ""));
-
-
-
 		WorkbenchCraftingRecipeBuilder.shaped(CelestialItems.SIMPLE_SPACESUIT_HELMET.get(), CelestialFluids.MOLTEN_IRON.get(), 0.333F, 2.1F).pattern("WWW").pattern("WGW").define('W', ItemTags.WOOL).define('G', Tags.Items.GLASS).unlockedBy("has_wool", has(Items.WHITE_WOOL)).save(consumer, saveName(CelestialItems.SIMPLE_SPACESUIT_HELMET.get(), ""));
 		WorkbenchCraftingRecipeBuilder.shaped(CelestialItems.SIMPLE_SPACESUIT_CHESTPLATE.get(), CelestialFluids.MOLTEN_IRON.get(), 0.666F, 4.2F).pattern("W W").pattern("WWW").pattern("WWW").define('W', ItemTags.WOOL).unlockedBy("has_wool", has(Items.WHITE_WOOL)).save(consumer, saveName(CelestialItems.SIMPLE_SPACESUIT_CHESTPLATE.get(), ""));
 		WorkbenchCraftingRecipeBuilder.shaped(CelestialItems.SIMPLE_SPACESUIT_LEGGINGS.get(), CelestialFluids.MOLTEN_IRON.get(), 0.555F, 3.5F).pattern("WWW").pattern("W W").pattern("W W").define('W', ItemTags.WOOL).unlockedBy("has_wool", has(Items.WHITE_WOOL)).save(consumer, saveName(CelestialItems.SIMPLE_SPACESUIT_LEGGINGS.get(), ""));
@@ -530,10 +507,26 @@ public class CelestialRecipeGen extends RecipeProvider {
 		WorkbenchCraftingRecipeBuilder.shaped(CelestialItems.BUOYANT_SPACESUIT_BOOTS.get(), CelestialFluids.MOLTEN_ALUMINUM.get(), 0.222F, 1.4F).pattern("W W").pattern("I I").define('W', ItemTags.WOOL).define('I', CelestialBlocks.DRY_ICE.get()).unlockedBy("has_wool", has(Items.WHITE_WOOL)).save(consumer, saveName(CelestialItems.BUOYANT_SPACESUIT_BOOTS.get(), ""));
 
 		WorkbenchCraftingRecipeBuilder.shaped(CelestialItems.HEAVY_DUTY_SPACESUIT_HELMET.get(), CelestialFluids.MOLTEN_STEEL.get(), 0.333F, 2.1F).pattern("WWW").pattern("AGA").define('W', ItemTags.WOOL).define('A', CelestialItems.COMPRESSED_AIR.get()).define('G', Tags.Items.GLASS).unlockedBy("has_wool", has(Items.WHITE_WOOL)).save(consumer, saveName(CelestialItems.HEAVY_DUTY_SPACESUIT_HELMET.get(), ""));
-		WorkbenchCraftingRecipeBuilder.shaped(CelestialItems.HEAVY_DUTY_SPACESUIT_CHESTPLATE.get(), CelestialFluids.MOLTEN_STEEL.get(), 0.666F, 4.2F).pattern("D D").pattern("DDD").pattern("DDD").define('D', Items.DIAMOND).unlockedBy("has_wool", has(Items.WHITE_WOOL)).save(consumer, saveName(CelestialItems.HEAVY_DUTY_SPACESUIT_CHESTPLATE.get(), ""));
-		WorkbenchCraftingRecipeBuilder.shaped(CelestialItems.HEAVY_DUTY_SPACESUIT_LEGGINGS.get(), CelestialFluids.MOLTEN_STEEL.get(), 0.555F, 3.5F).pattern("WWW").pattern("W W").pattern("W W").define('W', ItemTags.WOOL).unlockedBy("has_wool", has(Items.WHITE_WOOL)).save(consumer, saveName(CelestialItems.HEAVY_DUTY_SPACESUIT_LEGGINGS.get(), ""));
-		WorkbenchCraftingRecipeBuilder.shaped(CelestialItems.GRAVITY_SPACESUIT_BOOTS.get(), CelestialFluids.MOLTEN_STEEL.get(), 0.222F, 1.4F).pattern("W W").pattern("I I").define('W', ItemTags.WOOL).define('I', CelestialBlocks.DRY_ICE.get()).unlockedBy("has_wool", has(Items.WHITE_WOOL)).save(consumer, saveName(CelestialItems.GRAVITY_SPACESUIT_BOOTS.get(), ""));
+		WorkbenchCraftingRecipeBuilder.shaped(CelestialItems.HEAVY_DUTY_SPACESUIT_CHESTPLATE.get(), CelestialFluids.MOLTEN_STEEL.get(), 0.666F, 4.2F).pattern("D D").pattern("DID").pattern("DDD").define('D', Items.DIAMOND).define('I', CelestialItems.INFUSED_VISCOUS_SLIME_BALL.get()).unlockedBy("has_diamond", has(Items.DIAMOND)).save(consumer, saveName(CelestialItems.HEAVY_DUTY_SPACESUIT_CHESTPLATE.get(), ""));
+		WorkbenchCraftingRecipeBuilder.shaped(CelestialItems.HEAVY_DUTY_SPACESUIT_LEGGINGS.get(), CelestialFluids.MOLTEN_STEEL.get(), 0.555F, 3.5F).pattern("DDD").pattern("D D").pattern("D D").define('D', Items.DIAMOND).unlockedBy("has_diamond", has(Items.DIAMOND)).save(consumer, saveName(CelestialItems.HEAVY_DUTY_SPACESUIT_LEGGINGS.get(), ""));
+		WorkbenchCraftingRecipeBuilder.shaped(CelestialItems.GRAVITY_SPACESUIT_BOOTS.get(), CelestialFluids.MOLTEN_STEEL.get(), 0.222F, 1.4F).pattern("W W").pattern("G G").define('W', ItemTags.WOOL).define('G', CelestialItems.LUNAR_GOO.get()).unlockedBy("has_wool", has(Items.WHITE_WOOL)).save(consumer, saveName(CelestialItems.GRAVITY_SPACESUIT_BOOTS.get(), ""));
 
+		//TODO insulated, long fall, deep pressure
+
+
+		dyedItemWithLunarDust(CelestialItems.LIGHTWEIGHT_SPACESUIT_HELMET.get(), consumer);
+		dyedItemWithLunarDust(CelestialItems.LIGHTWEIGHT_SPACESUIT_CHESTPLATE.get(), consumer);
+		dyedItemWithLunarDust(CelestialItems.LIGHTWEIGHT_SPACESUIT_LEGGINGS.get(), consumer);
+		dyedItemWithLunarDust(CelestialItems.BUOYANT_SPACESUIT_BOOTS.get(), consumer);
+		dyedItemWithLunarDust(CelestialItems.HEAVY_DUTY_SPACESUIT_HELMET.get(), consumer);
+		dyedItemWithLunarDust(CelestialItems.HEAVY_DUTY_SPACESUIT_CHESTPLATE.get(), consumer);
+		dyedItemWithLunarDust(CelestialItems.HEAVY_DUTY_SPACESUIT_LEGGINGS.get(), consumer);
+		dyedItemWithLunarDust(CelestialItems.GRAVITY_SPACESUIT_BOOTS.get(), consumer);
+//		dyedItemWithLunarDust(CelestialItems.INSULATED_SPACESUIT_HELMET.get(), consumer);
+//		dyedItemWithLunarDust(CelestialItems.INSULATED_SPACESUIT_CHESTPLATE.get(), consumer);
+//		dyedItemWithLunarDust(CelestialItems.INSULATED_SPACESUIT_LEGGINGS.get(), consumer);
+//		dyedItemWithLunarDust(CelestialItems.INSULATED_SPACESUIT_BOOTS.get(), consumer);
+//		dyedItemWithLunarDust(CelestialItems.LONG_FALL_SPACESUIT_BOOTS.get(), consumer);
 
 
 		//---- WORKBENCH SMELTING -------------------------------------------------------------------------------
@@ -842,20 +835,10 @@ public class CelestialRecipeGen extends RecipeProvider {
 		ShapelessRecipeBuilder.shapeless(Blocks.ORANGE_CONCRETE_POWDER).requires(Items.ORANGE_DYE).requires(Blocks.SAND).requires(Blocks.SAND).requires(Blocks.SAND).requires(Blocks.SAND).requires(CelestialTags.Items.COARSE_REGOLITH).requires(CelestialTags.Items.COARSE_REGOLITH).requires(CelestialTags.Items.COARSE_REGOLITH).requires(CelestialTags.Items.COARSE_REGOLITH).unlockedBy("has_gravel", has(Blocks.GRAVEL)).save(consumer, "orange_concrete_from_coarse_regolith");
 		ShapelessRecipeBuilder.shapeless(Blocks.RED_CONCRETE_POWDER).requires(Items.RED_DYE).requires(Blocks.SAND).requires(Blocks.SAND).requires(Blocks.SAND).requires(Blocks.SAND).requires(CelestialTags.Items.COARSE_REGOLITH).requires(CelestialTags.Items.COARSE_REGOLITH).requires(CelestialTags.Items.COARSE_REGOLITH).requires(CelestialTags.Items.COARSE_REGOLITH).unlockedBy("has_gravel", has(Blocks.GRAVEL)).save(consumer, "red_concrete_from_coarse_regolith");
 
-		//TODO initial un-dyed recipes for each
-		dyedItemWithLunarDust(CelestialItems.LIGHTWEIGHT_SPACESUIT_HELMET.get(), consumer);
-		dyedItemWithLunarDust(CelestialItems.LIGHTWEIGHT_SPACESUIT_CHESTPLATE.get(), consumer);
-		dyedItemWithLunarDust(CelestialItems.LIGHTWEIGHT_SPACESUIT_LEGGINGS.get(), consumer);
-		dyedItemWithLunarDust(CelestialItems.BUOYANT_SPACESUIT_BOOTS.get(), consumer);
-		dyedItemWithLunarDust(CelestialItems.HEAVY_DUTY_SPACESUIT_HELMET.get(), consumer);
-		dyedItemWithLunarDust(CelestialItems.HEAVY_DUTY_SPACESUIT_CHESTPLATE.get(), consumer);
-		dyedItemWithLunarDust(CelestialItems.HEAVY_DUTY_SPACESUIT_LEGGINGS.get(), consumer);
-		dyedItemWithLunarDust(CelestialItems.GRAVITY_SPACESUIT_BOOTS.get(), consumer);
-		dyedItemWithLunarDust(CelestialItems.INSULATED_SPACESUIT_HELMET.get(), consumer);
-		dyedItemWithLunarDust(CelestialItems.INSULATED_SPACESUIT_CHESTPLATE.get(), consumer);
-		dyedItemWithLunarDust(CelestialItems.INSULATED_SPACESUIT_LEGGINGS.get(), consumer);
-		dyedItemWithLunarDust(CelestialItems.INSULATED_SPACESUIT_BOOTS.get(), consumer);
-		dyedItemWithLunarDust(CelestialItems.LONG_FALL_SPACESUIT_BOOTS.get(), consumer);
+
+		ShapedRecipeBuilder.shaped(CelestialItems.SMALL_FULL_OXYGEN_CANISTER.get()).pattern("XGX").define('X', CelestialItems.ALUMINUM_INGOT.get()).define('G', Tags.Items.GLASS).unlockedBy("has_" + name(CelestialItems.ALUMINUM_INGOT.get()), has(CelestialItems.ALUMINUM_INGOT.get())).save(consumer);
+		ShapedRecipeBuilder.shaped(CelestialItems.MEDIUM_FULL_OXYGEN_CANISTER.get()).pattern(" X ").pattern("XGX").pattern(" X ").define('X', CelestialItems.ALUMINUM_INGOT.get()).define('G', Tags.Items.GLASS).unlockedBy("has_" + name(CelestialItems.ALUMINUM_INGOT.get()), has(CelestialItems.ALUMINUM_INGOT.get())).save(consumer);
+		ShapedRecipeBuilder.shaped(CelestialItems.LARGE_FULL_OXYGEN_CANISTER.get()).pattern("XXX").pattern("XGX").pattern("XXX").define('X', CelestialItems.ALUMINUM_INGOT.get()).define('G', Tags.Items.GLASS).unlockedBy("has_" + name(CelestialItems.ALUMINUM_INGOT.get()), has(CelestialItems.ALUMINUM_INGOT.get())).save(consumer);
 
 
 	}

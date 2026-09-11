@@ -1,13 +1,13 @@
 {
   "type": "celestialexploration:workbench_crafting",
   "pattern": [
-    "WWW",
-    "W W",
-    "W W"
+    "DDD",
+    "D D",
+    "D D"
   ],
   "key": {
-    "W": {
-      "tag": "minecraft:wool"
+    "D": {
+      "item": "minecraft:diamond"
     }
   },
   "result": {

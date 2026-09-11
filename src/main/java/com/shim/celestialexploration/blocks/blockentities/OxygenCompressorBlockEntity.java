@@ -218,6 +218,7 @@ public class OxygenCompressorBlockEntity extends BlockEntity implements MenuProv
 //                }
 //            }
 
+
             if (blockEntity.isLit(state) && hasRoomInTank(blockEntity)) {
                 blockEntity.progress++;
                 if (blockEntity.progress == blockEntity.maxProgress) {

@@ -73,10 +73,10 @@ public class CelestialCommonEventSetup {
 
         });
 
-        AzIdentityRegistry.register(CelestialItems.ADVANCED_SPACESUIT_HELMET.get(), CelestialItems.ADVANCED_SPACESUIT_CHESTPLATE.get(), CelestialItems.ADVANCED_SPACESUIT_LEGGINGS.get(), CelestialItems.ADVANCED_SPACESUIT_BOOTS.get());
-        AzIdentityRegistry.register(CelestialItems.BASIC_SPACESUIT_HELMET.get(), CelestialItems.BASIC_SPACESUIT_CHESTPLATE.get(), CelestialItems.BASIC_SPACESUIT_LEGGINGS.get(), CelestialItems.BASIC_SPACESUIT_BOOTS.get());
-        AzIdentityRegistry.register(CelestialItems.THERMAL_SPACESUIT_HELMET.get(), CelestialItems.THERMAL_SPACESUIT_CHESTPLATE.get(), CelestialItems.THERMAL_SPACESUIT_LEGGINGS.get(), CelestialItems.THERMAL_SPACESUIT_BOOTS.get());
-        AzIdentityRegistry.register(CelestialItems.OG_HEAVY_DUTY_SPACESUIT_HELMET.get(), CelestialItems.OG_HEAVY_DUTY_SPACESUIT_CHESTPLATE.get(), CelestialItems.OG_HEAVY_DUTY_SPACESUIT_LEGGINGS.get(), CelestialItems.OG_HEAVY_DUTY_SPACESUIT_BOOTS.get());
+        AzIdentityRegistry.register(CelestialItems.SIMPLE_SPACESUIT_HELMET.get(), CelestialItems.SIMPLE_SPACESUIT_CHESTPLATE.get(), CelestialItems.SIMPLE_SPACESUIT_LEGGINGS.get(), CelestialItems.SIMPLE_SPACESUIT_BOOTS.get());
+        AzIdentityRegistry.register(CelestialItems.LIGHTWEIGHT_SPACESUIT_HELMET.get(), CelestialItems.LIGHTWEIGHT_SPACESUIT_CHESTPLATE.get(), CelestialItems.LIGHTWEIGHT_SPACESUIT_LEGGINGS.get(), CelestialItems.BUOYANT_SPACESUIT_BOOTS.get());
+//        AzIdentityRegistry.register(CelestialItems.INSULATED_SPACESUIT_HELMET.get(), CelestialItems.INSULATED_SPACESUIT_CHESTPLATE.get(), CelestialItems.INSULATED_SPACESUIT_LEGGINGS.get(), CelestialItems.INSULATED_SPACESUIT_BOOTS.get());
+        AzIdentityRegistry.register(CelestialItems.HEAVY_DUTY_SPACESUIT_HELMET.get(), CelestialItems.HEAVY_DUTY_SPACESUIT_CHESTPLATE.get(), CelestialItems.HEAVY_DUTY_SPACESUIT_LEGGINGS.get(), CelestialItems.GRAVITY_SPACESUIT_BOOTS.get());
 
 
     }

@@ -815,7 +815,7 @@ public class CelestialBlocks {
     public static final RegistryObject<Block> LARGE_DIAMOND_CRYSTAL = registerBlock("large_diamond_crystal", "Large Diamond Crystal", () -> new AmethystClusterBlock(3, 4, BlockBehaviour.Properties.copy(DIAMOND_CLUSTER.get()).sound(SoundType.SMALL_AMETHYST_BUD).lightLevel((state) -> 1)), CelestialTabs.CELESTIAL_BLOCKS_TAB);
 
     public static final RegistryObject<Block> OXYGEN_GENERATOR = registerBlockDropsSelf("oxygen_generator", "Oxygen Generator", () -> new OxygenGeneratorBlock(Block.Properties.of(Material.GLASS).strength(0.3F).sound(SoundType.GLASS)), CelestialTabs.SPACESHIP_TAB);
-    public static final RegistryObject<Block> UNSTABLE_OXYGEN_GENERATOR = registerBlockDropsSelf("unstable_oxygen_generator", "Unstable Oxygen Generator", () -> new OxygenGeneratorBlock(Block.Properties.of(Material.GLASS).strength(0.3F).sound(SoundType.GLASS)), CelestialTabs.SPACESHIP_TAB);
+//    public static final RegistryObject<Block> UNSTABLE_OXYGEN_GENERATOR = registerBlockDropsSelf("unstable_oxygen_generator", "Unstable Oxygen Generator", () -> new OxygenGeneratorBlock(Block.Properties.of(Material.GLASS).strength(0.3F).sound(SoundType.GLASS)), CelestialTabs.SPACESHIP_TAB);
 
 
 

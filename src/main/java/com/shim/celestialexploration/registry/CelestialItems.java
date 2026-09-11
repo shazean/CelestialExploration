@@ -4,10 +4,9 @@ import com.shim.celestialexploration.CelestialExploration;
 import com.shim.celestialexploration.entity.DyeType;
 import com.shim.celestialexploration.entity.vehicle.AbstractMagCart;
 import com.shim.celestialexploration.item.*;
-import com.shim.celestialexploration.item.armor.HeavyDutySpacesuitArmorItem;
 import com.shim.celestialexploration.item.armor.SpacesuitArmorItem;
-import com.shim.celestialexploration.item.armor.ThermalSpacesuitArmorItem;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
@@ -28,21 +27,20 @@ public class CelestialItems {
 
 	public static final Map<RegistryObject<? extends Item>, String> ITEM_LANG_EN_US = new HashMap<>();
 
-	public static <T extends Item> RegistryObject<T> registerItem(String nameIn, String localizationIn, Supplier<T> itemIn) {
-		RegistryObject<T> item = ITEMS.register(nameIn, itemIn);
-		ITEM_LANG_EN_US.put(item, localizationIn);
-		return item;
+	public static <T extends Item> RegistryObject<T> registerItem(String name, String localization, Supplier<T> item) {
+		RegistryObject<T> registeredItem = ITEMS.register(name, item);
+		ITEM_LANG_EN_US.put(registeredItem, localization);
+		return registeredItem;
 	}
 
-	public static <T extends Item> RegistryObject<T> registerItemNoName(String nameIn, Supplier<T> itemIn) {
-		RegistryObject<T> item = ITEMS.register(nameIn, itemIn);
-		return item;
+	public static <T extends Item> RegistryObject<T> registerItemNoName(String name, Supplier<T> item) {
+        return ITEMS.register(name, item);
 	}
 
-	public static RegistryObject<Item> registerFood(String nameIn, String localizationIn, int nutrition, float saturation) {
-		RegistryObject<Item> item = ITEMS.register(nameIn, () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_FOOD).food((new FoodProperties.Builder()).fast().nutrition(nutrition).saturationMod(saturation).build())));
-		ITEM_LANG_EN_US.put(item, localizationIn);
-		return item;
+	public static RegistryObject<Item> registerFood(String name, String localization, int nutrition, float saturation) {
+		RegistryObject<Item> registeredItem = ITEMS.register(name, () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_FOOD).food((new FoodProperties.Builder()).fast().nutrition(nutrition).saturationMod(saturation).build())));
+		ITEM_LANG_EN_US.put(registeredItem, localization);
+		return registeredItem;
 	}
 	
 	public static final Item.Properties BLOCK_ITEM_PROPERTIES = new Item.Properties().tab(CelestialTabs.CELESTIAL_BLOCKS_TAB);
@@ -92,24 +90,6 @@ public class CelestialItems {
 	public static final RegistryObject<Item> STEEL_LEGGINGS = registerItem("steel_leggings", "Steel Leggings", () -> new ArmorItem(CelestialArmorMaterials.STEEL, EquipmentSlot.LEGS, COMBAT_ITEM_PROPERTIES));
 
 	//SPACE SUIT
-	public static final RegistryObject<ArmorItem> BASIC_SPACESUIT_HELMET = registerItem("basic_spacesuit_helmet", "Basic Spacesuit Helmet", () -> new ArmorItem(CelestialArmorMaterials.BASIC_SPACESUIT, EquipmentSlot.HEAD, COMBAT_ITEM_PROPERTIES));
-	public static final RegistryObject<ArmorItem> BASIC_SPACESUIT_BOOTS = registerItem("basic_spacesuit_boots", "Basic Spacesuit Boots", () -> new ArmorItem(CelestialArmorMaterials.BASIC_SPACESUIT, EquipmentSlot.FEET, COMBAT_ITEM_PROPERTIES));
-	public static final RegistryObject<ArmorItem> BASIC_SPACESUIT_CHESTPLATE = registerItem("basic_spacesuit_chestplate", "Basic Spacesuit Chestplate", () -> new ArmorItem(CelestialArmorMaterials.BASIC_SPACESUIT, EquipmentSlot.CHEST, COMBAT_ITEM_PROPERTIES));
-	public static final RegistryObject<ArmorItem> BASIC_SPACESUIT_LEGGINGS = registerItem("basic_spacesuit_leggings", "Basic Spacesuit Leggings", () -> new ArmorItem(CelestialArmorMaterials.BASIC_SPACESUIT, EquipmentSlot.LEGS, COMBAT_ITEM_PROPERTIES));
-	public static final RegistryObject<ArmorItem> OG_HEAVY_DUTY_SPACESUIT_HELMET = registerItem("og_heavy_duty_spacesuit_helmet", "Heavy Duty Spacesuit Helmet", () -> new HeavyDutySpacesuitArmorItem(EquipmentSlot.HEAD, COMBAT_ITEM_PROPERTIES.fireResistant()));
-	public static final RegistryObject<ArmorItem> OG_HEAVY_DUTY_SPACESUIT_BOOTS = registerItem("og_heavy_duty_spacesuit_boots", "Heavy Duty Spacesuit Boots", () -> new HeavyDutySpacesuitArmorItem(EquipmentSlot.FEET, COMBAT_ITEM_PROPERTIES.fireResistant()));
-	public static final RegistryObject<ArmorItem> OG_HEAVY_DUTY_SPACESUIT_CHESTPLATE = registerItem("og_heavy_duty_spacesuit_chestplate", "Heavy Duty Spacesuit Chestplate", () -> new HeavyDutySpacesuitArmorItem(EquipmentSlot.CHEST, COMBAT_ITEM_PROPERTIES.fireResistant()));
-	public static final RegistryObject<ArmorItem> OG_HEAVY_DUTY_SPACESUIT_LEGGINGS = registerItem("og_heavy_duty_spacesuit_leggings", "Heavy Duty Spacesuit Leggings", () -> new HeavyDutySpacesuitArmorItem(EquipmentSlot.LEGS, COMBAT_ITEM_PROPERTIES.fireResistant()));
-	public static final RegistryObject<ArmorItem> THERMAL_SPACESUIT_HELMET = registerItem("thermal_spacesuit_helmet", "Thermal Spacesuit Helmet", () -> new ThermalSpacesuitArmorItem(EquipmentSlot.HEAD, COMBAT_ITEM_PROPERTIES));
-	public static final RegistryObject<ArmorItem> THERMAL_SPACESUIT_BOOTS = registerItem("thermal_spacesuit_boots", "Thermal Spacesuit Boots", () -> new ThermalSpacesuitArmorItem(EquipmentSlot.FEET, COMBAT_ITEM_PROPERTIES));
-	public static final RegistryObject<ArmorItem> THERMAL_SPACESUIT_CHESTPLATE = registerItem("thermal_spacesuit_chestplate", "Thermal Spacesuit Chestplate", () -> new ThermalSpacesuitArmorItem(EquipmentSlot.CHEST, COMBAT_ITEM_PROPERTIES));
-	public static final RegistryObject<ArmorItem> THERMAL_SPACESUIT_LEGGINGS = registerItem("thermal_spacesuit_leggings", "Thermal Spacesuit Leggings", () -> new ThermalSpacesuitArmorItem(EquipmentSlot.LEGS, COMBAT_ITEM_PROPERTIES));
-	public static final RegistryObject<ArmorItem> ADVANCED_SPACESUIT_HELMET = registerItem("advanced_spacesuit_helmet", "Advanced Spacesuit Helmet", () -> new ArmorItem(CelestialArmorMaterials.ADVANCED_SPACESUIT, EquipmentSlot.HEAD, COMBAT_ITEM_PROPERTIES.fireResistant()));
-	public static final RegistryObject<ArmorItem> ADVANCED_SPACESUIT_BOOTS = registerItem("advanced_spacesuit_boots", "Advanced Spacesuit Boots", () -> new ArmorItem(CelestialArmorMaterials.ADVANCED_SPACESUIT, EquipmentSlot.FEET, COMBAT_ITEM_PROPERTIES.fireResistant()));
-	public static final RegistryObject<ArmorItem> ADVANCED_SPACESUIT_CHESTPLATE = registerItem("advanced_spacesuit_chestplate", "Advanced Spacesuit Chestplate", () -> new ArmorItem(CelestialArmorMaterials.ADVANCED_SPACESUIT, EquipmentSlot.CHEST, COMBAT_ITEM_PROPERTIES.fireResistant()));
-	public static final RegistryObject<ArmorItem> ADVANCED_SPACESUIT_LEGGINGS = registerItem("advanced_spacesuit_leggings", "Advanced Spacesuit Leggings", () -> new ArmorItem(CelestialArmorMaterials.ADVANCED_SPACESUIT, EquipmentSlot.LEGS, COMBAT_ITEM_PROPERTIES.fireResistant()));
-
-	//SPACE SUIT
 	public static final RegistryObject<ArmorItem> SIMPLE_SPACESUIT_HELMET = registerItem("simple_spacesuit_helmet", "Simple Spacesuit Helmet", () -> new ArmorItem(CelestialArmorMaterials.SIMPLE, EquipmentSlot.HEAD, COMBAT_ITEM_PROPERTIES));
 	public static final RegistryObject<ArmorItem> SIMPLE_SPACESUIT_BOOTS = registerItem("simple_spacesuit_boots", "Simple Spacesuit Boots", () -> new ArmorItem(CelestialArmorMaterials.SIMPLE, EquipmentSlot.FEET, COMBAT_ITEM_PROPERTIES));
 	public static final RegistryObject<ArmorItem> SIMPLE_SPACESUIT_CHESTPLATE = registerItem("simple_spacesuit_chestplate", "Simple Spacesuit Chestplate", () -> new ArmorItem(CelestialArmorMaterials.SIMPLE, EquipmentSlot.CHEST, COMBAT_ITEM_PROPERTIES));
@@ -122,11 +102,11 @@ public class CelestialItems {
 	public static final RegistryObject<ArmorItem> BUOYANT_SPACESUIT_BOOTS = registerItem("buoyant_spacesuit_boots", "Buoyant Spacesuit Boots", () -> new SpacesuitArmorItem(CelestialArmorMaterials.LIGHTWEIGHT, EquipmentSlot.FEET, COMBAT_ITEM_PROPERTIES));
 	public static final RegistryObject<ArmorItem> LIGHTWEIGHT_SPACESUIT_CHESTPLATE = registerItem("lightweight_spacesuit_chestplate", "Lightweight Spacesuit Chestplate", () -> new SpacesuitArmorItem(CelestialArmorMaterials.LIGHTWEIGHT, EquipmentSlot.CHEST, COMBAT_ITEM_PROPERTIES));
 	public static final RegistryObject<ArmorItem> LIGHTWEIGHT_SPACESUIT_LEGGINGS = registerItem("lightweight_spacesuit_leggings", "Lightweight Spacesuit Leggings", () -> new SpacesuitArmorItem(CelestialArmorMaterials.LIGHTWEIGHT, EquipmentSlot.LEGS, COMBAT_ITEM_PROPERTIES));
-	public static final RegistryObject<ArmorItem> INSULATED_SPACESUIT_HELMET = registerItem("insulated_spacesuit_helmet", "Insulated Spacesuit Helmet", () -> new SpacesuitArmorItem(CelestialArmorMaterials.INSULATED, EquipmentSlot.HEAD, COMBAT_ITEM_PROPERTIES));
-	public static final RegistryObject<ArmorItem> INSULATED_SPACESUIT_BOOTS = registerItem("insulated_spacesuit_boots", "Insulated Spacesuit Boots", () -> new SpacesuitArmorItem(CelestialArmorMaterials.INSULATED, EquipmentSlot.FEET, COMBAT_ITEM_PROPERTIES.fireResistant()));
-	public static final RegistryObject<ArmorItem> INSULATED_SPACESUIT_CHESTPLATE = registerItem("insulated_spacesuit_chestplate", "Insulated Spacesuit Chestplate", () -> new SpacesuitArmorItem(CelestialArmorMaterials.INSULATED, EquipmentSlot.CHEST, COMBAT_ITEM_PROPERTIES.fireResistant()));
-	public static final RegistryObject<ArmorItem> INSULATED_SPACESUIT_LEGGINGS = registerItem("insulated_spacesuit_leggings", "Insulated Spacesuit Leggings", () -> new SpacesuitArmorItem(CelestialArmorMaterials.INSULATED, EquipmentSlot.LEGS, COMBAT_ITEM_PROPERTIES));
-	public static final RegistryObject<ArmorItem> LONG_FALL_SPACESUIT_BOOTS = registerItem("long_fall_spacesuit_boots", "Long Fall Spacesuit Boots", () -> new SpacesuitArmorItem(CelestialArmorMaterials.LONG_FALL, EquipmentSlot.FEET, COMBAT_ITEM_PROPERTIES));
+//	public static final RegistryObject<ArmorItem> INSULATED_SPACESUIT_HELMET = registerItem("insulated_spacesuit_helmet", "Insulated Spacesuit Helmet", () -> new SpacesuitArmorItem(CelestialArmorMaterials.INSULATED, EquipmentSlot.HEAD, COMBAT_ITEM_PROPERTIES));
+//	public static final RegistryObject<ArmorItem> INSULATED_SPACESUIT_BOOTS = registerItem("insulated_spacesuit_boots", "Insulated Spacesuit Boots", () -> new SpacesuitArmorItem(CelestialArmorMaterials.INSULATED, EquipmentSlot.FEET, COMBAT_ITEM_PROPERTIES.fireResistant()));
+//	public static final RegistryObject<ArmorItem> INSULATED_SPACESUIT_CHESTPLATE = registerItem("insulated_spacesuit_chestplate", "Insulated Spacesuit Chestplate", () -> new SpacesuitArmorItem(CelestialArmorMaterials.INSULATED, EquipmentSlot.CHEST, COMBAT_ITEM_PROPERTIES.fireResistant()));
+//	public static final RegistryObject<ArmorItem> INSULATED_SPACESUIT_LEGGINGS = registerItem("insulated_spacesuit_leggings", "Insulated Spacesuit Leggings", () -> new SpacesuitArmorItem(CelestialArmorMaterials.INSULATED, EquipmentSlot.LEGS, COMBAT_ITEM_PROPERTIES));
+//	public static final RegistryObject<ArmorItem> LONG_FALL_SPACESUIT_BOOTS = registerItem("long_fall_spacesuit_boots", "Long Fall Spacesuit Boots", () -> new SpacesuitArmorItem(CelestialArmorMaterials.LONG_FALL, EquipmentSlot.FEET, COMBAT_ITEM_PROPERTIES));
 
 
 	//---- SPAWN EGGS -------------------------------------------------------------------------------
@@ -289,6 +269,16 @@ public class CelestialItems {
 
 //	public static final RegistryObject<Item> CONTROL_PANEL = registerItem("control_panel", "Control Panel", () -> new ControlPanelItem(new Item.Properties().tab(CelestialTabs.SPACESHIP_TAB)));
 
+	//---- OXYGEN -------------------------------------------------------------------------------
+	public static final RegistryObject<Item> SMALL_FULL_OXYGEN_CANISTER = registerItem("small_full_oxygen_canister", "Small Full Oxygen Canister", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_FOOD).food((new FoodProperties.Builder()).fast().nutrition(0).saturationMod(.1F).alwaysEat().effect(() -> new MobEffectInstance(CelestialEffects.INSTANT_OXYGEN_EFFECT.get(), 1, 900), 1.0F).build())));
+	public static final RegistryObject<Item> MEDIUM_FULL_OXYGEN_CANISTER = registerItem("medium_full_oxygen_canister", "Medium Full Oxygen Canister", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_FOOD).food((new FoodProperties.Builder()).fast().nutrition(0).saturationMod(.1F).alwaysEat().effect(() -> new MobEffectInstance(CelestialEffects.INSTANT_OXYGEN_EFFECT.get(), 1, 1800), 1.0F).build())));
+	public static final RegistryObject<Item> LARGE_FULL_OXYGEN_CANISTER = registerItem("large_full_oxygen_canister", "Large Full Oxygen Canister", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_FOOD).food((new FoodProperties.Builder()).fast().nutrition(0).saturationMod(.1F).alwaysEat().effect(() -> new MobEffectInstance(CelestialEffects.INSTANT_OXYGEN_EFFECT.get(), 1, 3600), 1.0F).build())));
+
+	public static final RegistryObject<Item> SMALL_EMPTY_OXYGEN_CANISTER = registerItem("small_empty_oxygen_canister", "Small Empty Oxygen Canister", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_FOOD)));
+	public static final RegistryObject<Item> MEDIUM_EMPTY_OXYGEN_CANISTER = registerItem("medium_empty_oxygen_canister", "Medium Empty Oxygen Canister", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_FOOD)));
+	public static final RegistryObject<Item> LARGE_EMPTY_OXYGEN_CANISTER = registerItem("large_empty_oxygen_canister", "Large Empty Oxygen Canister", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_FOOD)));
+
+
 	//---- FOOD -------------------------------------------------------------------------------
 	public static final RegistryObject<Item> MARSHMALLOW_GOO = registerFood("marshmallow_goo", "Marshmallow Goo", 1, 0.1F);
 	public static final RegistryObject<Item> MARSHMALLOW = registerFood("marshmallow", "Marshmallow", 1, 0.2F);
@@ -299,4 +289,8 @@ public class CelestialItems {
 	public static final RegistryObject<Item> LUNAR_CHEESE = registerFood("lunar_cheese", "Lunar Cheese", 5, 0.65F);
 	public static final RegistryObject<Item> CHEESE = registerFood("cheese", "Cheese", 5, 0.65F);
 	public static final RegistryObject<Item> SUSPICIOUS_JELLO = registerItem("suspicious_jello", "Suspicious Jello", () -> new SuspiciousJelloItem(new Item.Properties().tab(CreativeModeTab.TAB_FOOD).food((new FoodProperties.Builder()).fast().nutrition(1).saturationMod(.2F).alwaysEat().build())));
+
+
+
+
 }

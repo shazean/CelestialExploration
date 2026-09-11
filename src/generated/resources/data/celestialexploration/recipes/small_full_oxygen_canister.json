@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XGX"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:aluminum_ingot"
+    },
+    "G": {
+      "tag": "forge:glass"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:small_full_oxygen_canister"
+  }
+}

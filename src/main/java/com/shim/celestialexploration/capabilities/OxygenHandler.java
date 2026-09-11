@@ -30,32 +30,47 @@ public class OxygenHandler {
 
     public void tick(Player player) {
         if (CelestialCommonConfig.OXYGEN_MECHANIC_ENABLED.get()) {
-            boolean accessToOxygen = player.hasEffect(CelestialEffects.OXYGENATED_EFFECT.get());
+            boolean oxygenated = player.hasEffect(CelestialEffects.OXYGENATED_EFFECT.get());
+            boolean accessToOxygen = !this.inLocationWithoutOxygen(player);
 
-//            CelestialExploration.LOGGER.debug("oxygen? " + accessToOxygen);
+//            CelestialExploration.LOGGER.debug("oxygen? " + oxygenated);
 
-            if (!accessToOxygen) {
-                if (this.inLocationWithoutOxygen(player) && !player.isCreative()) {
-                    this.useOxygen(player.isSprinting(), player);
+            if (!oxygenated) {
+                if (!player.isCreative()) {
+                    if (!accessToOxygen || player.getVehicle() != null) {
+                        this.useOxygen(player.isSprinting(), player);
+                    }
                 }
             }
 
-            if (accessToOxygen)
+            if (oxygenated || accessToOxygen) {
                 this.refillOxygen();
+                this.removeDebuff(player);
+            }
+
+            if (player.hasEffect(CelestialEffects.INSTANT_OXYGEN_EFFECT.get())) {
+                MobEffectInstance instantOxygen = player.getEffect(CelestialEffects.INSTANT_OXYGEN_EFFECT.get());
+                int amp = instantOxygen.getAmplifier();
+                this.addOxygen(amp);
+                player.removeEffect(CelestialEffects.INSTANT_OXYGEN_EFFECT.get());
+            }
 
             if (currentOxygen > maxOxygen)
                 currentOxygen = maxOxygen;
 
             if (currentOxygen <= 0) {
                 currentOxygen = 0; //reset to 0 so adding oxygen works properly
-                tickDelay++;
+                if (!oxygenated && !accessToOxygen) {
 
-                if (tickDelay == 60) {
-                    tickDelay = 0;
-                    Level level = player.level;
+                    tickDelay++;
 
-                    applyDamage(level, player);
-                    applyDebuff(level, player);
+                    if (tickDelay == 60) {
+                        tickDelay = 0;
+                        Level level = player.level;
+
+                        this.applyDamage(level, player);
+                        this.applyDebuff(level, player);
+                    }
                 }
             }
 
@@ -81,6 +96,11 @@ public class OxygenHandler {
             if (CelestialCommonConfig.OXYGEN_DEBUFF.get())
                 player.addEffect(new MobEffectInstance(CelestialEffects.SUFFOCATION_EFFECT.get(), 260, 0, true, true));
         }
+    }
+
+    private void removeDebuff(Player player) {
+        if (player.hasEffect(CelestialEffects.SUFFOCATION_EFFECT.get()))
+            player.removeEffect(CelestialEffects.SUFFOCATION_EFFECT.get());
     }
 
     private void applyDamage(Level level, Player player) {
@@ -124,10 +144,6 @@ public class OxygenHandler {
 
     private void refillOxygen() {
         this.currentOxygen += 3;
-    }
-
-    public void instantOxygen(int amount) {
-        this.currentOxygen += amount;
     }
 
     public void setOxygen(int oxygen) {
@@ -177,32 +193,32 @@ public class OxygenHandler {
         this.currentOxygen += amount;
         if (this.currentOxygen > this.maxOxygen)
             this.currentOxygen = this.maxOxygen;
-        //TODO remove debuffs
     }
 
-    public void equipSuitAddOxygen(Player player) {
-        ItemStack helmet = player.getInventory().getArmor(3);
-        if (helmet.getItem() instanceof SpacesuitArmorItem) {
-            this.currentOxygen += OxygenUtil.DEFAULT_OXYGEN_NO_HELMET;
+    public void equipSuitAddOxygen(ItemStack armor) {
+        if (armor.getItem() instanceof SpacesuitArmorItem spacesuit) {
+            if (SpacesuitArmorItem.isHelmet(spacesuit))
+                this.currentOxygen += OxygenUtil.DEFAULT_OXYGEN_NO_HELMET / 4;
         }
     }
 
     public boolean checkMaxOxygen(Player player) {
         ItemStack helmet = player.getInventory().getArmor(3);
+        CelestialExploration.LOGGER.debug("potential helmet is: " + helmet.getItem());
         if (helmet.isEmpty()) { //no helmet
             this.maxOxygen = OxygenUtil.DEFAULT_OXYGEN_NO_HELMET;
-            this.currentOxygen += OxygenUtil.DEFAULT_OXYGEN_NO_HELMET / 4;
+//            this.currentOxygen += OxygenUtil.DEFAULT_OXYGEN_NO_HELMET / 4;
         } else if (helmet.getItem() instanceof SpacesuitArmorItem) { //spacesuit helmet(s)
-            int oxygenFromHelmet = SpacesuitArmorItem.getOxygenBoost(helmet, player);
-            this.maxOxygen = oxygenFromHelmet;
-            this.currentOxygen += oxygenFromHelmet / 4;
+            this.maxOxygen = SpacesuitArmorItem.getOxygenBoost(helmet, player);
+//            this.currentOxygen += oxygenFromHelmet / 4;
             //get value from helmet
         } else { //non-spacesuit helmet
             this.maxOxygen = OxygenUtil.DEFAULT_OXYGEN_WITH_HELMET;
-            this.currentOxygen += OxygenUtil.DEFAULT_OXYGEN_WITH_HELMET / 4;
+//            this.currentOxygen += OxygenUtil.DEFAULT_OXYGEN_WITH_HELMET / 4;
         }
 
         ItemStack chestplate = player.getInventory().getArmor(2); //FIXME check this is the right value?
+        CelestialExploration.LOGGER.debug("potential chestplate is: " + chestplate.getItem());
         if (!chestplate.isEmpty() && chestplate.getItem() instanceof SpacesuitArmorItem) {
             //if wearing a chestplate, add appropriate oxygen amounts
             this.maxOxygen += SpacesuitArmorItem.getOxygenBoost(chestplate, player);

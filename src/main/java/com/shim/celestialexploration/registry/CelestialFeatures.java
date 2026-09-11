@@ -41,6 +41,11 @@ public class CelestialFeatures {
     public static final RegistryObject<Feature<NoneFeatureConfiguration>> MEDIUM_ICE_CRATER = FEATURES.register("medium_ice_crater", () -> new LinedCraterFeature(NoneFeatureConfiguration.CODEC, 9, 12, Blocks.ICE));
     public static final RegistryObject<Feature<NoneFeatureConfiguration>> LARGE_ICE_CRATER = FEATURES.register("large_ice_crater", () -> new LinedCraterFeature(NoneFeatureConfiguration.CODEC, 13, 16, Blocks.ICE));
 
+    public static final RegistryObject<Feature<NoneFeatureConfiguration>> SMALL_DRY_ICE_CRATER = FEATURES.register("small_dry_ice_crater", () -> new LinedCraterFeature(NoneFeatureConfiguration.CODEC, 5, 8, CelestialBlocks.DRY_ICE.get()));
+    public static final RegistryObject<Feature<NoneFeatureConfiguration>> MEDIUM_DRY_ICE_CRATER = FEATURES.register("medium_dry_ice_crater", () -> new LinedCraterFeature(NoneFeatureConfiguration.CODEC, 9, 12, CelestialBlocks.DRY_ICE.get()));
+    public static final RegistryObject<Feature<NoneFeatureConfiguration>> LARGE_DRY_ICE_CRATER = FEATURES.register("large_dry_ice_crater", () -> new LinedCraterFeature(NoneFeatureConfiguration.CODEC, 13, 16, CelestialBlocks.DRY_ICE.get()));
+
+
     public static final RegistryObject<Feature<NoneFeatureConfiguration>> ASTEROID = FEATURES.register("asteroid", () -> new AsteroidFeature(NoneFeatureConfiguration.CODEC));
 
 

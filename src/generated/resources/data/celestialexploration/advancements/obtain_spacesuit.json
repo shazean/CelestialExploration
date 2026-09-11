@@ -2,7 +2,7 @@
   "parent": "celestialexploration:root",
   "display": {
     "icon": {
-      "item": "celestialexploration:basic_spacesuit_helmet",
+      "item": "celestialexploration:simple_spacesuit_helmet",
       "nbt": "{Damage:0}"
     },
     "title": {
@@ -23,7 +23,7 @@
         "items": [
           {
             "items": [
-              "celestialexploration:basic_spacesuit_helmet"
+              "celestialexploration:simple_spacesuit_helmet"
             ]
           }
         ]
@@ -35,7 +35,7 @@
         "items": [
           {
             "items": [
-              "celestialexploration:basic_spacesuit_chestplate"
+              "celestialexploration:simple_spacesuit_chestplate"
             ]
           }
         ]
@@ -47,7 +47,7 @@
         "items": [
           {
             "items": [
-              "celestialexploration:basic_spacesuit_leggings"
+              "celestialexploration:simple_spacesuit_leggings"
             ]
           }
         ]
@@ -59,7 +59,7 @@
         "items": [
           {
             "items": [
-              "celestialexploration:basic_spacesuit_boots"
+              "celestialexploration:simple_spacesuit_boots"
             ]
           }
         ]

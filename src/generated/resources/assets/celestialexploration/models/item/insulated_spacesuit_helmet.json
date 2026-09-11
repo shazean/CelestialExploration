@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "celestialexploration:item/spacesuit_helmet",
-    "layer1": "celestialexploration:item/_helmet_overlay"
-  }
-}

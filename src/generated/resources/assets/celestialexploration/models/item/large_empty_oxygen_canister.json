@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "celestialexploration:item/large_empty_oxygen_canister"
+  }
+}

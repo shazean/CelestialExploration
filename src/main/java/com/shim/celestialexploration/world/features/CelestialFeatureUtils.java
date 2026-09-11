@@ -37,6 +37,11 @@ public class CelestialFeatureUtils {
     public static final Holder<ConfiguredFeature<NoneFeatureConfiguration, ?>> MEDIUM_ICE_CRATER = FeatureUtils.register("medium_ice_crater", CelestialFeatures.MEDIUM_ICE_CRATER.get(), new NoneFeatureConfiguration());
     public static final Holder<ConfiguredFeature<NoneFeatureConfiguration, ?>> LARGE_ICE_CRATER = FeatureUtils.register("large_ice_crater", CelestialFeatures.LARGE_ICE_CRATER.get(), new NoneFeatureConfiguration());
 
+    public static final Holder<ConfiguredFeature<NoneFeatureConfiguration, ?>> SMALL_DRY_ICE_CRATER = FeatureUtils.register("small_dry_ice_crater", CelestialFeatures.SMALL_DRY_ICE_CRATER.get(), new NoneFeatureConfiguration());
+    public static final Holder<ConfiguredFeature<NoneFeatureConfiguration, ?>> MEDIUM_DRY_ICE_CRATER = FeatureUtils.register("medium_dry_ice_crater", CelestialFeatures.MEDIUM_DRY_ICE_CRATER.get(), new NoneFeatureConfiguration());
+    public static final Holder<ConfiguredFeature<NoneFeatureConfiguration, ?>> LARGE_DRY_ICE_CRATER = FeatureUtils.register("large_dry_ice_crater", CelestialFeatures.LARGE_DRY_ICE_CRATER.get(), new NoneFeatureConfiguration());
+
+
     public static final Holder<ConfiguredFeature<NoneFeatureConfiguration, ?>> ASTEROID = FeatureUtils.register("asteroid", CelestialFeatures.ASTEROID.get(), new NoneFeatureConfiguration());
 
 

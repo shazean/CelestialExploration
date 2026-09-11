@@ -113,7 +113,9 @@ public class CelestialBlockTags extends BlockTagsProvider {
                 .add(CelestialBlocks.DIAMOND_CHUNK.get()).add(CelestialBlocks.DIAMOND_CLUSTER.get())
                 .add(CelestialBlocks.SMALL_DIAMOND_CRYSTAL.get()).add(CelestialBlocks.MEDIUM_DIAMOND_CRYSTAL.get()).add(CelestialBlocks.LARGE_DIAMOND_CRYSTAL.get())
 
-                .add(CelestialBlocks.WORKBENCH.get()).add(CelestialBlocks.OXYGEN_COMPRESSOR.get()).add(CelestialBlocks.OXYGEN_GENERATOR.get()).add(CelestialBlocks.UNSTABLE_OXYGEN_GENERATOR.get());
+                .add(CelestialBlocks.WORKBENCH.get()).add(CelestialBlocks.OXYGEN_COMPRESSOR.get()).add(CelestialBlocks.OXYGEN_GENERATOR.get())
+//                .add(CelestialBlocks.UNSTABLE_OXYGEN_GENERATOR.get())
+        ;
 
         tag(BlockTags.MINEABLE_WITH_AXE)
                 .add(CelestialBlocks.WORKBENCH.get());

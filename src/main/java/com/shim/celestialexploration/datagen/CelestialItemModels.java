@@ -664,10 +664,10 @@ public class CelestialItemModels extends BaseItemModels {
 		spacesuitItem(CelestialItems.HEAVY_DUTY_SPACESUIT_CHESTPLATE.get(), "heavy_duty", "chestplate");
 		spacesuitItem(CelestialItems.HEAVY_DUTY_SPACESUIT_LEGGINGS.get(), "heavy_duty", "leggings");
 		spacesuitItem(CelestialItems.GRAVITY_SPACESUIT_BOOTS.get(), "heavy_duty", "boots");
-		spacesuitItem(CelestialItems.INSULATED_SPACESUIT_HELMET.get(), "", "helmet");
-		spacesuitItem(CelestialItems.INSULATED_SPACESUIT_CHESTPLATE.get(), "insulated", "chestplate");
-		spacesuitItem(CelestialItems.INSULATED_SPACESUIT_LEGGINGS.get(), "insulated", "leggings");
-		spacesuitItem(CelestialItems.INSULATED_SPACESUIT_BOOTS.get(), "insulated", "boots");
+//		spacesuitItem(CelestialItems.INSULATED_SPACESUIT_HELMET.get(), "", "helmet");
+//		spacesuitItem(CelestialItems.INSULATED_SPACESUIT_CHESTPLATE.get(), "insulated", "chestplate");
+//		spacesuitItem(CelestialItems.INSULATED_SPACESUIT_LEGGINGS.get(), "insulated", "leggings");
+//		spacesuitItem(CelestialItems.INSULATED_SPACESUIT_BOOTS.get(), "insulated", "boots");
 //		spacesuitItem(CelestialItems.LONG_FALL_SPACESUIT_BOOTS.get(), "long_fall", "boots");
 
 		//---- GLASS/CERAMICS -------------------------------------------------------------------------------
@@ -932,12 +932,18 @@ public class CelestialItemModels extends BaseItemModels {
 
 
 		this.withExistingParent(name(CelestialBlocks.OXYGEN_GENERATOR.get()), this.modLoc("block/oxygen_generator_full"));
-		this.withExistingParent(name(CelestialBlocks.UNSTABLE_OXYGEN_GENERATOR.get()), this.modLoc("block/unstable_oxygen_generator_full"));
+//		this.withExistingParent(name(CelestialBlocks.UNSTABLE_OXYGEN_GENERATOR.get()), this.modLoc("block/unstable_oxygen_generator_full"));
 
 		this.withExistingParent(name(CelestialBlocks.LURKER_HEAD.get()), this.mcLoc("item/template_skull"));
 		this.withExistingParent(name(CelestialBlocks.VOIDED_HEAD.get()), this.mcLoc("item/template_skull"));
 		generatedBlockItem(CelestialBlocks.MECHADOG_HEAD.get(), "item/mechadog_head");
 
+		generatedItem(CelestialItems.SMALL_FULL_OXYGEN_CANISTER.get());
+		generatedItem(CelestialItems.MEDIUM_FULL_OXYGEN_CANISTER.get());
+		generatedItem(CelestialItems.LARGE_FULL_OXYGEN_CANISTER.get());
+		generatedItem(CelestialItems.SMALL_EMPTY_OXYGEN_CANISTER.get());
+		generatedItem(CelestialItems.MEDIUM_EMPTY_OXYGEN_CANISTER.get());
+		generatedItem(CelestialItems.LARGE_EMPTY_OXYGEN_CANISTER.get());
 
 //		generatedItem(ItemRegistry.CONTROL_PANEL.get());
 

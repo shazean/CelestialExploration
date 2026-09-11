@@ -2,12 +2,15 @@
   "type": "celestialexploration:workbench_crafting",
   "pattern": [
     "D D",
-    "DDD",
+    "DID",
     "DDD"
   ],
   "key": {
     "D": {
       "item": "minecraft:diamond"
+    },
+    "I": {
+      "item": "celestialexploration:infused_viscous_slime_ball"
     }
   },
   "result": {

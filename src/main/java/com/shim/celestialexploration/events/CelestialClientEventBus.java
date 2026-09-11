@@ -104,11 +104,11 @@ public class CelestialClientEventBus {
         event.enqueueWork(() -> ItemProperties.register(CelestialItems.LIGHTWEIGHT_SPACESUIT_CHESTPLATE.get(), color(), (stack, level, living, id) -> SpacesuitArmorItem.getColorPredicate(stack)));
         event.enqueueWork(() -> ItemProperties.register(CelestialItems.LIGHTWEIGHT_SPACESUIT_LEGGINGS.get(), color(), (stack, level, living, id) -> SpacesuitArmorItem.getColorPredicate(stack)));
         event.enqueueWork(() -> ItemProperties.register(CelestialItems.BUOYANT_SPACESUIT_BOOTS.get(), color(), (stack, level, living, id) -> SpacesuitArmorItem.getColorPredicate(stack)));
-        event.enqueueWork(() -> ItemProperties.register(CelestialItems.INSULATED_SPACESUIT_HELMET.get(), color(), (stack, level, living, id) -> SpacesuitArmorItem.getColorPredicate(stack)));
-        event.enqueueWork(() -> ItemProperties.register(CelestialItems.INSULATED_SPACESUIT_CHESTPLATE.get(), color(), (stack, level, living, id) -> SpacesuitArmorItem.getColorPredicate(stack)));
-        event.enqueueWork(() -> ItemProperties.register(CelestialItems.INSULATED_SPACESUIT_LEGGINGS.get(), color(), (stack, level, living, id) -> SpacesuitArmorItem.getColorPredicate(stack)));
-        event.enqueueWork(() -> ItemProperties.register(CelestialItems.INSULATED_SPACESUIT_BOOTS.get(), color(), (stack, level, living, id) -> SpacesuitArmorItem.getColorPredicate(stack)));
-        event.enqueueWork(() -> ItemProperties.register(CelestialItems.LONG_FALL_SPACESUIT_BOOTS.get(), color(), (stack, level, living, id) -> SpacesuitArmorItem.getColorPredicate(stack)));
+//        event.enqueueWork(() -> ItemProperties.register(CelestialItems.INSULATED_SPACESUIT_HELMET.get(), color(), (stack, level, living, id) -> SpacesuitArmorItem.getColorPredicate(stack)));
+//        event.enqueueWork(() -> ItemProperties.register(CelestialItems.INSULATED_SPACESUIT_CHESTPLATE.get(), color(), (stack, level, living, id) -> SpacesuitArmorItem.getColorPredicate(stack)));
+//        event.enqueueWork(() -> ItemProperties.register(CelestialItems.INSULATED_SPACESUIT_LEGGINGS.get(), color(), (stack, level, living, id) -> SpacesuitArmorItem.getColorPredicate(stack)));
+//        event.enqueueWork(() -> ItemProperties.register(CelestialItems.INSULATED_SPACESUIT_BOOTS.get(), color(), (stack, level, living, id) -> SpacesuitArmorItem.getColorPredicate(stack)));
+//        event.enqueueWork(() -> ItemProperties.register(CelestialItems.LONG_FALL_SPACESUIT_BOOTS.get(), color(), (stack, level, living, id) -> SpacesuitArmorItem.getColorPredicate(stack)));
 
 
         ItemBlockRenderTypes.setRenderLayer(CelestialBlocks.MARS_PORTAL.get(), RenderType.translucent());
@@ -278,8 +278,8 @@ public class CelestialClientEventBus {
         AzArmorRendererRegistry.register(SpacesuitRenderer.Simple::new, CelestialItems.SIMPLE_SPACESUIT_HELMET.get(), CelestialItems.SIMPLE_SPACESUIT_CHESTPLATE.get(), CelestialItems.SIMPLE_SPACESUIT_LEGGINGS.get(), CelestialItems.SIMPLE_SPACESUIT_BOOTS.get());
         AzArmorRendererRegistry.register(SpacesuitRenderer.HeavyDuty::new, CelestialItems.HEAVY_DUTY_SPACESUIT_HELMET.get(), CelestialItems.HEAVY_DUTY_SPACESUIT_CHESTPLATE.get(), CelestialItems.HEAVY_DUTY_SPACESUIT_LEGGINGS.get(), CelestialItems.GRAVITY_SPACESUIT_BOOTS.get());
         AzArmorRendererRegistry.register(SpacesuitRenderer.Lightweight::new, CelestialItems.LIGHTWEIGHT_SPACESUIT_HELMET.get(), CelestialItems.LIGHTWEIGHT_SPACESUIT_CHESTPLATE.get(), CelestialItems.LIGHTWEIGHT_SPACESUIT_LEGGINGS.get(), CelestialItems.BUOYANT_SPACESUIT_BOOTS.get());
-        AzArmorRendererRegistry.register(SpacesuitRenderer.Insulated::new, CelestialItems.INSULATED_SPACESUIT_HELMET.get(), CelestialItems.INSULATED_SPACESUIT_CHESTPLATE.get(), CelestialItems.INSULATED_SPACESUIT_LEGGINGS.get(), CelestialItems.INSULATED_SPACESUIT_BOOTS.get());
-        AzArmorRendererRegistry.register(SpacesuitRenderer.LongFall::new, CelestialItems.LONG_FALL_SPACESUIT_BOOTS.get());
+//        AzArmorRendererRegistry.register(SpacesuitRenderer.Insulated::new, CelestialItems.INSULATED_SPACESUIT_HELMET.get(), CelestialItems.INSULATED_SPACESUIT_CHESTPLATE.get(), CelestialItems.INSULATED_SPACESUIT_LEGGINGS.get(), CelestialItems.INSULATED_SPACESUIT_BOOTS.get());
+//        AzArmorRendererRegistry.register(SpacesuitRenderer.LongFall::new, CelestialItems.LONG_FALL_SPACESUIT_BOOTS.get());
 
 
         CelestialOverlays.registerOverlay(event);
@@ -325,11 +325,11 @@ public class CelestialClientEventBus {
         SpacesuitArmorItem.registerSpacesuitItemColors(event, CelestialItems.HEAVY_DUTY_SPACESUIT_CHESTPLATE.get());
         SpacesuitArmorItem.registerSpacesuitItemColors(event, CelestialItems.HEAVY_DUTY_SPACESUIT_LEGGINGS.get());
         SpacesuitArmorItem.registerSpacesuitItemColors(event, CelestialItems.GRAVITY_SPACESUIT_BOOTS.get());
-        SpacesuitArmorItem.registerSpacesuitItemColors(event, CelestialItems.INSULATED_SPACESUIT_HELMET.get());
-        SpacesuitArmorItem.registerSpacesuitItemColors(event, CelestialItems.INSULATED_SPACESUIT_CHESTPLATE.get());
-        SpacesuitArmorItem.registerSpacesuitItemColors(event, CelestialItems.INSULATED_SPACESUIT_LEGGINGS.get());
-        SpacesuitArmorItem.registerSpacesuitItemColors(event, CelestialItems.INSULATED_SPACESUIT_BOOTS.get());
-        SpacesuitArmorItem.registerSpacesuitItemColors(event, CelestialItems.LONG_FALL_SPACESUIT_BOOTS.get());
+//        SpacesuitArmorItem.registerSpacesuitItemColors(event, CelestialItems.INSULATED_SPACESUIT_HELMET.get());
+//        SpacesuitArmorItem.registerSpacesuitItemColors(event, CelestialItems.INSULATED_SPACESUIT_CHESTPLATE.get());
+//        SpacesuitArmorItem.registerSpacesuitItemColors(event, CelestialItems.INSULATED_SPACESUIT_LEGGINGS.get());
+//        SpacesuitArmorItem.registerSpacesuitItemColors(event, CelestialItems.INSULATED_SPACESUIT_BOOTS.get());
+//        SpacesuitArmorItem.registerSpacesuitItemColors(event, CelestialItems.LONG_FALL_SPACESUIT_BOOTS.get());
 
     }
 }

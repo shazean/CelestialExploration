@@ -287,6 +287,9 @@ public class CelestialForgeEventBus {
                 OxygenHandler oxygenCap = player.getCapability(CelestialCapabilities.OXYGEN_CAPABILITY).orElse(null);
                 if (oxygenCap != null) {
                     oxygenCap.checkMaxOxygen(player);
+                    if (!event.getTo().isEmpty()) {
+                        oxygenCap.equipSuitAddOxygen(event.getTo());
+                    }
                 }
             }
         }

@@ -54,6 +54,10 @@ public class SurfacePlacements {
     public static final Holder<PlacedFeature> UNCOMMON_MEDIUM_ICE_CRATER = PlacementUtils.register("uncommon_medium_ice_crater", CelestialFeatureUtils.MEDIUM_ICE_CRATER, RarityFilter.onAverageOnceEvery(UNCOMMON_MEDIUM + PLUS), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome());
     public static final Holder<PlacedFeature> UNCOMMON_LARGE_ICE_CRATER = PlacementUtils.register("uncommon_large_ice_crater", CelestialFeatureUtils.LARGE_ICE_CRATER, RarityFilter.onAverageOnceEvery(UNCOMMON_LARGE + PLUS), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome());
 
+    public static final Holder<PlacedFeature> UNCOMMON_SMALL_DRY_ICE_CRATER = PlacementUtils.register("uncommon_small_ice_crater", CelestialFeatureUtils.SMALL_DRY_ICE_CRATER, RarityFilter.onAverageOnceEvery(UNCOMMON_SMALL + PLUS), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome());
+    public static final Holder<PlacedFeature> UNCOMMON_MEDIUM_DRY_ICE_CRATER = PlacementUtils.register("uncommon_medium_ice_crater", CelestialFeatureUtils.MEDIUM_DRY_ICE_CRATER, RarityFilter.onAverageOnceEvery(UNCOMMON_MEDIUM + PLUS), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome());
+    public static final Holder<PlacedFeature> UNCOMMON_LARGE_DRY_ICE_CRATER = PlacementUtils.register("uncommon_large_ice_crater", CelestialFeatureUtils.LARGE_DRY_ICE_CRATER, RarityFilter.onAverageOnceEvery(UNCOMMON_LARGE + PLUS), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome());
+
     public static final Holder<PlacedFeature> ASTEROID = PlacementUtils.register("asteroid", CelestialFeatureUtils.ASTEROID, RarityFilter.onAverageOnceEvery(3), PlacementUtils.countExtra(1, 0.25F, 1), InSquarePlacement.spread(), HeightRangePlacement.uniform(VerticalAnchor.absolute(40), VerticalAnchor.absolute(80)), BiomeFilter.biome());
 
 

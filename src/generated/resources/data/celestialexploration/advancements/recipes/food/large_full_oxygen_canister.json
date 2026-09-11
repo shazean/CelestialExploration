@@ -2,17 +2,17 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "celestialexploration:heavy_duty_spacesuit_chestplate_"
+      "celestialexploration:large_full_oxygen_canister"
     ]
   },
   "criteria": {
-    "has_diamond": {
+    "has_aluminum_ingot": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:diamond"
+              "celestialexploration:aluminum_ingot"
             ]
           }
         ]
@@ -21,13 +21,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "celestialexploration:heavy_duty_spacesuit_chestplate_"
+        "recipe": "celestialexploration:large_full_oxygen_canister"
       }
     }
   },
   "requirements": [
     [
-      "has_diamond",
+      "has_aluminum_ingot",
       "has_the_recipe"
     ]
   ]

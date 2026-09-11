@@ -35,13 +35,13 @@ public class CelestialAdvancements extends AdvancementProvider {
                         FrameType.TASK, false, false, false)
                 .addCriterion("crafting_table", InventoryChangeTrigger.TriggerInstance.hasItems(Items.CRAFTING_TABLE)).save(consumer, modLoc("root"));
 
-        Advancement obtainSpacesuit = Advancement.Builder.advancement().display(new ItemStack(CelestialItems.BASIC_SPACESUIT_HELMET.get()),
+        Advancement obtainSpacesuit = Advancement.Builder.advancement().display(new ItemStack(CelestialItems.SIMPLE_SPACESUIT_HELMET.get()),
                         new TranslatableComponent("advancements.celestialexploration.obtain_spacesuit.title"), new TranslatableComponent("advancements.celestialexploration.obtain_spacesuit.description"),
                         null, FrameType.TASK, true, true, false)
-                .parent(root).addCriterion("basic_helmet", InventoryChangeTrigger.TriggerInstance.hasItems(CelestialItems.BASIC_SPACESUIT_HELMET.get()))
-                .addCriterion("basic_chestplate", InventoryChangeTrigger.TriggerInstance.hasItems(CelestialItems.BASIC_SPACESUIT_CHESTPLATE.get()))
-                .addCriterion("basic_leggings", InventoryChangeTrigger.TriggerInstance.hasItems(CelestialItems.BASIC_SPACESUIT_LEGGINGS.get()))
-                .addCriterion("basic_boots", InventoryChangeTrigger.TriggerInstance.hasItems(CelestialItems.BASIC_SPACESUIT_BOOTS.get())).save(consumer, modLoc("obtain_spacesuit"));
+                .parent(root).addCriterion("basic_helmet", InventoryChangeTrigger.TriggerInstance.hasItems(CelestialItems.SIMPLE_SPACESUIT_HELMET.get()))
+                .addCriterion("basic_chestplate", InventoryChangeTrigger.TriggerInstance.hasItems(CelestialItems.SIMPLE_SPACESUIT_CHESTPLATE.get()))
+                .addCriterion("basic_leggings", InventoryChangeTrigger.TriggerInstance.hasItems(CelestialItems.SIMPLE_SPACESUIT_LEGGINGS.get()))
+                .addCriterion("basic_boots", InventoryChangeTrigger.TriggerInstance.hasItems(CelestialItems.SIMPLE_SPACESUIT_BOOTS.get())).save(consumer, modLoc("obtain_spacesuit"));
 
         Advancement obtainSpaceship = Advancement.Builder.advancement().display(new ItemStack(CelestialItems.WHITE_SPACESHIP.get()),
                         new TranslatableComponent("advancements.celestialexploration.obtain_spaceship.title"), new TranslatableComponent("advancements.celestialexploration.obtain_spaceship.description"),

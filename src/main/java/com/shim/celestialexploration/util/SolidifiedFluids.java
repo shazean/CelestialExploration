@@ -15,7 +15,7 @@ public class SolidifiedFluids {
 
     private static final Map<Fluid, Block> FLUID_TO_SOLID_BLOCK = Util.make(new HashMap<>(), (map) -> {
         map.put(Fluids.LAVA, CelestialBlocks.QUASI_SOLID_OBSIDIAN.get());
-        map.put(Fluids.WATER, Blocks.FROSTED_ICE);
+        map.put(Fluids.WATER, CelestialBlocks.QUASI_SOLID_ICE.get());
         map.put(CelestialFluids.SULFUR.get(), CelestialBlocks.QUASI_SOLID_SULFUR_OBSIDIAN.get());
         map.put(CelestialFluids.METALLIC_HYDROGEN.get(), CelestialBlocks.QUASI_SOLID_METALLIC_HYDROGEN.get());
 
