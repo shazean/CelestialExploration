@@ -26,7 +26,6 @@ public class GeyserBlockEntity extends BlockEntity {
     }
 
     public static void tick(Level level, BlockPos pos, BlockState state, GeyserBlockEntity blockEntity) {
-//        CelestialExploration.LOGGER.debug("enabled? " + state.getValue(ENABLED) + ", geyserCooldown: " + blockEntity.geyserCooldown + ", duration: " + blockEntity.geyserDuration);
         if (blockEntity.geyserCooldown > 0) {
             blockEntity.geyserCooldown--;
             state = state.setValue(ENABLED, false);

@@ -53,7 +53,6 @@ public class SpaceshipItem extends Item {
             }
 
             if (hitresult.getType() == HitResult.Type.BLOCK) {
-//                CelestialExploration.LOGGER.debug("SpaceshipItem HitResult BLOCK should be placing spaceship");
                 Spaceship spaceship = new Spaceship(level, hitresult.getLocation().x, hitresult.getLocation().y, hitresult.getLocation().z);
                 spaceship.setDyeType(this.type);
                 spaceship.setYRot(player.getYRot());
@@ -61,15 +60,10 @@ public class SpaceshipItem extends Item {
                     return InteractionResultHolder.fail(itemstack);
                 } else {
                     if (!level.isClientSide) {
-//                        Block block = level.getBlockState(new BlockPos(hitresult.getLocation())).getBlock();
-//                        if (block instanceof LaunchPadBlock) {
-//                        } else {
-//                            spaceship.setInvData(spaceshipData);
                             level.addFreshEntity(spaceship);
                             level.gameEvent(player, GameEvent.ENTITY_PLACE, new BlockPos(hitresult.getLocation()));
                             if (!player.getAbilities().instabuild) {
                                 itemstack.shrink(1);
-//                            }
                         }
 
                     }
@@ -82,27 +76,4 @@ public class SpaceshipItem extends Item {
             }
         }
     }
-
-//    public void setSpaceshipItemData(CompoundTag tag) {
-//        this.spaceshipData = tag;
-//    }
-//
-//    @Override
-//    public CompoundTag getShareTag(ItemStack stackIn) {
-//        CompoundTag nbt = stackIn.getOrCreateTag();
-////        LoxTankCapability.ILoxTank loxCap = CelestialExploration.getCapability(stackIn, CapabilityRegistry.LOX_TANK_CAPABILITY);
-////        if (loxCap != null) {
-////            nbt.put("LoxData", loxCap.getLoxData());
-////        }
-//        return nbt;
-//    }
-//
-//    @Override
-//    public void readShareTag(ItemStack stackIn, @Nullable CompoundTag nbtIn) {
-//        super.readShareTag(stackIn, nbtIn);
-////        if (nbtIn != null) {
-////            LoxTankCapability.ILoxTank loxCap = CelestialExploration.getCapability(stackIn, CapabilityRegistry.LOX_TANK_CAPABILITY);
-////            if (loxCap != null && nbtIn.contains("LoxData", 10)) loxCap.setLoxData(nbtIn.getCompound("LoxData"));
-////        }
-//    }
 }

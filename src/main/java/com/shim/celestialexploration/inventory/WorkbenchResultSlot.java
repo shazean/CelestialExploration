@@ -94,22 +94,6 @@ public class WorkbenchResultSlot extends Slot {
         }
     }
 
-//    public List<Recipe<?>> getRecipesToAwardAndPopExperience(ServerLevel level, Vec3 pos) {
-//        List<Recipe<?>> list = Lists.newArrayList();
-//        CelestialExploration.LOGGER.debug("getRecipesToAwardAndPopExperience");
-//
-//
-//
-//        for(Object2IntMap.Entry<ResourceLocation> entry : this.recipesUsed.object2IntEntrySet()) {
-//            level.getRecipeManager().byKey(entry.getKey()).ifPresent((recipe) -> {
-//                list.add(recipe);
-//                createExperience(level, pos, entry.getIntValue(), ((WorkbenchCraftingRecipe)recipe).getExperience());
-//            });
-//        }
-//
-//        return list;
-//    }
-
     private static void createExperience(ServerLevel level, Vec3 position, int p_155001_, float p_155002_) {
         int i = Mth.floor((float)p_155001_ * p_155002_);
         float f = Mth.frac((float)p_155001_ * p_155002_);
@@ -133,7 +117,6 @@ public class WorkbenchResultSlot extends Slot {
 
         if (cap != null) {
 
-            CelestialExploration.LOGGER.debug("fluidJustAdded: " + this.craftSlots.getFluidToLeaveBehind());
             FluidStack fluidToLeaveBehind = new FluidStack(this.craftSlots.getTank().getFluid(), this.craftSlots.getFluidToLeaveBehind());
             this.craftSlots.getTank().drain(this.craftSlots.getTank().getTankCapacity(0), IFluidHandler.FluidAction.EXECUTE);
             this.craftSlots.getTank().fill(fluidToLeaveBehind, IFluidHandler.FluidAction.EXECUTE);
@@ -184,13 +167,6 @@ public class WorkbenchResultSlot extends Slot {
                     this.craftSlots.removeItem(i, 1);
                     itemstack = this.craftSlots.getItem(i);
 
-//                    if (itemstack.getItem() instanceof IngotMoldItem) {
-//                        this.craftSlots.setItem(i, new ItemStack(ItemRegistry.INGOT_MOLD.get(), 1));
-//                    }
-
-//                    if (itemstack.getItem() instanceof BlockMoldItem) {
-//                        this.craftSlots.setItem(i, new ItemStack(ItemRegistry.BLOCK_MOLD.get(), 1));
-//                    }
                 }
 
                 if (!itemstack1.isEmpty()) {

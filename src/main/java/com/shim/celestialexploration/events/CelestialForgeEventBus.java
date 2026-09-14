@@ -9,6 +9,7 @@ import com.shim.celestialexploration.entity.spawner.CelestialCatSpawner;
 import com.shim.celestialexploration.entity.projectile.MeteorProjectile;
 import com.shim.celestialexploration.entity.spawner.CelestialTraderSpawner;
 import com.shim.celestialexploration.entity.spawner.MechaCrowSpawner;
+import com.shim.celestialexploration.entity.vehicle.Buggy;
 import com.shim.celestialexploration.entity.vehicle.Spaceship;
 import com.shim.celestialexploration.item.armor.SpacesuitArmorItem;
 import com.shim.celestialexploration.registry.*;
@@ -123,6 +124,16 @@ public class CelestialForgeEventBus {
         Player player = event.player;
         BlockPos pos = player.blockPosition();
         Level level = player.level;
+
+        if (level.getBiome(pos).is(CelestialTags.Biomes.NO_OXYGEN_BIOMES)) {
+            Entity vehicle = player.getVehicle();
+            if (vehicle != null) {
+                if (vehicle.getType().is(CelestialTags.Entities.SPACE_VEHICLE)) {
+                    player.addEffect(new MobEffectInstance(CelestialEffects.OXYGENATED_EFFECT.get(), 120, 0, false, true));
+                }
+            }
+        }
+
         if (player.getInventory().getArmor(0).getItem() instanceof SpacesuitArmorItem armorItem) { //FIXME 3 is helmet?
             if (SpacesuitArmorItem.isLightweight(armorItem)) {
 

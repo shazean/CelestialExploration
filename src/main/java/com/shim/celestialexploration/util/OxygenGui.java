@@ -55,11 +55,7 @@ public class OxygenGui extends ForgeIngameGui implements IIngameOverlay {
         int totalOxygen = oxygenHandler.getOxygen();
         int totalSeconds = totalOxygen / 20;
         int fullMinutes = totalSeconds / 60; //convert to seconds, then minutes
-        int remainingSeconds = totalOxygen == 0 ? 0 : totalSeconds % 60; //should just be whatever's left over?
-
-
-//            CelestialExploration.LOGGER.debug("rendering oxygen data. total ticks: {}, totalSeconds: {}, fullMinutes: {}, remainingSecs: {})", totalOxygen, (totalOxygen / 20), fullMinutes, remainingSeconds);
-        //TODO allow multiple placements
+        int remainingSeconds = totalOxygen == 0 ? 0 : totalSeconds % 60; //should just be whatever's left over
         int displayOffset = CelestialClientConfig.OXYGEN_LOCATION.get() == CelestialClientConfig.OxygenDisplay.RIGHT ? 92 : -114;
 
         //display number of bubbles for each full minute

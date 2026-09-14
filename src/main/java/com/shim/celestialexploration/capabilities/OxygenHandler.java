@@ -33,11 +33,9 @@ public class OxygenHandler {
             boolean oxygenated = player.hasEffect(CelestialEffects.OXYGENATED_EFFECT.get());
             boolean accessToOxygen = !this.inLocationWithoutOxygen(player);
 
-//            CelestialExploration.LOGGER.debug("oxygen? " + oxygenated);
-
             if (!oxygenated) {
                 if (!player.isCreative()) {
-                    if (!accessToOxygen || player.getVehicle() != null) {
+                    if (!accessToOxygen) {
                         this.useOxygen(player.isSprinting(), player);
                     }
                 }
@@ -77,10 +75,6 @@ public class OxygenHandler {
             if (player instanceof ServerPlayer serverPlayer) {
                 CelestialPacketHandler.INSTANCE.sendTo(new OxygenHandlerPacket(currentOxygen), serverPlayer.connection.getConnection(), NetworkDirection.PLAY_TO_CLIENT);
             }
-
-//        this.checkMaxOxygen(player);
-
-//        CelestialExploration.LOGGER.debug("currentOxygen: " + currentOxygen + ", max: " + maxOxygen);
         }
     }
 
@@ -204,7 +198,7 @@ public class OxygenHandler {
 
     public boolean checkMaxOxygen(Player player) {
         ItemStack helmet = player.getInventory().getArmor(3);
-        CelestialExploration.LOGGER.debug("potential helmet is: " + helmet.getItem());
+//        CelestialExploration.LOGGER.debug("potential helmet is: " + helmet.getItem());
         if (helmet.isEmpty()) { //no helmet
             this.maxOxygen = OxygenUtil.DEFAULT_OXYGEN_NO_HELMET;
 //            this.currentOxygen += OxygenUtil.DEFAULT_OXYGEN_NO_HELMET / 4;
@@ -218,7 +212,7 @@ public class OxygenHandler {
         }
 
         ItemStack chestplate = player.getInventory().getArmor(2); //FIXME check this is the right value?
-        CelestialExploration.LOGGER.debug("potential chestplate is: " + chestplate.getItem());
+//        CelestialExploration.LOGGER.debug("potential chestplate is: " + chestplate.getItem());
         if (!chestplate.isEmpty() && chestplate.getItem() instanceof SpacesuitArmorItem) {
             //if wearing a chestplate, add appropriate oxygen amounts
             this.maxOxygen += SpacesuitArmorItem.getOxygenBoost(chestplate, player);

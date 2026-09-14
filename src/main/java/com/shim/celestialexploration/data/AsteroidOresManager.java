@@ -58,9 +58,6 @@ public class AsteroidOresManager extends SimpleJsonResourceReloadListener {
                 CelestialLib.LOGGER.error("asteroid ores {} is missing frequency", asteroid);
             }
 
-            CelestialExploration.LOGGER.debug("for {}, ore is {}, weight is {}, frequency is {}", asteroid, ore, weight, frequency);
-
-
             if (ore != null && weight != -1 && frequency != -1)
                 AsteroidOres.addOre(ore, weight, frequency);
 

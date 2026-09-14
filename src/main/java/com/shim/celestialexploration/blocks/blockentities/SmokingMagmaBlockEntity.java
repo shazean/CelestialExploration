@@ -31,8 +31,6 @@ public class SmokingMagmaBlockEntity extends BlockEntity {
     }
 
     public static void tick(Level level, BlockPos pos, BlockState state, SmokingMagmaBlockEntity blockEntity) {
-//        CelestialExploration.LOGGER.debug("enabled? " + state.getValue(ENABLED) + ", geyserCooldown: " + blockEntity.geyserCooldown + ", duration: " + blockEntity.geyserDuration);
-
         Random random = level.random;
         if (random.nextFloat() < 0.11F) {
             for(int i = 0; i < random.nextInt(2) + 2; ++i) {

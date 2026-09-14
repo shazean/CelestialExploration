@@ -74,7 +74,6 @@ public class MechaCrowSpawner implements CustomSpawner {
     public static boolean isOnValidBlock(ServerLevel level, BlockPos pos) {
         pos = pos.below();
         if (level.getBlockState(pos).is(CelestialBlocks.MOON_SAND_PATH.get()) || level.getBlockState(pos).is(CelestialBlocks.IO_SAND_PATH.get())) {
-            CelestialExploration.LOGGER.debug("standing on sand path");
             return true;
         } else if (level.getBlockState(pos).is(CelestialBlocks.MOON_SAND.get()) || level.getBlockState(pos).is(CelestialBlocks.IO_SAND.get())) {
             return level.getRandom().nextDouble() < 0.20;

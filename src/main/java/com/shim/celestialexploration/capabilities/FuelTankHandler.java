@@ -41,7 +41,6 @@ public class FuelTankHandler implements IFuelTank {
     public void setAmount(int amount) {
         fuelAmount = amount;
         int whatFullnessWillBe = (int) (((double) fuelAmount / (double) this.getTotalCapacity()) * this.getCapacityModifier());
-        CelestialExploration.LOGGER.debug("fullness: " + fullness + ", will be: " + whatFullnessWillBe + " ((" + fuelAmount + " / " + this.getTotalCapacity() + ") * " + this.getCapacityModifier() + ")");
         fullness = (int) (((double) fuelAmount / (double)this.getTotalCapacity()) * this.getCapacityModifier());
     }
 

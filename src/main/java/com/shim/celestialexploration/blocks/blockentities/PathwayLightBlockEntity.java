@@ -21,7 +21,6 @@ public class PathwayLightBlockEntity extends BlockEntity {
 
     public static void tick(Level level, BlockPos pos, BlockState state, PathwayLightBlockEntity blockEntity) {
         if (!level.isClientSide) {
-//            CelestialExploration.LOGGER.debug("pathway block is ticking " + blockEntity.litTime);
             if (blockEntity.litTime > 0) {
                 blockEntity.litTime--;
             }

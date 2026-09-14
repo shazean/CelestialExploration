@@ -17,12 +17,6 @@ public class MercurySlimeBlockEntity extends BlockEntity {
     }
 
     public static void tick(Level level, BlockPos pos, BlockState state, MercurySlimeBlockEntity blockEntity) {
-//        CelestialExploration.LOGGER.debug("enabled? " + state.getValue(ENABLED) + ", geyserCooldown: " + blockEntity.geyserCooldown + ", duration: " + blockEntity.geyserDuration);
-
-//        if (level.getTimeOfDay(1) % 10 == 0) {
-//            CelestialExploration.LOGGER.debug(level.getTimeOfDay(0.0F));
-//        }
-
         if (!level.isClientSide()) {
 
             if (level.isNight()) {

@@ -103,7 +103,6 @@ public class WorkbenchBlock extends BaseEntityBlock {
             ItemStack itemStack;
             ItemEntity itemEntity;
             itemStack = getFullBucketItem(tank.getFluid());
-//            itemEntity = new ItemEntity(level,(double)pos.getX() + 0.5D, (double)pos.getY() + 0.5D, (double)pos.getZ() + 0.5D, itemStack);
             int numItems = 0;
             int i;
             int j = 0;
@@ -111,46 +110,16 @@ public class WorkbenchBlock extends BaseEntityBlock {
             for (i = 0; i < tank.getFluidAmount() / 1000; i++) {
                 itemStack = getFullBucketItem(tank.getFluid());
                 Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), itemStack);
-//                tank.drain(1000, IFluidHandler.FluidAction.EXECUTE);
-//                level.addFreshEntity(itemEntity);
-//                CelestialExploration.LOGGER.debug("i:" + i + " fluidAmount / 1000: " + (tank.getFluidAmount() / 1000));
                 j++;
             }
 
             itemStack = getPartialBucketItem(tank.getFluid());
-//            itemEntity = new ItemEntity(level,(double)pos.getX() + 0.5D, (double)pos.getY() + 0.5D, (double)pos.getZ() + 0.5D, itemStack);
             tank.drain(j * 1000, IFluidHandler.FluidAction.EXECUTE);
 
             for (i = 0; i < tank.getFluidAmount() / 100; i++) {
                 itemStack = getPartialBucketItem(tank.getFluid());
                 Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), itemStack);
-
-//                level.addFreshEntity(itemEntity);
-//                CelestialExploration.LOGGER.debug("i:" + i + " fluidAmount / 100: " + (tank.getFluidAmount() / 100));
-
             }
-
-//            while (tank.getFluidAmount() >= 1000) {
-//                tank.drain(1000, IFluidHandler.FluidAction.EXECUTE);
-//                CelestialExploration.LOGGER.debug("Full buckets amount:" + tank.getFluidAmount());
-//            }
-//            itemStack.setCount(itemStack.getCount() + 1);
-//            CelestialExploration.LOGGER.debug("Num items to drop" + itemStack.getCount());
-//            itemEntity = new ItemEntity(level,(double)pos.getX() + 0.5D, (double)pos.getY() + 0.5D, (double)pos.getZ() + 0.5D, itemStack);
-//            level.addFreshEntity(itemEntity);
-//
-//            itemStack = getPartialBucketItem(tank.getFluid());
-//
-//            while (tank.getFluidAmount() >= 100) {
-//                tank.drain(100, IFluidHandler.FluidAction.EXECUTE);
-//                CelestialExploration.LOGGER.debug("Partial buckets amount:" + tank.getFluidAmount());
-//            }
-//            itemStack.setCount(itemStack.getCount() + 1);
-//            itemEntity = new ItemEntity(level,(double)pos.getX() + 0.5D, (double)pos.getY() + 0.5D, (double)pos.getZ() + 0.5D, itemStack);
-//            level.addFreshEntity(itemEntity);
-
-
-//            CelestialExploration.LOGGER.debug("Fluid amount:" + tank.getFluidAmount());
         }
         super.playerWillDestroy(level, pos, state, player);
     }

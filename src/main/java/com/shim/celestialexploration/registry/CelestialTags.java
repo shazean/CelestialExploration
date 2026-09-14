@@ -85,6 +85,8 @@ public class CelestialTags {
 
         public static final TagKey<Block> MOON_COW_SPAWNABLE_ON = BlockTags.create(modLoc("moon_cow_spawnable_on"));
 
+        public static final TagKey<Block> SAND_OR_REGOLITH = BlockTags.create(modLoc("sand_or_regolith"));
+        public static final TagKey<Block> GRAVEL_OR_COARSE_REGOLITH = BlockTags.create(modLoc("gravel_or_coarse_regolith"));
 
 
     }
@@ -149,6 +151,8 @@ public class CelestialTags {
         public static final TagKey<Item> SLIME_DROPS = ItemTags.create(modLoc("slime_drops"));
         public static final TagKey<Item> BAUXITE_ORE = ItemTags.create(modLoc("bauxite_ore"));
 
+        public static final TagKey<Item> SAND_OR_REGOLITH = ItemTags.create(modLoc("sand_or_regolith"));
+        public static final TagKey<Item> GRAVEL_OR_COARSE_REGOLITH = ItemTags.create(modLoc("gravel_or_coarse_regolith"));
 
 
     }
@@ -190,6 +194,7 @@ public class CelestialTags {
 
     public static class Entities {
         public static final TagKey<EntityType<?>> FARM_ANIMALS = create("farm_animals");
+        public static final TagKey<EntityType<?>> SPACE_VEHICLE = create("space_vehicle");
 
 //        public static final TagKey<EntityType<?>> LOW_GRAVITY_EXEMPT = create("low_gravity_exempt");
 //        public static final TagKey<EntityType<?>> HIGH_GRAVITY_EXEMPT = create("high_gravity_exempt");

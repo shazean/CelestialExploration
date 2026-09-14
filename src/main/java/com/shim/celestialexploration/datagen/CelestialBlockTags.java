@@ -117,6 +117,16 @@ public class CelestialBlockTags extends BlockTagsProvider {
 //                .add(CelestialBlocks.UNSTABLE_OXYGEN_GENERATOR.get())
         ;
 
+        tag(CelestialTags.Blocks.SAND_OR_REGOLITH)
+                .addTag(CelestialTags.Blocks.REGOLITH)
+                .add(Blocks.SAND)
+                .add(Blocks.RED_SAND);
+
+        tag(CelestialTags.Blocks.GRAVEL_OR_COARSE_REGOLITH)
+                .addTag(CelestialTags.Blocks.COARSE_REGOLITH)
+                .add(Blocks.GRAVEL);
+
+
         tag(BlockTags.MINEABLE_WITH_AXE)
                 .add(CelestialBlocks.WORKBENCH.get());
 

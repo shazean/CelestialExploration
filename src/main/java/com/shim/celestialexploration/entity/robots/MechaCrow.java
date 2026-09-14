@@ -152,20 +152,6 @@ public class MechaCrow extends TamableAnimal implements ContainerListener, IDyea
         spawnData = super.finalizeSpawn(levelAccessor, difficulty, spawnType, spawnData, nbt);
 
         Level level = levelAccessor.getLevel();
-//        if (level instanceof ServerLevel serverLevel) {
-//            Registry<ConfiguredStructureFeature<?, ?>> registry = serverLevel.registryAccess().registryOrThrow(Registry.CONFIGURED_STRUCTURE_FEATURE_REGISTRY);
-//            if (ChunkGenerator.allConfigurations(registry, CelestialStructures.LUNAR_COLONY.get()).anyMatch((structureFeature) -> {
-////                if (structureFeature.biomes.getRandomElement(this.random).isPresent()) {
-////                    Holder<Biome> biome = structureFeature.biomes.getRandomElement(this.random).get();
-////                    this.colorForSpawning = MoonColor.getColor(biome);
-////                    CelestialExploration.LOGGER.debug("biome: " + biome + ", color: " + this.colorForSpawning);
-////                }
-//                return serverLevel.structureFeatureManager().getStructureWithPieceAt(this.blockPosition(), structureFeature).isValid();
-//            })) {
-//                this.setPersistenceRequired();
-//            }
-//        }
-
         Holder<Biome> biome = level.getBiome(this.blockPosition());
         this.colorForSpawning = MoonColor.getColor(biome);
 
@@ -182,8 +168,6 @@ public class MechaCrow extends TamableAnimal implements ContainerListener, IDyea
             this.setDyeType(this.colorForSpawning);
         else
             this.entityData.set(DATA_ID_TYPE, this.random.nextInt(16));
-
-        CelestialExploration.LOGGER.debug("spawning mechacrow! with color: " +  this.colorForSpawning);
 
         return spawnData;
     }
@@ -400,7 +384,7 @@ public class MechaCrow extends TamableAnimal implements ContainerListener, IDyea
     @Override
     protected void pickUpItem(ItemEntity itemEntity) {
         ItemStack itemstack = itemEntity.getItem();
-//        CelestialExploration.LOGGER.debug("item is: " + itemstack + ", thrown by: " + itemEntity.getThrower() + ", looking for: " + this.getOwnerUUID());
+
         if (itemEntity.getThrower() == null) {
             return;
         }
@@ -408,10 +392,8 @@ public class MechaCrow extends TamableAnimal implements ContainerListener, IDyea
             if (this.inventory.canAddItem(itemstack)) {
 
                 this.inventory.addItem(itemstack);
-                CelestialExploration.LOGGER.debug("checking for recipe next");
 
                 if (hasRecipe(this)) {
-                    CelestialExploration.LOGGER.debug("has recipe");
 
                     this.onItemPickup(itemEntity);
                     this.take(itemEntity, itemstack.getCount());
@@ -440,15 +422,7 @@ public class MechaCrow extends TamableAnimal implements ContainerListener, IDyea
 
     private static boolean hasRecipe(MechaCrow entity) {
         Level level = entity.level;
-
-//        List<MechaCrowCraftingRecipe> s = level.getRecipeManager().getAllRecipesFor(MechaCrowCraftingRecipe.Type.INSTANCE);
-//        CelestialExploration.LOGGER.debug("crow recipes: {}", s);
-//        List<WorkbenchCraftingRecipe> s1 = level.getRecipeManager().getAllRecipesFor(WorkbenchCraftingRecipe.Type.INSTANCE);
-//        CelestialExploration.LOGGER.debug("workbench recipes: {}", s1);
-
-
         Optional<MechaCrowCraftingRecipe> match = level.getRecipeManager().getRecipeFor(MechaCrowCraftingRecipe.Type.INSTANCE, entity.inventory, level);
-
         return match.isPresent();
     }
 

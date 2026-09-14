@@ -23,6 +23,7 @@ import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.fluids.FluidAttributes;
 import net.minecraftforge.fluids.FluidStack;
 import org.jetbrains.annotations.NotNull;
@@ -75,30 +76,20 @@ public class WorkbenchCraftingRecipe implements Recipe<WorkbenchCraftingContaine
 
     @Override
     public boolean matches(WorkbenchCraftingContainer container, Level level) {
-//        return ingredient.test(container.getItem(0));
         if (!container.getTank().getFluid().containsFluid(new FluidStack(fluidIngredient, (int)(buckets * FluidAttributes.BUCKET_VOLUME)))) {
             return false;
         }
-
-//        if ((buckets * 1000) > container.getTank().getFluidAmount()) {
-//            return false;
-//        }
-
         for(int i = 0; i <= container.getWidth() - this.width; ++i) {
             for(int j = 0; j <= container.getHeight() - this.height; ++j) {
                 if (this.matches(container, i, j, true)) {
-//                    CelestialExploration.LOGGER.debug("matches!");
                     return true;
                 }
 
                 if (this.matches(container, i, j, false)) {
-//                    CelestialExploration.LOGGER.debug("matches!");
                     return true;
                 }
             }
         }
-//        CelestialExploration.LOGGER.debug("does not match!");
-
         return false;
     }
 
@@ -230,11 +221,7 @@ public class WorkbenchCraftingRecipe implements Recipe<WorkbenchCraftingContaine
 
     public boolean isIncomplete() {
         NonNullList<Ingredient> nonnulllist = this.getIngredients();
-        return nonnulllist.isEmpty() || nonnulllist.stream().filter((p_151277_) -> {
-            return !p_151277_.isEmpty();
-        }).anyMatch((p_151273_) -> {
-            return net.minecraftforge.common.ForgeHooks.hasNoElements(p_151273_);
-        });
+        return nonnulllist.isEmpty() || nonnulllist.stream().filter((p_151277_) -> !p_151277_.isEmpty()).anyMatch(ForgeHooks::hasNoElements);
     }
 
     private static int firstNonSpace(String p_44185_) {
@@ -337,7 +324,6 @@ public class WorkbenchCraftingRecipe implements Recipe<WorkbenchCraftingContaine
 
 
             ItemStack result = itemStackFromJson(GsonHelper.getAsJsonObject(json, "result"));
-//            CelestialExploration.LOGGER.debug("ingredients:" + ingredients + " result: " + result);
             return new WorkbenchCraftingRecipe(id, group, width, height, ingredients, fluidIngredient, buckets, result, experience);
         }
 

@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "#celestialexploration:coarse_regolith",
+    "minecraft:gravel"
+  ]
+}

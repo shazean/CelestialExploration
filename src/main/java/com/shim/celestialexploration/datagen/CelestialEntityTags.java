@@ -32,5 +32,10 @@ public class CelestialEntityTags extends EntityTypeTagsProvider {
                 .add(CelestialEntities.MECHACERBERUS.get())
                 .add(CelestialEntities.MECHACERBERUS_BOSS.get());
 
+        tag(CelestialTags.Entities.SPACE_VEHICLE)
+                .add(CelestialEntities.SPACESHIP.get())
+                .add(CelestialEntities.BUGGY.get());
+
+
     }
 }
