@@ -30,7 +30,7 @@ import org.apache.logging.log4j.Logger;
 
 import javax.annotation.Nullable;
 
-@Mod("celestialexploration")
+@Mod(CelestialExploration.MODID)
 public class CelestialExploration {
 
     // Directly reference a log4j logger.
@@ -75,9 +75,9 @@ public class CelestialExploration {
         CelestialPlanets.PLANETS.register(modEventBus);
 
         modEventBus.addListener(CelestialCapabilities::registerCapabilities);
-        MinecraftForge.EVENT_BUS.addGenericListener(ItemStack.class, CelestialCapabilities::attachItemCapabilities);
-        MinecraftForge.EVENT_BUS.addGenericListener(BlockEntity.class, CelestialCapabilities::attachBlockCapabilities);
-        MinecraftForge.EVENT_BUS.addGenericListener(Entity.class, CelestialCapabilities::attachEntityCapabilities);
+        bus.addGenericListener(ItemStack.class, CelestialCapabilities::attachItemCapabilities);
+        bus.addGenericListener(BlockEntity.class, CelestialCapabilities::attachBlockCapabilities);
+        bus.addGenericListener(Entity.class, CelestialCapabilities::attachEntityCapabilities);
         
         ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, CelestialClientConfig.SPEC, "celestialexploration-client.toml");
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, CelestialCommonConfig.SPEC, "celestialexploration-common.toml");
@@ -85,7 +85,7 @@ public class CelestialExploration {
 
         AzureLib.initialize();
 
-        MinecraftForge.EVENT_BUS.addListener(this::reloadResources);
+        bus.addListener(this::reloadResources);
 
         bus.addListener((InputEvent.KeyInputEvent e) -> onKeyPress(e.getKey(), e.getAction(), e.getModifiers()));
     }
