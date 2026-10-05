@@ -53,9 +53,6 @@ public class CelestialStructureKeys {
     public static ResourceKey<ConfiguredStructureFeature<?, ?>> JUPITER_DUNGEON = createKey("jupiter_dungeon");
     public static ResourceKey<ConfiguredStructureFeature<?, ?>> MARS_LABYRINTH = createKey("mars_labyrinth");
 
-    //RESEARCH TUNNELS
-    public static ResourceKey<ConfiguredStructureFeature<?, ?>> RESEARCH_TUNNEL = createKey("research_tunnel");
-
     //OTHER
     public static ResourceKey<ConfiguredStructureFeature<?, ?>> JUPITER_CLOUD = createKey("jupiter_cloud");
     public static ResourceKey<ConfiguredStructureFeature<?, ?>> LINEAE = createKey("lineae");

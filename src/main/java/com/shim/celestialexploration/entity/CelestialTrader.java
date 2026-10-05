@@ -107,13 +107,14 @@ public class CelestialTrader extends AbstractVillager {
         if (listing1 != null && listing2 != null) {
             MerchantOffers merchantoffers = this.getOffers();
             this.addOffersFromItemListings(merchantoffers, listing1, NUMBER_OF_TRADE_OFFERS);
-            int i = this.random.nextInt(listing2.length);
-            VillagerTrades.ItemListing villagertrades$itemlisting = listing2[i];
-            MerchantOffer merchantoffer = villagertrades$itemlisting.getOffer(this, this.random);
-            if (merchantoffer != null) {
-                merchantoffers.add(merchantoffer);
+            if (listing2.length > 1) { //TODO find out why this is sometimes not a positive number? (assuming its a 0…)
+                int i = this.random.nextInt(listing2.length);
+                VillagerTrades.ItemListing villagertrades$itemlisting = listing2[i];
+                MerchantOffer merchantoffer = villagertrades$itemlisting.getOffer(this, this.random);
+                if (merchantoffer != null) {
+                    merchantoffers.add(merchantoffer);
+                }
             }
-
         }
     }
 
@@ -123,7 +124,6 @@ public class CelestialTrader extends AbstractVillager {
         if (this.wanderTarget != null) {
             p_35861_.put("WanderTarget", NbtUtils.writeBlockPos(this.wanderTarget));
         }
-
     }
 
     public void readAdditionalSaveData(CompoundTag p_35852_) {
@@ -148,7 +148,6 @@ public class CelestialTrader extends AbstractVillager {
             int i = 3 + this.random.nextInt(4);
             this.level.addFreshEntity(new ExperienceOrb(this.level, this.getX(), this.getY() + 0.5D, this.getZ(), i));
         }
-
     }
 
     protected SoundEvent getAmbientSound() {

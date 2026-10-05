@@ -1,97 +1,59 @@
 package com.shim.celestialexploration.world.structures;
 
 import com.mojang.serialization.Codec;
-import com.shim.celestialexploration.registry.CelestialBlocks;
-import com.shim.celestialexploration.world.features.ResearchTunnelConfiguration;
-import net.minecraft.core.QuartPos;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.levelgen.GenerationStep;
-import net.minecraft.world.level.levelgen.LegacyRandomSource;
-import net.minecraft.world.level.levelgen.WorldgenRandom;
 import net.minecraft.world.level.levelgen.feature.StructureFeature;
+import net.minecraft.world.level.levelgen.feature.configurations.JigsawConfiguration;
+import net.minecraft.world.level.levelgen.structure.PoolElementStructurePiece;
 import net.minecraft.world.level.levelgen.structure.PostPlacementProcessor;
 import net.minecraft.world.level.levelgen.structure.pieces.PieceGenerator;
 import net.minecraft.world.level.levelgen.structure.pieces.PieceGeneratorSupplier;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder;
+import net.minecraft.world.level.levelgen.structure.pools.JigsawPlacement;
+import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
 
-import java.util.Arrays;
-import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.Optional;
+import java.util.Random;
 
-public class ResearchTunnelStructure extends StructureFeature<ResearchTunnelConfiguration> {
+public class ResearchTunnelStructure extends StructureFeature<JigsawConfiguration> {
+
+    public static final Codec<JigsawConfiguration> CODEC = RecordCodecBuilder.create((codec) -> codec.group(
+            StructureTemplatePool.CODEC.fieldOf("start_pool").forGetter(JigsawConfiguration::startPool),
+            Codec.intRange(0, 30).fieldOf("size").forGetter(JigsawConfiguration::maxDepth)
+    ).apply(codec, JigsawConfiguration::new));
 
     public ResearchTunnelStructure() {
-        super(ResearchTunnelConfiguration.CODEC, PieceGeneratorSupplier.simple(ResearchTunnelStructure::checkLocation, ResearchTunnelStructure::generatePieces), PostPlacementProcessor.NONE);
+        super(CODEC, ResearchTunnelStructure::createPiecesGenerator, PostPlacementProcessor.NONE);
     }
 
     @Override
     public GenerationStep.Decoration step() {
-        return GenerationStep.Decoration.UNDERGROUND_STRUCTURES;
+        return GenerationStep.Decoration.SURFACE_STRUCTURES;
     }
 
-    public static boolean checkLocation(PieceGeneratorSupplier.Context<ResearchTunnelConfiguration> context) {
-        WorldgenRandom worldgenrandom = new WorldgenRandom(new LegacyRandomSource(0L));
-        worldgenrandom.setLargeFeatureSeed(context.seed(), context.chunkPos().x, context.chunkPos().z);
-        double d0 = (context.config()).probability;
-        return !(worldgenrandom.nextDouble() >= d0) && context.validBiome().test(context.chunkGenerator().getNoiseBiome(QuartPos.fromBlock(context.chunkPos().getMiddleBlockX()), QuartPos.fromBlock(50), QuartPos.fromBlock(context.chunkPos().getMiddleBlockZ())));
+
+    private static boolean isFeatureChunk(PieceGeneratorSupplier.Context<JigsawConfiguration> context) {
+        return true;
     }
 
-    public static void generatePieces(StructurePiecesBuilder builder, PieceGenerator.Context<ResearchTunnelConfiguration> context) {
-        ResearchTunnelPieces.ResearchTunnelRoom tunnelpieces$tunnelroom = new ResearchTunnelPieces.ResearchTunnelRoom(0, context.random(), context.chunkPos().getBlockX(2), context.chunkPos().getBlockZ(2), (context.config()).type);
-        builder.addPiece(tunnelpieces$tunnelroom);
-        tunnelpieces$tunnelroom.addChildren(tunnelpieces$tunnelroom, builder, context.random());
-        int i = context.chunkGenerator().getSeaLevel();
-        builder.moveBelowSeaLevel(i, context.chunkGenerator().getMinY(), context.random(), 10);
-    }
+    public static Optional<PieceGenerator<JigsawConfiguration>> createPiecesGenerator(PieceGeneratorSupplier.Context<JigsawConfiguration> context) {
 
-    public enum Type implements StringRepresentable {
-        MARS("mars", CelestialBlocks.MARS_BRICKS.get(), CelestialBlocks.MARS_BRICKS.get(), CelestialBlocks.MARS_BRICK_WALL.get()),
-        MOON("moon", CelestialBlocks.MOON_BRICKS.get(), CelestialBlocks.MOON_BRICKS.get(), CelestialBlocks.MOON_BRICK_WALL.get()),
-        VENUS("venus", CelestialBlocks.VENUS_BRICKS.get(), CelestialBlocks.VENUS_BRICKS.get(), CelestialBlocks.VENUS_BRICK_WALL.get()),
-        MERCURY("mercury", CelestialBlocks.MERCURY_BRICKS.get(), CelestialBlocks.MERCURY_BRICKS.get(), CelestialBlocks.MERCURY_BRICK_WALL.get());
-
-        public static final Codec<ResearchTunnelStructure.Type> CODEC = StringRepresentable.fromEnum(ResearchTunnelStructure.Type::values, ResearchTunnelStructure.Type::byName);
-        private static final Map<String, ResearchTunnelStructure.Type> BY_NAME = Arrays.stream(values()).collect(Collectors.toMap(ResearchTunnelStructure.Type::getName, (p_66333_) -> p_66333_));
-        private final String name;
-        private final BlockState woodState;
-        private final BlockState planksState;
-        private final BlockState fenceState;
-
-        Type(String name, Block woodState, Block plank, Block fence) {
-            this.name = name;
-            this.woodState = woodState.defaultBlockState();
-            this.planksState = plank.defaultBlockState();
-            this.fenceState = fence.defaultBlockState();
+        if (!ResearchTunnelStructure.isFeatureChunk(context)) {
+            return Optional.empty();
         }
 
-        public String getName() {
-            return this.name;
-        }
+        BlockPos blockpos = context.chunkPos().getMiddleBlockPosition(0);
+        blockpos = new BlockPos(blockpos.getX(), context.heightAccessor().getMinBuildHeight() + (new Random().nextInt(64)), blockpos.getZ());
 
-        private static ResearchTunnelStructure.Type byName(String name) {
-            return BY_NAME.get(name);
-        }
+        Optional<PieceGenerator<JigsawConfiguration>> structurePiecesGenerator =
+                JigsawPlacement.addPieces(context, PoolElementStructurePiece::new, blockpos,false, false);
 
-        public static ResearchTunnelStructure.Type byId(int id) {
-            return id >= 0 && id < values().length ? values()[id] : MOON;
-        }
+        if (structurePiecesGenerator.isPresent()) {
+//            CelestialExploration.LOGGER.log(Level.DEBUG, "Mars colony at {}", blockpos);
+        }es:
 
-        public BlockState getWoodState() {
-            return this.woodState;
-        }
-
-        public BlockState getPlanksState() {
-            return this.planksState;
-        }
-
-        public BlockState getFenceState() {
-            return this.fenceState;
-        }
-
-        public String getSerializedName() {
-            return this.name;
-        }
+        return structurePiecesGenerator;
     }
 }

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "side": "celestialexploration:block/purple_ceramic_tile",
+    "bottom": "celestialexploration:block/purple_ceramic_tile",
+    "top": "celestialexploration:block/purple_ceramic_tile"
+  }
+}

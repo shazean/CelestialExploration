@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GGG",
+    "GXG",
+    "GGG"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:steel_wool"
+    },
+    "G": {
+      "tag": "celestialexploration:dyed_ceramic_brick"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:ceramic_brick",
+    "count": 8
+  }
+}

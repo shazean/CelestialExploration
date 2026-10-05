@@ -58,8 +58,11 @@ public class CelestialTags {
         public static final TagKey<Block> CONNECTED_GLASS = BlockTags.create(modLoc("connected_glass"));
         public static final TagKey<Block> CONNECTED_GLASS_PANE = BlockTags.create(modLoc("connected_glass_pane"));
 
+        public static final TagKey<Block> CERAMIC = BlockTags.create(modLoc("ceramic"));
         public static final TagKey<Block> DYED_CERAMIC = BlockTags.create(modLoc("dyed_ceramic"));
         public static final TagKey<Block> DYED_CERAMIC_TILE = BlockTags.create(modLoc("dyed_ceramic_tile"));
+        public static final TagKey<Block> DYED_CERAMIC_BRICK = BlockTags.create(modLoc("dyed_ceramic_brick"));
+//        public static final TagKey<Block> DYED_THIN_CERAMIC = BlockTags.create(modLoc("dyed_thin_ceramic_tile"));
         public static final TagKey<Block> PAINTED_CERAMIC = BlockTags.create(modLoc("painted_ceramic"));
 
         public static final TagKey<Block> MARS_PORTAL_FRAME_BLOCK = BlockTags.create(modLoc("mars_portal_frame_block"));
@@ -129,8 +132,10 @@ public class CelestialTags {
         public static final TagKey<Item> METEOR = ItemTags.create(modLoc("meteor"));
 
         public static final TagKey<Item> DYED_CERAMIC = ItemTags.create(modLoc("dyed_ceramic"));
+        public static final TagKey<Item> DYED_CERAMIC_TILE = ItemTags.create(modLoc("dyed_ceramic_tile"));
+        public static final TagKey<Item> DYED_CERAMIC_BRICK = ItemTags.create(modLoc("dyed_ceramic_brick"));
         public static final TagKey<Item> PAINTED_CERAMIC = ItemTags.create(modLoc("painted_ceramic"));
-        public static final TagKey<Item> DYED_CERAMIC_TILE = ItemTags.create(modLoc("ceramic_tile"));
+        public static final TagKey<Item> CERAMIC = ItemTags.create(modLoc("ceramic"));
 
         public static final TagKey<Item> MAG_RAIL = ItemTags.create(modLoc("mag_rail"));
         public static final TagKey<Item> CHESTS = ItemTags.create(modLoc("chests"));
@@ -180,6 +185,11 @@ public class CelestialTags {
         public static final TagKey<Biome> SOLAR_FIELDS_BIOMES = create("has_structure/solar_fields");
 
         public static final TagKey<Biome> NO_OXYGEN_BIOMES = create("no_oxygen");
+
+        public static final TagKey<Biome> MARS_RESEARCH_TUNNEL_BIOMES = create("has_structure/mars_research_tunnel");
+        public static final TagKey<Biome> MOON_RESEARCH_TUNNEL_BIOMES = create("has_structure/moon_research_tunnel");
+        public static final TagKey<Biome> MERCURY_RESEARCH_TUNNEL_BIOMES = create("has_structure/mercury_research_tunnel");
+
 
 
         //        public static final TagKey<Biome> PLANETS = create("planets");

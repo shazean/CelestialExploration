@@ -1,0 +1,105 @@
+{
+  "name": "celestialexploration:mars_colony/mars_colony_buildings",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 5,
+      "element": {
+        "location": "celestialexploration:mars_colony/crafting_hall",
+        "processors": "celestialexploration:mars_colony",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "celestialexploration:mars_colony/farm",
+        "processors": "celestialexploration:mars_colony",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 8,
+      "element": {
+        "location": "celestialexploration:mars_colony/greenhouse",
+        "processors": "celestialexploration:mars_colony",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 5,
+      "element": {
+        "location": "celestialexploration:mars_colony/house_alt",
+        "processors": "celestialexploration:mars_colony",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 5,
+      "element": {
+        "location": "celestialexploration:mars_colony/small_house_alt",
+        "processors": "celestialexploration:mars_colony",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "location": "celestialexploration:mars_colony/house",
+        "processors": "celestialexploration:mars_colony",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "location": "celestialexploration:mars_colony/small_house",
+        "processors": "celestialexploration:mars_colony",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "location": "celestialexploration:mars_colony/mess_hall",
+        "processors": "celestialexploration:mars_colony",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 8,
+      "element": {
+        "location": "celestialexploration:mars_colony/research_hub",
+        "processors": "celestialexploration:mars_colony",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 8,
+      "element": {
+        "location": "celestialexploration:mars_colony/smithy",
+        "processors": "celestialexploration:mars_colony",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 8,
+      "element": {
+        "location": "minecraft:empty",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

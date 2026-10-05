@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "side": "celestialexploration:block/magenta_ceramic_tile",
+    "bottom": "celestialexploration:block/magenta_ceramic_tile",
+    "top": "celestialexploration:block/magenta_ceramic_tile"
+  }
+}

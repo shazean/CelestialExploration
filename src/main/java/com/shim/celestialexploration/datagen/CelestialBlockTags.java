@@ -86,9 +86,9 @@ public class CelestialBlockTags extends BlockTagsProvider {
                 .add(CelestialBlocks.COMPRESSED_IO_COBBLED_DEEPSLATE.get()).add(CelestialBlocks.SUPER_COMPRESSED_IO_COBBLED_DEEPSLATE.get())
 
                 //CERAMIC
-                .add(CelestialBlocks.CERAMIC.get()).add(CelestialBlocks.CERAMIC_TILE.get())
+                .add(CelestialBlocks.CERAMIC.get()).add(CelestialBlocks.THIN_CERAMIC.get())
                 .addTag(CelestialTags.Blocks.DYED_CERAMIC)
-                .addTag(CelestialTags.Blocks.DYED_CERAMIC_TILE)
+                .addTag(CelestialTags.Blocks.CERAMIC)
                 .addTag(CelestialTags.Blocks.PAINTED_CERAMIC)
                 
                 //OTHER
@@ -105,7 +105,6 @@ public class CelestialBlockTags extends BlockTagsProvider {
 
                 .add(CelestialBlocks.MAGRAIL.get()).add(CelestialBlocks.ACTIVATOR_MAGRAIL.get()).add(CelestialBlocks.DETECTOR_MAGRAIL.get()).add(CelestialBlocks.POWERED_MAGRAIL.get())
 
-
                 .add(CelestialBlocks.STEEL_FRAME.get())
 
                 .addTag(CelestialTags.Blocks.CHESTS)
@@ -115,6 +114,8 @@ public class CelestialBlockTags extends BlockTagsProvider {
 
                 .add(CelestialBlocks.WORKBENCH.get()).add(CelestialBlocks.OXYGEN_COMPRESSOR.get()).add(CelestialBlocks.OXYGEN_GENERATOR.get())
 //                .add(CelestialBlocks.UNSTABLE_OXYGEN_GENERATOR.get())
+
+                .add(CelestialBlocks.DRY_ICE.get())
         ;
 
         tag(CelestialTags.Blocks.SAND_OR_REGOLITH)
@@ -252,7 +253,25 @@ public class CelestialBlockTags extends BlockTagsProvider {
                 .add(CelestialBlocks.CALLISTO_BRICK_SLAB.get())
                 .add(CelestialBlocks.GANYMEDE_BRICK_SLAB.get())
 
-                .add(CelestialBlocks.METEOR_BRICK_SLAB.get());
+                .add(CelestialBlocks.METEOR_BRICK_SLAB.get())
+
+        .add(CelestialBlocks.CERAMIC_SLAB.get()).add(CelestialBlocks.CERAMIC_TILE_SLAB.get()).add(CelestialBlocks.CERAMIC_BRICK_SLAB.get())
+        .add(CelestialBlocks.WHITE_CERAMIC_SLAB.get()).add(CelestialBlocks.LIGHT_GREY_CERAMIC_SLAB.get()).add(CelestialBlocks.GREY_CERAMIC_SLAB.get())
+        .add(CelestialBlocks.BLACK_CERAMIC_SLAB.get()).add(CelestialBlocks.PURPLE_CERAMIC_SLAB.get()).add(CelestialBlocks.MAGENTA_CERAMIC_SLAB.get())
+        .add(CelestialBlocks.BLUE_CERAMIC_SLAB.get()).add(CelestialBlocks.LIGHT_BLUE_CERAMIC_SLAB.get()).add(CelestialBlocks.CYAN_CERAMIC_SLAB.get())
+        .add(CelestialBlocks.GREEN_CERAMIC_SLAB.get()).add(CelestialBlocks.LIME_CERAMIC_SLAB.get()).add(CelestialBlocks.YELLOW_CERAMIC_SLAB.get())
+        .add(CelestialBlocks.ORANGE_CERAMIC_SLAB.get()).add(CelestialBlocks.BROWN_CERAMIC_SLAB.get()).add(CelestialBlocks.RED_CERAMIC_SLAB.get())
+        .add(CelestialBlocks.PINK_CERAMIC_SLAB.get()).add(CelestialBlocks.WHITE_CERAMIC_TILE_SLAB.get()).add(CelestialBlocks.LIGHT_GREY_CERAMIC_TILE_SLAB.get())
+        .add(CelestialBlocks.GREY_CERAMIC_TILE_SLAB.get()).add(CelestialBlocks.BLACK_CERAMIC_TILE_SLAB.get()).add(CelestialBlocks.PURPLE_CERAMIC_TILE_SLAB.get())
+        .add(CelestialBlocks.MAGENTA_CERAMIC_TILE_SLAB.get()).add(CelestialBlocks.BLUE_CERAMIC_TILE_SLAB.get()).add(CelestialBlocks.LIGHT_BLUE_CERAMIC_TILE_SLAB.get())
+        .add(CelestialBlocks.CYAN_CERAMIC_TILE_SLAB.get()).add(CelestialBlocks.GREEN_CERAMIC_TILE_SLAB.get()).add(CelestialBlocks.LIME_CERAMIC_TILE_SLAB.get())
+        .add(CelestialBlocks.YELLOW_CERAMIC_TILE_SLAB.get()).add(CelestialBlocks.ORANGE_CERAMIC_TILE_SLAB.get()).add(CelestialBlocks.BROWN_CERAMIC_TILE_SLAB.get())
+        .add(CelestialBlocks.RED_CERAMIC_TILE_SLAB.get()).add(CelestialBlocks.PINK_CERAMIC_TILE_SLAB.get()).add(CelestialBlocks.WHITE_CERAMIC_BRICK_SLAB.get())
+        .add(CelestialBlocks.LIGHT_GREY_CERAMIC_BRICK_SLAB.get()).add(CelestialBlocks.GREY_CERAMIC_BRICK_SLAB.get()).add(CelestialBlocks.BLACK_CERAMIC_BRICK_SLAB.get())
+        .add(CelestialBlocks.PURPLE_CERAMIC_BRICK_SLAB.get()).add(CelestialBlocks.MAGENTA_CERAMIC_BRICK_SLAB.get()).add(CelestialBlocks.BLUE_CERAMIC_BRICK_SLAB.get())
+        .add(CelestialBlocks.LIGHT_BLUE_CERAMIC_BRICK_SLAB.get()).add(CelestialBlocks.CYAN_CERAMIC_BRICK_SLAB.get()).add(CelestialBlocks.GREEN_CERAMIC_BRICK_SLAB.get())
+        .add(CelestialBlocks.LIME_CERAMIC_BRICK_SLAB.get()).add(CelestialBlocks.YELLOW_CERAMIC_BRICK_SLAB.get()).add(CelestialBlocks.ORANGE_CERAMIC_BRICK_SLAB.get())
+        .add(CelestialBlocks.BROWN_CERAMIC_BRICK_SLAB.get()).add(CelestialBlocks.RED_CERAMIC_BRICK_SLAB.get()).add(CelestialBlocks.PINK_CERAMIC_BRICK_SLAB.get());
 
         tag(net.minecraft.tags.BlockTags.STAIRS)
                 .add(CelestialBlocks.MOON_STONE_STAIRS.get()).add(CelestialBlocks.MOON_BRICK_STAIRS.get())
@@ -282,7 +301,27 @@ public class CelestialBlockTags extends BlockTagsProvider {
                 .add(CelestialBlocks.CALLISTO_BRICK_STAIRS.get())
                 .add(CelestialBlocks.GANYMEDE_BRICK_STAIRS.get())
 
-                .add(CelestialBlocks.METEOR_BRICK_STAIRS.get());
+                .add(CelestialBlocks.METEOR_BRICK_STAIRS.get())
+
+                .add(CelestialBlocks.CERAMIC_STAIRS.get()).add(CelestialBlocks.CERAMIC_TILE_STAIRS.get()).add(CelestialBlocks.CERAMIC_BRICK_STAIRS.get())
+                .add(CelestialBlocks.WHITE_CERAMIC_STAIRS.get()).add(CelestialBlocks.LIGHT_GREY_CERAMIC_STAIRS.get()).add(CelestialBlocks.GREY_CERAMIC_STAIRS.get())
+                .add(CelestialBlocks.BLACK_CERAMIC_STAIRS.get()).add(CelestialBlocks.PURPLE_CERAMIC_STAIRS.get()).add(CelestialBlocks.MAGENTA_CERAMIC_STAIRS.get())
+                .add(CelestialBlocks.BLUE_CERAMIC_STAIRS.get()).add(CelestialBlocks.LIGHT_BLUE_CERAMIC_STAIRS.get()).add(CelestialBlocks.CYAN_CERAMIC_STAIRS.get())
+                .add(CelestialBlocks.GREEN_CERAMIC_STAIRS.get()).add(CelestialBlocks.LIME_CERAMIC_STAIRS.get()).add(CelestialBlocks.YELLOW_CERAMIC_STAIRS.get())
+                .add(CelestialBlocks.ORANGE_CERAMIC_STAIRS.get()).add(CelestialBlocks.BROWN_CERAMIC_STAIRS.get()).add(CelestialBlocks.RED_CERAMIC_STAIRS.get())
+                .add(CelestialBlocks.PINK_CERAMIC_STAIRS.get()).add(CelestialBlocks.WHITE_CERAMIC_TILE_STAIRS.get()).add(CelestialBlocks.LIGHT_GREY_CERAMIC_TILE_STAIRS.get())
+                .add(CelestialBlocks.GREY_CERAMIC_TILE_STAIRS.get()).add(CelestialBlocks.BLACK_CERAMIC_TILE_STAIRS.get()).add(CelestialBlocks.PURPLE_CERAMIC_TILE_STAIRS.get())
+                .add(CelestialBlocks.MAGENTA_CERAMIC_TILE_STAIRS.get()).add(CelestialBlocks.BLUE_CERAMIC_TILE_STAIRS.get()).add(CelestialBlocks.LIGHT_BLUE_CERAMIC_TILE_STAIRS.get())
+                .add(CelestialBlocks.CYAN_CERAMIC_TILE_STAIRS.get()).add(CelestialBlocks.GREEN_CERAMIC_TILE_STAIRS.get()).add(CelestialBlocks.LIME_CERAMIC_TILE_STAIRS.get())
+                .add(CelestialBlocks.YELLOW_CERAMIC_TILE_STAIRS.get()).add(CelestialBlocks.ORANGE_CERAMIC_TILE_STAIRS.get()).add(CelestialBlocks.BROWN_CERAMIC_TILE_STAIRS.get())
+                .add(CelestialBlocks.RED_CERAMIC_TILE_STAIRS.get()).add(CelestialBlocks.PINK_CERAMIC_TILE_STAIRS.get()).add(CelestialBlocks.WHITE_CERAMIC_BRICK_STAIRS.get())
+                .add(CelestialBlocks.LIGHT_GREY_CERAMIC_BRICK_STAIRS.get()).add(CelestialBlocks.GREY_CERAMIC_BRICK_STAIRS.get()).add(CelestialBlocks.BLACK_CERAMIC_BRICK_STAIRS.get())
+                .add(CelestialBlocks.PURPLE_CERAMIC_BRICK_STAIRS.get()).add(CelestialBlocks.MAGENTA_CERAMIC_BRICK_STAIRS.get()).add(CelestialBlocks.BLUE_CERAMIC_BRICK_STAIRS.get())
+                .add(CelestialBlocks.LIGHT_BLUE_CERAMIC_BRICK_STAIRS.get()).add(CelestialBlocks.CYAN_CERAMIC_BRICK_STAIRS.get()).add(CelestialBlocks.GREEN_CERAMIC_BRICK_STAIRS.get())
+                .add(CelestialBlocks.LIME_CERAMIC_BRICK_STAIRS.get()).add(CelestialBlocks.YELLOW_CERAMIC_BRICK_STAIRS.get()).add(CelestialBlocks.ORANGE_CERAMIC_BRICK_STAIRS.get())
+                .add(CelestialBlocks.BROWN_CERAMIC_BRICK_STAIRS.get()).add(CelestialBlocks.RED_CERAMIC_BRICK_STAIRS.get()).add(CelestialBlocks.PINK_CERAMIC_BRICK_STAIRS.get())
+
+        ;
 
         tag(net.minecraft.tags.BlockTags.WALLS)
                 .add(CelestialBlocks.MOON_BRICK_WALL.get())
@@ -313,7 +352,28 @@ public class CelestialBlockTags extends BlockTagsProvider {
                 .add(CelestialBlocks.CALLISTO_BRICK_WALL.get())
                 .add(CelestialBlocks.GANYMEDE_BRICK_WALL.get())
 
-                .add(CelestialBlocks.PANEL_WALL.get());
+                .add(CelestialBlocks.PANEL_WALL.get())
+
+
+                .add(CelestialBlocks.CERAMIC_WALL.get()).add(CelestialBlocks.CERAMIC_TILE_WALL.get()).add(CelestialBlocks.CERAMIC_BRICK_WALL.get())
+                .add(CelestialBlocks.WHITE_CERAMIC_WALL.get()).add(CelestialBlocks.LIGHT_GREY_CERAMIC_WALL.get()).add(CelestialBlocks.GREY_CERAMIC_WALL.get())
+                .add(CelestialBlocks.BLACK_CERAMIC_WALL.get()).add(CelestialBlocks.PURPLE_CERAMIC_WALL.get()).add(CelestialBlocks.MAGENTA_CERAMIC_WALL.get())
+                .add(CelestialBlocks.BLUE_CERAMIC_WALL.get()).add(CelestialBlocks.LIGHT_BLUE_CERAMIC_WALL.get()).add(CelestialBlocks.CYAN_CERAMIC_WALL.get())
+                .add(CelestialBlocks.GREEN_CERAMIC_WALL.get()).add(CelestialBlocks.LIME_CERAMIC_WALL.get()).add(CelestialBlocks.YELLOW_CERAMIC_WALL.get())
+                .add(CelestialBlocks.ORANGE_CERAMIC_WALL.get()).add(CelestialBlocks.BROWN_CERAMIC_WALL.get()).add(CelestialBlocks.RED_CERAMIC_WALL.get())
+                .add(CelestialBlocks.PINK_CERAMIC_WALL.get()).add(CelestialBlocks.WHITE_CERAMIC_TILE_WALL.get()).add(CelestialBlocks.LIGHT_GREY_CERAMIC_TILE_WALL.get())
+                .add(CelestialBlocks.GREY_CERAMIC_TILE_WALL.get()).add(CelestialBlocks.BLACK_CERAMIC_TILE_WALL.get()).add(CelestialBlocks.PURPLE_CERAMIC_TILE_WALL.get())
+                .add(CelestialBlocks.MAGENTA_CERAMIC_TILE_WALL.get()).add(CelestialBlocks.BLUE_CERAMIC_TILE_WALL.get()).add(CelestialBlocks.LIGHT_BLUE_CERAMIC_TILE_WALL.get())
+                .add(CelestialBlocks.CYAN_CERAMIC_TILE_WALL.get()).add(CelestialBlocks.GREEN_CERAMIC_TILE_WALL.get()).add(CelestialBlocks.LIME_CERAMIC_TILE_WALL.get())
+                .add(CelestialBlocks.YELLOW_CERAMIC_TILE_WALL.get()).add(CelestialBlocks.ORANGE_CERAMIC_TILE_WALL.get()).add(CelestialBlocks.BROWN_CERAMIC_TILE_WALL.get())
+                .add(CelestialBlocks.RED_CERAMIC_TILE_WALL.get()).add(CelestialBlocks.PINK_CERAMIC_TILE_WALL.get()).add(CelestialBlocks.WHITE_CERAMIC_BRICK_WALL.get())
+                .add(CelestialBlocks.LIGHT_GREY_CERAMIC_BRICK_WALL.get()).add(CelestialBlocks.GREY_CERAMIC_BRICK_WALL.get()).add(CelestialBlocks.BLACK_CERAMIC_BRICK_WALL.get())
+                .add(CelestialBlocks.PURPLE_CERAMIC_BRICK_WALL.get()).add(CelestialBlocks.MAGENTA_CERAMIC_BRICK_WALL.get()).add(CelestialBlocks.BLUE_CERAMIC_BRICK_WALL.get())
+                .add(CelestialBlocks.LIGHT_BLUE_CERAMIC_BRICK_WALL.get()).add(CelestialBlocks.CYAN_CERAMIC_BRICK_WALL.get()).add(CelestialBlocks.GREEN_CERAMIC_BRICK_WALL.get())
+                .add(CelestialBlocks.LIME_CERAMIC_BRICK_WALL.get()).add(CelestialBlocks.YELLOW_CERAMIC_BRICK_WALL.get()).add(CelestialBlocks.ORANGE_CERAMIC_BRICK_WALL.get())
+                .add(CelestialBlocks.BROWN_CERAMIC_BRICK_WALL.get()).add(CelestialBlocks.RED_CERAMIC_BRICK_WALL.get()).add(CelestialBlocks.PINK_CERAMIC_BRICK_WALL.get())
+        
+        ;
 
         //OPENABLE THINGS
         tag(net.minecraft.tags.BlockTags.DOORS)
@@ -570,6 +630,12 @@ public class CelestialBlockTags extends BlockTagsProvider {
                 .add(CelestialBlocks.CYAN_CERAMIC_TILE.get()).add(CelestialBlocks.GREEN_CERAMIC_TILE.get()).add(CelestialBlocks.LIME_CERAMIC_TILE.get()).add(CelestialBlocks.YELLOW_CERAMIC_TILE.get())
                 .add(CelestialBlocks.ORANGE_CERAMIC_TILE.get()).add(CelestialBlocks.BROWN_CERAMIC_TILE.get()).add(CelestialBlocks.RED_CERAMIC_TILE.get()).add(CelestialBlocks.PINK_CERAMIC_TILE.get());
 
+        tag(CelestialTags.Blocks.DYED_CERAMIC_BRICK)
+                .add(CelestialBlocks.WHITE_CERAMIC_BRICK.get()).add(CelestialBlocks.LIGHT_GREY_CERAMIC_BRICK.get()).add(CelestialBlocks.GREY_CERAMIC_BRICK.get()).add(CelestialBlocks.BLACK_CERAMIC_BRICK.get())
+                .add(CelestialBlocks.PURPLE_CERAMIC_BRICK.get()).add(CelestialBlocks.MAGENTA_CERAMIC_BRICK.get()).add(CelestialBlocks.BLUE_CERAMIC_BRICK.get()).add(CelestialBlocks.LIGHT_BLUE_CERAMIC_BRICK.get())
+                .add(CelestialBlocks.CYAN_CERAMIC_BRICK.get()).add(CelestialBlocks.GREEN_CERAMIC_BRICK.get()).add(CelestialBlocks.LIME_CERAMIC_BRICK.get()).add(CelestialBlocks.YELLOW_CERAMIC_BRICK.get())
+                .add(CelestialBlocks.ORANGE_CERAMIC_BRICK.get()).add(CelestialBlocks.BROWN_CERAMIC_BRICK.get()).add(CelestialBlocks.RED_CERAMIC_BRICK.get()).add(CelestialBlocks.PINK_CERAMIC_BRICK.get());
+
         tag(CelestialTags.Blocks.PAINTED_CERAMIC)
                 .add(CelestialBlocks.PAINTED_WHITE_CERAMIC.get()).add(CelestialBlocks.PAINTED_LIGHT_GREY_CERAMIC.get()).add(CelestialBlocks.PAINTED_GREY_CERAMIC.get()).add(CelestialBlocks.PAINTED_BLACK_CERAMIC.get())
                 .add(CelestialBlocks.PAINTED_PURPLE_CERAMIC.get()).add(CelestialBlocks.PAINTED_MAGENTA_CERAMIC.get()).add(CelestialBlocks.PAINTED_BLUE_CERAMIC.get()).add(CelestialBlocks.PAINTED_LIGHT_BLUE_CERAMIC.get())
@@ -694,6 +760,26 @@ public class CelestialBlockTags extends BlockTagsProvider {
                 .add(CelestialBlocks.IO_DEEPSLATE.get())
                 .add(CelestialBlocks.IO_COBBLED_DEEPSLATE.get())
                 .add(CelestialBlocks.IO_SAND_PATH.get());
+
+
+        tag(CelestialTags.Blocks.CERAMIC)
+                .add(CelestialBlocks.CERAMIC.get()).add(CelestialBlocks.CERAMIC_TILE.get()).add(CelestialBlocks.CERAMIC_BRICK.get())
+                .add(CelestialBlocks.WHITE_CERAMIC.get()).add(CelestialBlocks.LIGHT_GREY_CERAMIC.get()).add(CelestialBlocks.GREY_CERAMIC.get())
+                .add(CelestialBlocks.BLACK_CERAMIC.get()).add(CelestialBlocks.PURPLE_CERAMIC.get()).add(CelestialBlocks.MAGENTA_CERAMIC.get())
+                .add(CelestialBlocks.BLUE_CERAMIC.get()).add(CelestialBlocks.LIGHT_BLUE_CERAMIC.get()).add(CelestialBlocks.CYAN_CERAMIC.get())
+                .add(CelestialBlocks.GREEN_CERAMIC.get()).add(CelestialBlocks.LIME_CERAMIC.get()).add(CelestialBlocks.YELLOW_CERAMIC.get())
+                .add(CelestialBlocks.ORANGE_CERAMIC.get()).add(CelestialBlocks.BROWN_CERAMIC.get()).add(CelestialBlocks.RED_CERAMIC.get())
+                .add(CelestialBlocks.PINK_CERAMIC.get()).add(CelestialBlocks.WHITE_CERAMIC_TILE.get()).add(CelestialBlocks.LIGHT_GREY_CERAMIC_TILE.get())
+                .add(CelestialBlocks.GREY_CERAMIC_TILE.get()).add(CelestialBlocks.BLACK_CERAMIC_TILE.get()).add(CelestialBlocks.PURPLE_CERAMIC_TILE.get())
+                .add(CelestialBlocks.MAGENTA_CERAMIC_TILE.get()).add(CelestialBlocks.BLUE_CERAMIC_TILE.get()).add(CelestialBlocks.LIGHT_BLUE_CERAMIC_TILE.get())
+                .add(CelestialBlocks.CYAN_CERAMIC_TILE.get()).add(CelestialBlocks.GREEN_CERAMIC_TILE.get()).add(CelestialBlocks.LIME_CERAMIC_TILE.get())
+                .add(CelestialBlocks.YELLOW_CERAMIC_TILE.get()).add(CelestialBlocks.ORANGE_CERAMIC_TILE.get()).add(CelestialBlocks.BROWN_CERAMIC_TILE.get())
+                .add(CelestialBlocks.RED_CERAMIC_TILE.get()).add(CelestialBlocks.PINK_CERAMIC_TILE.get()).add(CelestialBlocks.WHITE_CERAMIC_BRICK.get())
+                .add(CelestialBlocks.LIGHT_GREY_CERAMIC_BRICK.get()).add(CelestialBlocks.GREY_CERAMIC_BRICK.get()).add(CelestialBlocks.BLACK_CERAMIC_BRICK.get())
+                .add(CelestialBlocks.PURPLE_CERAMIC_BRICK.get()).add(CelestialBlocks.MAGENTA_CERAMIC_BRICK.get()).add(CelestialBlocks.BLUE_CERAMIC_BRICK.get())
+                .add(CelestialBlocks.LIGHT_BLUE_CERAMIC_BRICK.get()).add(CelestialBlocks.CYAN_CERAMIC_BRICK.get()).add(CelestialBlocks.GREEN_CERAMIC_BRICK.get())
+                .add(CelestialBlocks.LIME_CERAMIC_BRICK.get()).add(CelestialBlocks.YELLOW_CERAMIC_BRICK.get()).add(CelestialBlocks.ORANGE_CERAMIC_BRICK.get())
+                .add(CelestialBlocks.BROWN_CERAMIC_BRICK.get()).add(CelestialBlocks.RED_CERAMIC_BRICK.get()).add(CelestialBlocks.PINK_CERAMIC_BRICK.get());
 
     }
 

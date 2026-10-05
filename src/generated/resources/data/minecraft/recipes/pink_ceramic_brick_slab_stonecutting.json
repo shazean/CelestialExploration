@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "celestialexploration:pink_ceramic_brick"
+  },
+  "result": "celestialexploration:pink_ceramic_brick_slab",
+  "count": 2
+}

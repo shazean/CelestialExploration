@@ -1,0 +1,159 @@
+{
+  "name": "celestialexploration:research_tunnel/moon/likely_spider",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 150,
+      "element": {
+        "location": "celestialexploration:research_tunnel/moon/hall_spider",
+        "processors": "celestialexploration:moon_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 150,
+      "element": {
+        "location": "celestialexploration:research_tunnel/moon/hall_spider_alt",
+        "processors": "celestialexploration:moon_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 150,
+      "element": {
+        "location": "celestialexploration:research_tunnel/moon/corner_spider",
+        "processors": "celestialexploration:moon_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "location": "celestialexploration:research_tunnel/moon/hall_long",
+        "processors": "celestialexploration:moon_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 30,
+      "element": {
+        "location": "celestialexploration:research_tunnel/moon/hall_medium",
+        "processors": "celestialexploration:moon_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 30,
+      "element": {
+        "location": "celestialexploration:research_tunnel/moon/hall_short",
+        "processors": "celestialexploration:moon_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 30,
+      "element": {
+        "location": "celestialexploration:research_tunnel/moon/hall_tiny",
+        "processors": "celestialexploration:moon_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 30,
+      "element": {
+        "location": "celestialexploration:research_tunnel/moon/four_way",
+        "processors": "celestialexploration:moon_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 30,
+      "element": {
+        "location": "celestialexploration:research_tunnel/moon/tee",
+        "processors": "celestialexploration:moon_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 30,
+      "element": {
+        "location": "celestialexploration:research_tunnel/moon/corner",
+        "processors": "celestialexploration:moon_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "location": "celestialexploration:research_tunnel/moon/steps",
+        "processors": "celestialexploration:moon_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "location": "celestialexploration:research_tunnel/moon/steps_alt",
+        "processors": "celestialexploration:moon_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "location": "celestialexploration:research_tunnel/moon/steps_cave_in",
+        "processors": "celestialexploration:moon_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "location": "celestialexploration:research_tunnel/moon/cave_in_1",
+        "processors": "celestialexploration:moon_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "location": "celestialexploration:research_tunnel/moon/cave_in_2",
+        "processors": "celestialexploration:moon_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "location": "celestialexploration:research_tunnel/moon/cave_in_3",
+        "processors": "celestialexploration:moon_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "location": "celestialexploration:research_tunnel/moon/dead_end",
+        "processors": "celestialexploration:moon_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

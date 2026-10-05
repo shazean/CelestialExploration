@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:red_ceramic_brick_stairs_stonecutting"
+    ]
+  },
+  "criteria": {
+    "has_red_ceramic": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:red_ceramic"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:red_ceramic_brick_stairs_stonecutting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_red_ceramic",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -34,54 +34,54 @@ import java.util.function.Predicate;
 
 public class CelestialPlacement {
 
-    public static Optional<PieceGenerator<CelestialConfiguration>> addPieces(PieceGeneratorSupplier.Context<CelestialConfiguration> p_210285_, CelestialPlacement.PieceFactory p_210286_, BlockPos p_210287_, boolean p_210288_, boolean p_210289_) {
+    public static Optional<PieceGenerator<CelestialConfiguration>> addPieces(PieceGeneratorSupplier.Context<CelestialConfiguration> context, CelestialPlacement.PieceFactory pieceFactory, BlockPos pos, boolean p_210288_, boolean applyToWorldSurface) {
         WorldgenRandom worldgenrandom = new WorldgenRandom(new LegacyRandomSource(0L));
-        worldgenrandom.setLargeFeatureSeed(p_210285_.seed(), p_210285_.chunkPos().x, p_210285_.chunkPos().z);
-        RegistryAccess registryaccess = p_210285_.registryAccess();
-        CelestialConfiguration jigsawconfiguration = p_210285_.config();
-        ChunkGenerator chunkgenerator = p_210285_.chunkGenerator();
-        StructureManager structuremanager = p_210285_.structureManager();
-        LevelHeightAccessor levelheightaccessor = p_210285_.heightAccessor();
-        Predicate<Holder<Biome>> predicate = p_210285_.validBiome();
+        worldgenrandom.setLargeFeatureSeed(context.seed(), context.chunkPos().x, context.chunkPos().z);
+        RegistryAccess registryaccess = context.registryAccess();
+        CelestialConfiguration config = context.config();
+        ChunkGenerator chunkGen = context.chunkGenerator();
+        StructureManager structuremanager = context.structureManager();
+        LevelHeightAccessor levelheightaccessor = context.heightAccessor();
+        Predicate<Holder<Biome>> predicate = context.validBiome();
         StructureFeature.bootstrap();
         Registry<StructureTemplatePool> registry = registryaccess.registryOrThrow(Registry.TEMPLATE_POOL_REGISTRY);
         Rotation rotation = Rotation.getRandom(worldgenrandom);
-        StructureTemplatePool structuretemplatepool = jigsawconfiguration.startPool().value();
+        StructureTemplatePool structuretemplatepool = config.startPool().value();
         StructurePoolElement structurepoolelement = structuretemplatepool.getRandomTemplate(worldgenrandom);
         if (structurepoolelement == EmptyPoolElement.INSTANCE) {
             return Optional.empty();
         } else {
-            PoolElementStructurePiece poolelementstructurepiece = p_210286_.create(structuremanager, structurepoolelement, p_210287_, structurepoolelement.getGroundLevelDelta(), rotation, structurepoolelement.getBoundingBox(structuremanager, p_210287_, rotation));
-            BoundingBox boundingbox = poolelementstructurepiece.getBoundingBox();
-            int i = (boundingbox.maxX() + boundingbox.minX()) / 2;
-            int j = (boundingbox.maxZ() + boundingbox.minZ()) / 2;
-            int k;
-            if (p_210289_) {
-                k = p_210287_.getY() + chunkgenerator.getFirstFreeHeight(i, j, Heightmap.Types.WORLD_SURFACE_WG, levelheightaccessor);
+            PoolElementStructurePiece structurePiece = pieceFactory.create(structuremanager, structurepoolelement, pos, structurepoolelement.getGroundLevelDelta(), rotation, structurepoolelement.getBoundingBox(structuremanager, pos, rotation));
+            BoundingBox boundingbox = structurePiece.getBoundingBox();
+            int x = (boundingbox.maxX() + boundingbox.minX()) / 2;
+            int z = (boundingbox.maxZ() + boundingbox.minZ()) / 2;
+            int y;
+            if (applyToWorldSurface) {
+                y = pos.getY() + chunkGen.getFirstFreeHeight(x, z, Heightmap.Types.WORLD_SURFACE_WG, levelheightaccessor);
             } else {
-                k = p_210287_.getY();
+                y = pos.getY();
             }
 
-            if (!predicate.test(chunkgenerator.getNoiseBiome(QuartPos.fromBlock(i), QuartPos.fromBlock(k), QuartPos.fromBlock(j)))) {
+            if (!predicate.test(chunkGen.getNoiseBiome(QuartPos.fromBlock(x), QuartPos.fromBlock(y), QuartPos.fromBlock(z)))) {
                 return Optional.empty();
             } else {
-                int l = boundingbox.minY() + poolelementstructurepiece.getGroundLevelDelta();
-                poolelementstructurepiece.move(0, k - l, 0);
-                return Optional.of((p_210282_, p_210283_) -> {
-                    List<PoolElementStructurePiece> list = Lists.newArrayList();
-                    list.add(poolelementstructurepiece);
-                    if (jigsawconfiguration.maxDepth() > 0) {
+                int l = boundingbox.minY() + structurePiece.getGroundLevelDelta();
+                structurePiece.move(0, y - l, 0);
+                return Optional.of((piecesBuilder, context1) -> {
+                    List<PoolElementStructurePiece> structurePieces = Lists.newArrayList();
+                    structurePieces.add(structurePiece);
+                    if (config.maxDepth() > 0) {
                         int i1 = 80;
-                        AABB aabb = new AABB((double)(i - 80), (double)(k - 80), (double)(j - 80), (double)(i + 80 + 1), (double)(k + 80 + 1), (double)(j + 80 + 1));
-                        CelestialPlacement.Placer jigsawplacement$placer = new CelestialPlacement.Placer(registry, jigsawconfiguration.maxDepth(), p_210286_, chunkgenerator, structuremanager, list, worldgenrandom);
-                        jigsawplacement$placer.placing.addLast(new CelestialPlacement.PieceState(poolelementstructurepiece, new MutableObject<>(Shapes.join(Shapes.create(aabb), Shapes.create(AABB.of(boundingbox)), BooleanOp.ONLY_FIRST)), 0));
+                        AABB aabb = new AABB(x - i1, y - i1, z - i1, x + i1 + 1, y + i1 + 1, z + i1 + 1);
+                        CelestialPlacement.Placer placer = new CelestialPlacement.Placer(registry, config.maxDepth(), pieceFactory, chunkGen, structuremanager, structurePieces, worldgenrandom);
+                        placer.placing.addLast(new CelestialPlacement.PieceState(structurePiece, new MutableObject<>(Shapes.join(Shapes.create(aabb), Shapes.create(AABB.of(boundingbox)), BooleanOp.ONLY_FIRST)), 0));
 
-                        while(!jigsawplacement$placer.placing.isEmpty()) {
-                            CelestialPlacement.PieceState jigsawplacement$piecestate = jigsawplacement$placer.placing.removeFirst();
-                            jigsawplacement$placer.tryPlacingChildren(jigsawplacement$piecestate.piece, jigsawplacement$piecestate.free, jigsawplacement$piecestate.depth, p_210288_, levelheightaccessor);
+                        while(!placer.placing.isEmpty()) {
+                            CelestialPlacement.PieceState pieceState = placer.placing.removeFirst();
+                            placer.tryPlacingChildren(pieceState.piece, pieceState.free, pieceState.depth, p_210288_, levelheightaccessor);
                         }
 
-                        list.forEach(p_210282_::addPiece);
+                        structurePieces.forEach(piecesBuilder::addPiece);
                     }
                 });
             }

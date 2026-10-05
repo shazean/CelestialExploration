@@ -5,7 +5,7 @@
     {
       "weight": 5,
       "element": {
-        "location": "celestialexploration:callisto_colony_crafting_hall",
+        "location": "celestialexploration:callisto_colony/crafting_hall",
         "processors": "celestialexploration:lunar_colony",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
@@ -14,7 +14,7 @@
     {
       "weight": 1,
       "element": {
-        "location": "celestialexploration:callisto_colony_garden",
+        "location": "celestialexploration:callisto_colony/garden",
         "processors": "celestialexploration:lunar_colony",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
@@ -23,7 +23,7 @@
     {
       "weight": 8,
       "element": {
-        "location": "celestialexploration:callisto_colony_greenhouse",
+        "location": "celestialexploration:callisto_colony/greenhouse",
         "processors": "celestialexploration:lunar_colony",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
@@ -32,7 +32,7 @@
     {
       "weight": 5,
       "element": {
-        "location": "celestialexploration:callisto_colony_house_alt",
+        "location": "celestialexploration:callisto_colony/house_alt",
         "processors": "celestialexploration:lunar_colony",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
@@ -41,7 +41,7 @@
     {
       "weight": 5,
       "element": {
-        "location": "celestialexploration:callisto_colony_house_b_alt",
+        "location": "celestialexploration:callisto_colony/house_b_alt",
         "processors": "celestialexploration:lunar_colony",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
@@ -50,7 +50,7 @@
     {
       "weight": 10,
       "element": {
-        "location": "celestialexploration:callisto_colony_house",
+        "location": "celestialexploration:callisto_colony/house",
         "processors": "celestialexploration:lunar_colony",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
@@ -59,7 +59,16 @@
     {
       "weight": 10,
       "element": {
-        "location": "celestialexploration:callisto_colony_house_b",
+        "location": "celestialexploration:callisto_colony/house_b",
+        "processors": "celestialexploration:lunar_colony",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 15,
+      "element": {
+        "location": "celestialexploration:callisto_colony/ruined",
         "processors": "celestialexploration:lunar_colony",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
@@ -68,7 +77,7 @@
     {
       "weight": 10,
       "element": {
-        "location": "celestialexploration:callisto_colony_mess_hall",
+        "location": "celestialexploration:callisto_colony/mess_hall",
         "processors": "celestialexploration:lunar_colony",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
@@ -77,7 +86,7 @@
     {
       "weight": 10,
       "element": {
-        "location": "celestialexploration:callisto_colony_research_hub",
+        "location": "celestialexploration:callisto_colony/research_hub",
         "processors": "celestialexploration:lunar_colony",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
@@ -86,7 +95,7 @@
     {
       "weight": 8,
       "element": {
-        "location": "celestialexploration:callisto_colony_smithy",
+        "location": "celestialexploration:callisto_colony/smithy",
         "processors": "celestialexploration:lunar_colony",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"

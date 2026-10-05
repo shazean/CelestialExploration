@@ -1,0 +1,15 @@
+{
+  "name": "celestialexploration:research_tunnel/mars/start",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 50,
+      "element": {
+        "location": "celestialexploration:research_tunnel/mars/four_way",
+        "processors": "celestialexploration:mars_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

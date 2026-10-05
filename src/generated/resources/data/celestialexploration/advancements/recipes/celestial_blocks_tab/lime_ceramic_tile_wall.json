@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "celestialexploration:lime_ceramic_tile_wall"
+    ]
+  },
+  "criteria": {
+    "has_lime_ceramic": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:lime_ceramic"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "celestialexploration:lime_ceramic_tile_wall"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_lime_ceramic",
+      "has_the_recipe"
+    ]
+  ]
+}

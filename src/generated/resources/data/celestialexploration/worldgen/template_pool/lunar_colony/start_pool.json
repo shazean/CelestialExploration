@@ -1,0 +1,15 @@
+{
+  "name": "celestialexploration:lunar_colony/start_pool",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "celestialexploration:lunar_colony/bell",
+        "processors": "celestialexploration:lunar_colony",
+        "projection": "terrain_matching",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

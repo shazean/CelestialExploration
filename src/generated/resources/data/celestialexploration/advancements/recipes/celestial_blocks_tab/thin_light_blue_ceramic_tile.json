@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "celestialexploration:thin_light_blue_ceramic_tile"
+    ]
+  },
+  "criteria": {
+    "has_ceramic": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:ceramic"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "celestialexploration:thin_light_blue_ceramic_tile"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ceramic",
+      "has_the_recipe"
+    ]
+  ]
+}

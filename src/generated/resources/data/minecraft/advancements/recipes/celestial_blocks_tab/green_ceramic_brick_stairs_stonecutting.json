@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:green_ceramic_brick_stairs_stonecutting"
+    ]
+  },
+  "criteria": {
+    "has_green_ceramic": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "celestialexploration:green_ceramic"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:green_ceramic_brick_stairs_stonecutting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_green_ceramic",
+      "has_the_recipe"
+    ]
+  ]
+}

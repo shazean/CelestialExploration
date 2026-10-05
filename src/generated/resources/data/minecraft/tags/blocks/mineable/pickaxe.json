@@ -87,9 +87,9 @@
     "celestialexploration:compressed_io_cobbled_deepslate",
     "celestialexploration:super_compressed_io_cobbled_deepslate",
     "celestialexploration:ceramic",
-    "celestialexploration:ceramic_tile",
+    "celestialexploration:thin_ceramic",
     "#celestialexploration:dyed_ceramic",
-    "#celestialexploration:dyed_ceramic_tile",
+    "#celestialexploration:ceramic",
     "#celestialexploration:painted_ceramic",
     "celestialexploration:bauxite_ore",
     "celestialexploration:steel_block",
@@ -126,6 +126,7 @@
     "celestialexploration:large_diamond_crystal",
     "celestialexploration:workbench",
     "celestialexploration:oxygen_compressor",
-    "celestialexploration:oxygen_generator"
+    "celestialexploration:oxygen_generator",
+    "celestialexploration:dry_ice"
   ]
 }

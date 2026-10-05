@@ -199,6 +199,7 @@ public class CelestialClientEventBus {
         ItemBlockRenderTypes.setRenderLayer(CelestialBlocks.LARGE_DIAMOND_CRYSTAL.get(), RenderType.cutout());
 
         ItemBlockRenderTypes.setRenderLayer(CelestialBlocks.OXYGEN_GENERATOR.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(CelestialBlocks.UNSTABLE_OXYGEN_GENERATOR.get(), RenderType.cutout());
 
 
         //MOBS

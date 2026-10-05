@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "celestialexploration:white_ceramic"
+  },
+  "result": "celestialexploration:white_ceramic_stairs",
+  "count": 1
+}

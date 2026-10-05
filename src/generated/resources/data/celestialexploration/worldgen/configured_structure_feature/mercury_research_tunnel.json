@@ -1,0 +1,10 @@
+{
+  "type": "celestialexploration:mercury_research_tunnel",
+  "config": {
+    "start_pool": "celestialexploration:research_tunnel/mercury/start",
+    "size": 15
+  },
+  "biomes": "#celestialexploration:has_structure/mercury_research_tunnel",
+  "adapt_noise": false,
+  "spawn_overrides": {}
+}

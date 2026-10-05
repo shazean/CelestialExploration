@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:cyan_ceramic_tile"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:cyan_ceramic_tile_slab",
+    "count": 6
+  }
+}

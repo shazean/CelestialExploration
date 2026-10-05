@@ -16,8 +16,6 @@ import com.shim.celestialexploration.packets.CelestialPacketHandler;
 import com.shim.celestialexploration.registry.CelestialEntities;
 import com.shim.celestialexploration.registry.CelestialItems;
 import com.shim.celestialexploration.registry.CelestialPOIs;
-import com.shim.celestialexploration.registry.CelestialStructurePieceType;
-import com.shim.celestialexploration.world.structures.ResearchTunnelPieces;
 import mod.azure.azurelib.animation.cache.AzIdentityRegistry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.SpawnPlacements;
@@ -64,10 +62,10 @@ public class CelestialCommonEventSetup {
 
             CelestialPOIs.registerPOIs();
 
-            CelestialStructurePieceType.RESEARCH_TUNNEL_CORRIDOR = CelestialStructurePieceType.register("RTCorridor", ResearchTunnelPieces.ResearchTunnelCorridor::new);
-            CelestialStructurePieceType.RESEARCH_TUNNEL_CROSSING = CelestialStructurePieceType.register("RTCrossing", ResearchTunnelPieces.ResearchTunnelCrossing::new);
-            CelestialStructurePieceType.RESEARCH_TUNNEL_ROOM = CelestialStructurePieceType.register("RTRoom", ResearchTunnelPieces.ResearchTunnelRoom::new);
-            CelestialStructurePieceType.RESEARCH_TUNNEL_STAIRS = CelestialStructurePieceType.register("RTStairs", ResearchTunnelPieces.ResearchTunnelStairs::new);
+//            CelestialStructurePieceType.RESEARCH_TUNNEL_CORRIDOR = CelestialStructurePieceType.register("RTCorridor", ResearchTunnelPieces.ResearchTunnelCorridor::new);
+//            CelestialStructurePieceType.RESEARCH_TUNNEL_CROSSING = CelestialStructurePieceType.register("RTCrossing", ResearchTunnelPieces.ResearchTunnelCrossing::new);
+//            CelestialStructurePieceType.RESEARCH_TUNNEL_ROOM = CelestialStructurePieceType.register("RTRoom", ResearchTunnelPieces.ResearchTunnelRoom::new);
+//            CelestialStructurePieceType.RESEARCH_TUNNEL_STAIRS = CelestialStructurePieceType.register("RTStairs", ResearchTunnelPieces.ResearchTunnelStairs::new);
 
             RecipeType.register(new ResourceLocation(CelestialExploration.MODID, "workbench_crafting").toString());
 

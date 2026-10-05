@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "celestialexploration:red_ceramic_tile"
+  },
+  "result": "celestialexploration:red_ceramic_tile_wall",
+  "count": 1
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XX",
+    "XX"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:light_grey_ceramic_brick"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:thin_light_grey_ceramic_brick",
+    "count": 16
+  }
+}

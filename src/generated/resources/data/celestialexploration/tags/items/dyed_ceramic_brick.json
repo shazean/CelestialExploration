@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    "celestialexploration:white_ceramic_brick",
+    "celestialexploration:light_grey_ceramic_brick",
+    "celestialexploration:grey_ceramic_brick",
+    "celestialexploration:black_ceramic_brick",
+    "celestialexploration:purple_ceramic_brick",
+    "celestialexploration:magenta_ceramic_brick",
+    "celestialexploration:blue_ceramic_brick",
+    "celestialexploration:light_blue_ceramic_brick",
+    "celestialexploration:cyan_ceramic_brick",
+    "celestialexploration:green_ceramic_brick",
+    "celestialexploration:lime_ceramic_brick",
+    "celestialexploration:yellow_ceramic_brick",
+    "celestialexploration:orange_ceramic_brick",
+    "celestialexploration:brown_ceramic_brick",
+    "celestialexploration:red_ceramic_brick",
+    "celestialexploration:pink_ceramic_brick"
+  ]
+}

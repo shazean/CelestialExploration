@@ -1,0 +1,159 @@
+{
+  "name": "celestialexploration:research_tunnel/mars/research_tunnel",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 90,
+      "element": {
+        "location": "celestialexploration:research_tunnel/mars/hall_long",
+        "processors": "celestialexploration:mars_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 100,
+      "element": {
+        "location": "celestialexploration:research_tunnel/mars/hall_medium",
+        "processors": "celestialexploration:mars_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 100,
+      "element": {
+        "location": "celestialexploration:research_tunnel/mars/hall_short",
+        "processors": "celestialexploration:mars_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 100,
+      "element": {
+        "location": "celestialexploration:research_tunnel/mars/hall_tiny",
+        "processors": "celestialexploration:mars_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 40,
+      "element": {
+        "location": "celestialexploration:research_tunnel/mars/hall_spider",
+        "processors": "celestialexploration:mars_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 40,
+      "element": {
+        "location": "celestialexploration:research_tunnel/mars/hall_spider_alt",
+        "processors": "celestialexploration:mars_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 50,
+      "element": {
+        "location": "celestialexploration:research_tunnel/mars/four_way",
+        "processors": "celestialexploration:mars_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 60,
+      "element": {
+        "location": "celestialexploration:research_tunnel/mars/tee",
+        "processors": "celestialexploration:mars_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 50,
+      "element": {
+        "location": "celestialexploration:research_tunnel/mars/corner",
+        "processors": "celestialexploration:mars_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 40,
+      "element": {
+        "location": "celestialexploration:research_tunnel/mars/corner_spider",
+        "processors": "celestialexploration:mars_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 40,
+      "element": {
+        "location": "celestialexploration:research_tunnel/mars/steps",
+        "processors": "celestialexploration:mars_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 40,
+      "element": {
+        "location": "celestialexploration:research_tunnel/mars/steps_alt",
+        "processors": "celestialexploration:mars_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 30,
+      "element": {
+        "location": "celestialexploration:research_tunnel/mars/steps_cave_in",
+        "processors": "celestialexploration:mars_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 30,
+      "element": {
+        "location": "celestialexploration:research_tunnel/mars/cave_in_1",
+        "processors": "celestialexploration:mars_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 30,
+      "element": {
+        "location": "celestialexploration:research_tunnel/mars/cave_in_2",
+        "processors": "celestialexploration:mars_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 30,
+      "element": {
+        "location": "celestialexploration:research_tunnel/mars/cave_in_3",
+        "processors": "celestialexploration:mars_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "location": "celestialexploration:research_tunnel/mars/dead_end",
+        "processors": "celestialexploration:mars_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

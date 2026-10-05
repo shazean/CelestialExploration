@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/template_glass_pane_side_alt",
-  "textures": {
-    "pane": "celestialexploration:block/orange_ceramic",
-    "edge": "celestialexploration:block/orange_ceramic_tile_top"
-  }
-}

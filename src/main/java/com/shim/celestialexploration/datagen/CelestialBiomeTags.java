@@ -146,5 +146,15 @@ public class CelestialBiomeTags extends BiomeTagsProvider {
                 .addTag(CelestialTags.Biomes.GANYMEDE_BIOMES);
 
 
+        tag(CelestialTags.Biomes.MARS_RESEARCH_TUNNEL_BIOMES)
+                .addTag(CelestialTags.Biomes.MARS_BIOMES);
+        tag(CelestialTags.Biomes.MOON_RESEARCH_TUNNEL_BIOMES)
+                .addTag(CelestialTags.Biomes.MOON_BIOMES)
+                .addTag(CelestialTags.Biomes.GANYMEDE_BIOMES)
+                .addTag(CelestialTags.Biomes.CALLISTO_BIOMES)
+                .addTag(CelestialTags.Biomes.EUROPA_BIOMES);
+        tag(CelestialTags.Biomes.MERCURY_RESEARCH_TUNNEL_BIOMES)
+                .addTag(CelestialTags.Biomes.MERCURY_BIOMES);
+
     }
 }

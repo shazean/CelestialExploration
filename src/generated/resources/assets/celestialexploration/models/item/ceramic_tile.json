@@ -1,6 +1,3 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "celestialexploration:block/ceramic"
-  }
+  "parent": "celestialexploration:block/ceramic_tile"
 }

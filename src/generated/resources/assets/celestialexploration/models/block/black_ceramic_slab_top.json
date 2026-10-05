@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "side": "celestialexploration:block/black_ceramic",
+    "bottom": "celestialexploration:block/black_ceramic",
+    "top": "celestialexploration:block/black_ceramic"
+  }
+}

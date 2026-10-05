@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "celestialexploration:mars_research_tunnel",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 263272,
+    "spacing": 50,
+    "separation": 12,
+    "type": "minecraft:random_spread"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "type": "celestialexploration:moon_research_tunnel",
+  "config": {
+    "start_pool": "celestialexploration:research_tunnel/moon/start",
+    "size": 15
+  },
+  "biomes": "#celestialexploration:has_structure/moon_research_tunnel",
+  "adapt_noise": false,
+  "spawn_overrides": {}
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "side": "celestialexploration:block/grey_ceramic_brick",
+    "bottom": "celestialexploration:block/grey_ceramic_brick",
+    "top": "celestialexploration:block/grey_ceramic_brick"
+  }
+}

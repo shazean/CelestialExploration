@@ -2,11 +2,14 @@
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "X X",
-    "XXX",
+    "XxX",
     "X X"
   ],
   "key": {
     "X": {
+      "item": "celestialexploration:steel_rod"
+    },
+    "x": {
       "item": "celestialexploration:steel_ingot"
     }
   },

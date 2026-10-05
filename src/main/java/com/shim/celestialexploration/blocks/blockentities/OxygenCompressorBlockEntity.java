@@ -49,7 +49,7 @@ public class OxygenCompressorBlockEntity extends BlockEntity implements MenuProv
     private int maxFuelBurnTime;
     private int hasOxygen = 0;
 
-    private final ItemStackHandler itemHandler = new ItemStackHandler(7) {
+    private final ItemStackHandler itemHandler = new ItemStackHandler(8) {
         @Override
         protected void onContentsChanged(int slot) {
             setChanged();
@@ -155,8 +155,19 @@ public class OxygenCompressorBlockEntity extends BlockEntity implements MenuProv
         Containers.dropContents(this.level, this.worldPosition, inventory);
     }
 
-    public boolean isLit(BlockState state) {
-        return state.getValue(OxygenCompressorBlock.LIT);
+    public boolean isLit(BlockState state, Level level, BlockPos pos) {
+        boolean litAlready = state.getValue(OxygenCompressorBlock.LIT);
+        if (litAlready) return true;
+        boolean lit;
+        if (level.getBlockState(pos.below()).is(CelestialBlocks.OXYGEN_GENERATOR.get()) || level.getBlockState(pos.below()).is(CelestialBlocks.UNSTABLE_OXYGEN_GENERATOR.get())) {
+            lit = level.getBlockState(pos.below()).getValue(OxygenGeneratorBlock.LIT);
+            if (lit != litAlready) {
+                state = state.setValue(OxygenCompressorBlock.LIT, lit);
+                level.setBlock(pos, state, 3);
+            }
+            return lit;
+        }
+        return false;
 //        return this.fuelBurnTime > 0;
     }
 
@@ -170,7 +181,7 @@ public class OxygenCompressorBlockEntity extends BlockEntity implements MenuProv
             return true;
         }
         BlockState state = level.getBlockState(pos.below());
-        if (state.is(CelestialBlocks.OXYGEN_GENERATOR.get())) {
+        if (state.is(CelestialBlocks.OXYGEN_GENERATOR.get()) || state.is(CelestialBlocks.UNSTABLE_OXYGEN_GENERATOR.get())) {
             if (state.getValue(OxygenGeneratorBlock.OPERATING)) {
                 blockEntity.hasOxygen = 1;
                 return true;
@@ -182,7 +193,7 @@ public class OxygenCompressorBlockEntity extends BlockEntity implements MenuProv
 
     public static void tick(Level level, BlockPos pos, BlockState state, OxygenCompressorBlockEntity blockEntity) {
 
-        boolean lit = blockEntity.isLit(state);
+        boolean lit = blockEntity.isLit(state, level, pos);
         boolean changed = false;
         SimpleContainer inventory = new SimpleContainer(blockEntity.itemHandler.getSlots());
 
@@ -219,7 +230,7 @@ public class OxygenCompressorBlockEntity extends BlockEntity implements MenuProv
 //            }
 
 
-            if (blockEntity.isLit(state) && hasRoomInTank(blockEntity)) {
+            if (blockEntity.isLit(state, level, pos) && hasRoomInTank(blockEntity)) {
                 blockEntity.progress++;
                 if (blockEntity.progress == blockEntity.maxProgress) {
 
@@ -258,13 +269,13 @@ public class OxygenCompressorBlockEntity extends BlockEntity implements MenuProv
             } else {
                 blockEntity.progress = 0;
             }
-        } else if (!blockEntity.isLit(state) && blockEntity.progress > 0) {
+        } else if (!blockEntity.isLit(state, level, pos) && blockEntity.progress > 0) {
             blockEntity.progress = Mth.clamp(blockEntity.progress - 2, 0, blockEntity.maxProgress);
         }
 
-        if (lit != blockEntity.isLit(state)) {
+        if (lit != blockEntity.isLit(state, level, pos)) {
             changed = true;
-            state = state.setValue(OxygenCompressorBlock.LIT, blockEntity.isLit(state));
+            state = state.setValue(OxygenCompressorBlock.LIT, blockEntity.isLit(state, level, pos));
             level.setBlock(pos, state, 3);
         }
 

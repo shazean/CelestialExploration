@@ -129,4 +129,39 @@ public class CelestialNoises extends NoiseRouterData {
         return NoiseSettings.create(-32, 256, new NoiseSamplingSettings(1.0D, 1.0D, 80.0D, 160.0D),
                 new NoiseSlider(-0.078125D, 2, 8), new NoiseSlider(0.1171875D, 3, 0), 1, 2, TerrainProvider.overworld(false));
     }
+
+    static NoiseSettings saturnNoiseSettings() {
+        return NoiseSettings.create(-96, 384, new NoiseSamplingSettings(1.0D, 1.0D, 80.0D, 160.0D),
+                new NoiseSlider(-0.078125D, 2, 8), new NoiseSlider(0.1171875D, 3, 0), 1, 2, TerrainProvider.overworld(false));
+    }
+
+    static NoiseSettings rheaNoiseSettings() {
+        return NoiseSettings.create(-16, 192, new NoiseSamplingSettings(1.0D, 1.0D, 80.0D, 160.0D),
+                new NoiseSlider(-0.078125D, 2, 8), new NoiseSlider(0.1171875D, 3, 0), 1, 3, TerrainProvider.overworld(false));
+    }
+
+    static NoiseSettings dioneNoiseSettings() {
+        return NoiseSettings.create(-16, 192, new NoiseSamplingSettings(1.0D, 1.0D, 80.0D, 160.0D),
+                new NoiseSlider(-0.078125D, 2, 8), new NoiseSlider(0.1171875D, 3, 0), 1, 3, TerrainProvider.overworld(false));
+    }
+
+    static NoiseSettings enceladusNoiseSettings() {
+        return NoiseSettings.create(0, 128, new NoiseSamplingSettings(1.0D, 1.0D, 80.0D, 160.0D),
+                new NoiseSlider(-0.078125D, 2, 8), new NoiseSlider(0.1171875D, 3, 0), 1, 3, TerrainProvider.overworld(false));
+    }
+
+    static NoiseSettings iapetusNoiseSettings() {
+        return NoiseSettings.create(-16, 192, new NoiseSamplingSettings(1.0D, 1.0D, 80.0D, 160.0D),
+                new NoiseSlider(-0.078125D, 2, 8), new NoiseSlider(0.1171875D, 3, 0), 1, 3, TerrainProvider.overworld(false));
+    }
+
+    static NoiseSettings titanNoiseSettings() {
+        return NoiseSettings.create(-16, 192, new NoiseSamplingSettings(1.0D, 1.0D, 80.0D, 160.0D),
+                new NoiseSlider(-0.078125D, 2, 8), new NoiseSlider(0.1171875D, 3, 0), 1, 3, TerrainProvider.overworld(false));
+    }
+
+    static NoiseSettings tethysNoiseSettings() {
+        return NoiseSettings.create(-16, 192, new NoiseSamplingSettings(1.0D, 1.0D, 80.0D, 160.0D),
+                new NoiseSlider(-0.078125D, 2, 8), new NoiseSlider(0.1171875D, 3, 0), 1, 3, TerrainProvider.overworld(false));
+    }
 }

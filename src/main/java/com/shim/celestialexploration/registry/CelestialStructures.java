@@ -47,7 +47,7 @@ public class CelestialStructures {
     public static final RegistryObject<StructureFeature<?>> MAG_RAIL = DEFERRED_REGISTRY_STRUCTURE.register("mag_rail", MagRailStructure::new);
 
     //VILLAGES
-    public static final RegistryObject<StructureFeature<?>> LUNAR_COLONY = DEFERRED_REGISTRY_STRUCTURE.register("lunar_colony", LunarColonyStructure::new);
+    public static final RegistryObject<StructureFeature<?>> MOON_COLONY = DEFERRED_REGISTRY_STRUCTURE.register("moon_colony", MoonColonyStructure::new);
     public static final RegistryObject<StructureFeature<?>> MARS_COLONY = DEFERRED_REGISTRY_STRUCTURE.register("mars_colony", MarsColonyStructure::new);
     public static final RegistryObject<StructureFeature<?>> MERCURY_COLONY = DEFERRED_REGISTRY_STRUCTURE.register("mercury_colony", MercuryColonyStructure::new);
 
@@ -58,7 +58,9 @@ public class CelestialStructures {
 
 
     //RESEARCH TUNNELS
-    public static final RegistryObject<StructureFeature<?>> RESEARCH_TUNNEL = DEFERRED_REGISTRY_STRUCTURE.register("research_tunnel", ResearchTunnelStructure::new);
+    public static final RegistryObject<StructureFeature<?>> MARS_RESEARCH_TUNNEL = DEFERRED_REGISTRY_STRUCTURE.register("mars_research_tunnel", ResearchTunnelStructure::new);
+    public static final RegistryObject<StructureFeature<?>> MOON_RESEARCH_TUNNEL = DEFERRED_REGISTRY_STRUCTURE.register("moon_research_tunnel", ResearchTunnelStructure::new);
+    public static final RegistryObject<StructureFeature<?>> MERCURY_RESEARCH_TUNNEL = DEFERRED_REGISTRY_STRUCTURE.register("mercury_research_tunnel", ResearchTunnelStructure::new);
 
     public static final RegistryObject<StructureFeature<?>> SOLAR_FIELD = DEFERRED_REGISTRY_STRUCTURE.register("solar_field", SolarFieldStructure::new);
 

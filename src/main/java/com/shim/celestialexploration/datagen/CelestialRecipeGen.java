@@ -16,7 +16,6 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -394,8 +393,8 @@ public class CelestialRecipeGen extends RecipeProvider {
 		WorkbenchCraftingRecipeBuilder.shaped(CelestialBlocks.STEEL_FRAME.get(), 4, CelestialFluids.MOLTEN_STEEL.get(), 0.222F, 1.4F).pattern("X").define('X', Items.SCAFFOLDING).unlockedBy("has_steel", has(CelestialItems.STEEL_INGOT.get())).save(consumer, saveName(CelestialBlocks.STEEL_FRAME.get(), "from_workbench"));
 		WorkbenchCraftingRecipeBuilder.shaped(CelestialBlocks.STEEL_FRAME.get(), 1, CelestialFluids.MOLTEN_STEEL.get(), 0.111F, 0.4F).pattern("X X").pattern("XXX").pattern("X X").define('X', Items.STICK).unlockedBy("has_steel", has(CelestialItems.STEEL_INGOT.get())).save(consumer, saveName(CelestialBlocks.STEEL_FRAME.get(), "from_sticks_from_workbench"));
 
-		WorkbenchCraftingRecipeBuilder.shaped(CelestialItems.SPACESHIP_FRAME.get(), CelestialFluids.MOLTEN_STEEL.get(), 0.333F, 2.1F).pattern("C C").pattern(" X ").pattern("C C").define('X', CelestialBlocks.STEEL_FRAME.get()).define('C', CelestialBlocks.CERAMIC_TILE.get()).unlockedBy("has_steel", has(CelestialItems.STEEL_INGOT.get())).save(consumer, saveName(CelestialItems.SPACESHIP_FRAME.get(), "from_workbench"));
-		WorkbenchCraftingRecipeBuilder.shaped(CelestialItems.SPACESHIP_CABIN.get(), CelestialFluids.MOLTEN_ALUMINUM.get(), 0.444F, 2.8F).pattern(" C ").pattern("CGC").pattern("X X").define('C', CelestialBlocks.CERAMIC_TILE.get()).define('G', Tags.Items.GLASS).define('X', Tags.Items.CHESTS).unlockedBy("has_steel", has(CelestialItems.STEEL_INGOT.get())).save(consumer, saveName(CelestialItems.SPACESHIP_CABIN.get(), "from_workbench"));
+		WorkbenchCraftingRecipeBuilder.shaped(CelestialItems.SPACESHIP_FRAME.get(), CelestialFluids.MOLTEN_STEEL.get(), 0.333F, 2.1F).pattern("C C").pattern(" X ").pattern("C C").define('X', CelestialBlocks.STEEL_FRAME.get()).define('C', CelestialBlocks.THIN_CERAMIC.get()).unlockedBy("has_steel", has(CelestialItems.STEEL_INGOT.get())).save(consumer, saveName(CelestialItems.SPACESHIP_FRAME.get(), "from_workbench"));
+		WorkbenchCraftingRecipeBuilder.shaped(CelestialItems.SPACESHIP_CABIN.get(), CelestialFluids.MOLTEN_ALUMINUM.get(), 0.444F, 2.8F).pattern(" C ").pattern("CGC").pattern("X X").define('C', CelestialBlocks.THIN_CERAMIC.get()).define('G', Tags.Items.GLASS).define('X', Tags.Items.CHESTS).unlockedBy("has_steel", has(CelestialItems.STEEL_INGOT.get())).save(consumer, saveName(CelestialItems.SPACESHIP_CABIN.get(), "from_workbench"));
 		WorkbenchCraftingRecipeBuilder.shaped(CelestialItems.SPACESHIP_ENGINE.get(), CelestialFluids.MOLTEN_STEEL.get(), 0.555F, 3.1F).pattern("CRC").pattern("TTT").define('R', Items.REDSTONE).define('C', Items.COPPER_INGOT).define('T', Items.REDSTONE_TORCH).unlockedBy("has_steel", has(CelestialItems.STEEL_INGOT.get())).save(consumer, saveName(CelestialItems.SPACESHIP_ENGINE.get(), "from_workbench"));
 		WorkbenchCraftingRecipeBuilder.shaped(CelestialItems.WHITE_SPACESHIP.get(), CelestialFluids.MOLTEN_ALUMINUM.get(), 0.333F, 1.7F).pattern("C").pattern("F").pattern("E").define('C', CelestialItems.SPACESHIP_CABIN.get()).define('F', CelestialItems.SPACESHIP_FRAME.get()).define('E', CelestialItems.SPACESHIP_ENGINE.get()).unlockedBy("has_steel", has(CelestialItems.STEEL_INGOT.get())).save(consumer, saveName(CelestialItems.WHITE_SPACESHIP.get(), "from_workbench"));
 
@@ -428,7 +427,7 @@ public class CelestialRecipeGen extends RecipeProvider {
 		ShapedRecipeBuilder.shaped(CelestialBlocks.THIN_PANEL.get()).pattern("XX").pattern("XX").define('X', CelestialBlocks.PANEL.get()).unlockedBy("aluminum", has(CelestialItems.ALUMINUM_INGOT.get())).save(consumer);
 
 //		pane(BlockRegistry.PANEL.get(), BlockRegistry.THIN_PANEL.get(), BlockRegistry.PANEL.get(), consumer);
-		ShapedRecipeBuilder.shaped(CelestialBlocks.STEEL_LADDER.get()).pattern("X X").pattern("XXX").pattern("X X").define('X', CelestialItems.STEEL_INGOT.get()).unlockedBy("steel", has(CelestialItems.STEEL_INGOT.get())).save(consumer);
+		ShapedRecipeBuilder.shaped(CelestialBlocks.STEEL_LADDER.get()).pattern("X X").pattern("XxX").pattern("X X").define('X', CelestialItems.STEEL_ROD.get()).define('x', CelestialItems.STEEL_INGOT.get()).unlockedBy("steel", has(CelestialItems.STEEL_INGOT.get())).save(consumer);
 
 		ShapedRecipeBuilder.shaped(CelestialBlocks.AIRLOCK_DOOR.get()).pattern("GX").pattern("DX").define('X', CelestialItems.ALUMINUM_INGOT.get()).define('G', Tags.Items.GLASS_COLORLESS).define('D', CelestialBlocks.STEEL_DOOR.get()).unlockedBy("aluminum", has(CelestialItems.ALUMINUM_INGOT.get())).save(consumer);
 		ShapedRecipeBuilder.shaped(CelestialBlocks.AIRLOCK_DOOR.get()).pattern("GX").pattern("DX").define('X', CelestialItems.ALUMINUM_INGOT.get()).define('G', Tags.Items.GLASS_COLORLESS).define('D', Items.IRON_DOOR).unlockedBy("aluminum", has(CelestialItems.ALUMINUM_INGOT.get())).save(consumer, saveName(CelestialBlocks.AIRLOCK_DOOR.get(), "from_iron_door"));
@@ -623,42 +622,167 @@ public class CelestialRecipeGen extends RecipeProvider {
 		smelting(CelestialBlocks.SILICA.get(), CelestialBlocks.CERAMIC.get(), 1.05F, 100, Blocks.SAND, consumer);
 
 		ShapedRecipeBuilder.shaped(CelestialBlocks.CERAMIC.get(), 8).pattern("GGG").pattern("GXG").pattern("GGG").define('X', CelestialItems.STEEL_WOOL.get()).define('G', CelestialTags.Items.DYED_CERAMIC).unlockedBy("ceramic", has(CelestialBlocks.CERAMIC.get())).save(consumer, saveName(CelestialBlocks.CERAMIC.get(), "from_steel_wool"));
+		stairsSlabWallCraftStonecutting(CelestialBlocks.CERAMIC.get(), CelestialBlocks.CERAMIC_STAIRS.get(), CelestialBlocks.CERAMIC_SLAB.get(), CelestialBlocks.CERAMIC_WALL.get(), CelestialBlocks.CERAMIC.get(), consumer);
 		ShapedRecipeBuilder.shaped(CelestialBlocks.CERAMIC_TILE.get(), 8).pattern("GGG").pattern("GXG").pattern("GGG").define('X', CelestialItems.STEEL_WOOL.get()).define('G', CelestialTags.Items.DYED_CERAMIC_TILE).unlockedBy("ceramic", has(CelestialBlocks.CERAMIC.get())).save(consumer, saveName(CelestialBlocks.CERAMIC_TILE.get(), "from_steel_wool"));
+		ShapedRecipeBuilder.shaped(CelestialBlocks.CERAMIC_BRICK.get(), 8).pattern("GGG").pattern("GXG").pattern("GGG").define('X', CelestialItems.STEEL_WOOL.get()).define('G', CelestialTags.Items.DYED_CERAMIC_BRICK).unlockedBy("ceramic", has(CelestialBlocks.CERAMIC.get())).save(consumer, saveName(CelestialBlocks.CERAMIC_BRICK.get(), "from_steel_wool"));
+		stonecutting(CelestialBlocks.CERAMIC.get(), CelestialBlocks.CERAMIC_TILE.get(), 1, CelestialBlocks.CERAMIC.get(), consumer);
+		stairsSlabWallCraftStonecutting(CelestialBlocks.CERAMIC_TILE.get(), CelestialBlocks.CERAMIC_TILE_STAIRS.get(), CelestialBlocks.CERAMIC_TILE_SLAB.get(), CelestialBlocks.CERAMIC_TILE_WALL.get(), CelestialBlocks.CERAMIC.get(), consumer);
+
 
 		ShapedRecipeBuilder.shaped(CelestialBlocks.WHITE_CERAMIC.get(), 8).pattern("XXX").pattern("X#X").pattern("XXX").define('X', CelestialBlocks.CERAMIC.get()).define('#', Items.WHITE_DYE).unlockedBy("ceramic", has(CelestialBlocks.CERAMIC.get())).save(consumer);
+		stairsSlabWallCraftStonecutting(CelestialBlocks.WHITE_CERAMIC.get(), CelestialBlocks.WHITE_CERAMIC_STAIRS.get(), CelestialBlocks.WHITE_CERAMIC_SLAB.get(), CelestialBlocks.WHITE_CERAMIC_WALL.get(), CelestialBlocks.WHITE_CERAMIC.get(), consumer);
 		ShapedRecipeBuilder.shaped(CelestialBlocks.LIGHT_GREY_CERAMIC.get(), 8).pattern("XXX").pattern("X#X").pattern("XXX").define('X', CelestialBlocks.CERAMIC.get()).define('#', Items.LIGHT_GRAY_DYE).unlockedBy("ceramic", has(CelestialBlocks.CERAMIC.get())).save(consumer);
+		stairsSlabWallCraftStonecutting(CelestialBlocks.LIGHT_GREY_CERAMIC.get(), CelestialBlocks.LIGHT_GREY_CERAMIC_STAIRS.get(), CelestialBlocks.LIGHT_GREY_CERAMIC_SLAB.get(), CelestialBlocks.LIGHT_GREY_CERAMIC_WALL.get(), CelestialBlocks.LIGHT_GREY_CERAMIC.get(), consumer);
 		ShapedRecipeBuilder.shaped(CelestialBlocks.GREY_CERAMIC.get(), 8).pattern("XXX").pattern("X#X").pattern("XXX").define('X', CelestialBlocks.CERAMIC.get()).define('#', Items.GRAY_DYE).unlockedBy("ceramic", has(CelestialBlocks.CERAMIC.get())).save(consumer);
+		stairsSlabWallCraftStonecutting(CelestialBlocks.GREY_CERAMIC.get(), CelestialBlocks.GREY_CERAMIC_STAIRS.get(), CelestialBlocks.GREY_CERAMIC_SLAB.get(), CelestialBlocks.GREY_CERAMIC_WALL.get(), CelestialBlocks.GREY_CERAMIC.get(), consumer);
 		ShapedRecipeBuilder.shaped(CelestialBlocks.BLACK_CERAMIC.get(), 8).pattern("XXX").pattern("X#X").pattern("XXX").define('X', CelestialBlocks.CERAMIC.get()).define('#', Items.BLACK_DYE).unlockedBy("ceramic", has(CelestialBlocks.CERAMIC.get())).save(consumer);
+		stairsSlabWallCraftStonecutting(CelestialBlocks.BLACK_CERAMIC.get(), CelestialBlocks.BLACK_CERAMIC_STAIRS.get(), CelestialBlocks.BLACK_CERAMIC_SLAB.get(), CelestialBlocks.BLACK_CERAMIC_WALL.get(), CelestialBlocks.BLACK_CERAMIC.get(), consumer);
 		ShapedRecipeBuilder.shaped(CelestialBlocks.PURPLE_CERAMIC.get(), 8).pattern("XXX").pattern("X#X").pattern("XXX").define('X', CelestialBlocks.CERAMIC.get()).define('#', Items.PURPLE_DYE).unlockedBy("ceramic", has(CelestialBlocks.CERAMIC.get())).save(consumer);
+		stairsSlabWallCraftStonecutting(CelestialBlocks.PURPLE_CERAMIC.get(), CelestialBlocks.PURPLE_CERAMIC_STAIRS.get(), CelestialBlocks.PURPLE_CERAMIC_SLAB.get(), CelestialBlocks.PURPLE_CERAMIC_WALL.get(), CelestialBlocks.PURPLE_CERAMIC.get(), consumer);
 		ShapedRecipeBuilder.shaped(CelestialBlocks.MAGENTA_CERAMIC.get(), 8).pattern("XXX").pattern("X#X").pattern("XXX").define('X', CelestialBlocks.CERAMIC.get()).define('#', Items.MAGENTA_DYE).unlockedBy("ceramic", has(CelestialBlocks.CERAMIC.get())).save(consumer);
+		stairsSlabWallCraftStonecutting(CelestialBlocks.MAGENTA_CERAMIC.get(), CelestialBlocks.MAGENTA_CERAMIC_STAIRS.get(), CelestialBlocks.MAGENTA_CERAMIC_SLAB.get(), CelestialBlocks.MAGENTA_CERAMIC_WALL.get(), CelestialBlocks.MAGENTA_CERAMIC.get(), consumer);
 		ShapedRecipeBuilder.shaped(CelestialBlocks.BLUE_CERAMIC.get(), 8).pattern("XXX").pattern("X#X").pattern("XXX").define('X', CelestialBlocks.CERAMIC.get()).define('#', Items.BLUE_DYE).unlockedBy("ceramic", has(CelestialBlocks.CERAMIC.get())).save(consumer);
+		stairsSlabWallCraftStonecutting(CelestialBlocks.BLUE_CERAMIC.get(), CelestialBlocks.BLUE_CERAMIC_STAIRS.get(), CelestialBlocks.BLUE_CERAMIC_SLAB.get(), CelestialBlocks.BLUE_CERAMIC_WALL.get(), CelestialBlocks.BLUE_CERAMIC.get(), consumer);
 		ShapedRecipeBuilder.shaped(CelestialBlocks.LIGHT_BLUE_CERAMIC.get(), 8).pattern("XXX").pattern("X#X").pattern("XXX").define('X', CelestialBlocks.CERAMIC.get()).define('#', Items.LIGHT_BLUE_DYE).unlockedBy("ceramic", has(CelestialBlocks.CERAMIC.get())).save(consumer);
+		stairsSlabWallCraftStonecutting(CelestialBlocks.LIGHT_BLUE_CERAMIC.get(), CelestialBlocks.LIGHT_BLUE_CERAMIC_STAIRS.get(), CelestialBlocks.LIGHT_BLUE_CERAMIC_SLAB.get(), CelestialBlocks.LIGHT_BLUE_CERAMIC_WALL.get(), CelestialBlocks.LIGHT_BLUE_CERAMIC.get(), consumer);
 		ShapedRecipeBuilder.shaped(CelestialBlocks.CYAN_CERAMIC.get(), 8).pattern("XXX").pattern("X#X").pattern("XXX").define('X', CelestialBlocks.CERAMIC.get()).define('#', Items.CYAN_DYE).unlockedBy("ceramic", has(CelestialBlocks.CERAMIC.get())).save(consumer);
+		stairsSlabWallCraftStonecutting(CelestialBlocks.CYAN_CERAMIC.get(), CelestialBlocks.CYAN_CERAMIC_STAIRS.get(), CelestialBlocks.CYAN_CERAMIC_SLAB.get(), CelestialBlocks.CYAN_CERAMIC_WALL.get(), CelestialBlocks.CYAN_CERAMIC.get(), consumer);
 		ShapedRecipeBuilder.shaped(CelestialBlocks.GREEN_CERAMIC.get(), 8).pattern("XXX").pattern("X#X").pattern("XXX").define('X', CelestialBlocks.CERAMIC.get()).define('#', Items.GREEN_DYE).unlockedBy("ceramic", has(CelestialBlocks.CERAMIC.get())).save(consumer);
+		stairsSlabWallCraftStonecutting(CelestialBlocks.GREEN_CERAMIC.get(), CelestialBlocks.GREEN_CERAMIC_STAIRS.get(), CelestialBlocks.GREEN_CERAMIC_SLAB.get(), CelestialBlocks.GREEN_CERAMIC_WALL.get(), CelestialBlocks.GREEN_CERAMIC.get(), consumer);
 		ShapedRecipeBuilder.shaped(CelestialBlocks.LIME_CERAMIC.get(), 8).pattern("XXX").pattern("X#X").pattern("XXX").define('X', CelestialBlocks.CERAMIC.get()).define('#', Items.LIME_DYE).unlockedBy("ceramic", has(CelestialBlocks.CERAMIC.get())).save(consumer);
+		stairsSlabWallCraftStonecutting(CelestialBlocks.LIME_CERAMIC.get(), CelestialBlocks.LIME_CERAMIC_STAIRS.get(), CelestialBlocks.LIME_CERAMIC_SLAB.get(), CelestialBlocks.LIME_CERAMIC_WALL.get(), CelestialBlocks.LIME_CERAMIC.get(), consumer);
 		ShapedRecipeBuilder.shaped(CelestialBlocks.YELLOW_CERAMIC.get(), 8).pattern("XXX").pattern("X#X").pattern("XXX").define('X', CelestialBlocks.CERAMIC.get()).define('#', Items.YELLOW_DYE).unlockedBy("ceramic", has(CelestialBlocks.CERAMIC.get())).save(consumer);
+		stairsSlabWallCraftStonecutting(CelestialBlocks.YELLOW_CERAMIC.get(), CelestialBlocks.YELLOW_CERAMIC_STAIRS.get(), CelestialBlocks.YELLOW_CERAMIC_SLAB.get(), CelestialBlocks.YELLOW_CERAMIC_WALL.get(), CelestialBlocks.YELLOW_CERAMIC.get(), consumer);
 		ShapedRecipeBuilder.shaped(CelestialBlocks.ORANGE_CERAMIC.get(), 8).pattern("XXX").pattern("X#X").pattern("XXX").define('X', CelestialBlocks.CERAMIC.get()).define('#', Items.ORANGE_DYE).unlockedBy("ceramic", has(CelestialBlocks.CERAMIC.get())).save(consumer);
+		stairsSlabWallCraftStonecutting(CelestialBlocks.ORANGE_CERAMIC.get(), CelestialBlocks.ORANGE_CERAMIC_STAIRS.get(), CelestialBlocks.ORANGE_CERAMIC_SLAB.get(), CelestialBlocks.ORANGE_CERAMIC_WALL.get(), CelestialBlocks.ORANGE_CERAMIC.get(), consumer);
 		ShapedRecipeBuilder.shaped(CelestialBlocks.BROWN_CERAMIC.get(), 8).pattern("XXX").pattern("X#X").pattern("XXX").define('X', CelestialBlocks.CERAMIC.get()).define('#', Items.BROWN_DYE).unlockedBy("ceramic", has(CelestialBlocks.CERAMIC.get())).save(consumer);
+		stairsSlabWallCraftStonecutting(CelestialBlocks.BROWN_CERAMIC.get(), CelestialBlocks.BROWN_CERAMIC_STAIRS.get(), CelestialBlocks.BROWN_CERAMIC_SLAB.get(), CelestialBlocks.BROWN_CERAMIC_WALL.get(), CelestialBlocks.BROWN_CERAMIC.get(), consumer);
 		ShapedRecipeBuilder.shaped(CelestialBlocks.RED_CERAMIC.get(), 8).pattern("XXX").pattern("X#X").pattern("XXX").define('X', CelestialBlocks.CERAMIC.get()).define('#', Items.RED_DYE).unlockedBy("ceramic", has(CelestialBlocks.CERAMIC.get())).save(consumer);
+		stairsSlabWallCraftStonecutting(CelestialBlocks.RED_CERAMIC.get(), CelestialBlocks.RED_CERAMIC_STAIRS.get(), CelestialBlocks.RED_CERAMIC_SLAB.get(), CelestialBlocks.RED_CERAMIC_WALL.get(), CelestialBlocks.RED_CERAMIC.get(), consumer);
 		ShapedRecipeBuilder.shaped(CelestialBlocks.PINK_CERAMIC.get(), 8).pattern("XXX").pattern("X#X").pattern("XXX").define('X', CelestialBlocks.CERAMIC.get()).define('#', Items.PINK_DYE).unlockedBy("ceramic", has(CelestialBlocks.CERAMIC.get())).save(consumer);
+		stairsSlabWallCraftStonecutting(CelestialBlocks.PINK_CERAMIC.get(), CelestialBlocks.PINK_CERAMIC_STAIRS.get(), CelestialBlocks.PINK_CERAMIC_SLAB.get(), CelestialBlocks.PINK_CERAMIC_WALL.get(), CelestialBlocks.PINK_CERAMIC.get(), consumer);
 
-		pane(CelestialBlocks.CERAMIC.get(), CelestialBlocks.CERAMIC_TILE.get(), CelestialBlocks.CERAMIC.get(), consumer);
-		pane(CelestialBlocks.WHITE_CERAMIC.get(), CelestialBlocks.WHITE_CERAMIC_TILE.get(), CelestialBlocks.CERAMIC.get(), consumer);
-		pane(CelestialBlocks.LIGHT_GREY_CERAMIC.get(), CelestialBlocks.LIGHT_GREY_CERAMIC_TILE.get(), CelestialBlocks.CERAMIC.get(), consumer);
-		pane(CelestialBlocks.GREY_CERAMIC.get(), CelestialBlocks.GREY_CERAMIC_TILE.get(), CelestialBlocks.CERAMIC.get(), consumer);
-		pane(CelestialBlocks.BLACK_CERAMIC.get(), CelestialBlocks.BLACK_CERAMIC_TILE.get(), CelestialBlocks.CERAMIC.get(), consumer);
-		pane(CelestialBlocks.PURPLE_CERAMIC.get(), CelestialBlocks.PURPLE_CERAMIC_TILE.get(), CelestialBlocks.CERAMIC.get(), consumer);
-		pane(CelestialBlocks.MAGENTA_CERAMIC.get(), CelestialBlocks.MAGENTA_CERAMIC_TILE.get(), CelestialBlocks.CERAMIC.get(), consumer);
-		pane(CelestialBlocks.BLUE_CERAMIC.get(), CelestialBlocks.BLUE_CERAMIC_TILE.get(), CelestialBlocks.CERAMIC.get(), consumer);
-		pane(CelestialBlocks.LIGHT_BLUE_CERAMIC.get(), CelestialBlocks.LIGHT_BLUE_CERAMIC_TILE.get(), CelestialBlocks.CERAMIC.get(), consumer);
-		pane(CelestialBlocks.CYAN_CERAMIC.get(), CelestialBlocks.CYAN_CERAMIC_TILE.get(), CelestialBlocks.CERAMIC.get(), consumer);
-		pane(CelestialBlocks.GREEN_CERAMIC.get(), CelestialBlocks.GREEN_CERAMIC_TILE.get(), CelestialBlocks.CERAMIC.get(), consumer);
-		pane(CelestialBlocks.LIME_CERAMIC.get(), CelestialBlocks.LIME_CERAMIC_TILE.get(), CelestialBlocks.CERAMIC.get(), consumer);
-		pane(CelestialBlocks.YELLOW_CERAMIC.get(), CelestialBlocks.YELLOW_CERAMIC_TILE.get(), CelestialBlocks.CERAMIC.get(), consumer);
-		pane(CelestialBlocks.ORANGE_CERAMIC.get(), CelestialBlocks.ORANGE_CERAMIC_TILE.get(), CelestialBlocks.CERAMIC.get(), consumer);
-		pane(CelestialBlocks.BROWN_CERAMIC.get(), CelestialBlocks.BROWN_CERAMIC_TILE.get(), CelestialBlocks.CERAMIC.get(), consumer);
-		pane(CelestialBlocks.RED_CERAMIC.get(), CelestialBlocks.RED_CERAMIC_TILE.get(), CelestialBlocks.CERAMIC.get(), consumer);
-		pane(CelestialBlocks.PINK_CERAMIC.get(), CelestialBlocks.PINK_CERAMIC_TILE.get(), CelestialBlocks.CERAMIC.get(), consumer);
+		stonecutting(CelestialBlocks.WHITE_CERAMIC.get(), CelestialBlocks.WHITE_CERAMIC_TILE.get(), 1, CelestialBlocks.WHITE_CERAMIC.get(), consumer);
+		stairsSlabWallCraftStonecutting(CelestialBlocks.WHITE_CERAMIC_TILE.get(), CelestialBlocks.WHITE_CERAMIC_TILE_STAIRS.get(), CelestialBlocks.WHITE_CERAMIC_TILE_SLAB.get(), CelestialBlocks.WHITE_CERAMIC_TILE_WALL.get(), CelestialBlocks.WHITE_CERAMIC.get(), consumer);
+		stonecutting(CelestialBlocks.LIGHT_GREY_CERAMIC.get(), CelestialBlocks.LIGHT_GREY_CERAMIC_TILE.get(), 1, CelestialBlocks.LIGHT_GREY_CERAMIC.get(), consumer);
+		stairsSlabWallCraftStonecutting(CelestialBlocks.LIGHT_GREY_CERAMIC_TILE.get(), CelestialBlocks.LIGHT_GREY_CERAMIC_TILE_STAIRS.get(), CelestialBlocks.LIGHT_GREY_CERAMIC_TILE_SLAB.get(), CelestialBlocks.LIGHT_GREY_CERAMIC_TILE_WALL.get(), CelestialBlocks.LIGHT_GREY_CERAMIC.get(), consumer);
+		stonecutting(CelestialBlocks.GREY_CERAMIC.get(), CelestialBlocks.GREY_CERAMIC_TILE.get(), 1, CelestialBlocks.GREY_CERAMIC.get(), consumer);
+		stairsSlabWallCraftStonecutting(CelestialBlocks.GREY_CERAMIC_TILE.get(), CelestialBlocks.GREY_CERAMIC_TILE_STAIRS.get(), CelestialBlocks.GREY_CERAMIC_TILE_SLAB.get(), CelestialBlocks.GREY_CERAMIC_TILE_WALL.get(), CelestialBlocks.GREY_CERAMIC.get(), consumer);
+		stonecutting(CelestialBlocks.BLACK_CERAMIC.get(), CelestialBlocks.BLACK_CERAMIC_TILE.get(), 1, CelestialBlocks.BLACK_CERAMIC.get(), consumer);
+		stairsSlabWallCraftStonecutting(CelestialBlocks.BLACK_CERAMIC_TILE.get(), CelestialBlocks.BLACK_CERAMIC_TILE_STAIRS.get(), CelestialBlocks.BLACK_CERAMIC_TILE_SLAB.get(), CelestialBlocks.BLACK_CERAMIC_TILE_WALL.get(), CelestialBlocks.BLACK_CERAMIC.get(), consumer);
+		stonecutting(CelestialBlocks.PURPLE_CERAMIC.get(), CelestialBlocks.PURPLE_CERAMIC_TILE.get(), 1, CelestialBlocks.PURPLE_CERAMIC.get(), consumer);
+		stairsSlabWallCraftStonecutting(CelestialBlocks.PURPLE_CERAMIC_TILE.get(), CelestialBlocks.PURPLE_CERAMIC_TILE_STAIRS.get(), CelestialBlocks.PURPLE_CERAMIC_TILE_SLAB.get(), CelestialBlocks.PURPLE_CERAMIC_TILE_WALL.get(), CelestialBlocks.PURPLE_CERAMIC.get(), consumer);
+		stonecutting(CelestialBlocks.MAGENTA_CERAMIC.get(), CelestialBlocks.MAGENTA_CERAMIC_TILE.get(), 1, CelestialBlocks.MAGENTA_CERAMIC.get(), consumer);
+		stairsSlabWallCraftStonecutting(CelestialBlocks.MAGENTA_CERAMIC_TILE.get(), CelestialBlocks.MAGENTA_CERAMIC_TILE_STAIRS.get(), CelestialBlocks.MAGENTA_CERAMIC_TILE_SLAB.get(), CelestialBlocks.MAGENTA_CERAMIC_TILE_WALL.get(), CelestialBlocks.MAGENTA_CERAMIC.get(), consumer);
+		stonecutting(CelestialBlocks.BLUE_CERAMIC.get(), CelestialBlocks.BLUE_CERAMIC_TILE.get(), 1, CelestialBlocks.BLUE_CERAMIC.get(), consumer);
+		stairsSlabWallCraftStonecutting(CelestialBlocks.BLUE_CERAMIC_TILE.get(), CelestialBlocks.BLUE_CERAMIC_TILE_STAIRS.get(), CelestialBlocks.BLUE_CERAMIC_TILE_SLAB.get(), CelestialBlocks.BLUE_CERAMIC_TILE_WALL.get(), CelestialBlocks.BLUE_CERAMIC.get(), consumer);
+		stonecutting(CelestialBlocks.LIGHT_BLUE_CERAMIC.get(), CelestialBlocks.LIGHT_BLUE_CERAMIC_TILE.get(), 1, CelestialBlocks.LIGHT_BLUE_CERAMIC.get(), consumer);
+		stairsSlabWallCraftStonecutting(CelestialBlocks.LIGHT_BLUE_CERAMIC_TILE.get(), CelestialBlocks.LIGHT_BLUE_CERAMIC_TILE_STAIRS.get(), CelestialBlocks.LIGHT_BLUE_CERAMIC_TILE_SLAB.get(), CelestialBlocks.LIGHT_BLUE_CERAMIC_TILE_WALL.get(), CelestialBlocks.LIGHT_BLUE_CERAMIC.get(), consumer);
+		stonecutting(CelestialBlocks.CYAN_CERAMIC.get(), CelestialBlocks.CYAN_CERAMIC_TILE.get(), 1, CelestialBlocks.CYAN_CERAMIC.get(), consumer);
+		stairsSlabWallCraftStonecutting(CelestialBlocks.CYAN_CERAMIC_TILE.get(), CelestialBlocks.CYAN_CERAMIC_TILE_STAIRS.get(), CelestialBlocks.CYAN_CERAMIC_TILE_SLAB.get(), CelestialBlocks.CYAN_CERAMIC_TILE_WALL.get(), CelestialBlocks.CYAN_CERAMIC.get(), consumer);
+		stonecutting(CelestialBlocks.GREEN_CERAMIC.get(), CelestialBlocks.GREEN_CERAMIC_TILE.get(), 1, CelestialBlocks.GREEN_CERAMIC.get(), consumer);
+		stairsSlabWallCraftStonecutting(CelestialBlocks.GREEN_CERAMIC_TILE.get(), CelestialBlocks.GREEN_CERAMIC_TILE_STAIRS.get(), CelestialBlocks.GREEN_CERAMIC_TILE_SLAB.get(), CelestialBlocks.GREEN_CERAMIC_TILE_WALL.get(), CelestialBlocks.GREEN_CERAMIC.get(), consumer);
+		stonecutting(CelestialBlocks.LIME_CERAMIC.get(), CelestialBlocks.LIME_CERAMIC_TILE.get(), 1, CelestialBlocks.LIME_CERAMIC.get(), consumer);
+		stairsSlabWallCraftStonecutting(CelestialBlocks.LIME_CERAMIC_TILE.get(), CelestialBlocks.LIME_CERAMIC_TILE_STAIRS.get(), CelestialBlocks.LIME_CERAMIC_TILE_SLAB.get(), CelestialBlocks.LIME_CERAMIC_TILE_WALL.get(), CelestialBlocks.LIME_CERAMIC.get(), consumer);
+		stonecutting(CelestialBlocks.YELLOW_CERAMIC.get(), CelestialBlocks.YELLOW_CERAMIC_TILE.get(), 1, CelestialBlocks.YELLOW_CERAMIC.get(), consumer);
+		stairsSlabWallCraftStonecutting(CelestialBlocks.YELLOW_CERAMIC_TILE.get(), CelestialBlocks.YELLOW_CERAMIC_TILE_STAIRS.get(), CelestialBlocks.YELLOW_CERAMIC_TILE_SLAB.get(), CelestialBlocks.YELLOW_CERAMIC_TILE_WALL.get(), CelestialBlocks.YELLOW_CERAMIC.get(), consumer);
+		stonecutting(CelestialBlocks.ORANGE_CERAMIC.get(), CelestialBlocks.ORANGE_CERAMIC_TILE.get(), 1, CelestialBlocks.ORANGE_CERAMIC.get(), consumer);
+		stairsSlabWallCraftStonecutting(CelestialBlocks.ORANGE_CERAMIC_TILE.get(), CelestialBlocks.ORANGE_CERAMIC_TILE_STAIRS.get(), CelestialBlocks.ORANGE_CERAMIC_TILE_SLAB.get(), CelestialBlocks.ORANGE_CERAMIC_TILE_WALL.get(), CelestialBlocks.ORANGE_CERAMIC.get(), consumer);
+		stonecutting(CelestialBlocks.BROWN_CERAMIC.get(), CelestialBlocks.BROWN_CERAMIC_TILE.get(), 1, CelestialBlocks.BROWN_CERAMIC.get(), consumer);
+		stairsSlabWallCraftStonecutting(CelestialBlocks.BROWN_CERAMIC_TILE.get(), CelestialBlocks.BROWN_CERAMIC_TILE_STAIRS.get(), CelestialBlocks.BROWN_CERAMIC_TILE_SLAB.get(), CelestialBlocks.BROWN_CERAMIC_TILE_WALL.get(), CelestialBlocks.BROWN_CERAMIC.get(), consumer);
+		stonecutting(CelestialBlocks.RED_CERAMIC.get(), CelestialBlocks.RED_CERAMIC_TILE.get(), 1, CelestialBlocks.RED_CERAMIC.get(), consumer);
+		stairsSlabWallCraftStonecutting(CelestialBlocks.RED_CERAMIC_TILE.get(), CelestialBlocks.RED_CERAMIC_TILE_STAIRS.get(), CelestialBlocks.RED_CERAMIC_TILE_SLAB.get(), CelestialBlocks.RED_CERAMIC_TILE_WALL.get(), CelestialBlocks.RED_CERAMIC.get(), consumer);
+		stonecutting(CelestialBlocks.PINK_CERAMIC.get(), CelestialBlocks.PINK_CERAMIC_TILE.get(), 1, CelestialBlocks.PINK_CERAMIC.get(), consumer);
+		stairsSlabWallCraftStonecutting(CelestialBlocks.PINK_CERAMIC_TILE.get(), CelestialBlocks.PINK_CERAMIC_TILE_STAIRS.get(), CelestialBlocks.PINK_CERAMIC_TILE_SLAB.get(), CelestialBlocks.PINK_CERAMIC_TILE_WALL.get(), CelestialBlocks.PINK_CERAMIC.get(), consumer);
+
+		stonecutting(CelestialBlocks.WHITE_CERAMIC.get(), CelestialBlocks.WHITE_CERAMIC_BRICK.get(), 1, CelestialBlocks.WHITE_CERAMIC.get(), consumer);
+		stairsSlabWallCraftStonecutting(CelestialBlocks.WHITE_CERAMIC_BRICK.get(), CelestialBlocks.WHITE_CERAMIC_BRICK_STAIRS.get(), CelestialBlocks.WHITE_CERAMIC_BRICK_SLAB.get(), CelestialBlocks.WHITE_CERAMIC_BRICK_WALL.get(), CelestialBlocks.WHITE_CERAMIC.get(), consumer);
+		stonecutting(CelestialBlocks.LIGHT_GREY_CERAMIC.get(), CelestialBlocks.LIGHT_GREY_CERAMIC_BRICK.get(), 1, CelestialBlocks.LIGHT_GREY_CERAMIC.get(), consumer);
+		stairsSlabWallCraftStonecutting(CelestialBlocks.LIGHT_GREY_CERAMIC_BRICK.get(), CelestialBlocks.LIGHT_GREY_CERAMIC_BRICK_STAIRS.get(), CelestialBlocks.LIGHT_GREY_CERAMIC_BRICK_SLAB.get(), CelestialBlocks.LIGHT_GREY_CERAMIC_BRICK_WALL.get(), CelestialBlocks.LIGHT_GREY_CERAMIC.get(), consumer);
+		stonecutting(CelestialBlocks.GREY_CERAMIC.get(), CelestialBlocks.GREY_CERAMIC_BRICK.get(), 1, CelestialBlocks.GREY_CERAMIC.get(), consumer);
+		stairsSlabWallCraftStonecutting(CelestialBlocks.GREY_CERAMIC_BRICK.get(), CelestialBlocks.GREY_CERAMIC_BRICK_STAIRS.get(), CelestialBlocks.GREY_CERAMIC_BRICK_SLAB.get(), CelestialBlocks.GREY_CERAMIC_BRICK_WALL.get(), CelestialBlocks.GREY_CERAMIC.get(), consumer);
+		stonecutting(CelestialBlocks.BLACK_CERAMIC.get(), CelestialBlocks.BLACK_CERAMIC_BRICK.get(), 1, CelestialBlocks.BLACK_CERAMIC.get(), consumer);
+		stairsSlabWallCraftStonecutting(CelestialBlocks.BLACK_CERAMIC_BRICK.get(), CelestialBlocks.BLACK_CERAMIC_BRICK_STAIRS.get(), CelestialBlocks.BLACK_CERAMIC_BRICK_SLAB.get(), CelestialBlocks.BLACK_CERAMIC_BRICK_WALL.get(), CelestialBlocks.BLACK_CERAMIC.get(), consumer);
+		stonecutting(CelestialBlocks.PURPLE_CERAMIC.get(), CelestialBlocks.PURPLE_CERAMIC_BRICK.get(), 1, CelestialBlocks.PURPLE_CERAMIC.get(), consumer);
+		stairsSlabWallCraftStonecutting(CelestialBlocks.PURPLE_CERAMIC_BRICK.get(), CelestialBlocks.PURPLE_CERAMIC_BRICK_STAIRS.get(), CelestialBlocks.PURPLE_CERAMIC_BRICK_SLAB.get(), CelestialBlocks.PURPLE_CERAMIC_BRICK_WALL.get(), CelestialBlocks.PURPLE_CERAMIC.get(), consumer);
+		stonecutting(CelestialBlocks.MAGENTA_CERAMIC.get(), CelestialBlocks.MAGENTA_CERAMIC_BRICK.get(), 1, CelestialBlocks.MAGENTA_CERAMIC.get(), consumer);
+		stairsSlabWallCraftStonecutting(CelestialBlocks.MAGENTA_CERAMIC_BRICK.get(), CelestialBlocks.MAGENTA_CERAMIC_BRICK_STAIRS.get(), CelestialBlocks.MAGENTA_CERAMIC_BRICK_SLAB.get(), CelestialBlocks.MAGENTA_CERAMIC_BRICK_WALL.get(), CelestialBlocks.MAGENTA_CERAMIC.get(), consumer);
+		stonecutting(CelestialBlocks.BLUE_CERAMIC.get(), CelestialBlocks.BLUE_CERAMIC_BRICK.get(), 1, CelestialBlocks.BLUE_CERAMIC.get(), consumer);
+		stairsSlabWallCraftStonecutting(CelestialBlocks.BLUE_CERAMIC_BRICK.get(), CelestialBlocks.BLUE_CERAMIC_BRICK_STAIRS.get(), CelestialBlocks.BLUE_CERAMIC_BRICK_SLAB.get(), CelestialBlocks.BLUE_CERAMIC_BRICK_WALL.get(), CelestialBlocks.BLUE_CERAMIC.get(), consumer);
+		stonecutting(CelestialBlocks.LIGHT_BLUE_CERAMIC.get(), CelestialBlocks.LIGHT_BLUE_CERAMIC_BRICK.get(), 1, CelestialBlocks.LIGHT_BLUE_CERAMIC.get(), consumer);
+		stairsSlabWallCraftStonecutting(CelestialBlocks.LIGHT_BLUE_CERAMIC_BRICK.get(), CelestialBlocks.LIGHT_BLUE_CERAMIC_BRICK_STAIRS.get(), CelestialBlocks.LIGHT_BLUE_CERAMIC_BRICK_SLAB.get(), CelestialBlocks.LIGHT_BLUE_CERAMIC_BRICK_WALL.get(), CelestialBlocks.LIGHT_BLUE_CERAMIC.get(), consumer);
+		stonecutting(CelestialBlocks.CYAN_CERAMIC.get(), CelestialBlocks.CYAN_CERAMIC_BRICK.get(), 1, CelestialBlocks.CYAN_CERAMIC.get(), consumer);
+		stairsSlabWallCraftStonecutting(CelestialBlocks.CYAN_CERAMIC_BRICK.get(), CelestialBlocks.CYAN_CERAMIC_BRICK_STAIRS.get(), CelestialBlocks.CYAN_CERAMIC_BRICK_SLAB.get(), CelestialBlocks.CYAN_CERAMIC_BRICK_WALL.get(), CelestialBlocks.CYAN_CERAMIC.get(), consumer);
+		stonecutting(CelestialBlocks.GREEN_CERAMIC.get(), CelestialBlocks.GREEN_CERAMIC_BRICK.get(), 1, CelestialBlocks.GREEN_CERAMIC.get(), consumer);
+		stairsSlabWallCraftStonecutting(CelestialBlocks.GREEN_CERAMIC_BRICK.get(), CelestialBlocks.GREEN_CERAMIC_BRICK_STAIRS.get(), CelestialBlocks.GREEN_CERAMIC_BRICK_SLAB.get(), CelestialBlocks.GREEN_CERAMIC_BRICK_WALL.get(), CelestialBlocks.GREEN_CERAMIC.get(), consumer);
+		stonecutting(CelestialBlocks.LIME_CERAMIC.get(), CelestialBlocks.LIME_CERAMIC_BRICK.get(), 1, CelestialBlocks.LIME_CERAMIC.get(), consumer);
+		stairsSlabWallCraftStonecutting(CelestialBlocks.LIME_CERAMIC_BRICK.get(), CelestialBlocks.LIME_CERAMIC_BRICK_STAIRS.get(), CelestialBlocks.LIME_CERAMIC_BRICK_SLAB.get(), CelestialBlocks.LIME_CERAMIC_BRICK_WALL.get(), CelestialBlocks.LIME_CERAMIC.get(), consumer);
+		stonecutting(CelestialBlocks.YELLOW_CERAMIC.get(), CelestialBlocks.YELLOW_CERAMIC_BRICK.get(), 1, CelestialBlocks.YELLOW_CERAMIC.get(), consumer);
+		stairsSlabWallCraftStonecutting(CelestialBlocks.YELLOW_CERAMIC_BRICK.get(), CelestialBlocks.YELLOW_CERAMIC_BRICK_STAIRS.get(), CelestialBlocks.YELLOW_CERAMIC_BRICK_SLAB.get(), CelestialBlocks.YELLOW_CERAMIC_BRICK_WALL.get(), CelestialBlocks.YELLOW_CERAMIC.get(), consumer);
+		stonecutting(CelestialBlocks.ORANGE_CERAMIC.get(), CelestialBlocks.ORANGE_CERAMIC_BRICK.get(), 1, CelestialBlocks.ORANGE_CERAMIC.get(), consumer);
+		stairsSlabWallCraftStonecutting(CelestialBlocks.ORANGE_CERAMIC_BRICK.get(), CelestialBlocks.ORANGE_CERAMIC_BRICK_STAIRS.get(), CelestialBlocks.ORANGE_CERAMIC_BRICK_SLAB.get(), CelestialBlocks.ORANGE_CERAMIC_BRICK_WALL.get(), CelestialBlocks.ORANGE_CERAMIC.get(), consumer);
+		stonecutting(CelestialBlocks.BROWN_CERAMIC.get(), CelestialBlocks.BROWN_CERAMIC_BRICK.get(), 1, CelestialBlocks.BROWN_CERAMIC.get(), consumer);
+		stairsSlabWallCraftStonecutting(CelestialBlocks.BROWN_CERAMIC_BRICK.get(), CelestialBlocks.BROWN_CERAMIC_BRICK_STAIRS.get(), CelestialBlocks.BROWN_CERAMIC_BRICK_SLAB.get(), CelestialBlocks.BROWN_CERAMIC_BRICK_WALL.get(), CelestialBlocks.BROWN_CERAMIC.get(), consumer);
+		stonecutting(CelestialBlocks.RED_CERAMIC.get(), CelestialBlocks.RED_CERAMIC_BRICK.get(), 1, CelestialBlocks.RED_CERAMIC.get(), consumer);
+		stairsSlabWallCraftStonecutting(CelestialBlocks.RED_CERAMIC_BRICK.get(), CelestialBlocks.RED_CERAMIC_BRICK_STAIRS.get(), CelestialBlocks.RED_CERAMIC_BRICK_SLAB.get(), CelestialBlocks.RED_CERAMIC_BRICK_WALL.get(), CelestialBlocks.RED_CERAMIC.get(), consumer);
+		stonecutting(CelestialBlocks.PINK_CERAMIC.get(), CelestialBlocks.PINK_CERAMIC_BRICK.get(), 1, CelestialBlocks.PINK_CERAMIC.get(), consumer);
+		stairsSlabWallCraftStonecutting(CelestialBlocks.PINK_CERAMIC_BRICK.get(), CelestialBlocks.PINK_CERAMIC_BRICK_STAIRS.get(), CelestialBlocks.PINK_CERAMIC_BRICK_SLAB.get(), CelestialBlocks.PINK_CERAMIC_BRICK_WALL.get(), CelestialBlocks.PINK_CERAMIC.get(), consumer);
+
+
+		ceramicPane(CelestialBlocks.CERAMIC.get(), CelestialBlocks.THIN_CERAMIC.get(), CelestialBlocks.CERAMIC.get(), consumer);
+		ceramicPane(CelestialBlocks.WHITE_CERAMIC.get(), CelestialBlocks.THIN_WHITE_CERAMIC.get(), CelestialBlocks.CERAMIC.get(), consumer);
+		ceramicPane(CelestialBlocks.LIGHT_GREY_CERAMIC.get(), CelestialBlocks.THIN_LIGHT_GREY_CERAMIC.get(), CelestialBlocks.CERAMIC.get(), consumer);
+		ceramicPane(CelestialBlocks.GREY_CERAMIC.get(), CelestialBlocks.THIN_GREY_CERAMIC.get(), CelestialBlocks.CERAMIC.get(), consumer);
+		ceramicPane(CelestialBlocks.BLACK_CERAMIC.get(), CelestialBlocks.THIN_BLACK_CERAMIC.get(), CelestialBlocks.CERAMIC.get(), consumer);
+		ceramicPane(CelestialBlocks.PURPLE_CERAMIC.get(), CelestialBlocks.THIN_PURPLE_CERAMIC.get(), CelestialBlocks.CERAMIC.get(), consumer);
+		ceramicPane(CelestialBlocks.MAGENTA_CERAMIC.get(), CelestialBlocks.THIN_MAGENTA_CERAMIC.get(), CelestialBlocks.CERAMIC.get(), consumer);
+		ceramicPane(CelestialBlocks.BLUE_CERAMIC.get(), CelestialBlocks.THIN_BLUE_CERAMIC.get(), CelestialBlocks.CERAMIC.get(), consumer);
+		ceramicPane(CelestialBlocks.LIGHT_BLUE_CERAMIC.get(), CelestialBlocks.THIN_LIGHT_BLUE_CERAMIC.get(), CelestialBlocks.CERAMIC.get(), consumer);
+		ceramicPane(CelestialBlocks.CYAN_CERAMIC.get(), CelestialBlocks.THIN_CYAN_CERAMIC.get(), CelestialBlocks.CERAMIC.get(), consumer);
+		ceramicPane(CelestialBlocks.GREEN_CERAMIC.get(), CelestialBlocks.THIN_GREEN_CERAMIC.get(), CelestialBlocks.CERAMIC.get(), consumer);
+		ceramicPane(CelestialBlocks.LIME_CERAMIC.get(), CelestialBlocks.THIN_LIME_CERAMIC.get(), CelestialBlocks.CERAMIC.get(), consumer);
+		ceramicPane(CelestialBlocks.YELLOW_CERAMIC.get(), CelestialBlocks.THIN_YELLOW_CERAMIC.get(), CelestialBlocks.CERAMIC.get(), consumer);
+		ceramicPane(CelestialBlocks.ORANGE_CERAMIC.get(), CelestialBlocks.THIN_ORANGE_CERAMIC.get(), CelestialBlocks.CERAMIC.get(), consumer);
+		ceramicPane(CelestialBlocks.BROWN_CERAMIC.get(), CelestialBlocks.THIN_BROWN_CERAMIC.get(), CelestialBlocks.CERAMIC.get(), consumer);
+		ceramicPane(CelestialBlocks.RED_CERAMIC.get(), CelestialBlocks.THIN_RED_CERAMIC.get(), CelestialBlocks.CERAMIC.get(), consumer);
+		ceramicPane(CelestialBlocks.PINK_CERAMIC.get(), CelestialBlocks.THIN_PINK_CERAMIC.get(), CelestialBlocks.CERAMIC.get(), consumer);
+
+		ceramicPane(CelestialBlocks.CERAMIC_TILE.get(), CelestialBlocks.THIN_CERAMIC_TILE.get(), CelestialBlocks.CERAMIC.get(), consumer);
+		ceramicPane(CelestialBlocks.WHITE_CERAMIC_TILE.get(), CelestialBlocks.THIN_WHITE_CERAMIC_TILE.get(), CelestialBlocks.CERAMIC.get(), consumer);
+		ceramicPane(CelestialBlocks.LIGHT_GREY_CERAMIC_TILE.get(), CelestialBlocks.THIN_LIGHT_GREY_CERAMIC_TILE.get(), CelestialBlocks.CERAMIC.get(), consumer);
+		ceramicPane(CelestialBlocks.GREY_CERAMIC_TILE.get(), CelestialBlocks.THIN_GREY_CERAMIC_TILE.get(), CelestialBlocks.CERAMIC.get(), consumer);
+		ceramicPane(CelestialBlocks.BLACK_CERAMIC_TILE.get(), CelestialBlocks.THIN_BLACK_CERAMIC_TILE.get(), CelestialBlocks.CERAMIC.get(), consumer);
+		ceramicPane(CelestialBlocks.PURPLE_CERAMIC_TILE.get(), CelestialBlocks.THIN_PURPLE_CERAMIC_TILE.get(), CelestialBlocks.CERAMIC.get(), consumer);
+		ceramicPane(CelestialBlocks.MAGENTA_CERAMIC_TILE.get(), CelestialBlocks.THIN_MAGENTA_CERAMIC_TILE.get(), CelestialBlocks.CERAMIC.get(), consumer);
+		ceramicPane(CelestialBlocks.BLUE_CERAMIC_TILE.get(), CelestialBlocks.THIN_BLUE_CERAMIC_TILE.get(), CelestialBlocks.CERAMIC.get(), consumer);
+		ceramicPane(CelestialBlocks.LIGHT_BLUE_CERAMIC_TILE.get(), CelestialBlocks.THIN_LIGHT_BLUE_CERAMIC_TILE.get(), CelestialBlocks.CERAMIC.get(), consumer);
+		ceramicPane(CelestialBlocks.CYAN_CERAMIC_TILE.get(), CelestialBlocks.THIN_CYAN_CERAMIC_TILE.get(), CelestialBlocks.CERAMIC.get(), consumer);
+		ceramicPane(CelestialBlocks.GREEN_CERAMIC_TILE.get(), CelestialBlocks.THIN_GREEN_CERAMIC_TILE.get(), CelestialBlocks.CERAMIC.get(), consumer);
+		ceramicPane(CelestialBlocks.LIME_CERAMIC_TILE.get(), CelestialBlocks.THIN_LIME_CERAMIC_TILE.get(), CelestialBlocks.CERAMIC.get(), consumer);
+		ceramicPane(CelestialBlocks.YELLOW_CERAMIC_TILE.get(), CelestialBlocks.THIN_YELLOW_CERAMIC_TILE.get(), CelestialBlocks.CERAMIC.get(), consumer);
+		ceramicPane(CelestialBlocks.ORANGE_CERAMIC_TILE.get(), CelestialBlocks.THIN_ORANGE_CERAMIC_TILE.get(), CelestialBlocks.CERAMIC.get(), consumer);
+		ceramicPane(CelestialBlocks.BROWN_CERAMIC_TILE.get(), CelestialBlocks.THIN_BROWN_CERAMIC_TILE.get(), CelestialBlocks.CERAMIC.get(), consumer);
+		ceramicPane(CelestialBlocks.RED_CERAMIC_TILE.get(), CelestialBlocks.THIN_RED_CERAMIC_TILE.get(), CelestialBlocks.CERAMIC.get(), consumer);
+		ceramicPane(CelestialBlocks.PINK_CERAMIC_TILE.get(), CelestialBlocks.THIN_PINK_CERAMIC_TILE.get(), CelestialBlocks.CERAMIC.get(), consumer);
+
+		ceramicPane(CelestialBlocks.CERAMIC_BRICK.get(), CelestialBlocks.THIN_CERAMIC_BRICK.get(), CelestialBlocks.CERAMIC.get(), consumer);
+		ceramicPane(CelestialBlocks.WHITE_CERAMIC_BRICK.get(), CelestialBlocks.THIN_WHITE_CERAMIC_BRICK.get(), CelestialBlocks.CERAMIC.get(), consumer);
+		ceramicPane(CelestialBlocks.LIGHT_GREY_CERAMIC_BRICK.get(), CelestialBlocks.THIN_LIGHT_GREY_CERAMIC_BRICK.get(), CelestialBlocks.CERAMIC.get(), consumer);
+		ceramicPane(CelestialBlocks.GREY_CERAMIC_BRICK.get(), CelestialBlocks.THIN_GREY_CERAMIC_BRICK.get(), CelestialBlocks.CERAMIC.get(), consumer);
+		ceramicPane(CelestialBlocks.BLACK_CERAMIC_BRICK.get(), CelestialBlocks.THIN_BLACK_CERAMIC_BRICK.get(), CelestialBlocks.CERAMIC.get(), consumer);
+		ceramicPane(CelestialBlocks.PURPLE_CERAMIC_BRICK.get(), CelestialBlocks.THIN_PURPLE_CERAMIC_BRICK.get(), CelestialBlocks.CERAMIC.get(), consumer);
+		ceramicPane(CelestialBlocks.MAGENTA_CERAMIC_BRICK.get(), CelestialBlocks.THIN_MAGENTA_CERAMIC_BRICK.get(), CelestialBlocks.CERAMIC.get(), consumer);
+		ceramicPane(CelestialBlocks.BLUE_CERAMIC_BRICK.get(), CelestialBlocks.THIN_BLUE_CERAMIC_BRICK.get(), CelestialBlocks.CERAMIC.get(), consumer);
+		ceramicPane(CelestialBlocks.LIGHT_BLUE_CERAMIC_BRICK.get(), CelestialBlocks.THIN_LIGHT_BLUE_CERAMIC_BRICK.get(), CelestialBlocks.CERAMIC.get(), consumer);
+		ceramicPane(CelestialBlocks.CYAN_CERAMIC_BRICK.get(), CelestialBlocks.THIN_CYAN_CERAMIC_BRICK.get(), CelestialBlocks.CERAMIC.get(), consumer);
+		ceramicPane(CelestialBlocks.GREEN_CERAMIC_BRICK.get(), CelestialBlocks.THIN_GREEN_CERAMIC_BRICK.get(), CelestialBlocks.CERAMIC.get(), consumer);
+		ceramicPane(CelestialBlocks.LIME_CERAMIC_BRICK.get(), CelestialBlocks.THIN_LIME_CERAMIC_BRICK.get(), CelestialBlocks.CERAMIC.get(), consumer);
+		ceramicPane(CelestialBlocks.YELLOW_CERAMIC_BRICK.get(), CelestialBlocks.THIN_YELLOW_CERAMIC_BRICK.get(), CelestialBlocks.CERAMIC.get(), consumer);
+		ceramicPane(CelestialBlocks.ORANGE_CERAMIC_BRICK.get(), CelestialBlocks.THIN_ORANGE_CERAMIC_BRICK.get(), CelestialBlocks.CERAMIC.get(), consumer);
+		ceramicPane(CelestialBlocks.BROWN_CERAMIC_BRICK.get(), CelestialBlocks.THIN_BROWN_CERAMIC_BRICK.get(), CelestialBlocks.CERAMIC.get(), consumer);
+		ceramicPane(CelestialBlocks.RED_CERAMIC_BRICK.get(), CelestialBlocks.THIN_RED_CERAMIC_BRICK.get(), CelestialBlocks.CERAMIC.get(), consumer);
+		ceramicPane(CelestialBlocks.PINK_CERAMIC_BRICK.get(), CelestialBlocks.THIN_PINK_CERAMIC_BRICK.get(), CelestialBlocks.CERAMIC.get(), consumer);
+
 
 		smelting(CelestialBlocks.WHITE_CERAMIC.get(), CelestialBlocks.PAINTED_WHITE_CERAMIC.get(), 1.0F, 100, CelestialBlocks.CERAMIC.get(), consumer);
 		smelting(CelestialBlocks.LIGHT_GREY_CERAMIC.get(), CelestialBlocks.PAINTED_LIGHT_GREY_CERAMIC.get(), 1.0F, 100, CelestialBlocks.CERAMIC.get(), consumer);
@@ -826,6 +950,11 @@ public class CelestialRecipeGen extends RecipeProvider {
 
 	}
 
+	public static void ceramicPane(ItemLike item, ItemLike pane, ItemLike unlockedBy, Consumer<FinishedRecipe> consumer) {
+		ShapedRecipeBuilder.shaped(pane, 16).pattern("XX").pattern("XX").define('X', item).unlockedBy("has_" + name(unlockedBy), has(unlockedBy)).save(consumer);
+	}
+
+
 	private static void dyedItemWithLunarDust(ItemLike item, Consumer<FinishedRecipe> consumer) {
 		//TODO shapeless?
 		DyedRecipeBuilder.shaped(item, DyeColor.RED).pattern("XD").define('X', item).define('D', CelestialItems.GANYMEDE_DUST.get()).unlockedBy("has_" + name(item), has(item)).save(consumer, "red_" + name(item));
@@ -841,7 +970,7 @@ public class CelestialRecipeGen extends RecipeProvider {
 		DyedRecipeBuilder.shaped(item, DyeColor.PINK).pattern("XD").define('X', item).define('D', CelestialItems.TITANIA_DUST.get()).unlockedBy("has_" + name(item), has(item)).save(consumer, "pink_" + name(item));
 		DyedRecipeBuilder.shaped(item, DyeColor.WHITE).pattern("XD").define('X', item).define('D', CelestialItems.WHITE_MOON_DUST.get()).unlockedBy("has_" + name(item), has(item)).save(consumer, "white_" + name(item));
 		DyedRecipeBuilder.shaped(item, DyeColor.LIGHT_GRAY).pattern("XD").define('X', item).define('D', CelestialItems.LIGHT_GREY_MOON_DUST.get()).unlockedBy("has_" + name(item), has(item)).save(consumer, "light_grey_" + name(item));
-		DyedRecipeBuilder.shaped(item, DyeColor.GRAY).pattern("XD").define('X', item).define('D', CelestialItems.GREY_MOON_DUST.get()).unlockedBy("has_" + name(item), has(item)).save(consumer, "grey_" + name(item));
+		DyedRecipeBuilder.shaped(item, DyeColor.GRAY).pattern("XD").define('X', item).define('D', CelestialItems.TETHYS_DUST.get()).unlockedBy("has_" + name(item), has(item)).save(consumer, "grey_" + name(item));
 		DyedRecipeBuilder.shaped(item, DyeColor.BLACK).pattern("XD").define('X', item).define('D', CelestialItems.OBERON_DUST.get()).unlockedBy("has_" + name(item), has(item)).save(consumer, "black_" + name(item));
 		DyedRecipeBuilder.shaped(item, DyeColor.BROWN).pattern("XD").define('X', item).define('D', CelestialItems.IAPETUS_DUST.get()).unlockedBy("has_" + name(item), has(item)).save(consumer, "brown_" + name(item));
 	}

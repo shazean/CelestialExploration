@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X  ",
+    "XX ",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:light_grey_ceramic_tile"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:light_grey_ceramic_tile_stairs",
+    "count": 4
+  }
+}

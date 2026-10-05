@@ -77,8 +77,11 @@ public class CelestialItemTags extends ItemTagsProvider {
 		this.copy(CelestialTags.Blocks.IO_COBBLED_DEEPSLATE, CelestialTags.Items.IO_COBBLED_DEEPSLATE);
 
 		this.copy(CelestialTags.Blocks.DYED_CERAMIC, CelestialTags.Items.DYED_CERAMIC);
-
 		this.copy(CelestialTags.Blocks.DYED_CERAMIC_TILE, CelestialTags.Items.DYED_CERAMIC_TILE);
+		this.copy(CelestialTags.Blocks.DYED_CERAMIC_BRICK, CelestialTags.Items.DYED_CERAMIC_BRICK);
+		this.copy(CelestialTags.Blocks.CERAMIC, CelestialTags.Items.CERAMIC);
+
+//		this.copy(CelestialTags.Blocks.DYED_THIN_CERAMIC, CelestialTags.Items.DYED_CERAMIC_TILE);
 
 		this.copy(CelestialTags.Blocks.PAINTED_CERAMIC, CelestialTags.Items.PAINTED_CERAMIC);
 

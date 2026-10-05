@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "celestialexploration:moon_research_tunnel",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 215975,
+    "spacing": 50,
+    "separation": 12,
+    "type": "minecraft:random_spread"
+  }
+}

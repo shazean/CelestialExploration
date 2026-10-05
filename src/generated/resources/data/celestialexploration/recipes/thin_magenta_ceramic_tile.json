@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XX",
+    "XX"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:magenta_ceramic_tile"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:thin_magenta_ceramic_tile",
+    "count": 16
+  }
+}

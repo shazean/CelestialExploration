@@ -1,0 +1,159 @@
+{
+  "name": "celestialexploration:research_tunnel/mercury/likely_spider",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 150,
+      "element": {
+        "location": "celestialexploration:research_tunnel/mercury/hall_spider",
+        "processors": "celestialexploration:mercury_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 150,
+      "element": {
+        "location": "celestialexploration:research_tunnel/mercury/hall_spider_alt",
+        "processors": "celestialexploration:mercury_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 150,
+      "element": {
+        "location": "celestialexploration:research_tunnel/mercury/corner_spider",
+        "processors": "celestialexploration:mercury_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "location": "celestialexploration:research_tunnel/mercury/hall_long",
+        "processors": "celestialexploration:mercury_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 30,
+      "element": {
+        "location": "celestialexploration:research_tunnel/mercury/hall_medium",
+        "processors": "celestialexploration:mercury_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 30,
+      "element": {
+        "location": "celestialexploration:research_tunnel/mercury/hall_short",
+        "processors": "celestialexploration:mercury_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 30,
+      "element": {
+        "location": "celestialexploration:research_tunnel/mercury/hall_tiny",
+        "processors": "celestialexploration:mercury_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 30,
+      "element": {
+        "location": "celestialexploration:research_tunnel/mercury/four_way",
+        "processors": "celestialexploration:mercury_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 30,
+      "element": {
+        "location": "celestialexploration:research_tunnel/mercury/tee",
+        "processors": "celestialexploration:mercury_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 30,
+      "element": {
+        "location": "celestialexploration:research_tunnel/mercury/corner",
+        "processors": "celestialexploration:mercury_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "location": "celestialexploration:research_tunnel/mercury/steps",
+        "processors": "celestialexploration:mercury_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "location": "celestialexploration:research_tunnel/mercury/steps_alt",
+        "processors": "celestialexploration:mercury_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "location": "celestialexploration:research_tunnel/mercury/steps_cave_in",
+        "processors": "celestialexploration:mercury_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "location": "celestialexploration:research_tunnel/mercury/cave_in_1",
+        "processors": "celestialexploration:mercury_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "location": "celestialexploration:research_tunnel/mercury/cave_in_2",
+        "processors": "celestialexploration:mercury_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "location": "celestialexploration:research_tunnel/mercury/cave_in_3",
+        "processors": "celestialexploration:mercury_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "location": "celestialexploration:research_tunnel/mercury/dead_end",
+        "processors": "celestialexploration:mercury_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

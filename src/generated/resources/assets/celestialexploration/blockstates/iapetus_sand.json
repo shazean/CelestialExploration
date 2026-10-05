@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "celestialexploration:block/iapetus_sand"
+      },
+      {
+        "model": "celestialexploration:block/iapetus_sand",
+        "y": 90
+      },
+      {
+        "model": "celestialexploration:block/iapetus_sand",
+        "y": 180
+      },
+      {
+        "model": "celestialexploration:block/iapetus_sand",
+        "y": 270
+      }
+    ]
+  }
+}

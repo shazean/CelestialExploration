@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "celestialexploration:yellow_ceramic"
+    }
+  },
+  "result": {
+    "item": "celestialexploration:yellow_ceramic_wall",
+    "count": 6
+  }
+}

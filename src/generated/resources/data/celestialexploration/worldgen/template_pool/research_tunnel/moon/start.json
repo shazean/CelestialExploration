@@ -1,0 +1,15 @@
+{
+  "name": "celestialexploration:research_tunnel/moon/start",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 50,
+      "element": {
+        "location": "celestialexploration:research_tunnel/moon/four_way",
+        "processors": "celestialexploration:moon_research_tunnel",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

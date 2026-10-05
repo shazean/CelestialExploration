@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=top": {
+      "model": "celestialexploration:block/magenta_ceramic_slab_top"
+    },
+    "type=bottom": {
+      "model": "celestialexploration:block/magenta_ceramic_slab"
+    },
+    "type=double": {
+      "model": "celestialexploration:block/magenta_ceramic"
+    }
+  }
+}

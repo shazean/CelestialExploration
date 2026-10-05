@@ -227,10 +227,10 @@ public class CelestialItems {
 	public static final RegistryObject<Item> ENCELADUS_DUST = registerItem("enceladus_dust", "Enceladus (Light Blue) Dust", () -> new Item(ITEM_PROPERTIES));
 	public static final RegistryObject<Item> RHEA_DUST = registerItem("rhea_dust", "Rhea (Orange) Dust", () -> new Item(ITEM_PROPERTIES));
 	public static final RegistryObject<Item> IAPETUS_DUST = registerItem("iapetus_dust", "Iapetus (Brown) Dust", () -> new Item(ITEM_PROPERTIES));
+	public static final RegistryObject<Item> TETHYS_DUST = registerItem("tethys_dust", "Tethys Dust", () -> new Item(ITEM_PROPERTIES));
 
 	public static final RegistryObject<Item> WHITE_MOON_DUST = registerItem("white_moon_dust", "White Lunar Dust", () -> new Item(ITEM_PROPERTIES));
 	public static final RegistryObject<Item> LIGHT_GREY_MOON_DUST = registerItem("light_grey_moon_dust", "Light Grey Lunar Dust", () -> new Item(ITEM_PROPERTIES));
-	public static final RegistryObject<Item> GREY_MOON_DUST = registerItem("grey_moon_dust", "Grey Lunar Dust", () -> new Item(ITEM_PROPERTIES));
 
 	public static final RegistryObject<Item> STEEL_ROD = registerItem("steel_rod", "Steel Rod", () -> new Item(MATERIAL_ITEM_PROPERTIES));
 	public static final RegistryObject<Item> FLARE_ROD = registerItem("flare_rod", "Flare Rod", () -> new Item(MATERIAL_ITEM_PROPERTIES));

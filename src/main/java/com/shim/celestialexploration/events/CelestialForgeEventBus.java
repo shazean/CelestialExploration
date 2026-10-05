@@ -9,7 +9,6 @@ import com.shim.celestialexploration.entity.spawner.CelestialCatSpawner;
 import com.shim.celestialexploration.entity.projectile.MeteorProjectile;
 import com.shim.celestialexploration.entity.spawner.CelestialTraderSpawner;
 import com.shim.celestialexploration.entity.spawner.MechaCrowSpawner;
-import com.shim.celestialexploration.entity.vehicle.Buggy;
 import com.shim.celestialexploration.entity.vehicle.Spaceship;
 import com.shim.celestialexploration.item.armor.SpacesuitArmorItem;
 import com.shim.celestialexploration.registry.*;
@@ -35,12 +34,9 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraftforge.client.event.RenderTooltipEvent;
 import net.minecraftforge.common.util.BlockSnapshot;
@@ -148,18 +144,18 @@ public class CelestialForgeEventBus {
                             mutablePos.set(blockpos.getX(), blockpos.getY() + 1, blockpos.getZ());
                             BlockState blockstate1 = level.getBlockState(mutablePos);
                             if (blockstate1.isAir()) {
-                                BlockState blockstate2 = level.getBlockState(blockpos);
+                                BlockState blockstate = level.getBlockState(blockpos);
                                 FluidState fluidState = level.getFluidState(blockpos);
-                                if (!fluidState.isEmpty()) {
+                                if (!fluidState.isEmpty() && blockstate.getBlock() instanceof LiquidBlock) {
 
                                     Block solid = SolidifiedFluids.getSolidBlock(fluidState.getType());
-                                    BlockState blockState = solid.defaultBlockState();
+                                    BlockState solidBlockState = solid.defaultBlockState();
 
-                                    boolean isFull = blockstate2.getValue(LiquidBlock.LEVEL) == 0;
-                                    if (isFull && blockState.canSurvive(level, blockpos) && level.isUnobstructed(blockState, blockpos, CollisionContext.empty())
+                                    boolean isFull = blockstate.getValue(LiquidBlock.LEVEL) == 0;
+                                    if (isFull && solidBlockState.canSurvive(level, blockpos) && level.isUnobstructed(solidBlockState, blockpos, CollisionContext.empty())
                                             && !ForgeEventFactory.onBlockPlace(player, BlockSnapshot.create(level.dimension(), level, blockpos), Direction.UP)) {
 
-                                        level.setBlockAndUpdate(blockpos, blockState);
+                                        level.setBlockAndUpdate(blockpos, solidBlockState);
                                         level.scheduleTick(blockpos, solid, Mth.nextInt(player.getRandom(), 60, 120));
 
                                     }
@@ -369,13 +365,13 @@ public class CelestialForgeEventBus {
                 new CelestialVillagerTrades.ItemsForEmeralds(CelestialItems.OBERON_DUST.get(), 1, 3, 12, 1),
                 new CelestialVillagerTrades.ItemsForEmeralds(CelestialItems.DIONE_DUST.get(), 1, 3, 12, 1),
                 new CelestialVillagerTrades.ItemsForEmeralds(CelestialItems.TITAN_DUST.get(), 1, 3, 12, 1),
-                new CelestialVillagerTrades.ItemsForEmeralds(CelestialItems.GREY_MOON_DUST.get(), 1, 3, 12, 1),
+                new CelestialVillagerTrades.ItemsForEmeralds(CelestialItems.TETHYS_DUST.get(), 1, 3, 12, 1),
                 new CelestialVillagerTrades.ItemsForEmeralds(CelestialItems.TRITON_DUST.get(), 1, 3, 12, 1),
                 new CelestialVillagerTrades.ItemsForEmeralds(CelestialItems.ENCELADUS_DUST.get(), 1, 3, 12, 1),
                 new CelestialVillagerTrades.ItemsForEmeralds(CelestialItems.RHEA_DUST.get(), 1, 3, 12, 1),
                 new CelestialVillagerTrades.ItemsForEmeralds(CelestialItems.IAPETUS_DUST.get(), 1, 3, 12, 1),
                 new CelestialVillagerTrades.ItemsForEmeralds(CelestialItems.LIGHT_GREY_MOON_DUST.get(), 1, 3, 12, 1),
-                new CelestialVillagerTrades.ItemsForEmeralds(CelestialItems.GREY_MOON_DUST.get(), 1, 3, 12, 1),
+                new CelestialVillagerTrades.ItemsForEmeralds(CelestialItems.TETHYS_DUST.get(), 1, 3, 12, 1),
 
 
 //                new CelestialVillagerTrades.ItemsForEmeralds(Items.RED_DYE, 1, 3, 12, 1),

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "celestialexploration:cyan_ceramic"
+  },
+  "result": "celestialexploration:cyan_ceramic_brick",
+  "count": 1
+}
