@@ -29,7 +29,7 @@ public class CelestialStructureGen extends StructureProvider {
 
         this.registerStructureSet(CelestialStructures.VOLCANO.get(), 439292, 30, 12, new Pair<>(modLoc("venus_volcano"), 1)).save(consumer);
 
-        this.registerStructureSet(CelestialStructures.SOLAR_FIELD.get(), 213972, 30, 12, new Pair<>(modLoc("solar_field"), 1)).save(consumer);
+        this.registerStructureSet(CelestialStructures.SOLAR_FIELD.get(), 213972, 30, 12, new Pair<>(modLoc("solar_field"), 3)).save(consumer);
 
         this.registerStructureSet(CelestialStructures.MARS_RESEARCH_TUNNEL.get(), 263272, 50, 12, new Pair<>(modLoc("mars_research_tunnel"), 1)).save(consumer);
         this.registerStructureSet(CelestialStructures.MOON_RESEARCH_TUNNEL.get(), 215975, 50, 12, new Pair<>(modLoc("moon_research_tunnel"), 1)).save(consumer);
@@ -79,7 +79,7 @@ public class CelestialStructureGen extends StructureProvider {
                 poolElement(modLoc("colony/callisto/road_tee"), MOON_ROADS, false, 3)
         ).save(consumer);
 
-        this.registerTemplatePool(modLoc("callisto_colony/building"),
+        this.registerTemplatePool(modLoc("callisto_colony/buildings"),
                 poolElement(modLoc("colony/callisto/crafting_hall"), MOON_COLONY, true, 5),
                 poolElement(modLoc("colony/callisto/garden"), MOON_COLONY, true, 1),
                 poolElement(modLoc("colony/callisto/greenhouse"), MOON_COLONY, true, 8),
@@ -87,16 +87,20 @@ public class CelestialStructureGen extends StructureProvider {
                 poolElement(modLoc("colony/callisto/house_b_alt"), MOON_COLONY, true, 5),
                 poolElement(modLoc("colony/callisto/house"), MOON_COLONY, true, 10),
                 poolElement(modLoc("colony/callisto/house_b"), MOON_COLONY, true, 10),
-                poolElement(modLoc("colony/callisto/ruined"), MOON_COLONY, true, 15),
+                poolElement(modLoc("colony/callisto/ruined"), RUINED_MOON_COLONY, true, 15),
                 poolElement(modLoc("colony/callisto/mess_hall"), MOON_COLONY, true, 10),
                 poolElement(modLoc("colony/callisto/research_hub"), MOON_COLONY, true, 10),
                 poolElement(modLoc("colony/callisto/smithy"), MOON_COLONY, true, 8),
                 poolElement(EMPTY, EMPTY, true, 8)
         ).save(consumer);
 
+        this.registerTemplatePool(modLoc("solar_field/panel"),
+                poolElement(modLoc("solar_panel"), EMPTY, true, 8)).save(consumer);
+
+
         this.registerTemplatePool(modLoc("solar_field"),
-                poolElement(modLoc("solar_field_of_4"), EMPTY, true, 8), poolElement(modLoc("solar_field_of_4_broken"), EMPTY, false, 8),
-                poolElement(modLoc("solar_field_of_9"), EMPTY, true, 10), poolElement(modLoc("solar_field_of_16"), EMPTY, true, 5)).save(consumer);
+                poolElement(modLoc("solar_field_of_4"), EMPTY, false, 8), poolElement(modLoc("solar_field_of_4_broken"), modLoc("broken_solar_panel"), false, 8),
+                poolElement(modLoc("solar_field_of_9"), EMPTY, false, 10), poolElement(modLoc("solar_field_of_16"), EMPTY, false, 5)).save(consumer);
 
         this.registerTemplatePool(modLoc("research_tunnel/research_tunnel_mag_cart"),
                 poolElement(modLoc("research_tunnel/no_mag_cart"), EMPTY, true, 20),
@@ -235,9 +239,9 @@ public class CelestialStructureGen extends StructureProvider {
                 poolElement(modLoc("colony/moon/house_b"), MOON_COLONY, true, 10),
                 poolElement(modLoc("colony/moon/mess_hall"), MOON_COLONY, true, 10),
                 poolElement(modLoc("colony/moon/research_hub"), MOON_COLONY, true, 10),
-                poolElement(modLoc("colony/moon/ruined_meteor"), RUINED_MOON_COLONY, true, 1),
-                poolElement(modLoc("colony/moon/ruined_alt"), RUINED_MOON_COLONY, true, 3),
-                poolElement(modLoc("colony/moon/ruined"), RUINED_MOON_COLONY, true, 5),
+                poolElement(modLoc("colony/moon/ruined_meteor"), RUINED_MOON_COLONY, false, 1),
+                poolElement(modLoc("colony/moon/ruined_alt"), RUINED_MOON_COLONY, false, 3),
+                poolElement(modLoc("colony/moon/ruined"), RUINED_MOON_COLONY, false, 5),
                 poolElement(modLoc("colony/moon/smithy"), MOON_COLONY, true, 8),
                 poolElement(EMPTY, EMPTY, true, 8)).save(consumer);
         this.registerTemplatePool(modLoc("moon_colony/moon_colony_roads"),
@@ -259,9 +263,8 @@ public class CelestialStructureGen extends StructureProvider {
                 poolElement(modLoc("colony/europa/house_b"), MOON_COLONY, true, 10),
                 poolElement(modLoc("colony/europa/mess_hall"), MOON_COLONY, true, 10),
                 poolElement(modLoc("colony/europa/research_hub"), MOON_COLONY, true, 10),
-                poolElement(modLoc("colony/europa/ruined_meteor"), RUINED_MOON_COLONY, true, 1),
-                poolElement(modLoc("colony/europa/ruined_alt"), RUINED_MOON_COLONY, true, 3),
-                poolElement(modLoc("colony/europa/ruined"), RUINED_MOON_COLONY, true, 5),
+                poolElement(modLoc("colony/europa/ruined_alt"), RUINED_MOON_COLONY, false, 3),
+                poolElement(modLoc("colony/europa/ruined"), RUINED_MOON_COLONY, false, 5),
                 poolElement(modLoc("colony/europa/smithy"), MOON_COLONY, true, 8),
                 poolElement(EMPTY, EMPTY, true, 8)).save(consumer);
         this.registerTemplatePool(modLoc("europa_colony/europa_colony_roads"),
@@ -283,9 +286,9 @@ public class CelestialStructureGen extends StructureProvider {
                 poolElement(modLoc("colony/ganymede/house_b"), MOON_COLONY, true, 10),
                 poolElement(modLoc("colony/ganymede/mess_hall"), MOON_COLONY, true, 10),
                 poolElement(modLoc("colony/ganymede/research_hub"), MOON_COLONY, true, 10),
-                poolElement(modLoc("colony/ganymede/ruined_meteor"), RUINED_MOON_COLONY, true, 1),
-                poolElement(modLoc("colony/ganymede/ruined_alt"), RUINED_MOON_COLONY, true, 3),
-                poolElement(modLoc("colony/ganymede/ruined"), RUINED_MOON_COLONY, true, 5),
+                poolElement(modLoc("colony/ganymede/ruined_meteor"), RUINED_MOON_COLONY, false, 1),
+                poolElement(modLoc("colony/ganymede/ruined_alt"), RUINED_MOON_COLONY, false, 3),
+                poolElement(modLoc("colony/ganymede/ruined"), RUINED_MOON_COLONY, false, 5),
                 poolElement(modLoc("colony/ganymede/smithy"), MOON_COLONY, true, 8),
                 poolElement(EMPTY, EMPTY, true, 8)).save(consumer);
         this.registerTemplatePool(modLoc("ganymede_colony/ganymede_colony_roads"),
@@ -299,29 +302,29 @@ public class CelestialStructureGen extends StructureProvider {
 
 
         this.registerTemplatePool(modLoc("mars_colony/downstairs"),
-                poolElement(modLoc("mars_colony/bell"), MARS_COLONY, true, 1)).save(consumer);
+                poolElement(modLoc("colony/mars/bell"), MARS_COLONY, true, 1)).save(consumer);
         this.registerTemplatePool(modLoc("mars_colony/mars_colony_buildings"),
-                poolElement(modLoc("mars_colony/crafting_hall"), MARS_COLONY, true, 5),
-                poolElement(modLoc("mars_colony/farm"), MARS_COLONY, true, 1),
-                poolElement(modLoc("mars_colony/greenhouse"), MARS_COLONY, true, 8),
-                poolElement(modLoc("mars_colony/house_alt"), MARS_COLONY, true, 5),
-                poolElement(modLoc("mars_colony/small_house_alt"), MARS_COLONY, true, 5),
-                poolElement(modLoc("mars_colony/house"), MARS_COLONY, true, 10),
-                poolElement(modLoc("mars_colony/small_house"), MARS_COLONY, true, 10),
-                poolElement(modLoc("mars_colony/mess_hall"), MARS_COLONY, true, 10),
-                poolElement(modLoc("mars_colony/research_hub"), MARS_COLONY, true, 8),
-                poolElement(modLoc("mars_colony/smithy"), MARS_COLONY, true, 8),
+                poolElement(modLoc("colony/mars/crafting_hall"), MARS_COLONY, true, 5),
+                poolElement(modLoc("colony/mars/farm"), MARS_COLONY, true, 1),
+                poolElement(modLoc("colony/mars/greenhouse"), MARS_COLONY, true, 8),
+                poolElement(modLoc("colony/mars/house_alt"), MARS_COLONY, true, 5),
+                poolElement(modLoc("colony/mars/small_house_alt"), MARS_COLONY, true, 5),
+                poolElement(modLoc("colony/mars/house"), MARS_COLONY, true, 10),
+                poolElement(modLoc("colony/mars/small_house"), MARS_COLONY, true, 10),
+                poolElement(modLoc("colony/mars/mess_hall"), MARS_COLONY, true, 10),
+                poolElement(modLoc("colony/mars/research_hub"), MARS_COLONY, true, 8),
+                poolElement(modLoc("colony/mars/smithy"), MARS_COLONY, true, 8),
                 poolElement(EMPTY, EMPTY, true, 8)).save(consumer);
         this.registerTemplatePool(modLoc("mars_colony/mars_colony_roads"),
-                poolElement(modLoc("mars_colony/road_cross"), MARS_COLONY, true, 1),
-                poolElement(modLoc("mars_colony/road_elbow"), MARS_COLONY, true, 10),
-                poolElement(modLoc("mars_colony/road_straight"), MARS_COLONY, true, 2),
-                poolElement(modLoc("mars_colony/road_straight_one"), MARS_COLONY, true, 12),
-                poolElement(modLoc("mars_colony/road_straight_two"), MARS_COLONY, true, 25),
-                poolElement(modLoc("mars_colony/road_straight_short"), MARS_COLONY, true, 50),
-                poolElement(modLoc("mars_colony/road_tee"), MARS_COLONY, true, 3),
-                poolElement(modLoc("mars_colony/road_tee_alt"), MARS_COLONY, true, 5)).save(consumer);
-        this.registerTemplatePool(modLoc("mars_colony/start_pool"), poolElement(modLoc("mars_colony/surface_entrance"), MARS_COLONY, true, 1)).save(consumer);
+                poolElement(modLoc("colony/mars/road_cross"), MARS_COLONY, true, 1),
+                poolElement(modLoc("colony/mars/road_elbow"), MARS_COLONY, true, 10),
+                poolElement(modLoc("colony/mars/road_straight"), MARS_COLONY, true, 2),
+                poolElement(modLoc("colony/mars/road_straight_one"), MARS_COLONY, true, 12),
+                poolElement(modLoc("colony/mars/road_straight_two"), MARS_COLONY, true, 25),
+                poolElement(modLoc("colony/mars/road_straight_short"), MARS_COLONY, true, 50),
+                poolElement(modLoc("colony/mars/road_tee"), MARS_COLONY, true, 3),
+                poolElement(modLoc("colony/mars/road_tee_alt"), MARS_COLONY, true, 5)).save(consumer);
+        this.registerTemplatePool(modLoc("mars_colony/start_pool"), poolElement(modLoc("colony/mars/surface_entrance"), MARS_COLONY, true, 1)).save(consumer);
 
     }
 
@@ -337,7 +340,7 @@ public class CelestialStructureGen extends StructureProvider {
 
         this.registerStructureFeature().type(CelestialStructures.MOON_COLONY.get()).jigsawConfig(modLoc("callisto_colony/start_pool"), 5).biomes(modLoc("has_structure/callisto_colony_biomes")).doAdaptNoise().emptyMonsterSpawns().save(consumer, "callisto_colony");
         this.registerStructureFeature().type(CelestialStructures.MOON_COLONY.get()).jigsawConfig(modLoc("europa_colony/start_pool"), 5).biomes(modLoc("has_structure/europa_colony_biomes")).doAdaptNoise().emptyMonsterSpawns().save(consumer, "europa_colony");
-        this.registerStructureFeature().type(CelestialStructures.MOON_COLONY.get()).jigsawConfig(modLoc("moon_colony/start_pool"), 5).biomes(modLoc("has_structure/moon_colony_biomes")).doAdaptNoise().emptyMonsterSpawns().save(consumer, "moon_colony");
+        this.registerStructureFeature().type(CelestialStructures.MOON_COLONY.get()).jigsawConfig(modLoc("moon_colony/start_pool"), 5).biomes(CelestialTags.Biomes.MOON_COLONY_BIOMES).doAdaptNoise().emptyMonsterSpawns().save(consumer, "moon_colony");
         this.registerStructureFeature().type(CelestialStructures.MOON_COLONY.get()).jigsawConfig(modLoc("ganymede_colony/start_pool"), 5).biomes(modLoc("has_structure/ganymede_colony_biomes")).doAdaptNoise().emptyMonsterSpawns().save(consumer, "ganymede_colony");
         this.registerStructureFeature().type(CelestialStructures.MARS_COLONY.get()).jigsawConfig(modLoc("mars_colony/start_pool"), 5).biomes(modLoc("has_structure/mars_colony_biomes")).doAdaptNoise().emptyMonsterSpawns().save(consumer, "mars_colony");
         this.registerStructureFeature().type(CelestialStructures.MERCURY_COLONY.get()).jigsawConfig(modLoc("mercury_colony/start_pool"), 5).biomes(modLoc("has_structure/mercury_colony_biomes")).doAdaptNoise().emptyMonsterSpawns().save(consumer, "mercury_colony");
@@ -392,6 +395,7 @@ public class CelestialStructureGen extends StructureProvider {
                 processorRuleRandomMatch(CelestialBlocks.MOON_DEEPSLATE_TILES.get(), CelestialBlocks.CRACKED_MOON_DEEPSLATE_TILES.get(), CRACKED_BRICK_CHANCE),
                 processorRuleRandomMatch(CelestialBlocks.MOON_SAND_PATH.get(), CelestialBlocks.MOON_SAND.get(), 0.2F),
                 processorRuleRandomMatch(CelestialBlocks.LUNAR_LANTERN.get(), Blocks.AIR, LANTERN_TO_AIR_CHANCE),
+                processorRuleRandomMatch(CelestialBlocks.SOLAR_PANEL.get(), Blocks.AIR, LANTERN_TO_AIR_CHANCE),
                 processorRuleRandomMatch(CelestialBlocks.MOON_FARMLAND.get(), CelestialBlocks.MOON_FARMLAND_TILLED.get(), 0.1F),
                 GLOW_STRIP_TO_AIR, GENERATOR_TO_AIR)))).save(consumer);
 
@@ -403,12 +407,14 @@ public class CelestialStructureGen extends StructureProvider {
                 processorRuleRandomMatch(CelestialBlocks.LUNAR_LANTERN.get(), Blocks.AIR, LANTERN_TO_AIR_CHANCE * 2.0F),
                 GLOW_STRIP_TO_AIR)))).save(consumer);
 
-        this.registerProcessorRules(modLoc("mars_colony"), ImmutableList.of(new RuleProcessor(ImmutableList.of(
+        this.registerProcessorRules(MARS_COLONY, ImmutableList.of(new RuleProcessor(ImmutableList.of(
                 processorRuleRandomMatch(CelestialBlocks.MARS_BRICKS.get(), CelestialBlocks.CRACKED_MARS_BRICKS.get(), CRACKED_BRICK_CHANCE),
                 processorRuleRandomMatch(CelestialBlocks.MARS_LANTERN.get(), Blocks.AIR, LANTERN_TO_AIR_CHANCE),
                 processorRuleRandomMatch(CelestialBlocks.MARS_FARMLAND.get(), CelestialBlocks.MARS_FARMLAND_TILLED.get(), 0.1F),
                 GLOW_STRIP_TO_AIR, GENERATOR_TO_AIR)))).save(consumer);
 
+
+        this.registerProcessorRules(modLoc("broken_solar_panel"), ImmutableList.of(new RuleProcessor(ImmutableList.of(processorRuleRandomMatch(CelestialBlocks.SOLAR_PANEL.get(), Blocks.AIR, CRACKED_BRICK_CHANCE))))).save(consumer);
 
     }
 

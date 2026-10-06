@@ -5,7 +5,7 @@
     {
       "weight": 1,
       "element": {
-        "location": "celestialexploration:mars_colony/road_cross",
+        "location": "celestialexploration:colony/mars/road_cross",
         "processors": "celestialexploration:mars_colony",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
@@ -14,7 +14,7 @@
     {
       "weight": 10,
       "element": {
-        "location": "celestialexploration:mars_colony/road_elbow",
+        "location": "celestialexploration:colony/mars/road_elbow",
         "processors": "celestialexploration:mars_colony",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
@@ -23,7 +23,7 @@
     {
       "weight": 2,
       "element": {
-        "location": "celestialexploration:mars_colony/road_straight",
+        "location": "celestialexploration:colony/mars/road_straight",
         "processors": "celestialexploration:mars_colony",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
@@ -32,7 +32,7 @@
     {
       "weight": 12,
       "element": {
-        "location": "celestialexploration:mars_colony/road_straight_one",
+        "location": "celestialexploration:colony/mars/road_straight_one",
         "processors": "celestialexploration:mars_colony",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
@@ -41,7 +41,7 @@
     {
       "weight": 25,
       "element": {
-        "location": "celestialexploration:mars_colony/road_straight_two",
+        "location": "celestialexploration:colony/mars/road_straight_two",
         "processors": "celestialexploration:mars_colony",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
@@ -50,7 +50,7 @@
     {
       "weight": 50,
       "element": {
-        "location": "celestialexploration:mars_colony/road_straight_short",
+        "location": "celestialexploration:colony/mars/road_straight_short",
         "processors": "celestialexploration:mars_colony",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
@@ -59,7 +59,7 @@
     {
       "weight": 3,
       "element": {
-        "location": "celestialexploration:mars_colony/road_tee",
+        "location": "celestialexploration:colony/mars/road_tee",
         "processors": "celestialexploration:mars_colony",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
@@ -68,7 +68,7 @@
     {
       "weight": 5,
       "element": {
-        "location": "celestialexploration:mars_colony/road_tee_alt",
+        "location": "celestialexploration:colony/mars/road_tee_alt",
         "processors": "celestialexploration:mars_colony",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"

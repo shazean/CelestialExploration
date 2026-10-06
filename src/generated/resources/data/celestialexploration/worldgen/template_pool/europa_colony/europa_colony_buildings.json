@@ -5,8 +5,8 @@
     {
       "weight": 5,
       "element": {
-        "location": "celestialexploration:europa_colony/crafting_hall",
-        "processors": "celestialexploration:lunar_colony",
+        "location": "celestialexploration:colony/europa/crafting_hall",
+        "processors": "celestialexploration:moon_colony",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
@@ -14,8 +14,8 @@
     {
       "weight": 1,
       "element": {
-        "location": "celestialexploration:europa_colony/garden",
-        "processors": "celestialexploration:lunar_colony",
+        "location": "celestialexploration:colony/europa/garden",
+        "processors": "celestialexploration:moon_colony",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
@@ -23,8 +23,8 @@
     {
       "weight": 8,
       "element": {
-        "location": "celestialexploration:europa_colony/greenhouse",
-        "processors": "celestialexploration:lunar_colony",
+        "location": "celestialexploration:colony/europa/greenhouse",
+        "processors": "celestialexploration:moon_colony",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
@@ -32,8 +32,8 @@
     {
       "weight": 5,
       "element": {
-        "location": "celestialexploration:europa_colony/house_alt",
-        "processors": "celestialexploration:lunar_colony",
+        "location": "celestialexploration:colony/europa/house_alt",
+        "processors": "celestialexploration:moon_colony",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
@@ -41,8 +41,8 @@
     {
       "weight": 5,
       "element": {
-        "location": "celestialexploration:europa_colony/house_b_alt",
-        "processors": "celestialexploration:lunar_colony",
+        "location": "celestialexploration:colony/europa/house_b_alt",
+        "processors": "celestialexploration:moon_colony",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
@@ -50,8 +50,8 @@
     {
       "weight": 10,
       "element": {
-        "location": "celestialexploration:europa_colony/house",
-        "processors": "celestialexploration:lunar_colony",
+        "location": "celestialexploration:colony/europa/house",
+        "processors": "celestialexploration:moon_colony",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
@@ -59,8 +59,8 @@
     {
       "weight": 10,
       "element": {
-        "location": "celestialexploration:europa_colony/house_b",
-        "processors": "celestialexploration:lunar_colony",
+        "location": "celestialexploration:colony/europa/house_b",
+        "processors": "celestialexploration:moon_colony",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
@@ -68,8 +68,8 @@
     {
       "weight": 10,
       "element": {
-        "location": "celestialexploration:europa_colony/mess_hall",
-        "processors": "celestialexploration:lunar_colony",
+        "location": "celestialexploration:colony/europa/mess_hall",
+        "processors": "celestialexploration:moon_colony",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
@@ -77,17 +77,8 @@
     {
       "weight": 10,
       "element": {
-        "location": "celestialexploration:europa_colony/research_hub",
-        "processors": "celestialexploration:lunar_colony",
-        "projection": "rigid",
-        "element_type": "minecraft:single_pool_element"
-      }
-    },
-    {
-      "weight": 1,
-      "element": {
-        "location": "celestialexploration:europa_colony/ruined_meteor",
-        "processors": "celestialexploration:ruined_lunar_colony",
+        "location": "celestialexploration:colony/europa/research_hub",
+        "processors": "celestialexploration:moon_colony",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
@@ -95,26 +86,26 @@
     {
       "weight": 3,
       "element": {
-        "location": "celestialexploration:europa_colony/ruined_alt",
-        "processors": "celestialexploration:ruined_lunar_colony",
-        "projection": "rigid",
+        "location": "celestialexploration:colony/europa/ruined_alt",
+        "processors": "celestialexploration:ruined_moon_colony",
+        "projection": "terrain_matching",
         "element_type": "minecraft:single_pool_element"
       }
     },
     {
       "weight": 5,
       "element": {
-        "location": "celestialexploration:europa_colony/ruined",
-        "processors": "celestialexploration:ruined_lunar_colony",
-        "projection": "rigid",
+        "location": "celestialexploration:colony/europa/ruined",
+        "processors": "celestialexploration:ruined_moon_colony",
+        "projection": "terrain_matching",
         "element_type": "minecraft:single_pool_element"
       }
     },
     {
       "weight": 8,
       "element": {
-        "location": "celestialexploration:europa_colony/smithy",
-        "processors": "celestialexploration:lunar_colony",
+        "location": "celestialexploration:colony/europa/smithy",
+        "processors": "celestialexploration:moon_colony",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }

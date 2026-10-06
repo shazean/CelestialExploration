@@ -59,13 +59,13 @@ public class CelestialDimensionTypes extends DimensionTypeGenProvider {
                 .height(256, 256, -96).save(consumer, CelestialDimensions.EUROPA);
 
 
-        DimensionTypeGen.builder().ultrawarm(false).natural(true).mobs(true, false).respawn(true, false)
+        DimensionTypeGen.builder().ultrawarm(false).natural(true).mobs(true, false).respawn(false, true)
                 .sky(true, false, 0F).coordinateScale(12F).infiniburn(BlockTags.INFINIBURN_OVERWORLD)
                 .effects(CelestialDimensions.IO.location())
                 .height(256, 256, -32).save(consumer, CelestialDimensions.IO);
 
 
-        DimensionTypeGen.builder().ultrawarm(true).natural(false).mobs(true, true).respawn(false, true)
+        DimensionTypeGen.builder().ultrawarm(true).natural(false).mobs(true, true).respawn(true, false)
                 .sky(true, false, 0F).coordinateScale(12F).infiniburn(BlockTags.INFINIBURN_OVERWORLD)
                 .effects(CelestialDimensions.CALLISTO.location())
                 .height(256, 256, -32).save(consumer, CelestialDimensions.CALLISTO);

@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "#celestialexploration:milky_way",
     "#celestialexploration:mars",
     "#celestialexploration:venus",
     "#celestialexploration:mercury",

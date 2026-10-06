@@ -119,6 +119,7 @@ public class CelestialBiomeTags extends BiomeTagsProvider {
 //                .addTag(CelestialTags.Biomes.MILKY_WAY_BIOMES);
 
         tag(CelestialTags.Biomes.NO_OXYGEN_BIOMES)
+                .addTag(CelestialTags.Biomes.MILKY_WAY_BIOMES)
                 .addTag(CelestialTags.Biomes.MARS_BIOMES)
                 .addTag(CelestialTags.Biomes.VENUS_BIOMES)
                 .addTag(CelestialTags.Biomes.MERCURY_BIOMES)
@@ -155,6 +156,11 @@ public class CelestialBiomeTags extends BiomeTagsProvider {
                 .addTag(CelestialTags.Biomes.EUROPA_BIOMES);
         tag(CelestialTags.Biomes.MERCURY_RESEARCH_TUNNEL_BIOMES)
                 .addTag(CelestialTags.Biomes.MERCURY_BIOMES);
+
+        tag(CelestialTags.Biomes.MOON_COLONY_BIOMES)
+                .add(CelestialBiomeKeys.MOON_DESERT)
+                .add(CelestialBiomeKeys.MOON_PLAINS);
+
 
     }
 }

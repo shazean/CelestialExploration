@@ -1,0 +1,114 @@
+{
+  "name": "celestialexploration:callisto_colony/buildings",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 5,
+      "element": {
+        "location": "celestialexploration:colony/callisto/crafting_hall",
+        "processors": "celestialexploration:moon_colony",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "celestialexploration:colony/callisto/garden",
+        "processors": "celestialexploration:moon_colony",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 8,
+      "element": {
+        "location": "celestialexploration:colony/callisto/greenhouse",
+        "processors": "celestialexploration:moon_colony",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 5,
+      "element": {
+        "location": "celestialexploration:colony/callisto/house_alt",
+        "processors": "celestialexploration:moon_colony",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 5,
+      "element": {
+        "location": "celestialexploration:colony/callisto/house_b_alt",
+        "processors": "celestialexploration:moon_colony",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "location": "celestialexploration:colony/callisto/house",
+        "processors": "celestialexploration:moon_colony",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "location": "celestialexploration:colony/callisto/house_b",
+        "processors": "celestialexploration:moon_colony",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 15,
+      "element": {
+        "location": "celestialexploration:colony/callisto/ruined",
+        "processors": "celestialexploration:ruined_moon_colony",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "location": "celestialexploration:colony/callisto/mess_hall",
+        "processors": "celestialexploration:moon_colony",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "location": "celestialexploration:colony/callisto/research_hub",
+        "processors": "celestialexploration:moon_colony",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 8,
+      "element": {
+        "location": "celestialexploration:colony/callisto/smithy",
+        "processors": "celestialexploration:moon_colony",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 8,
+      "element": {
+        "location": "minecraft:empty",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

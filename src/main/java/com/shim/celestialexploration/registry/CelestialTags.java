@@ -190,6 +190,7 @@ public class CelestialTags {
         public static final TagKey<Biome> MOON_RESEARCH_TUNNEL_BIOMES = create("has_structure/moon_research_tunnel");
         public static final TagKey<Biome> MERCURY_RESEARCH_TUNNEL_BIOMES = create("has_structure/mercury_research_tunnel");
 
+        public static final TagKey<Biome> MOON_COLONY_BIOMES = create("has_structure/moon_colony_biomes");
 
 
         //        public static final TagKey<Biome> PLANETS = create("planets");

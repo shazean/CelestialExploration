@@ -2,7 +2,7 @@
   "structures": [
     {
       "structure": "celestialexploration:solar_field",
-      "weight": 1
+      "weight": 3
     }
   ],
   "placement": {

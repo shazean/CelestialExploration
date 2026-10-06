@@ -5,7 +5,7 @@
     {
       "weight": 1,
       "element": {
-        "location": "celestialexploration:mars_colony/bell",
+        "location": "celestialexploration:colony/mars/bell",
         "processors": "celestialexploration:mars_colony",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"

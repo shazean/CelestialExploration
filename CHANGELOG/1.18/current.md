@@ -5,3 +5,4 @@
 - `[NEW]` New ceramic blocks! Also fun fact, this puts us at nearly 1,000 new blocks. :O
 - `[CHG]` Steel ladder recipe is not so expensive anymore…
 - `[CHG]` Updated celestial colonies, most notably so they include local chests and farmland instead of vanilla variants
+- `[FIX]` Fixed beds and anchor respawns working accidentally being reversed for Io and Callisto.

@@ -1,0 +1,60 @@
+{
+  "name": "celestialexploration:moon_colony/moon_colony_roads",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "celestialexploration:colony/moon/road_cross",
+        "processors": "celestialexploration:moon_colony_road",
+        "projection": "terrain_matching",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "location": "celestialexploration:colony/moon/road_elbow",
+        "processors": "celestialexploration:moon_colony_road",
+        "projection": "terrain_matching",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 15,
+      "element": {
+        "location": "celestialexploration:colony/moon/road_straight",
+        "processors": "celestialexploration:moon_colony_road",
+        "projection": "terrain_matching",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 12,
+      "element": {
+        "location": "celestialexploration:colony/moon/road_small_straight",
+        "processors": "celestialexploration:moon_colony_road",
+        "projection": "terrain_matching",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 20,
+      "element": {
+        "location": "celestialexploration:colony/moon/road_small_straight_alt",
+        "processors": "celestialexploration:moon_colony_road",
+        "projection": "terrain_matching",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 3,
+      "element": {
+        "location": "celestialexploration:colony/moon/road_tee",
+        "processors": "celestialexploration:moon_colony_road",
+        "projection": "terrain_matching",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

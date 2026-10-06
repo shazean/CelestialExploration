@@ -1,5 +1,5 @@
 {
-  "type": "celestialexploration:lunar_colony",
+  "type": "celestialexploration:solar_field",
   "config": {
     "start_pool": "celestialexploration:solar_field",
     "size": 2

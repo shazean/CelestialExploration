@@ -1,0 +1,15 @@
+{
+  "name": "celestialexploration:solar_field/panel",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 8,
+      "element": {
+        "location": "celestialexploration:solar_panel",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

@@ -5,8 +5,8 @@
     {
       "weight": 1,
       "element": {
-        "location": "celestialexploration:ganymede_colony/road_cross",
-        "processors": "celestialexploration:lunar_colony_road",
+        "location": "celestialexploration:colony/ganymede/road_cross",
+        "processors": "celestialexploration:moon_colony_road",
         "projection": "terrain_matching",
         "element_type": "minecraft:single_pool_element"
       }
@@ -14,8 +14,8 @@
     {
       "weight": 10,
       "element": {
-        "location": "celestialexploration:ganymede_colony/road_elbow",
-        "processors": "celestialexploration:lunar_colony_road",
+        "location": "celestialexploration:colony/ganymede/road_elbow",
+        "processors": "celestialexploration:moon_colony_road",
         "projection": "terrain_matching",
         "element_type": "minecraft:single_pool_element"
       }
@@ -23,8 +23,8 @@
     {
       "weight": 15,
       "element": {
-        "location": "celestialexploration:ganymede_colony/road_straight",
-        "processors": "celestialexploration:lunar_colony_road",
+        "location": "celestialexploration:colony/ganymede/road_straight",
+        "processors": "celestialexploration:moon_colony_road",
         "projection": "terrain_matching",
         "element_type": "minecraft:single_pool_element"
       }
@@ -32,8 +32,8 @@
     {
       "weight": 12,
       "element": {
-        "location": "celestialexploration:ganymede_colony/road_small_straight",
-        "processors": "celestialexploration:lunar_colony_road",
+        "location": "celestialexploration:colony/ganymede/road_small_straight",
+        "processors": "celestialexploration:moon_colony_road",
         "projection": "terrain_matching",
         "element_type": "minecraft:single_pool_element"
       }
@@ -41,8 +41,8 @@
     {
       "weight": 20,
       "element": {
-        "location": "celestialexploration:ganymede_colony/road_small_straight_alt",
-        "processors": "celestialexploration:lunar_colony_road",
+        "location": "celestialexploration:colony/ganymede/road_small_straight_alt",
+        "processors": "celestialexploration:moon_colony_road",
         "projection": "terrain_matching",
         "element_type": "minecraft:single_pool_element"
       }
@@ -50,8 +50,8 @@
     {
       "weight": 3,
       "element": {
-        "location": "celestialexploration:ganymede_colony/road_tee",
-        "processors": "celestialexploration:lunar_colony_road",
+        "location": "celestialexploration:colony/ganymede/road_tee",
+        "processors": "celestialexploration:moon_colony_road",
         "projection": "terrain_matching",
         "element_type": "minecraft:single_pool_element"
       }
